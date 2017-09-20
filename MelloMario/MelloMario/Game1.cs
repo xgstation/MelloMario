@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,10 +12,14 @@ namespace MelloMario
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Script script;
+        List<Controller> controllers;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            controllers = new List<Controller>();
+            script = new Script();
             Content.RootDirectory = "Content";
         }
 
@@ -26,9 +31,13 @@ namespace MelloMario
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            controllers.Add(new GamepadController(this));
+            controllers.Add(new KeyboardController(this));
+
+            script.Initialize(controllers);
 
             base.Initialize();
+
         }
 
         /// <summary>
@@ -59,8 +68,10 @@ namespace MelloMario
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            foreach (Controller controller in controllers)
+            {
+                controller.UpdateInput();
+            }
 
             // TODO: Add your update logic here
 
