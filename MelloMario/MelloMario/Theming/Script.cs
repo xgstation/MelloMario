@@ -23,6 +23,17 @@ namespace MelloMario
                     controller.AddCommand((int)Keys.Left, new LeftCommand(this));
                     controller.AddCommand((int)Keys.Right, new RightCommand(this));
                     controller.AddCommand((int)Keys.Space, new ActionCommand(this));
+
+                    //commands for changing block/mario state
+                    controller.AddCommand((int)Keys.X, new UsedBlockCommand(this));
+                    controller.AddCommand((int)Keys.OemQuestion, new QuestionBlockCommand(this));
+                    controller.AddCommand((int)Keys.B, new BrickBlockCommand(this));
+                    controller.AddCommand((int)Keys.H, new HiddenBlockCommand(this));
+
+                    controller.AddCommand((int)Keys.Y, new StdStateCommand(this));
+                    controller.AddCommand((int)Keys.U, new SuperStateCommand(this));
+                    controller.AddCommand((int)Keys.I, new FireStateCommand(this));
+                    controller.AddCommand((int)Keys.O, new DeadStateCommand(this));
                 }
                 else
                 if (controller is GamepadController)
