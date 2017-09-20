@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Input;
 using MelloMario.Commands;
 using System.Diagnostics;
 
-//mostly a copy of examples and my sprint 0 code.namespace MelloMario
 namespace MelloMario
 {
     public abstract class Controller : IController

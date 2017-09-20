@@ -1,5 +1,4 @@
 
-//mostly a copy of examples and my sprint 0 code.
 using MelloMario.Commands;
 
 namespace MelloMario

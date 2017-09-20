@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//mostly a copy of examples but I guess there is no reason to reinvent the wheel
 namespace MelloMario.Commands
 {
 
