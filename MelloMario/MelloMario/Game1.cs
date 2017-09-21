@@ -14,6 +14,8 @@ namespace MelloMario
         SpriteBatch spriteBatch;
         Script script;
         List<Controller> controllers;
+        Mario mario;
+        
 
         public Game1()
         {
@@ -21,6 +23,7 @@ namespace MelloMario
             controllers = new List<Controller>();
             script = new Script();
             Content.RootDirectory = "Content";
+            
         }
 
         /// <summary>
@@ -48,7 +51,9 @@ namespace MelloMario
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            mario = new Mario(new Vector2(100, 00), this.Content);
+            mario.down();
+            mario.changeToSuperState();
             // TODO: use this.Content to load your game content here
         }
 
@@ -87,7 +92,7 @@ namespace MelloMario
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            mario.Draw(spriteBatch);
             base.Draw(gameTime);
         }
     }
