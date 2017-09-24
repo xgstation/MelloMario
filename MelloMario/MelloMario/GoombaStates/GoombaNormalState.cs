@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprite
+namespace MelloMario
 {
  
     public class GoombaNormalState:IGoombaState
@@ -32,10 +32,14 @@ namespace Sprite
         {
             goomba.Update(gameTime);
         }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             goomba.Draw(spriteBatch);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        {
+            goomba.Draw(spriteBatch, location);
         }
     }
 }
