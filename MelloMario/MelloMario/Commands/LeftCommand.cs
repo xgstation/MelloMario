@@ -13,7 +13,7 @@ namespace MelloMario
 
         public void Execute()
         {
-            throw new System.NotImplementedException();
+            this.model.Mario.left();
         }
     }
 }
