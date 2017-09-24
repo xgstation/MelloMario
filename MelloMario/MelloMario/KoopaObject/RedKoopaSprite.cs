@@ -61,7 +61,8 @@ namespace MelloMario
             }
 
         }
-        public void Draw(SpriteBatch spriteBatch)
+
+        public void Draw(SpriteBatch enemySprite)
         {
             int redWidth = redKoopa.Width / redColumns;
             int redHeight = redKoopa.Height / redRows;
@@ -69,17 +70,9 @@ namespace MelloMario
             int rC = redFrames % redColumns;
             Rectangle redLast = new Rectangle(0, 0, redWidth, redHeight);
             Rectangle redFirst = new Rectangle(redWidth * rC, rR * redHeight, redWidth, redHeight);
-            spriteBatch.Draw(redKoopa, redLast, redFirst, Color.White);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            int redWidth = redKoopa.Width / redColumns;
-            int redHeight = redKoopa.Height / redRows;
-            int rR = redFrames / redColumns;
-            int rC = redFrames % redColumns;
-            Rectangle redFirst = new Rectangle(redWidth * rC, rR * redHeight, redWidth, redHeight);
-            spriteBatch.Draw(redKoopa, location, redFirst);
+            enemySprite.Begin();
+            enemySprite.Draw(redKoopa, redLast, redFirst, Color.White);
+            enemySprite.End();
         }
     }
-    }
+}

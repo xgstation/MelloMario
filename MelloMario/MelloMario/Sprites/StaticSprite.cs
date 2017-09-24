@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario
+namespace MelloMario.Sprites
 {
     class StaticSprite : ISprite
     {

@@ -8,11 +8,11 @@ namespace MelloMario
 {
     class CommandFactory : ICommandFactory
     {
-        ICommand createGameModelCommand(string actionName, GameModel model)
+        public ICommand createGameModelCommand(string actionName, GameModel model)
         {
             // TODO: implement it
         }
-        ICommand createMarioCommand(string actionName, Mario mario)
+        public ICommand createMarioCommand(string actionName, Mario mario)
         {
             // TODO: implement it
         }

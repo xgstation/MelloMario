@@ -19,10 +19,12 @@ namespace MelloMario
             enemyGoomba = goomba1;
             goomba = SpriteFactory.Instance.CreateGoombaSprite();
         }
+
         public void transNormal()
         {
            
         }
+
         public void transDefeated()
         {
             enemyGoomba.GoombaState = new GoombaDefeatedState(enemyGoomba);
@@ -32,6 +34,7 @@ namespace MelloMario
         {
             goomba.Update(gameTime);
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             goomba.Draw(spriteBatch);

@@ -55,6 +55,8 @@
     <Compile Include="Commands\LeftCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\RightCommand.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="Factory\SpriteFactory.cs" />
     <Compile Include="GoombaObject\Goomba.cs" />
@@ -116,9 +118,9 @@
     <Compile Include="Sprites\UsedQuestionSprite.cs" />
     <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Theming\Script.cs" />
-    <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Controllers\Controllers.cs" />
-    <Compile Include="Controllers\IController.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Controllers\GamePadController.cs" />
+    <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
