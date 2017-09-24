@@ -41,6 +41,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Blocks\BrickBlock.cs" />
+    <Compile Include="Blocks\FloorBlock.cs" />
+    <Compile Include="Blocks\QuestionBlock.cs" />
+    <Compile Include="Blocks\StairBlock.cs" />
     <Compile Include="Commands\ActionCommand.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\JumpCommand.cs" />
@@ -48,6 +52,7 @@
     <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\RightCommand.cs" />
     <Compile Include="Factory\SpriteFactory.cs" />
+    <Compile Include="Interfaces\IBlock.cs" />
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
@@ -94,12 +99,18 @@
     <Compile Include="MarioStates\Super\Right\SuperJumpingRight.cs" />
     <Compile Include="MarioStates\Super\Right\SuperWalkingRight.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
+    <Compile Include="Sprites\BrickSprite.cs" />
+    <Compile Include="Sprites\DestroyingSprite.cs" />
+    <Compile Include="Sprites\FloorSprite.cs" />
+    <Compile Include="Sprites\QuestionSprite.cs" />
+    <Compile Include="Sprites\StairSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Commands\BrickBlockCommand.cs" />
     <Compile Include="Commands\HiddenBlockCommand.cs" />
     <Compile Include="Commands\QuestionBlockCommand.cs" />
     <Compile Include="Commands\DeadStateCommand.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
+    <Compile Include="Sprites\UsedQuestionSprite.cs" />
     <Compile Include="Theming\Script.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Controllers\Controllers.cs" />
