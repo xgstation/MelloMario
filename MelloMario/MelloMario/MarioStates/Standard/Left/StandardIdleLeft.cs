@@ -15,21 +15,19 @@ namespace MelloMario
         Mario mario;
         ISprite sprite;
         bool setToStatic;
-        ContentManager content;
 
-        public StandardIdleLeft(Mario newMario,ContentManager content)
+        public StandardIdleLeft(Mario newMario)
         {
             mario = newMario;
             setToStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("StandardIdleLeft",setToStatic,content);
-            this.content = content;
+            sprite = SpriteFactory.Instance.createSprite("StandardIdleLeft",setToStatic);
         }
         public void down() {
-            mario.setMarioState(new StandardCrouchingLeft(mario, content));
+            mario.setMarioState(new StandardCrouchingLeft(mario));
         }
         public void changeToFireState()
         {
-            mario.setMarioState(new FireIdleLeft(mario, content));
+            mario.setMarioState(new FireIdleLeft(mario));
         }
         public void changeToSuperState()
         {
@@ -41,9 +39,9 @@ namespace MelloMario
         }
         public void die()
         {
-            mario.setMarioState(new Dead(mario, content));
+            mario.setMarioState(new Dead(mario));
         }
-        public void Update()
+        public void Update(GameTime game)
         {
             //Nothing to do here
         }
@@ -66,17 +64,17 @@ namespace MelloMario
 
         public void up()
         {
-            mario.setMarioState(new StandardJumpingLeft(mario,content));
+            mario.setMarioState(new StandardJumpingLeft(mario));
         }
 
         public void right()
         {
-            mario.setMarioState(new StandardWalkingRight(mario,content));
+            mario.setMarioState(new StandardWalkingRight(mario));
         }
 
         public void left()
         {
-            mario.setMarioState(new StandardWalkingLeft(mario,content));
+            mario.setMarioState(new StandardWalkingLeft(mario));
         }
     }
 }

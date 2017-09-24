@@ -22,7 +22,7 @@ namespace MelloMario
         void changeToFireState();
         void changeToSuperState();
         void changeToStandardState();      
-        void Update();
-        void Draw(SpriteBatch spriteBatch,Vector2 location);
+        void Update(GameTime game);
+        void Draw(SpriteBatch spriteBatch, Vector2 position);
     }
 }

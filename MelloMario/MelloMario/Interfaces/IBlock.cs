@@ -10,7 +10,7 @@ namespace MelloMario
 {
     interface IBlock
     {
-        void Update();
+        void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch, Vector2 location);
     }
 }

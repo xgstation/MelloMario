@@ -4,16 +4,16 @@ namespace MelloMario
 {
     internal class DeadStateCommand : ICommand
     {
-        private Script script;
+        private GameModel model;
 
-        public DeadStateCommand(Script script)
+        public DeadStateCommand(GameModel model)
         {
-            this.script = script;
+            this.model = model;
         }
 
         public void Execute()
         {
-            throw new System.NotImplementedException();
+            model.Mario.die();
         }
     }
 }

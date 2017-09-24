@@ -12,21 +12,20 @@ namespace MelloMario
     class Dead : IMarioState
     {
         Mario mario;
-        ContentManager content;
         ISprite sprite;
         bool setToStatic;
-        public Dead(Mario mario, ContentManager content)
+        public Dead(Mario mario)
         {
             this.mario = mario;
-            this.content = content;
             setToStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("Dead",setToStatic,content);
+            sprite = SpriteFactory.Instance.createSprite("Dead",setToStatic);
 
 
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             sprite.Draw(spriteBatch,location);
+            
         }
         public void die() { }
         public void changeToFireState() { }
@@ -39,6 +38,6 @@ namespace MelloMario
         public void left(){ }
         public void right() { }
         public void up() { }
-        public void Update() { }      
+        public void Update(GameTime game) { }      
     }
 }

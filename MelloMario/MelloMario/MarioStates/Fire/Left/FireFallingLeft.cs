@@ -12,21 +12,19 @@ namespace MelloMario
     class FireFallingLeft : IMarioState
     {
         Mario mario;
-        ContentManager content;
         bool setStatic;
         ISprite sprite;
-        public FireFallingLeft(Mario mario,ContentManager content)
+        public FireFallingLeft(Mario mario)
         {
             this.mario = mario;
-            this.content = content;
             setStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("FireFallingLeft",setStatic,content);
+            sprite = SpriteFactory.Instance.createSprite("FireFallingLeft",setStatic);
 
 
         }
         public void die()
         {
-            mario.setMarioState(new Dead(mario,content));   
+            mario.setMarioState(new Dead(mario));   
         }
 
         public void changeToFireState()
@@ -36,13 +34,13 @@ namespace MelloMario
 
         public void changeToStandardState()
         {
-            mario.setMarioState(new StandardFallingLeft(mario,content));
+            mario.setMarioState(new StandardFallingLeft(mario));
             
         }
 
         public void changeToSuperState()
         {
-            mario.setMarioState(new SuperFallingLeft(mario,content));
+            mario.setMarioState(new SuperFallingLeft(mario));
         }
 
         public void down()
@@ -72,7 +70,7 @@ namespace MelloMario
 
         public void right()
         {
-            mario.setMarioState(new FireFallingRight(mario,content));
+            mario.setMarioState(new FireFallingRight(mario));
         }
 
         public void up()
@@ -80,7 +78,7 @@ namespace MelloMario
             //nothing here
         }
 
-        public void Update()
+        public void Update(GameTime game)
         {
         }
     }

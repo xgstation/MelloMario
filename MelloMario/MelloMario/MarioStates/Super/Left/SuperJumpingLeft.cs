@@ -13,32 +13,30 @@ namespace MelloMario
     class SuperJumpingLeft : IMarioState
     {
         Mario mario;
-        ContentManager content;
         bool setStatic;
         ISprite sprite;
-        public SuperJumpingLeft(Mario mario, ContentManager content)
+        public SuperJumpingLeft(Mario mario)
         {
             this.mario = mario;
-            this.content = content;
             setStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("SuperJumpingLeft", setStatic, content);
+            sprite = SpriteFactory.Instance.createSprite("SuperJumpingLeft", setStatic);
 
 
         }
 
         public void die()
         {
-            mario.setMarioState(new Dead(mario, content));
+            mario.setMarioState(new Dead(mario));
         }
 
         public void changeToFireState()
         {
-            mario.setMarioState(new FireJumpingLeft(mario,content));
+            mario.setMarioState(new FireJumpingLeft(mario));
         }
 
         public void changeToStandardState()
         {
-            mario.setMarioState(new StandardJumpingLeft(mario,content));
+            mario.setMarioState(new StandardJumpingLeft(mario));
         }
 
 
@@ -49,7 +47,7 @@ namespace MelloMario
 
         public void down()
         {
-            mario.setMarioState(new SuperIdleLeft(mario,content));
+            mario.setMarioState(new SuperIdleLeft(mario));
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -59,12 +57,12 @@ namespace MelloMario
 
         public void fall()
         {
-            mario.setMarioState(new SuperFallingLeft(mario,content));
+            mario.setMarioState(new SuperFallingLeft(mario));
         }
 
         public void idle()
         {
-            mario.setMarioState(new SuperIdleLeft(mario,content));   
+            mario.setMarioState(new SuperIdleLeft(mario));   
         }
 
         public void left()
@@ -75,7 +73,7 @@ namespace MelloMario
         public void right()
         {
             //jump right
-            mario.setMarioState(new SuperJumpingRight(mario,content));
+            mario.setMarioState(new SuperJumpingRight(mario));
         }
 
         public void up()
@@ -83,7 +81,7 @@ namespace MelloMario
            //nothing here
         }
 
-        public void Update()
+        public void Update(GameTime game)
         {
             
         }

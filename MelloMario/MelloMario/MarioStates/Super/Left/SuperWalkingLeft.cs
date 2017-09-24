@@ -14,29 +14,27 @@ namespace MelloMario
         Mario mario;
         ISprite sprite;
         bool setToStatic;
-        ContentManager content;
 
-        public SuperWalkingLeft(Mario newMario, ContentManager content)
+        public SuperWalkingLeft(Mario newMario)
         {
             mario = newMario;
             setToStatic = false;
-            sprite = SpriteFactory.Instance.createSprite("SuperWalkingLeft", setToStatic, content);
-            this.content = content;
+            sprite = SpriteFactory.Instance.createSprite("SuperWalkingLeft", setToStatic);
         }
 
         public void die()
         {
-            mario.setMarioState(new Dead(mario, content));
+            mario.setMarioState(new Dead(mario));
         }
 
         public void changeToFireState()
         {
-            mario.setMarioState(new FireWalkingLeft(mario,content));
+            mario.setMarioState(new FireWalkingLeft(mario));
         }
 
         public void changeToStandardState()
         {
-            mario.setMarioState(new StandardWalkingLeft(mario,content));
+            mario.setMarioState(new StandardWalkingLeft(mario));
         }
 
         public void changeToSuperState()
@@ -46,7 +44,7 @@ namespace MelloMario
 
         public void down()
         {
-            mario.setMarioState(new SuperCrouchingLeft(mario,content));
+            mario.setMarioState(new SuperCrouchingLeft(mario));
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -61,7 +59,7 @@ namespace MelloMario
 
         public void idle()
         {
-            mario.setMarioState(new SuperIdleLeft(mario,content));
+            mario.setMarioState(new SuperIdleLeft(mario));
         }
 
         public void left()
@@ -72,15 +70,15 @@ namespace MelloMario
         public void right()
         {
             //walk right
-            mario.setMarioState(new SuperWalkingRight(mario,content));
+            mario.setMarioState(new SuperWalkingRight(mario));
         }
 
         public void up()
         {
-            mario.setMarioState(new SuperJumpingLeft(mario,content));
+            mario.setMarioState(new SuperJumpingLeft(mario));
         }
 
-        public void Update()
+        public void Update(GameTime game)
         {
            
         }

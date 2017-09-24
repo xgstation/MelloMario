@@ -4,16 +4,16 @@ namespace MelloMario
 {
     internal class FireStateCommand : ICommand
     {
-        private Script script;
+        private GameModel model;
 
-        public FireStateCommand(Script script)
+        public FireStateCommand(GameModel model)
         {
-            this.script = script;
+            this.model = model;
         }
 
         public void Execute()
         {
-            throw new System.NotImplementedException();
+            model.Mario.changeToFireState();
         }
     }
 }

@@ -15,25 +15,23 @@ namespace MelloMario
         Mario mario;
         ISprite sprite;
         bool setToStatic;
-        ContentManager content;
 
-        public StandardIdleRight(Mario newMario,ContentManager content)
+        public StandardIdleRight(Mario newMario)
         {
             mario = newMario;
             setToStatic = true;
             sprite = SpriteFactory.Instance.createSprite("StandardIdleRight",setToStatic,content);
-            this.content = content;
         }
         public void down() {
-            mario.setMarioState(new StandardCrouchingRight(mario, content));
+            mario.setMarioState(new StandardCrouchingRight(mario));
         }
         public void changeToFireState()
         {
-            mario.setMarioState(new FireIdleRight(mario, content));
+            mario.setMarioState(new FireIdleRight(mario));
         }
         public void changeToSuperState()
         {
-            mario.setMarioState(new SuperIdleRight(mario, content));   
+            mario.setMarioState(new SuperIdleRight(mario));   
         }
         public void changeToStandardState()
         {
@@ -41,9 +39,9 @@ namespace MelloMario
         }
         public void die()
         {
-            mario.setMarioState(new Dead(mario, content));
+            mario.setMarioState(new Dead(mario));
         }
-        public void Update()
+        public void Update(GameTime game)
         {
             //Nothing to do here
         }
@@ -66,17 +64,17 @@ namespace MelloMario
 
         public void up()
         {
-            mario.setMarioState(new StandardJumpingRight(mario,content));
+            mario.setMarioState(new StandardJumpingRight(mario));
         }
 
         public void right()
         {
-            mario.setMarioState(new StandardWalkingRight(mario,content));
+            mario.setMarioState(new StandardWalkingRight(mario));
         }
 
         public void left()
         {
-            mario.setMarioState(new StandardWalkingLeft(mario,content));
+            mario.setMarioState(new StandardWalkingLeft(mario));
         }
     }
 }

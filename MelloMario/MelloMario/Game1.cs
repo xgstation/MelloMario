@@ -13,15 +13,14 @@ namespace MelloMario
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Script script;
-        List<Controller> controllers;
-        Mario mario;
+        GameModel model;
         
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            controllers = new List<Controller>();
             script = new Script();
+            model = new GameModel();
             Content.RootDirectory = "Content";
             
         }
@@ -34,10 +33,14 @@ namespace MelloMario
         /// </summary>
         protected override void Initialize()
         {
+
+            List<Controller> controllers = new List<Controller>();
             controllers.Add(new GamepadController(this));
             controllers.Add(new KeyboardController(this));
 
-            script.Initialize(controllers);
+            model.Initialize(controllers);
+
+            script.Initialize(model);
 
             base.Initialize();
 
@@ -51,9 +54,6 @@ namespace MelloMario
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            mario = new Mario(new Vector2(100, 00), this.Content);
-            mario.down();
-            mario.changeToSuperState();
             // TODO: use this.Content to load your game content here
         }
 
@@ -73,10 +73,9 @@ namespace MelloMario
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            foreach (Controller controller in controllers)
-            {
-                controller.UpdateInput();
-            }
+            
+
+            model.update(gameTime);
 
             // TODO: Add your update logic here
 
@@ -93,7 +92,7 @@ namespace MelloMario
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            mario.Draw(spriteBatch);
+            model.draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

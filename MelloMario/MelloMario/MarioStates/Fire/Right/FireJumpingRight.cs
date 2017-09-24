@@ -12,22 +12,20 @@ namespace MelloMario
     class FireJumpingRight : IMarioState
     {
         Mario mario;
-        ContentManager content;
         bool setStatic;
         ISprite sprite;
-        public FireJumpingRight(Mario mario, ContentManager content)
+        public FireJumpingRight(Mario mario)
         {
             this.mario = mario;
-            this.content = content;
             setStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("FireJumpingRight", setStatic, content);
+            sprite = SpriteFactory.Instance.createSprite("FireJumpingRight", setStatic);
 
 
         }
 
         public void die()
         {
-            mario.setMarioState(new Dead(mario, content));
+            mario.setMarioState(new Dead(mario));
         }
 
         public void changeToFireState()
@@ -37,16 +35,16 @@ namespace MelloMario
 
         public void changeToStandardState()
         {
-            mario.setMarioState(new StandardJumpingRight(mario,content));
+            mario.setMarioState(new StandardJumpingRight(mario));
         }
         public void changeToSuperState()
         {
-            mario.setMarioState(new SuperJumpingRight(mario,content));
+            mario.setMarioState(new SuperJumpingRight(mario));
         }
 
         public void down()
         {
-            mario.setMarioState(new FireIdleRight(mario,content));
+            mario.setMarioState(new FireIdleRight(mario));
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -56,17 +54,17 @@ namespace MelloMario
 
         public void fall()
         {
-            mario.setMarioState(new FireFallingRight(mario,content));
+            mario.setMarioState(new FireFallingRight(mario));
         }
 
         public void idle()
         {
-            mario.setMarioState(new FireIdleRight(mario,content));
+            mario.setMarioState(new FireIdleRight(mario));
         }
 
         public void left()
         {
-            mario.setMarioState(new FireIdleLeft(mario,content));
+            mario.setMarioState(new FireIdleLeft(mario));
         }
 
         public void right()
@@ -79,7 +77,7 @@ namespace MelloMario
             //nothing to do here
         }
 
-        public void Update()
+        public void Update(GameTime game)
         {
             
         }
