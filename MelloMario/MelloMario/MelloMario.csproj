@@ -56,7 +56,6 @@
     <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\RightCommand.cs" />
     <Compile Include="Factory\SpriteFactory.cs" />
-    <Compile Include="Factory\SpriteFactory1.cs" />
     <Compile Include="GoombaObject\Goomba.cs" />
     <Compile Include="GoombaStates\GoombaDefeatedState.cs" />
     <Compile Include="GoombaStates\GoombaNormalState.cs" />
