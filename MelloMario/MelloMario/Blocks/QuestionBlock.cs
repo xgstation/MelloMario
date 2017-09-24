@@ -8,21 +8,34 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Blocks
 {
-    class QuestionBlock
+    class QuestionBlock : IBlock
     {
         private ISprite sprite;
+        private Boolean isUsed;
         public IBlockState state { get; set; }
-        public QuestionBlock()
+        //Using Rectangle to record location and hitting boundary
+        public Rectangle Boundary { get; set; }
+        public QuestionBlock(Vector2 location, Boolean isUsed)
         {
-            this.state = new BlockStates.Silent();
-            //TODO : Constructor for Sprite
+            this.isUsed = isUsed;
+            if (!isUsed)
+            {
+                this.state = new BlockStates.Silent(this);
+            }
+            else
+            {
+                this.state = new BlockStates.Used(this);
+            }
+            this.Boundary = new Rectangle(location.ToPoint(), new Point(16, 16));
         }
-        public QuestionBlock(IBlockState state)
+        public void Update(GameTime gameTime)
         {
-            this.state = state;
-            //TODO : Constructor for Sprite
+            throw new NotImplementedException();
         }
-        public void Update() { }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location) { }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

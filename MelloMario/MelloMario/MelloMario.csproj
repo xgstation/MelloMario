@@ -262,6 +262,9 @@
     <None Include="Content\obj\Windows\SuperWalkingLeft.mgcontent" />
     <None Include="Content\obj\Windows\SuperWalkingRight.mgcontent" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PowerUps\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

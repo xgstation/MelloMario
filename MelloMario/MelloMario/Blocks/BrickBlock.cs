@@ -11,25 +11,30 @@ namespace MelloMario.Blocks
     class BrickBlock : IBlock
     {
         private ISprite sprite;
+        private Boolean isUsed = false;
         public IBlockState state { get; set; }
-        public BrickBlock ()
+        //Using Rectangle to record location and hitting boundary
+        public Rectangle Boundary { get; set; }
+        public BrickBlock(Vector2 location, Boolean isUsed)
         {
-            this.state = new BlockStates.Silent();
-            //TODO : Constructor for Sprite
+            this.isUsed = isUsed;
+            if (!isUsed)
+            {
+                state = new BlockStates.Silent(this);
+            }
+            else
+            {
+                state = new BlockStates.Used(this);
+            }
+            Boundary = new Rectangle(location.ToPoint(), new Point(16, 16));
         }
-        public BrickBlock (IBlockState state)
+        public void Update(GameTime gameTime)
         {
-            this.state = state;
-            //TODO : Constructor for Sprite
-        }
-
-        public void Update()
-        {
-            sprite.Update();
+            sprite.Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            sprite.Draw(spriteBatch, location);
+            sprite.Draw(spriteBatch);
         }
     }
 }
