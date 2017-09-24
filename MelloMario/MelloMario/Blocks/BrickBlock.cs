@@ -10,47 +10,21 @@ namespace MelloMario.Blocks
 {
     class BrickBlock : IBlock
     {
-        public enum State
-        {
-            Normal, Hidden, Destroy
-        }
-        public State state { get; set; }
         private ISprite sprite;
-        private int Frame = 0;
-        public BrickBlock (State state)
+        public IBlockState state { get; set; }
+        public BrickBlock ()
+        {
+            this.state = new BlockStates.Silent();
+            //TODO : Constructor for Sprite
+        }
+        public BrickBlock (IBlockState state)
         {
             this.state = state;
-            switch(this.state)
-            {
-                case State.Normal:
-                    {
-                        sprite = new Sprites.BrickSprite();
-                        break;
-                    }
-                case State.Hidden:
-                    {
-                        sprite = null;
-                        break;
-                    }
-            }
+            //TODO : Constructor for Sprite
         }
-        
+
         public void Update()
         {
-            if (state == State.Destroy)
-            {
-                if (Frame == 0)
-                {
-                    sprite = new Sprites.DestroyingSprite();
-                } else
-                {
-                    Frame++;
-                    if (Frame == sprite.TotalFrame())
-                    {
-                        sprite = null;
-                    }
-                }
-            }
             sprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

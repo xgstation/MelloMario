@@ -41,6 +41,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BlockStates\Destroy.cs" />
+    <Compile Include="BlockStates\Hidden.cs" />
+    <Compile Include="BlockStates\Silent.cs" />
+    <Compile Include="BlockStates\Used.cs" />
     <Compile Include="Blocks\BrickBlock.cs" />
     <Compile Include="Blocks\FloorBlock.cs" />
     <Compile Include="Blocks\QuestionBlock.cs" />
@@ -53,6 +57,7 @@
     <Compile Include="Commands\RightCommand.cs" />
     <Compile Include="Factory\SpriteFactory.cs" />
     <Compile Include="Interfaces\IBlock.cs" />
+    <Compile Include="Interfaces\IBlockState.cs" />
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
