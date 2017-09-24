@@ -28,7 +28,9 @@ namespace MelloMario.Sprites
         {
             return totalFrame;
         }
-        public void Update() { }
+
+        public void Update(GameTime time) { }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             int width = Texture.Width / Columns; //horizontal Cell

@@ -38,7 +38,8 @@ namespace MelloMario
         public void changeToStandardState() { marioState.changeToStandardState();}
         public void changeToFireState() { marioState.changeToFireState();}
         public void changeToSuperState() { marioState.changeToSuperState();}
-        public void Update(GameTime game){ marioState.Update(game);}
+        public void Update(GameTime game) { marioState.Update(game);}
+
         public void Draw(SpriteBatch spriteBatch)
         { marioState.Draw(spriteBatch);}
   

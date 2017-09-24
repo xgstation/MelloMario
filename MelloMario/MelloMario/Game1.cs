@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MelloMario.Controllers;
 
 namespace MelloMario
 {
@@ -33,7 +34,7 @@ namespace MelloMario
         protected override void Initialize()
         {
 
-            List<Controller> controllers = new List<Controller>();
+            List<IController> controllers = new List<IController>();
             controllers.Add(new GamepadController(this));
             controllers.Add(new KeyboardController(this));
 

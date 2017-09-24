@@ -37,7 +37,7 @@ namespace MelloMario.Blocks
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            sprite.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, location);
         }
     }
 }

@@ -62,7 +62,7 @@ namespace MelloMario
 
         }
 
-        public void Draw(SpriteBatch enemySprite)
+        public void Draw(SpriteBatch enemySprite, Vector2 location)
         {
             int redWidth = redKoopa.Width / redColumns;
             int redHeight = redKoopa.Height / redRows;

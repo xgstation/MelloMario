@@ -12,6 +12,6 @@ namespace MelloMario
     interface ISprite
     {
         void Update(GameTime game);
-        void Draw(SpriteBatch spriteBatch);
+        void Draw(SpriteBatch spriteBatch, Vector2 location);
     }
 }

@@ -22,12 +22,12 @@ namespace MelloMario.Sprites
 
         }
 
-        public void Update(GameTime game)
+        public void Update(GameTime time)
         {
             //do update after moving frame logic
         }
 
-        public void Draw(SpriteBatch spriteBatch,Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             //do moving frame logic later
             spriteBatch.Draw(texture,location,defaultColor);

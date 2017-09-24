@@ -10,7 +10,8 @@ namespace MelloMario.Sprites
 {
     class UsedQuestionSprite : ISprite
     {
-        public void Update() { }
+        public void Update(GameTime time) { }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 location) { }
     }
 }

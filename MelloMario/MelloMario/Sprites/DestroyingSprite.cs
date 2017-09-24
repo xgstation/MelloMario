@@ -18,7 +18,7 @@ namespace MelloMario.Sprites
             return totalFrame;
         }
 
-        public void Update()
+        public void Update(GameTime time)
         {
             currentFrame++;
             if (currentFrame == totalFrame)

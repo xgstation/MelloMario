@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace MelloMario
+namespace MelloMario.Sprites
 {
-    public class GoombaSprite:ISprite
+    public class GoombaSprite: ISprite
     {
         public Texture2D goomBa { get; set; }
         public int rows { get; set; }
@@ -40,7 +40,7 @@ namespace MelloMario
         
         }
 
-        public void Draw(SpriteBatch enemySprite)
+        public void Draw(SpriteBatch enemySprite, Vector2 location)
         {
             int width = goomBa.Width / columns;
             int height = goomBa.Height / rows;
