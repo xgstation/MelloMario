@@ -11,10 +11,12 @@ namespace MelloMario
         public ICommand createGameModelCommand(string actionName, GameModel model)
         {
             // TODO: implement it
+            return null;
         }
         public ICommand createMarioCommand(string actionName, Mario mario)
         {
             // TODO: implement it
+            return null;
         }
     }
 }

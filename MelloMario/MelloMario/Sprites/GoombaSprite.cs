@@ -26,7 +26,6 @@ namespace MelloMario.Sprites
 
         public void Update(GameTime gameTime)
         {
-            
             elapsed += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (elapsed >= delay)
             {
@@ -48,13 +47,11 @@ namespace MelloMario.Sprites
             int c = frames % columns;
             Rectangle last = new Rectangle(700, 100, width, height);
             Rectangle first = new Rectangle(width * c, r * height, width, height);
-
-            enemySprite.Draw(goomBa, last, first, Color.White);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            throw new NotImplementedException();
+            enemySprite.Begin();
+           
+                enemySprite.Draw(goomBa, last, first, Color.White);
+            
+            enemySprite.End();
         }
     }
 }

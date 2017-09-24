@@ -37,12 +37,8 @@ namespace MelloMario
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            // TODO: calculate the location
             goomba.Draw(spriteBatch);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            goomba.Draw(spriteBatch, location);
         }
     }
 }

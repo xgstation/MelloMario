@@ -15,6 +15,7 @@ namespace MelloMario.Sprites
         private int Columns = 0;
 
         private Texture2D Texture;
+
         public BrickSprite()
         {
             Texture = texture;
@@ -24,6 +25,7 @@ namespace MelloMario.Sprites
             totalFrames = Rows * Columns;
             currentPositionX = 0;
         }
+
         public int TotalFrame()
         {
             return totalFrame;

@@ -50,6 +50,7 @@ namespace MelloMario
         internal void draw(SpriteBatch spriteBatch)
         {
             mario.Draw(spriteBatch);
+            // TODO: Use objects (Goomba object / Koopa object / block object ...)?
             foreach (ISprite sprite in sprites)
             {
                 sprite.Draw(spriteBatch);

@@ -41,9 +41,9 @@ namespace MelloMario
         public void Update(GameTime game) { marioState.Update(game);}
 
         public void Draw(SpriteBatch spriteBatch)
-        { marioState.Draw(spriteBatch);}
-  
-       
-
+        {
+            // TODO: calculate the location
+            marioState.Draw(spriteBatch);
+        }
     }
 }
