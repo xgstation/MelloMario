@@ -4,11 +4,11 @@ namespace MelloMario
 {
     internal class LeftCommand : ICommand
     {
-        private Script script;
+        private GameModel model;
 
-        public LeftCommand(Script script)
+        public LeftCommand(GameModel model)
         {
-            this.script = script;
+            this.model = model;
         }
 
         public void Execute()

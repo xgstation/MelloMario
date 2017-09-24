@@ -4,11 +4,11 @@ namespace MelloMario
 {
     internal class HiddenBlockCommand : ICommand
     {
-        private Script script;
+        private GameModel model;
 
-        public HiddenBlockCommand(Script script)
+        public HiddenBlockCommand(GameModel model)
         {
-            this.script = script;
+            this.model = model;
         }
 
         public void Execute()

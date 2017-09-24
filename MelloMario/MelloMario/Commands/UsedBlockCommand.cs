@@ -4,11 +4,11 @@ namespace MelloMario
 {
     internal class UsedBlockCommand : ICommand
     {
-        private Script script;
+        private GameModel model;
 
-        public UsedBlockCommand(Script script)
+        public UsedBlockCommand(GameModel model)
         {
-            this.script = script;
+            this.model = model;
         }
 
         public void Execute()

@@ -5,11 +5,11 @@ namespace MelloMario
 {
     internal class JumpCommand : ICommand
     {
-        private Script script;
+        private GameModel model;
 
-        public JumpCommand(Script script)
+        public JumpCommand(GameModel model)
         {
-            this.script = script;
+            this.model = model;
         }
 
         public void Execute()
