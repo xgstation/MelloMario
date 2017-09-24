@@ -11,10 +11,12 @@ namespace MelloMario.BlockStates
     class Used : IBlockState
     {
         private IBlock block;
+
         public Used(IBlock block)
         {
             this.block = block;
         }
+
         public void changeToSilent()
         {
             throw new NotImplementedException();

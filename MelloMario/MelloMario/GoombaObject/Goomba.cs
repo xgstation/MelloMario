@@ -10,7 +10,7 @@ namespace MelloMario
 {
     public class Goomba
     {
-        public IState GoombaState;
+        public IGoombaState GoombaState;
         public Goomba()
         {
             GoombaState = new GoombaNormalState(this);

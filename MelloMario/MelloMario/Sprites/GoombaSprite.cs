@@ -6,7 +6,7 @@ namespace MelloMario
 {
     public class GoombaSprite:ISprite
     {
-         public Texture2D goomBa { get; set; }
+        public Texture2D goomBa { get; set; }
         public int rows { get; set; }
         public int columns { get; set; }
         private int frames;
@@ -23,8 +23,6 @@ namespace MelloMario
             totalFrames = rows * columns;
 
         }
-
-     
 
         public void Update(GameTime gameTime)
         {

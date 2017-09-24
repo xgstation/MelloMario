@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace MelloMario
 {
  
-    public class GoombaNormalState:IState
+    public class GoombaNormalState:IGoombaState
     {
         private ISprite goomba;
         private Goomba enemyGoomba;

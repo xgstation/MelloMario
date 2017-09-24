@@ -7,12 +7,8 @@ using System.Collections.Generic;
 
 namespace MelloMario
 {
-
     public class Script
     {
-
-
-        //this gamestate will eventually 
         public void Initialize(GameModel model)
         {
             foreach(Controller controller in model.controllers)
@@ -49,6 +45,5 @@ namespace MelloMario
                 }
             }
         }
-
     }
 }

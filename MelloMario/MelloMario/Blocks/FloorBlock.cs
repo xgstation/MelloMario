@@ -14,7 +14,8 @@ namespace MelloMario.Blocks
         private Boolean isUsed = false;
         public IBlockState state { get; set; }
         //Using Rectangle to record location and hitting boundary
-        public Rectangle Boundary { get; set; } 
+        public Rectangle Boundary { get; set; }
+
         public FloorBlock(Vector2 location, Boolean isUsed)
         {
             this.isUsed = isUsed;

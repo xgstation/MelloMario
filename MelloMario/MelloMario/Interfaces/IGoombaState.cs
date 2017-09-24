@@ -3,10 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    public interface IState
+    public interface IGoombaState
     {
         void transNormal();
-
 
         void transDefeated();
 

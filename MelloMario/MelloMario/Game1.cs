@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 namespace MelloMario
 {
     /// <summary>
-    /// This is the main type for your game.
+    /// This is the main type for Mello Mario game.
     /// </summary>
     public class Game1 : Game
     {
@@ -14,7 +14,6 @@ namespace MelloMario
         SpriteBatch spriteBatch;
         Script script;
         GameModel model;
-        
 
         public Game1()
         {
@@ -54,7 +53,7 @@ namespace MelloMario
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            // TODO: use this.Content to load your game content here
+            // TODO: Use this.Content to load game content here
         }
 
         /// <summary>
@@ -73,13 +72,9 @@ namespace MelloMario
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            
+            base.Update(gameTime);
 
             model.update(gameTime);
-
-            // TODO: Add your update logic here
-
-            base.Update(gameTime);
         }
 
         /// <summary>
@@ -90,11 +85,11 @@ namespace MelloMario
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            base.Draw(gameTime);
+
             spriteBatch.Begin();
             model.draw(spriteBatch);
             spriteBatch.End();
-            base.Draw(gameTime);
         }
     }
 }
