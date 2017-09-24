@@ -13,7 +13,7 @@ namespace MelloMario
 
         public void Execute()
         {
-            this.model.Mario.left();
+            model.Mario.left();
         }
     }
 }
