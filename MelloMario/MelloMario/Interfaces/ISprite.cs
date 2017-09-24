@@ -11,9 +11,8 @@ namespace MelloMario
 {
     interface ISprite
     {
-        Texture2D texture { get; set; }
-        void Update();
-        void Draw(SpriteBatch spriteBatch,Vector2 location);
+        void Update(GameTime game);
+        void Draw(SpriteBatch spriteBatch, Vector2 location);
         
     }
 }

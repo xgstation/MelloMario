@@ -12,15 +12,13 @@ namespace MelloMario
     class FireCrouchingLeft : IMarioState
     {
         Mario mario;
-        ContentManager content;
         bool setToStatic;
         ISprite sprite;
-        public FireCrouchingLeft(Mario mario,ContentManager content)
+        public FireCrouchingLeft(Mario mario)
         {
             this.mario = mario;
-            this.content = content;
             setToStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("FireCrouchingLeft", setToStatic, content);
+            sprite = SpriteFactory.Instance.createSprite("FireCrouchingLeft", setToStatic);
         }
         public void down()
         {
@@ -29,7 +27,7 @@ namespace MelloMario
         //crouching
         public void die()
         {
-            mario.setMarioState(new Dead(mario,content));
+            mario.setMarioState(new Dead(mario));
         }
 
         public void changeToFireState()
@@ -39,12 +37,12 @@ namespace MelloMario
 
         public void changeToStandardState()
         {
-            mario.setMarioState(new StandardCrouchingLeft(mario, content));
+            mario.setMarioState(new StandardCrouchingLeft(mario));
         }
 
         public void changeToSuperState()
         {
-            mario.setMarioState(new SuperCrouchingLeft(mario, content));           
+            mario.setMarioState(new SuperCrouchingLeft(mario));           
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -52,14 +50,14 @@ namespace MelloMario
             sprite.Draw(spriteBatch, location);
         }
 
-        public void Update()
+        public void Update(GameTime game)
         {
             
         }
 
         public void idle()
         {
-            mario.setMarioState(new FireIdleLeft(mario, content));
+            mario.setMarioState(new FireIdleLeft(mario));
         }
 
         public void fall()
@@ -69,12 +67,12 @@ namespace MelloMario
 
         public void up()
         {
-            mario.setMarioState(new FireIdleLeft(mario,content));
+            mario.setMarioState(new FireIdleLeft(mario));
         }
 
         public void right()
         {
-            mario.setMarioState(new FireCrouchingRight(mario,content));
+            mario.setMarioState(new FireCrouchingRight(mario));
         }
 
         public void left()

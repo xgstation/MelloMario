@@ -12,25 +12,23 @@ namespace MelloMario
     class StandardCrouchingRight : IMarioState
     {
         Mario mario;
-        ContentManager content;
         ISprite sprite;
         bool setToStatic;
 
-        public StandardCrouchingRight(Mario mario, ContentManager content)
+        public StandardCrouchingRight(Mario mario)
         {
             this.mario = mario;
-            this.content = content;
             setToStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("StandardCrouchingRight", setToStatic, this.content);
+            sprite = SpriteFactory.Instance.createSprite("StandardCrouchingRight", setToStatic);
         }
         public void die()
         {
-            mario.setMarioState(new Dead(mario, content));
+            mario.setMarioState(new Dead(mario));
         }
 
         public void changeToFireState()
         {
-            mario.setMarioState(new FireCrouchingRight(mario, content));
+            mario.setMarioState(new FireCrouchingRight(mario));
         }
 
         public void changeToStandardState()
@@ -39,7 +37,7 @@ namespace MelloMario
         }
         public void changeToSuperState()
         {
-            mario.setMarioState(new SuperCrouchingRight(mario, content));  
+            mario.setMarioState(new SuperCrouchingRight(mario));  
         }
 
         public void down()
@@ -59,12 +57,12 @@ namespace MelloMario
 
         public void idle()
         {
-            mario.setMarioState(new StandardIdleRight(mario,content));
+            mario.setMarioState(new StandardIdleRight(mario));
         }
 
         public void left()
         {
-            mario.setMarioState(new StandardCrouchingLeft(mario,content));
+            mario.setMarioState(new StandardCrouchingLeft(mario));
         }
 
         public void right()
@@ -74,10 +72,10 @@ namespace MelloMario
 
         public void up()
         {
-            mario.setMarioState(new StandardIdleRight(mario,content));
+            mario.setMarioState(new StandardIdleRight(mario));
         }
 
-        public void Update()
+        public void Update(GameTime game)
         {
          
         }

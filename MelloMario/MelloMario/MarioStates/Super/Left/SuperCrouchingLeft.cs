@@ -12,31 +12,29 @@ namespace MelloMario
     class SuperCrouchingLeft : IMarioState
     {
         Mario mario;
-        ContentManager content;
         bool setToStatic;
         ISprite sprite;
 
-        public SuperCrouchingLeft(Mario mario, ContentManager content)
+        public SuperCrouchingLeft(Mario mario)
         {
             this.mario = mario;
-            this.content = content;
             setToStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("SuperCrouchingLeft", setToStatic, content);
+            sprite = SpriteFactory.Instance.createSprite("SuperCrouchingLeft", setToStatic);
 
         }
         public void die()
         {
-            mario.setMarioState(new Dead(mario, content));
+            mario.setMarioState(new Dead(mario));
         }
 
         public void changeToFireState()
         {
-            mario.setMarioState(new FireCrouchingLeft(mario, content));
+            mario.setMarioState(new FireCrouchingLeft(mario));
         }
 
         public void changeToStandardState()
         {
-            mario.setMarioState(new StandardCrouchingLeft(mario,content));
+            mario.setMarioState(new StandardCrouchingLeft(mario));
         }
 
         public void changeToSuperState()
@@ -61,7 +59,7 @@ namespace MelloMario
 
         public void idle()
         {
-            mario.setMarioState(new SuperIdleLeft(mario,content));
+            mario.setMarioState(new SuperIdleLeft(mario));
         }
         public void left()
         {
@@ -71,15 +69,15 @@ namespace MelloMario
         public void right()
         {
             //right crouching
-            mario.setMarioState(new SuperIdleRight(mario,content));
+            mario.setMarioState(new SuperIdleRight(mario));
         }
 
         public void up()
         {
-            mario.setMarioState(new SuperIdleLeft(mario,content));
+            mario.setMarioState(new SuperIdleLeft(mario));
         }
 
-        public void Update()
+        public void Update(GameTime game)
         {
         }
     }

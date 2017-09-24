@@ -19,15 +19,14 @@ namespace MelloMario
             texture = newTexture;
             default_color = Color.White;
         }
-        public void Update()
-        {
-            //Nothing to do here
-        }
-        public void Draw(SpriteBatch spriteBatch,Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             spriteBatch.Draw(texture,location,default_color);
         }
 
+        public void Update(GameTime game)
+        {
 
+        }
     }
 }

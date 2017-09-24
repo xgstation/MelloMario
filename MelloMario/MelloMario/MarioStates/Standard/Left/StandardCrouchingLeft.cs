@@ -12,25 +12,23 @@ namespace MelloMario
     class StandardCrouchingLeft : IMarioState
     {
         Mario mario;
-        ContentManager content;
         ISprite sprite;
         bool setToStatic;
 
-        public StandardCrouchingLeft(Mario mario, ContentManager content)
+        public StandardCrouchingLeft(Mario mario)
         {
             this.mario = mario;
-            this.content = content;
             setToStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("StandardCrouchingLeft", setToStatic, this.content);
+            sprite = SpriteFactory.Instance.createSprite("StandardCrouchingLeft", setToStatic);
         }
         public void die()
         {
-            mario.setMarioState(new Dead(mario, content));
+            mario.setMarioState(new Dead(mario));
         }
 
         public void changeToFireState()
         {
-            mario.setMarioState(new FireCrouchingLeft(mario, content));
+            mario.setMarioState(new FireCrouchingLeft(mario));
         }
 
         public void changeToStandardState()
@@ -40,7 +38,7 @@ namespace MelloMario
 
         public void changeToSuperState()
         {
-            mario.setMarioState(new SuperCrouchingLeft(mario, content));  
+            mario.setMarioState(new SuperCrouchingLeft(mario));  
         }
 
         public void down()
@@ -60,7 +58,7 @@ namespace MelloMario
 
         public void idle()
         {
-            mario.setMarioState(new StandardIdleLeft(mario,content));
+            mario.setMarioState(new StandardIdleLeft(mario));
         }
 
         public void left()
@@ -75,10 +73,10 @@ namespace MelloMario
 
         public void up()
         {
-            mario.setMarioState(new StandardIdleLeft(mario,content));
+            mario.setMarioState(new StandardIdleLeft(mario));
         }
 
-        public void Update()
+        public void Update(GameTime game)
         {
          
         }

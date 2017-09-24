@@ -13,14 +13,12 @@ namespace MelloMario
    class Mario
     {
         IMarioState standardIdleRight;
-        public ContentManager content;
         IMarioState marioState;
         Vector2 location;
       
-        public Mario(Vector2 newLocation,ContentManager newContent)
+        public Mario(Vector2 newLocation)
         {
-            content = newContent;
-            standardIdleRight = new StandardIdleRight(this, content);
+            standardIdleRight = new StandardIdleRight(this);
             location = newLocation;
             marioState = standardIdleRight;
         }
@@ -39,9 +37,9 @@ namespace MelloMario
         public void changeToStandardState() { marioState.changeToStandardState();}
         public void changeToFireState() { marioState.changeToFireState();}
         public void changeToSuperState() { marioState.changeToSuperState();}
-        public void Update(){ marioState.Update();}
+        public void Update(GameTime game){ marioState.Update(game);}
         public void Draw(SpriteBatch spriteBatch)
-        { marioState.Draw(spriteBatch,location);}
+        { marioState.Draw(spriteBatch);}
   
        
 

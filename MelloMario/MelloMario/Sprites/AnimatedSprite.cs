@@ -18,12 +18,13 @@ namespace MelloMario
         {
             this.texture = texture;
             defaultColor = Color.White;
+
         }
-        public void Update()
+        public void Update(GameTime game)
         {
             //do update after moving frame logic
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch,Vector2 location)
         {
             //do moving frame logic later
             spriteBatch.Draw(texture,location,defaultColor);

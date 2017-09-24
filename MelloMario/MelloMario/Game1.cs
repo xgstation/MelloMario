@@ -50,9 +50,11 @@ namespace MelloMario
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            mario = new Mario(new Vector2(100, 00), this.Content);
-            mario.down();
+            SpriteFactory.Instance.LoadAllTextures(this.Content);
+            mario = new Mario(new Vector2(100, 100));
+            mario.up();
             mario.changeToSuperState();
             // TODO: use this.Content to load your game content here
         }

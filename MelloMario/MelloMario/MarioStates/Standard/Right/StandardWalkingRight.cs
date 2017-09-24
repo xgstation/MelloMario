@@ -14,24 +14,23 @@ namespace MelloMario
         Mario mario;
         ISprite sprite;
         bool setToStatic;
-        ContentManager content;
 
-        public StandardWalkingRight(Mario newMario, ContentManager content)
+        public StandardWalkingRight(Mario newMario)
         {
             mario = newMario;
             setToStatic = false;
-            sprite = SpriteFactory.Instance.createSprite("StandardWalkingRight", setToStatic, content);
-            this.content = content;
+            sprite = SpriteFactory.Instance.createSprite("StandardWalkingRight", setToStatic);
+
         }
 
         public void die()
         {
-            mario.setMarioState(new Dead(mario, content));
+            mario.setMarioState(new Dead(mario));
         }
 
         public void changeToFireState()
         {
-            mario.setMarioState(new FireWalkingRight(mario,content));
+            mario.setMarioState(new FireWalkingRight(mario));
         }
 
         public void changeToStandardState()
@@ -41,12 +40,12 @@ namespace MelloMario
 
         public void changeToSuperState()
         {
-            mario.setMarioState(new SuperWalkingRight(mario,content));
+            mario.setMarioState(new SuperWalkingRight(mario));
         }
 
         public void down()
         {
-            mario.setMarioState(new StandardCrouchingRight(mario,content));
+            mario.setMarioState(new StandardCrouchingRight(mario));
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -61,17 +60,17 @@ namespace MelloMario
 
         public void idle()
         {
-            mario.setMarioState(new StandardIdleRight(mario,content));
+            mario.setMarioState(new StandardIdleRight(mario));
         }
 
         public void jump()
         {
-            mario.setMarioState(new StandardJumpingRight(mario,content));
+            mario.setMarioState(new StandardJumpingRight(mario));
         }
 
         public void left()
         {
-            mario.setMarioState(new StandardJumpingLeft(mario,content));
+            mario.setMarioState(new StandardJumpingLeft(mario));
         }
 
         public void right()
@@ -81,10 +80,10 @@ namespace MelloMario
 
         public void up()
         {
-            mario.setMarioState(new StandardJumpingRight(mario,content));
+            mario.setMarioState(new StandardJumpingRight(mario));
         }
 
-        public void Update()
+        public void Update(GameTime game)
         {
             
         }
