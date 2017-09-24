@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario
+namespace MelloMario.Sprites
 {
     public class RedKoopaSprite : ISprite
     {

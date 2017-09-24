@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.Blocks
+namespace MelloMario.BlockObjects
 {
-    class StairBlock : IBlock
+    class FloorBlock : IBlock
     {
         private ISprite sprite;
         private Boolean isUsed = false;
@@ -16,7 +16,7 @@ namespace MelloMario.Blocks
         //Using Rectangle to record location and hitting boundary
         public Rectangle Boundary { get; set; }
 
-        public StairBlock(Vector2 location, Boolean isUsed)
+        public FloorBlock(Vector2 location, Boolean isUsed)
         {
             this.isUsed = isUsed;
             if (!isUsed)

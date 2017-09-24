@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario
+namespace MelloMario.GoombaStates
 {
     public class GoombaDefeatedState:IGoombaState
     {

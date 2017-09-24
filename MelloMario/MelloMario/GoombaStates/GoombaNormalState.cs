@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario
+namespace MelloMario.GoombaStates
 {
  
-    public class GoombaNormalState:IGoombaState
+    public class GoombaNormalState: IGoombaState
     {
         private ISprite goomba;
         private Goomba enemyGoomba;
