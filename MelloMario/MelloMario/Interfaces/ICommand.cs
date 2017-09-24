@@ -10,16 +10,4 @@ namespace MelloMario
     {
         void Execute();
     }
-
-    public abstract class ScriptCommand : ICommand
-    {
-        protected Script receiver;
-
-        public ScriptCommand(Script receiver)
-        {
-            this.receiver = receiver;
-        }
-        public abstract void Execute();
-    }
-
 }
