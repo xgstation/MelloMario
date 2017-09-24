@@ -10,52 +10,31 @@ namespace MelloMario.Blocks
 {
     class BrickBlock : IBlock
     {
-        public enum State
-        {
-            Normal, Hidden, Destroy
-        }
-        public State state { get; set; }
         private ISprite sprite;
-        private int Frame = 0;
-        public BrickBlock (State state)
+        private Boolean isUsed = false;
+        public IBlockState state { get; set; }
+        //Using Rectangle to record location and hitting boundary
+        public Rectangle Boundary { get; set; }
+        public BrickBlock(Vector2 location, Boolean isUsed)
         {
-            this.state = state;
-            switch(this.state)
+            this.isUsed = isUsed;
+            if (!isUsed)
             {
-                case State.Normal:
-                    {
-                        sprite = new Sprites.BrickSprite();
-                        break;
-                    }
-                case State.Hidden:
-                    {
-                        sprite = null;
-                        break;
-                    }
+                state = new BlockStates.Silent(this);
             }
+            else
+            {
+                state = new BlockStates.Used(this);
+            }
+            Boundary = new Rectangle(location.ToPoint(), new Point(16, 16));
         }
-        
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            if (state == State.Destroy)
-            {
-                if (Frame == 0)
-                {
-                    sprite = new Sprites.DestroyingSprite();
-                } else
-                {
-                    Frame++;
-                    if (Frame == sprite.TotalFrame())
-                    {
-                        sprite = null;
-                    }
-                }
-            }
-            sprite.Update();
+            sprite.Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            sprite.Draw(spriteBatch, location);
+            sprite.Draw(spriteBatch);
         }
     }
 }

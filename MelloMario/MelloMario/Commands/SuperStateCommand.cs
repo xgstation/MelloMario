@@ -4,16 +4,16 @@ namespace MelloMario
 {
     internal class SuperStateCommand : ICommand
     {
-        private Script script;
+        private GameModel model;
 
-        public SuperStateCommand(Script script)
+        public SuperStateCommand(GameModel model)
         {
-            this.script = script;
+            this.model = model;
         }
 
         public void Execute()
         {
-            throw new System.NotImplementedException();
+            this.model.Mario.changeToSuperState();
         }
     }
 }

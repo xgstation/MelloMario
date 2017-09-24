@@ -34,6 +34,7 @@ namespace MelloMario
         public void up() { marioState.up(); }
         public void right() { marioState.right(); }
         public void left() { marioState.left(); }
+        public void die() { marioState.die(); }
         public void changeToStandardState() { marioState.changeToStandardState();}
         public void changeToFireState() { marioState.changeToFireState();}
         public void changeToSuperState() { marioState.changeToSuperState();}

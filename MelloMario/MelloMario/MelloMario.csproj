@@ -41,6 +41,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BlockStates\Destroy.cs" />
+    <Compile Include="BlockStates\Hidden.cs" />
+    <Compile Include="BlockStates\Silent.cs" />
+    <Compile Include="BlockStates\Used.cs" />
     <Compile Include="Blocks\BrickBlock.cs" />
     <Compile Include="Blocks\FloorBlock.cs" />
     <Compile Include="Blocks\QuestionBlock.cs" />
@@ -58,6 +62,7 @@
     <Compile Include="GoombaStates\GoombaNormalState.cs" />
     <Compile Include="GoombaState\GoombaState.cs" />
     <Compile Include="Interfaces\IBlock.cs" />
+    <Compile Include="Interfaces\IBlockState.cs" />
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
@@ -107,6 +112,7 @@
     <Compile Include="Commands\DeadStateCommand.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
     <Compile Include="Sprites\UsedQuestionSprite.cs" />
+    <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Theming\Script.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Controllers\Controllers.cs" />
@@ -255,6 +261,9 @@
     <None Include="Content\obj\Windows\SuperJumpingRight.mgcontent" />
     <None Include="Content\obj\Windows\SuperWalkingLeft.mgcontent" />
     <None Include="Content\obj\Windows\SuperWalkingRight.mgcontent" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PowerUps\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
