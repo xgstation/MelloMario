@@ -6,53 +6,9 @@ using Microsoft.Xna.Framework.Input;
 using MelloMario.Commands;
 using System.Diagnostics;
 
-namespace MelloMario
+namespace MelloMario.Controllers
 {
-    public abstract class Controller : IController
-    {
-        protected Dictionary<int, ICommand> commands;
-
-        public Controller()
-        {
-            commands = new Dictionary<int, ICommand>();
-        }
-
-        public void AddCommand(int key, ICommand value)
-        {
-            commands.Add(key, value);
-        }
-
-        public abstract void UpdateInput();
-    }
-
-    class KeyboardController : Controller
-    {
-        Game game;
-        KeyboardState previousKeyboardState;
-        public KeyboardController(Game game)
-            : base()
-        {
-            this.game = game;
-            previousKeyboardState = Keyboard.GetState();
-        }
-
-        public override void UpdateInput()
-        {
-            // Get the current Keyboard state.
-            KeyboardState currentState = Keyboard.GetState();
-
-            Keys[] keysPressed = currentState.GetPressedKeys();
-            foreach (Keys key in keysPressed)
-                if (!previousKeyboardState.IsKeyDown(key))
-                    if (commands.ContainsKey((int)key))
-                        commands[(int)key].Execute();
-
-            // Update previous Keyboard state.
-            previousKeyboardState = currentState;
-        }
-    }
-
-    class GamepadController : Controller
+    class GamepadController : BaseController
     {
         Game game;
         GamePadState previousGamePadState,
@@ -93,5 +49,4 @@ namespace MelloMario
             }
         }
     }
-
 }
