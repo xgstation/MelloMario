@@ -13,7 +13,7 @@ namespace MelloMario
             // TODO: implement it
             return null;
         }
-        public ICommand createMarioCommand(string actionName, Mario mario)
+        public ICommand createMarioCommand(string actionName, MarioObjects.Mario mario)
         {
             // TODO: implement it
             return null;

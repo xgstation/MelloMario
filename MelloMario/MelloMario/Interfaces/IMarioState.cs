@@ -22,6 +22,6 @@ namespace MelloMario
         void changeToSuperState();
         void changeToStandardState();      
         void Update(GameTime game);
-        void Draw(SpriteBatch spriteBatch, Vector2 position);
+        void Draw(SpriteBatch spriteBatch, Vector2 location);
     }
 }
