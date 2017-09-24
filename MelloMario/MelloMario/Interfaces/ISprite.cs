@@ -13,6 +13,5 @@ namespace MelloMario
     {
         void Update(GameTime game);
         void Draw(SpriteBatch spriteBatch, Vector2 location);
-        
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprite
+namespace MelloMario
 {
     public class GoombaDefeatedState:IState
     {

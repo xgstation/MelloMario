@@ -54,7 +54,7 @@ namespace MelloMario
             mario.Draw(spriteBatch);
             foreach (ISprite sprite in sprites)
             {
-                sprite.Draw(spriteBatch);
+                sprite.Draw(spriteBatch, new Vector2(0,0));
             }
         }
     }

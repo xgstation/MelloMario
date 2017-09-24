@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace Sprite
+namespace MelloMario
 {
     public class GoombaSprite:ISprite
     {
@@ -50,11 +50,13 @@ namespace Sprite
             int c = frames % columns;
             Rectangle last = new Rectangle(700, 100, width, height);
             Rectangle first = new Rectangle(width * c, r * height, width, height);
-            enemySprite.Begin();
-           
-                enemySprite.Draw(goomBa, last, first, Color.White);
-            
-            enemySprite.End();
+
+            enemySprite.Draw(goomBa, last, first, Color.White);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        {
+            throw new NotImplementedException();
         }
     }
 }

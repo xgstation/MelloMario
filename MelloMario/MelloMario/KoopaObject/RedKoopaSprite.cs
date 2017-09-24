@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprite
+namespace MelloMario
 {
     public class RedKoopaSprite : ISprite
     {
@@ -61,7 +61,7 @@ namespace Sprite
             }
 
         }
-        public void Draw(SpriteBatch enemySprite)
+        public void Draw(SpriteBatch spriteBatch)
         {
             int redWidth = redKoopa.Width / redColumns;
             int redHeight = redKoopa.Height / redRows;
@@ -69,9 +69,17 @@ namespace Sprite
             int rC = redFrames % redColumns;
             Rectangle redLast = new Rectangle(0, 0, redWidth, redHeight);
             Rectangle redFirst = new Rectangle(redWidth * rC, rR * redHeight, redWidth, redHeight);
-            enemySprite.Begin();
-            enemySprite.Draw(redKoopa, redLast, redFirst, Color.White);
-            enemySprite.End();
+            spriteBatch.Draw(redKoopa, redLast, redFirst, Color.White);
         }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        {
+            int redWidth = redKoopa.Width / redColumns;
+            int redHeight = redKoopa.Height / redRows;
+            int rR = redFrames / redColumns;
+            int rC = redFrames % redColumns;
+            Rectangle redFirst = new Rectangle(redWidth * rC, rR * redHeight, redWidth, redHeight);
+            spriteBatch.Draw(redKoopa, location, redFirst);
         }
+    }
     }
