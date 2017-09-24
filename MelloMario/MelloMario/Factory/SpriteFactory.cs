@@ -13,6 +13,14 @@ namespace MelloMario
     class SpriteFactory : ISpriteFactory
         
     {
+        private static SpriteFactory instance = new SpriteFactory();
+        public static SpriteFactory Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
         
     
         public SpriteFactory()

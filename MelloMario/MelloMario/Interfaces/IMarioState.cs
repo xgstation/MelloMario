@@ -22,7 +22,6 @@ namespace MelloMario
         void changeToFireState();
         void changeToSuperState();
         void changeToStandardState();      
-        void changeToInvincibleState();
         void Update();
         void Draw(SpriteBatch spriteBatch,Vector2 location);
     }

@@ -12,7 +12,6 @@ namespace MelloMario
     class FireWalkingRight : IMarioState
     {
         Mario mario;
-        ISpriteFactory spriteCreation;
         ISprite sprite;
         bool setToStatic;
         ContentManager content;
@@ -20,9 +19,8 @@ namespace MelloMario
         public FireWalkingRight(Mario newMario, ContentManager content)
         {
             mario = newMario;
-            spriteCreation = new SpriteFactory();
             setToStatic = false;
-            sprite = spriteCreation.createSprite("FireWalkingRight", setToStatic, content);
+            sprite = SpriteFactory.Instance.createSprite("FireWalkingRight", setToStatic, content);
             this.content = content;
         }
 
@@ -39,11 +37,6 @@ namespace MelloMario
         public void changeToStandardState()
         {
             mario.setMarioState(new StandardWalkingRight(mario,content));
-        }
-
-        public void changeToInvincibleState()
-        {
-            mario.setMarioState(new InvincibleWalkingRight(mario, content));
         }
 
         public void changeToSuperState()

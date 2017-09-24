@@ -13,7 +13,6 @@ namespace MelloMario
     {
         Mario mario;
         ContentManager content;
-        ISpriteFactory spriteCreation;
         ISprite sprite;
         bool setToStatic;
 
@@ -22,8 +21,7 @@ namespace MelloMario
             this.mario = mario;
             this.content = content;
             setToStatic = true;
-            spriteCreation = new SpriteFactory();
-            sprite = spriteCreation.createSprite("StandardCrouchingLeft", setToStatic, this.content);
+            sprite = SpriteFactory.Instance.createSprite("StandardCrouchingLeft", setToStatic, this.content);
         }
         public void die()
         {
@@ -38,11 +36,6 @@ namespace MelloMario
         public void changeToStandardState()
         {
           //nothing to do here
-        }
-
-        public void changeToInvincibleState()
-        {
-            mario.setMarioState(new InvincibleCrouchingLeft(mario, content));
         }
 
         public void changeToSuperState()

@@ -12,7 +12,6 @@ namespace MelloMario
     class StandardWalkingLeft : IMarioState
     {
         Mario mario;
-        ISpriteFactory spriteCreation;
         ISprite sprite;
         bool setToStatic;
         ContentManager content;
@@ -20,9 +19,8 @@ namespace MelloMario
         public StandardWalkingLeft(Mario newMario, ContentManager content)
         {
             mario = newMario;
-            spriteCreation = new SpriteFactory();
             setToStatic = false;
-            sprite = spriteCreation.createSprite("StandardWalkingLeft", setToStatic, content);
+            sprite = SpriteFactory.Instance.createSprite("StandardWalkingLeft", setToStatic, content);
             this.content = content;
         }
 
@@ -39,11 +37,6 @@ namespace MelloMario
         public void changeToStandardState()
         {
             //nothing here
-        }
-
-        public void changeToInvincibleState()
-        {
-            mario.setMarioState(new InvincibleWalkingLeft(mario, content));
         }
 
         public void changeToSuperState()
