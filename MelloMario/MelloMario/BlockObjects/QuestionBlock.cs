@@ -9,21 +9,10 @@ using MelloMario.BlockObjects.States;
 
 namespace MelloMario.BlockObjects
 {
-    class QuestionBlock : BaseBlock
+    class QuestionBlock : BaseUseableBlock
     {
-        private Boolean isUsed;
-
-        public QuestionBlock(Vector2 location, Boolean isUsed): base(location)
+        public QuestionBlock(Vector2 location, Boolean isUsed): base(location, isUsed)
         {
-            this.isUsed = isUsed;
-            if (!isUsed)
-            {
-                this.state = new Silent(this);
-            }
-            else
-            {
-                this.state = new Used(this);
-            }
         }
     }
 }

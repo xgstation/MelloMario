@@ -11,19 +11,8 @@ namespace MelloMario.BlockObjects
 {
     class FloorBlock : BaseBlock
     {
-        private Boolean isUsed = false;
-
-        public FloorBlock(Vector2 location, Boolean isUsed): base(location)
+        public FloorBlock(Vector2 location): base(location)
         {
-            this.isUsed = isUsed;
-            if (!isUsed)
-            {
-                this.state = new Silent(this);
-            }
-            else
-            {
-                this.state = new Used(this);
-            }
         }
     }
 }

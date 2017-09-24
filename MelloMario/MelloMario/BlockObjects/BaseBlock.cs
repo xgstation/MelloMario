@@ -12,13 +12,15 @@ namespace MelloMario.BlockObjects
     abstract class BaseBlock : IGameObject
     {
         private ISprite sprite;
-        public IBlockState state { get; set; }
+        public IBlockState State { get; set; }
         //Using Rectangle to record location and hitting boundary
         public Rectangle Boundary { get; set; }
 
         public BaseBlock(Vector2 location)
         {
+            State = new Silent(this);
             Boundary = new Rectangle(location.ToPoint(), new Point(16, 16));
+            // TODO: add sprites?
         }
 
         public void Update(GameTime gameTime)

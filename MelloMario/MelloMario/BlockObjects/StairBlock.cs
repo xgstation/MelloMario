@@ -13,7 +13,6 @@ namespace MelloMario.BlockObjects
     {
         public StairBlock(Vector2 location): base(location)
         {
-            // TODO
         }
     }
 }
