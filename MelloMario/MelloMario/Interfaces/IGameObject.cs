@@ -8,9 +8,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    interface IBlock
+    interface IGameObject
     {
         void Update(GameTime gameTime);
-        void Draw(SpriteBatch spriteBatch, Vector2 location);
+        void Draw(SpriteBatch spriteBatch);
     }
 }
