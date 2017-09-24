@@ -19,8 +19,6 @@ namespace MelloMario
             this.mario = mario;
             setStatic = true;
             sprite = SpriteFactory.Instance.createSprite("FireJumpingRight", setStatic);
-
-
         }
 
         public void die()

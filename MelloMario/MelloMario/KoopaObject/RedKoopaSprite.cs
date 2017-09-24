@@ -61,6 +61,7 @@ namespace Sprite
             }
 
         }
+
         public void Draw(SpriteBatch enemySprite)
         {
             int redWidth = redKoopa.Width / redColumns;
@@ -73,5 +74,5 @@ namespace Sprite
             enemySprite.Draw(redKoopa, redLast, redFirst, Color.White);
             enemySprite.End();
         }
-        }
     }
+}

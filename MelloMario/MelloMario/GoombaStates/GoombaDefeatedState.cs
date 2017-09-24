@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sprite
 {
-    public class GoombaDefeatedState:IState
+    public class GoombaDefeatedState:IGoombaState
     {
         
         private Goomba enemyGoomba;

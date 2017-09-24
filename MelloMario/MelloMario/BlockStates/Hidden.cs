@@ -11,10 +11,12 @@ namespace MelloMario.BlockStates
     class Hidden : IBlockState
     {
         private IBlock block;
+
         public Hidden(IBlock block)
         {
             this.block = block;
         }
+
         public void changeToDestroy()
         {
             throw new NotImplementedException();

@@ -19,13 +19,10 @@ namespace MelloMario
             this.mario = mario;
             setToStatic = true;
             sprite = SpriteFactory.Instance.createSprite("Dead",setToStatic);
-
-
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            sprite.Draw(spriteBatch,location);
-            
+            sprite.Draw(spriteBatch, location);
         }
         public void die() { }
         public void changeToFireState() { }

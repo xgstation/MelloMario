@@ -7,8 +7,6 @@ namespace MelloMario
 {
     public class GameModel
     {
-
-        
         public List<Controller> controllers;
         private List<ISprite> sprites;
         // TODO: Do we need another abstraction layer for mario's actions?

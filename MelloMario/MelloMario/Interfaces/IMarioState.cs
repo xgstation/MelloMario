@@ -11,7 +11,6 @@ namespace MelloMario
 {
     interface IMarioState
     {
-
         void down();
         void idle();
         void fall();

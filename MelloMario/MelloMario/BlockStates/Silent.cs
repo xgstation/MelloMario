@@ -11,6 +11,7 @@ namespace MelloMario.BlockStates
     class Silent : IBlockState
     {
         private IBlock block;
+
         public Silent(IBlock block)
         {
             this.block = block;

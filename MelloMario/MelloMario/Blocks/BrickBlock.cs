@@ -15,6 +15,7 @@ namespace MelloMario.Blocks
         public IBlockState state { get; set; }
         //Using Rectangle to record location and hitting boundary
         public Rectangle Boundary { get; set; }
+
         public BrickBlock(Vector2 location, Boolean isUsed)
         {
             this.isUsed = isUsed;
@@ -28,10 +29,12 @@ namespace MelloMario.Blocks
             }
             Boundary = new Rectangle(location.ToPoint(), new Point(16, 16));
         }
+
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
         }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             sprite.Draw(spriteBatch);
