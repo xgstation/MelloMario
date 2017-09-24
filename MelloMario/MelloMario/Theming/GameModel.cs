@@ -22,6 +22,8 @@ namespace MelloMario
         internal void Initialize(List<Controller> controllers)
         {
             this.controllers = controllers;
+
+            
         }
 
         internal void update(GameTime gameTime)

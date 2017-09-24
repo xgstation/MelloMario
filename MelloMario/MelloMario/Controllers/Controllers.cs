@@ -77,9 +77,9 @@ namespace MelloMario
                 if (currentState != emptyInput) // Button Pressed
                 {
 
-                    var buttonList = (Buttons[])Enum.GetValues(typeof(Buttons));
+                    Buttons[] buttonList = (Buttons[])Enum.GetValues(typeof(Buttons));
 
-                    foreach (var button in buttonList)
+                    foreach (Buttons button in buttonList)
                     {
                         if (currentState.IsButtonDown(button) &&
                             !previousGamePadState.IsButtonDown(button))
