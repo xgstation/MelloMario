@@ -4,11 +4,11 @@ namespace MelloMario
 {
     internal class CrouchCommand : ICommand
     {
-        private Script script;
+        private GameModel model;
 
-        public CrouchCommand(Script script)
+        public CrouchCommand(GameModel model)
         {
-            this.script = script;
+            this.model = model;
         }
 
         public void Execute()

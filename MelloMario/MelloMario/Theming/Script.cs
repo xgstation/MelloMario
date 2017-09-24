@@ -11,39 +11,41 @@ namespace MelloMario
     public class Script
     {
 
-        public void Initialize(List<Controller> controllers)
+
+        //this gamestate will eventually 
+        public void Initialize(GameModel model)
         {
-            foreach(Controller controller in controllers)
+            foreach(Controller controller in model.controllers)
             {
                 if (controller is KeyboardController)
                 {
-                    controller.AddCommand((int)Keys.Escape, new PauseCommand(this));
-                    controller.AddCommand((int)Keys.A, new JumpCommand(this));
-                    controller.AddCommand((int)Keys.Down, new CrouchCommand(this));
-                    controller.AddCommand((int)Keys.Left, new LeftCommand(this));
-                    controller.AddCommand((int)Keys.Right, new RightCommand(this));
-                    controller.AddCommand((int)Keys.Space, new ActionCommand(this));
+                    controller.AddCommand((int)Keys.Escape, new PauseCommand(model));
+                    controller.AddCommand((int)Keys.A, new JumpCommand(model));
+                    controller.AddCommand((int)Keys.Down, new CrouchCommand(model));
+                    controller.AddCommand((int)Keys.Left, new LeftCommand(model));
+                    controller.AddCommand((int)Keys.Right, new RightCommand(model));
+                    controller.AddCommand((int)Keys.Space, new ActionCommand(model));
 
                     //commands for changing block/mario state
-                    controller.AddCommand((int)Keys.X, new UsedBlockCommand(this));
-                    controller.AddCommand((int)Keys.OemQuestion, new QuestionBlockCommand(this));
-                    controller.AddCommand((int)Keys.B, new BrickBlockCommand(this));
-                    controller.AddCommand((int)Keys.H, new HiddenBlockCommand(this));
+                    controller.AddCommand((int)Keys.X, new UsedBlockCommand(model));
+                    controller.AddCommand((int)Keys.OemQuestion, new QuestionBlockCommand(model));
+                    controller.AddCommand((int)Keys.B, new BrickBlockCommand(model));
+                    controller.AddCommand((int)Keys.H, new HiddenBlockCommand(model));
 
-                    controller.AddCommand((int)Keys.Y, new StdStateCommand(this));
-                    controller.AddCommand((int)Keys.U, new SuperStateCommand(this));
-                    controller.AddCommand((int)Keys.I, new FireStateCommand(this));
-                    controller.AddCommand((int)Keys.O, new DeadStateCommand(this));
+                    controller.AddCommand((int)Keys.Y, new StdStateCommand(model));
+                    controller.AddCommand((int)Keys.U, new SuperStateCommand(model));
+                    controller.AddCommand((int)Keys.I, new FireStateCommand(model));
+                    controller.AddCommand((int)Keys.O, new DeadStateCommand(model));
                 }
                 else
                 if (controller is GamepadController)
                 {
-                    controller.AddCommand((int)Buttons.Start, new PauseCommand(this));
-                    controller.AddCommand((int)Buttons.A, new JumpCommand(this));
-                    controller.AddCommand((int)Buttons.DPadDown, new CrouchCommand(this));
-                    controller.AddCommand((int)Buttons.DPadLeft, new LeftCommand(this));
-                    controller.AddCommand((int)Buttons.DPadRight, new RightCommand(this));
-                    controller.AddCommand((int)Buttons.B, new ActionCommand(this));
+                    controller.AddCommand((int)Buttons.Start, new PauseCommand(model));
+                    controller.AddCommand((int)Buttons.A, new JumpCommand(model));
+                    controller.AddCommand((int)Buttons.DPadDown, new CrouchCommand(model));
+                    controller.AddCommand((int)Buttons.DPadLeft, new LeftCommand(model));
+                    controller.AddCommand((int)Buttons.DPadRight, new RightCommand(model));
+                    controller.AddCommand((int)Buttons.B, new ActionCommand(model));
                 }
             }
         }

@@ -4,13 +4,13 @@ namespace MelloMario
 {
     internal class PauseCommand : ICommand
     {
-        private Script script;
 
-        public PauseCommand(Script script)
+        private GameModel model;
+
+        public PauseCommand(GameModel model)
         {
-            this.script = script;
+            this.model = model;
         }
-
         public void Execute()
         {
             throw new System.NotImplementedException();

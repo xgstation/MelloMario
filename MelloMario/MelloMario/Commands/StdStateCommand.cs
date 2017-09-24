@@ -4,11 +4,11 @@ namespace MelloMario
 {
     internal class StdStateCommand : ICommand
     {
-        private Script script;
+        private GameModel model;
 
-        public StdStateCommand(Script script)
+        public StdStateCommand(GameModel model)
         {
-            this.script = script;
+            this.model = model;
         }
 
         public void Execute()
