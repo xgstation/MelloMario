@@ -52,10 +52,16 @@
     <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\RightCommand.cs" />
     <Compile Include="Factory\SpriteFactory.cs" />
+    <Compile Include="Factory\SpriteFactory1.cs" />
+    <Compile Include="GoombaObject\Goomba.cs" />
+    <Compile Include="GoombaStates\GoombaDefeatedState.cs" />
+    <Compile Include="GoombaStates\GoombaNormalState.cs" />
+    <Compile Include="GoombaState\GoombaState.cs" />
     <Compile Include="Interfaces\IBlock.cs" />
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
+    <Compile Include="KoopaObject\RedKoopaSprite.cs" />
     <Compile Include="MarioPlayerObject\Mario.cs" />
     <Compile Include="MarioStates\Dead\Dead.cs" />
     <Compile Include="MarioStates\Fire\Left\FireCrouchingLeft.cs" />

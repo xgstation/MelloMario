@@ -92,7 +92,9 @@ namespace MelloMario
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
             mario.Draw(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
