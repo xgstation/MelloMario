@@ -5,15 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MelloMario.GoombaObjects.States;
 
 namespace MelloMario.GoombaObjects
 {
-    public class Goomba
+    public class Goomba: IGameObject
     {
+        private Vector2 location;
         public IGoombaState GoombaState;
-        public Goomba()
+
+        public Goomba(Vector2 initLocation)
         {
-            GoombaState = new GoombaNormalState(this);
+            GoombaState = new Normal(this);
+            this.location = initLocation;
         }
 
         public void transNormal()
@@ -32,7 +36,7 @@ namespace MelloMario.GoombaObjects
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            GoombaState.Draw(spriteBatch);
+            GoombaState.Draw(spriteBatch, location);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace MelloMario
     public class GameModel
     {
         private List<IController> controllers;
-        private List<ISprite> sprites;
+        private List<IGameObject> objects;
         // TODO: Do we need another abstraction layer for mario's actions?
         private Mario mario;
 
@@ -22,7 +22,7 @@ namespace MelloMario
 
         public GameModel()
         {
-            sprites = new List<ISprite>();
+            objects = new List<IGameObject>();
             mario = new Mario(new Vector2(100, 00));
         }
 
@@ -40,9 +40,10 @@ namespace MelloMario
                 controller.UpdateInput();
             }
             mario.Update(gameTime);
-            foreach (ISprite sprite in sprites)
+
+            foreach (IGameObject gameObject in objects)
             {
-                sprite.Update(gameTime);
+                gameObject.Update(gameTime);
             }
 
         }
@@ -50,10 +51,10 @@ namespace MelloMario
         internal void draw(SpriteBatch spriteBatch)
         {
             mario.Draw(spriteBatch);
-            // TODO: Use objects (Goomba object / Koopa object / block object ...)?
-            foreach (ISprite sprite in sprites)
+
+            foreach (IGameObject gameObject in objects)
             {
-                sprite.Draw(spriteBatch);
+                gameObject.Draw(spriteBatch);
             }
         }
     }

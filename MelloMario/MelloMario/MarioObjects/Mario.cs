@@ -7,8 +7,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using MelloMario.MarioObjects.States;
 
-namespace MelloMario
+namespace MelloMario.MarioObjects
 {
    class Mario
     {
@@ -16,10 +17,10 @@ namespace MelloMario
         IMarioState marioState;
         Vector2 location;
       
-        public Mario(Vector2 newLocation)
+        public Mario(Vector2 initLocation)
         {
             standardIdleRight = new StandardIdleRight(this);
-            location = newLocation;
+            location = initLocation;
             marioState = standardIdleRight;
         }
         
@@ -38,12 +39,15 @@ namespace MelloMario
         public void changeToStandardState() { marioState.changeToStandardState();}
         public void changeToFireState() { marioState.changeToFireState();}
         public void changeToSuperState() { marioState.changeToSuperState();}
-        public void Update(GameTime game) { marioState.Update(game);}
+        public void Update(GameTime game)
+        {
+            // TODO: calculate the location
+            marioState.Update(game);
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // TODO: calculate the location
-            marioState.Draw(spriteBatch);
+            marioState.Draw(spriteBatch, location);
         }
     }
 }
