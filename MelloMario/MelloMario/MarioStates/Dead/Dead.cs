@@ -13,7 +13,6 @@ namespace MelloMario
     {
         Mario mario;
         ContentManager content;
-        ISpriteFactory spriteCreation;
         ISprite sprite;
         bool setToStatic;
         public Dead(Mario mario, ContentManager content)
@@ -21,8 +20,8 @@ namespace MelloMario
             this.mario = mario;
             this.content = content;
             setToStatic = true;
-            spriteCreation = new SpriteFactory();
-            sprite = spriteCreation.createSprite("Dead", setToStatic, content);
+            sprite = SpriteFactory.Instance.createSprite("Dead",setToStatic,content);
+
 
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

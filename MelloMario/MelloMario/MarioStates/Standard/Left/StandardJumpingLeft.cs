@@ -14,15 +14,13 @@ namespace MelloMario
         Mario mario;
         ContentManager content;
         bool setStatic;
-        ISpriteFactory spriteCreation;
         ISprite sprite;
         public StandardJumpingLeft(Mario mario, ContentManager content)
         {
             this.mario = mario;
             this.content = content;
             setStatic = true;
-            spriteCreation = new SpriteFactory();
-            sprite = spriteCreation.createSprite("StandardJumpingLeft", setStatic, content);
+            sprite = SpriteFactory.Instance.createSprite("StandardJumpingLeft", setStatic, content);
 
 
         }
@@ -41,11 +39,6 @@ namespace MelloMario
         {
             //nothing here
             
-        }
-
-        public void changeToInvincibleState()
-        {
-            mario.setMarioState(new InvincibleJumpingLeft(mario, content));
         }
 
         public void changeToSuperState()

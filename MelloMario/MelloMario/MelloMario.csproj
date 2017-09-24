@@ -63,16 +63,6 @@
     <Compile Include="MarioStates\Fire\Right\FireIdleRight.cs" />
     <Compile Include="MarioStates\Fire\Right\FireJumpingRight.cs" />
     <Compile Include="MarioStates\Fire\Right\FireWalkingRight.cs" />
-    <Compile Include="MarioStates\Invincible\Left\InvincibleCrouchingLeft.cs" />
-    <Compile Include="MarioStates\Invincible\Left\InvincibleFallingLeft.cs" />
-    <Compile Include="MarioStates\Invincible\Left\InvincibleIdleLeft.cs" />
-    <Compile Include="MarioStates\Invincible\Left\InvincibleJumpingLeft.cs" />
-    <Compile Include="MarioStates\Invincible\Left\InvincibleWalkingLeft.cs" />
-    <Compile Include="MarioStates\Invincible\Right\InvincibleCrouchingRight.cs" />
-    <Compile Include="MarioStates\Invincible\Right\InvincibleFallingRight.cs" />
-    <Compile Include="MarioStates\Invincible\Right\InvincibleIdleRight.cs" />
-    <Compile Include="MarioStates\Invincible\Right\InvincibleJumpingRight.cs" />
-    <Compile Include="MarioStates\Invincible\Right\InvincibleWalkingRight.cs" />
     <Compile Include="MarioStates\Standard\Left\StandardCrouchingLeft.cs" />
     <Compile Include="MarioStates\Standard\Left\StandardFallingLeft.cs" />
     <Compile Include="MarioStates\Standard\Left\StandardIdleLeft.cs" />

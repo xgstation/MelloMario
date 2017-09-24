@@ -13,7 +13,6 @@ namespace MelloMario
     class StandardIdleLeft : IMarioState
     {
         Mario mario;
-        ISpriteFactory spriteCreation;
         ISprite sprite;
         bool setToStatic;
         ContentManager content;
@@ -21,9 +20,8 @@ namespace MelloMario
         public StandardIdleLeft(Mario newMario,ContentManager content)
         {
             mario = newMario;
-            spriteCreation = new SpriteFactory();
             setToStatic = true;
-            sprite = spriteCreation.createSprite("StandardIdleLeft",setToStatic,content);
+            sprite = SpriteFactory.Instance.createSprite("StandardIdleLeft",setToStatic,content);
             this.content = content;
         }
         public void down() {
@@ -44,10 +42,6 @@ namespace MelloMario
         public void die()
         {
             mario.setMarioState(new Dead(mario, content));
-        }
-        public void changeToInvincibleState()
-        {
-            mario.setMarioState(new InvincibleIdleLeft(mario, content));
         }
         public void Update()
         {

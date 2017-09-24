@@ -25,9 +25,7 @@ namespace MelloMario
         }
         public void Draw(SpriteBatch spriteBatch,Vector2 location)
         {
-            spriteBatch.Begin();
             spriteBatch.Draw(texture,location,default_color);
-            spriteBatch.End();
         }
 
 

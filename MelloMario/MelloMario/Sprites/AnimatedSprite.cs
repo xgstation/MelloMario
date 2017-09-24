@@ -26,9 +26,7 @@ namespace MelloMario
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             //do moving frame logic later
-            spriteBatch.Begin();
             spriteBatch.Draw(texture,location,defaultColor);
-            spriteBatch.End();
             
         }
       

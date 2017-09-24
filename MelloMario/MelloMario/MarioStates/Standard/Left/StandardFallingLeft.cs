@@ -12,7 +12,6 @@ namespace MelloMario
     class StandardFallingLeft : IMarioState
     {
         Mario mario;
-        ISpriteFactory spriteCreation;
         ISprite sprite;
         bool setToStatic;
         ContentManager content;
@@ -21,8 +20,7 @@ namespace MelloMario
             this.mario = mario;
             this.content = content;
             setToStatic = true;
-            spriteCreation = new SpriteFactory();
-            sprite = spriteCreation.createSprite("StandardFallingLeft",setToStatic,content);
+            sprite = SpriteFactory.Instance.createSprite("StandardFallingLeft",setToStatic,content);
         }
         //falling
         public void die()
@@ -39,12 +37,6 @@ namespace MelloMario
         {
          //nothing to do here
         }
-
-        public void changeToInvincibleState()
-        {
-            mario.setMarioState(new InvincibleFallingLeft(mario, content));
-        }
-
         public void changeToSuperState()
         {
             mario.setMarioState(new SuperFallingLeft(mario, content));
