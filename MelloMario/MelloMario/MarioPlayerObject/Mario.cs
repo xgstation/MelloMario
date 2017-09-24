@@ -40,7 +40,7 @@ namespace MelloMario
         public void changeToSuperState() { marioState.changeToSuperState();}
         public void Update(GameTime game){ marioState.Update(game);}
         public void Draw(SpriteBatch spriteBatch)
-        { marioState.Draw(spriteBatch);}
+        { marioState.Draw(spriteBatch,location);}
   
        
 
