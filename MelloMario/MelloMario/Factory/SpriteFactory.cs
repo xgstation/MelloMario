@@ -36,9 +36,11 @@ namespace MelloMario
         private Texture2D fireFlowerSpritesheet;
         private Texture2D starSpritesheet;
         private static SpriteFactory instance = new SpriteFactory();
+
         public SpriteFactory()
         {
         }
+
         public static SpriteFactory Instance
         {
             get
@@ -108,8 +110,6 @@ namespace MelloMario
 
         }
         
-    
- 
         public ISprite createSprite(string textureName, bool Static)
         {
             //change
