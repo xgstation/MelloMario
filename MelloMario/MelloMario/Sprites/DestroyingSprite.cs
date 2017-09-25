@@ -12,11 +12,13 @@ namespace MelloMario.Sprites
     {
         private const int totalFrame = 5;
         private int currentFrame = 0;
+
         public int TotalFrame()
         {
             return totalFrame;
         }
-        public void Update()
+
+        public void Update(GameTime time)
         {
             currentFrame++;
             if (currentFrame == totalFrame)
@@ -24,6 +26,7 @@ namespace MelloMario.Sprites
                 currentFrame = 0;
             }
         }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 location) { }
     }
 }

@@ -1,6 +1,4 @@
-﻿using MelloMario.Commands;
-
-namespace MelloMario
+﻿namespace MelloMario.Commands
 {
     internal class StdStateCommand : ICommand
     {
@@ -13,7 +11,7 @@ namespace MelloMario
 
         public void Execute()
         {
-            this.model.Mario.changeToStandardState();
+            model.Mario.changeToStandardState();
         }
     }
 }

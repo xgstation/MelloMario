@@ -2,11 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace Sprite
+namespace MelloMario.Sprites
 {
-    public class GoombaSprite:ISprite
+    public class GoombaSprite: ISprite
     {
-         public Texture2D goomBa { get; set; }
+        public Texture2D goomBa { get; set; }
         public int rows { get; set; }
         public int columns { get; set; }
         private int frames;
@@ -24,11 +24,8 @@ namespace Sprite
 
         }
 
-     
-
         public void Update(GameTime gameTime)
         {
-            
             elapsed += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (elapsed >= delay)
             {
@@ -42,7 +39,7 @@ namespace Sprite
         
         }
 
-        public void Draw(SpriteBatch enemySprite)
+        public void Draw(SpriteBatch enemySprite, Vector2 location)
         {
             int width = goomBa.Width / columns;
             int height = goomBa.Height / rows;

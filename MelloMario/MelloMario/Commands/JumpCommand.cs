@@ -1,7 +1,4 @@
-﻿using MelloMario.Commands;
-using System.Diagnostics;
-
-namespace MelloMario
+﻿namespace MelloMario.Commands
 {
     internal class JumpCommand : ICommand
     {
@@ -14,7 +11,7 @@ namespace MelloMario
 
         public void Execute()
         {
-            this.model.Mario.up();
+            model.Mario.up();
         }
     }
 }
