@@ -51,11 +51,6 @@ namespace MelloMario.MarioObjects.States
             sprite.Draw(spriteBatch,location);
         }
 
-        public void fall()
-        {
-            //nothing here
-        }
-
         public void idle()
         {
             mario.setMarioState(new StandardIdleLeft(mario));

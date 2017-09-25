@@ -13,7 +13,6 @@ namespace MelloMario
     {
         void down();
         void idle();
-        void fall();
         void up();
         void right();
         void left();

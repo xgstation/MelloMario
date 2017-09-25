@@ -61,11 +61,6 @@ namespace MelloMario.MarioObjects.States
             //nothing to do here
         }
 
-        public void fall()
-        {
-            //nothing to do here
-        }
-
         public void up()
         {
             mario.setMarioState(new SuperJumpingLeft(mario));

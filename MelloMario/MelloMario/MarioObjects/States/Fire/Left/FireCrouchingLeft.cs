@@ -60,11 +60,6 @@ namespace MelloMario.MarioObjects.States
             mario.setMarioState(new FireIdleLeft(mario));
         }
 
-        public void fall()
-        {
-            //nothing to do here           
-        }
-
         public void up()
         {
             mario.setMarioState(new FireIdleLeft(mario));

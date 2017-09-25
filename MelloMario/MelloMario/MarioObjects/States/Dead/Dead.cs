@@ -31,7 +31,6 @@ namespace MelloMario.MarioObjects.States
         public void changeToStandardState() { }
         public void changeToSuperState() { }
         public void down() { }
-        public void fall() { }
         public void idle() { }
         public void left(){ }
         public void right() { }

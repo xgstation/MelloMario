@@ -20,14 +20,14 @@ namespace MelloMario
         //dead
         private Texture2D Dead;
         //fire
-        private Texture2D FireCrouchingLeft, FireFallingLeft, FireIdleLeft, FireJumpingLeft, FireWalkingLeft;
-        private Texture2D FireCrouchingRight, FireFallingRight, FireIdleRight, FireJumpingRight, FireWalkingRight;
+        private Texture2D FireCrouchingLeft, FireIdleLeft, FireJumpingLeft, FireWalkingLeft;
+        private Texture2D FireCrouchingRight, FireIdleRight, FireJumpingRight, FireWalkingRight;
         //super
-        private Texture2D SuperCrouchingLeft, SuperFallingLeft, SuperIdleLeft, SuperJumpingLeft,SuperWalkingLeft;
-        private Texture2D SuperCrouchingRight, SuperFallingRight, SuperIdleRight, SuperJumpingRight, SuperWalkingRight;
+        private Texture2D SuperCrouchingLeft,SuperIdleLeft, SuperJumpingLeft,SuperWalkingLeft;
+        private Texture2D SuperCrouchingRight,SuperIdleRight, SuperJumpingRight, SuperWalkingRight;
         //standard
-        private Texture2D StandardFallingLeft, StandardIdleLeft, StandardJumpingLeft, StandardWalkingLeft;
-        private Texture2D StandardFallingRight, StandardIdleRight, StandardJumpingRight, StandardWalkingRight;
+        private Texture2D StandardIdleLeft, StandardJumpingLeft, StandardWalkingLeft;
+        private Texture2D StandardIdleRight, StandardJumpingRight, StandardWalkingRight;
 
         private Texture2D goombaSpritesheet;
         private Texture2D greenKoopaSpritesheet;
@@ -65,32 +65,26 @@ namespace MelloMario
             Dead = content.Load<Texture2D>("Dead");
             //fire
             FireCrouchingLeft = content.Load<Texture2D>("FireCrouchingLeft");
-            FireFallingLeft = content.Load<Texture2D>("FireFallingLeft");
             FireIdleLeft = content.Load<Texture2D>("FireIdleLeft");
             FireWalkingLeft = content.Load<Texture2D>("FireWalkingLeft");
             FireJumpingLeft = content.Load<Texture2D>("FireJumpingLeft");
             FireCrouchingRight = content.Load<Texture2D>("FireCrouchingRight");
-            FireFallingRight = content.Load<Texture2D>("FireFallingRight");
             FireIdleRight = content.Load<Texture2D>("FireIdleRight");
             FireWalkingRight = content.Load<Texture2D>("FireWalkingRight");
             FireJumpingRight = content.Load<Texture2D>("FireJumpingRight");
             //standard
-            StandardFallingLeft = content.Load<Texture2D>("StandardFallingLeft");
             StandardIdleLeft = content.Load<Texture2D>("StandardIdleLeft");
             StandardWalkingLeft = content.Load<Texture2D>("StandardWalkingLeft");
             StandardJumpingLeft = content.Load<Texture2D>("StandardJumpingLeft");
-            StandardFallingRight = content.Load<Texture2D>("StandardFallingRight");
             StandardIdleRight = content.Load<Texture2D>("StandardIdleRight");
             StandardWalkingRight = content.Load<Texture2D>("StandardWalkingRight");
             StandardJumpingRight = content.Load<Texture2D>("StandardJumpingRight");
             //super
             SuperCrouchingLeft = content.Load<Texture2D>("SuperCrouchingLeft");
-            SuperFallingLeft = content.Load<Texture2D>("SuperFallingLeft");
             SuperIdleLeft = content.Load<Texture2D>("SuperIdleLeft");
             SuperWalkingLeft = content.Load<Texture2D>("SuperWalkingLeft");
             SuperJumpingLeft = content.Load<Texture2D>("SuperJumpingLeft");
             SuperCrouchingRight = content.Load<Texture2D>("SuperCrouchingRight");
-            SuperFallingRight = content.Load<Texture2D>("SuperFallingRight");
             SuperIdleRight = content.Load<Texture2D>("SuperIdleRight");
             SuperWalkingRight = content.Load<Texture2D>("SuperWalkingRight");
             SuperJumpingRight = content.Load<Texture2D>("SuperJumpingRight");
