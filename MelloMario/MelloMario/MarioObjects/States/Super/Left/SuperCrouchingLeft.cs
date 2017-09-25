@@ -34,7 +34,6 @@ namespace MelloMario.MarioObjects.States
 
         public void changeToStandardState()
         {
-            mario.setMarioState(new StandardCrouchingLeft(mario));
         }
 
         public void changeToSuperState()

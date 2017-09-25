@@ -26,8 +26,8 @@ namespace MelloMario
         private Texture2D SuperCrouchingLeft, SuperFallingLeft, SuperIdleLeft, SuperJumpingLeft,SuperWalkingLeft;
         private Texture2D SuperCrouchingRight, SuperFallingRight, SuperIdleRight, SuperJumpingRight, SuperWalkingRight;
         //standard
-        private Texture2D StandardCrouchingLeft, StandardFallingLeft, StandardIdleLeft, StandardJumpingLeft, StandardWalkingLeft;
-        private Texture2D StandardCrouchingRight, StandardFallingRight, StandardIdleRight, StandardJumpingRight, StandardWalkingRight;
+        private Texture2D StandardFallingLeft, StandardIdleLeft, StandardJumpingLeft, StandardWalkingLeft;
+        private Texture2D StandardFallingRight, StandardIdleRight, StandardJumpingRight, StandardWalkingRight;
 
         private Texture2D goombaSpritesheet;
         private Texture2D greenKoopaSpritesheet;
@@ -75,12 +75,10 @@ namespace MelloMario
             FireWalkingRight = content.Load<Texture2D>("FireWalkingRight");
             FireJumpingRight = content.Load<Texture2D>("FireJumpingRight");
             //standard
-            StandardCrouchingLeft = content.Load<Texture2D>("StandardCrouchingLeft");
             StandardFallingLeft = content.Load<Texture2D>("StandardFallingLeft");
             StandardIdleLeft = content.Load<Texture2D>("StandardIdleLeft");
             StandardWalkingLeft = content.Load<Texture2D>("StandardWalkingLeft");
             StandardJumpingLeft = content.Load<Texture2D>("StandardJumpingLeft");
-            StandardCrouchingRight = content.Load<Texture2D>("StandardCrouchingRight");
             StandardFallingRight = content.Load<Texture2D>("StandardFallingRight");
             StandardIdleRight = content.Load<Texture2D>("StandardIdleRight");
             StandardWalkingRight = content.Load<Texture2D>("StandardWalkingRight");

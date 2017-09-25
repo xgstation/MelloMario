@@ -23,7 +23,7 @@ namespace MelloMario.MarioObjects.States
             sprite = SpriteFactory.Instance.CreateSprite("StandardIdleRight", setToStatic);
         }
         public void down() {
-            mario.setMarioState(new StandardCrouchingRight(mario));
+            //nothing here for standard
         }
         public void changeToFireState()
         {

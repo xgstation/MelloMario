@@ -44,7 +44,6 @@ namespace MelloMario.MarioObjects.States
 
         public void down()
         {
-            mario.setMarioState(new StandardCrouchingLeft(mario));
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:FireCrouchingRight.png
 
-#begin StandardCrouchingRight.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:StandardCrouchingRight.png
-
 #begin SuperCrouchingRight.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -252,18 +240,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:FireWalkingLeft.png
-
-#begin StandardCrouchingLeft.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:StandardCrouchingLeft.png
 
 #begin StandardFallingLeft.png
 /importer:TextureImporter

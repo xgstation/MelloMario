@@ -114,12 +114,10 @@
     <Compile Include="MarioObjects\States\Fire\Right\FireIdleRight.cs" />
     <Compile Include="MarioObjects\States\Fire\Right\FireJumpingRight.cs" />
     <Compile Include="MarioObjects\States\Fire\Right\FireWalkingRight.cs" />
-    <Compile Include="MarioObjects\States\Standard\Left\StandardCrouchingLeft.cs" />
     <Compile Include="MarioObjects\States\Standard\Left\StandardFallingLeft.cs" />
     <Compile Include="MarioObjects\States\Standard\Left\StandardIdleLeft.cs" />
     <Compile Include="MarioObjects\States\Standard\Left\StandardJumpingLeft.cs" />
     <Compile Include="MarioObjects\States\Standard\Left\StandardWalkingLeft.cs" />
-    <Compile Include="MarioObjects\States\Standard\Right\StandardCrouchingRight.cs" />
     <Compile Include="MarioObjects\States\Standard\Right\StandardFallingRight.cs" />
     <Compile Include="MarioObjects\States\Standard\Right\StandardIdleRight.cs" />
     <Compile Include="MarioObjects\States\Standard\Right\StandardJumpingRight.cs" />
