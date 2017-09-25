@@ -12,6 +12,6 @@ namespace MelloMario
 {
     interface ISpriteFactory
     {
-        ISprite createSprite(string textureName,bool Static);
+        ISprite CreateSprite(string textureName, bool Static);
     }
 }

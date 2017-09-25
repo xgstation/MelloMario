@@ -11,7 +11,6 @@ namespace MelloMario
 {
     interface IMarioState
     {
-
         void down();
         void idle();
         void fall();
@@ -21,8 +20,8 @@ namespace MelloMario
         void die();
         void changeToFireState();
         void changeToSuperState();
-        void changeToStandardState();      
+        void changeToStandardState();
         void Update(GameTime game);
-        void Draw(SpriteBatch spriteBatch, Vector2 position);
+        void Draw(SpriteBatch spriteBatch, Vector2 location);
     }
 }

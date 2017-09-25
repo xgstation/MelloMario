@@ -41,27 +41,32 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BlockStates\Destroy.cs" />
-    <Compile Include="BlockStates\Hidden.cs" />
-    <Compile Include="BlockStates\Silent.cs" />
-    <Compile Include="BlockStates\Used.cs" />
-    <Compile Include="Blocks\BrickBlock.cs" />
-    <Compile Include="Blocks\FloorBlock.cs" />
-    <Compile Include="Blocks\QuestionBlock.cs" />
-    <Compile Include="Blocks\StairBlock.cs" />
+    <Compile Include="BlockObjects\BaseUseableBlock.cs" />
+    <Compile Include="BlockObjects\BaseBlock.cs" />
+    <Compile Include="BlockObjects\States\Destroied.cs" />
+    <Compile Include="BlockObjects\States\Hidden.cs" />
+    <Compile Include="BlockObjects\States\Silent.cs" />
+    <Compile Include="BlockObjects\States\Used.cs" />
+    <Compile Include="BlockObjects\BrickBlock.cs" />
+    <Compile Include="BlockObjects\FloorBlock.cs" />
+    <Compile Include="BlockObjects\QuestionBlock.cs" />
+    <Compile Include="BlockObjects\StairBlock.cs" />
     <Compile Include="Commands\ActionCommand.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\JumpCommand.cs" />
     <Compile Include="Commands\LeftCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\RightCommand.cs" />
-    <Compile Include="Factory\SpriteFactory.cs" />
-    <Compile Include="Factory\SpriteFactory1.cs" />
-    <Compile Include="GoombaObject\Goomba.cs" />
-    <Compile Include="GoombaStates\GoombaDefeatedState.cs" />
-    <Compile Include="GoombaStates\GoombaNormalState.cs" />
-    <Compile Include="GoombaState\GoombaState.cs" />
-    <Compile Include="Interfaces\IBlock.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\KeyboardController.cs" />
+    <Compile Include="Factories\CommandFactory.cs" />
+    <Compile Include="Factories\SpriteFactory.cs" />
+    <Compile Include="GoombaObjects\Goomba.cs" />
+    <Compile Include="GoombaObjects\States\Defeated.cs" />
+    <Compile Include="GoombaObjects\States\Normal.cs" />
+    <Compile Include="Interfaces\ICommandFactory.cs" />
+    <Compile Include="Interfaces\IGoombaState.cs" />
+    <Compile Include="Interfaces\IGameObject.cs" />
     <Compile Include="Interfaces\IBlockState.cs" />
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
@@ -99,9 +104,6 @@
     <Compile Include="MarioStates\Super\Right\SuperIdleRight.cs" />
     <Compile Include="MarioStates\Super\Right\SuperJumpingRight.cs" />
     <Compile Include="MarioStates\Super\Right\SuperWalkingRight.cs" />
-    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\BrickSprite.cs" />
     <Compile Include="Sprites\DestroyingSprite.cs" />
@@ -118,9 +120,9 @@
     <Compile Include="Sprites\UsedQuestionSprite.cs" />
     <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Theming\Script.cs" />
-    <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Controllers\Controllers.cs" />
-    <Compile Include="Controllers\IController.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Controllers\GamePadController.cs" />
+    <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -327,7 +329,6 @@
     <None Include="obj\x86\Release\MelloMario.csproj.CoreCompileInputs.cache" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Windows\x86\Release\" />
     <Folder Include="PowerUps\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
