@@ -15,7 +15,7 @@ namespace MelloMario
     {
         private static ISpriteFactory instance = new SpriteFactory();
 
-        Dictionary<String, Texture2D> stringToTexture;
+        Dictionary<String, Texture2D> stringToMarioTexture;
         //player textures
         //dead
         private Texture2D Dead;
@@ -89,23 +89,19 @@ namespace MelloMario
             SuperWalkingRight = content.Load<Texture2D>("SuperWalkingRight");
             SuperJumpingRight = content.Load<Texture2D>("SuperJumpingRight");
             //dictionary
-            stringToTexture = new Dictionary<String, Texture2D>
+            stringToMarioTexture = new Dictionary<String, Texture2D>
             {
-                {"FireCrouchingLeft",FireCrouchingLeft},{"FireIdleLeft",FireIdleLeft}, {"FireJumpingLeft",FireJumpingLeft},
-                {"FireWalkingLeft",FireWalkingLeft},{"FireFallingLeft",FireFallingLeft},{"FireCrouchingRight",FireCrouchingRight},
-                {"FireIdleRight",FireIdleRight},{"FireJumpingRight",FireJumpingRight},{"FireWalkingRight",FireWalkingRight},
-                {"FireFallingRight",FireFallingRight},{"SuperCrouchingLeft",SuperCrouchingLeft},{"SuperIdleLeft",SuperIdleLeft},
-                {"SuperJumpingLeft",SuperJumpingLeft},{"SuperWalkingLeft",SuperWalkingLeft},{"SuperFallingLeft",SuperFallingLeft},
-                {"SuperCrouchingRight",SuperCrouchingRight},{"SuperIdleRight",SuperIdleRight},{"SuperJumpingRight",SuperJumpingRight},
-                {"SuperWalkingRight",SuperWalkingRight},{"SuperFallingRight",SuperFallingRight},{"StandardCrouchingLeft",StandardCrouchingLeft},
+                {"FireCrouchingLeft",FireCrouchingLeft},{"FireIdleLeft",FireIdleLeft}, {"FireJumpingLeft",FireJumpingLeft},{"FireWalkingLeft",FireWalkingLeft},
+                {"FireCrouchingRight",FireCrouchingRight},{"FireIdleRight",FireIdleRight},{"FireJumpingRight",FireJumpingRight},{"FireWalkingRight",FireWalkingRight},
+                {"SuperCrouchingLeft",SuperCrouchingLeft},{"SuperIdleLeft",SuperIdleLeft},{"SuperJumpingLeft",SuperJumpingLeft},{"SuperWalkingLeft",SuperWalkingLeft},
+                {"SuperCrouchingRight",SuperCrouchingRight},{"SuperIdleRight",SuperIdleRight},{"SuperJumpingRight",SuperJumpingRight},{"SuperWalkingRight",SuperWalkingRight},
                 {"StandardIdleLeft",StandardIdleLeft},{"StandardJumpingLeft",StandardJumpingLeft},{"StandardWalkingLeft",StandardWalkingLeft},
-                {"StandardFallingLeft",StandardFallingLeft},{"StandardCrouchingRight",StandardCrouchingRight},{"StandardIdleRight",StandardIdleRight},
-                {"StandardJumpingRight",StandardJumpingRight},{"StandardWalkingRight",StandardWalkingRight},{"StandardFallingRight",StandardFallingRight},
+                {"StandardIdleRight",StandardIdleRight},{"StandardJumpingRight",StandardJumpingRight},{"StandardWalkingRight",StandardWalkingRight},
             };
 
         }
         
-        public ISprite CreateSprite(string textureName, bool Static)
+        public ISprite CreateMarioSprite(string status, bool Static)
         {
             //change
             
@@ -113,56 +109,61 @@ namespace MelloMario
             
             if (Static)
             {
-             sprite = new StaticSprite(stringToTexture[textureName]);
+                sprite = new StaticSprite(stringToMarioTexture[status]);
             }
-            //animated
             else
             {
-            //add additional parameters when motion is involved
-            sprite = new AnimatedSprite(stringToTexture[textureName],3,3);
+                // animated
+                // add additional parameters when motion is involved
+                sprite = new AnimatedSprite(stringToMarioTexture[status],3,3);
             }
             return sprite;
-       
         }
 
-        public ISprite CreateGoombaSprite()
+        public ISprite CreateGoombaSprite(string status)
         {
-            return new GoombaSprite(goombaSpritesheet, 1, 3, false);
+            if (status == "Defeated")
+            {
+                return new GoombaSprite(goombaSpritesheet, 1, 3, true);
+            }
+            else
+            {
+                return new GoombaSprite(goombaSpritesheet, 1, 3, false);
+            }
+        }
+        
+        public ISprite CreateRedKoopaSprite(string status)
+        {
+            if (status == "JumpOn")
+            {
+                return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, true, false);
+            }
+            else if (status == "Defeated")
+            {
+                return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, true);
+            }
+            else
+            {
+                return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, false);
+            }
         }
 
-        public ISprite CreateDefeatedGoombaSprite()
+        public ISprite CreateGreenKoopaSprite(string status)
         {
-            return new GoombaSprite(goombaSpritesheet, 1, 3, true);
+            if (status == "JumpOn")
+            {
+                return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, true, false);
+            }
+            else if (status == "Defeated")
+            {
+                return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, true);
+            }
+            else
+            {
+                return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, false);
+            }
         }
 
-        public ISprite CreateRedKoopaSprite()
-        {
-            return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, false);
-        }
-
-        public ISprite CreateJumpOnRedKoopaSprite()
-        {
-            return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, true, false);
-        }
-
-        public ISprite CreateDefeatedRedKoopaSprite()
-        {
-            return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, true);
-        }
-
-        public ISprite CreateGreenKoopaSprite()
-        {
-            return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, false);
-        }
-
-        public ISprite CreateJumpOnGreenKoopaSprite()
-        {
-            return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, true, false);
-        }
-        public ISprite CreateDefeatedGreenKoopaSprite()
-        {
-            return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, true);
-        }
         public ISprite CreatCoinSprite()
         {
             return new CoinSprite(coinSpritesheet, 1, 4);
@@ -177,12 +178,13 @@ namespace MelloMario
         {
             return new StarSprite(fireFlowerSpritesheet, 1, 8);
         }
+
         public ISprite CreatSuperMushroomSprite()
         {
             return new superMushroomSprite(superMushroomSpritesheet);
         }
 
-        public ISprite CreatoneUpMushroomSprite()
+        public ISprite CreateOneUpMushroomSprite()
         {
             return new oneUpshroomSprite(oneUpMushroomSpritesheet);
         }

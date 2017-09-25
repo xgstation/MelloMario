@@ -29,9 +29,8 @@ namespace MelloMario.MarioObjects
             marioState = newMarioState;
         }
         //make another method that returns the current state of the object
-        public void down() { marioState.down();}
-        public void idle() { marioState.idle();}
-        public void fall() { marioState.fall(); }
+        public void down() { marioState.down(); }
+        public void idle() { marioState.idle(); }
         public void up() { marioState.up(); }
         public void right() { marioState.right(); }
         public void left() { marioState.left(); }

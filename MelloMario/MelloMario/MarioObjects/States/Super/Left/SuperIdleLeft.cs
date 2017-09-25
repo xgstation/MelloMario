@@ -19,7 +19,7 @@ namespace MelloMario.MarioObjects.States
         {
             this.mario = mario;
             setToStatic = true;
-            sprite = SpriteFactory.Instance.CreateSprite("SuperIdleLeft",setToStatic);
+            sprite = SpriteFactory.Instance.CreateMarioSprite("SuperIdleLeft",setToStatic);
 
         }
         public void down()
