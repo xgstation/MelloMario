@@ -15,6 +15,7 @@ namespace MelloMario.BlockObjects.States
         public Destroied(BaseBlock block)
         {
             this.block = block;
+
         }
 
         public void changeToSilent()
