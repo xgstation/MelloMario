@@ -80,7 +80,7 @@ namespace MelloMario.MarioObjects.States
 
         public void Update(GameTime game)
         {
-           
+            sprite.Update(game);
         }
     }
 }

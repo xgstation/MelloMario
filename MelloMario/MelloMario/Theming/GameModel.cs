@@ -24,7 +24,7 @@ namespace MelloMario
         public GameModel()
         {
             objects = new List<IGameObject>();
-            mario = new Mario(new Vector2(100, 00));
+            mario = new Mario(new Vector2(100, 100));
         }
 
         internal void Initialize(List<IController> controllers)

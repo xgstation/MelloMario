@@ -117,18 +117,19 @@ namespace MelloMario
             //change
             
             ISprite sprite;
-            //static
+            
             if (Static)
             {
-               sprite = new StaticSprite(stringToTexture[textureName]);
+             sprite = new StaticSprite(stringToTexture[textureName]);
             }
             //animated
             else
             {
-                //add additional parameters when motion is involved
-                sprite = new AnimatedSprite(stringToTexture[textureName]);
+            //add additional parameters when motion is involved
+            sprite = new AnimatedSprite(stringToTexture[textureName],3,3);
             }
             return sprite;
+       
         }
 
         public ISprite CreateGoombaSprite()

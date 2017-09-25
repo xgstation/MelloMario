@@ -44,6 +44,7 @@ namespace MelloMario.MarioObjects.States
         public void Update(GameTime game)
         {
             //Nothing to do here
+            sprite.Update(game);
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {

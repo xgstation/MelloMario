@@ -36,6 +36,6 @@ namespace MelloMario.MarioObjects.States
         public void left(){ }
         public void right() { }
         public void up() { }
-        public void Update(GameTime game) { }      
+        public void Update(GameTime game) { sprite.Update(game); }      
     }
 }
