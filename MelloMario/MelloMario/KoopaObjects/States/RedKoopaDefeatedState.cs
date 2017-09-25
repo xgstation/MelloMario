@@ -11,9 +11,9 @@ namespace MelloMario.KoopaObjects.States
     public class RedKoopaDefeatedState : IKoopaState
     {
 
-        private KoopaObject.RedKoopa enemyRedKoopa;
+        private RedKoopa enemyRedKoopa;
         private ISprite redKoopa;
-        public RedKoopaDefeatedState(KoopaObject.RedKoopa koopaRed)
+        public RedKoopaDefeatedState(RedKoopa koopaRed)
         {
             enemyRedKoopa = koopaRed;
             redKoopa = SpriteFactory.Instance.CreateDefeatedRedKoopaSprite();

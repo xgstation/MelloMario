@@ -1,4 +1,4 @@
-﻿using MelloMario.fireFlowerState;
+﻿using MelloMario.ItemObjects.FireFlowerStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,11 +11,11 @@ namespace MelloMario.ItemObjects
 {
     public class FireFlower
     {
-        public ItemState flowerState;
+        public IItemState flowerState;
 
         public FireFlower()
         {
-            flowerState = new fireFlowerNormalState(this);
+            flowerState = new FireFlowerNormalState(this);
         }
 
         public void TransNormal()

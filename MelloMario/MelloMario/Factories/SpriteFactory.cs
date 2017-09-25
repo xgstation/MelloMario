@@ -112,7 +112,7 @@ namespace MelloMario
 
         }
         
-        public ISprite createSprite(string textureName, bool Static)
+        public ISprite CreateSprite(string textureName, bool Static)
         {
             //change
             

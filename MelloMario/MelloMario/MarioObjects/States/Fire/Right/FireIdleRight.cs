@@ -20,7 +20,7 @@ namespace MelloMario.MarioObjects.States
         {
             mario = newMario;
             setToStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("FireIdleRight",setToStatic);
+            sprite = SpriteFactory.Instance.CreateSprite("FireIdleRight",setToStatic);
         }
         public void down()
         {

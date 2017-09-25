@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MelloMario.KoopaObjects.States;
 
 namespace MelloMario.KoopaObjects
 {
     public class GreenKoopa
     {
-        public Interfaces.IKoopaState greenKoopaState;
+        public IKoopaState greenKoopaState;
         public GreenKoopa()
         {
             greenKoopaState = new GreenKoopaNormalState(this);

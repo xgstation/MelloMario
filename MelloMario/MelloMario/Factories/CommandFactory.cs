@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MelloMario.MarioObjects;
 
 namespace MelloMario
 {
     class CommandFactory : ICommandFactory
     {
-        public ICommand createGameModelCommand(string actionName, GameModel model)
+        public ICommand CreateGameModelCommand(string actionName, GameModel model)
         {
-            // TODO: implement it
-            return null;
+            throw new NotImplementedException();
         }
-        public ICommand createMarioCommand(string actionName, MarioObjects.Mario mario)
+        
+        public ICommand CreateMarioCommand(string actionName, Mario mario)
         {
-            // TODO: implement it
-            return null;
+            throw new NotImplementedException();
         }
     }
 }

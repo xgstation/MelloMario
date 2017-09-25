@@ -1,4 +1,4 @@
-﻿using MelloMario.KoopaObject;
+﻿using MelloMario.KoopaObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -13,6 +13,7 @@ namespace MelloMario.KoopaObjects.States
     {
         private GreenKoopa enemyGreenKoopa;
         private ISprite greenKoopa;
+
         public GreenKoopaDefeatedState(GreenKoopa koopaGreen)
         {
             enemyGreenKoopa = koopaGreen;

@@ -1,4 +1,4 @@
-﻿using MelloMario.CoinStates;
+﻿using MelloMario.ItemObjects.CoinStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,11 +11,11 @@ namespace MelloMario.ItemObjects
 {
     public class Coin
     {
-        public ItemState coinState;
+        public IItemState coinState;
 
         public Coin()
         {
-            coinState = new coinNormalState(this);
+            coinState = new CoinNormalState(this);
         }
 
         public void TransNormal()

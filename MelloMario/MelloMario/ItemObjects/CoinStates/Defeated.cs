@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.CoinStates
 {
-    public class coinDefeatedState : Interfaces.ItemState
+    public class CoinDefeatedState : IItemState
     {
-        private ItemObject.coin coinItem;
-        public coinDefeatedState(ItemObject.coin coin1)
+        private Coin coinItem;
+        public CoinDefeatedState(Coin coin1)
         {
 
             coinItem = coin1;
@@ -20,7 +20,7 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public void transNormal()
         {
-            coinItem.coinState = new coinNormalState(coinItem);
+            coinItem.coinState = new CoinNormalState(coinItem);
         }
 
         public void transDefeated()

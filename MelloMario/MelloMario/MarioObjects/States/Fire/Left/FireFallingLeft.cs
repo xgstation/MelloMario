@@ -18,7 +18,7 @@ namespace MelloMario.MarioObjects.States
         {
             this.mario = mario;
             setStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("FireFallingLeft", setStatic);
+            sprite = SpriteFactory.Instance.CreateSprite("FireFallingLeft", setStatic);
         }
         public void die()
         {

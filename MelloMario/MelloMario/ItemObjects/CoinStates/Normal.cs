@@ -1,4 +1,4 @@
-﻿using MelloMario.ItemObject;
+﻿using MelloMario.ItemObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.CoinStates
 {
-    public class coinNormalState : Interfaces.ItemState
+    public class CoinNormalState : IItemState
     {
-        private coin coinItem;
+        private Coin coinItem;
         private ISprite coin;
-        public coinNormalState(coin coin1)
+        public CoinNormalState(Coin coin1)
         {
 
             coinItem = coin1;
@@ -26,7 +26,7 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public void transDefeated()
         {
-            coinItem.coinState = new coinDefeatedState(coinItem);
+            coinItem.coinState = new CoinDefeatedState(coinItem);
         }
         public void Update(GameTime gameTime)
         {

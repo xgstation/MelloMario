@@ -13,6 +13,13 @@ namespace MelloMario
         // TODO: Do we need another abstraction layer for mario's actions?
         private Mario mario;
 
+        internal List<IController> Controllers
+        {
+            get
+            {
+                return controllers;
+            }
+        }
         internal Mario Mario
         {
             get

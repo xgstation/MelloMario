@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
-    public class oneUpMushroomDefeatedState : Interfaces.ItemState
+    public class OneUpMushroomDefeatedState : IItemState
     {
-        private ItemObject.oneUpMushroom mushroomItem;
-        public oneUpMushroomDefeatedState(ItemObject.oneUpMushroom mushroomItem1)
+        private OneUpMushroom mushroomItem;
+        public OneUpMushroomDefeatedState(OneUpMushroom mushroomItem1)
         {
             mushroomItem = mushroomItem1;
         }
         public void transNormal()
         {
-            mushroomItem.oneUpMushroomState = new oneUpMushroomNormalState(mushroomItem);
+            mushroomItem.oneUpMushroomState = new OneUpMushroomNormalState(mushroomItem);
         }
         public void transDefeated()
         {

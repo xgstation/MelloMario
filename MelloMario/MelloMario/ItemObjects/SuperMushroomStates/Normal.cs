@@ -1,4 +1,4 @@
-﻿using MelloMario.ItemObject;
+﻿using MelloMario.ItemObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.SuperMushroomStates
 {
-    public class superMushroomNormalState : Interfaces.ItemState
+    public class SuperMushroomNormalState : IItemState
     {
         private ISprite mushroom;
-        private superMushroom mushroomItem;
-        public superMushroomNormalState(superMushroom mushroomItem1)
+        private SuperMushroom mushroomItem;
+        public SuperMushroomNormalState(SuperMushroom mushroomItem1)
         {
             mushroomItem = mushroomItem1;
             mushroom = SpriteFactory.Instance.CreatSuperMushroomSprite();

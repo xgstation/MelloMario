@@ -1,4 +1,4 @@
-﻿using MelloMario.ItemObject;
+﻿using MelloMario.ItemObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
-    public class oneUpMushroomNormalState : Interfaces.ItemState
+    public class OneUpMushroomNormalState : IItemState
     {
-        private oneUpMushroom mushroomItem;
+        private OneUpMushroom mushroomItem;
         private ISprite mushroom;
-        public oneUpMushroomNormalState(oneUpMushroom mushroomItem1)
+        public OneUpMushroomNormalState(OneUpMushroom mushroomItem1)
         {
 
             mushroomItem = mushroomItem1;
@@ -26,7 +26,7 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
 
         public void transDefeated()
         {
-            mushroomItem.oneUpMushroomState = new oneUpMushroomDefeatedState(mushroomItem);
+            mushroomItem.oneUpMushroomState = new OneUpMushroomDefeatedState(mushroomItem);
         }
         public void Update(GameTime gameTime)
         {

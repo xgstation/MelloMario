@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
-    public class fireFlowerDefeatedState : Interfaces.ItemState
+    public class FireFlowerDefeatedState : IItemState
     {
 
-        private ItemObject.fireFlower flowerItem;
-        public fireFlowerDefeatedState(ItemObject.fireFlower flower1)
+        private FireFlower flowerItem;
+        public FireFlowerDefeatedState(FireFlower flower1)
         {
             flowerItem = flower1;
 
         }
         public void transNormal()
         {
-            flowerItem.flowerState = new fireFlowerNormalState(flowerItem);
+            flowerItem.flowerState = new FireFlowerNormalState(flowerItem);
         }
         public void transDefeated()
         {

@@ -1,4 +1,4 @@
-﻿using MelloMario.superMushroomState;
+﻿using MelloMario.ItemObjects.SuperMushroomStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,11 +11,11 @@ namespace MelloMario.ItemObjects
 {
     public class SuperMushroom
     {
-        public ItemState mushroomState;
+        public IItemState mushroomState;
 
         public SuperMushroom()
         {
-            mushroomState = new superMushroomNormalState(this);
+            mushroomState = new SuperMushroomNormalState(this);
         }
 
         public void TransNormal()

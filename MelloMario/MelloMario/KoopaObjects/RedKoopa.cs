@@ -5,15 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MelloMario.KoopaObjects.States;
 
 namespace MelloMario.KoopaObjects
 {
     public class RedKoopa
     {
-        public Interfaces.IKoopaState redKoopaState;
+        public IKoopaState redKoopaState;
         public RedKoopa()
         {
-            redKoopaState = new KoopaStates.RedKoopaNormalState(this);
+            redKoopaState = new RedKoopaNormalState(this);
         }
 
         public void transNormal()

@@ -1,4 +1,4 @@
-﻿using MelloMario.StarState;
+﻿using MelloMario.ItemObjects.StarStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,7 +11,7 @@ namespace MelloMario.ItemObjects
 {
     public class Star
     {
-        public ItemState starState;
+        public IItemState starState;
 
         public Star()
         {

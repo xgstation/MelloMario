@@ -10,25 +10,29 @@ namespace MelloMario.Sprites
 {
     class BrickSprite : ISprite
     {
-        private const int totalFrame = 5;
-        private int currentFrame = 0;
-        private int Columns = 0;
+        private int Rows;
+        private int Columns;
+
+        private int totalFrames;
+        private int currentFrame;
+        private int currentPositionX;
 
         private Texture2D Texture;
 
-        public BrickSprite()
+        public BrickSprite(int rows, int columns, int posX)
         {
-            Texture = texture;
+            // TODO: Texture = texture;
             Rows = rows;
             Columns = columns;
+
             currentFrame = 0;
+            currentPositionX = posX;
             totalFrames = Rows * Columns;
-            currentPositionX = 0;
         }
 
-        public int TotalFrame()
+        public int TotalFrames()
         {
-            return totalFrame;
+            return totalFrames;
         }
 
         public void Update(GameTime time) { }
