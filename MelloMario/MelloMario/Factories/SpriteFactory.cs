@@ -169,5 +169,29 @@ namespace MelloMario
         {
             return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, true);
         }
+        public ISprite CreatCoinSprite()
+        {
+            return new CoinSprite(coinSpritesheet, 1, 4);
+        }
+
+        public ISprite CreateStarSprite()
+        {
+            return new StarSprite(starSpritesheet, 1, 4);
+        }
+
+
+        public ISprite CreateFlowerSprite()
+        {
+            return new StarSprite(fireFlowerSpritesheet, 1, 8);
+        }
+        public ISprite CreatSuperMushroomSprite()
+        {
+            return new superMushroomSprite(superMushroomSpritesheet);
+        }
+
+        public ISprite CreatoneUpMushroomSprite()
+        {
+            return new oneUpshroomSprite(oneUpMushroomSpritesheet);
+        }
     }
 }

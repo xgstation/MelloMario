@@ -51,6 +51,8 @@
     <Compile Include="BlockObjects\FloorBlock.cs" />
     <Compile Include="BlockObjects\QuestionBlock.cs" />
     <Compile Include="BlockObjects\StairBlock.cs" />
+    <Compile Include="CoinStates\coinNormalState.cs" />
+    <Compile Include="CoinStates\coinDefeatedState.cs" />
     <Compile Include="Commands\ActionCommand.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\JumpCommand.cs" />
@@ -61,12 +63,15 @@
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Factories\CommandFactory.cs" />
     <Compile Include="Factories\SpriteFactory.cs" />
+    <Compile Include="fireFlowerState\fireFlowerDefeatedState.cs" />
+    <Compile Include="fireFlowerState\fireFlowerNormalState.cs" />
     <Compile Include="GoombaObjects\Goomba.cs" />
     <Compile Include="GoombaObjects\States\Defeated.cs" />
     <Compile Include="GoombaObjects\States\Normal.cs" />
     <Compile Include="GoombaObject\Goomba.cs" />
     <Compile Include="GoombaStates\GoombaNormalState.cs" />
     <Compile Include="GoombaStates\GoombaDefeatedState.cs" />
+    <Compile Include="Interfaces\ItemState.cs" />
     <Compile Include="Interfaces\IKoopaState.cs" />
     <Compile Include="Interfaces\ICommandFactory.cs" />
     <Compile Include="Interfaces\IGoombaState.cs" />
@@ -75,6 +80,8 @@
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
+    <Compile Include="ItemObject\fireFlower.cs" />
+    <Compile Include="ItemObject\coin.cs" />
     <Compile Include="KoopaObject\GreenKoopa.cs" />
     <Compile Include="KoopaObject\RedKoopa.cs" />
     <Compile Include="KoopaStates\RedKoopaNormalState.cs" />
@@ -149,6 +156,11 @@
     <Compile Include="MarioStates\Super\Right\SuperWalkingRight.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\BrickSprite.cs" />
+    <Compile Include="Sprites\superMushroomSprite.cs" />
+    <Compile Include="Sprites\StartSprite.cs" />
+    <Compile Include="Sprites\oneUpMushroomSprite.cs" />
+    <Compile Include="Sprites\fireFlowerSprite.cs" />
+    <Compile Include="Sprites\CoinSprite.cs" />
     <Compile Include="Sprites\GreenKoopaSprite.cs" />
     <Compile Include="Sprites\DestroyingSprite.cs" />
     <Compile Include="Sprites\FloorSprite.cs" />
