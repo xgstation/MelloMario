@@ -6,29 +6,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.fireFlowerState
+namespace MelloMario.ItemObjects.CoinStates
 {
-    public class fireFlowerDefeatedState : Interfaces.ItemState
+    public class coinDefeatedState : Interfaces.ItemState
     {
-
-        private ItemObject.fireFlower flowerItem;
-        public fireFlowerDefeatedState(ItemObject.fireFlower flower1)
+        private ItemObject.coin coinItem;
+        public coinDefeatedState(ItemObject.coin coin1)
         {
-            flowerItem = flower1;
+
+            coinItem = coin1;
 
         }
+
         public void transNormal()
         {
-            flowerItem.flowerState = new fireFlowerNormalState(flowerItem);
+            coinItem.coinState = new coinNormalState(coinItem);
         }
+
         public void transDefeated()
         {
 
         }
-
         public void Update(GameTime gameTime)
         {
-
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

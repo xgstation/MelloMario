@@ -7,23 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.ItemObject
+namespace MelloMario.ItemObjects
 {
-    public class oneUpMushroom
+    public class OneUpMushroom
     {
+        public ItemState oneUpMushroomState;
 
-        public Interfaces.ItemState oneUpMushroomState;
-
-        public oneUpMushroom()
+        public OneUpMushroom()
         {
             oneUpMushroomState = new oneUpMushroomNormalState(this);
         }
 
-        public void transNormal()
+        public void TransNormal()
         {
             oneUpMushroomState.transNormal();
         }
-        public void transDefeated()
+
+        public void TransDefeated()
         {
             oneUpMushroomState.transDefeated();
         }

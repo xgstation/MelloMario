@@ -7,16 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.StarState
+namespace MelloMario.ItemObjects.FireFlowerStates
 {
-    public class StarNormalState : Interfaces.ItemState
+    public class fireFlowerNormalState : Interfaces.ItemState
     {
-        private ISprite star;
-        private Star starItem;
-        public StarNormalState(Star star1)
+        private ISprite flower;
+        private fireFlower flowerItem;
+        public fireFlowerNormalState(fireFlower flower1)
         {
-            starItem = star1;
-            star = SpriteFactory.Instance.CreateStarSprite();
+            flowerItem = flower1;
+            flower = SpriteFactory.Instance.CreateFlowerSprite();
         }
         public void transNormal()
         {
@@ -24,17 +24,17 @@ namespace MelloMario.StarState
         }
         public void transDefeated()
         {
-            starItem.starState = new StarDefeatedState(starItem);
+            flowerItem.flowerState = new fireFlowerDefeatedState(flowerItem);
         }
 
         public void Update(GameTime gameTime)
         {
-            star.Update(gameTime);
+            flower.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            star.Draw(spriteBatch, location);
+            flower.Draw(spriteBatch, location);
         }
     }
 }

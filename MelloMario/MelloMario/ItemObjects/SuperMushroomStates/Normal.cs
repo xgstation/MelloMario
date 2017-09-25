@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.superMushroomState
+namespace MelloMario.ItemObjects.SuperMushroomStates
 {
     public class superMushroomNormalState : Interfaces.ItemState
     {

@@ -7,21 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.ItemObject
+namespace MelloMario.ItemObjects
 {
     public class Star
     {
-        public Interfaces.ItemState starState;
+        public ItemState starState;
+
         public Star()
         {
             starState = new StarNormalState(this);
         }
 
-        public void transNormal()
+        public void TransNormal()
         {
             starState.transNormal();
         }
-        public void transDefeated()
+        public void TransDefeated()
         {
             starState.transDefeated();
         }

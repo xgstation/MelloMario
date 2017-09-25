@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.oneUpMushroomState
+namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
     public class oneUpMushroomNormalState : Interfaces.ItemState
     {

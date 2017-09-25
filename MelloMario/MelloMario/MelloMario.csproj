@@ -68,9 +68,38 @@
     <Compile Include="Interfaces\IGoombaState.cs" />
     <Compile Include="Interfaces\IGameObject.cs" />
     <Compile Include="Interfaces\IBlockState.cs" />
+    <Compile Include="Interfaces\IItemState.cs" />
+    <Compile Include="Interfaces\IKoopaState.cs" />
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
+    <Compile Include="ItemObjects\Coin.cs" />
+    <Compile Include="ItemObjects\CoinStates\Defeated.cs" />
+    <Compile Include="ItemObjects\CoinStates\Normal.cs" />
+    <Compile Include="ItemObjects\FireFlower.cs" />
+    <Compile Include="ItemObjects\FireFlowerStates\Defeated.cs" />
+    <Compile Include="ItemObjects\FireFlowerStates\Normal.cs" />
+    <Compile Include="ItemObjects\OneUpMushroom.cs" />
+    <Compile Include="ItemObjects\OneUpMushroomStates\Defeated.cs" />
+    <Compile Include="ItemObjects\OneUpMushroomStates\Normal.cs" />
+    <Compile Include="ItemObjects\Star.cs" />
+    <Compile Include="ItemObjects\StarStates\Defeated.cs" />
+    <Compile Include="ItemObjects\StarStates\Normal.cs" />
+    <Compile Include="ItemObjects\SuperMushroom.cs" />
+    <Compile Include="ItemObjects\SuperMushroomStates\Defeated.cs" />
+    <Compile Include="ItemObjects\SuperMushroomStates\Normal.cs" />
+    <Compile Include="KoopaObjects\GreenKoopa.cs" />
+    <Compile Include="KoopaObjects\RedKoopa.cs" />
+    <Compile Include="KoopaObjects\States\GreenKoopaDefeatedState.cs" />
+    <Compile Include="KoopaObjects\States\GreenKoopaJumpOnState.cs" />
+    <Compile Include="KoopaObjects\States\GreenKoopaNormalState.cs" />
+    <Compile Include="KoopaObjects\States\RedKoopaDefeatedState.cs" />
+    <Compile Include="KoopaObjects\States\RedKoopaJumpOnState.cs" />
+    <Compile Include="KoopaObjects\States\RedKoopaNormalState.cs" />
+    <Compile Include="Sprites\CoinSprite.cs" />
+    <Compile Include="Sprites\FireFlowerSprite.cs" />
+    <Compile Include="Sprites\GreenKoopaSprite.cs" />
+    <Compile Include="Sprites\OneUpMushroomSprite.cs" />
     <Compile Include="Sprites\RedKoopaSprite.cs" />
     <Compile Include="MarioObjects\Mario.cs" />
     <Compile Include="MarioObjects\States\Dead\Dead.cs" />
@@ -111,12 +140,14 @@
     <Compile Include="Sprites\GoombaSprite.cs" />
     <Compile Include="Sprites\QuestionSprite.cs" />
     <Compile Include="Sprites\StairSprite.cs" />
+    <Compile Include="Sprites\StartSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Commands\BrickBlockCommand.cs" />
     <Compile Include="Commands\HiddenBlockCommand.cs" />
     <Compile Include="Commands\QuestionBlockCommand.cs" />
     <Compile Include="Commands\DeadStateCommand.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
+    <Compile Include="Sprites\SuperMushroomSprite.cs" />
     <Compile Include="Sprites\UsedQuestionSprite.cs" />
     <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Theming\Script.cs" />
@@ -268,10 +299,7 @@
     <None Include="Content\obj\Windows\SuperWalkingLeft.mgcontent" />
     <None Include="Content\obj\Windows\SuperWalkingRight.mgcontent" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="KoopaObjects\" />
-    <Folder Include="PowerUps\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

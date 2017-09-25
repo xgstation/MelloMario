@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.KoopaStates
+namespace MelloMario.KoopaObjects.States
 {
-    public class RedKoopaJumpOnState : Interfaces.IKoopaState
+    public class RedKoopaJumpOnState : IKoopaState
     {
         private ISprite redKoopa;
         private KoopaObject.RedKoopa enemyRedKoopa;

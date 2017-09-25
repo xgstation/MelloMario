@@ -7,21 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.ItemObject
+namespace MelloMario.ItemObjects
 {
-    public class coin
+    public class Coin
     {
-        public Interfaces.ItemState coinState;
-        public coin()
+        public ItemState coinState;
+
+        public Coin()
         {
             coinState = new coinNormalState(this);
         }
 
-        public void transNormal()
+        public void TransNormal()
         {
             coinState.transNormal();
         }
-        public void transDefeated()
+
+        public void TransDefeated()
         {
             coinState.transDefeated();
         }

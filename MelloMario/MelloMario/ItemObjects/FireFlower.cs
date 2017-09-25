@@ -7,21 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.ItemObject
+namespace MelloMario.ItemObjects
 {
-    public class fireFlower
+    public class FireFlower
     {
-        public Interfaces.ItemState flowerState;
-        public fireFlower()
+        public ItemState flowerState;
+
+        public FireFlower()
         {
             flowerState = new fireFlowerNormalState(this);
         }
 
-        public void transNormal()
+        public void TransNormal()
         {
             flowerState.transNormal();
         }
-        public void transDefeated()
+
+        public void TransDefeated()
         {
             flowerState.transDefeated();
         }

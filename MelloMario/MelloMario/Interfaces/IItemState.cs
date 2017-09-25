@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.Interfaces
+namespace MelloMario
 {
-    public interface ItemState
+    public interface IItemState
     {
         void transNormal();
         void transDefeated();

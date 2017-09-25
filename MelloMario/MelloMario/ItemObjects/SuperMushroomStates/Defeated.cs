@@ -7,35 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.CoinStates
+namespace MelloMario.ItemObjects.SuperMushroomStates
 {
-    public class coinNormalState : Interfaces.ItemState
+    public class superMushroomDefeatedState : Interfaces.ItemState
     {
-        private coin coinItem;
-        private ISprite coin;
-        public coinNormalState(coin coin1)
+        private superMushroom mushroomItem;
+        public superMushroomDefeatedState(superMushroom mushroomItem1)
         {
-
-            coinItem = coin1;
-            coin = SpriteFactory.Instance.CreatCoinSprite();
+            mushroomItem = mushroomItem1;
         }
+
         public void transNormal()
         {
-
+            mushroomItem.mushroomState = new superMushroomNormalState(mushroomItem);
         }
-
         public void transDefeated()
         {
-            coinItem.coinState = new coinDefeatedState(coinItem);
+
         }
         public void Update(GameTime gameTime)
         {
-            coin.Update(gameTime);
+
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            coin.Draw(spriteBatch, location);
+
         }
+
+
     }
 }

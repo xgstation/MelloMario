@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MelloMario.Interfaces;
+using MelloMario.ItemObject;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -6,18 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.oneUpMushroomState
+namespace MelloMario.ItemObjects.StarStates
 {
-    public class oneUpMushroomDefeatedState : Interfaces.ItemState
+    public class StarDefeatedState : ItemState
     {
-        private ItemObject.oneUpMushroom mushroomItem;
-        public oneUpMushroomDefeatedState(ItemObject.oneUpMushroom mushroomItem1)
+
+        private Star starItem;
+        public StarDefeatedState(Star star1)
         {
-            mushroomItem = mushroomItem1;
+            starItem = star1;
+
         }
         public void transNormal()
         {
-            mushroomItem.oneUpMushroomState = new oneUpMushroomNormalState(mushroomItem);
+            starItem.starState = new StarNormalState(starItem);
         }
         public void transDefeated()
         {

@@ -7,34 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.fireFlowerState
+namespace MelloMario.ItemObjects.CoinStates
 {
-    public class fireFlowerNormalState : Interfaces.ItemState
+    public class coinNormalState : Interfaces.ItemState
     {
-        private ISprite flower;
-        private fireFlower flowerItem;
-        public fireFlowerNormalState(fireFlower flower1)
+        private coin coinItem;
+        private ISprite coin;
+        public coinNormalState(coin coin1)
         {
-            flowerItem = flower1;
-            flower = SpriteFactory.Instance.CreateFlowerSprite();
+
+            coinItem = coin1;
+            coin = SpriteFactory.Instance.CreatCoinSprite();
         }
         public void transNormal()
         {
 
         }
+
         public void transDefeated()
         {
-            flowerItem.flowerState = new fireFlowerDefeatedState(flowerItem);
+            coinItem.coinState = new coinDefeatedState(coinItem);
         }
-
         public void Update(GameTime gameTime)
         {
-            flower.Update(gameTime);
+            coin.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            flower.Draw(spriteBatch, location);
+            coin.Draw(spriteBatch, location);
         }
     }
 }

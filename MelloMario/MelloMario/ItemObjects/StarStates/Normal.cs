@@ -1,5 +1,4 @@
-﻿using MelloMario.Interfaces;
-using MelloMario.ItemObject;
+﻿using MelloMario.ItemObject;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -8,33 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.StarState
+namespace MelloMario.ItemObjects.StarStates
 {
-    public class StarDefeatedState : ItemState
+    public class StarNormalState : Interfaces.ItemState
     {
-
+        private ISprite star;
         private Star starItem;
-        public StarDefeatedState(Star star1)
+        public StarNormalState(Star star1)
         {
             starItem = star1;
-
+            star = SpriteFactory.Instance.CreateStarSprite();
         }
         public void transNormal()
         {
-            starItem.starState = new StarNormalState(starItem);
+
         }
         public void transDefeated()
         {
-
+            starItem.starState = new StarDefeatedState(starItem);
         }
+
         public void Update(GameTime gameTime)
         {
-
+            star.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-
+            star.Draw(spriteBatch, location);
         }
     }
 }
