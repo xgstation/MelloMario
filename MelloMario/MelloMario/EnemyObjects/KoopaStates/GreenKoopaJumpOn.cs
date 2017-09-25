@@ -6,20 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.KoopaObjects.States
+namespace MelloMario.EnemyObjects.KoopaStates
 {
-    public class GreenKoopaJumpOnState : IKoopaState
+    class GreenKoopaJumpOn : IKoopaState
     {
         private ISprite greenKoopa;
         private GreenKoopa enemyGreenKoopa;
-        public GreenKoopaJumpOnState(GreenKoopa koopaGreen)
+        public GreenKoopaJumpOn(GreenKoopa koopaGreen)
         {
             enemyGreenKoopa = koopaGreen;
             greenKoopa = SpriteFactory.Instance.CreateJumpOnGreenKoopaSprite();
         }
         public void transNormal()
         {
-            enemyGreenKoopa.greenKoopaState = new GreenKoopaNormalState(enemyGreenKoopa);
+            enemyGreenKoopa.greenKoopaState = new GreenKoopaNormal(enemyGreenKoopa);
         }
 
         public void transJumpOn()
@@ -29,7 +29,7 @@ namespace MelloMario.KoopaObjects.States
 
         public void transDefeated()
         {
-            enemyGreenKoopa.greenKoopaState = new GreenKoopaDefeatedState(enemyGreenKoopa);
+            enemyGreenKoopa.greenKoopaState = new GreenKoopaDefeated(enemyGreenKoopa);
         }
 
         public void Update(GameTime gameTime)

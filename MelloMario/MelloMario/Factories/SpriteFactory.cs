@@ -179,7 +179,6 @@ namespace MelloMario
             return new StarSprite(starSpritesheet, 1, 4);
         }
 
-
         public ISprite CreateFlowerSprite()
         {
             return new StarSprite(fireFlowerSpritesheet, 1, 8);

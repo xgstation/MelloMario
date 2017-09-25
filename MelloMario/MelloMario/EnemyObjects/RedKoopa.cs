@@ -5,16 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MelloMario.KoopaObjects.States;
+using MelloMario.EnemyObjects.KoopaStates;
 
-namespace MelloMario.KoopaObjects
+namespace MelloMario.EnemyObjects
 {
-    public class RedKoopa
+    public class RedKoopa : BaseEnemy
     {
         public IKoopaState redKoopaState;
-        public RedKoopa()
+        public RedKoopa(Vector2 initLocation) : base(initLocation)
         {
-            redKoopaState = new RedKoopaNormalState(this);
+            redKoopaState = new RedKoopaNormal(this);
         }
 
         public void transNormal()
@@ -30,13 +30,13 @@ namespace MelloMario.KoopaObjects
             redKoopaState.transDefeated();
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             redKoopaState.Update(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            redKoopaState.Draw(spriteBatch, location);
+            redKoopaState.Draw(spriteBatch, Location);
         }
     }
 }

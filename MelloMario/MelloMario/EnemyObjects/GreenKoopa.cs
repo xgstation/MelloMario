@@ -5,16 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MelloMario.KoopaObjects.States;
+using MelloMario.EnemyObjects.KoopaStates;
 
-namespace MelloMario.KoopaObjects
+namespace MelloMario.EnemyObjects
 {
-    public class GreenKoopa
+    public class GreenKoopa : BaseEnemy
     {
         public IKoopaState greenKoopaState;
-        public GreenKoopa()
+        public GreenKoopa(Vector2 initLocation) : base(initLocation)
         {
-            greenKoopaState = new GreenKoopaNormalState(this);
+            greenKoopaState = new GreenKoopaNormal(this);
         }
 
         public void transNormal()
@@ -30,13 +30,13 @@ namespace MelloMario.KoopaObjects
             greenKoopaState.transDefeated();
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             greenKoopaState.Update(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            greenKoopaState.Draw(spriteBatch, location);
+            greenKoopaState.Draw(spriteBatch, Location);
         }
 
     }

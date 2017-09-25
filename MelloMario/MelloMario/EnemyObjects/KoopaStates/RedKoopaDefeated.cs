@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.KoopaObjects.States
+namespace MelloMario.EnemyObjects.KoopaStates
 {
-    public class RedKoopaDefeatedState : IKoopaState
+    class RedKoopaDefeated : IKoopaState
     {
 
         private RedKoopa enemyRedKoopa;
         private ISprite redKoopa;
-        public RedKoopaDefeatedState(RedKoopa koopaRed)
+        public RedKoopaDefeated(RedKoopa koopaRed)
         {
             enemyRedKoopa = koopaRed;
             redKoopa = SpriteFactory.Instance.CreateDefeatedRedKoopaSprite();
@@ -21,12 +21,12 @@ namespace MelloMario.KoopaObjects.States
         }
         public void transNormal()
         {
-            enemyRedKoopa.redKoopaState = new RedKoopaNormalState(enemyRedKoopa);
+            enemyRedKoopa.redKoopaState = new RedKoopaNormal(enemyRedKoopa);
         }
 
         public void transJumpOn()
         {
-            enemyRedKoopa.redKoopaState = new RedKoopaJumpOnState(enemyRedKoopa);
+            enemyRedKoopa.redKoopaState = new RedKoopaJumpOn(enemyRedKoopa);
         }
 
         public void transDefeated()

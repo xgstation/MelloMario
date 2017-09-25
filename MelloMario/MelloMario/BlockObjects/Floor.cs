@@ -9,9 +9,9 @@ using MelloMario.BlockObjects.States;
 
 namespace MelloMario.BlockObjects
 {
-    class BrickBlock : BaseUseableBlock
+    public class Floor : BaseBlock
     {
-        public BrickBlock(Vector2 location, Boolean isUsed): base(location, isUsed)
+        public Floor(Vector2 location): base(location)
         {
         }
     }

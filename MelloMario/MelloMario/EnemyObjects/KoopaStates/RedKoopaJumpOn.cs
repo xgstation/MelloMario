@@ -6,30 +6,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.KoopaObjects.States
+namespace MelloMario.EnemyObjects.KoopaStates
 {
-    public class RedKoopaNormalState : IKoopaState
+    class RedKoopaJumpOn : IKoopaState
     {
         private ISprite redKoopa;
         private RedKoopa enemyRedKoopa;
-        public RedKoopaNormalState(RedKoopa koopaRed)
+        public RedKoopaJumpOn(RedKoopa koopaRed)
         {
             enemyRedKoopa = koopaRed;
-            redKoopa = SpriteFactory.Instance.CreateRedKoopaSprite();
+            redKoopa = SpriteFactory.Instance.CreateJumpOnRedKoopaSprite();
         }
         public void transNormal()
         {
-
+            enemyRedKoopa.redKoopaState = new RedKoopaNormal(enemyRedKoopa);
         }
 
         public void transJumpOn()
         {
-            enemyRedKoopa.redKoopaState = new RedKoopaJumpOnState(enemyRedKoopa);
+
         }
 
         public void transDefeated()
         {
-            enemyRedKoopa.redKoopaState = new RedKoopaDefeatedState(enemyRedKoopa);
+            enemyRedKoopa.redKoopaState = new RedKoopaDefeated(enemyRedKoopa);
         }
 
         public void Update(GameTime gameTime)
