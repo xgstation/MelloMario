@@ -54,7 +54,8 @@ namespace MelloMario
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            SpriteFactory.Instance.LoadAllTextures(this.Content);
+            
+          
             // TODO: Use this.Content to load game content here
         }
 

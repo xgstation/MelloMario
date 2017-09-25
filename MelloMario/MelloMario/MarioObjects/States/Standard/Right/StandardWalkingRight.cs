@@ -63,14 +63,9 @@ namespace MelloMario.MarioObjects.States
             mario.setMarioState(new StandardIdleRight(mario));
         }
 
-        public void jump()
-        {
-            mario.setMarioState(new StandardJumpingRight(mario));
-        }
-
         public void left()
         {
-            mario.setMarioState(new StandardJumpingLeft(mario));
+            mario.setMarioState(new StandardWalkingLeft(mario));
         }
 
         public void right()
