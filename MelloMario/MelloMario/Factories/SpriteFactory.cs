@@ -133,17 +133,65 @@ namespace MelloMario
 
         public ISprite CreateGoombaSprite()
         {
-            return new GoombaSprite(goombaSpritesheet, 1, 2);
+            return new GoombaSprite(goombaSpritesheet, 1, 3, false);
         }
 
-        public ISprite CreateKoopaSprite()
+        public ISprite CreateDefeatedGoombaSprite()
         {
-            return new KoopaSprite(greenKoopaSpritesheet, redKoopaSpritesheet, 1, 6, 3, 4);
+            return new GoombaSprite(goombaSpritesheet, 1, 3, true);
         }
 
-        public ISprite CreateItemSprite()
+        public ISprite CreateRedKoopaSprite()
         {
-            return new ItemSprite(superMushroomSpritesheet, oneUpMushroomSpritesheet, starSpritesheet, fireFlowerSpritesheet, coinSpritesheet, 1, 4);
+            return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, false);
+        }
+
+        public ISprite CreateJumpOnRedKoopaSprite()
+        {
+            return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, true, false);
+        }
+
+        public ISprite CreateDefeatedRedKoopaSprite()
+        {
+            return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, true);
+        }
+
+        public ISprite CreateGreenKoopaSprite()
+        {
+            return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, false);
+        }
+
+        public ISprite CreateJumpOnGreenKoopaSprite()
+        {
+            return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, true, false);
+        }
+        public ISprite CreateDefeatedGreenKoopaSprite()
+        {
+            return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, true);
+        }
+        public ISprite CreatCoinSprite()
+        {
+            return new CoinSprite(coinSpritesheet, 1, 4);
+        }
+
+        public ISprite CreateStarSprite()
+        {
+            return new StarSprite(starSpritesheet, 1, 4);
+        }
+
+
+        public ISprite CreateFlowerSprite()
+        {
+            return new StarSprite(fireFlowerSpritesheet, 1, 8);
+        }
+        public ISprite CreatSuperMushroomSprite()
+        {
+            return new superMushroomSprite(superMushroomSpritesheet);
+        }
+
+        public ISprite CreatoneUpMushroomSprite()
+        {
+            return new oneUpshroomSprite(oneUpMushroomSpritesheet);
         }
     }
 }
