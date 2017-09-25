@@ -34,9 +34,13 @@ namespace MelloMario
         protected override void Initialize()
         {
 
-            List<IController> controllers = new List<IController>();
-            controllers.Add(new GamepadController(this));
-            controllers.Add(new KeyboardController(this));
+            List<IController> controllers = new List<IController>
+            {
+                new GamepadController(this),
+                new KeyboardController(this)
+            };
+
+            
 
             model.Initialize(controllers);
 
@@ -54,8 +58,11 @@ namespace MelloMario
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
-          
+
+            SpriteFactory.Instance.LoadAllTextures(this.Content);
+
+            model.LoadEntities();
+
             // TODO: Use this.Content to load game content here
         }
 
@@ -77,7 +84,7 @@ namespace MelloMario
         {
             base.Update(gameTime);
 
-            model.update(gameTime);
+            model.Update(gameTime);
         }
 
         /// <summary>
@@ -91,7 +98,7 @@ namespace MelloMario
             base.Draw(gameTime);
 
             spriteBatch.Begin();
-            model.draw(spriteBatch);
+            model.Draw(spriteBatch);
             spriteBatch.End();
         }
     }

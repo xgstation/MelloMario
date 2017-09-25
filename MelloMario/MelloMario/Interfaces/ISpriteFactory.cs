@@ -21,5 +21,6 @@ namespace MelloMario
         ISprite CreatSuperMushroomSprite();
         ISprite CreateFlowerSprite();
         ISprite CreateOneUpMushroomSprite();
+        void LoadAllTextures(ContentManager content);
     }
 }

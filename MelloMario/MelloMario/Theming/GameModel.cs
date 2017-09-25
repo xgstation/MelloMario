@@ -31,17 +31,22 @@ namespace MelloMario
         public GameModel()
         {
             objects = new List<IGameObject>();
-            mario = new Mario(new Vector2(100, 100));
         }
 
         internal void Initialize(List<IController> controllers)
         {
             this.controllers = controllers;
 
-            
         }
 
-        internal void update(GameTime gameTime)
+        internal void LoadEntities()
+        {
+
+            mario = new Mario(new Vector2(100, 100));
+
+        }
+
+        internal void Update(GameTime gameTime)
         {
             foreach (IController controller in controllers)
             {
@@ -56,7 +61,7 @@ namespace MelloMario
 
         }
 
-        internal void draw(SpriteBatch spriteBatch)
+        internal void Draw(SpriteBatch spriteBatch)
         {
             mario.Draw(spriteBatch);
 
