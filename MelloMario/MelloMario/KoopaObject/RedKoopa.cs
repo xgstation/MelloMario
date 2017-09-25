@@ -5,36 +5,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MelloMario.GoombaObjects.States;
-using MelloMario.GoombaStates;
 
-namespace MelloMario.GoombaObjects
+namespace MelloMario.KoopaObject
 {
-    public class Goomba
+    public class RedKoopa
     {
-        public IGoombaState GoombaState;
-        public Goomba()
+        public Interfaces.IKoopaState redKoopaState;
+        public RedKoopa()
         {
-            GoombaState = new GoombaNormalState(this);
+            redKoopaState = new KoopaStates.RedKoopaNormalState(this);
         }
 
         public void transNormal()
         {
-            GoombaState.transNormal();
+            redKoopaState.transNormal();
+        }
+        public void transJumpedOn()
+        {
+            redKoopaState.transJumpOn();
         }
         public void transDefeated()
         {
-            GoombaState.transDefeated();
+            redKoopaState.transDefeated();
         }
 
         public void Update(GameTime gameTime)
         {
-            GoombaState.Update(gameTime);
+            redKoopaState.Update(gameTime);
         }
-
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            GoombaState.Draw(spriteBatch, location);
+            redKoopaState.Draw(spriteBatch, location);
         }
     }
 }

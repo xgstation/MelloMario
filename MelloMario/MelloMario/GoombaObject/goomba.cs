@@ -5,17 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MelloMario.GoombaObjects.States;
-using MelloMario.GoombaStates;
 
-namespace MelloMario.GoombaObjects
+namespace MelloMario.GoombaObject
 {
     public class Goomba
     {
         public IGoombaState GoombaState;
         public Goomba()
         {
-            GoombaState = new GoombaNormalState(this);
+            GoombaState = new GoombaStates.GoombaNormalState(this);
         }
 
         public void transNormal()
