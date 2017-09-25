@@ -80,6 +80,9 @@
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
+    <Compile Include="ItemObject\star.cs" />
+    <Compile Include="ItemObject\superMushroom.cs" />
+    <Compile Include="ItemObject\oneUpMushroom.cs" />
     <Compile Include="ItemObject\fireFlower.cs" />
     <Compile Include="ItemObject\coin.cs" />
     <Compile Include="KoopaObject\GreenKoopa.cs" />
@@ -154,6 +157,8 @@
     <Compile Include="MarioStates\Super\Right\SuperIdleRight.cs" />
     <Compile Include="MarioStates\Super\Right\SuperJumpingRight.cs" />
     <Compile Include="MarioStates\Super\Right\SuperWalkingRight.cs" />
+    <Compile Include="oneUpMushroomState\oneUpMushroomNormalState.cs" />
+    <Compile Include="oneUpMushroomState\oneUpMushroomDefeatedState.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\BrickSprite.cs" />
     <Compile Include="Sprites\superMushroomSprite.cs" />
@@ -175,6 +180,10 @@
     <Compile Include="Commands\DeadStateCommand.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
     <Compile Include="Sprites\UsedQuestionSprite.cs" />
+    <Compile Include="StarState\starNormalState.cs" />
+    <Compile Include="StarState\starDefeatedState.cs" />
+    <Compile Include="superMushroomState\superMushroomNormalState.cs" />
+    <Compile Include="superMushroomState\superMushroomDefeatedState.cs" />
     <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Theming\Script.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
