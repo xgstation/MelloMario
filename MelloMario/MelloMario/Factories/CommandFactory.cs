@@ -9,6 +9,20 @@ namespace MelloMario
 {
     class CommandFactory : ICommandFactory
     {
+        private static ICommandFactory instance = new CommandFactory();
+        
+        public CommandFactory()
+        {
+        }
+
+        public static ICommandFactory Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
         public ICommand CreateGameModelCommand(string actionName, GameModel model)
         {
             throw new NotImplementedException();
