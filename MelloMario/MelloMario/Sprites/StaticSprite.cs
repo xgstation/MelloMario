@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario
+namespace MelloMario.Sprites
 {
     class StaticSprite : ISprite
     {
@@ -19,14 +19,15 @@ namespace MelloMario
             texture = newTexture;
             default_color = Color.White;
         }
+
+        public void Update(GameTime time)
+        {
+
+        }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             spriteBatch.Draw(texture,location,default_color);
-        }
-
-        public void Update(GameTime game)
-        {
-
         }
     }
 }

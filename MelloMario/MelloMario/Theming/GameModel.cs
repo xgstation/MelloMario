@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.MarioObjects;
 
 namespace MelloMario
 {
     public class GameModel
     {
-
-        
-        public List<Controller> controllers;
-        private List<ISprite> sprites;
+        private List<IController> controllers;
+        private List<IGameObject> objects;
         // TODO: Do we need another abstraction layer for mario's actions?
         private Mario mario;
 
+        internal List<IController> Controllers
+        {
+            get
+            {
+                return controllers;
+            }
+        }
         internal Mario Mario
         {
             get
@@ -24,11 +30,11 @@ namespace MelloMario
 
         public GameModel()
         {
-            sprites = new List<ISprite>();
-            mario = new Mario(new Vector2(100, 00));
+            objects = new List<IGameObject>();
+            mario = new Mario(new Vector2(100, 100));
         }
 
-        internal void Initialize(List<Controller> controllers)
+        internal void Initialize(List<IController> controllers)
         {
             this.controllers = controllers;
 
@@ -37,14 +43,15 @@ namespace MelloMario
 
         internal void update(GameTime gameTime)
         {
-            foreach (Controller controller in controllers)
+            foreach (IController controller in controllers)
             {
                 controller.UpdateInput();
             }
             mario.Update(gameTime);
-            foreach (ISprite sprite in sprites)
+
+            foreach (IGameObject gameObject in objects)
             {
-                sprite.Update(gameTime);
+                gameObject.Update(gameTime);
             }
 
         }
@@ -52,9 +59,10 @@ namespace MelloMario
         internal void draw(SpriteBatch spriteBatch)
         {
             mario.Draw(spriteBatch);
-            foreach (ISprite sprite in sprites)
+
+            foreach (IGameObject gameObject in objects)
             {
-                sprite.Draw(spriteBatch);
+                gameObject.Draw(spriteBatch);
             }
         }
     }

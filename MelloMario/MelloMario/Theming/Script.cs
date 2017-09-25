@@ -4,18 +4,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using System.Collections.Generic;
+using MelloMario.Controllers;
+using MelloMario.Commands;
 
 namespace MelloMario
 {
-
     public class Script
     {
-
-
-        //this gamestate will eventually 
         public void Initialize(GameModel model)
         {
-            foreach(Controller controller in model.controllers)
+            foreach(IController controller in model.Controllers)
             {
                 if (controller is KeyboardController)
                 {
@@ -49,6 +47,5 @@ namespace MelloMario
                 }
             }
         }
-
     }
 }

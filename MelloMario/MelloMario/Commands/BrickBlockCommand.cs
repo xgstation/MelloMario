@@ -1,6 +1,4 @@
-﻿using MelloMario.Commands;
-
-namespace MelloMario
+﻿namespace MelloMario.Commands
 {
     internal class BrickBlockCommand : ICommand
     {

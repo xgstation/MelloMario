@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario
+namespace MelloMario.Sprites
 {
     class UsedQuestionSprite : ISprite
     {
-        public void Update() { }
+        public void Update(GameTime time) { }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 location) { }
     }
 }
