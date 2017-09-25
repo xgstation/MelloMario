@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario
 {
-    interface IBlockState
+    public interface IBlockState
     {
         void changeToSilent();
         void changeToDestroy();

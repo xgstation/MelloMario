@@ -19,7 +19,7 @@ namespace MelloMario.MarioObjects.States
         {
             this.mario = mario;
             setToStatic = true;
-            sprite = SpriteFactory.Instance.createSprite("SuperCrouchingLeft", setToStatic);
+            sprite = SpriteFactory.Instance.CreateSprite("SuperCrouchingLeft", setToStatic);
 
         }
         public void die()

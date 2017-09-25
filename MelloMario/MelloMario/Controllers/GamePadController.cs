@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace MelloMario.Controllers
 {
-    class GamepadController : BaseController
+    public class GamepadController : BaseController
     {
         Game game;
         GamePadState previousGamePadState,

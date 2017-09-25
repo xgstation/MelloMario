@@ -9,7 +9,7 @@ using MelloMario.BlockObjects.States;
 
 namespace MelloMario.BlockObjects
 {
-    abstract class BaseUseableBlock : BaseBlock
+    public abstract class BaseUseableBlock : BaseBlock
     {   
         private Boolean isUsed = false;
 

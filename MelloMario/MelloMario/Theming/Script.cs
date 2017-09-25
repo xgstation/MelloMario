@@ -13,7 +13,7 @@ namespace MelloMario
     {
         public void Initialize(GameModel model)
         {
-            foreach(IController controller in model.controllers)
+            foreach(IController controller in model.Controllers)
             {
                 if (controller is KeyboardController)
                 {

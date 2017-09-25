@@ -12,8 +12,9 @@ using Microsoft.Xna.Framework.Content;
 namespace MelloMario
 {
     class SpriteFactory : ISpriteFactory
-        
     {
+        private static ISpriteFactory instance = new SpriteFactory();
+
         Dictionary<String, Texture2D> stringToTexture;
         //player textures
         //dead
@@ -36,19 +37,19 @@ namespace MelloMario
         private Texture2D coinSpritesheet;
         private Texture2D fireFlowerSpritesheet;
         private Texture2D starSpritesheet;
-        private static SpriteFactory instance = new SpriteFactory();
 
         public SpriteFactory()
         {
         }
 
-        public static SpriteFactory Instance
+        public static ISpriteFactory Instance
         {
             get
             {
                 return instance;
             }
         }
+
         public void LoadAllTextures(ContentManager content)
         {
             // TODO: Implement lazy-loading with singleton pattern?
@@ -112,7 +113,7 @@ namespace MelloMario
 
         }
         
-        public ISprite createSprite(string textureName, bool Static)
+        public ISprite CreateSprite(string textureName, bool Static)
         {
             //change
             
@@ -179,7 +180,6 @@ namespace MelloMario
         {
             return new StarSprite(starSpritesheet, 1, 4);
         }
-
 
         public ISprite CreateFlowerSprite()
         {

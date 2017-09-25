@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MelloMario.Controllers;
-using MelloMario.MarioObjects;
 
 namespace MelloMario
 {
@@ -16,8 +15,6 @@ namespace MelloMario
         SpriteBatch spriteBatch;
         Script script;
         GameModel model;
-        Mario mario;
-    
 
         public Game1()
         {
@@ -44,9 +41,8 @@ namespace MelloMario
             model.Initialize(controllers);
 
             script.Initialize(model);
-           
+
             base.Initialize();
-            
 
         }
 
@@ -59,7 +55,6 @@ namespace MelloMario
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(this.Content);
-
             // TODO: Use this.Content to load game content here
         }
 
@@ -80,7 +75,7 @@ namespace MelloMario
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-         
+
             model.update(gameTime);
         }
 
@@ -95,7 +90,6 @@ namespace MelloMario
             base.Draw(gameTime);
 
             spriteBatch.Begin();
-        
             model.draw(spriteBatch);
             spriteBatch.End();
         }

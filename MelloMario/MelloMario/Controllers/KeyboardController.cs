@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace MelloMario.Controllers
 {
-    class KeyboardController : BaseController
+    public class KeyboardController : BaseController
     {
         Game game;
         KeyboardState previousKeyboardState;

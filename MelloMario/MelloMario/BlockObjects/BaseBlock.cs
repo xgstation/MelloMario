@@ -9,7 +9,7 @@ using MelloMario.BlockObjects.States;
 
 namespace MelloMario.BlockObjects
 {
-    abstract class BaseBlock : IGameObject
+    public abstract class BaseBlock : IGameObject
     {
         private ISprite sprite;
         public IBlockState State { get; set; }
