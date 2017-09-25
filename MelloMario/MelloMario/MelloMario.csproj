@@ -99,6 +99,9 @@
     <Compile Include="MarioStates\Super\Right\SuperIdleRight.cs" />
     <Compile Include="MarioStates\Super\Right\SuperJumpingRight.cs" />
     <Compile Include="MarioStates\Super\Right\SuperWalkingRight.cs" />
+    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\BrickSprite.cs" />
     <Compile Include="Sprites\DestroyingSprite.cs" />
@@ -133,6 +136,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Windows\x86\Debug\MelloMario.exe" />
+    <Content Include="bin\Windows\x86\Debug\MelloMario.pdb" />
+    <Content Include="bin\Windows\x86\Debug\MonoGame.Framework.dll" />
+    <Content Include="bin\Windows\x86\Debug\MonoGame.Framework.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct2D1.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct2D1.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D11.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D11.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.DXGI.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.DXGI.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.XAudio2.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.XAudio2.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.dll" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.xml" />
+    <Content Include="bin\Windows\x86\Debug\SharpDX.xml" />
     <Content Include="Content\Dead.png" />
     <Content Include="Content\FireCrouchingLeft.png" />
     <Content Include="Content\FireCrouchingRight.png" />
@@ -179,6 +200,47 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="bin\Windows\x86\Debug\Content\Dead.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\FireCrouchingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\FireCrouchingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\FireFallingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\FireFallingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\FireIdleLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\FireIdleRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\FireJumpingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\FireJumpingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\FireWalkingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\FireWalkingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\InvincibleCrouchingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\InvincibleCrouchingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\InvincibleFallingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\InvincibleFallingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\InvincibleIdleLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\InvincibleIdleRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\InvincibleJumpingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\InvincibleJumpingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\InvincibleWalkingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\InvincibleWalkingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\StandardCrouchingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\StandardCrouchingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\StandardFallingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\StandardFallingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\StandardIdleLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\StandardIdleRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\StandardJumpingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\StandardJumpingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\StandardWalkingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\StandardWalkingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\SuperCrouchingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\SuperCrouchingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\SuperFallingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\SuperFallingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\SuperIdleLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\SuperIdleRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\SuperJumpingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\SuperJumpingRight.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\SuperWalkingLeft.xnb" />
+    <None Include="bin\Windows\x86\Debug\Content\SuperWalkingRight.xnb" />
     <None Include="Content\bin\Windows\Dead.xnb" />
     <None Include="Content\bin\Windows\FireCrouchingLeft.xnb" />
     <None Include="Content\bin\Windows\FireCrouchingRight.xnb" />
@@ -262,8 +324,10 @@
     <None Include="Content\obj\Windows\SuperJumpingRight.mgcontent" />
     <None Include="Content\obj\Windows\SuperWalkingLeft.mgcontent" />
     <None Include="Content\obj\Windows\SuperWalkingRight.mgcontent" />
+    <None Include="obj\x86\Release\MelloMario.csproj.CoreCompileInputs.cache" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Windows\x86\Release\" />
     <Folder Include="PowerUps\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
