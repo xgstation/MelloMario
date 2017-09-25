@@ -12,6 +12,7 @@ namespace MelloMario.Blocks
     {
         private ISprite sprite;
         private Boolean isUsed;
+        private Boolean isVisible;
         public IBlockState state { get; set; }
         //Using Rectangle to record location and hitting boundary
         public Rectangle Boundary { get; set; }
@@ -30,12 +31,15 @@ namespace MelloMario.Blocks
         }
         public void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            throw new NotImplementedException();
+           if (isVisible)
+            {
+                sprite.Draw(spriteBatch, location);
+            }
         }
     }
 }

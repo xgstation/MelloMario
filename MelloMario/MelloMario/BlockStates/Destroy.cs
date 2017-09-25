@@ -14,6 +14,7 @@ namespace MelloMario.BlockStates
         public Destroy(IBlock block)
         {
             this.block = block;
+
         }
 
         public void changeToSilent()
