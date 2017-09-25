@@ -73,6 +73,7 @@
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
+    <Compile Include="ItemObjects\BaseItem.cs" />
     <Compile Include="ItemObjects\Coin.cs" />
     <Compile Include="ItemObjects\CoinStates\Defeated.cs" />
     <Compile Include="ItemObjects\CoinStates\Normal.cs" />

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects
 {
-    public class OneUpMushroom
+    public class OneUpMushroom : BaseItem
     {
         public IItemState oneUpMushroomState;
 
-        public OneUpMushroom()
+        public OneUpMushroom(Vector2 initLocation) : base(initLocation)
         {
             oneUpMushroomState = new OneUpMushroomNormalState(this);
         }
@@ -28,14 +28,14 @@ namespace MelloMario.ItemObjects
             oneUpMushroomState.transDefeated();
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             oneUpMushroomState.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            oneUpMushroomState.Draw(spriteBatch, location);
+            oneUpMushroomState.Draw(spriteBatch, Location);
         }
     }
 }

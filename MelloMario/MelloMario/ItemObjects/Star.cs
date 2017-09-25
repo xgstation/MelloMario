@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects
 {
-    public class Star
+    public class Star : BaseItem
     {
         public IItemState starState;
 
-        public Star()
+        public Star(Vector2 initLocation) : base(initLocation)
         {
             starState = new StarNormalState(this);
         }
@@ -27,14 +27,14 @@ namespace MelloMario.ItemObjects
             starState.transDefeated();
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             starState.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            starState.Draw(spriteBatch, location);
+            starState.Draw(spriteBatch, Location);
         }
     }
 }

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects
 {
-    public class FireFlower
+    public class FireFlower : BaseItem
     {
         public IItemState flowerState;
 
-        public FireFlower()
+        public FireFlower(Vector2 initLocation) : base(initLocation)
         {
             flowerState = new FireFlowerNormalState(this);
         }
@@ -28,14 +28,14 @@ namespace MelloMario.ItemObjects
             flowerState.transDefeated();
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             flowerState.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            flowerState.Draw(spriteBatch, location);
+            flowerState.Draw(spriteBatch, Location);
         }
     }
 }

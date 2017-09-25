@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects
 {
-    public class Coin
+    public class Coin : BaseItem
     {
         public IItemState coinState;
 
-        public Coin()
+        public Coin(Vector2 initLocation): base(initLocation)
         {
             coinState = new CoinNormalState(this);
         }
@@ -28,14 +28,14 @@ namespace MelloMario.ItemObjects
             coinState.transDefeated();
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             coinState.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            coinState.Draw(spriteBatch, location);
+            coinState.Draw(spriteBatch, Location);
         }
     }
 }

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects
 {
-    public class SuperMushroom
+    public class SuperMushroom : BaseItem
     {
         public IItemState mushroomState;
 
-        public SuperMushroom()
+        public SuperMushroom(Vector2 initLocation) : base(initLocation)
         {
             mushroomState = new SuperMushroomNormalState(this);
         }
@@ -28,14 +28,14 @@ namespace MelloMario.ItemObjects
             mushroomState.transDefeated();
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             mushroomState.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            mushroomState.Draw(spriteBatch, location);
+            mushroomState.Draw(spriteBatch, Location);
         }
     }
 }
