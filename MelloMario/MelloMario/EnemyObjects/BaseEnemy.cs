@@ -10,7 +10,7 @@ namespace MelloMario.EnemyObjects
 {
     public abstract class BaseEnemy : IGameObject
     {
-        public Vector2 Location { get; set; }
+        protected Vector2 Location;
 
         public BaseEnemy(Vector2 initLocation)
         {

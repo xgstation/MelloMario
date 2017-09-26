@@ -11,31 +11,31 @@ namespace MelloMario.ItemObjects
 {
     public class Coin : BaseItem
     {
-        public IItemState coinState;
+        public IItemState State;
 
         public Coin(Vector2 initLocation): base(initLocation)
         {
-            coinState = new CoinNormalState(this);
+            State = new CoinNormalState(this);
         }
 
         public void TransNormal()
         {
-            coinState.transNormal();
+            State.transNormal();
         }
 
         public void TransDefeated()
         {
-            coinState.transDefeated();
+            State.transDefeated();
         }
 
         public override void Update(GameTime gameTime)
         {
-            coinState.Update(gameTime);
+            State.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            coinState.Draw(spriteBatch, Location);
+            State.Draw(spriteBatch, Location);
         }
     }
 }

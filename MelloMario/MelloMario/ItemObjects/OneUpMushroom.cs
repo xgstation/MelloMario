@@ -11,31 +11,31 @@ namespace MelloMario.ItemObjects
 {
     public class OneUpMushroom : BaseItem
     {
-        public IItemState oneUpMushroomState;
+        public IItemState State;
 
         public OneUpMushroom(Vector2 initLocation) : base(initLocation)
         {
-            oneUpMushroomState = new OneUpMushroomNormalState(this);
+            State = new OneUpMushroomNormalState(this);
         }
 
         public void TransNormal()
         {
-            oneUpMushroomState.transNormal();
+            State.transNormal();
         }
 
         public void TransDefeated()
         {
-            oneUpMushroomState.transDefeated();
+            State.transDefeated();
         }
 
         public override void Update(GameTime gameTime)
         {
-            oneUpMushroomState.Update(gameTime);
+            State.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            oneUpMushroomState.Draw(spriteBatch, Location);
+            State.Draw(spriteBatch, Location);
         }
     }
 }

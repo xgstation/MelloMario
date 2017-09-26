@@ -17,7 +17,7 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
         }
         public void transNormal()
         {
-            mushroomItem.oneUpMushroomState = new OneUpMushroomNormalState(mushroomItem);
+            mushroomItem.State = new OneUpMushroomNormalState(mushroomItem);
         }
         public void transDefeated()
         {

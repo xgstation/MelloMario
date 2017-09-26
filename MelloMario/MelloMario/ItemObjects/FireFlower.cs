@@ -11,31 +11,31 @@ namespace MelloMario.ItemObjects
 {
     public class FireFlower : BaseItem
     {
-        public IItemState flowerState;
+        public IItemState State;
 
         public FireFlower(Vector2 initLocation) : base(initLocation)
         {
-            flowerState = new FireFlowerNormalState(this);
+            State = new FireFlowerNormalState(this);
         }
 
         public void TransNormal()
         {
-            flowerState.transNormal();
+            State.transNormal();
         }
 
         public void TransDefeated()
         {
-            flowerState.transDefeated();
+            State.transDefeated();
         }
 
         public override void Update(GameTime gameTime)
         {
-            flowerState.Update(gameTime);
+            State.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            flowerState.Draw(spriteBatch, Location);
+            State.Draw(spriteBatch, Location);
         }
     }
 }

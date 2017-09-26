@@ -26,7 +26,7 @@ namespace MelloMario.ItemObjects.SuperMushroomStates
 
         public void transDefeated()
         {
-            mushroomItem.mushroomState = new superMushroomDefeatedState(mushroomItem);
+            mushroomItem.State = new superMushroomDefeatedState(mushroomItem);
         }
         public void Update(GameTime gameTime)
         {

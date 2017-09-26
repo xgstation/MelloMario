@@ -20,7 +20,7 @@ namespace MelloMario.ItemObjects.StarStates
         }
         public void transNormal()
         {
-            starItem.starState = new StarNormalState(starItem);
+            starItem.State = new StarNormalState(starItem);
         }
         public void transDefeated()
         {

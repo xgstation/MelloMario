@@ -11,30 +11,30 @@ namespace MelloMario.ItemObjects
 {
     public class Star : BaseItem
     {
-        public IItemState starState;
+        public IItemState State;
 
         public Star(Vector2 initLocation) : base(initLocation)
         {
-            starState = new StarNormalState(this);
+            State = new StarNormalState(this);
         }
 
         public void TransNormal()
         {
-            starState.transNormal();
+            State.transNormal();
         }
         public void TransDefeated()
         {
-            starState.transDefeated();
+            State.transDefeated();
         }
 
         public override void Update(GameTime gameTime)
         {
-            starState.Update(gameTime);
+            State.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            starState.Draw(spriteBatch, Location);
+            State.Draw(spriteBatch, Location);
         }
     }
 }

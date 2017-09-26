@@ -10,7 +10,6 @@ namespace MelloMario.EnemyObjects.KoopaStates
 {
     class RedKoopaDefeated : IKoopaState
     {
-
         private RedKoopa enemyRedKoopa;
         private ISprite redKoopa;
         public RedKoopaDefeated(RedKoopa koopaRed)
@@ -21,12 +20,12 @@ namespace MelloMario.EnemyObjects.KoopaStates
         }
         public void transNormal()
         {
-            enemyRedKoopa.redKoopaState = new RedKoopaNormal(enemyRedKoopa);
+            enemyRedKoopa.State = new RedKoopaNormal(enemyRedKoopa);
         }
 
         public void transJumpOn()
         {
-            enemyRedKoopa.redKoopaState = new RedKoopaJumpOn(enemyRedKoopa);
+            enemyRedKoopa.State = new RedKoopaJumpOn(enemyRedKoopa);
         }
 
         public void transDefeated()

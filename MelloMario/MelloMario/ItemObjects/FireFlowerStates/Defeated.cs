@@ -19,7 +19,7 @@ namespace MelloMario.ItemObjects.FireFlowerStates
         }
         public void transNormal()
         {
-            flowerItem.flowerState = new FireFlowerNormalState(flowerItem);
+            flowerItem.State = new FireFlowerNormalState(flowerItem);
         }
         public void transDefeated()
         {

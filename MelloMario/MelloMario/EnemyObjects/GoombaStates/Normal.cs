@@ -26,7 +26,7 @@ namespace MelloMario.EnemyObjects.GoombaStates
 
         public void transDefeated()
         {
-            enemyGoomba.GoombaState = new Defeated(enemyGoomba);
+            enemyGoomba.State = new Defeated(enemyGoomba);
         }
 
         public void Update(GameTime gameTime)

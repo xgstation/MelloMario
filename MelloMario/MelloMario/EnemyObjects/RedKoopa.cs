@@ -11,32 +11,33 @@ namespace MelloMario.EnemyObjects
 {
     public class RedKoopa : BaseEnemy
     {
-        public IKoopaState redKoopaState;
+        public IKoopaState State;
+
         public RedKoopa(Vector2 initLocation) : base(initLocation)
         {
-            redKoopaState = new RedKoopaNormal(this);
+            State = new RedKoopaNormal(this);
         }
 
         public void transNormal()
         {
-            redKoopaState.transNormal();
+            State.transNormal();
         }
         public void transJumpedOn()
         {
-            redKoopaState.transJumpOn();
+            State.transJumpOn();
         }
         public void transDefeated()
         {
-            redKoopaState.transDefeated();
+            State.transDefeated();
         }
 
         public override void Update(GameTime gameTime)
         {
-            redKoopaState.Update(gameTime);
+            State.Update(gameTime);
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            redKoopaState.Draw(spriteBatch, Location);
+            State.Draw(spriteBatch, Location);
         }
     }
 }

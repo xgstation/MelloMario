@@ -6,7 +6,7 @@ namespace MelloMario.EnemyObjects
 {
     public class Goomba: BaseEnemy
     {
-        public IGoombaState GoombaState;
+        public IGoombaState State;
 
         public Goomba(Vector2 initLocation) : base(initLocation)
         {
@@ -15,21 +15,21 @@ namespace MelloMario.EnemyObjects
 
         public void transNormal()
         {
-            GoombaState.transNormal();
+            State.transNormal();
         }
         public void transDefeated()
         {
-            GoombaState.transDefeated();
+            State.transDefeated();
         }
 
         public override void Update(GameTime gameTime)
         {
-            GoombaState.Update(gameTime);
+            State.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            GoombaState.Draw(spriteBatch, Location);
+            State.Draw(spriteBatch, Location);
         }
     }
 }

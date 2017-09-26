@@ -24,12 +24,12 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void transJumpOn()
         {
-            enemyGreenKoopa.greenKoopaState = new GreenKoopaJumpOn(enemyGreenKoopa);
+            enemyGreenKoopa.State = new GreenKoopaJumpOn(enemyGreenKoopa);
         }
 
         public void transDefeated()
         {
-            enemyGreenKoopa.greenKoopaState = new GreenKoopaDefeated(enemyGreenKoopa);
+            enemyGreenKoopa.State = new GreenKoopaDefeated(enemyGreenKoopa);
         }
 
         public void Update(GameTime gameTime)

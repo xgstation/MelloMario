@@ -26,7 +26,7 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public void transDefeated()
         {
-            coinItem.coinState = new CoinDefeatedState(coinItem);
+            coinItem.State = new CoinDefeatedState(coinItem);
         }
         public void Update(GameTime gameTime)
         {

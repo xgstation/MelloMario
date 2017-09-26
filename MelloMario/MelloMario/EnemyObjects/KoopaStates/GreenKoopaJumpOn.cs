@@ -19,7 +19,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
         }
         public void transNormal()
         {
-            enemyGreenKoopa.greenKoopaState = new GreenKoopaNormal(enemyGreenKoopa);
+            enemyGreenKoopa.State = new GreenKoopaNormal(enemyGreenKoopa);
         }
 
         public void transJumpOn()
@@ -29,7 +29,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void transDefeated()
         {
-            enemyGreenKoopa.greenKoopaState = new GreenKoopaDefeated(enemyGreenKoopa);
+            enemyGreenKoopa.State = new GreenKoopaDefeated(enemyGreenKoopa);
         }
 
         public void Update(GameTime gameTime)

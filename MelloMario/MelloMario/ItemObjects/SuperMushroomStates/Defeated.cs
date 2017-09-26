@@ -19,7 +19,7 @@ namespace MelloMario.ItemObjects.SuperMushroomStates
 
         public void transNormal()
         {
-            mushroomItem.mushroomState = new SuperMushroomNormalState(mushroomItem);
+            mushroomItem.State = new SuperMushroomNormalState(mushroomItem);
         }
         public void transDefeated()
         {

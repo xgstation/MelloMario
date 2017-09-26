@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    interface ISprite
+    public interface ISprite
     {
         void Update(GameTime game);
         void Draw(SpriteBatch spriteBatch, Vector2 location);

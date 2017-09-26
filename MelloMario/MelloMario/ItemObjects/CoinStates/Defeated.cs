@@ -20,7 +20,7 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public void transNormal()
         {
-            coinItem.coinState = new CoinNormalState(coinItem);
+            coinItem.State = new CoinNormalState(coinItem);
         }
 
         public void transDefeated()
