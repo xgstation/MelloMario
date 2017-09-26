@@ -5,44 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.BlockObjects.States;
 
-namespace MelloMario.Blocks
+namespace MelloMario.BlockObjects
 {
-    class BrickBlock : IBlock
+    public abstract class BaseBlock : IGameObject
     {
-        public ISprite sprite { get; set; }
-        private Boolean isVisible;
-        private Boolean isUsed = false;
-        public IBlockState state { get; set; }
+        protected ISprite Sprite;
+        public IBlockState State;
+
         //Using Rectangle to record location and hitting boundary
         public Rectangle Boundary { get; set; }
-        public BrickBlock(Vector2 location, Boolean isUsed)
+
+        public BaseBlock(Vector2 location)
         {
-            this.isUsed = isUsed;
-            if (!isUsed)
-            {
-                state = new BlockStates.Silent(this);
-            }
-            else
-            {
-                state = new BlockStates.Used(this);
-            }
+            State = new Silent(this);
             Boundary = new Rectangle(location.ToPoint(), new Point(16, 16));
+            // TODO: add sprites?
         }
-        public void SetSpriteBasedOnState()
-        {
-            sprite = state.GetSprite();
-        }
+
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            Sprite.Update(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+
+        public void Draw(SpriteBatch spriteBatch)
         {
-            if (isVisible)
-            {
-                sprite.Draw(spriteBatch, location);
-            }
+            Sprite.Draw(spriteBatch, Boundary.Location.ToVector2());
         }
     }
 }

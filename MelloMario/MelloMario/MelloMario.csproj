@@ -145,7 +145,7 @@
     <Compile Include="Sprites\UsedQuestionSprite.cs" />
     <Compile Include="EnemyObjects\BaseEnemy.cs" />
     <Compile Include="Theming\GameModel.cs" />
-    <Compile Include="Theming\Script.cs" />
+    <Compile Include="Theming\GameScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
     <Compile Include="Interfaces\IController.cs" />

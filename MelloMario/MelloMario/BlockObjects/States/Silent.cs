@@ -17,22 +17,22 @@ namespace MelloMario.BlockObjects.States
             this.block = block;
         }
 
-        public void changeToDestroy()
+        public void ChangeToDestroy()
         {
             throw new NotImplementedException();
         }
 
-        public void changeToHidden()
+        public void ChangeToHidden()
         {
             throw new NotImplementedException();
         }
 
-        public void changeToSilent()
+        public void ChangeToSilent()
         {
             throw new NotImplementedException();
         }
 
-        public void changeToUsed()
+        public void ChangeToUsed()
         {
             throw new NotImplementedException();
         }

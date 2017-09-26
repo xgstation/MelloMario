@@ -19,12 +19,12 @@ namespace MelloMario.EnemyObjects.GoombaStates
             goomba = SpriteFactory.Instance.CreateGoombaSprite("Normal");
         }
 
-        public void transNormal()
+        public void ChangeToNormal()
         {
            
         }
 
-        public void transDefeated()
+        public void ChangeToDefeated()
         {
             enemyGoomba.State = new Defeated(enemyGoomba);
         }

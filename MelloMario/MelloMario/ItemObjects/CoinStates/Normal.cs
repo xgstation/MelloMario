@@ -19,12 +19,12 @@ namespace MelloMario.ItemObjects.CoinStates
             coinItem = coin1;
             coin = SpriteFactory.Instance.CreatCoinSprite();
         }
-        public void transNormal()
+        public void ChangeToNormal()
         {
 
         }
 
-        public void transDefeated()
+        public void ChangeToDefeated()
         {
             coinItem.State = new CoinDefeatedState(coinItem);
         }

@@ -25,16 +25,16 @@ namespace MelloMario.MarioObjects.States
         {
             sprite.Draw(spriteBatch, location);
         }
-        public void die() { }
-        public void changeToFireState() { }
-        public void changeToInvincibleState() { }
-        public void changeToStandardState() { }
-        public void changeToSuperState() { }
-        public void down() { }
-        public void idle() { }
-        public void left(){ }
-        public void right() { }
-        public void up() { }
+        public void Die() { }
+        public void ChangeToFireState() { }
+        public void ChangeToInvincibleState() { }
+        public void ChangeToStandardState() { }
+        public void ChangeToSuperState() { }
+        public void Down() { }
+        public void Idle() { }
+        public void Left(){ }
+        public void Right() { }
+        public void Up() { }
         public void Update(GameTime game) { sprite.Update(game); }      
     }
 }

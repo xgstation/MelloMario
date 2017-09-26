@@ -23,15 +23,15 @@ namespace MelloMario.MarioObjects
         }
         
         //make another method that returns the current state of the object
-        public void down() { State.down(); }
-        public void idle() { State.idle(); }
-        public void up() { State.up(); }
-        public void right() { State.right(); }
-        public void left() { State.left(); }
-        public void die() { State.die(); }
-        public void changeToStandardState() { State.changeToStandardState();}
-        public void changeToFireState() { State.changeToFireState();}
-        public void changeToSuperState() { State.changeToSuperState();}
+        public void Down() { State.Down(); }
+        public void Idle() { State.Idle(); }
+        public void Up() { State.Up(); }
+        public void Right() { State.Right(); }
+        public void Left() { State.Left(); }
+        public void Die() { State.Die(); }
+        public void ChangeToStandardState() { State.ChangeToStandardState();}
+        public void ChangeToFireState() { State.ChangeToFireState();}
+        public void ChangeToSuperState() { State.ChangeToSuperState();}
         public void Update(GameTime game)
         {
             // TODO: calculate the location

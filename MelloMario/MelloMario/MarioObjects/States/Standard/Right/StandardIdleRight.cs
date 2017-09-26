@@ -22,22 +22,22 @@ namespace MelloMario.MarioObjects.States
             setToStatic = true;
             sprite = SpriteFactory.Instance.CreateMarioSprite("StandardIdleRight", setToStatic);
         }
-        public void down() {
+        public void Down() {
             //nothing here for standard
         }
-        public void changeToFireState()
+        public void ChangeToFireState()
         {
             mario.State = new FireIdleRight(mario);
         }
-        public void changeToSuperState()
+        public void ChangeToSuperState()
         {
             mario.State = new SuperIdleRight(mario);   
         }
-        public void changeToStandardState()
+        public void ChangeToStandardState()
         {
             //nothing to do here
         }
-        public void die()
+        public void Die()
         {
             mario.State = new Dead(mario);
         }
@@ -53,21 +53,21 @@ namespace MelloMario.MarioObjects.States
             
         }
 
-        public void idle()
+        public void Idle()
         {
             //nothing to do here
         }
- public void up()
+ public void Up()
         {
             mario.State = new StandardJumpingRight(mario);
         }
 
-        public void right()
+        public void Right()
         {
             mario.State = new StandardWalkingRight(mario);
         }
 
-        public void left()
+        public void Left()
         {
             mario.State = new StandardWalkingLeft(mario);
         }

@@ -53,14 +53,14 @@ namespace MelloMario
         public void LoadAllTextures(ContentManager content)
         {
             // TODO: Implement lazy-loading with singleton pattern?
-            goombaSpritesheet = content.Load<Texture2D>("goomba");
+            /*goombaSpritesheet = content.Load<Texture2D>("goomba");
             greenKoopaSpritesheet = content.Load<Texture2D>("greenKoopa");
             redKoopaSpritesheet = content.Load<Texture2D>("redKoopa");
             superMushroomSpritesheet = content.Load<Texture2D>("superMushroom");
             oneUpMushroomSpritesheet = content.Load<Texture2D>("1-UpMushroom");
             coinSpritesheet = content.Load<Texture2D>("coin");
             fireFlowerSpritesheet = content.Load<Texture2D>("fireFlower");
-            starSpritesheet = content.Load<Texture2D>("star");
+            starSpritesheet = content.Load<Texture2D>("star");*/
             //dead
             Dead = content.Load<Texture2D>("Dead");
             //fire

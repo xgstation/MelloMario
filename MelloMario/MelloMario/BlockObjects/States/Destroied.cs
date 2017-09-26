@@ -18,23 +18,23 @@ namespace MelloMario.BlockObjects.States
 
         }
 
-        public void changeToSilent()
+        public void ChangeToSilent()
         {
             throw new NotImplementedException();
         }
 
-        public void changeToDestroy()
+        public void ChangeToDestroy()
         {
             
             throw new NotImplementedException();
         }
 
-        public void changeToHidden()
+        public void ChangeToHidden()
         {
             throw new NotImplementedException();
         }
 
-        public void changeToUsed()
+        public void ChangeToUsed()
         {
             throw new NotImplementedException();
         }

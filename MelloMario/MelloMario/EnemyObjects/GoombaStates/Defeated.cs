@@ -19,11 +19,11 @@ namespace MelloMario.EnemyObjects.GoombaStates
            
         }
 
-        public void transNormal()
+        public void ChangeToNormal()
         {
             enemyGoomba.State = new Normal(enemyGoomba);
         }
-        public void transDefeated()
+        public void ChangeToDefeated()
         {
             
         }

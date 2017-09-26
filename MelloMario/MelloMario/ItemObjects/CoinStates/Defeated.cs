@@ -18,12 +18,12 @@ namespace MelloMario.ItemObjects.CoinStates
 
         }
 
-        public void transNormal()
+        public void ChangeToNormal()
         {
             coinItem.State = new CoinNormalState(coinItem);
         }
 
-        public void transDefeated()
+        public void ChangeToDefeated()
         {
 
         }

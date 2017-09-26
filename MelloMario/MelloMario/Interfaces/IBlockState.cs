@@ -8,9 +8,9 @@ namespace MelloMario
 {
     public interface IBlockState
     {
-        void changeToSilent();
-        void changeToDestroy();
-        void changeToHidden();
-        void changeToUsed();
+        void ChangeToSilent();
+        void ChangeToDestroy();
+        void ChangeToHidden();
+        void ChangeToUsed();
     }
 }
