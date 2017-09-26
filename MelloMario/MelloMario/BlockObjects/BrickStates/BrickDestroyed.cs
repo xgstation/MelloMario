@@ -11,12 +11,17 @@ namespace MelloMario.BlockObjects.States
     class BrickDestroyed : IBlockState
     {
         private BrickBlock block;
-        private ISprite sprite;
+        private ISprite[] sprites;
 
         public BrickDestroyed(BrickBlock block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateBrick("Destroyed");
+            sprites = new ISprite[4] {
+                SpriteFactory.Instance.CreateBrick("DestroyedLT"),
+                SpriteFactory.Instance.CreateBrick("DestroyedLB"),
+                SpriteFactory.Instance.CreateBrick("DestroyedRT"),
+                SpriteFactory.Instance.CreateBrick("DestroyedRB"),
+            };
         }
 
         public void ChangeToSilent()
@@ -41,12 +46,17 @@ namespace MelloMario.BlockObjects.States
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            sprite.Draw(spriteBatch, location);
+            foreach (ISprite sprite in sprites) {
+                sprite.Draw(spriteBatch, location);
+            }
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            foreach (ISprite sprite in sprites)
+            {
+                sprite.Update(gameTime);
+            }
         }
     }
 }

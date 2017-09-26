@@ -105,6 +105,7 @@
     <Compile Include="EnemyObjects\KoopaStates\RedKoopaJumpOn.cs" />
     <Compile Include="EnemyObjects\KoopaStates\RedKoopaNormal.cs" />
     <Compile Include="Sprites\BlockSprites\BlockSilentSprite.cs" />
+    <Compile Include="Sprites\BlockSprites\BrickPieceSprite.cs" />
     <Compile Include="Sprites\CoinSprite.cs" />
     <Compile Include="Sprites\FireFlowerSprite.cs" />
     <Compile Include="Sprites\GreenKoopaSprite.cs" />
@@ -165,6 +166,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\BrickPieces.png" />
     <Content Include="Content\OneUpMushroom.png" />
     <Content Include="Content\BlockSheet.png" />
     <Content Include="Content\Coin.png" />
