@@ -25,11 +25,17 @@ namespace MelloMario
                 if (controller is KeyboardController)
                 {
                     controller.AddCommand((int)Keys.Escape, factory.CreateGameModelCommand("Pause", model));
-                    controller.AddCommand((int)Keys.A, factory.CreateMarioCommand("Jump", mario));
+                    //controller.AddCommand((int)Keys.A, factory.CreateMarioCommand("Jump", mario));
                     controller.AddCommand((int)Keys.Down, factory.CreateMarioCommand("Crouch", mario));
+                    controller.AddCommand((int)Keys.Up, factory.CreateMarioCommand("Jump", mario));
                     controller.AddCommand((int)Keys.Left, factory.CreateMarioCommand("Left", mario));
                     controller.AddCommand((int)Keys.Right, factory.CreateMarioCommand("Right", mario));
                     controller.AddCommand((int)Keys.Space, factory.CreateMarioCommand("Action", mario));
+
+                    controller.AddCommand((int)Keys.S, factory.CreateMarioCommand("Crouch", mario));
+                    controller.AddCommand((int)Keys.W, factory.CreateMarioCommand("Jump", mario));
+                    controller.AddCommand((int)Keys.A, factory.CreateMarioCommand("Left", mario));
+                    controller.AddCommand((int)Keys.D, factory.CreateMarioCommand("Right", mario));
 
                     //commands for changing block/mario state
                     controller.AddCommand((int)Keys.X, factory.CreateGameObjectCommand("UsedBlock", null)); // TODO
