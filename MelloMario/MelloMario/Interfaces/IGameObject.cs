@@ -10,7 +10,6 @@ namespace MelloMario
 {
     public interface IGameObject
     {
-        void SetSpriteBasedOnState();
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
     }

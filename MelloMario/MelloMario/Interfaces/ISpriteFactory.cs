@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using MelloMario.BlockObjects;
 
 namespace MelloMario
 {
@@ -14,6 +15,12 @@ namespace MelloMario
     {
         ISprite CreateMarioSprite(string status, bool Static);
         ISprite CreateGoombaSprite(string status);
+
+        ISprite CreateStair(string v);
+        ISprite CreateQuestion(string v);
+        ISprite CreateFloor(string v);
+        ISprite CreateBrick(string v);
+
         ISprite CreateRedKoopaSprite(string status);
         ISprite CreateGreenKoopaSprite(string status);
         ISprite CreateStarSprite();

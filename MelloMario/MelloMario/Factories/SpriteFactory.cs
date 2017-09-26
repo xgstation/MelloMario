@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using MelloMario.BlockObjects;
+using MelloMario.Sprites.BlockSprites;
 
 namespace MelloMario
 {
@@ -38,6 +40,8 @@ namespace MelloMario
         private Texture2D fireFlowerSpritesheet;
         private Texture2D starSpritesheet;
 
+        private Texture2D blockSpritesheet;
+
         private SpriteFactory()
         {
         }
@@ -52,15 +56,27 @@ namespace MelloMario
 
         public void LoadAllTextures(ContentManager content)
         {
+            blockSpritesheet = content.Load<Texture2D>("BlockSheet");
             // TODO: Implement lazy-loading with singleton pattern?
-            goombaSpritesheet = content.Load<Texture2D>("goomba");
-            greenKoopaSpritesheet = content.Load<Texture2D>("greenKoopa");
-            redKoopaSpritesheet = content.Load<Texture2D>("redKoopa");
-            superMushroomSpritesheet = content.Load<Texture2D>("superMushroom");
-            oneUpMushroomSpritesheet = content.Load<Texture2D>("1-UpMushroom");
-            coinSpritesheet = content.Load<Texture2D>("coin");
-            fireFlowerSpritesheet = content.Load<Texture2D>("fireFlower");
-            starSpritesheet = content.Load<Texture2D>("star");
+
+            //these files are not in the repository, i am assigning all of them to an existing
+            //texture so we can compile add the textures and restore this chunk
+            /*  goombaSpritesheet = content.Load<Texture2D>("goomba");
+                greenKoopaSpritesheet = content.Load<Texture2D>("greenKoopa");
+                redKoopaSpritesheet = content.Load<Texture2D>("redKoopa");
+                superMushroomSpritesheet = content.Load<Texture2D>("superMushroom");
+                oneUpMushroomSpritesheet = content.Load<Texture2D>("1-UpMushroom");
+                coinSpritesheet = content.Load<Texture2D>("coin");
+                fireFlowerSpritesheet = content.Load<Texture2D>("fireFlower");
+                starSpritesheet = content.Load<Texture2D>("star"); */
+            goombaSpritesheet = content.Load<Texture2D>("Dead");
+            greenKoopaSpritesheet = content.Load<Texture2D>("Dead");
+            redKoopaSpritesheet = content.Load<Texture2D>("Dead");
+            superMushroomSpritesheet = content.Load<Texture2D>("Dead");
+            oneUpMushroomSpritesheet = content.Load<Texture2D>("Dead");
+            coinSpritesheet = content.Load<Texture2D>("Dead");
+            fireFlowerSpritesheet = content.Load<Texture2D>("Dead");
+            starSpritesheet = content.Load<Texture2D>("Dead");
             //dead
             Dead = content.Load<Texture2D>("Dead");
             //fire
@@ -186,6 +202,65 @@ namespace MelloMario
         public ISprite CreateOneUpMushroomSprite()
         {
             return new oneUpshroomSprite(oneUpMushroomSpritesheet);
+        }
+
+        public ISprite CreateQuestion(string v)
+        {
+            switch (v)
+            {
+                case "Hidden":
+                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
+                case "Used":
+                    return new BlockSilentSprite(blockSpritesheet, 0, 26);
+                case "Silent":
+                    return new BlockSilentSprite(blockSpritesheet,0,24);
+                default:
+                    throw new Exception("Unknown sprite");
+            }
+        }
+
+        public ISprite CreateBrick(string v)
+        {
+            switch (v)
+            {
+                case "Destroyed":
+                    //this is temporary, needs anims
+                    return new BlockSilentSprite(blockSpritesheet, 0, 14);
+                case "Hidden":
+                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
+                case "Used":
+                    return new BlockSilentSprite(blockSpritesheet, 0, 26);
+                case "Silent":
+                    return new BlockSilentSprite(blockSpritesheet, 0, 1);
+                default:
+                    throw new Exception("Unknown sprite");
+            }
+        }
+
+        public ISprite CreateFloor(string v)
+        {
+            switch (v)
+            {
+                case "Hidden":
+                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
+                case "Silent":
+                    return new BlockSilentSprite(blockSpritesheet, 0, 0);
+                default:
+                    throw new Exception("Unknown sprite");
+            }
+        }
+
+        public ISprite CreateStair(string v)
+        {
+            switch (v)
+            {
+                case "Hidden":
+                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
+                case "Silent":
+                    return new BlockSilentSprite(blockSpritesheet, 1, 0);
+                default:
+                    throw new Exception("Unknown sprite");
+            }
         }
     }
 }
