@@ -16,7 +16,7 @@ namespace MelloMario
         {
         }
             
-        public void Bind(List<IController> controllers, GameModel model, Mario mario)
+        public void Bind(List<IController> controllers, Mario mario, List<IGameObject> objects)
         {
             ICommandFactory factory = CommandFactory.Instance;
 
@@ -24,7 +24,7 @@ namespace MelloMario
             {
                 if (controller is KeyboardController)
                 {
-                    controller.AddCommand((int)Keys.Escape, factory.CreateGameModelCommand("Pause", model));
+                    //controller.AddCommand((int)Keys.Escape, factory.CreateGameModelCommand("Pause", objects));
                     //controller.AddCommand((int)Keys.A, factory.CreateMarioCommand("Jump", mario));
                     controller.AddCommand((int)Keys.Down, factory.CreateMarioCommand("Crouch", mario));
                     controller.AddCommand((int)Keys.Up, factory.CreateMarioCommand("Jump", mario));
@@ -38,10 +38,10 @@ namespace MelloMario
                     controller.AddCommand((int)Keys.D, factory.CreateMarioCommand("Right", mario));
 
                     //commands for changing block/mario state
-                    controller.AddCommand((int)Keys.X, factory.CreateGameObjectCommand("UsedBlock", null)); // TODO
-                    controller.AddCommand((int)Keys.OemQuestion, factory.CreateGameObjectCommand("QuestionBlock", null)); // TODO
-                    controller.AddCommand((int)Keys.B, factory.CreateGameObjectCommand("BrickBlock", null)); // TODO
-                    controller.AddCommand((int)Keys.H, factory.CreateGameObjectCommand("HiddenBlock", null)); // TODO
+                    controller.AddCommand((int)Keys.X, factory.CreateMiscCommand("UsedBlock", objects));
+                    controller.AddCommand((int)Keys.OemQuestion, factory.CreateMiscCommand("QuestionBlock", objects));
+                    controller.AddCommand((int)Keys.B, factory.CreateMiscCommand("BrickBlock", objects));
+                    controller.AddCommand((int)Keys.H, factory.CreateMiscCommand("HiddenBlock", objects));
 
                     controller.AddCommand((int)Keys.Y, factory.CreateMarioCommand("StandardState", mario));
                     controller.AddCommand((int)Keys.U, factory.CreateMarioCommand("SuperState", mario));
@@ -51,7 +51,7 @@ namespace MelloMario
                 else
                 if (controller is GamepadController)
                 {
-                    controller.AddCommand((int)Buttons.Start, factory.CreateGameModelCommand("Pause", model));
+                    // controller.AddCommand((int)Buttons.Start, factory.CreateGameModelCommand("Pause", model));
                     controller.AddCommand((int)Buttons.A, factory.CreateMarioCommand("Jump", mario));
                     controller.AddCommand((int)Buttons.DPadDown, factory.CreateMarioCommand("Crouch", mario));
                     controller.AddCommand((int)Buttons.DPadLeft, factory.CreateMarioCommand("Left", mario));

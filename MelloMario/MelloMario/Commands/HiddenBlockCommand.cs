@@ -1,8 +1,10 @@
-﻿namespace MelloMario.Commands
+﻿using System.Collections.Generic;
+
+namespace MelloMario.Commands
 {
-    class HiddenBlockCommand : BaseCommand<IGameObject>
+    class HiddenBlockCommand : BaseCommand<List<IGameObject>>
     {
-        public HiddenBlockCommand(IGameObject obj) : base(obj)
+        public HiddenBlockCommand(List<IGameObject> obj) : base(obj)
         {
         }
 

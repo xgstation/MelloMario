@@ -41,6 +41,7 @@ namespace MelloMario
         private Texture2D starSpritesheet;
 
         private Texture2D blockSpritesheet;
+        private Texture2D brickPieceSpritesheet;
 
         private SpriteFactory()
         {
@@ -57,6 +58,7 @@ namespace MelloMario
         public void LoadAllTextures(ContentManager content)
         {
             blockSpritesheet = content.Load<Texture2D>("BlockSheet");
+            brickPieceSpritesheet = content.Load<Texture2D>("BrickPieces");
             // TODO: Implement lazy-loading with singleton pattern?
 
             //these files are not in the repository, i am assigning all of them to an existing
@@ -215,9 +217,14 @@ namespace MelloMario
         {
             switch (v)
             {
-                case "Destroyed":
-                    //this is temporary, needs anims
-                    return new BlockSilentSprite(blockSpritesheet, 0, 14);
+                case "DestroyedLT":
+                    return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 0, 0, BrickPieceSprite.Part.LeftTop);
+                case "DestroyedLB":
+                    return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 1, 0, BrickPieceSprite.Part.LeftBottom);
+                case "DestroyedRT":
+                    return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 0, 1, BrickPieceSprite.Part.RightTop);
+                case "DestroyedRB":
+                    return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 1, 1, BrickPieceSprite.Part.RightBottom);
                 case "Hidden":
                     return new BlockSilentSprite(blockSpritesheet, 1, 12);
                 case "Used":

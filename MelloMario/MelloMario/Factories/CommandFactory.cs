@@ -24,7 +24,7 @@ namespace MelloMario
             }
         }
 
-        public ICommand CreateGameModelCommand(string action, GameModel model)
+        public ICommand CreateGameControlCommand(string action, GameModel model)
         {
             switch (action)
             {
@@ -35,7 +35,7 @@ namespace MelloMario
             }
         }
 
-        public ICommand CreateGameObjectCommand(string action, IGameObject gameObject)
+        public ICommand CreateMiscCommand(string action, List<IGameObject> gameObject)
         {
             switch (action)
             {

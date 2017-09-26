@@ -13,7 +13,7 @@ namespace MelloMario
         private List<IGameObject> objects;
         // TODO: Do we need another abstraction layer for mario's actions?
         private Mario mario;
-        
+
         public GameModel()
         {
         }
@@ -25,7 +25,7 @@ namespace MelloMario
 
         public void Bind(GameScript script)
         {
-            script.Bind(controllers, this, mario);
+            script.Bind(controllers, mario, objects);
         }
 
         public void LoadEntities()
