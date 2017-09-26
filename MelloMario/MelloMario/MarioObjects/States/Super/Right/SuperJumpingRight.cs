@@ -46,7 +46,7 @@ namespace MelloMario.MarioObjects.States
 
         public void Down()
         {
-            mario.State = new SuperIdleRight(mario);
+            mario.State = new SuperWalkingRight(mario);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

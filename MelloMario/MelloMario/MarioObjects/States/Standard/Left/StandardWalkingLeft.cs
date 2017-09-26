@@ -64,7 +64,7 @@ namespace MelloMario.MarioObjects.States
         public void Right()
         {
             //walk right
-            mario.State = new StandardWalkingRight(mario);
+            mario.State = new StandardIdleLeft(mario);
         }
 
         public void Up()

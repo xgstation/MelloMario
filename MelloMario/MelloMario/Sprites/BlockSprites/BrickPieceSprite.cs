@@ -46,25 +46,25 @@ namespace MelloMario.Sprites.BlockSprites
 
         public void Update(GameTime gameTime)
         {
-            elapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            elapsed += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             frames++;
             switch (part)
             {
                 case Part.LeftBottom:
-                    offset.X = -4 * elapsed;
-                    offset.Y = (float)Math.Pow(offset.X, 2) - offset.X + 8f;
+                    offset.X = -elapsed / 5f + 4;
+                    offset.Y = (float)Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
                     break;
                 case Part.LeftTop:
-                    offset.X = -8 * elapsed;
-                    offset.Y = (float)Math.Pow(offset.X, 2) - offset.X + 16f;
+                    offset.X = -elapsed / 5f + 4;
+                    offset.Y = (float)Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
                     break;
                 case Part.RightBottom:
-                    offset.X = 4 * elapsed;
-                    offset.Y = (float)Math.Pow(offset.X, 2) - offset.X + 8f;
+                    offset.X = elapsed / 5f + 12;
+                    offset.Y = (float)Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
                     break;
                 case Part.RightTop:
-                    offset.X = 8 * elapsed;
-                    offset.Y = (float)Math.Pow(offset.X, 2) - offset.X + 16f;
+                    offset.X = elapsed / 5f + 12;
+                    offset.Y = (float)Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
                     break;
             }
             

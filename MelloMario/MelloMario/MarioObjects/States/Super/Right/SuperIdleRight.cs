@@ -73,7 +73,7 @@ namespace MelloMario.MarioObjects.States
         public void Left()
         {
             //walk left
-            mario.State = new SuperWalkingLeft(mario);
+            mario.State = new SuperIdleLeft(mario);
         }
     }
 }
