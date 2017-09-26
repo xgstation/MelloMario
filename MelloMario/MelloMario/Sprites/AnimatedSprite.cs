@@ -51,7 +51,7 @@ namespace MelloMario.Sprites
         {
             int Width = texture.Width / Columns;
             int Height = texture.Height / Rows;
-            int R = frames / Columns;
+            int R = (int)((float)frames / (float)Columns);
             int C = frames % Columns;
             Rectangle Last = new Rectangle((int)location.X, (int)location.Y, Width, Height);
             Rectangle First = new Rectangle(Width * C, R * Height, Width, Height);
