@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    interface IGameObject
+    public interface IGameObject
     {
         void SetSpriteBasedOnState();
         void Update(GameTime gameTime);

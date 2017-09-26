@@ -12,48 +12,34 @@ namespace MelloMario
         private List<IGameObject> objects;
         // TODO: Do we need another abstraction layer for mario's actions?
         private Mario mario;
-
-        internal List<IController> Controllers
-        {
-            get
-            {
-                return controllers;
-            }
-        }
-        internal Mario Mario
-        {
-            get
-            {
-                return mario;
-            }
-        }
-
+        
         public GameModel()
         {
-            objects = new List<IGameObject>();
         }
 
-        internal void Initialize(List<IController> controllers)
+        public void LoadControllers(List<IController> controllers)
         {
             this.controllers = controllers;
-
         }
 
-        internal void LoadEntities()
+        public void Bind(GameScript script)
         {
-
-            mario = new Mario(new Vector2(100, 100));
-
+            script.Bind(controllers, this, mario);
         }
 
-        internal void Update(GameTime gameTime)
+        public void LoadEntities()
+        {
+            objects = new List<IGameObject>();
+            mario = new Mario(new Vector2(100, 100));
+            objects.Add(mario);
+        }
+
+        public void Update(GameTime gameTime)
         {
             foreach (IController controller in controllers)
             {
-                controller.UpdateInput();
+                controller.Update();
             }
-            mario.Update(gameTime);
-
             foreach (IGameObject gameObject in objects)
             {
                 gameObject.Update(gameTime);
@@ -63,8 +49,6 @@ namespace MelloMario
 
         internal void Draw(SpriteBatch spriteBatch)
         {
-            mario.Draw(spriteBatch);
-
             foreach (IGameObject gameObject in objects)
             {
                 gameObject.Draw(spriteBatch);

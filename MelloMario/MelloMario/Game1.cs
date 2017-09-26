@@ -13,16 +13,15 @@ namespace MelloMario
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Script script;
         GameModel model;
+        GameScript script;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            script = new Script();
+            spriteBatch = new SpriteBatch(GraphicsDevice);
             model = new GameModel();
-            Content.RootDirectory = "Content";
-            
+            script = new GameScript();
         }
 
         /// <summary>
@@ -33,6 +32,7 @@ namespace MelloMario
         /// </summary>
         protected override void Initialize()
         {
+            base.Initialize();
 
             List<IController> controllers = new List<IController>
             {
@@ -40,14 +40,8 @@ namespace MelloMario
                 new KeyboardController(this)
             };
 
-            
-
-            model.Initialize(controllers);
-
-            script.Initialize(model, model.Mario);
-
-            base.Initialize();
-
+            model.LoadControllers(controllers);
+            model.Bind(script);
         }
 
         /// <summary>
@@ -56,14 +50,13 @@ namespace MelloMario
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            Content.RootDirectory = "Content";
+            base.LoadContent();
 
+            // Create a new SpriteBatch, which can be used to draw textures.
             SpriteFactory.Instance.LoadAllTextures(this.Content);
 
             model.LoadEntities();
-
-            // TODO: Use this.Content to load game content here
         }
 
         /// <summary>
@@ -72,7 +65,7 @@ namespace MelloMario
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            base.UnloadContent();
         }
 
         /// <summary>
@@ -94,7 +87,6 @@ namespace MelloMario
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             base.Draw(gameTime);
 
             spriteBatch.Begin();

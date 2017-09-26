@@ -10,13 +10,17 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario
 {
-    public class Script
+    public class GameScript
     {
-        private CommandFactory factory = new CommandFactory();
-
-        public void Initialize(GameModel model, Mario mario)
+        public GameScript()
         {
-            foreach(IController controller in model.Controllers)
+        }
+            
+        public void Bind(List<IController> controllers, GameModel model, Mario mario)
+        {
+            ICommandFactory factory = CommandFactory.Instance;
+
+            foreach (IController controller in controllers)
             {
                 if (controller is KeyboardController)
                 {
