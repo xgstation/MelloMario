@@ -13,40 +13,34 @@ namespace MelloMario.MarioObjects
 {
    class Mario
     {
-        IMarioState standardIdleRight;
-        IMarioState marioState;
+        public IMarioState State;
         Vector2 location;
       
         public Mario(Vector2 initLocation)
         {
-            standardIdleRight = new StandardIdleRight(this);
             location = initLocation;
-            marioState = standardIdleRight;
+            State = new StandardIdleRight(this);
         }
         
-        public void setMarioState(IMarioState newMarioState)
-        {
-            marioState = newMarioState;
-        }
         //make another method that returns the current state of the object
-        public void down() { marioState.down(); }
-        public void idle() { marioState.idle(); }
-        public void up() { marioState.up(); }
-        public void right() { marioState.right(); }
-        public void left() { marioState.left(); }
-        public void die() { marioState.die(); }
-        public void changeToStandardState() { marioState.changeToStandardState();}
-        public void changeToFireState() { marioState.changeToFireState();}
-        public void changeToSuperState() { marioState.changeToSuperState();}
+        public void down() { State.down(); }
+        public void idle() { State.idle(); }
+        public void up() { State.up(); }
+        public void right() { State.right(); }
+        public void left() { State.left(); }
+        public void die() { State.die(); }
+        public void changeToStandardState() { State.changeToStandardState();}
+        public void changeToFireState() { State.changeToFireState();}
+        public void changeToSuperState() { State.changeToSuperState();}
         public void Update(GameTime game)
         {
             // TODO: calculate the location
-            marioState.Update(game);
+            State.Update(game);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            marioState.Draw(spriteBatch, location);
+            State.Draw(spriteBatch, location);
         }
     }
 }

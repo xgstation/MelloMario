@@ -24,17 +24,17 @@ namespace MelloMario.MarioObjects.States
 
         public void die()
         {
-            mario.setMarioState(new Dead(mario));
+            mario.State = new Dead(mario);
         }
 
         public void changeToFireState()
         {
-            mario.setMarioState(new FireWalkingLeft(mario));
+            mario.State = new FireWalkingLeft(mario);
         }
 
         public void changeToStandardState()
         {
-            mario.setMarioState(new StandardWalkingLeft(mario));
+            mario.State = new StandardWalkingLeft(mario);
         }
 
         public void changeToSuperState()
@@ -44,7 +44,7 @@ namespace MelloMario.MarioObjects.States
 
         public void down()
         {
-            mario.setMarioState(new SuperCrouchingLeft(mario));
+            mario.State = new SuperCrouchingLeft(mario);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -54,7 +54,7 @@ namespace MelloMario.MarioObjects.States
 
         public void idle()
         {
-            mario.setMarioState(new SuperIdleLeft(mario));
+            mario.State = new SuperIdleLeft(mario);
         }
 
         public void left()
@@ -65,12 +65,12 @@ namespace MelloMario.MarioObjects.States
         public void right()
         {
             //walk right
-            mario.setMarioState(new SuperWalkingRight(mario));
+            mario.State = new SuperWalkingRight(mario);
         }
 
         public void up()
         {
-            mario.setMarioState(new SuperJumpingLeft(mario));
+            mario.State = new SuperJumpingLeft(mario);
         }
 
         public void Update(GameTime game)
