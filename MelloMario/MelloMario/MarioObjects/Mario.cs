@@ -11,7 +11,7 @@ using MelloMario.MarioObjects.States;
 
 namespace MelloMario.MarioObjects
 {
-   class Mario
+    public class Mario
     {
         public IMarioState State;
         Vector2 location;

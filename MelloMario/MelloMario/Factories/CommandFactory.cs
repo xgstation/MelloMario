@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MelloMario.Commands;
 using MelloMario.MarioObjects;
 
 namespace MelloMario
@@ -23,14 +24,59 @@ namespace MelloMario
             }
         }
 
-        public ICommand CreateGameModelCommand(string actionName, GameModel model)
+        public ICommand CreateGameModelCommand(string action, GameModel model)
         {
-            throw new NotImplementedException();
+            switch (action)
+            {
+                case "Pause":
+                    return new PauseCommand(model);
+                default:
+                    throw new Exception("Unknown action");
+            }
         }
-        
-        public ICommand CreateMarioCommand(string actionName, Mario mario)
+
+        public ICommand CreateGameObjectCommand(string action, IGameObject gameObject)
         {
-            throw new NotImplementedException();
+            switch (action)
+            {
+                case "BrickBlock":
+                    return new BrickBlockCommand(gameObject);
+                case "HiddenBlock":
+                    return new HiddenBlockCommand(gameObject);
+                case "QuestionBlock":
+                    return new QuestionBlockCommand(gameObject);
+                case "UsedBlock":
+                    return new UsedBlockCommand(gameObject);
+                default:
+                    throw new Exception("Unknown action");
+            }
+        }
+
+        public ICommand CreateMarioCommand(string action, Mario mario)
+        {
+            switch (action)
+            {
+                case "Action":
+                    return new ActionCommand(mario);
+                case "Crouch":
+                    return new CrouchCommand(mario);
+                case "DeadState":
+                    return new DeadStateCommand(mario);
+                case "FireState":
+                    return new FireStateCommand(mario);
+                case "Jump":
+                    return new JumpCommand(mario);
+                case "Left":
+                    return new LeftCommand(mario);
+                case "Right":
+                    return new RightCommand(mario);
+                case "StandardState":
+                    return new StandardStateCommand(mario);
+                case "SuperState":
+                    return new SuperStateCommand(mario);
+                default:
+                    throw new Exception("Unknown action");
+            }
         }
     }
 }

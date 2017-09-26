@@ -1,17 +1,16 @@
-﻿namespace MelloMario.Commands
-{
-    internal class FireStateCommand : ICommand
-    {
-        private GameModel model;
+﻿using MelloMario.MarioObjects;
 
-        public FireStateCommand(GameModel model)
+namespace MelloMario.Commands
+{
+    class FireStateCommand : BaseCommand<Mario>
+    {
+        public FireStateCommand(Mario mario) : base(mario)
         {
-            this.model = model;
         }
 
-        public void Execute()
+        public override void Execute()
         {
-            model.Mario.changeToFireState();
+            Receiver.changeToFireState();
         }
     }
 }

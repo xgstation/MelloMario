@@ -1,15 +1,12 @@
 ﻿namespace MelloMario.Commands
 {
-    internal class BrickBlockCommand : ICommand
+    internal class BrickBlockCommand : BaseCommand<IGameObject>
     {
-        private GameModel model;
-
-        public BrickBlockCommand(GameModel model)
+        public BrickBlockCommand(IGameObject obj) : base(obj)
         {
-            this.model = model;
         }
 
-        public void Execute()
+        public override void Execute()
         {
             throw new System.NotImplementedException();
         }

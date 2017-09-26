@@ -44,7 +44,7 @@ namespace MelloMario
 
             model.Initialize(controllers);
 
-            script.Initialize(model);
+            script.Initialize(model, model.Mario);
 
             base.Initialize();
 

@@ -6,44 +6,47 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using MelloMario.Controllers;
 using MelloMario.Commands;
+using MelloMario.MarioObjects;
 
 namespace MelloMario
 {
     public class Script
     {
-        public void Initialize(GameModel model)
+        private CommandFactory factory = new CommandFactory();
+
+        public void Initialize(GameModel model, Mario mario)
         {
             foreach(IController controller in model.Controllers)
             {
                 if (controller is KeyboardController)
                 {
-                    controller.AddCommand((int)Keys.Escape, new PauseCommand(model));
-                    controller.AddCommand((int)Keys.A, new JumpCommand(model));
-                    controller.AddCommand((int)Keys.Down, new CrouchCommand(model));
-                    controller.AddCommand((int)Keys.Left, new LeftCommand(model));
-                    controller.AddCommand((int)Keys.Right, new RightCommand(model));
-                    controller.AddCommand((int)Keys.Space, new ActionCommand(model));
+                    controller.AddCommand((int)Keys.Escape, factory.CreateGameModelCommand("Pause", model));
+                    controller.AddCommand((int)Keys.A, factory.CreateMarioCommand("Jump", mario));
+                    controller.AddCommand((int)Keys.Down, factory.CreateMarioCommand("Crouch", mario));
+                    controller.AddCommand((int)Keys.Left, factory.CreateMarioCommand("Left", mario));
+                    controller.AddCommand((int)Keys.Right, factory.CreateMarioCommand("Right", mario));
+                    controller.AddCommand((int)Keys.Space, factory.CreateMarioCommand("Action", mario));
 
                     //commands for changing block/mario state
-                    controller.AddCommand((int)Keys.X, new UsedBlockCommand(model));
-                    controller.AddCommand((int)Keys.OemQuestion, new QuestionBlockCommand(model));
-                    controller.AddCommand((int)Keys.B, new BrickBlockCommand(model));
-                    controller.AddCommand((int)Keys.H, new HiddenBlockCommand(model));
+                    controller.AddCommand((int)Keys.X, factory.CreateGameObjectCommand("UsedBlock", null)); // TODO
+                    controller.AddCommand((int)Keys.OemQuestion, factory.CreateGameObjectCommand("QuestionBlock", null)); // TODO
+                    controller.AddCommand((int)Keys.B, factory.CreateGameObjectCommand("BrickBlock", null)); // TODO
+                    controller.AddCommand((int)Keys.H, factory.CreateGameObjectCommand("HiddenBlock", null)); // TODO
 
-                    controller.AddCommand((int)Keys.Y, new StdStateCommand(model));
-                    controller.AddCommand((int)Keys.U, new SuperStateCommand(model));
-                    controller.AddCommand((int)Keys.I, new FireStateCommand(model));
-                    controller.AddCommand((int)Keys.O, new DeadStateCommand(model));
+                    controller.AddCommand((int)Keys.Y, factory.CreateMarioCommand("StandardState", mario));
+                    controller.AddCommand((int)Keys.U, factory.CreateMarioCommand("SuperState", mario));
+                    controller.AddCommand((int)Keys.I, factory.CreateMarioCommand("FireState", mario));
+                    controller.AddCommand((int)Keys.O, factory.CreateMarioCommand("DeadState", mario));
                 }
                 else
                 if (controller is GamepadController)
                 {
-                    controller.AddCommand((int)Buttons.Start, new PauseCommand(model));
-                    controller.AddCommand((int)Buttons.A, new JumpCommand(model));
-                    controller.AddCommand((int)Buttons.DPadDown, new CrouchCommand(model));
-                    controller.AddCommand((int)Buttons.DPadLeft, new LeftCommand(model));
-                    controller.AddCommand((int)Buttons.DPadRight, new RightCommand(model));
-                    controller.AddCommand((int)Buttons.B, new ActionCommand(model));
+                    controller.AddCommand((int)Buttons.Start, factory.CreateGameModelCommand("Pause", model));
+                    controller.AddCommand((int)Buttons.A, factory.CreateMarioCommand("Jump", mario));
+                    controller.AddCommand((int)Buttons.DPadDown, factory.CreateMarioCommand("Crouch", mario));
+                    controller.AddCommand((int)Buttons.DPadLeft, factory.CreateMarioCommand("Left", mario));
+                    controller.AddCommand((int)Buttons.DPadRight, factory.CreateMarioCommand("Right", mario));
+                    controller.AddCommand((int)Buttons.B, factory.CreateMarioCommand("Action", mario));
                 }
             }
         }

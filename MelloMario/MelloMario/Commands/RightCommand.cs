@@ -1,17 +1,16 @@
-﻿namespace MelloMario.Commands
-{
-    internal class RightCommand : ICommand
-    {
-        private GameModel model;
+﻿using MelloMario.MarioObjects;
 
-        public RightCommand(GameModel model)
+namespace MelloMario.Commands
+{
+    class RightCommand : BaseCommand<Mario>
+    {
+        public RightCommand(Mario mario) : base(mario)
         {
-            this.model = model;
         }
 
-        public void Execute()
+        public override void Execute()
         {
-            model.Mario.right();
+            Receiver.right();
         }
     }
 }

@@ -1,17 +1,16 @@
-﻿namespace MelloMario.Commands
-{
-    internal class DeadStateCommand : ICommand
-    {
-        private GameModel model;
+﻿using MelloMario.MarioObjects;
 
-        public DeadStateCommand(GameModel model)
+namespace MelloMario.Commands
+{
+    class DeadStateCommand : BaseCommand<Mario>
+    {
+        public DeadStateCommand(Mario mario) : base(mario)
         {
-            this.model = model;
         }
 
-        public void Execute()
+        public override void Execute()
         {
-            model.Mario.die();
+            Receiver.die();
         }
     }
 }

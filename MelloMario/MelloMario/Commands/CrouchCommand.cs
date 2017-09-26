@@ -1,17 +1,16 @@
-﻿namespace MelloMario.Commands
-{
-    internal class CrouchCommand : ICommand
-    {
-        private GameModel model;
+﻿using MelloMario.MarioObjects;
 
-        public CrouchCommand(GameModel model)
+namespace MelloMario.Commands
+{
+    class CrouchCommand : BaseCommand<Mario>
+    {
+        public CrouchCommand(Mario mario) : base(mario)
         {
-            this.model = model;
         }
 
-        public void Execute()
+        public override void Execute()
         {
-            model.Mario.down();
+            Receiver.down();
         }
     }
 }

@@ -1,17 +1,16 @@
-﻿namespace MelloMario.Commands
-{
-    internal class SuperStateCommand : ICommand
-    {
-        private GameModel model;
+﻿using MelloMario.MarioObjects;
 
-        public SuperStateCommand(GameModel model)
+namespace MelloMario.Commands
+{
+    class SuperStateCommand : BaseCommand<Mario>
+    {
+        public SuperStateCommand(Mario mario) : base(mario)
         {
-            this.model = model;
         }
 
-        public void Execute()
+        public override void Execute()
         {
-            model.Mario.changeToSuperState();
+            Receiver.changeToSuperState();
         }
     }
 }

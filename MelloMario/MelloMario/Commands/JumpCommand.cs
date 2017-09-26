@@ -1,17 +1,16 @@
-﻿namespace MelloMario.Commands
-{
-    internal class JumpCommand : ICommand
-    {
-        private GameModel model;
+﻿using MelloMario.MarioObjects;
 
-        public JumpCommand(GameModel model)
+namespace MelloMario.Commands
+{
+    class JumpCommand : BaseCommand<Mario>
+    {
+        public JumpCommand(Mario mario) : base(mario)
         {
-            this.model = model;
         }
 
-        public void Execute()
+        public override void Execute()
         {
-            model.Mario.up();
+            Receiver.up();
         }
     }
 }

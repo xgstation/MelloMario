@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    interface IMarioState
+    public interface IMarioState
     {
         void down();
         void idle();

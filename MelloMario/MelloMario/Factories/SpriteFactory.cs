@@ -122,45 +122,44 @@ namespace MelloMario
 
         public ISprite CreateGoombaSprite(string status)
         {
-            if (status == "Defeated")
+            switch (status)
             {
-                return new GoombaSprite(goombaSpritesheet, 1, 3, true);
-            }
-            else
-            {
-                return new GoombaSprite(goombaSpritesheet, 1, 3, false);
+                case "Normal":
+                    return new GoombaSprite(goombaSpritesheet, 1, 3, false);
+                case "Defeated":
+                    return new GoombaSprite(goombaSpritesheet, 1, 3, true);
+                default:
+                    throw new Exception("Unknown sprite");
             }
         }
         
         public ISprite CreateRedKoopaSprite(string status)
         {
-            if (status == "JumpOn")
+            switch (status)
             {
-                return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, true, false);
-            }
-            else if (status == "Defeated")
-            {
-                return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, true);
-            }
-            else
-            {
-                return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, false);
+                case "Normal":
+                    return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, false);
+                case "JumpOn":
+                    return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, true, false);
+                case "Defeated":
+                    return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, true);
+                default:
+                    throw new Exception("Unknown sprite");
             }
         }
 
         public ISprite CreateGreenKoopaSprite(string status)
         {
-            if (status == "JumpOn")
+            switch (status)
             {
-                return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, true, false);
-            }
-            else if (status == "Defeated")
-            {
-                return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, true);
-            }
-            else
-            {
-                return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, false);
+                case "Normal":
+                    return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, false);
+                case "JumpOn":
+                    return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, true, false);
+                case "Defeated":
+                    return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, true);
+                default:
+                    throw new Exception("Unknown sprite");
             }
         }
 

@@ -1,15 +1,11 @@
 ﻿namespace MelloMario.Commands
 {
-    internal class PauseCommand : ICommand
+    class PauseCommand : BaseCommand<GameModel>
     {
-
-        private GameModel model;
-
-        public PauseCommand(GameModel model)
+        public PauseCommand(GameModel model): base(model)
         {
-            this.model = model;
         }
-        public void Execute()
+        public override void Execute()
         {
             //
         }

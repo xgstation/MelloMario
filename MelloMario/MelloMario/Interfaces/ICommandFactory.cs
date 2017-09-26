@@ -8,8 +8,8 @@ namespace MelloMario
 {
     interface ICommandFactory
     {
-        ICommand CreateGameModelCommand(string actionName, GameModel model);
-        ICommand CreateGameObjectCommand(string actionName, IGameObject gameObject);
-        ICommand CreateMarioCommand(string actionName, MarioObjects.Mario mario);
+        ICommand CreateGameModelCommand(string action, GameModel model);
+        ICommand CreateGameObjectCommand(string action, IGameObject gameObject);
+        ICommand CreateMarioCommand(string action, MarioObjects.Mario mario);
     }
 }
