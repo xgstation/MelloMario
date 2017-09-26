@@ -10,8 +10,9 @@ namespace MelloMario
 {
     public interface IBlockState
     {
+        void ChangeToBumped();
         void ChangeToSilent();
-        void ChangeToDestroy();
+        void ChangeToDestroyed();
         void ChangeToHidden();
         void ChangeToUsed();
         void Draw(SpriteBatch spriteBatch, Vector2 location);

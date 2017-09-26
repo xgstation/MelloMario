@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MelloMario.BlockObjects.States;
+using MelloMario.BlockObjects.FloorStates;
 
 namespace MelloMario.BlockObjects
 {
