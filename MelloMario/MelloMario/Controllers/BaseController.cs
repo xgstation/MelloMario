@@ -10,7 +10,8 @@ namespace MelloMario.Controllers
 {
     public abstract class BaseController : IController
     {
-        protected Dictionary<int, ICommand> commands;
+        // TODO: use generic type T instead of int?
+        private Dictionary<int, ICommand> commands;
 
         public BaseController()
         {
@@ -20,6 +21,14 @@ namespace MelloMario.Controllers
         public void AddCommand(int key, ICommand value)
         {
             commands.Add(key, value);
+        }
+
+        protected void RunCommand(int key)
+        {
+            if (commands.ContainsKey(key))
+            {
+                commands[key].Execute();
+            }
         }
 
         public abstract void UpdateInput();

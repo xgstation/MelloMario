@@ -39,8 +39,9 @@ namespace MelloMario.Controllers
                     {
                         if (currentState.IsButtonDown(button) &&
                             !previousGamePadState.IsButtonDown(button))
-                            if (commands.ContainsKey((int)button))
-                                commands[(int)button].Execute();
+                        {
+                            RunCommand((int)button);
+                        }
                     }
                 }
 

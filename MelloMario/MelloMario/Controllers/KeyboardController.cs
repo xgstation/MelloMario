@@ -12,6 +12,7 @@ namespace MelloMario.Controllers
     {
         Game game;
         KeyboardState previousKeyboardState;
+
         public KeyboardController(Game game)
             : base()
         {
@@ -27,8 +28,9 @@ namespace MelloMario.Controllers
             Keys[] keysPressed = currentState.GetPressedKeys();
             foreach (Keys key in keysPressed)
                 if (!previousKeyboardState.IsKeyDown(key))
-                    if (commands.ContainsKey((int)key))
-                        commands[(int)key].Execute();
+                {
+                    RunCommand((int)key);
+                }
 
             // Update previous Keyboard state.
             previousKeyboardState = currentState;
