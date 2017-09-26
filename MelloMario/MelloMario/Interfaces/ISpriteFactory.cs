@@ -13,5 +13,17 @@ namespace MelloMario
     interface ISpriteFactory
     {
         ISprite CreateSprite(string textureName, bool Static);
+        ISprite CreateGoombaSprite();
+        ISprite CreateDefeatedGreenKoopaSprite();
+        ISprite CreateJumpOnGreenKoopaSprite();
+        ISprite CreateStarSprite();
+        ISprite CreatCoinSprite();
+        ISprite CreatSuperMushroomSprite();
+        ISprite CreateFlowerSprite();
+        ISprite CreatoneUpMushroomSprite();
+        ISprite CreateRedKoopaSprite();
+        ISprite CreateJumpOnRedKoopaSprite();
+        ISprite CreateDefeatedRedKoopaSprite();
+        ISprite CreateGreenKoopaSprite();
     }
 }
