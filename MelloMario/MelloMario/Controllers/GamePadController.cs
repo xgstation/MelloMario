@@ -22,7 +22,7 @@ namespace MelloMario.Controllers
             emptyInput = new GamePadState(Vector2.Zero, Vector2.Zero, 0, 0, new Buttons());
         }
 
-        public override void UpdateInput()
+        public override void Update()
         {
             // Get the current gamepad state.
             GamePadState currentState = GamePad.GetState(PlayerIndex.One);

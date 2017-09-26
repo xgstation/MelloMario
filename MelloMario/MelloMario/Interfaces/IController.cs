@@ -3,9 +3,9 @@ using MelloMario.Commands;
 
 namespace MelloMario
 {
-    interface IController
+    public interface IController
     {
         void AddCommand(int key, ICommand value);
-        void UpdateInput();
+        void Update();
     }
 }

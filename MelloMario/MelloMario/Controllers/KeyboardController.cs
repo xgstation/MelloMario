@@ -20,7 +20,7 @@ namespace MelloMario.Controllers
             previousKeyboardState = Keyboard.GetState();
         }
 
-        public override void UpdateInput()
+        public override void Update()
         {
             // Get the current Keyboard state.
             KeyboardState currentState = Keyboard.GetState();

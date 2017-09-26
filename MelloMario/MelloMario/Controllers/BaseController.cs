@@ -31,6 +31,6 @@ namespace MelloMario.Controllers
             }
         }
 
-        public abstract void UpdateInput();
+        public abstract void Update();
     }
 }
