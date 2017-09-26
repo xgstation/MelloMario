@@ -16,6 +16,7 @@ namespace MelloMario.BlockObjects
         {
             this.location = location;
         }
+
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(SpriteBatch spriteBatch);
     }
