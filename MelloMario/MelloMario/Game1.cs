@@ -12,14 +12,14 @@ namespace MelloMario
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
         GameModel model;
         GameScript script;
+
+        SpriteBatch spriteBatch;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            spriteBatch = new SpriteBatch(GraphicsDevice);
             model = new GameModel();
             script = new GameScript();
         }
@@ -54,6 +54,7 @@ namespace MelloMario
             base.LoadContent();
 
             // Create a new SpriteBatch, which can be used to draw textures.
+            spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(this.Content);
 
             model.LoadEntities();
