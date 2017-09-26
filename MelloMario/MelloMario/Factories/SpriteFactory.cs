@@ -107,7 +107,7 @@ namespace MelloMario
             //dictionary
             stringToMarioTexture = new Dictionary<String, Texture2D>
             {
-                {"FireCrouchingLeft",FireCrouchingLeft},{"FireIdleLeft",FireIdleLeft}, {"FireJumpingLeft",FireJumpingLeft},{"FireWalkingLeft",FireWalkingLeft},
+                {"Dead",Dead},{"FireCrouchingLeft",FireCrouchingLeft},{"FireIdleLeft",FireIdleLeft}, {"FireJumpingLeft",FireJumpingLeft},{"FireWalkingLeft",FireWalkingLeft},
                 {"FireCrouchingRight",FireCrouchingRight},{"FireIdleRight",FireIdleRight},{"FireJumpingRight",FireJumpingRight},{"FireWalkingRight",FireWalkingRight},
                 {"SuperCrouchingLeft",SuperCrouchingLeft},{"SuperIdleLeft",SuperIdleLeft},{"SuperJumpingLeft",SuperJumpingLeft},{"SuperWalkingLeft",SuperWalkingLeft},
                 {"SuperCrouchingRight",SuperCrouchingRight},{"SuperIdleRight",SuperIdleRight},{"SuperJumpingRight",SuperJumpingRight},{"SuperWalkingRight",SuperWalkingRight},
