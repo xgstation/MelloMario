@@ -165,28 +165,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\OneUpMushroom.png" />
     <Content Include="Content\BlockSheet.png" />
+    <Content Include="Content\Coin.png" />
     <Content Include="Content\Dead.png" />
     <Content Include="Content\FireCrouchingLeft.png" />
     <Content Include="Content\FireCrouchingRight.png" />
+    <Content Include="Content\FireFlower.png" />
     <Content Include="Content\FireIdleLeft.png" />
     <Content Include="Content\FireIdleRight.png" />
     <Content Include="Content\FireJumpingLeft.png" />
     <Content Include="Content\FireJumpingRight.png" />
     <Content Include="Content\FireWalkingLeft.png" />
     <Content Include="Content\FireWalkingRight.png" />
+    <Content Include="Content\Goomba.png" />
+    <Content Include="Content\GreenKoopa.png" />
+    <Content Include="Content\RedKoopa.png" />
     <Content Include="Content\StandardIdleLeft.png" />
     <Content Include="Content\StandardIdleRight.png" />
     <Content Include="Content\StandardJumpingLeft.png" />
     <Content Include="Content\StandardJumpingRight.png" />
     <Content Include="Content\StandardWalkingLeft.png" />
     <Content Include="Content\StandardWalkingRight.png" />
+    <Content Include="Content\Star.png" />
     <Content Include="Content\SuperCrouchingLeft.png" />
     <Content Include="Content\SuperCrouchingRight.png" />
     <Content Include="Content\SuperIdleLeft.png" />
     <Content Include="Content\SuperIdleRight.png" />
     <Content Include="Content\SuperJumpingLeft.png" />
     <Content Include="Content\SuperJumpingRight.png" />
+    <Content Include="Content\SuperMushroom.png" />
     <Content Include="Content\SuperWalkingLeft.png" />
     <Content Include="Content\SuperWalkingRight.png" />
     <Content Include="Icon.ico" />

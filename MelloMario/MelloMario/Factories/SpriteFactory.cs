@@ -61,22 +61,14 @@ namespace MelloMario
 
             //these files are not in the repository, i am assigning all of them to an existing
             //texture so we can compile add the textures and restore this chunk
-            /*  goombaSpritesheet = content.Load<Texture2D>("goomba");
-                greenKoopaSpritesheet = content.Load<Texture2D>("greenKoopa");
-                redKoopaSpritesheet = content.Load<Texture2D>("redKoopa");
-                superMushroomSpritesheet = content.Load<Texture2D>("superMushroom");
-                oneUpMushroomSpritesheet = content.Load<Texture2D>("1-UpMushroom");
-                coinSpritesheet = content.Load<Texture2D>("coin");
-                fireFlowerSpritesheet = content.Load<Texture2D>("fireFlower");
-                starSpritesheet = content.Load<Texture2D>("star"); */
-            goombaSpritesheet = content.Load<Texture2D>("Dead");
-            greenKoopaSpritesheet = content.Load<Texture2D>("Dead");
-            redKoopaSpritesheet = content.Load<Texture2D>("Dead");
-            superMushroomSpritesheet = content.Load<Texture2D>("Dead");
-            oneUpMushroomSpritesheet = content.Load<Texture2D>("Dead");
-            coinSpritesheet = content.Load<Texture2D>("Dead");
-            fireFlowerSpritesheet = content.Load<Texture2D>("Dead");
-            starSpritesheet = content.Load<Texture2D>("Dead");
+            goombaSpritesheet = content.Load<Texture2D>("Goomba");
+            greenKoopaSpritesheet = content.Load<Texture2D>("GreenKoopa");
+            redKoopaSpritesheet = content.Load<Texture2D>("RedKoopa");
+            superMushroomSpritesheet = content.Load<Texture2D>("SuperMushroom");
+            oneUpMushroomSpritesheet = content.Load<Texture2D>("OneUpMushroom");
+            coinSpritesheet = content.Load<Texture2D>("Coin");
+            fireFlowerSpritesheet = content.Load<Texture2D>("FireFlower");
+            starSpritesheet = content.Load<Texture2D>("Star");
             //dead
             Dead = content.Load<Texture2D>("Dead");
             //fire
