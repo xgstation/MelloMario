@@ -17,17 +17,17 @@ namespace MelloMario.EnemyObjects.KoopaStates
             enemyRedKoopa = koopaRed;
             redKoopa = SpriteFactory.Instance.CreateRedKoopaSprite("JumpOn");
         }
-        public void transNormal()
+        public void ChangeToNormal()
         {
             enemyRedKoopa.State = new RedKoopaNormal(enemyRedKoopa);
         }
 
-        public void transJumpOn()
+        public void ChangeToJumpOn()
         {
 
         }
 
-        public void transDefeated()
+        public void ChangeToDefeated()
         {
             enemyRedKoopa.State = new RedKoopaDefeated(enemyRedKoopa);
         }

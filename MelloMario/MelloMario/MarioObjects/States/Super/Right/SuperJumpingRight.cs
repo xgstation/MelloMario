@@ -13,38 +13,38 @@ namespace MelloMario.MarioObjects.States
     class SuperJumpingRight : IMarioState
     {
         Mario mario;
-        bool setStatic;
+        bool setToStatic;
         ISprite sprite;
         public SuperJumpingRight(Mario mario)
         {
             this.mario = mario;
-            setStatic = true;
-            sprite = SpriteFactory.Instance.CreateMarioSprite("SuperJumpingRight", setStatic);
+            setToStatic = true;
+            sprite = SpriteFactory.Instance.CreateMarioSprite("SuperJumpingRight", setToStatic);
 
 
         }
 
-        public void die()
+        public void Die()
         {
             mario.State = new Dead(mario);
         }
 
-        public void changeToFireState()
+        public void ChangeToFireState()
         {
             mario.State = new FireJumpingRight(mario);
         }
 
-        public void changeToStandardState()
+        public void ChangeToStandardState()
         {
             mario.State = new StandardJumpingRight(mario);
         }
 
-        public void changeToSuperState()
+        public void ChangeToSuperState()
         {
          //nothing here  
         }
 
-        public void down()
+        public void Down()
         {
             mario.State = new SuperIdleRight(mario);
         }
@@ -54,23 +54,23 @@ namespace MelloMario.MarioObjects.States
             sprite.Draw(spriteBatch,location);
         }
 
-        public void idle()
+        public void Idle()
         {
             mario.State = new SuperIdleRight(mario);   
         }
 
-        public void left()
+        public void Left()
         {
             //jump left
             mario.State = new SuperJumpingLeft(mario);
         }
 
-        public void right()
+        public void Right()
         {
             //nothing here
         }
 
-        public void up()
+        public void Up()
         {
            //nothing here
         }

@@ -18,11 +18,11 @@ namespace MelloMario.ItemObjects.StarStates
             starItem = star1;
             star = SpriteFactory.Instance.CreateStarSprite();
         }
-        public void transNormal()
+        public void ChangeToNormal()
         {
 
         }
-        public void transDefeated()
+        public void ChangeToDefeated()
         {
             starItem.State = new StarDefeatedState(starItem);
         }

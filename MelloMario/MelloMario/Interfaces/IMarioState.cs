@@ -11,15 +11,15 @@ namespace MelloMario
 {
     public interface IMarioState
     {
-        void down();
-        void idle();
-        void up();
-        void right();
-        void left();
-        void die();
-        void changeToFireState();
-        void changeToSuperState();
-        void changeToStandardState();
+        void Down();
+        void Idle();
+        void Up();
+        void Right();
+        void Left();
+        void Die();
+        void ChangeToFireState();
+        void ChangeToSuperState();
+        void ChangeToStandardState();
         void Update(GameTime game);
         void Draw(SpriteBatch spriteBatch, Vector2 location);
     }

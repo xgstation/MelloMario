@@ -23,27 +23,27 @@ namespace MelloMario.MarioObjects.States
 
         }
 
-        public void die()
+        public void Die()
         {
             mario.State = new Dead(mario);
         }
 
-        public void changeToFireState()
+        public void ChangeToFireState()
         {
             mario.State = new FireWalkingRight(mario);
         }
 
-        public void changeToStandardState()
+        public void ChangeToStandardState()
         {
             //nothing here
         }
 
-        public void changeToSuperState()
+        public void ChangeToSuperState()
         {
             mario.State = new SuperWalkingRight(mario);
         }
 
-        public void down()
+        public void Down()
         {
            //nothing here
         }
@@ -53,22 +53,22 @@ namespace MelloMario.MarioObjects.States
             sprite.Draw(spriteBatch,location);
         }
 
-        public void idle()
+        public void Idle()
         {
             mario.State = new StandardIdleRight(mario);
         }
 
-        public void left()
+        public void Left()
         {
             mario.State = new StandardWalkingLeft(mario);
         }
 
-        public void right()
+        public void Right()
         {
             //nothing here
         }
 
-        public void up()
+        public void Up()
         {
             mario.State = new StandardJumpingRight(mario);
         }

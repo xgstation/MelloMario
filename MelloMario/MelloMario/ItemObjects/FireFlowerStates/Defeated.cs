@@ -17,11 +17,11 @@ namespace MelloMario.ItemObjects.FireFlowerStates
             flowerItem = flower1;
 
         }
-        public void transNormal()
+        public void ChangeToNormal()
         {
             flowerItem.State = new FireFlowerNormalState(flowerItem);
         }
-        public void transDefeated()
+        public void ChangeToDefeated()
         {
 
         }

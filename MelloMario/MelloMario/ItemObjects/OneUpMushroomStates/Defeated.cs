@@ -15,11 +15,11 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
         {
             mushroomItem = mushroomItem1;
         }
-        public void transNormal()
+        public void ChangeToNormal()
         {
             mushroomItem.State = new OneUpMushroomNormalState(mushroomItem);
         }
-        public void transDefeated()
+        public void ChangeToDefeated()
         {
 
         }

@@ -13,13 +13,13 @@ namespace MelloMario.EnemyObjects
 
         }
 
-        public void transNormal()
+        public void ChangeToNormal()
         {
-            State.transNormal();
+            State.ChangeToNormal();
         }
-        public void transDefeated()
+        public void ChangeToDefeated()
         {
-            State.transDefeated();
+            State.ChangeToDefeated();
         }
 
         public override void Update(GameTime gameTime)

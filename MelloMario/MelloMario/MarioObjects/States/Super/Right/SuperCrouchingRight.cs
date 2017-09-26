@@ -22,28 +22,28 @@ namespace MelloMario.MarioObjects.States
             sprite =SpriteFactory.Instance.CreateMarioSprite("SuperCrouchingRight", setToStatic);
 
         }
-        public void die()
+        public void Die()
         {
             mario.State = new Dead(mario);
         }
 
-        public void changeToFireState()
+        public void ChangeToFireState()
         {
             mario.State = new FireCrouchingRight(mario);
         }
 
-        public void changeToStandardState()
+        public void ChangeToStandardState()
         {
             //nothing here
         }
 
 
-        public void changeToSuperState()
+        public void ChangeToSuperState()
         {
             //nothing to do here
         }
 
-        public void down()
+        public void Down()
         {
             //nothing to do here
         }
@@ -53,22 +53,22 @@ namespace MelloMario.MarioObjects.States
             sprite.Draw(spriteBatch,location);
         }
 
-        public void idle()
+        public void Idle()
         {
             mario.State = new SuperIdleRight(mario);
         }
-        public void left()
+        public void Left()
         {
             //left crouching
             mario.State = new SuperCrouchingLeft(mario);
         }
 
-        public void right()
+        public void Right()
         {
             //nothing here
         }
 
-        public void up()
+        public void Up()
         {
             mario.State = new SuperIdleRight(mario);
         }

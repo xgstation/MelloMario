@@ -19,14 +19,14 @@ namespace MelloMario.ItemObjects.SuperMushroomStates
             mushroom = SpriteFactory.Instance.CreatSuperMushroomSprite();
 
         }
-        public void transNormal()
+        public void ChangeToNormal()
         {
 
         }
 
-        public void transDefeated()
+        public void ChangeToDefeated()
         {
-            mushroomItem.State = new superMushroomDefeatedState(mushroomItem);
+            mushroomItem.State = new SuperMushroomDefeatedState(mushroomItem);
         }
         public void Update(GameTime gameTime)
         {

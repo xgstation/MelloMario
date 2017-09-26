@@ -5,8 +5,8 @@ namespace MelloMario
 {
     public interface IGoombaState
     {
-        void transNormal();
-        void transDefeated();
+        void ChangeToNormal();
+        void ChangeToDefeated();
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch, Vector2 location);
     }
