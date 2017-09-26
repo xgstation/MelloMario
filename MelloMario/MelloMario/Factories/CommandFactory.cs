@@ -12,7 +12,7 @@ namespace MelloMario
     {
         private static ICommandFactory instance = new CommandFactory();
         
-        public CommandFactory()
+        private CommandFactory()
         {
         }
 

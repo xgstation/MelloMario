@@ -38,7 +38,7 @@ namespace MelloMario
         private Texture2D fireFlowerSpritesheet;
         private Texture2D starSpritesheet;
 
-        public SpriteFactory()
+        private SpriteFactory()
         {
         }
 
