@@ -16,7 +16,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
         public GreenKoopaDefeated(GreenKoopa koopaGreen)
         {
             enemyGreenKoopa = koopaGreen;
-            greenKoopa = SpriteFactory.Instance.CreateDefeatedGreenKoopaSprite();
+            greenKoopa = SpriteFactory.Instance.CreateGreenKoopaSprite("Defeated");
         }
         public void transNormal()
         {

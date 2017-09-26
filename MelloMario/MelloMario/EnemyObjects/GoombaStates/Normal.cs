@@ -16,7 +16,7 @@ namespace MelloMario.EnemyObjects.GoombaStates
         public Normal(Goomba goomba1)
         {
             enemyGoomba = goomba1;
-            goomba = SpriteFactory.Instance.CreateGoombaSprite();
+            goomba = SpriteFactory.Instance.CreateGoombaSprite("Normal");
         }
 
         public void transNormal()

@@ -17,7 +17,7 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
         {
 
             mushroomItem = mushroomItem1;
-            mushroom = SpriteFactory.Instance.CreatoneUpMushroomSprite();
+            mushroom = SpriteFactory.Instance.CreateOneUpMushroomSprite();
         }
         public void transNormal()
         {

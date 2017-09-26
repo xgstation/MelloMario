@@ -15,7 +15,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
         public GreenKoopaJumpOn(GreenKoopa koopaGreen)
         {
             enemyGreenKoopa = koopaGreen;
-            greenKoopa = SpriteFactory.Instance.CreateJumpOnGreenKoopaSprite();
+            greenKoopa = SpriteFactory.Instance.CreateGreenKoopaSprite("JumpOn");
         }
         public void transNormal()
         {
