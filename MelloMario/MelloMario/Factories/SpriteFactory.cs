@@ -205,8 +205,6 @@ namespace MelloMario
         {
             switch (v)
             {
-                case "Hidden":
-                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
                 case "Used":
                     return new BlockSilentSprite(blockSpritesheet, 0, 27);
                 case "Silent":
@@ -228,8 +226,6 @@ namespace MelloMario
                     return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 0, 1, BrickPieceSprite.Part.RightTop);
                 case "DestroyedRB":
                     return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 1, 1, BrickPieceSprite.Part.RightBottom);
-                case "Hidden":
-                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
                 case "Used":
                     return new BlockSilentSprite(blockSpritesheet, 0, 26);
                 case "Silent":
@@ -243,8 +239,6 @@ namespace MelloMario
         {
             switch (v)
             {
-                case "Hidden":
-                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
                 case "Silent":
                     return new BlockSilentSprite(blockSpritesheet, 0, 0);
                 default:
@@ -256,8 +250,6 @@ namespace MelloMario
         {
             switch (v)
             {
-                case "Hidden":
-                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
                 case "Silent":
                     return new BlockSilentSprite(blockSpritesheet, 1, 0);
                 default:
