@@ -172,7 +172,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CodeReviews\CodeReviewKelly.txt" />
+    <Content Include="CodeReviews\CodeReviewCai1.txt" />
     <Content Include="CodeReviews\CodeReviewMaltsev1.txt" />
     <Content Include="CodeReviews\CodeReviewXu1.txt" />
     <Content Include="Content\BrickPieces.png" />
