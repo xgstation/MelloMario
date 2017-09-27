@@ -60,7 +60,7 @@ namespace MelloMario.MarioObjects.States
 
         public void Idle()
         {
-            //nothing to do here
+            //nothing to do lhere
         }
         public void Up()
         {

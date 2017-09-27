@@ -42,7 +42,7 @@ namespace MelloMario.MarioObjects.States
 
         public void Down()
         {
-            mario.State = new FireIdleRight(mario);
+            mario.State = new FireWalkingRight(mario);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
