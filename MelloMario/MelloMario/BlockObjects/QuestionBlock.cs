@@ -12,11 +12,16 @@ namespace MelloMario.BlockObjects
     public class QuestionBlock : BaseBlock
     {
         public IBlockState State;
-
+        public List<IGameObject> objects;
         public QuestionBlock(Vector2 location) : base(location)
         {
             State = new QuestionSilent(this);
+            objects = null;
         }
+        public QuestionBlock(Vector2 location, List<IGameObject> objects) : this (location)
+        {
+            this.objects = objects;
+        } 
 
         public override void Draw(SpriteBatch spriteBatch)
         {

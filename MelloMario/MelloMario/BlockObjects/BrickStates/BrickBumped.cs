@@ -16,15 +16,21 @@ namespace MelloMario.BlockObjects.BrickStates
         private float speedY = -7f;
         private float accelerationY = 1.5f;
         private float offset;
+        private int itemQuantity;
         public BrickBumped(BrickBlock brickBlock)
         {
             block = brickBlock;
             sprite = SpriteFactory.Instance.CreateBrick("Silent");
+            itemQuantity = 0;
+        }
+        public BrickBumped(BrickBlock brickBlock, int itemQuantity) : this (brickBlock)
+        {
+            this.itemQuantity = itemQuantity;
         }
 
         public void ChangeToSilent()
-        {
-            block.State = new BrickSilent(block);
+        {   
+            block.State = new BrickSilent(block, itemQuantity);
         }
 
         public void ChangeToHidden()
