@@ -11,19 +11,21 @@ namespace MelloMario.Sprites.BlockSprites
     class BlockSilentSprite : ISprite
     {
         private Texture2D texture;
-        int row, col;
+        int row, col, w, l;
 
-        public BlockSilentSprite(Texture2D texture,int row, int col)
+        public BlockSilentSprite(Texture2D texture,int row, int col, int w, int l)
         {
             this.texture = texture;
             this.row = row;
             this.col = col;
+            this.w = w;
+            this.l = l;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            Rectangle area = new Rectangle(col*16,row*16,16,16);
-            Rectangle destRect = new Rectangle(new Point((int)location.X, (int)location.Y),new Point(32));
+            Rectangle area = new Rectangle(col*16,row*16,w,l);
+            Rectangle destRect = new Rectangle(new Point((int)location.X, (int)location.Y),new Point(w * 2));
             spriteBatch.Draw(texture, destRect, area, Color.White);
         }
 
