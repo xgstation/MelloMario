@@ -10,8 +10,8 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class BrickBumped : IBlockState
     {
-        private Vector2 origin;
         private BrickBlock block;
+        private ISprite sprite;
         private float elapsed;
         private float speedY = -7f;
         private float accelerationY = 1.5f;
@@ -19,6 +19,7 @@ namespace MelloMario.BlockObjects.BrickStates
         public BrickBumped(BrickBlock brickBlock)
         {
             block = brickBlock;
+            sprite = SpriteFactory.Instance.CreateBrick("Silent");
         }
 
         public void ChangeToSilent()
@@ -48,7 +49,7 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Update(GameTime gameTime)
         {
-            elapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            elapsed += ((float)gameTime.ElapsedGameTime.Milliseconds) / 20;
             offset = 0.5f * accelerationY * (float)Math.Pow(elapsed,2.0f) + speedY * elapsed;
             
             if (offset >= 0)
@@ -59,7 +60,8 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            throw new NotImplementedException();
+            Vector2 p = new Vector2(location.X, location.Y + offset);
+            sprite.Draw(spriteBatch, p);
         }
     }
 }

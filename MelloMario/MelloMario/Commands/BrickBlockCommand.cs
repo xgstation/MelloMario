@@ -26,7 +26,7 @@ namespace MelloMario.Commands
                 }
             }
 
-            brick.State.ChangeToDestroyed();
+            brick.State.ChangeToBumped();
         }
     }
 }
