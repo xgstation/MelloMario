@@ -11,12 +11,16 @@ namespace MelloMario.BlockObjects.BrickStates
     class BrickHidden : IBlockState
     {
         private BrickBlock block;
+        private int itemQuantity;
 
         public BrickHidden(BrickBlock block)
         {
             this.block = block;
         }
-
+        public BrickHidden(BrickBlock block, int itemQuantity) : this (block)
+        {
+            this.itemQuantity = itemQuantity;
+        }
         public void ChangeToSilent()
         {
             block.State = new BrickSilent(block);

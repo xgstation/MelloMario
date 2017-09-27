@@ -12,11 +12,17 @@ namespace MelloMario.BlockObjects.QuestionStates
     {
         private QuestionBlock block;
         private ISprite sprite;
+        private int itemQuantity;
 
         public QuestionSilent(QuestionBlock block)
         {
             this.block = block;
             sprite = SpriteFactory.Instance.CreateQuestion("Silent");
+            itemQuantity = 1;
+        }
+        public QuestionSilent(QuestionBlock block, int itemQuantity) : this(block)
+        {
+            this.itemQuantity = itemQuantity;
         }
 
         public void ChangeToSilent()
@@ -41,7 +47,7 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void ChangeToBumped()
         {
-            block.State = new QuestionBumped(block);
+            block.State = new QuestionBumped(block, itemQuantity);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

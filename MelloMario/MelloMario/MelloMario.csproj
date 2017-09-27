@@ -89,6 +89,7 @@
     <Compile Include="ItemObjects\FireFlower.cs" />
     <Compile Include="ItemObjects\FireFlowerStates\Defeated.cs" />
     <Compile Include="ItemObjects\FireFlowerStates\Normal.cs" />
+    <Compile Include="ItemObjects\FireFlowerStates\Unveil.cs" />
     <Compile Include="ItemObjects\OneUpMushroom.cs" />
     <Compile Include="ItemObjects\OneUpMushroomStates\Defeated.cs" />
     <Compile Include="ItemObjects\OneUpMushroomStates\Normal.cs" />
