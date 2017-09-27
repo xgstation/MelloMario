@@ -20,11 +20,12 @@ namespace MelloMario.Commands
                 {
                     mario = (MarioObjects.Mario)obj;
                 }
-                if (obj is BlockObjects.BrickBlock)
+                if (obj is BlockObjects.BrickBlock && ((BlockObjects.BrickBlock)obj).State is BlockObjects.BrickStates.BrickSilent)
                 {
                     brick = (BlockObjects.BrickBlock)obj;
                 }
             }
+            if (brick != null)
             if (mario.State is MarioObjects.States.StandardIdleLeft ||
                 mario.State is MarioObjects.States.StandardIdleRight ||
                 mario.State is MarioObjects.States.StandardJumpingLeft ||

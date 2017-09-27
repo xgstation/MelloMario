@@ -36,6 +36,9 @@ namespace MelloMario
             
             objects.Add(mario);
             //temporary hard coded blocks
+            BrickBlock blockHidden = new BrickBlock(new Vector2(300, 200));
+            blockHidden.State.ChangeToHidden();
+            objects.Add(blockHidden);
             objects.Add(new BrickBlock(new Vector2(100, 200)));
             objects.Add(new QuestionBlock(new Vector2(150, 200)));
             objects.Add(new StairBlock(new Vector2(200, 200)));
