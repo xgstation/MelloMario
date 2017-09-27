@@ -190,7 +190,7 @@
     <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.xml" />
     <Content Include="bin\Windows\x86\Debug\SharpDX.xml" />
     <Content Include="Content\BrickPieces.png" />
-    <Content Include="Content\GreenKoopa .png" />
+    <Content Include="Content\Coin.png" />
     <Content Include="Content\BlockSheet.png" />
     <Content Include="Content\Dead.png" />
     <Content Include="Content\FireCrouchingLeft.png" />
@@ -203,6 +203,8 @@
     <Content Include="Content\FireWalkingLeft.png" />
     <Content Include="Content\FireWalkingRight.png" />
     <Content Include="Content\Goomba.png" />
+    <Content Include="Content\GreenKoopa.png" />
+    <Content Include="Content\OneUpMushroom.png" />
     <Content Include="Content\RedKoopa.png" />
     <Content Include="Content\StandardIdleLeft.png" />
     <Content Include="Content\StandardIdleRight.png" />
@@ -217,6 +219,7 @@
     <Content Include="Content\SuperIdleRight.png" />
     <Content Include="Content\SuperJumpingLeft.png" />
     <Content Include="Content\SuperJumpingRight.png" />
+    <Content Include="Content\SuperMushroom.png" />
     <Content Include="Content\SuperWalkingLeft.png" />
     <Content Include="Content\SuperWalkingRight.png" />
     <Content Include="Icon.ico" />
