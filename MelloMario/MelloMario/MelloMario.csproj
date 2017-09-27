@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BlockObjects\BaseBlock.cs" />
+    <Compile Include="BlockObjects\BrickStates\BrickBumped.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickDestroyed.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickHidden.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickSilent.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="BlockObjects\FloorStates\FloorHidden.cs" />
     <Compile Include="BlockObjects\FloorStates\FloorSilent.cs" />
     <Compile Include="BlockObjects\QuestionBlock.cs" />
+    <Compile Include="BlockObjects\QuestionStates\QuestionBumped.cs" />
     <Compile Include="BlockObjects\QuestionStates\QuestionHidden.cs" />
     <Compile Include="BlockObjects\QuestionStates\QuestionSilent.cs" />
     <Compile Include="BlockObjects\QuestionStates\QuestionUsed.cs" />

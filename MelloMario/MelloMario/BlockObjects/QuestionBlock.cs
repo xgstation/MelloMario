@@ -5,19 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.BlockObjects.QuestionStates;
 
 namespace MelloMario.BlockObjects
 {
     public class QuestionBlock : BaseBlock
     {
-        public QuestionBlock(Vector2 location)
+        public IBlockState State;
+
+        public QuestionBlock(Vector2 location) : base(location)
         {
-            state = new QuestionStates.Normal(this, location);
-            SetBoundaryBasedOnState();
+            State = new QuestionSilent(this);
         }
-        public QuestionBlock(Vector2 location, Boolean isHidden) : this(location)
+
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            state = new QuestionStates.Normal(this, location, isHidden);
+            State.Draw(spriteBatch, location);
+        }
+        
+        public override void Update(GameTime gameTime)
+        {
+            State.Update(gameTime);
         }
     }
 }

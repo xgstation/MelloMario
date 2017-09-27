@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.BlockObjects.States
+namespace MelloMario.BlockObjects.BrickStates
 {
     class BrickUsed : IBlockState
     {
@@ -24,7 +24,7 @@ namespace MelloMario.BlockObjects.States
             block.State = new BrickSilent(block);
         }
 
-        public void ChangeToDestroy()
+        public void ChangeToDestroyed()
         {
             block.State = new BrickDestroyed(block);
         }
@@ -37,6 +37,11 @@ namespace MelloMario.BlockObjects.States
         public void ChangeToUsed()
         {
             //do nothing
+        }
+
+        public void ChangeToBumped()
+        {
+            block.State = new BrickBumped(block);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

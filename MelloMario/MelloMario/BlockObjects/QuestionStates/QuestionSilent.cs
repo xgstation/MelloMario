@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.BlockObjects.States
+namespace MelloMario.BlockObjects.QuestionStates
 {
     class QuestionSilent : IBlockState
     {
@@ -24,7 +24,7 @@ namespace MelloMario.BlockObjects.States
             //do nothing
         }
 
-        public void ChangeToDestroy()
+        public void ChangeToDestroyed()
         {
             //question blocks cant be destroyed
         }
@@ -37,6 +37,11 @@ namespace MelloMario.BlockObjects.States
         public void ChangeToUsed()
         {
             block.State = new QuestionUsed(block);
+        }
+
+        public void ChangeToBumped()
+        {
+            //do nothing
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
