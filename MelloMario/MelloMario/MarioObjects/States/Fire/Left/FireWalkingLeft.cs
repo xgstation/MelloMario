@@ -44,7 +44,7 @@ namespace MelloMario.MarioObjects.States
 
         public void Down()
         {
-            mario.State = new FireCrouchingLeft(mario);
+            
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -60,7 +60,8 @@ namespace MelloMario.MarioObjects.States
         public void Right()
         {
             //walk right
-            mario.State = new FireIdleRight(mario);
+            mario.PrevWalking = false;
+            mario.State = new FireIdleLeft(mario);
         }
 
         public void Up()

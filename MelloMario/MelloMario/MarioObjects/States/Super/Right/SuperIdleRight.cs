@@ -63,12 +63,14 @@ namespace MelloMario.MarioObjects.States
 
         public void Right()
         {
+            mario.PrevWalking = true;
             mario.State = new SuperWalkingRight(mario);
         }
 
         public void Left()
         {
             //walk left
+            mario.PrevWalking = false;
             mario.State = new SuperIdleLeft(mario);
         }
     }
