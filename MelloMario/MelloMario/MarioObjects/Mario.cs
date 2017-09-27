@@ -17,6 +17,7 @@ namespace MelloMario.MarioObjects
         //enum tracking state
         enum PowerState { Fire,Standard,Super};
         PowerState currentPowerState;
+        public bool PrevWalking;
         Vector2 location;
       
         public Mario(Vector2 initLocation)
@@ -24,6 +25,7 @@ namespace MelloMario.MarioObjects
             location = initLocation;
             State = new StandardIdleRight(this);
             currentPowerState = PowerState.Standard;
+            PrevWalking = false;
         }
         
         //make another method that returns the current state of the object

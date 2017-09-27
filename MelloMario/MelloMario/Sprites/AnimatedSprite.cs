@@ -11,21 +11,20 @@ namespace MelloMario.Sprites
 {
     class AnimatedSprite : ISprite
     {
-        //add motion later
-        public Texture2D texture { get; set; }
+        public Texture2D texture;
         Color defaultColor;
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        private int rows;
+        private int columns;
         private int frames;
         private int totalFrames;
         private float elapsed;
         private float delay = 250f;
 
-        public AnimatedSprite(Texture2D texture,int rows, int columns)
+        public AnimatedSprite(Texture2D texture, int rows, int columns)
         {
             this.texture = texture;
-            Rows = rows;
-            Columns = columns;
+            this.rows = rows;
+            this.columns = columns;
             frames = 0;
             totalFrames = rows * columns;
             defaultColor = Color.White;
@@ -49,15 +48,13 @@ namespace MelloMario.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            int Width = texture.Width / Columns;
-            int Height = texture.Height / Rows;
-            int R = (int)((float)frames / (float)Columns);
-            int C = frames % Columns;
+            int Width = texture.Width / columns;
+            int Height = texture.Height / rows;
+            int R = frames / columns;
+            int C = frames % columns;
             Rectangle Last = new Rectangle((int)location.X, (int)location.Y, Width, Height);
             Rectangle First = new Rectangle(Width * C, R * Height, Width, Height);
             spriteBatch.Draw(texture, Last, First, Color.White);
-
-
         }
     }
 }

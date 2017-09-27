@@ -60,16 +60,19 @@ namespace MelloMario.MarioObjects.States
         public void Up()
         {
             mario.State = new FireJumpingLeft(mario);
+
         }
 
         public void Right()
         {
-            mario.State = new FireWalkingRight(mario);
+            mario.State = new FireIdleRight(mario);
+            mario.PrevWalking = true;
         }
 
         public void Left()
         {
             mario.State = new FireWalkingLeft(mario);
+            mario.PrevWalking = true;
         }
     }
 }

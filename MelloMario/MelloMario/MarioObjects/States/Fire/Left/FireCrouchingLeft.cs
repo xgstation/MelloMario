@@ -63,7 +63,7 @@ namespace MelloMario.MarioObjects.States
 
         public void Right()
         {
-            mario.State = new FireCrouchingRight(mario);
+            
         }
 
         public void Left()

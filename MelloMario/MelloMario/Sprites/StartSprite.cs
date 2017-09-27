@@ -54,9 +54,9 @@ namespace MelloMario.Sprites
             int C = frames % Columns;
             Rectangle Last = new Rectangle((int)pos.X, (int)pos.Y, Width, Height);
             Rectangle First = new Rectangle(Width * C, R * Height, Width, Height);
-            itemSprite.Begin();
+           
             itemSprite.Draw(star, Last, First, Color.White);
-            itemSprite.End();
+    
         }
     }
 }
