@@ -57,11 +57,6 @@ namespace MelloMario.MarioObjects.States
         {
             sprite.Update(game);
         }
-
-        public void Idle()
-        {
-            //nothing to do lhere
-        }
         public void Up()
         {
             mario.State = new FireJumpingLeft(mario);

@@ -53,10 +53,7 @@ namespace MelloMario.MarioObjects.States
             
         }
 
-        public void Idle()
-        {
-            //nothing to do here
-        }
+  
  public void Up()
         {
             mario.State = new StandardJumpingRight(mario);

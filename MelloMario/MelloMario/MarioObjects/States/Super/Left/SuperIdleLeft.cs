@@ -56,11 +56,6 @@ namespace MelloMario.MarioObjects.States
             sprite.Update(game);
         }
 
-        public void Idle()
-        {
-            //nothing to do here
-        }
-
         public void Up()
         {
             mario.State = new SuperJumpingLeft(mario);

@@ -12,7 +12,6 @@ namespace MelloMario
     public interface IMarioState
     {
         void Down();
-        void Idle();
         void Up();
         void Right();
         void Left();

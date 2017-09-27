@@ -53,11 +53,6 @@ namespace MelloMario.MarioObjects.States
             sprite.Draw(spriteBatch,location);
         }
 
-        public void Idle()
-        {
-            mario.State=new FireIdleLeft(mario);
-        }
-
         public void Left()
         {
             //nothing to do here

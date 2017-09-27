@@ -52,12 +52,6 @@ namespace MelloMario.MarioObjects.States
             sprite.Draw(spriteBatch,location);
             
         }
-
-        public void Idle()
-        {
-            //nothing to do here
-        }
-
         public void Up()
         {
             mario.State = new StandardJumpingLeft(mario);

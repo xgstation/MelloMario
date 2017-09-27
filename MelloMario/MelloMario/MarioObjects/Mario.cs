@@ -24,7 +24,6 @@ namespace MelloMario.MarioObjects
         
         //make another method that returns the current state of the object
         public void Down() { State.Down(); }
-        public void Idle() { State.Idle(); }
         public void Up() { State.Up(); }
         public void Right() { State.Right(); }
         public void Left() { State.Left(); }
