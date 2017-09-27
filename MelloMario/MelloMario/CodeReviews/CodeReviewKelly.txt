@@ -1,0 +1,15 @@
+﻿Kelly Cai
+09/26/2017
+Sprint 1
+Mario object state classes
+Myself
+
+There were too many different state classes to track, due to combining both the power and action states.
+Thus, if there was a minor error, it would have to be changed across all states.
+
+My recommendation would be to split the action state machine from the power-up state machine,
+and then find a cohesive way for the two to interact.
+
+This review took me 5-10 minutes.
+
+
