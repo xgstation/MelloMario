@@ -15,8 +15,8 @@ namespace MelloMario.MarioObjects
     {
         public IMarioState State;
         //enum tracking state
-        enum PowerState { Fire,Standard,Super};
-        PowerState currentPowerState;
+        public enum PowerState { Fire,Standard,Super};
+        public PowerState currentPowerState;
         public bool PrevWalking;
         Vector2 location;
       
