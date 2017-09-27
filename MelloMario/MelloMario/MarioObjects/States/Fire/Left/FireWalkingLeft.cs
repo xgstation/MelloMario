@@ -44,7 +44,7 @@ namespace MelloMario.MarioObjects.States
 
         public void Down()
         {
-            mario.State = new FireCrouchingLeft(mario);
+            
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
