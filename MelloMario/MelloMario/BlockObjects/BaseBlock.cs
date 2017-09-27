@@ -10,20 +10,14 @@ namespace MelloMario.BlockObjects
 {
     public abstract class BaseBlock : IGameObject
     {
-        public IBlockState state { get; set; }
-        //Using Rectangle to record hitting boundary
-        public Rectangle boundary { get; set; }
-        public void SetBoundaryBasedOnState()
+        protected Vector2 location;
+
+        public BaseBlock(Vector2 location)
         {
-            boundary = state.GetBoundary();
+            this.location = location;
         }
-        public void Update(GameTime gameTime)
-        {
-            state.Update(gameTime);
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            state.Draw(spriteBatch, boundary.Location.ToVector2());
-        }
+
+        public abstract void Update(GameTime gameTime);
+        public abstract void Draw(SpriteBatch spriteBatch);
     }
 }
