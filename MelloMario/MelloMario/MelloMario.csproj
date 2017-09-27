@@ -106,6 +106,7 @@
     <Compile Include="EnemyObjects\KoopaStates\RedKoopaDefeated.cs" />
     <Compile Include="EnemyObjects\KoopaStates\RedKoopaJumpOn.cs" />
     <Compile Include="EnemyObjects\KoopaStates\RedKoopaNormal.cs" />
+    <Compile Include="Sprites\BlockSprites\BlockAnimatedSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BlockSilentSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BrickPieceSprite.cs" />
     <Compile Include="Sprites\CoinSprite.cs" />
@@ -184,6 +185,7 @@
     <Content Include="Content\FireWalkingRight.png" />
     <Content Include="Content\Goomba.png" />
     <Content Include="Content\GreenKoopa.png" />
+    <Content Include="Content\Question.png" />
     <Content Include="Content\RedKoopa.png" />
     <Content Include="Content\StandardIdleLeft.png" />
     <Content Include="Content\StandardIdleRight.png" />

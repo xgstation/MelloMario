@@ -43,6 +43,8 @@ namespace MelloMario
         private Texture2D blockSpritesheet;
         private Texture2D brickPieceSpritesheet;
 
+        private Texture2D questionSpriteSheet;
+
         private SpriteFactory()
         {
         }
@@ -59,6 +61,7 @@ namespace MelloMario
         {
             blockSpritesheet = content.Load<Texture2D>("BlockSheet");
             brickPieceSpritesheet = content.Load<Texture2D>("BrickPieces");
+            questionSpriteSheet = content.Load<Texture2D>("Question");
             // TODO: Implement lazy-loading with singleton pattern?
 
             //these files are not in the repository, i am assigning all of them to an existing
@@ -205,9 +208,9 @@ namespace MelloMario
                 case "Hidden":
                     return new BlockSilentSprite(blockSpritesheet, 1, 12);
                 case "Used":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 26);
+                    return new BlockSilentSprite(blockSpritesheet, 0, 27);
                 case "Silent":
-                    return new BlockSilentSprite(blockSpritesheet,0,24);
+                    return new AnimatedSprite(questionSpriteSheet, 1, 3);
                 default:
                     throw new Exception("Unknown sprite");
             }
