@@ -205,7 +205,7 @@ namespace MelloMario
                 case "Hidden":
                     return new BlockSilentSprite(blockSpritesheet, 1, 12);
                 case "Used":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 26);
+                    return new BlockSilentSprite(blockSpritesheet, 0, 27);
                 case "Silent":
                     return new BlockSilentSprite(blockSpritesheet,0,24);
                 default:
