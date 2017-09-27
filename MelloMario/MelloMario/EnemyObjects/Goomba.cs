@@ -10,7 +10,7 @@ namespace MelloMario.EnemyObjects
 
         public Goomba(Vector2 initLocation) : base(initLocation)
         {
-
+            State = new Normal(this);
         }
 
         public void ChangeToNormal()
