@@ -53,14 +53,9 @@ namespace MelloMario.MarioObjects.States
             sprite.Draw(spriteBatch,location);
         }
 
-        public void Idle()
-        {
-            mario.State = new StandardIdleRight(mario);
-        }
-
         public void Left()
         {
-            mario.State = new StandardWalkingLeft(mario);
+            mario.State = new StandardIdleRight(mario);
         }
 
         public void Right()

@@ -54,10 +54,6 @@ namespace MelloMario.MarioObjects.States
             sprite.Update(game);
         }
 
-        public void Idle()
-        {
-            mario.State = new FireIdleRight(mario);
-        }
 
         public void Up()
         {
