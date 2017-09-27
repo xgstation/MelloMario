@@ -34,6 +34,7 @@ namespace MelloMario.MarioObjects.States
 
         public void ChangeToStandardState()
         {
+            mario.PrevWalking = true;
             mario.State = new StandardWalkingLeft(mario);
         }
 
@@ -60,6 +61,7 @@ namespace MelloMario.MarioObjects.States
         public void Right()
         {
             //walk right
+            mario.PrevWalking = false;
             mario.State = new SuperIdleLeft(mario);
         }
 
