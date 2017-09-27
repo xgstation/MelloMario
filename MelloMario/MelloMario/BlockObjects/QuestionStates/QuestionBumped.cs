@@ -60,10 +60,11 @@ namespace MelloMario.BlockObjects.QuestionStates
             if (offset >= 0)
             {
                 ChangeToUsed();
-                if (itemQuantity > 0)
+                if (itemQuantity > 0 && block.objects != null)
                 {
                     ItemObjects.FireFlower item = new ItemObjects.FireFlower(block.location);
-                    block.objects.Add(item);
+                    item.TransUnveil();
+                    block.objects.Insert(0, item);
                 }   
             }
         }

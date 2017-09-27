@@ -15,7 +15,7 @@ namespace MelloMario.ItemObjects
 
         public FireFlower(Vector2 initLocation) : base(initLocation)
         {
-            State = new FireFlowerUnveilState(this);
+            State = new FireFlowerNormalState(this);
         }
         public void TransUnveil()
         {

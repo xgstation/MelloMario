@@ -14,6 +14,7 @@ namespace MelloMario.ItemObjects.FireFlowerStates
         private FireFlower flowerItem;
         private float elapsed;
         private float offset;
+        private Vector2 origin;
         public FireFlowerUnveilState(FireFlower newFlower)
         {
             flowerItem = newFlower;
@@ -31,15 +32,17 @@ namespace MelloMario.ItemObjects.FireFlowerStates
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            flower.Draw(spriteBatch, location);
+            origin = new Vector2(location.X, location.Y - offset);
+            flower.Draw(spriteBatch, origin);
         }
 
         public void Update(GameTime gameTime)
         {
-            elapsed += ((float)gameTime.ElapsedGameTime.Milliseconds) / 20;
+            elapsed += ((float)gameTime.ElapsedGameTime.Milliseconds) / 40;
             offset =  1f * elapsed;
-            if (offset >= 16)
+            if (offset >= 32f)
             {
+                flowerItem.Location = origin;
                 ChangeToNormal();
             }
         }
