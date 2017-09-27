@@ -11,12 +11,11 @@ namespace MelloMario.BlockObjects.QuestionStates
     class QuestionHidden : IBlockState
     {
         private QuestionBlock block;
-        private ISprite sprite;
+
 
         public QuestionHidden(QuestionBlock block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateQuestion("Hidden");
         }
 
         public void ChangeToSilent()
@@ -46,12 +45,12 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            sprite.Draw(spriteBatch, location);
+            //do nothing
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            //do nothing
         }
     }
 }

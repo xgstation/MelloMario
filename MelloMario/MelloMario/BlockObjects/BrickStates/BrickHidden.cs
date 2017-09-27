@@ -11,12 +11,10 @@ namespace MelloMario.BlockObjects.BrickStates
     class BrickHidden : IBlockState
     {
         private BrickBlock block;
-        private ISprite sprite;
 
         public BrickHidden(BrickBlock block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateBrick("Hidden");
         }
 
         public void ChangeToSilent()
@@ -46,12 +44,12 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            sprite.Draw(spriteBatch, location);
+            //do nothing
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            //do nothing
         }
     }
 }
