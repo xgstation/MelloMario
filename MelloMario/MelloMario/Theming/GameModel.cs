@@ -52,9 +52,9 @@ namespace MelloMario
             {
                 controller.Update();
             }
-            foreach (IGameObject gameObject in objects)
+            for(int i = 0; i < objects.Count; ++i)
             {
-                gameObject.Update(gameTime);
+                objects[i].Update(gameTime);
             }
 
         }
