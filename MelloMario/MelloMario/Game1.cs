@@ -13,8 +13,7 @@ namespace MelloMario
     {
         GraphicsDeviceManager graphics;
         GameModel model;
-        GameScript script;
-
+        GameScript script;        
         SpriteBatch spriteBatch;
 
         public Game1()

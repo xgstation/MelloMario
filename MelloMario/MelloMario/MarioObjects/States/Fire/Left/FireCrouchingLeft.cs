@@ -19,6 +19,7 @@ namespace MelloMario.MarioObjects.States
             this.mario = mario;
             setToStatic = true;
             sprite = SpriteFactory.Instance.CreateMarioSprite("FireCrouchingLeft", setToStatic);
+            
         }
         public void Down()
         {

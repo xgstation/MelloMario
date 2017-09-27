@@ -41,7 +41,7 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void ChangeToBumped()
         {
-            //do nothing
+            block.State = new QuestionBumped(block);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

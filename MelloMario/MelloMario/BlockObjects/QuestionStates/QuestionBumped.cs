@@ -54,7 +54,7 @@ namespace MelloMario.BlockObjects.QuestionStates
 
             if (offset >= 0)
             {
-                ChangeToSilent();
+                ChangeToUsed();
             }
         }
 

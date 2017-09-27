@@ -14,12 +14,16 @@ namespace MelloMario.MarioObjects
     public class Mario : IGameObject
     {
         public IMarioState State;
+        //enum tracking state
+        enum PowerState { Fire,Standard,Super};
+        PowerState currentPowerState;
         Vector2 location;
       
         public Mario(Vector2 initLocation)
         {
             location = initLocation;
             State = new StandardIdleRight(this);
+            currentPowerState = PowerState.Standard;
         }
         
         //make another method that returns the current state of the object
@@ -28,9 +32,15 @@ namespace MelloMario.MarioObjects
         public void Right() { State.Right(); }
         public void Left() { State.Left(); }
         public void Die() { State.Die(); }
-        public void ChangeToStandardState() { State.ChangeToStandardState();}
-        public void ChangeToFireState() { State.ChangeToFireState();}
-        public void ChangeToSuperState() { State.ChangeToSuperState();}
+        public void ChangeToStandardState() {
+            currentPowerState = PowerState.Standard;
+            State.ChangeToStandardState();}
+        public void ChangeToFireState() {
+            currentPowerState = PowerState.Fire;
+            State.ChangeToFireState();}
+        public void ChangeToSuperState() {
+            currentPowerState = PowerState.Super;
+            State.ChangeToSuperState();}
         public void Update(GameTime game)
         {
             // TODO: calculate the location
