@@ -169,6 +169,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CodeReviews\CodeReviewMaltsev1.txt" />
     <Content Include="Content\BrickPieces.png" />
     <Content Include="Content\OneUpMushroom.png" />
     <Content Include="Content\BlockSheet.png" />

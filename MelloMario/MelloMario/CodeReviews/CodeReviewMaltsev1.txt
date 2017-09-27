@@ -1,0 +1,8 @@
+﻿Sergey Maltsev
+9/26/2017
+Sprint 1
+All of Factorys
+Multiple Authors
+A lot of overlap most of the methods can be
+simplified or combined into one.
+For example 
