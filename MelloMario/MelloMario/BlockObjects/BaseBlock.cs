@@ -5,19 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MelloMario.BlockObjects.States;
 
 namespace MelloMario.BlockObjects
 {
     public abstract class BaseBlock : IGameObject
     {
-        protected Vector2 location;
-
-        public BaseBlock(Vector2 location)
+        public IBlockState state { get; set; }
+        //Using Rectangle to record hitting boundary
+        public Rectangle boundary { get; set; }
+        public void SetBoundaryBasedOnState()
         {
-            this.location = location;
+            boundary = state.GetBoundary();
         }
-        public abstract void Update(GameTime gameTime);
-        public abstract void Draw(SpriteBatch spriteBatch);
+        public void Update(GameTime gameTime)
+        {
+            state.Update(gameTime);
+        }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            state.Draw(spriteBatch, boundary.Location.ToVector2());
+        }
     }
 }
