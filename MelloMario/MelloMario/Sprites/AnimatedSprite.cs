@@ -11,24 +11,36 @@ namespace MelloMario.Sprites
 {
     class AnimatedSprite : ISprite
     {
-        public Texture2D texture;
+        Texture2D texture;
         Color defaultColor;
         private int rows;
         private int columns;
-        private int frames;
-        private int totalFrames;
+        private int frame;
+        private int beginFrame;
+        private int endFrame;
         private float elapsed;
         private float delay = 250f;
 
-        public AnimatedSprite(Texture2D texture, int rows, int columns)
+        public AnimatedSprite(Texture2D newTexture, int rows, int columns)
         {
-            this.texture = texture;
+            texture = newTexture;
+            defaultColor = Color.White;
             this.rows = rows;
             this.columns = columns;
-            frames = 0;
-            totalFrames = rows * columns;
-            defaultColor = Color.White;
+            frame = 0;
+            beginFrame = 0;
+            endFrame = rows * columns;
+        }
 
+        public AnimatedSprite(Texture2D newTexture, int rows, int columns, int begin, int end)
+        {
+            texture = newTexture;
+            defaultColor = Color.White;
+            this.rows = rows;
+            this.columns = columns;
+            frame = 0;
+            beginFrame = begin;
+            endFrame = end;
         }
 
         public void Update(GameTime time)
@@ -37,10 +49,10 @@ namespace MelloMario.Sprites
             elapsed += (float)time.ElapsedGameTime.TotalMilliseconds;
             if (elapsed >= delay)
             {
-                frames++;
-                if (frames == totalFrames)
+                frame++;
+                if (frame == endFrame)
                 {
-                    frames = 0;
+                    frame = beginFrame;
                 }
                 elapsed = 0;
             }
@@ -50,8 +62,8 @@ namespace MelloMario.Sprites
         {
             int Width = texture.Width / columns;
             int Height = texture.Height / rows;
-            int R = frames / columns;
-            int C = frames % columns;
+            int R = frame / columns;
+            int C = frame % columns;
             Rectangle Last = new Rectangle((int)location.X, (int)location.Y, Width, Height);
             Rectangle First = new Rectangle(Width * C, R * Height, Width, Height);
             spriteBatch.Draw(texture, Last, First, Color.White);

@@ -26,13 +26,7 @@ namespace MelloMario.Commands
                 }
             }
             if (brick != null)
-            if (mario.State is MarioObjects.States.StandardIdleLeft ||
-                mario.State is MarioObjects.States.StandardIdleRight ||
-                mario.State is MarioObjects.States.StandardJumpingLeft ||
-                mario.State is MarioObjects.States.StandardJumpingRight ||
-                mario.State is MarioObjects.States.StandardWalkingLeft ||
-                mario.State is MarioObjects.States.StandardWalkingRight ||
-                mario.State is MarioObjects.States.Dead)
+            if (mario.currentPowerState == MarioObjects.Mario.PowerState.Standard)
                 brick.State.ChangeToBumped();
             else
                 brick.State.ChangeToDestroyed();

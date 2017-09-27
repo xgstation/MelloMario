@@ -10,7 +10,7 @@ namespace MelloMario.Commands
 
         public override void Execute()
         {
-            throw new System.NotImplementedException();
+            //do nothing
         }
     }
 }
