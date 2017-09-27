@@ -128,7 +128,7 @@ namespace MelloMario
             {
                 // animated
                 // add additional parameters when motion is involved
-                sprite = new AnimatedSprite(stringToMarioTexture[status],1,3);
+                sprite = new AnimatedSprite(stringToMarioTexture[status], 1, 3);
             }
             return sprite;
         }
