@@ -43,6 +43,8 @@ namespace MelloMario
         private Texture2D blockSpritesheet;
         private Texture2D brickPieceSpritesheet;
 
+        private Texture2D questionSpriteSheet;
+
         private SpriteFactory()
         {
         }
@@ -59,6 +61,7 @@ namespace MelloMario
         {
             blockSpritesheet = content.Load<Texture2D>("BlockSheet");
             brickPieceSpritesheet = content.Load<Texture2D>("BrickPieces");
+            questionSpriteSheet = content.Load<Texture2D>("Question");
             // TODO: Implement lazy-loading with singleton pattern?
 
             //these files are not in the repository, i am assigning all of them to an existing
@@ -125,7 +128,7 @@ namespace MelloMario
             {
                 // animated
                 // add additional parameters when motion is involved
-                sprite = new AnimatedSprite(stringToMarioTexture[status],1,3);
+                sprite = new AnimatedSprite(stringToMarioTexture[status], 1, 3);
             }
             return sprite;
         }
@@ -202,12 +205,10 @@ namespace MelloMario
         {
             switch (v)
             {
-                case "Hidden":
-                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
                 case "Used":
                     return new BlockSilentSprite(blockSpritesheet, 0, 27);
                 case "Silent":
-                    return new BlockSilentSprite(blockSpritesheet,0,24);
+                    return new AnimatedSprite(questionSpriteSheet, 1, 3);
                 default:
                     throw new Exception("Unknown sprite");
             }
@@ -225,8 +226,6 @@ namespace MelloMario
                     return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 0, 1, BrickPieceSprite.Part.RightTop);
                 case "DestroyedRB":
                     return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 1, 1, BrickPieceSprite.Part.RightBottom);
-                case "Hidden":
-                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
                 case "Used":
                     return new BlockSilentSprite(blockSpritesheet, 0, 26);
                 case "Silent":
@@ -240,8 +239,6 @@ namespace MelloMario
         {
             switch (v)
             {
-                case "Hidden":
-                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
                 case "Silent":
                     return new BlockSilentSprite(blockSpritesheet, 0, 0);
                 default:
@@ -253,8 +250,6 @@ namespace MelloMario
         {
             switch (v)
             {
-                case "Hidden":
-                    return new BlockSilentSprite(blockSpritesheet, 1, 12);
                 case "Silent":
                     return new BlockSilentSprite(blockSpritesheet, 1, 0);
                 default:

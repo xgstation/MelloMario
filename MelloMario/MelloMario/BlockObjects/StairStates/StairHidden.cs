@@ -11,12 +11,10 @@ namespace MelloMario.BlockObjects.StairStates
     class StairHidden : IBlockState
     {
         private StairBlock block;
-        private ISprite sprite;
 
         public StairHidden(StairBlock block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateStair("Hidden");
         }
 
         public void ChangeToSilent()
@@ -46,12 +44,12 @@ namespace MelloMario.BlockObjects.StairStates
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            sprite.Draw(spriteBatch, location);
+            //do nothing
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            //do nothing
         }
     }
 }

@@ -65,6 +65,7 @@ namespace MelloMario.MarioObjects.States
         public void Left()
         {
             mario.State = new StandardWalkingLeft(mario);
+            mario.PrevWalking = true;
         }
     }
 }

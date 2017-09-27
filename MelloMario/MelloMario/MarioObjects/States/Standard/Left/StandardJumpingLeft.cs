@@ -46,7 +46,10 @@ namespace MelloMario.MarioObjects.States
 
         public void Down()
         {
-            mario.State = new StandardWalkingLeft(mario);
+            if (mario.PrevWalking)
+                mario.State = new StandardWalkingLeft(mario);
+            else
+                mario.State = new StandardIdleLeft(mario);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

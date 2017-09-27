@@ -11,12 +11,10 @@ namespace MelloMario.BlockObjects.FloorStates
     class FloorHidden : IBlockState
     {
         private FloorBlock block;
-        private ISprite sprite;
 
         public FloorHidden(FloorBlock block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateFloor("Hidden");
         }
 
         public void ChangeToSilent()
@@ -46,12 +44,12 @@ namespace MelloMario.BlockObjects.FloorStates
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            sprite.Draw(spriteBatch, location);
+            //do nothing
         }
 
         public void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            //do nothing
         }
     }
 }

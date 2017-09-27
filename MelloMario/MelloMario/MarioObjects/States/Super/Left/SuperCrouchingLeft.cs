@@ -57,8 +57,8 @@ namespace MelloMario.MarioObjects.States
 
         public void Right()
         {
-            //right crouching
-            mario.State = new SuperCrouchingRight(mario);
+            
+           
         }
 
         public void Up()

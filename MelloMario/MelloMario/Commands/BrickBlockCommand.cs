@@ -20,13 +20,22 @@ namespace MelloMario.Commands
                 {
                     mario = (MarioObjects.Mario)obj;
                 }
-                if (obj is BlockObjects.BrickBlock)
+                if (obj is BlockObjects.BrickBlock && ((BlockObjects.BrickBlock)obj).State is BlockObjects.BrickStates.BrickSilent)
                 {
                     brick = (BlockObjects.BrickBlock)obj;
                 }
             }
-
-            brick.State.ChangeToBumped();
+            if (brick != null)
+            if (mario.State is MarioObjects.States.StandardIdleLeft ||
+                mario.State is MarioObjects.States.StandardIdleRight ||
+                mario.State is MarioObjects.States.StandardJumpingLeft ||
+                mario.State is MarioObjects.States.StandardJumpingRight ||
+                mario.State is MarioObjects.States.StandardWalkingLeft ||
+                mario.State is MarioObjects.States.StandardWalkingRight ||
+                mario.State is MarioObjects.States.Dead)
+                brick.State.ChangeToBumped();
+            else
+                brick.State.ChangeToDestroyed();
         }
     }
 }
