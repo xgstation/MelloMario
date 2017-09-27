@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MelloMario.MarioObjects;
 using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
+using MelloMario.ItemObjects;
 
 namespace MelloMario
 {
@@ -41,6 +42,13 @@ namespace MelloMario
             objects.Add(new StairBlock(new Vector2(200, 200)));
             objects.Add(new FloorBlock(new Vector2(250, 200)));
             objects.Add(new Goomba(new Vector2(100, 300)));
+            objects.Add(new GreenKoopa(new Vector2(100, 400)));
+            objects.Add(new RedKoopa(new Vector2(200, 400)));
+            objects.Add(new Coin(new Vector2(50, 50)));
+            objects.Add(new FireFlower(new Vector2(100,50)));
+            objects.Add(new OneUpMushroom(new Vector2(200, 50)));
+            objects.Add(new SuperMushroom(new Vector2(250, 50)));
+            objects.Add(new Star(new Vector2(300, 50)));
         }
 
         public void Update(GameTime gameTime)

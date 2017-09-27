@@ -24,9 +24,9 @@ namespace MelloMario.Sprites
         public void Draw(SpriteBatch itemSprite, Vector2 location)
         {
             pos = location;
-            itemSprite.Begin();
+         
             itemSprite.Draw(mushroom, pos, Color.White);
-            itemSprite.End();
+
         }
     }
 }
