@@ -20,6 +20,7 @@ namespace MelloMario
         ISprite CreateQuestion(string v);
         ISprite CreateFloor(string v);
         ISprite CreateBrick(string v);
+        ISprite CreatePipeline();
 
         ISprite CreateRedKoopaSprite(string status);
         ISprite CreateGreenKoopaSprite(string status);

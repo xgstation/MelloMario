@@ -52,6 +52,8 @@
     <Compile Include="BlockObjects\FloorBlock.cs" />
     <Compile Include="BlockObjects\FloorStates\FloorHidden.cs" />
     <Compile Include="BlockObjects\FloorStates\FloorSilent.cs" />
+    <Compile Include="BlockObjects\PipelineBlock.cs" />
+    <Compile Include="BlockObjects\PipelineStates\PipelineSilent.cs" />
     <Compile Include="BlockObjects\QuestionBlock.cs" />
     <Compile Include="BlockObjects\QuestionStates\QuestionBumped.cs" />
     <Compile Include="BlockObjects\QuestionStates\QuestionHidden.cs" />
@@ -171,7 +173,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CodeReviews\CodeReviewCai1.txt" />
     <Content Include="CodeReviews\CodeReviewMaltsev1.txt" />
+    <Content Include="CodeReviews\CodeReviewXu1.txt" />
     <Content Include="Content\BrickPieces.png" />
     <Content Include="Content\OneUpMushroom.png" />
     <Content Include="Content\BlockSheet.png" />

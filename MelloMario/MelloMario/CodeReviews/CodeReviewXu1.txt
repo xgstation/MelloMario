@@ -1,0 +1,23 @@
+﻿Gen Xu
+9/26/2017
+Sprint 1
+
+Files viewed: BlockObjects, Commands, ItemObjects, Interfaces
+Author being viewed: Whole team.
+Comments:
+Improvements:
+Most game elements are unified as deriviation of IGameObject, which includes blocks, items.
+It allows using a single list to iteratively call the common method like Draw() and Update().
+Each block is now having its own corresponding state.
+Item has a new state called Unveil which is used to progressively show the item when it comes out from brick/question blocks.
+Code styles are unified, IGameObjects implemented with Base classes which share some common methods.
+Iterative method is changed to avoid change elements in list during foreach iteration, with replacing by a single for loop.
+
+Hypothetical Change:
+Still, there are many style problems, including variable names, case pattern, inherited style.
+The way to iteratively render (Draw) sprite is not rigorous enough.
+Code readablitiy needs to be improved: single letter variable names were used in many places without any comments.
+Checking state of Mario is not easy with current design, a method to check a simple Big/Small mario is needed in order to deal with brick hitting.
+They will be improved in the future sprints.
+
+Complete time: 15 minutes
