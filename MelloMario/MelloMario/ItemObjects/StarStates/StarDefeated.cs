@@ -7,35 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.ItemObjects.CoinStates
+namespace MelloMario.ItemObjects.StarStates
 {
-    public class CoinNormalState : IItemState
+    public class StarDefeated : IItemState
     {
-        private Coin coinItem;
-        private ISprite coin;
-        public CoinNormalState(Coin coin1)
-        {
 
-            coinItem = coin1;
-            coin = SpriteFactory.Instance.CreatCoinSprite();
+        private Star starItem;
+        public StarDefeated(Star star1)
+        {
+            starItem = star1;
+
         }
         public void ChangeToNormal()
         {
-
+            starItem.State = new StarNormalState(starItem);
         }
-
         public void ChangeToDefeated()
         {
-            coinItem.State = new CoinDefeatedState(coinItem);
+
         }
         public void Update(GameTime gameTime)
         {
-            coin.Update(gameTime);
+
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            coin.Draw(spriteBatch, location);
+
         }
     }
 }

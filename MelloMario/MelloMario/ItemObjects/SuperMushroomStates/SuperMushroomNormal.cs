@@ -9,32 +9,33 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.SuperMushroomStates
 {
-    public class SuperMushroomDefeatedState : IItemState
+    public class SuperMushroomNormal : IItemState
     {
+        private ISprite mushroom;
         private SuperMushroom mushroomItem;
-        public SuperMushroomDefeatedState(SuperMushroom mushroomItem1)
+        public SuperMushroomNormal(SuperMushroom mushroomItem1)
         {
             mushroomItem = mushroomItem1;
-        }
+            mushroom = SpriteFactory.Instance.CreatSuperMushroomSprite();
 
+        }
         public void ChangeToNormal()
         {
-            mushroomItem.State = new SuperMushroomNormalState(mushroomItem);
+
         }
+
         public void ChangeToDefeated()
         {
-
+            mushroomItem.State = new SuperMushroomDefeated(mushroomItem);
         }
         public void Update(GameTime gameTime)
         {
-
+            mushroom.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-
+            mushroom.Draw(spriteBatch, location);
         }
-
-
     }
 }

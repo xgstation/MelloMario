@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
-    public class OneUpMushroomNormalState : IItemState
+    public class OneUpMushroomNormal : IItemState
     {
         private OneUpMushroom mushroomItem;
         private ISprite mushroom;
-        public OneUpMushroomNormalState(OneUpMushroom mushroomItem1)
+        public OneUpMushroomNormal(OneUpMushroom mushroomItem1)
         {
 
             mushroomItem = mushroomItem1;
@@ -26,7 +26,7 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
 
         public void ChangeToDefeated()
         {
-            mushroomItem.State = new OneUpMushroomDefeatedState(mushroomItem);
+            mushroomItem.State = new OneUpMushroomDefeated(mushroomItem);
         }
         public void Update(GameTime gameTime)
         {

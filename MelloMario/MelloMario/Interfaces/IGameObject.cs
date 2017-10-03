@@ -10,6 +10,8 @@ namespace MelloMario
 {
     public interface IGameObject
     {
+        Rectangle Boundary();
+
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
     }

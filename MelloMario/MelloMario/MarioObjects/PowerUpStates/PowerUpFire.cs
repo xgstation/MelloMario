@@ -4,27 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.States
 {
-    class FireCrouchingRight : IMarioState
+    class FireIdleLeft : IMarioState
     {
         Mario mario;
-        bool setToStatic;
         ISprite sprite;
-        public FireCrouchingRight(Mario mario)
+        bool setToStatic;
+       
+        public FireIdleLeft(Mario newMario)
         {
-            this.mario = mario;
+            mario = newMario;
             setToStatic = true;
-            sprite = SpriteFactory.Instance.CreateMarioSprite("FireCrouchingRight", setToStatic);
+            sprite = SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", setToStatic);
         }
         public void Down()
         {
-            //nothing to do here
+            mario.State = new FireCrouchingLeft(mario);
         }
-        //crouching
         public void Die()
         {
             mario.State = new Dead(mario);
@@ -32,42 +33,46 @@ namespace MelloMario.MarioObjects.States
 
         public void ChangeToFireState()
         {
-            //nothing to do here
+        //nothing to do here
         }
 
         public void ChangeToStandardState()
         {
-            //nothing here
+            mario.State = new StandardIdleLeft(mario);
         }
+
         public void ChangeToSuperState()
         {
-            mario.State = new SuperCrouchingRight(mario);           
+            mario.State = new SuperIdleLeft(mario);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            sprite.Draw(spriteBatch, location);
+         
+            sprite.Draw(spriteBatch,location);
+           
         }
 
         public void Update(GameTime game)
         {
             sprite.Update(game);
         }
-
-
         public void Up()
         {
-            mario.State = new FireIdleRight(mario);
+            mario.State = new FireJumpingLeft(mario);
+
         }
 
         public void Right()
         {
-            //nothing to do here
+            mario.State = new FireIdleRight(mario);
+            mario.PrevWalking = true;
         }
 
         public void Left()
         {
-            
+            mario.State = new FireWalkingLeft(mario);
+            mario.PrevWalking = true;
         }
     }
 }

@@ -7,24 +7,24 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace MelloMario.MarioObjects.States
+namespace MelloMario.MarioObjects.PowerUpStates
 {
-    class SuperIdleRight : IMarioState
+    class SuperIdleLeft : IMarioState
     {
         Mario mario;
         bool setToStatic;
         ISprite sprite;
         
-        public SuperIdleRight(Mario mario)
+        public SuperIdleLeft(Mario mario)
         {
             this.mario = mario;
             setToStatic = true;
-            sprite = SpriteFactory.Instance.CreateMarioSprite("SuperIdleRight",setToStatic);
+            sprite = SpriteFactory.Instance.CreateMarioSprite("SuperIdleLeft",setToStatic);
 
         }
         public void Down()
         {
-            mario.State = new SuperCrouchingRight(mario);
+            mario.State = new SuperCrouchingLeft(mario);
         }
         public void Die()
         {
@@ -33,12 +33,12 @@ namespace MelloMario.MarioObjects.States
 
         public void ChangeToFireState()
         {
-            mario.State = new FireIdleRight(mario); 
+            mario.State = new FireIdleLeft(mario); 
         }
 
         public void ChangeToStandardState()
         {
-            mario.State = new StandardIdleRight(mario);
+            mario.State = new StandardIdleLeft(mario);
         }
 
         public void ChangeToSuperState()
@@ -58,20 +58,18 @@ namespace MelloMario.MarioObjects.States
 
         public void Up()
         {
-            mario.State = new SuperJumpingRight(mario);
+            mario.State = new SuperJumpingLeft(mario);
         }
 
         public void Right()
         {
-            mario.PrevWalking = true;
-            mario.State = new SuperWalkingRight(mario);
+            mario.State = new SuperIdleRight(mario);
         }
 
         public void Left()
         {
-            //walk left
-            mario.PrevWalking = false;
-            mario.State = new SuperIdleLeft(mario);
+            mario.PrevWalking = true;
+            mario.State = new SuperWalkingLeft(mario);
         }
     }
 }

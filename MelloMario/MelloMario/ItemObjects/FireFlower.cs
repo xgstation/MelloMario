@@ -15,11 +15,11 @@ namespace MelloMario.ItemObjects
 
         public FireFlower(Vector2 initLocation) : base(initLocation)
         {
-            State = new FireFlowerNormalState(this);
+            State = new FireFlowerNormal(this);
         }
         public void TransUnveil()
         {
-            State = new FireFlowerUnveilState(this);
+            State = new FireFlowerUnveil(this);
         }
         public void TransNormal()
         {

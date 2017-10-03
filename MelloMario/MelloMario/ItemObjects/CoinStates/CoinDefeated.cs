@@ -6,26 +6,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.ItemObjects.OneUpMushroomStates
+namespace MelloMario.ItemObjects.CoinStates
 {
-    public class OneUpMushroomDefeatedState : IItemState
+    public class CoinDefeatedState : IItemState
     {
-        private OneUpMushroom mushroomItem;
-        public OneUpMushroomDefeatedState(OneUpMushroom mushroomItem1)
+        private Coin coinItem;
+        public CoinDefeatedState(Coin coin1)
         {
-            mushroomItem = mushroomItem1;
+
+            coinItem = coin1;
+
         }
+
         public void ChangeToNormal()
         {
-            mushroomItem.State = new OneUpMushroomNormalState(mushroomItem);
+            coinItem.State = new CoinNormal(coinItem);
         }
+
         public void ChangeToDefeated()
         {
 
         }
         public void Update(GameTime gameTime)
         {
-
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

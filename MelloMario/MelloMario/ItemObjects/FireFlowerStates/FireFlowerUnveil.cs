@@ -8,26 +8,26 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
-    class FireFlowerUnveilState : IItemState
+    class FireFlowerUnveil : IItemState
     {
         private ISprite flower;
         private FireFlower flowerItem;
         private float elapsed;
         private float offset;
         private Vector2 origin;
-        public FireFlowerUnveilState(FireFlower newFlower)
+        public FireFlowerUnveil(FireFlower newFlower)
         {
             flowerItem = newFlower;
             flower = SpriteFactory.Instance.CreateFlowerSprite();
         }
         public void ChangeToDefeated()
         {
-            flowerItem.State = new FireFlowerDefeatedState(flowerItem);
+            flowerItem.State = new FireFlowerDefeated(flowerItem);
         }
 
         public void ChangeToNormal()
         {
-            flowerItem.State = new FireFlowerNormalState(flowerItem);
+            flowerItem.State = new FireFlowerNormal(flowerItem);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

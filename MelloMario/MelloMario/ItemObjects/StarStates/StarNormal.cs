@@ -24,7 +24,7 @@ namespace MelloMario.ItemObjects.StarStates
         }
         public void ChangeToDefeated()
         {
-            starItem.State = new StarDefeatedState(starItem);
+            starItem.State = new StarDefeated(starItem);
         }
 
         public void Update(GameTime gameTime)

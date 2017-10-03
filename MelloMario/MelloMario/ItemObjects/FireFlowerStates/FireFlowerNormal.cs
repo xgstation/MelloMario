@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MelloMario.ItemObjects;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -8,32 +9,32 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
-    public class FireFlowerDefeatedState : IItemState
+    public class FireFlowerNormal : IItemState
     {
-
+        private ISprite flower;
         private FireFlower flowerItem;
-        public FireFlowerDefeatedState(FireFlower flower1)
+        public FireFlowerNormal(FireFlower flower1)
         {
             flowerItem = flower1;
-
+            flower = SpriteFactory.Instance.CreateFlowerSprite();
         }
         public void ChangeToNormal()
         {
-            flowerItem.State = new FireFlowerNormalState(flowerItem);
+
         }
         public void ChangeToDefeated()
         {
-
+            flowerItem.State = new FireFlowerDefeated(flowerItem);
         }
 
         public void Update(GameTime gameTime)
         {
-
+            flower.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-
+            flower.Draw(spriteBatch, location);
         }
     }
 }

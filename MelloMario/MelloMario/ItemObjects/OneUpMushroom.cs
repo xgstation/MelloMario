@@ -15,7 +15,7 @@ namespace MelloMario.ItemObjects
 
         public OneUpMushroom(Vector2 initLocation) : base(initLocation)
         {
-            State = new OneUpMushroomNormalState(this);
+            State = new OneUpMushroomNormal(this);
         }
 
         public void TransNormal()
