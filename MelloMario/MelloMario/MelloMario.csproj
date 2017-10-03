@@ -110,6 +110,7 @@
     <Compile Include="EnemyObjects\KoopaStates\RedKoopaDefeated.cs" />
     <Compile Include="EnemyObjects\KoopaStates\RedKoopaJumpOn.cs" />
     <Compile Include="EnemyObjects\KoopaStates\RedKoopaNormal.cs" />
+    <Compile Include="LevelGen\LevelReader.cs" />
     <Compile Include="Sprites\BlockSprites\BlockAnimatedSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BlockSilentSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BrickPieceSprite.cs" />
@@ -211,6 +212,7 @@
     <Content Include="Content\SuperWalkingLeft.png" />
     <Content Include="Content\SuperWalkingRight.png" />
     <Content Include="Icon.ico" />
+    <Content Include="LevelGen\ExampleLevel.txt" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
