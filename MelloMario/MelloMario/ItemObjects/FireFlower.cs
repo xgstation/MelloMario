@@ -17,10 +17,7 @@ namespace MelloMario.ItemObjects
         {
             State = new FireFlowerNormalState(this);
         }
-        public void TransUnveil()
-        {
-            State = new FireFlowerUnveilState(this);
-        }
+
         public void TransNormal()
         {
             State.ChangeToNormal();

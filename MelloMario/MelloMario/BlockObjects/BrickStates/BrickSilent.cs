@@ -12,16 +12,11 @@ namespace MelloMario.BlockObjects.BrickStates
     {
         private BrickBlock block;
         private ISprite sprite;
-        private int itemQuantity;
+
         public BrickSilent(BrickBlock block)
         {
             this.block = block;
             sprite = SpriteFactory.Instance.CreateBrick("Silent");
-            itemQuantity = 0;
-        }
-        public BrickSilent(BrickBlock block, int itemQuantity) : this (block)
-        {
-            this.itemQuantity = itemQuantity;
         }
 
         public void ChangeToSilent()
@@ -46,7 +41,7 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void ChangeToBumped()
         {
-            block.State = new BrickBumped(block, itemQuantity);
+            block.State = new BrickBumped(block);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
