@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.MarioObjects.States
+namespace MelloMario.MarioObjects.MovementStates
 {
     class FireWalkingLeft : IMarioState
     {

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace MelloMario.EnemyObjects.GoombaStates
 {
-    class Normal: IGoombaState
+    class GoombaNormal: IGoombaState
     {
         private ISprite goomba;
         private Goomba enemyGoomba;
 
-        public Normal(Goomba goomba1)
+        public GoombaNormal(Goomba goomba1)
         {
             enemyGoomba = goomba1;
             goomba = SpriteFactory.Instance.CreateGoombaSprite("Normal");
@@ -26,7 +26,7 @@ namespace MelloMario.EnemyObjects.GoombaStates
 
         public void ChangeToDefeated()
         {
-            enemyGoomba.State = new Defeated(enemyGoomba);
+            enemyGoomba.State = new GoombaDefeated(enemyGoomba);
         }
 
         public void Update(GameTime gameTime)
