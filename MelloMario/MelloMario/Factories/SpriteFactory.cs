@@ -44,7 +44,6 @@ namespace MelloMario
         private Texture2D brickPieceSpritesheet;
 
         private Texture2D questionSpriteSheet;
-
         private SpriteFactory()
         {
         }
@@ -206,7 +205,7 @@ namespace MelloMario
             switch (v)
             {
                 case "Used":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 27);
+                    return new BlockSilentSprite(blockSpritesheet, 0, 27, 16, 16);
                 case "Silent":
                     return new AnimatedSprite(questionSpriteSheet, 1, 3);
                 default:
@@ -227,9 +226,9 @@ namespace MelloMario
                 case "DestroyedRB":
                     return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 1, 1, BrickPieceSprite.Part.RightBottom);
                 case "Used":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 26);
+                    return new BlockSilentSprite(blockSpritesheet, 0, 26, 16, 16);
                 case "Silent":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 1);
+                    return new BlockSilentSprite(blockSpritesheet, 0, 1, 16, 16);
                 default:
                     throw new Exception("Unknown sprite");
             }
@@ -240,7 +239,7 @@ namespace MelloMario
             switch (v)
             {
                 case "Silent":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 0);
+                    return new BlockSilentSprite(blockSpritesheet, 0, 0, 16, 16);
                 default:
                     throw new Exception("Unknown sprite");
             }
@@ -251,10 +250,14 @@ namespace MelloMario
             switch (v)
             {
                 case "Silent":
-                    return new BlockSilentSprite(blockSpritesheet, 1, 0);
+                    return new BlockSilentSprite(blockSpritesheet, 1, 0, 16, 16);
                 default:
                     throw new Exception("Unknown sprite");
             }
+        }
+        public ISprite CreatePipeline()
+        {
+            return new BlockSilentSprite(blockSpritesheet, 8, 0, 32, 32);
         }
     }
 }

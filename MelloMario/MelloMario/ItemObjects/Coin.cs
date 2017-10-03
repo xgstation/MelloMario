@@ -15,7 +15,7 @@ namespace MelloMario.ItemObjects
 
         public Coin(Vector2 initLocation): base(initLocation)
         {
-            State = new CoinNormalState(this);
+            State = new CoinNormal(this);
         }
 
         public void TransNormal()

@@ -52,6 +52,7 @@ namespace MelloMario
             objects.Add(new OneUpMushroom(new Vector2(200, 50)));
             objects.Add(new SuperMushroom(new Vector2(250, 50)));
             objects.Add(new Star(new Vector2(300, 50)));
+            objects.Add(new PipelineBlock(new Vector2(350, 168)));
         }
 
         public void Update(GameTime gameTime)

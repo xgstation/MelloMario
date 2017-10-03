@@ -15,7 +15,7 @@ namespace MelloMario.ItemObjects
 
         public SuperMushroom(Vector2 initLocation) : base(initLocation)
         {
-            State = new SuperMushroomNormalState(this);
+            State = new SuperMushroomNormal(this);
         }
 
         public void TransNormal()
