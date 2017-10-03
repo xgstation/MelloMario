@@ -16,17 +16,12 @@ namespace MelloMario.BlockObjects.QuestionStates
         private float speedY = -7f;
         private float accelerationY = 1.5f;
         private float offset;
-        private int itemQuantity;
         public QuestionBumped(QuestionBlock questionBlock)
         {
             block = questionBlock;
             sprite = SpriteFactory.Instance.CreateQuestion("Silent");
-            itemQuantity = 0;
         }
-        public QuestionBumped(QuestionBlock questionBlock, int itemQuantity) : this (questionBlock)
-        {
-            this.itemQuantity = itemQuantity;
-        }
+
         public void ChangeToSilent()
         {
             block.State = new QuestionSilent(block);
@@ -60,12 +55,6 @@ namespace MelloMario.BlockObjects.QuestionStates
             if (offset >= 0)
             {
                 ChangeToUsed();
-                if (itemQuantity > 0 && block.objects != null)
-                {
-                    ItemObjects.FireFlower item = new ItemObjects.FireFlower(block.location);
-                    item.TransUnveil();
-                    block.objects.Insert(0, item);
-                }   
             }
         }
 

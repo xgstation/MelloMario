@@ -11,13 +11,13 @@ namespace MelloMario.Sprites
 {
     class StaticSprite : ISprite
     {
-        Texture2D texture;
-        Color defaultColor;
+        public Texture2D texture { get ; set; }
+        Color default_color;
 
         public StaticSprite(Texture2D newTexture)
         {
             texture = newTexture;
-            defaultColor = Color.White;
+            default_color = Color.White;
         }
 
         public void Update(GameTime time)
@@ -27,7 +27,7 @@ namespace MelloMario.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            spriteBatch.Draw(texture,location,defaultColor);
+            spriteBatch.Draw(texture,location,default_color);
         }
     }
 }

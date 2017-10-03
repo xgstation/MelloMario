@@ -10,7 +10,7 @@ namespace MelloMario.BlockObjects
 {
     public abstract class BaseBlock : IGameObject
     {
-        public Vector2 location;
+        protected Vector2 location;
 
         public BaseBlock(Vector2 location)
         {
