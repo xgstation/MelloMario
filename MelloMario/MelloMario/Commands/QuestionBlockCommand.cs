@@ -2,9 +2,9 @@
 
 namespace MelloMario.Commands
 {
-    class QuestionBlockCommand : BaseCommand<List<IGameObject>>
+    class QuestionBlockCommand : BaseCommand<IGameObject[,]>
     {
-        public QuestionBlockCommand(List<IGameObject> obj) : base(obj)
+        public QuestionBlockCommand(IGameObject[,] obj) : base(obj)
         {
         }
 

@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MelloMario.Controllers;
+using MelloMario.LevelGen;
+using System.IO;
 
 namespace MelloMario
 {
@@ -15,12 +17,19 @@ namespace MelloMario
         GameModel model;
         GameScript script;        
         SpriteBatch spriteBatch;
+        LevelReader reader;
+        int w, h;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             model = new GameModel();
             script = new GameScript();
+
+            reader = new LevelReader("Content/ExampleLevel.txt");
+            LevelReader.Pack dims = reader.Initilize();
+            w = dims.X;
+            h = dims.Y;
         }
 
         /// <summary>
@@ -32,6 +41,10 @@ namespace MelloMario
         protected override void Initialize()
         {
             base.Initialize();
+
+            
+
+            
 
             List<IController> controllers = new List<IController>
             {
@@ -56,7 +69,7 @@ namespace MelloMario
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(this.Content);
 
-            model.LoadEntities();
+            model.LoadEntities(w,h);
         }
 
         /// <summary>

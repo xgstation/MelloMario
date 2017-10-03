@@ -35,7 +35,7 @@ namespace MelloMario
             }
         }
 
-        public ICommand CreateMiscCommand(string action, List<IGameObject> gameObject)
+        public ICommand CreateMiscCommand(string action, IGameObject[,] gameObject)
         {
             switch (action)
             {

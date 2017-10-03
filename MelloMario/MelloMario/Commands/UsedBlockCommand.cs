@@ -2,9 +2,9 @@
 
 namespace MelloMario.Commands
 {
-    class UsedBlockCommand : BaseCommand<List<IGameObject>>
+    class UsedBlockCommand : BaseCommand<IGameObject[,]>
     {
-        public UsedBlockCommand(List<IGameObject> obj): base(obj)
+        public UsedBlockCommand(IGameObject[,] obj): base(obj)
         {
         }
 

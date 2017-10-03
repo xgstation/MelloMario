@@ -2,9 +2,9 @@
 
 namespace MelloMario.Commands
 {
-    internal class BrickBlockCommand : BaseCommand<List<IGameObject>>
+    internal class BrickBlockCommand : BaseCommand<IGameObject[,]>
     {
-        public BrickBlockCommand(List<IGameObject> obj) : base(obj)
+        public BrickBlockCommand(IGameObject[,] obj) : base(obj)
         {
         }
 

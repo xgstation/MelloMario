@@ -212,7 +212,9 @@
     <Content Include="Content\SuperWalkingLeft.png" />
     <Content Include="Content\SuperWalkingRight.png" />
     <Content Include="Icon.ico" />
-    <Content Include="LevelGen\ExampleLevel.txt" />
+    <Content Include="Content\ExampleLevel.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />

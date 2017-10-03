@@ -2,9 +2,9 @@
 
 namespace MelloMario.Commands
 {
-    class HiddenBlockCommand : BaseCommand<List<IGameObject>>
+    class HiddenBlockCommand : BaseCommand<IGameObject[,]>
     {
-        public HiddenBlockCommand(List<IGameObject> obj) : base(obj)
+        public HiddenBlockCommand(IGameObject[,] obj) : base(obj)
         {
         }
 

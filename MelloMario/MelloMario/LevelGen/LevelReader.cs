@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,5 +40,38 @@ namespace MelloMario.LevelGen
 
     class LevelReader
     {
+        public class Pack
+        {
+            public int X { get; set; }
+            public int Y { get; set; }
+            public Pack(int x, int y)
+            {
+                X = x;
+                Y = y;
+            }
+        }
+
+        private int h;
+        private int w;
+        private StreamReader input;
+
+        public LevelReader(String path)
+        {
+            Stream inStream = new FileStream(path,FileMode.Open);
+            input = new StreamReader(inStream);
+
+            String heightAsString = input.ReadLine();
+            String widthAsString = input.ReadLine();
+
+            h = Int32.Parse(heightAsString);
+            w = Int32.Parse(widthAsString);
+
+        }
+
+        public Pack Initilize()
+        {
+            return new Pack(h,w);
+        }
+
     }
 }
