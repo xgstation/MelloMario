@@ -119,11 +119,6 @@
     <Compile Include="Sprites\BlockSprites\BlockAnimatedSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BlockSilentSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BrickPieceSprite.cs" />
-    <Compile Include="Sprites\CoinSprite.cs" />
-    <Compile Include="Sprites\FireFlowerSprite.cs" />
-    <Compile Include="Sprites\GreenKoopaSprite.cs" />
-    <Compile Include="Sprites\OneUpMushroomSprite.cs" />
-    <Compile Include="Sprites\RedKoopaSprite.cs" />
     <Compile Include="MarioObjects\Mario.cs" />
     <Compile Include="MarioObjects\MovementStates\MovementCrouching.cs" />
     <Compile Include="MarioObjects\MovementStates\MovementIdle.cs" />
@@ -131,15 +126,12 @@
     <Compile Include="MarioObjects\MovementStates\MovementWalking.cs" />
     <Compile Include="MarioObjects\PowerUpStates\PowerUpSuper.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
-    <Compile Include="Sprites\GoombaSprite.cs" />
-    <Compile Include="Sprites\StartSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Commands\BrickBlockCommand.cs" />
     <Compile Include="Commands\HiddenBlockCommand.cs" />
     <Compile Include="Commands\QuestionBlockCommand.cs" />
     <Compile Include="Commands\DeadStateCommand.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
-    <Compile Include="Sprites\SuperMushroomSprite.cs" />
     <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Theming\GameScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
@@ -161,6 +153,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BrickPieces.png" />
+    <Content Include="Content\GoombaDead.png" />
+    <Content Include="Content\GreenKoopaDead.png" />
+    <Content Include="Content\GreenKoopaStepped.png" />
     <Content Include="Content\OneUpMushroom.png" />
     <Content Include="Content\BlockSheet.png" />
     <Content Include="Content\Coin.png" />
@@ -178,6 +173,8 @@
     <Content Include="Content\GreenKoopa.png" />
     <Content Include="Content\Question.png" />
     <Content Include="Content\RedKoopa.png" />
+    <Content Include="Content\RedKoopaDead.png" />
+    <Content Include="Content\RedKoopaStepped.png" />
     <Content Include="Content\StandardIdleLeft.png" />
     <Content Include="Content\StandardIdleRight.png" />
     <Content Include="Content\StandardJumpingLeft.png" />
