@@ -100,7 +100,7 @@ namespace MelloMario.Factories
             }
             else
             {
-                sprite = new AnimatedSprite(stringToMarioTexture[status], 1, 3);
+                sprite = new AnimatedSprite(stringToMarioTexture[status], 3, 1);
             }
 
             return sprite;
@@ -111,7 +111,7 @@ namespace MelloMario.Factories
             switch (status)
             {
                 case "Normal":
-                    return new AnimatedSprite(goombaSpritesheet, 1, 2);
+                    return new AnimatedSprite(goombaSpritesheet, 2, 1);
                 case "Defeated":
                     return new StaticSprite(goombaSpritesheet);
                 default:
@@ -149,24 +149,24 @@ namespace MelloMario.Factories
             }
         }
 
-        public ISprite CreatCoinSprite()
-        {
-            return new AnimatedSprite(coinSpritesheet, 1, 4);
-        }
-
         public ISprite CreateStarSprite()
         {
-            return new AnimatedSprite(starSpritesheet, 1, 4);
+            return new AnimatedSprite(starSpritesheet, 4, 1);
+        }
+
+        public ISprite CreateCoinSprite()
+        {
+            return new AnimatedSprite(coinSpritesheet, 4, 1);
+        }
+
+        public ISprite CreateSuperMushroomSprite()
+        {
+            return new StaticSprite(superMushroomSpritesheet);
         }
 
         public ISprite CreateFlowerSprite()
         {
-            return new AnimatedSprite(fireFlowerSpritesheet, 1, 8);
-        }
-
-        public ISprite CreatSuperMushroomSprite()
-        {
-            return new StaticSprite(superMushroomSpritesheet);
+            return new AnimatedSprite(fireFlowerSpritesheet, 8, 1);
         }
 
         public ISprite CreateOneUpMushroomSprite()
@@ -179,7 +179,7 @@ namespace MelloMario.Factories
             switch (v)
             {
                 case "Used":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 27, 16, 16);
+                    return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
                 case "Silent":
                     return new AnimatedSprite(questionSpriteSheet, 1, 3);
                 default:
@@ -200,38 +200,27 @@ namespace MelloMario.Factories
                 case "DestroyedRB":
                     return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 1, 1, BrickPieceSprite.Part.RightBottom);
                 case "Used":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 26, 16, 16);
+                    return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
                 case "Silent":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 1, 16, 16);
+                    return new SlicedSprite(blockSpritesheet, 33, 28, 1, 0);
                 default:
                     throw new Exception("Unknown sprite");
             }
         }
 
-        public ISprite CreateFloorSprite(string v)
+        public ISprite CreateFloorSprite()
         {
-            switch (v)
-            {
-                case "Silent":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 0, 16, 16);
-                default:
-                    throw new Exception("Unknown sprite");
-            }
+            return new SlicedSprite(blockSpritesheet, 33, 28, 0, 0);
         }
 
-        public ISprite CreateStairSprite(string v)
+        public ISprite CreateStairSprite()
         {
-            switch (v)
-            {
-                case "Silent":
-                    return new BlockSilentSprite(blockSpritesheet, 1, 0, 16, 16);
-                default:
-                    throw new Exception("Unknown sprite");
-            }
+            return new SlicedSprite(blockSpritesheet, 33, 28, 1, 0);
         }
+
         public ISprite CreatePipelineSprite()
         {
-            return new BlockSilentSprite(blockSpritesheet, 8, 0, 32, 32);
+            return new SlicedSprite(blockSpritesheet, 33, 28, 8, 0);
         }
     }
 }

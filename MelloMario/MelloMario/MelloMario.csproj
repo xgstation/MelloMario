@@ -116,8 +116,6 @@
     <Compile Include="MarioObjects\PowerUpStates\PowerUpFire.cs" />
     <Compile Include="MarioObjects\PowerUpStates\PowerUpStandard.cs" />
     <Compile Include="BaseClasses\BaseSprite.cs" />
-    <Compile Include="Sprites\BlockSprites\BlockAnimatedSprite.cs" />
-    <Compile Include="Sprites\BlockSprites\BlockSilentSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BrickPieceSprite.cs" />
     <Compile Include="MarioObjects\Mario.cs" />
     <Compile Include="MarioObjects\MovementStates\MovementCrouching.cs" />
