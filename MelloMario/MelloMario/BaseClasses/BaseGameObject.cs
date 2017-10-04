@@ -6,10 +6,10 @@ namespace MelloMario
 {
     abstract class BaseGameObject : IGameObject
     {
-        private Point Location;
-        private Point Size;
-        private Point Movement;
-        private ISprite Sprite;
+        private Point location;
+        private Point size;
+        private Point movement;
+        private ISprite sprite;
 
         private void Collide(IGameObject target)
         {
@@ -44,10 +44,10 @@ namespace MelloMario
                     moveX = 0;
                     break;
                 case ResizeModeX.Center:
-                    moveX = (Size.X - newSize.X) / 2;
+                    moveX = (size.X - newSize.X) / 2;
                     break;
                 case ResizeModeX.Right:
-                    moveX = Size.X - newSize.X;
+                    moveX = size.X - newSize.X;
                     break;
             }
             switch (modeY)
@@ -56,47 +56,47 @@ namespace MelloMario
                     moveY = 0;
                     break;
                 case ResizeModeY.Center:
-                    moveY = (Size.Y - newSize.Y) / 2;
+                    moveY = (size.Y - newSize.Y) / 2;
                     break;
                 case ResizeModeY.Bottom:
-                    moveY = Size.Y - newSize.Y;
+                    moveY = size.Y - newSize.Y;
                     break;
             }
 
-            Size = newSize;
-            Location.X += moveX;
-            Location.Y += moveY;
+            size = newSize;
+            location.X += moveX;
+            location.Y += moveY;
         }
 
         protected void Move(Point newMovement)
         {
-            Movement += newMovement;
+            movement += newMovement;
         }
 
         protected void StopMove()
         {
-            Movement.X = 0;
-            Movement.Y = 0;
+            movement.X = 0;
+            movement.Y = 0;
         }
 
         protected void ChangeSprite(ISprite sprite)
         {
-            Sprite = sprite;
+            this.sprite = sprite;
         }
 
         public Rectangle Boundary
         {
             get
             {
-                return new Rectangle(Location.X, Location.Y, Size.X, Size.Y);
+                return new Rectangle(location.X, location.Y, size.X, size.Y);
             }
         }
 
-        public BaseGameObject(Point location, Point size)
+        public BaseGameObject(Point newLocation, Point newSize)
         {
-            this.Location = location;
-            this.Size = size;
-            this.Movement = new Point();
+            this.location = newLocation;
+            this.size = newSize;
+            this.movement = new Point();
         }
 
         public void Update(GameTime time, IList<IGameObject> collidable)
@@ -104,35 +104,35 @@ namespace MelloMario
             OnSimulation(time);
 
             // Since each update is a very small iteration, the order does not matter.
-            while (Movement.X > 0)
+            while (movement.X > 0)
             {
-                Location.X += 1;
-                Movement.X -= 1;
+                location.X += 1;
+                movement.X -= 1;
                 CollideAll(collidable);
             }
-            while (Movement.X < 0)
+            while (movement.X < 0)
             {
-                Location.X -= 1;
-                Movement.X += 1;
+                location.X -= 1;
+                movement.X += 1;
                 CollideAll(collidable);
             }
-            while (Movement.Y > 0)
+            while (movement.Y > 0)
             {
-                Location.Y += 1;
-                Movement.Y -= 1;
+                location.Y += 1;
+                movement.Y -= 1;
                 CollideAll(collidable);
             }
-            while (Movement.Y < 0)
+            while (movement.Y < 0)
             {
-                Location.Y -= 1;
-                Movement.Y += 1;
+                location.Y -= 1;
+                movement.Y += 1;
                 CollideAll(collidable);
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, Boundary);
+            sprite.Draw(spriteBatch, Boundary);
         }
 
         public abstract void OnSimulation(GameTime time);

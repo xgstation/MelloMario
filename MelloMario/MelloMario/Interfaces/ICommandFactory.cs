@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MelloMario.MarioObjects;
 
 namespace MelloMario
 {
@@ -10,6 +6,6 @@ namespace MelloMario
     {
         ICommand CreateGameControlCommand(string action, GameModel model);
         ICommand CreateMiscCommand(string action, IGameObject[,] gameObject);
-        ICommand CreateMarioCommand(string action, MarioObjects.Mario mario);
+        ICommand CreateMarioCommand(string action, Mario mario);
     }
 }

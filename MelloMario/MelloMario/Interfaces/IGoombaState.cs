@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    public interface IGoombaState
+    interface IGoombaState
     {
         void ChangeToNormal();
         void ChangeToDefeated();
