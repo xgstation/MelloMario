@@ -22,6 +22,14 @@ namespace MelloMario.Sprites
             this.size = size;
         }
 
+        public Point PixelSize
+        {
+            get
+            {
+                return new Point(size.X, size.Y); // Do copy to prevent unintended change of value
+            }
+        }
+
         public BaseSprite(Texture2D texture, Point source, Point size)
         {
             this.texture = texture;

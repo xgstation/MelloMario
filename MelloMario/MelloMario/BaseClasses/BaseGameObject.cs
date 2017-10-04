@@ -91,6 +91,12 @@ namespace MelloMario
             this.sprite = sprite;
         }
 
+        protected void ChangeSpriteAndResize(ISprite sprite, ResizeModeX modeX, ResizeModeY modeY)
+        {
+            ChangeSprite(sprite);
+            Resize(sprite.PixelSize, modeX, modeY);
+        }
+
         public Rectangle Boundary
         {
             get
