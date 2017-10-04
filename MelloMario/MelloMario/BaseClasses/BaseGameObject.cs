@@ -18,6 +18,7 @@ namespace MelloMario
             if (rectA.Left == rectB.Right || rectA.Right == rectB.Left || rectA.Top == rectB.Bottom || rectA.Bottom == rectB.Top)
             {
                 OnCollision(target);
+                target.OnCollision(this);
             }
         }
 
@@ -83,9 +84,6 @@ namespace MelloMario
             Sprite = sprite;
         }
 
-        protected abstract void OnSimulation(GameTime time);
-        protected abstract void OnCollision(IGameObject target);
-
         public Rectangle Boundary
         {
             get
@@ -108,21 +106,25 @@ namespace MelloMario
             // Since each update is a very small iteration, the order does not matter.
             while (Movement.X > 0)
             {
+                Location.X += 1;
                 Movement.X -= 1;
                 CollideAll(collidable);
             }
             while (Movement.X < 0)
             {
+                Location.X -= 1;
                 Movement.X += 1;
                 CollideAll(collidable);
             }
             while (Movement.Y > 0)
             {
+                Location.Y += 1;
                 Movement.Y -= 1;
                 CollideAll(collidable);
             }
             while (Movement.Y < 0)
             {
+                Location.Y -= 1;
                 Movement.Y += 1;
                 CollideAll(collidable);
             }
@@ -132,5 +134,8 @@ namespace MelloMario
         {
             Sprite.Draw(spriteBatch, Boundary);
         }
+
+        public abstract void OnSimulation(GameTime time);
+        public abstract void OnCollision(IGameObject target);
     }
 }
