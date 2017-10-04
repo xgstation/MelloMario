@@ -15,7 +15,7 @@ namespace MelloMario.Sprites
         private int frames;
         private double elapsed;
 
-        private void updateSourceRectangle()
+        private void UpdateSourceRectangle()
         {
             int x = frames % columns;
             int y = frames / columns;
@@ -28,7 +28,7 @@ namespace MelloMario.Sprites
             elapsed += time.ElapsedGameTime.TotalMilliseconds;
             if (elapsed >= delay)
             {
-                updateSourceRectangle();
+                UpdateSourceRectangle();
 
                 frames += 1;
                 if (frames == rows * columns)
