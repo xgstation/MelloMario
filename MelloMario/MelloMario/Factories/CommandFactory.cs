@@ -11,7 +11,7 @@ namespace MelloMario.Factories
     class CommandFactory : ICommandFactory
     {
         private static ICommandFactory instance = new CommandFactory();
-        
+
         private CommandFactory()
         {
         }

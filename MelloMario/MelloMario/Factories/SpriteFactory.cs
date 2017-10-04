@@ -25,8 +25,8 @@ namespace MelloMario.Factories
         private Texture2D FireCrouchingLeft, FireIdleLeft, FireJumpingLeft, FireWalkingLeft;
         private Texture2D FireCrouchingRight, FireIdleRight, FireJumpingRight, FireWalkingRight;
         //super
-        private Texture2D SuperCrouchingLeft,SuperIdleLeft, SuperJumpingLeft,SuperWalkingLeft;
-        private Texture2D SuperCrouchingRight,SuperIdleRight, SuperJumpingRight, SuperWalkingRight;
+        private Texture2D SuperCrouchingLeft, SuperIdleLeft, SuperJumpingLeft, SuperWalkingLeft;
+        private Texture2D SuperCrouchingRight, SuperIdleRight, SuperJumpingRight, SuperWalkingRight;
         //standard
         private Texture2D StandardIdleLeft, StandardJumpingLeft, StandardWalkingLeft;
         private Texture2D StandardIdleRight, StandardJumpingRight, StandardWalkingRight;
@@ -112,13 +112,13 @@ namespace MelloMario.Factories
             };
 
         }
-        
+
         public ISprite CreateMarioSprite(string status, bool Static)
         {
             //change
-            
+
             ISprite sprite;
-            
+
             if (Static)
             {
                 sprite = new StaticSprite(stringToMarioTexture[status]);
@@ -144,7 +144,7 @@ namespace MelloMario.Factories
                     throw new Exception("Unknown sprite");
             }
         }
-        
+
         public ISprite CreateRedKoopaSprite(string status)
         {
             switch (status)

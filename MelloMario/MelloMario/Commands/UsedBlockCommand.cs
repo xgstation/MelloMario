@@ -4,7 +4,7 @@ namespace MelloMario.Commands
 {
     class UsedBlockCommand : BaseCommand<IGameObject[,]>
     {
-        public UsedBlockCommand(IGameObject[,] obj): base(obj)
+        public UsedBlockCommand(IGameObject[,] obj) : base(obj)
         {
         }
 

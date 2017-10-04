@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MelloMario.Commands
+﻿namespace MelloMario.Commands
 {
     class HiddenBlockCommand : BaseCommand<IGameObject[,]>
     {
@@ -26,7 +24,9 @@ namespace MelloMario.Commands
                 }
             }
             if (brick != null)
-            brick.State.ChangeToSilent();
+            {
+                brick.State.ChangeToSilent();
+            }
         }
     }
 }
