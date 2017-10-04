@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="BaseClasses\BaseGameObject.cs" />
     <Compile Include="BaseClasses\BaseFactory.cs" />
-    <Compile Include="BaseClasses\BaseBlock.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickBumped.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickDestroyed.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickHidden.cs" />
@@ -87,7 +86,6 @@
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
-    <Compile Include="BaseClasses\BaseItem.cs" />
     <Compile Include="ItemObjects\Coin.cs" />
     <Compile Include="ItemObjects\CoinStates\CoinDefeated.cs" />
     <Compile Include="ItemObjects\CoinStates\CoinNormal.cs" />
@@ -143,7 +141,6 @@
     <Compile Include="Commands\DeadStateCommand.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
     <Compile Include="Sprites\SuperMushroomSprite.cs" />
-    <Compile Include="BaseClasses\BaseEnemy.cs" />
     <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Theming\GameScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />

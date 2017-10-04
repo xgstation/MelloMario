@@ -2,22 +2,24 @@ using System.Collections.Generic;
 
 namespace MelloMario.Controllers
 {
-    abstract class BaseController : IController
+    abstract class BaseController<T> : IController
     {
-        // TODO: use generic type T instead of int?
-        private Dictionary<int, ICommand> commands;
+        private Dictionary<T, ICommand> commands;
 
         public BaseController()
         {
-            commands = new Dictionary<int, ICommand>();
+            commands = new Dictionary<T, ICommand>();
         }
 
-        public void AddCommand(int key, ICommand value)
+        public void AddCommand(object key, ICommand value)
         {
-            commands.Add(key, value);
+            if (key is T)
+            {
+                commands.Add((T)key, value);
+            }
         }
 
-        protected void RunCommand(int key)
+        protected void RunCommand(T key)
         {
             if (commands.ContainsKey(key))
             {

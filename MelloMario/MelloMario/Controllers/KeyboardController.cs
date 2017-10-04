@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace MelloMario.Controllers
 {
-    public class KeyboardController : BaseController
+    class KeyboardController : BaseController<Keys>
     {
         Game game;
         KeyboardState previousKeyboardState;
@@ -29,7 +29,7 @@ namespace MelloMario.Controllers
             foreach (Keys key in keysPressed)
                 if (!previousKeyboardState.IsKeyDown(key))
                 {
-                    RunCommand((int)key);
+                    RunCommand(key);
                 }
 
             // Update previous Keyboard state.
