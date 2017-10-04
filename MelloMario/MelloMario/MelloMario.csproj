@@ -126,6 +126,7 @@
     <Compile Include="MarioObjects\MovementStates\MovementWalking.cs" />
     <Compile Include="MarioObjects\PowerUpStates\PowerUpSuper.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
+    <Compile Include="Sprites\SlicedSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Commands\BrickBlockCommand.cs" />
     <Compile Include="Commands\HiddenBlockCommand.cs" />

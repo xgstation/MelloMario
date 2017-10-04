@@ -9,15 +9,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Sprites
 {
-    class StaticSprite : BaseSprite
+    class SlicedSprite : BaseSprite
     {
         protected override void OnAnimate(GameTime time)
         {
             // Do nothing
         }
 
-        public StaticSprite(Texture2D texture) : base(
-            texture, new Point(), new Point(texture.Width, texture.Height)
+        public SlicedSprite(Texture2D texture, int columns, int rows, int x, int y) : base(
+            texture, new Point(texture.Width * x / columns, texture.Height * y / rows), new Point(texture.Width / columns, texture.Height / rows)
         )
         {
         }

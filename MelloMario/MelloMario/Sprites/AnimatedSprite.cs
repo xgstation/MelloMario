@@ -17,10 +17,10 @@ namespace MelloMario.Sprites
 
         private void updateSourceRectangle()
         {
-            int c = frames % columns;
-            int r = frames / columns;
+            int x = frames % columns;
+            int y = frames / columns;
 
-            ChangeSource(new Point(width * c / columns, height * r / rows));
+            ChangeSource(new Point(width * x / columns, height * y / rows));
         }
 
         protected override void OnAnimate(GameTime time)
@@ -40,7 +40,9 @@ namespace MelloMario.Sprites
             }
         }
 
-        public AnimatedSprite(Texture2D texture, int columns, int rows, double delay = 250) : base(texture, new Point(), new Point(texture.Width / columns, texture.Height / rows))
+        public AnimatedSprite(Texture2D texture, int columns, int rows, double delay = 250) : base(
+            texture, new Point(), new Point(texture.Width / columns, texture.Height / rows)
+        )
         {
             this.columns = columns;
             this.rows = rows;
