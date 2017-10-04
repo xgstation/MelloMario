@@ -10,69 +10,32 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.DirectionStates
 {
-    class FireIdleLeft : IMarioState
+    class DirectionRight : Direction
     {
         Mario mario;
-        ISprite sprite;
-        bool setToStatic;
+       // ISprite sprite;
+        //bool setToStatic;
        
-        public FireIdleLeft(Mario newMario)
+        public DirectionRight(Mario newMario)
         {
             mario = newMario;
-            setToStatic = true;
-            sprite = SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", setToStatic);
+            //setToStatic = true;
+            //sprite = SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", setToStatic);
         }
-        public void Down()
+        public void UpgradeToRightDirection()
         {
-            mario.State = new FireCrouchingLeft(mario);
-        }
-        public void Die()
-        {
-            mario.State = new Dead(mario);
+            
         }
 
-        public void ChangeToFireState()
+        public void UpgradeToLeftDirection()
         {
-        //nothing to do here
+            mario.State = new DirectionLeft(mario);
         }
 
-        public void ChangeToStandardState()
-        {
-            mario.State = new StandardIdleLeft(mario);
-        }
-
-        public void ChangeToSuperState()
-        {
-            mario.State = new SuperIdleLeft(mario);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-         
-            sprite.Draw(spriteBatch,location);
-           
-        }
 
         public void Update(GameTime game)
         {
-            sprite.Update(game);
-        }
-        public void Up()
-        {
-            mario.State = new FireJumpingLeft(mario);
-
-        }
-
-        public void Right()
-        {
-            mario.State = new FireIdleRight(mario);
-            mario.PrevWalking = true;
-        }
-
-        public void Left()
-        {
-            mario.State = new FireWalkingLeft(mario);
-            mario.PrevWalking = true;
+            //sprite.Update(game);
         }
     }
 }

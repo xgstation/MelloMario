@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using MelloMario.MarioObjects.States;
+using MelloMario.MarioObjects.DirectionStates;
 
 namespace MelloMario.MarioObjects
 {
@@ -23,7 +24,7 @@ namespace MelloMario.MarioObjects
         public Mario(Vector2 initLocation)
         {
             location = initLocation;
-            State = new StandardIdleRight(this);
+            State = new DirectionRight(this);
             currentPowerState = PowerState.Standard;
             PrevWalking = false;
         }
