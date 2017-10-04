@@ -1,60 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 
 namespace MelloMario.Sprites
 {
-    class AnimatedSprite : ISprite
+    class AnimatedSprite : BaseSprite
     {
-        public Texture2D texture;
-        Color defaultColor;
-        private int rows;
         private int columns;
+        private int rows;
+        private double delay;
+
+        private int width;
+        private int height;
+
         private int frames;
-        private int totalFrames;
-        private float elapsed;
-        private float delay = 250f;
+        private double elapsed;
 
-        public AnimatedSprite(Texture2D texture, int rows, int columns)
+        private void updateSourceRectangle()
         {
-            this.texture = texture;
-            this.rows = rows;
-            this.columns = columns;
-            frames = 0;
-            totalFrames = rows * columns;
-            defaultColor = Color.White;
+            int c = frames % columns;
+            int r = frames / columns;
 
+            ChangeSource(new Point(width * c / columns, height * r / rows));
         }
 
-        public void Update(GameTime time)
+        protected override void OnAnimate(GameTime time)
         {
-            //do update after moving frame logic
-            elapsed += (float)time.ElapsedGameTime.TotalMilliseconds;
+            elapsed += time.ElapsedGameTime.TotalMilliseconds;
             if (elapsed >= delay)
             {
-                frames++;
-                if (frames == totalFrames)
+                updateSourceRectangle();
+
+                frames += 1;
+                if (frames == rows * columns)
                 {
                     frames = 0;
                 }
-                elapsed = 0;
+
+                elapsed -= delay;
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public AnimatedSprite(Texture2D texture, int columns, int rows, double delay = 250) : base(texture, new Point(), new Point(texture.Width / columns, texture.Height / rows))
         {
-            int Width = texture.Width / columns;
-            int Height = texture.Height / rows;
-            int R = frames / columns;
-            int C = frames % columns;
-            Rectangle Last = new Rectangle((int)location.X, (int)location.Y, Width, Height);
-            Rectangle First = new Rectangle(Width * C, R * Height, Width, Height);
-            spriteBatch.Draw(texture, Last, First, Color.White);
+            this.columns = columns;
+            this.rows = rows;
+            this.delay = delay;
+            frames = 0;
+            elapsed = 0;
         }
     }
 }

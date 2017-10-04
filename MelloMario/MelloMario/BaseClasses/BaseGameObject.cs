@@ -75,9 +75,9 @@ namespace MelloMario
             location.Y += moveY;
         }
 
-        protected void Move(Point newMovement)
+        protected void Move(Point delta)
         {
-            movement += newMovement;
+            movement += delta;
         }
 
         protected void StopMove()
@@ -137,9 +137,9 @@ namespace MelloMario
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(GameTime time, SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Boundary);
+            sprite.Draw(time, spriteBatch, Boundary);
         }
     }
 }
