@@ -1,21 +1,20 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using MelloMario.Controllers;
+using MelloMario.Factories;
 using MelloMario.LevelGen;
-using System.IO;
 
 namespace MelloMario
 {
     /// <summary>
     /// This is the main type for Mello Mario game.
     /// </summary>
-    public class Game1 : Game
+    class Game1 : Game
     {
         GraphicsDeviceManager graphics;
         GameModel model;
-        GameScript script;        
+        GameScript script;
         SpriteBatch spriteBatch;
         LevelReader reader;
         int w, h;
@@ -42,9 +41,9 @@ namespace MelloMario
         {
             base.Initialize();
 
-            
 
-            
+
+
 
             List<IController> controllers = new List<IController>
             {
@@ -69,7 +68,7 @@ namespace MelloMario
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(this.Content);
 
-            model.LoadEntities(w,h);
+            model.LoadEntities(w, h);
         }
 
         /// <summary>
@@ -85,25 +84,25 @@ namespace MelloMario
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
+        /// <param name="time">Provides a snapshot of timing values.</param>
+        protected override void Update(GameTime time)
         {
-            base.Update(gameTime);
+            base.Update(time);
 
-            model.Update(gameTime);
+            model.Update(time);
         }
 
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
+        /// <param name="time">Provides a snapshot of timing values.</param>
+        protected override void Draw(GameTime time)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            base.Draw(gameTime);
+            base.Draw(time);
 
             spriteBatch.Begin();
-            model.Draw(spriteBatch);
+            model.Draw(time, spriteBatch);
             spriteBatch.End();
         }
     }

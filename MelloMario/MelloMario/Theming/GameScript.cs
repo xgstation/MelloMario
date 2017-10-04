@@ -1,17 +1,12 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System.Diagnostics;
+﻿using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using MelloMario.Controllers;
-using MelloMario.Commands;
 using MelloMario.MarioObjects;
 using MelloMario.Factories;
 
 namespace MelloMario
 {
-    public class GameScript
+    class GameScript
     {
         public GameScript()
         {
