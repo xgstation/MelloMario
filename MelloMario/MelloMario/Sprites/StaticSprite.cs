@@ -9,25 +9,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Sprites
 {
-    class StaticSprite : ISprite
+    class StaticSprite : BaseSprite
     {
-        public Texture2D texture { get ; set; }
-        Color default_color;
-
-        public StaticSprite(Texture2D newTexture)
+        protected override void OnAnimate(GameTime time)
         {
-            texture = newTexture;
-            default_color = Color.White;
+            // Do nothing
         }
 
-        public void Update(GameTime time)
+        public StaticSprite(Texture2D texture) : base(texture, new Point(), new Point(texture.Width, texture.Height))
         {
-
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            spriteBatch.Draw(texture,location,default_color);
         }
     }
 }
