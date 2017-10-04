@@ -7,11 +7,11 @@ namespace MelloMario
         ISprite CreateMarioSprite(string status, bool Static);
         ISprite CreateGoombaSprite(string status);
 
-        ISprite CreateStair(string v);
-        ISprite CreateQuestion(string v);
-        ISprite CreateFloor(string v);
-        ISprite CreateBrick(string v);
-        ISprite CreatePipeline();
+        ISprite CreateStairSprite(string v);
+        ISprite CreateQuestionSprite(string v);
+        ISprite CreateFloorSprite(string v);
+        ISprite CreateBrickSprite(string v);
+        ISprite CreatePipelineSprite();
 
         ISprite CreateRedKoopaSprite(string status);
         ISprite CreateGreenKoopaSprite(string status);

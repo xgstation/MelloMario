@@ -18,7 +18,11 @@ namespace MelloMario
             if (rectA.Left == rectB.Right || rectA.Right == rectB.Left || rectA.Top == rectB.Bottom || rectA.Bottom == rectB.Top)
             {
                 OnCollision(target);
-                target.OnCollision(this);
+
+                if (target is BaseGameObject)
+                {
+                    ((BaseGameObject)target).OnCollision(this);
+                }
             }
         }
 
@@ -32,6 +36,9 @@ namespace MelloMario
 
         protected enum ResizeModeX { Left, Center, Right };
         protected enum ResizeModeY { Top, Center, Bottom };
+
+        protected abstract void OnSimulation(GameTime time);
+        protected abstract void OnCollision(IGameObject target);
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
         {
@@ -92,10 +99,10 @@ namespace MelloMario
             }
         }
 
-        public BaseGameObject(Point newLocation, Point newSize)
+        public BaseGameObject(Point location, Point size)
         {
-            this.location = newLocation;
-            this.size = newSize;
+            this.location = location;
+            this.size = size;
             this.movement = new Point();
         }
 
@@ -134,8 +141,5 @@ namespace MelloMario
         {
             sprite.Draw(spriteBatch, Boundary);
         }
-
-        public abstract void OnSimulation(GameTime time);
-        public abstract void OnCollision(IGameObject target);
     }
 }

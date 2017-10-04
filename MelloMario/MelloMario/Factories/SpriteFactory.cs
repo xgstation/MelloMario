@@ -200,7 +200,7 @@ namespace MelloMario.Factories
             return new oneUpshroomSprite(oneUpMushroomSpritesheet);
         }
 
-        public ISprite CreateQuestion(string v)
+        public ISprite CreateQuestionSprite(string v)
         {
             switch (v)
             {
@@ -213,7 +213,7 @@ namespace MelloMario.Factories
             }
         }
 
-        public ISprite CreateBrick(string v)
+        public ISprite CreateBrickSprite(string v)
         {
             switch (v)
             {
@@ -234,7 +234,7 @@ namespace MelloMario.Factories
             }
         }
 
-        public ISprite CreateFloor(string v)
+        public ISprite CreateFloorSprite(string v)
         {
             switch (v)
             {
@@ -245,7 +245,7 @@ namespace MelloMario.Factories
             }
         }
 
-        public ISprite CreateStair(string v)
+        public ISprite CreateStairSprite(string v)
         {
             switch (v)
             {
@@ -255,7 +255,7 @@ namespace MelloMario.Factories
                     throw new Exception("Unknown sprite");
             }
         }
-        public ISprite CreatePipeline()
+        public ISprite CreatePipelineSprite()
         {
             return new BlockSilentSprite(blockSpritesheet, 8, 0, 32, 32);
         }

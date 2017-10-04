@@ -10,8 +10,5 @@ namespace MelloMario
 
         void Update(GameTime time, IList<IGameObject> collidable);
         void Draw(SpriteBatch spriteBatch);
-
-        void OnSimulation(GameTime time);
-        void OnCollision(IGameObject target);
     }
 }

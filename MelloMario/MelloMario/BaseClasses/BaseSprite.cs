@@ -10,14 +10,16 @@ namespace MelloMario.Sprites
         private Point size;
         private Color defaultColor;
 
-        public BaseSprite(Texture2D newTexture, Point newSource, Point newSize)
+        protected abstract void OnAnimate(GameTime time);
+
+        public BaseSprite(Texture2D texture, Point source, Point size)
         {
-            this.texture = newTexture;
-            this.source = newSource;
-            this.size = newSize;
+            this.texture = texture;
+            this.source = source;
+            this.size = size;
         }
 
-        public void Draw(SpriteBatch spriteBatch, Rectangle destination)
+        public void Draw(GameTime time, SpriteBatch spriteBatch, Rectangle destination)
         {
             spriteBatch.Draw(texture, destination, new Rectangle(source, size), defaultColor);
         }

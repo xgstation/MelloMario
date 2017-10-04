@@ -5,6 +5,6 @@ namespace MelloMario
 {
     interface ISprite
     {
-        void Draw(SpriteBatch spriteBatch, Rectangle destination);
+        void Draw(GameTime time, SpriteBatch spriteBatch, Rectangle destination);
     }
 }
