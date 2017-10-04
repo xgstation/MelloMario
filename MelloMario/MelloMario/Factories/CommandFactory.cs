@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MelloMario.Commands;
 using MelloMario.MarioObjects;
 
-namespace MelloMario
+namespace MelloMario.Factories
 {
     class CommandFactory : ICommandFactory
     {

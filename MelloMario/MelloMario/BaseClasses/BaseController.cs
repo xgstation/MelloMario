@@ -1,14 +1,8 @@
-
-using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using MelloMario.Commands;
-using System.Diagnostics;
 
 namespace MelloMario.Controllers
 {
-    public abstract class BaseController : IController
+    abstract class BaseController : IController
     {
         // TODO: use generic type T instead of int?
         private Dictionary<int, ICommand> commands;

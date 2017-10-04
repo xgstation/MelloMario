@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Content;
 using MelloMario.BlockObjects;
 using MelloMario.Sprites.BlockSprites;
 
-namespace MelloMario
+namespace MelloMario.Factories
 {
     class SpriteFactory : ISpriteFactory
     {

@@ -42,7 +42,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BlockObjects\BaseBlock.cs" />
+    <Compile Include="BaseClasses\BaseGameObject.cs" />
+    <Compile Include="BaseClasses\BaseFactory.cs" />
+    <Compile Include="BaseClasses\BaseBlock.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickBumped.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickDestroyed.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickHidden.cs" />
@@ -62,14 +64,14 @@
     <Compile Include="BlockObjects\StairBlock.cs" />
     <Compile Include="BlockObjects\StairStates\StairHidden.cs" />
     <Compile Include="BlockObjects\StairStates\StairSilent.cs" />
-    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="BaseClasses\BaseCommand.cs" />
     <Compile Include="Commands\ActionCommand.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\JumpCommand.cs" />
     <Compile Include="Commands\LeftCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\RightCommand.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="BaseClasses\BaseController.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Factories\CommandFactory.cs" />
     <Compile Include="Factories\SpriteFactory.cs" />
@@ -85,7 +87,7 @@
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
-    <Compile Include="ItemObjects\BaseItem.cs" />
+    <Compile Include="BaseClasses\BaseItem.cs" />
     <Compile Include="ItemObjects\Coin.cs" />
     <Compile Include="ItemObjects\CoinStates\CoinDefeated.cs" />
     <Compile Include="ItemObjects\CoinStates\CoinNormal.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="MarioObjects\PowerUpStates\PowerUpDead.cs" />
     <Compile Include="MarioObjects\PowerUpStates\PowerUpFire.cs" />
     <Compile Include="MarioObjects\PowerUpStates\PowerUpStandard.cs" />
+    <Compile Include="BaseClasses\BaseSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BlockAnimatedSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BlockSilentSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BrickPieceSprite.cs" />
@@ -140,7 +143,7 @@
     <Compile Include="Commands\DeadStateCommand.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
     <Compile Include="Sprites\SuperMushroomSprite.cs" />
-    <Compile Include="EnemyObjects\BaseEnemy.cs" />
+    <Compile Include="BaseClasses\BaseEnemy.cs" />
     <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Theming\GameScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />

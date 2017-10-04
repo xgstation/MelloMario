@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.ItemObjects
 {
-    public abstract class BaseItem : IGameObject
+    abstract class BaseItem : BaseGameObject
     {
         public Vector2 Location { get; set; }
 

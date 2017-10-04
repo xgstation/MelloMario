@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.BlockObjects
+namespace MelloMario
 {
-    public abstract class BaseBlock : IGameObject
+    abstract class BaseGameObject : IGameObject
     {
-        protected Vector2 location;
+        protected Rectangle location;
 
         public BaseBlock(Vector2 location)
         {
