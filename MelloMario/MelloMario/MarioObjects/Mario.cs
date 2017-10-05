@@ -14,9 +14,8 @@ namespace MelloMario.MarioObjects
 
         private void OnStateChanged()
         {
-            //if () {
-               // ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
-            //}
+            // if () ...
+            // ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
         }
 
         protected override void OnSimulation(GameTime time)
@@ -69,9 +68,6 @@ namespace MelloMario.MarioObjects
             directionState = new DirectionRight(this);
             movementState = new Movementldle(this);
             powerUpState = new PowerUpStandard(this);
-            //I am not sure where you wanted the sprite attached, this seems like a logical place
-            ISprite sprite = SpriteFactory.Instance.CreateMarioSprite("StandardIdleRight",true);
-            ShowSprite(sprite);
             OnStateChanged();
         }
 
