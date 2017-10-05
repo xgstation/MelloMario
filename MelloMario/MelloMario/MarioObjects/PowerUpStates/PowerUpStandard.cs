@@ -25,11 +25,11 @@ namespace MelloMario.MarioObjects.PowerUpStates
         }
         public void Kill()
         {
-            this.mario.State = new PowerUpDead(this.mario);
+            this.mario.PowerUpState = new PowerUpDead(this.mario);
         }
         public void UpgradeToFire()
         {
-            this.mario.State = new PowerUpFire(this.mario);
+            this.mario.PowerUpState = new PowerUpFire(this.mario);
         }
         public void Downgrade()
         {
@@ -37,7 +37,7 @@ namespace MelloMario.MarioObjects.PowerUpStates
         }
         public void UpgradeToSuper()
         {
-            this.mario.State = new PowerUpSuper(this.mario);
+            this.mario.PowerUpState = new PowerUpSuper(this.mario);
         }
         public void Update(GameTime time)
         {

@@ -17,7 +17,7 @@ namespace MelloMario.MarioObjects.PowerUpStates
         //bool setToStatic;
 
 
-        public PowerUpFire (Mario newMario)
+        public PowerUpFire(Mario newMario)
         {
             mario = newMario;
             //setToStatic = true;
@@ -25,20 +25,20 @@ namespace MelloMario.MarioObjects.PowerUpStates
         }
         public void Kill()
         {
-            this.mario.State = new PowerUpDead(this.mario);
+            this.mario.PowerUpState = new PowerUpDead(this.mario);
         }
         public void UpgradeToFire()
         {
 
         }
-       public void Downgrade()
+        public void Downgrade()
         {
-            this.mario.State = new PowerUpStandard(this.mario);
+            this.mario.PowerUpState = new PowerUpStandard(this.mario);
 
         }
         public void UpgradeToSuper()
         {
-            this.mario.State = new PowerUpSuper(this.mario);
+            this.mario.PowerUpState = new PowerUpSuper(this.mario);
         }
         public void Update(GameTime time)
         {

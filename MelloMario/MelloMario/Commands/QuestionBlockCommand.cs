@@ -12,7 +12,7 @@ namespace MelloMario.Commands
         {
             // temporary code for demo in sprint 1
             MarioObjects.Mario mario = null;
-            BlockObjects.QuestionBlock question = null;
+            BlockObjects.Question question = null;
 
             foreach (IGameObject obj in Receiver)
             {
@@ -20,9 +20,9 @@ namespace MelloMario.Commands
                 {
                     mario = (MarioObjects.Mario)obj;
                 }
-                if (obj is BlockObjects.QuestionBlock)
+                if (obj is BlockObjects.Question)
                 {
-                    question = (BlockObjects.QuestionBlock)obj;
+                    question = (BlockObjects.Question)obj;
                 }
             }
             question.State.Bump();

@@ -23,19 +23,19 @@ namespace MelloMario.MarioObjects.MovementStates
         }
         public void Crouch()
         {
-            this.mario.State = new MovementCrouching(this.mario);
+            this.mario.MovementState = new MovementCrouching(this.mario);
         }
         public void Idle()
         {
-            this.mario.State = new Movementldle(this.mario);
+            this.mario.MovementState = new Movementldle(this.mario);
         }
         public void Jump()
         {
-            this.mario.State = new MovementJumping(this.mario);
+            this.mario.MovementState = new MovementJumping(this.mario);
         }
         public void Walk()
         {
-           
+
         }
 
         public void Update(GameTime time)

@@ -24,15 +24,15 @@ namespace MelloMario.MarioObjects.PowerUpStates
         }
         public void Kill()
         {
-            this.mario.State = new PowerUpDead(this.mario);
+            this.mario.PowerUpState = new PowerUpDead(this.mario);
         }
         public void UpgradeToFire()
         {
-            this.mario.State = new PowerUpFire(this.mario);
+            this.mario.PowerUpState = new PowerUpFire(this.mario);
         }
         public void Downgrade()
         {
-            this.mario.State = new PowerUpStandard(this.mario);
+            this.mario.PowerUpState = new PowerUpStandard(this.mario);
         }
         public void UpgradeToSuper()
         {

@@ -14,7 +14,7 @@ namespace MelloMario.MarioObjects.MovementStates
     {
         Mario mario;
         //bool setToStatic;
-       // ISprite sprite;
+        // ISprite sprite;
         public Movementldle(Mario mario)
         {
             this.mario = mario;
@@ -24,19 +24,19 @@ namespace MelloMario.MarioObjects.MovementStates
         }
         public void Crouch()
         {
-            this.mario.State = new MovementCrouching(this.mario);
+            this.mario.MovementState = new MovementCrouching(this.mario);
         }
         public void Idle()
         {
-            
+
         }
         public void Jump()
         {
-            this.mario.State = new MovementJumping(this.mario);
+            this.mario.MovementState = new MovementJumping(this.mario);
         }
         public void Walk()
         {
-            this.mario.State = new MovementWalking(this.mario);
+            this.mario.MovementState = new MovementWalking(this.mario);
         }
 
         public void Update(GameTime time)

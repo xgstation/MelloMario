@@ -10,7 +10,8 @@ namespace MelloMario.Commands
 
         public override void Execute()
         {
-            Receiver.ChangeToStandardState();
+            // TODO: this command should be replaced by MarioHurtCommand
+            Receiver.Downgrade();
         }
     }
 }
