@@ -19,27 +19,27 @@ namespace MelloMario.BlockObjects.FloorStates
             sprite = SpriteFactory.Instance.CreateFloor("Silent");
         }
 
-        public void ChangeToSilent()
+        public void Show()
         {
             //do nothing
         }
 
-        public void ChangeToDestroyed()
+        public void Destroy()
         {
             //cant destroy stair blocks
         }
 
-        public void ChangeToHidden()
+        public void Hide()
         {
             block.State = new FloorHidden(block);
         }
 
-        public void ChangeToUsed()
+        public void UseUp()
         {
             //stairs cant be used
         }
 
-        public void ChangeToBumped()
+        public void Bump()
         {
             //do nothing
         }
@@ -49,7 +49,7 @@ namespace MelloMario.BlockObjects.FloorStates
             sprite.Draw(spriteBatch, location);
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
         }

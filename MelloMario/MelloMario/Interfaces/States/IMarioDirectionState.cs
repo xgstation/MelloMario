@@ -2,10 +2,10 @@
 
 namespace MelloMario
 {
-    interface IGoombaState
+    interface IMarioDirectionState
     {
-        void ChangeToNormal();
-        void ChangeToDefeated();
+        void TurnRight();
+        void TurnLeft();
 
         void Update(GameTime time);
     }

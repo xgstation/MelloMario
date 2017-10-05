@@ -20,15 +20,15 @@ namespace MelloMario.ItemObjects
 
         public void TransNormal()
         {
-            State.ChangeToNormal();
+            State.Show();
         }
 
         public void TransDefeated()
         {
-            State.ChangeToDefeated();
+            State.Collect();
         }
 
-        public override void Update(GameTime time)
+        public override void Update(GameTime timeTime)
         {
             State.Update(gameTime);
         }

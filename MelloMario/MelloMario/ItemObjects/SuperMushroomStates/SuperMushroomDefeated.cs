@@ -17,15 +17,15 @@ namespace MelloMario.ItemObjects.SuperMushroomStates
             mushroomItem = mushroomItem1;
         }
 
-        public void ChangeToNormal()
+        public void Show()
         {
             mushroomItem.State = new SuperMushroomNormal(mushroomItem);
         }
-        public void ChangeToDefeated()
+        public void Collect()
         {
 
         }
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
 
         }

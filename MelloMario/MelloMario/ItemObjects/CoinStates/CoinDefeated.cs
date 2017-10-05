@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.CoinStates
 {
-    class CoinDefeatedState : IItemState
+    class CoinDefeated : IItemState
     {
         private Coin coinItem;
-        public CoinDefeatedState(Coin coin1)
+        public CoinDefeated(Coin coin1)
         {
 
             coinItem = coin1;
 
         }
 
-        public void ChangeToNormal()
+        public void Show()
         {
             coinItem.State = new CoinNormal(coinItem);
         }
 
-        public void ChangeToDefeated()
+        public void Collect()
         {
 
         }
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
         }
 

@@ -21,19 +21,19 @@ namespace MelloMario.MarioObjects.MovementStates
             //sprite = SpriteFactory.Instance.CreateMarioSprite("FireCrouchingLeft", setToStatic);
 
         }
-        public void UpgradeToMovementCrouching()
+        public void Crouch()
         {
             this.mario.State = new MovementCrouching(this.mario);
         }
-        public void UpgradeToMovementldle()
+        public void Idle()
         {
             this.mario.State = new Movementldle(this.mario);
         }
-        public void UpgradeToMovementJumping()
+        public void Jump()
         {
             
         }
-        public void UpgradeToMovementWalking()
+        public void Walk()
         {
             this.mario.State = new MovementWalking(this.mario);
         }

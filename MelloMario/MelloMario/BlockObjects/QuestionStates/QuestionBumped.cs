@@ -22,39 +22,39 @@ namespace MelloMario.BlockObjects.QuestionStates
             sprite = SpriteFactory.Instance.CreateQuestion("Silent");
         }
 
-        public void ChangeToSilent()
+        public void Show()
         {
             block.State = new QuestionSilent(block);
         }
 
-        public void ChangeToHidden()
+        public void Hide()
         {
             block.State = new QuestionHidden(block);
         }
 
-        public void ChangeToUsed()
+        public void UseUp()
         {
             block.State = new QuestionUsed(block);
         }
 
-        public void ChangeToBumped()
+        public void Bump()
         {
             // Do nothing
         }
 
-        public void ChangeToDestroyed()
+        public void Destroy()
         {
             // Do nothing
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             elapsed += ((float)gameTime.ElapsedGameTime.Milliseconds) / 20;
             offset = 0.5f * accelerationY * (float)Math.Pow(elapsed, 2.0f) + speedY * elapsed;
 
             if (offset >= 0)
             {
-                ChangeToUsed();
+                UseUp();
             }
         }
 

@@ -25,7 +25,7 @@ namespace MelloMario.Commands
                     question = (BlockObjects.QuestionBlock)obj;
                 }
             }
-            question.State.ChangeToBumped();
+            question.State.Bump();
         }
     }
 }

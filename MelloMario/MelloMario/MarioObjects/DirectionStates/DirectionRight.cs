@@ -22,12 +22,12 @@ namespace MelloMario.MarioObjects.DirectionStates
             //setToStatic = true;
             //sprite = SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", setToStatic);
         }
-        public void UpgradeToRightDirection()
+        public void TurnRight()
         {
             
         }
 
-        public void UpgradeToLeftDirection()
+        public void TurnLeft()
         {
             mario.State = new DirectionLeft(mario);
         }

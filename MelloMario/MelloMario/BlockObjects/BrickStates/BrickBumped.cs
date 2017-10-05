@@ -22,39 +22,39 @@ namespace MelloMario.BlockObjects.BrickStates
             sprite = SpriteFactory.Instance.CreateBrick("Silent");
         }
 
-        public void ChangeToSilent()
+        public void Show()
         {
             block.State = new BrickSilent(block);
         }
 
-        public void ChangeToHidden()
+        public void Hide()
         {
             block.State = new BrickHidden(block);
         }
 
-        public void ChangeToUsed()
+        public void UseUp()
         {
             block.State = new BrickUsed(block);
         }
 
-        public void ChangeToBumped()
+        public void Bump()
         {
             // Do nothing
         }
 
-        public void ChangeToDestroyed()
+        public void Destroy()
         {
             block.State = new BrickDestroyed(block);
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             elapsed += ((float)gameTime.ElapsedGameTime.Milliseconds) / 20;
             offset = 0.5f * accelerationY * (float)Math.Pow(elapsed,2.0f) + speedY * elapsed;
             
             if (offset >= 0)
             {
-                ChangeToSilent();
+                Show();
             }
         }
 

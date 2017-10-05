@@ -17,16 +17,16 @@ namespace MelloMario.ItemObjects.FireFlowerStates
             flowerItem = flower1;
 
         }
-        public void ChangeToNormal()
+        public void Show()
         {
             flowerItem.State = new FireFlowerNormal(flowerItem);
         }
-        public void ChangeToDefeated()
+        public void Collect()
         {
 
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
 
         }

@@ -19,27 +19,27 @@ namespace MelloMario.BlockObjects.QuestionStates
             sprite = SpriteFactory.Instance.CreateQuestion("Silent");
         }
 
-        public void ChangeToSilent()
+        public void Show()
         {
             //do nothing
         }
 
-        public void ChangeToDestroyed()
+        public void Destroy()
         {
             //question blocks cant be destroyed
         }
 
-        public void ChangeToHidden()
+        public void Hide()
         {
             block.State = new QuestionHidden(block);
         }
 
-        public void ChangeToUsed()
+        public void UseUp()
         {
             block.State = new QuestionUsed(block);
         }
 
-        public void ChangeToBumped()
+        public void Bump()
         {
             block.State = new QuestionBumped(block);
         }
@@ -49,7 +49,7 @@ namespace MelloMario.BlockObjects.QuestionStates
             sprite.Draw(spriteBatch, location);
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
         }

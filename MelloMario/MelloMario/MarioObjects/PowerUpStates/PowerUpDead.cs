@@ -23,19 +23,19 @@ namespace MelloMario.MarioObjects.PowerUpStates
             //setToStatic = true;
             //sprite = SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", setToStatic);
         }
-        public void UpgradeToPowerUpDead()
+        public void Kill()
         {
          
         }
-        public void UpgradeToPowerUpFire()
+        public void UpgradeToFire()
         {
 
         }
-       public  void UpgradeToPowerUpStandard()
+       public  void Downgrade()
         {
 
         }
-        public void UpgradeToPowerUpSuper()
+        public void UpgradeToSuper()
         {
 
         }

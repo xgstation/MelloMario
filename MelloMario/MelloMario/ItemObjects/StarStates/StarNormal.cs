@@ -9,25 +9,25 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.StarStates
 {
-    class StarNormalState : IItemState
+    class StarNormal : IItemState
     {
         private ISprite star;
         private Star starItem;
-        public StarNormalState(Star star1)
+        public StarNormal(Star star1)
         {
             starItem = star1;
             star = SpriteFactory.Instance.CreateStarSprite();
         }
-        public void ChangeToNormal()
+        public void Show()
         {
 
         }
-        public void ChangeToDefeated()
+        public void Collect()
         {
             starItem.State = new StarDefeated(starItem);
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             star.Update(gameTime);
         }

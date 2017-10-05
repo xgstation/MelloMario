@@ -38,7 +38,7 @@ namespace MelloMario
             objects[0, 0] = mario;
             //temporary hard coded blocks
             BrickBlock blockHidden = new BrickBlock(new Vector2(300, 200));
-            blockHidden.State.ChangeToHidden();
+            blockHidden.State.Hide();
             objects[1, 0] = (blockHidden);
             objects[2, 0] = (new BrickBlock(new Vector2(100, 200)));
             objects[3, 0] = (new QuestionBlock(new Vector2(150, 200)));

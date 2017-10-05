@@ -19,16 +19,16 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
             mushroomItem = mushroomItem1;
             mushroom = SpriteFactory.Instance.CreateOneUpMushroomSprite();
         }
-        public void ChangeToNormal()
+        public void Show()
         {
 
         }
 
-        public void ChangeToDefeated()
+        public void Collect()
         {
             mushroomItem.State = new OneUpMushroomDefeated(mushroomItem);
         }
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             mushroom.Update(gameTime);
         }

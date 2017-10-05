@@ -2,10 +2,10 @@
 
 namespace MelloMario
 {
-    interface IItemState
+    interface IGoombaState
     {
-        void ChangeToNormal();
-        void ChangeToDefeated();
+        void Show();
+        void Defeat();
 
         void Update(GameTime time);
     }

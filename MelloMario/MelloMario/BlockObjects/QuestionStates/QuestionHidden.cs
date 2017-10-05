@@ -18,27 +18,27 @@ namespace MelloMario.BlockObjects.QuestionStates
             this.block = block;
         }
 
-        public void ChangeToSilent()
+        public void Show()
         {
             block.State = new QuestionSilent(block);
         }
 
-        public void ChangeToDestroyed()
+        public void Destroy()
         {
             //question blocks cant be destroyed
         }
 
-        public void ChangeToHidden()
+        public void Hide()
         {
             //do nothing
         }
 
-        public void ChangeToUsed()
+        public void UseUp()
         {
             block.State = new QuestionUsed(block);
         }
 
-        public void ChangeToBumped()
+        public void Bump()
         {
             //do nothing
         }
@@ -48,7 +48,7 @@ namespace MelloMario.BlockObjects.QuestionStates
             //do nothing
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             //do nothing
         }

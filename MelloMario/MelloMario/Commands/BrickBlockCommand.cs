@@ -35,11 +35,11 @@ namespace MelloMario.Commands
                     mario.State is MarioObjects.States.StandardWalkingRight ||
                     mario.State is MarioObjects.States.Dead)
                 {
-                    brick.State.ChangeToBumped();
+                    brick.State.Bump();
                 }
                 else
                 {
-                    brick.State.ChangeToDestroyed();
+                    brick.State.Destroy();
                 }
             }
         }

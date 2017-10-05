@@ -17,27 +17,27 @@ namespace MelloMario.BlockObjects.StairStates
             this.block = block;
         }
 
-        public void ChangeToSilent()
+        public void Show()
         {
             block.State = new StairSilent(block);
         }
 
-        public void ChangeToDestroyed()
+        public void Destroy()
         {
             //cant destroy stair blocks
         }
 
-        public void ChangeToHidden()
+        public void Hide()
         {
             //do nothing
         }
 
-        public void ChangeToUsed()
+        public void UseUp()
         {
             //stairs cant be used
         }
 
-        public void ChangeToBumped()
+        public void Bump()
         {
             //do nothing
         }
@@ -47,7 +47,7 @@ namespace MelloMario.BlockObjects.StairStates
             //do nothing
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             //do nothing
         }

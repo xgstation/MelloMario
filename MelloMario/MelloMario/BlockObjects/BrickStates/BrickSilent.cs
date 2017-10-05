@@ -19,27 +19,27 @@ namespace MelloMario.BlockObjects.BrickStates
             sprite = SpriteFactory.Instance.CreateBrick("Silent");
         }
 
-        public void ChangeToSilent()
+        public void Show()
         {
             //do nothing
         }
 
-        public void ChangeToDestroyed()
+        public void Destroy()
         {
             block.State = new BrickDestroyed(block);
         }
 
-        public void ChangeToHidden()
+        public void Hide()
         {
             block.State = new BrickHidden(block);
         }
 
-        public void ChangeToUsed()
+        public void UseUp()
         {
             block.State = new BrickUsed(block);
         }
 
-        public void ChangeToBumped()
+        public void Bump()
         {
             block.State = new BrickBumped(block);
         }
@@ -49,7 +49,7 @@ namespace MelloMario.BlockObjects.BrickStates
             sprite.Draw(spriteBatch, location);
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
         }

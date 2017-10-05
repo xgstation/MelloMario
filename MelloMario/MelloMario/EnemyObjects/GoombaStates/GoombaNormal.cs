@@ -19,17 +19,17 @@ namespace MelloMario.EnemyObjects.GoombaStates
             goomba = SpriteFactory.Instance.CreateGoombaSprite("Normal");
         }
 
-        public void ChangeToNormal()
+        public void Show()
         {
            
         }
 
-        public void ChangeToDefeated()
+        public void Defeat()
         {
             enemyGoomba.State = new GoombaDefeated(enemyGoomba);
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             goomba.Update(gameTime);
         }

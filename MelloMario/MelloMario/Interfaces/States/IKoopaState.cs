@@ -4,9 +4,9 @@ namespace MelloMario
 {
     interface IKoopaState
     {
-        void ChangeToNormal();
-        void ChangeToJumpOn();
-        void ChangeToDefeated();
+        void Show();
+        void JumpOn();
+        void Defeat();
 
         void Update(GameTime time);
     }

@@ -20,12 +20,12 @@ namespace MelloMario.ItemObjects.FireFlowerStates
             flowerItem = newFlower;
             flower = SpriteFactory.Instance.CreateFlowerSprite();
         }
-        public void ChangeToDefeated()
+        public void Collect()
         {
             flowerItem.State = new FireFlowerDefeated(flowerItem);
         }
 
-        public void ChangeToNormal()
+        public void Show()
         {
             flowerItem.State = new FireFlowerNormal(flowerItem);
         }
@@ -36,14 +36,14 @@ namespace MelloMario.ItemObjects.FireFlowerStates
             flower.Draw(spriteBatch, origin);
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             elapsed += ((float)gameTime.ElapsedGameTime.Milliseconds) / 40;
             offset =  1f * elapsed;
             if (offset >= 32f)
             {
                 flowerItem.Location = origin;
-                ChangeToNormal();
+                Show();
             }
         }
     }

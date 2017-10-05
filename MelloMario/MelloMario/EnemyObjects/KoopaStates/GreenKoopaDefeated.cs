@@ -18,22 +18,22 @@ namespace MelloMario.EnemyObjects.KoopaStates
             enemyGreenKoopa = koopaGreen;
             greenKoopa = SpriteFactory.Instance.CreateGreenKoopaSprite("Defeated");
         }
-        public void ChangeToNormal()
+        public void Show()
         {
             enemyGreenKoopa.State = new GreenKoopaNormal(enemyGreenKoopa);
         }
 
-        public void ChangeToJumpOn()
+        public void JumpOn()
         {
             enemyGreenKoopa.State = new GreenKoopaJumpOn(enemyGreenKoopa);
         }
 
-        public void ChangeToDefeated()
+        public void Defeat()
         {
 
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             greenKoopa.Update(gameTime);
         }

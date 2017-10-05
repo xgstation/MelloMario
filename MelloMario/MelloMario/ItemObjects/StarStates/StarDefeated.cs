@@ -18,15 +18,15 @@ namespace MelloMario.ItemObjects.StarStates
             starItem = star1;
 
         }
-        public void ChangeToNormal()
+        public void Show()
         {
-            starItem.State = new StarNormalState(starItem);
+            starItem.State = new StarNormal(starItem);
         }
-        public void ChangeToDefeated()
+        public void Collect()
         {
 
         }
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
 
         }

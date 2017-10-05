@@ -17,27 +17,27 @@ namespace MelloMario.BlockObjects.BrickStates
             this.block = block;
         }
 
-        public void ChangeToSilent()
+        public void Show()
         {
             block.State = new BrickSilent(block);
         }
 
-        public void ChangeToDestroyed()
+        public void Destroy()
         {
             block.State = new BrickDestroyed(block);
         }
 
-        public void ChangeToHidden()
+        public void Hide()
         {
             //do nothing
         }
 
-        public void ChangeToUsed()
+        public void UseUp()
         {
             block.State = new BrickUsed(block);
         }
 
-        public void ChangeToBumped()
+        public void Bump()
         {
             block.State = new BrickBumped(block);
         }
@@ -47,7 +47,7 @@ namespace MelloMario.BlockObjects.BrickStates
             //do nothing
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             //do nothing
         }

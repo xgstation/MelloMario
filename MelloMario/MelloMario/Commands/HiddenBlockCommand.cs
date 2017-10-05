@@ -25,7 +25,7 @@
             }
             if (brick != null)
             {
-                brick.State.ChangeToSilent();
+                brick.State.Show();
             }
         }
     }

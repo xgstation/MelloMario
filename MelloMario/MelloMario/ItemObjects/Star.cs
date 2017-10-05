@@ -15,19 +15,19 @@ namespace MelloMario.ItemObjects
 
         public Star(Vector2 initLocation) : base(initLocation)
         {
-            State = new StarNormalState(this);
+            State = new StarNormal(this);
         }
 
         public void TransNormal()
         {
-            State.ChangeToNormal();
+            State.Show();
         }
         public void TransDefeated()
         {
-            State.ChangeToDefeated();
+            State.Collect();
         }
 
-        public override void Update(GameTime time)
+        public override void Update(GameTime gameTime)
         {
             State.Update(gameTime);
         }

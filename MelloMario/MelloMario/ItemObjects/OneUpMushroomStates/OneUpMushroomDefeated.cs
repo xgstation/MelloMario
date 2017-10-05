@@ -15,15 +15,15 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
         {
             mushroomItem = mushroomItem1;
         }
-        public void ChangeToNormal()
+        public void Show()
         {
             mushroomItem.State = new OneUpMushroomNormal(mushroomItem);
         }
-        public void ChangeToDefeated()
+        public void Collect()
         {
 
         }
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
 
         }

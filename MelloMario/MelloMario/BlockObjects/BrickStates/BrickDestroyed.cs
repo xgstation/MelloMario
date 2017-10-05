@@ -24,39 +24,40 @@ namespace MelloMario.BlockObjects.BrickStates
             };
         }
 
-        public void ChangeToSilent()
+        public void Show()
         {
             block.State = new BrickSilent(block);
         }
 
-        public void ChangeToDestroyed()
+        public void Destroy()
         {
             //do nothing
         }
 
-        public void ChangeToHidden()
+        public void Hide()
         {
             block.State = new BrickHidden(block);
         }
 
-        public void ChangeToUsed()
+        public void UseUp()
         {
             block.State = new BrickUsed(block);
         }
 
-        public void ChangeToBumped()
+        public void Bump()
         {
             block.State = new BrickBumped(block);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            foreach (ISprite sprite in sprites) {
+            foreach (ISprite sprite in sprites)
+            {
                 sprite.Draw(spriteBatch, location);
             }
         }
 
-        public void Update(GameTime time)
+        public void Update(GameTime gameTime)
         {
             foreach (ISprite sprite in sprites)
             {

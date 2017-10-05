@@ -20,18 +20,18 @@ namespace MelloMario.EnemyObjects
 
         public void ChangeToNormal()
         {
-            State.ChangeToNormal();
+            State.Show();
         }
         public void ChangeToJumpedOn()
         {
-            State.ChangeToJumpOn();
+            State.JumpOn();
         }
         public void ChangeToDefeated()
         {
-            State.ChangeToDefeated();
+            State.Defeat();
         }
 
-        public override void Update(GameTime time)
+        public override void Update(GameTime gameTime)
         {
             State.Update(gameTime);
         }
