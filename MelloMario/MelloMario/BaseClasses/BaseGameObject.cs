@@ -86,18 +86,18 @@ namespace MelloMario
             movement.Y = 0;
         }
 
-        protected void Show(ISprite sprite)
+        protected void ShowSprite(ISprite sprite)
         {
             this.sprite = sprite;
         }
 
-        protected void ShowResized(ISprite sprite, ResizeModeX modeX, ResizeModeY modeY)
+        protected void ShowSprite(ISprite sprite, ResizeModeX modeX, ResizeModeY modeY)
         {
-            Show(sprite);
+            ShowSprite(sprite);
             Resize(sprite.PixelSize, modeX, modeY);
         }
 
-        protected void Hide()
+        protected void HideSprite()
         {
             sprite = null;
         }

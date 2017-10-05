@@ -15,7 +15,7 @@ namespace MelloMario.MarioObjects
         private void OnStateChanged()
         {
             // if () ...
-            // ShowResized(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
+            // ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
         }
 
         protected override void OnSimulation(GameTime time)
