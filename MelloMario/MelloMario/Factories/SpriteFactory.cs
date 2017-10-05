@@ -181,7 +181,7 @@ namespace MelloMario.Factories
                 case "Used":
                     return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
                 case "Normal":
-                    return new AnimatedSprite(questionSpriteSheet, 1, 3);
+                    return new AnimatedSprite(questionSpriteSheet, 3, 1);
                 default:
                     throw new Exception("Unknown sprite");
             }
