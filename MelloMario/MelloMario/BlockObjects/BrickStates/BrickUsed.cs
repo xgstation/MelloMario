@@ -45,12 +45,7 @@ namespace MelloMario.BlockObjects.BrickStates
             block.State = new BrickBumped(block);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            sprite.Draw(spriteBatch, location);
-        }
-
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             sprite.Update(gameTime);
         }

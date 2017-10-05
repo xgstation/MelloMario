@@ -38,7 +38,7 @@ namespace MelloMario.MarioObjects.MovementStates
            
         }
 
-        public void Update(GameTime game)
+        public void Update(GameTime time)
         {
             //sprite.Update(game);
         }

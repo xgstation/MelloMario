@@ -33,7 +33,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             greenKoopa.Update(gameTime);
         }

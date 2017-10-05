@@ -39,7 +39,7 @@ namespace MelloMario.MarioObjects.PowerUpStates
         {
 
         }
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
 
         }

@@ -27,7 +27,7 @@ namespace MelloMario.EnemyObjects.GoombaStates
         {
             
         }
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
          
         }

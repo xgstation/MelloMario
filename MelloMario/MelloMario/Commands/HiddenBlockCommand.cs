@@ -10,7 +10,7 @@
         {
             // temporary code for demo in sprint 1
             MarioObjects.Mario mario = null;
-            BlockObjects.BrickBlock brick = null;
+            BlockObjects.Brick brick = null;
 
             foreach (IGameObject obj in Receiver)
             {
@@ -18,9 +18,9 @@
                 {
                     mario = (MarioObjects.Mario)obj;
                 }
-                if (obj is BlockObjects.BrickBlock && ((BlockObjects.BrickBlock)obj).State is BlockObjects.BrickStates.BrickHidden)
+                if (obj is BlockObjects.Brick && ((BlockObjects.Brick)obj).State is BlockObjects.BrickStates.BrickHidden)
                 {
-                    brick = (BlockObjects.BrickBlock)obj;
+                    brick = (BlockObjects.Brick)obj;
                 }
             }
             if (brick != null)

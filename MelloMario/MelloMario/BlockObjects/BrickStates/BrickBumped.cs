@@ -48,21 +48,15 @@ namespace MelloMario.BlockObjects.BrickStates
             block.State = new BrickDestroyed(block);
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             elapsed += ((float)gameTime.ElapsedGameTime.Milliseconds) / 20;
-            offset = 0.5f * accelerationY * (float)Math.Pow(elapsed,2.0f) + speedY * elapsed;
-            
+            offset = 0.5f * accelerationY * (float)Math.Pow(elapsed, 2.0f) + speedY * elapsed;
+
             if (offset >= 0)
             {
                 Show();
             }
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            Vector2 p = new Vector2(location.X, location.Y + offset);
-            sprite.Draw(spriteBatch, p);
         }
     }
 }

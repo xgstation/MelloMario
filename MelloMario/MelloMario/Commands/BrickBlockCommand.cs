@@ -12,7 +12,7 @@ namespace MelloMario.Commands
         {
             // temporary code for demo in sprint 1
             MarioObjects.Mario mario = null;
-            BlockObjects.BrickBlock brick = null;
+            BlockObjects.Brick brick = null;
 
             foreach (IGameObject obj in Receiver)
             {
@@ -20,14 +20,14 @@ namespace MelloMario.Commands
                 {
                     mario = (MarioObjects.Mario)obj;
                 }
-                if (obj is BlockObjects.BrickBlock && ((BlockObjects.BrickBlock)obj).State is BlockObjects.BrickStates.BrickNormal)
+                if (obj is BlockObjects.Brick && ((BlockObjects.Brick)obj).State is BlockObjects.BrickStates.BrickNormal)
                 {
-                    brick = (BlockObjects.BrickBlock)obj;
+                    brick = (BlockObjects.Brick)obj;
                 }
             }
             if (brick != null)
             {
-                if (mario.State is MarioObjects.States.StandardIdleLeft ||
+                /* if (mario.State is MarioObjects.States.StandardIdleLeft ||
                     mario.State is MarioObjects.States.StandardIdleRight ||
                     mario.State is MarioObjects.States.StandardJumpingLeft ||
                     mario.State is MarioObjects.States.StandardJumpingRight ||
@@ -37,7 +37,7 @@ namespace MelloMario.Commands
                 {
                     brick.State.Bump();
                 }
-                else
+                else*/
                 {
                     brick.State.Destroy();
                 }

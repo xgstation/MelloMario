@@ -29,7 +29,7 @@ namespace MelloMario.MarioObjects.DirectionStates
 
         }
 
-        public void Update(GameTime game)
+        public void Update(GameTime time)
         {
         }
     }

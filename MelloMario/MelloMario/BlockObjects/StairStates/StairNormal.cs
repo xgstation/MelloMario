@@ -50,7 +50,7 @@ namespace MelloMario.BlockObjects.StairStates
             sprite.Draw(spriteBatch, location);
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             sprite.Update(gameTime);
         }

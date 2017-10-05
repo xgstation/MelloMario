@@ -47,7 +47,7 @@ namespace MelloMario.BlockObjects.FloorStates
             //do nothing
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             //do nothing
         }

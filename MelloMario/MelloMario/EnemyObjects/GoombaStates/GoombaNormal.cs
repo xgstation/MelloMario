@@ -29,7 +29,7 @@ namespace MelloMario.EnemyObjects.GoombaStates
             enemyGoomba.State = new GoombaDefeated(enemyGoomba);
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             goomba.Update(gameTime);
         }

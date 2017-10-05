@@ -36,7 +36,7 @@ namespace MelloMario.ItemObjects.FireFlowerStates
             flower.Draw(spriteBatch, origin);
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             elapsed += ((float)gameTime.ElapsedGameTime.Milliseconds) / 40;
             offset =  1f * elapsed;

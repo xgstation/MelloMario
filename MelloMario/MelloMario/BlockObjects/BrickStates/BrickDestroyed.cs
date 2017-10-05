@@ -54,16 +54,12 @@ namespace MelloMario.BlockObjects.BrickStates
         {
             foreach (ISprite sprite in sprites)
             {
-                sprite.Draw(spriteBatch, location);
+                // sprite.Draw(spriteBatch, location);
             }
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
-            foreach (ISprite sprite in sprites)
-            {
-                sprite.Update(gameTime);
-            }
         }
     }
 }

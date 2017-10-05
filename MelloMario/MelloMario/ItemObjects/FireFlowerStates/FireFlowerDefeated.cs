@@ -26,7 +26,7 @@ namespace MelloMario.ItemObjects.FireFlowerStates
 
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
 
         }
