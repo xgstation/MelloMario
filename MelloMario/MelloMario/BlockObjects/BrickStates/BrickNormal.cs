@@ -5,18 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
     class BrickNormal : IBlockState
     {
-        private BrickBlock block;
+        private Brick block;
         private ISprite sprite;
 
-        public BrickNormal(BrickBlock block)
+        public BrickNormal(Brick block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateBrick("Normal");
+            sprite = SpriteFactory.Instance.CreateBrickSprite("Normal");
         }
 
         public void Show()

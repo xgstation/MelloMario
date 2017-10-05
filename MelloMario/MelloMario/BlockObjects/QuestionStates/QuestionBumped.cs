@@ -5,21 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
     class QuestionBumped : IBlockState
     {
-        private QuestionBlock block;
+        private Question block;
         private ISprite sprite;
         private float elapsed;
         private float speedY = -7f;
         private float accelerationY = 1.5f;
         private float offset;
-        public QuestionBumped(QuestionBlock questionBlock)
+        public QuestionBumped(Question questionBlock)
         {
             block = questionBlock;
-            sprite = SpriteFactory.Instance.CreateQuestion("Normal");
+            sprite = SpriteFactory.Instance.CreateQuestionSprite("Normal");
         }
 
         public void Show()

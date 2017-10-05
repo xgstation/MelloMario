@@ -5,18 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario.BlockObjects.PipelineStates
 {
     class PipelineNormal : IBlockState
     {
-        private PipelineBlock block;
+        private Pipeline block;
         private ISprite sprite;
 
-        public PipelineNormal(PipelineBlock block)
+        public PipelineNormal(Pipeline block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreatePipeline();
+            sprite = SpriteFactory.Instance.CreatePipelineSprite();
         }
 
         public void Bump()

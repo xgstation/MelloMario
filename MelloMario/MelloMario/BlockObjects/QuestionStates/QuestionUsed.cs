@@ -5,18 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
     class QuestionUsed : IBlockState
     {
-        private QuestionBlock block;
+        private Question block;
         private ISprite sprite;
 
-        public QuestionUsed(QuestionBlock block)
+        public QuestionUsed(Question block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateQuestion("Used");
+            sprite = SpriteFactory.Instance.CreateQuestionSprite("Used");
         }
 
         public void Show()

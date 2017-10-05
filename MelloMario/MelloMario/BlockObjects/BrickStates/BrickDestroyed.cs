@@ -5,22 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
     class BrickDestroyed : IBlockState
     {
-        private BrickBlock block;
+        private Brick block;
         private ISprite[] sprites;
 
-        public BrickDestroyed(BrickBlock block)
+        public BrickDestroyed(Brick block)
         {
             this.block = block;
             sprites = new ISprite[4] {
-                SpriteFactory.Instance.CreateBrick("DestroyedLT"),
-                SpriteFactory.Instance.CreateBrick("DestroyedLB"),
-                SpriteFactory.Instance.CreateBrick("DestroyedRT"),
-                SpriteFactory.Instance.CreateBrick("DestroyedRB"),
+                SpriteFactory.Instance.CreateBrickSprite("DestroyedLT"),
+                SpriteFactory.Instance.CreateBrickSprite("DestroyedLB"),
+                SpriteFactory.Instance.CreateBrickSprite("DestroyedRT"),
+                SpriteFactory.Instance.CreateBrickSprite("DestroyedRB"),
             };
         }
 

@@ -10,9 +10,9 @@ namespace MelloMario.BlockObjects.StairStates
 {
     class StairHidden : IBlockState
     {
-        private StairBlock block;
+        private Stair block;
 
-        public StairHidden(StairBlock block)
+        public StairHidden(Stair block)
         {
             this.block = block;
         }

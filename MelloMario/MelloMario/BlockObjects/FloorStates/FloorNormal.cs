@@ -5,18 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario.BlockObjects.FloorStates
 {
     class FloorNormal : IBlockState
     {
-        private FloorBlock block;
+        private Floor block;
         private ISprite sprite;
 
-        public FloorNormal(FloorBlock block)
+        public FloorNormal(Floor block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateFloor("Normal");
+            sprite = SpriteFactory.Instance.CreateFloorSprite("Normal");
         }
 
         public void Show()

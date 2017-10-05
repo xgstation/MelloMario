@@ -10,9 +10,9 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class BrickHidden : IBlockState
     {
-        private BrickBlock block;
+        private Brick block;
 
-        public BrickHidden(BrickBlock block)
+        public BrickHidden(Brick block)
         {
             this.block = block;
         }

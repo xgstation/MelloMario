@@ -5,18 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario.BlockObjects.StairStates
 {
     class StairNormal : IBlockState
     {
-        private StairBlock block;
+        private Stair block;
         private ISprite sprite;
 
-        public StairNormal(StairBlock block)
+        public StairNormal(Stair block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateStair("Normal");
+            sprite = SpriteFactory.Instance.CreateStairSprite();
         }
 
         public void Show()

@@ -10,9 +10,9 @@ namespace MelloMario.BlockObjects.FloorStates
 {
     class FloorHidden : IBlockState
     {
-        private FloorBlock block;
+        private Floor block;
 
-        public FloorHidden(FloorBlock block)
+        public FloorHidden(Floor block)
         {
             this.block = block;
         }

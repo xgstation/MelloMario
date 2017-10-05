@@ -5,21 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
     class BrickBumped : IBlockState
     {
-        private BrickBlock block;
+        private Brick block;
         private ISprite sprite;
         private float elapsed;
         private float speedY = -7f;
         private float accelerationY = 1.5f;
         private float offset;
-        public BrickBumped(BrickBlock brickBlock)
+        public BrickBumped(Brick brickBlock)
         {
             block = brickBlock;
-            sprite = SpriteFactory.Instance.CreateBrick("Normal");
+            sprite = SpriteFactory.Instance.CreateBrickSprite("Normal");
         }
 
         public void Show()
