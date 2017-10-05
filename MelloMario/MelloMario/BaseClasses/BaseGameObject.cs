@@ -86,15 +86,20 @@ namespace MelloMario
             movement.Y = 0;
         }
 
-        protected void ChangeSprite(ISprite sprite)
+        protected void Show(ISprite sprite)
         {
             this.sprite = sprite;
         }
 
-        protected void ChangeSpriteAndResize(ISprite sprite, ResizeModeX modeX, ResizeModeY modeY)
+        protected void ShowResized(ISprite sprite, ResizeModeX modeX, ResizeModeY modeY)
         {
-            ChangeSprite(sprite);
+            Show(sprite);
             Resize(sprite.PixelSize, modeX, modeY);
+        }
+
+        protected void Hide()
+        {
+            sprite = null;
         }
 
         public Rectangle Boundary
@@ -109,7 +114,8 @@ namespace MelloMario
         {
             this.location = location;
             this.size = size;
-            this.movement = new Point();
+
+            movement = new Point();
         }
 
         public void Update(GameTime time, IList<IGameObject> collidable)
@@ -145,7 +151,10 @@ namespace MelloMario
 
         public void Draw(GameTime time, SpriteBatch spriteBatch)
         {
-            sprite.Draw(time, spriteBatch, Boundary);
+            if (sprite != null)
+            {
+                sprite.Draw(time, spriteBatch, Boundary);
+            }
         }
     }
 }
