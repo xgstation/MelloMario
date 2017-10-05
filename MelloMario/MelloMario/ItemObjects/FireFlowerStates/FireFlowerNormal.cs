@@ -1,40 +1,30 @@
-﻿using MelloMario.ItemObjects;
+﻿using MelloMario.Factories;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
     class FireFlowerNormal : IItemState
     {
-        private ISprite flower;
-        private FireFlower flowerItem;
+        private FireFlower flower;
+
         public FireFlowerNormal(FireFlower flower1)
         {
-            flowerItem = flower1;
-            flower = SpriteFactory.Instance.CreateFlowerSprite();
+            flower = flower1;
         }
+
         public void Show()
         {
-
         }
+
         public void Collect()
         {
-            flowerItem.State = new FireFlowerDefeated(flowerItem);
+            flower.State = new FireFlowerDefeated(flower);
         }
 
         public void Update(GameTime time)
         {
-            flower.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            flower.Draw(spriteBatch, location);
-        }
     }
 }

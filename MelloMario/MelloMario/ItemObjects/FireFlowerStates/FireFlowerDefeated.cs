@@ -12,28 +12,23 @@ namespace MelloMario.ItemObjects.FireFlowerStates
     {
 
         private FireFlower flowerItem;
+
         public FireFlowerDefeated(FireFlower flower1)
         {
             flowerItem = flower1;
-
         }
+
         public void Show()
         {
             flowerItem.State = new FireFlowerNormal(flowerItem);
         }
+
         public void Collect()
         {
-
         }
 
         public void Update(GameTime time)
         {
-
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-
         }
     }
 }

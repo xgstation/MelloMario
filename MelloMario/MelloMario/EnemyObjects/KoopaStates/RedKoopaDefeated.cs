@@ -11,13 +11,12 @@ namespace MelloMario.EnemyObjects.KoopaStates
     class RedKoopaDefeated : IKoopaState
     {
         private RedKoopa enemyRedKoopa;
-        private ISprite redKoopa;
+
         public RedKoopaDefeated(RedKoopa koopaRed)
         {
             enemyRedKoopa = koopaRed;
-            redKoopa = SpriteFactory.Instance.CreateRedKoopaSprite("Defeated");
-
         }
+
         public void Show()
         {
             enemyRedKoopa.State = new RedKoopaNormal(enemyRedKoopa);
@@ -30,18 +29,10 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void Defeat()
         {
-
         }
 
         public void Update(GameTime time)
         {
-            redKoopa.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            redKoopa.Draw(spriteBatch, location);
-
         }
     }
 }

@@ -11,29 +11,24 @@ namespace MelloMario.ItemObjects.StarStates
 {
     class StarDefeated : IItemState
     {
-
         private Star starItem;
+
         public StarDefeated(Star star1)
         {
             starItem = star1;
-
         }
+
         public void Show()
         {
             starItem.State = new StarNormal(starItem);
         }
+
         public void Collect()
         {
-
         }
+
         public void Update(GameTime time)
         {
-
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-
         }
     }
 }

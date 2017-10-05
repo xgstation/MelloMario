@@ -12,12 +12,10 @@ namespace MelloMario.BlockObjects.QuestionStates
     class QuestionUsed : IBlockState
     {
         private Question block;
-        private ISprite sprite;
 
         public QuestionUsed(Question block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateQuestionSprite("Used");
         }
 
         public void Show()
@@ -45,14 +43,8 @@ namespace MelloMario.BlockObjects.QuestionStates
             //do nothing
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            sprite.Draw(spriteBatch, location);
-        }
-
         public void Update(GameTime time)
         {
-            sprite.Update(gameTime);
         }
     }
 }

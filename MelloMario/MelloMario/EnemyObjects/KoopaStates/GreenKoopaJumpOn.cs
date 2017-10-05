@@ -10,13 +10,13 @@ namespace MelloMario.EnemyObjects.KoopaStates
 {
     class GreenKoopaJumpOn : IKoopaState
     {
-        private ISprite greenKoopa;
         private GreenKoopa enemyGreenKoopa;
+
         public GreenKoopaJumpOn(GreenKoopa koopaGreen)
         {
             enemyGreenKoopa = koopaGreen;
-            greenKoopa = SpriteFactory.Instance.CreateGreenKoopaSprite("JumpOn");
         }
+
         public void Show()
         {
             enemyGreenKoopa.State = new GreenKoopaNormal(enemyGreenKoopa);
@@ -24,7 +24,6 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void JumpOn()
         {
-
         }
 
         public void Defeat()
@@ -34,12 +33,6 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void Update(GameTime time)
         {
-            greenKoopa.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            greenKoopa.Draw(spriteBatch, location);
         }
     }
 }

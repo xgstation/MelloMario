@@ -10,12 +10,11 @@ namespace MelloMario.EnemyObjects.KoopaStates
 {
     class GreenKoopaNormal : IKoopaState
     {
-        private ISprite greenKoopa;
         private GreenKoopa enemyGreenKoopa;
+
         public GreenKoopaNormal(GreenKoopa koopaGreen)
         {
             enemyGreenKoopa = koopaGreen;
-            greenKoopa = SpriteFactory.Instance.CreateGreenKoopaSprite("Normal");
         }
         public void Show()
         {
@@ -34,12 +33,6 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void Update(GameTime time)
         {
-            greenKoopa.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            greenKoopa.Draw(spriteBatch, location);
         }
     }
 }

@@ -12,12 +12,10 @@ namespace MelloMario.BlockObjects.PipelineStates
     class PipelineNormal : IBlockState
     {
         private Pipeline block;
-        private ISprite sprite;
 
         public PipelineNormal(Pipeline block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreatePipelineSprite();
         }
 
         public void Bump()
@@ -45,14 +43,8 @@ namespace MelloMario.BlockObjects.PipelineStates
             //do nothing
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            sprite.Draw(spriteBatch, location);
-        }
-
         public void Update(GameTime time)
         {
-            sprite.Update(gameTime);
         }
     }
 }

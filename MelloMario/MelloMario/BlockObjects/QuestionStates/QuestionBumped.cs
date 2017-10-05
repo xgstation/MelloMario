@@ -12,7 +12,6 @@ namespace MelloMario.BlockObjects.QuestionStates
     class QuestionBumped : IBlockState
     {
         private Question block;
-        private ISprite sprite;
         private float elapsed;
         private float speedY = -7f;
         private float accelerationY = 1.5f;
@@ -20,7 +19,6 @@ namespace MelloMario.BlockObjects.QuestionStates
         public QuestionBumped(Question questionBlock)
         {
             block = questionBlock;
-            sprite = SpriteFactory.Instance.CreateQuestionSprite("Normal");
         }
 
         public void Show()
@@ -50,19 +48,14 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Update(GameTime time)
         {
-            elapsed += ((float)gameTime.ElapsedGameTime.Milliseconds) / 20;
-            offset = 0.5f * accelerationY * (float)Math.Pow(elapsed, 2.0f) + speedY * elapsed;
+            // TODO: control sprite via this.block
+            // elapsed += ((float)time.ElapsedGameTime.Milliseconds) / 20;
+            // offset = 0.5f * accelerationY * (float)Math.Pow(elapsed, 2.0f) + speedY * elapsed;
 
-            if (offset >= 0)
-            {
-                UseUp();
-            }
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            Vector2 p = new Vector2(location.X, location.Y + offset);
-            sprite.Draw(spriteBatch, p);
+            // if (offset >= 0)
+            // {
+            //     UseUp();
+            // }
         }
     }
 }

@@ -12,12 +12,10 @@ namespace MelloMario.BlockObjects.BrickStates
     class BrickUsed : IBlockState
     {
         private Brick block;
-        private ISprite sprite;
 
         public BrickUsed(Brick block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateBrickSprite("Used");
         }
 
         public void Show()
@@ -47,7 +45,6 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Update(GameTime time)
         {
-            sprite.Update(gameTime);
         }
     }
 }

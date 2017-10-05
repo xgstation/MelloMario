@@ -12,15 +12,14 @@ namespace MelloMario.BlockObjects.BrickStates
     class BrickBumped : IBlockState
     {
         private Brick block;
-        private ISprite sprite;
         private float elapsed;
         private float speedY = -7f;
         private float accelerationY = 1.5f;
         private float offset;
+
         public BrickBumped(Brick brickBlock)
         {
             block = brickBlock;
-            sprite = SpriteFactory.Instance.CreateBrickSprite("Normal");
         }
 
         public void Show()
@@ -50,7 +49,7 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Update(GameTime time)
         {
-            elapsed += ((float)gameTime.ElapsedGameTime.Milliseconds) / 20;
+            elapsed += ((float)time.ElapsedGameTime.Milliseconds) / 20;
             offset = 0.5f * accelerationY * (float)Math.Pow(elapsed, 2.0f) + speedY * elapsed;
 
             if (offset >= 0)

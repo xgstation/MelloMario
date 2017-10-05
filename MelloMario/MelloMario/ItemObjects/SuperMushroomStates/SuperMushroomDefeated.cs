@@ -12,6 +12,7 @@ namespace MelloMario.ItemObjects.SuperMushroomStates
     class SuperMushroomDefeated : IItemState
     {
         private SuperMushroom mushroomItem;
+
         public SuperMushroomDefeated(SuperMushroom mushroomItem1)
         {
             mushroomItem = mushroomItem1;
@@ -21,20 +22,13 @@ namespace MelloMario.ItemObjects.SuperMushroomStates
         {
             mushroomItem.State = new SuperMushroomNormal(mushroomItem);
         }
+
         public void Collect()
         {
-
         }
+
         public void Update(GameTime time)
         {
-
         }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-
-        }
-
-
     }
 }

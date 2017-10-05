@@ -11,17 +11,17 @@ namespace MelloMario.ItemObjects.StarStates
 {
     class StarNormal : IItemState
     {
-        private ISprite star;
         private Star starItem;
+
         public StarNormal(Star star1)
         {
             starItem = star1;
-            star = SpriteFactory.Instance.CreateStarSprite();
         }
+
         public void Show()
         {
-
         }
+
         public void Collect()
         {
             starItem.State = new StarDefeated(starItem);
@@ -29,12 +29,6 @@ namespace MelloMario.ItemObjects.StarStates
 
         public void Update(GameTime time)
         {
-            star.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            star.Draw(spriteBatch, location);
         }
     }
 }

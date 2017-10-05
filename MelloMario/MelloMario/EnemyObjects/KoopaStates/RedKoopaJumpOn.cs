@@ -10,13 +10,13 @@ namespace MelloMario.EnemyObjects.KoopaStates
 {
     class RedKoopaJumpOn : IKoopaState
     {
-        private ISprite redKoopa;
         private RedKoopa enemyRedKoopa;
+
         public RedKoopaJumpOn(RedKoopa koopaRed)
         {
             enemyRedKoopa = koopaRed;
-            redKoopa = SpriteFactory.Instance.CreateRedKoopaSprite("JumpOn");
         }
+
         public void Show()
         {
             enemyRedKoopa.State = new RedKoopaNormal(enemyRedKoopa);
@@ -24,7 +24,6 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void JumpOn()
         {
-
         }
 
         public void Defeat()
@@ -34,12 +33,6 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void Update(GameTime time)
         {
-            redKoopa.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            redKoopa.Draw(spriteBatch, location);
         }
     }
 }

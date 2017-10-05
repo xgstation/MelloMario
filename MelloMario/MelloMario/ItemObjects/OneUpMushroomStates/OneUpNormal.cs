@@ -12,30 +12,22 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
     class OneUpMushroomNormal : IItemState
     {
         private OneUpMushroom mushroomItem;
-        private ISprite mushroom;
+
         public OneUpMushroomNormal(OneUpMushroom mushroomItem1)
         {
 
             mushroomItem = mushroomItem1;
-            mushroom = SpriteFactory.Instance.CreateOneUpMushroomSprite();
         }
         public void Show()
         {
-
         }
 
         public void Collect()
         {
-            mushroomItem.State = new OneUpMushroomDefeated(mushroomItem);
-        }
-        public void Update(GameTime time)
-        {
-            mushroom.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Update(GameTime time)
         {
-            mushroom.Draw(spriteBatch, location);
         }
     }
 }

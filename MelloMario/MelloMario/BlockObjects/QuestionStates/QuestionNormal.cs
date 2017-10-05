@@ -12,12 +12,10 @@ namespace MelloMario.BlockObjects.QuestionStates
     class QuestionNormal : IBlockState
     {
         private Question block;
-        private ISprite sprite;
 
         public QuestionNormal(Question block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateQuestionSprite("Normal");
         }
 
         public void Show()
@@ -45,14 +43,8 @@ namespace MelloMario.BlockObjects.QuestionStates
             block.State = new QuestionBumped(block);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            sprite.Draw(spriteBatch, location);
-        }
-
         public void Update(GameTime time)
         {
-            sprite.Update(gameTime);
         }
     }
 }

@@ -10,18 +10,16 @@ namespace MelloMario.EnemyObjects.GoombaStates
 {
     class GoombaNormal: IGoombaState
     {
-        private ISprite goomba;
         private Goomba enemyGoomba;
 
         public GoombaNormal(Goomba goomba1)
         {
             enemyGoomba = goomba1;
-            goomba = SpriteFactory.Instance.CreateGoombaSprite("Normal");
         }
 
         public void Show()
         {
-           
+
         }
 
         public void Defeat()
@@ -31,13 +29,7 @@ namespace MelloMario.EnemyObjects.GoombaStates
 
         public void Update(GameTime time)
         {
-            goomba.Update(gameTime);
-        }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            // TODO: calculate the location
-            goomba.Draw(spriteBatch, location);
         }
     }
 }

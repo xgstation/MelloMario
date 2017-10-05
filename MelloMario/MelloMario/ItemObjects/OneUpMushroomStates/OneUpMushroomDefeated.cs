@@ -11,18 +11,22 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
     class OneUpMushroomDefeated : IItemState
     {
         private OneUpMushroom mushroomItem;
+
         public OneUpMushroomDefeated(OneUpMushroom mushroomItem1)
         {
             mushroomItem = mushroomItem1;
         }
+
         public void Show()
         {
             mushroomItem.State = new OneUpMushroomNormal(mushroomItem);
         }
+
         public void Collect()
         {
 
         }
+
         public void Update(GameTime time)
         {
 

@@ -11,31 +11,24 @@ namespace MelloMario.ItemObjects.SuperMushroomStates
 {
     class SuperMushroomNormal : IItemState
     {
-        private ISprite mushroom;
         private SuperMushroom mushroomItem;
+
         public SuperMushroomNormal(SuperMushroom mushroomItem1)
         {
             mushroomItem = mushroomItem1;
-            mushroom = SpriteFactory.Instance.CreatSuperMushroomSprite();
-
         }
+
         public void Show()
         {
-
         }
 
         public void Collect()
         {
             mushroomItem.State = new SuperMushroomDefeated(mushroomItem);
         }
+
         public void Update(GameTime time)
         {
-            mushroom.Update(gameTime);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            mushroom.Draw(spriteBatch, location);
         }
     }
 }

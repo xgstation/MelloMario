@@ -12,12 +12,10 @@ namespace MelloMario.BlockObjects.StairStates
     class StairNormal : IBlockState
     {
         private Stair block;
-        private ISprite sprite;
 
         public StairNormal(Stair block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateStairSprite();
         }
 
         public void Show()
@@ -45,14 +43,8 @@ namespace MelloMario.BlockObjects.StairStates
             //do nothing
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            sprite.Draw(spriteBatch, location);
-        }
-
         public void Update(GameTime time)
         {
-            sprite.Update(gameTime);
         }
     }
 }

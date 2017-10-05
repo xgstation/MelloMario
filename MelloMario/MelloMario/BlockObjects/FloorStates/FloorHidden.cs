@@ -42,11 +42,6 @@ namespace MelloMario.BlockObjects.FloorStates
             //do nothing
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            //do nothing
-        }
-
         public void Update(GameTime time)
         {
             //do nothing

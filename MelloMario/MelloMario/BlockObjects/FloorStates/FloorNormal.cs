@@ -12,12 +12,10 @@ namespace MelloMario.BlockObjects.FloorStates
     class FloorNormal : IBlockState
     {
         private Floor block;
-        private ISprite sprite;
 
         public FloorNormal(Floor block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateFloorSprite("Normal");
         }
 
         public void Show()
@@ -45,14 +43,8 @@ namespace MelloMario.BlockObjects.FloorStates
             //do nothing
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            sprite.Draw(spriteBatch, location);
-        }
-
         public void Update(GameTime time)
         {
-            sprite.Update(gameTime);
         }
     }
 }

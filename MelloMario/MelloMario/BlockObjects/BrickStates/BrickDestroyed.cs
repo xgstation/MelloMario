@@ -12,17 +12,11 @@ namespace MelloMario.BlockObjects.BrickStates
     class BrickDestroyed : IBlockState
     {
         private Brick block;
-        private ISprite[] sprites;
 
         public BrickDestroyed(Brick block)
         {
             this.block = block;
-            sprites = new ISprite[4] {
-                SpriteFactory.Instance.CreateBrickSprite("DestroyedLT"),
-                SpriteFactory.Instance.CreateBrickSprite("DestroyedLB"),
-                SpriteFactory.Instance.CreateBrickSprite("DestroyedRT"),
-                SpriteFactory.Instance.CreateBrickSprite("DestroyedRB"),
-            };
+            // TODO: handle the case that there are 4 sprites
         }
 
         public void Show()
@@ -48,14 +42,6 @@ namespace MelloMario.BlockObjects.BrickStates
         public void Bump()
         {
             block.State = new BrickBumped(block);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            foreach (ISprite sprite in sprites)
-            {
-                // sprite.Draw(spriteBatch, location);
-            }
         }
 
         public void Update(GameTime time)

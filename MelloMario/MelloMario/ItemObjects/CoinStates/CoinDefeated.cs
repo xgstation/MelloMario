@@ -11,11 +11,10 @@ namespace MelloMario.ItemObjects.CoinStates
     class CoinDefeated : IItemState
     {
         private Coin coinItem;
+
         public CoinDefeated(Coin coin1)
         {
-
             coinItem = coin1;
-
         }
 
         public void Show()
@@ -25,15 +24,10 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public void Collect()
         {
-
         }
+
         public void Update(GameTime time)
         {
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-
         }
     }
 }
