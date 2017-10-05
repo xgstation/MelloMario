@@ -8,7 +8,6 @@ namespace MelloMario.Sprites
         private Texture2D texture;
         private Point source;
         private Point size;
-        private Color defaultColor;
 
         protected abstract void OnAnimate(GameTime time);
 
@@ -41,7 +40,7 @@ namespace MelloMario.Sprites
         {
             OnAnimate(time);
 
-            spriteBatch.Draw(texture, destination, new Rectangle(source, size), defaultColor);
+            spriteBatch.Draw(texture, destination, new Rectangle(source, size), Color.White);
         }
     }
 }

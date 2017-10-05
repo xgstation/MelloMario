@@ -47,6 +47,8 @@ namespace MelloMario.Sprites
             this.columns = columns;
             this.rows = rows;
             this.delay = delay;
+            width = texture.Width / columns;
+            height = texture.Height / rows;
             frames = 0;
             elapsed = 0;
         }
