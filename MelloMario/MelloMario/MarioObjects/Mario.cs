@@ -9,11 +9,13 @@ namespace MelloMario.MarioObjects
     class Mario : BaseGameObject
     {
         private IMarioDirectionState directionState;
-        public IMarioMovementState movementState;
-        public IMarioPowerUpState powerUpState;
+        private IMarioMovementState movementState;
+        private IMarioPowerUpState powerUpState;
 
         private void OnStateChanged()
         {
+            // if () ...
+            // ShowResized(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
         }
 
         protected override void OnSimulation(GameTime time)
@@ -63,7 +65,10 @@ namespace MelloMario.MarioObjects
 
         public Mario(Point location) : base(location, new Point(32, 32))
         {
-            ShowResized(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
+            directionState = new DirectionRight(this);
+            movementState = new Movementldle(this);
+            powerUpState = new PowerUpStandard(this);
+            OnStateChanged();
         }
 
         public void TurnLeft()

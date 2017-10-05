@@ -1,43 +1,53 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MelloMario.Factories;
 using MelloMario.EnemyObjects.KoopaStates;
 
 namespace MelloMario.EnemyObjects
 {
-    class RedKoopa : BaseEnemy
+    class RedKoopa : BaseGameObject
     {
-        public IKoopaState State;
+        private IItemState state;
 
-        public RedKoopa(Vector2 initLocation) : base(initLocation)
+        private void OnStateChanged()
         {
-            State = new RedKoopaNormal(this);
+            // if () ...
+            // ShowResized(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
         }
 
-        public void ChangeToNormal()
+        protected override void OnSimulation(GameTime time)
+        {
+        }
+
+        protected override void OnCollision(IGameObject target)
+        {
+        }
+
+        public IItemState State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+                OnStateChanged();
+            }
+        }
+
+        public RedKoopa(Point location) : base(location, new Point(32, 32))
+        {
+            state = new RedKoopaNormal(this);
+            OnStateChanged();
+        }
+
+        public void Show()
         {
             State.Show();
         }
-        public void ChangeToJumpedOn()
+        public void Collect()
         {
-            State.JumpOn();
-        }
-        public void ChangeToDefeated()
-        {
-            State.Defeat();
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            State.Update(gameTime);
-        }
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            State.Draw(spriteBatch, Location);
+            State.Collect();
         }
     }
 }

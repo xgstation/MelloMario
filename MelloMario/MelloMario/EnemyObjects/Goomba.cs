@@ -1,35 +1,53 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 using MelloMario.EnemyObjects.GoombaStates;
 
 namespace MelloMario.EnemyObjects
 {
-    class Goomba: BaseEnemy
+    class Goomba : BaseGameObject
     {
-        public IGoombaState State;
+        private IItemState state;
 
-        public Goomba(Vector2 initLocation) : base(initLocation)
+        private void OnStateChanged()
         {
-            State = new GoombaNormal(this);
+            // if () ...
+            // ShowResized(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
         }
 
-        public void ChangeToNormal()
+        protected override void OnSimulation(GameTime time)
+        {
+        }
+
+        protected override void OnCollision(IGameObject target)
+        {
+        }
+
+        public IItemState State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+                OnStateChanged();
+            }
+        }
+
+        public Goomba(Point location) : base(location, new Point(32, 32))
+        {
+            state = new GoombaNormal(this);
+            OnStateChanged();
+        }
+
+        public void Show()
         {
             State.Show();
         }
-        public void ChangeToDefeated()
+        public void Collect()
         {
-            State.Defeat();
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            State.Update(gameTime);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            State.Draw(spriteBatch, Location);
+            State.Collect();
         }
     }
 }

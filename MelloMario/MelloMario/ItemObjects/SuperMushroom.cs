@@ -1,41 +1,53 @@
-﻿using MelloMario.ItemObjects.SuperMushroomStates;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using MelloMario.Factories;
+using MelloMario.ItemObjects.SuperMushroomStates;
 
 namespace MelloMario.ItemObjects
 {
-    class SuperMushroom : BaseItem
+    class SuperMushroom : BaseGameObject
     {
-        public IItemState State;
+        private IItemState state;
 
-        public SuperMushroom(Vector2 initLocation) : base(initLocation)
+        private void OnStateChanged()
         {
-            State = new SuperMushroomNormal(this);
+            // if () ...
+            // ShowResized(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
         }
 
-        public void TransNormal()
+        protected override void OnSimulation(GameTime time)
+        {
+        }
+
+        protected override void OnCollision(IGameObject target)
+        {
+        }
+
+        public IItemState State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+                OnStateChanged();
+            }
+        }
+
+        public SuperMushroom(Point location) : base(location, new Point(32, 32))
+        {
+            state = new SuperMushroomNormal(this);
+            OnStateChanged();
+        }
+
+        public void Show()
         {
             State.Show();
         }
-
-        public void TransDefeated()
+        public void Collect()
         {
             State.Collect();
-        }
-
-        public override void Update(GameTime timeTime)
-        {
-            State.Update(gameTime);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            State.Draw(spriteBatch, Location);
         }
     }
 }

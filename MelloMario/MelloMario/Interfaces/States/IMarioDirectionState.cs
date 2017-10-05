@@ -4,8 +4,8 @@ namespace MelloMario
 {
     interface IMarioDirectionState
     {
-        void TurnRight();
         void TurnLeft();
+        void TurnRight();
 
         void Update(GameTime time);
     }
