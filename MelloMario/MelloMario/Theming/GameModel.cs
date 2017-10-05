@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MelloMario.MarioObjects;
@@ -9,7 +8,7 @@ using MelloMario.ItemObjects;
 
 namespace MelloMario
 {
-    public class GameModel
+    class GameModel
     {
         private List<IController> controllers;
         private IGameObject[,] objects;
@@ -63,25 +62,32 @@ namespace MelloMario
             {
                 controller.Update();
             }
+
             for (int i = 0; i < objects.GetLength(0); ++i)
             {
                 for (int j = 0; j < objects.GetLength(1); ++j)
                 {
                     if (objects[i, j] != null)
-                        objects[i, j].Update(time);
+                    {
+                        // note: the list will contain all objects that are possible to collide with objects[i, j]
+                        // BaseGameObject.OnCollision may be triggered multiple times (actually, it is a status instead of an event)
+                        objects[i, j].Update(time, new List<IGameObject>());
+                    }
                 }
             }
 
         }
 
-        internal void Draw(SpriteBatch spriteBatch)
+        internal void Draw(GameTime time, SpriteBatch spriteBatch)
         {
             for (int i = 0; i < objects.GetLength(0); ++i)
             {
                 for (int j = 0; j < objects.GetLength(1); ++j)
                 {
                     if (objects[i, j] != null)
-                        objects[i, j].Draw(spriteBatch);
+                    {
+                        objects[i, j].Draw(time, spriteBatch);
+                    }
                 }
             }
         }

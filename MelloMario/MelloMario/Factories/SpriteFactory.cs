@@ -192,13 +192,13 @@ namespace MelloMario.Factories
             switch (v)
             {
                 case "DestroyedLT":
-                    return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 0, 0, BrickPieceSprite.Part.LeftTop);
+                    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.LeftTop, 0, 0);
                 case "DestroyedLB":
-                    return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 1, 0, BrickPieceSprite.Part.LeftBottom);
+                    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.LeftBottom, 1, 0);
                 case "DestroyedRT":
-                    return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 0, 1, BrickPieceSprite.Part.RightTop);
+                    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.RightTop, 0, 1);
                 case "DestroyedRB":
-                    return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 1, 1, BrickPieceSprite.Part.RightBottom);
+                    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.RightBottom, 1, 1);
                 case "Used":
                     return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
                 case "Silent":

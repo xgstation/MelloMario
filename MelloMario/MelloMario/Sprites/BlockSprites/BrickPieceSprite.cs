@@ -10,64 +10,77 @@ namespace MelloMario.Sprites.BlockSprites
 {
     class BrickPieceSprite : ISprite
     {
+        private Texture2D texture;
+        private Part part;
+
+        private int x;
+        private int y;
+
+        private int frames;
+        private double elapsed;
+        private double offsetX;
+        private double offsetY;
+
+        private void UpdateOffset(GameTime time)
+        {
+            elapsed += time.ElapsedGameTime.TotalMilliseconds;
+            frames += 1;
+
+            switch (part)
+            {
+                case Part.LeftBottom:
+                    offsetX = -elapsed / 5f + 4;
+                    offsetY = Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
+                    break;
+                case Part.LeftTop:
+                    offsetX = -elapsed / 5f + 4;
+                    offsetY = Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
+                    break;
+                case Part.RightBottom:
+                    offsetX = elapsed / 5f + 12;
+                    offsetY = Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
+                    break;
+                case Part.RightTop:
+                    offsetX = elapsed / 5f + 12;
+                    offsetY = Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
+                    break;
+            }
+
+        }
+
         public enum Part
         {
             LeftTop, LeftBottom, RightTop, RightBottom
         }
-        private Part part;
-        private int frames;
-        public int Rows { get; set; }
-        public int Columns { get; set; }
-        private int posX, posY;
-        private float elapsed;
-        private Vector2 offset;
-        public Texture2D texture { get; set; }
-        public BrickPieceSprite(Texture2D texture, int Rows, int Columns, int posX, int posY, Part part)
+
+        public Point PixelSize
+        {
+            get
+            {
+                return new Point();
+            }
+        }
+
+        public BrickPieceSprite(Texture2D texture, Part part, int x, int y)
         {
             this.texture = texture;
-            offset = new Vector2(0f, 0f);
             this.part = part;
-            this.Rows = Rows;
-            this.posX = posX;
-            this.posY = posY;
-            this.Columns = Columns;
+            this.x = x;
+            this.y = y;
 
-        }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            int Width = texture.Width / Columns;
-            int Height = texture.Height / Rows;
-            int R = frames / Columns;
-            int C = frames % Columns;
-            Rectangle Last = new Rectangle((int)(location.X + offset.X), (int)(location.Y + offset.Y), Width*2, Height*2);
-            Rectangle First = new Rectangle(Width * posX, posY * Height, Width, Height);
-            spriteBatch.Draw(texture, Last, First, Color.White);
+            frames = 0;
+            elapsed = 0;
+            offsetX = 0f;
+            offsetY = 0f;
         }
 
-        public void Update(GameTime gameTime)
+        public void Draw(GameTime time, SpriteBatch spriteBatch, Rectangle destination)
         {
-            elapsed += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            frames++;
-            switch (part)
-            {
-                case Part.LeftBottom:
-                    offset.X = -elapsed / 5f + 4;
-                    offset.Y = (float)Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
-                    break;
-                case Part.LeftTop:
-                    offset.X = -elapsed / 5f + 4;
-                    offset.Y = (float)Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
-                    break;
-                case Part.RightBottom:
-                    offset.X = elapsed / 5f + 12;
-                    offset.Y = (float)Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
-                    break;
-                case Part.RightTop:
-                    offset.X = elapsed / 5f + 12;
-                    offset.Y = (float)Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
-                    break;
-            }
-            
+            UpdateOffset(time);
+
+            Rectangle newDestination = new Rectangle(destination.Left + (int)offsetX, destination.Top + (int)offsetY, destination.Width, destination.Height);
+            Rectangle source = new Rectangle(texture.Width * x / 2, texture.Height * y / 2, texture.Width / 2, texture.Height / 2);
+            spriteBatch.Draw(texture, newDestination, source, Color.White);
         }
     }
 }
