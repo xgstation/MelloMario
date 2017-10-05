@@ -23,7 +23,7 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
         {
 
         }
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
 
         }

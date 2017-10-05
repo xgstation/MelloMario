@@ -32,7 +32,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
             enemyRedKoopa.State = new RedKoopaDefeated(enemyRedKoopa);
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             redKoopa.Update(gameTime);
         }

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.DirectionStates
 {
-    class DirectionRight : Direction
+    class DirectionRight : IMarioDirectionState
     {
         Mario mario;
        // ISprite sprite;

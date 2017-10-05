@@ -47,7 +47,7 @@ namespace MelloMario.BlockObjects.QuestionStates
             // Do nothing
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             elapsed += ((float)gameTime.ElapsedGameTime.Milliseconds) / 20;
             offset = 0.5f * accelerationY * (float)Math.Pow(elapsed, 2.0f) + speedY * elapsed;

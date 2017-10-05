@@ -10,10 +10,10 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.DirectionStates
 {
-    class DirectionLeft : Direction
+    class DirectionLeft : IMarioDirectionState
     {
         Mario mario;
-       
+
         public DirectionLeft(Mario newMario)
         {
             mario = newMario;
@@ -27,14 +27,14 @@ namespace MelloMario.MarioObjects.DirectionStates
 
         public void UpgradeToLeftDirection()
         {
-          
+
         }
 
 
-        public void Update(GameTime game)
+        public void Update(GameTime time)
         {
             //sprite.Update(game);
         }
-       
+
     }
 }

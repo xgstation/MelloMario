@@ -28,7 +28,7 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
         {
             mushroomItem.State = new OneUpMushroomDefeated(mushroomItem);
         }
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             mushroom.Update(gameTime);
         }

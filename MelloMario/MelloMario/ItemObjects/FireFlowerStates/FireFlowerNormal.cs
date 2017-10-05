@@ -27,7 +27,7 @@ namespace MelloMario.ItemObjects.FireFlowerStates
             flowerItem.State = new FireFlowerDefeated(flowerItem);
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             flower.Update(gameTime);
         }

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.PowerUpStates
 {
-    class PowerUpFire : PowerUp
+    class PowerUpFire : IMarioPowerUpState
     {
         Mario mario;
         //ISprite sprite;

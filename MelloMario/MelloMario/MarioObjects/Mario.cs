@@ -44,7 +44,7 @@ namespace MelloMario.MarioObjects
         public void ChangeToSuperState() {
             currentPowerState = PowerState.Super;
             State.ChangeToSuperState();}
-        public void Update(GameTime game)
+        public void Update(GameTime time)
         {
             // TODO: calculate the location
             State.Update(game);

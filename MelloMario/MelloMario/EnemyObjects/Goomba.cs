@@ -22,7 +22,7 @@ namespace MelloMario.EnemyObjects
             State.ChangeToDefeated();
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime time)
         {
             State.Update(gameTime);
         }

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.MovementStates
 {
-    class Movementldle : Movement
+    class Movementldle : IMarioMovementState
     {
         Mario mario;
         //bool setToStatic;

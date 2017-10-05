@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
@@ -8,7 +7,7 @@ namespace MelloMario
         void ChangeToNormal();
         void ChangeToJumpOn();
         void ChangeToDefeated();
-        void Update(GameTime gameTime);
-        void Draw(SpriteBatch spriteBatch, Vector2 location);
+
+        void Update(GameTime time);
     }
 }

@@ -26,7 +26,7 @@ namespace MelloMario.ItemObjects.StarStates
         {
 
         }
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
 
         }

@@ -21,7 +21,7 @@ namespace MelloMario.BlockObjects
             State.Draw(spriteBatch, location);
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime time)
         {
             State.Update(gameTime);
         }

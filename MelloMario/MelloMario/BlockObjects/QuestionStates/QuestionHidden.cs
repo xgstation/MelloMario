@@ -48,7 +48,7 @@ namespace MelloMario.BlockObjects.QuestionStates
             //do nothing
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             //do nothing
         }

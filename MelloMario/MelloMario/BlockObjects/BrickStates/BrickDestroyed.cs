@@ -56,7 +56,7 @@ namespace MelloMario.BlockObjects.BrickStates
             }
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime time)
         {
             foreach (ISprite sprite in sprites)
             {
