@@ -40,7 +40,7 @@ namespace MelloMario.LevelGen
 
     class LevelReader
     {
-        class Pack
+        public class Pack
         {
             public int X { get; set; }
             public int Y { get; set; }
@@ -57,7 +57,7 @@ namespace MelloMario.LevelGen
 
         public LevelReader(String path)
         {
-            Stream inStream = new FileStream(path,FileMode.Open);
+            Stream inStream = new FileStream(path, FileMode.Open);
             input = new StreamReader(inStream);
 
             String heightAsString = input.ReadLine();
@@ -70,7 +70,7 @@ namespace MelloMario.LevelGen
 
         public Pack Initilize()
         {
-            return new Pack(h,w);
+            return new Pack(h, w);
         }
 
     }
