@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace MelloMario.Controllers
 {
-    public class GamepadController : BaseController
+    class GamepadController : BaseController<Buttons>
     {
         Game game;
         GamePadState previousGamePadState,
@@ -40,7 +40,7 @@ namespace MelloMario.Controllers
                         if (currentState.IsButtonDown(button) &&
                             !previousGamePadState.IsButtonDown(button))
                         {
-                            RunCommand((int)button);
+                            RunCommand(button);
                         }
                     }
                 }

@@ -11,29 +11,22 @@ using Microsoft.Xna.Framework.Content;
 using MelloMario.BlockObjects;
 using MelloMario.Sprites.BlockSprites;
 
-namespace MelloMario
+namespace MelloMario.Factories
 {
     class SpriteFactory : ISpriteFactory
     {
         private static ISpriteFactory instance = new SpriteFactory();
 
         Dictionary<String, Texture2D> stringToMarioTexture;
-        //player textures
-        //dead
-        private Texture2D Dead;
-        //fire
-        private Texture2D FireCrouchingLeft, FireIdleLeft, FireJumpingLeft, FireWalkingLeft;
-        private Texture2D FireCrouchingRight, FireIdleRight, FireJumpingRight, FireWalkingRight;
-        //super
-        private Texture2D SuperCrouchingLeft,SuperIdleLeft, SuperJumpingLeft,SuperWalkingLeft;
-        private Texture2D SuperCrouchingRight,SuperIdleRight, SuperJumpingRight, SuperWalkingRight;
-        //standard
-        private Texture2D StandardIdleLeft, StandardJumpingLeft, StandardWalkingLeft;
-        private Texture2D StandardIdleRight, StandardJumpingRight, StandardWalkingRight;
 
         private Texture2D goombaSpritesheet;
+        private Texture2D goombaDeadSpritesheet;
         private Texture2D greenKoopaSpritesheet;
+        private Texture2D greenKoopaSteppedSpritesheet;
+        private Texture2D greenKoopaDeadSpritesheet;
         private Texture2D redKoopaSpritesheet;
+        private Texture2D redKoopaSteppedSpritesheet;
+        private Texture2D redKoopaDeadSpritesheet;
         private Texture2D superMushroomSpritesheet;
         private Texture2D oneUpMushroomSpritesheet;
         private Texture2D coinSpritesheet;
@@ -66,69 +59,50 @@ namespace MelloMario
             //these files are not in the repository, i am assigning all of them to an existing
             //texture so we can compile add the textures and restore this chunk
             goombaSpritesheet = content.Load<Texture2D>("Goomba");
+            goombaDeadSpritesheet = content.Load<Texture2D>("GoombaDead");
             greenKoopaSpritesheet = content.Load<Texture2D>("GreenKoopa");
+            greenKoopaSteppedSpritesheet = content.Load<Texture2D>("GreenKoopaStepped");
+            greenKoopaDeadSpritesheet = content.Load<Texture2D>("GreenKoopaDead");
             redKoopaSpritesheet = content.Load<Texture2D>("RedKoopa");
+            redKoopaSteppedSpritesheet = content.Load<Texture2D>("RedKoopaStepped");
+            redKoopaDeadSpritesheet = content.Load<Texture2D>("RedKoopaDead");
             superMushroomSpritesheet = content.Load<Texture2D>("SuperMushroom");
             oneUpMushroomSpritesheet = content.Load<Texture2D>("OneUpMushroom");
             coinSpritesheet = content.Load<Texture2D>("Coin");
             fireFlowerSpritesheet = content.Load<Texture2D>("FireFlower");
             starSpritesheet = content.Load<Texture2D>("Star");
-            //dead
-            Dead = content.Load<Texture2D>("Dead");
-            //fire
-            FireCrouchingLeft = content.Load<Texture2D>("FireCrouchingLeft");
-            FireIdleLeft = content.Load<Texture2D>("FireIdleLeft");
-            FireWalkingLeft = content.Load<Texture2D>("FireWalkingLeft");
-            FireJumpingLeft = content.Load<Texture2D>("FireJumpingLeft");
-            FireCrouchingRight = content.Load<Texture2D>("FireCrouchingRight");
-            FireIdleRight = content.Load<Texture2D>("FireIdleRight");
-            FireWalkingRight = content.Load<Texture2D>("FireWalkingRight");
-            FireJumpingRight = content.Load<Texture2D>("FireJumpingRight");
-            //standard
-            StandardIdleLeft = content.Load<Texture2D>("StandardIdleLeft");
-            StandardWalkingLeft = content.Load<Texture2D>("StandardWalkingLeft");
-            StandardJumpingLeft = content.Load<Texture2D>("StandardJumpingLeft");
-            StandardIdleRight = content.Load<Texture2D>("StandardIdleRight");
-            StandardWalkingRight = content.Load<Texture2D>("StandardWalkingRight");
-            StandardJumpingRight = content.Load<Texture2D>("StandardJumpingRight");
-            //super
-            SuperCrouchingLeft = content.Load<Texture2D>("SuperCrouchingLeft");
-            SuperIdleLeft = content.Load<Texture2D>("SuperIdleLeft");
-            SuperWalkingLeft = content.Load<Texture2D>("SuperWalkingLeft");
-            SuperJumpingLeft = content.Load<Texture2D>("SuperJumpingLeft");
-            SuperCrouchingRight = content.Load<Texture2D>("SuperCrouchingRight");
-            SuperIdleRight = content.Load<Texture2D>("SuperIdleRight");
-            SuperWalkingRight = content.Load<Texture2D>("SuperWalkingRight");
-            SuperJumpingRight = content.Load<Texture2D>("SuperJumpingRight");
+
             //dictionary
             stringToMarioTexture = new Dictionary<String, Texture2D>
             {
-                {"Dead",Dead},{"FireCrouchingLeft",FireCrouchingLeft},{"FireIdleLeft",FireIdleLeft}, {"FireJumpingLeft",FireJumpingLeft},{"FireWalkingLeft",FireWalkingLeft},
-                {"FireCrouchingRight",FireCrouchingRight},{"FireIdleRight",FireIdleRight},{"FireJumpingRight",FireJumpingRight},{"FireWalkingRight",FireWalkingRight},
-                {"SuperCrouchingLeft",SuperCrouchingLeft},{"SuperIdleLeft",SuperIdleLeft},{"SuperJumpingLeft",SuperJumpingLeft},{"SuperWalkingLeft",SuperWalkingLeft},
-                {"SuperCrouchingRight",SuperCrouchingRight},{"SuperIdleRight",SuperIdleRight},{"SuperJumpingRight",SuperJumpingRight},{"SuperWalkingRight",SuperWalkingRight},
-                {"StandardIdleLeft",StandardIdleLeft},{"StandardJumpingLeft",StandardJumpingLeft},{"StandardWalkingLeft",StandardWalkingLeft},
-                {"StandardIdleRight",StandardIdleRight},{"StandardJumpingRight",StandardJumpingRight},{"StandardWalkingRight",StandardWalkingRight},
+                { "Dead", content.Load<Texture2D>("Dead")},
+                { "FireCrouchingLeft",content.Load<Texture2D>("FireCrouchingLeft")},{"FireIdleLeft",content.Load<Texture2D>("FireIdleLeft")},
+                { "FireJumpingLeft",content.Load<Texture2D>("FireJumpingLeft")},{"FireWalkingLeft",content.Load<Texture2D>("FireWalkingLeft")},
+                { "FireCrouchingRight",content.Load<Texture2D>("FireCrouchingRight")},{"FireIdleRight",content.Load<Texture2D>("FireIdleRight")},
+                { "FireJumpingRight",content.Load<Texture2D>("FireJumpingRight")},{"FireWalkingRight",content.Load<Texture2D>("FireWalkingRight")},
+                { "SuperCrouchingLeft",content.Load<Texture2D>("SuperCrouchingLeft")},{"SuperIdleLeft",content.Load<Texture2D>("SuperIdleLeft")},
+                { "SuperJumpingLeft",content.Load<Texture2D>("SuperJumpingLeft")},{"SuperWalkingLeft",content.Load<Texture2D>("SuperWalkingLeft")},
+                { "SuperCrouchingRight",content.Load<Texture2D>("SuperCrouchingRight")},{"SuperIdleRight",content.Load<Texture2D>("SuperIdleRight")},
+                { "SuperJumpingRight",content.Load<Texture2D>("SuperJumpingRight")},{"SuperWalkingRight",content.Load<Texture2D>("SuperWalkingRight")},
+                { "StandardIdleLeft",content.Load<Texture2D>("StandardIdleLeft")},{"StandardJumpingLeft",content.Load<Texture2D>("StandardJumpingLeft")},
+                { "StandardWalkingLeft",content.Load<Texture2D>("StandardWalkingLeft")},{"StandardIdleRight",content.Load<Texture2D>("StandardIdleRight")},
+                { "StandardJumpingRight",content.Load<Texture2D>("StandardJumpingRight")},{"StandardWalkingRight",content.Load<Texture2D>("StandardWalkingRight")},
             };
-
         }
-        
-        public ISprite CreateMarioSprite(string status, bool Static)
+
+        public ISprite CreateMarioSprite(string status, bool isStatic)
         {
-            //change
-            
             ISprite sprite;
-            
-            if (Static)
+
+            if (isStatic)
             {
                 sprite = new StaticSprite(stringToMarioTexture[status]);
             }
             else
             {
-                // animated
-                // add additional parameters when motion is involved
-                sprite = new AnimatedSprite(stringToMarioTexture[status], 1, 3);
+                sprite = new AnimatedSprite(stringToMarioTexture[status], 3, 1);
             }
+
             return sprite;
         }
 
@@ -137,24 +111,24 @@ namespace MelloMario
             switch (status)
             {
                 case "Normal":
-                    return new GoombaSprite(goombaSpritesheet, 1, 3, false);
+                    return new AnimatedSprite(goombaSpritesheet, 2, 1);
                 case "Defeated":
-                    return new GoombaSprite(goombaSpritesheet, 1, 3, true);
+                    return new StaticSprite(goombaSpritesheet);
                 default:
                     throw new Exception("Unknown sprite");
             }
         }
-        
+
         public ISprite CreateRedKoopaSprite(string status)
         {
             switch (status)
             {
                 case "Normal":
-                    return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, false);
+                    return new AnimatedSprite(redKoopaSpritesheet, 2, 2);
                 case "JumpOn":
-                    return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, true, false);
+                    return new StaticSprite(redKoopaSteppedSpritesheet);
                 case "Defeated":
-                    return new RedKoopaSprite(redKoopaSpritesheet, 3, 2, false, true);
+                    return new StaticSprite(redKoopaDeadSpritesheet);
                 default:
                     throw new Exception("Unknown sprite");
             }
@@ -165,47 +139,47 @@ namespace MelloMario
             switch (status)
             {
                 case "Normal":
-                    return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, false);
+                    return new AnimatedSprite(greenKoopaSpritesheet, 2, 2);
                 case "JumpOn":
-                    return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, true, false);
+                    return new StaticSprite(greenKoopaSteppedSpritesheet);
                 case "Defeated":
-                    return new GreenKoopaSprite(greenKoopaSpritesheet, 3, 2, false, true);
+                    return new StaticSprite(greenKoopaDeadSpritesheet);
                 default:
                     throw new Exception("Unknown sprite");
             }
         }
 
-        public ISprite CreatCoinSprite()
-        {
-            return new CoinSprite(coinSpritesheet, 1, 4);
-        }
-
         public ISprite CreateStarSprite()
         {
-            return new StarSprite(starSpritesheet, 1, 4);
+            return new AnimatedSprite(starSpritesheet, 4, 1);
+        }
+
+        public ISprite CreateCoinSprite()
+        {
+            return new AnimatedSprite(coinSpritesheet, 4, 1);
+        }
+
+        public ISprite CreateSuperMushroomSprite()
+        {
+            return new StaticSprite(superMushroomSpritesheet);
         }
 
         public ISprite CreateFlowerSprite()
         {
-            return new StarSprite(fireFlowerSpritesheet, 1, 8);
-        }
-
-        public ISprite CreatSuperMushroomSprite()
-        {
-            return new superMushroomSprite(superMushroomSpritesheet);
+            return new AnimatedSprite(fireFlowerSpritesheet, 8, 1);
         }
 
         public ISprite CreateOneUpMushroomSprite()
         {
-            return new oneUpshroomSprite(oneUpMushroomSpritesheet);
+            return new StaticSprite(oneUpMushroomSpritesheet);
         }
 
-        public ISprite CreateQuestion(string v)
+        public ISprite CreateQuestionSprite(string v)
         {
             switch (v)
             {
                 case "Used":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 27, 16, 16);
+                    return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
                 case "Silent":
                     return new AnimatedSprite(questionSpriteSheet, 1, 3);
                 default:
@@ -213,7 +187,7 @@ namespace MelloMario
             }
         }
 
-        public ISprite CreateBrick(string v)
+        public ISprite CreateBrickSprite(string v)
         {
             switch (v)
             {
@@ -226,38 +200,27 @@ namespace MelloMario
                 case "DestroyedRB":
                     return new BrickPieceSprite(brickPieceSpritesheet, 2, 2, 1, 1, BrickPieceSprite.Part.RightBottom);
                 case "Used":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 26, 16, 16);
+                    return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
                 case "Silent":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 1, 16, 16);
+                    return new SlicedSprite(blockSpritesheet, 33, 28, 1, 0);
                 default:
                     throw new Exception("Unknown sprite");
             }
         }
 
-        public ISprite CreateFloor(string v)
+        public ISprite CreateFloorSprite()
         {
-            switch (v)
-            {
-                case "Silent":
-                    return new BlockSilentSprite(blockSpritesheet, 0, 0, 16, 16);
-                default:
-                    throw new Exception("Unknown sprite");
-            }
+            return new SlicedSprite(blockSpritesheet, 33, 28, 0, 0);
         }
 
-        public ISprite CreateStair(string v)
+        public ISprite CreateStairSprite()
         {
-            switch (v)
-            {
-                case "Silent":
-                    return new BlockSilentSprite(blockSpritesheet, 1, 0, 16, 16);
-                default:
-                    throw new Exception("Unknown sprite");
-            }
+            return new SlicedSprite(blockSpritesheet, 33, 28, 1, 0);
         }
-        public ISprite CreatePipeline()
+
+        public ISprite CreatePipelineSprite()
         {
-            return new BlockSilentSprite(blockSpritesheet, 8, 0, 32, 32);
+            return new SlicedSprite(blockSpritesheet, 33, 28, 8, 0);
         }
     }
 }

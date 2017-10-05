@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using MelloMario.Commands;
 using MelloMario.MarioObjects;
 
-namespace MelloMario
+namespace MelloMario.Factories
 {
     class CommandFactory : ICommandFactory
     {
         private static ICommandFactory instance = new CommandFactory();
-        
+
         private CommandFactory()
         {
         }
@@ -35,7 +35,7 @@ namespace MelloMario
             }
         }
 
-        public ICommand CreateMiscCommand(string action, List<IGameObject> gameObject)
+        public ICommand CreateMiscCommand(string action, IGameObject[,] gameObject)
         {
             switch (action)
             {

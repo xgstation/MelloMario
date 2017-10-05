@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace MelloMario.Commands
+﻿namespace MelloMario.Commands
 {
-    class HiddenBlockCommand : BaseCommand<List<IGameObject>>
+    class HiddenBlockCommand : BaseCommand<IGameObject[,]>
     {
-        public HiddenBlockCommand(List<IGameObject> obj) : base(obj)
+        public HiddenBlockCommand(IGameObject[,] obj) : base(obj)
         {
         }
 
@@ -26,7 +24,9 @@ namespace MelloMario.Commands
                 }
             }
             if (brick != null)
-            brick.State.ChangeToSilent();
+            {
+                brick.State.ChangeToSilent();
+            }
         }
     }
 }

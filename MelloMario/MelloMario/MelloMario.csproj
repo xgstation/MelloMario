@@ -42,7 +42,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BlockObjects\BaseBlock.cs" />
+    <Compile Include="BaseClasses\BaseGameObject.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickBumped.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickDestroyed.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickHidden.cs" />
@@ -62,14 +62,14 @@
     <Compile Include="BlockObjects\StairBlock.cs" />
     <Compile Include="BlockObjects\StairStates\StairHidden.cs" />
     <Compile Include="BlockObjects\StairStates\StairSilent.cs" />
-    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="BaseClasses\BaseCommand.cs" />
     <Compile Include="Commands\ActionCommand.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\JumpCommand.cs" />
     <Compile Include="Commands\LeftCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\RightCommand.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="BaseClasses\BaseController.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Factories\CommandFactory.cs" />
     <Compile Include="Factories\SpriteFactory.cs" />
@@ -85,7 +85,6 @@
     <Compile Include="Interfaces\IMarioState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
-    <Compile Include="ItemObjects\BaseItem.cs" />
     <Compile Include="ItemObjects\Coin.cs" />
     <Compile Include="ItemObjects\CoinStates\CoinDefeated.cs" />
     <Compile Include="ItemObjects\CoinStates\CoinNormal.cs" />
@@ -113,21 +112,11 @@
     <Compile Include="LevelGen\LevelReader.cs" />
     <Compile Include="MarioObjects\DirectionStates\DirectionRight.cs" />
     <Compile Include="MarioObjects\DirectionStates\DirectionLeft.cs" />
-    <Compile Include="MarioObjects\DirectionStates\Direction.cs" />
     <Compile Include="MarioObjects\PowerUpStates\PowerUpDead.cs" />
     <Compile Include="MarioObjects\PowerUpStates\PowerUpFire.cs" />
     <Compile Include="MarioObjects\PowerUpStates\PowerUpStandard.cs" />
-    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="Sprites\BlockSprites\BlockAnimatedSprite.cs" />
-    <Compile Include="Sprites\BlockSprites\BlockSilentSprite.cs" />
+    <Compile Include="BaseClasses\BaseSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BrickPieceSprite.cs" />
-    <Compile Include="Sprites\CoinSprite.cs" />
-    <Compile Include="Sprites\FireFlowerSprite.cs" />
-    <Compile Include="Sprites\GreenKoopaSprite.cs" />
-    <Compile Include="Sprites\OneUpMushroomSprite.cs" />
-    <Compile Include="Sprites\RedKoopaSprite.cs" />
     <Compile Include="MarioObjects\Mario.cs" />
     <Compile Include="MarioObjects\MovementStates\MovementCrouching.cs" />
     <Compile Include="MarioObjects\MovementStates\MovementIdle.cs" />
@@ -135,16 +124,13 @@
     <Compile Include="MarioObjects\MovementStates\MovementWalking.cs" />
     <Compile Include="MarioObjects\PowerUpStates\PowerUpSuper.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
-    <Compile Include="Sprites\GoombaSprite.cs" />
-    <Compile Include="Sprites\StartSprite.cs" />
+    <Compile Include="Sprites\SlicedSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Commands\BrickBlockCommand.cs" />
     <Compile Include="Commands\HiddenBlockCommand.cs" />
     <Compile Include="Commands\QuestionBlockCommand.cs" />
     <Compile Include="Commands\DeadStateCommand.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
-    <Compile Include="Sprites\SuperMushroomSprite.cs" />
-    <Compile Include="EnemyObjects\BaseEnemy.cs" />
     <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Theming\GameScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
@@ -165,27 +151,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Windows\x86\Debug\MelloMario.exe" />
-    <Content Include="bin\Windows\x86\Debug\MelloMario.pdb" />
-    <Content Include="bin\Windows\x86\Debug\MonoGame.Framework.dll" />
-    <Content Include="bin\Windows\x86\Debug\MonoGame.Framework.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct2D1.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct2D1.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D11.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D11.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.DXGI.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.DXGI.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XAudio2.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XAudio2.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.xml" />
-    <Content Include="CodeReviews\CodeReviewCai1.txt" />
-    <Content Include="CodeReviews\CodeReviewWenli1.txt" />
     <Content Include="Content\BrickPieces.png" />
+    <Content Include="Content\GoombaDead.png" />
+    <Content Include="Content\GreenKoopaDead.png" />
+    <Content Include="Content\GreenKoopaStepped.png" />
     <Content Include="Content\OneUpMushroom.png" />
     <Content Include="Content\BlockSheet.png" />
     <Content Include="Content\Coin.png" />
@@ -203,6 +172,8 @@
     <Content Include="Content\GreenKoopa.png" />
     <Content Include="Content\Question.png" />
     <Content Include="Content\RedKoopa.png" />
+    <Content Include="Content\RedKoopaDead.png" />
+    <Content Include="Content\RedKoopaStepped.png" />
     <Content Include="Content\StandardIdleLeft.png" />
     <Content Include="Content\StandardIdleRight.png" />
     <Content Include="Content\StandardJumpingLeft.png" />
@@ -220,59 +191,15 @@
     <Content Include="Content\SuperWalkingLeft.png" />
     <Content Include="Content\SuperWalkingRight.png" />
     <Content Include="Icon.ico" />
-    <Content Include="LevelGen\ExampleLevel.txt" />
+    <Content Include="Content\ExampleLevel.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="bin\Windows\x86\Debug\Content\BlockSheet.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\BrickPieces.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\coin.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Dead.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireCrouchingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireCrouchingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\fireFlower.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireIdleLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireIdleRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireJumpingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireJumpingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireWalkingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireWalkingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\goomba.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\greenKoopa.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\OneUpMushroom.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Question.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\RedKoopa.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardIdleLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardIdleRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardJumpingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardJumpingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardWalkingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardWalkingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\star.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperCrouchingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperCrouchingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperIdleLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperIdleRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperJumpingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperJumpingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperMushroom.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperWalkingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperWalkingRight.xnb" />
-    <None Include="obj\x86\Release\MelloMario.csproj.CoreCompileInputs.cache" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Windows\x86\Release\" />
-    <Folder Include="MarioPlayerObject\" />
-    <Folder Include="MarioStates\Dead\" />
-    <Folder Include="MarioStates\Fire\Left\" />
-    <Folder Include="MarioStates\Fire\Right\" />
-    <Folder Include="MarioStates\Standard\Left\" />
-    <Folder Include="MarioStates\Standard\Right\" />
-    <Folder Include="MarioStates\Super\Left\" />
-    <Folder Include="MarioStates\Super\Right\" />
-    <Folder Include="PowerUps\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
