@@ -9,7 +9,7 @@ using MelloMario.BlockObjects.QuestionStates;
 
 namespace MelloMario.BlockObjects
 {
-    public class QuestionBlock : BaseBlock
+    class QuestionBlock : BaseBlock
     {
         public IBlockState State;
 

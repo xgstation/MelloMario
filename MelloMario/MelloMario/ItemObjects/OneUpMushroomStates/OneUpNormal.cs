@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
-    public class OneUpMushroomNormal : IItemState
+    class OneUpMushroomNormal : IItemState
     {
         private OneUpMushroom mushroomItem;
         private ISprite mushroom;

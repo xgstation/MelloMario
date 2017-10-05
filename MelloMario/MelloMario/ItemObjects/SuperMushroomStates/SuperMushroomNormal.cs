@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.SuperMushroomStates
 {
-    public class SuperMushroomNormal : IItemState
+    class SuperMushroomNormal : IItemState
     {
         private ISprite mushroom;
         private SuperMushroom mushroomItem;

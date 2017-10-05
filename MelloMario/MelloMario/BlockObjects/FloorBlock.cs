@@ -9,7 +9,7 @@ using MelloMario.BlockObjects.FloorStates;
 
 namespace MelloMario.BlockObjects
 {
-    public class FloorBlock : BaseBlock
+    class FloorBlock : BaseBlock
     {
         public IBlockState State;
         

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.MarioObjects.MovementStates
 {
-    public interface Movement
+    interface Movement
     {
         void UpgradeToMovementCrouching();
         void UpgradeToMovementldle();

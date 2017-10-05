@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
-    public class FireFlowerNormal : IItemState
+    class FireFlowerNormal : IItemState
     {
         private ISprite flower;
         private FireFlower flowerItem;

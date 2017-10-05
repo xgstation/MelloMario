@@ -40,7 +40,7 @@ namespace MelloMario.LevelGen
 
     class LevelReader
     {
-        public class Pack
+        class Pack
         {
             public int X { get; set; }
             public int Y { get; set; }

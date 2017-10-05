@@ -12,7 +12,7 @@ using MelloMario.MarioObjects.DirectionStates;
 
 namespace MelloMario.MarioObjects
 {
-    public class Mario : IGameObject
+    class Mario : IGameObject
     {
         public IMarioState State;
         //enum tracking state

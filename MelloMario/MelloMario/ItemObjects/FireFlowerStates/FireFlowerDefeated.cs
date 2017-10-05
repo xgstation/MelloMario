@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
-    public class FireFlowerDefeated : IItemState
+    class FireFlowerDefeated : IItemState
     {
 
         private FireFlower flowerItem;

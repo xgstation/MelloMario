@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects
 {
-    public class Star : BaseItem
+    class Star : BaseItem
     {
         public IItemState State;
 

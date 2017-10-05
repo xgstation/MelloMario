@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.CoinStates
 {
-    public class CoinNormal : IItemState
+    class CoinNormal : IItemState
     {
         private Coin coinItem;
         private ISprite coin;

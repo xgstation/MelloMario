@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.StarStates
 {
-    public class StarDefeated : IItemState
+    class StarDefeated : IItemState
     {
 
         private Star starItem;

@@ -4,7 +4,7 @@ using MelloMario.EnemyObjects.GoombaStates;
 
 namespace MelloMario.EnemyObjects
 {
-    public class Goomba: BaseEnemy
+    class Goomba: BaseEnemy
     {
         public IGoombaState State;
 

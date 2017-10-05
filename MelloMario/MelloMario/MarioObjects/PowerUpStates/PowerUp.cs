@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.MarioObjects.PowerUpStates
 {
-    public interface PowerUp
+    interface PowerUp
     {
         void UpgradeToPowerUpDead();
         void UpgradeToPowerUpFire();

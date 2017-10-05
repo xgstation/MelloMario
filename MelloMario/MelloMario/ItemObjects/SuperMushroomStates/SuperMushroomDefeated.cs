@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.SuperMushroomStates
 {
-    public class SuperMushroomDefeated : IItemState
+    class SuperMushroomDefeated : IItemState
     {
         private SuperMushroom mushroomItem;
         public SuperMushroomDefeated(SuperMushroom mushroomItem1)

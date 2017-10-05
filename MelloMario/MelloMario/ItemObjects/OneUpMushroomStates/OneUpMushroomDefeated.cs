@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
-    public class OneUpMushroomDefeated : IItemState
+    class OneUpMushroomDefeated : IItemState
     {
         private OneUpMushroom mushroomItem;
         public OneUpMushroomDefeated(OneUpMushroom mushroomItem1)

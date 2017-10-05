@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.CoinStates
 {
-    public class CoinDefeatedState : IItemState
+    class CoinDefeatedState : IItemState
     {
         private Coin coinItem;
         public CoinDefeatedState(Coin coin1)

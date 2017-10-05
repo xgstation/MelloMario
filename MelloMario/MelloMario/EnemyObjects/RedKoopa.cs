@@ -9,7 +9,7 @@ using MelloMario.EnemyObjects.KoopaStates;
 
 namespace MelloMario.EnemyObjects
 {
-    public class RedKoopa : BaseEnemy
+    class RedKoopa : BaseEnemy
     {
         public IKoopaState State;
 

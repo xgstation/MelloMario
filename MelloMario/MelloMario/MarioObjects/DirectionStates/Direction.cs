@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.MarioObjects.DirectionStates
 {
-    public interface Direction
+    interface Direction
     {
         void UpgradeToRightDirection();
         void UpgradeToLeftDirection();
