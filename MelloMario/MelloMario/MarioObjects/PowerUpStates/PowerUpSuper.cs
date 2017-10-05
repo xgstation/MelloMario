@@ -9,67 +9,38 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.PowerUpStates
 {
-    class SuperIdleLeft : IMarioState
+    class PowerUpSuper : PowerUp
     {
         Mario mario;
-        bool setToStatic;
-        ISprite sprite;
-        
-        public SuperIdleLeft(Mario mario)
+        //ISprite sprite;
+        //bool setToStatic;
+
+
+        public PowerUpSuper(Mario newMario)
         {
-            this.mario = mario;
-            setToStatic = true;
-            sprite = SpriteFactory.Instance.CreateMarioSprite("SuperIdleLeft",setToStatic);
+            mario = newMario;
+            //setToStatic = true;
+            //sprite = SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", setToStatic);
+        }
+        public void UpgradeToPowerUpDead()
+        {
+            this.mario.State = new PowerUpDead(this.mario);
+        }
+        public void UpgradeToPowerUpFire()
+        {
+            this.mario.State = new PowerUpFire(this.mario);
+        }
+        public void UpgradeToPowerUpStandard()
+        {
+            this.mario.State = new PowerUpStandard(this.mario);
+        }
+        public void UpgradeToPowerUpSuper()
+        {
 
         }
-        public void Down()
+        public void Update(GameTime gameTime)
         {
-            mario.State = new SuperCrouchingLeft(mario);
-        }
-        public void Die()
-        {
-            mario.State = new Dead(mario);
-        }
 
-        public void ChangeToFireState()
-        {
-            mario.State = new FireIdleLeft(mario); 
-        }
-
-        public void ChangeToStandardState()
-        {
-            mario.State = new StandardIdleLeft(mario);
-        }
-
-        public void ChangeToSuperState()
-        {
-            //nothing to do here
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            sprite.Draw(spriteBatch, location);
-        }
-
-        public void Update(GameTime game)
-        {
-            sprite.Update(game);
-        }
-
-        public void Up()
-        {
-            mario.State = new SuperJumpingLeft(mario);
-        }
-
-        public void Right()
-        {
-            mario.State = new SuperIdleRight(mario);
-        }
-
-        public void Left()
-        {
-            mario.PrevWalking = true;
-            mario.State = new SuperWalkingLeft(mario);
         }
     }
 }

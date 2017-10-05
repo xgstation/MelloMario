@@ -10,69 +10,39 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.PowerUpStates
 {
-    class FireIdleLeft : IMarioState
+    class PowerUpDead : PowerUp
     {
         Mario mario;
-        ISprite sprite;
-        bool setToStatic;
-       
-        public FireIdleLeft(Mario newMario)
+        //ISprite sprite;
+        //bool setToStatic;
+
+
+        public PowerUpDead(Mario newMario)
         {
             mario = newMario;
-            setToStatic = true;
-            sprite = SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", setToStatic);
+            //setToStatic = true;
+            //sprite = SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", setToStatic);
         }
-        public void Down()
-        {
-            mario.State = new FireCrouchingLeft(mario);
-        }
-        public void Die()
-        {
-            mario.State = new Dead(mario);
-        }
-
-        public void ChangeToFireState()
-        {
-        //nothing to do here
-        }
-
-        public void ChangeToStandardState()
-        {
-            mario.State = new StandardIdleLeft(mario);
-        }
-
-        public void ChangeToSuperState()
-        {
-            mario.State = new SuperIdleLeft(mario);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void UpgradeToPowerUpDead()
         {
          
-            sprite.Draw(spriteBatch,location);
-           
         }
-
-        public void Update(GameTime game)
+        public void UpgradeToPowerUpFire()
         {
-            sprite.Update(game);
-        }
-        public void Up()
-        {
-            mario.State = new FireJumpingLeft(mario);
 
         }
-
-        public void Right()
+       public  void UpgradeToPowerUpStandard()
         {
-            mario.State = new FireIdleRight(mario);
-            mario.PrevWalking = true;
+
         }
-
-        public void Left()
+        public void UpgradeToPowerUpSuper()
         {
-            mario.State = new FireWalkingLeft(mario);
-            mario.PrevWalking = true;
+
+        }
+        public void Update(GameTime gameTime)
+        {
+
         }
     }
 }
+

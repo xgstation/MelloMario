@@ -9,72 +9,38 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.MarioObjects.MovementStates
 {
-    class FireJumpingLeft : IMarioState
+    class MovementJumping : Movement
     {
         Mario mario;
-        bool setToStatic;
-        ISprite sprite;
-        public FireJumpingLeft(Mario mario)
+        //bool setToStatic;
+        // ISprite sprite;
+        public MovementJumping(Mario mario)
         {
             this.mario = mario;
-            setToStatic = true;
-            sprite = SpriteFactory.Instance.CreateMarioSprite("FireJumpingLeft", setToStatic);
-
+            //setToStatic = true;
+            //sprite = SpriteFactory.Instance.CreateMarioSprite("FireCrouchingLeft", setToStatic);
 
         }
-
-        public void Die()
+        public void UpgradeToMovementCrouching()
         {
-            mario.State=new Dead(mario);
+            this.mario.State = new MovementCrouching(this.mario);
         }
-
-        public void ChangeToFireState()
+        public void UpgradeToMovementldle()
         {
-            //nothing here
+            this.mario.State = new Movementldle(this.mario);
         }
-
-        public void ChangeToStandardState()
+        public void UpgradeToMovementJumping()
         {
-            mario.State=new StandardJumpingLeft(mario);
+            
         }
-
-        public void ChangeToSuperState()
+        public void UpgradeToMovementWalking()
         {
-            mario.State=new SuperJumpingLeft(mario);
-        }
-
-        public void Down()
-        {
-            if (mario.PrevWalking)
-                mario.State = new FireWalkingLeft(mario);
-            else
-                mario.State = new FireIdleLeft(mario);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            sprite.Draw(spriteBatch,location);
-        }
-
-        public void Left()
-        {
-            //nothing to do here
-        }
-
-        public void Right()
-        {
-            //right jump
-            mario.State=new FireJumpingRight(mario);
-        }
-
-        public void Up()
-        {
-            //nothing to do here
+            this.mario.State = new MovementWalking(this.mario);
         }
 
         public void Update(GameTime game)
         {
-            sprite.Update(game);
+            //sprite.Update(game);
         }
     }
 }

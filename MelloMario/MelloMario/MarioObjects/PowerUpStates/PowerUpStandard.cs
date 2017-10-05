@@ -10,62 +10,38 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.PowerUpStates
 {
-    class StandardIdleLeft : IMarioState
+    class PowerUpStandard : PowerUp
     {
         Mario mario;
-        ISprite sprite;
-        bool setToStatic;
+        //ISprite sprite;
+        //bool setToStatic;
 
-        public StandardIdleLeft(Mario newMario)
+
+        public PowerUpStandard(Mario newMario)
         {
             mario = newMario;
-            setToStatic = true;
-            sprite = SpriteFactory.Instance.CreateMarioSprite("StandardIdleLeft",setToStatic);
+            //setToStatic = true;
+            //sprite = SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", setToStatic);
         }
-        public void Down() {
-            //nothing here
-        }
-        public void ChangeToFireState()
+        public void UpgradeToPowerUpDead()
         {
-            mario.State = new FireIdleLeft(mario);
+            this.mario.State = new PowerUpDead(this.mario);
         }
-        public void ChangeToSuperState()
+        public void UpgradeToPowerUpFire()
         {
-            mario.State = new SuperIdleLeft(mario);   
+            this.mario.State = new PowerUpFire(this.mario);
         }
-        public void ChangeToStandardState()
+        public void UpgradeToPowerUpStandard()
         {
-            //nothing to do here
-        }
-        public void Die()
-        {
-            mario.State = new Dead(mario);
-        }
-        public void Update(GameTime game)
-        {
-            //Nothing to do here
-            sprite.Update(game);
-        }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            
-            sprite.Draw(spriteBatch,location);
-            
-        }
-        public void Up()
-        {
-            mario.State = new StandardJumpingLeft(mario);
-        }
 
-        public void Right()
-        {
-            mario.State = new StandardIdleRight(mario);
         }
-
-        public void Left()
+        public void UpgradeToPowerUpSuper()
         {
-            mario.State = new StandardWalkingLeft(mario);
-            mario.PrevWalking = true;
+            this.mario.State = new PowerUpSuper(this.mario);
+        }
+        public void Update(GameTime gameTime)
+        {
+
         }
     }
 }

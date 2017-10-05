@@ -9,66 +9,38 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.MarioObjects.MovementStates
 {
-    class FireCrouchingLeft : IMarioState
+    class MovementCrouching : Movement
     {
         Mario mario;
         bool setToStatic;
         ISprite sprite;
-        public FireCrouchingLeft(Mario mario)
+        public MovementCrouching(Mario mario)
         {
             this.mario = mario;
-            setToStatic = true;
-            sprite = SpriteFactory.Instance.CreateMarioSprite("FireCrouchingLeft", setToStatic);
+            //setToStatic = true;
+            //sprite = SpriteFactory.Instance.CreateMarioSprite("FireCrouchingLeft", setToStatic);
             
         }
-        public void Down()
+        public void UpgradeToMovementCrouching()
         {
-            //nothing to do here
+          
         }
-        //crouching
-        public void Die()
+        public void UpgradeToMovementldle()
         {
-            mario.State = new Dead(mario);
+            this.mario.State = new Movementldle(this.mario);
         }
-
-        public void ChangeToFireState()
+        public void UpgradeToMovementJumping()
         {
-            //nothing to do here
+            this.mario.State = new MovementJumping(this.mario);
         }
-
-        public void ChangeToStandardState()
+        public void UpgradeToMovementWalking()
         {
-            //nothing here
-        }
-
-        public void ChangeToSuperState()
-        {
-            mario.State = new SuperCrouchingLeft(mario);           
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            sprite.Draw(spriteBatch, location);
+            this.mario.State = new MovementWalking(this.mario);
         }
 
         public void Update(GameTime game)
         {
-            sprite.Update(game);
-        }
-
-        public void Up()
-        {
-            mario.State = new FireIdleLeft(mario);
-        }
-
-        public void Right()
-        {
-            
-        }
-
-        public void Left()
-        {
-            //left crouch
+            //sprite.Update(game);
         }
     }
 }
