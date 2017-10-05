@@ -20,7 +20,7 @@ namespace MelloMario.LevelGen
         B:Brick
         S:Stair
         Q:Question
-        P:Pipe(needs 2xY or Yx2 format)
+        P:Pipe(down and to the right)
          
         Entities:
         C:Coin

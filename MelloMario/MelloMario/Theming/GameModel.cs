@@ -32,12 +32,12 @@ namespace MelloMario
         public void LoadEntities(int w, int h)
         {
             objects = new IGameObject[w, h];
-            mario = new Mario(new Vector2(100, 100));
+            mario = new Mario(new Point(100, 100));
 
             //all of these array cords are randomly picked ignore them
             objects[0, 0] = mario;
             //temporary hard coded blocks
-            BrickBlock blockHidden = new BrickBlock(new Vector2(300, 200));
+            Brick blockHidden = new Brick(new Point(300, 200));
             blockHidden.State.Hide();
             objects[1, 0] = (blockHidden);
             objects[2, 0] = (new Brick(new Point(100, 200)));
