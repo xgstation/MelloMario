@@ -43,23 +43,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseClasses\BaseGameObject.cs" />
+    <Compile Include="BlockObjects\Brick.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickBumped.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickDestroyed.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickHidden.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickSilent.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickUsed.cs" />
-    <Compile Include="BlockObjects\BrickBlock.cs" />
-    <Compile Include="BlockObjects\FloorBlock.cs" />
+    <Compile Include="BlockObjects\Floor.cs" />
     <Compile Include="BlockObjects\FloorStates\FloorHidden.cs" />
     <Compile Include="BlockObjects\FloorStates\FloorSilent.cs" />
-    <Compile Include="BlockObjects\PipelineBlock.cs" />
+    <Compile Include="BlockObjects\Pipeline.cs" />
     <Compile Include="BlockObjects\PipelineStates\PipelineSilent.cs" />
-    <Compile Include="BlockObjects\QuestionBlock.cs" />
+    <Compile Include="BlockObjects\Question.cs" />
     <Compile Include="BlockObjects\QuestionStates\QuestionBumped.cs" />
     <Compile Include="BlockObjects\QuestionStates\QuestionHidden.cs" />
     <Compile Include="BlockObjects\QuestionStates\QuestionSilent.cs" />
     <Compile Include="BlockObjects\QuestionStates\QuestionUsed.cs" />
-    <Compile Include="BlockObjects\StairBlock.cs" />
+    <Compile Include="BlockObjects\Stair.cs" />
     <Compile Include="BlockObjects\StairStates\StairHidden.cs" />
     <Compile Include="BlockObjects\StairStates\StairSilent.cs" />
     <Compile Include="BaseClasses\BaseCommand.cs" />
