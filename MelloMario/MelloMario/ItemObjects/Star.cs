@@ -38,6 +38,9 @@ namespace MelloMario.ItemObjects
         public Star(Point location) : base(location, new Point(32, 32))
         {
             state = new StarNormal(this);
+            //I am not sure where you wanted the sprite attached, this seems like a logical place
+            ISprite sprite = SpriteFactory.Instance.CreateStarSprite();
+            ShowSprite(sprite);
             OnStateChanged();
         }
 

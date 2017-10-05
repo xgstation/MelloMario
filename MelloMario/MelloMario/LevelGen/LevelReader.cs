@@ -1,4 +1,7 @@
 ﻿using MelloMario.BlockObjects;
+using MelloMario.EnemyObjects;
+using MelloMario.ItemObjects;
+using MelloMario.MarioObjects;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -16,6 +19,8 @@ namespace MelloMario.LevelGen
         first line height of level
         second line width of level
 
+        !:Mario
+
         Blocks:
         F:Floor
         B:Brick
@@ -25,9 +30,9 @@ namespace MelloMario.LevelGen
          
         Entities:
         C:Coin
-        1:One Up
+        1:One Up Mushroom
         R:Fire Flower
-        M:Mushroom
+        M:Super Mushroom
         T:Star
 
         Harm:
@@ -78,28 +83,61 @@ namespace MelloMario.LevelGen
 
         public IGameObject[,] LoadStatic()
         {
-            IGameObject[,] staticObjects = new IGameObject[w, h];
+            IGameObject[,] staticObjects = new IGameObject[h,w];
             dynamicObjects = new List<IGameObject>();
 
-            for (int i = 0; i < w; ++i)
+            for (int i = 0; i < h; ++i)
             {
                 string curLine = input.ReadLine();
-                for (int j = 0; j < h; ++j)
+                for (int j = 0; j < w; ++j)
                 {
                     char curChar = curLine.ElementAt(j);
                     switch (curChar)
                     {
+                        case '!':
+                            dynamicObjects.Add(new Mario(new Point(j * SCALE, i * SCALE)));
+                            break;
+
+                        //blocks
                         case 'F':
-                            staticObjects[i, j] = new Floor(new Point(i * SCALE, j * SCALE));
+                            staticObjects[i,j] = new Floor(new Point(j * SCALE, i * SCALE));
                             break;
                         case 'B':
-                            staticObjects[i, j] = new Brick(new Point(i * SCALE, j * SCALE));
+                            staticObjects[i,j] = new Brick(new Point(j * SCALE, i * SCALE));
                             break;
                         case 'S':
-                            staticObjects[i, j] = new Stair(new Point(i * SCALE, j * SCALE));
+                            staticObjects[i,j] = new Stair(new Point(j * SCALE, i * SCALE));
                             break;
                         case 'Q':
-                            staticObjects[i, j] = new Question(new Point(i * SCALE, j * SCALE));
+                            staticObjects[i,j] = new Question(new Point(j * SCALE, i * SCALE));
+                            break;
+
+                        //harm
+                        case 'G':
+                            dynamicObjects.Add(new Goomba(new Point(j * SCALE, i * SCALE)));
+                            break;
+                        case 'K':
+                            dynamicObjects.Add(new GreenKoopa(new Point(j * SCALE, i * SCALE)));
+                            break;
+                        case 'D':
+                            dynamicObjects.Add(new RedKoopa(new Point(j * SCALE, i * SCALE)));
+                            break;
+
+                        //entities
+                        case 'C':
+                            staticObjects[i, j] = new Coin(new Point(j * SCALE, i * SCALE));
+                            break;
+                        case '1':
+                            dynamicObjects.Add(new OneUpMushroom(new Point(j * SCALE, i * SCALE)));
+                            break;
+                        case 'R':
+                            dynamicObjects.Add(new FireFlower(new Point(j * SCALE, i * SCALE)));
+                            break;
+                        case 'M':
+                            dynamicObjects.Add(new SuperMushroom(new Point(j * SCALE, i * SCALE)));
+                            break;
+                        case 'T':
+                            dynamicObjects.Add(new Star(new Point(j * SCALE, i * SCALE)));
                             break;
                         default:
                             //do nothing, blank space dont add anything to blocks

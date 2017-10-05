@@ -38,6 +38,9 @@ namespace MelloMario.EnemyObjects
         public RedKoopa(Point location) : base(location, new Point(32, 32))
         {
             state = new RedKoopaNormal(this);
+            //I am not sure where you wanted the sprite attached, this seems like a logical place
+            ISprite sprite = SpriteFactory.Instance.CreateRedKoopaSprite("Normal");
+            ShowSprite(sprite);
             OnStateChanged();
         }
 

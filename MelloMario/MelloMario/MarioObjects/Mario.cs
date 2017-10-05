@@ -68,6 +68,9 @@ namespace MelloMario.MarioObjects
             directionState = new DirectionRight(this);
             movementState = new Movementldle(this);
             powerUpState = new PowerUpStandard(this);
+            //I am not sure where you wanted the sprite attached, this seems like a logical place
+            ISprite sprite = SpriteFactory.Instance.CreateMarioSprite("StandardIdleRight",true);
+            ShowSprite(sprite);
             OnStateChanged();
         }
 

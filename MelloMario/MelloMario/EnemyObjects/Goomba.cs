@@ -38,6 +38,9 @@ namespace MelloMario.EnemyObjects
         public Goomba(Point location) : base(location, new Point(32, 32))
         {
             state = new GoombaNormal(this);
+            //I am not sure where you wanted the sprite attached, this seems like a logical place
+            ISprite sprite = SpriteFactory.Instance.CreateGoombaSprite("Normal");
+            ShowSprite(sprite);
             OnStateChanged();
         }
 

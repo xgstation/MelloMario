@@ -38,6 +38,7 @@ namespace MelloMario
             dynamicObjects = reader.LoadDynamic();
 
             //hard coded items and blocks for testing purposes
+            /*
             stationaryObjects = new IGameObject[22, 22];
             mario = new Mario(new Point(100, 100));
             stationaryObjects[0, 0] = mario;
@@ -57,6 +58,7 @@ namespace MelloMario
             dynamicObjects.Add(new OneUpMushroom(new Point(200, 50)));
             dynamicObjects.Add(new SuperMushroom(new Point(250, 50)));
             dynamicObjects.Add(new Star(new Point(300, 50)));
+            */
         }
 
         public void Update(GameTime time)

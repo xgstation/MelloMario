@@ -1,7 +1,10 @@
-﻿5
-23
-_________Q_____________
-_________________S_S___
-_______BQBQB____SS_SS__
-______G____G___SSSMSSS_
-FFFFFFFFFFFFFFFFFFFFFFF
+﻿8
+25
+_________________________
+_________R_______________
+_________Q_______K_K_____
+___C___D1_TD_____S_S_____
+__CCC__BQBQB____SS_SS____
+_!____G____G___SSSMSSS___
+FFFFFFFFFFFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFFFFFFFFFFF
