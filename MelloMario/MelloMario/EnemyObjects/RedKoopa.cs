@@ -10,8 +10,8 @@ namespace MelloMario.EnemyObjects
 
         private void OnStateChanged()
         {
-            // if () ...
-            // ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
+            // TODO: load different sprites base on the state
+            ShowSprite(SpriteFactory.Instance.CreateRedKoopaSprite("Normal"));
         }
 
         protected override void OnSimulation(GameTime time)
@@ -38,9 +38,6 @@ namespace MelloMario.EnemyObjects
         public RedKoopa(Point location) : base(location, new Point(32, 32))
         {
             state = new RedKoopaNormal(this);
-            //I am not sure where you wanted the sprite attached, this seems like a logical place
-            ISprite sprite = SpriteFactory.Instance.CreateRedKoopaSprite("Normal");
-            ShowSprite(sprite);
             OnStateChanged();
         }
 

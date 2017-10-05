@@ -10,8 +10,27 @@ namespace MelloMario.BlockObjects
 
         private void OnStateChanged()
         {
-            // if () ...
-            // ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
+            if (state is BrickBumped)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
+            }
+            if (state is BrickDestroyed)
+            {
+                // TODO: design a new mechanism to handle multiple sprites (class SpriteGroup : ISprite)?
+                // ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Destroyed"));
+            }
+            if (state is BrickHidden)
+            {
+                HideSprite();
+            }
+            if (state is BrickNormal)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
+            }
+            if (state is BrickUsed)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Used"));
+            }
         }
 
         protected override void OnSimulation(GameTime time)
@@ -38,9 +57,6 @@ namespace MelloMario.BlockObjects
         public Brick(Point location) : base(location, new Point(32, 32))
         {
             state = new BrickNormal(this);
-            //I am not sure where you wanted the sprite attached, this seems like a logical place
-            ISprite sprite = SpriteFactory.Instance.CreateBrickSprite("Normal");
-            ShowSprite(sprite);
             OnStateChanged();
         }
 

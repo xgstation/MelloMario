@@ -10,8 +10,8 @@ namespace MelloMario.ItemObjects
 
         private void OnStateChanged()
         {
-            // if () ...
-            // ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
+            // TODO: load different sprites base on the state
+            ISprite sprite = SpriteFactory.Instance.CreateFlowerSprite();
         }
 
         protected override void OnSimulation(GameTime time)
@@ -38,9 +38,6 @@ namespace MelloMario.ItemObjects
         public FireFlower(Point location) : base(location, new Point(32, 32))
         {
             state = new FireFlowerNormal(this);
-            //I am not sure where you wanted the sprite attached, this seems like a logical place
-            ISprite sprite = SpriteFactory.Instance.CreateFlowerSprite();
-            ShowSprite(sprite);
             OnStateChanged();
         }
 

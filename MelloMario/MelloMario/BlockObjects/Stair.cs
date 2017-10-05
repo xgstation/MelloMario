@@ -10,8 +10,14 @@ namespace MelloMario.BlockObjects
 
         private void OnStateChanged()
         {
-            // if () ...
-            // ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
+            if (state is StairHidden)
+            {
+                HideSprite();
+            }
+            if (state is StairNormal)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateStairSprite());
+            }
         }
 
         protected override void OnSimulation(GameTime time)
@@ -38,9 +44,6 @@ namespace MelloMario.BlockObjects
         public Stair(Point location) : base(location, new Point(32, 32))
         {
             state = new StairNormal(this);
-            //I am not sure where you wanted the sprite attached, this seems like a logical place
-            ISprite sprite = SpriteFactory.Instance.CreateStairSprite();
-            ShowSprite(sprite);
             OnStateChanged();
         }
 

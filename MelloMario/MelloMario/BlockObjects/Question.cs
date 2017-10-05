@@ -10,8 +10,22 @@ namespace MelloMario.BlockObjects
 
         private void OnStateChanged()
         {
-            // if () ...
-            // ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
+            if (state is QuestionBumped)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
+            }
+            if (state is QuestionHidden)
+            {
+                HideSprite();
+            }
+            if (state is QuestionNormal)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
+            }
+            if (state is QuestionUsed)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
+            }
         }
 
         protected override void OnSimulation(GameTime time)
@@ -38,9 +52,6 @@ namespace MelloMario.BlockObjects
         public Question(Point location) : base(location, new Point(32, 32))
         {
             state = new QuestionNormal(this);
-            //I am not sure where you wanted the sprite attached, this seems like a logical place
-            ISprite sprite = SpriteFactory.Instance.CreateQuestionSprite("Normal");
-            ShowSprite(sprite);
             OnStateChanged();
         }
 
