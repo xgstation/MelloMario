@@ -1,58 +1,110 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using MelloMario.MarioObjects.States;
+﻿using Microsoft.Xna.Framework;
+using MelloMario.Factories;
 using MelloMario.MarioObjects.DirectionStates;
+using MelloMario.MarioObjects.MovementStates;
+using MelloMario.MarioObjects.PowerUpStates;
 
 namespace MelloMario.MarioObjects
 {
-    class Mario : IGameObject
+    class Mario : BaseGameObject
     {
-        public IMarioState State;
-        //enum tracking state
-        enum PowerState { Fire,Standard,Super};
-        PowerState currentPowerState;
-        public bool PrevWalking;
-        Vector2 location;
-      
-        public Mario(Vector2 initLocation)
+        private IMarioDirectionState directionState;
+        public IMarioMovementState movementState;
+        public IMarioPowerUpState powerUpState;
+
+        private void OnStateChanged()
         {
-            location = initLocation;
-            State = new DirectionRight(this);
-            currentPowerState = PowerState.Standard;
-            PrevWalking = false;
-        }
-        
-        //make another method that returns the current state of the object
-        public void Down() { State.Down(); }
-        public void Up() { State.Up(); }
-        public void Right() { State.Right(); }
-        public void Left() { State.Left(); }
-        public void Die() { State.Die(); }
-        public void ChangeToStandardState() {
-            currentPowerState = PowerState.Standard;
-            State.ChangeToStandardState();}
-        public void ChangeToFireState() {
-            currentPowerState = PowerState.Fire;
-            State.ChangeToFireState();}
-        public void ChangeToSuperState() {
-            currentPowerState = PowerState.Super;
-            State.ChangeToSuperState();}
-        public void Update(GameTime time)
-        {
-            // TODO: calculate the location
-            State.Update(game);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        protected override void OnSimulation(GameTime time)
         {
-            State.Draw(spriteBatch, location);
+        }
+
+        protected override void OnCollision(IGameObject target)
+        {
+        }
+
+        public IMarioDirectionState DirectionState
+        {
+            get
+            {
+                return directionState;
+            }
+            set
+            {
+                directionState = value;
+                OnStateChanged();
+            }
+        }
+        public IMarioMovementState MovementState
+        {
+            get
+            {
+                return movementState;
+            }
+            set
+            {
+                movementState = value;
+                OnStateChanged();
+            }
+        }
+        public IMarioPowerUpState PowerUpState
+        {
+            get
+            {
+                return powerUpState;
+            }
+            set
+            {
+                powerUpState = value;
+                OnStateChanged();
+            }
+        }
+
+        public Mario(Point location) : base(location, new Point(32, 32))
+        {
+            ShowResized(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
+        }
+
+        public void TurnLeft()
+        {
+            DirectionState.TurnLeft();
+        }
+        public void TurnRight()
+        {
+            DirectionState.TurnRight();
+        }
+        public void Crouch()
+        {
+            MovementState.Crouch();
+        }
+        public void Idle()
+        {
+            MovementState.Idle();
+        }
+        public void Jump()
+        {
+            MovementState.Jump();
+        }
+        public void Walk()
+        {
+            MovementState.Walk();
+        }
+        public void UpgradeToSuper()
+        {
+            PowerUpState.UpgradeToSuper();
+        }
+        public void UpgradeToFire()
+        {
+            PowerUpState.UpgradeToFire();
+        }
+        public void Downgrade()
+        {
+            PowerUpState.Downgrade();
+        }
+        public void Kill()
+        {
+            PowerUpState.Kill();
         }
     }
 }

@@ -17,12 +17,6 @@ namespace MelloMario.MarioObjects.DirectionStates
         public DirectionLeft(Mario newMario)
         {
             mario = newMario;
-            //setToStatic = true;
-            //sprite = SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", setToStatic);
-        }
-        public void TurnRight()
-        {
-            mario.State = new DirectionRight(mario);
         }
 
         public void TurnLeft()
@@ -30,10 +24,13 @@ namespace MelloMario.MarioObjects.DirectionStates
 
         }
 
+        public void TurnRight()
+        {
+            mario.DirectionState = new DirectionRight(mario);
+        }
 
         public void Update(GameTime time)
         {
-            //sprite.Update(game);
         }
 
     }
