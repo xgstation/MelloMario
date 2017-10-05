@@ -32,10 +32,7 @@ namespace MelloMario.Controllers
             {
                 if (currentState != emptyInput) // Button Pressed
                 {
-
-                    Buttons[] buttonList = (Buttons[])Enum.GetValues(typeof(Buttons));
-
-                    foreach (Buttons button in buttonList)
+                    foreach (Buttons button in Enum.GetValues(typeof(Buttons)))
                     {
                         if (currentState.IsButtonDown(button) &&
                             !previousGamePadState.IsButtonDown(button))

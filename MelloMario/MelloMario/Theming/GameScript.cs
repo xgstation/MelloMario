@@ -12,7 +12,7 @@ namespace MelloMario
         {
         }
 
-        public void Bind(List<IController> controllers, Mario mario, IGameObject[,] objects)
+        public void Bind(IList<IController> controllers, Mario mario, IGameObject[,] objects)
         {
             ICommandFactory factory = CommandFactory.Instance;
 

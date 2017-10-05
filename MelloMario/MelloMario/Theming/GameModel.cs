@@ -11,9 +11,9 @@ namespace MelloMario
 {
     class GameModel
     {
-        private List<IController> controllers;
+        private IList<IController> controllers;
         private IGameObject[,] stationaryObjects;
-        private List<IGameObject> dynamicObjects;
+        private IList<IGameObject> dynamicObjects;
         // TODO: Do we need another abstraction layer for mario's actions?
         private Mario mario;
 
@@ -22,7 +22,7 @@ namespace MelloMario
             dynamicObjects = new List<IGameObject>();
         }
 
-        public void LoadControllers(List<IController> controllers)
+        public void LoadControllers(IList<IController> controllers)
         {
             this.controllers = controllers;
         }
@@ -38,7 +38,6 @@ namespace MelloMario
             dynamicObjects = reader.LoadDynamic();
 
             //hard coded items and blocks for testing purposes
-            /*
             stationaryObjects = new IGameObject[22, 22];
             mario = new Mario(new Point(100, 100));
             stationaryObjects[0, 0] = mario;
@@ -58,7 +57,6 @@ namespace MelloMario
             dynamicObjects.Add(new OneUpMushroom(new Point(200, 50)));
             dynamicObjects.Add(new SuperMushroom(new Point(250, 50)));
             dynamicObjects.Add(new Star(new Point(300, 50)));
-            */
         }
 
         public void Update(GameTime time)
@@ -68,7 +66,7 @@ namespace MelloMario
                 controller.Update();
             }
 
-            foreach(IGameObject gameObject in dynamicObjects)
+            foreach (IGameObject gameObject in dynamicObjects)
             {
                 gameObject.Update(time, new List<IGameObject>());
             }

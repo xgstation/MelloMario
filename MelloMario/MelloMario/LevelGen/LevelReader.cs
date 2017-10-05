@@ -56,7 +56,7 @@ namespace MelloMario.LevelGen
         private int h;
         private int w;
         private StreamReader input;
-        private List<IGameObject> dynamicObjects;
+        private IList<IGameObject> dynamicObjects;
 
         public LevelReader(String path)
         {
@@ -81,16 +81,16 @@ namespace MelloMario.LevelGen
             IGameObject[,] staticObjects = new IGameObject[w, h];
             dynamicObjects = new List<IGameObject>();
 
-            for(int i = 0; i < w; ++i)
+            for (int i = 0; i < w; ++i)
             {
                 string curLine = input.ReadLine();
-                for(int j = 0; j < h; ++j)
+                for (int j = 0; j < h; ++j)
                 {
                     char curChar = curLine.ElementAt(j);
-                    switch(curChar)
+                    switch (curChar)
                     {
                         case 'F':
-                            staticObjects[i, j] = new Floor(new Point(i*SCALE,j*SCALE));
+                            staticObjects[i, j] = new Floor(new Point(i * SCALE, j * SCALE));
                             break;
                         case 'B':
                             staticObjects[i, j] = new Brick(new Point(i * SCALE, j * SCALE));
@@ -111,7 +111,7 @@ namespace MelloMario.LevelGen
             return staticObjects;
         }
 
-        public List<IGameObject> LoadDynamic()
+        public IList<IGameObject> LoadDynamic()
         {
             //must be called after load static
             return dynamicObjects;

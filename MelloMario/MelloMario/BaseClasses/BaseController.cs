@@ -4,7 +4,7 @@ namespace MelloMario.Controllers
 {
     abstract class BaseController<T> : IController
     {
-        private Dictionary<T, ICommand> commands;
+        private IDictionary<T, ICommand> commands;
 
         public BaseController()
         {

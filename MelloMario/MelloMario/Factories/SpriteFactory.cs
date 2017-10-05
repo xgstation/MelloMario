@@ -17,7 +17,7 @@ namespace MelloMario.Factories
     {
         private static ISpriteFactory instance = new SpriteFactory();
 
-        Dictionary<String, Texture2D> stringToMarioTexture;
+        IDictionary<String, Texture2D> stringToMarioTexture;
 
         private Texture2D goombaSpritesheet;
         private Texture2D goombaDeadSpritesheet;
@@ -35,8 +35,8 @@ namespace MelloMario.Factories
 
         private Texture2D blockSpritesheet;
         private Texture2D brickPieceSpritesheet;
-
         private Texture2D questionSpriteSheet;
+
         private SpriteFactory()
         {
         }
