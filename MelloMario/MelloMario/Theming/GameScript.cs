@@ -12,7 +12,7 @@ namespace MelloMario
         {
         }
 
-        public void Bind(IList<IController> controllers, Mario mario, IGameObject[,] objects)
+        public void Bind(IList<IController> controllers, Mario mario, IGameObject[,] staticBlocks, List<IGameObject> dynamicBlocks)
         {
             ICommandFactory factory = CommandFactory.Instance;
 
@@ -34,10 +34,10 @@ namespace MelloMario
                     controller.AddCommand(Keys.D, factory.CreateMarioCommand("Right", mario));
 
                     //commands for changing block/mario state
-                    controller.AddCommand(Keys.X, factory.CreateMiscCommand("UsedBlock", objects));
-                    controller.AddCommand(Keys.OemQuestion, factory.CreateMiscCommand("QuestionBlock", objects));
-                    controller.AddCommand(Keys.B, factory.CreateMiscCommand("BrickBlock", objects));
-                    controller.AddCommand(Keys.H, factory.CreateMiscCommand("HiddenBlock", objects));
+                    controller.AddCommand(Keys.X, factory.CreateMiscCommand("UsedBlock", staticBlocks));
+                    controller.AddCommand(Keys.OemQuestion, factory.CreateMiscCommand("QuestionBlock", staticBlocks));
+                    controller.AddCommand(Keys.B, factory.CreateMiscCommand("BrickBlock", staticBlocks));
+                    controller.AddCommand(Keys.H, factory.CreateMiscCommand("HiddenBlock", staticBlocks));
 
                     controller.AddCommand(Keys.Y, factory.CreateMarioCommand("StandardState", mario));
                     controller.AddCommand(Keys.U, factory.CreateMarioCommand("SuperState", mario));

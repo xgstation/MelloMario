@@ -13,7 +13,7 @@ namespace MelloMario
     {
         private IList<IController> controllers;
         private IGameObject[,] stationaryObjects;
-        private IList<IGameObject> dynamicObjects;
+        private List<IGameObject> dynamicObjects;
         // TODO: Do we need another abstraction layer for mario's actions?
         private Mario mario;
 
@@ -29,13 +29,16 @@ namespace MelloMario
 
         public void Bind(GameScript script)
         {
-            script.Bind(controllers, mario, stationaryObjects);
+            script.Bind(controllers, mario, stationaryObjects, dynamicObjects);
         }
 
         public void LoadEntities(LevelReader reader)
         {
             stationaryObjects = reader.LoadStatic();
+            //these need to be called after loadstatic, this is a little bit messy
+            //will probably change in the future
             dynamicObjects = reader.LoadDynamic();
+            mario = reader.LoadMario();
 
             //hard coded items and blocks for testing purposes
             /*
@@ -68,6 +71,8 @@ namespace MelloMario
                 controller.Update();
             }
 
+            mario.Update(time, new List<IGameObject>());
+
             foreach (IGameObject gameObject in dynamicObjects)
             {
                 gameObject.Update(time, new List<IGameObject>());
@@ -90,6 +95,8 @@ namespace MelloMario
 
         internal void Draw(GameTime time, SpriteBatch spriteBatch)
         {
+            mario.Draw(time, spriteBatch);
+
             foreach (IGameObject gameObject in dynamicObjects)
             {
                 gameObject.Draw(time, spriteBatch);

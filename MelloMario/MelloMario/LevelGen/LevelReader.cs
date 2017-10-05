@@ -61,7 +61,8 @@ namespace MelloMario.LevelGen
         private int h;
         private int w;
         private StreamReader input;
-        private IList<IGameObject> dynamicObjects;
+        private List<IGameObject> dynamicObjects;
+        private Mario mario;
 
         public LevelReader(String path)
         {
@@ -95,7 +96,7 @@ namespace MelloMario.LevelGen
                     switch (curChar)
                     {
                         case '!':
-                            dynamicObjects.Add(new Mario(new Point(j * SCALE, i * SCALE)));
+                            mario = new Mario(new Point(j * SCALE, i * SCALE));
                             break;
 
                         //blocks
@@ -149,10 +150,16 @@ namespace MelloMario.LevelGen
             return staticObjects;
         }
 
-        public IList<IGameObject> LoadDynamic()
+        public List<IGameObject> LoadDynamic()
         {
             //must be called after load static
             return dynamicObjects;
+        }
+
+        public Mario LoadMario()
+        {
+            //must be called after load static
+            return mario;
         }
 
     }
