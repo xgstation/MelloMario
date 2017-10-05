@@ -14,8 +14,44 @@ namespace MelloMario.MarioObjects
 
         private void OnStateChanged()
         {
-            // if () ...
-            // ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
+            if (powerUpState is PowerUpStandard)
+            {
+                if(MovementState is Movementldle)
+                {
+                    if(directionState is DirectionLeft)
+                    {
+                         ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardIdleLeft", false), ResizeModeX.Center, ResizeModeY.Bottom);
+                    }
+                    else
+                    {
+                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardIdleRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
+                    }
+                }
+                else if(MovementState is MovementJumping)
+                {
+                    if (directionState is DirectionLeft)
+                    {
+                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardJumpingLeft", false), ResizeModeX.Center, ResizeModeY.Bottom);
+                    }
+                    else
+                    {
+                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardJumpingRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
+                    }
+                }
+                else if(MovementState is MovementWalking)
+                {
+                    if (directionState is DirectionLeft)
+                    {
+                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardWalkingLeft", true), ResizeModeX.Center, ResizeModeY.Bottom);
+                    }
+                    else
+                    {
+                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardWalkingWalking", true), ResizeModeX.Center, ResizeModeY.Bottom);
+                    }
+                }
+            
+            }
+
         }
 
         protected override void OnSimulation(GameTime time)
