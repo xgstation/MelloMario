@@ -21,7 +21,7 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Show()
         {
-            block.State = new QuestionSilent(block);
+            block.State = new QuestionNormal(block);
         }
 
         public void Destroy()

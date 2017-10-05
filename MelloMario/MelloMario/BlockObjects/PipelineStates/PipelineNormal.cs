@@ -6,17 +6,32 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.BlockObjects.FloorStates
+namespace MelloMario.BlockObjects.PipelineStates
 {
-    class FloorSilent : IBlockState
+    class PipelineNormal : IBlockState
     {
-        private FloorBlock block;
+        private PipelineBlock block;
         private ISprite sprite;
 
-        public FloorSilent(FloorBlock block)
+        public PipelineNormal(PipelineBlock block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateFloor("Silent");
+            sprite = SpriteFactory.Instance.CreatePipeline();
+        }
+
+        public void Bump()
+        {
+            //do nothing
+        }
+
+        public void Destroy()
+        {
+            //do nothing
+        }
+
+        public void Hide()
+        {
+            //do nothing
         }
 
         public void Show()
@@ -24,22 +39,7 @@ namespace MelloMario.BlockObjects.FloorStates
             //do nothing
         }
 
-        public void Destroy()
-        {
-            //cant destroy stair blocks
-        }
-
-        public void Hide()
-        {
-            block.State = new FloorHidden(block);
-        }
-
         public void UseUp()
-        {
-            //stairs cant be used
-        }
-
-        public void Bump()
         {
             //do nothing
         }

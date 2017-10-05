@@ -19,7 +19,7 @@ namespace MelloMario.BlockObjects.StairStates
 
         public void Show()
         {
-            block.State = new StairSilent(block);
+            block.State = new StairNormal(block);
         }
 
         public void Destroy()

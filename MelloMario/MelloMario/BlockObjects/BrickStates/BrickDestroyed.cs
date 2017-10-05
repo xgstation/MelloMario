@@ -26,7 +26,7 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Show()
         {
-            block.State = new BrickSilent(block);
+            block.State = new BrickNormal(block);
         }
 
         public void Destroy()

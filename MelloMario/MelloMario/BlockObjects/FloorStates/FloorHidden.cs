@@ -19,7 +19,7 @@ namespace MelloMario.BlockObjects.FloorStates
 
         public void Show()
         {
-            block.State = new FloorSilent(block);
+            block.State = new FloorNormal(block);
         }
 
         public void Destroy()

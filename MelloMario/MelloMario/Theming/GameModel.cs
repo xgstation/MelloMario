@@ -40,19 +40,19 @@ namespace MelloMario
             BrickBlock blockHidden = new BrickBlock(new Vector2(300, 200));
             blockHidden.State.Hide();
             objects[1, 0] = (blockHidden);
-            objects[2, 0] = (new BrickBlock(new Vector2(100, 200)));
-            objects[3, 0] = (new QuestionBlock(new Vector2(150, 200)));
-            objects[4, 0] = (new StairBlock(new Vector2(200, 200)));
-            objects[0, 1] = (new FloorBlock(new Vector2(250, 200)));
-            objects[0, 2] = (new Goomba(new Vector2(100, 300)));
-            objects[0, 3] = (new GreenKoopa(new Vector2(100, 400)));
-            objects[0, 4] = (new RedKoopa(new Vector2(200, 400)));
-            objects[1, 1] = (new Coin(new Vector2(50, 50)));
-            objects[1, 2] = (new FireFlower(new Vector2(100, 50)));
-            objects[1, 3] = (new OneUpMushroom(new Vector2(200, 50)));
-            objects[1, 4] = (new SuperMushroom(new Vector2(250, 50)));
-            objects[2, 1] = (new Star(new Vector2(300, 50)));
-            objects[2, 2] = (new PipelineBlock(new Vector2(350, 168)));
+            objects[2, 0] = (new Brick(new Point(100, 200)));
+            objects[3, 0] = (new Question(new Point(150, 200)));
+            objects[4, 0] = (new Stair(new Point(200, 200)));
+            objects[0, 1] = (new Floor(new Point(250, 200)));
+            objects[0, 2] = (new Goomba(new Point(100, 300)));
+            objects[0, 3] = (new GreenKoopa(new Point(100, 400)));
+            objects[0, 4] = (new RedKoopa(new Point(200, 400)));
+            objects[1, 1] = (new Coin(new Point(50, 50)));
+            objects[1, 2] = (new FireFlower(new Point(100, 50)));
+            objects[1, 3] = (new OneUpMushroom(new Point(200, 50)));
+            objects[1, 4] = (new SuperMushroom(new Point(250, 50)));
+            objects[2, 1] = (new Star(new Point(300, 50)));
+            objects[2, 2] = (new Pipeline(new Point(350, 168)));
 
         }
 

@@ -6,7 +6,7 @@ namespace MelloMario.EnemyObjects
 {
     class Goomba : BaseGameObject
     {
-        private IItemState state;
+        private IGoombaState state;
 
         private void OnStateChanged()
         {
@@ -22,7 +22,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        public IItemState State
+        public IGoombaState State
         {
             get
             {
@@ -45,9 +45,9 @@ namespace MelloMario.EnemyObjects
         {
             State.Show();
         }
-        public void Collect()
+        public void Defeat()
         {
-            State.Collect();
+            State.Defeat();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace MelloMario.BlockObjects
 {
     class Question : BaseGameObject
     {
-        private IItemState state;
+        private IBlockState state;
 
         private void OnStateChanged()
         {
@@ -22,7 +22,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        public IItemState State
+        public IBlockState State
         {
             get
             {
@@ -37,7 +37,7 @@ namespace MelloMario.BlockObjects
 
         public Question(Point location) : base(location, new Point(32, 32))
         {
-            state = new QuestionSilent(this);
+            state = new QuestionNormal(this);
             OnStateChanged();
         }
 
@@ -45,9 +45,21 @@ namespace MelloMario.BlockObjects
         {
             State.Show();
         }
-        public void Collect()
+        public void Hide()
         {
-            State.Collect();
+            State.Hide();
+        }
+        public void Bump()
+        {
+            State.Bump();
+        }
+        public void Destroy()
+        {
+            State.Destroy();
+        }
+        public void UseUp()
+        {
+            State.UseUp();
         }
     }
 }

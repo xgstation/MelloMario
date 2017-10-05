@@ -19,12 +19,12 @@ namespace MelloMario.BlockObjects.QuestionStates
         public QuestionBumped(QuestionBlock questionBlock)
         {
             block = questionBlock;
-            sprite = SpriteFactory.Instance.CreateQuestion("Silent");
+            sprite = SpriteFactory.Instance.CreateQuestion("Normal");
         }
 
         public void Show()
         {
-            block.State = new QuestionSilent(block);
+            block.State = new QuestionNormal(block);
         }
 
         public void Hide()

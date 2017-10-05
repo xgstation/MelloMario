@@ -6,7 +6,7 @@ namespace MelloMario.EnemyObjects
 {
     class GreenKoopa : BaseGameObject
     {
-        private IItemState state;
+        private IKoopaState state;
 
         private void OnStateChanged()
         {
@@ -22,7 +22,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        public IItemState State
+        public IKoopaState State
         {
             get
             {
@@ -45,9 +45,13 @@ namespace MelloMario.EnemyObjects
         {
             State.Show();
         }
-        public void Collect()
+        public void JumpOn()
         {
-            State.Collect();
+            State.JumpOn();
+        }
+        public void Defeat()
+        {
+            State.Defeat();
         }
     }
 }

@@ -6,32 +6,17 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.BlockObjects.PipelineStates
+namespace MelloMario.BlockObjects.QuestionStates
 {
-    class PipelineSilent : IBlockState
+    class QuestionNormal : IBlockState
     {
-        private PipelineBlock block;
+        private QuestionBlock block;
         private ISprite sprite;
 
-        public PipelineSilent(PipelineBlock block)
+        public QuestionNormal(QuestionBlock block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreatePipeline();
-        }
-
-        public void Bump()
-        {
-            //do nothing
-        }
-
-        public void Destroy()
-        {
-            //do nothing
-        }
-
-        public void Hide()
-        {
-            //do nothing
+            sprite = SpriteFactory.Instance.CreateQuestion("Normal");
         }
 
         public void Show()
@@ -39,9 +24,24 @@ namespace MelloMario.BlockObjects.PipelineStates
             //do nothing
         }
 
+        public void Destroy()
+        {
+            //question blocks cant be destroyed
+        }
+
+        public void Hide()
+        {
+            block.State = new QuestionHidden(block);
+        }
+
         public void UseUp()
         {
-            //do nothing
+            block.State = new QuestionUsed(block);
+        }
+
+        public void Bump()
+        {
+            block.State = new QuestionBumped(block);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

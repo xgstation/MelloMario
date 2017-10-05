@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.BlockObjects.QuestionStates
+namespace MelloMario.BlockObjects.FloorStates
 {
-    class QuestionSilent : IBlockState
+    class FloorNormal : IBlockState
     {
-        private QuestionBlock block;
+        private FloorBlock block;
         private ISprite sprite;
 
-        public QuestionSilent(QuestionBlock block)
+        public FloorNormal(FloorBlock block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateQuestion("Silent");
+            sprite = SpriteFactory.Instance.CreateFloor("Normal");
         }
 
         public void Show()
@@ -26,22 +26,22 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Destroy()
         {
-            //question blocks cant be destroyed
+            //cant destroy stair blocks
         }
 
         public void Hide()
         {
-            block.State = new QuestionHidden(block);
+            block.State = new FloorHidden(block);
         }
 
         public void UseUp()
         {
-            block.State = new QuestionUsed(block);
+            //stairs cant be used
         }
 
         public void Bump()
         {
-            block.State = new QuestionBumped(block);
+            //do nothing
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

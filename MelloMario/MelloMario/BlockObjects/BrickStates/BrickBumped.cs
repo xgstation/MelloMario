@@ -19,12 +19,12 @@ namespace MelloMario.BlockObjects.BrickStates
         public BrickBumped(BrickBlock brickBlock)
         {
             block = brickBlock;
-            sprite = SpriteFactory.Instance.CreateBrick("Silent");
+            sprite = SpriteFactory.Instance.CreateBrick("Normal");
         }
 
         public void Show()
         {
-            block.State = new BrickSilent(block);
+            block.State = new BrickNormal(block);
         }
 
         public void Hide()

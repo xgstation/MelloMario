@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.BlockObjects.BrickStates
+namespace MelloMario.BlockObjects.StairStates
 {
-    class BrickSilent : IBlockState
+    class StairNormal : IBlockState
     {
-        private BrickBlock block;
+        private StairBlock block;
         private ISprite sprite;
 
-        public BrickSilent(BrickBlock block)
+        public StairNormal(StairBlock block)
         {
             this.block = block;
-            sprite = SpriteFactory.Instance.CreateBrick("Silent");
+            sprite = SpriteFactory.Instance.CreateStair("Normal");
         }
 
         public void Show()
@@ -26,22 +26,22 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Destroy()
         {
-            block.State = new BrickDestroyed(block);
+            //cant destroy stair blocks
         }
 
         public void Hide()
         {
-            block.State = new BrickHidden(block);
+            block.State = new StairHidden(block);
         }
 
         public void UseUp()
         {
-            block.State = new BrickUsed(block);
+            //stairs cant be used
         }
 
         public void Bump()
         {
-            block.State = new BrickBumped(block);
+            //do nothing
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

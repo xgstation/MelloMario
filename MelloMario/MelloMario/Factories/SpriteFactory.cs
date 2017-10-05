@@ -180,7 +180,7 @@ namespace MelloMario.Factories
             {
                 case "Used":
                     return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
-                case "Silent":
+                case "Normal":
                     return new AnimatedSprite(questionSpriteSheet, 1, 3);
                 default:
                     throw new Exception("Unknown sprite");
@@ -201,7 +201,7 @@ namespace MelloMario.Factories
                     return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.RightBottom, 1, 1);
                 case "Used":
                     return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
-                case "Silent":
+                case "Normal":
                     return new SlicedSprite(blockSpritesheet, 33, 28, 1, 0);
                 default:
                     throw new Exception("Unknown sprite");
