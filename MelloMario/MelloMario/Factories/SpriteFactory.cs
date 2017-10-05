@@ -113,7 +113,7 @@ namespace MelloMario.Factories
                 case "Normal":
                     return new AnimatedSprite(goombaSpritesheet, 2, 1);
                 case "Defeated":
-                    return new StaticSprite(goombaSpritesheet);
+                    return new StaticSprite(goombaDeadSpritesheet);
                 default:
                     throw new Exception("Unknown sprite");
             }

@@ -373,18 +373,6 @@
 /processorParam:TextureFormat=Color
 /build:Star.png
 
-#begin Goomba.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Goomba.png
-
 #begin GreenKoopa.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -480,4 +468,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:RedKoopaDead.png
+
+#begin Goomba.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Goomba.png
 
