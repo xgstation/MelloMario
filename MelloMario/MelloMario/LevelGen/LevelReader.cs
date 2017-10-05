@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MelloMario.BlockObjects;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -51,9 +52,11 @@ namespace MelloMario.LevelGen
             }
         }
 
+        private const int SCALE = 32;
         private int h;
         private int w;
         private StreamReader input;
+        private List<IGameObject> dynamicObjects;
 
         public LevelReader(String path)
         {
@@ -71,6 +74,47 @@ namespace MelloMario.LevelGen
         public Pack Initilize()
         {
             return new Pack(h, w);
+        }
+
+        public IGameObject[,] LoadStatic()
+        {
+            IGameObject[,] staticObjects = new IGameObject[w, h];
+            dynamicObjects = new List<IGameObject>();
+
+            for(int i = 0; i < w; ++i)
+            {
+                string curLine = input.ReadLine();
+                for(int j = 0; j < h; ++j)
+                {
+                    char curChar = curLine.ElementAt(j);
+                    switch(curChar)
+                    {
+                        case 'F':
+                            staticObjects[i, j] = new Floor(new Point(i*SCALE,j*SCALE));
+                            break;
+                        case 'B':
+                            staticObjects[i, j] = new Brick(new Point(i * SCALE, j * SCALE));
+                            break;
+                        case 'S':
+                            staticObjects[i, j] = new Stair(new Point(i * SCALE, j * SCALE));
+                            break;
+                        case 'Q':
+                            staticObjects[i, j] = new Question(new Point(i * SCALE, j * SCALE));
+                            break;
+                        default:
+                            //do nothing, blank space dont add anything to blocks
+                            break;
+                    }
+                }
+            }
+
+            return staticObjects;
+        }
+
+        public List<IGameObject> LoadDynamic()
+        {
+            //must be called after load static
+            return dynamicObjects;
         }
 
     }

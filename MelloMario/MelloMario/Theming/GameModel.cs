@@ -5,6 +5,7 @@ using MelloMario.MarioObjects;
 using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
 using MelloMario.ItemObjects;
+using MelloMario.LevelGen;
 
 namespace MelloMario
 {
@@ -31,14 +32,16 @@ namespace MelloMario
             script.Bind(controllers, mario, stationaryObjects);
         }
 
-        public void LoadEntities(int w, int h)
+        public void LoadEntities(LevelReader reader)
         {
-            stationaryObjects = new IGameObject[w, h];
-            mario = new Mario(new Point(100, 100));
+            stationaryObjects = reader.LoadStatic();
+            dynamicObjects = reader.LoadDynamic();
 
-            //all of these array cords are randomly picked ignore them
+            //hard coded items and blocks for testing purposes
+            /*
+            stationaryObjects = new IGameObject[22, 22];
+            mario = new Mario(new Point(100, 100));
             stationaryObjects[0, 0] = mario;
-            //temporary hard coded blocks
             Brick blockHidden = new Brick(new Point(300, 200));
             blockHidden.State.Hide();
             stationaryObjects[1, 0] = (blockHidden);
@@ -55,7 +58,7 @@ namespace MelloMario
             dynamicObjects.Add(new OneUpMushroom(new Point(200, 50)));
             dynamicObjects.Add(new SuperMushroom(new Point(250, 50)));
             dynamicObjects.Add(new Star(new Point(300, 50)));
-
+            */
         }
 
         public void Update(GameTime time)

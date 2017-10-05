@@ -26,9 +26,6 @@ namespace MelloMario
             script = new GameScript();
 
             reader = new LevelReader("Content/ExampleLevel.txt");
-            LevelReader.Pack dims = reader.Initilize();
-            w = dims.X;
-            h = dims.Y;
         }
 
         /// <summary>
@@ -39,11 +36,12 @@ namespace MelloMario
         /// </summary>
         protected override void Initialize()
         {
+
+            LevelReader.Pack dims = reader.Initilize();
+            w = dims.X;
+            h = dims.Y;
+
             base.Initialize();
-
-
-
-
 
             List<IController> controllers = new List<IController>
             {
@@ -61,6 +59,8 @@ namespace MelloMario
         /// </summary>
         protected override void LoadContent()
         {
+
+
             Content.RootDirectory = "Content";
             base.LoadContent();
 
@@ -68,7 +68,7 @@ namespace MelloMario
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.LoadAllTextures(this.Content);
 
-            model.LoadEntities(w, h);
+            model.LoadEntities(reader);
         }
 
         /// <summary>
