@@ -15,13 +15,53 @@ namespace MelloMario
         {
             Rectangle rectA = Boundary;
             Rectangle rectB = target.Boundary;
-            if (rectA.Left == rectB.Right || rectA.Right == rectB.Left || rectA.Top == rectB.Bottom || rectA.Bottom == rectB.Top)
+
+            bool intersectX = rectA.Left < rectB.Right && rectB.Left < rectA.Right;
+            bool intersectY = rectA.Top < rectB.Bottom && rectB.Top < rectA.Bottom;
+
+            if (intersectY && rectA.Left == rectB.Right)
             {
-                OnCollision(target);
+                OnCollision(target, CollisionMode.Left);
 
                 if (target is BaseGameObject)
                 {
-                    ((BaseGameObject)target).OnCollision(this);
+                    ((BaseGameObject)target).OnCollision(this, CollisionMode.Right);
+                }
+            }
+            if (intersectY && rectA.Right == rectB.Left)
+            {
+                OnCollision(target, CollisionMode.Right);
+
+                if (target is BaseGameObject)
+                {
+                    ((BaseGameObject)target).OnCollision(this, CollisionMode.Left);
+                }
+            }
+            if (intersectX && rectA.Top == rectB.Bottom)
+            {
+                OnCollision(target, CollisionMode.Top);
+
+                if (target is BaseGameObject)
+                {
+                    ((BaseGameObject)target).OnCollision(this, CollisionMode.Bottom);
+                }
+            }
+            if (intersectY && rectA.Bottom == rectB.Top)
+            {
+                OnCollision(target, CollisionMode.Bottom);
+
+                if (target is BaseGameObject)
+                {
+                    ((BaseGameObject)target).OnCollision(this, CollisionMode.Top);
+                }
+            }
+            if (intersectX && intersectY)
+            {
+                OnCollision(target, CollisionMode.Cross);
+
+                if (target is BaseGameObject)
+                {
+                    ((BaseGameObject)target).OnCollision(this, CollisionMode.Cross);
                 }
             }
         }
@@ -34,11 +74,12 @@ namespace MelloMario
             }
         }
 
+        protected enum CollisionMode { Left, Right, Top, Bottom, Cross };
         protected enum ResizeModeX { Left, Center, Right };
         protected enum ResizeModeY { Top, Center, Bottom };
 
         protected abstract void OnSimulation(GameTime time);
-        protected abstract void OnCollision(IGameObject target);
+        protected abstract void OnCollision(IGameObject target, CollisionMode mode);
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
         {
@@ -121,6 +162,8 @@ namespace MelloMario
         public void Update(GameTime time, IList<IGameObject> collidable)
         {
             OnSimulation(time);
+
+            CollideAll(collidable);
 
             // Since each update is a very small iteration, the order does not matter.
             while (movement.X > 0)

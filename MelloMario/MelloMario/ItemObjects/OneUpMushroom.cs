@@ -24,7 +24,7 @@ namespace MelloMario.ItemObjects
         {
         }
 
-        protected override void OnCollision(IGameObject target)
+        protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
         }
 
