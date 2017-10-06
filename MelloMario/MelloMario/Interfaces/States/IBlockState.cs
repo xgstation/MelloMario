@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MelloMario.MarioObjects;
+using Microsoft.Xna.Framework;
 
 namespace MelloMario
 {
@@ -6,9 +7,7 @@ namespace MelloMario
     {
         void Show();
         void Hide();
-        void Bump();
-        void Destroy(); // TODO: this should be merged with bump (based on the item a block contain and the power-up state of mario)
-        void UseUp(); // TODO: this should be merged with bump (based on the item a block contain and the power-up state of mario)
+        void Bump(Mario mario);
 
         void Update(GameTime time);
     }

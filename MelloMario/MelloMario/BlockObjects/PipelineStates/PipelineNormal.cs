@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using MelloMario.Factories;
+﻿using Microsoft.Xna.Framework;
+using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.PipelineStates
 {
@@ -18,12 +12,7 @@ namespace MelloMario.BlockObjects.PipelineStates
             this.block = block;
         }
 
-        public void Bump()
-        {
-            //do nothing
-        }
-
-        public void Destroy()
+        public void Show()
         {
             //do nothing
         }
@@ -33,12 +22,7 @@ namespace MelloMario.BlockObjects.PipelineStates
             //do nothing
         }
 
-        public void Show()
-        {
-            //do nothing
-        }
-
-        public void UseUp()
+        public void Bump(Mario mario)
         {
             //do nothing
         }

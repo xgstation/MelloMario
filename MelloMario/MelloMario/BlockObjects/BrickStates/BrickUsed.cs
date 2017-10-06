@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Factories;
+using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
@@ -23,24 +24,14 @@ namespace MelloMario.BlockObjects.BrickStates
             block.State = new BrickNormal(block);
         }
 
-        public void Destroy()
-        {
-            block.State = new BrickDestroyed(block);
-        }
-
         public void Hide()
         {
             block.State = new BrickHidden(block);
         }
 
-        public void UseUp()
+        public void Bump(Mario mario)
         {
-            //do nothing
-        }
-
-        public void Bump()
-        {
-            block.State = new BrickBumped(block);
+            // nothing
         }
 
         public void Update(GameTime time)

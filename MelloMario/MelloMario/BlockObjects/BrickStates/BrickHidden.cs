@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
@@ -22,24 +17,14 @@ namespace MelloMario.BlockObjects.BrickStates
             block.State = new BrickNormal(block);
         }
 
-        public void Destroy()
-        {
-            block.State = new BrickDestroyed(block);
-        }
-
         public void Hide()
         {
             //do nothing
         }
 
-        public void UseUp()
+        public void Bump(Mario mario)
         {
-            block.State = new BrickUsed(block);
-        }
-
-        public void Bump()
-        {
-            block.State = new BrickBumped(block);
+            //do nothing
         }
 
         public void Update(GameTime time)

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Factories;
+using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
@@ -31,23 +32,17 @@ namespace MelloMario.BlockObjects.QuestionStates
             block.State = new QuestionHidden(block);
         }
 
-        public void UseUp()
+        public void Bump(Mario mario)
         {
-            block.State = new QuestionUsed(block);
-        }
-
-        public void Bump()
-        {
-            // Do nothing
-        }
-
-        public void Destroy()
-        {
-            // Do nothing
+            // do nothing
         }
 
         public void Update(GameTime time)
         {
+            // TODO: release items
+            // block.State = new QuestionNormal(block);
+            // block.State = new QuestionUsed(block);
+
             // TODO: control sprite via this.block
             // elapsed += ((float)time.ElapsedGameTime.Milliseconds) / 20;
             // offset = 0.5f * accelerationY * (float)Math.Pow(elapsed, 2.0f) + speedY * elapsed;

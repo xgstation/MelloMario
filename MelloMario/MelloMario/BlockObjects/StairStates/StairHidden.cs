@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MelloMario.MarioObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -22,22 +23,12 @@ namespace MelloMario.BlockObjects.StairStates
             block.State = new StairNormal(block);
         }
 
-        public void Destroy()
-        {
-            //cant destroy stair blocks
-        }
-
         public void Hide()
         {
             //do nothing
         }
 
-        public void UseUp()
-        {
-            //stairs cant be used
-        }
-
-        public void Bump()
+        public void Bump(Mario mario)
         {
             //do nothing
         }

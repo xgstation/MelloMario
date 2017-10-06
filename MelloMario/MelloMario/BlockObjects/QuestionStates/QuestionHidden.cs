@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
@@ -23,22 +24,12 @@ namespace MelloMario.BlockObjects.QuestionStates
             block.State = new QuestionNormal(block);
         }
 
-        public void Destroy()
-        {
-            //question blocks cant be destroyed
-        }
-
         public void Hide()
         {
             //do nothing
         }
 
-        public void UseUp()
-        {
-            block.State = new QuestionUsed(block);
-        }
-
-        public void Bump()
+        public void Bump(Mario mario)
         {
             //do nothing
         }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Factories;
+using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
@@ -23,23 +24,15 @@ namespace MelloMario.BlockObjects.BrickStates
             //do nothing
         }
 
-        public void Destroy()
-        {
-            block.State = new BrickDestroyed(block);
-        }
-
         public void Hide()
         {
             block.State = new BrickHidden(block);
         }
 
-        public void UseUp()
+        public void Bump(Mario mario)
         {
-            block.State = new BrickUsed(block);
-        }
-
-        public void Bump()
-        {
+            // TODO: if large mario && no item then
+            // block.State = new BrickDestroyed(block);
             block.State = new BrickBumped(block);
         }
 

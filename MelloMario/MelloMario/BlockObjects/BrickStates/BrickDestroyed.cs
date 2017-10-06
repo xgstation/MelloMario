@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Factories;
+using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
@@ -16,17 +17,11 @@ namespace MelloMario.BlockObjects.BrickStates
         public BrickDestroyed(Brick block)
         {
             this.block = block;
-            // TODO: handle the case that there are 4 sprites
         }
 
         public void Show()
         {
             block.State = new BrickNormal(block);
-        }
-
-        public void Destroy()
-        {
-            //do nothing
         }
 
         public void Hide()
@@ -36,12 +31,12 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void UseUp()
         {
-            block.State = new BrickUsed(block);
+            // do nothing
         }
 
-        public void Bump()
+        public void Bump(Mario mario)
         {
-            block.State = new BrickBumped(block);
+            // do nothing
         }
 
         public void Update(GameTime time)

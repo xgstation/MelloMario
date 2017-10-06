@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.BlockObjects.QuestionStates;
+using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects
 {
@@ -63,17 +64,9 @@ namespace MelloMario.BlockObjects
         {
             State.Hide();
         }
-        public void Bump()
+        public void Bump(Mario mario)
         {
-            State.Bump();
-        }
-        public void Destroy()
-        {
-            State.Destroy();
-        }
-        public void UseUp()
-        {
-            State.UseUp();
+            State.Bump(mario);
         }
     }
 }

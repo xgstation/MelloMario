@@ -25,7 +25,7 @@ namespace MelloMario.Commands
                     question = (BlockObjects.Question)obj;
                 }
             }
-            question.State.Bump();
+            question.State.Bump(mario);
         }
     }
 }
