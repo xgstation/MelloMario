@@ -84,7 +84,7 @@ namespace MelloMario.LevelGen
 
         public IGameObject[,] LoadStatic()
         {
-            IGameObject[,] staticObjects = new IGameObject[h,w];
+            IGameObject[,] staticObjects = new IGameObject[h, w];
             dynamicObjects = new List<IGameObject>();
 
             for (int i = 0; i < h; ++i)
@@ -101,16 +101,16 @@ namespace MelloMario.LevelGen
 
                         //blocks
                         case 'F':
-                            staticObjects[i,j] = new Floor(new Point(j * SCALE, i * SCALE));
+                            staticObjects[i, j] = new Floor(new Point(j * SCALE, i * SCALE));
                             break;
                         case 'B':
-                            staticObjects[i,j] = new Brick(new Point(j * SCALE, i * SCALE));
+                            staticObjects[i, j] = new Brick(new Point(j * SCALE, i * SCALE));
                             break;
                         case 'S':
-                            staticObjects[i,j] = new Stair(new Point(j * SCALE, i * SCALE));
+                            staticObjects[i, j] = new Stair(new Point(j * SCALE, i * SCALE));
                             break;
                         case 'Q':
-                            staticObjects[i,j] = new Question(new Point(j * SCALE, i * SCALE));
+                            staticObjects[i, j] = new Question(new Point(j * SCALE, i * SCALE));
                             break;
 
                         //harm
@@ -118,10 +118,10 @@ namespace MelloMario.LevelGen
                             dynamicObjects.Add(new Goomba(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'K':
-                            dynamicObjects.Add(new GreenKoopa(new Point(j * SCALE, i * SCALE)));
+                            dynamicObjects.Add(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.green));
                             break;
                         case 'D':
-                            dynamicObjects.Add(new RedKoopa(new Point(j * SCALE, i * SCALE)));
+                            dynamicObjects.Add(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.red));
                             break;
 
                         //entities

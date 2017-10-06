@@ -119,21 +119,6 @@ namespace MelloMario.Factories
             }
         }
 
-        public ISprite CreateRedKoopaSprite(string status)
-        {
-            switch (status)
-            {
-                case "Normal":
-                    return new AnimatedSprite(redKoopaSpritesheet, 2, 2);
-                case "JumpOn":
-                    return new StaticSprite(redKoopaSteppedSpritesheet);
-                case "Defeated":
-                    return new StaticSprite(redKoopaDeadSpritesheet);
-                default:
-                    throw new Exception("Unknown sprite");
-            }
-        }
-
         public ISprite CreateGreenKoopaSprite(string status)
         {
             switch (status)
@@ -144,6 +129,21 @@ namespace MelloMario.Factories
                     return new StaticSprite(greenKoopaSteppedSpritesheet);
                 case "Defeated":
                     return new StaticSprite(greenKoopaDeadSpritesheet);
+                default:
+                    throw new Exception("Unknown sprite");
+            }
+        }
+
+        public ISprite CreateRedKoopaSprite(string status)
+        {
+            switch (status)
+            {
+                case "Normal":
+                    return new AnimatedSprite(redKoopaSpritesheet, 2, 2);
+                case "JumpOn":
+                    return new StaticSprite(redKoopaSteppedSpritesheet);
+                case "Defeated":
+                    return new StaticSprite(redKoopaDeadSpritesheet);
                 default:
                     throw new Exception("Unknown sprite");
             }

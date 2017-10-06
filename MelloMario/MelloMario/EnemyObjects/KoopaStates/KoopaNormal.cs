@@ -8,27 +8,28 @@ using System.Threading.Tasks;
 
 namespace MelloMario.EnemyObjects.KoopaStates
 {
-    class RedKoopaDefeated : IKoopaState
+    class KoopaNormal : IKoopaState
     {
-        private RedKoopa enemyRedKoopa;
+        private Koopa enemyRedKoopa;
 
-        public RedKoopaDefeated(RedKoopa koopaRed)
+        public KoopaNormal(Koopa koopaRed)
         {
             enemyRedKoopa = koopaRed;
         }
 
         public void Show()
         {
-            enemyRedKoopa.State = new RedKoopaNormal(enemyRedKoopa);
+
         }
 
         public void JumpOn()
         {
-            enemyRedKoopa.State = new RedKoopaJumpOn(enemyRedKoopa);
+            enemyRedKoopa.State = new KoopaJumpOn(enemyRedKoopa);
         }
 
         public void Defeat()
         {
+            enemyRedKoopa.State = new KoopaDefeated(enemyRedKoopa);
         }
 
         public void Update(GameTime time)

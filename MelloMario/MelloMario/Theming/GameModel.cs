@@ -39,29 +39,6 @@ namespace MelloMario
             //will probably change in the future
             dynamicObjects = reader.LoadDynamic();
             mario = reader.LoadMario();
-
-            //hard coded items and blocks for testing purposes
-            /*
-            stationaryObjects = new IGameObject[22, 22];
-            mario = new Mario(new Point(100, 100));
-            stationaryObjects[0, 0] = mario;
-            Brick blockHidden = new Brick(new Point(300, 200));
-            blockHidden.State.Hide();
-            stationaryObjects[1, 0] = (blockHidden);
-            stationaryObjects[2, 0] = (new Brick(new Point(100, 200)));
-            stationaryObjects[3, 0] = (new Question(new Point(150, 200)));
-            stationaryObjects[4, 0] = (new Stair(new Point(200, 200)));
-            stationaryObjects[0, 1] = (new Floor(new Point(250, 200)));
-            stationaryObjects[2, 2] = (new Pipeline(new Point(350, 168)));
-            stationaryObjects[1, 1] = (new Coin(new Point(50, 50)));
-            dynamicObjects.Add(new Goomba(new Point(100, 300)));
-            dynamicObjects.Add(new GreenKoopa(new Point(100, 400)));
-            dynamicObjects.Add(new RedKoopa(new Point(200, 400)));
-            dynamicObjects.Add(new FireFlower(new Point(100, 50)));
-            dynamicObjects.Add(new OneUpMushroom(new Point(200, 50)));
-            dynamicObjects.Add(new SuperMushroom(new Point(250, 50)));
-            dynamicObjects.Add(new Star(new Point(300, 50)));
-            */
         }
 
         public void Update(GameTime time)
