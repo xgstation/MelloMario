@@ -164,7 +164,7 @@ namespace MelloMario.Factories
             return new StaticSprite(superMushroomSpritesheet);
         }
 
-        public ISprite CreateFlowerSprite()
+        public ISprite CreateFireFlowerSprite()
         {
             return new AnimatedSprite(fireFlowerSpritesheet, 8, 1);
         }

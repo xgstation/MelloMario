@@ -10,8 +10,14 @@ namespace MelloMario.ItemObjects
 
         private void OnStateChanged()
         {
-            // TODO: load different sprites base on the state
-            ISprite sprite = SpriteFactory.Instance.CreateCoinSprite();
+            if (state is CoinNormal)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateCoinSprite());
+            }
+            else if (state is CoinDefeated)
+            {
+                HideSprite();
+            }
         }
 
         protected override void OnSimulation(GameTime time)

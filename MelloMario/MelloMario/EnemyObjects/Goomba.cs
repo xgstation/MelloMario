@@ -10,8 +10,14 @@ namespace MelloMario.EnemyObjects
 
         private void OnStateChanged()
         {
-            // TODO: load different sprites base on the state
-            ShowSprite(SpriteFactory.Instance.CreateGoombaSprite("Normal"));
+            if (state is GoombaNormal)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateGoombaSprite("Normal"));
+            }
+            else if (state is GoombaDefeated)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateGoombaSprite("Defeated"));
+            }
         }
 
         protected override void OnSimulation(GameTime time)

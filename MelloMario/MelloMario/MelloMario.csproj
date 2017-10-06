@@ -156,26 +156,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Windows\x86\Debug\MelloMario.exe" />
-    <Content Include="bin\Windows\x86\Debug\MelloMario.pdb" />
-    <Content Include="bin\Windows\x86\Debug\MonoGame.Framework.dll" />
-    <Content Include="bin\Windows\x86\Debug\MonoGame.Framework.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct2D1.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct2D1.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D11.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.Direct3D11.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.DXGI.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.DXGI.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XAudio2.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XAudio2.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.dll" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.XInput.xml" />
-    <Content Include="bin\Windows\x86\Debug\SharpDX.xml" />
-    <Content Include="CodeReviews\CodeReviewCai1.txt" />
-    <Content Include="CodeReviews\CodeReviewWenli1.txt" />
     <Content Include="Content\BrickPieces.png" />
     <Content Include="Content\GoombaDead.png" />
     <Content Include="Content\GreenKoopaDead.png" />
@@ -223,44 +203,9 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="bin\Windows\x86\Debug\Content\BlockSheet.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\BrickPieces.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\coin.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Dead.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireCrouchingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireCrouchingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\fireFlower.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireIdleLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireIdleRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireJumpingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireJumpingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireWalkingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\FireWalkingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\goomba.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\greenKoopa.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\OneUpMushroom.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\Question.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\RedKoopa.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardIdleLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardIdleRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardJumpingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardJumpingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardWalkingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\StandardWalkingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\star.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperCrouchingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperCrouchingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperIdleLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperIdleRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperJumpingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperJumpingRight.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperMushroom.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperWalkingLeft.xnb" />
-    <None Include="bin\Windows\x86\Debug\Content\SuperWalkingRight.xnb" />
     <None Include="obj\x86\Release\MelloMario.csproj.CoreCompileInputs.cache" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Windows\x86\Release\" />
     <Folder Include="MarioPlayerObject\" />
     <Folder Include="MarioStates\Dead\" />
     <Folder Include="MarioStates\Fire\Left\" />

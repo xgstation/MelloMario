@@ -14,20 +14,20 @@ namespace MelloMario.BlockObjects
             {
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
             }
-            if (state is BrickDestroyed)
+            else if (state is BrickDestroyed)
             {
                 // TODO: design a new mechanism to handle multiple sprites (class SpriteGroup : ISprite)?
                 // ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Destroyed"));
             }
-            if (state is BrickHidden)
+            else if (state is BrickHidden)
             {
                 HideSprite();
             }
-            if (state is BrickNormal)
+            else if (state is BrickNormal)
             {
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
             }
-            if (state is BrickUsed)
+            else if (state is BrickUsed)
             {
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Used"));
             }

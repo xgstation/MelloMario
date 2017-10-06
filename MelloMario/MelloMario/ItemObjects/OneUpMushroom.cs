@@ -10,8 +10,14 @@ namespace MelloMario.ItemObjects
 
         private void OnStateChanged()
         {
-            // TODO: load different sprites base on the state
-            ShowSprite(SpriteFactory.Instance.CreateOneUpMushroomSprite());
+            if (state is OneUpMushroomNormal)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateOneUpMushroomSprite());
+            }
+            else if (state is OneUpMushroomDefeated)
+            {
+                HideSprite();
+            }
         }
 
         protected override void OnSimulation(GameTime time)

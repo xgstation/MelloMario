@@ -10,8 +10,18 @@ namespace MelloMario.EnemyObjects
 
         private void OnStateChanged()
         {
-            // TODO: load different sprites base on the state
-            ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite("Normal"));
+            if (state is GreenKoopaNormal)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite("Normal"));
+            }
+            else if (state is GreenKoopaJumpOn)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite("JumpOn"));
+            }
+            else if (state is GreenKoopaDefeated)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite("Defeated"));
+            }
         }
 
         protected override void OnSimulation(GameTime time)

@@ -13,7 +13,7 @@ namespace MelloMario
         ISprite CreateStarSprite();
         ISprite CreateCoinSprite();
         ISprite CreateSuperMushroomSprite();
-        ISprite CreateFlowerSprite();
+        ISprite CreateFireFlowerSprite();
         ISprite CreateOneUpMushroomSprite();
 
         ISprite CreateQuestionSprite(string v);

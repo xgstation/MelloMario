@@ -14,15 +14,15 @@ namespace MelloMario.BlockObjects
             {
                 ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
             }
-            if (state is QuestionHidden)
+            else if (state is QuestionHidden)
             {
                 HideSprite();
             }
-            if (state is QuestionNormal)
+            else if (state is QuestionNormal)
             {
                 ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
             }
-            if (state is QuestionUsed)
+            else if (state is QuestionUsed)
             {
                 ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
             }

@@ -10,8 +10,14 @@ namespace MelloMario.ItemObjects
 
         private void OnStateChanged()
         {
-            // TODO: load different sprites base on the state
-            ISprite sprite = SpriteFactory.Instance.CreateFlowerSprite();
+            if (state is FireFlowerNormal)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateFireFlowerSprite());
+            }
+            else if (state is FireFlowerDefeated)
+            {
+                HideSprite();
+            }
         }
 
         protected override void OnSimulation(GameTime time)

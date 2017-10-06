@@ -10,8 +10,14 @@ namespace MelloMario.ItemObjects
 
         private void OnStateChanged()
         {
-            // TODO: load different sprites base on the state
-            ShowSprite(SpriteFactory.Instance.CreateStarSprite());
+            if (state is StarNormal)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateStarSprite());
+            }
+            else if (state is StarDefeated)
+            {
+                HideSprite();
+            }
         }
 
         protected override void OnSimulation(GameTime time)

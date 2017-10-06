@@ -14,7 +14,7 @@ namespace MelloMario.BlockObjects
             {
                 HideSprite();
             }
-            if (state is StairNormal)
+            else if (state is StairNormal)
             {
                 ShowSprite(SpriteFactory.Instance.CreateStairSprite());
             }
