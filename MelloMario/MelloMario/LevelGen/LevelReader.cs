@@ -46,24 +46,11 @@ namespace MelloMario.LevelGen
 
     class LevelReader
     {
-        public class Pack
-        {
-            public int X { get; set; }
-            public int Y { get; set; }
-            public Pack(int x, int y)
-            {
-                X = x;
-                Y = y;
-            }
-        }
-
         private const int SCALE = 32;
-        private int h;
-        private int w;
+        private Point size;
         // Note: Without implementing IDisposable, it may cause resource leak
         //       The code analysis tool generates a warning here
         private StreamReader input;
-        private IList<IGameObject>[,] allObjects;
         private Mario mario;
 
         public LevelReader(String path)
@@ -74,81 +61,66 @@ namespace MelloMario.LevelGen
             String heightAsString = input.ReadLine();
             String widthAsString = input.ReadLine();
 
-            h = Int32.Parse(heightAsString);
-            w = Int32.Parse(widthAsString);
-
-            allObjects = new List<IGameObject>[h, w];
-
+            size = new Point(Int32.Parse(widthAsString), Int32.Parse(heightAsString));
         }
 
-        public Pack Initilize()
+        public IGameObjectManager LoadObjects()
         {
-            return new Pack(h, w);
-        }
+            IGameObjectManager objectManager = new GameObjectManager(SCALE, size);
 
-        public IList<IGameObject>[,] LoadObjects()
-        {
-            for (int i = 0; i < h; ++i)
-            {
-                for (int j = 0; j < w; ++j)
-                {
-                    allObjects[i, j] = new List<IGameObject>();
-                }
-            }
-
-            for (int i = 0; i < h; ++i)
+            for (int i = 0; i < size.Y; ++i)
             {
                 string curLine = input.ReadLine();
-                for (int j = 0; j < w; ++j)
+                for (int j = 0; j < size.X; ++j)
                 {
                     char curChar = curLine.ElementAt(j);
                     switch (curChar)
                     {
                         case '!':
                             mario = new Mario(new Point(j * SCALE, i * SCALE));
-                            allObjects[i, j].Add(mario);
+                            objectManager.AddObject(mario);
                             break;
 
                         //blocks
                         case 'F':
-                            allObjects[i, j].Add(new Floor(new Point(j * SCALE, i * SCALE)));
+                            objectManager.AddObject(new Floor(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'B':
-                            allObjects[i, j].Add(new Brick(new Point(j * SCALE, i * SCALE)));
+                            objectManager.AddObject(new Brick(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'S':
-                            allObjects[i, j].Add(new Stair(new Point(j * SCALE, i * SCALE)));
+                            objectManager.AddObject(new Stair(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'Q':
-                            allObjects[i, j].Add(new Question(new Point(j * SCALE, i * SCALE)));
+                            objectManager.AddObject(new Question(new Point(j * SCALE, i * SCALE)));
                             break;
 
                         //harm
                         case 'G':
-                            allObjects[i, j].Add(new Goomba(new Point(j * SCALE, i * SCALE)));
+                            objectManager.AddObject(new Goomba(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'K':
-                            allObjects[i, j].Add(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.green));
+                            objectManager.AddObject(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.green));
                             break;
                         case 'D':
-                            allObjects[i, j].Add(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.red));
+                            objectManager.AddObject(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.red));
                             break;
 
                         //entities
                         case 'C':
-                            allObjects[i, j].Add(new Coin(new Point(j * SCALE, i * SCALE)));
+                            objectManager.AddObject(new Coin(new Point(j * SCALE, i * SCALE)));
                             break;
                         case '1':
-                            allObjects[i, j].Add(new OneUpMushroom(new Point(j * SCALE, i * SCALE)));
+                            objectManager.AddObject(new OneUpMushroom(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'R':
-                            allObjects[i, j].Add(new FireFlower(new Point(j * SCALE, i * SCALE)));
+                            objectManager.AddObject(new FireFlower(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'M':
-                            allObjects[i, j].Add(new SuperMushroom(new Point(j * SCALE, i * SCALE)));
+                            objectManager.AddObject(new SuperMushroom(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'T':
-                            allObjects[i, j].Add(new Star(new Point(j * SCALE, i * SCALE)));
+                            objectManager.AddObject(new Star(new Point(j * SCALE, i * SCALE)));
                             break;
                         default:
                             //do nothing, blank space dont add anything to blocks
@@ -157,7 +129,7 @@ namespace MelloMario.LevelGen
                 }
             }
 
-            return allObjects;
+            return objectManager;
         }
 
         public Mario BindMario()

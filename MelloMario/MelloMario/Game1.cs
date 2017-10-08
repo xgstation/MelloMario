@@ -15,9 +15,10 @@ namespace MelloMario
         GraphicsDeviceManager graphics;
         GameModel model;
         GameScript script;
-        SpriteBatch spriteBatch;
+
         LevelReader reader;
-        int w, h;
+
+        SpriteBatch spriteBatch;
 
         public Game1()
         {
@@ -36,14 +37,9 @@ namespace MelloMario
         /// </summary>
         protected override void Initialize()
         {
-
-            LevelReader.Pack dims = reader.Initilize();
-            w = dims.X;
-            h = dims.Y;
-
             base.Initialize();
 
-            IList<IController> controllers = new List<IController>
+            IEnumerable<IController> controllers = new List<IController>
             {
                 new GamepadController(this),
                 new KeyboardController(this)
@@ -59,8 +55,6 @@ namespace MelloMario
         /// </summary>
         protected override void LoadContent()
         {
-
-
             Content.RootDirectory = "Content";
             base.LoadContent();
 

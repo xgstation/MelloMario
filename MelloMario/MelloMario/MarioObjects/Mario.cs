@@ -166,11 +166,24 @@ namespace MelloMario.MarioObjects
             UpdateHVel(time);
             UpdateHPos(time);
             Move(new Point((int)floatLocX - (int)oldLocX, 0));
-            //Move(new Point(1, 0));
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
+            if (mode == CollisionMode.Left && hVel < 0)
+            {
+                // note: when we implemented vertical move, it will be different
+                hAccel = 0;
+                hVel = 0;
+                StopMove();
+            }
+            if (mode == CollisionMode.Right && hVel > 0)
+            {
+                // note: when we implemented vertical move, it will be different
+                hAccel = 0;
+                hVel = 0;
+                StopMove();
+            }
         }
 
         public IMarioDirectionState DirectionState

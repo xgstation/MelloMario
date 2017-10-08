@@ -66,7 +66,7 @@ namespace MelloMario
             }
         }
 
-        private void CollideAll(IList<IGameObject> collidable)
+        private void CollideAll(IEnumerable<IGameObject> collidable)
         {
             foreach (IGameObject target in collidable)
             {
@@ -154,7 +154,7 @@ namespace MelloMario
             movement = new Point();
         }
 
-        public void Update(GameTime time, IList<IGameObject> collidable)
+        public void Update(GameTime time, IEnumerable<IGameObject> collidable)
         {
             OnSimulation(time);
 
