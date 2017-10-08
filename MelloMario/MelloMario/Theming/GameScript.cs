@@ -29,9 +29,11 @@ namespace MelloMario
                     controller.AddCommand(Keys.Space, factory.CreateMarioCommand("Action", mario));
 
                     controller.AddCommand(Keys.S, factory.CreateMarioCommand("Crouch", mario));
-                    controller.AddCommand(Keys.W, factory.CreateMarioCommand("Jump", mario));
+                   controller.AddCommand(Keys.W, factory.CreateMarioCommand("Jump", mario));
                     controller.AddHoldCommand(Keys.A, factory.CreateMarioCommand("Left", mario));
                     controller.AddHoldCommand(Keys.D, factory.CreateMarioCommand("Right", mario));
+                    controller.AddVerticalCommand(Keys.W, factory.CreateMarioCommand("Jump", mario));
+                    controller.AddVerticalCommand(Keys.S, factory.CreateMarioCommand("Fall", mario));
 
                     //commands for changing block/mario state
                     //comented out because outdated and not needed after sprint 1

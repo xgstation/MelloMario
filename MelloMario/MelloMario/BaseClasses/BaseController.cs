@@ -12,7 +12,7 @@ namespace MelloMario.Controllers
             commands = new Dictionary<T, ICommand>();
             holdCommands = new Dictionary<T, ICommand>();
         }
-
+  
         public void AddCommand(object key, ICommand value)
         {
             if (key is T)

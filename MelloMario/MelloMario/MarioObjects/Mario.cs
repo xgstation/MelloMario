@@ -18,7 +18,7 @@ namespace MelloMario.MarioObjects
         private const float H_FRICTION = 100f;
         public const float H_MAX_ACCEL = 110f;
         private const float H_MAX_VEL = 6f;
-
+   
         private void OnStateChanged()
         {
             if (powerUpState is PowerUpStandard)
@@ -164,7 +164,7 @@ namespace MelloMario.MarioObjects
             UpdateHVel(time);
             UpdateHPos(time);
             location.X = (int)floatLocX;
-        }
+         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
