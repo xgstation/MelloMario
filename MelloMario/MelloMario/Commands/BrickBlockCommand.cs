@@ -39,7 +39,8 @@ namespace MelloMario.Commands
                 }
                 else*/
                 {
-                    brick.State.Destroy();
+                    // TODO: implement destroy or remove method
+                    // brick.State.Destroy();
                 }
             }
         }

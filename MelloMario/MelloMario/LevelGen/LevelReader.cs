@@ -61,7 +61,7 @@ namespace MelloMario.LevelGen
         private int h;
         private int w;
         private StreamReader input;
-        private List<IGameObject> dynamicObjects;
+        private List<IGameObject>[,] allObjects;
         private Mario mario;
 
         public LevelReader(String path)
@@ -75,6 +75,8 @@ namespace MelloMario.LevelGen
             h = Int32.Parse(heightAsString);
             w = Int32.Parse(widthAsString);
 
+            allObjects = new List<IGameObject>[h,w];
+
         }
 
         public Pack Initilize()
@@ -82,10 +84,15 @@ namespace MelloMario.LevelGen
             return new Pack(h, w);
         }
 
-        public IGameObject[,] LoadStatic()
+        public List<IGameObject>[,] LoadObjects()
         {
-            IGameObject[,] staticObjects = new IGameObject[h, w];
-            dynamicObjects = new List<IGameObject>();
+            for (int i = 0; i < h; ++i)
+            {
+                for (int j = 0; j < w; ++j)
+                {
+                    allObjects[i,j] = new List<IGameObject>();
+                }
+            }
 
             for (int i = 0; i < h; ++i)
             {
@@ -97,48 +104,49 @@ namespace MelloMario.LevelGen
                     {
                         case '!':
                             mario = new Mario(new Point(j * SCALE, i * SCALE));
+                            allObjects[i, j].Add(mario);
                             break;
 
                         //blocks
                         case 'F':
-                            staticObjects[i, j] = new Floor(new Point(j * SCALE, i * SCALE));
+                            allObjects[i, j].Add(new Floor(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'B':
-                            staticObjects[i, j] = new Brick(new Point(j * SCALE, i * SCALE));
+                            allObjects[i, j].Add(new Brick(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'S':
-                            staticObjects[i, j] = new Stair(new Point(j * SCALE, i * SCALE));
+                            allObjects[i, j].Add(new Stair(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'Q':
-                            staticObjects[i, j] = new Question(new Point(j * SCALE, i * SCALE));
+                            allObjects[i, j].Add(new Question(new Point(j * SCALE, i * SCALE)));
                             break;
 
                         //harm
                         case 'G':
-                            dynamicObjects.Add(new Goomba(new Point(j * SCALE, i * SCALE)));
+                            allObjects[i, j].Add(new Goomba(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'K':
-                            dynamicObjects.Add(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.green));
+                            allObjects[i, j].Add(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.green));
                             break;
                         case 'D':
-                            dynamicObjects.Add(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.red));
+                            allObjects[i, j].Add(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.red));
                             break;
 
                         //entities
                         case 'C':
-                            staticObjects[i, j] = new Coin(new Point(j * SCALE, i * SCALE));
+                            allObjects[i, j].Add(new Coin(new Point(j * SCALE, i * SCALE)));
                             break;
                         case '1':
-                            dynamicObjects.Add(new OneUpMushroom(new Point(j * SCALE, i * SCALE)));
+                            allObjects[i, j].Add(new OneUpMushroom(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'R':
-                            dynamicObjects.Add(new FireFlower(new Point(j * SCALE, i * SCALE)));
+                            allObjects[i, j].Add(new FireFlower(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'M':
-                            dynamicObjects.Add(new SuperMushroom(new Point(j * SCALE, i * SCALE)));
+                            allObjects[i, j].Add(new SuperMushroom(new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'T':
-                            dynamicObjects.Add(new Star(new Point(j * SCALE, i * SCALE)));
+                            allObjects[i, j].Add(new Star(new Point(j * SCALE, i * SCALE)));
                             break;
                         default:
                             //do nothing, blank space dont add anything to blocks
@@ -147,18 +155,12 @@ namespace MelloMario.LevelGen
                 }
             }
 
-            return staticObjects;
+            return allObjects;
         }
 
-        public List<IGameObject> LoadDynamic()
+        public Mario BindMario()
         {
-            //must be called after load static
-            return dynamicObjects;
-        }
-
-        public Mario LoadMario()
-        {
-            //must be called after load static
+            //must be called after load objects
             return mario;
         }
 

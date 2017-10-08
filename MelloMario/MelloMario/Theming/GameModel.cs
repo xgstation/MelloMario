@@ -12,14 +12,12 @@ namespace MelloMario
     class GameModel
     {
         private IList<IController> controllers;
-        private IGameObject[,] stationaryObjects;
-        private List<IGameObject> dynamicObjects;
-        // TODO: Do we need another abstraction layer for mario's actions?
+        private List<IGameObject>[,] allObjects;
+        // this is a "pointer" this mario also exists in all objects.
         private Mario mario;
 
         public GameModel()
         {
-            dynamicObjects = new List<IGameObject>();
         }
 
         public void LoadControllers(IList<IController> controllers)
@@ -29,16 +27,13 @@ namespace MelloMario
 
         public void Bind(GameScript script)
         {
-            script.Bind(controllers, mario, stationaryObjects, dynamicObjects);
+            script.Bind(controllers, mario, allObjects);
         }
 
         public void LoadEntities(LevelReader reader)
         {
-            stationaryObjects = reader.LoadStatic();
-            //these need to be called after loadstatic, this is a little bit messy
-            //will probably change in the future
-            dynamicObjects = reader.LoadDynamic();
-            mario = reader.LoadMario();
+            allObjects = reader.LoadObjects();
+            mario = reader.BindMario();
         }
 
         public void Update(GameTime time)
@@ -48,22 +43,13 @@ namespace MelloMario
                 controller.Update();
             }
 
-            mario.Update(time, new List<IGameObject>());
-
-            foreach (IGameObject gameObject in dynamicObjects)
+            for (int i = 0; i < allObjects.GetLength(0); ++i)
             {
-                gameObject.Update(time, new List<IGameObject>());
-            }
-
-            for (int i = 0; i < stationaryObjects.GetLength(0); ++i)
-            {
-                for (int j = 0; j < stationaryObjects.GetLength(1); ++j)
+                for (int j = 0; j < allObjects.GetLength(1); ++j)
                 {
-                    if (stationaryObjects[i, j] != null)
+                    foreach(IGameObject obj in allObjects[i,j])
                     {
-                        // note: the list will contain all objects that are possible to collide with objects[i, j]
-                        // BaseGameObject.OnCollision may be triggered multiple times (actually, it is a status instead of an event)
-                        stationaryObjects[i, j].Update(time, new List<IGameObject>());
+                        obj.Update(time, new List<IGameObject>());
                     }
                 }
             }
@@ -74,18 +60,13 @@ namespace MelloMario
         {
             mario.Draw(time, spriteBatch);
 
-            foreach (IGameObject gameObject in dynamicObjects)
+            for (int i = 0; i < allObjects.GetLength(0); ++i)
             {
-                gameObject.Draw(time, spriteBatch);
-            }
-
-            for (int i = 0; i < stationaryObjects.GetLength(0); ++i)
-            {
-                for (int j = 0; j < stationaryObjects.GetLength(1); ++j)
+                for (int j = 0; j < allObjects.GetLength(1); ++j)
                 {
-                    if (stationaryObjects[i, j] != null)
+                    foreach (IGameObject obj in allObjects[i,j])
                     {
-                        stationaryObjects[i, j].Draw(time, spriteBatch);
+                        obj.Draw(time, spriteBatch);
                     }
                 }
             }
