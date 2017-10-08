@@ -14,6 +14,8 @@ namespace MelloMario.MarioObjects
         private IMarioPowerUpState powerUpState;
         //floatlocx is needed to keep track of movement smaller than one pixel on the screen.
         private float hAccel, hVel, floatLocX;
+        // TODO: do movement and state change (sprite change) together
+        // TODO: encapsulate the gravity (mushrooms/enemies need them too)
         public float userInX;
         private const float H_FRICTION = 100f;
         public const float H_MAX_ACCEL = 110f;
@@ -158,12 +160,12 @@ namespace MelloMario.MarioObjects
 
         protected override void OnSimulation(GameTime time)
         {
-            
-            UpdateHAccel(userInX,time);
+
+            UpdateHAccel(userInX, time);
             userInX = 0;
             UpdateHVel(time);
             UpdateHPos(time);
-            location.X = (int)floatLocX;
+            Move(new Point((int)floatLocX, 0));
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
@@ -221,7 +223,7 @@ namespace MelloMario.MarioObjects
 
         public void UpdateHPos(GameTime time)
         {
-            floatLocX += (hVel*size.X) * (float)time.ElapsedGameTime.TotalMilliseconds / 1000; 
+            floatLocX += (hVel * Boundary.Width) * (float)time.ElapsedGameTime.TotalMilliseconds / 1000;
         }
 
         public void UpdateHVel(GameTime time)
@@ -232,7 +234,7 @@ namespace MelloMario.MarioObjects
                 hVel = H_MAX_VEL;
             else if (hVel < -1 * H_MAX_VEL)
                 hVel = -1 * H_MAX_VEL;
-            if (oldVel*hVel < 0)
+            if (oldVel * hVel < 0)
             {
                 hAccel = 0;
                 hVel = 0;
@@ -241,12 +243,12 @@ namespace MelloMario.MarioObjects
 
         public void UpdateHAccel(float userDelta, GameTime time)
         {
-            
-            if(hVel > 0)
+
+            if (hVel > 0)
             {
                 hAccel -= H_FRICTION * (float)time.ElapsedGameTime.TotalMilliseconds / 1000;
             }
-            else if(hVel < 0)
+            else if (hVel < 0)
             {
                 hAccel += H_FRICTION * (float)time.ElapsedGameTime.TotalMilliseconds / 1000;
             }
