@@ -44,9 +44,23 @@ namespace MelloMario
                 controller.Update();
             }
 
+            ICollection<IGameObject> movedObjects = new List<IGameObject>();
             foreach (IGameObject obj in objectManager.ScanObjects())
             {
+                Rectangle oldBoundary = obj.Boundary;
+
                 obj.Update(time, objectManager.ScanNearbyObjects(obj));
+
+                if (obj.Boundary != oldBoundary)
+                {
+                    movedObjects.Add(obj);
+                }
+            }
+
+            foreach (IGameObject obj in movedObjects)
+            {
+                objectManager.RemoveObject(obj);
+                objectManager.AddObject(obj);
             }
         }
 
