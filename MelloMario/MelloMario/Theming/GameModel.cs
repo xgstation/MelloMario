@@ -11,8 +11,8 @@ namespace MelloMario
 {
     class GameModel
     {
-        private IList<IController> controllers;
         private IList<IGameObject>[,] allObjects;
+        private IEnumerable<IController> controllers;
         // this is a "pointer" this mario also exists in all objects.
         private Mario mario;
 
@@ -20,7 +20,7 @@ namespace MelloMario
         {
         }
 
-        public void LoadControllers(IList<IController> newControllers)
+        public void LoadControllers(IEnumerable<IController> newControllers)
         {
             controllers = newControllers;
         }

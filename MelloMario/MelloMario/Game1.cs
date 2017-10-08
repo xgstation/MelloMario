@@ -43,7 +43,7 @@ namespace MelloMario
 
             base.Initialize();
 
-            IList<IController> controllers = new List<IController>
+            IEnumerable<IController> controllers = new List<IController>
             {
                 new GamepadController(this),
                 new KeyboardController(this)
@@ -59,8 +59,6 @@ namespace MelloMario
         /// </summary>
         protected override void LoadContent()
         {
-
-
             Content.RootDirectory = "Content";
             base.LoadContent();
 
