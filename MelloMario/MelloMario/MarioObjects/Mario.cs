@@ -3,6 +3,7 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects.DirectionStates;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.MarioObjects.PowerUpStates;
+using System;
 
 namespace MelloMario.MarioObjects
 {
@@ -11,6 +12,12 @@ namespace MelloMario.MarioObjects
         private IMarioDirectionState directionState;
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
+        //floatlocx is needed to keep track of movement smaller than one pixel on the screen.
+        private float hAccel, hVel, floatLocX;
+        public float userInX;
+        private const float H_FRICTION = 100f;
+        public const float H_MAX_ACCEL = 110f;
+        private const float H_MAX_VEL = 6f;
 
         private void OnStateChanged()
         {
@@ -151,6 +158,12 @@ namespace MelloMario.MarioObjects
 
         protected override void OnSimulation(GameTime time)
         {
+            
+            UpdateHAccel(userInX,time);
+            userInX = 0;
+            UpdateHVel(time);
+            UpdateHPos(time);
+            location.X = (int)floatLocX;
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
@@ -199,7 +212,53 @@ namespace MelloMario.MarioObjects
             directionState = new DirectionRight(this);
             movementState = new Movementldle(this);
             powerUpState = new PowerUpStandard(this);
+            hAccel = 0;
+            hVel = 0;
+            userInX = 0;
+            floatLocX = location.X;
             OnStateChanged();
+        }
+
+        public void UpdateHPos(GameTime time)
+        {
+            floatLocX += (hVel*size.X) * (float)time.ElapsedGameTime.TotalMilliseconds / 1000; 
+        }
+
+        public void UpdateHVel(GameTime time)
+        {
+            float oldVel = hVel;
+            hVel += hAccel * (float)time.ElapsedGameTime.TotalMilliseconds / 1000;
+            if (hVel > H_MAX_VEL)
+                hVel = H_MAX_VEL;
+            else if (hVel < -1 * H_MAX_VEL)
+                hVel = -1 * H_MAX_VEL;
+            if (oldVel*hVel < 0)
+            {
+                hAccel = 0;
+                hVel = 0;
+            }
+        }
+
+        public void UpdateHAccel(float userDelta, GameTime time)
+        {
+            
+            if(hVel > 0)
+            {
+                hAccel -= H_FRICTION * (float)time.ElapsedGameTime.TotalMilliseconds / 1000;
+            }
+            else if(hVel < 0)
+            {
+                hAccel += H_FRICTION * (float)time.ElapsedGameTime.TotalMilliseconds / 1000;
+            }
+            hAccel += userDelta * (float)time.ElapsedGameTime.TotalMilliseconds / 1000;
+            if (hAccel > H_MAX_ACCEL)
+            {
+                hAccel = H_MAX_ACCEL;
+            }
+            else if (hAccel < -1 * H_MAX_ACCEL)
+            {
+                hAccel = -1 * H_MAX_ACCEL;
+            }
         }
 
         public void TurnLeft()

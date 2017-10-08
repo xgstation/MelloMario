@@ -35,7 +35,8 @@ namespace MelloMario.Controllers
                     foreach (Buttons button in Enum.GetValues(typeof(Buttons)))
                     {
                         if (currentState.IsButtonDown(button) &&
-                            !previousGamePadState.IsButtonDown(button))
+                            (!previousGamePadState.IsButtonDown(button) ||
+                            holdCommands.ContainsKey(button)))
                         {
                             RunCommand(button);
                         }

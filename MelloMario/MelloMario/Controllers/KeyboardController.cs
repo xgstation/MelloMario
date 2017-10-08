@@ -26,10 +26,12 @@ namespace MelloMario.Controllers
             KeyboardState currentState = Keyboard.GetState();
 
             foreach (Keys key in currentState.GetPressedKeys())
-                if (!previousKeyboardState.IsKeyDown(key))
+            {
+                if (!previousKeyboardState.IsKeyDown(key) || holdCommands.ContainsKey(key))
                 {
                     RunCommand(key);
                 }
+            }
 
             // Update previous Keyboard state.
             previousKeyboardState = currentState;

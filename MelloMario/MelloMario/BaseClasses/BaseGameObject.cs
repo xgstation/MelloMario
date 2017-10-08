@@ -6,8 +6,8 @@ namespace MelloMario
 {
     abstract class BaseGameObject : IGameObject
     {
-        private Point location;
-        private Point size;
+        protected Point location;
+        protected Point size;
         private Point movement;
         private ISprite sprite;
 
