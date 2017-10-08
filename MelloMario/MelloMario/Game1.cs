@@ -43,7 +43,7 @@ namespace MelloMario
 
             base.Initialize();
 
-            List<IController> controllers = new List<IController>
+            IList<IController> controllers = new List<IController>
             {
                 new GamepadController(this),
                 new KeyboardController(this)

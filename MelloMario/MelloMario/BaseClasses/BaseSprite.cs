@@ -11,14 +11,14 @@ namespace MelloMario.Sprites
 
         protected abstract void OnAnimate(GameTime time);
 
-        protected void ChangeSource(Point source)
+        protected void ChangeSource(Point newSource)
         {
-            this.source = source;
+            source = newSource;
         }
 
-        protected void ChangeSize(Point size)
+        protected void ChangeSize(Point newSize)
         {
-            this.size = size;
+            size = newSize;
         }
 
         public Point PixelSize

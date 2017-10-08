@@ -42,6 +42,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MelloMario.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseClasses\BaseGameObject.cs" />
     <Compile Include="BlockObjects\Brick.cs" />

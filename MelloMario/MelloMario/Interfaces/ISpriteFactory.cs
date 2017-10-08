@@ -18,8 +18,8 @@ namespace MelloMario
         ISprite CreateFireFlowerSprite();
         ISprite CreateOneUpMushroomSprite();
 
-        ISprite CreateQuestionSprite(string v);
-        ISprite CreateBrickSprite(string v);
+        ISprite CreateQuestionSprite(string status);
+        ISprite CreateBrickSprite(string status);
         ISprite CreateFloorSprite();
         ISprite CreateStairSprite();
         ISprite CreatePipelineSprite();

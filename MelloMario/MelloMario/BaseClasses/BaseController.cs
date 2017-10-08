@@ -4,43 +4,34 @@ namespace MelloMario.Controllers
 {
     abstract class BaseController<T> : IController
     {
-        private IDictionary<T, ICommand> commands;
-        protected IDictionary<T, ICommand> holdCommands;
+        private IDictionary<KeyBehavior, IDictionary<T, ICommand>> commands;
 
         public BaseController()
         {
-            commands = new Dictionary<T, ICommand>();
-            holdCommands = new Dictionary<T, ICommand>();
+            commands = new Dictionary<KeyBehavior, IDictionary<T, ICommand>>() {
+                { KeyBehavior.press, new Dictionary<T, ICommand>() },
+                { KeyBehavior.release, new Dictionary<T, ICommand>() },
+                { KeyBehavior.hold, new Dictionary<T, ICommand>() },
+            };
         }
-  
-        public void AddCommand(object key, ICommand value)
+
+        public void AddCommand(object key, ICommand value, KeyBehavior behavior)
         {
             if (key is T)
             {
-                commands.Add((T)key, value);
+                commands[behavior].Add((T)key, value);
             }
         }
 
-        public void AddHoldCommand(object key, ICommand value)
+        protected void RunCommand(T key, KeyBehavior behavior)
         {
-            if (key is T)
+            if (commands[behavior].ContainsKey(key))
             {
-                holdCommands.Add((T)key, value);
-            }
-        }
-
-        protected void RunCommand(T key)
-        {
-            if (commands.ContainsKey(key))
-            {
-                commands[key].Execute();
-            } else if(holdCommands.ContainsKey(key))
-            {
-                holdCommands[key].Execute();
+                commands[behavior][key].Execute();
             }
         }
 
         public abstract void Update();
-        
+
     }
 }
