@@ -12,7 +12,7 @@ namespace MelloMario
     class GameModel
     {
         private IList<IController> controllers;
-        private List<IGameObject>[,] allObjects;
+        private IList<IGameObject>[,] allObjects;
         // this is a "pointer" this mario also exists in all objects.
         private Mario mario;
 
@@ -47,7 +47,7 @@ namespace MelloMario
             {
                 for (int j = 0; j < allObjects.GetLength(1); ++j)
                 {
-                    foreach(IGameObject obj in allObjects[i,j])
+                    foreach (IGameObject obj in allObjects[i, j])
                     {
                         obj.Update(time, new List<IGameObject>());
                     }
@@ -64,7 +64,7 @@ namespace MelloMario
             {
                 for (int j = 0; j < allObjects.GetLength(1); ++j)
                 {
-                    foreach (IGameObject obj in allObjects[i,j])
+                    foreach (IGameObject obj in allObjects[i, j])
                     {
                         obj.Draw(time, spriteBatch);
                     }

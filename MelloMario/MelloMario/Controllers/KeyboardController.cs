@@ -1,23 +1,18 @@
-
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using MelloMario.Commands;
-using System.Diagnostics;
 
 namespace MelloMario.Controllers
 {
     class KeyboardController : BaseController<Keys>
     {
         Game game;
-        KeyboardState previousKeyboardState;
+        KeyboardState previousState;
 
         public KeyboardController(Game game)
             : base()
         {
             this.game = game;
-            previousKeyboardState = Keyboard.GetState();
+            previousState = Keyboard.GetState();
         }
 
         public override void Update()
@@ -27,14 +22,25 @@ namespace MelloMario.Controllers
 
             foreach (Keys key in currentState.GetPressedKeys())
             {
-                if (!previousKeyboardState.IsKeyDown(key) || holdCommands.ContainsKey(key))
+                if (!previousState.IsKeyDown(key))
                 {
-                    RunCommand(key);
+                    RunCommand(key, KeyBehavior.press);
+                }
+                else
+                {
+                    RunCommand(key, KeyBehavior.hold);
+                }
+            }
+            foreach (Keys key in previousState.GetPressedKeys())
+            {
+                if (!currentState.IsKeyDown(key))
+                {
+                    RunCommand(key, KeyBehavior.release);
                 }
             }
 
             // Update previous Keyboard state.
-            previousKeyboardState = currentState;
+            previousState = currentState;
         }
     }
 }

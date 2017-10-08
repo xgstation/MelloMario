@@ -12,7 +12,7 @@ namespace MelloMario
         {
         }
 
-        public void Bind(IList<IController> controllers, Mario mario, List<IGameObject>[,] allObjects)
+        public void Bind(IList<IController> controllers, Mario mario, IList<IGameObject>[,] allObjects)
         {
             ICommandFactory factory = CommandFactory.Instance;
 
@@ -24,14 +24,14 @@ namespace MelloMario
                     //controller.AddCommand(Keys.A, factory.CreateMarioCommand("Jump", mario));
                     controller.AddCommand(Keys.Down, factory.CreateMarioCommand("Crouch", mario));
                     controller.AddCommand(Keys.Up, factory.CreateMarioCommand("Jump", mario));
-                    controller.AddHoldCommand(Keys.Left, factory.CreateMarioCommand("Left", mario));
-                    controller.AddHoldCommand(Keys.Right, factory.CreateMarioCommand("Right", mario));
+                    controller.AddCommand(Keys.Left, factory.CreateMarioCommand("Left", mario), KeyBehavior.hold);
+                    controller.AddCommand(Keys.Right, factory.CreateMarioCommand("Right", mario), KeyBehavior.hold);
                     controller.AddCommand(Keys.Space, factory.CreateMarioCommand("Action", mario));
 
                     controller.AddCommand(Keys.S, factory.CreateMarioCommand("Crouch", mario));
                     controller.AddCommand(Keys.W, factory.CreateMarioCommand("Jump", mario));
-                    controller.AddHoldCommand(Keys.A, factory.CreateMarioCommand("Left", mario));
-                    controller.AddHoldCommand(Keys.D, factory.CreateMarioCommand("Right", mario));
+                    controller.AddCommand(Keys.A, factory.CreateMarioCommand("Left", mario), KeyBehavior.hold);
+                    controller.AddCommand(Keys.D, factory.CreateMarioCommand("Right", mario), KeyBehavior.hold);
 
                     //commands for changing block/mario state
                     //comented out because outdated and not needed after sprint 1
@@ -53,8 +53,8 @@ namespace MelloMario
                     // controller.AddCommand(Buttons.Start, factory.CreateGameModelCommand("Pause", model));
                     controller.AddCommand(Buttons.A, factory.CreateMarioCommand("Jump", mario));
                     controller.AddCommand(Buttons.DPadDown, factory.CreateMarioCommand("Crouch", mario));
-                    controller.AddHoldCommand(Buttons.DPadLeft, factory.CreateMarioCommand("Left", mario));
-                    controller.AddHoldCommand(Buttons.DPadRight, factory.CreateMarioCommand("Right", mario));
+                    controller.AddCommand(Buttons.DPadLeft, factory.CreateMarioCommand("Left", mario), KeyBehavior.hold);
+                    controller.AddCommand(Buttons.DPadRight, factory.CreateMarioCommand("Right", mario), KeyBehavior.hold);
                     controller.AddCommand(Buttons.B, factory.CreateMarioCommand("Action", mario));
                 }
             }
