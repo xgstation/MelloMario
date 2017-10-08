@@ -60,8 +60,10 @@ namespace MelloMario.LevelGen
         private const int SCALE = 32;
         private int h;
         private int w;
+        // Note: Without implementing IDisposable, it may cause resource leak
+        //       The code analysis tool generates a warning here
         private StreamReader input;
-        private List<IGameObject>[,] allObjects;
+        private IList<IGameObject>[,] allObjects;
         private Mario mario;
 
         public LevelReader(String path)
@@ -75,7 +77,7 @@ namespace MelloMario.LevelGen
             h = Int32.Parse(heightAsString);
             w = Int32.Parse(widthAsString);
 
-            allObjects = new List<IGameObject>[h,w];
+            allObjects = new List<IGameObject>[h, w];
 
         }
 
@@ -84,13 +86,13 @@ namespace MelloMario.LevelGen
             return new Pack(h, w);
         }
 
-        public List<IGameObject>[,] LoadObjects()
+        public IList<IGameObject>[,] LoadObjects()
         {
             for (int i = 0; i < h; ++i)
             {
                 for (int j = 0; j < w; ++j)
                 {
-                    allObjects[i,j] = new List<IGameObject>();
+                    allObjects[i, j] = new List<IGameObject>();
                 }
             }
 
@@ -163,6 +165,5 @@ namespace MelloMario.LevelGen
             //must be called after load objects
             return mario;
         }
-
     }
 }

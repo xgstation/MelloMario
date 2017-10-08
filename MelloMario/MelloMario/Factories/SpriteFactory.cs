@@ -174,9 +174,9 @@ namespace MelloMario.Factories
             return new StaticSprite(oneUpMushroomSpritesheet);
         }
 
-        public ISprite CreateQuestionSprite(string v)
+        public ISprite CreateQuestionSprite(string status)
         {
-            switch (v)
+            switch (status)
             {
                 case "Used":
                     return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
@@ -187,9 +187,9 @@ namespace MelloMario.Factories
             }
         }
 
-        public ISprite CreateBrickSprite(string v)
+        public ISprite CreateBrickSprite(string status)
         {
-            switch (v)
+            switch (status)
             {
                 case "DestroyedLT":
                     return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.LeftTop, 0, 0);

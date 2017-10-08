@@ -20,9 +20,9 @@ namespace MelloMario
         {
         }
 
-        public void LoadControllers(IList<IController> controllers)
+        public void LoadControllers(IList<IController> newControllers)
         {
-            this.controllers = controllers;
+            controllers = newControllers;
         }
 
         public void Bind(GameScript script)

@@ -160,12 +160,13 @@ namespace MelloMario.MarioObjects
 
         protected override void OnSimulation(GameTime time)
         {
-
+            float oldLocX = floatLocX;
             UpdateHAccel(userInX, time);
             userInX = 0;
             UpdateHVel(time);
             UpdateHPos(time);
-            Move(new Point((int)floatLocX, 0));
+            Move(new Point((int)floatLocX - (int)oldLocX, 0));
+            //Move(new Point(1, 0));
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)

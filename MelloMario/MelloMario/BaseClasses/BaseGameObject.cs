@@ -127,20 +127,15 @@ namespace MelloMario
             movement.Y = 0;
         }
 
-        protected void SetSprite(ISprite sprite)
+        protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
         {
-            this.sprite = sprite;
-        }
-
-        protected void ShowSprite(ISprite sprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
-        {
-            SetSprite(sprite);
+            sprite = newSprite;
             Resize(sprite.PixelSize, modeX, modeY);
         }
 
         protected void HideSprite()
         {
-            SetSprite(null);
+            sprite = null;
         }
 
         public Rectangle Boundary
