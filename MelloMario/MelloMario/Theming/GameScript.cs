@@ -28,8 +28,9 @@ namespace MelloMario
                     controller.AddCommand(Keys.Right, factory.CreateMarioCommand("Right", mario), KeyBehavior.hold);
                     controller.AddCommand(Keys.Space, factory.CreateMarioCommand("Action", mario));
 
-                    controller.AddCommand(Keys.S, factory.CreateMarioCommand("Crouch", mario));
-                    controller.AddCommand(Keys.W, factory.CreateMarioCommand("Jump", mario));
+                    //controller.AddCommand(Keys.S, factory.CreateMarioCommand("Crouch", mario), KeyBehavior.hold);
+                    controller.AddCommand(Keys.S, factory.CreateMarioCommand("Fall", mario), KeyBehavior.hold);
+                    controller.AddCommand(Keys.W, factory.CreateMarioCommand("Jump", mario),KeyBehavior.hold);
                     controller.AddCommand(Keys.A, factory.CreateMarioCommand("Left", mario), KeyBehavior.hold);
                     controller.AddCommand(Keys.D, factory.CreateMarioCommand("Right", mario), KeyBehavior.hold);
 

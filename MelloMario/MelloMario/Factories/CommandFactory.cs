@@ -66,6 +66,8 @@ namespace MelloMario.Factories
                     return new FireStateCommand(mario);
                 case "Jump":
                     return new JumpCommand(mario);
+                case "Fall":
+                    return new FallCommand(mario);
                 case "Left":
                     return new LeftCommand(mario);
                 case "Right":
