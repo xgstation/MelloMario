@@ -7,7 +7,7 @@ using System;
 
 namespace MelloMario.MarioObjects
 {
-    class Mario : BaseGameObject
+    class Mario : BasePhysicalObject
     {
         private IMarioDirectionState directionState;
         private IMarioMovementState movementState;
@@ -239,7 +239,7 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        public Mario(Point location) : base(location, new Point(32, 32))
+        public Mario(Point location) : base(location, new Point(32, 32), 32)
         {
             directionState = new DirectionRight(this);
             movementState = new Movementldle(this);

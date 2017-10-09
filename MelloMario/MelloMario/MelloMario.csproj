@@ -46,6 +46,7 @@
     <StartupObject>MelloMario.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BaseClasses\BasePhysicalObject.cs" />
     <Compile Include="BaseClasses\BaseGameObject.cs" />
     <Compile Include="BlockObjects\Brick.cs" />
     <Compile Include="BlockObjects\BrickStates\BrickBumped.cs" />
