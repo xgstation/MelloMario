@@ -17,32 +17,32 @@ namespace MelloMario.Sprites.BlockSprites
         private int y;
 
         private int frames;
-        private double elapsed;
-        private double offsetX;
-        private double offsetY;
+        private float elapsed;
+        private float offsetX;
+        private float offsetY;
 
         private void UpdateOffset(GameTime time)
         {
-            elapsed += time.ElapsedGameTime.TotalMilliseconds;
+            elapsed += (float)time.ElapsedGameTime.TotalMilliseconds;
             frames += 1;
 
             switch (part)
             {
                 case Part.LeftBottom:
                     offsetX = -elapsed / 5f + 4;
-                    offsetY = Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
+                    offsetY = (float)Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
                     break;
                 case Part.LeftTop:
                     offsetX = -elapsed / 5f + 4;
-                    offsetY = Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
+                    offsetY = (float)Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
                     break;
                 case Part.RightBottom:
                     offsetX = elapsed / 5f + 12;
-                    offsetY = Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
+                    offsetY = (float)Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
                     break;
                 case Part.RightTop:
                     offsetX = elapsed / 5f + 12;
-                    offsetY = Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
+                    offsetY = (float)Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
                     break;
             }
 

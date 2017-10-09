@@ -121,9 +121,13 @@ namespace MelloMario
             movement += delta;
         }
 
-        protected void StopMove()
+        protected void StopMoveHorizontal()
         {
             movement.X = 0;
+        }
+
+        protected void StopMoveVertical()
+        {
             movement.Y = 0;
         }
 

@@ -7,13 +7,13 @@ namespace MelloMario.Sprites
     {
         private int columns;
         private int rows;
-        private double delay;
+        private float delay;
 
         private int width;
         private int height;
 
         private int frames;
-        private double elapsed;
+        private float elapsed;
 
         private void UpdateSourceRectangle()
         {
@@ -25,7 +25,7 @@ namespace MelloMario.Sprites
 
         protected override void OnAnimate(GameTime time)
         {
-            elapsed += time.ElapsedGameTime.TotalMilliseconds;
+            elapsed += (float)time.ElapsedGameTime.TotalMilliseconds;
             if (elapsed >= delay)
             {
                 UpdateSourceRectangle();
@@ -40,7 +40,7 @@ namespace MelloMario.Sprites
             }
         }
 
-        public AnimatedSprite(Texture2D texture, int columns, int rows, double delay = 250) : base(
+        public AnimatedSprite(Texture2D texture, int columns, int rows, float delay = 250) : base(
             texture, new Point(), new Point(texture.Width / columns, texture.Height / rows)
         )
         {
