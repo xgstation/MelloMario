@@ -15,7 +15,7 @@ namespace MelloMario.Commands
 
         public override void Execute()
         {
-            Receiver.userInY = Mario.F_MAX_ACCEL;
+            //Receiver.userInY = Mario.H_MAX_ACCEL;
             Receiver.Jump();
         }
     }

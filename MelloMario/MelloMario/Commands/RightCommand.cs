@@ -10,7 +10,7 @@ namespace MelloMario.Commands
 
         public override void Execute()
         {
-            Receiver.userInX = Mario.H_MAX_ACCEL;
+            Receiver.userInX = 110;
             Receiver.TurnRight();
         }
     }

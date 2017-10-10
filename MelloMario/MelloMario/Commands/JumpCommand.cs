@@ -10,7 +10,7 @@ namespace MelloMario.Commands
 
         public override void Execute()
         {
-            Receiver.userInY =  Mario.J_MAX_ACCEL;
+            Receiver.userInY = -110;
             Receiver.Jump();
         }
     }
