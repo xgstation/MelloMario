@@ -15,7 +15,8 @@ namespace MelloMario.Commands
 
         public override void Execute()
         {
-            //Receiver.userInY = Mario.H_MAX_ACCEL;
+            // TODO: this is for sprint 2 only
+            Receiver.userInY = 150;
             Receiver.Jump();
         }
     }
