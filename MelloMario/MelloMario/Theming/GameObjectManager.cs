@@ -57,17 +57,20 @@ namespace MelloMario
         {
             Point location = locations[gameObject];
 
-            for (int i = location.X - 1; i <= location.X + 1; ++i)
+            for (int i = location.X - 2; i <= location.X + 2; ++i)
             {
                 if (i < objects.GetLowerBound(0) || i > objects.GetUpperBound(0)) continue;
 
-                for (int j = location.Y - 1; j <= location.Y + 1; ++j)
+                for (int j = location.Y - 2; j <= location.Y + 2; ++j)
                 {
                     if (j < objects.GetLowerBound(1) || j > objects.GetUpperBound(1)) continue;
 
                     foreach (IGameObject obj in objects[i, j])
                     {
-                        yield return obj;
+                        if (obj != gameObject)
+                        {
+                            yield return obj;
+                        }
                     }
                 }
             }

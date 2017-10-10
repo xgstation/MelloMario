@@ -29,7 +29,10 @@ namespace MelloMario
 
         protected void ApplyFriction(float friction = FORCE_F)
         {
-            frictionalForce += friction;
+            if (frictionalForce < friction)
+            {
+                frictionalForce = friction;
+            }
         }
 
         protected void Bounce(CollisionMode mode, float rate)

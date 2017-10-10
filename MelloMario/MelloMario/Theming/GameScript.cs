@@ -20,8 +20,8 @@ namespace MelloMario
             {
                 //controller.AddCommand(Keys.Escape, factory.CreateGameModelCommand("Pause", objects));
                 //controller.AddCommand(Keys.A, factory.CreateMarioCommand("Jump", mario));
-                controller.AddCommand(Keys.Down, factory.CreateMarioCommand("Crouch", mario));
-                controller.AddCommand(Keys.Up, factory.CreateMarioCommand("Jump", mario));
+                controller.AddCommand(Keys.Down, factory.CreateMarioCommand("Crouch", mario), KeyBehavior.hold);
+                controller.AddCommand(Keys.Up, factory.CreateMarioCommand("Jump", mario), KeyBehavior.hold);
                 controller.AddCommand(Keys.Left, factory.CreateMarioCommand("Left", mario), KeyBehavior.hold);
                 controller.AddCommand(Keys.Right, factory.CreateMarioCommand("Right", mario), KeyBehavior.hold);
                 controller.AddCommand(Keys.Space, factory.CreateMarioCommand("Action", mario));
@@ -46,8 +46,8 @@ namespace MelloMario
                 controller.AddCommand(Keys.O, factory.CreateMarioCommand("DeadState", mario));
 
                 // controller.AddCommand(Buttons.Start, factory.CreateGameModelCommand("Pause", model));
-                controller.AddCommand(Buttons.A, factory.CreateMarioCommand("Jump", mario));
-                controller.AddCommand(Buttons.DPadDown, factory.CreateMarioCommand("Crouch", mario));
+                controller.AddCommand(Buttons.A, factory.CreateMarioCommand("Jump", mario), KeyBehavior.hold);
+                controller.AddCommand(Buttons.DPadDown, factory.CreateMarioCommand("Crouch", mario), KeyBehavior.hold);
                 controller.AddCommand(Buttons.DPadLeft, factory.CreateMarioCommand("Left", mario), KeyBehavior.hold);
                 controller.AddCommand(Buttons.DPadRight, factory.CreateMarioCommand("Right", mario), KeyBehavior.hold);
                 controller.AddCommand(Buttons.B, factory.CreateMarioCommand("Action", mario));

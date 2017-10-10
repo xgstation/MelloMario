@@ -46,7 +46,7 @@ namespace MelloMario
                     ((BaseGameObject)target).OnCollision(this, CollisionMode.Bottom);
                 }
             }
-            if (intersectY && rectA.Bottom == rectB.Top)
+            if (intersectX && rectA.Bottom == rectB.Top)
             {
                 OnCollision(target, CollisionMode.Bottom);
 
