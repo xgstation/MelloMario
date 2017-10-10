@@ -7,9 +7,19 @@ namespace MelloMario
 {
     abstract class BasePhysicalObject : BaseGameObject
     {
-        private const float FORCE_G = 10f;
+        private const float FORCE_G = 20f;
         private const float FORCE_F = 100f;
-        private const float VELOCITY_MAX = 6f;
+        private const float VELOCITY_MAX = 10f;
+        // TODO: add 4-direction velocity limit
+        // TODO: add in-air friction
+
+        //note: base on wenli's work:
+        //private const float J_FRICTION = 110f;
+        //private const float F_FRICTION = 80f;
+        //public const float J_MAX_ACCEL = -110f;
+        //public const float F_MAX_ACCEL = 150f;
+        //private const float J_MAX_VEL = -5f;
+        //private const float F_MAX_VEL = 10f;
 
         private float pixelScale;
         private Vector2 movement;
@@ -87,32 +97,43 @@ namespace MelloMario
             // Apply conservative force
 
             velocity += force * deltaTime;
-            if (velocity.Length() > VELOCITY_MAX)
-            {
-                velocity.Normalize();
-                velocity *= VELOCITY_MAX;
-            }
-
             force.X = 0;
             force.Y = 0;
 
             // Apply frictional force
 
-            if (velocity.Length() > frictionalForce * deltaTime)
+            if (velocity.X > frictionalForce * deltaTime)
             {
-                Vector2 direction = -velocity;
-                direction.Normalize();
-                velocity += direction * (frictionalForce * deltaTime);
+                velocity.X -= frictionalForce * deltaTime;
+            }
+            else if (velocity.X < -frictionalForce * deltaTime)
+            {
+                velocity.X += frictionalForce * deltaTime;
             }
             else
             {
                 velocity.X = 0;
-                velocity.Y = 0;
             }
             frictionalForce = 0;
 
             // Apply velocity
 
+            if (velocity.X > VELOCITY_MAX)
+            {
+                velocity.X = VELOCITY_MAX;
+            }
+            else if (velocity.X < -VELOCITY_MAX)
+            {
+                velocity.X = -VELOCITY_MAX;
+            }
+            if (velocity.Y > VELOCITY_MAX)
+            {
+                velocity.Y = VELOCITY_MAX;
+            }
+            else if (velocity.Y < -VELOCITY_MAX)
+            {
+                velocity.Y = -VELOCITY_MAX;
+            }
             movement += velocity * deltaTime;
 
             // Apply movement
