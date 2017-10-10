@@ -9,17 +9,14 @@ namespace MelloMario
     {
         private const float FORCE_G = 20f;
         private const float FORCE_F = 100f;
-        private const float VELOCITY_MAX = 10f;
-        // TODO: add 4-direction velocity limit
+        private const float VELOCITY_MAX_LR = 10f;
+        private const float VELOCITY_MAX_U = 10f;
+        private const float VELOCITY_MAX_D = 20f;
         // TODO: add in-air friction
 
         //note: base on wenli's work:
         //private const float J_FRICTION = 110f;
         //private const float F_FRICTION = 80f;
-        //public const float J_MAX_ACCEL = -110f;
-        //public const float F_MAX_ACCEL = 150f;
-        //private const float J_MAX_VEL = -5f;
-        //private const float F_MAX_VEL = 10f;
 
         private float pixelScale;
         private Vector2 movement;
@@ -118,21 +115,21 @@ namespace MelloMario
 
             // Apply velocity
 
-            if (velocity.X > VELOCITY_MAX)
+            if (velocity.X > VELOCITY_MAX_LR)
             {
-                velocity.X = VELOCITY_MAX;
+                velocity.X = VELOCITY_MAX_LR;
             }
-            else if (velocity.X < -VELOCITY_MAX)
+            else if (velocity.X < -VELOCITY_MAX_LR)
             {
-                velocity.X = -VELOCITY_MAX;
+                velocity.X = -VELOCITY_MAX_LR;
             }
-            if (velocity.Y > VELOCITY_MAX)
+            if (velocity.Y > VELOCITY_MAX_D)
             {
-                velocity.Y = VELOCITY_MAX;
+                velocity.Y = VELOCITY_MAX_D;
             }
-            else if (velocity.Y < -VELOCITY_MAX)
+            else if (velocity.Y < -VELOCITY_MAX_U)
             {
-                velocity.Y = -VELOCITY_MAX;
+                velocity.Y = -VELOCITY_MAX_U;
             }
             movement += velocity * deltaTime;
 
