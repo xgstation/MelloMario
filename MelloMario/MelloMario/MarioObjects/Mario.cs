@@ -7,22 +7,20 @@ using MelloMario.MarioObjects.ProtectionStates;
 
 namespace MelloMario.MarioObjects
 {
-    class Mario : BasePhysicalObject
+    class Mario : BasePhysicalObject, IGameCharacter
     {
         private IMarioDirectionState directionState;
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
         // TODO: encapsulate user input
-        public float userInX;
-        public float userInY;
+        private Vector2 userInput;
 
         private void OnStateChanged()
         {
             if (powerUpState is Dead)
             {
                 ShowSprite(SpriteFactory.Instance.CreateMarioSprite(powerUpState.GetType().Name, true));
-                //
             }
             else
             {
@@ -35,9 +33,9 @@ namespace MelloMario.MarioObjects
 
         protected override void OnSimulation(GameTime time)
         {
-            ApplyForce(new Vector2(userInX, userInY));
-            userInX = 0;
-            userInY = 0;
+            ApplyForce(userInput);
+            userInput.X = 0;
+            userInput.Y = 0;
             ApplyGravity();
 
             base.OnSimulation(time);
@@ -111,42 +109,48 @@ namespace MelloMario.MarioObjects
             OnStateChanged();
         }
 
-        public void TurnLeft()
+        public void Left()
         {
+            userInput.X -= 110;
             DirectionState.TurnLeft();
         }
-        public void TurnRight()
+        public void Right()
         {
+            userInput.X += 110;
             DirectionState.TurnRight();
         }
+
+        public void Jump()
+        {
+            userInput.Y -= 110;
+            MovementState.Jump();
+        }
+
         public void Crouch()
         {
             MovementState.Crouch();
         }
-        public void Idle()
+
+        public void Action()
         {
-            MovementState.Idle();
+            throw new System.NotImplementedException();
         }
-        public void Jump()
-        {
-            MovementState.Jump();
-        }
-        public void Walk()
-        {
-            MovementState.Walk();
-        }
+
         public void UpgradeToSuper()
         {
             PowerUpState.UpgradeToSuper();
         }
+
         public void UpgradeToFire()
         {
             PowerUpState.UpgradeToFire();
         }
+
         public void Downgrade()
         {
             PowerUpState.Downgrade();
         }
+
         public void Kill()
         {
             // TODO

@@ -35,47 +35,37 @@ namespace MelloMario.Factories
             }
         }
 
-        public ICommand CreateMiscCommand(string action, IGameObject[,] gameObject)
+        public ICommand CreateGameCharacterCommand(string action, IGameCharacter character)
         {
             switch (action)
             {
-                case "BrickBlock":
-                    return new BrickBlockCommand(gameObject);
-                case "HiddenBlock":
-                    return new HiddenBlockCommand(gameObject);
-                case "QuestionBlock":
-                    return new QuestionBlockCommand(gameObject);
-                case "UsedBlock":
-                    return new UsedBlockCommand(gameObject);
+                case "Action":
+                    return new ActionCommand(character);
+                case "Crouch":
+                    return new CrouchCommand(character);
+                case "Jump":
+                    return new JumpCommand(character);
+                case "Left":
+                    return new LeftCommand(character);
+                case "Right":
+                    return new RightCommand(character);
                 default:
                     throw new Exception("Unknown action");
             }
         }
 
-        public ICommand CreateMarioCommand(string action, Mario mario)
+        public ICommand CreateGameObjectCommand(string action, IGameObject gameObject)
         {
             switch (action)
             {
-                case "Action":
-                    return new ActionCommand(mario);
-                case "Crouch":
-                    return new CrouchCommand(mario);
                 case "DeadState":
-                    return new DeadStateCommand(mario);
+                    return new DeadStateCommand((Mario)gameObject);
                 case "FireState":
-                    return new FireStateCommand(mario);
-                case "Jump":
-                    return new JumpCommand(mario);
-                case "Fall":
-                    return new FallCommand(mario);
-                case "Left":
-                    return new LeftCommand(mario);
-                case "Right":
-                    return new RightCommand(mario);
+                    return new FireStateCommand((Mario)gameObject);
                 case "StandardState":
-                    return new StandardStateCommand(mario);
+                    return new StandardStateCommand((Mario)gameObject);
                 case "SuperState":
-                    return new SuperStateCommand(mario);
+                    return new SuperStateCommand((Mario)gameObject);
                 default:
                     throw new Exception("Unknown action");
             }

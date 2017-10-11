@@ -67,7 +67,6 @@
     <Compile Include="BlockObjects\StairStates\Normal.cs" />
     <Compile Include="BaseClasses\BaseCommand.cs" />
     <Compile Include="Commands\ActionCommand.cs" />
-    <Compile Include="Commands\FallCommand.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\JumpCommand.cs" />
     <Compile Include="Commands\LeftCommand.cs" />
@@ -130,9 +129,6 @@
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\SlicedSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
-    <Compile Include="Commands\BrickBlockCommand.cs" />
-    <Compile Include="Commands\HiddenBlockCommand.cs" />
-    <Compile Include="Commands\QuestionBlockCommand.cs" />
     <Compile Include="Commands\DeadStateCommand.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
     <Compile Include="Theming\GameModel.cs" />
@@ -144,7 +140,6 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Commands\UsedBlockCommand.cs" />
     <Compile Include="Commands\StandardStateCommand.cs" />
     <Compile Include="Commands\SuperStateCommand.cs" />
   </ItemGroup>

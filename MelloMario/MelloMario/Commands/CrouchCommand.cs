@@ -1,10 +1,8 @@
-﻿using MelloMario.MarioObjects;
-
-namespace MelloMario.Commands
+﻿namespace MelloMario.Commands
 {
-    class CrouchCommand : BaseCommand<Mario>
+    class CrouchCommand : BaseCommand<IGameCharacter>
     {
-        public CrouchCommand(Mario mario) : base(mario)
+        public CrouchCommand(IGameCharacter character) : base(character)
         {
         }
 

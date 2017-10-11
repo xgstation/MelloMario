@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    interface IGameCharacter
+    interface IGameCharacter : IGameObject
     {
         void Left();
         void Right();

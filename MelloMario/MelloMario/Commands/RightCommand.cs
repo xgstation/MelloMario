@@ -1,17 +1,14 @@
-﻿using MelloMario.MarioObjects;
-
-namespace MelloMario.Commands
+﻿namespace MelloMario.Commands
 {
-    class RightCommand : BaseCommand<Mario>
+    class RightCommand : BaseCommand<IGameCharacter>
     {
-        public RightCommand(Mario mario) : base(mario)
+        public RightCommand(IGameCharacter character) : base(character)
         {
         }
 
         public override void Execute()
         {
-            Receiver.userInX = 110;
-            Receiver.TurnRight();
+            Receiver.Right();
         }
     }
 }
