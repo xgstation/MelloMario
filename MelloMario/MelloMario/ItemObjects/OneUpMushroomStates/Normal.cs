@@ -24,7 +24,6 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
 
         public void Collect()
         {
-            mushroomItem.State = new Defeated(mushroomItem);
         }
 
         public void Update(GameTime time)

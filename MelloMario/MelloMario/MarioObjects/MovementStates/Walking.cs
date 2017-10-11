@@ -27,7 +27,7 @@ namespace MelloMario.MarioObjects.MovementStates
         }
         public void Idle()
         {
-            this.mario.MovementState = new Movementldle(this.mario);
+            this.mario.MovementState = new Standing(this.mario);
         }
         public void Jump()
         {

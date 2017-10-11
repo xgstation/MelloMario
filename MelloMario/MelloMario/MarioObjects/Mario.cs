@@ -92,7 +92,7 @@ namespace MelloMario.MarioObjects
         public Mario(Point location) : base(location, new Point(32, 32), 32)
         {
             directionState = new Right(this);
-            movementState = new Movementldle(this);
+            movementState = new Standing(this);
             powerUpState = new Standard(this);
             OnStateChanged();
         }

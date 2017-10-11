@@ -119,7 +119,7 @@
     <Compile Include="Sprites\BlockSprites\BrickPieceSprite.cs" />
     <Compile Include="MarioObjects\Mario.cs" />
     <Compile Include="MarioObjects\MovementStates\Crouching.cs" />
-    <Compile Include="MarioObjects\MovementStates\Idle.cs" />
+    <Compile Include="MarioObjects\MovementStates\Standing.cs" />
     <Compile Include="MarioObjects\MovementStates\Jumping.cs" />
     <Compile Include="MarioObjects\MovementStates\Walking.cs" />
     <Compile Include="MarioObjects\PowerUpStates\Super.cs" />
@@ -153,6 +153,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BrickPieces.png" />
+    <Content Include="Content\FireStandingLeft.png" />
+    <Content Include="Content\FireStandingRight.png" />
     <Content Include="Content\GoombaDead.png" />
     <Content Include="Content\GreenKoopaDead.png" />
     <Content Include="Content\GreenKoopaStepped.png" />
@@ -163,8 +165,6 @@
     <Content Include="Content\FireCrouchingLeft.png" />
     <Content Include="Content\FireCrouchingRight.png" />
     <Content Include="Content\FireFlower.png" />
-    <Content Include="Content\FireIdleLeft.png" />
-    <Content Include="Content\FireIdleRight.png" />
     <Content Include="Content\FireJumpingLeft.png" />
     <Content Include="Content\FireJumpingRight.png" />
     <Content Include="Content\FireWalkingLeft.png" />
@@ -175,20 +175,20 @@
     <Content Include="Content\RedKoopa.png" />
     <Content Include="Content\RedKoopaDead.png" />
     <Content Include="Content\RedKoopaStepped.png" />
-    <Content Include="Content\StandardIdleLeft.png" />
-    <Content Include="Content\StandardIdleRight.png" />
     <Content Include="Content\StandardJumpingLeft.png" />
     <Content Include="Content\StandardJumpingRight.png" />
+    <Content Include="Content\StandardStandingLeft.png" />
+    <Content Include="Content\StandardStandingRight.png" />
     <Content Include="Content\StandardWalkingLeft.png" />
     <Content Include="Content\StandardWalkingRight.png" />
     <Content Include="Content\Star.png" />
     <Content Include="Content\SuperCrouchingLeft.png" />
     <Content Include="Content\SuperCrouchingRight.png" />
-    <Content Include="Content\SuperIdleLeft.png" />
-    <Content Include="Content\SuperIdleRight.png" />
     <Content Include="Content\SuperJumpingLeft.png" />
     <Content Include="Content\SuperJumpingRight.png" />
     <Content Include="Content\SuperMushroom.png" />
+    <Content Include="Content\SuperStandingLeft.png" />
+    <Content Include="Content\SuperStandingRight.png" />
     <Content Include="Content\SuperWalkingLeft.png" />
     <Content Include="Content\SuperWalkingRight.png" />
     <Content Include="Icon.ico" />

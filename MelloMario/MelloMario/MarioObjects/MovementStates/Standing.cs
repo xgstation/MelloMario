@@ -10,12 +10,12 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.MovementStates
 {
-    class Movementldle : IMarioMovementState
+    class Standing : IMarioMovementState
     {
         Mario mario;
         //bool setToStatic;
         // ISprite sprite;
-        public Movementldle(Mario mario)
+        public Standing(Mario mario)
         {
             this.mario = mario;
             //setToStatic = true;
