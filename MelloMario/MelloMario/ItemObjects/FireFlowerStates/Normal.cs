@@ -4,11 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
-    class FireFlowerNormal : IItemState
+    class Normal : IItemState
     {
         private FireFlower flower;
 
-        public FireFlowerNormal(FireFlower flower1)
+        public Normal(FireFlower flower1)
         {
             flower = flower1;
         }
@@ -19,7 +19,6 @@ namespace MelloMario.ItemObjects.FireFlowerStates
 
         public void Collect()
         {
-            flower.State = new FireFlowerDefeated(flower);
         }
 
         public void Update(GameTime time)

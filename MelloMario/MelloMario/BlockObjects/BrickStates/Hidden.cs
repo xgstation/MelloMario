@@ -1,20 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
 
-namespace MelloMario.BlockObjects.FloorStates
+namespace MelloMario.BlockObjects.BrickStates
 {
-    class FloorHidden : IBlockState
+    class Hidden : IBlockState
     {
-        private Floor block;
+        private Brick block;
 
-        public FloorHidden(Floor block)
+        public Hidden(Brick block)
         {
             this.block = block;
         }
 
         public void Show()
         {
-            block.State = new FloorNormal(block);
+            block.State = new Normal(block);
         }
 
         public void Hide()

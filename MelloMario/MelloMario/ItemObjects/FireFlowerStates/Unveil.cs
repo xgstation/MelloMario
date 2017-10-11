@@ -8,25 +8,24 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
-    class FireFlowerUnveil : IItemState
+    class Unveil : IItemState
     {
         private FireFlower flowerItem;
         private float elapsed;
         private float offset;
         private Vector2 origin;
 
-        public FireFlowerUnveil(FireFlower newFlower)
+        public Unveil(FireFlower newFlower)
         {
             flowerItem = newFlower;
         }
         public void Collect()
         {
-            flowerItem.State = new FireFlowerDefeated(flowerItem);
         }
 
         public void Show()
         {
-            flowerItem.State = new FireFlowerNormal(flowerItem);
+            flowerItem.State = new Normal(flowerItem);
         }
 
         public void Update(GameTime time)

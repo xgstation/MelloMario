@@ -6,16 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MelloMario.Factories;
 
-namespace MelloMario.ItemObjects.StarStates
+namespace MelloMario.ItemObjects.CoinStates
 {
-    class StarNormal : IItemState
+    class Normal : IItemState
     {
-        private Star starItem;
+        private Coin coinItem;
 
-        public StarNormal(Star star1)
+        public Normal(Coin coin1)
         {
-            starItem = star1;
+            coinItem = coin1;
         }
 
         public void Show()
@@ -24,7 +25,7 @@ namespace MelloMario.ItemObjects.StarStates
 
         public void Collect()
         {
-            starItem.State = new StarDefeated(starItem);
+            coinItem.State = new Collected(coinItem);
         }
 
         public void Update(GameTime time)

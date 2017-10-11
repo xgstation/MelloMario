@@ -10,28 +10,30 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
-    class BrickUsed : IBlockState
+    class Normal : IBlockState
     {
         private Brick block;
 
-        public BrickUsed(Brick block)
+        public Normal(Brick block)
         {
             this.block = block;
         }
 
         public void Show()
         {
-            block.State = new BrickNormal(block);
+            //do nothing
         }
 
         public void Hide()
         {
-            block.State = new BrickHidden(block);
+            block.State = new Hidden(block);
         }
 
         public void Bump(Mario mario)
         {
-            // nothing
+            // TODO: if large mario && no item then
+            // block.State = new BrickDestroyed(block);
+            block.State = new Bumped(block);
         }
 
         public void Update(GameTime time)

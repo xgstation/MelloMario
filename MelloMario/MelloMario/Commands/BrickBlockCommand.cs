@@ -20,7 +20,7 @@ namespace MelloMario.Commands
                 {
                     mario = (MarioObjects.Mario)obj;
                 }
-                if (obj is BlockObjects.Brick && ((BlockObjects.Brick)obj).State is BlockObjects.BrickStates.BrickNormal)
+                if (obj is BlockObjects.Brick && ((BlockObjects.Brick)obj).State is BlockObjects.BrickStates.Normal)
                 {
                     brick = (BlockObjects.Brick)obj;
                 }

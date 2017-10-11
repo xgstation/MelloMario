@@ -10,14 +10,7 @@ namespace MelloMario.ItemObjects
 
         private void OnStateChanged()
         {
-            if (state is FireFlowerNormal)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateFireFlowerSprite());
-            }
-            else if (state is FireFlowerDefeated)
-            {
-                HideSprite();
-            }
+            ShowSprite(SpriteFactory.Instance.CreateFireFlowerSprite());
         }
 
         protected override void OnSimulation(GameTime time)
@@ -43,7 +36,7 @@ namespace MelloMario.ItemObjects
 
         public FireFlower(Point location) : base(location, new Point(32, 32))
         {
-            state = new FireFlowerNormal(this);
+            state = new Normal(this);
             OnStateChanged();
         }
 

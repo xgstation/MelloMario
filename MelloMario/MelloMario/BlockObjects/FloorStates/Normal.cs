@@ -1,13 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
 
-namespace MelloMario.BlockObjects.PipelineStates
+namespace MelloMario.BlockObjects.FloorStates
 {
-    class PipelineNormal : IBlockState
+    class Normal : IBlockState
     {
-        private Pipeline block;
+        private Floor block;
 
-        public PipelineNormal(Pipeline block)
+        public Normal(Floor block)
         {
             this.block = block;
         }
@@ -20,6 +20,11 @@ namespace MelloMario.BlockObjects.PipelineStates
         public void Hide()
         {
             //do nothing
+        }
+
+        public void UseUp()
+        {
+            //stairs cant be used
         }
 
         public void Bump(Mario mario)

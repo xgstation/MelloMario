@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace MelloMario.EnemyObjects.GoombaStates
 {
-    class GoombaDefeated : IGoombaState
+    class Defeated : IGoombaState
     {
 
         private Goomba enemyGoomba;
 
-        public GoombaDefeated(Goomba goomba1)
+        public Defeated(Goomba goomba1)
         {
             enemyGoomba = goomba1;
 
@@ -21,7 +21,7 @@ namespace MelloMario.EnemyObjects.GoombaStates
 
         public void Show()
         {
-            enemyGoomba.State = new GoombaNormal(enemyGoomba);
+            enemyGoomba.State = new Normal(enemyGoomba);
         }
 
         public void Defeat()

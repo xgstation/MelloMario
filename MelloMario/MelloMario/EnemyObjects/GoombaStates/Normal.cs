@@ -6,29 +6,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.ItemObjects.FireFlowerStates
+namespace MelloMario.EnemyObjects.GoombaStates
 {
-    class FireFlowerDefeated : IItemState
+    class Normal : IGoombaState
     {
+        private Goomba enemyGoomba;
 
-        private FireFlower flowerItem;
-
-        public FireFlowerDefeated(FireFlower flower1)
+        public Normal(Goomba goomba1)
         {
-            flowerItem = flower1;
+            enemyGoomba = goomba1;
         }
 
         public void Show()
         {
-            flowerItem.State = new FireFlowerNormal(flowerItem);
+
         }
 
-        public void Collect()
+        public void Defeat()
         {
+            enemyGoomba.State = new Defeated(enemyGoomba);
         }
 
         public void Update(GameTime time)
         {
+
         }
     }
 }

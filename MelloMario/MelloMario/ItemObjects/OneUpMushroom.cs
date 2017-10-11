@@ -10,14 +10,7 @@ namespace MelloMario.ItemObjects
 
         private void OnStateChanged()
         {
-            if (state is OneUpMushroomNormal)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateOneUpMushroomSprite());
-            }
-            else if (state is OneUpMushroomDefeated)
-            {
-                HideSprite();
-            }
+            ShowSprite(SpriteFactory.Instance.CreateOneUpMushroomSprite());
         }
 
         protected override void OnSimulation(GameTime time)

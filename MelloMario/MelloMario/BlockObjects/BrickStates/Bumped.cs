@@ -10,7 +10,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
-    class BrickBumped : IBlockState
+    class Bumped : IBlockState
     {
         private Brick block;
         private float elapsed;
@@ -18,19 +18,19 @@ namespace MelloMario.BlockObjects.BrickStates
         private float accelerationY = 1.5f;
         private float offset;
 
-        public BrickBumped(Brick brickBlock)
+        public Bumped(Brick brickBlock)
         {
             block = brickBlock;
         }
 
         public void Show()
         {
-            block.State = new BrickNormal(block);
+            block.State = new Normal(block);
         }
 
         public void Hide()
         {
-            block.State = new BrickHidden(block);
+            block.State = new Hidden(block);
         }
 
         public void Bump(Mario mario)

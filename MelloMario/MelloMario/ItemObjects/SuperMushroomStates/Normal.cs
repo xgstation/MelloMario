@@ -9,18 +9,17 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.SuperMushroomStates
 {
-    class SuperMushroomDefeated : IItemState
+    class Normal : IItemState
     {
         private SuperMushroom mushroomItem;
 
-        public SuperMushroomDefeated(SuperMushroom mushroomItem1)
+        public Normal(SuperMushroom mushroomItem1)
         {
             mushroomItem = mushroomItem1;
         }
 
         public void Show()
         {
-            mushroomItem.State = new SuperMushroomNormal(mushroomItem);
         }
 
         public void Collect()

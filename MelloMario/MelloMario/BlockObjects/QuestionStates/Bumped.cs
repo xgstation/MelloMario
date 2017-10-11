@@ -10,26 +10,26 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
-    class QuestionBumped : IBlockState
+    class Bumped : IBlockState
     {
         private Question block;
         private float elapsed;
         private float speedY = -7f;
         private float accelerationY = 1.5f;
         private float offset;
-        public QuestionBumped(Question questionBlock)
+        public Bumped(Question questionBlock)
         {
             block = questionBlock;
         }
 
         public void Show()
         {
-            block.State = new QuestionNormal(block);
+            block.State = new Normal(block);
         }
 
         public void Hide()
         {
-            block.State = new QuestionHidden(block);
+            block.State = new Hidden(block);
         }
 
         public void Bump(Mario mario)

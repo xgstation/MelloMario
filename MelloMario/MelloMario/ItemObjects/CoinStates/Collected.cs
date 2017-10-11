@@ -1,5 +1,4 @@
-﻿using MelloMario.ItemObjects;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -7,20 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.ItemObjects.StarStates
+namespace MelloMario.ItemObjects.CoinStates
 {
-    class StarDefeated : IItemState
+    class Collected : IItemState
     {
-        private Star starItem;
+        private Coin coinItem;
 
-        public StarDefeated(Star star1)
+        public Collected(Coin coin1)
         {
-            starItem = star1;
+            coinItem = coin1;
         }
 
         public void Show()
         {
-            starItem.State = new StarNormal(starItem);
+            coinItem.State = new Normal(coinItem);
         }
 
         public void Collect()

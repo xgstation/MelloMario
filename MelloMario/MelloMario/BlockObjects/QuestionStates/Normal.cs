@@ -8,35 +8,30 @@ using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Factories;
 using MelloMario.MarioObjects;
 
-namespace MelloMario.BlockObjects.BrickStates
+namespace MelloMario.BlockObjects.QuestionStates
 {
-    class BrickDestroyed : IBlockState
+    class Normal : IBlockState
     {
-        private Brick block;
+        private Question block;
 
-        public BrickDestroyed(Brick block)
+        public Normal(Question block)
         {
             this.block = block;
         }
 
         public void Show()
         {
-            block.State = new BrickNormal(block);
+            //do nothing
         }
 
         public void Hide()
         {
-            block.State = new BrickHidden(block);
-        }
-
-        public void UseUp()
-        {
-            // do nothing
+            block.State = new Hidden(block);
         }
 
         public void Bump(Mario mario)
         {
-            // do nothing
+            block.State = new Bumped(block);
         }
 
         public void Update(GameTime time)

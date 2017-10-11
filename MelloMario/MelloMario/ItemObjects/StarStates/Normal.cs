@@ -7,24 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.ItemObjects.OneUpMushroomStates
+namespace MelloMario.ItemObjects.StarStates
 {
-    class OneUpMushroomNormal : IItemState
+    class Normal : IItemState
     {
-        private OneUpMushroom mushroomItem;
+        private Star starItem;
 
-        public OneUpMushroomNormal(OneUpMushroom mushroomItem1)
+        public Normal(Star star1)
         {
-
-            mushroomItem = mushroomItem1;
+            starItem = star1;
         }
+
         public void Show()
         {
         }
 
         public void Collect()
         {
-            mushroomItem.State = new OneUpMushroomDefeated(mushroomItem);
         }
 
         public void Update(GameTime time)

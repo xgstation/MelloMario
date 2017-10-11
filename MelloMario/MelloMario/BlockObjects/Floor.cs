@@ -11,14 +11,7 @@ namespace MelloMario.BlockObjects
 
         private void OnStateChanged()
         {
-            if (state is FloorHidden)
-            {
-                HideSprite();
-            }
-            else if (state is FloorNormal)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateFloorSprite());
-            }
+            ShowSprite(SpriteFactory.Instance.CreateFloorSprite());
         }
 
         protected override void OnSimulation(GameTime time)
@@ -44,7 +37,7 @@ namespace MelloMario.BlockObjects
 
         public Floor(Point location) : base(location, new Point(32, 32))
         {
-            state = new FloorNormal(this);
+            state = new Normal(this);
             OnStateChanged();
         }
 

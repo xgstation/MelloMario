@@ -110,10 +110,10 @@ namespace MelloMario.Factories
         {
             switch (status)
             {
-                case "Normal":
-                    return new AnimatedSprite(goombaSpritesheet, 2, 1);
                 case "Defeated":
                     return new StaticSprite(goombaDeadSpritesheet);
+                case "Normal":
+                    return new AnimatedSprite(goombaSpritesheet, 2, 1);
                 default:
                     throw new Exception("Unknown sprite");
             }
@@ -123,12 +123,12 @@ namespace MelloMario.Factories
         {
             switch (status)
             {
-                case "Normal":
-                    return new AnimatedSprite(greenKoopaSpritesheet, 2, 2);
-                case "JumpOn":
-                    return new StaticSprite(greenKoopaSteppedSpritesheet);
                 case "Defeated":
                     return new StaticSprite(greenKoopaDeadSpritesheet);
+                case "JumpOn":
+                    return new StaticSprite(greenKoopaSteppedSpritesheet);
+                case "Normal":
+                    return new AnimatedSprite(greenKoopaSpritesheet, 2, 2);
                 default:
                     throw new Exception("Unknown sprite");
             }
@@ -138,12 +138,12 @@ namespace MelloMario.Factories
         {
             switch (status)
             {
-                case "Normal":
-                    return new AnimatedSprite(redKoopaSpritesheet, 2, 2);
-                case "JumpOn":
-                    return new StaticSprite(redKoopaSteppedSpritesheet);
                 case "Defeated":
                     return new StaticSprite(redKoopaDeadSpritesheet);
+                case "JumpOn":
+                    return new StaticSprite(redKoopaSteppedSpritesheet);
+                case "Normal":
+                    return new AnimatedSprite(redKoopaSpritesheet, 2, 2);
                 default:
                     throw new Exception("Unknown sprite");
             }
@@ -178,10 +178,12 @@ namespace MelloMario.Factories
         {
             switch (status)
             {
-                case "Used":
-                    return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
+                case "Bumped":
+                    return new AnimatedSprite(questionSpriteSheet, 3, 1);
                 case "Normal":
                     return new AnimatedSprite(questionSpriteSheet, 3, 1);
+                case "Used":
+                    return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
                 default:
                     throw new Exception("Unknown sprite");
             }
@@ -191,18 +193,20 @@ namespace MelloMario.Factories
         {
             switch (status)
             {
-                case "DestroyedLT":
-                    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.LeftTop, 0, 0);
-                case "DestroyedLB":
-                    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.LeftBottom, 1, 0);
-                case "DestroyedRT":
-                    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.RightTop, 0, 1);
-                case "DestroyedRB":
-                    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.RightBottom, 1, 1);
-                case "Used":
-                    return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
+                case "Bumped":
+                    return new SlicedSprite(blockSpritesheet, 33, 28, 1, 0);
+                //case "DestroyedLT":
+                //    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.LeftTop, 0, 0);
+                //case "DestroyedLB":
+                //    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.LeftBottom, 1, 0);
+                //case "DestroyedRT":
+                //    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.RightTop, 0, 1);
+                //case "DestroyedRB":
+                //    return new BrickPieceSprite(brickPieceSpritesheet, BrickPieceSprite.Part.RightBottom, 1, 1);
                 case "Normal":
                     return new SlicedSprite(blockSpritesheet, 33, 28, 1, 0);
+                case "Used":
+                    return new SlicedSprite(blockSpritesheet, 33, 28, 27, 0);
                 default:
                     throw new Exception("Unknown sprite");
             }

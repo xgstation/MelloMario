@@ -10,11 +10,11 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.StairStates
 {
-    class StairNormal : IBlockState
+    class Normal : IBlockState
     {
         private Stair block;
 
-        public StairNormal(Stair block)
+        public Normal(Stair block)
         {
             this.block = block;
         }
@@ -26,7 +26,7 @@ namespace MelloMario.BlockObjects.StairStates
 
         public void Hide()
         {
-            block.State = new StairHidden(block);
+            //do nothing
         }
 
         public void Bump(Mario mario)

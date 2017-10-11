@@ -18,7 +18,7 @@
                 {
                     mario = (MarioObjects.Mario)obj;
                 }
-                if (obj is BlockObjects.Brick && ((BlockObjects.Brick)obj).State is BlockObjects.BrickStates.BrickHidden)
+                if (obj is BlockObjects.Brick && ((BlockObjects.Brick)obj).State is BlockObjects.BrickStates.Hidden)
                 {
                     brick = (BlockObjects.Brick)obj;
                 }

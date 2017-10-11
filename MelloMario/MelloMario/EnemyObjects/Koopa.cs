@@ -14,32 +14,10 @@ namespace MelloMario.EnemyObjects
             switch (color)
             {
                 case ShellColor.green:
-                    if (state is KoopaNormal)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite("Normal"));
-                    }
-                    else if (state is KoopaJumpOn)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite("JumpOn"));
-                    }
-                    else if (state is KoopaDefeated)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite("Defeated"));
-                    }
+                    ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite(state.GetType().Name));
                     break;
                 case ShellColor.red:
-                    if (state is KoopaNormal)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateRedKoopaSprite("Normal"));
-                    }
-                    else if (state is KoopaJumpOn)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateRedKoopaSprite("JumpOn"));
-                    }
-                    else if (state is KoopaDefeated)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateRedKoopaSprite("Defeated"));
-                    }
+                    ShowSprite(SpriteFactory.Instance.CreateRedKoopaSprite(state.GetType().Name));
                     break;
             }
         }
@@ -71,7 +49,7 @@ namespace MelloMario.EnemyObjects
         {
             this.color = color;
 
-            state = new KoopaNormal(this);
+            state = new Normal(this);
             OnStateChanged();
         }
 

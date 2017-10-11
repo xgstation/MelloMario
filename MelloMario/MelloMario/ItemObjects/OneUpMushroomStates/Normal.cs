@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MelloMario.ItemObjects;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -8,33 +9,26 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
-    class OneUpMushroomDefeated : IItemState
+    class OneUpMushroomNormal : IItemState
     {
         private OneUpMushroom mushroomItem;
 
-        public OneUpMushroomDefeated(OneUpMushroom mushroomItem1)
+        public OneUpMushroomNormal(OneUpMushroom mushroomItem1)
         {
+
             mushroomItem = mushroomItem1;
         }
-
         public void Show()
         {
-            mushroomItem.State = new OneUpMushroomNormal(mushroomItem);
         }
 
         public void Collect()
         {
-
+            mushroomItem.State = new Defeated(mushroomItem);
         }
 
         public void Update(GameTime time)
         {
-
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-
         }
     }
 }

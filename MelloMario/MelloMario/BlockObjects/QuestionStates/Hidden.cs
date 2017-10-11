@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MelloMario.MarioObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.MarioObjects;
 
-namespace MelloMario.BlockObjects.StairStates
+namespace MelloMario.BlockObjects.QuestionStates
 {
-    class StairHidden : IBlockState
+    class Hidden : IBlockState
     {
-        private Stair block;
+        private Question block;
 
-        public StairHidden(Stair block)
+
+        public Hidden(Question block)
         {
             this.block = block;
         }
 
         public void Show()
         {
-            block.State = new StairNormal(block);
+            block.State = new Normal(block);
         }
 
         public void Hide()

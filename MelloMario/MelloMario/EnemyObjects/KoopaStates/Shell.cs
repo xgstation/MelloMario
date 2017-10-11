@@ -6,30 +6,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.EnemyObjects.GoombaStates
+namespace MelloMario.EnemyObjects.KoopaStates
 {
-    class GoombaNormal: IGoombaState
+    class Shell : IKoopaState
     {
-        private Goomba enemyGoomba;
+        private Koopa enemyRedKoopa;
 
-        public GoombaNormal(Goomba goomba1)
+        public Shell(Koopa koopaRed)
         {
-            enemyGoomba = goomba1;
+            enemyRedKoopa = koopaRed;
         }
 
         public void Show()
         {
+            enemyRedKoopa.State = new Normal(enemyRedKoopa);
+        }
 
+        public void JumpOn()
+        {
         }
 
         public void Defeat()
         {
-            enemyGoomba.State = new GoombaDefeated(enemyGoomba);
+            enemyRedKoopa.State = new Defeated(enemyRedKoopa);
         }
 
         public void Update(GameTime time)
         {
-
         }
     }
 }

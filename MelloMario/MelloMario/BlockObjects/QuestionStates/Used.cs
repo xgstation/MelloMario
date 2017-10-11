@@ -10,23 +10,23 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
-    class QuestionUsed : IBlockState
+    class Used : IBlockState
     {
         private Question block;
 
-        public QuestionUsed(Question block)
+        public Used(Question block)
         {
             this.block = block;
         }
 
         public void Show()
         {
-            block.State = new QuestionNormal(block);
+            block.State = new Normal(block);
         }
 
         public void Hide()
         {
-            block.State = new QuestionHidden(block);
+            block.State = new Hidden(block);
         }
 
         public void Bump(Mario mario)
