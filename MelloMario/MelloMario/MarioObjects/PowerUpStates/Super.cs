@@ -12,19 +12,10 @@ namespace MelloMario.MarioObjects.PowerUpStates
     class Super : IMarioPowerUpState
     {
         Mario mario;
-        //ISprite sprite;
-        //bool setToStatic;
-
 
         public Super(Mario newMario)
         {
             mario = newMario;
-            //setToStatic = true;
-            //sprite = SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", setToStatic);
-        }
-        public void Kill()
-        {
-            this.mario.PowerUpState = new Dead(this.mario);
         }
         public void UpgradeToFire()
         {

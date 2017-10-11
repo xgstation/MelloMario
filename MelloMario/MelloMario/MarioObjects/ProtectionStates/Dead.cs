@@ -10,11 +10,11 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.ProtectionStates
 {
-    class Protected : IMarioProtectionState
+    class Dead : IMarioProtectionState
     {
         Mario mario;
 
-        public Protected(Mario mario)
+        public Dead(Mario mario)
         {
             this.mario = mario;
         }
@@ -30,3 +30,4 @@ namespace MelloMario.MarioObjects.ProtectionStates
         }
     }
 }
+

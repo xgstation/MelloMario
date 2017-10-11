@@ -10,27 +10,23 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.ProtectionStates
 {
-    class DirectionRight : IMarioDirectionState
+    class Normal : IMarioProtectionState
     {
         Mario mario;
 
-        public DirectionRight(Mario newMario)
+        public Normal(Mario mario)
         {
-            mario = newMario;
+            this.mario = mario;
         }
 
-        public void TurnLeft()
-        {
-            mario.DirectionState = new Left(mario);
-        }
-
-        public void TurnRight()
+        public void Star()
         {
 
         }
 
         public void Update(GameTime time)
         {
+
         }
     }
 }

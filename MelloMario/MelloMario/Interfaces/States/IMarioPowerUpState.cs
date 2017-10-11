@@ -7,7 +7,6 @@ namespace MelloMario
         void UpgradeToSuper();
         void UpgradeToFire();
         void Downgrade();
-        void Kill();
 
         void Update(GameTime time);
     }

@@ -3,7 +3,7 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects.DirectionStates;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.MarioObjects.PowerUpStates;
-using System;
+using MelloMario.MarioObjects.ProtectionStates;
 
 namespace MelloMario.MarioObjects
 {
@@ -12,6 +12,7 @@ namespace MelloMario.MarioObjects
         private IMarioDirectionState directionState;
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
+        private IMarioProtectionState protectionState;
         // TODO: encapsulate user input
         public float userInX;
         public float userInY;
@@ -88,12 +89,25 @@ namespace MelloMario.MarioObjects
                 OnStateChanged();
             }
         }
+        public IMarioProtectionState ProtectionState
+        {
+            get
+            {
+                return protectionState;
+            }
+            set
+            {
+                protectionState = value;
+                OnStateChanged();
+            }
+        }
 
         public Mario(Point location) : base(location, new Point(32, 32), 32)
         {
             directionState = new Right(this);
             movementState = new Standing(this);
             powerUpState = new Standard(this);
+            protectionState = new Protected(this);
             OnStateChanged();
         }
 
@@ -135,7 +149,7 @@ namespace MelloMario.MarioObjects
         }
         public void Kill()
         {
-            PowerUpState.Kill();
+            // TODO
         }
     }
 }
