@@ -81,6 +81,7 @@
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
     <Compile Include="Interfaces\ICommandFactory.cs" />
+    <Compile Include="Interfaces\IGameCharacter.cs" />
     <Compile Include="Interfaces\IGameObjectManager.cs" />
     <Compile Include="Interfaces\States\IGoombaState.cs" />
     <Compile Include="Interfaces\IGameObject.cs" />
