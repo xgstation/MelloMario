@@ -18,138 +18,17 @@ namespace MelloMario.MarioObjects
 
         private void OnStateChanged()
         {
-            if (powerUpState is PowerUpStandard)
+            if (powerUpState is Dead)
             {
-                if (MovementState is Movementldle)
-                {
-                    if (directionState is DirectionLeft)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardIdleLeft", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                    else if (directionState is DirectionRight)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardIdleRight", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                }
-                else if (MovementState is MovementJumping)
-                {
-                    if (directionState is DirectionLeft)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardJumpingLeft", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                    else if (directionState is DirectionRight)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardJumpingRight", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                }
-                else if (MovementState is MovementWalking)
-                {
-                    if (directionState is DirectionLeft)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardWalkingLeft", false), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                    else if (directionState is DirectionRight)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("StandardWalkingRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                }
-
+                ShowSprite(SpriteFactory.Instance.CreateMarioSprite(powerUpState.GetType().Name, true));
+                //
             }
-            else if (powerUpState is PowerUpFire)
+            else
             {
-                if (MovementState is MovementCrouching)
-                {
-                    if (directionState is DirectionLeft)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireCrouchingLeft", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                    else if (directionState is DirectionRight)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireCrouchingRight", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                }
-                else if (MovementState is Movementldle)
-                {
-                    if (directionState is DirectionLeft)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireIdleLeft", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                    else if (directionState is DirectionRight)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireIdleRight", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                }
-                else if (MovementState is MovementJumping)
-                {
-                    if (directionState is DirectionLeft)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireJumpingLeft", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                    else if (directionState is DirectionRight)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireJumpingRight", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                }
-                else if (MovementState is MovementWalking)
-                {
-                    if (directionState is DirectionLeft)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireWalkingLeft", false), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                    else if (directionState is DirectionRight)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("FireWalkingRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                }
-
-            }
-            else if (powerUpState is PowerUpSuper)
-            {
-                if (MovementState is MovementCrouching)
-                {
-                    if (directionState is DirectionLeft)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("SuperCrouchingLeft", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                    else if (directionState is DirectionRight)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("SuperCrouchingRight", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                }
-                else if (MovementState is Movementldle)
-                {
-                    if (directionState is DirectionLeft)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("SuperIdleLeft", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                    else if (directionState is DirectionRight)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("SuperIdleRight", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                }
-                else if (MovementState is MovementJumping)
-                {
-                    if (directionState is DirectionLeft)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("SuperJumpingLeft", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                    else if (directionState is DirectionRight)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("SuperJumpingRight", true), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                }
-                else if (MovementState is MovementWalking)
-                {
-                    if (directionState is DirectionLeft)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("SuperWalkingLeft", false), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                    else if (directionState is DirectionRight)
-                    {
-                        ShowSprite(SpriteFactory.Instance.CreateMarioSprite("SuperWalkingRight", false), ResizeModeX.Center, ResizeModeY.Bottom);
-                    }
-                }
-
+                ShowSprite(SpriteFactory.Instance.CreateMarioSprite(
+                    powerUpState.GetType().Name + movementState.GetType().Name + directionState.GetType().Name,
+                    !(movementState is Walking)
+                ));
             }
         }
 
@@ -212,9 +91,9 @@ namespace MelloMario.MarioObjects
 
         public Mario(Point location) : base(location, new Point(32, 32), 32)
         {
-            directionState = new DirectionRight(this);
+            directionState = new Right(this);
             movementState = new Movementldle(this);
-            powerUpState = new PowerUpStandard(this);
+            powerUpState = new Standard(this);
             OnStateChanged();
         }
 

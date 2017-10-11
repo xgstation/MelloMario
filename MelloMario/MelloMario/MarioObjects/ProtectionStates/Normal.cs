@@ -8,30 +8,29 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace MelloMario.MarioObjects.DirectionStates
+namespace MelloMario.MarioObjects.ProtectionStates
 {
-    class DirectionLeft : IMarioDirectionState
+    class DirectionRight : IMarioDirectionState
     {
         Mario mario;
 
-        public DirectionLeft(Mario newMario)
+        public DirectionRight(Mario newMario)
         {
             mario = newMario;
         }
 
         public void TurnLeft()
         {
-
+            mario.DirectionState = new Left(mario);
         }
 
         public void TurnRight()
         {
-            mario.DirectionState = new DirectionRight(mario);
+
         }
 
         public void Update(GameTime time)
         {
         }
-
     }
 }

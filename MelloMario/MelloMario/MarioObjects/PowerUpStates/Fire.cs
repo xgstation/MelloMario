@@ -10,14 +10,14 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.PowerUpStates
 {
-    class PowerUpStandard : IMarioPowerUpState
+    class Fire : IMarioPowerUpState
     {
         Mario mario;
         //ISprite sprite;
         //bool setToStatic;
 
 
-        public PowerUpStandard(Mario newMario)
+        public Fire(Mario newMario)
         {
             mario = newMario;
             //setToStatic = true;
@@ -25,19 +25,20 @@ namespace MelloMario.MarioObjects.PowerUpStates
         }
         public void Kill()
         {
-            this.mario.PowerUpState = new PowerUpDead(this.mario);
+            this.mario.PowerUpState = new Dead(this.mario);
         }
         public void UpgradeToFire()
         {
-            this.mario.PowerUpState = new PowerUpFire(this.mario);
+
         }
         public void Downgrade()
         {
+            this.mario.PowerUpState = new Standard(this.mario);
 
         }
         public void UpgradeToSuper()
         {
-            this.mario.PowerUpState = new PowerUpSuper(this.mario);
+            this.mario.PowerUpState = new Super(this.mario);
         }
         public void Update(GameTime time)
         {

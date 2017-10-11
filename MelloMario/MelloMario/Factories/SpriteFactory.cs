@@ -80,13 +80,13 @@ namespace MelloMario.Factories
                 { "FireJumpingLeft",content.Load<Texture2D>("FireJumpingLeft")},{"FireWalkingLeft",content.Load<Texture2D>("FireWalkingLeft")},
                 { "FireCrouchingRight",content.Load<Texture2D>("FireCrouchingRight")},{"FireIdleRight",content.Load<Texture2D>("FireIdleRight")},
                 { "FireJumpingRight",content.Load<Texture2D>("FireJumpingRight")},{"FireWalkingRight",content.Load<Texture2D>("FireWalkingRight")},
+                { "StandardIdleLeft",content.Load<Texture2D>("StandardIdleLeft")},{"StandardJumpingLeft",content.Load<Texture2D>("StandardJumpingLeft")},
+                { "StandardWalkingLeft",content.Load<Texture2D>("StandardWalkingLeft")},{"StandardIdleRight",content.Load<Texture2D>("StandardIdleRight")},
+                { "StandardJumpingRight",content.Load<Texture2D>("StandardJumpingRight")},{"StandardWalkingRight",content.Load<Texture2D>("StandardWalkingRight")},
                 { "SuperCrouchingLeft",content.Load<Texture2D>("SuperCrouchingLeft")},{"SuperIdleLeft",content.Load<Texture2D>("SuperIdleLeft")},
                 { "SuperJumpingLeft",content.Load<Texture2D>("SuperJumpingLeft")},{"SuperWalkingLeft",content.Load<Texture2D>("SuperWalkingLeft")},
                 { "SuperCrouchingRight",content.Load<Texture2D>("SuperCrouchingRight")},{"SuperIdleRight",content.Load<Texture2D>("SuperIdleRight")},
                 { "SuperJumpingRight",content.Load<Texture2D>("SuperJumpingRight")},{"SuperWalkingRight",content.Load<Texture2D>("SuperWalkingRight")},
-                { "StandardIdleLeft",content.Load<Texture2D>("StandardIdleLeft")},{"StandardJumpingLeft",content.Load<Texture2D>("StandardJumpingLeft")},
-                { "StandardWalkingLeft",content.Load<Texture2D>("StandardWalkingLeft")},{"StandardIdleRight",content.Load<Texture2D>("StandardIdleRight")},
-                { "StandardJumpingRight",content.Load<Texture2D>("StandardJumpingRight")},{"StandardWalkingRight",content.Load<Texture2D>("StandardWalkingRight")},
             };
         }
 

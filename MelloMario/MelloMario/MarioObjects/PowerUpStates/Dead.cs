@@ -10,14 +10,14 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.PowerUpStates
 {
-    class PowerUpDead : IMarioPowerUpState
+    class Dead : IMarioPowerUpState
     {
         Mario mario;
         //ISprite sprite;
         //bool setToStatic;
 
 
-        public PowerUpDead(Mario newMario)
+        public Dead(Mario newMario)
         {
             mario = newMario;
             //setToStatic = true;
@@ -25,13 +25,13 @@ namespace MelloMario.MarioObjects.PowerUpStates
         }
         public void Kill()
         {
-         
+
         }
         public void UpgradeToFire()
         {
 
         }
-       public  void Downgrade()
+        public void Downgrade()
         {
 
         }

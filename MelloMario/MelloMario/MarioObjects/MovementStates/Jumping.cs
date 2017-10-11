@@ -9,12 +9,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.MarioObjects.MovementStates
 {
-    class MovementJumping : IMarioMovementState
+    class Jumping : IMarioMovementState
     {
         Mario mario;
         //bool setToStatic;
         // ISprite sprite;
-        public MovementJumping(Mario mario)
+        public Jumping(Mario mario)
         {
             this.mario = mario;
             //setToStatic = true;
@@ -23,7 +23,7 @@ namespace MelloMario.MarioObjects.MovementStates
         }
         public void Crouch()
         {
-            this.mario.MovementState = new MovementCrouching(this.mario);
+            this.mario.MovementState = new Crouching(this.mario);
         }
         public void Idle()
         {
@@ -35,7 +35,7 @@ namespace MelloMario.MarioObjects.MovementStates
         }
         public void Walk()
         {
-            this.mario.MovementState = new MovementWalking(this.mario);
+            this.mario.MovementState = new Walking(this.mario);
         }
 
         public void Update(GameTime time)
