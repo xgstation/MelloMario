@@ -1,12 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
-    interface IGoombaState
+    interface IGoombaState : IState
     {
         void Show();
         void Defeat();
-
-        void Update(GameTime time);
     }
 }

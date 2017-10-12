@@ -1,14 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
-    interface IMarioMovementState
+    interface IMarioMovementState : IState
     {
         void Crouch();
         void Idle();
         void Jump();
         void Walk();
-
-        void Update(GameTime time);
     }
 }

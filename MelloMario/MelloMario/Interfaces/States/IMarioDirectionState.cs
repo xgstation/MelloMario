@@ -1,12 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
-    interface IMarioDirectionState
+    interface IMarioDirectionState : IState
     {
         void TurnLeft();
         void TurnRight();
-
-        void Update(GameTime time);
     }
 }

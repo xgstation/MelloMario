@@ -1,11 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
-    interface IMarioProtectionState
+    interface IMarioProtectionState : IState
     {
         void Star();
-
-        void Update(GameTime time);
     }
 }

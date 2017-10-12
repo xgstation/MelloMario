@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="BaseClasses\BasePhysicalObject.cs" />
     <Compile Include="BaseClasses\BaseGameObject.cs" />
+    <Compile Include="BaseClasses\BaseTimedState.cs" />
+    <Compile Include="BaseClasses\BaseState.cs" />
     <Compile Include="BlockObjects\Brick.cs" />
     <Compile Include="BlockObjects\BrickStates\Bumped.cs" />
     <Compile Include="BlockObjects\BrickStates\Destroyed.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Interfaces\ICommandFactory.cs" />
     <Compile Include="Interfaces\IGameCharacter.cs" />
     <Compile Include="Interfaces\IGameObjectManager.cs" />
+    <Compile Include="Interfaces\States\IState.cs" />
     <Compile Include="Interfaces\States\IGoombaState.cs" />
     <Compile Include="Interfaces\IGameObject.cs" />
     <Compile Include="Interfaces\States\IBlockState.cs" />
