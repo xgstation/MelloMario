@@ -89,7 +89,7 @@ namespace MelloMario
         protected override void OnSimulation(GameTime time)
         {
             // Note: if we will support recording/replaying, use a constant number here
-            float deltaTime = (float)time.ElapsedGameTime.TotalMilliseconds / 1000;
+            float deltaTime = time.ElapsedGameTime.Milliseconds / 1000f;
 
             // Apply conservative force
 
