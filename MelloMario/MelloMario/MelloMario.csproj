@@ -83,7 +83,7 @@
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
     <Compile Include="Interfaces\ICommandFactory.cs" />
     <Compile Include="Interfaces\IGameCharacter.cs" />
-    <Compile Include="Interfaces\IGameObjectManager.cs" />
+    <Compile Include="Interfaces\IGameWorld.cs" />
     <Compile Include="Interfaces\States\IState.cs" />
     <Compile Include="Interfaces\States\IGoombaState.cs" />
     <Compile Include="Interfaces\IGameObject.cs" />
@@ -135,7 +135,7 @@
     <Compile Include="Commands\DeadStateCommand.cs" />
     <Compile Include="Commands\FireStateCommand.cs" />
     <Compile Include="Theming\GameModel.cs" />
-    <Compile Include="Theming\GameObjectManager.cs" />
+    <Compile Include="Theming\GameWorld.cs" />
     <Compile Include="Theming\GameScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
