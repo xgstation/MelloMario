@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    interface IGameObjectManager
+    interface IGameWorld
     {
         Rectangle Boundary { get; }
 

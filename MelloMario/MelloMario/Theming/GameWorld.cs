@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario
 {
-    class GameObjectManager : IGameObjectManager
+    class GameWorld : IGameWorld
     {
         private int grid;
         private Point size;
@@ -22,7 +22,7 @@ namespace MelloMario
             }
         }
 
-        public GameObjectManager(int grid, Point size)
+        public GameWorld(int grid, Point size)
         {
             this.grid = grid;
             this.size = size;
