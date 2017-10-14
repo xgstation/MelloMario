@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
-    class OneUpMushroomNormal : IItemState
+    class OneUpMushroomNormal : BaseState<OneUpMushroom>, IItemState
     {
         private OneUpMushroom mushroomItem;
 
@@ -26,7 +26,7 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
         {
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
         }
     }

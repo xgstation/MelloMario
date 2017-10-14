@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.SuperMushroomStates
 {
-    class Normal : IItemState
+    class Normal : BaseState<SuperMushroom>, IItemState
     {
         private SuperMushroom mushroomItem;
 
@@ -26,7 +26,7 @@ namespace MelloMario.ItemObjects.SuperMushroomStates
         {
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
         }
     }

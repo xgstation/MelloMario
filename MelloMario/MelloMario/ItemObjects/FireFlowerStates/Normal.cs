@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
-    class Normal : IItemState
+    class Normal : BaseState<FireFlower>, IItemState
     {
         private FireFlower flower;
 
@@ -21,9 +21,8 @@ namespace MelloMario.ItemObjects.FireFlowerStates
         {
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
         }
-
     }
 }

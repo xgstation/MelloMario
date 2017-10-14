@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.CoinStates
 {
-    class Collected : IItemState
+    class Collected : BaseState<Coin>, IItemState
     {
         private Coin coinItem;
 
@@ -26,7 +26,7 @@ namespace MelloMario.ItemObjects.CoinStates
         {
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
         }
     }

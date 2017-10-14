@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
-    class Unveil : IItemState
+    class Unveil : BaseState<FireFlower>, IItemState
     {
         private FireFlower flowerItem;
         private float elapsed;
@@ -28,7 +28,7 @@ namespace MelloMario.ItemObjects.FireFlowerStates
             flowerItem.State = new Normal(flowerItem);
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
             // elapsed += ((float)time.ElapsedGameTime.Milliseconds) / 40;
             // offset =  1f * elapsed;

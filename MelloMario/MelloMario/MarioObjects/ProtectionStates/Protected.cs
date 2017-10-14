@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.ProtectionStates
 {
-    class Protected : IMarioProtectionState
+    class Protected : BaseState<Mario>, IMarioProtectionState
     {
         Mario mario;
 
@@ -24,7 +24,7 @@ namespace MelloMario.MarioObjects.ProtectionStates
 
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
 
         }

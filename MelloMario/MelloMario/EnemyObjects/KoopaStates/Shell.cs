@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.EnemyObjects.KoopaStates
 {
-    class Shell : IKoopaState
+    class Shell : BaseState<Koopa>, IKoopaState
     {
         private Koopa enemyRedKoopa;
 
@@ -31,7 +31,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
             enemyRedKoopa.State = new Defeated(enemyRedKoopa);
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
         }
     }

@@ -10,7 +10,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.StairStates
 {
-    class Normal : IBlockState
+    class Normal : BaseState<Stair>, IBlockState
     {
         private Stair block;
 
@@ -34,7 +34,7 @@ namespace MelloMario.BlockObjects.StairStates
             //do nothing
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
         }
     }

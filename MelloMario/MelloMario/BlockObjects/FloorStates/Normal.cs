@@ -3,7 +3,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.FloorStates
 {
-    class Normal : IBlockState
+    class Normal : BaseState<Floor>, IBlockState
     {
         private Floor block;
 
@@ -32,7 +32,7 @@ namespace MelloMario.BlockObjects.FloorStates
             //do nothing
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
         }
     }

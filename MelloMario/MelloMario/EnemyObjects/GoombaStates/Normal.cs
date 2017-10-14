@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.EnemyObjects.GoombaStates
 {
-    class Normal : IGoombaState
+    class Normal : BaseState<Goomba>, IGoombaState
     {
         private Goomba enemyGoomba;
 
@@ -27,7 +27,7 @@ namespace MelloMario.EnemyObjects.GoombaStates
             enemyGoomba.State = new Defeated(enemyGoomba);
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
 
         }

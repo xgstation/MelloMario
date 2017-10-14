@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.PowerUpStates
 {
-    class Standard : IMarioPowerUpState
+    class Standard : BaseState<Mario>, IMarioPowerUpState
     {
         Mario mario;
 
@@ -30,7 +30,7 @@ namespace MelloMario.MarioObjects.PowerUpStates
         {
             this.mario.PowerUpState = new Super(this.mario);
         }
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
 
         }

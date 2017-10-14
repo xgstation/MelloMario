@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.StarStates
 {
-    class Normal : IItemState
+    class Normal : BaseState<Star>, IItemState
     {
         private Star starItem;
 
@@ -26,7 +26,7 @@ namespace MelloMario.ItemObjects.StarStates
         {
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
         }
     }

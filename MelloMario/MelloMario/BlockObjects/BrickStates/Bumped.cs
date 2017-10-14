@@ -10,7 +10,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
-    class Bumped : IBlockState
+    class Bumped : BaseState<Brick>, IBlockState
     {
         private Brick block;
         private float elapsed;
@@ -38,7 +38,7 @@ namespace MelloMario.BlockObjects.BrickStates
             // do nothing
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
             //TODO: release items
             //block.State = new BrickNormal(block);

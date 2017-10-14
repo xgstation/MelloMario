@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.MarioObjects.MovementStates
 {
-    class Walking : IMarioMovementState
+    class Walking : BaseState<Mario>, IMarioMovementState
     {
         Mario mario;
         //bool setToStatic;
@@ -38,7 +38,7 @@ namespace MelloMario.MarioObjects.MovementStates
 
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
             //sprite.Update(game);
         }

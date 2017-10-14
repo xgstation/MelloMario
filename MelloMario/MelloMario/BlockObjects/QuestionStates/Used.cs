@@ -10,7 +10,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
-    class Used : IBlockState
+    class Used : BaseState<Question>, IBlockState
     {
         private Question block;
 
@@ -34,7 +34,7 @@ namespace MelloMario.BlockObjects.QuestionStates
             //do nothing
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
         }
     }

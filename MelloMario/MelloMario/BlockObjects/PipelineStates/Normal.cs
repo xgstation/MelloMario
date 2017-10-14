@@ -3,7 +3,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.PipelineStates
 {
-    class Normal : IBlockState
+    class Normal : BaseState<Pipeline>, IBlockState
     {
         private Pipeline block;
 
@@ -27,7 +27,7 @@ namespace MelloMario.BlockObjects.PipelineStates
             //do nothing
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
         }
     }

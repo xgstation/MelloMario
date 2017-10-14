@@ -10,7 +10,7 @@ using MelloMario.Factories;
 
 namespace MelloMario.ItemObjects.CoinStates
 {
-    class Normal : IItemState
+    class Normal : BaseState<Coin>, IItemState
     {
         private Coin coinItem;
 
@@ -28,7 +28,7 @@ namespace MelloMario.ItemObjects.CoinStates
             coinItem.State = new Collected(coinItem);
         }
 
-        public void Update(GameTime time)
+        public override void Update(GameTime time)
         {
         }
     }
