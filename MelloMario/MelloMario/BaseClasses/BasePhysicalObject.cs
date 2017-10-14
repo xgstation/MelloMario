@@ -140,7 +140,7 @@ namespace MelloMario
             Move(pixelMovement);
         }
 
-        public BasePhysicalObject(Point location, Point size, float pixelScale) : base(location, size)
+        public BasePhysicalObject(IGameWorld world, Point location, Point size, float pixelScale) : base(world, location, size)
         {
             this.pixelScale = pixelScale;
             movement = new Vector2();
