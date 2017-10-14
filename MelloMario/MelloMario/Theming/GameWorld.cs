@@ -18,7 +18,7 @@ namespace MelloMario
         {
             get
             {
-                return new Rectangle(0, 0, size.X, size.Y);
+                return new Rectangle(0, 0, size.X * grid, size.Y * grid);
             }
         }
 

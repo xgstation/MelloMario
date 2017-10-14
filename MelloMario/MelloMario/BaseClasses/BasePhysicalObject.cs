@@ -47,6 +47,7 @@ namespace MelloMario
             switch (mode)
             {
                 case CollisionMode.Left:
+                case CollisionMode.InnerLeft:
                     if (velocity.X < 0)
                     {
                         movement.X = 0;
@@ -55,6 +56,7 @@ namespace MelloMario
                     }
                     break;
                 case CollisionMode.Right:
+                case CollisionMode.InnerRight:
                     if (velocity.X > 0)
                     {
                         movement.X = 0;
@@ -63,6 +65,7 @@ namespace MelloMario
                     }
                     break;
                 case CollisionMode.Top:
+                case CollisionMode.InnerTop:
                     if (velocity.Y < 0)
                     {
                         movement.Y = 0;
@@ -71,6 +74,7 @@ namespace MelloMario
                     }
                     break;
                 case CollisionMode.Bottom:
+                case CollisionMode.InnerBottom:
                     if (velocity.Y > 0)
                     {
                         movement.Y = 0;

@@ -53,6 +53,7 @@ namespace MelloMario.MarioObjects
 
         protected override void OnOut(CollisionMode mode)
         {
+            SoftBounce(mode);
         }
 
         public IMarioDirectionState DirectionState
