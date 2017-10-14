@@ -21,6 +21,10 @@ namespace MelloMario.ItemObjects
         {
         }
 
+        protected override void OnOut(CollisionMode mode)
+        {
+        }
+
         public IItemState State
         {
             get
@@ -34,7 +38,7 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public OneUpMushroom(Point location) : base(location, new Point(32, 32))
+        public OneUpMushroom(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
             state = new OneUpMushroomNormal(this);
             OnStateChanged();

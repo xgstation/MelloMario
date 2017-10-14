@@ -21,6 +21,10 @@ namespace MelloMario.EnemyObjects
         {
         }
 
+        protected override void OnOut(CollisionMode mode)
+        {
+        }
+
         public IGoombaState State
         {
             get
@@ -34,7 +38,7 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        public Goomba(Point location) : base(location, new Point(32, 32))
+        public Goomba(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
             state = new Normal(this);
             OnStateChanged();

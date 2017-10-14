@@ -46,7 +46,7 @@ namespace MelloMario
             {
                 Rectangle oldBoundary = obj.Boundary;
 
-                obj.Update(time, world.ScanNearbyObjects(obj));
+                obj.Update(time);
 
                 if (obj.Boundary != oldBoundary)
                 {

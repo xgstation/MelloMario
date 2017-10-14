@@ -30,6 +30,10 @@ namespace MelloMario.EnemyObjects
         {
         }
 
+        protected override void OnOut(CollisionMode mode)
+        {
+        }
+
         public enum ShellColor { green, red };
 
         public IKoopaState State
@@ -45,7 +49,7 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        public Koopa(Point location, ShellColor color) : base(location, new Point(32, 32))
+        public Koopa(IGameWorld world, Point location, ShellColor color) : base(world, location, new Point(32, 32))
         {
             this.color = color;
 

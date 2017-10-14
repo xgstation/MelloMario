@@ -77,50 +77,50 @@ namespace MelloMario.LevelGen
                     switch (curChar)
                     {
                         case '!':
-                            character = new Mario(new Point(j * SCALE, i * SCALE));
+                            character = new Mario(world, new Point(j * SCALE, i * SCALE));
                             world.AddObject(character);
                             break;
 
                         //blocks
                         case 'F':
-                            world.AddObject(new Floor(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Floor(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'B':
-                            world.AddObject(new Brick(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Brick(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'S':
-                            world.AddObject(new Stair(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Stair(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'Q':
-                            world.AddObject(new Question(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Question(world, new Point(j * SCALE, i * SCALE)));
                             break;
 
                         //harm
                         case 'G':
-                            world.AddObject(new Goomba(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Goomba(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'K':
-                            world.AddObject(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.green));
+                            world.AddObject(new Koopa(world, new Point(j * SCALE, i * SCALE), Koopa.ShellColor.green));
                             break;
                         case 'D':
-                            world.AddObject(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.red));
+                            world.AddObject(new Koopa(world, new Point(j * SCALE, i * SCALE), Koopa.ShellColor.red));
                             break;
 
                         //entities
                         case 'C':
-                            world.AddObject(new Coin(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Coin(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case '1':
-                            world.AddObject(new OneUpMushroom(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new OneUpMushroom(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'R':
-                            world.AddObject(new FireFlower(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new FireFlower(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'M':
-                            world.AddObject(new SuperMushroom(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new SuperMushroom(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'T':
-                            world.AddObject(new Star(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Star(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         default:
                             //do nothing, blank space dont add anything to blocks

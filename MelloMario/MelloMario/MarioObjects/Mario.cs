@@ -51,6 +51,10 @@ namespace MelloMario.MarioObjects
             SoftBounce(mode);
         }
 
+        protected override void OnOut(CollisionMode mode)
+        {
+        }
+
         public IMarioDirectionState DirectionState
         {
             get
@@ -100,7 +104,7 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        public Mario(Point location) : base(location, new Point(32, 32), 32)
+        public Mario(IGameWorld world, Point location) : base(world, location, new Point(32, 32), 32)
         {
             directionState = new Right(this);
             movementState = new Standing(this);

@@ -22,6 +22,10 @@ namespace MelloMario.BlockObjects
         {
         }
 
+        protected override void OnOut(CollisionMode mode)
+        {
+        }
+
         public IBlockState State
         {
             get
@@ -35,7 +39,7 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public Pipeline(Point location) : base(location, new Point(32, 32))
+        public Pipeline(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
             state = new Normal(this);
             OnStateChanged();
