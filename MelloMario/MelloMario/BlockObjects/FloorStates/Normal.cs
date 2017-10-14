@@ -5,11 +5,8 @@ namespace MelloMario.BlockObjects.FloorStates
 {
     class Normal : BaseState<Floor>, IBlockState
     {
-        private Floor block;
-
         public Normal(Floor block)
         {
-            this.block = block;
         }
 
         public void Show()

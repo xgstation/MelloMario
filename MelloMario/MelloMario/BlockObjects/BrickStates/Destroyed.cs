@@ -12,11 +12,8 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class Destroyed : BaseState<Brick>, IBlockState
     {
-        private Brick block;
-
         public Destroyed(Brick block)
         {
-            this.block = block;
         }
 
         public void Show()

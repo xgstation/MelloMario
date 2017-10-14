@@ -15,7 +15,6 @@ namespace MelloMario.MarioObjects.MovementStates
 
         public Crouching(Mario mario)
         {
-            this.mario = mario;
         }
         public void Crouch()
         {

@@ -16,8 +16,6 @@ namespace MelloMario.BlockObjects.BrickStates
         private float elapsed;
         private float speedY = -7f;
         private float accelerationY = 1.5f;
-        private float offset;
-
         public Bumped(Brick brickBlock)
         {
             block = brickBlock;

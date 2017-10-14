@@ -11,12 +11,9 @@ namespace MelloMario.BlockObjects.QuestionStates
 {
     class Hidden : BaseState<Question>, IBlockState
     {
-        private Question block;
-
 
         public Hidden(Question block)
         {
-            this.block = block;
         }
 
         public void Show()

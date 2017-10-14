@@ -12,11 +12,8 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class Normal : BaseState<Brick>, IBlockState
     {
-        private Brick block;
-
         public Normal(Brick block)
         {
-            this.block = block;
         }
 
         public void Show()

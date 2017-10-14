@@ -10,8 +10,6 @@ namespace MelloMario.ItemObjects.CoinStates
 {
     class Collected : BaseState<Coin>, IItemState
     {
-        private Coin coinItem;
-
         public Collected(Coin coin1)
         {
             coinItem = coin1;

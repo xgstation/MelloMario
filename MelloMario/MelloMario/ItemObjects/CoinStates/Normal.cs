@@ -12,8 +12,6 @@ namespace MelloMario.ItemObjects.CoinStates
 {
     class Normal : BaseState<Coin>, IItemState
     {
-        private Coin coinItem;
-
         public Normal(Coin coin1)
         {
             coinItem = coin1;

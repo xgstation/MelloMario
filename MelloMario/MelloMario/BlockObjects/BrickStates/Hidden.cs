@@ -5,11 +5,8 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class Hidden : BaseState<Brick>, IBlockState
     {
-        private Brick block;
-
         public Hidden(Brick block)
         {
-            this.block = block;
         }
 
         public void Show()

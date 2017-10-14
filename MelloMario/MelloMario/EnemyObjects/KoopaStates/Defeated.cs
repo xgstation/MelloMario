@@ -10,8 +10,6 @@ namespace MelloMario.EnemyObjects.KoopaStates
 {
     class Defeated : BaseState<Koopa>, IKoopaState
     {
-        private Koopa enemyRedKoopa;
-
         public Defeated(Koopa koopaRed)
         {
             enemyRedKoopa = koopaRed;

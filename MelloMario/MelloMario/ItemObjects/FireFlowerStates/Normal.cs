@@ -6,8 +6,6 @@ namespace MelloMario.ItemObjects.FireFlowerStates
 {
     class Normal : BaseState<FireFlower>, IItemState
     {
-        private FireFlower flower;
-
         public Normal(FireFlower flower1)
         {
             flower = flower1;

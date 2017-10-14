@@ -12,11 +12,8 @@ namespace MelloMario.BlockObjects.QuestionStates
 {
     class Normal : BaseState<Question>, IBlockState
     {
-        private Question block;
-
         public Normal(Question block)
         {
-            this.block = block;
         }
 
         public void Show()

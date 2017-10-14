@@ -12,11 +12,8 @@ namespace MelloMario.BlockObjects.QuestionStates
 {
     class Used : BaseState<Question>, IBlockState
     {
-        private Question block;
-
         public Used(Question block)
         {
-            this.block = block;
         }
 
         public void Show()

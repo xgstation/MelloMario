@@ -10,8 +10,6 @@ namespace MelloMario.EnemyObjects.KoopaStates
 {
     class Normal : BaseState<Koopa>, IKoopaState
     {
-        private Koopa enemyRedKoopa;
-
         public Normal(Koopa koopaRed)
         {
             enemyRedKoopa = koopaRed;

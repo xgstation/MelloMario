@@ -11,8 +11,6 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
     class OneUpMushroomNormal : BaseState<OneUpMushroom>, IItemState
     {
-        private OneUpMushroom mushroomItem;
-
         public OneUpMushroomNormal(OneUpMushroom mushroomItem1)
         {
 

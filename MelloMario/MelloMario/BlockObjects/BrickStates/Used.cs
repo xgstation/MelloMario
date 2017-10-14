@@ -12,11 +12,8 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class Used : BaseState<Brick>, IBlockState
     {
-        private Brick block;
-
         public Used(Brick block)
         {
-            this.block = block;
         }
 
         public void Show()

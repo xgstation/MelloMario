@@ -5,11 +5,8 @@ namespace MelloMario.BlockObjects.PipelineStates
 {
     class Normal : BaseState<Pipeline>, IBlockState
     {
-        private Pipeline block;
-
         public Normal(Pipeline block)
         {
-            this.block = block;
         }
 
         public void Show()

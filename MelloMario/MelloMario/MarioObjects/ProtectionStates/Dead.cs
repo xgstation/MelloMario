@@ -16,7 +16,6 @@ namespace MelloMario.MarioObjects.ProtectionStates
 
         public Dead(Mario mario)
         {
-            this.mario = mario;
         }
 
         public void Star()

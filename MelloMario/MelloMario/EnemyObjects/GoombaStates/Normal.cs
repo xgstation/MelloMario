@@ -10,8 +10,6 @@ namespace MelloMario.EnemyObjects.GoombaStates
 {
     class Normal : BaseState<Goomba>, IGoombaState
     {
-        private Goomba enemyGoomba;
-
         public Normal(Goomba goomba1)
         {
             enemyGoomba = goomba1;

@@ -11,8 +11,6 @@ namespace MelloMario.EnemyObjects.GoombaStates
     class Defeated : BaseState<Goomba>, IGoombaState
     {
 
-        private Goomba enemyGoomba;
-
         public Defeated(Goomba goomba1)
         {
             enemyGoomba = goomba1;

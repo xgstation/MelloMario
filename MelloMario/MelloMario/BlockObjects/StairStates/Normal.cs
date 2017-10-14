@@ -12,11 +12,8 @@ namespace MelloMario.BlockObjects.StairStates
 {
     class Normal : BaseState<Stair>, IBlockState
     {
-        private Stair block;
-
         public Normal(Stair block)
         {
-            this.block = block;
         }
 
         public void Show()
