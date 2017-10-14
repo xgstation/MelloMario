@@ -5,6 +5,7 @@ namespace MelloMario.Sprites
 {
     abstract class BaseSprite : ISprite
     {
+        private SpriteBatch spriteBatch;
         private Texture2D texture;
         private Point source;
         private Point size;
@@ -29,14 +30,15 @@ namespace MelloMario.Sprites
             }
         }
 
-        public BaseSprite(Texture2D texture, Point source, Point size)
+        public BaseSprite(SpriteBatch spriteBatch, Texture2D texture, Point source, Point size)
         {
+            this.spriteBatch = spriteBatch;
             this.texture = texture;
             this.source = source;
             this.size = size;
         }
 
-        public void Draw(GameTime time, SpriteBatch spriteBatch, Rectangle destination)
+        public void Draw(GameTime time, Rectangle destination)
         {
             OnAnimate(time);
 

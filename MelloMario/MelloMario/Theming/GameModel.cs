@@ -61,13 +61,13 @@ namespace MelloMario
             }
         }
 
-        internal void Draw(GameTime time, SpriteBatch spriteBatch)
+        internal void Draw(GameTime time)
         {
-            character.Draw(time, spriteBatch);
+            character.Draw(time);
 
             foreach (IGameObject obj in world.ScanObjects())
             {
-                obj.Draw(time, spriteBatch);
+                obj.Draw(time);
             }
         }
     }

@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
     interface ISpriteFactory
     {
         void LoadAllTextures(ContentManager content);
+        void BindSpriteBatch(SpriteBatch spriteBatch);
 
         ISprite CreateMarioSprite(string status, bool Static);
 

@@ -40,8 +40,8 @@ namespace MelloMario.Sprites
             }
         }
 
-        public AnimatedSprite(Texture2D texture, int columns, int rows, int interval = 250) : base(
-            texture, new Point(), new Point(texture.Width / columns, texture.Height / rows)
+        public AnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, int interval = 250) : base(
+            spriteBatch, texture, new Point(), new Point(texture.Width / columns, texture.Height / rows)
         )
         {
             this.columns = columns;

@@ -145,6 +145,13 @@ namespace MelloMario
             sprite = null;
         }
 
+        protected void RemoveSelf()
+        {
+            StopMoveHorizontal();
+            StopMoveVertical();
+            world.RemoveObject(this);
+        }
+
         public Rectangle Boundary
         {
             get
@@ -195,11 +202,11 @@ namespace MelloMario
             }
         }
 
-        public void Draw(GameTime time, SpriteBatch spriteBatch)
+        public void Draw(GameTime time)
         {
             if (sprite != null)
             {
-                sprite.Draw(time, spriteBatch, Boundary);
+                sprite.Draw(time, Boundary);
             }
         }
     }

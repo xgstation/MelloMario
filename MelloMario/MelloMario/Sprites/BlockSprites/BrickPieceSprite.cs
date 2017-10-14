@@ -10,6 +10,7 @@ namespace MelloMario.Sprites.BlockSprites
 {
     class BrickPieceSprite : ISprite
     {
+        private SpriteBatch spriteBatch;
         private Texture2D texture;
         private Part part;
 
@@ -61,8 +62,9 @@ namespace MelloMario.Sprites.BlockSprites
             }
         }
 
-        public BrickPieceSprite(Texture2D texture, Part part, int x, int y)
+        public BrickPieceSprite(SpriteBatch spriteBatch, Texture2D texture, Part part, int x, int y)
         {
+            this.spriteBatch = spriteBatch;
             this.texture = texture;
             this.part = part;
             this.x = x;
@@ -74,7 +76,7 @@ namespace MelloMario.Sprites.BlockSprites
             offsetY = 0f;
         }
 
-        public void Draw(GameTime time, SpriteBatch spriteBatch, Rectangle destination)
+        public void Draw(GameTime time, Rectangle destination)
         {
             UpdateOffset(time);
 
