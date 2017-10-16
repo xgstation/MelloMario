@@ -121,6 +121,7 @@ namespace MelloMario.MarioObjects
             facing = Facing.left;
             OnStateChanged();
         }
+
         public void Right()
         {
             userInput.X += FORCE_INPUT;
@@ -130,7 +131,12 @@ namespace MelloMario.MarioObjects
 
         public void Jump()
         {
-            if (!(MovementState is Crouching))
+            if (MovementState is Crouching)
+            {
+                // TODO: for sprint2 only
+                SoftBounce(CollisionMode.Bottom);
+            }
+            else
             {
                 userInput.Y -= FORCE_INPUT;
                 if (g_on)
@@ -139,23 +145,22 @@ namespace MelloMario.MarioObjects
                 }
             }
 
-            // TODO: for sprint2 only
-            SoftBounce(CollisionMode.Bottom);
-
             MovementState.Jump();
         }
 
         public void Crouch()
         {
-            if (!(MovementState is Jumping))
+            if (MovementState is Jumping)
+            {
+                // TODO: for sprint2 only
+                SoftBounce(CollisionMode.Top);
+            }
+            else
             {
                 // TODO: for sprint2 only
                 // "fall" instead of "crouch"
                 userInput.Y += FORCE_INPUT;
             }
-
-            // TODO: for sprint2 only
-            SoftBounce(CollisionMode.Top);
 
             MovementState.Crouch();
         }
