@@ -25,8 +25,7 @@ namespace MelloMario
         protected enum Facing { left, right };
 
         protected const float FORCE_G = 40f;
-        protected const float FORCE_MOVE = 120f;
-        protected const float FORCE_JUMP = 160f;
+        protected const float FORCE_INPUT = 120f;
         protected const float FORCE_F_GROUND = 100f;
         protected const float FORCE_F_AIR = 20f;
 

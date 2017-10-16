@@ -18,20 +18,18 @@ namespace MelloMario
             {
                 //controller.AddCommand(Keys.Escape, factory.CreateGameModelCommand("Pause", objects));
                 controller.AddCommand(Keys.Space, factory.CreateGameCharacterCommand("Action", character));
-                //controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.Up, factory.CreateGameCharacterCommand("Jump", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.Left, factory.CreateGameCharacterCommand("Left", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.Right, factory.CreateGameCharacterCommand("Right", character), KeyBehavior.hold);
 
-                //controller.AddCommand(Keys.S, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.S, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.W, factory.CreateGameCharacterCommand("Jump", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.A, factory.CreateGameCharacterCommand("Left", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.D, factory.CreateGameCharacterCommand("Right", character), KeyBehavior.hold);
 
                 // sprint 2 cheat commands
 
-                controller.AddCommand(Keys.Down, factory.CreateGameObjectCommand("Fall", character), KeyBehavior.hold);
-                controller.AddCommand(Keys.S, factory.CreateGameObjectCommand("Fall", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.G, factory.CreateGameObjectCommand("ToggleGravity", character));
 
                 controller.AddCommand(Keys.Y, factory.CreateGameObjectCommand("StandardState", character));

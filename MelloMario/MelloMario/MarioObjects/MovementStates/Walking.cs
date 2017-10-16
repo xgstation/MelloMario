@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.MarioObjects.PowerUpStates;
 
 namespace MelloMario.MarioObjects.MovementStates
 {
@@ -17,7 +18,10 @@ namespace MelloMario.MarioObjects.MovementStates
 
         public void Crouch()
         {
-            Owner.MovementState = new Crouching(Owner);
+            if (!(Owner.PowerUpState is Standard))
+            {
+                Owner.MovementState = new Crouching(Owner);
+            }
         }
         public void Idle()
         {

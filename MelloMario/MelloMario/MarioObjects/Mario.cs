@@ -117,29 +117,46 @@ namespace MelloMario.MarioObjects
 
         public void Left()
         {
-            userInput.X -= FORCE_MOVE;
+            userInput.X -= FORCE_INPUT;
             facing = Facing.left;
             OnStateChanged();
         }
         public void Right()
         {
-            userInput.X += FORCE_MOVE;
+            userInput.X += FORCE_INPUT;
             facing = Facing.right;
             OnStateChanged();
         }
 
         public void Jump()
         {
-            userInput.Y -= FORCE_JUMP;
-            if (g_on)
+            if (!(MovementState is Crouching))
             {
-                userInput.Y -= FORCE_G;
+                userInput.Y -= FORCE_INPUT;
+                if (g_on)
+                {
+                    userInput.Y -= FORCE_G;
+                }
             }
+
+            // TODO: for sprint2 only
+            SoftBounce(CollisionMode.Bottom);
+
             MovementState.Jump();
         }
 
         public void Crouch()
         {
+            if (!(MovementState is Jumping))
+            {
+                // TODO: for sprint2 only
+                // "fall" instead of "crouch"
+                userInput.Y += FORCE_INPUT;
+            }
+
+            // TODO: for sprint2 only
+            SoftBounce(CollisionMode.Top);
+
             MovementState.Crouch();
         }
 
@@ -170,17 +187,10 @@ namespace MelloMario.MarioObjects
 
         // TODO: For sprint 2 only
         //       Please remove it after sprint 2
-        [System.Obsolete]
         bool g_on;
-        [System.Obsolete]
         public void ToggleGravity()
         {
             g_on = !g_on;
-        }
-        [System.Obsolete]
-        public void Fall()
-        {
-            userInput.Y += FORCE_MOVE;
         }
     }
 }

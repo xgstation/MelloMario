@@ -60,8 +60,6 @@ namespace MelloMario.Factories
         {
             switch (action)
             {
-                case "Fall":
-                    return new FallCommand((Mario)gameObject);
                 case "ToggleGravity":
                     return new ToggleGravityCommand((Mario)gameObject);
                 case "DeadState":

@@ -17,7 +17,7 @@ namespace MelloMario.MarioObjects.MovementStates
 
         public void Crouch()
         {
-            Owner.MovementState = new Crouching(Owner);
+            Owner.MovementState = new Standing(Owner);
         }
         public void Idle()
         {
@@ -31,7 +31,7 @@ namespace MelloMario.MarioObjects.MovementStates
         {
             Owner.MovementState = new Walking(Owner);
         }
-
+        
         public override void Update(GameTime time)
         {
             //sprite.Update(game);
