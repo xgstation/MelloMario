@@ -12,9 +12,7 @@ namespace MelloMario.MarioObjects.ProtectionStates
 {
     class Dead : BaseState<Mario>, IMarioProtectionState
     {
-        Mario mario;
-
-        public Dead(Mario mario)
+        public Dead(Mario owner) : base(owner)
         {
         }
 

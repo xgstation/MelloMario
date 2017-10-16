@@ -12,23 +12,23 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class Bumped : BaseState<Brick>, IBlockState
     {
-        private Brick block;
         private float elapsed;
         private float speedY = -7f;
         private float accelerationY = 1.5f;
-        public Bumped(Brick brickBlock)
+        private float offset;
+
+        public Bumped(Brick owner) : base(owner)
         {
-            block = brickBlock;
         }
 
         public void Show()
         {
-            block.State = new Normal(block);
+            Owner.State = new Normal(Owner);
         }
 
         public void Hide()
         {
-            block.State = new Hidden(block);
+            Owner.State = new Hidden(Owner);
         }
 
         public void Bump(Mario mario)

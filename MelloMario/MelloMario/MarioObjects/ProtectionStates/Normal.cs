@@ -12,9 +12,7 @@ namespace MelloMario.MarioObjects.ProtectionStates
 {
     class Normal : BaseState<Mario>, IMarioProtectionState
     {
-        Mario mario;
-
-        public Normal(Mario mario)
+        public Normal(Mario owner) : base(owner)
         {
         }
 

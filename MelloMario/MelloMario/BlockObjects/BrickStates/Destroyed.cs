@@ -12,18 +12,18 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class Destroyed : BaseState<Brick>, IBlockState
     {
-        public Destroyed(Brick block)
+        public Destroyed(Brick owner) : base(owner)
         {
         }
 
         public void Show()
         {
-            block.State = new Normal(block);
+            Owner.State = new Normal(Owner);
         }
 
         public void Hide()
         {
-            block.State = new Hidden(block);
+            Owner.State = new Hidden(Owner);
         }
 
         public void UseUp()

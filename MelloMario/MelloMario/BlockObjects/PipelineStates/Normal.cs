@@ -5,7 +5,7 @@ namespace MelloMario.BlockObjects.PipelineStates
 {
     class Normal : BaseState<Pipeline>, IBlockState
     {
-        public Normal(Pipeline block)
+        public Normal(Pipeline owner) : base(owner)
         {
         }
 

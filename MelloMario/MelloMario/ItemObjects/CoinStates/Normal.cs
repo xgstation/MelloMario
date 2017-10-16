@@ -12,9 +12,8 @@ namespace MelloMario.ItemObjects.CoinStates
 {
     class Normal : BaseState<Coin>, IItemState
     {
-        public Normal(Coin coin1)
+        public Normal(Coin owner) : base(owner)
         {
-            coinItem = coin1;
         }
 
         public void Show()
@@ -23,7 +22,7 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public void Collect()
         {
-            coinItem.State = new Collected(coinItem);
+            Owner.State = new Collected(Owner);
         }
 
         public override void Update(GameTime time)

@@ -12,13 +12,13 @@ namespace MelloMario.BlockObjects.QuestionStates
     class Hidden : BaseState<Question>, IBlockState
     {
 
-        public Hidden(Question block)
+        public Hidden(Question owner) : base(owner)
         {
         }
 
         public void Show()
         {
-            block.State = new Normal(block);
+            Owner.State = new Normal(Owner);
         }
 
         public void Hide()

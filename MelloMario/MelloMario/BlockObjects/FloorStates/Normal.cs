@@ -5,7 +5,7 @@ namespace MelloMario.BlockObjects.FloorStates
 {
     class Normal : BaseState<Floor>, IBlockState
     {
-        public Normal(Floor block)
+        public Normal(Floor owner) : base(owner)
         {
         }
 

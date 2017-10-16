@@ -12,7 +12,7 @@ namespace MelloMario.BlockObjects.QuestionStates
 {
     class Normal : BaseState<Question>, IBlockState
     {
-        public Normal(Question block)
+        public Normal(Question owner) : base(owner)
         {
         }
 
@@ -23,12 +23,12 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Hide()
         {
-            block.State = new Hidden(block);
+            Owner.State = new Hidden(Owner);
         }
 
         public void Bump(Mario mario)
         {
-            block.State = new Bumped(block);
+            Owner.State = new Bumped(Owner);
         }
 
         public override void Update(GameTime time)

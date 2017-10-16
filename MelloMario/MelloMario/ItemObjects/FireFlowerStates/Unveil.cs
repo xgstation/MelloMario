@@ -10,22 +10,21 @@ namespace MelloMario.ItemObjects.FireFlowerStates
 {
     class Unveil : BaseState<FireFlower>, IItemState
     {
-        private FireFlower flowerItem;
         private float elapsed;
         private float offset;
         private Vector2 origin;
 
-        public Unveil(FireFlower newFlower)
+        public Unveil(FireFlower owner) : base(owner)
         {
-            flowerItem = newFlower;
         }
+
         public void Collect()
         {
         }
 
         public void Show()
         {
-            flowerItem.State = new Normal(flowerItem);
+            Owner.State = new Normal(Owner);
         }
 
         public override void Update(GameTime time)

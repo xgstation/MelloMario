@@ -12,7 +12,7 @@ namespace MelloMario.BlockObjects.StairStates
 {
     class Normal : BaseState<Stair>, IBlockState
     {
-        public Normal(Stair block)
+        public Normal(Stair owner) : base(owner)
         {
         }
 

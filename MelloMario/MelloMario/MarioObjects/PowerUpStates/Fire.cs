@@ -12,24 +12,22 @@ namespace MelloMario.MarioObjects.PowerUpStates
 {
     class Fire : BaseState<Mario>, IMarioPowerUpState
     {
-        Mario mario;
-
-        public Fire(Mario newMario)
+        public Fire(Mario owner) : base(owner)
         {
-            mario = newMario;
         }
+
         public void UpgradeToFire()
         {
 
         }
         public void Downgrade()
         {
-            this.mario.PowerUpState = new Standard(this.mario);
+            Owner.PowerUpState = new Standard(Owner);
 
         }
         public void UpgradeToSuper()
         {
-            this.mario.PowerUpState = new Super(this.mario);
+            Owner.PowerUpState = new Super(Owner);
         }
         public override void Update(GameTime time)
         {

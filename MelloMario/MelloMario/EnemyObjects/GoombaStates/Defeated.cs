@@ -11,15 +11,13 @@ namespace MelloMario.EnemyObjects.GoombaStates
     class Defeated : BaseState<Goomba>, IGoombaState
     {
 
-        public Defeated(Goomba goomba1)
+        public Defeated(Goomba owner) : base(owner)
         {
-            enemyGoomba = goomba1;
-
         }
 
         public void Show()
         {
-            enemyGoomba.State = new Normal(enemyGoomba);
+            Owner.State = new Normal(Owner);
         }
 
         public void Defeat()
