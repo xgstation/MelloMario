@@ -25,7 +25,7 @@ namespace MelloMario.MarioObjects
         private const float J_FRICTION = 110f;
         private const float F_FRICTION = 80f;
         public const float J_MAX_ACCEL = -110f;
-        public const float F_MAX_ACCEL = 150f;
+        public const float F_MAX_ACCEL = 200f;
         private const float J_MAX_VEL = -5f;
         private const float F_MAX_VEL = 10f;
 
