@@ -124,12 +124,12 @@ namespace MelloMario
             movement += delta;
         }
 
-        protected void StopMoveHorizontal()
+        protected void StopHorizontalMovement()
         {
             movement.X = 0;
         }
 
-        protected void StopMoveVertical()
+        protected void StopVerticalMovement()
         {
             movement.Y = 0;
         }
@@ -147,8 +147,8 @@ namespace MelloMario
 
         protected void RemoveSelf()
         {
-            StopMoveHorizontal();
-            StopMoveVertical();
+            StopHorizontalMovement();
+            StopVerticalMovement();
             world.RemoveObject(this);
         }
 

@@ -22,7 +22,7 @@ namespace MelloMario
         private Vector2 movement;
         private Vector2 velocity;
         private Vector2 force;
-        private float frictionalForce;
+        private Vector2 frictionalForce;
 
         protected void ApplyForce(Vector2 delta)
         {
@@ -34,11 +34,19 @@ namespace MelloMario
             ApplyForce(new Vector2(0, gravity));
         }
 
-        protected void ApplyFriction(float friction = FORCE_F)
+        protected void ApplyHorizontalFriction(float friction = FORCE_F)
         {
-            if (frictionalForce < friction)
+            if (frictionalForce.X < friction)
             {
-                frictionalForce = friction;
+                frictionalForce.X = friction;
+            }
+        }
+
+        protected void ApplyVerticalFriction(float friction = FORCE_F)
+        {
+            if (frictionalForce.Y < friction)
+            {
+                frictionalForce.Y = friction;
             }
         }
 
@@ -52,7 +60,7 @@ namespace MelloMario
                     {
                         movement.X = 0;
                         velocity.X = -velocity.X * rate;
-                        StopMoveHorizontal();
+                        StopHorizontalMovement();
                     }
                     break;
                 case CollisionMode.Right:
@@ -61,7 +69,7 @@ namespace MelloMario
                     {
                         movement.X = 0;
                         velocity.X = -velocity.X * rate;
-                        StopMoveHorizontal();
+                        StopHorizontalMovement();
                     }
                     break;
                 case CollisionMode.Top:
@@ -70,7 +78,7 @@ namespace MelloMario
                     {
                         movement.Y = 0;
                         velocity.Y = -velocity.Y * rate;
-                        StopMoveVertical();
+                        StopVerticalMovement();
                     }
                     break;
                 case CollisionMode.Bottom:
@@ -79,7 +87,7 @@ namespace MelloMario
                     {
                         movement.Y = 0;
                         velocity.Y = -velocity.Y * rate;
-                        StopMoveVertical();
+                        StopVerticalMovement();
                     }
                     break;
             }
@@ -103,19 +111,36 @@ namespace MelloMario
 
             // Apply frictional force
 
-            if (velocity.X > frictionalForce * deltaTime)
+            Vector2 deltaV = frictionalForce * deltaTime;
+
+            if (velocity.X > deltaV.X)
             {
-                velocity.X -= frictionalForce * deltaTime;
+                velocity.X -= deltaV.X;
             }
-            else if (velocity.X < -frictionalForce * deltaTime)
+            else if (velocity.X < -deltaV.X)
             {
-                velocity.X += frictionalForce * deltaTime;
+                velocity.X += deltaV.X;
             }
             else
             {
                 velocity.X = 0;
             }
-            frictionalForce = 0;
+
+            if (velocity.Y > deltaV.Y)
+            {
+                velocity.Y -= deltaV.Y;
+            }
+            else if (velocity.Y < -deltaV.Y)
+            {
+                velocity.Y += deltaV.Y;
+            }
+            else
+            {
+                velocity.Y = 0;
+            }
+
+            frictionalForce.X = 0;
+            frictionalForce.X = 0;
 
             // Apply velocity
 
