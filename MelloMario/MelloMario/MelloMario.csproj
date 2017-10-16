@@ -94,7 +94,6 @@
     <Compile Include="Interfaces\States\IKoopaState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\ISpriteFactory.cs" />
-    <Compile Include="Interfaces\States\IMarioDirectionState.cs" />
     <Compile Include="ItemObjects\Coin.cs" />
     <Compile Include="ItemObjects\CoinStates\Collected.cs" />
     <Compile Include="ItemObjects\CoinStates\Normal.cs" />
@@ -113,8 +112,6 @@
     <Compile Include="EnemyObjects\KoopaStates\Normal.cs" />
     <Compile Include="LevelGen\LevelReader.cs" />
     <Compile Include="Interfaces\States\IMarioProtectionState.cs" />
-    <Compile Include="MarioObjects\DirectionStates\Right.cs" />
-    <Compile Include="MarioObjects\DirectionStates\Left.cs" />
     <Compile Include="Interfaces\States\IMarioMovementState.cs" />
     <Compile Include="Interfaces\States\IMarioPowerUpState.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Dead.cs" />

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
-using MelloMario.MarioObjects.DirectionStates;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.MarioObjects.PowerUpStates;
 using MelloMario.MarioObjects.ProtectionStates;
@@ -9,7 +8,6 @@ namespace MelloMario.MarioObjects
 {
     class Mario : BasePhysicalObject, IGameCharacter
     {
-        private IMarioDirectionState directionState;
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
@@ -24,8 +22,18 @@ namespace MelloMario.MarioObjects
             }
             else
             {
+                string facingString;
+                if (facing == Facing.left)
+                {
+                    facingString = "Left";
+                }
+                else
+                {
+                    facingString = "Right";
+                }
+
                 ShowSprite(SpriteFactory.Instance.CreateMarioSprite(
-                    powerUpState.GetType().Name + movementState.GetType().Name + directionState.GetType().Name,
+                    powerUpState.GetType().Name + movementState.GetType().Name + facingString,
                     !(movementState is Walking)
                 ));
             }
@@ -60,18 +68,6 @@ namespace MelloMario.MarioObjects
             SoftBounce(mode);
         }
 
-        public IMarioDirectionState DirectionState
-        {
-            get
-            {
-                return directionState;
-            }
-            set
-            {
-                directionState = value;
-                OnStateChanged();
-            }
-        }
         public IMarioMovementState MovementState
         {
             get
@@ -111,7 +107,6 @@ namespace MelloMario.MarioObjects
 
         public Mario(IGameWorld world, Point location) : base(world, location, new Point(32, 32), 32)
         {
-            directionState = new Right(this);
             movementState = new Standing(this);
             powerUpState = new Standard(this);
             protectionState = new Protected(this);
