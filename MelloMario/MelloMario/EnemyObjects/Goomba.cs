@@ -10,14 +10,7 @@ namespace MelloMario.EnemyObjects
 
         private void OnStateChanged()
         {
-            if (state is GoombaNormal)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateGoombaSprite("Normal"));
-            }
-            else if (state is GoombaDefeated)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateGoombaSprite("Defeated"));
-            }
+            ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name));
         }
 
         protected override void OnSimulation(GameTime time)
@@ -25,6 +18,10 @@ namespace MelloMario.EnemyObjects
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
+        {
+        }
+
+        protected override void OnOut(CollisionMode mode)
         {
         }
 
@@ -41,9 +38,9 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        public Goomba(Point location) : base(location, new Point(32, 32))
+        public Goomba(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
-            state = new GoombaNormal(this);
+            state = new Normal(this);
             OnStateChanged();
         }
 

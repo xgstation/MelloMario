@@ -1,16 +1,13 @@
-﻿using MelloMario.MarioObjects;
-
-namespace MelloMario.Commands
+﻿namespace MelloMario.Commands
 {
-    class JumpCommand : BaseCommand<Mario>
+    class JumpCommand : BaseCommand<IGameCharacter>
     {
-        public JumpCommand(Mario mario) : base(mario)
+        public JumpCommand(IGameCharacter character) : base(character)
         {
         }
 
         public override void Execute()
         {
-            Receiver.userInY =  Mario.J_MAX_ACCEL;
             Receiver.Jump();
         }
     }

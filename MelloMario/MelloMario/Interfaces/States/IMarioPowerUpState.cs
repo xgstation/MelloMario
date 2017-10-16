@@ -1,14 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
-    interface IMarioPowerUpState
+    interface IMarioPowerUpState : IState
     {
         void UpgradeToSuper();
         void UpgradeToFire();
         void Downgrade();
-        void Kill();
-
-        void Update(GameTime time);
     }
 }

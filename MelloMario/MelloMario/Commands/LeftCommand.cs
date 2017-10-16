@@ -1,17 +1,14 @@
-﻿using MelloMario.MarioObjects;
-
-namespace MelloMario.Commands
+﻿namespace MelloMario.Commands
 {
-    class LeftCommand : BaseCommand<Mario>
+    class LeftCommand : BaseCommand<IGameCharacter>
     {
-        public LeftCommand(Mario mario) : base(mario)
+        public LeftCommand(IGameCharacter character) : base(character)
         {
         }
 
         public override void Execute()
         {
-            Receiver.userInX = -1 * Mario.H_MAX_ACCEL;
-            Receiver.TurnLeft();
+            Receiver.Left();
         }
     }
 }

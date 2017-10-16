@@ -16,8 +16,8 @@ namespace MelloMario.Sprites
             // Do nothing
         }
 
-        public StaticSprite(Texture2D texture) : base(
-            texture, new Point(), new Point(texture.Width, texture.Height)
+        public StaticSprite(SpriteBatch spriteBatch, Texture2D texture) : base(
+            spriteBatch, texture, new Point(), new Point(texture.Width, texture.Height)
         )
         {
         }

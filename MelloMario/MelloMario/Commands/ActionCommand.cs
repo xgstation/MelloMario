@@ -1,16 +1,14 @@
-﻿using MelloMario.MarioObjects;
-
-namespace MelloMario.Commands
+﻿namespace MelloMario.Commands
 {
-    class ActionCommand : BaseCommand<Mario>
+    class ActionCommand : BaseCommand<IGameCharacter>
     {
-        public ActionCommand(Mario mario) : base(mario)
+        public ActionCommand(IGameCharacter character) : base(character)
         {
         }
 
         public override void Execute()
         {
-            // Receiver.fire();
+            Receiver.Action();
         }
     }
 }

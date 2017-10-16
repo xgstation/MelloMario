@@ -51,7 +51,6 @@ namespace MelloMario.LevelGen
         // Note: Without implementing IDisposable, it may cause resource leak
         //       The code analysis tool generates a warning here
         private StreamReader input;
-        private Mario mario;
 
         public LevelReader(String path)
         {
@@ -64,9 +63,10 @@ namespace MelloMario.LevelGen
             size = new Point(Int32.Parse(widthAsString), Int32.Parse(heightAsString));
         }
 
-        public IGameObjectManager LoadObjects()
+        public Tuple<IGameWorld, IGameCharacter> LoadObjects()
         {
-            IGameObjectManager objectManager = new GameObjectManager(SCALE, size);
+            IGameWorld world = new GameWorld(SCALE, size);
+            IGameCharacter character = null;
 
             for (int i = 0; i < size.Y; ++i)
             {
@@ -77,50 +77,50 @@ namespace MelloMario.LevelGen
                     switch (curChar)
                     {
                         case '!':
-                            mario = new Mario(new Point(j * SCALE, i * SCALE));
-                            objectManager.AddObject(mario);
+                            character = new Mario(world, new Point(j * SCALE, i * SCALE));
+                            world.AddObject(character);
                             break;
 
                         //blocks
                         case 'F':
-                            objectManager.AddObject(new Floor(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Floor(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'B':
-                            objectManager.AddObject(new Brick(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Brick(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'S':
-                            objectManager.AddObject(new Stair(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Stair(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'Q':
-                            objectManager.AddObject(new Question(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Question(world, new Point(j * SCALE, i * SCALE)));
                             break;
 
                         //harm
                         case 'G':
-                            objectManager.AddObject(new Goomba(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Goomba(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'K':
-                            objectManager.AddObject(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.green));
+                            world.AddObject(new Koopa(world, new Point(j * SCALE, i * SCALE), Koopa.ShellColor.green));
                             break;
                         case 'D':
-                            objectManager.AddObject(new Koopa(new Point(j * SCALE, i * SCALE), Koopa.ShellColor.red));
+                            world.AddObject(new Koopa(world, new Point(j * SCALE, i * SCALE), Koopa.ShellColor.red));
                             break;
 
                         //entities
                         case 'C':
-                            objectManager.AddObject(new Coin(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Coin(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case '1':
-                            objectManager.AddObject(new OneUpMushroom(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new OneUpMushroom(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'R':
-                            objectManager.AddObject(new FireFlower(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new FireFlower(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'M':
-                            objectManager.AddObject(new SuperMushroom(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new SuperMushroom(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'T':
-                            objectManager.AddObject(new Star(new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(new Star(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         default:
                             //do nothing, blank space dont add anything to blocks
@@ -129,13 +129,7 @@ namespace MelloMario.LevelGen
                 }
             }
 
-            return objectManager;
-        }
-
-        public Mario BindMario()
-        {
-            //must be called after load objects
-            return mario;
+            return new Tuple<IGameWorld, IGameCharacter>(world, character);
         }
     }
 }

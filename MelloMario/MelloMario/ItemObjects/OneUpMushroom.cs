@@ -10,14 +10,7 @@ namespace MelloMario.ItemObjects
 
         private void OnStateChanged()
         {
-            if (state is OneUpMushroomNormal)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateOneUpMushroomSprite());
-            }
-            else if (state is OneUpMushroomDefeated)
-            {
-                HideSprite();
-            }
+            ShowSprite(SpriteFactory.Instance.CreateOneUpMushroomSprite());
         }
 
         protected override void OnSimulation(GameTime time)
@@ -25,6 +18,10 @@ namespace MelloMario.ItemObjects
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
+        {
+        }
+
+        protected override void OnOut(CollisionMode mode)
         {
         }
 
@@ -41,7 +38,7 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public OneUpMushroom(Point location) : base(location, new Point(32, 32))
+        public OneUpMushroom(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
             state = new OneUpMushroomNormal(this);
             OnStateChanged();

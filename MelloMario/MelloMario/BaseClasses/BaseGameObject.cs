@@ -1,85 +1,88 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace MelloMario
 {
     abstract class BaseGameObject : IGameObject
     {
+        private IGameWorld world;
         private Point location;
         private Point size;
         private Point movement;
         private ISprite sprite;
 
-        private void Collide(IGameObject target)
+        private IEnumerable<Tuple<CollisionMode, CollisionMode>> ScanCollideModes(Rectangle targetBoundary)
         {
             Rectangle rectA = Boundary;
-            Rectangle rectB = target.Boundary;
+            Rectangle rectB = targetBoundary;
 
             bool intersectX = rectA.Left < rectB.Right && rectB.Left < rectA.Right;
             bool intersectY = rectA.Top < rectB.Bottom && rectB.Top < rectA.Bottom;
 
             if (intersectY && rectA.Left == rectB.Right)
             {
-                OnCollision(target, CollisionMode.Left);
-
-                if (target is BaseGameObject)
-                {
-                    ((BaseGameObject)target).OnCollision(this, CollisionMode.Right);
-                }
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.Left, CollisionMode.Right);
             }
             if (intersectY && rectA.Right == rectB.Left)
             {
-                OnCollision(target, CollisionMode.Right);
-
-                if (target is BaseGameObject)
-                {
-                    ((BaseGameObject)target).OnCollision(this, CollisionMode.Left);
-                }
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.Right, CollisionMode.Left);
             }
             if (intersectX && rectA.Top == rectB.Bottom)
             {
-                OnCollision(target, CollisionMode.Top);
-
-                if (target is BaseGameObject)
-                {
-                    ((BaseGameObject)target).OnCollision(this, CollisionMode.Bottom);
-                }
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.Top, CollisionMode.Bottom);
             }
-            if (intersectY && rectA.Bottom == rectB.Top)
+            if (intersectX && rectA.Bottom == rectB.Top)
             {
-                OnCollision(target, CollisionMode.Bottom);
-
-                if (target is BaseGameObject)
-                {
-                    ((BaseGameObject)target).OnCollision(this, CollisionMode.Top);
-                }
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.Bottom, CollisionMode.Top);
             }
-            if (intersectX && intersectY)
+            if (intersectY && rectA.Left == rectB.Left)
             {
-                OnCollision(target, CollisionMode.Cross);
-
-                if (target is BaseGameObject)
-                {
-                    ((BaseGameObject)target).OnCollision(this, CollisionMode.Cross);
-                }
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InnerLeft, CollisionMode.InnerLeft);
+            }
+            if (intersectY && rectA.Right == rectB.Right)
+            {
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InnerRight, CollisionMode.InnerRight);
+            }
+            if (intersectX && rectA.Top == rectB.Top)
+            {
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InnerTop, CollisionMode.InnerTop);
+            }
+            if (intersectX && rectA.Bottom == rectB.Bottom)
+            {
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InnerBottom, CollisionMode.InnerBottom);
             }
         }
 
-        private void CollideAll(IEnumerable<IGameObject> collidable)
+        private void CollideAll()
         {
-            foreach (IGameObject target in collidable)
+            foreach (IGameObject target in world.ScanNearbyObjects(this))
             {
-                Collide(target);
+                foreach (Tuple<CollisionMode, CollisionMode> pair in ScanCollideModes(target.Boundary))
+                {
+                    OnCollision(target, pair.Item1);
+
+                    if (target is BaseGameObject)
+                    {
+                        ((BaseGameObject)target).OnCollision(this, pair.Item2);
+                    }
+                }
+            }
+
+            foreach (Tuple<CollisionMode, CollisionMode> pair in ScanCollideModes(world.Boundary))
+            {
+                OnOut(pair.Item1);
             }
         }
 
-        protected enum CollisionMode { Left, Right, Top, Bottom, Cross };
+        protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom };
         protected enum ResizeModeX { Left, Center, Right };
         protected enum ResizeModeY { Top, Center, Bottom };
 
         protected abstract void OnSimulation(GameTime time);
         protected abstract void OnCollision(IGameObject target, CollisionMode mode);
+        protected abstract void OnOut(CollisionMode mode);
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
         {
@@ -121,9 +124,13 @@ namespace MelloMario
             movement += delta;
         }
 
-        protected void StopMove()
+        protected void StopMoveHorizontal()
         {
             movement.X = 0;
+        }
+
+        protected void StopMoveVertical()
+        {
             movement.Y = 0;
         }
 
@@ -138,6 +145,13 @@ namespace MelloMario
             sprite = null;
         }
 
+        protected void RemoveSelf()
+        {
+            StopMoveHorizontal();
+            StopMoveVertical();
+            world.RemoveObject(this);
+        }
+
         public Rectangle Boundary
         {
             get
@@ -146,52 +160,53 @@ namespace MelloMario
             }
         }
 
-        public BaseGameObject(Point location, Point size)
+        public BaseGameObject(IGameWorld world, Point location, Point size)
         {
+            this.world = world;
             this.location = location;
             this.size = size;
 
             movement = new Point();
         }
 
-        public void Update(GameTime time, IEnumerable<IGameObject> collidable)
+        public void Update(GameTime time)
         {
             OnSimulation(time);
 
-            CollideAll(collidable);
+            CollideAll();
 
             // Since each update is a very small iteration, the order does not matter.
             while (movement.X > 0)
             {
                 location.X += 1;
                 movement.X -= 1;
-                CollideAll(collidable);
+                CollideAll();
             }
             while (movement.X < 0)
             {
                 location.X -= 1;
                 movement.X += 1;
-                CollideAll(collidable);
+                CollideAll();
             }
             while (movement.Y > 0)
             {
                 location.Y += 1;
                 movement.Y -= 1;
-                CollideAll(collidable);
+                CollideAll();
             }
             while (movement.Y < 0)
             {
                 location.Y -= 1;
                 movement.Y += 1;
-                CollideAll(collidable);
+                CollideAll();
             }
         }
 
-        public void Draw(GameTime time, SpriteBatch spriteBatch)
+        public void Draw(GameTime time)
         {
             if (sprite != null)
             {
-                sprite.Draw(time, spriteBatch, Boundary);
+                sprite.Draw(time, Boundary);
             }
         }
     }

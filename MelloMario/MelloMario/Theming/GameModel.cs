@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MelloMario.MarioObjects;
-using MelloMario.BlockObjects;
-using MelloMario.EnemyObjects;
-using MelloMario.ItemObjects;
 using MelloMario.LevelGen;
+using System;
 
 namespace MelloMario
 {
@@ -13,9 +10,8 @@ namespace MelloMario
     {
         private IEnumerable<IController> controllers;
 
-        private IGameObjectManager objectManager;
-        // this is a "pointer" this mario also exists in all objects.
-        private Mario mario;
+        private IGameWorld world;
+        private IGameCharacter character;
 
         public GameModel()
         {
@@ -28,13 +24,14 @@ namespace MelloMario
 
         public void Bind(GameScript script)
         {
-            script.Bind(controllers, mario);
+            script.Bind(controllers, character);
         }
 
         public void LoadEntities(LevelReader reader)
         {
-            objectManager = reader.LoadObjects();
-            mario = reader.BindMario();
+            Tuple<IGameWorld, IGameCharacter> pair = reader.LoadObjects();
+            world = pair.Item1;
+            character = pair.Item2;
         }
 
         public void Update(GameTime time)
@@ -45,11 +42,11 @@ namespace MelloMario
             }
 
             ICollection<IGameObject> movedObjects = new List<IGameObject>();
-            foreach (IGameObject obj in objectManager.ScanObjects())
+            foreach (IGameObject obj in world.ScanObjects())
             {
                 Rectangle oldBoundary = obj.Boundary;
 
-                obj.Update(time, objectManager.ScanNearbyObjects(obj));
+                obj.Update(time);
 
                 if (obj.Boundary != oldBoundary)
                 {
@@ -59,18 +56,18 @@ namespace MelloMario
 
             foreach (IGameObject obj in movedObjects)
             {
-                objectManager.RemoveObject(obj);
-                objectManager.AddObject(obj);
+                world.RemoveObject(obj);
+                world.AddObject(obj);
             }
         }
 
-        internal void Draw(GameTime time, SpriteBatch spriteBatch)
+        internal void Draw(GameTime time)
         {
-            mario.Draw(time, spriteBatch);
+            character.Draw(time);
 
-            foreach (IGameObject obj in objectManager.ScanObjects())
+            foreach (IGameObject obj in world.ScanObjects())
             {
-                obj.Draw(time, spriteBatch);
+                obj.Draw(time);
             }
         }
     }

@@ -10,14 +10,7 @@ namespace MelloMario.ItemObjects
 
         private void OnStateChanged()
         {
-            if (state is StarNormal)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateStarSprite());
-            }
-            else if (state is StarDefeated)
-            {
-                HideSprite();
-            }
+            ShowSprite(SpriteFactory.Instance.CreateStarSprite());
         }
 
         protected override void OnSimulation(GameTime time)
@@ -25,6 +18,10 @@ namespace MelloMario.ItemObjects
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
+        {
+        }
+
+        protected override void OnOut(CollisionMode mode)
         {
         }
 
@@ -41,9 +38,9 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public Star(Point location) : base(location, new Point(32, 32))
+        public Star(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
-            state = new StarNormal(this);
+            state = new Normal(this);
             OnStateChanged();
         }
 

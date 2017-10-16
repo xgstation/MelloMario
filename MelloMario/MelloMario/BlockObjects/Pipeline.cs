@@ -11,10 +11,7 @@ namespace MelloMario.BlockObjects
 
         private void OnStateChanged()
         {
-            if (state is PipelineNormal)
-            {
-                ShowSprite(SpriteFactory.Instance.CreatePipelineSprite());
-            }
+            ShowSprite(SpriteFactory.Instance.CreatePipelineSprite());
         }
 
         protected override void OnSimulation(GameTime time)
@@ -22,6 +19,10 @@ namespace MelloMario.BlockObjects
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
+        {
+        }
+
+        protected override void OnOut(CollisionMode mode)
         {
         }
 
@@ -38,9 +39,9 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public Pipeline(Point location) : base(location, new Point(32, 32))
+        public Pipeline(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
-            state = new PipelineNormal(this);
+            state = new Normal(this);
             OnStateChanged();
         }
 

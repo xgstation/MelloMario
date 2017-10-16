@@ -11,14 +11,7 @@ namespace MelloMario.BlockObjects
 
         private void OnStateChanged()
         {
-            if (state is StairHidden)
-            {
-                HideSprite();
-            }
-            else if (state is StairNormal)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateStairSprite());
-            }
+            ShowSprite(SpriteFactory.Instance.CreateStairSprite());
         }
 
         protected override void OnSimulation(GameTime time)
@@ -26,6 +19,10 @@ namespace MelloMario.BlockObjects
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
+        {
+        }
+
+        protected override void OnOut(CollisionMode mode)
         {
         }
 
@@ -42,9 +39,9 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public Stair(Point location) : base(location, new Point(32, 32))
+        public Stair(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
-            state = new StairNormal(this);
+            state = new Normal(this);
             OnStateChanged();
         }
 

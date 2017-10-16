@@ -10,14 +10,7 @@ namespace MelloMario.ItemObjects
 
         private void OnStateChanged()
         {
-            if (state is CoinNormal)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateCoinSprite());
-            }
-            else if (state is CoinDefeated)
-            {
-                HideSprite();
-            }
+            ShowSprite(SpriteFactory.Instance.CreateCoinSprite());
         }
 
         protected override void OnSimulation(GameTime time)
@@ -25,6 +18,10 @@ namespace MelloMario.ItemObjects
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
+        {
+        }
+
+        protected override void OnOut(CollisionMode mode)
         {
         }
 
@@ -41,9 +38,9 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public Coin(Point location) : base(location, new Point(32, 32))
+        public Coin(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
-            state = new CoinNormal(this);
+            state = new Normal(this);
             OnStateChanged();
         }
 

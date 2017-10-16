@@ -11,26 +11,13 @@ namespace MelloMario.BlockObjects
 
         private void OnStateChanged()
         {
-            if (state is BrickBumped)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
-            }
-            else if (state is BrickDestroyed)
-            {
-                // TODO: design a new mechanism to handle multiple sprites (class SpriteGroup : ISprite)?
-                // ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Destroyed"));
-            }
-            else if (state is BrickHidden)
+            if (state is Hidden)
             {
                 HideSprite();
             }
-            else if (state is BrickNormal)
+            else
             {
-                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
-            }
-            else if (state is BrickUsed)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Used"));
+                ShowSprite(SpriteFactory.Instance.CreateBrickSprite(state.GetType().Name));
             }
         }
 
@@ -39,6 +26,10 @@ namespace MelloMario.BlockObjects
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
+        {
+        }
+
+        protected override void OnOut(CollisionMode mode)
         {
         }
 
@@ -55,9 +46,9 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public Brick(Point location) : base(location, new Point(32, 32))
+        public Brick(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
-            state = new BrickNormal(this);
+            state = new Normal(this);
             OnStateChanged();
         }
 

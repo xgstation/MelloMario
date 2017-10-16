@@ -6,7 +6,7 @@
 
         public BaseCommand(T receiver)
         {
-            this.Receiver = receiver;
+            Receiver = receiver;
         }
 
         public abstract void Execute();

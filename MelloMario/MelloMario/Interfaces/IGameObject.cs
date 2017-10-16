@@ -8,7 +8,7 @@ namespace MelloMario
     {
         Rectangle Boundary { get; }
 
-        void Update(GameTime time, IEnumerable<IGameObject> collidable);
-        void Draw(GameTime time, SpriteBatch spriteBatch);
+        void Update(GameTime time);
+        void Draw(GameTime time);
     }
 }

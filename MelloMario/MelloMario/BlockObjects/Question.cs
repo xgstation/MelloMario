@@ -11,21 +11,13 @@ namespace MelloMario.BlockObjects
 
         private void OnStateChanged()
         {
-            if (state is QuestionBumped)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
-            }
-            else if (state is QuestionHidden)
+            if (state is Hidden)
             {
                 HideSprite();
             }
-            else if (state is QuestionNormal)
+            else
             {
-                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
-            }
-            else if (state is QuestionUsed)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
+                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite(state.GetType().Name));
             }
         }
 
@@ -34,6 +26,10 @@ namespace MelloMario.BlockObjects
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
+        {
+        }
+
+        protected override void OnOut(CollisionMode mode)
         {
         }
 
@@ -50,9 +46,9 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public Question(Point location) : base(location, new Point(32, 32))
+        public Question(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
-            state = new QuestionNormal(this);
+            state = new Normal(this);
             OnStateChanged();
         }
 
