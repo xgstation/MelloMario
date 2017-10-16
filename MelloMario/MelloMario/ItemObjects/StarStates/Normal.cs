@@ -11,9 +11,8 @@ namespace MelloMario.ItemObjects.StarStates
 {
     class Normal : BaseState<Star>, IItemState
     {
-        public Normal(Star star1)
+        public Normal(Star owner) : base(owner)
         {
-            starItem = star1;
         }
 
         public void Show()

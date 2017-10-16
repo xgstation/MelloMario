@@ -12,16 +12,13 @@ namespace MelloMario.MarioObjects.DirectionStates
 {
     class Right : BaseState<Mario>, IMarioDirectionState
     {
-        Mario mario;
-
-        public Right(Mario newMario)
+        public Right(Mario owner) : base(owner)
         {
-            mario = newMario;
         }
 
         public void TurnLeft()
         {
-            mario.DirectionState = new Left(mario);
+            Owner.DirectionState = new Left(Owner);
         }
 
         public void TurnRight()

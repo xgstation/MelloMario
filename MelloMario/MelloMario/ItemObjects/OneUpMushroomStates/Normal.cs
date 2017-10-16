@@ -11,11 +11,10 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
     class OneUpMushroomNormal : BaseState<OneUpMushroom>, IItemState
     {
-        public OneUpMushroomNormal(OneUpMushroom mushroomItem1)
+        public OneUpMushroomNormal(OneUpMushroom owner) : base(owner)
         {
-
-            mushroomItem = mushroomItem1;
         }
+
         public void Show()
         {
         }

@@ -11,26 +11,25 @@ namespace MelloMario.MarioObjects.MovementStates
 {
     class Crouching : BaseState<Mario>, IMarioMovementState
     {
-        Mario mario;
-
-        public Crouching(Mario mario)
+        public Crouching(Mario owner) : base(owner)
         {
         }
+
         public void Crouch()
         {
 
         }
         public void Idle()
         {
-            this.mario.MovementState = new Standing(this.mario);
+            Owner.MovementState = new Standing(Owner);
         }
         public void Jump()
         {
-            this.mario.MovementState = new Jumping(this.mario);
+            Owner.MovementState = new Jumping(Owner);
         }
         public void Walk()
         {
-            this.mario.MovementState = new Walking(this.mario);
+            Owner.MovementState = new Walking(Owner);
         }
 
         public override void Update(GameTime time)

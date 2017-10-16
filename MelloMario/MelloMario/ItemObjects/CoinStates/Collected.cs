@@ -10,14 +10,13 @@ namespace MelloMario.ItemObjects.CoinStates
 {
     class Collected : BaseState<Coin>, IItemState
     {
-        public Collected(Coin coin1)
+        public Collected(Coin owner) : base(owner)
         {
-            coinItem = coin1;
         }
 
         public void Show()
         {
-            coinItem.State = new Normal(coinItem);
+            Owner.State = new Normal(Owner);
         }
 
         public void Collect()

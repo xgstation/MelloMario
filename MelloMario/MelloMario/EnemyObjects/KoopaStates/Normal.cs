@@ -10,9 +10,8 @@ namespace MelloMario.EnemyObjects.KoopaStates
 {
     class Normal : BaseState<Koopa>, IKoopaState
     {
-        public Normal(Koopa koopaRed)
+        public Normal(Koopa owner) : base(owner)
         {
-            enemyRedKoopa = koopaRed;
         }
 
         public void Show()
@@ -22,12 +21,12 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void JumpOn()
         {
-            enemyRedKoopa.State = new Shell(enemyRedKoopa);
+            Owner.State = new Shell(Owner);
         }
 
         public void Defeat()
         {
-            enemyRedKoopa.State = new Defeated(enemyRedKoopa);
+            Owner.State = new Defeated(Owner);
         }
 
         public override void Update(GameTime time)

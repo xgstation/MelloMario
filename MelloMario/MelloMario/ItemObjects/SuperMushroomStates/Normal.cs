@@ -11,9 +11,8 @@ namespace MelloMario.ItemObjects.SuperMushroomStates
 {
     class Normal : BaseState<SuperMushroom>, IItemState
     {
-        public Normal(SuperMushroom mushroomItem1)
+        public Normal(SuperMushroom owner) : base(owner)
         {
-            mushroomItem = mushroomItem1;
         }
 
         public void Show()

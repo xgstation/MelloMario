@@ -12,18 +12,18 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class Used : BaseState<Brick>, IBlockState
     {
-        public Used(Brick block)
+        public Used(Brick owner) : base(owner)
         {
         }
 
         public void Show()
         {
-            block.State = new Normal(block);
+            Owner.State = new Normal(Owner);
         }
 
         public void Hide()
         {
-            block.State = new Hidden(block);
+            Owner.State = new Hidden(Owner);
         }
 
         public void Bump(Mario mario)

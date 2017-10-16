@@ -12,11 +12,8 @@ namespace MelloMario.MarioObjects.DirectionStates
 {
     class Left : BaseState<Mario>, IMarioDirectionState
     {
-        Mario mario;
-
-        public Left(Mario newMario)
+        public Left(Mario owner) : base(owner)
         {
-            mario = newMario;
         }
 
         public void TurnLeft()
@@ -26,7 +23,7 @@ namespace MelloMario.MarioObjects.DirectionStates
 
         public void TurnRight()
         {
-            mario.DirectionState = new Right(mario);
+            Owner.DirectionState = new Right(Owner);
         }
 
         public override void Update(GameTime time)

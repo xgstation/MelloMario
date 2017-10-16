@@ -12,7 +12,7 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class Normal : BaseState<Brick>, IBlockState
     {
-        public Normal(Brick block)
+        public Normal(Brick owner) : base(owner)
         {
         }
 
@@ -23,14 +23,14 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Hide()
         {
-            block.State = new Hidden(block);
+            Owner.State = new Hidden(Owner);
         }
 
         public void Bump(Mario mario)
         {
             // TODO: if large mario && no item then
-            // block.State = new BrickDestroyed(block);
-            block.State = new Bumped(block);
+            // Owner.State = new BrickDestroyed(Owner);
+            Owner.State = new Bumped(Owner);
         }
 
         public override void Update(GameTime time)

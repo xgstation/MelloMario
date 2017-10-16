@@ -10,9 +10,8 @@ namespace MelloMario.EnemyObjects.GoombaStates
 {
     class Normal : BaseState<Goomba>, IGoombaState
     {
-        public Normal(Goomba goomba1)
+        public Normal(Goomba owner) : base(owner)
         {
-            enemyGoomba = goomba1;
         }
 
         public void Show()
@@ -22,7 +21,7 @@ namespace MelloMario.EnemyObjects.GoombaStates
 
         public void Defeat()
         {
-            enemyGoomba.State = new Defeated(enemyGoomba);
+            Owner.State = new Defeated(Owner);
         }
 
         public override void Update(GameTime time)

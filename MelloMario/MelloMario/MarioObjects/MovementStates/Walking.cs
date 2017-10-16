@@ -11,27 +11,21 @@ namespace MelloMario.MarioObjects.MovementStates
 {
     class Walking : BaseState<Mario>, IMarioMovementState
     {
-        Mario mario;
-        //bool setToStatic;
-        // ISprite sprite;
-        public Walking(Mario mario)
+        public Walking(Mario owner) : base(owner)
         {
-            this.mario = mario;
-            //setToStatic = true;
-            //sprite = SpriteFactory.Instance.CreateMarioSprite("FireCrouchingLeft", setToStatic);
-
         }
+
         public void Crouch()
         {
-            this.mario.MovementState = new Crouching(this.mario);
+            Owner.MovementState = new Crouching(Owner);
         }
         public void Idle()
         {
-            this.mario.MovementState = new Standing(this.mario);
+            Owner.MovementState = new Standing(Owner);
         }
         public void Jump()
         {
-            this.mario.MovementState = new Jumping(this.mario);
+            Owner.MovementState = new Jumping(Owner);
         }
         public void Walk()
         {

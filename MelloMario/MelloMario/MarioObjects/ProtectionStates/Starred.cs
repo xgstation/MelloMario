@@ -12,11 +12,8 @@ namespace MelloMario.MarioObjects.ProtectionStates
 {
     class Starred : BaseState<Mario>, IMarioProtectionState
     {
-        Mario mario;
-
-        public Starred(Mario mario)
+        public Starred(Mario owner) : base(owner)
         {
-            this.mario = mario;
         }
 
         public void Star()

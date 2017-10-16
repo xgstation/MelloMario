@@ -11,23 +11,17 @@ namespace MelloMario.MarioObjects.MovementStates
 {
     class Jumping : BaseState<Mario>, IMarioMovementState
     {
-        Mario mario;
-        //bool setToStatic;
-        // ISprite sprite;
-        public Jumping(Mario mario)
+        public Jumping(Mario owner) : base(owner)
         {
-            this.mario = mario;
-            //setToStatic = true;
-            //sprite = SpriteFactory.Instance.CreateMarioSprite("FireCrouchingLeft", setToStatic);
-
         }
+
         public void Crouch()
         {
-            this.mario.MovementState = new Crouching(this.mario);
+            Owner.MovementState = new Crouching(Owner);
         }
         public void Idle()
         {
-            this.mario.MovementState = new Standing(this.mario);
+            Owner.MovementState = new Standing(Owner);
         }
         public void Jump()
         {
@@ -35,7 +29,7 @@ namespace MelloMario.MarioObjects.MovementStates
         }
         public void Walk()
         {
-            this.mario.MovementState = new Walking(this.mario);
+            Owner.MovementState = new Walking(Owner);
         }
 
         public override void Update(GameTime time)
