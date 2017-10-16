@@ -49,6 +49,8 @@ namespace MelloMario.MarioObjects
             {
                 ApplyGravity();
             }
+            ApplyHorizontalFriction(FORCE_F_AIR);
+            ApplyVerticalFriction(FORCE_F_AIR);
 
             base.OnSimulation(time);
         }
@@ -58,7 +60,7 @@ namespace MelloMario.MarioObjects
             // TODO: if target is block
             if (mode == CollisionMode.Bottom)
             {
-                ApplyFriction();
+                ApplyHorizontalFriction(FORCE_F_GROUND);
             }
             SoftBounce(mode);
         }
@@ -115,18 +117,24 @@ namespace MelloMario.MarioObjects
 
         public void Left()
         {
-            userInput.X -= 110;
-            DirectionState.TurnLeft();
+            userInput.X -= FORCE_MOVE;
+            facing = Facing.left;
+            OnStateChanged();
         }
         public void Right()
         {
-            userInput.X += 110;
-            DirectionState.TurnRight();
+            userInput.X += FORCE_MOVE;
+            facing = Facing.right;
+            OnStateChanged();
         }
 
         public void Jump()
         {
-            userInput.Y -= 110;
+            userInput.Y -= FORCE_JUMP;
+            if (g_on)
+            {
+                userInput.Y -= FORCE_G;
+            }
             MovementState.Jump();
         }
 
@@ -172,7 +180,7 @@ namespace MelloMario.MarioObjects
         [System.Obsolete]
         public void Fall()
         {
-            userInput.Y += 110;
+            userInput.Y += FORCE_MOVE;
         }
     }
 }

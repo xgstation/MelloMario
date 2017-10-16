@@ -7,10 +7,8 @@ namespace MelloMario
 {
     abstract class BasePhysicalObject : BaseGameObject
     {
-        private const float FORCE_G = 20f;
-        private const float FORCE_F = 100f;
-        private const float VELOCITY_MAX_LR = 10f;
-        private const float VELOCITY_MAX_U = 10f;
+        private const float VELOCITY_MAX_LR = 15f;
+        private const float VELOCITY_MAX_U = 15f;
         private const float VELOCITY_MAX_D = 20f;
         // TODO: add in-air friction
 
@@ -24,6 +22,16 @@ namespace MelloMario
         private Vector2 force;
         private Vector2 frictionalForce;
 
+        protected enum Facing { left, right };
+
+        protected const float FORCE_G = 40f;
+        protected const float FORCE_MOVE = 120f;
+        protected const float FORCE_JUMP = 160f;
+        protected const float FORCE_F_GROUND = 100f;
+        protected const float FORCE_F_AIR = 20f;
+
+        protected Facing facing;
+
         protected void ApplyForce(Vector2 delta)
         {
             force += delta;
@@ -34,7 +42,7 @@ namespace MelloMario
             ApplyForce(new Vector2(0, gravity));
         }
 
-        protected void ApplyHorizontalFriction(float friction = FORCE_F)
+        protected void ApplyHorizontalFriction(float friction)
         {
             if (frictionalForce.X < friction)
             {
@@ -42,7 +50,7 @@ namespace MelloMario
             }
         }
 
-        protected void ApplyVerticalFriction(float friction = FORCE_F)
+        protected void ApplyVerticalFriction(float friction)
         {
             if (frictionalForce.Y < friction)
             {
@@ -175,6 +183,7 @@ namespace MelloMario
             movement = new Vector2();
             velocity = new Vector2();
             force = new Vector2();
+            facing = Facing.right;
         }
     }
 }
