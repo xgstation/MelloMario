@@ -26,7 +26,8 @@ namespace MelloMario.LevelGen
         B:Brick
         S:Stair
         Q:Question
-        P:Pipe(down and to the right)
+        P:Pipe(to the right one block)
+        V:Vertical Pipe(to the right one block)
          
         Entities:
         C:Coin
@@ -93,6 +94,14 @@ namespace MelloMario.LevelGen
                             break;
                         case 'Q':
                             world.AddObject(new Question(world, new Point(j * SCALE, i * SCALE)));
+                            break;
+                        case 'P':
+                            world.AddObject(new Pipeline(world, new Point(j * SCALE, i * SCALE), "LeftIn"));
+                            world.AddObject(new Pipeline(world, new Point((j+1) * SCALE, i * SCALE), "RightIn"));
+                            break;
+                        case 'V':
+                            world.AddObject(new Pipeline(world, new Point(j * SCALE, i * SCALE), "Left"));
+                            world.AddObject(new Pipeline(world, new Point((j + 1) * SCALE, i * SCALE), "Right"));
                             break;
 
                         //harm
