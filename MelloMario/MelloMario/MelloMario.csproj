@@ -70,6 +70,8 @@
     <Compile Include="BaseClasses\BaseCommand.cs" />
     <Compile Include="Commands\ActionCommand.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
+    <Compile Include="Commands\ToggleGravityCommand.cs" />
+    <Compile Include="Commands\FallCommand.cs" />
     <Compile Include="Commands\JumpCommand.cs" />
     <Compile Include="Commands\LeftCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />

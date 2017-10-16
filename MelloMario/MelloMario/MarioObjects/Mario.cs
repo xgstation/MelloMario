@@ -36,7 +36,11 @@ namespace MelloMario.MarioObjects
             ApplyForce(userInput);
             userInput.X = 0;
             userInput.Y = 0;
-            ApplyGravity();
+
+            if (g_on)
+            {
+                ApplyGravity();
+            }
 
             base.OnSimulation(time);
         }
@@ -159,6 +163,21 @@ namespace MelloMario.MarioObjects
         public void Kill()
         {
             // TODO
+        }
+
+        // TODO: For sprint 2 only
+        //       Please remove it after sprint 2
+        [System.Obsolete]
+        bool g_on;
+        [System.Obsolete]
+        public void ToggleGravity()
+        {
+            g_on = !g_on;
+        }
+        [System.Obsolete]
+        public void Fall()
+        {
+            userInput.Y += 110;
         }
     }
 }
