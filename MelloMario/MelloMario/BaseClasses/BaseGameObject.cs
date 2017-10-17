@@ -158,6 +158,11 @@ namespace MelloMario
             {
                 return new Rectangle(location.X, location.Y, size.X, size.Y);
             }
+            set
+            {
+                location = value.Location;
+                size = value.Size;
+            }
         }
 
         public BaseGameObject(IGameWorld world, Point location, Point size)
