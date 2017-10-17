@@ -52,7 +52,7 @@ namespace MelloMario.Factories
                 case "JumpPress":
                     return new JumpPress(character);
                 case "JumpRelease":
-                    return new JumpPress(character);
+                    return new JumpRelease(character);
                 case "Left":
                     return new Left(character);
                 case "LeftPress":

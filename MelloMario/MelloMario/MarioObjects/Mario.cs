@@ -75,17 +75,15 @@ namespace MelloMario.MarioObjects
             {
                 case "Brick":
                 case "Question":
-                    Brick b;
-                    Question q;
                     bool isHidden;
+
                     if (target is Brick)
                     {
-                        b = (Brick)target;
-                        isHidden = b.State is BlockObjects.BrickStates.Hidden;
-                    } else
+                        isHidden = ((Brick)target).State is BlockObjects.BrickStates.Hidden;
+                    }
+                    else
                     {
-                        q = (Question)target;
-                        isHidden = q.State is BlockObjects.QuestionStates.Hidden;
+                        isHidden = ((Question)target).State is BlockObjects.QuestionStates.Hidden;
                     }
                     if (isHidden && mode != CollisionMode.Top)
                     {
@@ -305,7 +303,10 @@ namespace MelloMario.MarioObjects
 
         public void CrouchRelease()
         {
-            MovementState.Idle();
+            if (MovementState is Jumping)
+            {
+                MovementState.Idle();
+            }
         }
 
         public void Action()
