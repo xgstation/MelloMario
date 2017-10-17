@@ -49,6 +49,10 @@ namespace MelloMario.Factories
                     return new LeftCommand(character);
                 case "Right":
                     return new RightCommand(character);
+                case "LeftRelease":
+                    return new LeftReleaseCommand(character);
+                case "RightRelease":
+                    return new RightReleaseCommand(character);
                 default:
                     throw new Exception("Unknown action");
             }

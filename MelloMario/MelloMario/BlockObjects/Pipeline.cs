@@ -8,10 +8,11 @@ namespace MelloMario.BlockObjects
     class Pipeline : BaseGameObject
     {
         private IBlockState state;
+        private string type;
 
         private void OnStateChanged()
         {
-            ShowSprite(SpriteFactory.Instance.CreatePipelineSprite());
+            ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(type));
         }
 
         protected override void OnSimulation(GameTime time)
@@ -39,9 +40,10 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public Pipeline(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
+        public Pipeline(IGameWorld world, Point location, string type) : base(world, location, new Point(32, 32))
         {
             state = new Normal(this);
+            this.type = type;
             OnStateChanged();
         }
 

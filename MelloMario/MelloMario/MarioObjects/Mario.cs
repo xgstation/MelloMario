@@ -53,6 +53,12 @@ namespace MelloMario.MarioObjects
             ApplyVerticalFriction(FORCE_F_AIR);
 
             base.OnSimulation(time);
+
+            if(movement.Y == 0 && movementState is Jumping)
+            {
+                movementState.Idle();
+                OnStateChanged();
+            }
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
@@ -117,16 +123,52 @@ namespace MelloMario.MarioObjects
 
         public void Left()
         {
-            userInput.X -= FORCE_INPUT;
-            facing = Facing.left;
-            OnStateChanged();
+            if (!(movementState is Crouching))
+                userInput.X -= FORCE_INPUT;
+            if (facing == Facing.right)
+            {
+                facing = Facing.left;
+                OnStateChanged();
+            }
+            if (movementState is Standing)
+            {
+                movementState.Walk();
+                OnStateChanged();
+            }
+        }
+
+        public void LeftRelease()
+        {
+            if (movementState is Walking)
+            {
+                movementState.Idle();
+                OnStateChanged();
+            }
+        }
+
+        public void RightRelease()
+        {
+            if (movementState is Walking)
+            {
+                movementState.Idle();
+                OnStateChanged();
+            }
         }
 
         public void Right()
         {
-            userInput.X += FORCE_INPUT;
-            facing = Facing.right;
-            OnStateChanged();
+            if(!(movementState is Crouching))
+                userInput.X += FORCE_INPUT;
+            if (facing == Facing.left)
+            {
+                facing = Facing.right;
+                OnStateChanged();
+            }
+            if (movementState is Standing)
+            {
+                movementState.Walk();
+                OnStateChanged();
+            }
         }
 
         public void Jump()
@@ -135,7 +177,6 @@ namespace MelloMario.MarioObjects
             {
                 // TODO: for sprint2 only
                 SoftBounce(CollisionMode.Bottom);
-
             }
             else
             {
@@ -143,13 +184,12 @@ namespace MelloMario.MarioObjects
                 if (g_on)
                 {
                     userInput.Y -= FORCE_G;
-
                 }
             }
-                MovementState.Jump();
 
-
-            }
+            MovementState.Jump();
+            OnStateChanged();
+        }
 
         public void Crouch()
         {
@@ -185,10 +225,6 @@ namespace MelloMario.MarioObjects
 
         public void Downgrade()
         {
-            if (PowerUpState is Super && MovementState is Crouching)
-            {
-                MovementState.Idle();
-            }
             PowerUpState.Downgrade();
         }
 

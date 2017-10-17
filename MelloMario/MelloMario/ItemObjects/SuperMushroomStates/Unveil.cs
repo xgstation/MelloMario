@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.ItemObjects.OneUpMushroomStates
+namespace MelloMario.ItemObjects.SuperMushroomStates
 {
-    class Normal : BaseState<OneUpMushroom>, IItemState
+    class Unveil : BaseState<SuperMushroom>, IItemState
     {
-        public Normal(OneUpMushroom owner) : base(owner)
+        public Unveil(SuperMushroom owner) : base(owner)
         {
         }
 

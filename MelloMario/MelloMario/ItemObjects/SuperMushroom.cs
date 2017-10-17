@@ -38,10 +38,20 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public SuperMushroom(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
+        public SuperMushroom(IGameWorld world, Point location, bool isUnveil) : base(world, location, new Point(32, 32))
         {
-            state = new Normal(this);
+            if (isUnveil)
+            {
+                state = new Unveil(this);
+            }
+            else
+            {
+                state = new Normal(this);
+            }
             OnStateChanged();
+        }
+        public SuperMushroom(IGameWorld world, Point location) : this (world, location, false)
+        {
         }
 
         public void Show()

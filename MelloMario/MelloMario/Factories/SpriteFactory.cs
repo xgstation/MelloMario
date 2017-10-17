@@ -226,12 +226,24 @@ namespace MelloMario.Factories
 
         public ISprite CreateStairSprite()
         {
-            return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 0);
+            return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 1);
         }
 
-        public ISprite CreatePipelineSprite()
+        public ISprite CreatePipelineSprite(String type)
         {
-            return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 8, 0);
+            switch (type)
+            {
+                case "LeftIn":
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 8);
+                case "RightIn":
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 8);
+                case "Left":
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 9);
+                case "Right":
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 9);
+                default:
+                    throw new Exception("Unknown sprite");
+            }
         }
     }
 }
