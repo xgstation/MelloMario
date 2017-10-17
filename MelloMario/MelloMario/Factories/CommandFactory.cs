@@ -53,6 +53,18 @@ namespace MelloMario.Factories
                     return new LeftReleaseCommand(character);
                 case "RightRelease":
                     return new RightReleaseCommand(character);
+                case "RightPress":
+                    return new RightPressCommand(character);
+                case "LeftPress":
+                    return new LeftPressCommand(character);
+                case "JumpRelease":
+                    return new JumpPressCommand(character);
+                case "CrouchRelease":
+                    return new CrouchReleaseCommand(character);
+                case "JumpPress":
+                    return new JumpPressCommand(character);
+                case "CrouchPress":
+                    return new CrouchPressCommand(character);
                 default:
                     throw new Exception("Unknown action");
             }
