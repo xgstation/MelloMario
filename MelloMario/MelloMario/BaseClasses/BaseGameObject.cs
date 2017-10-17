@@ -118,6 +118,8 @@ namespace MelloMario
             location.X += moveX;
             location.Y += moveY;
         }
+
+        // TODO: remove them later
         protected IGameWorld World()
         {
             return world;
@@ -126,6 +128,7 @@ namespace MelloMario
         {
             return location;
         }
+
         protected void Move(Point delta)
         {
             movement += delta;
