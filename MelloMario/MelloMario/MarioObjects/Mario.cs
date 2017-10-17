@@ -135,6 +135,7 @@ namespace MelloMario.MarioObjects
             {
                 // TODO: for sprint2 only
                 SoftBounce(CollisionMode.Bottom);
+
             }
             else
             {
@@ -142,11 +143,13 @@ namespace MelloMario.MarioObjects
                 if (g_on)
                 {
                     userInput.Y -= FORCE_G;
+
                 }
             }
+                MovementState.Jump();
 
-            MovementState.Jump();
-        }
+
+            }
 
         public void Crouch()
         {
@@ -182,6 +185,10 @@ namespace MelloMario.MarioObjects
 
         public void Downgrade()
         {
+            if (PowerUpState is Super && MovementState is Crouching)
+            {
+                MovementState.Idle();
+            }
             PowerUpState.Downgrade();
         }
 
