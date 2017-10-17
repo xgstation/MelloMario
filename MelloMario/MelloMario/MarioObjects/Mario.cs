@@ -5,6 +5,7 @@ using MelloMario.MarioObjects.PowerUpStates;
 using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
+using System;
 
 namespace MelloMario.MarioObjects
 {
@@ -296,6 +297,36 @@ namespace MelloMario.MarioObjects
         public void ToggleGravity()
         {
             g_on = !g_on;
+        }
+
+        public void LeftPress()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RightPress()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void JumpRelease()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void JumpPress()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CrouchRelease()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CrouchPress()
+        {
+            throw new NotImplementedException();
         }
     }
 }
