@@ -119,14 +119,40 @@ namespace MelloMario.MarioObjects
         {
             userInput.X -= FORCE_INPUT;
             facing = Facing.left;
-            OnStateChanged();
+            if (movementState is Standing)
+            {
+                movementState.Walk();
+                OnStateChanged();
+            }
+        }
+
+        public void LeftRelease()
+        {
+            if (movementState is Walking)
+            {
+                movementState.Idle();
+                OnStateChanged();
+            }
+        }
+
+        public void RightRelease()
+        {
+            if (movementState is Walking)
+            {
+                movementState.Idle();
+                OnStateChanged();
+            }
         }
 
         public void Right()
         {
             userInput.X += FORCE_INPUT;
             facing = Facing.right;
-            OnStateChanged();
+            if (movementState is Standing)
+            {
+                movementState.Walk();
+                OnStateChanged();
+            }
         }
 
         public void Jump()
