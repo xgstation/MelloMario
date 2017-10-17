@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
+using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.KoopaStates;
 
 namespace MelloMario.EnemyObjects
@@ -28,6 +29,35 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
+            if (target is Mario)
+            {
+                //TODO: fire as target to be added
+                Mario m = (Mario)target;
+                if (m.ProtectionState is MarioObjects.ProtectionStates.Protected)
+                {
+                    Defeat();
+                }
+                else
+                {
+                    if (state is Normal)
+                    {
+                        if (mode == CollisionMode.Top)
+                            JumpOn();
+                    }
+                    else if (state is Shell)
+                    {
+                        if (mode == CollisionMode.Left || mode == CollisionMode.Top)
+                        {
+                            Pushed();
+                        }
+                        else
+                        {
+                            Pushed();
+                        }
+                      
+                    }
+                }
+            }
         }
 
         protected override void OnOut(CollisionMode mode)
@@ -35,7 +65,6 @@ namespace MelloMario.EnemyObjects
         }
 
         public enum ShellColor { green, red };
-
         public IKoopaState State
         {
             get
@@ -64,6 +93,10 @@ namespace MelloMario.EnemyObjects
         public void JumpOn()
         {
             State.JumpOn();
+        }
+        public void Pushed()
+        {
+            State.Pushed();
         }
         public void Defeat()
         {

@@ -32,5 +32,10 @@ namespace MelloMario.EnemyObjects.KoopaStates
         public override void Update(GameTime time)
         {
         }
+
+        public void Pushed()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.ItemObjects.FireFlowerStates;
+using MelloMario.MarioObjects;
 
 namespace MelloMario.ItemObjects
 {
@@ -19,6 +20,10 @@ namespace MelloMario.ItemObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
+            if (target is Mario)
+            {
+                Collect();
+            }
         }
 
         protected override void OnOut(CollisionMode mode)

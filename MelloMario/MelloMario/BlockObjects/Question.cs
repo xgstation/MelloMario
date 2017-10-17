@@ -29,6 +29,10 @@ namespace MelloMario.BlockObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
+            if (target is Mario && mode == CollisionMode.Bottom)
+            {
+                Bump((Mario)target);
+            }
         }
 
         protected override void OnOut(CollisionMode mode)
@@ -108,6 +112,8 @@ namespace MelloMario.BlockObjects
                         break;
                 }
             }
+            if (items.Count == 0)
+                state = new Used(this);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
+using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.GoombaStates;
 
 namespace MelloMario.EnemyObjects
@@ -19,6 +20,24 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
+            if (target is Mario)
+            {
+                //TODO: Fire to be added
+                Mario m = (Mario)target;
+                if(mode == CollisionMode.Top || m.ProtectionState is MarioObjects.ProtectionStates.Protected)
+                {
+                    Defeat();
+                }
+            }
+            else if (target is Koopa)
+            {
+                Koopa k = (Koopa)target;
+                if (k.State is KoopaStates.MovingShell)
+                {
+                    Defeat();
+                }
+            }
+            
         }
 
         protected override void OnOut(CollisionMode mode)

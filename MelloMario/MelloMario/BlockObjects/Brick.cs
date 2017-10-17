@@ -29,6 +29,10 @@ namespace MelloMario.BlockObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
+            if (target is Mario && mode == CollisionMode.Bottom)
+            {
+                Bump((Mario)target);
+            }
         }
 
         protected override void OnOut(CollisionMode mode)
@@ -45,6 +49,17 @@ namespace MelloMario.BlockObjects
             {
                 state = value;
                 OnStateChanged();
+            }
+        }
+        public Queue<char> Items
+        {
+            get
+            {
+                return items;
+            }
+            set
+            {
+                items = value;
             }
         }
         public Brick(IGameWorld world, Point location, bool isHidden, Queue<char> items) : base(world, location, new Point(32, 32))
@@ -107,6 +122,8 @@ namespace MelloMario.BlockObjects
                     default:
                         break;
                 }
+                if (items.Count == 0)
+                    state = new Used(this);
             }
         }
     }

@@ -38,7 +38,7 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public override void Update(GameTime time)
         {
-            //TODO: release items
+            //TODO: Only Animations
             //block.State = new BrickNormal(block);
             //block.State = new BrickUsed(block);
 
