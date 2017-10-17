@@ -51,7 +51,18 @@ namespace MelloMario.BlockObjects
             state = new Normal(this);
             OnStateChanged();
         }
-
+        public Brick(IGameWorld world, Point location, bool isHidden) : base(world, location, new Point(32, 32))
+        {
+            if (isHidden)
+            {
+                state = new Hidden(this);
+            }
+            else
+            {
+                state = new Normal(this);
+            }
+            OnStateChanged();
+        }
         public void Show()
         {
             State.Show();

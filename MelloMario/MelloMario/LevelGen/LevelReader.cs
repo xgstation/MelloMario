@@ -24,8 +24,10 @@ namespace MelloMario.LevelGen
         Blocks:
         F:Floor
         B:Brick
+        b:Hidden Brick
         S:Stair
         Q:Question
+        q:Hidden Question
         P:Pipe(to the right one block)
         V:Vertical Pipe(to the right one block)
          
@@ -89,11 +91,17 @@ namespace MelloMario.LevelGen
                         case 'B':
                             world.AddObject(new Brick(world, new Point(j * SCALE, i * SCALE)));
                             break;
+                        case 'b':
+                            world.AddObject(new Brick(world, new Point(j * SCALE, i * SCALE), true));
+                            break;
                         case 'S':
                             world.AddObject(new Stair(world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'Q':
                             world.AddObject(new Question(world, new Point(j * SCALE, i * SCALE)));
+                            break;
+                        case 'q':
+                            world.AddObject(new Question(world, new Point(j * SCALE, i * SCALE), true));
                             break;
                         case 'P':
                             world.AddObject(new Pipeline(world, new Point(j * SCALE, i * SCALE), "LeftIn"));
