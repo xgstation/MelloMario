@@ -4,6 +4,7 @@ using MelloMario.MarioObjects.MovementStates;
 using MelloMario.MarioObjects.PowerUpStates;
 using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.BlockObjects;
+using MelloMario.EnemyObjects;
 
 namespace MelloMario.MarioObjects
 {
@@ -17,7 +18,11 @@ namespace MelloMario.MarioObjects
 
         private void OnStateChanged()
         {
-            if (powerUpState is Dead)
+            if (movementState is Crouching && powerUpState is Standard)
+            {
+                movementState.Idle();
+            }
+            else if (powerUpState is Dead)
             {
                 ShowSprite(SpriteFactory.Instance.CreateMarioSprite(powerUpState.GetType().Name, true));
             }
@@ -79,12 +84,47 @@ namespace MelloMario.MarioObjects
                     {
                         ApplyHorizontalFriction(FORCE_F_GROUND);
 
-                        if (movementState is Jumping)
+                        if (MovementState is Jumping)
                         {
-                            movementState.Idle();
+                            MovementState.Idle();
                         }
                     }
 
+                    break;
+                case "Goomba":
+                    if (mode != CollisionMode.Bottom)
+                    {
+                        if (((Goomba)target).State is EnemyObjects.GoombaStates.Normal)
+                        {
+                            PowerUpState.Downgrade();
+                        }
+                    }
+
+                    break;
+                case "Koopa":
+                    if (mode != CollisionMode.Bottom)
+                    {
+                        if (((Koopa)target).State is EnemyObjects.KoopaStates.Normal)
+                        {
+                            PowerUpState.Downgrade();
+                        }
+                    }
+
+                    break;
+                case "Coin":
+                    // TODO: coin +1
+                    break;
+                case "FireFlower":
+                    PowerUpState.UpgradeToFire();
+                    break;
+                case "OneUpMushroom":
+                    // TODO: life +1
+                    break;
+                case "Star":
+                    ProtectionState.Star();
+                    break;
+                case "SuperMushroom":
+                    PowerUpState.UpgradeToSuper();
                     break;
             }
         }
@@ -141,7 +181,7 @@ namespace MelloMario.MarioObjects
 
         public void Left()
         {
-            if (!(movementState is Crouching))
+            if (!(MovementState is Crouching))
             {
                 userInput.X -= FORCE_INPUT;
             }
@@ -149,23 +189,23 @@ namespace MelloMario.MarioObjects
             {
                 ChangeFacing(FacingMode.left);
             }
-            if (movementState is Standing)
+            if (MovementState is Standing)
             {
-                movementState.Walk();
+                MovementState.Walk();
             }
         }
 
         public void LeftRelease()
         {
-            if (movementState is Walking)
+            if (MovementState is Walking)
             {
-                movementState.Idle();
+                MovementState.Idle();
             }
         }
 
         public void Right()
         {
-            if (!(movementState is Crouching))
+            if (!(MovementState is Crouching))
             {
                 userInput.X += FORCE_INPUT;
             }
@@ -173,17 +213,17 @@ namespace MelloMario.MarioObjects
             {
                 ChangeFacing(FacingMode.right);
             }
-            if (movementState is Standing)
+            if (MovementState is Standing)
             {
-                movementState.Walk();
+                MovementState.Walk();
             }
         }
 
         public void RightRelease()
         {
-            if (movementState is Walking)
+            if (MovementState is Walking)
             {
-                movementState.Idle();
+                MovementState.Idle();
             }
         }
 
@@ -217,7 +257,7 @@ namespace MelloMario.MarioObjects
             {
                 // TODO: for sprint2 only
                 // "fall" instead of "crouch"
-                userInput.Y += FORCE_INPUT;
+                userInput.Y += FORCE_INPUT;          
             }
 
             MovementState.Crouch();
