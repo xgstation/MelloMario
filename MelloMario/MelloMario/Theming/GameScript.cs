@@ -29,6 +29,8 @@ namespace MelloMario
                 controller.AddCommand(Keys.W, factory.CreateGameCharacterCommand("Jump", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.A, factory.CreateGameCharacterCommand("Left", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.D, factory.CreateGameCharacterCommand("Right", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.A, factory.CreateGameCharacterCommand("LeftRelease", character), KeyBehavior.release);
+                controller.AddCommand(Keys.D, factory.CreateGameCharacterCommand("RightRelease", character), KeyBehavior.release);
 
                 // sprint 2 cheat commands
 
@@ -44,6 +46,9 @@ namespace MelloMario
                 controller.AddCommand(Buttons.A, factory.CreateGameCharacterCommand("Jump", character), KeyBehavior.hold);
                 controller.AddCommand(Buttons.DPadLeft, factory.CreateGameCharacterCommand("Left", character), KeyBehavior.hold);
                 controller.AddCommand(Buttons.DPadRight, factory.CreateGameCharacterCommand("Right", character), KeyBehavior.hold);
+
+                controller.AddCommand(Buttons.DPadLeft, factory.CreateGameCharacterCommand("LeftRelease", character), KeyBehavior.release);
+                controller.AddCommand(Buttons.DPadRight, factory.CreateGameCharacterCommand("RightRelease", character), KeyBehavior.release);
             }
         }
     }

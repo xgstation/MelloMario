@@ -118,7 +118,11 @@ namespace MelloMario.MarioObjects
         public void Left()
         {
             userInput.X -= FORCE_INPUT;
-            facing = Facing.left;
+            if(facing == Facing.right)
+            {
+                facing = Facing.left;
+                OnStateChanged();
+            }
             if (movementState is Standing)
             {
                 movementState.Walk();
@@ -147,7 +151,11 @@ namespace MelloMario.MarioObjects
         public void Right()
         {
             userInput.X += FORCE_INPUT;
-            facing = Facing.right;
+            if (facing == Facing.left)
+            {
+                facing = Facing.right;
+                OnStateChanged();
+            }
             if (movementState is Standing)
             {
                 movementState.Walk();
