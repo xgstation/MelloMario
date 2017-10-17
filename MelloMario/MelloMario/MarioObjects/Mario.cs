@@ -53,6 +53,12 @@ namespace MelloMario.MarioObjects
             ApplyVerticalFriction(FORCE_F_AIR);
 
             base.OnSimulation(time);
+
+            if(movement.Y == 0 && movementState is Jumping)
+            {
+                movementState.Idle();
+                OnStateChanged();
+            }
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
@@ -117,8 +123,9 @@ namespace MelloMario.MarioObjects
 
         public void Left()
         {
-            userInput.X -= FORCE_INPUT;
-            if(facing == Facing.right)
+            if (!(movementState is Crouching))
+                userInput.X -= FORCE_INPUT;
+            if (facing == Facing.right)
             {
                 facing = Facing.left;
                 OnStateChanged();
@@ -150,7 +157,8 @@ namespace MelloMario.MarioObjects
 
         public void Right()
         {
-            userInput.X += FORCE_INPUT;
+            if(!(movementState is Crouching))
+                userInput.X += FORCE_INPUT;
             if (facing == Facing.left)
             {
                 facing = Facing.right;
@@ -180,6 +188,7 @@ namespace MelloMario.MarioObjects
             }
 
             MovementState.Jump();
+            OnStateChanged();
         }
 
         public void Crouch()

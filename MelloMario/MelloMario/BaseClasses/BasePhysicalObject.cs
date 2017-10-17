@@ -17,7 +17,7 @@ namespace MelloMario
         //private const float F_FRICTION = 80f;
 
         private float pixelScale;
-        private Vector2 movement;
+        protected Vector2 movement;
         private Vector2 velocity;
         private Vector2 force;
         private Vector2 frictionalForce;
@@ -168,6 +168,12 @@ namespace MelloMario
                 velocity.Y = -VELOCITY_MAX_U;
             }
             movement += velocity * deltaTime;
+
+            //get rid of some movement that is way too small to have an effect
+            if (movement.X * movement.X < 0.0001)
+                movement.X = 0;
+            if (movement.Y * movement.Y < 0.0001)
+                movement.Y = 0;
 
             // Apply movement
 
