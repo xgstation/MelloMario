@@ -22,14 +22,14 @@ namespace MelloMario
         private Vector2 force;
         private Vector2 frictionalForce;
 
-        protected enum Facing { left, right };
+        protected enum FacingMode { left, right };
 
         protected const float FORCE_G = 40f;
         protected const float FORCE_INPUT = 120f;
         protected const float FORCE_F_GROUND = 100f;
         protected const float FORCE_F_AIR = 20f;
 
-        protected Facing facing;
+        protected FacingMode Facing;
 
         protected void ApplyForce(Vector2 delta)
         {
@@ -182,7 +182,7 @@ namespace MelloMario
             movement = new Vector2();
             velocity = new Vector2();
             force = new Vector2();
-            facing = Facing.right;
+            Facing = FacingMode.right;
         }
     }
 }

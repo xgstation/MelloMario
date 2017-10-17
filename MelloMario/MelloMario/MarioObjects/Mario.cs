@@ -24,7 +24,7 @@ namespace MelloMario.MarioObjects
             else
             {
                 string facingString;
-                if (facing == Facing.left)
+                if (Facing == FacingMode.left)
                 {
                     facingString = "Left";
                 }
@@ -40,8 +40,10 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        private void OnFacingChanged()
+        private void ChangeFacing(FacingMode facing)
         {
+            Facing = facing;
+
             // Notice: The effect should be the same as changing Mario's state
             OnStateChanged();
         }
@@ -77,7 +79,10 @@ namespace MelloMario.MarioObjects
                     {
                         ApplyHorizontalFriction(FORCE_F_GROUND);
 
-                        movementState.Idle();
+                        if (movementState is Jumping)
+                        {
+                            movementState.Idle();
+                        }
                     }
 
                     break;
@@ -137,11 +142,12 @@ namespace MelloMario.MarioObjects
         public void Left()
         {
             if (!(movementState is Crouching))
-                userInput.X -= FORCE_INPUT;
-            if (facing == Facing.right)
             {
-                facing = Facing.left;
-                OnFacingChanged();
+                userInput.X -= FORCE_INPUT;
+            }
+            if (Facing == FacingMode.right)
+            {
+                ChangeFacing(FacingMode.left);
             }
             if (movementState is Standing)
             {
@@ -160,11 +166,12 @@ namespace MelloMario.MarioObjects
         public void Right()
         {
             if (!(movementState is Crouching))
-                userInput.X += FORCE_INPUT;
-            if (facing == Facing.left)
             {
-                facing = Facing.right;
-                OnFacingChanged();
+                userInput.X += FORCE_INPUT;
+            }
+            if (Facing == FacingMode.left)
+            {
+                ChangeFacing(FacingMode.right);
             }
             if (movementState is Standing)
             {
