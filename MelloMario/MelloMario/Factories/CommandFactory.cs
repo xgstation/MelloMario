@@ -29,7 +29,7 @@ namespace MelloMario.Factories
             switch (action)
             {
                 case "Pause":
-                    return new PauseCommand(model);
+                    return new Pause(model);
                 default:
                     throw new Exception("Unknown action");
             }
@@ -40,31 +40,31 @@ namespace MelloMario.Factories
             switch (action)
             {
                 case "Action":
-                    return new ActionCommand(character);
+                    return new Commands.Action(character);
                 case "Crouch":
-                    return new CrouchCommand(character);
-                case "Jump":
-                    return new JumpCommand(character);
-                case "Left":
-                    return new LeftCommand(character);
-                case "Right":
-                    return new RightCommand(character);
-                case "LeftRelease":
-                    return new LeftReleaseCommand(character);
-                case "RightRelease":
-                    return new RightReleaseCommand(character);
-                case "RightPress":
-                    return new RightPressCommand(character);
-                case "LeftPress":
-                    return new LeftPressCommand(character);
-                case "JumpRelease":
-                    return new JumpPressCommand(character);
-                case "CrouchRelease":
-                    return new CrouchReleaseCommand(character);
-                case "JumpPress":
-                    return new JumpPressCommand(character);
+                    return new Crouch(character);
                 case "CrouchPress":
-                    return new CrouchPressCommand(character);
+                    return new CrouchPress(character);
+                case "CrouchRelease":
+                    return new CrouchRelease(character);
+                case "Jump":
+                    return new Jump(character);
+                case "JumpPress":
+                    return new JumpPress(character);
+                case "JumpRelease":
+                    return new JumpPress(character);
+                case "Left":
+                    return new Left(character);
+                case "LeftPress":
+                    return new LeftPress(character);
+                case "LeftRelease":
+                    return new LeftRelease(character);
+                case "Right":
+                    return new Right(character);
+                case "RightPress":
+                    return new RightPress(character);
+                case "RightRelease":
+                    return new RightRelease(character);
                 default:
                     throw new Exception("Unknown action");
             }
@@ -77,15 +77,15 @@ namespace MelloMario.Factories
             switch (action)
             {
                 case "ToggleGravity":
-                    return new ToggleGravityCommand((Mario)gameObject);
+                    return new ToggleGravity((Mario)gameObject);
                 case "DeadState":
-                    return new DeadStateCommand((Mario)gameObject);
+                    return new DeadState((Mario)gameObject);
                 case "FireState":
-                    return new FireStateCommand((Mario)gameObject);
+                    return new FireState((Mario)gameObject);
                 case "StandardState":
-                    return new StandardStateCommand((Mario)gameObject);
+                    return new StandardState((Mario)gameObject);
                 case "SuperState":
-                    return new SuperStateCommand((Mario)gameObject);
+                    return new SuperState((Mario)gameObject);
                 default:
                     throw new Exception("Unknown action");
             }

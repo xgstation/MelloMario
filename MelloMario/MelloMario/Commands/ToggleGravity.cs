@@ -2,15 +2,15 @@
 
 namespace MelloMario.Commands
 {
-    class DeadStateCommand : BaseCommand<Mario>
+    class ToggleGravity : BaseCommand<Mario>
     {
-        public DeadStateCommand(Mario mario) : base(mario)
+        public ToggleGravity(Mario mario) : base(mario)
         {
         }
 
         public override void Execute()
         {
-            Receiver.Kill();
+            Receiver.ToggleGravity();
         }
     }
 }

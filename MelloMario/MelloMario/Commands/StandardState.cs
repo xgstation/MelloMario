@@ -2,9 +2,9 @@
 
 namespace MelloMario.Commands
 {
-    class StandardStateCommand : BaseCommand<Mario>
+    class StandardState : BaseCommand<Mario>
     {
-        public StandardStateCommand(Mario mario) : base(mario)
+        public StandardState(Mario mario) : base(mario)
         {
         }
 

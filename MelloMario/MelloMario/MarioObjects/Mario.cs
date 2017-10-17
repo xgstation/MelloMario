@@ -5,7 +5,6 @@ using MelloMario.MarioObjects.PowerUpStates;
 using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
-using System;
 
 namespace MelloMario.MarioObjects
 {
@@ -75,11 +74,9 @@ namespace MelloMario.MarioObjects
             switch (target.GetType().Name)
             {
                 case "Brick":
-                    //TODO:Hidden Brick
                 case "Floor":
                 case "Pipeline":
                 case "Question":
-                    //TODO:Hidden Question
                 case "Stair":
                     SoftBounce(mode);
 
@@ -198,6 +195,11 @@ namespace MelloMario.MarioObjects
             }
         }
 
+        public void LeftPress()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void LeftRelease()
         {
             if (MovementState is Walking)
@@ -220,6 +222,11 @@ namespace MelloMario.MarioObjects
             {
                 MovementState.Walk();
             }
+        }
+
+        public void RightPress()
+        {
+            throw new System.NotImplementedException();
         }
 
         public void RightRelease()
@@ -249,6 +256,16 @@ namespace MelloMario.MarioObjects
             MovementState.Jump();
         }
 
+        public void JumpPress()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void JumpRelease()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Crouch()
         {
             if (MovementState is Jumping)
@@ -260,12 +277,21 @@ namespace MelloMario.MarioObjects
             {
                 // TODO: for sprint2 only
                 // "fall" instead of "crouch"
-                userInput.Y += FORCE_INPUT;          
+                userInput.Y += FORCE_INPUT;
             }
 
             MovementState.Crouch();
         }
 
+        public void CrouchPress()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void CrouchRelease()
+        {
+            throw new System.NotImplementedException();
+        }
 
         public void Action()
         {
@@ -298,36 +324,6 @@ namespace MelloMario.MarioObjects
         public void ToggleGravity()
         {
             g_on = !g_on;
-        }
-
-        public void LeftPress()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RightPress()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void JumpRelease()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void JumpPress()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CrouchRelease()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CrouchPress()
-        {
-            throw new NotImplementedException();
         }
     }
 }

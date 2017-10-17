@@ -2,15 +2,15 @@
 
 namespace MelloMario.Commands
 {
-    class FireStateCommand : BaseCommand<Mario>
+    class DeadState : BaseCommand<Mario>
     {
-        public FireStateCommand(Mario mario) : base(mario)
+        public DeadState(Mario mario) : base(mario)
         {
         }
 
         public override void Execute()
         {
-            Receiver.UpgradeToFire();
+            Receiver.Kill();
         }
     }
 }
