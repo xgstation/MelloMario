@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MelloMario.Commands
+﻿namespace MelloMario.Commands
 {
-    class LeftPressCommand : BaseCommand<IGameCharacter>
+    class LeftPress : BaseCommand<IGameCharacter>
     {
-        public LeftPressCommand(IGameCharacter character) : base(character)
+        public LeftPress(IGameCharacter character) : base(character)
         {
         }
 

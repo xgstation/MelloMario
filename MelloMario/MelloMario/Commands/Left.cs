@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class LeftCommand : BaseCommand<IGameCharacter>
+    class Left : BaseCommand<IGameCharacter>
     {
-        public LeftCommand(IGameCharacter character) : base(character)
+        public Left(IGameCharacter character) : base(character)
         {
         }
 

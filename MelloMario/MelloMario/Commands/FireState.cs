@@ -2,15 +2,15 @@
 
 namespace MelloMario.Commands
 {
-    class ToggleGravityCommand : BaseCommand<Mario>
+    class FireState : BaseCommand<Mario>
     {
-        public ToggleGravityCommand(Mario mario) : base(mario)
+        public FireState(Mario mario) : base(mario)
         {
         }
 
         public override void Execute()
         {
-            Receiver.ToggleGravity();
+            Receiver.UpgradeToFire();
         }
     }
 }

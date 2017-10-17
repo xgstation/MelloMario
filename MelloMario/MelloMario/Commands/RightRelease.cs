@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class RightReleaseCommand : BaseCommand<IGameCharacter>
+    class RightRelease : BaseCommand<IGameCharacter>
     {
-        public RightReleaseCommand(IGameCharacter character) : base(character)
+        public RightRelease(IGameCharacter character) : base(character)
         {
         }
 

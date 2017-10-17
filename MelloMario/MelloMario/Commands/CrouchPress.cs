@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MelloMario.Commands
+﻿namespace MelloMario.Commands
 {
-    class CrouchPressCommand : BaseCommand<IGameCharacter>
+    class CrouchPress : BaseCommand<IGameCharacter>
     {
-        public CrouchPressCommand(IGameCharacter character) : base(character)
+        public CrouchPress(IGameCharacter character) : base(character)
         {
         }
 

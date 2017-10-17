@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MelloMario.Commands
+﻿namespace MelloMario.Commands
 {
-    class RightPressCommand : BaseCommand<IGameCharacter>
+    class RightPress : BaseCommand<IGameCharacter>
     {
-        public RightPressCommand(IGameCharacter character) : base(character)
+        public RightPress(IGameCharacter character) : base(character)
         {
         }
 

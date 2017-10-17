@@ -5,7 +5,6 @@ using MelloMario.MarioObjects.PowerUpStates;
 using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
-using System;
 
 namespace MelloMario.MarioObjects
 {
@@ -207,13 +206,17 @@ namespace MelloMario.MarioObjects
             {
                 userInput.X -= FORCE_INPUT;
             }
-            if (Facing == FacingMode.right)
-            {
-                ChangeFacing(FacingMode.left);
-            }
             if (MovementState is Standing)
             {
                 MovementState.Walk();
+            }
+        }
+
+        public void LeftPress()
+        {
+            if (Facing == FacingMode.right)
+            {
+                ChangeFacing(FacingMode.left);
             }
         }
 
@@ -231,13 +234,17 @@ namespace MelloMario.MarioObjects
             {
                 userInput.X += FORCE_INPUT;
             }
-            if (Facing == FacingMode.left)
-            {
-                ChangeFacing(FacingMode.right);
-            }
             if (MovementState is Standing)
             {
                 MovementState.Walk();
+            }
+        }
+
+        public void RightPress()
+        {
+            if (Facing == FacingMode.left)
+            {
+                ChangeFacing(FacingMode.right);
             }
         }
 
@@ -251,40 +258,55 @@ namespace MelloMario.MarioObjects
 
         public void Jump()
         {
-            if (MovementState is Crouching)
-            {
-                // TODO: for sprint2 only
-                SoftBounce(CollisionMode.Bottom);
-            }
-            else
+            if (!(MovementState is Crouching))
             {
                 userInput.Y -= FORCE_INPUT;
                 if (g_on)
                 {
                     userInput.Y -= FORCE_G;
                 }
-            }
 
-            MovementState.Jump();
+                MovementState.Jump();
+            }
+        }
+
+        public void JumpPress()
+        {
+            // TODO: for sprint2 only
+            SoftBounce(CollisionMode.Bottom);
+        }
+
+        public void JumpRelease()
+        {
+            // TODO: for sprint2 only
+            if (MovementState is Crouching)
+            {
+                MovementState.Idle();
+            }
         }
 
         public void Crouch()
         {
-            if (MovementState is Jumping)
-            {
-                // TODO: for sprint2 only
-                SoftBounce(CollisionMode.Top);
-            }
-            else
+            if (!(MovementState is Jumping))
             {
                 // TODO: for sprint2 only
                 // "fall" instead of "crouch"
-                userInput.Y += FORCE_INPUT;          
-            }
+                userInput.Y += FORCE_INPUT;
 
-            MovementState.Crouch();
+                MovementState.Crouch();
+            }
         }
 
+        public void CrouchPress()
+        {
+            // TODO: for sprint2 only
+            SoftBounce(CollisionMode.Top);
+        }
+
+        public void CrouchRelease()
+        {
+            MovementState.Idle();
+        }
 
         public void Action()
         {
@@ -317,36 +339,6 @@ namespace MelloMario.MarioObjects
         public void ToggleGravity()
         {
             g_on = !g_on;
-        }
-
-        public void LeftPress()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RightPress()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void JumpRelease()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void JumpPress()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CrouchRelease()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CrouchPress()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -7,17 +7,17 @@ namespace MelloMario
     interface IGameCharacter : IGameObject
     {
         void Left();
-        void LeftRelease();
         void LeftPress();
+        void LeftRelease();
         void Right();
-        void RightRelease();
         void RightPress();
+        void RightRelease();
         void Jump();
-        void JumpRelease();
         void JumpPress();
+        void JumpRelease();
         void Crouch();
-        void CrouchRelease();
         void CrouchPress();
+        void CrouchRelease();
         void Action();
     }
 }
