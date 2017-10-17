@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.ItemObjects.SuperMushroomStates;
+using MelloMario.MarioObjects;
 
 namespace MelloMario.ItemObjects
 {
@@ -19,6 +20,11 @@ namespace MelloMario.ItemObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
+            if (target is Mario)
+            {
+                Collect();
+            }
+            //Collide with bumped brick to be done
         }
 
         protected override void OnOut(CollisionMode mode)

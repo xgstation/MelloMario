@@ -74,9 +74,11 @@ namespace MelloMario.MarioObjects
             switch (target.GetType().Name)
             {
                 case "Brick":
+                    //TODO:Hidden Brick
                 case "Floor":
                 case "Pipeline":
                 case "Question":
+                    //TODO:Hidden Question
                 case "Stair":
                     SoftBounce(mode);
 

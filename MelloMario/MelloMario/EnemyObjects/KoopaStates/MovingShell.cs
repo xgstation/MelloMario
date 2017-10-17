@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace MelloMario.EnemyObjects.KoopaStates
 {
-    class Shell : BaseState<Koopa>, IKoopaState
+    class MovingShell : BaseState<Koopa>, IKoopaState
     {
-        public Shell(Koopa owner) : base(owner)
+        public MovingShell(Koopa owner) : base(owner)
         {
         }
 
