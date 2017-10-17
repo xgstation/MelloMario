@@ -3,6 +3,8 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.MarioObjects.PowerUpStates;
 using MelloMario.MarioObjects.ProtectionStates;
+using MelloMario.BlockObjects;
+using MelloMario.EnemyObjects;
 
 namespace MelloMario.MarioObjects
 {
@@ -16,14 +18,18 @@ namespace MelloMario.MarioObjects
 
         private void OnStateChanged()
         {
-            if (powerUpState is Dead)
+            if (movementState is Crouching && powerUpState is Standard)
+            {
+                movementState.Idle();
+            }
+            else if (powerUpState is Dead)
             {
                 ShowSprite(SpriteFactory.Instance.CreateMarioSprite(powerUpState.GetType().Name, true));
             }
             else
             {
                 string facingString;
-                if (facing == Facing.left)
+                if (Facing == FacingMode.left)
                 {
                     facingString = "Left";
                 }
@@ -37,6 +43,14 @@ namespace MelloMario.MarioObjects
                     !(movementState is Walking)
                 ));
             }
+        }
+
+        private void ChangeFacing(FacingMode facing)
+        {
+            Facing = facing;
+
+            // Notice: The effect should be the same as changing Mario's state
+            OnStateChanged();
         }
 
         protected override void OnSimulation(GameTime time)
@@ -53,22 +67,66 @@ namespace MelloMario.MarioObjects
             ApplyVerticalFriction(FORCE_F_AIR);
 
             base.OnSimulation(time);
-
-            if(movement.Y == 0 && movementState is Jumping)
-            {
-                movementState.Idle();
-                OnStateChanged();
-            }
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
-            // TODO: if target is block
-            if (mode == CollisionMode.Bottom)
+            switch (target.GetType().Name)
             {
-                ApplyHorizontalFriction(FORCE_F_GROUND);
+                case "Brick":
+                case "Floor":
+                case "Pipeline":
+                case "Question":
+                case "Stair":
+                    SoftBounce(mode);
+
+                    if (mode == CollisionMode.Bottom)
+                    {
+                        ApplyHorizontalFriction(FORCE_F_GROUND);
+
+                        if (MovementState is Jumping)
+                        {
+                            MovementState.Idle();
+                        }
+                    }
+
+                    break;
+                case "Goomba":
+                    if (mode != CollisionMode.Bottom)
+                    {
+                        if (((Goomba)target).State is EnemyObjects.GoombaStates.Normal)
+                        {
+                            PowerUpState.Downgrade();
+                        }
+                    }
+
+                    break;
+                case "Koopa":
+                    if (mode != CollisionMode.Bottom)
+                    {
+                        if (((Koopa)target).State is EnemyObjects.KoopaStates.Normal)
+                        {
+                            PowerUpState.Downgrade();
+                        }
+                    }
+
+                    break;
+                case "Coin":
+                    // TODO: coin +1
+                    break;
+                case "FireFlower":
+                    PowerUpState.UpgradeToFire();
+                    break;
+                case "OneUpMushroom":
+                    // TODO: life +1
+                    break;
+                case "Star":
+                    ProtectionState.Star();
+                    break;
+                case "SuperMushroom":
+                    PowerUpState.UpgradeToSuper();
+                    break;
             }
-            SoftBounce(mode);
         }
 
         protected override void OnOut(CollisionMode mode)
@@ -123,51 +181,49 @@ namespace MelloMario.MarioObjects
 
         public void Left()
         {
-            if (!(movementState is Crouching))
+            if (!(MovementState is Crouching))
+            {
                 userInput.X -= FORCE_INPUT;
-            if (facing == Facing.right)
-            {
-                facing = Facing.left;
-                OnStateChanged();
             }
-            if (movementState is Standing)
+            if (Facing == FacingMode.right)
             {
-                movementState.Walk();
-                OnStateChanged();
+                ChangeFacing(FacingMode.left);
+            }
+            if (MovementState is Standing)
+            {
+                MovementState.Walk();
             }
         }
 
         public void LeftRelease()
         {
-            if (movementState is Walking)
+            if (MovementState is Walking)
             {
-                movementState.Idle();
-                OnStateChanged();
-            }
-        }
-
-        public void RightRelease()
-        {
-            if (movementState is Walking)
-            {
-                movementState.Idle();
-                OnStateChanged();
+                MovementState.Idle();
             }
         }
 
         public void Right()
         {
-            if(!(movementState is Crouching))
+            if (!(MovementState is Crouching))
+            {
                 userInput.X += FORCE_INPUT;
-            if (facing == Facing.left)
-            {
-                facing = Facing.right;
-                OnStateChanged();
             }
-            if (movementState is Standing)
+            if (Facing == FacingMode.left)
             {
-                movementState.Walk();
-                OnStateChanged();
+                ChangeFacing(FacingMode.right);
+            }
+            if (MovementState is Standing)
+            {
+                MovementState.Walk();
+            }
+        }
+
+        public void RightRelease()
+        {
+            if (MovementState is Walking)
+            {
+                MovementState.Idle();
             }
         }
 
@@ -188,7 +244,6 @@ namespace MelloMario.MarioObjects
             }
 
             MovementState.Jump();
-            OnStateChanged();
         }
 
         public void Crouch()

@@ -17,19 +17,19 @@ namespace MelloMario
         //private const float F_FRICTION = 80f;
 
         private float pixelScale;
-        protected Vector2 movement;
+        private Vector2 movement;
         private Vector2 velocity;
         private Vector2 force;
         private Vector2 frictionalForce;
 
-        protected enum Facing { left, right };
+        protected enum FacingMode { left, right };
 
         protected const float FORCE_G = 40f;
         protected const float FORCE_INPUT = 120f;
         protected const float FORCE_F_GROUND = 100f;
         protected const float FORCE_F_AIR = 20f;
 
-        protected Facing facing;
+        protected FacingMode Facing;
 
         protected void ApplyForce(Vector2 delta)
         {
@@ -169,12 +169,6 @@ namespace MelloMario
             }
             movement += velocity * deltaTime;
 
-            //get rid of some movement that is way too small to have an effect
-            if (movement.X * movement.X < 0.0001)
-                movement.X = 0;
-            if (movement.Y * movement.Y < 0.0001)
-                movement.Y = 0;
-
             // Apply movement
 
             Point pixelMovement = (movement * pixelScale).ToPoint();
@@ -188,7 +182,7 @@ namespace MelloMario
             movement = new Vector2();
             velocity = new Vector2();
             force = new Vector2();
-            facing = Facing.right;
+            Facing = FacingMode.right;
         }
     }
 }

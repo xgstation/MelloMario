@@ -10,6 +10,7 @@ namespace MelloMario.BlockObjects
     {
         private IBlockState state;
         private Queue<char> items;
+
         private void OnStateChanged()
         {
             if (state is Hidden)
@@ -46,7 +47,7 @@ namespace MelloMario.BlockObjects
                 OnStateChanged();
             }
         }
-        public Brick(IGameWorld world, Point location, bool isHidden, Queue<char> items) : base(world, location, new Point(32,32))
+        public Brick(IGameWorld world, Point location, bool isHidden, Queue<char> items) : base(world, location, new Point(32, 32))
         {
             if (isHidden)
             {
@@ -81,6 +82,7 @@ namespace MelloMario.BlockObjects
         {
             State.Bump(mario);
         }
+
         public void ReleaseNextItem()
         {
             if (items.Count != 0)

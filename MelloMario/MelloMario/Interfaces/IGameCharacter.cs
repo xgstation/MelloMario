@@ -8,8 +8,8 @@ namespace MelloMario
     {
         void Left();
         void LeftRelease();
-        void RightRelease();
         void Right();
+        void RightRelease();
         void Jump();
         void Crouch();
         void Action();
