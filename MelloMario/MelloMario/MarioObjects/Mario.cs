@@ -202,7 +202,7 @@ namespace MelloMario.MarioObjects
             {
                 // TODO: for sprint2 only
                 // "fall" instead of "crouch"
-                userInput.Y += FORCE_INPUT;
+                userInput.Y += FORCE_INPUT;          
             }
 
             MovementState.Crouch();
