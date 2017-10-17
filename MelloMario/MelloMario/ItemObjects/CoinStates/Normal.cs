@@ -22,7 +22,7 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public void Collect()
         {
-            Owner.State = new Collected(Owner);
+
         }
 
         public override void Update(GameTime time)

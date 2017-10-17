@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
-    class Normal : BaseState<OneUpMushroom>, IItemState
+    class Unveil : BaseState<OneUpMushroom>, IItemState
     {
-        public Normal(OneUpMushroom owner) : base(owner)
+        //TODO: Unveil Animation
+        public Unveil(OneUpMushroom owner) : base(owner)
         {
         }
 

@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MelloMario.Factories;
 
-namespace MelloMario.ItemObjects.OneUpMushroomStates
+namespace MelloMario.ItemObjects.CoinStates
 {
-    class Normal : BaseState<OneUpMushroom>, IItemState
+    class Unveil : BaseState<Coin>, IItemState
     {
-        public Normal(OneUpMushroom owner) : base(owner)
+        public Unveil (Coin owner) : base(owner)
         {
         }
 
@@ -21,6 +22,7 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
 
         public void Collect()
         {
+
         }
 
         public override void Update(GameTime time)

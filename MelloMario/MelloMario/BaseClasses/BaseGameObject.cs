@@ -118,7 +118,14 @@ namespace MelloMario
             location.X += moveX;
             location.Y += moveY;
         }
-
+        protected IGameWorld World()
+        {
+            return world;
+        }
+        protected Point Location()
+        {
+            return location;
+        }
         protected void Move(Point delta)
         {
             movement += delta;
@@ -157,11 +164,6 @@ namespace MelloMario
             get
             {
                 return new Rectangle(location.X, location.Y, size.X, size.Y);
-            }
-            set
-            {
-                location = value.Location;
-                size = value.Size;
             }
         }
 

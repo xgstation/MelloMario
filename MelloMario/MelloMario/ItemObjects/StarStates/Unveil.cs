@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MelloMario.ItemObjects;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -6,17 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MelloMario.ItemObjects.CoinStates
+namespace MelloMario.ItemObjects.StarStates
 {
-    class Collected : BaseState<Coin>, IItemState
+    class Unveil : BaseState<Star>, IItemState
     {
-        public Collected(Coin owner) : base(owner)
+        //TODO: Unveil Animation
+        public Unveil(Star owner) : base(owner)
         {
         }
 
         public void Show()
         {
-            Owner.State = new Normal(Owner);
         }
 
         public void Collect()
