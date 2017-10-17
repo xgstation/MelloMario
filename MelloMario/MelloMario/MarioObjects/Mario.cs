@@ -75,11 +75,30 @@ namespace MelloMario.MarioObjects
             switch (target.GetType().Name)
             {
                 case "Brick":
-                    //TODO:Hidden Brick
+                case "Question":
+                    Brick b;
+                    Question q;
+                    bool isHidden;
+                    if (target is Brick)
+                    {
+                        b = (Brick)target;
+                        isHidden = b.State is BlockObjects.BrickStates.Hidden;
+                    } else
+                    {
+                        q = (Question)target;
+                        isHidden = q.State is BlockObjects.QuestionStates.Hidden;
+                    }
+                    if (isHidden && mode != CollisionMode.Top)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        goto case "Stair";
+                    }
+                //TODO:Hidden Brick
                 case "Floor":
                 case "Pipeline":
-                case "Question":
-                    //TODO:Hidden Question
                 case "Stair":
                     SoftBounce(mode);
 
