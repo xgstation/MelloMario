@@ -69,6 +69,12 @@
     <Compile Include="BlockObjects\StairStates\Normal.cs" />
     <Compile Include="BaseClasses\BaseCommand.cs" />
     <Compile Include="Commands\ActionCommand.cs" />
+    <Compile Include="Commands\Class1.cs" />
+    <Compile Include="Commands\LeftPress.cs" />
+    <Compile Include="Commands\CrouchPress.cs" />
+    <Compile Include="Commands\JumpPress.cs" />
+    <Compile Include="Commands\CrouchReleaseCommand.cs" />
+    <Compile Include="Commands\JumpReleaseCommand.cs" />
     <Compile Include="Commands\CrouchCommand.cs" />
     <Compile Include="Commands\RightReleaseCommand.cs" />
     <Compile Include="Commands\LeftReleaseCommand.cs" />
