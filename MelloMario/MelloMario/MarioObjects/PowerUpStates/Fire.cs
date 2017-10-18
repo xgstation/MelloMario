@@ -28,6 +28,9 @@ namespace MelloMario.MarioObjects.PowerUpStates
         public void UpgradeToSuper()
         {
             Owner.PowerUpState = new Super(Owner);
+            if (Owner.ProtectionState is ProtectionStates.Dead)
+                Owner.ProtectionState = new ProtectionStates.Normal(Owner);
+
         }
         public override void Update(GameTime time)
         {
