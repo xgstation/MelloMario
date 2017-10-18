@@ -1,8 +1,0 @@
-Author: wenli wu
-Date: 9/26/2017
-Sprint Number:1
-Name of file: Mario.cs, StandardJumpingLeft.cs
-Author of the .cs file: Kelly Cai
-Comment: For the Mario class, The first characters of some variables use upper case letter while others use lower case letters and the variable currentPowerState is not used.  Since Mario.cs class has ChangeTo StandardState(), ChangeToFireState(), ChangeToSuperState() methods, the enum is not useful.  For the StandardJumpingLeft class, the name of a Mario variable is the same as the name of a parameter, the author can avoid this by simply rename variables.  And there are some uncessary white spaces.  The team should come up with general way to layout content and use general name conventions.
-Number of minutes:20 minutes.
-If mario's brother enters the game, and we need lots of changes to implement the second character. 
