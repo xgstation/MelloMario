@@ -9,8 +9,8 @@ namespace MelloMario.BlockObjects
     class Brick : BaseGameObject
     {
         private IBlockState state;
-        private Queue<char> items;
-        private int elapsed;
+        private Queue<IGameObject> items;
+
         private void OnStateChanged()
         {
             if (state is Hidden)
@@ -52,18 +52,12 @@ namespace MelloMario.BlockObjects
                 OnStateChanged();
             }
         }
-        public Queue<char> Items
+
+        public Brick(IGameWorld world, Point location, bool isHidden = false) : this(world, location, new Queue<IGameObject>(), isHidden)
         {
-            get
-            {
-                return items;
-            }
-            set
-            {
-                items = value;
-            }
         }
-        public Brick(IGameWorld world, Point location, bool isHidden, Queue<char> items) : base(world, location, new Point(32, 32))
+
+        public Brick(IGameWorld world, Point location, Queue<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
         {
             if (isHidden)
             {
@@ -73,58 +67,37 @@ namespace MelloMario.BlockObjects
             {
                 state = new Normal(this);
             }
-            this.items = items;
             OnStateChanged();
-        }
 
-        public Brick(IGameWorld world, Point location, bool isHidden) : this(world, location, isHidden, new Queue<char>())
-        {
-
-        }
-        public Brick(IGameWorld world, Point location) : this(world, location, false, new Queue<char>())
-        {
-
+            this.items = items;
         }
 
         public void Show()
         {
             State.Show();
         }
+
         public void Hide()
         {
             State.Hide();
         }
+
         public void Bump(Mario mario)
         {
             State.Bump(mario);
         }
 
-        public void ReleaseNextItem()
+        public bool ReleaseNextItem()
         {
-            if (items.Count != 0)
+            if (items.Count == 0)
             {
-                switch (items.Dequeue())
-                {
-                    case 'C':
-                        World().AddObject(new ItemObjects.Coin(World(), Location(), true));
-                        break;
-                    case '1':
-                        World().AddObject(new ItemObjects.OneUpMushroom(World(), Location(), true));
-                        break;
-                    case 'R':
-                        World().AddObject(new ItemObjects.FireFlower(World(), Location(), true));
-                        break;
-                    case 'M':
-                        World().AddObject(new ItemObjects.SuperMushroom(World(), Location(), true));
-                        break;
-                    case 'T':
-                        World().AddObject(new ItemObjects.Star(World(), Location(), true));
-                        break;
-                    default:
-                        break;
-                }
-                if (items.Count == 0)
-                    state = new Used(this);
+                return false;
+            }
+            else
+            {
+                World().AddObject(items.Dequeue());
+
+                return true;
             }
         }
     }
