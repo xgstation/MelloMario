@@ -529,3 +529,10 @@
 /processorParam:TextureFormat=Color
 /build:RedKoopaRight.png
 
+#begin Basic.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Basic.spritefont
+
