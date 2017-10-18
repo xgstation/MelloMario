@@ -171,6 +171,8 @@
     <Content Include="Content\FireStandingRight.png" />
     <Content Include="Content\GoombaDead.png" />
     <Content Include="Content\GreenKoopaDead.png" />
+    <Content Include="Content\GreenKoopaLeft.png" />
+    <Content Include="Content\GreenKoopaRight.png" />
     <Content Include="Content\GreenKoopaStepped.png" />
     <Content Include="Content\OneUpMushroom.png" />
     <Content Include="Content\BlockSheet.png" />
@@ -188,6 +190,8 @@
     <Content Include="Content\Question.png" />
     <Content Include="Content\RedKoopa.png" />
     <Content Include="Content\RedKoopaDead.png" />
+    <Content Include="Content\RedKoopaLeft.png" />
+    <Content Include="Content\RedKoopaRight.png" />
     <Content Include="Content\RedKoopaStepped.png" />
     <Content Include="Content\StandardJumpingLeft.png" />
     <Content Include="Content\StandardJumpingRight.png" />
