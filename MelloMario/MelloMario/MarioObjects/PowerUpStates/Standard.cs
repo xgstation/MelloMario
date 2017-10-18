@@ -22,7 +22,7 @@ namespace MelloMario.MarioObjects.PowerUpStates
         }
         public void Downgrade()
         {
-
+            Owner.ProtectionState = new ProtectionStates.Dead(Owner);
         }
         public void UpgradeToSuper()
         {

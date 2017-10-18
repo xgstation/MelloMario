@@ -22,9 +22,9 @@ namespace MelloMario.MarioObjects
             {
                 movementState.Idle();
             }
-            else if (powerUpState is Dead)
+            else if (protectionState is Dead)
             {
-                ShowSprite(SpriteFactory.Instance.CreateMarioSprite(powerUpState.GetType().Name, true));
+                ShowSprite(SpriteFactory.Instance.CreateMarioSprite(protectionState.GetType().Name, true));
             }
             else
             {
@@ -193,7 +193,7 @@ namespace MelloMario.MarioObjects
         {
             movementState = new Standing(this);
             powerUpState = new Standard(this);
-            protectionState = new Protected(this);
+            protectionState = new Normal(this);
             OnStateChanged();
         }
 

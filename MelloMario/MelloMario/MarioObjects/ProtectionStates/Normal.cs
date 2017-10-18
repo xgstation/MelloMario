@@ -18,7 +18,7 @@ namespace MelloMario.MarioObjects.ProtectionStates
 
         public void Star()
         {
-
+            Owner.ProtectionState = new Starred(Owner);
         }
 
         public override void Update(GameTime time)
