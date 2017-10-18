@@ -33,7 +33,7 @@ namespace MelloMario.EnemyObjects
             {
                 //TODO: fire as target to be added
                 Mario m = (Mario)target;
-                if (m.ProtectionState is MarioObjects.ProtectionStates.Protected)
+                if (m.ProtectionState is MarioObjects.ProtectionStates.Starred)
                 {
                     Defeat();
                 }
