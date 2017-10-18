@@ -1,0 +1,26 @@
+﻿Sergey Maltsev
+10/17/2017
+Sprint 2
+Factorys and Level Reader
+Multiple Authors
+
+Factories:
+Can be cleaned up, some of the methods overlap in functionality
+for example some keys check for hold and pressed seperately, yet
+the functionality for the two is effectively the same.
+
+Some methods are outdated, in that they will not really be needed
+in later sprints and as such should not be relied upon.
+
+Error catching is not great, but it is there at a basic level.
+Logging to console would improve it.
+
+Level Reader:
+The current level reader is acceptable for sprint 2.
+It has its own factory is is releatively consise.
+
+However for later sprints we will want to change to JSON
+or some similar system in order to store info about blocks in a
+clean manner, as o right now every instance of a block is identical.
+
+This took 10 min.
