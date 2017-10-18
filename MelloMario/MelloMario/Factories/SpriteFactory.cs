@@ -140,12 +140,16 @@ namespace MelloMario.Factories
         {
             switch (status)
             {
-                case "Defeated":
+                case "DefeatedLeft":
+                case "DefeatedRight":
                     return new StaticSprite(spriteBatch, greenKoopaDeadSpritesheet);
-                case "Shell":
+                case "ShellLeft":
+                case "ShellRight":
                     return new StaticSprite(spriteBatch, greenKoopaSteppedSpritesheet);
-                case "Normal":
-                    return new AnimatedSprite(spriteBatch, greenKoopaSpritesheet, 2, 2);
+                case "NormalLeft":
+                    return new AnimatedSprite(spriteBatch, greenKoopaLeft, 2, 1);
+                case "NormalRight":
+                    return new AnimatedSprite(spriteBatch, greenKoopaRight, 2, 1);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -157,12 +161,16 @@ namespace MelloMario.Factories
         {
             switch (status)
             {
-                case "Defeated":
+                case "DefeatedLeft":
+                case "DefeatedRight":
                     return new StaticSprite(spriteBatch, redKoopaDeadSpritesheet);
-                case "Shell":
+                case "ShellLeft":
+                case "ShellRight":
                     return new StaticSprite(spriteBatch, redKoopaSteppedSpritesheet);
-                case "Normal":
-                    return new AnimatedSprite(spriteBatch, redKoopaSpritesheet, 2, 2);
+                case "NormalLeft":
+                    return new AnimatedSprite(spriteBatch, redKoopaLeft, 2, 1);
+                case "NormalRight":
+                    return new AnimatedSprite(spriteBatch, redKoopaRight, 2, 1);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code

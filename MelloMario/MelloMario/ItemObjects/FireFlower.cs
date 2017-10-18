@@ -68,5 +68,10 @@ namespace MelloMario.ItemObjects
             RemoveSelf();
             //State.Collect();
         }
+
+        public void UnveilMove(int delta)
+        {
+            Move(new Point(0, delta));
+        }
     }
 }

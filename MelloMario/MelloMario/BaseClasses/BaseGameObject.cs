@@ -124,12 +124,8 @@ namespace MelloMario
         {
             return world;
         }
-        protected Point Location()
-        {
-            return location;
-        }
 
-        internal void Move(Point delta)
+        protected void Move(Point delta)
         {
             movement += delta;
         }
@@ -144,7 +140,7 @@ namespace MelloMario
             movement.Y = 0;
         }
 
-        protected virtual void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
+        protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
         {
             sprite = newSprite;
             Resize(sprite.PixelSize, modeX, modeY);

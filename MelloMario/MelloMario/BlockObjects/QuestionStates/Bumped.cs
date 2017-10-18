@@ -38,16 +38,16 @@ namespace MelloMario.BlockObjects.QuestionStates
             elapsed += time.ElapsedGameTime.Milliseconds;
             if (elapsed >= 100)
             {
-                Owner.Move(new Point(0, 0));
-                Owner.State = new Used(Owner);
+                Owner.BumpMove(0);
+                Show();
             }
             else if (elapsed >= 50)
             {
-                Owner.Move(new Point(0, 7));
+                Owner.BumpMove(7);
             }
             else
             {
-                Owner.Move(new Point(0, -7));
+                Owner.BumpMove(-7);
             }
         }
     }
