@@ -6,13 +6,15 @@ namespace MelloMario
 {
     class GameScript
     {
+        private ICommandFactory factory;
+
         public GameScript()
         {
         }
 
         public void Bind(IEnumerable<IController> controllers, IGameCharacter character)
         {
-            ICommandFactory factory = CommandFactory.Instance;
+            factory = CommandFactory.Instance;
 
             foreach (IController controller in controllers)
             {
