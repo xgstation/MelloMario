@@ -24,7 +24,7 @@ namespace MelloMario.EnemyObjects
             {
                 //TODO: Fire to be added
                 Mario m = (Mario)target;
-                if(mode == CollisionMode.Top || m.ProtectionState is MarioObjects.ProtectionStates.Protected)
+                if(mode == CollisionMode.Top || m.ProtectionState is MarioObjects.ProtectionStates.Starred)
                 {
                     Defeat();
                 }
