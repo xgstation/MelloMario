@@ -134,7 +134,7 @@ namespace MelloMario.Factories
             {
                 case "Defeated":
                     return new StaticSprite(spriteBatch, greenKoopaDeadSpritesheet);
-                case "JumpOn":
+                case "Shell":
                     return new StaticSprite(spriteBatch, greenKoopaSteppedSpritesheet);
                 case "Normal":
                     return new AnimatedSprite(spriteBatch, greenKoopaSpritesheet, 2, 2);
@@ -151,7 +151,7 @@ namespace MelloMario.Factories
             {
                 case "Defeated":
                     return new StaticSprite(spriteBatch, redKoopaDeadSpritesheet);
-                case "JumpOn":
+                case "Shell":
                     return new StaticSprite(spriteBatch, redKoopaSteppedSpritesheet);
                 case "Normal":
                     return new AnimatedSprite(spriteBatch, redKoopaSpritesheet, 2, 2);
