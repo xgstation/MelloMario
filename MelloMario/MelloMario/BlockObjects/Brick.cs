@@ -10,7 +10,6 @@ namespace MelloMario.BlockObjects
     {
         private IBlockState state;
         private Queue<char> items;
-        private int elapsed;
         private void OnStateChanged()
         {
             if (state is Hidden)
