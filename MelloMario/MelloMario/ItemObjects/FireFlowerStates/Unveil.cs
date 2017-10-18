@@ -32,12 +32,11 @@ namespace MelloMario.ItemObjects.FireFlowerStates
             elapsed += time.ElapsedGameTime.Milliseconds;
             if (elapsed >= 2000)
             {
-                Owner.Move(new Point(0, 0));
                 Show();
             }
             else
             {
-                Owner.Move(new Point(0, -16));
+                Owner.UnveilMove(-16);
             }
         }
     }

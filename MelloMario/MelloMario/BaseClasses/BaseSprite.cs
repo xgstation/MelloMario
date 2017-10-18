@@ -17,11 +17,6 @@ namespace MelloMario.Sprites
             source = newSource;
         }
 
-        protected void ChangeSize(Point newSize)
-        {
-            size = newSize;
-        }
-
         public Point PixelSize
         {
             get
