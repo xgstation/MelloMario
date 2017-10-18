@@ -41,7 +41,7 @@ namespace MelloMario.BlockObjects.BrickStates
         public override void Update(GameTime time)
         {
             elapsed += time.ElapsedGameTime.Milliseconds;
-            if(elapsed>200)
+            if(elapsed>300)
             {
                 Owner.Remove();
             }

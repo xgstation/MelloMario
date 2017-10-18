@@ -59,24 +59,27 @@ namespace MelloMario
 
         public IEnumerable<IGameObject> ScanNearbyObjects(IGameObject gameObject)
         {
-            Point location = locations[gameObject];
-
-            for (int i = location.X - 2; i <= location.X + 2; ++i)
+            if (locations.ContainsKey(gameObject))
             {
-                if (i < objects.GetLowerBound(0) || i > objects.GetUpperBound(0)) continue;
+                Point location = locations[gameObject];
 
-                for (int j = location.Y - 2; j <= location.Y + 2; ++j)
+                for (int i = location.X - 2; i <= location.X + 2; ++i)
                 {
-                    if (j < objects.GetLowerBound(1) || j > objects.GetUpperBound(1)) continue;
+                    if (i < objects.GetLowerBound(0) || i > objects.GetUpperBound(0)) continue;
 
-                    // TODO: optimize this
-                    IGameObject[] objectList = new IGameObject[objects[i,j].Count];
-                    objects[i, j].CopyTo(objectList, 0);
-                    foreach (IGameObject obj in objectList)
+                    for (int j = location.Y - 2; j <= location.Y + 2; ++j)
                     {
-                        if (obj != gameObject)
+                        if (j < objects.GetLowerBound(1) || j > objects.GetUpperBound(1)) continue;
+
+                        // TODO: optimize this
+                        IGameObject[] objectList = new IGameObject[objects[i, j].Count];
+                        objects[i, j].CopyTo(objectList, 0);
+                        foreach (IGameObject obj in objectList)
                         {
-                            yield return obj;
+                            if (obj != gameObject)
+                            {
+                                yield return obj;
+                            }
                         }
                     }
                 }

@@ -19,9 +19,9 @@ namespace MelloMario.BlockObjects
             else if(state is Destroyed)
             {
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedRT"));
-                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedLT"));
-                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedRB"));
-                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedLB"));
+                //ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedLT"));
+                //ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedRB"));
+                //ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedLB"));
 
             }
             else
@@ -49,7 +49,7 @@ namespace MelloMario.BlockObjects
 
         public void Remove()
         {
-            World().RemoveObject(this);
+            RemoveSelf();
         }
 
         public IBlockState State
