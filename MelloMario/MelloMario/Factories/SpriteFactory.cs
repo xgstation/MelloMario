@@ -122,7 +122,9 @@ namespace MelloMario.Factories
                 case "Normal":
                     return new AnimatedSprite(spriteBatch, goombaSpritesheet, 2, 1);
                 default:
-                    throw new Exception("Unknown sprite");
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
             }
         }
 
@@ -137,7 +139,9 @@ namespace MelloMario.Factories
                 case "Normal":
                     return new AnimatedSprite(spriteBatch, greenKoopaSpritesheet, 2, 2);
                 default:
-                    throw new Exception("Unknown sprite");
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
             }
         }
 
@@ -152,7 +156,9 @@ namespace MelloMario.Factories
                 case "Normal":
                     return new AnimatedSprite(spriteBatch, redKoopaSpritesheet, 2, 2);
                 default:
-                    throw new Exception("Unknown sprite");
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
             }
         }
 
@@ -192,7 +198,9 @@ namespace MelloMario.Factories
                 case "Used":
                     return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 27, 0);
                 default:
-                    throw new Exception("Unknown sprite");
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
             }
         }
 
@@ -215,7 +223,9 @@ namespace MelloMario.Factories
                 case "Used":
                     return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 27, 0);
                 default:
-                    throw new Exception("Unknown sprite");
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
             }
         }
 
@@ -242,7 +252,9 @@ namespace MelloMario.Factories
                 case "Right":
                     return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 9);
                 default:
-                    throw new Exception("Unknown sprite");
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
             }
         }
     }

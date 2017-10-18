@@ -47,7 +47,7 @@ namespace MelloMario.LevelGen
          
          */
 
-    class LevelReader
+    class LevelReader : IDisposable
     {
         private const int SCALE = 32;
         private Point size;
@@ -64,6 +64,11 @@ namespace MelloMario.LevelGen
             String widthAsString = input.ReadLine();
 
             size = new Point(Int32.Parse(widthAsString), Int32.Parse(heightAsString));
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)input).Dispose();
         }
 
         public Tuple<IGameWorld, IGameCharacter> LoadObjects()

@@ -36,6 +36,11 @@ namespace MelloMario.BlockObjects.QuestionStates
             // do nothing
         }
 
+        public void UseUp()
+        {
+            Owner.State = new Used(Owner);
+        }
+
         public override void Update(GameTime time)
         {
             // TODO: release items
@@ -43,13 +48,13 @@ namespace MelloMario.BlockObjects.QuestionStates
             // block.State = new QuestionUsed(block);
 
             // TODO: control sprite via this.block
-            // elapsed += ((float)time.ElapsedGameTime.Milliseconds) / 20;
-            // offset = 0.5f * accelerationY * (float)Math.Pow(elapsed, 2.0f) + speedY * elapsed;
+            elapsed += ((float)time.ElapsedGameTime.Milliseconds) / 20;
+            offset = 0.5f * accelerationY * (float)Math.Pow(elapsed, 2.0f) + speedY * elapsed;
 
-            // if (offset >= 0)
-            // {
-            //     UseUp();
-            // }
+            if (offset >= 0)
+            {
+                UseUp();
+            }
         }
     }
 }

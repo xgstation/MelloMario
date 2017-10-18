@@ -31,7 +31,9 @@ namespace MelloMario.Factories
                 case "Pause":
                     return new Pause(model);
                 default:
-                    throw new Exception("Unknown action");
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
             }
         }
 
@@ -66,7 +68,9 @@ namespace MelloMario.Factories
                 case "RightRelease":
                     return new RightRelease(character);
                 default:
-                    throw new Exception("Unknown action");
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
             }
         }
 
@@ -87,7 +91,9 @@ namespace MelloMario.Factories
                 case "SuperState":
                     return new SuperState((Mario)gameObject);
                 default:
-                    throw new Exception("Unknown action");
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
             }
         }
     }
