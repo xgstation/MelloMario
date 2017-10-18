@@ -65,8 +65,9 @@ namespace MelloMario.ItemObjects
             State.Show();
         }
         public void Collect()
+        {
             RemoveSelf();
-        //State.Collect();
+            //State.Collect();
+        }
     }
-}
 }
