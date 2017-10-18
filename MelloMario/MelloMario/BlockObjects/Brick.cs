@@ -84,13 +84,7 @@ namespace MelloMario.BlockObjects
 
             this.items = items;
         }
-
-        protected override void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
-        {
-
-            base.ShowSprite(newSprite,modeX,modeY);
-        }
-
+        
         public void Show()
         {
             State.Show();
@@ -104,6 +98,11 @@ namespace MelloMario.BlockObjects
         public void Bump(Mario mario)
         {
             State.Bump(mario);
+        }
+
+        public void BumpMove(int delta)
+        {
+            Move(new Point(0, delta));
         }
 
         public bool ReleaseNextItem()
