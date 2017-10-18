@@ -5,22 +5,38 @@ using MelloMario.EnemyObjects.KoopaStates;
 
 namespace MelloMario.EnemyObjects
 {
-    class Koopa : BaseGameObject
+    class Koopa : BasePhysicalObject
     {
         private ShellColor color;
         private IKoopaState state;
 
         private void OnStateChanged()
         {
+            string facingString;
+            if (Facing == FacingMode.left)
+            {
+                facingString = "Left";
+            }
+            else
+            {
+                facingString = "Right";
+            }
             switch (color)
             {
                 case ShellColor.green:
-                    ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite(state.GetType().Name));
+                    ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite(state.GetType().Name+facingString));
                     break;
                 case ShellColor.red:
-                    ShowSprite(SpriteFactory.Instance.CreateRedKoopaSprite(state.GetType().Name));
+                    ShowSprite(SpriteFactory.Instance.CreateRedKoopaSprite(state.GetType().Name+facingString));
                     break;
             }
+        }
+        private void ChangeFacing(FacingMode facing)
+        {
+            Facing = facing;
+
+            // Notice: The effect should be the same as changing Mario's state
+            OnStateChanged();
         }
 
         protected override void OnSimulation(GameTime time)
@@ -78,7 +94,7 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        public Koopa(IGameWorld world, Point location, ShellColor color) : base(world, location, new Point(32, 32))
+        public Koopa(IGameWorld world, Point location, ShellColor color) : base(world, location, new Point(32, 32),32)
         {
             this.color = color;
 

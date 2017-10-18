@@ -27,11 +27,7 @@ namespace MelloMario.BlockObjects.BrickStates
         {
             Owner.State = new Hidden(Owner);
         }
-
-        public void UseUp()
-        {
-            // do nothing
-        }
+        
 
         public void Bump(Mario mario)
         {

@@ -85,24 +85,17 @@ namespace MelloMario.BlockObjects
             this.items = items;
         }
         
-        public void Show()
-        {
-            State.Show();
-        }
-
-        public void Hide()
-        {
-            State.Hide();
-        }
 
         public void Bump(Mario mario)
         {
             State.Bump(mario);
+            
         }
 
         public void BumpMove(int delta)
         {
             Move(new Point(0, delta));
+            
         }
 
         public bool ReleaseNextItem()
