@@ -28,8 +28,14 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Bump(Mario mario)
         {
-            Owner.State = new Bumped(Owner);
-            Owner.ReleaseNextItem();
+            if (Owner.ReleaseNextItem())
+            {
+                Owner.State = new Bumped(Owner);
+            }
+            else
+            {
+                Owner.State = new Used(Owner);
+            }
         }
 
         public override void Update(GameTime time)
