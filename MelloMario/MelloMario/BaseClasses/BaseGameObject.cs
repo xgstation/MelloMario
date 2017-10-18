@@ -11,7 +11,8 @@ namespace MelloMario
         private Point location;
         private Point size;
         private Point movement;
-        private ISprite sprite;
+        //TODO: Change protected
+        protected ISprite sprite;
 
         private IEnumerable<Tuple<CollisionMode, CollisionMode>> ScanCollideModes(Rectangle targetBoundary)
         {
@@ -207,8 +208,8 @@ namespace MelloMario
                 CollideAll();
             }
         }
-
-        public void Draw(GameTime time)
+        //TODO: Consider change virtual
+        public virtual void Draw(GameTime time)
         {
             if (sprite != null)
             {

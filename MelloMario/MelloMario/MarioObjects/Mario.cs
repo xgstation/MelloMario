@@ -120,7 +120,7 @@ namespace MelloMario.MarioObjects
                 case "Goomba":
                     if (mode != CollisionMode.Bottom)
                     {
-                        if (((Goomba)target).State is EnemyObjects.GoombaStates.Normal)
+                        if (((Goomba)target).State is EnemyObjects.GoombaStates.Normal && !(ProtectionState is Starred))
                         {
                             PowerUpState.Downgrade();
                         }
@@ -130,7 +130,7 @@ namespace MelloMario.MarioObjects
                 case "Koopa":
                     if (mode != CollisionMode.Bottom)
                     {
-                        if (((Koopa)target).State is EnemyObjects.KoopaStates.Normal)
+                        if (((Koopa)target).State is EnemyObjects.KoopaStates.Normal && !(ProtectionState is Starred))
                         {
                             PowerUpState.Downgrade();
                         }
@@ -347,6 +347,22 @@ namespace MelloMario.MarioObjects
         public void ToggleGravity()
         {
             g_on = !g_on;
+        }
+        //TODO: Consider change ovverride
+        public override void Draw(GameTime time)
+        {
+            if (sprite != null)
+            {
+                if (ProtectionState is Starred)
+                {
+                    if ((int)time.TotalGameTime.Milliseconds % 8 == 0)
+                        sprite.Draw(time, Boundary);
+                }
+                else
+                {
+                    sprite.Draw(time, Boundary);
+                }
+            }
         }
     }
 }

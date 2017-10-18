@@ -1,0 +1,12 @@
+Gen Xu
+10/17/2017
+Sprint 2
+
+Code being reviewed: tileMap Define and LevelGen
+Code Written by Sergey
+Some functions are not fully done such as items inside bricks/question blocks.
+Needs to be changed to json/Xml inorder to make more organizable.
+Lack of hidden blocks define but eventually added by me.
+Adding(reading) objects from files one by one can be optimized such as Floor rectangle from point to point which can eliminate I/O use.
+
+
