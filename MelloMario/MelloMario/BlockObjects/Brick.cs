@@ -17,6 +17,14 @@ namespace MelloMario.BlockObjects
             {
                 HideSprite();
             }
+            else if(state is Destroyed)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedRT"));
+                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedLT"));
+                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedRB"));
+                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedLB"));
+
+            }
             else
             {
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite(state.GetType().Name));
@@ -38,6 +46,11 @@ namespace MelloMario.BlockObjects
 
         protected override void OnOut(CollisionMode mode)
         {
+        }
+
+        public void Remove()
+        {
+            World().RemoveObject(this);
         }
 
         public IBlockState State
@@ -84,6 +97,12 @@ namespace MelloMario.BlockObjects
         public Brick(IGameWorld world, Point location) : this(world, location, false, new Queue<char>())
         {
 
+        }
+
+        protected override void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
+        {
+
+            base.ShowSprite(newSprite,modeX,modeY);
         }
 
         public void Show()

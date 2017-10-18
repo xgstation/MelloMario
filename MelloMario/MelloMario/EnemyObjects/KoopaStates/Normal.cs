@@ -35,7 +35,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void Pushed()
         {
-            throw new NotImplementedException();
+            //can't push normal koopa
         }
     }
 }

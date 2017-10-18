@@ -12,8 +12,10 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class Destroyed : BaseState<Brick>, IBlockState
     {
+        private float elapsed;
         public Destroyed(Brick owner) : base(owner)
         {
+            elapsed = 0;
         }
 
         public void Show()
@@ -38,6 +40,11 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public override void Update(GameTime time)
         {
+            elapsed += time.ElapsedGameTime.Milliseconds;
+            if(elapsed>200)
+            {
+                Owner.Remove();
+            }
         }
     }
 }

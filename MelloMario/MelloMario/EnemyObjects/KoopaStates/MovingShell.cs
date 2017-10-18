@@ -34,7 +34,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void Pushed()
         {
-            throw new NotImplementedException();
+            //do nothing for this sprint
         }
     }
 }

@@ -58,7 +58,7 @@ namespace MelloMario.Sprites.BlockSprites
         {
             get
             {
-                return new Point();
+                return new Point(16,16);
             }
         }
 
@@ -83,6 +83,8 @@ namespace MelloMario.Sprites.BlockSprites
             Rectangle newDestination = new Rectangle(destination.Left + (int)offsetX, destination.Top + (int)offsetY, destination.Width, destination.Height);
             Rectangle source = new Rectangle(texture.Width * x / 2, texture.Height * y / 2, texture.Width / 2, texture.Height / 2);
             spriteBatch.Draw(texture, newDestination, source, Color.White);
+
+
         }
     }
 }
