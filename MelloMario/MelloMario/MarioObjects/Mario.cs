@@ -76,14 +76,17 @@ namespace MelloMario.MarioObjects
                 case "Brick":
                 case "Question":
                     bool isHidden;
+                    bool isBumping; // TODO: remove later
 
                     if (target is Brick)
                     {
                         isHidden = ((Brick)target).State is BlockObjects.BrickStates.Hidden;
+                        isBumping = ((Brick)target).State is BlockObjects.BrickStates.Bumped;
                     }
                     else
                     {
                         isHidden = ((Question)target).State is BlockObjects.QuestionStates.Hidden;
+                        isBumping = ((Question)target).State is BlockObjects.QuestionStates.Bumped;
                     }
                     if (isHidden && mode != CollisionMode.Top)
                     {
@@ -91,6 +94,11 @@ namespace MelloMario.MarioObjects
                     }
                     else
                     {
+                        if (isBumping && mode == CollisionMode.Top)
+                        {
+                            Bounce(mode, 1);
+                            Move(new Point(0, 7));
+                        }
                         goto case "Stair";
                     }
                 case "Floor":

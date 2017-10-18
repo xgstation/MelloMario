@@ -98,11 +98,13 @@ namespace MelloMario.BlockObjects
         public void Bump(Mario mario)
         {
             State.Bump(mario);
+            
         }
 
         public void BumpMove(int delta)
         {
             Move(new Point(0, delta));
+            
         }
 
         public bool ReleaseNextItem()
