@@ -5,6 +5,7 @@ using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
 using MelloMario.ItemObjects;
 using MelloMario.MarioObjects;
+using System.Collections.Generic;
 
 namespace MelloMario.Factories
 {
@@ -57,9 +58,9 @@ namespace MelloMario.Factories
                 case "Stair":
                     return new Stair(world, location);
                 case "Question":
-                    return new Question(world, location);
+                    return new Question(world, location, false, new Queue<char>('R'));
                 case "HiddenQuestion":
-                    return new Question(world, location, true);
+                    return new Question(world, location, true, new Queue<char>('R'));
                 case "PipelineLeftIn":
                     return new Pipeline(world, location, "LeftIn");
                 case "PipelineRightIn":
