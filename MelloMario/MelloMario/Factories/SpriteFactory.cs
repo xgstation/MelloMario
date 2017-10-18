@@ -25,8 +25,12 @@ namespace MelloMario.Factories
         private Texture2D goombaDeadSpritesheet;
         private Texture2D greenKoopaSpritesheet;
         private Texture2D greenKoopaSteppedSpritesheet;
+        private Texture2D greenKoopaLeft;
+        private Texture2D greenKoopaRight;
         private Texture2D greenKoopaDeadSpritesheet;
         private Texture2D redKoopaSpritesheet;
+        private Texture2D redKoopaLeft;
+        private Texture2D redKoopaRight;
         private Texture2D redKoopaSteppedSpritesheet;
         private Texture2D redKoopaDeadSpritesheet;
         private Texture2D superMushroomSpritesheet;
@@ -63,9 +67,13 @@ namespace MelloMario.Factories
             goombaSpritesheet = content.Load<Texture2D>("Goomba");
             goombaDeadSpritesheet = content.Load<Texture2D>("GoombaDead");
             greenKoopaSpritesheet = content.Load<Texture2D>("GreenKoopa");
+            greenKoopaLeft = content.Load<Texture2D>("GreenKoopaLeft");
+            greenKoopaRight = content.Load<Texture2D>("GreenKoopaRight");
             greenKoopaSteppedSpritesheet = content.Load<Texture2D>("GreenKoopaStepped");
             greenKoopaDeadSpritesheet = content.Load<Texture2D>("GreenKoopaDead");
             redKoopaSpritesheet = content.Load<Texture2D>("RedKoopa");
+            redKoopaLeft = content.Load<Texture2D>("RedKoopaLeft");
+            redKoopaRight = content.Load<Texture2D>("RedKoopaRight");
             redKoopaSteppedSpritesheet = content.Load<Texture2D>("RedKoopaStepped");
             redKoopaDeadSpritesheet = content.Load<Texture2D>("RedKoopaDead");
             superMushroomSpritesheet = content.Load<Texture2D>("SuperMushroom");
