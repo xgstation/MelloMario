@@ -46,6 +46,8 @@ namespace MelloMario.Factories
 
         public IGameObject CreateGameObject(string type, IGameWorld world, Point location)
         {
+            Queue<IGameObject> items;
+
             switch (type)
             {
                 //blocks
@@ -58,9 +60,13 @@ namespace MelloMario.Factories
                 case "Stair":
                     return new Stair(world, location);
                 case "Question":
-                    return new Question(world, location, false, new Queue<char>('R'));
+                    items = new Queue<IGameObject>();
+                    items.Enqueue(CreateGameObject("FireFlower", world, location));
+                    return new Question(world, location, items, false);
                 case "HiddenQuestion":
-                    return new Question(world, location, true, new Queue<char>('R'));
+                    items = new Queue<IGameObject>();
+                    items.Enqueue(CreateGameObject("FireFlower", world, location));
+                    return new Question(world, location, items, true);
                 case "PipelineLeftIn":
                     return new Pipeline(world, location, "LeftIn");
                 case "PipelineRightIn":
