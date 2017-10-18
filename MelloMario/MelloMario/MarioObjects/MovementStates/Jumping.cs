@@ -17,7 +17,7 @@ namespace MelloMario.MarioObjects.MovementStates
 
         public void Crouch()
         {
-            Owner.MovementState = new Standing(Owner);
+           
         }
         public void Idle()
         {
