@@ -16,6 +16,7 @@ namespace MelloMario.ItemObjects
 
         protected override void OnSimulation(GameTime time)
         {
+            state.Update(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
@@ -64,7 +65,8 @@ namespace MelloMario.ItemObjects
         }
         public void Collect()
         {
-            State.Collect();
+            RemoveSelf();
+            //State.Collect();
         }
     }
 }

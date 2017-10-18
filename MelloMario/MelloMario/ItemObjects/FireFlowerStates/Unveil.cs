@@ -12,11 +12,10 @@ namespace MelloMario.ItemObjects.FireFlowerStates
     class Unveil : BaseState<FireFlower>, IItemState
     {
         private float elapsed;
-        private float offset;
-        private Vector2 origin;
 
         public Unveil(FireFlower owner) : base(owner)
         {
+            elapsed = 0f;
         }
 
         public void Collect()
@@ -30,13 +29,16 @@ namespace MelloMario.ItemObjects.FireFlowerStates
 
         public override void Update(GameTime time)
         {
-            // elapsed += ((float)time.ElapsedGameTime.Milliseconds) / 40;
-            // offset =  1f * elapsed;
-            // if (offset >= 32f)
-            // {
-            //     flowerItem.Location = origin;
-            //     Show();
-            // }
+            elapsed += time.ElapsedGameTime.Milliseconds;
+            if (elapsed >= 2000)
+            {
+                Owner.Move(new Point(0, 0));
+                Show();
+            }
+            else
+            {
+                Owner.Move(new Point(0, -16));
+            }
         }
     }
 }

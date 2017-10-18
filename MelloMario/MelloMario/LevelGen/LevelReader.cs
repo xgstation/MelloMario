@@ -67,7 +67,9 @@ namespace MelloMario.LevelGen
 
         public Tuple<IGameWorld, IGameCharacter> LoadObjects()
         {
-            IGameWorld world = GameObjectFactory.Instance.CreateGameWorld(size);
+            IGameObjectFactory factory = GameObjectFactory.Instance;
+
+            IGameWorld world = factory.CreateGameWorld(size);
             IGameCharacter character = null;
 
             for (int i = 0; i < size.Y; ++i)
@@ -79,65 +81,65 @@ namespace MelloMario.LevelGen
                     switch (curChar)
                     {
                         case '!':
-                            Tuple<IGameCharacter, IGameObject> pair = GameObjectFactory.Instance.CreateGameCharacter("Mario", world, new Point(j * SCALE, i * SCALE));
+                            Tuple<IGameCharacter, IGameObject> pair = factory.CreateGameCharacter("Mario", world, new Point(j * SCALE, i * SCALE));
                             character = pair.Item1;
                             world.AddObject(pair.Item2);
                             break;
 
                         //blocks
                         case 'F':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("Floor", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("Floor", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'B':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("Brick", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("Brick", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'b':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("HiddenBrick", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("HiddenBrick", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'S':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("Stair", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("Stair", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'Q':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("Question", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("Question", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'q':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("HiddenQuestion", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("HiddenQuestion", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'P':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("PipelineLeftIn", world, new Point(j * SCALE, i * SCALE)));
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("PipelineRightIn", world, new Point((j + 1) * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("PipelineLeftIn", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("PipelineRightIn", world, new Point((j + 1) * SCALE, i * SCALE)));
                             break;
                         case 'V':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("PipelineLeft", world, new Point(j * SCALE, i * SCALE)));
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("PipelineRight", world, new Point((j + 1) * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("PipelineLeft", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("PipelineRight", world, new Point((j + 1) * SCALE, i * SCALE)));
                             break;
 
                         //harm
                         case 'G':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("Goomba", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("Goomba", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'K':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("GreenKoopa", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("GreenKoopa", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'D':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("RedKoopa", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("RedKoopa", world, new Point(j * SCALE, i * SCALE)));
                             break;
 
                         //entities
                         case 'C':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("Coin", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("Coin", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case '1':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("OneUpMushroom", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("OneUpMushroom", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'R':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("FireFlower", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("FireFlower", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'M':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("SuperMushroom", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("SuperMushroom", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         case 'T':
-                            world.AddObject(GameObjectFactory.Instance.CreateGameObject("Star", world, new Point(j * SCALE, i * SCALE)));
+                            world.AddObject(factory.CreateGameObject("Star", world, new Point(j * SCALE, i * SCALE)));
                             break;
                         default:
                             //do nothing, blank space dont add anything to blocks
