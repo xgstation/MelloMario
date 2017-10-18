@@ -103,10 +103,13 @@ namespace MelloMario
 
         public void RemoveObject(IGameObject gameObject)
         {
-            Point location = locations[gameObject];
-            locations.Remove(gameObject);
+            if (locations.ContainsKey(gameObject))
+            {
+                Point location = locations[gameObject];
+                locations.Remove(gameObject);
 
-            objects[location.X, location.Y].Remove(gameObject);
+                objects[location.X, location.Y].Remove(gameObject);
+            }
         }
     }
 }
