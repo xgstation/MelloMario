@@ -95,7 +95,6 @@ namespace MelloMario.MarioObjects
                     {
                         goto case "Stair";
                     }
-                //TODO:Hidden Brick
                 case "Floor":
                 case "Pipeline":
                 case "Stair":

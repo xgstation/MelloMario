@@ -12,13 +12,10 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class Bumped : BaseState<Brick>, IBlockState
     {
-        private float elapsed;
-        private float speedY = -7f;
-        private float accelerationY = 1.5f;
-        private float offset;
-
+        private int elapsed;
         public Bumped(Brick owner) : base(owner)
         {
+            elapsed = 0;
         }
 
         public void Show()
@@ -38,16 +35,19 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public override void Update(GameTime time)
         {
-            //TODO: Only Animations
-            //block.State = new BrickNormal(block);
-            //block.State = new BrickUsed(block);
-
-            elapsed += ((float)time.ElapsedGameTime.Milliseconds) / 20;
-            offset = 0.5f * accelerationY * (float)Math.Pow(elapsed, 2.0f) + speedY * elapsed;
-
-            if (offset >= 0)
+            elapsed += time.ElapsedGameTime.Milliseconds;
+            if (elapsed >= 100)
             {
+                Owner.Move(new Point(0, 0));
                 Show();
+            }
+            else if (elapsed >= 50)
+            {
+                Owner.Move(new Point(0, 7));
+            }
+            else
+            {
+                Owner.Move(new Point(0, -7));
             }
         }
     }

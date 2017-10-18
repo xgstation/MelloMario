@@ -12,10 +12,7 @@ namespace MelloMario.BlockObjects.QuestionStates
 {
     class Bumped : BaseState<Question>, IBlockState
     {
-        private float elapsed;
-        private float speedY = -7f;
-        private float accelerationY = 1.5f;
-        private float offset;
+        private int elapsed;
 
         public Bumped(Question owner) : base(owner)
         {
@@ -38,18 +35,20 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public override void Update(GameTime time)
         {
-            // TODO: release items
-            // block.State = new QuestionNormal(block);
-            // block.State = new QuestionUsed(block);
-
-            // TODO: control sprite via this.block
-            // elapsed += ((float)time.ElapsedGameTime.Milliseconds) / 20;
-            // offset = 0.5f * accelerationY * (float)Math.Pow(elapsed, 2.0f) + speedY * elapsed;
-
-            // if (offset >= 0)
-            // {
-            //     UseUp();
-            // }
+            elapsed += time.ElapsedGameTime.Milliseconds;
+            if (elapsed >= 100)
+            {
+                Owner.Move(new Point(0, 0));
+                Owner.State = new Used(Owner);
+            }
+            else if (elapsed >= 50)
+            {
+                Owner.Move(new Point(0, 7));
+            }
+            else
+            {
+                Owner.Move(new Point(0, -7));
+            }
         }
     }
 }

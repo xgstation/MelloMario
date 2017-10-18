@@ -25,6 +25,7 @@ namespace MelloMario.BlockObjects
 
         protected override void OnSimulation(GameTime time)
         {
+            state.Update(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)

@@ -65,7 +65,10 @@ namespace MelloMario
                 {
                     if (j < objects.GetLowerBound(1) || j > objects.GetUpperBound(1)) continue;
 
-                    foreach (IGameObject obj in objects[i, j])
+                    // TODO: optimize this
+                    IGameObject[] objectList = new IGameObject[objects[i,j].Count];
+                    objects[i, j].CopyTo(objectList, 0);
+                    foreach (IGameObject obj in objectList)
                     {
                         if (obj != gameObject)
                         {

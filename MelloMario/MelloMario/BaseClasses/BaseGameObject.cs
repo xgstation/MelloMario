@@ -129,7 +129,7 @@ namespace MelloMario
             return location;
         }
 
-        protected void Move(Point delta)
+        internal void Move(Point delta)
         {
             movement += delta;
         }

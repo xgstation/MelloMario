@@ -28,7 +28,7 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Bump(Mario mario)
         {
-            //do nothing
+            Owner.State = new Bumped(Owner);
         }
 
         public override void Update(GameTime time)

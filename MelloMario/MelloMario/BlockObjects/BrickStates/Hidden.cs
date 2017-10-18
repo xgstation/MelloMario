@@ -21,7 +21,15 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Bump(Mario mario)
         {
-            //do nothing
+            if (Owner.Items.Count == 0 && !(mario.PowerUpState is MarioObjects.PowerUpStates.Standard))
+            {
+                Owner.State = new Destroyed(Owner);
+            }
+            else
+            {
+                Owner.State = new Bumped(Owner);
+                Owner.ReleaseNextItem();
+            }
         }
 
         public override void Update(GameTime time)

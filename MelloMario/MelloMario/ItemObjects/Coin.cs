@@ -65,7 +65,8 @@ namespace MelloMario.ItemObjects
         }
         public void Collect()
         {
-            State.Collect();
+            //State.Collect();
+            World().RemoveObject(this);
         }
     }
 }
