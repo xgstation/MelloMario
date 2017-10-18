@@ -15,6 +15,7 @@ namespace MelloMario
         GraphicsDeviceManager graphics;
         GameModel model;
         GameScript script;
+        private SpriteFont basicFont;
 
         LevelReader reader;
 
@@ -60,6 +61,8 @@ namespace MelloMario
 
             SpriteFactory.Instance.LoadAllTextures(Content);
 
+            basicFont = Content.Load<SpriteFont>("Basic");
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.BindSpriteBatch(spriteBatch);
@@ -99,6 +102,8 @@ namespace MelloMario
 
             spriteBatch.Begin();
             model.Draw(time);
+            spriteBatch.DrawString(basicFont, "Press G to engage/disengage artificial gravity thrusters", new Vector2(10, 10), Color.White);
+
             spriteBatch.End();
         }
     }
