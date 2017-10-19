@@ -73,7 +73,7 @@ namespace MelloMario.BaseClasses
                 objects.Add(new Tuple<Interval, BaseGameObject>(interval, obj));
             }
             world.AddObject(this);
-            
+
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
@@ -85,9 +85,9 @@ namespace MelloMario.BaseClasses
                 switch (mode)
                 {
                     case CollisionMode.LeftBottom:
-                        if (target.Boundary.Location.X + target.Boundary.Width / 2 > Boundary.Location.X)
+                        if (target.Boundary.Center.X > Boundary.Location.X)
                         {
-                            foreach(var obj in objects)
+                            foreach (var obj in objects)
                             {
                                 if (obj.Item1.CompareTo(marioBoundary) == 0)
                                 {
@@ -98,7 +98,7 @@ namespace MelloMario.BaseClasses
                         }
                         break;
                     case CollisionMode.RightBottom:
-                        if(target.Boundary.Location.X + target.Boundary.Width / 2 < Boundary.Location.X + Boundary.Width)
+                        if (target.Boundary.Center.X < Boundary.Location.X + Boundary.Width)
                         {
                             foreach (var obj in objects)
                             {
@@ -134,7 +134,7 @@ namespace MelloMario.BaseClasses
         }
         public override void Draw(GameTime time)
         {
-            foreach(var obj in objects)
+            foreach (var obj in objects)
             {
                 obj.Item2.Draw(time);
             }

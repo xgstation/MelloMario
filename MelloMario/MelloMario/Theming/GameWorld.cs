@@ -89,8 +89,8 @@ namespace MelloMario
         public void AddObject(IGameObject gameObject)
         {
             Point location = new Point(
-                (gameObject.Boundary.X + gameObject.Boundary.Width / 2) / grid,
-                (gameObject.Boundary.Y + gameObject.Boundary.Height / 2) / grid
+                gameObject.Boundary.Center.X / grid,
+                gameObject.Boundary.Center.Y / grid
             );
             locations[gameObject] = location;
 

@@ -213,6 +213,7 @@ namespace MelloMario
             movement = new Point();
         }
 
+        // TODO: remove virtual
         public virtual void Update(GameTime time)
         {
             OnSimulation(time);
@@ -245,6 +246,7 @@ namespace MelloMario
                 CollideAll();
             }
         }
+
         //TODO: Consider change virtual
         public virtual void Draw(GameTime time)
         {
