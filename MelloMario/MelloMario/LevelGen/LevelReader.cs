@@ -45,8 +45,6 @@ namespace MelloMario.LevelGen
     {
         private const int SCALE = 32;
         private Point size;
-        // Note: Without implementing IDisposable, it may cause resource leak
-        //       The code analysis tool generates a warning here
         private StreamReader input;
 
         public LevelReader(String path)
@@ -62,7 +60,7 @@ namespace MelloMario.LevelGen
 
         public void Dispose()
         {
-            ((IDisposable)input).Dispose();
+            input.Dispose();
         }
 
         public Tuple<IGameWorld, IGameCharacter> LoadObjects()

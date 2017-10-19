@@ -10,11 +10,6 @@ namespace MelloMario
         private const float VELOCITY_MAX_LR = 15f;
         private const float VELOCITY_MAX_U = 15f;
         private const float VELOCITY_MAX_D = 20f;
-        // TODO: add in-air friction
-
-        //note: base on wenli's work:
-        //private const float J_FRICTION = 110f;
-        //private const float F_FRICTION = 80f;
 
         private float pixelScale;
         private Vector2 movement;

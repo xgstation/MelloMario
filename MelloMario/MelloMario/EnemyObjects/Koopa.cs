@@ -45,11 +45,10 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
-            if (target is Mario)
+            if (target is Mario mario)
             {
                 //TODO: fire as target to be added
-                Mario m = (Mario)target;
-                if (m.ProtectionState is MarioObjects.ProtectionStates.Starred)
+                if (mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
                 {
                     Defeat();
                 }

@@ -104,9 +104,9 @@ namespace MelloMario
                 {
                     OnCollision(target, pair.Item1, pair.Item3, pair.Item4);
 
-                    if (target is BaseGameObject)
+                    if (target is BaseGameObject gameObject)
                     {
-                        ((BaseGameObject)target).OnCollision(this, pair.Item2, pair.Item4, pair.Item3);
+                        gameObject.OnCollision(this, pair.Item2, pair.Item4, pair.Item3);
                     }
                 }
             }

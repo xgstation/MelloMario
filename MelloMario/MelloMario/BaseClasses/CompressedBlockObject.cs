@@ -24,9 +24,8 @@ namespace MelloMario.BaseClasses
             public Interval() : this(0, 0) { }
             public int CompareTo(object obj)
             {
-                if (obj is int)
+                if (obj is int number)
                 {
-                    int number = (int)obj;
                     if (number < min)
                     {
                         return 1;
@@ -40,9 +39,8 @@ namespace MelloMario.BaseClasses
                         return 0;
                     }
                 }
-                else if (obj is Interval)
+                else if (obj is Interval interval)
                 {
-                    var interval = obj as Interval;
                     if (interval.max < min)
                     {
                         return 1;
@@ -63,15 +61,15 @@ namespace MelloMario.BaseClasses
             }
         }
 
-        private SortedSet<Tuple<Interval, BaseGameObject>> objects;
+        private SortedSet<Tuple<Interval, IGameObject>> objects;
 
-        public CompressedBlockObject(IGameWorld world, Point location, Point size, BaseGameObject[] gameObjects) : base(world, location, size)
+        public CompressedBlockObject(IGameWorld world, Point location, Point size, IGameObject[] gameObjects) : base(world, location, size)
         {
-            var objects = new SortedSet<Tuple<Interval, BaseGameObject>>();
+            ISet<Tuple<Interval, IGameObject>> objects = new SortedSet<Tuple<Interval, IGameObject>>();
             foreach (BaseGameObject obj in gameObjects)
             {
-                var interval = new Interval(obj.Boundary.X, obj.Boundary.Location.X + obj.Boundary.Width);
-                objects.Add(new Tuple<Interval, BaseGameObject>(interval, obj));
+                Interval interval = new Interval(obj.Boundary.X, obj.Boundary.Location.X + obj.Boundary.Width);
+                objects.Add(new Tuple<Interval, IGameObject>(interval, obj));
             }
             world.AddObject(this);
 
@@ -79,7 +77,7 @@ namespace MelloMario.BaseClasses
 
         protected override void OnSimulation(GameTime time)
         {
-            foreach (var obj in objects)
+            foreach (Tuple<Interval, IGameObject> obj in objects)
             {
                 obj.Item2.Update(time);
             }
@@ -87,9 +85,8 @@ namespace MelloMario.BaseClasses
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
-            if (target is Mario)
+            if (target is Mario mario)
             {
-                var mario = target as Mario;
                 Interval marioBoundary = new Interval(mario.Boundary.X, mario.Boundary.X + mario.Boundary.Width);
                 // note: cornerPassive == right means that Mario's right half touches bottom left corner of this object
                 if (mode == CollisionMode.Bottom && cornerPassive == CollisionCornerMode.Right)
@@ -124,7 +121,7 @@ namespace MelloMario.BaseClasses
 
         protected override void OnDraw(GameTime time)
         {
-            foreach (var obj in objects)
+            foreach (Tuple<Interval, IGameObject> obj in objects)
             {
                 obj.Item2.Draw(time);
             }

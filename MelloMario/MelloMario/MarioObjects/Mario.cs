@@ -80,22 +80,26 @@ namespace MelloMario.MarioObjects
                     bool isHidden;
                     bool isBumping; // TODO: remove later
 
-                    if (target is Brick)
+                    if (target is Brick brick)
                     {
-                        isHidden = ((Brick)target).State is BlockObjects.BrickStates.Hidden;
-                        isBumping = ((Brick)target).State is BlockObjects.BrickStates.Bumped;
+                        isHidden = brick.State is BlockObjects.BrickStates.Hidden;
+                        isBumping = brick.State is BlockObjects.BrickStates.Bumped;
+                    }
+                    else if (target is Question question)
+                    {
+                        isHidden = question.State is BlockObjects.QuestionStates.Hidden;
+                        isBumping = question.State is BlockObjects.QuestionStates.Bumped;
                     }
                     else
                     {
-                        isHidden = ((Question)target).State is BlockObjects.QuestionStates.Hidden;
-                        isBumping = ((Question)target).State is BlockObjects.QuestionStates.Bumped;
+                        // never reach
+                        isHidden = false;
+                        isBumping = false;
                     }
-                    if (isHidden && mode != CollisionMode.Top)
+
+                    if (!isHidden || mode == CollisionMode.Top)
                     {
-                        break;
-                    }
-                    else
-                    {
+                        // TODO: hack
                         if (isBumping && mode == CollisionMode.Top)
                         {
                             Bounce(mode, 1);
@@ -103,6 +107,8 @@ namespace MelloMario.MarioObjects
                         }
                         goto case "Stair";
                     }
+
+                    break;
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
@@ -120,9 +126,9 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Goomba":
-                    if (mode != CollisionMode.Bottom)
+                    if (target is Goomba goomba && mode != CollisionMode.Bottom)
                     {
-                        if (((Goomba)target).State is EnemyObjects.GoombaStates.Normal && !(ProtectionState is Starred))
+                        if (goomba.State is EnemyObjects.GoombaStates.Normal && !(ProtectionState is Starred))
                         {
                             PowerUpState.Downgrade();
                         }
@@ -130,9 +136,9 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Koopa":
-                    if (mode != CollisionMode.Bottom)
+                    if (target is Koopa koopa && mode != CollisionMode.Bottom)
                     {
-                        if (((Koopa)target).State is EnemyObjects.KoopaStates.Normal && !(ProtectionState is Starred))
+                        if (koopa.State is EnemyObjects.KoopaStates.Normal && !(ProtectionState is Starred))
                         {
                             PowerUpState.Downgrade();
                         }
@@ -166,7 +172,7 @@ namespace MelloMario.MarioObjects
         {
             if (ProtectionState is Starred)
             {
-                if ((int)time.TotalGameTime.Milliseconds % 8 == 0)
+                if (time.TotalGameTime.Milliseconds % 8 == 0)
                 {
                     HideSprite();
                 }
