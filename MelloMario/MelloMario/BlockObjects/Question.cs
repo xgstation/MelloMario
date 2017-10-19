@@ -30,7 +30,7 @@ namespace MelloMario.BlockObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
-            if (target is Mario && mode == CollisionMode.Bottom)
+            if (target is Mario && (mode == CollisionMode.InBottomLeft || mode == CollisionMode.InBottomRight))
             {
                 Bump((Mario)target);
             }

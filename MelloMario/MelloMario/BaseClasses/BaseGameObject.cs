@@ -18,10 +18,39 @@ namespace MelloMario
         {
             Rectangle rectA = Boundary;
             Rectangle rectB = targetBoundary;
-
+            
             bool intersectX = rectA.Left < rectB.Right && rectB.Left < rectA.Right;
             bool intersectY = rectA.Top < rectB.Bottom && rectB.Top < rectA.Bottom;
 
+
+            ///////New conditions begin
+            bool centerInX = rectB.Center.X > rectA.Left && rectB.Center.X < rectA.Right;
+            bool centerInXLeft = centerInX && rectB.Center.X <= rectA.Center.X;
+            bool centerInXRight = centerInX && rectB.Center.X >= rectA.Center.X;
+
+            bool centerInY = rectB.Center.Y > rectA.Top && rectB.Center.Y < rectA.Bottom;
+            bool centerInYTop = centerInY && rectB.Center.Y <= rectA.Center.Y;
+            bool centerInYBottom = centerInY && rectB.Center.Y >= rectA.Center.Y;
+
+            bool crossXfromLeft = rectB.Right >= rectA.Left && rectB.Left < rectA.Left;
+            bool crossXfromRight = rectB.Left <= rectA.Right && rectB.Right > rectA.Right;
+            bool crossYfromBottom = rectB.Top <= rectA.Bottom && rectB.Bottom > rectA.Bottom;
+            bool crossYfromTop = rectB.Bottom >= rectA.Top && rectB.Top < rectA.Top;
+            //     -------------
+            //     |   rectA   |
+            //     -------------
+            //   -------
+            //   |rectB|
+            //   -------
+            if (crossYfromBottom && crossXfromLeft && centerInX)
+            {
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InBottomLeft, CollisionMode.Top);
+            }
+            if (crossYfromBottom && crossXfromRight && centerInX)
+            {
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InBottomRight, CollisionMode.Top);
+            }
+            ///////New conditions end
             if (intersectY && rectA.Left == rectB.Right)
             {
                 yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.Left, CollisionMode.Right);
@@ -77,7 +106,7 @@ namespace MelloMario
             }
         }
 
-        protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom };
+        protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom, LeftBottom, RightBottom, LeftTop, RightTop, InBottomLeft, InBottomRight, TopLeft, TopRight};
         protected enum ResizeModeX { Left, Center, Right };
         protected enum ResizeModeY { Top, Center, Bottom };
 
@@ -176,7 +205,7 @@ namespace MelloMario
             movement = new Point();
         }
 
-        public void Update(GameTime time)
+        public virtual void Update(GameTime time)
         {
             OnSimulation(time);
 

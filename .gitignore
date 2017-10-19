@@ -287,3 +287,5 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 /MelloMario/XMLFile.xml
+/MelloMario/MelloMario/BaseClasses/CompressedBlockObject.cs
+/MelloMario/MelloMario/BaseClasses/CompressedBlockObject.cs

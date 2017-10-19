@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BaseClasses\BasePhysicalObject.cs" />
     <Compile Include="BaseClasses\BaseGameObject.cs" />
+    <Compile Include="BaseClasses\CompressedBlockObject.cs" />
     <Compile Include="BaseClasses\BaseTimedState.cs" />
     <Compile Include="BaseClasses\BaseState.cs" />
     <Compile Include="BlockObjects\Brick.cs" />
