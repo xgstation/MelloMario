@@ -52,7 +52,7 @@ namespace MelloMario
             }
         }
 
-        protected void Bounce(CollisionMode mode, Vector2 refVelocity, float rate = 0)
+        protected bool Bounce(CollisionMode mode, Vector2 refVelocity, float rate = 0)
         {
             switch (mode)
             {
@@ -63,8 +63,11 @@ namespace MelloMario
                         // movement.X = 0;
                         velocity.X = refVelocity.X + (refVelocity.X - velocity.X) * rate;
                         StopHorizontalMovement();
+
+                        return true;
                     }
-                    break;
+
+                    return false;
                 case CollisionMode.Right:
                 case CollisionMode.InnerRight:
                     if (velocity.X > refVelocity.X)
@@ -72,8 +75,11 @@ namespace MelloMario
                         // movement.X = 0;
                         velocity.X = refVelocity.X + (refVelocity.X - velocity.X) * rate;
                         StopHorizontalMovement();
+
+                        return true;
                     }
-                    break;
+
+                    return false;
                 case CollisionMode.Top:
                 case CollisionMode.InnerTop:
                     if (velocity.Y < refVelocity.Y)
@@ -81,8 +87,11 @@ namespace MelloMario
                         // movement.Y = 0;
                         velocity.Y = refVelocity.Y + (refVelocity.Y - velocity.Y) * rate;
                         StopVerticalMovement();
+
+                        return true;
                     }
-                    break;
+
+                    return false;
                 case CollisionMode.Bottom:
                 case CollisionMode.InnerBottom:
                     if (velocity.Y > refVelocity.Y)
@@ -90,8 +99,14 @@ namespace MelloMario
                         // movement.Y = 0;
                         velocity.Y = refVelocity.Y + (refVelocity.Y - velocity.Y) * rate;
                         StopVerticalMovement();
+
+                        return true;
                     }
-                    break;
+
+                    return false;
+                default:
+                    // never reach
+                    return false;
             }
         }
 

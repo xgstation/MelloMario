@@ -91,14 +91,29 @@ namespace MelloMario.MarioObjects
                         isBumping = false;
                     }
 
-                    if (!isHidden || (mode == CollisionMode.Top && corner == CollisionCornerMode.Center))
+                    if (mode == CollisionMode.Top && corner == CollisionCornerMode.Center)
                     {
-                        // TODO: hack
-                        if (isBumping && mode == CollisionMode.Top && corner == CollisionCornerMode.Center)
+                        if (Bounce(mode, new Vector2(), 1))
                         {
-                            Bounce(mode, new Vector2(), 1);
-                            Move(new Point(0, 7));
+                            if (isBumping)
+                            {
+                                Move(new Point(0, 7));
+                            }
+                            else
+                            {
+                                if (target is Brick brick1)
+                                {
+                                    brick1.Bump(this);
+                                }
+                                else if (target is Question question1)
+                                {
+                                    question1.Bump(this);
+                                }
+                            }
                         }
+                    }
+                    else if (!isHidden)
+                    {
                         goto case "Stair";
                     }
 
