@@ -9,7 +9,7 @@ namespace MelloMario.ItemObjects
     {
         private IItemState state;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateStarSprite());
         }
@@ -43,7 +43,7 @@ namespace MelloMario.ItemObjects
             set
             {
                 state = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
@@ -57,7 +57,7 @@ namespace MelloMario.ItemObjects
             {
                 state = new Normal(this);
             }
-            OnStateChanged();
+            UpdateSprite();
         }
         public Star(IGameWorld world, Point location) : this(world, location, false)
         {

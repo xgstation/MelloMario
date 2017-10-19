@@ -11,7 +11,7 @@ namespace MelloMario.BlockObjects
         private IBlockState state;
         private Queue<IGameObject> items;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             if (state is Hidden)
             {
@@ -53,7 +53,7 @@ namespace MelloMario.BlockObjects
             set
             {
                 state = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
@@ -71,7 +71,7 @@ namespace MelloMario.BlockObjects
             {
                 state = new Normal(this);
             }
-            OnStateChanged();
+            UpdateSprite();
 
             this.items = items;
         }

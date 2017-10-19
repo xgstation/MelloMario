@@ -14,7 +14,7 @@ namespace MelloMario.MarioObjects
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             if (movementState is Crouching && powerUpState is Standard)
             {
@@ -47,8 +47,8 @@ namespace MelloMario.MarioObjects
         {
             Facing = facing;
 
-            // Notice: The effect should be the same as changing Mario's state
-            OnStateChanged();
+            // Notice: The effect should be the same as changing state
+            UpdateSprite();
         }
 
         protected override void OnSimulation(GameTime time)
@@ -172,7 +172,7 @@ namespace MelloMario.MarioObjects
                 }
                 else
                 {
-                    OnStateChanged(); // TODO
+                    UpdateSprite();
                 }
             }
         }
@@ -186,7 +186,7 @@ namespace MelloMario.MarioObjects
             set
             {
                 movementState = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
         public IMarioPowerUpState PowerUpState
@@ -198,7 +198,7 @@ namespace MelloMario.MarioObjects
             set
             {
                 powerUpState = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
         public IMarioProtectionState ProtectionState
@@ -210,7 +210,7 @@ namespace MelloMario.MarioObjects
             set
             {
                 protectionState = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
@@ -219,7 +219,7 @@ namespace MelloMario.MarioObjects
             movementState = new Standing(this);
             powerUpState = new Standard(this);
             protectionState = new Normal(this);
-            OnStateChanged();
+            UpdateSprite();
         }
 
         public void UpgradeToSuper()

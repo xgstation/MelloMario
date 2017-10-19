@@ -10,7 +10,7 @@ namespace MelloMario.BlockObjects
         private IBlockState state;
         private string type;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(type));
         }
@@ -40,7 +40,7 @@ namespace MelloMario.BlockObjects
             set
             {
                 state = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
@@ -48,7 +48,7 @@ namespace MelloMario.BlockObjects
         {
             state = new Normal(this);
             this.type = type;
-            OnStateChanged();
+            UpdateSprite();
         }
 
         public void Show()

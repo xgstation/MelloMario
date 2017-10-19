@@ -9,7 +9,7 @@ namespace MelloMario.ItemObjects
     {
         private IItemState state;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateOneUpMushroomSprite());
         }
@@ -44,7 +44,7 @@ namespace MelloMario.ItemObjects
             set
             {
                 state = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
@@ -58,7 +58,7 @@ namespace MelloMario.ItemObjects
             {
                 state = new Normal(this);
             }
-            OnStateChanged();
+            UpdateSprite();
         }
         public OneUpMushroom(IGameWorld world, Point location) : this(world, location, false)
         {

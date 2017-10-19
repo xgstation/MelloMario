@@ -9,7 +9,7 @@ namespace MelloMario.BlockObjects
     {
         private IBlockState state;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateStairSprite());
         }
@@ -39,14 +39,14 @@ namespace MelloMario.BlockObjects
             set
             {
                 state = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
         public Stair(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
             state = new Normal(this);
-            OnStateChanged();
+            UpdateSprite();
         }
 
         public void Show()

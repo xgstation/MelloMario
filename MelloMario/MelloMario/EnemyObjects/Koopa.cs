@@ -10,7 +10,7 @@ namespace MelloMario.EnemyObjects
         private ShellColor color;
         private IKoopaState state;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             string facingString;
             if (Facing == FacingMode.left)
@@ -31,12 +31,13 @@ namespace MelloMario.EnemyObjects
                     break;
             }
         }
+
         private void ChangeFacing(FacingMode facing)
         {
             Facing = facing;
 
-            // Notice: The effect should be the same as changing Mario's state
-            OnStateChanged();
+            // Notice: The effect should be the same as changing state
+            UpdateSprite();
         }
 
         protected override void OnSimulation(GameTime time)
@@ -93,7 +94,7 @@ namespace MelloMario.EnemyObjects
             set
             {
                 state = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
@@ -102,7 +103,7 @@ namespace MelloMario.EnemyObjects
             this.color = color;
 
             state = new Normal(this);
-            OnStateChanged();
+            UpdateSprite();
         }
 
         public void Show()

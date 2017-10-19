@@ -9,7 +9,7 @@ namespace MelloMario.ItemObjects
     {
         private IItemState state;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateFireFlowerSprite());
         }
@@ -44,7 +44,7 @@ namespace MelloMario.ItemObjects
             set
             {
                 state = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
         public FireFlower(IGameWorld world, Point location, bool isUnveil) : base(world, location, new Point(32, 32))
@@ -57,7 +57,7 @@ namespace MelloMario.ItemObjects
             {
                 state = new Normal(this);
             }
-            OnStateChanged();
+            UpdateSprite();
         }
         public FireFlower(IGameWorld world, Point location) : this(world, location, false)
         {
