@@ -94,7 +94,7 @@ namespace MelloMario.MarioObjects
                     if (!isHidden || mode == CollisionMode.Top)
                     {
                         // TODO: hack
-                        if (isBumping && mode == CollisionMode.Top)
+                        if (isBumping && mode == CollisionMode.Top && corner == CollisionCornerMode.Center)
                         {
                             Bounce(mode, 1);
                             Move(new Point(0, 7));
