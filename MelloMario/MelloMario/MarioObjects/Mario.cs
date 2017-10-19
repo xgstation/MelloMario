@@ -96,7 +96,7 @@ namespace MelloMario.MarioObjects
                         // TODO: hack
                         if (isBumping && mode == CollisionMode.Top && corner == CollisionCornerMode.Center)
                         {
-                            Bounce(mode, 1);
+                            Bounce(mode, new Vector2(), 1);
                             Move(new Point(0, 7));
                         }
                         goto case "Stair";
@@ -106,7 +106,7 @@ namespace MelloMario.MarioObjects
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
-                    SoftBounce(mode);
+                    Bounce(mode, new Vector2());
 
                     if (mode == CollisionMode.Bottom)
                     {
@@ -159,7 +159,7 @@ namespace MelloMario.MarioObjects
 
         protected override void OnOut(CollisionMode mode)
         {
-            SoftBounce(mode);
+            Bounce(mode, new Vector2());
         }
 
         protected override void OnDraw(GameTime time)

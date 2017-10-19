@@ -104,7 +104,7 @@ namespace MelloMario.MarioObjects
         public void JumpPress()
         {
             // TODO: for sprint2 only
-            SoftBounce(CollisionMode.Bottom);
+            Bounce(CollisionMode.Bottom, new Vector2());
         }
 
         public void JumpRelease()
@@ -131,7 +131,7 @@ namespace MelloMario.MarioObjects
         public void CrouchPress()
         {
             // TODO: for sprint2 only
-            SoftBounce(CollisionMode.Top);
+            Bounce(CollisionMode.Top, new Vector2());
         }
 
         public void CrouchRelease()

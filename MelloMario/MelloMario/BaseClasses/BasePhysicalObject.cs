@@ -52,52 +52,47 @@ namespace MelloMario
             }
         }
 
-        protected void Bounce(CollisionMode mode, float rate)
+        protected void Bounce(CollisionMode mode, Vector2 refVelocity, float rate = 0)
         {
             switch (mode)
             {
                 case CollisionMode.Left:
                 case CollisionMode.InnerLeft:
-                    if (velocity.X < 0)
+                    if (velocity.X < refVelocity.X)
                     {
-                        movement.X = 0;
-                        velocity.X = -velocity.X * rate;
+                        // movement.X = 0;
+                        velocity.X = refVelocity.X + (refVelocity.X - velocity.X) * rate;
                         StopHorizontalMovement();
                     }
                     break;
                 case CollisionMode.Right:
                 case CollisionMode.InnerRight:
-                    if (velocity.X > 0)
+                    if (velocity.X > refVelocity.X)
                     {
-                        movement.X = 0;
-                        velocity.X = -velocity.X * rate;
+                        // movement.X = 0;
+                        velocity.X = refVelocity.X + (refVelocity.X - velocity.X) * rate;
                         StopHorizontalMovement();
                     }
                     break;
                 case CollisionMode.Top:
                 case CollisionMode.InnerTop:
-                    if (velocity.Y < 0)
+                    if (velocity.Y < refVelocity.Y)
                     {
-                        movement.Y = 0;
-                        velocity.Y = -velocity.Y * rate;
+                        // movement.Y = 0;
+                        velocity.Y = refVelocity.Y + (refVelocity.Y - velocity.Y) * rate;
                         StopVerticalMovement();
                     }
                     break;
                 case CollisionMode.Bottom:
                 case CollisionMode.InnerBottom:
-                    if (velocity.Y > 0)
+                    if (velocity.Y > refVelocity.Y)
                     {
-                        movement.Y = 0;
-                        velocity.Y = -velocity.Y * rate;
+                        // movement.Y = 0;
+                        velocity.Y = refVelocity.Y + (refVelocity.Y - velocity.Y) * rate;
                         StopVerticalMovement();
                     }
                     break;
             }
-        }
-
-        protected void SoftBounce(CollisionMode mode)
-        {
-            Bounce(mode, 0);
         }
 
         protected override void OnSimulation(GameTime time)
