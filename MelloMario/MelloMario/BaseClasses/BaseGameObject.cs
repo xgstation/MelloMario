@@ -44,11 +44,19 @@ namespace MelloMario
             //   -------
             if (crossYfromBottom && crossXfromLeft && centerInX)
             {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InBottomLeft, CollisionMode.Top);
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InBottomLeft, CollisionMode.InTopRight);
             }
             if (crossYfromBottom && crossXfromRight && centerInX)
             {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InBottomRight, CollisionMode.Top);
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InBottomRight, CollisionMode.InTopLeft);
+            }
+            if (crossYfromBottom && crossXfromLeft && !centerInX)
+            {
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.OutBottomLeft, CollisionMode.OutTopRight);
+            }
+            if (crossYfromBottom && crossXfromRight && !centerInX)
+            {
+                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.OutBottomRight, CollisionMode.OutTopLeft);
             }
             ///////New conditions end
             if (intersectY && rectA.Left == rectB.Right)
@@ -106,7 +114,7 @@ namespace MelloMario
             }
         }
 
-        protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom, LeftBottom, RightBottom, LeftTop, RightTop, InBottomLeft, InBottomRight, TopLeft, TopRight};
+        protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom, LeftBottom, RightBottom, LeftTop, RightTop, InBottomLeft, InBottomRight, InTopLeft, InTopRight, OutBottomRight, OutTopRight, OutBottomLeft, OutTopLeft };
         protected enum ResizeModeX { Left, Center, Right };
         protected enum ResizeModeY { Top, Center, Bottom };
 

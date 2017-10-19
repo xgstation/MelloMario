@@ -73,6 +73,8 @@ namespace MelloMario.MarioObjects
         {
             switch (target.GetType().Name)
             {
+                //TODO: add cases when collision mode is OutLeftTop/OutRightTop that Mario will be squeezed to side of the brick
+                //NOTE: if collision mode is OutLeftTop/OutRightTop, be careful that if there are blocks surronding the target, no squeeze will happen!!
                 case "Brick":
                 case "Question":
                     bool isHidden;
