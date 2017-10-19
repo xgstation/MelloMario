@@ -44,7 +44,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnDraw(GameTime time)
+        protected override void OnDraw(GameTime time, ZIndex zIndex)
         {
         }
 

@@ -58,7 +58,7 @@ namespace MelloMario.Sprites.BlockSprites
         {
             get
             {
-                return new Point(16,16);
+                return new Point(16, 16);
             }
         }
 
@@ -76,15 +76,16 @@ namespace MelloMario.Sprites.BlockSprites
             offsetY = 0f;
         }
 
-        public void Draw(GameTime time, Rectangle destination)
+        public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
         {
-            UpdateOffset(time);
+            if (zIndex == ZIndex.front)
+            {
+                UpdateOffset(time);
 
-            Rectangle newDestination = new Rectangle(destination.Left + (int)offsetX, destination.Top + (int)offsetY, destination.Width, destination.Height);
-            Rectangle source = new Rectangle(texture.Width * x / 2, texture.Height * y / 2, texture.Width / 2, texture.Height / 2);
-            spriteBatch.Draw(texture, newDestination, source, Color.White);
-
-
+                Rectangle newDestination = new Rectangle(destination.Left + (int)offsetX, destination.Top + (int)offsetY, destination.Width, destination.Height);
+                Rectangle source = new Rectangle(texture.Width * x / 2, texture.Height * y / 2, texture.Width / 2, texture.Height / 2);
+                spriteBatch.Draw(texture, newDestination, source, Color.White);
+            }
         }
     }
 }

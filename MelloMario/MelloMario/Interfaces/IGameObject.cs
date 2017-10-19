@@ -9,6 +9,6 @@ namespace MelloMario
         Rectangle Boundary { get; }
 
         void Update(GameTime time);
-        void Draw(GameTime time);
+        void Draw(GameTime time, ZIndex zIndex);
     }
 }

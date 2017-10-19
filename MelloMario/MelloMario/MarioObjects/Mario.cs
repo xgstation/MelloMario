@@ -97,7 +97,7 @@ namespace MelloMario.MarioObjects
                         {
                             if (isBumping)
                             {
-                                Move(new Point(0, 7));
+                                Move(new Point(0, 1));
                             }
                             else
                             {
@@ -177,7 +177,7 @@ namespace MelloMario.MarioObjects
             Bounce(mode, new Vector2());
         }
 
-        protected override void OnDraw(GameTime time)
+        protected override void OnDraw(GameTime time, ZIndex zIndex)
         {
             if (ProtectionState is Starred)
             {

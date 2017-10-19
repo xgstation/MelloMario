@@ -119,11 +119,11 @@ namespace MelloMario.BaseClasses
 
         }
 
-        protected override void OnDraw(GameTime time)
+        protected override void OnDraw(GameTime time, ZIndex zIndex)
         {
             foreach (Tuple<Interval, IGameObject> obj in objects)
             {
-                obj.Item2.Draw(time);
+                obj.Item2.Draw(time, zIndex);
             }
         }
 
