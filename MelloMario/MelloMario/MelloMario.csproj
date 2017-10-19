@@ -128,6 +128,7 @@
     <Compile Include="Interfaces\States\IMarioProtectionState.cs" />
     <Compile Include="Interfaces\States\IMarioMovementState.cs" />
     <Compile Include="Interfaces\States\IMarioPowerUpState.cs" />
+    <Compile Include="MarioObjects\PlayerMario.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Dead.cs" />
     <Compile Include="MarioObjects\PowerUpStates\Fire.cs" />
     <Compile Include="MarioObjects\PowerUpStates\Standard.cs" />

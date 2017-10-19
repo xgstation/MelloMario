@@ -8,13 +8,11 @@ using MelloMario.EnemyObjects;
 
 namespace MelloMario.MarioObjects
 {
-    class Mario : BasePhysicalObject, IGameCharacter
+    class Mario : BasePhysicalObject
     {
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-        // TODO: encapsulate user input
-        private Vector2 userInput;
 
         private void OnStateChanged()
         {
@@ -45,7 +43,7 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        private void ChangeFacing(FacingMode facing)
+        protected void ChangeFacing(FacingMode facing)
         {
             Facing = facing;
 
@@ -55,10 +53,6 @@ namespace MelloMario.MarioObjects
 
         protected override void OnSimulation(GameTime time)
         {
-            ApplyForce(userInput);
-            userInput.X = 0;
-            userInput.Y = 0;
-
             if (g_on)
             {
                 ApplyGravity();
@@ -226,122 +220,6 @@ namespace MelloMario.MarioObjects
             powerUpState = new Standard(this);
             protectionState = new Normal(this);
             OnStateChanged();
-        }
-
-        public void Left()
-        {
-            if (!(MovementState is Crouching))
-            {
-                userInput.X -= FORCE_INPUT;
-            }
-            if (MovementState is Standing)
-            {
-                MovementState.Walk();
-            }
-        }
-
-        public void LeftPress()
-        {
-            if (Facing == FacingMode.right)
-            {
-                ChangeFacing(FacingMode.left);
-            }
-        }
-
-        public void LeftRelease()
-        {
-            if (MovementState is Walking)
-            {
-                MovementState.Idle();
-            }
-        }
-
-        public void Right()
-        {
-            if (!(MovementState is Crouching))
-            {
-                userInput.X += FORCE_INPUT;
-            }
-            if (MovementState is Standing)
-            {
-                MovementState.Walk();
-            }
-        }
-
-        public void RightPress()
-        {
-            if (Facing == FacingMode.left)
-            {
-                ChangeFacing(FacingMode.right);
-            }
-        }
-
-        public void RightRelease()
-        {
-            if (MovementState is Walking)
-            {
-                MovementState.Idle();
-            }
-        }
-
-        public void Jump()
-        {
-            if (!(MovementState is Crouching))
-            {
-                userInput.Y -= FORCE_INPUT;
-                if (g_on)
-                {
-                    userInput.Y -= FORCE_G;
-                }
-
-                MovementState.Jump();
-            }
-        }
-
-        public void JumpPress()
-        {
-            // TODO: for sprint2 only
-            SoftBounce(CollisionMode.Bottom);
-        }
-
-        public void JumpRelease()
-        {
-            // TODO: for sprint2 only
-            if (MovementState is Crouching)
-            {
-                MovementState.Idle();
-            }
-        }
-
-        public void Crouch()
-        {
-            if (!(MovementState is Jumping))
-            {
-                // TODO: for sprint2 only
-                // "fall" instead of "crouch"
-                userInput.Y += FORCE_INPUT;
-
-                MovementState.Crouch();
-            }
-        }
-
-        public void CrouchPress()
-        {
-            // TODO: for sprint2 only
-            SoftBounce(CollisionMode.Top);
-        }
-
-        public void CrouchRelease()
-        {
-            if (MovementState is Jumping)
-            {
-                MovementState.Idle();
-            }
-        }
-
-        public void Action()
-        {
-            throw new System.NotImplementedException();
         }
 
         public void UpgradeToSuper()

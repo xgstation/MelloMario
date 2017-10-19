@@ -6,6 +6,8 @@ namespace MelloMario
 {
     interface IGameCharacter : IGameObject
     {
+        Rectangle Viewport { get; }
+
         void Left();
         void LeftPress();
         void LeftRelease();
