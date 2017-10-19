@@ -146,7 +146,6 @@
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\SlicedSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
-    <Compile Include="Commands\DeadState.cs" />
     <Compile Include="Commands\FireState.cs" />
     <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Theming\GameWorld.cs" />

@@ -237,11 +237,6 @@ namespace MelloMario.MarioObjects
             PowerUpState.Downgrade();
         }
 
-        public void Kill()
-        {
-            // TODO
-        }
-
         // TODO: For sprint 2 only
         //       Please remove it after sprint 2
         bool g_on;

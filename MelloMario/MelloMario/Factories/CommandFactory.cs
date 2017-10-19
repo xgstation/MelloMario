@@ -80,8 +80,6 @@ namespace MelloMario.Factories
                 {
                     case "ToggleGravity":
                         return new ToggleGravity(mario);
-                    case "DeadState":
-                        return new DeadState(mario);
                     case "FireState":
                         return new FireState(mario);
                     case "StandardState":
