@@ -31,6 +31,10 @@ namespace MelloMario.ItemObjects
         {
         }
 
+        protected override void OnDraw(GameTime time)
+        {
+        }
+
         public IItemState State
         {
             get
@@ -56,7 +60,7 @@ namespace MelloMario.ItemObjects
             }
             OnStateChanged();
         }
-        public OneUpMushroom(IGameWorld world, Point location) : this (world, location, false)
+        public OneUpMushroom(IGameWorld world, Point location) : this(world, location, false)
         {
         }
 

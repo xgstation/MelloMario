@@ -30,6 +30,10 @@ namespace MelloMario.ItemObjects
         {
         }
 
+        protected override void OnDraw(GameTime time)
+        {
+        }
+
         public IItemState State
         {
             get
@@ -48,7 +52,8 @@ namespace MelloMario.ItemObjects
             if (isUnveil)
             {
                 state = new Unveil(this);
-            } else
+            }
+            else
             {
                 state = new Normal(this);
             }

@@ -11,26 +11,18 @@ namespace MelloMario
         private Point location;
         private Point size;
         private Point movement;
-        //TODO: Change protected
-        protected ISprite sprite;
+        private ISprite sprite;
 
         private IEnumerable<Tuple<CollisionMode, CollisionMode>> ScanCollideModes(Rectangle targetBoundary)
         {
             Rectangle rectA = Boundary;
             Rectangle rectB = targetBoundary;
-            
+
             bool intersectX = rectA.Left < rectB.Right && rectB.Left < rectA.Right;
             bool intersectY = rectA.Top < rectB.Bottom && rectB.Top < rectA.Bottom;
 
-
-            ///////New conditions begin
-            bool centerInX = rectB.Center.X > rectA.Left && rectB.Center.X < rectA.Right;
-            bool centerInXLeft = centerInX && rectB.Center.X <= rectA.Center.X;
-            bool centerInXRight = centerInX && rectB.Center.X >= rectA.Center.X;
-
-            bool centerInY = rectB.Center.Y > rectA.Top && rectB.Center.Y < rectA.Bottom;
-            bool centerInYTop = centerInY && rectB.Center.Y <= rectA.Center.Y;
-            bool centerInYBottom = centerInY && rectB.Center.Y >= rectA.Center.Y;
+            bool centerInX = rectA.Left < rectB.Center.X && rectB.Center.X < rectA.Right;
+            bool centerInY = rectA.Top < rectB.Center.Y && rectB.Center.Y < rectA.Bottom;
 
             bool crossXfromLeft = rectB.Right >= rectA.Left && rectB.Left < rectA.Left;
             bool crossXfromRight = rectB.Left <= rectA.Right && rectB.Right > rectA.Right;
@@ -121,6 +113,7 @@ namespace MelloMario
         protected abstract void OnSimulation(GameTime time);
         protected abstract void OnCollision(IGameObject target, CollisionMode mode);
         protected abstract void OnOut(CollisionMode mode);
+        protected abstract void OnDraw(GameTime time);
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
         {
@@ -213,8 +206,7 @@ namespace MelloMario
             movement = new Point();
         }
 
-        // TODO: remove virtual
-        public virtual void Update(GameTime time)
+        public void Update(GameTime time)
         {
             OnSimulation(time);
 
@@ -247,9 +239,10 @@ namespace MelloMario
             }
         }
 
-        //TODO: Consider change virtual
-        public virtual void Draw(GameTime time)
+        public void Draw(GameTime time)
         {
+            OnDraw(time);
+
             if (sprite != null)
             {
                 sprite.Draw(time, Boundary);

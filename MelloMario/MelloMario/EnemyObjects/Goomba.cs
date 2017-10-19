@@ -24,7 +24,7 @@ namespace MelloMario.EnemyObjects
             {
                 //TODO: Fire to be added
                 Mario m = (Mario)target;
-                if(mode == CollisionMode.Top || m.ProtectionState is MarioObjects.ProtectionStates.Starred)
+                if (mode == CollisionMode.Top || m.ProtectionState is MarioObjects.ProtectionStates.Starred)
                 {
                     Defeat();
                 }
@@ -37,10 +37,14 @@ namespace MelloMario.EnemyObjects
                     Defeat();
                 }
             }
-            
+
         }
 
         protected override void OnOut(CollisionMode mode)
+        {
+        }
+
+        protected override void OnDraw(GameTime time)
         {
         }
 

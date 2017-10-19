@@ -24,10 +24,10 @@ namespace MelloMario.EnemyObjects
             switch (color)
             {
                 case ShellColor.green:
-                    ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite(state.GetType().Name+facingString));
+                    ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite(state.GetType().Name + facingString));
                     break;
                 case ShellColor.red:
-                    ShowSprite(SpriteFactory.Instance.CreateRedKoopaSprite(state.GetType().Name+facingString));
+                    ShowSprite(SpriteFactory.Instance.CreateRedKoopaSprite(state.GetType().Name + facingString));
                     break;
             }
         }
@@ -70,13 +70,17 @@ namespace MelloMario.EnemyObjects
                         {
                             Pushed();
                         }
-                      
+
                     }
                 }
             }
         }
 
         protected override void OnOut(CollisionMode mode)
+        {
+        }
+
+        protected override void OnDraw(GameTime time)
         {
         }
 
@@ -94,7 +98,7 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        public Koopa(IGameWorld world, Point location, ShellColor color) : base(world, location, new Point(32, 32),32)
+        public Koopa(IGameWorld world, Point location, ShellColor color) : base(world, location, new Point(32, 32), 32)
         {
             this.color = color;
 

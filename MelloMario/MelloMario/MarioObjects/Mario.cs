@@ -162,6 +162,21 @@ namespace MelloMario.MarioObjects
             SoftBounce(mode);
         }
 
+        protected override void OnDraw(GameTime time)
+        {
+            if (ProtectionState is Starred)
+            {
+                if ((int)time.TotalGameTime.Milliseconds % 8 == 0)
+                {
+                    HideSprite();
+                }
+                else
+                {
+                    OnStateChanged(); // TODO
+                }
+            }
+        }
+
         public IMarioMovementState MovementState
         {
             get
@@ -349,22 +364,6 @@ namespace MelloMario.MarioObjects
         public void ToggleGravity()
         {
             g_on = !g_on;
-        }
-        //TODO: Consider change ovverride
-        public override void Draw(GameTime time)
-        {
-            if (sprite != null)
-            {
-                if (ProtectionState is Starred)
-                {
-                    if ((int)time.TotalGameTime.Milliseconds % 8 == 0)
-                        sprite.Draw(time, Boundary);
-                }
-                else
-                {
-                    sprite.Draw(time, Boundary);
-                }
-            }
         }
     }
 }

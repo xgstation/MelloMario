@@ -31,6 +31,10 @@ namespace MelloMario.ItemObjects
         {
         }
 
+        protected override void OnDraw(GameTime time)
+        {
+        }
+
         public IItemState State
         {
             get
@@ -45,7 +49,7 @@ namespace MelloMario.ItemObjects
         }
         public FireFlower(IGameWorld world, Point location, bool isUnveil) : base(world, location, new Point(32, 32))
         {
-            if(isUnveil)
+            if (isUnveil)
             {
                 state = new Unveil(this);
             }
@@ -55,7 +59,7 @@ namespace MelloMario.ItemObjects
             }
             OnStateChanged();
         }
-        public FireFlower(IGameWorld world, Point location) : this (world, location, false)
+        public FireFlower(IGameWorld world, Point location) : this(world, location, false)
         {
         }
 

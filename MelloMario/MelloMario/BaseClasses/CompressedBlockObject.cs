@@ -77,6 +77,14 @@ namespace MelloMario.BaseClasses
 
         }
 
+        protected override void OnSimulation(GameTime time)
+        {
+            foreach (var obj in objects)
+            {
+                obj.Item2.Update(time);
+            }
+        }
+
         protected override void OnCollision(IGameObject target, CollisionMode mode)
         {
             if (target is Mario)
@@ -117,23 +125,13 @@ namespace MelloMario.BaseClasses
                 }
             }
         }
+
         protected override void OnOut(CollisionMode mode)
         {
 
         }
 
-        protected override void OnSimulation(GameTime time)
-        {
-
-        }
-        public override void Update(GameTime time)
-        {
-            foreach (var obj in objects)
-            {
-                obj.Item2.Update(time);
-            }
-        }
-        public override void Draw(GameTime time)
+        protected override void OnDraw(GameTime time)
         {
             foreach (var obj in objects)
             {

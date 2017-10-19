@@ -30,6 +30,10 @@ namespace MelloMario.ItemObjects
         {
         }
 
+        protected override void OnDraw(GameTime time)
+        {
+        }
+
         public IItemState State
         {
             get
@@ -55,7 +59,7 @@ namespace MelloMario.ItemObjects
             }
             OnStateChanged();
         }
-        public Star(IGameWorld world, Point location) : this (world, location, false)
+        public Star(IGameWorld world, Point location) : this(world, location, false)
         {
         }
 

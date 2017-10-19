@@ -26,6 +26,10 @@ namespace MelloMario.BlockObjects
         {
         }
 
+        protected override void OnDraw(GameTime time)
+        {
+        }
+
         public IBlockState State
         {
             get

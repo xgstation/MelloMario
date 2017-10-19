@@ -44,6 +44,10 @@ namespace MelloMario.ItemObjects
             }
         }
 
+        protected override void OnDraw(GameTime time)
+        {
+        }
+
         public SuperMushroom(IGameWorld world, Point location, bool isUnveil) : base(world, location, new Point(32, 32))
         {
             if (isUnveil)
@@ -56,7 +60,7 @@ namespace MelloMario.ItemObjects
             }
             OnStateChanged();
         }
-        public SuperMushroom(IGameWorld world, Point location) : this (world, location, false)
+        public SuperMushroom(IGameWorld world, Point location) : this(world, location, false)
         {
         }
 

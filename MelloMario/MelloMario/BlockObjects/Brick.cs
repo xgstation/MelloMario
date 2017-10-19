@@ -17,7 +17,7 @@ namespace MelloMario.BlockObjects
             {
                 HideSprite();
             }
-            else if(state is Destroyed)
+            else if (state is Destroyed)
             {
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedRT"));
                 //ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedLT"));
@@ -45,6 +45,10 @@ namespace MelloMario.BlockObjects
         }
 
         protected override void OnOut(CollisionMode mode)
+        {
+        }
+
+        protected override void OnDraw(GameTime time)
         {
         }
 
@@ -84,18 +88,18 @@ namespace MelloMario.BlockObjects
 
             this.items = items;
         }
-        
+
 
         public void Bump(Mario mario)
         {
             State.Bump(mario);
-            
+
         }
 
         public void BumpMove(int delta)
         {
             Move(new Point(0, delta));
-            
+
         }
 
         public bool ReleaseNextItem()
