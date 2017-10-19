@@ -11,44 +11,31 @@ using Newtonsoft.Json.Converters;
 namespace MelloMario.LevelGen
 {
 
-    /*
-     documentation/key for level gen
-
-        first line height of level
-        second line width of level
-
-        !:Mario
-
-        Blocks:
-        F:Floor
-        B:Brick
-        b:Hidden Brick
-        S:Stair
-        Q:Question
-        q:Hidden Question
-        P:Pipe(to the right one block)
-        V:Vertical Pipe(to the right one block)
-
-        Entities:
-        C:Coin
-        1:One Up Mushroom
-        R:Fire Flower
-        M:Super Mushroom
-        T:Star
-
-        Harm:
-        G:Goomba
-        K:Green Koopa
-        D:Red Kappa
-
-        _:Blank
-
-         */
-
-    class LevelReaderJson : IDisposable
+    class LevelIOJson : IDisposable
     {
-        public class BrickConverter : JsonConverter
+
+        // Note: Without implementing IDisposable, it may cause resource leak
+        //       The code analysis tool generates a warning here
+        protected class CharacterConverter : JsonConverter
         {
+            public override bool CanConvert(Type objectType)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            {
+                throw new NotImplementedException();
+            }
+        }
+        protected class MapConverter : JsonConverter
+        {
+
             public override bool CanConvert(Type objectType)
             {
                 throw new NotImplementedException();
@@ -69,36 +56,67 @@ namespace MelloMario.LevelGen
                 get { return false; }
             }
         }
+        protected class ScoreConverter : JsonConverter
+        {
+            public override bool CanConvert(Type objectType)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            {
+                throw new NotImplementedException();
+            }
+        }
+        protected class CustomScriptConverter : JsonConverter
+        {
+            public override bool CanConvert(Type objectType)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
         private const int GRIDSIZE = 32;
-        private Point size;
-        // Note: Without implementing IDisposable, it may cause resource leak
-        //       The code analysis tool generates a warning here
+
         private StreamReader input;
-        //
-        private String jsonString;
-        private JsonReader jReader;
-        private List<JObject> loadList;
-        private JObject jMap;
-        public LevelReaderJson(String path)
+        private String levelString;
+        private List<JToken> loadList;
+        private JToken jLevelToken;
+        private IGameWorld[] Scenes;
+        public LevelIOJson(String path)
         {
             Stream inStream = new FileStream(path, FileMode.Open);
             input = new StreamReader(inStream);
+            levelString = File.ReadAllText(path);
+            jLevelToken = JToken.Parse(levelString);
+            loadList = jLevelToken.Children().ToList();
+            IGameObjectFactory factory = GameObjectFactory.Instance;
+            IGameCharacter character = null;
 
-            String heightAsString = input.ReadLine();
-            String widthAsString = input.ReadLine();
-
-            size = new Point(Int32.Parse(widthAsString), Int32.Parse(heightAsString));
-            ///
-            jsonString = File.ReadAllText(path);
-            jMap = JObject.Parse(jsonString);
-
+            inStream.Close();
         }
 
         public void Dispose()
         {
             ((IDisposable)input).Dispose();
         }
-        private void addMatirx(int x, int y, int rows, int columns, GameObjectFactory factory, String type, GameWorld world, SortedSet<Tuple<int,int>> ignoredSet)
+        private void AddMatirx(int x, int y, int rows, int columns, GameObjectFactory factory, String type, GameWorld world, SortedSet<Tuple<int,int>> ignoredSet)
         {
             for (int i = 0; i < rows; i++)
             {
@@ -117,19 +135,9 @@ namespace MelloMario.LevelGen
         {
             return ignoredSet.Contains(new Tuple<int, int>(i, j));
         }
-        public Tuple<IGameWorld, IGameCharacter> LoadObjects()
+        public Tuple<IGameWorld[], IGameCharacter> LoadObjects()
         {
-            IGameObjectFactory factory = GameObjectFactory.Instance;
-            IGameWorld world = factory.CreateGameWorld(size);
-            IGameCharacter character = null;
-            //
-            IList<JToken> maps = jMap["Map"].Children().ToList();
-            Point mapSize = jMap["Map"]["Main"].Value<Point>("Size");
-            foreach (var map in maps)
-            {
-
-            }
-            //
+            /*
             for (int i = 0; i < size.Y; ++i)
             {
                 string curLine = input.ReadLine();
@@ -205,8 +213,10 @@ namespace MelloMario.LevelGen
                     }
                 }
             }
+            **/
 
-            return new Tuple<IGameWorld, IGameCharacter>(world, character);
+            //TODO: change null
+            return new Tuple<IGameWorld[], IGameCharacter>(Scenes, null);
         }
     }
 }

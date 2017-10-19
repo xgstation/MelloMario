@@ -1,4 +1,11 @@
 ﻿{
+  "Character": {
+    "Map": 0,
+    "Point": {
+      "X": 3,
+      "Y": 3
+    }
+  },
   "Map": [
     {
       "Main": {
@@ -7,7 +14,7 @@
           "Column": 25
         },
         "Character": {
-          "Location": {
+          "Point": {
             "X": 2,
             "Y": 2
           }
@@ -16,20 +23,17 @@
           {
             "Bricks": [
               {
-                "Matrix": {
-                  "Location": { //Required
+                "Array": {
+                  "Point": { //Required for Array
                     "X": 2,
                     "Y": 3
                   },
-                  "Size": { //Required
-                    "Rows": 1,
-                    "Columns": 4
-                  }
+                  "Length": 4 //Required for Array
                 }
               },
               {
                 "Single": {
-                  "Location": {
+                  "Point": {
                     "X": 7,
                     "Y": 9
                   },
@@ -43,7 +47,7 @@
             "Floors": [
               {
                 "Matirx": {
-                  "Location": {
+                  "Point": {
                     "X": 1,
                     "Y": 13
                   },
@@ -53,7 +57,7 @@
                   },
                   "Ignore": {
                     "Matrix": {
-                      "Location": {
+                      "Point": {
                         "X": 16,
                         "Y": 13
                       },
@@ -67,7 +71,7 @@
               },
               {
                 "Matrix": {
-                  "Location": {
+                  "Point": {
                     "X": 21,
                     "Y": 13
                   },
@@ -82,7 +86,7 @@
           {
             "Floor": {
               "Single": {
-                "Location": {
+                "Point": {
                   "X": 24,
                   "Y": 15
                 }
@@ -92,7 +96,7 @@
           {
             "Floor": {
               "Single": {
-                "Location": {
+                "Point": {
                   "X": 25,
                   "Y": 15
                 }
@@ -103,7 +107,7 @@
             "Stairs": [
               {
                 "Matrix": {
-                  "Location": {
+                  "Point": {
                     "X": 16,
                     "Y": 7
                   },
@@ -149,7 +153,7 @@
         "Items": [
           {
             "Coin": {
-              "Location": {
+              "Point": {
                 "X": 1,
                 "Y": 1
               }
@@ -158,5 +162,7 @@
         ]
       }
     }
-  ]
+  ],
+  "Score": [],
+  "CustomScript": []
 }
