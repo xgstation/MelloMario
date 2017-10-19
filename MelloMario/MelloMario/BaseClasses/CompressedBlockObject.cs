@@ -9,6 +9,7 @@ using MelloMario.MarioObjects;
 namespace MelloMario.BaseClasses
 {
     //NOT FINISHED YET
+    //Briefly Introduction:
     class CompressedBlockObject : BaseGameObject
     {
         private class Interval : IComparable
