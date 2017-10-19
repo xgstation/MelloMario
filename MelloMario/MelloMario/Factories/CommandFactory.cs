@@ -74,22 +74,29 @@ namespace MelloMario.Factories
         // This method and all of the commands will be removed in the final game
         public ICommand CreateGameObjectCommand(string action, IGameObject gameObject)
         {
-            switch (action)
+            if (gameObject is Mario mario)
             {
-                case "ToggleGravity":
-                    return new ToggleGravity((Mario)gameObject);
-                case "DeadState":
-                    return new DeadState((Mario)gameObject);
-                case "FireState":
-                    return new FireState((Mario)gameObject);
-                case "StandardState":
-                    return new StandardState((Mario)gameObject);
-                case "SuperState":
-                    return new SuperState((Mario)gameObject);
-                default:
-                    //it should never hit this case, if it does there is an error somewhere
-                    //else in the code
-                    return null;
+                switch (action)
+                {
+                    case "ToggleGravity":
+                        return new ToggleGravity(mario);
+                    case "FireState":
+                        return new FireState(mario);
+                    case "StandardState":
+                        return new StandardState(mario);
+                    case "SuperState":
+                        return new SuperState(mario);
+                    default:
+                        //it should never hit this case, if it does there is an error somewhere
+                        //else in the code
+                        return null;
+                }
+            }
+            else
+            {
+                //it should never hit this case, if it does there is an error somewhere
+                //else in the code
+                return null;
             }
         }
     }

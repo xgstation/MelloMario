@@ -9,7 +9,7 @@ namespace MelloMario.EnemyObjects
     {
         private IGoombaState state;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name));
         }
@@ -18,21 +18,19 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
-            if (target is Mario)
+            if (target is Mario mario)
             {
                 //TODO: Fire to be added
-                Mario m = (Mario)target;
-                if (mode == CollisionMode.Top || m.ProtectionState is MarioObjects.ProtectionStates.Starred)
+                if (mode == CollisionMode.Top || mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
                 {
                     Defeat();
                 }
             }
-            else if (target is Koopa)
+            else if (target is Koopa koopa)
             {
-                Koopa k = (Koopa)target;
-                if (k.State is KoopaStates.MovingShell)
+                if (koopa.State is KoopaStates.MovingShell)
                 {
                     Defeat();
                 }
@@ -57,14 +55,14 @@ namespace MelloMario.EnemyObjects
             set
             {
                 state = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
         public Goomba(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
             state = new Normal(this);
-            OnStateChanged();
+            UpdateSprite();
         }
 
         public void Show()

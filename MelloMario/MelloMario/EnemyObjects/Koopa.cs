@@ -10,7 +10,7 @@ namespace MelloMario.EnemyObjects
         private ShellColor color;
         private IKoopaState state;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             string facingString;
             if (Facing == FacingMode.left)
@@ -31,25 +31,25 @@ namespace MelloMario.EnemyObjects
                     break;
             }
         }
+
         private void ChangeFacing(FacingMode facing)
         {
             Facing = facing;
 
-            // Notice: The effect should be the same as changing Mario's state
-            OnStateChanged();
+            // Notice: The effect should be the same as changing state
+            UpdateSprite();
         }
 
         protected override void OnSimulation(GameTime time)
         {
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
-            if (target is Mario)
+            if (target is Mario mario)
             {
                 //TODO: fire as target to be added
-                Mario m = (Mario)target;
-                if (m.ProtectionState is MarioObjects.ProtectionStates.Starred)
+                if (mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
                 {
                     Defeat();
                 }
@@ -94,7 +94,7 @@ namespace MelloMario.EnemyObjects
             set
             {
                 state = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
@@ -103,7 +103,7 @@ namespace MelloMario.EnemyObjects
             this.color = color;
 
             state = new Normal(this);
-            OnStateChanged();
+            UpdateSprite();
         }
 
         public void Show()

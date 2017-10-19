@@ -36,7 +36,7 @@ namespace MelloMario.Factories
             switch (type)
             {
                 case "Mario":
-                    Mario mario = new Mario(world, location);
+                    PlayerMario mario = new PlayerMario(world, location);
 
                     return new Tuple<IGameCharacter, IGameObject>(mario, mario);
                 default:

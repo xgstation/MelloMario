@@ -9,7 +9,7 @@ namespace MelloMario.ItemObjects
     {
         private IItemState state;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateCoinSprite());
         }
@@ -18,7 +18,7 @@ namespace MelloMario.ItemObjects
         {
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
             if (target is Mario && !(state is Unveil))
             {
@@ -43,7 +43,7 @@ namespace MelloMario.ItemObjects
             set
             {
                 state = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
@@ -57,7 +57,7 @@ namespace MelloMario.ItemObjects
             {
                 state = new Normal(this);
             }
-            OnStateChanged();
+            UpdateSprite();
         }
         public Coin(IGameWorld world, Point location) : this(world, location, false)
         {

@@ -129,6 +129,7 @@
     <Compile Include="Interfaces\States\IMarioProtectionState.cs" />
     <Compile Include="Interfaces\States\IMarioMovementState.cs" />
     <Compile Include="Interfaces\States\IMarioPowerUpState.cs" />
+    <Compile Include="MarioObjects\PlayerMario.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Dead.cs" />
     <Compile Include="MarioObjects\PowerUpStates\Fire.cs" />
     <Compile Include="MarioObjects\PowerUpStates\Standard.cs" />
@@ -146,7 +147,6 @@
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\SlicedSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
-    <Compile Include="Commands\DeadState.cs" />
     <Compile Include="Commands\FireState.cs" />
     <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Theming\GameWorld.cs" />

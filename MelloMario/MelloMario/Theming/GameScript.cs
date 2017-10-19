@@ -53,7 +53,6 @@ namespace MelloMario
                 controller.AddCommand(Keys.Y, factory.CreateGameObjectCommand("StandardState", character));
                 controller.AddCommand(Keys.U, factory.CreateGameObjectCommand("SuperState", character));
                 controller.AddCommand(Keys.I, factory.CreateGameObjectCommand("FireState", character));
-                controller.AddCommand(Keys.O, factory.CreateGameObjectCommand("DeadState", character));
 
                 controller.AddCommand(Buttons.B, factory.CreateGameCharacterCommand("Action", character));
                 controller.AddCommand(Buttons.DPadDown, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);

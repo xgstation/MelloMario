@@ -17,9 +17,9 @@ namespace MelloMario.Controllers
 
         public void AddCommand(object key, ICommand value, KeyBehavior behavior)
         {
-            if (key is T)
+            if (key is T castedKey)
             {
-                commands[behavior].Add((T)key, value);
+                commands[behavior].Add(castedKey, value);
             }
         }
 

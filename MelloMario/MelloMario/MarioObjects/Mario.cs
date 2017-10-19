@@ -8,15 +8,13 @@ using MelloMario.EnemyObjects;
 
 namespace MelloMario.MarioObjects
 {
-    class Mario : BasePhysicalObject, IGameCharacter
+    class Mario : BasePhysicalObject
     {
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-        // TODO: encapsulate user input
-        private Vector2 userInput;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             if (movementState is Crouching && powerUpState is Standard)
             {
@@ -45,20 +43,16 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        private void ChangeFacing(FacingMode facing)
+        protected void ChangeFacing(FacingMode facing)
         {
             Facing = facing;
 
-            // Notice: The effect should be the same as changing Mario's state
-            OnStateChanged();
+            // Notice: The effect should be the same as changing state
+            UpdateSprite();
         }
 
         protected override void OnSimulation(GameTime time)
         {
-            ApplyForce(userInput);
-            userInput.X = 0;
-            userInput.Y = 0;
-
             if (g_on)
             {
                 ApplyGravity();
@@ -69,7 +63,7 @@ namespace MelloMario.MarioObjects
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
             switch (target.GetType().Name)
             {
@@ -80,22 +74,26 @@ namespace MelloMario.MarioObjects
                     bool isHidden;
                     bool isBumping; // TODO: remove later
 
-                    if (target is Brick)
+                    if (target is Brick brick)
                     {
-                        isHidden = ((Brick)target).State is BlockObjects.BrickStates.Hidden;
-                        isBumping = ((Brick)target).State is BlockObjects.BrickStates.Bumped;
+                        isHidden = brick.State is BlockObjects.BrickStates.Hidden;
+                        isBumping = brick.State is BlockObjects.BrickStates.Bumped;
+                    }
+                    else if (target is Question question)
+                    {
+                        isHidden = question.State is BlockObjects.QuestionStates.Hidden;
+                        isBumping = question.State is BlockObjects.QuestionStates.Bumped;
                     }
                     else
                     {
-                        isHidden = ((Question)target).State is BlockObjects.QuestionStates.Hidden;
-                        isBumping = ((Question)target).State is BlockObjects.QuestionStates.Bumped;
+                        // never reach
+                        isHidden = false;
+                        isBumping = false;
                     }
-                    if (isHidden && mode != CollisionMode.Top)
+
+                    if (!isHidden || mode == CollisionMode.Top)
                     {
-                        break;
-                    }
-                    else
-                    {
+                        // TODO: hack
                         if (isBumping && mode == CollisionMode.Top)
                         {
                             Bounce(mode, 1);
@@ -103,6 +101,8 @@ namespace MelloMario.MarioObjects
                         }
                         goto case "Stair";
                     }
+
+                    break;
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
@@ -120,9 +120,9 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Goomba":
-                    if (mode != CollisionMode.Bottom)
+                    if (target is Goomba goomba && mode != CollisionMode.Bottom)
                     {
-                        if (((Goomba)target).State is EnemyObjects.GoombaStates.Normal && !(ProtectionState is Starred))
+                        if (goomba.State is EnemyObjects.GoombaStates.Normal && !(ProtectionState is Starred))
                         {
                             PowerUpState.Downgrade();
                         }
@@ -130,9 +130,9 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Koopa":
-                    if (mode != CollisionMode.Bottom)
+                    if (target is Koopa koopa && mode != CollisionMode.Bottom)
                     {
-                        if (((Koopa)target).State is EnemyObjects.KoopaStates.Normal && !(ProtectionState is Starred))
+                        if (koopa.State is EnemyObjects.KoopaStates.Normal && !(ProtectionState is Starred))
                         {
                             PowerUpState.Downgrade();
                         }
@@ -166,13 +166,13 @@ namespace MelloMario.MarioObjects
         {
             if (ProtectionState is Starred)
             {
-                if ((int)time.TotalGameTime.Milliseconds % 8 == 0)
+                if (time.TotalGameTime.Milliseconds % 8 == 0)
                 {
                     HideSprite();
                 }
                 else
                 {
-                    OnStateChanged(); // TODO
+                    UpdateSprite();
                 }
             }
         }
@@ -186,7 +186,7 @@ namespace MelloMario.MarioObjects
             set
             {
                 movementState = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
         public IMarioPowerUpState PowerUpState
@@ -198,7 +198,7 @@ namespace MelloMario.MarioObjects
             set
             {
                 powerUpState = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
         public IMarioProtectionState ProtectionState
@@ -210,7 +210,7 @@ namespace MelloMario.MarioObjects
             set
             {
                 protectionState = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
@@ -219,123 +219,7 @@ namespace MelloMario.MarioObjects
             movementState = new Standing(this);
             powerUpState = new Standard(this);
             protectionState = new Normal(this);
-            OnStateChanged();
-        }
-
-        public void Left()
-        {
-            if (!(MovementState is Crouching))
-            {
-                userInput.X -= FORCE_INPUT;
-            }
-            if (MovementState is Standing)
-            {
-                MovementState.Walk();
-            }
-        }
-
-        public void LeftPress()
-        {
-            if (Facing == FacingMode.right)
-            {
-                ChangeFacing(FacingMode.left);
-            }
-        }
-
-        public void LeftRelease()
-        {
-            if (MovementState is Walking)
-            {
-                MovementState.Idle();
-            }
-        }
-
-        public void Right()
-        {
-            if (!(MovementState is Crouching))
-            {
-                userInput.X += FORCE_INPUT;
-            }
-            if (MovementState is Standing)
-            {
-                MovementState.Walk();
-            }
-        }
-
-        public void RightPress()
-        {
-            if (Facing == FacingMode.left)
-            {
-                ChangeFacing(FacingMode.right);
-            }
-        }
-
-        public void RightRelease()
-        {
-            if (MovementState is Walking)
-            {
-                MovementState.Idle();
-            }
-        }
-
-        public void Jump()
-        {
-            if (!(MovementState is Crouching))
-            {
-                userInput.Y -= FORCE_INPUT;
-                if (g_on)
-                {
-                    userInput.Y -= FORCE_G;
-                }
-
-                MovementState.Jump();
-            }
-        }
-
-        public void JumpPress()
-        {
-            // TODO: for sprint2 only
-            SoftBounce(CollisionMode.Bottom);
-        }
-
-        public void JumpRelease()
-        {
-            // TODO: for sprint2 only
-            if (MovementState is Crouching)
-            {
-                MovementState.Idle();
-            }
-        }
-
-        public void Crouch()
-        {
-            if (!(MovementState is Jumping))
-            {
-                // TODO: for sprint2 only
-                // "fall" instead of "crouch"
-                userInput.Y += FORCE_INPUT;
-
-                MovementState.Crouch();
-            }
-        }
-
-        public void CrouchPress()
-        {
-            // TODO: for sprint2 only
-            SoftBounce(CollisionMode.Top);
-        }
-
-        public void CrouchRelease()
-        {
-            if (MovementState is Jumping)
-            {
-                MovementState.Idle();
-            }
-        }
-
-        public void Action()
-        {
-            throw new System.NotImplementedException();
+            UpdateSprite();
         }
 
         public void UpgradeToSuper()
@@ -351,11 +235,6 @@ namespace MelloMario.MarioObjects
         public void Downgrade()
         {
             PowerUpState.Downgrade();
-        }
-
-        public void Kill()
-        {
-            // TODO
         }
 
         // TODO: For sprint 2 only

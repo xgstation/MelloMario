@@ -13,7 +13,7 @@ namespace MelloMario
         private Point movement;
         private ISprite sprite;
 
-        private IEnumerable<Tuple<CollisionMode, CollisionMode>> ScanCollideModes(Rectangle targetBoundary)
+        private IEnumerable<Tuple<CollisionMode, CollisionMode, CollisionCornerMode, CollisionCornerMode>> ScanCollideModes(Rectangle targetBoundary)
         {
             Rectangle rectA = Boundary;
             Rectangle rectB = targetBoundary;
@@ -21,67 +21,78 @@ namespace MelloMario
             bool intersectX = rectA.Left < rectB.Right && rectB.Left < rectA.Right;
             bool intersectY = rectA.Top < rectB.Bottom && rectB.Top < rectA.Bottom;
 
-            bool centerInX = rectA.Left < rectB.Center.X && rectB.Center.X < rectA.Right;
-            bool centerInY = rectA.Top < rectB.Center.Y && rectB.Center.Y < rectA.Bottom;
+            CollisionCornerMode cornerX =
+                rectA.Center.X <= rectB.Left
+                    ? CollisionCornerMode.Left
+                    : rectA.Center.X >= rectB.Right
+                        ? CollisionCornerMode.Right
+                        : CollisionCornerMode.Center;
+            CollisionCornerMode cornerXPassive =
+                rectB.Center.X <= rectA.Left
+                    ? CollisionCornerMode.Left
+                    : rectB.Center.X >= rectA.Right
+                        ? CollisionCornerMode.Right
+                        : CollisionCornerMode.Center;
+            CollisionCornerMode cornerY =
+                rectA.Center.Y <= rectB.Top
+                    ? CollisionCornerMode.Top
+                    : rectA.Center.Y >= rectB.Bottom
+                        ? CollisionCornerMode.Bottom
+                        : CollisionCornerMode.Center;
+            CollisionCornerMode cornerYPassive =
+                rectB.Center.Y <= rectA.Top
+                    ? CollisionCornerMode.Top
+                    : rectB.Center.Y >= rectA.Bottom
+                        ? CollisionCornerMode.Bottom
+                        : CollisionCornerMode.Center;
 
-            bool crossXfromLeft = rectB.Right >= rectA.Left && rectB.Left < rectA.Left;
-            bool crossXfromRight = rectB.Left <= rectA.Right && rectB.Right > rectA.Right;
-            bool crossYfromBottom = rectB.Top <= rectA.Bottom && rectB.Bottom > rectA.Bottom;
-            bool crossYfromTop = rectB.Bottom >= rectA.Top && rectB.Top < rectA.Top;
-            //     -------------
-            //     |   rectA   |
-            //     -------------
-            //   -------
-            //   |rectB|
-            //   -------
-            if (crossYfromBottom && crossXfromLeft && centerInX)
-            {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InBottomLeft, CollisionMode.InTopRight);
-            }
-            if (crossYfromBottom && crossXfromRight && centerInX)
-            {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InBottomRight, CollisionMode.InTopLeft);
-            }
-            if (crossYfromBottom && crossXfromLeft && !centerInX)
-            {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.OutBottomLeft, CollisionMode.OutTopRight);
-            }
-            if (crossYfromBottom && crossXfromRight && !centerInX)
-            {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.OutBottomRight, CollisionMode.OutTopLeft);
-            }
-            ///////New conditions end
             if (intersectY && rectA.Left == rectB.Right)
             {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.Left, CollisionMode.Right);
+                yield return new Tuple<CollisionMode, CollisionMode, CollisionCornerMode, CollisionCornerMode>(
+                    CollisionMode.Left, CollisionMode.Right, cornerY, cornerYPassive
+                );
             }
             if (intersectY && rectA.Right == rectB.Left)
             {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.Right, CollisionMode.Left);
+                yield return new Tuple<CollisionMode, CollisionMode, CollisionCornerMode, CollisionCornerMode>(
+                    CollisionMode.Right, CollisionMode.Left, cornerY, cornerYPassive
+                );
             }
             if (intersectX && rectA.Top == rectB.Bottom)
             {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.Top, CollisionMode.Bottom);
+                yield return new Tuple<CollisionMode, CollisionMode, CollisionCornerMode, CollisionCornerMode>(
+                    CollisionMode.Top, CollisionMode.Bottom, cornerX, cornerXPassive
+                );
             }
             if (intersectX && rectA.Bottom == rectB.Top)
             {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.Bottom, CollisionMode.Top);
+                yield return new Tuple<CollisionMode, CollisionMode, CollisionCornerMode, CollisionCornerMode>(
+                    CollisionMode.Bottom, CollisionMode.Top, cornerX, cornerXPassive
+                );
             }
             if (intersectY && rectA.Left == rectB.Left)
             {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InnerLeft, CollisionMode.InnerLeft);
+                yield return new Tuple<CollisionMode, CollisionMode, CollisionCornerMode, CollisionCornerMode>(
+                    CollisionMode.InnerLeft, CollisionMode.InnerLeft, cornerY, cornerYPassive
+                );
             }
             if (intersectY && rectA.Right == rectB.Right)
             {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InnerRight, CollisionMode.InnerRight);
+                yield return new Tuple<CollisionMode, CollisionMode, CollisionCornerMode, CollisionCornerMode>(
+                    CollisionMode.InnerRight, CollisionMode.InnerRight, cornerY, cornerYPassive
+                );
             }
             if (intersectX && rectA.Top == rectB.Top)
             {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InnerTop, CollisionMode.InnerTop);
+                yield return new Tuple<CollisionMode, CollisionMode, CollisionCornerMode, CollisionCornerMode>(
+                    CollisionMode.InnerTop, CollisionMode.InnerTop, cornerX, cornerXPassive
+                );
             }
             if (intersectX && rectA.Bottom == rectB.Bottom)
             {
-                yield return new Tuple<CollisionMode, CollisionMode>(CollisionMode.InnerBottom, CollisionMode.InnerBottom);
+                yield return new Tuple<CollisionMode, CollisionMode, CollisionCornerMode, CollisionCornerMode>(
+                    CollisionMode.InnerBottom, CollisionMode.InnerBottom, cornerX, cornerXPassive
+                );
             }
         }
 
@@ -89,29 +100,30 @@ namespace MelloMario
         {
             foreach (IGameObject target in world.ScanNearbyObjects(this))
             {
-                foreach (Tuple<CollisionMode, CollisionMode> pair in ScanCollideModes(target.Boundary))
+                foreach (Tuple<CollisionMode, CollisionMode, CollisionCornerMode, CollisionCornerMode> pair in ScanCollideModes(target.Boundary))
                 {
-                    OnCollision(target, pair.Item1);
+                    OnCollision(target, pair.Item1, pair.Item3, pair.Item4);
 
-                    if (target is BaseGameObject)
+                    if (target is BaseGameObject gameObject)
                     {
-                        ((BaseGameObject)target).OnCollision(this, pair.Item2);
+                        gameObject.OnCollision(this, pair.Item2, pair.Item4, pair.Item3);
                     }
                 }
             }
 
-            foreach (Tuple<CollisionMode, CollisionMode> pair in ScanCollideModes(world.Boundary))
+            foreach (Tuple<CollisionMode, CollisionMode, CollisionCornerMode, CollisionCornerMode> pair in ScanCollideModes(world.Boundary))
             {
                 OnOut(pair.Item1);
             }
         }
 
-        protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom, LeftBottom, RightBottom, LeftTop, RightTop, InBottomLeft, InBottomRight, InTopLeft, InTopRight, OutBottomRight, OutTopRight, OutBottomLeft, OutTopLeft };
+        protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom };
+        protected enum CollisionCornerMode { Left, Right, Top, Bottom, Center };
         protected enum ResizeModeX { Left, Center, Right };
         protected enum ResizeModeY { Top, Center, Bottom };
 
         protected abstract void OnSimulation(GameTime time);
-        protected abstract void OnCollision(IGameObject target, CollisionMode mode);
+        protected abstract void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive);
         protected abstract void OnOut(CollisionMode mode);
         protected abstract void OnDraw(GameTime time);
 

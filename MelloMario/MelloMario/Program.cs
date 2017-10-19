@@ -14,8 +14,7 @@ namespace MelloMario
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
-                game.Run();
+            new Game1().Run();
         }
     }
 #endif

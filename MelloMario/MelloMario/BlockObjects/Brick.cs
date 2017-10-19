@@ -11,7 +11,7 @@ namespace MelloMario.BlockObjects
         private IBlockState state;
         private Queue<IGameObject> items;
 
-        private void OnStateChanged()
+        private void UpdateSprite()
         {
             if (state is Hidden)
             {
@@ -36,11 +36,11 @@ namespace MelloMario.BlockObjects
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
-            if (target is Mario && (mode == CollisionMode.InBottomLeft || mode == CollisionMode.InBottomRight))
+            if (target is Mario mario && mode == CollisionMode.Bottom)
             {
-                Bump((Mario)target);
+                Bump(mario);
             }
         }
 
@@ -66,7 +66,7 @@ namespace MelloMario.BlockObjects
             set
             {
                 state = value;
-                OnStateChanged();
+                UpdateSprite();
             }
         }
 
@@ -84,7 +84,7 @@ namespace MelloMario.BlockObjects
             {
                 state = new Normal(this);
             }
-            OnStateChanged();
+            UpdateSprite();
 
             this.items = items;
         }
