@@ -18,6 +18,7 @@ namespace MelloMario.LevelGen
         //       The code analysis tool generates a warning here
         protected class CharacterConverter : JsonConverter
         {
+
             public override bool CanConvert(Type objectType)
             {
                 throw new NotImplementedException();
@@ -218,5 +219,6 @@ namespace MelloMario.LevelGen
             //TODO: change null
             return new Tuple<IGameWorld[], IGameCharacter>(Scenes, null);
         }
+        public void SaveObjects(IGameWorld[] scenes, IGameCharacter character) { }
     }
 }
