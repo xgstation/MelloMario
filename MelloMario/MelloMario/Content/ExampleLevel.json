@@ -1,0 +1,162 @@
+﻿{
+  "Map": [
+    {
+      "Main": {
+        "Size": { //Required
+          "Row": 15,
+          "Column": 25
+        },
+        "Character": {
+          "Location": {
+            "X": 2,
+            "Y": 2
+          }
+        },
+        "Structures": [
+          {
+            "Bricks": [
+              {
+                "Matrix": {
+                  "Location": { //Required
+                    "X": 2,
+                    "Y": 3
+                  },
+                  "Size": { //Required
+                    "Rows": 1,
+                    "Columns": 4
+                  }
+                }
+              },
+              {
+                "Single": {
+                  "Location": {
+                    "X": 7,
+                    "Y": 9
+                  },
+                  "Visible": false,
+                  "Item": "C"
+                }
+              }
+            ]
+          },
+          {
+            "Floors": [
+              {
+                "Matirx": {
+                  "Location": {
+                    "X": 1,
+                    "Y": 13
+                  },
+                  "Size": {
+                    "Rows": 3,
+                    "Columns": 18
+                  },
+                  "Ignore": {
+                    "Matrix": {
+                      "Location": {
+                        "X": 16,
+                        "Y": 13
+                      },
+                      "Size": {
+                        "Rows": 2,
+                        "Columns": 3
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "Matrix": {
+                  "Location": {
+                    "X": 21,
+                    "Y": 13
+                  },
+                  "Size": {
+                    "Rows": 3,
+                    "Columns": 3
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "Floor": {
+              "Single": {
+                "Location": {
+                  "X": 24,
+                  "Y": 15
+                }
+              }
+            }
+          },
+          {
+            "Floor": {
+              "Single": {
+                "Location": {
+                  "X": 25,
+                  "Y": 15
+                }
+              }
+            }
+          },
+          {
+            "Stairs": [
+              {
+                "Matrix": {
+                  "Location": {
+                    "X": 16,
+                    "Y": 7
+                  },
+                  "Size": {
+                    "Rows": 6,
+                    "Columns": 8
+                  },
+                  "Ignores": [
+                    {
+                      "Matrix": {
+                        "i": 1,
+                        "j": 1,
+                        "k": 2,
+                        "l": 2
+                      }
+                    },
+                    {
+                      "Matrix": {
+                        "i": 1,
+                        "j": 4,
+                        "k": 6,
+                        "l": 5
+                      }
+                    },
+                    {
+                      "Single": {
+                        "i": 3,
+                        "j": 1
+                      }
+                    },
+                    {
+                      "Single": {
+                        "i": 4,
+                        "j": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "Items": [
+          {
+            "Coin": {
+              "Location": {
+                "X": 1,
+                "Y": 1
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
