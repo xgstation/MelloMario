@@ -91,7 +91,7 @@ namespace MelloMario.MarioObjects
                         isBumping = false;
                     }
 
-                    if (!isHidden || mode == CollisionMode.Top)
+                    if (!isHidden || (mode == CollisionMode.Top && corner == CollisionCornerMode.Center))
                     {
                         // TODO: hack
                         if (isBumping && mode == CollisionMode.Top && corner == CollisionCornerMode.Center)
