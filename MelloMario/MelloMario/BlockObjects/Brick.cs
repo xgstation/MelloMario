@@ -10,7 +10,8 @@ namespace MelloMario.BlockObjects
     {
         private IBlockState state;
         private Queue<IGameObject> items;
-
+        private CollisionMode previousMode;
+        private bool isFromTop;
         private void UpdateSprite()
         {
             if (state is Hidden)
@@ -38,9 +39,24 @@ namespace MelloMario.BlockObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
-            if (target is Mario mario && mode == CollisionMode.Bottom && cornerPassive == CollisionCornerMode.Center)
+            if (target is Mario mario)
             {
-                Bump(mario);
+                if (mode == CollisionMode.Bottom && cornerPassive == CollisionCornerMode.Center)
+                {
+                    isFromTop = CollisionMode.InnerTop == previousMode || CollisionMode.InnerBottom == previousMode || CollisionMode.Top == previousMode;
+                    if (state is Hidden)
+                    {
+                        if (!isFromTop)
+                        {
+                            Bump(mario);
+                        }
+                    }
+                    else
+                    {
+                        Bump(mario);
+                    }
+                }
+                previousMode = mode;
             }
         }
 
