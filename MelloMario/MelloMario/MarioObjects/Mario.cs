@@ -69,7 +69,7 @@ namespace MelloMario.MarioObjects
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
             switch (target.GetType().Name)
             {

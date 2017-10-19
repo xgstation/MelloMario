@@ -85,43 +85,34 @@ namespace MelloMario.BaseClasses
             }
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
             if (target is Mario)
             {
                 var mario = target as Mario;
-                var marioBoundary = new Interval(mario.Boundary.X, mario.Boundary.X + mario.Boundary.Width);
-                switch (mode)
+                Interval marioBoundary = new Interval(mario.Boundary.X, mario.Boundary.X + mario.Boundary.Width);
+                // note: cornerPassive == right means that Mario's right half touches bottom left corner of this object
+                if (mode == CollisionMode.Bottom && cornerPassive == CollisionCornerMode.Right)
                 {
-                    case CollisionMode.LeftBottom:
-                        if (target.Boundary.Center.X > Boundary.Location.X)
+                    foreach (Tuple<Interval, IGameObject> obj in objects)
+                    {
+                        if (obj.Item1.CompareTo(marioBoundary) == 0)
                         {
-                            foreach (var obj in objects)
-                            {
-                                if (obj.Item1.CompareTo(marioBoundary) == 0)
-                                {
-                                    //TODO: Change BaseGameObject in order to Collide conditionally
-                                    //obj.Item2.Collide();
-                                }
-                            }
+                            //TODO: Change BaseGameObject in order to Collide conditionally
+                            //obj.Item2.Collide();
                         }
-                        break;
-                    case CollisionMode.RightBottom:
-                        if (target.Boundary.Center.X < Boundary.Location.X + Boundary.Width)
+                    }
+                }
+                else if (mode == CollisionMode.Bottom && cornerPassive == CollisionCornerMode.Left)
+                {
+                    foreach (Tuple<Interval, IGameObject> obj in objects)
+                    {
+                        if (obj.Item1.CompareTo(marioBoundary) == 0)
                         {
-                            foreach (var obj in objects)
-                            {
-                                if (obj.Item1.CompareTo(marioBoundary) == 0)
-                                {
-                                    //TODO: Change BaseGameObject in order to Collide conditionally
-                                    //obj.Item2.Collide();
-                                }
-                            }
+                            //TODO: Change BaseGameObject in order to Collide conditionally
+                            //obj.Item2.Collide();
                         }
-                        break;
-                    default:
-                        //DO NOTHING
-                        break;
+                    }
                 }
             }
         }

@@ -18,7 +18,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
             if (target is Mario)
             {

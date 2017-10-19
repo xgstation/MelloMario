@@ -28,9 +28,9 @@ namespace MelloMario.BlockObjects
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
-            if (target is Mario && (mode == CollisionMode.InBottomLeft || mode == CollisionMode.InBottomRight))
+            if (target is Mario && mode == CollisionMode.Bottom)
             {
                 Bump((Mario)target);
             }
