@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json.Converters;
-using System.Collections;
 
 namespace MelloMario.LevelGen
 {
@@ -95,40 +94,13 @@ namespace MelloMario.LevelGen
 
 
         private const int GRIDSIZE = 32;
-        private String path;
+
         private StreamReader input;
-        private StreamWriter output;
         private String levelString;
         private List<JToken> loadList;
         private JToken jLevelToken;
         private IGameWorld[] Scenes;
-        private LevelIOMode levelIOMode;
-
-        public enum LevelIOMode { load, save };
-
-        public LevelIOJson(String path, LevelIOMode levelIOMode)
-        {
-            this.path = path;
-            this.levelIOMode = levelIOMode;
-            if (levelIOMode is LevelIOMode.load)
-            {
-                
-            }
-            else
-            {
-
-            }
-        }
-        public bool CanChangeToWrite()
-        {
-            return false;
-        }
-        public void Load(out IEnumerable<IGameWorld> gameworlds, out IEnumerable<IGameCharacter> characters)
-        {
-            gameworlds = null;
-            characters = null;
-        }
-        public Tuple<IEnumerable<IGameWorld>,IEnumerable<IGameCharacter>> Load()
+        public LevelIOJson(String path)
         {
             Stream inStream = new FileStream(path, FileMode.Open);
             input = new StreamReader(inStream);
@@ -139,7 +111,6 @@ namespace MelloMario.LevelGen
             IGameCharacter character = null;
 
             inStream.Close();
-            return null;
         }
 
         public void Dispose()

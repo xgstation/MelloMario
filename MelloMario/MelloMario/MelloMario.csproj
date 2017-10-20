@@ -93,7 +93,6 @@
     <Compile Include="EnemyObjects\Goomba.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
-    <Compile Include="Game2.cs" />
     <Compile Include="Interfaces\ICommandFactory.cs" />
     <Compile Include="Interfaces\IGameObjectFactory.cs" />
     <Compile Include="Interfaces\IGameCharacter.cs" />
@@ -149,9 +148,7 @@
     <Compile Include="Sprites\SlicedSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Commands\FireState.cs" />
-    <Compile Include="Theming\GameModel2.cs" />
     <Compile Include="Theming\GameModel.cs" />
-    <Compile Include="Theming\GameWorld2.cs" />
     <Compile Include="Theming\GameWorld.cs" />
     <Compile Include="Theming\GameScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
