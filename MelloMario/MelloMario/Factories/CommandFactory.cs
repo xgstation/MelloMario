@@ -26,6 +26,9 @@ namespace MelloMario.Factories
             {
                 case "Pause":
                     return new Pause(model);
+                case "Quit":
+                    Console.WriteLine("Reached");
+                    return new Quit(model);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code

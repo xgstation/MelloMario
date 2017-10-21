@@ -29,7 +29,7 @@ namespace MelloMario
 
         public void Bind(GameScript script)
         {
-            script.Bind(controllers, character);
+            //script.Bind(controllers, character);
         }
 
         public void LoadEntities(LevelIOJson loader)

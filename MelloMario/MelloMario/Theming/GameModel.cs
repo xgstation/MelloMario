@@ -9,7 +9,6 @@ namespace MelloMario
     class GameModel
     {
         private IEnumerable<IController> controllers;
-
         private IGameWorld world;
         private IGameCharacter character;
 
@@ -24,7 +23,7 @@ namespace MelloMario
 
         public void Bind(GameScript script)
         {
-            script.Bind(controllers, character);
+            script.Bind(controllers, character, this);
         }
 
         public void LoadEntities(LevelReader reader)
@@ -67,6 +66,11 @@ namespace MelloMario
             {
                 obj.Draw(time, zIndex);
             }
+        }
+
+        public void Quit()
+        {
+            // Add quit command
         }
     }
 }

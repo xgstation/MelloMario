@@ -7,19 +7,18 @@ namespace MelloMario
     class GameScript
     {
         private ICommandFactory factory;
-
         public GameScript()
         {
         }
 
-        public void Bind(IEnumerable<IController> controllers, IGameCharacter character)
+        public void Bind(IEnumerable<IController> controllers, IGameCharacter character, GameModel model)
         {
             factory = CommandFactory.Instance;
 
             foreach (IController controller in controllers)
             {
                 //controller.AddCommand(Keys.Escape, factory.CreateGameModelCommand("Pause", objects));
-                controller.AddCommand(Keys.Space, factory.CreateGameCharacterCommand("Action", character));
+                controller.AddCommand(Keys.Space, factory.CreateGameCharacterCommand("Action", character)); // Needs to be implemented
                 controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("CrouchPress", character), KeyBehavior.press);
                 controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("CrouchRelease", character), KeyBehavior.release);
@@ -45,6 +44,9 @@ namespace MelloMario
                 controller.AddCommand(Keys.D, factory.CreateGameCharacterCommand("Right", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.D, factory.CreateGameCharacterCommand("RightPress", character), KeyBehavior.press);
                 controller.AddCommand(Keys.D, factory.CreateGameCharacterCommand("RightRelease", character), KeyBehavior.release);
+
+                // Need to quit game using Q
+                controller.AddCommand(Keys.Q, factory.CreateGameControlCommand("Quit", model), KeyBehavior.press);
 
                 // sprint 2 cheat commands
 
