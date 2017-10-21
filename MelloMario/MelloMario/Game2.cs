@@ -7,6 +7,8 @@ using MelloMario.LevelGen;
 
 namespace MelloMario
 {
+    //WIP: This is a Game class in developing for testing purpose.
+
     /// <summary>
     /// This is the main type for Mello Mario game.
     /// </summary>
@@ -86,6 +88,7 @@ namespace MelloMario
             base.Update(time);
 
             model.Update(time);
+
         }
 
         /// <summary>

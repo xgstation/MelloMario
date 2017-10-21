@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario
 {
+    //WIP: This is a GameWorld class in developing for testing purpose.
+
     class GameWorld2 : IGameWorld
     {
         private int grid;

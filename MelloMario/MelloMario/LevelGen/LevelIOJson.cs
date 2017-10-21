@@ -11,6 +11,7 @@ using System.Collections;
 
 namespace MelloMario.LevelGen
 {
+    //WIP: This is a LevelGen class in developing for testing purpose.
 
     class LevelIOJson : IDisposable
     {

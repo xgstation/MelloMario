@@ -6,6 +6,9 @@ using System;
 
 namespace MelloMario
 {
+    //WIP: This is a GameModel class in developing for testing purpose.
+
+
     class GameModel2
     {
         private LevelIOJson levelLoader;
