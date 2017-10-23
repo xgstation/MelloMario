@@ -49,9 +49,6 @@ namespace MelloMario
                 controller.AddCommand(Keys.Q, factory.CreateGameControlCommand("Quit", model), KeyBehavior.press);
 
                 // sprint 2 cheat commands
-
-    
-
                 controller.AddCommand(Keys.Y, factory.CreateGameObjectCommand("StandardState", character));
                 controller.AddCommand(Keys.U, factory.CreateGameObjectCommand("SuperState", character));
                 controller.AddCommand(Keys.I, factory.CreateGameObjectCommand("FireState", character));
