@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace MelloMario.LevelGen
 {
+    //Using for deserialize json to a single GameWorld(Map)
     class GameWorld2Converter : JsonConverter
     {
         private string index;
         private GameModel2 gameModel;
         JsonSerializer serializers;
-        IGameObjectFactory factory = GameObjectFactory.Instance;
         public string Index
         {
             get
@@ -37,10 +37,6 @@ namespace MelloMario.LevelGen
         public override bool CanConvert(Type objectType)
         {
             return objectType is IGameWorld;
-        }
-        private void matrixAdd(JToken token, IGameWorld world)
-        {
-
         }
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
