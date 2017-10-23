@@ -83,13 +83,13 @@ namespace MelloMario
             }
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario mario)
             {
                 Interval marioBoundary = new Interval(mario.Boundary.X, mario.Boundary.X + mario.Boundary.Width);
                 // note: cornerPassive == right means that Mario's right half touches bottom left corner of this object
-                if (mode == CollisionMode.Bottom && cornerPassive == CollisionCornerMode.Right)
+                if (mode == CollisionMode.Bottom && cornerPassive == CornerMode.Right)
                 {
                     foreach (Tuple<Interval, IGameObject> obj in objects)
                     {
@@ -100,7 +100,7 @@ namespace MelloMario
                         }
                     }
                 }
-                else if (mode == CollisionMode.Bottom && cornerPassive == CollisionCornerMode.Left)
+                else if (mode == CollisionMode.Bottom && cornerPassive == CornerMode.Left)
                 {
                     foreach (Tuple<Interval, IGameObject> obj in objects)
                     {
