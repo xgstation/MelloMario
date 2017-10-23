@@ -113,7 +113,7 @@ namespace MelloMario.LevelGen
             this.levelIOMode = levelIOMode;
             if (levelIOMode is LevelIOMode.load)
             {
-                
+
             }
             else
             {
@@ -129,7 +129,7 @@ namespace MelloMario.LevelGen
             gameworlds = null;
             characters = null;
         }
-        public Tuple<IEnumerable<IGameWorld>,IEnumerable<IGameCharacter>> Load()
+        public Tuple<IEnumerable<IGameWorld>, IEnumerable<IGameCharacter>> Load()
         {
             Stream inStream = new FileStream(path, FileMode.Open);
             input = new StreamReader(inStream);
@@ -145,9 +145,9 @@ namespace MelloMario.LevelGen
 
         public void Dispose()
         {
-            ((IDisposable)input).Dispose();
+            input.Dispose();
         }
-        private void AddMatirx(int x, int y, int rows, int columns, GameObjectFactory factory, String type, GameWorld world, SortedSet<Tuple<int,int>> ignoredSet)
+        private void AddMatirx(int x, int y, int rows, int columns, GameObjectFactory factory, String type, GameWorld world, SortedSet<Tuple<int, int>> ignoredSet)
         {
             for (int i = 0; i < rows; i++)
             {
@@ -162,7 +162,7 @@ namespace MelloMario.LevelGen
         {
             world.AddObject(factory.CreateGameObject(type, world, new Point(x * GRIDSIZE, y * GRIDSIZE)));
         }
-        private bool isIgnored(int i, int j, SortedSet<Tuple<int,int>> ignoredSet)
+        private bool isIgnored(int i, int j, SortedSet<Tuple<int, int>> ignoredSet)
         {
             return ignoredSet.Contains(new Tuple<int, int>(i, j));
         }
