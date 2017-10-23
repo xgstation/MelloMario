@@ -226,14 +226,8 @@ namespace MelloMario.Factories
             {
                 case "Bumped":
                     return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 0);
-                case "DestroyedLT":
-                    return new BrickPieceSprite(spriteBatch, brickPieceSpritesheet, BrickPieceSprite.Part.LeftTop, 0, 0);
-                case "DestroyedLB":
-                    return new BrickPieceSprite(spriteBatch, brickPieceSpritesheet, BrickPieceSprite.Part.LeftBottom, 1, 0);
-                case "DestroyedRT":
-                    return new BrickPieceSprite(spriteBatch, brickPieceSpritesheet, BrickPieceSprite.Part.RightTop, 0, 1);
-                case "DestroyedRB":
-                    return new BrickPieceSprite(spriteBatch, brickPieceSpritesheet, BrickPieceSprite.Part.RightBottom, 1, 1);
+                case "Destroyed":
+                    return new BrickPieceSprite(spriteBatch, brickPieceSpritesheet);
                 case "Normal":
                     return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 0);
                 case "Used":
