@@ -7,7 +7,7 @@ namespace MelloMario.ItemObjects
 {
     class Star : BasePhysicalObject
     {
-        private const int H_SPEED = 4;
+        private const int H_SPEED = 3;
         private IItemState state;
         private bool goingRight;
 
