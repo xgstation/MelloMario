@@ -11,11 +11,13 @@ namespace MelloMario.EnemyObjects
 
         private void UpdateSprite()
         {
+         
             ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name));
         }
 
         protected override void OnSimulation(GameTime time)
         {
+
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
@@ -44,6 +46,8 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnDraw(GameTime time, ZIndex zIndex)
         {
+          
+         
         }
 
         public IGoombaState State

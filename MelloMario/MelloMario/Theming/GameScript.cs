@@ -50,7 +50,7 @@ namespace MelloMario
 
                 // sprint 2 cheat commands
 
-                controller.AddCommand(Keys.G, factory.CreateGameObjectCommand("ToggleGravity", character));
+    
 
                 controller.AddCommand(Keys.Y, factory.CreateGameObjectCommand("StandardState", character));
                 controller.AddCommand(Keys.U, factory.CreateGameObjectCommand("SuperState", character));

@@ -53,10 +53,8 @@ namespace MelloMario.MarioObjects
 
         protected override void OnSimulation(GameTime time)
         {
-            if (g_on)
-            {
-                ApplyGravity();
-            }
+           
+            ApplyGravity();
             ApplyHorizontalFriction(FORCE_F_AIR);
             ApplyVerticalFriction(FORCE_F_AIR);
 
@@ -257,12 +255,5 @@ namespace MelloMario.MarioObjects
             PowerUpState.Downgrade();
         }
 
-        // TODO: For sprint 2 only
-        //       Please remove it after sprint 2
-        bool g_on;
-        public void ToggleGravity()
-        {
-            g_on = !g_on;
-        }
-    }
+    }    
 }
