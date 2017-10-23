@@ -16,8 +16,8 @@ namespace MelloMario.Sprites
             // Do nothing
         }
 
-        public SlicedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, int x, int y) : base(
-            spriteBatch, texture, new Point(texture.Width * x / columns, texture.Height * y / rows), new Point(texture.Width / columns, texture.Height / rows)
+        public SlicedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, int x, int y, ZIndex activeZIndex = ZIndex.main) : base(
+            spriteBatch, texture, new Point(texture.Width * x / columns, texture.Height * y / rows), new Point(texture.Width / columns, texture.Height / rows), activeZIndex
         )
         {
         }

@@ -7,10 +7,12 @@ using MelloMario.LevelGen;
 
 namespace MelloMario
 {
+    //WIP: This is a Game class in developing for testing purpose.
+
     /// <summary>
     /// This is the main type for Mello Mario game.
     /// </summary>
-    class Game1 : Game
+    class Game2 : Game
     {
         GraphicsDeviceManager graphics;
         GameModel model;
@@ -20,7 +22,7 @@ namespace MelloMario
 
         SpriteBatch spriteBatch;
 
-        public Game1()
+        public Game2()
         {
             graphics = new GraphicsDeviceManager(this);
             model = new GameModel();
@@ -86,6 +88,7 @@ namespace MelloMario
             base.Update(time);
 
             model.Update(time);
+
         }
 
         /// <summary>

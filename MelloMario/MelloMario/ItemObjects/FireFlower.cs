@@ -21,7 +21,7 @@ namespace MelloMario.ItemObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
-            if (target is Mario)
+            if (target is Mario && state is Normal)
             {
                 Collect();
             }
@@ -31,7 +31,7 @@ namespace MelloMario.ItemObjects
         {
         }
 
-        protected override void OnDraw(GameTime time)
+        protected override void OnDraw(GameTime time, ZIndex zIndex)
         {
         }
 

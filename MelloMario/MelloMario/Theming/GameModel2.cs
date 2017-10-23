@@ -6,13 +6,22 @@ using System;
 
 namespace MelloMario
 {
-    class GameModel
+    //WIP: This is a GameModel class in developing for testing purpose.
+
+
+    class GameModel2
     {
+        private LevelIOJson levelLoader;
+        private LevelIOJson levelSaver;
+
         private IEnumerable<IController> controllers;
+        private IEnumerable<IGameWorld> worlds;
+        private IEnumerable<IGameCharacter> characters;
+
         private IGameWorld world;
         private IGameCharacter character;
 
-        public GameModel()
+        public GameModel2()
         {
         }
 
@@ -23,14 +32,14 @@ namespace MelloMario
 
         public void Bind(GameScript script)
         {
-            script.Bind(controllers, character, this);
+            //script.Bind(controllers, character);
         }
 
-        public void LoadEntities(LevelReader reader)
+        public void LoadEntities(LevelIOJson loader)
         {
-            Tuple<IGameWorld, IGameCharacter> pair = reader.LoadObjects();
-            world = pair.Item1;
-            character = pair.Item2;
+            var pair = loader.Load();
+            worlds = pair.Item1;
+            characters = pair.Item2;
         }
 
         public void Update(GameTime time)
@@ -66,11 +75,6 @@ namespace MelloMario
             {
                 obj.Draw(time, zIndex);
             }
-        }
-
-        public void Quit()
-        {
-            // Add quit command
         }
     }
 }

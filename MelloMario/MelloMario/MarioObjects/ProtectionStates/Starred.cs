@@ -10,9 +10,14 @@ using Microsoft.Xna.Framework.Content;
 
 namespace MelloMario.MarioObjects.ProtectionStates
 {
-    class Starred : BaseState<Mario>, IMarioProtectionState
+    class Starred : BaseTimedState<Mario>, IMarioProtectionState
     {
-        public Starred(Mario owner) : base(owner)
+        protected override void OnTimer(GameTime time)
+        {
+            Owner.ProtectionState = new Normal(Owner);
+        }
+
+        public Starred(Mario owner) : base(owner, 15000)
         {
         }
 

@@ -9,6 +9,7 @@ namespace MelloMario.Sprites
         private Texture2D texture;
         private Point source;
         private Point size;
+        private ZIndex activeZIndex;
 
         protected abstract void OnAnimate(GameTime time);
 
@@ -25,19 +26,23 @@ namespace MelloMario.Sprites
             }
         }
 
-        public BaseSprite(SpriteBatch spriteBatch, Texture2D texture, Point source, Point size)
+        public BaseSprite(SpriteBatch spriteBatch, Texture2D texture, Point source, Point size, ZIndex activeZIndex)
         {
             this.spriteBatch = spriteBatch;
             this.texture = texture;
             this.source = source;
             this.size = size;
+            this.activeZIndex = activeZIndex;
         }
 
-        public void Draw(GameTime time, Rectangle destination)
+        public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
         {
-            OnAnimate(time);
+            if (activeZIndex == zIndex)
+            {
+                OnAnimate(time);
 
-            spriteBatch.Draw(texture, destination, new Rectangle(source, size), Color.White);
+                spriteBatch.Draw(texture, destination, new Rectangle(source, size), Color.White);
+            }
         }
     }
 }

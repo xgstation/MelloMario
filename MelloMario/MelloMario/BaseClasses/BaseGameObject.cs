@@ -125,7 +125,7 @@ namespace MelloMario
         protected abstract void OnSimulation(GameTime time);
         protected abstract void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive);
         protected abstract void OnOut(CollisionMode mode);
-        protected abstract void OnDraw(GameTime time);
+        protected abstract void OnDraw(GameTime time, ZIndex zIndex);
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
         {
@@ -251,13 +251,13 @@ namespace MelloMario
             }
         }
 
-        public void Draw(GameTime time)
+        public void Draw(GameTime time, ZIndex zIndex)
         {
-            OnDraw(time);
+            OnDraw(time, zIndex);
 
             if (sprite != null)
             {
-                sprite.Draw(time, Boundary);
+                sprite.Draw(time, Boundary, zIndex);
             }
         }
     }

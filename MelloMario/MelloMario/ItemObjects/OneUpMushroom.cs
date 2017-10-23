@@ -16,22 +16,22 @@ namespace MelloMario.ItemObjects
 
         protected override void OnSimulation(GameTime time)
         {
+            state.Update(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
-            if (target is Mario)
+            if (target is Mario && state is Normal)
             {
                 Collect();
             }
-            //Collide with bumped brick to be done
         }
 
         protected override void OnOut(CollisionMode mode)
         {
         }
 
-        protected override void OnDraw(GameTime time)
+        protected override void OnDraw(GameTime time, ZIndex zIndex)
         {
         }
 
@@ -72,6 +72,11 @@ namespace MelloMario.ItemObjects
         {
             RemoveSelf();
             //State.Collect();
+        }
+
+        public void UnveilMove(int delta)
+        {
+            Move(new Point(0, delta));
         }
     }
 }

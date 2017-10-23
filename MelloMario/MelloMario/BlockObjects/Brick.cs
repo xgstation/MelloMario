@@ -44,7 +44,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnDraw(GameTime time)
+        protected override void OnDraw(GameTime time, ZIndex zIndex)
         {
         }
 
@@ -108,7 +108,7 @@ namespace MelloMario.BlockObjects
             {
                 World().AddObject(items.Dequeue());
 
-                return true;
+                return (items.Count != 0);
             }
         }
     }

@@ -61,11 +61,14 @@ namespace MelloMario.Factories
                     return new Stair(world, location);
                 case "Question":
                     items = new Queue<IGameObject>();
-                    items.Enqueue(CreateGameObject("FireFlower", world, location));
+                    items.Enqueue(CreateGameObject("FireFlowerUnveil", world, location));
                     return new Question(world, location, items, false);
                 case "HiddenQuestion":
                     items = new Queue<IGameObject>();
-                    items.Enqueue(CreateGameObject("FireFlower", world, location));
+                    items.Enqueue(CreateGameObject("CoinUnveil", world, location));
+                    items.Enqueue(CreateGameObject("CoinUnveil", world, location));
+                    items.Enqueue(CreateGameObject("CoinUnveil", world, location));
+                    items.Enqueue(CreateGameObject("CoinUnveil", world, location));
                     return new Question(world, location, items, true);
                 case "PipelineLeftIn":
                     return new Pipeline(world, location, "LeftIn");
@@ -87,14 +90,24 @@ namespace MelloMario.Factories
                 //entities
                 case "Coin":
                     return new Coin(world, location);
+                case "CoinUnveil":
+                    return new Coin(world, location, true);
                 case "OneUpMushroom":
                     return new OneUpMushroom(world, location);
+                case "OneUpMushroomUnveil":
+                    return new OneUpMushroom(world, location, true);
                 case "FireFlower":
                     return new FireFlower(world, location);
+                case "FireFlowerUnveil":
+                    return new FireFlower(world, location, true);
                 case "SuperMushroom":
                     return new SuperMushroom(world, location);
+                case "SuperMushroomUnveil":
+                    return new SuperMushroom(world, location, true);
                 case "Star":
                     return new Star(world, location);
+                case "StarUnveil":
+                    return new Star(world, location, true);
 
                 default:
                     return null;
