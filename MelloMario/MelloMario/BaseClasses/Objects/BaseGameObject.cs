@@ -160,6 +160,8 @@ namespace MelloMario
             size = newSize;
             location.X += moveX;
             location.Y += moveY;
+
+            world.MoveObject(this);
         }
 
         // TODO: remove them later
@@ -171,6 +173,8 @@ namespace MelloMario
         protected void Move(Point delta)
         {
             movement += delta;
+
+            world.MoveObject(this);
         }
 
         protected void StopHorizontalMovement()
@@ -198,6 +202,7 @@ namespace MelloMario
         {
             StopHorizontalMovement();
             StopVerticalMovement();
+
             world.RemoveObject(this);
         }
 
