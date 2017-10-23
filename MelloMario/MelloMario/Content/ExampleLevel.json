@@ -1,168 +1,40 @@
 ﻿{
-  "Character": {
-    "Map": 0,
-    "Point": {
-      "X": 3,
-      "Y": 3
-    }
-  },
-  "Map": [
+  "Maps": [
     {
-      "Main": {
-        "Size": { //Required
-          "Row": 15,
-          "Column": 25
-        },
-        "Character": {
-          "Point": {
-            "X": 2,
-            "Y": 2
+      "Index": "Main",
+      "Grid": 32,
+      "Size": {
+        "X": 15,
+        "Y": 25
+      },
+      "SpawnPoint": {
+        "X": 15,
+        "Y": 15
+      },
+      "Structures": [
+        {
+          "Type": "Brick",
+          "Array": {
+            "Point": {
+              "X": 2,
+              "Y": 3
+            },
+            "Length": 4
           }
-        },
-        "Structures": [
-          {
-            "Bricks": [
-              {
-                "Array": {
-                  "Point": { //Required for Array
-                    "X": 2,
-                    "Y": 3
-                  },
-                  "Length": 4 //Required for Array
-                }
-              },
-              {
-                "Single": {
-                  "Point": {
-                    "X": 7,
-                    "Y": 9
-                  },
-                  "Visible": false,
-                  "Item": "C"
-                }
-              }
-            ]
-          },
-          {
-            "Floors": [
-              {
-                "Matirx": {
-                  "Point": {
-                    "X": 1,
-                    "Y": 13
-                  },
-                  "Size": {
-                    "Rows": 3,
-                    "Columns": 18
-                  },
-                  "Ignore": {
-                    "Matrix": {
-                      "Point": {
-                        "X": 16,
-                        "Y": 13
-                      },
-                      "Size": {
-                        "Rows": 2,
-                        "Columns": 3
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "Matrix": {
-                  "Point": {
-                    "X": 21,
-                    "Y": 13
-                  },
-                  "Size": {
-                    "Rows": 3,
-                    "Columns": 3
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "Floor": {
-              "Single": {
-                "Point": {
-                  "X": 24,
-                  "Y": 15
-                }
-              }
-            }
-          },
-          {
-            "Floor": {
-              "Single": {
-                "Point": {
-                  "X": 25,
-                  "Y": 15
-                }
-              }
-            }
-          },
-          {
-            "Stairs": [
-              {
-                "Matrix": {
-                  "Point": {
-                    "X": 16,
-                    "Y": 7
-                  },
-                  "Size": {
-                    "Rows": 6,
-                    "Columns": 8
-                  },
-                  "Ignores": [
-                    {
-                      "Matrix": {
-                        "i": 1,
-                        "j": 1,
-                        "k": 2,
-                        "l": 2
-                      }
-                    },
-                    {
-                      "Matrix": {
-                        "i": 1,
-                        "j": 4,
-                        "k": 6,
-                        "l": 5
-                      }
-                    },
-                    {
-                      "Single": {
-                        "i": 3,
-                        "j": 1
-                      }
-                    },
-                    {
-                      "Single": {
-                        "i": 4,
-                        "j": 1
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ],
-        "Items": [
-          {
-            "Coin": {
-              "Point": {
-                "X": 1,
-                "Y": 1
-              }
-            }
-          }
-        ]
+        }
+      ]
+    },
+    {
+      "Index": "1-2",
+      "Grid": 32,
+      "Size": {
+        "X": 15,
+        "Y": 15
+      },
+      "SpawnPoint": {
+        "X": 3,
+        "Y": 3
       }
     }
-  ],
-  "Score": [],
-  "CustomScript": []
-}
+  ]
+}    

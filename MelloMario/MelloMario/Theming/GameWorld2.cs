@@ -15,6 +15,7 @@ namespace MelloMario
         private Point size;
         private ISet<IGameObject>[,] objects;
         private IDictionary<IGameObject, Point> locations;
+        private GameModel2 gameModel;
 
         public Rectangle Boundary
         {
@@ -24,11 +25,11 @@ namespace MelloMario
             }
         }
 
-        public GameWorld2(int grid, Point size)
+        public GameWorld2(int grid, Point size, GameModel2 gameModel)
         {
             this.grid = grid;
             this.size = size;
-
+            this.gameModel = gameModel;
             objects = new HashSet<IGameObject>[size.X, size.Y];
             for (int i = objects.GetLowerBound(0); i <= objects.GetUpperBound(0); ++i)
             {
@@ -41,6 +42,10 @@ namespace MelloMario
             locations = new Dictionary<IGameObject, Point>();
         }
 
+        public GameModel2 GetModel
+        {
+            get { return gameModel; }
+        }
         public IEnumerable<IGameObject> ScanObjects()
         {
             for (int i = objects.GetLowerBound(0); i <= objects.GetUpperBound(0); ++i)

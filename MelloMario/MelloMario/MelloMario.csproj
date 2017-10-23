@@ -126,6 +126,8 @@
     <Compile Include="EnemyObjects\KoopaStates\Shell.cs" />
     <Compile Include="EnemyObjects\KoopaStates\Normal.cs" />
     <Compile Include="ItemObjects\SuperMushroomStates\Unveil.cs" />
+    <Compile Include="LevelGen\CharacterConverter.cs" />
+    <Compile Include="LevelGen\GameWorldConverter.cs" />
     <Compile Include="LevelGen\LevelIOJson.cs" />
     <Compile Include="LevelGen\LevelReader.cs" />
     <Compile Include="Interfaces\States\IMarioProtectionState.cs" />
