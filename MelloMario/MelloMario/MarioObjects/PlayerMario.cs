@@ -136,10 +136,9 @@ namespace MelloMario.MarioObjects
 
         public void CrouchRelease()
         {
-            if (MovementState is Jumping)
-            {
+            
                 MovementState.Idle();
-            }
+            
         }
 
         public void Action()

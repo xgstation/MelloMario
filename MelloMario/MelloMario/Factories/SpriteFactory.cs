@@ -208,11 +208,11 @@ namespace MelloMario.Factories
             switch (status)
             {
                 case "Bumped":
-                    return new AnimatedSprite(spriteBatch, questionSpriteSheet, 3, 1);
+                    return new AnimatedSprite(spriteBatch, questionSpriteSheet, 3, 1, ZIndex.front);
                 case "Normal":
-                    return new AnimatedSprite(spriteBatch, questionSpriteSheet, 3, 1);
+                    return new AnimatedSprite(spriteBatch, questionSpriteSheet, 3, 1, ZIndex.front);
                 case "Used":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 27, 0);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 27, 0, ZIndex.front);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -225,19 +225,13 @@ namespace MelloMario.Factories
             switch (status)
             {
                 case "Bumped":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 0);
-                case "DestroyedLT":
-                    return new BrickPieceSprite(spriteBatch, brickPieceSpritesheet, BrickPieceSprite.Part.LeftTop, 0, 0);
-                case "DestroyedLB":
-                    return new BrickPieceSprite(spriteBatch, brickPieceSpritesheet, BrickPieceSprite.Part.LeftBottom, 1, 0);
-                case "DestroyedRT":
-                    return new BrickPieceSprite(spriteBatch, brickPieceSpritesheet, BrickPieceSprite.Part.RightTop, 0, 1);
-                case "DestroyedRB":
-                    return new BrickPieceSprite(spriteBatch, brickPieceSpritesheet, BrickPieceSprite.Part.RightBottom, 1, 1);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 0, ZIndex.front);
+                case "Destroyed":
+                    return new BrickPieceSprite(spriteBatch, brickPieceSpritesheet);
                 case "Normal":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 0);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 0, ZIndex.front);
                 case "Used":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 27, 0);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 27, 0, ZIndex.front);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -247,12 +241,12 @@ namespace MelloMario.Factories
 
         public ISprite CreateFloorSprite()
         {
-            return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 0);
+            return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 0, ZIndex.front);
         }
 
         public ISprite CreateStairSprite()
         {
-            return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 1);
+            return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 1, ZIndex.front);
         }
 
         public ISprite CreatePipelineSprite(String type)
@@ -260,13 +254,13 @@ namespace MelloMario.Factories
             switch (type)
             {
                 case "LeftIn":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 8);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 8, ZIndex.front);
                 case "RightIn":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 8);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 8, ZIndex.front);
                 case "Left":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 9);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 9, ZIndex.front);
                 case "Right":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 9);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 9, ZIndex.front);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code

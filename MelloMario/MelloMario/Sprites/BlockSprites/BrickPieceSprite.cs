@@ -12,78 +12,59 @@ namespace MelloMario.Sprites.BlockSprites
     {
         private SpriteBatch spriteBatch;
         private Texture2D texture;
-        private Part part;
 
-        private int x;
-        private int y;
-
-        private int frames;
-        private float elapsed;
-        private float offsetX;
-        private float offsetY;
-
-        private void UpdateOffset(GameTime time)
-        {
-            elapsed += (float)time.ElapsedGameTime.TotalMilliseconds;
-            frames += 1;
-
-            switch (part)
-            {
-                case Part.LeftBottom:
-                    offsetX = -elapsed / 5f + 4;
-                    offsetY = (float)Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
-                    break;
-                case Part.LeftTop:
-                    offsetX = -elapsed / 5f + 4;
-                    offsetY = (float)Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
-                    break;
-                case Part.RightBottom:
-                    offsetX = elapsed / 5f + 12;
-                    offsetY = (float)Math.Pow(elapsed / 20f, 2f) - elapsed + 16f;
-                    break;
-                case Part.RightTop:
-                    offsetX = elapsed / 5f + 12;
-                    offsetY = (float)Math.Pow(elapsed / 19f, 2f) - elapsed + 32f;
-                    break;
-            }
-
-        }
-
-        public enum Part
-        {
-            LeftTop, LeftBottom, RightTop, RightBottom
-        }
+        private int elapsed;
 
         public Point PixelSize
         {
             get
             {
-                return new Point(16, 16);
+                return new Point(texture.Width, texture.Height);
             }
         }
 
-        public BrickPieceSprite(SpriteBatch spriteBatch, Texture2D texture, Part part, int x, int y)
+        public BrickPieceSprite(SpriteBatch spriteBatch, Texture2D texture)
         {
             this.spriteBatch = spriteBatch;
             this.texture = texture;
-            this.part = part;
-            this.x = x;
-            this.y = y;
 
-            frames = 0;
             elapsed = 0;
-            offsetX = 0f;
-            offsetY = 0f;
         }
 
         public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
         {
             if (zIndex == ZIndex.front)
             {
-                UpdateOffset(time);
+                elapsed += time.ElapsedGameTime.Milliseconds;
 
-                Rectangle newDestination = new Rectangle(destination.Left + (int)offsetX, destination.Top + (int)offsetY, destination.Width, destination.Height);
-                Rectangle source = new Rectangle(texture.Width * x / 2, texture.Height * y / 2, texture.Width / 2, texture.Height / 2);
+                int offsetX;
+                int offsetY;
+                Rectangle newDestination;
+                Rectangle source;
+
+                offsetX = -elapsed / 5 + 4;
+                offsetY = elapsed * elapsed / 400 - elapsed + 16;
+                newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
+                source = new Rectangle(0, 0, texture.Width / 2, texture.Height / 2);
+                spriteBatch.Draw(texture, newDestination, source, Color.White);
+
+                offsetX = -elapsed / 5 + 4;
+                offsetY = elapsed * elapsed / 360 - elapsed + 32;
+                newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
+                source = new Rectangle(0, texture.Height / 2, texture.Width / 2, texture.Height / 2);
+                spriteBatch.Draw(texture, newDestination, source, Color.White);
+
+                offsetX = elapsed / 5 + 12;
+                offsetY = elapsed * elapsed / 400 - elapsed + 16;
+                newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
+                source = new Rectangle(texture.Width / 2, 0, texture.Width / 2, texture.Height / 2);
+                spriteBatch.Draw(texture, newDestination, source, Color.White);
+
+                offsetX = elapsed / 5 + 12;
+                offsetY = elapsed * elapsed / 360 - elapsed + 32;
+                newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
+                source = new Rectangle(texture.Width / 2, texture.Height / 2, texture.Width / 2, texture.Height / 2);
+
                 spriteBatch.Draw(texture, newDestination, source, Color.White);
             }
         }

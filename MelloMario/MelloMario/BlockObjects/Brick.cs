@@ -17,14 +17,6 @@ namespace MelloMario.BlockObjects
             {
                 HideSprite();
             }
-            else if (state is Destroyed)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedRT"));
-                //ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedLT"));
-                //ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedRB"));
-                //ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedLB"));
-
-            }
             else
             {
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite(state.GetType().Name));
@@ -36,7 +28,7 @@ namespace MelloMario.BlockObjects
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
         }
 

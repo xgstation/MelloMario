@@ -53,17 +53,15 @@ namespace MelloMario.MarioObjects
 
         protected override void OnSimulation(GameTime time)
         {
-            if (g_on)
-            {
-                ApplyGravity();
-            }
+
+            ApplyGravity();
             ApplyHorizontalFriction(FORCE_F_AIR);
             ApplyVerticalFriction(FORCE_F_AIR);
 
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
             switch (target.GetType().Name)
             {
@@ -91,7 +89,8 @@ namespace MelloMario.MarioObjects
                         isBumping = false;
                     }
 
-                    if (mode == CollisionMode.Top && corner == CollisionCornerMode.Center)
+                    // if (mode == CollisionMode.Top && corner == CollisionCornerMode.Center) // TODO
+                    if (mode == CollisionMode.Top)
                     {
                         if (Bounce(mode, new Vector2(), 1))
                         {
@@ -159,12 +158,12 @@ namespace MelloMario.MarioObjects
                     // TODO: implement coins count
                     break;
                 case "FireFlower":
-                    if(((ItemObjects.FireFlower)target).State is ItemObjects.FireFlowerStates.Normal)
+                    if (((ItemObjects.FireFlower)target).State is ItemObjects.FireFlowerStates.Normal)
                         PowerUpState.UpgradeToFire();
                     break;
                 case "OneUpMushroom":
                     if (((ItemObjects.OneUpMushroom)target).State is ItemObjects.OneUpMushroomStates.Normal) { }
-                        // TODO: implement +1s
+                    // TODO: implement +1s
                     break;
                 case "Star":
                     if (((ItemObjects.Star)target).State is ItemObjects.StarStates.Normal)
@@ -257,12 +256,5 @@ namespace MelloMario.MarioObjects
             PowerUpState.Downgrade();
         }
 
-        // TODO: For sprint 2 only
-        //       Please remove it after sprint 2
-        bool g_on;
-        public void ToggleGravity()
-        {
-            g_on = !g_on;
-        }
     }
 }

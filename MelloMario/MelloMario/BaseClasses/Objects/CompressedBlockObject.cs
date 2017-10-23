@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
 
-namespace MelloMario.BaseClasses
+namespace MelloMario
 {
     //NOT FINISHED YET
     //Briefly Introduction:
@@ -83,13 +83,13 @@ namespace MelloMario.BaseClasses
             }
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario mario)
             {
                 Interval marioBoundary = new Interval(mario.Boundary.X, mario.Boundary.X + mario.Boundary.Width);
                 // note: cornerPassive == right means that Mario's right half touches bottom left corner of this object
-                if (mode == CollisionMode.Bottom && cornerPassive == CollisionCornerMode.Right)
+                if (mode == CollisionMode.Bottom && cornerPassive == CornerMode.Right)
                 {
                     foreach (Tuple<Interval, IGameObject> obj in objects)
                     {
@@ -100,7 +100,7 @@ namespace MelloMario.BaseClasses
                         }
                     }
                 }
-                else if (mode == CollisionMode.Bottom && cornerPassive == CollisionCornerMode.Left)
+                else if (mode == CollisionMode.Bottom && cornerPassive == CornerMode.Left)
                 {
                     foreach (Tuple<Interval, IGameObject> obj in objects)
                     {
