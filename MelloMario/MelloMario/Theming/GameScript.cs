@@ -35,9 +35,9 @@ namespace MelloMario
                 controller.AddCommand(Keys.S, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.S, factory.CreateGameCharacterCommand("CrouchPress", character), KeyBehavior.press);
                 controller.AddCommand(Keys.S, factory.CreateGameCharacterCommand("CrouchRelease", character), KeyBehavior.release);
-                controller.AddCommand(Keys.W, factory.CreateGameCharacterCommand("Jump", character), KeyBehavior.hold);
-                controller.AddCommand(Keys.W, factory.CreateGameCharacterCommand("JumpPress", character), KeyBehavior.press);
-                controller.AddCommand(Keys.W, factory.CreateGameCharacterCommand("JumpRelease", character), KeyBehavior.release);
+                controller.AddCommand(Keys.Z, factory.CreateGameCharacterCommand("Jump", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.Z, factory.CreateGameCharacterCommand("JumpPress", character), KeyBehavior.press);
+                controller.AddCommand(Keys.Z, factory.CreateGameCharacterCommand("JumpRelease", character), KeyBehavior.release);
                 controller.AddCommand(Keys.A, factory.CreateGameCharacterCommand("Left", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.A, factory.CreateGameCharacterCommand("LeftPress", character), KeyBehavior.press);
                 controller.AddCommand(Keys.A, factory.CreateGameCharacterCommand("LeftRelease", character), KeyBehavior.release);
