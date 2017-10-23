@@ -8,6 +8,7 @@ namespace MelloMario.ItemObjects
 {
     class SuperMushroom : BasePhysicalObject
     {
+        private const int H_SPEED = 2;
         private IItemState state;
         private bool goingRight;
 
@@ -24,9 +25,9 @@ namespace MelloMario.ItemObjects
             if (state is Normal)
             {
                 if (goingRight)
-                    Move(new Point(1,0));
+                    Move(new Point(H_SPEED, 0));
                 else
-                    Move(new Point(-1, 0));
+                    Move(new Point(-1 * H_SPEED, 0));
             }
             base.OnSimulation(time);
         }
