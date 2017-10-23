@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
 
-namespace MelloMario.BaseClasses
+namespace MelloMario
 {
     //NOT FINISHED YET
     //Briefly Introduction:

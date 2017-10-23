@@ -46,11 +46,11 @@
     <StartupObject>MelloMario.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BaseClasses\BasePhysicalObject.cs" />
-    <Compile Include="BaseClasses\BaseGameObject.cs" />
-    <Compile Include="BaseClasses\CompressedBlockObject.cs" />
-    <Compile Include="BaseClasses\BaseTimedState.cs" />
-    <Compile Include="BaseClasses\BaseState.cs" />
+    <Compile Include="BaseClasses\Objects\BasePhysicalObject.cs" />
+    <Compile Include="BaseClasses\Objects\BaseGameObject.cs" />
+    <Compile Include="BaseClasses\Objects\CompressedBlockObject.cs" />
+    <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
+    <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
     <Compile Include="BlockObjects\Brick.cs" />
     <Compile Include="BlockObjects\BrickStates\Bumped.cs" />
     <Compile Include="BlockObjects\BrickStates\Destroyed.cs" />
