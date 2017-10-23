@@ -16,11 +16,12 @@ namespace MelloMario.ItemObjects
 
         protected override void OnSimulation(GameTime time)
         {
+            state.Update(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
         {
-            if (target is Mario && !(state is Unveil))
+            if (target is Mario && state is Normal)
             {
                 Collect();
             }
@@ -72,6 +73,11 @@ namespace MelloMario.ItemObjects
         {
             RemoveSelf();
             //State.Collect();
+        }
+
+        public void UnveilMove(int delta)
+        {
+            Move(new Point(0, delta));
         }
     }
 }

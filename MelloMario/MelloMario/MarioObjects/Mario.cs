@@ -155,19 +155,24 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Coin":
-                    // TODO: coin +1
+                    if (((ItemObjects.Coin)target).State is ItemObjects.CoinStates.Normal) { }
+                    // TODO: implement coins count
                     break;
                 case "FireFlower":
-                    PowerUpState.UpgradeToFire();
+                    if(((ItemObjects.FireFlower)target).State is ItemObjects.FireFlowerStates.Normal)
+                        PowerUpState.UpgradeToFire();
                     break;
                 case "OneUpMushroom":
-                    // TODO: life +1
+                    if (((ItemObjects.OneUpMushroom)target).State is ItemObjects.OneUpMushroomStates.Normal) { }
+                        // TODO: implement +1s
                     break;
                 case "Star":
-                    ProtectionState.Star();
+                    if (((ItemObjects.Star)target).State is ItemObjects.StarStates.Normal)
+                        ProtectionState.Star();
                     break;
                 case "SuperMushroom":
-                    PowerUpState.UpgradeToSuper();
+                    if (((ItemObjects.SuperMushroom)target).State is ItemObjects.SuperMushroomStates.Normal)
+                        PowerUpState.UpgradeToSuper();
                     break;
             }
         }

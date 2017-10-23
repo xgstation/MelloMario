@@ -8,10 +8,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
-    //TODO: Unveil Animation
+
     class Unveil : BaseState<FireFlower>, IItemState
     {
         private float elapsed;
+        private float realOffset;
 
         public Unveil(FireFlower owner) : base(owner)
         {
@@ -29,14 +30,20 @@ namespace MelloMario.ItemObjects.FireFlowerStates
 
         public override void Update(GameTime time)
         {
+
             elapsed += time.ElapsedGameTime.Milliseconds;
-            if (elapsed >= 2000)
+            realOffset += 32 * time.ElapsedGameTime.Milliseconds / 1000f;
+            if (elapsed >= 1000)
             {
                 Show();
             }
             else
             {
-                Owner.UnveilMove(-16);
+                while (realOffset > 1)
+                {
+                    Owner.UnveilMove(-1);
+                    --realOffset;
+                }
             }
         }
     }

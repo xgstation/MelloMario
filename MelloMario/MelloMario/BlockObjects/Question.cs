@@ -102,7 +102,7 @@ namespace MelloMario.BlockObjects
             {
                 World().AddObject(items.Dequeue());
 
-                return true;
+                return (items.Count != 0);
             }
         }
     }
