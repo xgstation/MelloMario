@@ -5,7 +5,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.ItemObjects
 {
-    class FireFlower : BaseGameObject
+    class FireFlower : BaseCollidableObject
     {
         private IItemState state;
 

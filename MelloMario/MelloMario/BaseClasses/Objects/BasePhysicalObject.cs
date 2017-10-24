@@ -5,7 +5,7 @@ using System;
 
 namespace MelloMario
 {
-    abstract class BasePhysicalObject : BaseGameObject
+    abstract class BasePhysicalObject : BaseCollidableObject
     {
         private const float VELOCITY_MAX_LR = 15f;
         private const float VELOCITY_MAX_U = 15f;

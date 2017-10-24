@@ -46,9 +46,9 @@
     <StartupObject>MelloMario.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BaseClasses\Objects\BaseCollidableObject.cs" />
     <Compile Include="BaseClasses\Objects\BasePhysicalObject.cs" />
     <Compile Include="BaseClasses\Objects\BaseGameObject.cs" />
-    <Compile Include="BaseClasses\Objects\CompressedBlockObject.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
     <Compile Include="BlockObjects\Brick.cs" />
@@ -229,9 +229,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="Content\ExampleLevel.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Content\ExampleLevel.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

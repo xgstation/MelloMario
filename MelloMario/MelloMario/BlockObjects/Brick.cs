@@ -6,7 +6,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects
 {
-    class Brick : BaseGameObject
+    class Brick : BaseCollidableObject
     {
         private IBlockState state;
         private IEnumerator<IGameObject> items;
@@ -108,7 +108,7 @@ namespace MelloMario.BlockObjects
         {
             if (item != null)
             {
-                World().AddObject(item);
+                World.AddObject(item);
                 LoadItem();
             }
 

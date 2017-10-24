@@ -5,13 +5,13 @@ using MelloMario.EnemyObjects.GoombaStates;
 
 namespace MelloMario.EnemyObjects
 {
-    class Goomba : BaseGameObject
+    class Goomba : BaseCollidableObject
     {
         private IGoombaState state;
 
         private void UpdateSprite()
         {
-         
+
             ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name));
         }
 
@@ -46,8 +46,8 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnDraw(GameTime time, ZIndex zIndex)
         {
-          
-         
+
+
         }
 
         public IGoombaState State
