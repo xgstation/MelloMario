@@ -15,11 +15,11 @@
         {
           "Type": "Brick",
           "Point": {
-            "X": 5,
+            "X": 6,
             "Y": 5
           },
           "Quantity": {
-            "X": 5,
+            "X": 6,
             "Y": 1
           },
           "Properties": [
