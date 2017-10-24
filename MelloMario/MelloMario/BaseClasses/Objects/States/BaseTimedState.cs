@@ -7,11 +7,19 @@ namespace MelloMario
         private int elapsed;
         private int interval;
 
+        protected float Progress
+        {
+            get
+            {
+                return elapsed / interval;
+            }
+        }
+
         protected abstract void OnTimer(GameTime time);
 
-        public BaseTimedState(T owner, int totalTime) : base(owner)
+        public BaseTimedState(T owner, int interval) : base(owner)
         {
-            this.interval = totalTime;
+            this.interval = interval;
         }
 
         public override void Update(GameTime time)
