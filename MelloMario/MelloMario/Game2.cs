@@ -15,20 +15,20 @@ namespace MelloMario
     class Game2 : Game
     {
         GraphicsDeviceManager graphics;
-        GameModel model;
+        GameModel2 model;
         GameScript script;
 
-        LevelReader reader;
+        LevelIOJson reader;
 
         SpriteBatch spriteBatch;
 
         public Game2()
         {
             graphics = new GraphicsDeviceManager(this);
-            model = new GameModel();
+            model = new GameModel2("Content/ExampleLevel.json");
             script = new GameScript();
 
-            reader = new LevelReader("Content/ExampleLevel.txt");
+            reader = new LevelIOJson("Content/ExampleLevel.json", model);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace MelloMario
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.BindSpriteBatch(spriteBatch);
 
-            model.LoadEntities(reader);
+            model.LoadEntities("Main");
         }
 
         /// <summary>

@@ -44,7 +44,7 @@ namespace MelloMario
         }
         public void LoadEntities()
         {
-            LoadEntities("default");
+            LoadEntities("Main");
         }
         public void SwitchWorld(string index)
         {

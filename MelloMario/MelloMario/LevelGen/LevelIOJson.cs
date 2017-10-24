@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json.Converters;
 using System.Collections;
+using MelloMario.MarioObjects;
 
 namespace MelloMario.LevelGen
 {
@@ -37,17 +38,12 @@ namespace MelloMario.LevelGen
             this.path = path;
             this.gameModel = gameModel;
         }
-        public bool CanChangeToWrite()
-        {
-            return false;
-        }
         public Tuple<IGameWorld, IGameCharacter> Load(string index)
         {
-            stream = new FileStream(path, FileMode.Open);
-            input = new StreamReader(stream);
             levelString = File.ReadAllText(path);
-            IGameWorld world = JsonConvert.DeserializeObject<IGameWorld>(levelString, new GameWorld2Converter(index, gameModel));
-            IGameCharacter character = JsonConvert.DeserializeObject<IGameCharacter>(levelString);
+            var world = JsonConvert.DeserializeObject<GameWorld2>(levelString, new GameWorld2Converter(index, gameModel));
+            IGameCharacter character = new PlayerMario(world, new Point(10, 10));
+            //IGameCharacter character = JsonConvert.DeserializeObject<IGameCharacter>(levelString, new CharacterConverter(index,world));
             return new Tuple<IGameWorld, IGameCharacter>(world, character);
         }
         public void Close()
@@ -64,25 +60,7 @@ namespace MelloMario.LevelGen
         {
             ((IDisposable)input).Dispose();
         }
-        private void AddMatirx(int x, int y, int rows, int columns, GameObjectFactory factory, String type, GameWorld world, SortedSet<Tuple<int,int>> ignoredSet)
-        {
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    if (!isIgnored(i, j, ignoredSet))
-                        world.AddObject(factory.CreateGameObject(type, world, new Point(x + j * GRIDSIZE, y + i * GRIDSIZE)));
-                }
-            }
-        }
-        private void addSingle(int x, int y, GameObjectFactory factory, String type, GameWorld world)
-        {
-            world.AddObject(factory.CreateGameObject(type, world, new Point(x * GRIDSIZE, y * GRIDSIZE)));
-        }
-        private bool isIgnored(int i, int j, SortedSet<Tuple<int,int>> ignoredSet)
-        {
-            return ignoredSet.Contains(new Tuple<int, int>(i, j));
-        }
+        
 
     }
 }

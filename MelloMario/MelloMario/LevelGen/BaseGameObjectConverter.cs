@@ -30,7 +30,7 @@ namespace MelloMario.LevelGen
             Point startPoint = gameObjToken.ElementAt(1).First.ToObject<Point>();
             int rows = gameObjToken.ElementAt(2).First.ElementAt(0).ToObject<int>();
             int columns = gameObjToken.ElementAt(2).First.ElementAt(1).ToObject<int>();
-            IDictionary<Point, Tuple<bool, string>> Properties = 
+            IDictionary<Point, Tuple<bool, string>> Properties =
                 gameObjToken.ElementAt(3).ToDictionary(
                     token => token.ElementAt(0).ToObject<Point>(),
                     token => new Tuple<bool, string>(token.First.ElementAt(1).ToObject<bool>(),
@@ -42,7 +42,10 @@ namespace MelloMario.LevelGen
                 {
                     Point location = new Point(startPoint.X + i, startPoint.Y + j);
                     Tuple<bool, string> property;
-                    Properties.TryGetValue(location, out property);
+                    if (!Properties.TryGetValue(new Point(i, j), out property))
+                    {
+                        property = new Tuple<bool, string>(false, "");
+                    }
                     switch (gameObjectType)
                     {
                         case "Brick":
