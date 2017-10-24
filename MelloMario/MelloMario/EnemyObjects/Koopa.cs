@@ -40,7 +40,7 @@ namespace MelloMario.EnemyObjects
             UpdateSprite();
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnUpdate(GameTime time)
         {
         }
 

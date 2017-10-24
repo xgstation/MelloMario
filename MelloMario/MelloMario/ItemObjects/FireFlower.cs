@@ -14,7 +14,7 @@ namespace MelloMario.ItemObjects
             ShowSprite(SpriteFactory.Instance.CreateFireFlowerSprite());
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnUpdate(GameTime time)
         {
             state.Update(time);
         }

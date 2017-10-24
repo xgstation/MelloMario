@@ -36,7 +36,7 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnUpdate(GameTime time)
         {
             state.Update(time);
         }

@@ -15,7 +15,7 @@ namespace MelloMario.BlockObjects
             ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(type));
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnUpdate(GameTime time)
         {
         }
 

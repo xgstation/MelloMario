@@ -17,6 +17,7 @@ namespace MelloMario
         protected IGameWorld World;
 
         protected abstract void OnUpdate(GameTime time);
+        protected abstract void OnSimulation(GameTime time);
         protected abstract void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex);
 
         protected void Relocate(Point delta)
@@ -87,7 +88,10 @@ namespace MelloMario
 
         public void Update(GameTime time)
         {
+            // TODO: override OnUpdate for states etc.
+            //       override OnSimulation for movement and collision
             OnUpdate(time);
+            OnSimulation(time);
         }
 
         public void Draw(GameTime time, Rectangle viewport, ZIndex zIndex)

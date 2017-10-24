@@ -179,6 +179,8 @@ namespace MelloMario
             Point pixelMovement = (movement * pixelScale).ToPoint();
             movement -= pixelMovement.ToVector2() / pixelScale;
             Move(pixelMovement);
+
+            base.OnSimulation(time);
         }
 
         public BasePhysicalObject(IGameWorld world, Point location, Point size, float pixelScale) : base(world, location, size)
