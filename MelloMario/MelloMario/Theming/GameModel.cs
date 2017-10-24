@@ -56,9 +56,19 @@ namespace MelloMario
             }
         }
 
+        public void Pause()
+        {
+            // TODO
+        }
+
+        public void Reset()
+        {
+            // TODO
+        }
+
         public void Quit()
         {
-            // Add quit command
+            // TODO
         }
     }
 }

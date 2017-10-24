@@ -74,13 +74,20 @@ namespace MelloMario
                 obj.Draw(time, currentCharacter.Viewport, zIndex);
             }
         }
-        internal void Quit()
+
+        public void Pause()
         {
 
         }
-        internal void Reset()
+
+        public void Reset()
         {
             LoadEntities();
+        }
+
+        public void Quit()
+        {
+
         }
     }
 }
