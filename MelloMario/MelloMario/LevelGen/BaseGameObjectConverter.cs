@@ -61,7 +61,7 @@ namespace MelloMario.LevelGen
                             objectStack.Push(new Stair(gameWorld, location));
                             break;
                         default:
-                            factory.CreateGameObject(gameObjectType, gameWorld, location);
+                            objectStack.Push(factory.CreateGameObject(gameObjectType, gameWorld, location));
                             break;
                     }
                 }
