@@ -5,7 +5,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects
 {
-    class Stair : BaseGameObject
+    class Stair : BaseCollidableObject
     {
         private IBlockState state;
 

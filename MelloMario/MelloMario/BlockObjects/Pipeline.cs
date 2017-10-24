@@ -5,7 +5,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects
 {
-    class Pipeline : BaseGameObject
+    class Pipeline : BaseCollidableObject
     {
         private IBlockState state;
         private string type;

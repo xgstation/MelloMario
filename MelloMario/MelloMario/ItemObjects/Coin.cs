@@ -5,7 +5,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.ItemObjects
 {
-    class Coin : BaseGameObject
+    class Coin : BaseCollidableObject
     {
         private IItemState state;
 
