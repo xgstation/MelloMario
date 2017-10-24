@@ -15,7 +15,39 @@ namespace MelloMario
         private Point size;
         private ISet<IGameObject>[,] objects;
         private IDictionary<IGameObject, Point> locations;
+        private GameModel2 gameModel;
 
+        private ISet<IGameObject> toAdd;
+        private ISet<IGameObject> toMove;
+        private ISet<IGameObject> toRemove;
+
+        private void DoAdd(IGameObject gameObject)
+        {
+            if (!locations.ContainsKey(gameObject))
+            {
+                Point location = new Point(
+                    gameObject.Boundary.Center.X / grid,
+                    gameObject.Boundary.Center.Y / grid
+                );
+
+                if (location.X >= 0 && location.X < size.X && location.Y >= 0 && location.Y < size.Y)
+                {
+                    locations[gameObject] = location;
+                    objects[location.X, location.Y].Add(gameObject);
+                }
+            }
+        }
+
+        private void DoRemove(IGameObject gameObject)
+        {
+            if (locations.ContainsKey(gameObject))
+            {
+                Point location = locations[gameObject];
+
+                locations.Remove(gameObject);
+                objects[location.X, location.Y].Remove(gameObject);
+            }
+        }
         public Rectangle Boundary
         {
             get
@@ -24,11 +56,11 @@ namespace MelloMario
             }
         }
 
-        public GameWorld2(int grid, Point size)
+        public GameWorld2(int grid, Point size, GameModel2 gameModel)
         {
             this.grid = grid;
             this.size = size;
-
+            this.gameModel = gameModel;
             objects = new HashSet<IGameObject>[size.X, size.Y];
             for (int i = objects.GetLowerBound(0); i <= objects.GetUpperBound(0); ++i)
             {
@@ -39,8 +71,15 @@ namespace MelloMario
             }
 
             locations = new Dictionary<IGameObject, Point>();
+            toAdd = new HashSet<IGameObject>();
+            toMove = new HashSet<IGameObject>();
+            toRemove = new HashSet<IGameObject>();
         }
 
+        public GameModel2 GetModel
+        {
+            get { return gameModel; }
+        }
         public IEnumerable<IGameObject> ScanObjects()
         {
             for (int i = objects.GetLowerBound(0); i <= objects.GetUpperBound(0); ++i)
@@ -90,28 +129,51 @@ namespace MelloMario
 
         public void AddObject(IGameObject gameObject)
         {
-            Point location = new Point(
-                gameObject.Boundary.Center.X / grid,
-                gameObject.Boundary.Center.Y / grid
-            );
-            locations[gameObject] = location;
+            toAdd.Add(gameObject);
+        }
 
-            // TODO: handle "out of boundary"
-            if (location.X >= 0 && location.X < size.X && location.Y >= 0 && location.Y < size.Y)
-            {
-                objects[location.X, location.Y].Add(gameObject);
-            }
+        public void AddObject(IEnumerable<IGameObject> gameObjects)
+        {
+            foreach (var obj in gameObjects)
+                AddObject(obj);
         }
 
         public void RemoveObject(IGameObject gameObject)
         {
-            if (locations.ContainsKey(gameObject))
-            {
-                Point location = locations[gameObject];
-                locations.Remove(gameObject);
+            toRemove.Add(gameObject);
+        }
 
-                objects[location.X, location.Y].Remove(gameObject);
+        public void RemoveObject(IEnumerable<IGameObject> gameObjects)
+        {
+            foreach (var obj in gameObjects)
+                RemoveObject(obj);
+        }
+
+        public void MoveObject(IGameObject gameObject)
+        {
+            toMove.Add(gameObject);
+        }
+
+        public void Update()
+        {
+            foreach (IGameObject obj in toAdd)
+            {
+                DoAdd(obj);
             }
+            toAdd.Clear();
+
+            foreach (IGameObject obj in toMove)
+            {
+                DoRemove(obj);
+                DoAdd(obj);
+            }
+            toMove.Clear();
+
+            foreach (IGameObject obj in toRemove)
+            {
+                DoRemove(obj);
+            }
+            toRemove.Clear();
         }
     }
 }

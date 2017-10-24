@@ -41,37 +41,35 @@ namespace MelloMario
                 controller.Update();
             }
 
-            ICollection<IGameObject> movedObjects = new List<IGameObject>();
             foreach (IGameObject obj in world.ScanObjects())
             {
-                Rectangle oldBoundary = obj.Boundary;
-
                 obj.Update(time);
-
-                if (obj.Boundary != oldBoundary)
-                {
-                    movedObjects.Add(obj);
-                }
             }
 
-            foreach (IGameObject obj in movedObjects)
-            {
-                world.RemoveObject(obj);
-                world.AddObject(obj);
-            }
+            world.Update();
         }
 
-        internal void Draw(GameTime time, ZIndex zIndex)
+        public void Draw(GameTime time, ZIndex zIndex)
         {
             foreach (IGameObject obj in world.ScanObjects())
             {
-                obj.Draw(time, zIndex);
+                obj.Draw(time, character.Viewport, zIndex);
             }
+        }
+
+        public void Pause()
+        {
+            // TODO
+        }
+
+        public void Reset()
+        {
+            // TODO
         }
 
         public void Quit()
         {
-            // Add quit command
+            // TODO
         }
     }
 }

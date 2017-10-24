@@ -11,18 +11,19 @@ namespace MelloMario
 
     class GameModel2
     {
-        private LevelIOJson levelLoader;
-        private LevelIOJson levelSaver;
+        private LevelIOJson levelIO;
 
         private IEnumerable<IController> controllers;
-        private IEnumerable<IGameWorld> worlds;
-        private IEnumerable<IGameCharacter> characters;
 
-        private IGameWorld world;
-        private IGameCharacter character;
+        private IGameWorld previousWorld;
+        private IGameCharacter previousCharacter;
 
-        public GameModel2()
+        private IGameWorld currentWorld;
+        private IGameCharacter currentCharacter;
+
+        public GameModel2(string path)
         {
+            levelIO = new LevelIOJson(path, this);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -35,13 +36,22 @@ namespace MelloMario
             //script.Bind(controllers, character);
         }
 
-        public void LoadEntities(LevelIOJson loader)
+        public void LoadEntities(string index)
         {
-            var pair = loader.Load();
-            worlds = pair.Item1;
-            characters = pair.Item2;
+            var pair = levelIO.Load(index);
+            currentWorld = pair.Item1;
+            currentCharacter = pair.Item2;
         }
-
+        public void LoadEntities()
+        {
+            LoadEntities("Main");
+        }
+        public void SwitchWorld(string index)
+        {
+            previousWorld = currentWorld;
+            previousCharacter = currentCharacter;
+            LoadEntities(index);
+        }
         public void Update(GameTime time)
         {
             foreach (IController controller in controllers)
@@ -49,32 +59,35 @@ namespace MelloMario
                 controller.Update();
             }
 
-            ICollection<IGameObject> movedObjects = new List<IGameObject>();
-            foreach (IGameObject obj in world.ScanObjects())
+            foreach (IGameObject obj in currentWorld.ScanObjects())
             {
-                Rectangle oldBoundary = obj.Boundary;
-
                 obj.Update(time);
-
-                if (obj.Boundary != oldBoundary)
-                {
-                    movedObjects.Add(obj);
-                }
             }
 
-            foreach (IGameObject obj in movedObjects)
+            currentWorld.Update();
+        }
+
+        public void Draw(GameTime time, ZIndex zIndex)
+        {
+            foreach (IGameObject obj in currentWorld.ScanObjects())
             {
-                world.RemoveObject(obj);
-                world.AddObject(obj);
+                obj.Draw(time, currentCharacter.Viewport, zIndex);
             }
         }
 
-        internal void Draw(GameTime time, ZIndex zIndex)
+        public void Pause()
         {
-            foreach (IGameObject obj in world.ScanObjects())
-            {
-                obj.Draw(time, zIndex);
-            }
+
+        }
+
+        public void Reset()
+        {
+            LoadEntities();
+        }
+
+        public void Quit()
+        {
+
         }
     }
 }

@@ -27,6 +27,8 @@ namespace MelloMario.Factories
             {
                 case "Pause":
                     return new Pause(model);
+                case "Reset":
+                    return new Reset(model);
                 case "Quit":
                     Console.WriteLine("Reached");
                     return new Quit(model);
@@ -87,8 +89,7 @@ namespace MelloMario.Factories
             {
                 switch (action)
                 {
-                    case "ToggleGravity":
-                        return new ToggleGravity(mario);
+
                     case "FireState":
                         return new FireState(mario);
                     case "StandardState":

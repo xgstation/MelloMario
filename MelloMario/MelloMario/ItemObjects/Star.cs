@@ -7,6 +7,7 @@ namespace MelloMario.ItemObjects
 {
     class Star : BasePhysicalObject
     {
+        private const int H_SPEED = 3;
         private IItemState state;
         private bool goingRight;
 
@@ -23,14 +24,14 @@ namespace MelloMario.ItemObjects
             if (state is Normal)
             {
                 if (goingRight)
-                    Move(new Point(3, 0));
+                    Move(new Point(H_SPEED, 0));
                 else
-                    Move(new Point(-3, 0));
+                    Move(new Point(-1 * H_SPEED, 0));
             }
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
             switch (target.GetType().Name)
             {
@@ -45,17 +46,17 @@ namespace MelloMario.ItemObjects
                 case "Stair":
                     // TODO: check against hidden
                     Bounce(mode, new Vector2());
-                    if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CollisionCornerMode.Center)
+                    if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
                         goingRight = true;
                     }
-                    else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CollisionCornerMode.Center)
+                    else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
                         goingRight = false;
                     }
-                    if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CollisionCornerMode.Center)
+                    if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
                         ApplyForce(new Vector2(0, -160f));
                     break;
             }
@@ -65,7 +66,7 @@ namespace MelloMario.ItemObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, ZIndex zIndex)
+        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
         }
 

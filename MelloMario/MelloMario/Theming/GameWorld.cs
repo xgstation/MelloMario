@@ -14,6 +14,38 @@ namespace MelloMario
         private ISet<IGameObject>[,] objects;
         private IDictionary<IGameObject, Point> locations;
 
+        private ISet<IGameObject> toAdd;
+        private ISet<IGameObject> toMove;
+        private ISet<IGameObject> toRemove;
+
+        private void DoAdd(IGameObject gameObject)
+        {
+            if (!locations.ContainsKey(gameObject))
+            {
+                Point location = new Point(
+                    gameObject.Boundary.Center.X / grid,
+                    gameObject.Boundary.Center.Y / grid
+                );
+
+                if (location.X >= 0 && location.X < size.X && location.Y >= 0 && location.Y < size.Y)
+                {
+                    locations[gameObject] = location;
+                    objects[location.X, location.Y].Add(gameObject);
+                }
+            }
+        }
+
+        private void DoRemove(IGameObject gameObject)
+        {
+            if (locations.ContainsKey(gameObject))
+            {
+                Point location = locations[gameObject];
+
+                locations.Remove(gameObject);
+                objects[location.X, location.Y].Remove(gameObject);
+            }
+        }
+
         public Rectangle Boundary
         {
             get
@@ -37,6 +69,9 @@ namespace MelloMario
             }
 
             locations = new Dictionary<IGameObject, Point>();
+            toAdd = new HashSet<IGameObject>();
+            toMove = new HashSet<IGameObject>();
+            toRemove = new HashSet<IGameObject>();
         }
 
         public IEnumerable<IGameObject> ScanObjects()
@@ -88,28 +123,39 @@ namespace MelloMario
 
         public void AddObject(IGameObject gameObject)
         {
-            Point location = new Point(
-                gameObject.Boundary.Center.X / grid,
-                gameObject.Boundary.Center.Y / grid
-            );
-            locations[gameObject] = location;
+            toAdd.Add(gameObject);
+        }
 
-            // TODO: handle "out of boundary"
-            if (location.X >= 0 && location.X < size.X && location.Y >= 0 && location.Y < size.Y)
-            {
-                objects[location.X, location.Y].Add(gameObject);
-            }
+        public void MoveObject(IGameObject gameObject)
+        {
+            toMove.Add(gameObject);
         }
 
         public void RemoveObject(IGameObject gameObject)
         {
-            if (locations.ContainsKey(gameObject))
-            {
-                Point location = locations[gameObject];
-                locations.Remove(gameObject);
+            toRemove.Add(gameObject);
+        }
 
-                objects[location.X, location.Y].Remove(gameObject);
+        public void Update()
+        {
+            foreach (IGameObject obj in toAdd)
+            {
+                DoAdd(obj);
             }
+            toAdd.Clear();
+
+            foreach (IGameObject obj in toMove)
+            {
+                DoRemove(obj);
+                DoAdd(obj);
+            }
+            toMove.Clear();
+
+            foreach (IGameObject obj in toRemove)
+            {
+                DoRemove(obj);
+            }
+            toRemove.Clear();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
 
-namespace MelloMario.BaseClasses
+namespace MelloMario
 {
     //NOT FINISHED YET
     //Briefly Introduction:
@@ -61,11 +61,11 @@ namespace MelloMario.BaseClasses
             }
         }
 
-        private SortedSet<Tuple<Interval, IGameObject>> objects;
+        private ISet<Tuple<Interval, IGameObject>> objects;
 
         public CompressedBlockObject(IGameWorld world, Point location, Point size, IGameObject[] gameObjects) : base(world, location, size)
         {
-            objects = new SortedSet<Tuple<Interval, IGameObject>>();
+            objects = new HashSet<Tuple<Interval, IGameObject>>();
             foreach (BaseGameObject obj in gameObjects)
             {
                 Interval interval = new Interval(obj.Boundary.X, obj.Boundary.Location.X + obj.Boundary.Width);
@@ -83,13 +83,13 @@ namespace MelloMario.BaseClasses
             }
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario mario)
             {
                 Interval marioBoundary = new Interval(mario.Boundary.X, mario.Boundary.X + mario.Boundary.Width);
                 // note: cornerPassive == right means that Mario's right half touches bottom left corner of this object
-                if (mode == CollisionMode.Bottom && cornerPassive == CollisionCornerMode.Right)
+                if (mode == CollisionMode.Bottom && cornerPassive == CornerMode.Right)
                 {
                     foreach (Tuple<Interval, IGameObject> obj in objects)
                     {
@@ -100,7 +100,7 @@ namespace MelloMario.BaseClasses
                         }
                     }
                 }
-                else if (mode == CollisionMode.Bottom && cornerPassive == CollisionCornerMode.Left)
+                else if (mode == CollisionMode.Bottom && cornerPassive == CornerMode.Left)
                 {
                     foreach (Tuple<Interval, IGameObject> obj in objects)
                     {
@@ -119,7 +119,7 @@ namespace MelloMario.BaseClasses
 
         }
 
-        protected override void OnDraw(GameTime time, ZIndex zIndex)
+        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
             foreach (Tuple<Interval, IGameObject> obj in objects)
             {

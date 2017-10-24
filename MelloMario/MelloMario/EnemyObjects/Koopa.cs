@@ -44,7 +44,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario mario)
             {
@@ -80,7 +80,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, ZIndex zIndex)
+        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
         }
 

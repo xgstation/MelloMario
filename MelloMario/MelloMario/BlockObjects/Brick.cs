@@ -6,10 +6,11 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects
 {
-    class Brick : BaseGameObject
+    class Brick : BaseCollidableObject
     {
         private IBlockState state;
-        private Queue<IGameObject> items;
+        private IEnumerator<IGameObject> items;
+        private IGameObject item;
 
         private void UpdateSprite()
         {
@@ -17,17 +18,21 @@ namespace MelloMario.BlockObjects
             {
                 HideSprite();
             }
-            else if (state is Destroyed)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedRT"));
-                //ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedLT"));
-                //ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedRB"));
-                //ShowSprite(SpriteFactory.Instance.CreateBrickSprite("DestroyedLB"));
-
-            }
             else
             {
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite(state.GetType().Name));
+            }
+        }
+
+        private void LoadItem()
+        {
+            if (items.MoveNext())
+            {
+                item = items.Current;
+            }
+            else
+            {
+                item = null;
             }
         }
 
@@ -36,7 +41,7 @@ namespace MelloMario.BlockObjects
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
         }
 
@@ -44,7 +49,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, ZIndex zIndex)
+        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
@@ -66,11 +71,11 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public Brick(IGameWorld world, Point location, bool isHidden = false) : this(world, location, new Queue<IGameObject>(), isHidden)
+        public Brick(IGameWorld world, Point location, bool isHidden = false) : this(world, location, new List<IGameObject>(), isHidden)
         {
         }
 
-        public Brick(IGameWorld world, Point location, Queue<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
+        public Brick(IGameWorld world, Point location, IEnumerable<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
         {
             if (isHidden)
             {
@@ -82,7 +87,8 @@ namespace MelloMario.BlockObjects
             }
             UpdateSprite();
 
-            this.items = items;
+            this.items = items.GetEnumerator();
+            LoadItem();
         }
 
 
@@ -100,16 +106,13 @@ namespace MelloMario.BlockObjects
 
         public bool ReleaseNextItem()
         {
-            if (items.Count == 0)
+            if (item != null)
             {
-                return false;
+                World.AddObject(item);
+                LoadItem();
             }
-            else
-            {
-                World().AddObject(items.Dequeue());
 
-                return (items.Count != 0);
-            }
+            return item != null;
         }
     }
 }

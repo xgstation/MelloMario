@@ -5,7 +5,7 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects
 {
-    class Pipeline : BaseGameObject
+    class Pipeline : BaseCollidableObject
     {
         private IBlockState state;
         private string type;
@@ -19,7 +19,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionCornerMode corner, CollisionCornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
         }
 
@@ -27,7 +27,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, ZIndex zIndex)
+        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
         }
 

@@ -46,11 +46,11 @@
     <StartupObject>MelloMario.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BaseClasses\BasePhysicalObject.cs" />
-    <Compile Include="BaseClasses\BaseGameObject.cs" />
-    <Compile Include="BaseClasses\CompressedBlockObject.cs" />
-    <Compile Include="BaseClasses\BaseTimedState.cs" />
-    <Compile Include="BaseClasses\BaseState.cs" />
+    <Compile Include="BaseClasses\Objects\BaseCollidableObject.cs" />
+    <Compile Include="BaseClasses\Objects\BasePhysicalObject.cs" />
+    <Compile Include="BaseClasses\Objects\BaseGameObject.cs" />
+    <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
+    <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
     <Compile Include="BlockObjects\Brick.cs" />
     <Compile Include="BlockObjects\BrickStates\Bumped.cs" />
     <Compile Include="BlockObjects\BrickStates\Destroyed.cs" />
@@ -71,6 +71,7 @@
     <Compile Include="BaseClasses\BaseCommand.cs" />
     <Compile Include="Commands\Action.cs" />
     <Compile Include="Commands\Quit.cs" />
+    <Compile Include="Commands\Reset.cs" />
     <Compile Include="Commands\RightPress.cs" />
     <Compile Include="Commands\LeftPress.cs" />
     <Compile Include="Commands\CrouchPress.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="Commands\Crouch.cs" />
     <Compile Include="Commands\RightRelease.cs" />
     <Compile Include="Commands\LeftRelease.cs" />
-    <Compile Include="Commands\ToggleGravity.cs" />
     <Compile Include="Commands\Jump.cs" />
     <Compile Include="Commands\Left.cs" />
     <Compile Include="Commands\Pause.cs" />
@@ -95,18 +95,18 @@
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
     <Compile Include="Game2.cs" />
-    <Compile Include="Interfaces\ICommandFactory.cs" />
-    <Compile Include="Interfaces\IGameObjectFactory.cs" />
-    <Compile Include="Interfaces\IGameCharacter.cs" />
+    <Compile Include="Interfaces\Factories\ICommandFactory.cs" />
+    <Compile Include="Interfaces\Factories\IGameObjectFactory.cs" />
+    <Compile Include="Interfaces\Objects\IGameCharacter.cs" />
     <Compile Include="Interfaces\IGameWorld.cs" />
-    <Compile Include="Interfaces\States\IState.cs" />
-    <Compile Include="Interfaces\States\IGoombaState.cs" />
-    <Compile Include="Interfaces\IGameObject.cs" />
-    <Compile Include="Interfaces\States\IBlockState.cs" />
-    <Compile Include="Interfaces\States\IItemState.cs" />
-    <Compile Include="Interfaces\States\IKoopaState.cs" />
+    <Compile Include="Interfaces\Objects\States\IState.cs" />
+    <Compile Include="Interfaces\Objects\States\IGoombaState.cs" />
+    <Compile Include="Interfaces\Objects\IGameObject.cs" />
+    <Compile Include="Interfaces\Objects\States\IBlockState.cs" />
+    <Compile Include="Interfaces\Objects\States\IItemState.cs" />
+    <Compile Include="Interfaces\Objects\States\IKoopaState.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
-    <Compile Include="Interfaces\ISpriteFactory.cs" />
+    <Compile Include="Interfaces\Factories\ISpriteFactory.cs" />
     <Compile Include="ItemObjects\Coin.cs" />
     <Compile Include="ItemObjects\CoinStates\Normal.cs" />
     <Compile Include="ItemObjects\CoinStates\Unveil.cs" />
@@ -126,11 +126,14 @@
     <Compile Include="EnemyObjects\KoopaStates\Shell.cs" />
     <Compile Include="EnemyObjects\KoopaStates\Normal.cs" />
     <Compile Include="ItemObjects\SuperMushroomStates\Unveil.cs" />
+    <Compile Include="LevelGen\BaseGameObjectConverter.cs" />
+    <Compile Include="LevelGen\CharacterConverter.cs" />
+    <Compile Include="LevelGen\GameWorldConverter.cs" />
     <Compile Include="LevelGen\LevelIOJson.cs" />
     <Compile Include="LevelGen\LevelReader.cs" />
-    <Compile Include="Interfaces\States\IMarioProtectionState.cs" />
-    <Compile Include="Interfaces\States\IMarioMovementState.cs" />
-    <Compile Include="Interfaces\States\IMarioPowerUpState.cs" />
+    <Compile Include="Interfaces\Objects\States\IMarioProtectionState.cs" />
+    <Compile Include="Interfaces\Objects\States\IMarioMovementState.cs" />
+    <Compile Include="Interfaces\Objects\States\IMarioPowerUpState.cs" />
     <Compile Include="MarioObjects\PlayerMario.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Dead.cs" />
     <Compile Include="MarioObjects\PowerUpStates\Fire.cs" />
@@ -150,9 +153,8 @@
     <Compile Include="Sprites\SlicedSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Commands\FireState.cs" />
-    <Compile Include="Theming\GameModel2.cs" />
     <Compile Include="Theming\GameModel.cs" />
-    <Compile Include="Theming\GameWorld2.cs" />
+    <Compile Include="Theming\GameModel2.cs" />
     <Compile Include="Theming\GameWorld.cs" />
     <Compile Include="Theming\GameScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
@@ -163,6 +165,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\StandardState.cs" />
     <Compile Include="Commands\SuperState.cs" />
+    <Compile Include="Theming\GameWorld2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
