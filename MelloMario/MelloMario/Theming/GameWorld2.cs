@@ -118,5 +118,15 @@ namespace MelloMario
                 objects[location.X, location.Y].Remove(gameObject);
             }
         }
+
+        public void MoveObject(IGameObject gameObject)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

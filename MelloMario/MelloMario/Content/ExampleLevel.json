@@ -14,12 +14,30 @@
       "Structures": [
         {
           "Type": "Brick",
-          "Array": {
-            "Point": {
-              "X": 2,
-              "Y": 3
-            },
-            "Length": 4
+          "Point": {
+            "X": 5,
+            "Y": 5
+          },
+          "Quantity": {
+            "X": 5,
+            "Y": 1
+          },
+          "Properties": [
+            {
+              "Index": {
+                "X": 1,
+                "Y": 1
+              },
+              "isHidden": false,
+              "ItemValue": "CCCCC"
+            }
+          ]
+        },
+        {
+          "Type": "Question",
+          "Point": {
+            "X": 10,
+            "Y": 10
           }
         }
       ]

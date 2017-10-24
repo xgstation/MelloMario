@@ -22,6 +22,7 @@ namespace MelloMario.LevelGen
 
         private const int GRIDSIZE = 32;
         private String path;
+        Stream stream;
         private StreamReader input;
         private StreamWriter output;
         private String levelString;
@@ -42,18 +43,23 @@ namespace MelloMario.LevelGen
         }
         public Tuple<IGameWorld, IGameCharacter> Load(string index)
         {
-            Stream inStream = new FileStream(path, FileMode.Open);
-            input = new StreamReader(inStream);
+            stream = new FileStream(path, FileMode.Open);
+            input = new StreamReader(stream);
             levelString = File.ReadAllText(path);
-            jLevelToken = JToken.Parse(levelString);
-            loadList = jLevelToken.Children().ToList();
-            IGameObjectFactory factory = GameObjectFactory.Instance;
-            IGameCharacter character = null;
-
-            inStream.Close();
-            return null;
+            IGameWorld world = JsonConvert.DeserializeObject<IGameWorld>(levelString, new GameWorld2Converter(index, gameModel));
+            IGameCharacter character = JsonConvert.DeserializeObject<IGameCharacter>(levelString);
+            return new Tuple<IGameWorld, IGameCharacter>(world, character);
         }
-
+        public void Close()
+        {
+            //TODO: Rewrite these
+            if (stream != null)
+                stream.Close();
+            if (input != null)
+                input.Close();
+            if (output != null)
+                output.Close();
+        }
         public void Dispose()
         {
             ((IDisposable)input).Dispose();
