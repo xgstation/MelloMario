@@ -181,7 +181,7 @@ namespace MelloMario.MarioObjects
             Bounce(mode, new Vector2());
         }
 
-        protected override void OnDraw(GameTime time, ZIndex zIndex)
+        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
             if (ProtectionState is Starred)
             {

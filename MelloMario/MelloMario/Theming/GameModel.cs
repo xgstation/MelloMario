@@ -48,11 +48,11 @@ namespace MelloMario
             world.Update();
         }
 
-        internal void Draw(GameTime time, ZIndex zIndex)
+        public void Draw(GameTime time, ZIndex zIndex)
         {
             foreach (IGameObject obj in world.ScanObjects())
             {
-                obj.Draw(time, zIndex);
+                obj.Draw(time, character.Viewport, zIndex);
             }
         }
 

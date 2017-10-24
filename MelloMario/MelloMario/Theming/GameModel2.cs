@@ -67,11 +67,11 @@ namespace MelloMario
             currentWorld.Update();
         }
 
-        internal void Draw(GameTime time, ZIndex zIndex)
+        public void Draw(GameTime time, ZIndex zIndex)
         {
             foreach (IGameObject obj in currentWorld.ScanObjects())
             {
-                obj.Draw(time, zIndex);
+                obj.Draw(time, currentCharacter.Viewport, zIndex);
             }
         }
         internal void Quit()

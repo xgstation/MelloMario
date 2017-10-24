@@ -78,7 +78,7 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        protected override void OnDraw(GameTime time, ZIndex zIndex)
+        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
