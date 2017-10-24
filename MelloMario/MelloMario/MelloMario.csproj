@@ -128,7 +128,7 @@
     <Compile Include="ItemObjects\SuperMushroomStates\Unveil.cs" />
     <Compile Include="LevelGen\BaseGameObjectConverter.cs" />
     <Compile Include="LevelGen\CharacterConverter.cs" />
-    <Compile Include="LevelGen\GameWorldConverter.cs" />
+    <Compile Include="LevelGen\GameConverter.cs" />
     <Compile Include="LevelGen\LevelIOJson.cs" />
     <Compile Include="LevelGen\LevelReader.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioProtectionState.cs" />
