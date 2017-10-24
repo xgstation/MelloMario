@@ -7,10 +7,16 @@
         "X": 15,
         "Y": 25
       },
-      "SpawnPoint": {
-        "X": 15,
-        "Y": 15
-      },
+      "Characters": [
+        {
+          "Type": "Mario",
+          "SpawnPoint": {
+            "X": 15,
+            "Y": 15
+          },
+          "State": "Nomral"
+        }
+      ],
       "Structures": [
         {
           "Type": "Brick",
