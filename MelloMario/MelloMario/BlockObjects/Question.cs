@@ -3,13 +3,14 @@ using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.BlockObjects.QuestionStates;
 using MelloMario.MarioObjects;
+using System;
 
 namespace MelloMario.BlockObjects
 {
     class Question : BaseGameObject
     {
         private IBlockState state;
-        private Queue<IGameObject> items;
+        private string items;
 
         private void UpdateSprite()
         {
@@ -69,7 +70,19 @@ namespace MelloMario.BlockObjects
             }
             UpdateSprite();
 
-            this.items = items;
+            this.items = items.ToString();
+        }
+        public Question(IGameWorld world, Point location, Tuple<bool, string> Property) : base(world, location, new Point(32,32))
+        {
+            if (Property.Item1)
+            {
+                state = new Hidden(this);
+            }
+            else
+            {
+                state = new Normal(this);
+            }
+            items = Property.Item2;
         }
 
         public void Show()
@@ -94,16 +107,18 @@ namespace MelloMario.BlockObjects
 
         public bool ReleaseNextItem()
         {
-            if (items.Count == 0)
-            {
-                return false;
-            }
-            else
-            {
-                World().AddObject(items.Dequeue());
 
-                return (items.Count != 0);
-            }
+            throw new NotImplementedException();
+            //if (items.Count == 0)
+            //{
+            //    return false;
+            //}
+            //else
+            //{
+            //    World().AddObject(items.Dequeue());
+
+            //    return (items.Count != 0);
+            //}
         }
     }
 }

@@ -3,13 +3,14 @@ using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.BlockObjects.BrickStates;
 using MelloMario.MarioObjects;
+using System;
 
 namespace MelloMario.BlockObjects
 {
     class Brick : BaseGameObject
     {
         private IBlockState state;
-        private Queue<IGameObject> items;
+        private string items;
 
         private void UpdateSprite()
         {
@@ -57,7 +58,6 @@ namespace MelloMario.BlockObjects
                 UpdateSprite();
             }
         }
-
         public Brick(IGameWorld world, Point location, bool isHidden = false) : this(world, location, new Queue<IGameObject>(), isHidden)
         {
         }
@@ -74,9 +74,20 @@ namespace MelloMario.BlockObjects
             }
             UpdateSprite();
 
-            this.items = items;
+            this.items = items.ToString();
         }
-
+        public Brick(IGameWorld world, Point location, Tuple<bool, string> Property) : base(world, location, new Point(32,32))
+        {
+            if (Property.Item1)
+            {
+                state = new Hidden(this);
+            }
+            else
+            {
+                state = new Normal(this);
+            }
+            items = Property.Item2;
+        }
 
         public void Bump(Mario mario)
         {
@@ -92,16 +103,18 @@ namespace MelloMario.BlockObjects
 
         public bool ReleaseNextItem()
         {
-            if (items.Count == 0)
-            {
-                return false;
-            }
-            else
-            {
-                World().AddObject(items.Dequeue());
 
-                return (items.Count != 0);
-            }
+            throw new NotImplementedException();
+            //if (items.Count == 0)
+            //{
+            //    return false;
+            //}
+            //else
+            //{
+            //    World().AddObject(items.Dequeue());
+
+            //    return (items.Count != 0);
+            //}
         }
     }
 }
