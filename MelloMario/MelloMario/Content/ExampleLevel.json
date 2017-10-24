@@ -32,13 +32,6 @@
               "ItemValue": "CCCCC"
             }
           ]
-        },
-        {
-          "Type": "Question",
-          "Point": {
-            "X": 10,
-            "Y": 10
-          }
         }
       ]
     },
