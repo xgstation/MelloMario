@@ -17,8 +17,6 @@ namespace MelloMario
         GameModel model;
         GameScript script;
 
-        IMarioMovementState movementState;
-
         LevelReader reader;
 
         SpriteBatch spriteBatch;
@@ -28,7 +26,6 @@ namespace MelloMario
             graphics = new GraphicsDeviceManager(this);
             model = new GameModel();
             script = new GameScript();
-            movementState = new Jumping(owner);
 
             reader = new LevelReader("Content/ExampleLevel.txt");
         }
