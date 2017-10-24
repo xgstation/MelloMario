@@ -74,5 +74,13 @@ namespace MelloMario
                 obj.Draw(time, zIndex);
             }
         }
+        internal void Quit()
+        {
+
+        }
+        internal void Reset()
+        {
+            LoadEntities();
+        }
     }
 }

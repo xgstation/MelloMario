@@ -26,6 +26,8 @@ namespace MelloMario.Factories
             {
                 case "Pause":
                     return new Pause(model);
+                case "Reset":
+                    return new Reset(model);
                 case "Quit":
                     Console.WriteLine("Reached");
                     return new Quit(model);

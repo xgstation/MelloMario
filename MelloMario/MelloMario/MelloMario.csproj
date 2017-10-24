@@ -71,6 +71,7 @@
     <Compile Include="BaseClasses\BaseCommand.cs" />
     <Compile Include="Commands\Action.cs" />
     <Compile Include="Commands\Quit.cs" />
+    <Compile Include="Commands\Reset.cs" />
     <Compile Include="Commands\RightPress.cs" />
     <Compile Include="Commands\LeftPress.cs" />
     <Compile Include="Commands\CrouchPress.cs" />

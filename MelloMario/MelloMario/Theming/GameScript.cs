@@ -47,7 +47,7 @@ namespace MelloMario
 
                 // Need to quit game using Q
                 controller.AddCommand(Keys.Q, factory.CreateGameControlCommand("Quit", model), KeyBehavior.press);
-
+                controller.AddCommand(Keys.R, factory.CreateGameControlCommand("Reset", model), KeyBehavior.press);
                 // sprint 2 cheat commands
                 controller.AddCommand(Keys.Y, factory.CreateGameObjectCommand("StandardState", character));
                 controller.AddCommand(Keys.U, factory.CreateGameObjectCommand("SuperState", character));
