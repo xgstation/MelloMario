@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Controllers;
 using MelloMario.Factories;
 using MelloMario.LevelGen;
-using MelloMario.MarioObjects.MovementStates;
 
 namespace MelloMario
 {

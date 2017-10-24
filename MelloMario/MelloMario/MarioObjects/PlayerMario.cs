@@ -92,62 +92,33 @@ namespace MelloMario.MarioObjects
 
         public void Jump()
         {
-            if (!(MovementState is Crouching) && userInput.Y == 0)
-            {
-                userInput.Y -= FORCE_INPUT;
-                userInput.Y -= FORCE_G;
+            userInput.Y -= FORCE_INPUT;
+            userInput.Y -= FORCE_G;
 
-                MovementState.Jump();
-            }
+            MovementState.Jump();
         }
 
         public void JumpPress()
         {
-            // TODO: for sprint2 only
-            if (MovementState is Jumping)
-            {
-                userInput.Y -= 0;
-                userInput.Y -= 0;
-                Bounce(CollisionMode.Bottom, new Vector2());
-            }
-            else
-            {
-                Bounce(CollisionMode.Bottom, new Vector2());
-            }
+            // TODO: add accelerate time limit
         }
 
         public void JumpRelease()
         {
-            // TODO: for sprint2 only
-            if (MovementState is Crouching)
-            {
-                MovementState.Idle();
-            }
         }
 
         public void Crouch()
         {
-            if (!(MovementState is Jumping))
-            {
-                // TODO: for sprint2 only
-                // "fall" instead of "crouch"
-                userInput.Y += FORCE_INPUT;
-
-                MovementState.Crouch();
-            }
+            MovementState.Crouch();
         }
 
         public void CrouchPress()
         {
-            // TODO: for sprint2 only
-            Bounce(CollisionMode.Top, new Vector2());
         }
 
         public void CrouchRelease()
         {
-            
-                MovementState.Idle();
-            
+            MovementState.Idle();
         }
 
         public void Action()

@@ -1,7 +1,4 @@
-﻿using MelloMario.MarioObjects.MovementStates;
-
-namespace MelloMario.Commands
-
+﻿namespace MelloMario.Commands
 {
     class JumpPress : BaseCommand<IGameCharacter>
     {
