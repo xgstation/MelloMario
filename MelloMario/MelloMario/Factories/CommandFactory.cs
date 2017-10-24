@@ -1,6 +1,7 @@
 ﻿using System;
 using MelloMario.Commands;
 using MelloMario.MarioObjects;
+using MelloMario.MarioObjects.MovementStates;
 
 namespace MelloMario.Factories
 {
@@ -38,7 +39,7 @@ namespace MelloMario.Factories
             }
         }
 
-        public ICommand CreateGameCharacterCommand(string action, IGameCharacter character)
+        public ICommand CreateGameCharacterCommand(string action, IGameCharacter character, IMarioMovementState move)
         {
             switch (action)
             {
@@ -53,7 +54,12 @@ namespace MelloMario.Factories
                 case "Jump":
                     return new Jump(character);
                 case "JumpPress":
-                    return new JumpPress(character);
+                    if(!(move is Jumping)) 
+                        return new JumpPress(character, move);
+                    else
+                    {
+                        return new CrouchPress(character);
+                    }
                 case "JumpRelease":
                     return new JumpRelease(character);
                 case "Left":

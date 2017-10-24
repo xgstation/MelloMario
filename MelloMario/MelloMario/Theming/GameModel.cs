@@ -11,6 +11,7 @@ namespace MelloMario
         private IEnumerable<IController> controllers;
         private IGameWorld world;
         private IGameCharacter character;
+        private IMarioMovementState move;
 
         public GameModel()
         {
@@ -23,7 +24,7 @@ namespace MelloMario
 
         public void Bind(GameScript script)
         {
-            script.Bind(controllers, character, this);
+            script.Bind(controllers, character, this, move);
         }
 
         public void LoadEntities(LevelReader reader)
