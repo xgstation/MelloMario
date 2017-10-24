@@ -5,15 +5,12 @@ namespace MelloMario.Commands
 {
     class JumpPress : BaseCommand<IGameCharacter>
     {
-    private IMarioMovementState movementState;
-        public JumpPress(IGameCharacter character, IMarioMovementState move) : base(character)
+        public JumpPress(IGameCharacter character) : base(character)
         {
-        movementState = move;
         }
 
         public override void Execute()
         {
-        if (!(movementState is Jumping))
             Receiver.JumpPress();
         }
     }

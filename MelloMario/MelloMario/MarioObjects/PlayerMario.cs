@@ -92,7 +92,7 @@ namespace MelloMario.MarioObjects
 
         public void Jump()
         {
-            if (!(MovementState is Crouching))
+            if (!(MovementState is Crouching) && userInput.Y == 0)
             {
                 userInput.Y -= FORCE_INPUT;
                 userInput.Y -= FORCE_G;
@@ -104,7 +104,16 @@ namespace MelloMario.MarioObjects
         public void JumpPress()
         {
             // TODO: for sprint2 only
-            Bounce(CollisionMode.Bottom, new Vector2());
+            if (MovementState is Jumping)
+            {
+                userInput.Y -= 0;
+                userInput.Y -= 0;
+                Bounce(CollisionMode.Bottom, new Vector2());
+            }
+            else
+            {
+                Bounce(CollisionMode.Bottom, new Vector2());
+            }
         }
 
         public void JumpRelease()

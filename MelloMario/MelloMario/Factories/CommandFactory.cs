@@ -39,7 +39,7 @@ namespace MelloMario.Factories
             }
         }
 
-        public ICommand CreateGameCharacterCommand(string action, IGameCharacter character, IMarioMovementState move)
+        public ICommand CreateGameCharacterCommand(string action, IGameCharacter character)
         {
             switch (action)
             {
@@ -54,12 +54,7 @@ namespace MelloMario.Factories
                 case "Jump":
                     return new Jump(character);
                 case "JumpPress":
-                    if(!(move is Jumping)) 
-                        return new JumpPress(character, move);
-                    else
-                    {
-                        return new CrouchPress(character);
-                    }
+                    return new JumpPress(character);
                 case "JumpRelease":
                     return new JumpRelease(character);
                 case "Left":
