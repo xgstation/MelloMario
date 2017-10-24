@@ -12,13 +12,13 @@ namespace MelloMario.MarioObjects
     {
         private Vector2 userInput;
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnUpdate(GameTime time)
         {
             ApplyForce(userInput);
             userInput.X = 0;
             userInput.Y = 0;
 
-            base.OnSimulation(time);
+            base.OnUpdate(time);
         }
 
         public Rectangle Viewport

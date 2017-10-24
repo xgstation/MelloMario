@@ -121,7 +121,6 @@ namespace MelloMario
         protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom };
         protected enum CornerMode { Left, Right, Top, Bottom, Center };
 
-        protected abstract void OnSimulation(GameTime time);
         protected abstract void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive);
         protected abstract void OnOut(CollisionMode mode);
 
@@ -150,27 +149,33 @@ namespace MelloMario
             World.RemoveObject(this);
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnSimulation(GameTime time)
         {
+            CollideAll();
+
             // Since each update is a very small iteration, the order does not matter.
+
             while (movement.X < 0)
             {
                 Relocate(new Point(-1, 0));
                 movement.X += 1;
                 CollideAll();
             }
+
             while (movement.X > 0)
             {
                 Relocate(new Point(1, 0));
                 movement.X -= 1;
                 CollideAll();
             }
+
             while (movement.Y < 0)
             {
                 Relocate(new Point(0, -1));
                 movement.Y += 1;
                 CollideAll();
             }
+
             while (movement.Y > 0)
             {
                 Relocate(new Point(0, 1));

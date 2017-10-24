@@ -1,20 +1,19 @@
 ﻿using MelloMario.BlockObjects;
 using MelloMario.ItemObjects;
+using MelloMario.Factories;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MelloMario.LevelGen
 {
     class BaseGameObjectConverter : JsonConverter
     {
         private GameWorld2 gameWorld;
-        IGameObjectFactory factory;
+
         public BaseGameObjectConverter(GameWorld2 gameWorld)
         {
             this.gameWorld = gameWorld;
@@ -72,7 +71,7 @@ namespace MelloMario.LevelGen
                             objectStack.Push(new Stair(gameWorld, location));
                             break;
                         default:
-                            objectStack.Push(factory.CreateGameObject(gameObjectType, gameWorld, location));
+                            objectStack.Push(GameObjectFactory.Instance.CreateGameObject(gameObjectType, gameWorld, location));
                             break;
                     }
                 }

@@ -11,29 +11,21 @@ using System.Threading.Tasks;
 namespace MelloMario.LevelGen
 {
     //Using for deserialize json to a single GameWorld(Map)
-    class GameWorld2Converter : JsonConverter
+    class GameConverter : JsonConverter
     {
         private string index;
-        private GameWorld2 gameWorld;
         private GameModel2 gameModel;
         JsonSerializer serializers;
-        public string Index
-        {
-            get
-            {
-                return index;
-            }
-            set
-            {
-                value = index;
-            }
-        }
-        public GameWorld2Converter(string index, GameModel2 gameModel)
+
+        private GameWorld2 world;
+        private IGameCharacter character;
+        public GameConverter(string index, GameModel2 gameModel)
         {
             this.index = index;
             this.gameModel = gameModel;
             serializers = new JsonSerializer();
-            serializers.Converters.Add(new BaseGameObjectConverter(gameWorld));
+            serializers.Converters.Add(new BaseGameObjectConverter(world));
+            serializers.Converters.Add(new CharacterConverter(world));
         }
         public override bool CanConvert(Type objectType)
         {
@@ -55,25 +47,44 @@ namespace MelloMario.LevelGen
             }
             Point mapSize = MapToBeLoaded.Value<JToken>("Size").ToObject<Point>();
 
-            IList<JToken> Structures = MapToBeLoaded.Value<JToken>("Structures").ToList();
-            gameWorld = new GameWorld2(MapToBeLoaded.Value<int>("Grid"), mapSize, gameModel);
 
+            IList<JToken> Structures = MapToBeLoaded.Value<JToken>("Structures").ToList();
+            world = new GameWorld2(MapToBeLoaded.Value<int>("Grid"), mapSize, gameModel);
             foreach (var obj in Structures)
             {
                 var temp = obj.ToObject<object>(serializers);
                 if (temp is IGameObject gameObject)
                 {
-                    gameWorld.AddObject(gameObject);
+                    world.AddObject(gameObject);
                 }
                 else if (temp is IEnumerable<IGameObject> gameObjects)
                 {
                     foreach (var gameObj in gameObjects)
                     {
-                        gameWorld.AddObject(gameObj);
+                        world.AddObject(gameObj);
                     }
                 }
             }
-            return gameWorld;
+            
+            IList<JToken> Characters = MapToBeLoaded.Value<JToken>("Characters").ToList();
+            foreach (var obj in Characters)
+            {
+                var temp = obj.ToObject<object>(serializers);
+                if (temp is IGameCharacter gameCharacter)
+                {
+                    character = gameCharacter;
+                    world.AddObject(gameCharacter);
+                }
+                //TODO: Add support for IEnumerables<IGameCharacter>
+                //else if (temp is IEnumerable<IGameCharacter> gameCharacters)
+                //{
+                //    foreach (var gameChar in gameCharacters)
+                //    {
+                //        gameWorld.AddObject(gameChar);
+                //    }
+                //}
+            }
+            return new Tuple<IGameWorld, IGameCharacter>(world, character);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

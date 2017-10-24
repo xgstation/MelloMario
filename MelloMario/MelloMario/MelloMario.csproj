@@ -128,7 +128,7 @@
     <Compile Include="ItemObjects\SuperMushroomStates\Unveil.cs" />
     <Compile Include="LevelGen\BaseGameObjectConverter.cs" />
     <Compile Include="LevelGen\CharacterConverter.cs" />
-    <Compile Include="LevelGen\GameWorldConverter.cs" />
+    <Compile Include="LevelGen\GameConverter.cs" />
     <Compile Include="LevelGen\LevelIOJson.cs" />
     <Compile Include="LevelGen\LevelReader.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioProtectionState.cs" />
@@ -229,7 +229,9 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="Content\ExampleLevel.json" />
+    <None Include="Content\ExampleLevel.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

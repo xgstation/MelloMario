@@ -15,7 +15,7 @@ namespace MelloMario.EnemyObjects
             ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name));
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnUpdate(GameTime time)
         {
 
         }

@@ -16,10 +16,10 @@ namespace MelloMario.ItemObjects
             ShowSprite(SpriteFactory.Instance.CreateStarSprite());
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnUpdate(GameTime time)
         {
-
             ApplyGravity();
+
             state.Update(time);
             if (state is Normal)
             {
@@ -28,7 +28,6 @@ namespace MelloMario.ItemObjects
                 else
                     Move(new Point(-1 * H_SPEED, 0));
             }
-            base.OnSimulation(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
