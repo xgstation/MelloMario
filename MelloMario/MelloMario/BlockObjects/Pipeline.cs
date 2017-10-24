@@ -2,19 +2,17 @@
 using MelloMario.Factories;
 using MelloMario.BlockObjects.PipelineStates;
 using MelloMario.MarioObjects;
-using System;
 
 namespace MelloMario.BlockObjects
 {
     class Pipeline : BaseGameObject
     {
         private IBlockState state;
-        private bool isPortal;
-        private string portalIndex;
+        private string type;
 
         private void UpdateSprite()
         {
-            ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(portalIndex));
+            ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(type));
         }
 
         protected override void OnSimulation(GameTime time)
@@ -49,13 +47,8 @@ namespace MelloMario.BlockObjects
         public Pipeline(IGameWorld world, Point location, string type) : base(world, location, new Point(32, 32))
         {
             state = new Normal(this);
-            this.portalIndex = type;
+            this.type = type;
             UpdateSprite();
-        }
-        public Pipeline(IGameWorld world, Point location, Tuple<bool,string> property) : base(world, location, new Point(32, 32))
-        {
-            isPortal = property.Item1;
-            portalIndex = property.Item2;
         }
 
         public void Show()

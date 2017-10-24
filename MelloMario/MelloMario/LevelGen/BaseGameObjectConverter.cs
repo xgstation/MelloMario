@@ -1,4 +1,5 @@
 ﻿using MelloMario.BlockObjects;
+using MelloMario.ItemObjects;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -21,6 +22,13 @@ namespace MelloMario.LevelGen
         public override bool CanConvert(Type objectType)
         {
             return true;
+        }
+
+        public IEnumerable<IGameObject> GenerateItems(Tuple<bool, string> property, IGameWorld world, Point location)
+        {
+            // note: just yield return all items here
+            //       move this function to some other class if needed
+            yield return new Coin(world, location);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
@@ -49,13 +57,13 @@ namespace MelloMario.LevelGen
                     switch (gameObjectType)
                     {
                         case "Brick":
-                            objectStack.Push(new Brick(gameWorld, location, property));
+                            objectStack.Push(new Brick(gameWorld, location, GenerateItems(property, gameWorld, location)));
                             break;
                         case "Question":
-                            objectStack.Push(new Question(gameWorld, location, property));
+                            objectStack.Push(new Question(gameWorld, location, GenerateItems(property, gameWorld, location)));
                             break;
                         case "Pipeline":
-                            objectStack.Push(new Pipeline(gameWorld, location, property));
+                            objectStack.Push(new Pipeline(gameWorld, location, property.Item2));
                             break;
                         case "Floor":
                             objectStack.Push(new Floor(gameWorld, location));

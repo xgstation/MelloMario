@@ -3,14 +3,14 @@ using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.BlockObjects.QuestionStates;
 using MelloMario.MarioObjects;
-using System;
 
 namespace MelloMario.BlockObjects
 {
     class Question : BaseGameObject
     {
         private IBlockState state;
-        private string items;
+        private IEnumerator<IGameObject> items;
+        private IGameObject item;
 
         private void UpdateSprite()
         {
@@ -21,6 +21,18 @@ namespace MelloMario.BlockObjects
             else
             {
                 ShowSprite(SpriteFactory.Instance.CreateQuestionSprite(state.GetType().Name));
+            }
+        }
+
+        private void LoadItem()
+        {
+            if (items.MoveNext())
+            {
+                item = items.Current;
+            }
+            else
+            {
+                item = null;
             }
         }
 
@@ -54,11 +66,11 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public Question(IGameWorld world, Point location, bool isHidden = false) : this(world, location, new Queue<IGameObject>(), isHidden)
+        public Question(IGameWorld world, Point location, bool isHidden = false) : this(world, location, new List<IGameObject>(), isHidden)
         {
         }
 
-        public Question(IGameWorld world, Point location, Queue<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
+        public Question(IGameWorld world, Point location, IEnumerable<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
         {
             if (isHidden)
             {
@@ -70,19 +82,8 @@ namespace MelloMario.BlockObjects
             }
             UpdateSprite();
 
-            this.items = items.ToString();
-        }
-        public Question(IGameWorld world, Point location, Tuple<bool, string> Property) : base(world, location, new Point(32,32))
-        {
-            if (Property.Item1)
-            {
-                state = new Hidden(this);
-            }
-            else
-            {
-                state = new Normal(this);
-            }
-            items = Property.Item2;
+            this.items = items.GetEnumerator();
+            LoadItem();
         }
 
         public void Show()
@@ -107,18 +108,13 @@ namespace MelloMario.BlockObjects
 
         public bool ReleaseNextItem()
         {
+            if (item != null)
+            {
+                World().AddObject(item);
+                LoadItem();
+            }
 
-            throw new NotImplementedException();
-            //if (items.Count == 0)
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-            //    World().AddObject(items.Dequeue());
-
-            //    return (items.Count != 0);
-            //}
+            return item != null;
         }
     }
 }
