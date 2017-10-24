@@ -24,8 +24,6 @@ namespace MelloMario.LevelGen
             this.index = index;
             this.gameModel = gameModel;
             serializers = new JsonSerializer();
-            serializers.Converters.Add(new BaseGameObjectConverter(world));
-            serializers.Converters.Add(new CharacterConverter(world));
         }
         public override bool CanConvert(Type objectType)
         {
@@ -50,6 +48,8 @@ namespace MelloMario.LevelGen
 
             IList<JToken> Structures = MapToBeLoaded.Value<JToken>("Structures").ToList();
             world = new GameWorld2(MapToBeLoaded.Value<int>("Grid"), mapSize, gameModel);
+            serializers.Converters.Add(new BaseGameObjectConverter(world));
+            serializers.Converters.Add(new CharacterConverter(world));
             foreach (var obj in Structures)
             {
                 var temp = obj.ToObject<object>(serializers);
