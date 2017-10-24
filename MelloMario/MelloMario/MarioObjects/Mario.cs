@@ -53,7 +53,6 @@ namespace MelloMario.MarioObjects
 
         protected override void OnSimulation(GameTime time)
         {
-
             ApplyGravity();
             ApplyHorizontalFriction(FORCE_F_AIR);
             ApplyVerticalFriction(FORCE_F_AIR);

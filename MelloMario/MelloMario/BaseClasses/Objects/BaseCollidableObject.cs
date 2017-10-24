@@ -152,6 +152,9 @@ namespace MelloMario
 
         protected override void OnUpdate(GameTime time)
         {
+            OnSimulation(time);
+
+            CollideAll();
             // Since each update is a very small iteration, the order does not matter.
             while (movement.X < 0)
             {
