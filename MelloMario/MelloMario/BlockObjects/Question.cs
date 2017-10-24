@@ -9,7 +9,8 @@ namespace MelloMario.BlockObjects
     class Question : BaseGameObject
     {
         private IBlockState state;
-        private Queue<IGameObject> items;
+        private IEnumerator<IGameObject> items;
+        private IGameObject item;
 
         private void UpdateSprite()
         {
@@ -20,6 +21,18 @@ namespace MelloMario.BlockObjects
             else
             {
                 ShowSprite(SpriteFactory.Instance.CreateQuestionSprite(state.GetType().Name));
+            }
+        }
+
+        private void LoadItem()
+        {
+            if (items.MoveNext())
+            {
+                item = items.Current;
+            }
+            else
+            {
+                item = null;
             }
         }
 
@@ -53,11 +66,11 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public Question(IGameWorld world, Point location, bool isHidden = false) : this(world, location, new Queue<IGameObject>(), isHidden)
+        public Question(IGameWorld world, Point location, bool isHidden = false) : this(world, location, new List<IGameObject>(), isHidden)
         {
         }
 
-        public Question(IGameWorld world, Point location, Queue<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
+        public Question(IGameWorld world, Point location, IEnumerable<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
         {
             if (isHidden)
             {
@@ -69,7 +82,8 @@ namespace MelloMario.BlockObjects
             }
             UpdateSprite();
 
-            this.items = items;
+            this.items = items.GetEnumerator();
+            LoadItem();
         }
 
         public void Show()
@@ -94,16 +108,13 @@ namespace MelloMario.BlockObjects
 
         public bool ReleaseNextItem()
         {
-            if (items.Count == 0)
+            if (item != null)
             {
-                return false;
+                World().AddObject(item);
+                LoadItem();
             }
-            else
-            {
-                World().AddObject(items.Dequeue());
 
-                return (items.Count != 0);
-            }
+            return item != null;
         }
     }
 }

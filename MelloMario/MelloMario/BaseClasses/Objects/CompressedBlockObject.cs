@@ -61,11 +61,11 @@ namespace MelloMario
             }
         }
 
-        private SortedSet<Tuple<Interval, IGameObject>> objects;
+        private ISet<Tuple<Interval, IGameObject>> objects;
 
         public CompressedBlockObject(IGameWorld world, Point location, Point size, IGameObject[] gameObjects) : base(world, location, size)
         {
-            objects = new SortedSet<Tuple<Interval, IGameObject>>();
+            objects = new HashSet<Tuple<Interval, IGameObject>>();
             foreach (BaseGameObject obj in gameObjects)
             {
                 Interval interval = new Interval(obj.Boundary.X, obj.Boundary.Location.X + obj.Boundary.Width);

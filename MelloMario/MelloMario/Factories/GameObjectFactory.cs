@@ -46,7 +46,7 @@ namespace MelloMario.Factories
 
         public IGameObject CreateGameObject(string type, IGameWorld world, Point location)
         {
-            Queue<IGameObject> items;
+            IEnumerable<IGameObject> items;
 
             switch (type)
             {
@@ -60,15 +60,19 @@ namespace MelloMario.Factories
                 case "Stair":
                     return new Stair(world, location);
                 case "Question":
-                    items = new Queue<IGameObject>();
-                    items.Enqueue(CreateGameObject("FireFlowerUnveil", world, location));
+                    items = new List<IGameObject>()
+                    {
+                        CreateGameObject("FireFlowerUnveil", world, location),
+                    };
                     return new Question(world, location, items, false);
                 case "HiddenQuestion":
-                    items = new Queue<IGameObject>();
-                    items.Enqueue(CreateGameObject("CoinUnveil", world, location));
-                    items.Enqueue(CreateGameObject("CoinUnveil", world, location));
-                    items.Enqueue(CreateGameObject("CoinUnveil", world, location));
-                    items.Enqueue(CreateGameObject("CoinUnveil", world, location));
+                    items = new List<IGameObject>()
+                    {
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                    };
                     return new Question(world, location, items, true);
                 case "PipelineLeftIn":
                     return new Pipeline(world, location, "LeftIn");
