@@ -1,6 +1,7 @@
 ﻿using MelloMario.MarioObjects;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,9 @@ namespace MelloMario.LevelGen
 {
     class CharacterConverter : JsonConverter
     {
-        private string index;
         private GameWorld2 gameWorld;
-        public CharacterConverter(string index, GameWorld2 gameWorld)
+        public CharacterConverter(GameWorld2 gameWorld)
         {
-            this.index = index;
             this.gameWorld = gameWorld;
         }
         public override bool CanConvert(Type objectType)
@@ -26,8 +25,24 @@ namespace MelloMario.LevelGen
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            //TODO: CHANGE IT
-            return new Mario(gameWorld, new Point(3, 3));
+            JToken jsonToken = JToken.Load(reader);
+            string characterType = jsonToken.ElementAt(0).First.ToObject<string>();
+            Point startPoint = jsonToken.ElementAt(1).First.ToObject<Point>();
+            Mario mario = new Mario(gameWorld, startPoint);
+            switch (jsonToken.ElementAt(2).Value<string>())
+            {
+                //TODO: Finish switch statement
+                case "FireMario":
+                    mario.UpgradeToFire();
+                    break;
+                case "SuperMario":
+                    mario.UpgradeToSuper();
+                    break;
+                default:
+                    //Do nothing
+                    break;
+            }
+            return mario;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
