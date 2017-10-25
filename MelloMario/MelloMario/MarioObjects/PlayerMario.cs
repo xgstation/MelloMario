@@ -11,13 +11,13 @@ namespace MelloMario.MarioObjects
     class PlayerMario : Mario, IGameCharacter
     {
         private Vector2 userInput;
-
+        private GameTime timer;
         protected override void OnUpdate(GameTime time)
         {
+            timer = time;
             ApplyForce(userInput);
             userInput.X = 0;
             userInput.Y = 0;
-
             base.OnUpdate(time);
         }
 
@@ -89,18 +89,28 @@ namespace MelloMario.MarioObjects
                 MovementState.Idle();
             }
         }
-
+        double secondsPerFrame = 0.5; //Update every half second
+        double elapsedFromPreviousFrame = 0; //Accumulate the elapsed time
         public void Jump()
         {
-            userInput.Y -= FORCE_INPUT;
-            userInput.Y -= FORCE_G;
+            elapsedFromPreviousFrame += timer.ElapsedGameTime.TotalSeconds;
+            if (MovementState is Jumping && elapsedFromPreviousFrame >= secondsPerFrame)
+            {
+                userInput.Y = 0;
+            }
+            else
+            {
+                userInput.Y -= FORCE_INPUT;
+                userInput.Y -= FORCE_G;
 
-            MovementState.Jump();
+                MovementState.Jump();
+            }
+            
         }
 
         public void JumpPress()
         {
-            // TODO: add accelerate time limit
+            elapsedFromPreviousFrame = 0;
         }
 
         public void JumpRelease()
