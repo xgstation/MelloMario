@@ -107,7 +107,8 @@ namespace MelloMario.MarioObjects
 
         public void JumpPress()
         {
-            elapsedFromPreviousFrame = 0;
+            if (!(MovementState is Jumping))
+                elapsedFromPreviousFrame = 0;
         }
 
         public void JumpRelease()
