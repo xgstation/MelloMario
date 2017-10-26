@@ -77,7 +77,8 @@ namespace MelloMario.LevelGen
             }
             return new EncapsulatedObject<IGameObject>(objectStack);
         }
-
+        //TODO: Add serialize method and change CanWrite
+        public override bool CanWrite => false;
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
