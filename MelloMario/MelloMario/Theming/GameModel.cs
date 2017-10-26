@@ -12,6 +12,8 @@ namespace MelloMario
         private IGameWorld world;
         private IGameCharacter character;
         private LevelIOJson jsonReader;
+        private bool isPaused = false;
+        private GameScript script;
         public GameModel()
         {
         }
@@ -23,6 +25,10 @@ namespace MelloMario
 
         public void Bind(GameScript script)
         {
+            if (this.script == null)
+            {
+                this.script = script;
+            }
             script.Bind(controllers, character, this);
         }
 
@@ -32,10 +38,13 @@ namespace MelloMario
             world = pair.Item1;
             character = pair.Item2;
         }
-        public void LoadEntities(LevelIOJson reader)
+        public void LoadEntities(LevelIOJson jsonReader)
         {
-            jsonReader = reader;
-            Tuple<IGameWorld, IGameCharacter> pair = reader.Load("Main");
+            if (this.jsonReader == null)
+            {
+                this.jsonReader = jsonReader;
+            }
+            Tuple<IGameWorld, IGameCharacter> pair = jsonReader.Load("Main");
             world = pair.Item1;
             character = pair.Item2;
         }
@@ -46,13 +55,15 @@ namespace MelloMario
             {
                 controller.Update();
             }
-
-            foreach (IGameObject obj in world.ScanObjects())
+            if (!isPaused)
             {
-                obj.Update(time);
-            }
+                foreach (IGameObject obj in world.ScanObjects())
+                {
+                    obj.Update(time);
+                }
 
-            world.Update();
+                world.Update();
+            }
         }
 
         public void Draw(GameTime time, ZIndex zIndex)
@@ -65,12 +76,14 @@ namespace MelloMario
 
         public void Pause()
         {
+            isPaused = !isPaused;
             // TODO
         }
 
         public void Reset()
         {
             LoadEntities(jsonReader);
+            Bind(script);
         }
 
         public void Quit()
