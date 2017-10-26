@@ -5,13 +5,11 @@ namespace MelloMario.Controllers
 {
     class KeyboardController : BaseController<Keys>
     {
-        Game game;
         KeyboardState previousState;
 
-        public KeyboardController(Game game)
-            : base()
+        public KeyboardController(GameModel model)
+            : base(model)
         {
-            this.game = game;
             previousState = Keyboard.GetState();
         }
 

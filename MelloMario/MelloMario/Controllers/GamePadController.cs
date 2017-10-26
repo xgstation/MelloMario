@@ -6,13 +6,11 @@ namespace MelloMario.Controllers
 {
     class GamepadController : BaseController<Buttons>
     {
-        Game game;
         GamePadState previousState;
 
-        public GamepadController(Game game)
-            : base()
+        public GamepadController(GameModel model)
+            : base(model)
         {
-            this.game = game;
             previousState = GamePad.GetState(PlayerIndex.One);
         }
 
