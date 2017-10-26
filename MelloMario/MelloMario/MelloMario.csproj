@@ -94,7 +94,6 @@
     <Compile Include="EnemyObjects\Goomba.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
-    <Compile Include="Game2.cs" />
     <Compile Include="Interfaces\Factories\ICommandFactory.cs" />
     <Compile Include="Interfaces\Factories\IGameObjectFactory.cs" />
     <Compile Include="Interfaces\Objects\IGameCharacter.cs" />
@@ -155,7 +154,6 @@
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Commands\FireState.cs" />
     <Compile Include="Theming\GameModel.cs" />
-    <Compile Include="Theming\GameModel2.cs" />
     <Compile Include="Theming\GameWorld.cs" />
     <Compile Include="Theming\GameScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
@@ -166,7 +164,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\StandardState.cs" />
     <Compile Include="Commands\SuperState.cs" />
-    <Compile Include="Theming\GameWorld2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

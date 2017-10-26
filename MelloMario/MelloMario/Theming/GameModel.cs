@@ -32,6 +32,12 @@ namespace MelloMario
             world = pair.Item1;
             character = pair.Item2;
         }
+        public void LoadEntities(LevelIOJson reader)
+        {
+            Tuple<IGameWorld, IGameCharacter> pair = reader.Load("Main");
+            world = pair.Item1;
+            character = pair.Item2;
+        }
 
         public void Update(GameTime time)
         {

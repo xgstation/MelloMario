@@ -15,12 +15,12 @@ namespace MelloMario.LevelGen
     class GameConverter : JsonConverter
     {
         private string index;
-        private GameModel2 gameModel;
+        private GameModel gameModel;
         JsonSerializer serializers;
 
-        private GameWorld2 world;
+        private GameWorld world;
         private IGameCharacter character;
-        public GameConverter(string index, GameModel2 gameModel)
+        public GameConverter(string index, GameModel gameModel)
         {
             this.index = index;
             this.gameModel = gameModel;
@@ -48,7 +48,7 @@ namespace MelloMario.LevelGen
 
 
             IList<JToken> Structures = MapToBeLoaded.Value<JToken>("Structures").ToList();
-            world = new GameWorld2(MapToBeLoaded.Value<int>("Grid"), mapSize, gameModel);
+            world = new GameWorld(MapToBeLoaded.Value<int>("Grid"), mapSize);
             serializers.Converters.Add(new BaseGameObjectConverter(world));
             serializers.Converters.Add(new CharacterConverter(world));
 

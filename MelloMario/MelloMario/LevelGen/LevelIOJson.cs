@@ -24,10 +24,10 @@ namespace MelloMario.LevelGen
         private const int GRIDSIZE = 32;
         private string path;
         private string levelString;
-        private GameModel2 gameModel;
+        private GameModel gameModel;
         
 
-        public LevelIOJson(string path, GameModel2 gameModel)
+        public LevelIOJson(string path, GameModel gameModel)
         {
             this.path = path;
             this.gameModel = gameModel;

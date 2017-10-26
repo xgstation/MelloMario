@@ -12,8 +12,8 @@ namespace MelloMario.LevelGen
 {
     class CharacterConverter : JsonConverter
     {
-        private GameWorld2 gameWorld;
-        public CharacterConverter(GameWorld2 gameWorld)
+        private GameWorld gameWorld;
+        public CharacterConverter(GameWorld gameWorld)
         {
             this.gameWorld = gameWorld;
         }
@@ -28,8 +28,12 @@ namespace MelloMario.LevelGen
             var characterStack = new Stack<PlayerMario>();
             string characterType = jsonToken.ElementAt(0).First.ToObject<string>();
             Point startPoint = jsonToken.ElementAt(1).First.ToObject<Point>();
+            //TODO: Change with Grid Scale
+            startPoint.X = startPoint.X * 32;
+            startPoint.Y = startPoint.Y * 32;
             characterStack.Push(new PlayerMario(gameWorld, startPoint));
             string state = jsonToken.ElementAt(2).First.ToObject<string>();
+            //TODO: Change with IDictionary to change the state of each characters
             switch (state)
             {
                 //TODO: Finish switch statement

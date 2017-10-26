@@ -17,7 +17,8 @@ namespace MelloMario
         GameScript script;
 
         LevelReader reader;
-
+        LevelIOJson jsonReader;
+        bool jsonFlag = true;
         SpriteBatch spriteBatch;
 
         public Game1()
@@ -27,6 +28,7 @@ namespace MelloMario
             script = new GameScript();
 
             reader = new LevelReader("Content/ExampleLevel.txt");
+            jsonReader = new LevelIOJson("Content/ExampleLevel.json", model);
         }
 
         /// <summary>
@@ -63,8 +65,14 @@ namespace MelloMario
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.BindSpriteBatch(spriteBatch);
-
-            model.LoadEntities(reader);
+            if (jsonFlag)
+            {
+                model.LoadEntities(jsonReader);
+            }
+            else
+            {
+                model.LoadEntities(reader);
+            }
         }
 
         /// <summary>

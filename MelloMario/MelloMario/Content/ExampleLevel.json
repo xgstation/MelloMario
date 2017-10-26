@@ -4,28 +4,376 @@
       "Index": "Main",
       "Grid": 32,
       "Size": {
-        "X": 15,
-        "Y": 25
+        "X": 25,
+        "Y": 15
       },
       "Characters": [
         {
           "Type": "Mario",
           "SpawnPoint": {
-            "X": 15,
-            "Y": 15
+            "X": 1,
+            "Y": 11
           },
           "State": "Nomral"
         }
       ],
       "Structures": [
         {
-          "Type": "Brick",
+          "Type": "FireFlower",
           "Point": {
-            "X": 6,
-            "Y": 5
+            "X": 5,
+            "Y": 9
           },
           "Quantity": {
             "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "FireFlower",
+          "Point": {
+            "X": 7,
+            "Y": 9
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "HiddenBrick",
+          "Point": {
+            "X": 3,
+            "Y": 10
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Brick",
+          "Point": {
+            "X": 4,
+            "Y": 10
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Question",
+          "Point": {
+            "X": 5,
+            "Y": 10
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Brick",
+          "Point": {
+            "X": 6,
+            "Y": 10
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Question",
+          "Point": {
+            "X": 7,
+            "Y": 10
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Brick",
+          "Point": {
+            "X": 8,
+            "Y": 10
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "HiddenQuestion",
+          "Point": {
+            "X": 9,
+            "Y": 10
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 22,
+            "Y": 12
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "RedKoopa",
+          "Point": {
+            "X": 20,
+            "Y": 12
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "GreenKoopa",
+          "Point": {
+            "X": 18,
+            "Y": 12
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Coin",
+          "Point": {
+            "X": 13,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Star",
+          "Point": {
+            "X": 14,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Coin",
+          "Point": {
+            "X": 15,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "PipelineLeftIn",
+          "Point": {
+            "X": 23,
+            "Y": 11
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "PipelineRightIn",
+          "Point": {
+            "X": 24,
+            "Y": 11
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "PipelineLeft",
+          "Point": {
+            "X": 23,
+            "Y": 12
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 2
+          },
+          "Properties": []
+        },
+        {
+          "Type": "PipelineRight",
+          "Point": {
+            "X": 24,
+            "Y": 12
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 2
+          },
+          "Properties": []
+        },
+        {
+          "Type": "OneUpMushroom",
+          "Point": {
+            "X": 11,
+            "Y": 6
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "SuperMushroom",
+          "Point": {
+            "X": 3,
+            "Y": 6
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Stair",
+          "Point": {
+            "X": 16,
+            "Y": 9
+          },
+          "Quantity": {
+            "X": 2,
+            "Y": 4
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Floor",
+          "Point": {
+            "X": 16,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 7,
+            "Y": 2
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Floor",
+          "Point": {
+            "X": 13,
+            "Y": 14
+          },
+          "Quantity": {
+            "X": 3,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Floor",
+          "Point": {
+            "X": 23,
+            "Y": 14
+          },
+          "Quantity": {
+            "X": 2,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Stair",
+          "Point": {
+            "X": 1,
+            "Y": 7
+          },
+          "Quantity": {
+            "X": 13,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Stair",
+          "Point": {
+            "X": 1,
+            "Y": 6
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Stair",
+          "Point": {
+            "X": 13,
+            "Y": 6
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Floor",
+          "Point": {
+            "X": 0,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 13,
+            "Y": 2
+          },
+          "Properties": []
+        },
+        {
+          "Type": "Brick",
+          "Point": {
+            "X": 4,
+            "Y": 3
+          },
+          "Quantity": {
+            "X": 6,
             "Y": 1
           },
           "Properties": [
@@ -35,7 +383,7 @@
                 "Y": 1
               },
               "isHidden": false,
-              "ItemValue": "CCCCC"
+              "ItemValue": ""
             }
           ]
         }
@@ -54,4 +402,4 @@
       }
     }
   ]
-}    
+}
