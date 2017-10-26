@@ -12,12 +12,13 @@ namespace MelloMario.ItemObjects.CoinStates
 {
     class Unveil : BaseState<Coin>, IItemState
     {
-        private float elapsed;
-        private float realOffset;
+        private int elapsed;
+        private int move;
 
         public Unveil(Coin owner) : base(owner)
         {
-            elapsed = 0f;
+            elapsed = 0;
+            move = 0;
         }
 
         public void Show()
@@ -32,20 +33,21 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public override void Update(GameTime time)
         {
+            if (elapsed >= 100)
+            {
+                move = 0;
+            }
             elapsed += time.ElapsedGameTime.Milliseconds;
-            realOffset += 256 * time.ElapsedGameTime.Milliseconds / 1000f;
-            if (elapsed >= 500)
+            move += 1;
+            
+            if (elapsed >= 300)
             {
                 Collect();
+                Owner.UnveilMove(0);
             }
             else
             {
-                while (realOffset > 1)
-                {
-                    Owner.UnveilMove(-1);
-                    --realOffset;
-                }
-
+                Owner.UnveilMove(-move);
             }
         }
     }
