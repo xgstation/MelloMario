@@ -1,3 +1,4 @@
+using MelloMario.Commands;
 using System.Collections.Generic;
 
 namespace MelloMario.Controllers
@@ -5,9 +6,11 @@ namespace MelloMario.Controllers
     abstract class BaseController<T> : IController
     {
         private IDictionary<KeyBehavior, IDictionary<T, ICommand>> commands;
+        private GameModel model;
 
-        public BaseController()
+        public BaseController(GameModel model)
         {
+            this.model = model;
             commands = new Dictionary<KeyBehavior, IDictionary<T, ICommand>>() {
                 { KeyBehavior.press, new Dictionary<T, ICommand>() },
                 { KeyBehavior.release, new Dictionary<T, ICommand>() },
@@ -34,7 +37,8 @@ namespace MelloMario.Controllers
         {
             if (commands[behavior].ContainsKey(key))
             {
-                commands[behavior][key].Execute();
+                if(!model.IsPaused || commands[behavior][key] is Pause)
+                    commands[behavior][key].Execute();
             }
         }
 
