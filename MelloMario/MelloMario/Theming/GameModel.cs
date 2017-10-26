@@ -11,7 +11,7 @@ namespace MelloMario
         private IEnumerable<IController> controllers;
         private IGameWorld world;
         private IGameCharacter character;
-
+        private LevelIOJson jsonReader;
         public GameModel()
         {
         }
@@ -34,6 +34,7 @@ namespace MelloMario
         }
         public void LoadEntities(LevelIOJson reader)
         {
+            jsonReader = reader;
             Tuple<IGameWorld, IGameCharacter> pair = reader.Load("Main");
             world = pair.Item1;
             character = pair.Item2;
@@ -69,7 +70,7 @@ namespace MelloMario
 
         public void Reset()
         {
-            // TODO
+            LoadEntities(jsonReader);
         }
 
         public void Quit()
