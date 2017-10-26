@@ -19,7 +19,14 @@ namespace MelloMario.Controllers
         {
             if (key is T castedKey)
             {
-                commands[behavior].Add(castedKey, value);
+                if (commands[behavior].ContainsKey(castedKey))
+                {
+                    commands[behavior][castedKey] = value;
+                }
+                else
+                {
+                    commands[behavior].Add(castedKey, value);
+                }
             }
         }
 
