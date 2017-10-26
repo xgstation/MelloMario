@@ -17,7 +17,7 @@ namespace MelloMario
         public GameModel()
         {
         }
-
+        public bool IsPaused => isPaused;
         public void LoadControllers(IEnumerable<IController> newControllers)
         {
             controllers = newControllers;
@@ -72,6 +72,7 @@ namespace MelloMario
             {
                 obj.Draw(time, character.Viewport, zIndex);
             }
+
         }
 
         public void Pause()

@@ -43,8 +43,8 @@ namespace MelloMario
 
             IEnumerable<IController> controllers = new List<IController>
             {
-                new GamepadController(this),
-                new KeyboardController(this)
+                new GamepadController(model),
+                new KeyboardController(model)
             };
 
             model.LoadControllers(controllers);
@@ -74,7 +74,6 @@ namespace MelloMario
                 model.LoadEntities(reader);
             }
         }
-
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// game-specific content.
@@ -106,6 +105,10 @@ namespace MelloMario
             base.Draw(time);
 
             spriteBatch.Begin();
+            if (model.IsPaused)
+            {
+                ResetElapsedTime();
+            }
             model.Draw(time, ZIndex.back);
             model.Draw(time, ZIndex.main);
             model.Draw(time, ZIndex.front);
