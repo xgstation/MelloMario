@@ -1,4 +1,5 @@
 ﻿using MelloMario.Factories;
+using MelloMario.MarioObjects;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -50,31 +51,22 @@ namespace MelloMario.LevelGen
             world = new GameWorld2(MapToBeLoaded.Value<int>("Grid"), mapSize, gameModel);
             serializers.Converters.Add(new BaseGameObjectConverter(world));
             serializers.Converters.Add(new CharacterConverter(world));
-            foreach (var obj in Structures)
+
+            foreach (var jToken in Structures)
             {
-                var temp = obj.ToObject<object>(serializers);
-                if (temp is IGameObject gameObject)
+                var gameObjs = jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
+                foreach (var gameObj in gameObjs.RealObj)
                 {
-                    world.AddObject(gameObject);
-                }
-                else if (temp is IEnumerable<IGameObject> gameObjects)
-                {
-                    foreach (var gameObj in gameObjects)
-                    {
-                        world.AddObject(gameObj);
-                    }
+                    world.AddObject(gameObj);
                 }
             }
-            
+
             IList<JToken> Characters = MapToBeLoaded.Value<JToken>("Characters").ToList();
             foreach (var obj in Characters)
             {
-                var temp = obj.ToObject<object>(serializers);
-                if (temp is IGameCharacter gameCharacter)
-                {
-                    character = gameCharacter;
-                    world.AddObject(gameCharacter);
-                }
+                var temp = obj.ToObject<EncapsulatedObject<PlayerMario>>(serializers);
+                character = temp.RealObj.Pop();
+                world.AddObject(character);
                 //TODO: Add support for IEnumerables<IGameCharacter>
                 //else if (temp is IEnumerable<IGameCharacter> gameCharacters)
                 //{

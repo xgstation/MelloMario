@@ -19,30 +19,31 @@ namespace MelloMario.LevelGen
         }
         public override bool CanConvert(Type objectType)
         {
-
-            return true;
+            return typeof(EncapsulatedObject<PlayerMario>).IsAssignableFrom(objectType);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JToken jsonToken = JToken.Load(reader);
+            var characterStack = new Stack<PlayerMario>();
             string characterType = jsonToken.ElementAt(0).First.ToObject<string>();
             Point startPoint = jsonToken.ElementAt(1).First.ToObject<Point>();
-            Mario mario = new Mario(gameWorld, startPoint);
-            switch (jsonToken.ElementAt(2).Value<string>())
+            characterStack.Push(new PlayerMario(gameWorld, startPoint));
+            string state = jsonToken.ElementAt(2).First.ToObject<string>();
+            switch (state)
             {
                 //TODO: Finish switch statement
                 case "FireMario":
-                    mario.UpgradeToFire();
+                    //mario.UpgradeToFire();
                     break;
                 case "SuperMario":
-                    mario.UpgradeToSuper();
+                    //mario.UpgradeToSuper();
                     break;
                 default:
                     //Do nothing
                     break;
             }
-            return mario;
+            return new EncapsulatedObject<PlayerMario>(characterStack);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

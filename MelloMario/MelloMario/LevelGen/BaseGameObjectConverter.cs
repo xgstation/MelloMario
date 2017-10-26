@@ -20,7 +20,7 @@ namespace MelloMario.LevelGen
         }
         public override bool CanConvert(Type objectType)
         {
-            return true;
+            return typeof(EncapsulatedObject<IGameObject>).IsAssignableFrom(objectType);
         }
 
         public IEnumerable<IGameObject> GenerateItems(Tuple<bool, string> property, IGameWorld world, Point location)
@@ -76,11 +76,7 @@ namespace MelloMario.LevelGen
                     }
                 }
             }
-            if (rows == 1 && columns == 1)
-            {
-                return objectStack.Pop();
-            }
-            return objectStack;
+            return new EncapsulatedObject<IGameObject>(objectStack);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

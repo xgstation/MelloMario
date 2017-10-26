@@ -128,6 +128,7 @@
     <Compile Include="ItemObjects\SuperMushroomStates\Unveil.cs" />
     <Compile Include="LevelGen\BaseGameObjectConverter.cs" />
     <Compile Include="LevelGen\CharacterConverter.cs" />
+    <Compile Include="LevelGen\EncapsulatedObject.cs" />
     <Compile Include="LevelGen\GameConverter.cs" />
     <Compile Include="LevelGen\LevelIOJson.cs" />
     <Compile Include="LevelGen\LevelReader.cs" />
