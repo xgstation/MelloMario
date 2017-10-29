@@ -13,10 +13,11 @@ namespace MelloMario.LevelGen
     class BaseGameObjectConverter : JsonConverter
     {
         private GameWorld gameWorld;
-
-        public BaseGameObjectConverter(GameWorld parentGameWorld)
+        private int grid;
+        public BaseGameObjectConverter(GameWorld parentGameWorld, int gridSize)
         {
             gameWorld = parentGameWorld;
+            grid = gridSize;
         }
         public override bool CanConvert(Type objectType)
         {
@@ -26,10 +27,10 @@ namespace MelloMario.LevelGen
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JToken gameObjToken = JToken.Load(reader);
-            string gameObjectType = gameObjToken.ElementAt(0).First.ToObject<string>();
-            Point startPoint = gameObjToken.ElementAt(1).First.ToObject<Point>();
-            int rows = gameObjToken.ElementAt(2).First.ElementAt(0).ToObject<int>();
-            int columns = gameObjToken.ElementAt(2).First.ElementAt(1).ToObject<int>();
+            string gameObjectType = gameObjToken["Type"].ToObject<string>();
+            Point startPoint = gameObjToken["Point"].ToObject<Point>();
+            int rows = gameObjToken["Quantity"]["X"].ToObject<int>();
+            int columns = gameObjToken["Quantity"]["Y"].ToObject<int>();
             IDictionary<Point, Tuple<bool, string>> Properties = null;
             var propertiesJToken = gameObjToken["Properties"];
             if (propertiesJToken != null && propertiesJToken.HasValues)
@@ -45,7 +46,7 @@ namespace MelloMario.LevelGen
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    Point location = new Point((startPoint.X + i) * 32, (startPoint.Y + j) * 32);
+                    Point location = new Point((startPoint.X + i) * grid, (startPoint.Y + j) * grid);
                     Tuple<bool, string> property;
                     if (Properties == null || !Properties.TryGetValue(new Point(i, j), out property))
                     {
