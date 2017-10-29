@@ -21,7 +21,7 @@
         {
           "Type": "FireFlower",
           "Point": {
-            "X": 5,
+            "X": 6,
             "Y": 9
           },
           "Quantity": {
@@ -33,7 +33,7 @@
         {
           "Type": "FireFlower",
           "Point": {
-            "X": 7,
+            "X": 8,
             "Y": 9
           },
           "Quantity": {
@@ -119,6 +119,18 @@
           "Point": {
             "X": 9,
             "Y": 10
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
+          "Type": "HiddenQuestion",
+          "Point": {
+            "X": 7,
+            "Y": 6
           },
           "Quantity": {
             "X": 1,
@@ -249,7 +261,7 @@
         {
           "Type": "OneUpMushroom",
           "Point": {
-            "X": 11,
+            "X": 5,
             "Y": 6
           },
           "Quantity": {
@@ -261,7 +273,7 @@
         {
           "Type": "SuperMushroom",
           "Point": {
-            "X": 3,
+            "X": 6,
             "Y": 6
           },
           "Quantity": {

@@ -11,8 +11,11 @@ namespace MelloMario.MarioObjects.MovementStates
 {
     class Jumping : BaseState<Mario>, IMarioMovementState
     {
+        private IMarioMovementState previous;
+
         public Jumping(Mario owner) : base(owner)
         {
+            previous = owner.MovementState;
         }
 
         public void Crouch()
@@ -23,6 +26,10 @@ namespace MelloMario.MarioObjects.MovementStates
         {
             Owner.MovementState = new Standing(Owner);
         }
+        public void Landing()
+        {
+            Owner.MovementState = previous;
+        }
         public void Jump()
         {
 
@@ -31,7 +38,7 @@ namespace MelloMario.MarioObjects.MovementStates
         {
             Owner.MovementState = new Walking(Owner);
         }
-        
+       
         public override void Update(GameTime time)
         {
             //sprite.Update(game);

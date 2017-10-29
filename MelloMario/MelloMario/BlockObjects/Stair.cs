@@ -1,13 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
-using MelloMario.BlockObjects.StairStates;
 using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects
 {
     class Stair : BaseCollidableObject
     {
-        private IBlockState state;
 
         private void UpdateSprite()
         {
@@ -30,36 +28,9 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        public IBlockState State
-        {
-            get
-            {
-                return state;
-            }
-            set
-            {
-                state = value;
-                UpdateSprite();
-            }
-        }
-
         public Stair(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
-            state = new Normal(this);
             UpdateSprite();
-        }
-
-        public void Show()
-        {
-            State.Show();
-        }
-        public void Hide()
-        {
-            State.Hide();
-        }
-        public void Bump(Mario mario)
-        {
-            State.Bump(mario);
         }
     }
 }

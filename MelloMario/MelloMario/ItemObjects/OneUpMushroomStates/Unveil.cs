@@ -21,6 +21,7 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
 
         public void Show()
         {
+            
             Owner.State = new Normal(Owner);
         }
 

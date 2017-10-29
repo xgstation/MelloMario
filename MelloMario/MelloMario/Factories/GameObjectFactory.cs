@@ -12,11 +12,13 @@ namespace MelloMario.Factories
     class GameObjectFactory : IGameObjectFactory
     {
         private const int SCALE = 32;
+        private Point marioLoc;
 
         private static IGameObjectFactory instance = new GameObjectFactory();
 
         private GameObjectFactory()
         {
+            marioLoc = new Point(0,0);
         }
 
         public static IGameObjectFactory Instance
@@ -37,7 +39,7 @@ namespace MelloMario.Factories
             {
                 case "Mario":
                     PlayerMario mario = new PlayerMario(world, location);
-
+                    marioLoc = location;
                     return new Tuple<IGameCharacter, IGameObject>(mario, mario);
                 default:
                     return null;
@@ -65,6 +67,15 @@ namespace MelloMario.Factories
                         CreateGameObject("FireFlowerUnveil", world, location),
                     };
                     return new Question(world, location, items, false);
+                case "QuestionCoin":
+                    items = new List<IGameObject>()
+                    {
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                    };
+                    return new Question(world, location, items, false);
                 case "HiddenQuestion":
                     items = new List<IGameObject>()
                     {
@@ -72,6 +83,12 @@ namespace MelloMario.Factories
                         CreateGameObject("CoinUnveil", world, location),
                         CreateGameObject("CoinUnveil", world, location),
                         CreateGameObject("CoinUnveil", world, location),
+                    };
+                    return new Question(world, location, items, true);
+                case "HiddenQuestionFlower":
+                    items = new List<IGameObject>()
+                    {
+                        CreateGameObject("FireFlowerUnveil", world, location),
                     };
                     return new Question(world, location, items, true);
                 case "PipelineLeftIn":
@@ -97,21 +114,21 @@ namespace MelloMario.Factories
                 case "CoinUnveil":
                     return new Coin(world, location, true);
                 case "OneUpMushroom":
-                    return new OneUpMushroom(world, location);
+                    return new OneUpMushroom(world, location, marioLoc);
                 case "OneUpMushroomUnveil":
-                    return new OneUpMushroom(world, location, true);
+                    return new OneUpMushroom(world, location, marioLoc, true);
                 case "FireFlower":
                     return new FireFlower(world, location);
                 case "FireFlowerUnveil":
                     return new FireFlower(world, location, true);
                 case "SuperMushroom":
-                    return new SuperMushroom(world, location);
+                    return new SuperMushroom(world, location, marioLoc);
                 case "SuperMushroomUnveil":
-                    return new SuperMushroom(world, location, true);
+                    return new SuperMushroom(world, location, marioLoc, true);
                 case "Star":
-                    return new Star(world, location);
+                    return new Star(world, location, marioLoc);
                 case "StarUnveil":
-                    return new Star(world, location, true);
+                    return new Star(world, location, marioLoc, true);
 
                 default:
                     return null;

@@ -2,6 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.OneUpMushroomStates;
 using MelloMario.MarioObjects;
+using MelloMario.BlockObjects;
 
 namespace MelloMario.ItemObjects
 {
@@ -10,6 +11,7 @@ namespace MelloMario.ItemObjects
         private const int H_SPEED = 3;
         private IItemState state;
         private bool goingRight;
+
 
         private void UpdateSprite()
         {
@@ -33,16 +35,21 @@ namespace MelloMario.ItemObjects
         {
             switch (target.GetType().Name)
             {
-                case "Mario":
+                case "PlayerMario":
                     if (state is Normal)
                         Collect();
                     break;
                 case "Brick":
+                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                        break;
+                    goto case "Stair";
                 case "Question":
+                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                        break;
+                    goto case "Stair";
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
-                    // TODO: check against hidden
                     Bounce(mode, new Vector2());
                     if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                     {
@@ -79,9 +86,12 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public OneUpMushroom(IGameWorld world, Point location, bool isUnveil) : base(world, location, new Point(32, 32), 32)
+        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
         {
-            goingRight = true;
+            if (marioLocation.X < location.X)
+                goingRight = true;
+            else
+                goingRight = false;
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -92,13 +102,8 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
-        public OneUpMushroom(IGameWorld world, Point location) : this(world, location, false)
+        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
-        }
-
-        public void Show()
-        {
-            State.Show();
         }
         public void Collect()
         {

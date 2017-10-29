@@ -62,11 +62,6 @@ namespace MelloMario.ItemObjects
         public FireFlower(IGameWorld world, Point location) : this(world, location, false)
         {
         }
-
-        public void Show()
-        {
-            State.Show();
-        }
         public void Collect()
         {
             RemoveSelf();
