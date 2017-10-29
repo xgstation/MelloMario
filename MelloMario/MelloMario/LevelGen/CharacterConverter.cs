@@ -28,21 +28,22 @@ namespace MelloMario.LevelGen
         {
             JToken jsonToken = JToken.Load(reader);
             var characterStack = new Stack<PlayerMario>();
-            string characterType = jsonToken["Type"].ToObject<string>();
-            Point startPoint = jsonToken["SpawnPoint"].ToObject<Point>();
+            var type = jsonToken["Type"].ToObject<string>();
+            var startPoint = jsonToken["SpawnPoint"].ToObject<Point>();
+            var state = jsonToken["State"].ToObject<string>();
             startPoint.X = startPoint.X * grid;
             startPoint.Y = startPoint.Y * grid;
-            characterStack.Push(new PlayerMario(gameWorld, startPoint));
-            string state = jsonToken.ElementAt(2).First.ToObject<string>();
+            var mario = new PlayerMario(gameWorld, startPoint);
+            characterStack.Push(mario);
             //TODO: Change with IDictionary to change the state of each characters
             switch (state)
             {
                 //TODO: Finish switch statement
                 case "FireMario":
-                    //mario.UpgradeToFire();
+                    mario.UpgradeToFire();
                     break;
                 case "SuperMario":
-                    //mario.UpgradeToSuper();
+                    mario.UpgradeToSuper();
                     break;
                 default:
                     //Do nothing
