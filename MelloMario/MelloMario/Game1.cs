@@ -12,9 +12,10 @@ namespace MelloMario
     /// </summary>
     class Game1 : Game
     {
+        GraphicsDeviceManager graphics;
         GameModel model;
         GameScript script;
-        GraphicsDeviceManager graphics;
+
         LevelReader reader;
         LevelIOJson jsonReader;
         bool jsonFlag = true;
@@ -22,9 +23,10 @@ namespace MelloMario
 
         public Game1()
         {
+            graphics = new GraphicsDeviceManager(this);
             model = new GameModel();
             script = new GameScript();
-            graphics = new GraphicsDeviceManager(this);
+
             reader = new LevelReader("Content/ExampleLevel.txt");
             jsonReader = new LevelIOJson("Content/ExampleLevel.json", model);
         }

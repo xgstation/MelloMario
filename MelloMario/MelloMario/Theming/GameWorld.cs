@@ -146,7 +146,6 @@ namespace MelloMario
 
             foreach (IGameObject obj in toMove)
             {
-
                 if (locations.ContainsKey(obj))
                 {
                     DoRemove(obj);
