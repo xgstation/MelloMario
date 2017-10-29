@@ -69,10 +69,6 @@ namespace MelloMario.EnemyObjects
             UpdateSprite();
         }
 
-        public void Show()
-        {
-            State.Show();
-        }
         public void Defeat()
         {
             State.Defeat();

@@ -105,11 +105,6 @@ namespace MelloMario.ItemObjects
         public SuperMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }
-
-        public void Show()
-        {
-            State.Show();
-        }
         public void Collect()
         {
             RemoveSelf();

@@ -12,7 +12,6 @@ namespace MelloMario
     /// </summary>
     class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
         GameModel model;
         GameScript script;
 
@@ -23,7 +22,6 @@ namespace MelloMario
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
             model = new GameModel();
             script = new GameScript();
 

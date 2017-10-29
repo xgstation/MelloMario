@@ -109,11 +109,7 @@ namespace MelloMario.ItemObjects
         public Star(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }
-
-        public void Show()
-        {
-            State.Show();
-        }
+        
         public void Collect()
         {
             RemoveSelf();

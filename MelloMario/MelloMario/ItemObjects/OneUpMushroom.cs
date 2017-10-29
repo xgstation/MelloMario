@@ -11,7 +11,6 @@ namespace MelloMario.ItemObjects
         private const int H_SPEED = 3;
         private IItemState state;
         private bool goingRight;
-        private Mario mario;
 
 
         private void UpdateSprite()
@@ -105,11 +104,6 @@ namespace MelloMario.ItemObjects
         }
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
-        }
-
-        public void Show()
-        {
-            State.Show();
         }
         public void Collect()
         {
