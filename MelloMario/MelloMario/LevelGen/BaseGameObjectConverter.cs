@@ -30,13 +30,8 @@ namespace MelloMario.LevelGen
             Point startPoint = gameObjToken.ElementAt(1).First.ToObject<Point>();
             int rows = gameObjToken.ElementAt(2).First.ElementAt(0).ToObject<int>();
             int columns = gameObjToken.ElementAt(2).First.ElementAt(1).ToObject<int>();
-
-            IDictionary<IGameObject, Tuple<bool, string>> itemDatabase;
-
             IDictionary<Point, Tuple<bool, string>> Properties = null;
             var propertiesJToken = gameObjToken["Properties"];
-            //TODO: Add appropriate condition to avoid null pointer
-            //if (false)
             if (propertiesJToken != null && propertiesJToken.HasValues)
             {
                 Properties = propertiesJToken.ToDictionary(
@@ -44,14 +39,6 @@ namespace MelloMario.LevelGen
                   token => new Tuple<bool, string>(token.First.ElementAt(1).ToObject<bool>(),
                                                       token.First.ElementAt(2).ToObject<string>()));
             }
-            //if(test != null)
-            //{
-            //    test.ToString();
-            //}
-            //else
-            //{
-            //    test = null;
-            //}
             var objectStack = new Stack<IGameObject>();
             for (int i = 0; i < rows; i++)
             {
