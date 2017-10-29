@@ -127,6 +127,18 @@
           "Properties": []
         },
         {
+          "Type": "HiddenQuestion",
+          "Point": {
+            "X": 7,
+            "Y": 6
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 1
+          },
+          "Properties": []
+        },
+        {
           "Type": "Goomba",
           "Point": {
             "X": 22,

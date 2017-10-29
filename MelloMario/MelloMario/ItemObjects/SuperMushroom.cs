@@ -40,11 +40,16 @@ namespace MelloMario.ItemObjects
                         Collect();
                     break;
                 case "Brick":
+                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                        break;
+                    goto case "Stair";
                 case "Question":
+                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                        break;
+                    goto case "Stair";
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
-                    // TODO: check against hidden
                     Bounce(mode, new Vector2());
                     if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                     {

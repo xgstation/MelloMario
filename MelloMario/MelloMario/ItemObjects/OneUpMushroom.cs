@@ -2,6 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.OneUpMushroomStates;
 using MelloMario.MarioObjects;
+using MelloMario.BlockObjects;
 
 namespace MelloMario.ItemObjects
 {
@@ -40,7 +41,13 @@ namespace MelloMario.ItemObjects
                         Collect();
                     break;
                 case "Brick":
+                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                        break;
+                    goto case "Stair";
                 case "Question":
+                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                        break;
+                    goto case "Stair";
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
