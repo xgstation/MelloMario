@@ -67,6 +67,15 @@ namespace MelloMario.Factories
                         CreateGameObject("FireFlowerUnveil", world, location),
                     };
                     return new Question(world, location, items, false);
+                case "QuestionCoin":
+                    items = new List<IGameObject>()
+                    {
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                    };
+                    return new Question(world, location, items, false);
                 case "HiddenQuestion":
                     items = new List<IGameObject>()
                     {
@@ -74,6 +83,12 @@ namespace MelloMario.Factories
                         CreateGameObject("CoinUnveil", world, location),
                         CreateGameObject("CoinUnveil", world, location),
                         CreateGameObject("CoinUnveil", world, location),
+                    };
+                    return new Question(world, location, items, true);
+                case "HiddenQuestionFlower":
+                    items = new List<IGameObject>()
+                    {
+                        CreateGameObject("FireFlowerUnveil", world, location),
                     };
                     return new Question(world, location, items, true);
                 case "PipelineLeftIn":
