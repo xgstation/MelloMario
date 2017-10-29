@@ -12,7 +12,7 @@ namespace MelloMario
         private IGameWorld world;
         private IGameCharacter character;
         private GameScript script;
-        private LevelReader reader;
+        private LevelIOJson reader;
         private bool isPaused;
 
         public bool IsPaused
@@ -23,7 +23,7 @@ namespace MelloMario
             }
         }
 
-        public GameModel(GameScript script, LevelReader reader)
+        public GameModel(GameScript script, LevelIOJson reader)
         {
             this.script = script;
             this.reader = reader;
@@ -67,7 +67,7 @@ namespace MelloMario
 
         public void Reset()
         {
-            Tuple<IGameWorld, IGameCharacter> pair = reader.LoadObjects();
+            Tuple<IGameWorld, IGameCharacter> pair = reader.Load("Main");
             world = pair.Item1;
             character = pair.Item2;
 

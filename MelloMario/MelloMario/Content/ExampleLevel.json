@@ -14,7 +14,7 @@
             "X": 1,
             "Y": 11
           },
-          "State": "Nomral"
+          "State": "FireMario"
         }
       ],
       "Structures": [
@@ -93,14 +93,23 @@
         {
           "Type": "Question",
           "Point": {
-            "X": 7,
+            "X": 13,
             "Y": 10
           },
           "Quantity": {
             "X": 1,
             "Y": 1
           },
-          "Properties": []
+          "Properties": [
+            {
+              "Index": {
+                "X": 0,
+                "Y": 0
+              },
+              "isHidden": false,
+              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            }
+          ]
         },
         {
           "Type": "Brick",
@@ -391,11 +400,11 @@
           "Properties": [
             {
               "Index": {
-                "X": 1,
-                "Y": 1
+                "X": 0,
+                "Y": 0
               },
               "isHidden": false,
-              "ItemValue": ""
+              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
             }
           ]
         }

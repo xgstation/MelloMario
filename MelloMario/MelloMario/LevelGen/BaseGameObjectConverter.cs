@@ -26,43 +26,63 @@ namespace MelloMario.LevelGen
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            JToken gameObjToken = JToken.Load(reader);
-            string gameObjectType = gameObjToken["Type"].ToObject<string>();
-            Point startPoint = gameObjToken["Point"].ToObject<Point>();
-            int rows = gameObjToken["Quantity"]["X"].ToObject<int>();
-            int columns = gameObjToken["Quantity"]["Y"].ToObject<int>();
-            IDictionary<Point, Tuple<bool, string>> Properties = null;
-            var propertiesJToken = gameObjToken["Properties"];
+            JToken objToken = JToken.Load(reader);
+            var objectStack = new Stack<IGameObject>();
+
+            var type = tryGet<string>(objToken, "Type");
+            var startPoint = tryGet<Point>(objToken, "Point");
+            var rows = tryGet<int>(objToken, "Quantity", "X");
+            var columns = tryGet<int>(objToken, "Quantity", "Y");
+            IDictionary<Point, Tuple<bool, string[]>> Properties = null;
+            var propertiesJToken = objToken["Properties"];
             if (propertiesJToken != null && propertiesJToken.HasValues)
             {
                 Properties = propertiesJToken.ToDictionary(
-                  token => token["Index"].ToObject<Point>(),
-                  token => new Tuple<bool, string>(
-                      token["isHidden"].ToObject<bool>(),
-                      token["ItemValue"].ToObject<string>()));
+                  token => tryGet<Point>(token, "Index"),
+                  token => new Tuple<bool, string[]>(
+                      tryGet<bool>(token, "isHidden"),
+                      tryGet<string[]>(token, "ItemValue")));
             }
-            var objectStack = new Stack<IGameObject>();
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
                     Point location = new Point((startPoint.X + i) * grid, (startPoint.Y + j) * grid);
-                    Tuple<bool, string> property;
+                    Tuple<bool, string[]> property = null;
+                    IList<IGameObject> list = null;
                     if (Properties == null || !Properties.TryGetValue(new Point(i, j), out property))
                     {
-                        property = new Tuple<bool, string>(false, "");
+                        property = new Tuple<bool, string[]>(false, null);
                     }
-                    switch (gameObjectType)
+                    else
+                    {
+                        list = createItemList(gameWorld, location, property.Item2);
+                    }
+                    switch (type)
                     {
                         //TODO: Add items parameter in constructors for Brick and Question
                         case "Brick":
-                            objectStack.Push(new Brick(gameWorld, location));
+                            if (list != null)
+                            {
+                                objectStack.Push(new Brick(gameWorld, location, list, property.Item1));
+                            }
+                            else
+                            {
+                                objectStack.Push(new Brick(gameWorld, location, property.Item1));
+                            }
                             break;
                         case "Question":
-                            objectStack.Push(new Question(gameWorld, location));
+                            if (list != null)
+                            {
+                                objectStack.Push(new Question(gameWorld, location, list, property.Item1));
+                            }
+                            else
+                            {
+                                objectStack.Push(new Question(gameWorld, location));
+                            }
                             break;
                         case "Pipeline":
-                            objectStack.Push(new Pipeline(gameWorld, location, property.Item2));
+                            objectStack.Push(new Pipeline(gameWorld, location, property.Item2[0]));
                             break;
                         case "Floor":
                             objectStack.Push(new Floor(gameWorld, location));
@@ -71,7 +91,7 @@ namespace MelloMario.LevelGen
                             objectStack.Push(new Stair(gameWorld, location));
                             break;
                         default:
-                            objectStack.Push(GameObjectFactory.Instance.CreateGameObject(gameObjectType, gameWorld, location));
+                            objectStack.Push(GameObjectFactory.Instance.CreateGameObject(type, gameWorld, location));
                             break;
                     }
                 }
@@ -83,6 +103,35 @@ namespace MelloMario.LevelGen
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
+        }
+
+        private T tryGet<T>(JToken token, params string[] p)
+        {
+            T obj = default(T);
+            JToken tempToken = token;
+            for (int i = 0; i < p.Length - 1; i++)
+            {
+                if (tempToken[p[i]] != null)
+                    tempToken = tempToken[p[i]];
+            }
+            if (tempToken[p[p.Length - 1]] != null)
+            {
+                obj = tempToken[p[p.Length - 1]].ToObject<T>();
+            }
+            return obj;
+        }
+        private IList<IGameObject> createItemList(GameWorld world, Point point, params string[] s)
+        {
+            if (s != null)
+            {
+                var list = new List<IGameObject>();
+                for (int i = 0; i < s.Length; i++)
+                {
+                    list.Add(Factories.GameObjectFactory.Instance.CreateGameObject(s[i], world, point));
+                }
+                return list;
+            }
+            return null;
         }
     }
 }
