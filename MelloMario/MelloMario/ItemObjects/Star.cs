@@ -3,6 +3,7 @@ using MelloMario.Factories;
 using MelloMario.ItemObjects.StarStates;
 using MelloMario.MarioObjects;
 using MelloMario.BlockObjects;
+using System.Diagnostics;
 
 namespace MelloMario.ItemObjects
 {
@@ -33,9 +34,10 @@ namespace MelloMario.ItemObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
+            //Debug.WriteLine(target.GetType().Name);
             switch (target.GetType().Name)
             {
-                case "Mario":
+                case "PlayerMario":
                     if (state is Normal)
                         Collect();
                     break;

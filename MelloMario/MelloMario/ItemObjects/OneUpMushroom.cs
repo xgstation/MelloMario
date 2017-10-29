@@ -36,7 +36,7 @@ namespace MelloMario.ItemObjects
         {
             switch (target.GetType().Name)
             {
-                case "Mario":
+                case "PlayerMario":
                     if (state is Normal)
                         Collect();
                     break;
