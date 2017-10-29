@@ -9,7 +9,9 @@ namespace MelloMario.ItemObjects
     {
         private const int H_SPEED = 3;
         private IItemState state;
-        public bool goingRight;
+        private bool goingRight;
+        private Mario mario;
+
 
         private void UpdateSprite()
         {
@@ -79,9 +81,12 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public OneUpMushroom(IGameWorld world, Point location, bool isUnveil) : base(world, location, new Point(32, 32), 32)
+        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
         {
-            goingRight = true;
+            if (marioLocation.X < location.X)
+                goingRight = true;
+            else
+                goingRight = false;
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -92,7 +97,7 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
-        public OneUpMushroom(IGameWorld world, Point location) : this(world, location, false)
+        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }
 
