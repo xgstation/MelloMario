@@ -249,7 +249,7 @@
         {
           "Type": "OneUpMushroom",
           "Point": {
-            "X": 11,
+            "X": 5,
             "Y": 6
           },
           "Quantity": {
@@ -261,7 +261,7 @@
         {
           "Type": "SuperMushroom",
           "Point": {
-            "X": 3,
+            "X": 6,
             "Y": 6
           },
           "Quantity": {

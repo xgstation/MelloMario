@@ -82,9 +82,12 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public Star(IGameWorld world, Point location, bool isUnveil) : base(world, location, new Point(32, 32), 32)
+        public Star(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
         {
-            goingRight = true;
+            if (marioLocation.X < location.X)
+                goingRight = true;
+            else
+                goingRight = false;
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -95,7 +98,7 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
-        public Star(IGameWorld world, Point location) : this(world, location, false)
+        public Star(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }
 
