@@ -14,13 +14,13 @@ namespace MelloMario.LevelGen
     {
         private GameWorld gameWorld;
 
-        public BaseGameObjectConverter(GameWorld gameWorld)
+        public BaseGameObjectConverter(GameWorld parentGameWorld)
         {
-            this.gameWorld = gameWorld;
+            gameWorld = parentGameWorld;
         }
         public override bool CanConvert(Type objectType)
         {
-            return typeof(EncapsulatedObject<IGameObject>).IsAssignableFrom(objectType);
+            return typeof(EncapsulatedObject<IGameObject>).IsAssignableFrom(objectType) || objectType is IGameObject;
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
@@ -30,16 +30,28 @@ namespace MelloMario.LevelGen
             Point startPoint = gameObjToken.ElementAt(1).First.ToObject<Point>();
             int rows = gameObjToken.ElementAt(2).First.ElementAt(0).ToObject<int>();
             int columns = gameObjToken.ElementAt(2).First.ElementAt(1).ToObject<int>();
+
+            IDictionary<IGameObject, Tuple<bool, string>> itemDatabase;
+
             IDictionary<Point, Tuple<bool, string>> Properties = null;
+            var propertiesJToken = gameObjToken["Properties"];
             //TODO: Add appropriate condition to avoid null pointer
-            if (false)
+            //if (false)
+            if (propertiesJToken != null && propertiesJToken.HasValues)
             {
-                Properties =
-                  gameObjToken.ElementAt(3).ToDictionary(
-                      token => token.ElementAt(0).ToObject<Point>(),
-                      token => new Tuple<bool, string>(token.First.ElementAt(1).ToObject<bool>(),
-                                                          token.First.ElementAt(2).ToObject<string>()));
+                Properties = propertiesJToken.ToDictionary(
+                  token => token["Index"].ToObject<Point>(),
+                  token => new Tuple<bool, string>(token.First.ElementAt(1).ToObject<bool>(),
+                                                      token.First.ElementAt(2).ToObject<string>()));
             }
+            //if(test != null)
+            //{
+            //    test.ToString();
+            //}
+            //else
+            //{
+            //    test = null;
+            //}
             var objectStack = new Stack<IGameObject>();
             for (int i = 0; i < rows; i++)
             {
@@ -77,7 +89,7 @@ namespace MelloMario.LevelGen
             }
             return new EncapsulatedObject<IGameObject>(objectStack);
         }
-        //TODO: Add serialize method and change CanWrite
+        //TODO: Add serialize method and change CanWrite 
         public override bool CanWrite => false;
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
