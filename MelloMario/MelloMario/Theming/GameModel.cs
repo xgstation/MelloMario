@@ -6,7 +6,7 @@ using System;
 
 namespace MelloMario
 {
-    class GameModel
+    class GameModel : IGameModel
     {
         private IEnumerable<IController> controllers;
         private IGameWorld world;

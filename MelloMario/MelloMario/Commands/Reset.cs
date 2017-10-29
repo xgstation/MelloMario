@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class Reset : BaseCommand<GameModel>
+    class Reset : BaseCommand<IGameModel>
     {
-        public Reset(GameModel model) : base(model)
+        public Reset(IGameModel model) : base(model)
         {
         }
         public override void Execute()

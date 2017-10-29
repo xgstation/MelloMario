@@ -11,7 +11,7 @@ namespace MelloMario
         {
         }
 
-        public void Bind(IEnumerable<IController> controllers, IGameCharacter character, GameModel model)
+        public void Bind(IEnumerable<IController> controllers, IGameCharacter character, IGameModel model)
         {
             factory = CommandFactory.Instance;
 
@@ -45,10 +45,11 @@ namespace MelloMario
                 controller.AddCommand(Keys.D, factory.CreateGameCharacterCommand("RightPress", character), KeyBehavior.press);
                 controller.AddCommand(Keys.D, factory.CreateGameCharacterCommand("RightRelease", character), KeyBehavior.release);
 
-                // Need to quit game using Q
+                // game control commands
                 controller.AddCommand(Keys.Q, factory.CreateGameControlCommand("Quit", model), KeyBehavior.press);
                 controller.AddCommand(Keys.R, factory.CreateGameControlCommand("Reset", model), KeyBehavior.press);
-                controller.AddCommand(Keys.P, factory.CreateGameControlCommand("Pause",model), KeyBehavior.press);
+                controller.AddCommand(Keys.P, factory.CreateGameControlCommand("Pause", model), KeyBehavior.press);
+
                 // sprint 2 cheat commands
                 controller.AddCommand(Keys.Y, factory.CreateGameObjectCommand("StandardState", character));
                 controller.AddCommand(Keys.U, factory.CreateGameObjectCommand("SuperState", character));

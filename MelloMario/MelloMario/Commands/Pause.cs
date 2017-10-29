@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class Pause : BaseCommand<GameModel>
+    class Pause : BaseCommand<IGameModel>
     {
-        public Pause(GameModel model) : base(model)
+        public Pause(IGameModel model) : base(model)
         {
         }
         public override void Execute()

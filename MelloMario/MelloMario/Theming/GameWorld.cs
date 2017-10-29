@@ -1,8 +1,4 @@
-﻿using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using MelloMario.Controllers;
-using MelloMario.MarioObjects;
-using MelloMario.Factories;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario

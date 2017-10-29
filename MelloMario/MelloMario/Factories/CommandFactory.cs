@@ -20,7 +20,7 @@ namespace MelloMario.Factories
             }
         }
 
-        public ICommand CreateGameControlCommand(string action, GameModel model)
+        public ICommand CreateGameControlCommand(string action, IGameModel model)
         {
             switch (action)
             {
