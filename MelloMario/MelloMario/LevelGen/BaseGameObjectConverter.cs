@@ -13,10 +13,11 @@ namespace MelloMario.LevelGen
     class BaseGameObjectConverter : JsonConverter
     {
         private GameWorld gameWorld;
-
-        public BaseGameObjectConverter(GameWorld parentGameWorld)
+        private int grid;
+        public BaseGameObjectConverter(GameWorld parentGameWorld, int gridSize)
         {
             gameWorld = parentGameWorld;
+            grid = gridSize;
         }
         public override bool CanConvert(Type objectType)
         {
@@ -26,38 +27,26 @@ namespace MelloMario.LevelGen
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JToken gameObjToken = JToken.Load(reader);
-            string gameObjectType = gameObjToken.ElementAt(0).First.ToObject<string>();
-            Point startPoint = gameObjToken.ElementAt(1).First.ToObject<Point>();
-            int rows = gameObjToken.ElementAt(2).First.ElementAt(0).ToObject<int>();
-            int columns = gameObjToken.ElementAt(2).First.ElementAt(1).ToObject<int>();
-
-            IDictionary<IGameObject, Tuple<bool, string>> itemDatabase;
-
+            string gameObjectType = gameObjToken["Type"].ToObject<string>();
+            Point startPoint = gameObjToken["Point"].ToObject<Point>();
+            int rows = gameObjToken["Quantity"]["X"].ToObject<int>();
+            int columns = gameObjToken["Quantity"]["Y"].ToObject<int>();
             IDictionary<Point, Tuple<bool, string>> Properties = null;
             var propertiesJToken = gameObjToken["Properties"];
-            //TODO: Add appropriate condition to avoid null pointer
-            //if (false)
             if (propertiesJToken != null && propertiesJToken.HasValues)
             {
                 Properties = propertiesJToken.ToDictionary(
                   token => token["Index"].ToObject<Point>(),
-                  token => new Tuple<bool, string>(token.First.ElementAt(1).ToObject<bool>(),
-                                                      token.First.ElementAt(2).ToObject<string>()));
+                  token => new Tuple<bool, string>(
+                      token["isHidden"].ToObject<bool>(),
+                      token["ItemValue"].ToObject<string>()));
             }
-            //if(test != null)
-            //{
-            //    test.ToString();
-            //}
-            //else
-            //{
-            //    test = null;
-            //}
             var objectStack = new Stack<IGameObject>();
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    Point location = new Point((startPoint.X + i) * 32, (startPoint.Y + j) * 32);
+                    Point location = new Point((startPoint.X + i) * grid, (startPoint.Y + j) * grid);
                     Tuple<bool, string> property;
                     if (Properties == null || !Properties.TryGetValue(new Point(i, j), out property))
                     {

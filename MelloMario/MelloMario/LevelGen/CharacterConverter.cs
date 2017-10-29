@@ -13,9 +13,11 @@ namespace MelloMario.LevelGen
     class CharacterConverter : JsonConverter
     {
         private GameWorld gameWorld;
-        public CharacterConverter(GameWorld gameWorld)
+        private int grid;
+        public CharacterConverter(GameWorld gameWorld, int gridSize)
         {
             this.gameWorld = gameWorld;
+            grid = gridSize;
         }
         public override bool CanConvert(Type objectType)
         {
@@ -26,11 +28,10 @@ namespace MelloMario.LevelGen
         {
             JToken jsonToken = JToken.Load(reader);
             var characterStack = new Stack<PlayerMario>();
-            string characterType = jsonToken.ElementAt(0).First.ToObject<string>();
-            Point startPoint = jsonToken.ElementAt(1).First.ToObject<Point>();
-            //TODO: Change with Grid Scale
-            startPoint.X = startPoint.X * 32;
-            startPoint.Y = startPoint.Y * 32;
+            string characterType = jsonToken["Type"].ToObject<string>();
+            Point startPoint = jsonToken["SpawnPoint"].ToObject<Point>();
+            startPoint.X = startPoint.X * grid;
+            startPoint.Y = startPoint.Y * grid;
             characterStack.Push(new PlayerMario(gameWorld, startPoint));
             string state = jsonToken.ElementAt(2).First.ToObject<string>();
             //TODO: Change with IDictionary to change the state of each characters
