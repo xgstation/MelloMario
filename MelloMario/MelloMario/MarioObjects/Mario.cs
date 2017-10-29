@@ -125,7 +125,8 @@ namespace MelloMario.MarioObjects
 
                         if (MovementState is Jumping)
                         {
-                            MovementState.Idle();
+                            //MovementState.Idle();
+                            MovementState.Landing();
                         }
                     }
 

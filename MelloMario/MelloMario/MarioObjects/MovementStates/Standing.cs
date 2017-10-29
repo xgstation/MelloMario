@@ -24,6 +24,11 @@ namespace MelloMario.MarioObjects.MovementStates
         {
 
         }
+
+        public void Landing()
+        {
+
+        }
         public void Jump()
         {
             Owner.MovementState = new Jumping(Owner);
