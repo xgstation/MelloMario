@@ -36,8 +36,9 @@ namespace MelloMario.LevelGen
             {
                 Properties = propertiesJToken.ToDictionary(
                   token => token["Index"].ToObject<Point>(),
-                  token => new Tuple<bool, string>(token.First.ElementAt(1).ToObject<bool>(),
-                                                      token.First.ElementAt(2).ToObject<string>()));
+                  token => new Tuple<bool, string>(
+                      token["isHidden"].ToObject<bool>(),
+                      token["ItemValue"].ToObject<string>()));
             }
             var objectStack = new Stack<IGameObject>();
             for (int i = 0; i < rows; i++)
