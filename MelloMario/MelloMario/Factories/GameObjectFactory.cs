@@ -12,13 +12,14 @@ namespace MelloMario.Factories
     class GameObjectFactory : IGameObjectFactory
     {
         private const int SCALE = 32;
+        // TODO: remove this later and use the collision between the camera and objects to "activate" objects' movement
         private Point marioLoc;
 
         private static IGameObjectFactory instance = new GameObjectFactory();
 
         private GameObjectFactory()
         {
-            marioLoc = new Point(0,0);
+            marioLoc = new Point(0, 0);
         }
 
         public static IGameObjectFactory Instance

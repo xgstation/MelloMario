@@ -72,13 +72,11 @@ namespace MelloMario
             {
                 obj.Draw(time, character.Viewport, zIndex);
             }
-
         }
 
         public void Pause()
         {
             isPaused = !isPaused;
-            // TODO
         }
 
         public void Reset()
