@@ -9,7 +9,7 @@ namespace MelloMario.ItemObjects
     {
         private const int H_SPEED = 3;
         private IItemState state;
-        private bool goingRight;
+        public bool goingRight;
 
         private void UpdateSprite()
         {
