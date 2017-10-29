@@ -14,7 +14,7 @@ namespace MelloMario
     {
         GameModel model;
         GameScript script;
-
+        GraphicsDeviceManager graphics;
         LevelReader reader;
         LevelIOJson jsonReader;
         bool jsonFlag = true;
@@ -24,7 +24,7 @@ namespace MelloMario
         {
             model = new GameModel();
             script = new GameScript();
-
+            graphics = new GraphicsDeviceManager(this);
             reader = new LevelReader("Content/ExampleLevel.txt");
             jsonReader = new LevelIOJson("Content/ExampleLevel.json", model);
         }
