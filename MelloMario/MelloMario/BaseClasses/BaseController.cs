@@ -31,14 +31,7 @@ namespace MelloMario.Controllers
         {
             if (key is T castedKey)
             {
-                if (commands[behavior].ContainsKey(castedKey))
-                {
-                    commands[behavior][castedKey] = value;
-                }
-                else
-                {
-                    commands[behavior].Add(castedKey, value);
-                }
+                commands[behavior].Add(castedKey, value);
             }
         }
 
@@ -49,7 +42,10 @@ namespace MelloMario.Controllers
 
         public void Reset()
         {
-            commands.Clear();
+            foreach (Dictionary<T, ICommand> dict in commands.Values)
+            {
+                dict.Clear();
+            }
         }
     }
 }

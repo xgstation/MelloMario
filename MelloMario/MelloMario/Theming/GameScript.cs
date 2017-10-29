@@ -17,6 +17,8 @@ namespace MelloMario
 
             foreach (IController controller in controllers)
             {
+                controller.Reset();
+
                 //controller.AddCommand(Keys.Escape, factory.CreateGameModelCommand("Pause", objects));
                 controller.AddCommand(Keys.Space, factory.CreateGameCharacterCommand("Action", character)); // Needs to be implemented
                 controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
