@@ -27,8 +27,9 @@ namespace MelloMario.MarioObjects
         {
             get
             {
-                // TODO
-                return new Rectangle(0, 0, 0, 0);
+                Point location = Boundary.Location - new Point(400, 400);
+                Point size = Point(800, 600); // TODO: currently, size of viewport does nothing
+                return new Rectangle(location, size);
             }
         }
 
@@ -107,8 +108,7 @@ namespace MelloMario.MarioObjects
 
         public void JumpPress()
         {
-            if (!(MovementState is Jumping))
-                elapsedFromPreviousFrame = 0;
+            elapsedFromPreviousFrame = 0;
         }
 
         public void JumpRelease()
