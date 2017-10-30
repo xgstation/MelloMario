@@ -8,7 +8,7 @@ namespace MelloMario.EnemyObjects
 {
     class Goomba : BasePhysicalObject
     {
-        bool Fall;
+
         private IGoombaState state;
         private float timeFromDeath;
         private const int VELOCITY_LR = 1;
@@ -22,7 +22,7 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnUpdate(GameTime time)
         {
-            //ApplyGravity();
+            
             state.Update(time);
             if(state is Defeated)
             {
@@ -34,8 +34,7 @@ namespace MelloMario.EnemyObjects
             }
             else
             {
-                if (!Fall)
-                {
+                    ApplyGravity();
                     if (Facing == FacingMode.right)
                     {
                         Move(new Point(VELOCITY_LR, 0));
@@ -45,11 +44,9 @@ namespace MelloMario.EnemyObjects
                         Move(new Point(-VELOCITY_LR, 0));
                     }
                 }
-
-                   
-
+           
             }
-        }
+        
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
@@ -68,7 +65,7 @@ namespace MelloMario.EnemyObjects
                     Defeat();
                 }
             }
-            else if (target is Brick brick || target is Question question||target is Floor floor || target is Stair stair || target is Pipeline pipeline) {
+            else if (target is Brick brick || target is Question question||target is Floor floor|| target is Pipeline pipeline) {
                 if (mode == CollisionMode.Left)
                 {
                     Bounce(mode, new Vector2(), 1);
@@ -78,6 +75,11 @@ namespace MelloMario.EnemyObjects
                 {
                     Bounce(mode, new Vector2(), 1);
                     Facing = FacingMode.left;
+                }
+                else if(mode == CollisionMode.Bottom)
+                {
+                    Bounce(mode, new Vector2());
+                
                 }
             }
 
@@ -119,7 +121,6 @@ namespace MelloMario.EnemyObjects
             timeFromDeath = 0;
             state = new Normal(this);
             UpdateSprite();
-             Fall = false;
         }
 
         public void Defeat()
