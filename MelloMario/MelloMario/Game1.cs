@@ -21,7 +21,7 @@ namespace MelloMario
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            model = new GameModel(new GameScript(), new LevelIOJson("Content/ExampleLevel.json", model));
+            model = new GameModel(this, new GameScript(), new LevelIOJson("Content/ExampleLevel.json", model));
         }
 
         /// <summary>

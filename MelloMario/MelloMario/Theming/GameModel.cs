@@ -14,6 +14,7 @@ namespace MelloMario
         private GameScript script;
         private LevelIOJson reader;
         private bool isPaused;
+        private Game game;
 
         public bool IsPaused
         {
@@ -23,8 +24,9 @@ namespace MelloMario
             }
         }
 
-        public GameModel(GameScript script, LevelIOJson reader)
+        public GameModel(Game game, GameScript script, LevelIOJson reader)
         {
+            this.game = game;
             this.script = script;
             this.reader = reader;
         }
@@ -40,7 +42,7 @@ namespace MelloMario
             {
                 controller.Update();
             }
-
+            
             if (!isPaused)
             {
                 foreach (IGameObject obj in world.ScanObjects())
@@ -76,7 +78,7 @@ namespace MelloMario
 
         public void Quit()
         {
-            // TODO
+            game.Exit();
         }
     }
 }
