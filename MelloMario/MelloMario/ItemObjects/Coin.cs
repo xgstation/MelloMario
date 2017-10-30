@@ -12,11 +12,13 @@ namespace MelloMario.ItemObjects
         private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateCoinSprite());
+            
         }
 
         protected override void OnUpdate(GameTime time)
         {
             state.Update(time);
+     
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)

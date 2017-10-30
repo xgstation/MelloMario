@@ -13,6 +13,7 @@ namespace MelloMario.MarioObjects
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
+  
 
         private void UpdateSprite()
         {
@@ -122,11 +123,11 @@ namespace MelloMario.MarioObjects
                     if (mode == CollisionMode.Bottom)
                     {
                         ApplyHorizontalFriction(FORCE_F_GROUND);
-
                         if (MovementState is Jumping)
                         {
-                            //MovementState.Idle();
-                            MovementState.Landing();
+                            MovementState.Idle();
+                           
+
                         }
                     }
 
