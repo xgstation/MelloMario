@@ -116,6 +116,8 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Floor":
+                    Bounce(mode, new Vector2());
+                    break;
                 case "Pipeline":
                 case "Stair":
                     Bounce(mode, new Vector2());

@@ -5,6 +5,7 @@ using MelloMario.MarioObjects.PowerUpStates;
 using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
+using System;
 
 namespace MelloMario.MarioObjects
 {
@@ -101,18 +102,28 @@ namespace MelloMario.MarioObjects
             {
                 userInput.Y -= FORCE_INPUT;
                 userInput.Y -= FORCE_G;
-
+                
                 MovementState.Jump();
             }
         }
 
         public void JumpPress()
         {
-            elapsedFromPreviousFrame = 0;
+            if (!(MovementState is Jumping) || elapsedFromPreviousFrame < secondsPerFrame)
+                elapsedFromPreviousFrame = 0;
         }
 
         public void JumpRelease()
         {
+            MovementState.Idle();
+            //if ((MovementState is Jumping))
+            //{
+            //    isFalling = true;
+            //} 
+            //else
+            //{
+            //    isFalling = false;
+            //}
             // if (MovementState is Walking)
             // {
             //if (Facing == FacingMode.left)
