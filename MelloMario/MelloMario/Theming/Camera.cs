@@ -19,7 +19,7 @@ namespace MelloMario
         {
             throw new System.NotImplementedException();
         }
-
+        
         public Camera(IGameWorld world, Point location, Point size) : base(world, location, size)
         {
             //
