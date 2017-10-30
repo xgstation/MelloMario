@@ -14,34 +14,10 @@
             "X": 1,
             "Y": 11
           },
-          "State": "FireMario"
+          "State": "Normal"
         }
       ],
       "Structures": [
-        {
-          "Type": "FireFlower",
-          "Point": {
-            "X": 6,
-            "Y": 9
-          },
-          "Quantity": {
-            "X": 1,
-            "Y": 1
-          },
-          "Properties": []
-        },
-        {
-          "Type": "FireFlower",
-          "Point": {
-            "X": 8,
-            "Y": 9
-          },
-          "Quantity": {
-            "X": 1,
-            "Y": 1
-          },
-          "Properties": []
-        },
         {
           "Type": "HiddenBrick",
           "Point": {
@@ -76,7 +52,12 @@
             "X": 1,
             "Y": 1
           },
-          "Properties": []
+          "Properties": [
+            {
+              "isHidden": false,
+              "ItemValue": [ "FireFlowerUnveil" ]
+            }
+          ]
         },
         {
           "Type": "Brick",

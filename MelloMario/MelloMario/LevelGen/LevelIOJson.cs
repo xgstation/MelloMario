@@ -12,7 +12,6 @@ using MelloMario.MarioObjects;
 
 namespace MelloMario.LevelGen
 {
-    //WIP: This is a LevelGen class in developing for testing purpose.
 
     class LevelIOJson : IDisposable
     {
@@ -20,22 +19,20 @@ namespace MelloMario.LevelGen
         // Note: Without implementing IDisposable, it may cause resource leak
         //       The code analysis tool generates a warning here
   
-
-        private const int GRIDSIZE = 32;
+            
         private string path;
         private string levelString;
-        private GameModel gameModel;
-        
-
-        public LevelIOJson(string path, GameModel gameModel)
+        private GameModel model;
+        public LevelIOJson(string jsonPath, GameModel gameModel)
         {
-            this.path = path;
-            this.gameModel = gameModel;
+            path = jsonPath;
+            model = gameModel;
+            if (File.Exists(jsonPath))
+                levelString = File.ReadAllText(jsonPath);
         }
         public Tuple<IGameWorld, IGameCharacter> Load(string index)
         {
-            levelString = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IGameCharacter>>(levelString, new GameConverter(index, gameModel));
+            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IGameCharacter>>(levelString, new GameConverter(index, model));
         }
         public void Close()
         {
