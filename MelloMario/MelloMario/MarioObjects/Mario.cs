@@ -117,6 +117,10 @@ namespace MelloMario.MarioObjects
                     break;
                 case "Floor":
                     Bounce(mode, new Vector2());
+                    if (MovementState is Jumping)
+                    {
+                        MovementState.Idle();
+                    }
                     break;
                 case "Pipeline":
                 case "Stair":

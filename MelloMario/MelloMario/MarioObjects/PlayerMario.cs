@@ -109,13 +109,12 @@ namespace MelloMario.MarioObjects
 
         public void JumpPress()
         {
-            if (!(MovementState is Jumping) || elapsedFromPreviousFrame < secondsPerFrame)
+            if (MovementState is Standing)
                 elapsedFromPreviousFrame = 0;
         }
 
         public void JumpRelease()
         {
-            MovementState.Idle();
             //if ((MovementState is Jumping))
             //{
             //    isFalling = true;
