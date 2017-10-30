@@ -100,7 +100,7 @@ namespace MelloMario
 
             if (sprite != null)
             {
-                sprite.Draw(time, Boundary, zIndex);
+                sprite.Draw(time, new Rectangle(Boundary.Location - viewport.Location, Boundary.Size), zIndex);
             }
         }
     }
