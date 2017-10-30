@@ -65,7 +65,7 @@ namespace MelloMario.EnemyObjects
                     Defeat();
                 }
             }
-            else if (target is Brick brick || target is Question question||target is Floor floor|| target is Pipeline pipeline) {
+            else if (target is Brick brick || target is Question question||target is Floor floor||target is Stair stair|| target is Pipeline pipeline) {
                 if (mode == CollisionMode.Left)
                 {
                     Bounce(mode, new Vector2(), 1);
