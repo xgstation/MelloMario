@@ -2,6 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.KoopaStates;
+using MelloMario.BlockObjects;
 
 namespace MelloMario.EnemyObjects
 {
@@ -9,6 +10,7 @@ namespace MelloMario.EnemyObjects
     {
         private ShellColor color;
         private IKoopaState state;
+        private const int VELOCITY_LR = 1;
 
         private void UpdateSprite()
         {
@@ -42,7 +44,18 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnUpdate(GameTime time)
         {
-        }
+     
+            if (Facing == FacingMode.right)
+            {
+                Move(new Point(VELOCITY_LR, 0));
+            }
+            else
+            {             
+                Move(new Point(-VELOCITY_LR, 0));
+            }
+         
+        
+    }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
@@ -74,6 +87,19 @@ namespace MelloMario.EnemyObjects
                     }
                 }
             }
+            else if(target is Brick brick || target is Question question || target is Floor floor || target is Stair stair || target is Pipeline pipeline)
+            {
+                if (mode == CollisionMode.Left)
+                {
+                    Bounce(mode, new Vector2(), 1);
+                    ChangeFacing(FacingMode.right);
+                }
+                else if (mode == CollisionMode.Right)
+                {
+                    Bounce(mode, new Vector2(), 1);
+                    ChangeFacing(FacingMode.left);
+                }
+            }
         }
 
         protected override void OnOut(CollisionMode mode)
@@ -98,8 +124,16 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        public Koopa(IGameWorld world, Point location, ShellColor color) : base(world, location, new Point(32, 32), 32)
+        public Koopa(IGameWorld world, Point location, Point marioLocation,ShellColor color) : base(world, location, new Point(32, 32), 32)
         {
+            if (marioLocation.X < location.X)
+            {
+                Facing = FacingMode.left;
+            }
+            else
+            {
+                Facing = FacingMode.right;
+            }
             this.color = color;
 
             state = new Normal(this);

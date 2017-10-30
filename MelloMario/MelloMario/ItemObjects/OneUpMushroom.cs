@@ -2,7 +2,6 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.OneUpMushroomStates;
 using MelloMario.MarioObjects;
-using MelloMario.BlockObjects;
 
 namespace MelloMario.ItemObjects
 {
@@ -10,8 +9,6 @@ namespace MelloMario.ItemObjects
     {
         private const int H_SPEED = 3;
         private IItemState state;
-        private bool goingRight;
-
 
         private void UpdateSprite()
         {
@@ -24,7 +21,7 @@ namespace MelloMario.ItemObjects
             state.Update(time);
             if (state is Normal)
             {
-                if (goingRight)
+                if (Facing == FacingMode.right)
                     Move(new Point(H_SPEED, 0));
                 else
                     Move(new Point(-1 * H_SPEED, 0));
@@ -35,31 +32,26 @@ namespace MelloMario.ItemObjects
         {
             switch (target.GetType().Name)
             {
-                case "PlayerMario":
+                case "Mario":
                     if (state is Normal)
                         Collect();
                     break;
                 case "Brick":
-                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
-                        break;
-                    goto case "Stair";
                 case "Question":
-                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
-                        break;
-                    goto case "Stair";
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
+                    // TODO: check against hidden
                     Bounce(mode, new Vector2());
                     if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
-                        goingRight = true;
+                        Facing = FacingMode.right;
                     }
                     else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
-                        goingRight = false;
+                        Facing = FacingMode.left;
                     }
                     break;
             }
@@ -89,9 +81,14 @@ namespace MelloMario.ItemObjects
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
         {
             if (marioLocation.X < location.X)
-                goingRight = true;
+            {
+                Facing = FacingMode.left;
+            }
             else
-                goingRight = false;
+            {
+                Facing = FacingMode.right;
+            }
+
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -104,6 +101,11 @@ namespace MelloMario.ItemObjects
         }
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
+        }
+
+        public void Show()
+        {
+            State.Show();
         }
         public void Collect()
         {

@@ -113,6 +113,19 @@ namespace MelloMario.MarioObjects
 
         public void JumpRelease()
         {
+           // if (MovementState is Walking)
+           // {
+                //if (Facing == FacingMode.left)
+               // {
+                  //  Left();
+                   // LeftRelease();
+              //  }
+               // else
+                //{
+                   // Right();
+                   // RightRelease();
+                //}
+           // }
         }
 
         public void Crouch()

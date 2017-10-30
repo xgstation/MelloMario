@@ -10,7 +10,6 @@ namespace MelloMario.ItemObjects
     {
         private const int H_SPEED = 2;
         private IItemState state;
-        private bool goingRight;
 
         private void UpdateSprite()
         {
@@ -24,7 +23,7 @@ namespace MelloMario.ItemObjects
             state.Update(time);
             if (state is Normal)
             {
-                if (goingRight)
+                if (Facing == FacingMode.right)
                     Move(new Point(H_SPEED, 0));
                 else
                     Move(new Point(-1 * H_SPEED, 0));
@@ -54,12 +53,12 @@ namespace MelloMario.ItemObjects
                     if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
-                        goingRight = true;
+                        Facing = FacingMode.right;
                     }
                     else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
-                        goingRight = false;
+                        Facing = FacingMode.left;
                     }
                     break;
             }
@@ -89,9 +88,14 @@ namespace MelloMario.ItemObjects
         public SuperMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
         {
             if (marioLocation.X < location.X)
-                goingRight = false;
+            {
+                Facing = FacingMode.left;
+            }
             else
-                goingRight = true;
+            {
+                Facing = FacingMode.right;
+            }
+
             if (isUnveil)
             {
                 state = new Unveil(this);
