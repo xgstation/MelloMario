@@ -6,47 +6,32 @@ using System;
 
 namespace MelloMario
 {
-    class GameModel
+    class GameModel : IGameModel
     {
         private IEnumerable<IController> controllers;
         private IGameWorld world;
         private IGameCharacter character;
-        private LevelIOJson jsonReader;
-        private bool isPaused = false;
         private GameScript script;
-        public GameModel()
+        private LevelIOJson reader;
+        private bool isPaused;
+
+        public bool IsPaused
         {
+            get
+            {
+                return isPaused;
+            }
         }
-        public bool IsPaused => isPaused;
+
+        public GameModel(GameScript script, LevelIOJson reader)
+        {
+            this.script = script;
+            this.reader = reader;
+        }
+
         public void LoadControllers(IEnumerable<IController> newControllers)
         {
             controllers = newControllers;
-        }
-
-        public void Bind(GameScript script)
-        {
-            if (this.script == null)
-            {
-                this.script = script;
-            }
-            script.Bind(controllers, character, this);
-        }
-
-        public void LoadEntities(LevelReader reader)
-        {
-            Tuple<IGameWorld, IGameCharacter> pair = reader.LoadObjects();
-            world = pair.Item1;
-            character = pair.Item2;
-        }
-        public void LoadEntities(LevelIOJson jsonReader)
-        {
-            if (this.jsonReader == null)
-            {
-                this.jsonReader = jsonReader;
-            }
-            Tuple<IGameWorld, IGameCharacter> pair = jsonReader.Load("Main");
-            world = pair.Item1;
-            character = pair.Item2;
         }
 
         public void Update(GameTime time)
@@ -55,6 +40,7 @@ namespace MelloMario
             {
                 controller.Update();
             }
+
             if (!isPaused)
             {
                 foreach (IGameObject obj in world.ScanObjects())
@@ -72,19 +58,20 @@ namespace MelloMario
             {
                 obj.Draw(time, character.Viewport, zIndex);
             }
-
         }
 
         public void Pause()
         {
             isPaused = !isPaused;
-            // TODO
         }
 
         public void Reset()
         {
-            LoadEntities(jsonReader);
-            Bind(script);
+            Tuple<IGameWorld, IGameCharacter> pair = reader.Load("Main");
+            world = pair.Item1;
+            character = pair.Item2;
+
+            script.Bind(controllers, character, this);
         }
 
         public void Quit()

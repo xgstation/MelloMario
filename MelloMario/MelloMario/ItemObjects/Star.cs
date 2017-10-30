@@ -2,6 +2,8 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.StarStates;
 using MelloMario.MarioObjects;
+using MelloMario.BlockObjects;
+using System.Diagnostics;
 
 namespace MelloMario.ItemObjects
 {
@@ -32,18 +34,24 @@ namespace MelloMario.ItemObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
+            //Debug.WriteLine(target.GetType().Name);
             switch (target.GetType().Name)
             {
-                case "Mario":
+                case "PlayerMario":
                     if (state is Normal)
                         Collect();
                     break;
                 case "Brick":
+                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                        break;
+                    goto case "Stair";
                 case "Question":
+                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                        break;
+                    goto case "Stair";
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
-                    // TODO: check against hidden
                     Bounce(mode, new Vector2());
                     if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                     {
@@ -101,11 +109,7 @@ namespace MelloMario.ItemObjects
         public Star(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }
-
-        public void Show()
-        {
-            State.Show();
-        }
+        
         public void Collect()
         {
             RemoveSelf();

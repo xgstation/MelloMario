@@ -8,13 +8,7 @@ namespace MelloMario.Controllers
     {
         GamePadState previousState;
 
-        public GamepadController(GameModel model)
-            : base(model)
-        {
-            previousState = GamePad.GetState(PlayerIndex.One);
-        }
-
-        public override void Update()
+        protected override void OnUpdate()
         {
             // Get the current gamepad state.
             GamePadState currentState = GamePad.GetState(PlayerIndex.One);
@@ -45,6 +39,12 @@ namespace MelloMario.Controllers
 
             // Update previous gamepad state.
             previousState = currentState;
+        }
+
+        public GamepadController(IGameModel model)
+            : base(model)
+        {
+            previousState = GamePad.GetState(PlayerIndex.One);
         }
     }
 }

@@ -13,55 +13,76 @@ namespace MelloMario.LevelGen
     class BaseGameObjectConverter : JsonConverter
     {
         private GameWorld gameWorld;
-
-        public BaseGameObjectConverter(GameWorld gameWorld)
+        private int grid;
+        public BaseGameObjectConverter(GameWorld parentGameWorld, int gridSize)
         {
-            this.gameWorld = gameWorld;
+            gameWorld = parentGameWorld;
+            grid = gridSize;
         }
         public override bool CanConvert(Type objectType)
         {
-            return typeof(EncapsulatedObject<IGameObject>).IsAssignableFrom(objectType);
+            return typeof(EncapsulatedObject<IGameObject>).IsAssignableFrom(objectType) || objectType is IGameObject;
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            JToken gameObjToken = JToken.Load(reader);
-            string gameObjectType = gameObjToken.ElementAt(0).First.ToObject<string>();
-            Point startPoint = gameObjToken.ElementAt(1).First.ToObject<Point>();
-            int rows = gameObjToken.ElementAt(2).First.ElementAt(0).ToObject<int>();
-            int columns = gameObjToken.ElementAt(2).First.ElementAt(1).ToObject<int>();
-            IDictionary<Point, Tuple<bool, string>> Properties = null;
-            //TODO: Add appropriate condition to avoid null pointer
-            if (false)
-            {
-                Properties =
-                  gameObjToken.ElementAt(3).ToDictionary(
-                      token => token.ElementAt(0).ToObject<Point>(),
-                      token => new Tuple<bool, string>(token.First.ElementAt(1).ToObject<bool>(),
-                                                          token.First.ElementAt(2).ToObject<string>()));
-            }
+            JToken objToken = JToken.Load(reader);
             var objectStack = new Stack<IGameObject>();
+
+            var type = tryGet<string>(objToken, "Type");
+            var startPoint = tryGet<Point>(objToken, "Point");
+            var rows = tryGet<int>(objToken, "Quantity", "X");
+            var columns = tryGet<int>(objToken, "Quantity", "Y");
+            IDictionary<Point, Tuple<bool, string[]>> Properties = null;
+            var propertiesJToken = objToken["Properties"];
+            if (propertiesJToken != null && propertiesJToken.HasValues)
+            {
+                Properties = propertiesJToken.ToDictionary(
+                  token => tryGet<Point>(token, "Index"),
+                  token => new Tuple<bool, string[]>(
+                      tryGet<bool>(token, "isHidden"),
+                      tryGet<string[]>(token, "ItemValue")));
+            }
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    Point location = new Point((startPoint.X + i) * 32, (startPoint.Y + j) * 32);
-                    Tuple<bool, string> property;
+                    Point location = new Point((startPoint.X + i) * grid, (startPoint.Y + j) * grid);
+                    Tuple<bool, string[]> property = null;
+                    IList<IGameObject> list = null;
                     if (Properties == null || !Properties.TryGetValue(new Point(i, j), out property))
                     {
-                        property = new Tuple<bool, string>(false, "");
+                        property = new Tuple<bool, string[]>(false, null);
                     }
-                    switch (gameObjectType)
+                    else
+                    {
+                        list = createItemList(gameWorld, location, property.Item2);
+                    }
+                    switch (type)
                     {
                         //TODO: Add items parameter in constructors for Brick and Question
                         case "Brick":
-                            objectStack.Push(new Brick(gameWorld, location));
+                            if (list != null)
+                            {
+                                objectStack.Push(new Brick(gameWorld, location, list, property.Item1));
+                            }
+                            else
+                            {
+                                objectStack.Push(new Brick(gameWorld, location, property.Item1));
+                            }
                             break;
                         case "Question":
-                            objectStack.Push(new Question(gameWorld, location));
+                            if (list != null)
+                            {
+                                objectStack.Push(new Question(gameWorld, location, list, property.Item1));
+                            }
+                            else
+                            {
+                                objectStack.Push(new Question(gameWorld, location));
+                            }
                             break;
                         case "Pipeline":
-                            objectStack.Push(new Pipeline(gameWorld, location, property.Item2));
+                            objectStack.Push(new Pipeline(gameWorld, location, property.Item2[0]));
                             break;
                         case "Floor":
                             objectStack.Push(new Floor(gameWorld, location));
@@ -70,18 +91,47 @@ namespace MelloMario.LevelGen
                             objectStack.Push(new Stair(gameWorld, location));
                             break;
                         default:
-                            objectStack.Push(GameObjectFactory.Instance.CreateGameObject(gameObjectType, gameWorld, location));
+                            objectStack.Push(GameObjectFactory.Instance.CreateGameObject(type, gameWorld, location));
                             break;
                     }
                 }
             }
             return new EncapsulatedObject<IGameObject>(objectStack);
         }
-        //TODO: Add serialize method and change CanWrite
+        //TODO: Add serialize method and change CanWrite 
         public override bool CanWrite => false;
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
+        }
+
+        private T tryGet<T>(JToken token, params string[] p)
+        {
+            T obj = default(T);
+            JToken tempToken = token;
+            for (int i = 0; i < p.Length - 1; i++)
+            {
+                if (tempToken[p[i]] != null)
+                    tempToken = tempToken[p[i]];
+            }
+            if (tempToken[p[p.Length - 1]] != null)
+            {
+                obj = tempToken[p[p.Length - 1]].ToObject<T>();
+            }
+            return obj;
+        }
+        private IList<IGameObject> createItemList(GameWorld world, Point point, params string[] s)
+        {
+            if (s != null)
+            {
+                var list = new List<IGameObject>();
+                for (int i = 0; i < s.Length; i++)
+                {
+                    list.Add(Factories.GameObjectFactory.Instance.CreateGameObject(s[i], world, point));
+                }
+                return list;
+            }
+            return null;
         }
     }
 }

@@ -6,5 +6,6 @@ namespace MelloMario
     {
         void AddCommand(object key, ICommand value, KeyBehavior behavior = KeyBehavior.press);
         void Update();
+        void Reset();
     }
 }

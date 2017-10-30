@@ -7,13 +7,7 @@ namespace MelloMario.Controllers
     {
         KeyboardState previousState;
 
-        public KeyboardController(GameModel model)
-            : base(model)
-        {
-            previousState = Keyboard.GetState();
-        }
-
-        public override void Update()
+        protected override void OnUpdate()
         {
             // Get the current Keyboard state.
             KeyboardState currentState = Keyboard.GetState();
@@ -39,6 +33,12 @@ namespace MelloMario.Controllers
 
             // Update previous Keyboard state.
             previousState = currentState;
+        }
+
+        public KeyboardController(IGameModel model)
+            : base(model)
+        {
+            previousState = Keyboard.GetState();
         }
     }
 }

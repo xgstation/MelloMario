@@ -122,10 +122,6 @@ namespace MelloMario.EnemyObjects
              Fall = false;
         }
 
-        public void Show()
-        {
-            State.Show();
-        }
         public void Defeat()
         {
             State.Defeat();

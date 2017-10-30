@@ -4,7 +4,7 @@ namespace MelloMario
 {
     interface ICommandFactory
     {
-        ICommand CreateGameControlCommand(string action, GameModel model);
+        ICommand CreateGameControlCommand(string action, IGameModel model);
         ICommand CreateGameCharacterCommand(string action, IGameCharacter character);
         ICommand CreateGameObjectCommand(string action, IGameObject gameObject);
     }

@@ -58,16 +58,13 @@
     <Compile Include="BlockObjects\BrickStates\Normal.cs" />
     <Compile Include="BlockObjects\BrickStates\Used.cs" />
     <Compile Include="BlockObjects\Floor.cs" />
-    <Compile Include="BlockObjects\FloorStates\Normal.cs" />
     <Compile Include="BlockObjects\Pipeline.cs" />
-    <Compile Include="BlockObjects\PipelineStates\Normal.cs" />
     <Compile Include="BlockObjects\Question.cs" />
     <Compile Include="BlockObjects\QuestionStates\Bumped.cs" />
     <Compile Include="BlockObjects\QuestionStates\Hidden.cs" />
     <Compile Include="BlockObjects\QuestionStates\Normal.cs" />
     <Compile Include="BlockObjects\QuestionStates\Used.cs" />
     <Compile Include="BlockObjects\Stair.cs" />
-    <Compile Include="BlockObjects\StairStates\Normal.cs" />
     <Compile Include="BaseClasses\BaseCommand.cs" />
     <Compile Include="Commands\Action.cs" />
     <Compile Include="Commands\Quit.cs" />
@@ -96,6 +93,7 @@
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
     <Compile Include="Interfaces\Factories\ICommandFactory.cs" />
     <Compile Include="Interfaces\Factories\IGameObjectFactory.cs" />
+    <Compile Include="Interfaces\IGameModel.cs" />
     <Compile Include="Interfaces\Objects\IGameCharacter.cs" />
     <Compile Include="Interfaces\IGameWorld.cs" />
     <Compile Include="Interfaces\Objects\States\IState.cs" />
@@ -154,6 +152,7 @@
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Commands\FireState.cs" />
     <Compile Include="Theming\GameModel.cs" />
+    <Compile Include="Theming\Camera.cs" />
     <Compile Include="Theming\GameWorld.cs" />
     <Compile Include="Theming\GameScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />

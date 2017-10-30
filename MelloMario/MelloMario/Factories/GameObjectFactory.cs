@@ -12,13 +12,14 @@ namespace MelloMario.Factories
     class GameObjectFactory : IGameObjectFactory
     {
         private const int SCALE = 32;
+        // TODO: remove this later and use the collision between the camera and objects to "activate" objects' movement
         private Point marioLoc;
 
         private static IGameObjectFactory instance = new GameObjectFactory();
 
         private GameObjectFactory()
         {
-            marioLoc = new Point(0,0);
+            marioLoc = new Point(0, 0);
         }
 
         public static IGameObjectFactory Instance
@@ -67,6 +68,15 @@ namespace MelloMario.Factories
                         CreateGameObject("FireFlowerUnveil", world, location),
                     };
                     return new Question(world, location, items, false);
+                case "QuestionCoin":
+                    items = new List<IGameObject>()
+                    {
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                        CreateGameObject("CoinUnveil", world, location),
+                    };
+                    return new Question(world, location, items, false);
                 case "HiddenQuestion":
                     items = new List<IGameObject>()
                     {
@@ -74,6 +84,12 @@ namespace MelloMario.Factories
                         CreateGameObject("CoinUnveil", world, location),
                         CreateGameObject("CoinUnveil", world, location),
                         CreateGameObject("CoinUnveil", world, location),
+                    };
+                    return new Question(world, location, items, true);
+                case "HiddenQuestionFlower":
+                    items = new List<IGameObject>()
+                    {
+                        CreateGameObject("FireFlowerUnveil", world, location),
                     };
                     return new Question(world, location, items, true);
                 case "PipelineLeftIn":

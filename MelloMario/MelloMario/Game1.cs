@@ -16,19 +16,12 @@ namespace MelloMario
         GameModel model;
         GameScript script;
 
-        LevelReader reader;
-        LevelIOJson jsonReader;
-        bool jsonFlag = true;
         SpriteBatch spriteBatch;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            model = new GameModel();
-            script = new GameScript();
-
-            reader = new LevelReader("Content/ExampleLevel.txt");
-            jsonReader = new LevelIOJson("Content/ExampleLevel.json", model);
+            model = new GameModel(new GameScript(), new LevelIOJson("Content/ExampleLevel.json", model));
         }
 
         /// <summary>
@@ -48,7 +41,8 @@ namespace MelloMario
             };
 
             model.LoadControllers(controllers);
-            model.Bind(script);
+
+            model.Reset(); // Create the level for the first time
         }
 
         /// <summary>
@@ -65,15 +59,8 @@ namespace MelloMario
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.BindSpriteBatch(spriteBatch);
-            if (jsonFlag)
-            {
-                model.LoadEntities(jsonReader);
-            }
-            else
-            {
-                model.LoadEntities(reader);
-            }
         }
+
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// game-specific content.
@@ -104,11 +91,12 @@ namespace MelloMario
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
 
-            spriteBatch.Begin();
             if (model.IsPaused)
             {
                 ResetElapsedTime();
             }
+
+            spriteBatch.Begin();
             model.Draw(time, ZIndex.back);
             model.Draw(time, ZIndex.main);
             model.Draw(time, ZIndex.front);

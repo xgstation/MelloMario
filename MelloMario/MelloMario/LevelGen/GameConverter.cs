@@ -45,12 +45,12 @@ namespace MelloMario.LevelGen
                 }
             }
             Point mapSize = MapToBeLoaded.Value<JToken>("Size").ToObject<Point>();
-
+            int grid = MapToBeLoaded["Grid"].ToObject<int>();
 
             IList<JToken> Structures = MapToBeLoaded.Value<JToken>("Structures").ToList();
             world = new GameWorld(MapToBeLoaded.Value<int>("Grid"), mapSize);
-            serializers.Converters.Add(new BaseGameObjectConverter(world));
-            serializers.Converters.Add(new CharacterConverter(world));
+            serializers.Converters.Add(new BaseGameObjectConverter(world, grid));
+            serializers.Converters.Add(new CharacterConverter(world, grid));
 
             foreach (var jToken in Structures)
             {

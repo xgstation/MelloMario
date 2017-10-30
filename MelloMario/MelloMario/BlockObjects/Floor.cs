@@ -1,14 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
-using MelloMario.BlockObjects.FloorStates;
 using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects
 {
     class Floor : BaseCollidableObject
     {
-        private IBlockState state;
-
         private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateFloorSprite());
@@ -30,36 +27,9 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        public IBlockState State
-        {
-            get
-            {
-                return state;
-            }
-            set
-            {
-                state = value;
-                UpdateSprite();
-            }
-        }
-
         public Floor(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
         {
-            state = new Normal(this);
             UpdateSprite();
-        }
-
-        public void Show()
-        {
-            State.Show();
-        }
-        public void Hide()
-        {
-            State.Hide();
-        }
-        public void Bump(Mario mario)
-        {
-            State.Bump(mario);
         }
     }
 }

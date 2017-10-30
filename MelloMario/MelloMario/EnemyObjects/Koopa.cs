@@ -105,11 +105,7 @@ namespace MelloMario.EnemyObjects
             state = new Normal(this);
             UpdateSprite();
         }
-
-        public void Show()
-        {
-            State.Show();
-        }
+        
         public void JumpOn()
         {
             State.JumpOn();

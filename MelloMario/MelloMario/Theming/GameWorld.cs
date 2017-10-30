@@ -1,8 +1,4 @@
-﻿using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using MelloMario.Controllers;
-using MelloMario.MarioObjects;
-using MelloMario.Factories;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario
@@ -146,8 +142,11 @@ namespace MelloMario
 
             foreach (IGameObject obj in toMove)
             {
-                DoRemove(obj);
-                DoAdd(obj);
+                if (locations.ContainsKey(obj))
+                {
+                    DoRemove(obj);
+                    DoAdd(obj);
+                }
             }
             toMove.Clear();
 
