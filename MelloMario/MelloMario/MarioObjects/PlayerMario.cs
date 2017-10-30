@@ -109,7 +109,7 @@ namespace MelloMario.MarioObjects
 
         public void JumpPress()
         {
-            if (MovementState is Standing)
+            if (MovementState is Standing || MovementState is Walking)
                 elapsedFromPreviousFrame = 0;
         }
 
