@@ -31,8 +31,13 @@ namespace MelloMario.LevelGen
 
             var type = tryGet<string>(objToken, "Type");
             var startPoint = tryGet<Point>(objToken, "Point");
-            var rows = tryGet<int>(objToken, "Quantity", "X");
-            var columns = tryGet<int>(objToken, "Quantity", "Y");
+            int rows = 1;
+            int columns = 1;
+            if (objToken["Quantity"] != null)
+            {
+                rows = tryGet<int>(objToken, "Quantity", "X");
+                columns = tryGet<int>(objToken, "Quantity", "Y");
+            }
             IDictionary<Point, Tuple<bool, string[]>> Properties = null;
             var propertiesJToken = objToken["Properties"];
             if (propertiesJToken != null && propertiesJToken.HasValues)
@@ -127,7 +132,7 @@ namespace MelloMario.LevelGen
                 var list = new List<IGameObject>();
                 for (int i = 0; i < s.Length; i++)
                 {
-                    list.Add(Factories.GameObjectFactory.Instance.CreateGameObject(s[i], world, point));
+                    list.Add(GameObjectFactory.Instance.CreateGameObject(s[i], world, point));
                 }
                 return list;
             }
