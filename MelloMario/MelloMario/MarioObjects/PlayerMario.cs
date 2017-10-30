@@ -27,8 +27,8 @@ namespace MelloMario.MarioObjects
         {
             get
             {
-                Point location = Boundary.Location - new Point(400, 400);
-                Point size = Point(800, 600); // TODO: currently, size of viewport does nothing
+                Point location = Boundary.Location - new Point(320, 320);
+                Point size = new Point(800, 480); // TODO: currently, size of viewport does nothing
                 return new Rectangle(location, size);
             }
         }
@@ -113,19 +113,19 @@ namespace MelloMario.MarioObjects
 
         public void JumpRelease()
         {
-           // if (MovementState is Walking)
-           // {
-                //if (Facing == FacingMode.left)
-               // {
-                  //  Left();
-                   // LeftRelease();
-              //  }
-               // else
-                //{
-                   // Right();
-                   // RightRelease();
-                //}
-           // }
+            // if (MovementState is Walking)
+            // {
+            //if (Facing == FacingMode.left)
+            // {
+            //  Left();
+            // LeftRelease();
+            //  }
+            // else
+            //{
+            // Right();
+            // RightRelease();
+            //}
+            // }
         }
 
         public void Crouch()
