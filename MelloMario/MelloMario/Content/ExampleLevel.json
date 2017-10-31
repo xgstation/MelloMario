@@ -11,50 +11,60 @@
         {
           "Type": "Mario",
           "SpawnPoint": {
-            "X": 1,
-            "Y": 11
+            "X": 10,
+            "Y": 14
           },
           "State": "Normal"
         }
       ],
-      "Structures": [
+      "Entity": [
         {
-          "Type": "Stair",
+          "Type": "Floor",
           "Point": {
-            "X": 30,
-            "Y": 4
-          }
+            "X": 0,
+            "Y": 15
+          },
+          "Quantity": {
+            "X": 212,
+            "Y": 2
+          },
+          "Ignored": [
+            {
+              "X": 3,
+              "Y": 0
+            },
+            {
+              "X": 4,
+              "u": 0
+            }
+          ]
         },
         {
           "Type": "Floor",
           "Point": {
-            "X": 25,
-            "Y": 15
-          },
-          "Quantity": {
-            "X": 200,
-            "Y": 2
+            "x": 2,
+            "y": 14
           }
         },
         {
           "Type": "HiddenBrick",
           "Point": {
             "X": 3,
-            "Y": 10
+            "Y": 11
           }
         },
         {
           "Type": "Brick",
           "Point": {
             "X": 4,
-            "Y": 10
+            "Y": 11
           }
         },
         {
           "Type": "Question",
           "Point": {
             "X": 5,
-            "Y": 10
+            "Y": 11
           },
           "Properties": [
             {
@@ -67,14 +77,18 @@
           "Type": "Brick",
           "Point": {
             "X": 6,
-            "Y": 10
+            "Y": 11
+          },
+          "Quantity": {
+            "X": 3,
+            "Y": 1
           }
         },
         {
           "Type": "Question",
           "Point": {
             "X": 13,
-            "Y": 10
+            "Y": 11
           },
           "Properties": [
             {
@@ -83,29 +97,15 @@
                 "Y": 0
               },
               "isHidden": false,
-              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+              "ItemValue": [ "StarUnveil" ]
             }
           ]
-        },
-        {
-          "Type": "Brick",
-          "Point": {
-            "X": 8,
-            "Y": 10
-          }
         },
         {
           "Type": "HiddenQuestion",
           "Point": {
             "X": 9,
-            "Y": 10
-          }
-        },
-        {
-          "Type": "HiddenQuestion",
-          "Point": {
-            "X": 7,
-            "Y": 6
+            "Y": 11
           }
         },
         {
@@ -119,70 +119,60 @@
           "Type": "RedKoopa",
           "Point": {
             "X": 20,
-            "Y": 12
+            "Y": 14
           }
         },
         {
           "Type": "GreenKoopa",
           "Point": {
-            "X": 18,
-            "Y": 12
-          }
-        },
-        {
-          "Type": "Coin",
-          "Point": {
-            "X": 13,
-            "Y": 13
-          }
-        },
-        {
-          "Type": "Star",
-          "Point": {
-            "X": 14,
-            "Y": 13
-          }
-        },
-        {
-          "Type": "Coin",
-          "Point": {
-            "X": 15,
-            "Y": 13
+            "X": 10,
+            "Y": 10
           }
         },
         {
           "Type": "PipelineLeftIn",
           "Point": {
             "X": 23,
-            "Y": 11
+            "Y": 10
           }
         },
         {
           "Type": "PipelineRightIn",
           "Point": {
             "X": 24,
-            "Y": 11
+            "Y": 10
           }
         },
         {
           "Type": "PipelineLeft",
           "Point": {
             "X": 23,
-            "Y": 12
+            "Y": 11
           },
           "Quantity": {
             "X": 1,
-            "Y": 2
+            "Y": 4
           }
         },
         {
           "Type": "PipelineRight",
           "Point": {
             "X": 24,
-            "Y": 12
+            "Y": 11
           },
           "Quantity": {
             "X": 1,
+            "Y": 4
+          }
+        },
+        {
+          "Type": "Stair",
+          "Point": {
+            "X": 26,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 2,
             "Y": 2
           }
         },
@@ -204,44 +194,18 @@
           "Type": "Stair",
           "Point": {
             "X": 16,
-            "Y": 9
+            "Y": 12
           },
           "Quantity": {
             "X": 2,
-            "Y": 4
+            "Y": 3
           }
         },
         {
-          "Type": "Floor",
+          "Type": "Question",
           "Point": {
-            "X": 16,
-            "Y": 13
-          },
-          "Quantity": {
-            "X": 7,
-            "Y": 2
-          }
-        },
-        {
-          "Type": "Floor",
-          "Point": {
-            "X": 13,
-            "Y": 14
-          },
-          "Quantity": {
-            "X": 3,
-            "Y": 1
-          }
-        },
-        {
-          "Type": "Floor",
-          "Point": {
-            "X": 23,
-            "Y": 14
-          },
-          "Quantity": {
-            "X": 2,
-            "Y": 1
+            "X": 19,
+            "Y": 10
           }
         },
         {
@@ -267,17 +231,6 @@
           "Point": {
             "X": 13,
             "Y": 6
-          }
-        },
-        {
-          "Type": "Floor",
-          "Point": {
-            "X": 0,
-            "Y": 13
-          },
-          "Quantity": {
-            "X": 13,
-            "Y": 2
           }
         },
         {
