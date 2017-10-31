@@ -106,7 +106,7 @@ namespace MelloMario.EnemyObjects
             if (target is Koopa koopa)
             {
                 if (koopa.State is KoopaStates.MovingShell)
-               {
+                {
                     Defeat();
                 }
             }

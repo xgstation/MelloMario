@@ -130,6 +130,13 @@ namespace MelloMario.EnemyObjects
                     }
                     break;
             }
+            if (target is Koopa koopa)
+            {
+                if (koopa.State is MovingShell)
+                {
+                    Defeat();
+                }
+            }
         }
 
         protected override void OnOut(CollisionMode mode)
