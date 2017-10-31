@@ -40,6 +40,7 @@ namespace MelloMario.Factories
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public ICommand CreateGameCharacterCommand(string action, IGameCharacter character)
         {
             switch (action)
