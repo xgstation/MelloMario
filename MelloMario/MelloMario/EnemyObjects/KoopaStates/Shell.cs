@@ -34,7 +34,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void Pushed()
         {
-            //this is for a later sprint
+            Owner.State = new MovingShell(Owner);
         }
     }
 }

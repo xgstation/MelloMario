@@ -12,6 +12,7 @@ namespace MelloMario.EnemyObjects
         private ShellColor color;
         private IKoopaState state;
         private const int VELOCITY_LR = 1;
+        private const int VELOCITY_SHELL = 3;
         private bool move;
         private void UpdateSprite()
         {
@@ -51,11 +52,17 @@ namespace MelloMario.EnemyObjects
                
                 if (Facing == FacingMode.right)
                 {
-                    Move(new Point(VELOCITY_LR, 0));
+                    if (state is MovingShell)
+                        Move(new Point(VELOCITY_SHELL, 0));
+                    else
+                        Move(new Point(VELOCITY_LR, 0));
                 }
                 else
                 {
-                    Move(new Point(-VELOCITY_LR, 0));
+                    if (state is MovingShell)
+                        Move(new Point(-1 * VELOCITY_SHELL, 0));
+                    else
+                        Move(new Point(-1 * VELOCITY_LR, 0));
                 }
             }
             if (World.Model.Character != null && !move)
@@ -72,67 +79,85 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-            if (target is Mario mario)
-            {
-                //TODO: fire as target to be added
-                if (mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
-                {
-                    Defeat();
-            
-                }
-                else
-                {
-                    if (state is Normal)
-                    {
-                        if (mode == CollisionMode.Top)
-                        {
-                            JumpOn();
-                        }
-                    }
-                     else if (state is Defeated)
-                    { 
 
-                        if (mode == CollisionMode.Left||mode == CollisionMode.Right)
+            switch (target.GetType().Name)
+            {
+                case "PlayerMario":
+                    //TODO: Fire to be added
+                    Mario mario = (Mario)target;//TODO: fire as target to be added
+                    if (mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
+                    {
+                        Defeat();
+                    }
+                    else
+                    {
+                        if (state is Normal || state is MovingShell)
                         {
-                            Pushed();
+                            if (mode == CollisionMode.Top)
+                            {
+                                JumpOn();
+                            }
                         }
-                        else if (mode == CollisionMode.Top && corner == CornerMode.Left)
+                        else if (state is Defeated)
+                        {
+
+                            if (mode == CollisionMode.Left)
+                            {
+                                ChangeFacing(FacingMode.right);
+                                Pushed();
+                            }
+                            else if (mode == CollisionMode.Right)
+                            {
+                                ChangeFacing(FacingMode.left);
+                                Pushed();
+                            }
+                            else if (mode == CollisionMode.Top && corner == CornerMode.Left)
                             {
                                 ChangeFacing(FacingMode.right);
                                 JumpOn();
 
                             }
-                        else if(mode == CollisionMode.Top && corner == CornerMode.Right)
-                        {
-                            ChangeFacing(FacingMode.left);
-                            JumpOn();
-                        }
-                    } 
-                    else if(state is MovingShell)
-                    {
-                        if (mode == CollisionMode.Top)
-                        {
-                            Defeat();
+                            else if (mode == CollisionMode.Top && corner == CornerMode.Right)
+                            {
+                                ChangeFacing(FacingMode.left);
+                                JumpOn();
+                            }
                         }
                     }
-                
-                }
+                    break;
+                case "Brick":
+                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                        break;
+                    goto case "Stair";
+                case "Question":
+                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                        break;
+                    goto case "Stair";
+                case "Floor":
+                case "Pipeline":
+                case "Stair":
+                    if (mode == CollisionMode.Left)
+                    {
+                        Bounce(mode, new Vector2(), 1);
+                        ChangeFacing(FacingMode.right);
+                    }
+                    else if (mode == CollisionMode.Right)
+                    {
+                        Bounce(mode, new Vector2(), 1);
+                        ChangeFacing(FacingMode.left);
+                    }
+                    else if (mode == CollisionMode.Bottom)
+                    {
+                        Bounce(mode, new Vector2());
+
+                    }
+                    break;
             }
-            else if(target is Brick || target is Question || target is Floor||target is Stair || target is Pipeline)
+            if (target is Koopa koopa)
             {
-                if (mode == CollisionMode.Left)
+                if (koopa.State is MovingShell)
                 {
-                    Bounce(mode, new Vector2(), 1);
-                    ChangeFacing(FacingMode.right);
-                }
-                else if (mode == CollisionMode.Right)
-                {
-                    Bounce(mode, new Vector2(), 1);
-                    ChangeFacing(FacingMode.left);
-                }
-                else if (mode == CollisionMode.Bottom)
-                {
-                    Bounce(mode, new Vector2());
+                    Defeat();
                 }
             }
         }
