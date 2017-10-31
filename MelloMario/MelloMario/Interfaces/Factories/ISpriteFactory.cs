@@ -8,7 +8,8 @@ namespace MelloMario
         void LoadAllTextures(ContentManager content);
         void BindSpriteBatch(SpriteBatch spriteBatch);
 
-        ISprite CreateMarioSprite(string status, bool Static);
+        ISprite CreateMarioSprite(string status, bool isStatic, bool isStar);
+        ISprite CreateMarioSprite(string status, bool isStatic);
 
         ISprite CreateGoombaSprite(string status);
         ISprite CreateGreenKoopaSprite(string status);
