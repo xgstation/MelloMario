@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.ItemObjects.StarStates;
-using MelloMario.MarioObjects;
 using MelloMario.BlockObjects;
-using System.Diagnostics;
 
 namespace MelloMario.ItemObjects
 {
@@ -20,11 +18,10 @@ namespace MelloMario.ItemObjects
 
         protected override void OnUpdate(GameTime time)
         {
-            ApplyGravity();
-
             state.Update(time);
             if (state is Normal)
             {
+                ApplyGravity();
                 if (goingRight)
                     Move(new Point(H_SPEED, 0));
                 else
@@ -34,39 +31,39 @@ namespace MelloMario.ItemObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-            //Debug.WriteLine(target.GetType().Name);
-            switch (target.GetType().Name)
-            {
-                case "PlayerMario":
-                    if (state is Normal)
-                        Collect();
-                    break;
-                case "Brick":
-                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+            if (state is Normal)
+                switch (target.GetType().Name)
+                {
+                    case "PlayerMario":
+                        if (state is Normal)
+                            Collect();
                         break;
-                    goto case "Stair";
-                case "Question":
-                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                    case "Brick":
+                        if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                            break;
+                        goto case "Stair";
+                    case "Question":
+                        if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                            break;
+                        goto case "Stair";
+                    case "Floor":
+                    case "Pipeline":
+                    case "Stair":
+                        Bounce(mode, new Vector2());
+                        if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
+                        {
+                            Bounce(mode, new Vector2(), 1);
+                            goingRight = true;
+                        }
+                        else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
+                        {
+                            Bounce(mode, new Vector2(), 1);
+                            goingRight = false;
+                        }
+                        if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
+                            ApplyForce(new Vector2(0, -160f));
                         break;
-                    goto case "Stair";
-                case "Floor":
-                case "Pipeline":
-                case "Stair":
-                    Bounce(mode, new Vector2());
-                    if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
-                    {
-                        Bounce(mode, new Vector2(), 1);
-                        goingRight = true;
-                    }
-                    else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
-                    {
-                        Bounce(mode, new Vector2(), 1);
-                        goingRight = false;
-                    }
-                    if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
-                        ApplyForce(new Vector2(0, -160f));
-                    break;
-            }
+                }
         }
 
         protected override void OnOut(CollisionMode mode)
