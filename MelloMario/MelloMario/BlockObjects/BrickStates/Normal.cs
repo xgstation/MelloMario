@@ -30,7 +30,6 @@ namespace MelloMario.BlockObjects.BrickStates
         {
             if (Owner.HasItem)
             {
-                Owner.ReleaseNextItem();
                 Owner.State = new Bumped(Owner);
             }
             else
