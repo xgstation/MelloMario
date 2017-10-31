@@ -1,0 +1,20 @@
+﻿Sergey Maltsev
+10/31/2017
+Sprint 3
+Koopa
+Multiple Authors
+
+Koopa
+
+Seperating shell from defeated would be a good idea.
+As of right now when the koopa is defeated it just disapears.
+Having a seperate death state with an animation where it
+falls of the screen would be a good idea.
+
+In terms of code neatness unifiying some of the if statements
+into a switch would probably make the code more readable.
+
+Seperating some of the methods in the on collision into its own
+submethods would also improve code readability.
+
+This took 10 min.
