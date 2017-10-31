@@ -89,12 +89,12 @@ namespace MelloMario.EnemyObjects
                     if (mode == CollisionMode.Left)
                     {
                         Bounce(mode, new Vector2(), 1);
-                        Facing = FacingMode.right;
+                        ChangeFacing(FacingMode.right);
                     }
                     else if (mode == CollisionMode.Right)
                     {
                         Bounce(mode, new Vector2(), 1);
-                        Facing = FacingMode.left;
+                        ChangeFacing(FacingMode.left);
                     }
                     else if (mode == CollisionMode.Bottom)
                     {
@@ -134,6 +134,15 @@ namespace MelloMario.EnemyObjects
                 state = value;
                 UpdateSprite();
             }
+
+        }
+
+        private void ChangeFacing(FacingMode facing)
+        {
+            Facing = facing;
+
+            // Notice: The effect should be the same as changing state
+            UpdateSprite();
         }
 
         public Goomba(IGameWorld world, Point location, Point marioLoc) : base(world, location, new Point(32, 32), 32)
