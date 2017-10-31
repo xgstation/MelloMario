@@ -35,8 +35,7 @@ namespace MelloMario.Controllers
             previousState = currentState;
         }
 
-        public KeyboardController()
-            : base()
+        public KeyboardController() : base()
         {
             previousState = Keyboard.GetState();
         }
