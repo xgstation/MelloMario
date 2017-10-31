@@ -107,11 +107,18 @@ namespace MelloMario.EnemyObjects
                             ChangeFacing(FacingMode.left);
                             JumpOn();
                         }
-                    }   
+                    } 
+                    else if(state is MovingShell)
+                    {
+                        if (mode == CollisionMode.Top)
+                        {
+                            Defeat();
+                        }
+                    }
                 
                 }
             }
-            else if(target is Brick || target is Question || target is Floor || target is Pipeline)
+            else if(target is Brick || target is Question || target is Floor||target is Stair || target is Pipeline)
             {
                 if (mode == CollisionMode.Left)
                 {
