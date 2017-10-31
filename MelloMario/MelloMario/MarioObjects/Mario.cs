@@ -142,7 +142,7 @@ namespace MelloMario.MarioObjects
                     {
                         if (goomba.State is EnemyObjects.GoombaStates.Normal && !(ProtectionState is Starred))
                         {
-                            PowerUpState.Downgrade();
+                            Downgrade();
                         }
 
                     }
@@ -157,11 +157,11 @@ namespace MelloMario.MarioObjects
                     {
                         if (koopa.State is EnemyObjects.KoopaStates.Normal && !(ProtectionState is Starred))
                         {
-                            PowerUpState.Downgrade();
+                            Downgrade();
                         }
                         else if (koopa.State is EnemyObjects.KoopaStates.MovingShell && !(ProtectionState is Starred))
                         {
-                            PowerUpState.Downgrade();
+                            Downgrade();
                         }
                     }
                     else if (!(protectionState is Starred))
@@ -201,6 +201,16 @@ namespace MelloMario.MarioObjects
 
         protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
+            if (protectionState is Protected)
+                if (time.TotalGameTime.Milliseconds % 3 == 0)
+                {
+                    HideSprite();
+                }
+                else
+                {
+                    UpdateSprite();
+                }
+
         }
 
         public IMarioMovementState MovementState
@@ -260,7 +270,11 @@ namespace MelloMario.MarioObjects
 
         public void Downgrade()
         {
-            PowerUpState.Downgrade();
+
+            if (protectionState is Normal)
+                PowerUpState.Downgrade();
+            if ((protectionState is Normal))
+                protectionState.Protect();
         }
 
     }

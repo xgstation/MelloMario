@@ -21,6 +21,11 @@ namespace MelloMario.MarioObjects.ProtectionStates
             Owner.ProtectionState = new Starred(Owner);
         }
 
+        public void Protect()
+        {
+            Owner.ProtectionState = new Protected(Owner);
+        }
+
         public override void Update(GameTime time)
         {
 

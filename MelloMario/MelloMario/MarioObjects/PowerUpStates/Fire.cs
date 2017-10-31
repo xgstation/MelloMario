@@ -22,7 +22,7 @@ namespace MelloMario.MarioObjects.PowerUpStates
         }
         public void Downgrade()
         {
-            Owner.PowerUpState = new Standard(Owner);
+            UpgradeToSuper();
 
         }
         public void UpgradeToSuper()

@@ -25,5 +25,10 @@ namespace MelloMario.MarioObjects.ProtectionStates
         {
             Owner.ProtectionState = new Starred(Owner);
         }
+
+        public void Protect()
+        {
+            //do nothing since star overrides protect
+        }
     }
 }
