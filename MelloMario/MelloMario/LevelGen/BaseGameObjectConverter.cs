@@ -129,7 +129,7 @@ namespace MelloMario.LevelGen
             //TODO: Implement serializer
         }
 
-        private T TryGet<T>(JToken token, params string[] p)
+        static private T TryGet<T>(JToken token, params string[] p)
         {
             T obj = default(T);
             JToken tempToken = token;
@@ -144,7 +144,7 @@ namespace MelloMario.LevelGen
             }
             return obj;
         }
-        private IList<IGameObject> CreateItemList(GameWorld world, Point point, params string[] s)
+        static private IList<IGameObject> CreateItemList(GameWorld world, Point point, params string[] s)
         {
             if (s != null)
             {
