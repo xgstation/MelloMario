@@ -10,13 +10,18 @@ namespace MelloMario.Sprites
         private Point source;
         private Point size;
         private ZIndex activeZIndex;
-        protected Color color;
+        private Color color;
 
         protected abstract void OnAnimate(GameTime time);
 
         protected void ChangeSource(Point newSource)
         {
             source = newSource;
+        }
+
+        protected void ChangeColor(Color newColor)
+        {
+            color = newColor;
         }
 
         public Point PixelSize
