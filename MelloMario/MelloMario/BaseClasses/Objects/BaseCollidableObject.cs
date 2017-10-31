@@ -117,7 +117,7 @@ namespace MelloMario
             }
         }
 
-        protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom, None };
+        protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom };
         protected enum CornerMode { Left, Right, Top, Bottom, Center };
 
         protected abstract void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive);

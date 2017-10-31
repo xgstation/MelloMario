@@ -103,12 +103,7 @@ namespace MelloMario
 
                     return false;
                 default:
-                    if (velocity.Y > refVelocity.Y)
-                    {
-                        velocity.Y = refVelocity.Y + (refVelocity.Y - velocity.Y) * rate;
-
-                        return true;
-                    }
+                    // never reach
                     return false;
             }
         }

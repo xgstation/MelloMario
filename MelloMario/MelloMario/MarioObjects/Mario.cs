@@ -144,11 +144,11 @@ namespace MelloMario.MarioObjects
                         {
                             PowerUpState.Downgrade();
                         }
-                      
+
                     }
-                    else if(!(protectionState is Starred))
+                    else if (!(protectionState is Starred))
                     {
-                        Bounce(CollisionMode.None, new Vector2(0, -20));
+                        Bounce(mode, new Vector2(0, -20), 0.5f);
                     }
 
                     break;
@@ -159,13 +159,14 @@ namespace MelloMario.MarioObjects
                         {
                             PowerUpState.Downgrade();
                         }
-                        else if (koopa.State is EnemyObjects.KoopaStates.MovingShell && !(ProtectionState is Starred)){
+                        else if (koopa.State is EnemyObjects.KoopaStates.MovingShell && !(ProtectionState is Starred))
+                        {
                             PowerUpState.Downgrade();
                         }
                     }
                     else if (!(protectionState is Starred))
                     {
-                        Bounce(CollisionMode.None, new Vector2(0, -20));
+                        Bounce(mode, new Vector2(0, -20), 0.5f);
                     }
 
                     break;
