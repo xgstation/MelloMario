@@ -1,13 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
-using System;
 
 namespace MelloMario
 {
     abstract class BasePhysicalObject : BaseCollidableObject
     {
-        private const float VELOCITY_MAX_LR = 15f;
+        private const float VELOCITY_MAX_LR = 10f;
         private const float VELOCITY_MAX_U = 15f;
         private const float VELOCITY_MAX_D = 20f;
 

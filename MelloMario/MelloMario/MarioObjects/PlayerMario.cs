@@ -1,11 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using MelloMario.Factories;
 using MelloMario.MarioObjects.MovementStates;
-using MelloMario.MarioObjects.PowerUpStates;
-using MelloMario.MarioObjects.ProtectionStates;
-using MelloMario.BlockObjects;
-using MelloMario.EnemyObjects;
-using System;
 
 namespace MelloMario.MarioObjects
 {
@@ -27,6 +21,27 @@ namespace MelloMario.MarioObjects
             {
                 Point location = Boundary.Location - new Point(320, 320);
                 Point size = new Point(800, 480); // TODO: currently, size of viewport does nothing
+
+                Rectangle worldBoundary = World.Boundary;
+
+                // NOTE: this is a temporary solution for sprint 3, this should be moved to the collision detection system
+                if (location.X < worldBoundary.Left)
+                {
+                    location.X = worldBoundary.Left;
+                }
+                if (location.Y < worldBoundary.Top)
+                {
+                    location.Y = worldBoundary.Top;
+                }
+                if (location.X > worldBoundary.Right - size.X)
+                {
+                    location.X = worldBoundary.Right - size.X;
+                }
+                if (location.Y > worldBoundary.Bottom - size.Y)
+                {
+                    location.Y = worldBoundary.Bottom - size.Y;
+                }
+
                 return new Rectangle(location, size);
             }
         }
