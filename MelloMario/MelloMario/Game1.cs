@@ -12,20 +12,17 @@ namespace MelloMario
     /// </summary>
     class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        GameModel model;
+        private GraphicsDeviceManager graphics;
+        private GameModel model;
 
-        SpriteBatch spriteBatch;
+        private SpriteBatch spriteBatch;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             model = new GameModel(this, new LevelIOJson("Content/ExampleLevel.json"));
         }
-        internal void ToggleFullScreen()
-        {
-            graphics.ToggleFullScreen();
-        }
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -99,5 +96,13 @@ namespace MelloMario
             model.Draw(time, ZIndex.front);
             spriteBatch.End();
         }
+
+        // game controlling
+
+        public void ToggleFullScreen()
+        {
+            graphics.ToggleFullScreen();
+        }
+
     }
 }
