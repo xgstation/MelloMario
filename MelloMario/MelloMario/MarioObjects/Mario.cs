@@ -146,6 +146,10 @@ namespace MelloMario.MarioObjects
                         }
                       
                     }
+                    else if(!(protectionState is Starred))
+                    {
+                        Bounce(CollisionMode.None, new Vector2(0, -20));
+                    }
 
                     break;
                 case "Koopa":
@@ -158,6 +162,10 @@ namespace MelloMario.MarioObjects
                         else if (koopa.State is EnemyObjects.KoopaStates.MovingShell && !(ProtectionState is Starred)){
                             PowerUpState.Downgrade();
                         }
+                    }
+                    else if (!(protectionState is Starred))
+                    {
+                        Bounce(CollisionMode.None, new Vector2(0, -20));
                     }
 
                     break;

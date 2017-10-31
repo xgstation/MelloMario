@@ -114,13 +114,13 @@ namespace MelloMario.EnemyObjects
                             else if (mode == CollisionMode.Top && corner == CornerMode.Left)
                             {
                                 ChangeFacing(FacingMode.right);
-                                JumpOn();
+                                Pushed();
 
                             }
                             else if (mode == CollisionMode.Top && corner == CornerMode.Right)
                             {
                                 ChangeFacing(FacingMode.left);
-                                JumpOn();
+                                Pushed();
                             }
                         }
                     }
