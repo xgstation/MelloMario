@@ -65,36 +65,49 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-            if (target is Mario mario)
+            switch(target.GetType().Name)
             {
-                //TODO: Fire to be added
-                if (mode == CollisionMode.Top || mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
-                {
-                    Defeat();
-                }
+                case "PlayerMario":
+                    //TODO: Fire to be added
+                    Mario mario = (Mario)target;
+                    if (mode == CollisionMode.Top || mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
+                    {
+                        Defeat();
+                    }
+                    break;
+                case "Brick":
+                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                        break;
+                    goto case "Stair";
+                case "Question":
+                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                        break;
+                    goto case "Stair";
+                case "Floor":
+                case "Pipeline":
+                case "Stair":
+                    if (mode == CollisionMode.Left)
+                    {
+                        Bounce(mode, new Vector2(), 1);
+                        Facing = FacingMode.right;
+                    }
+                    else if (mode == CollisionMode.Right)
+                    {
+                        Bounce(mode, new Vector2(), 1);
+                        Facing = FacingMode.left;
+                    }
+                    else if (mode == CollisionMode.Bottom)
+                    {
+                        Bounce(mode, new Vector2());
+
+                    }
+                    break;
             }
-            else if (target is Koopa koopa)
+            if (target is Koopa koopa)
             {
                 if (koopa.State is KoopaStates.MovingShell)
                {
                     Defeat();
-                }
-            }
-            else if (target is Brick || target is Question ||target is Floor || target is Stair || target is Pipeline) {
-                if (mode == CollisionMode.Left)
-                {
-                    Bounce(mode, new Vector2(), 1);
-                    Facing = FacingMode.right;
-                }
-                else if (mode == CollisionMode.Right)
-                {
-                    Bounce(mode, new Vector2(), 1);
-                    Facing = FacingMode.left;
-                }
-                else if(mode == CollisionMode.Bottom)
-                {
-                    Bounce(mode, new Vector2());
-                
                 }
             }
 
