@@ -13,6 +13,8 @@ namespace MelloMario.EnemyObjects
         private float timeFromDeath;
         private const int VELOCITY_LR = 1;
         private bool move;
+        private Rectangle marioCurrentLoc;
+        private Point goombaCurrentLoc;
         private void UpdateSprite()
         {
          
@@ -41,11 +43,21 @@ namespace MelloMario.EnemyObjects
                     if (Facing == FacingMode.right)
                     {
                         Move(new Point(VELOCITY_LR, 0));
+                        goombaCurrentLoc += new Point(VELOCITY_LR, 0);
                     }
                     else
                     {
                         Move(new Point(-VELOCITY_LR, 0));
+                        goombaCurrentLoc -= new Point(VELOCITY_LR, 0);
                     }
+                }
+                if ((marioCurrentLoc.Location.X - goombaCurrentLoc.X) < marioCurrentLoc.Size.X || (marioCurrentLoc.Location.X - goombaCurrentLoc.X) > -marioCurrentLoc.Size.X)
+                {
+                    move = true;
+                }
+                else
+                {
+                    move = false;
                 }
             }
            
@@ -69,7 +81,7 @@ namespace MelloMario.EnemyObjects
                     Defeat();
                 }
             }
-            else if (target is Brick || target is Question ||target is Floor ||target is Stair || target is Pipeline) {
+            else if (target is Brick || target is Question ||target is Floor || target is Stair || target is Pipeline) {
                 if (mode == CollisionMode.Left)
                 {
                     Bounce(mode, new Vector2(), 1);
@@ -114,6 +126,8 @@ namespace MelloMario.EnemyObjects
 
         public Goomba(IGameWorld world, Point location, Rectangle marioViewport) : base(world, location, new Point(32, 32), 32)
         {
+            marioCurrentLoc = marioViewport;
+            goombaCurrentLoc = location;
             if (marioViewport.Location.X < location.X)
             {
                 Facing = FacingMode.left;
@@ -122,14 +136,7 @@ namespace MelloMario.EnemyObjects
             {
                 Facing = FacingMode.right;
             }
-            if ((marioViewport.Location.X - location.X) < marioViewport.Size.X || (marioViewport.Location.X - location.X) > -marioViewport.Size.X)
-            {
-                move = true;
-            }
-            else
-            {
-                move = false;
-            }
+            move = false;
             timeFromDeath = 0;
             state = new Normal(this);
             UpdateSprite();
