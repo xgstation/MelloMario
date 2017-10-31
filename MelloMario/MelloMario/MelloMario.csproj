@@ -128,7 +128,6 @@
     <Compile Include="LevelGen\EncapsulatedObject.cs" />
     <Compile Include="LevelGen\GameConverter.cs" />
     <Compile Include="LevelGen\LevelIOJson.cs" />
-    <Compile Include="LevelGen\LevelReader.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioProtectionState.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioMovementState.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioPowerUpState.cs" />

@@ -16,7 +16,7 @@ namespace MelloMario
 
         private void DoAdd(IGameObject gameObject)
         {
-            if (!locations.ContainsKey(gameObject))
+            if (gameObject != null && !locations.ContainsKey(gameObject))
             {
                 Point location = new Point(
                     gameObject.Boundary.Center.X / grid,

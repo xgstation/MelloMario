@@ -1,14 +1,6 @@
-﻿using MelloMario.Factories;
-using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.IO;
-using System.Linq;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using Newtonsoft.Json.Converters;
-using System.Collections;
-using MelloMario.MarioObjects;
 
 namespace MelloMario.LevelGen
 {
@@ -27,17 +19,16 @@ namespace MelloMario.LevelGen
         {
             path = jsonPath;
             model = gameModel;
-            if (File.Exists(jsonPath))
-                levelString = File.ReadAllText(jsonPath);
         }
         public Tuple<IGameWorld, IGameCharacter> Load(string index)
         {
+            levelString = File.ReadAllText(path);
             return JsonConvert.DeserializeObject<Tuple<IGameWorld, IGameCharacter>>(levelString, new GameConverter(index, model));
         }
-        public void Close()
-        {
+        //public void Close()
+        //{
             //TODO: Implement IO stream close
-        }
+        //}
         public void Dispose()
         {
             //TODO: Implement dispose

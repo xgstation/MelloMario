@@ -15,7 +15,6 @@ namespace MelloMario.LevelGen
     class GameConverter : JsonConverter
     {
         private string index;
-        private GameModel gameModel;
         JsonSerializer serializers;
 
         private GameWorld world;
@@ -23,7 +22,6 @@ namespace MelloMario.LevelGen
         public GameConverter(string index, GameModel gameModel)
         {
             this.index = index;
-            this.gameModel = gameModel;
             serializers = new JsonSerializer();
         }
         public override bool CanConvert(Type objectType)
@@ -47,7 +45,7 @@ namespace MelloMario.LevelGen
             Point mapSize = MapToBeLoaded.Value<JToken>("Size").ToObject<Point>();
             int grid = MapToBeLoaded["Grid"].ToObject<int>();
 
-            IList<JToken> Structures = MapToBeLoaded.Value<JToken>("Structures").ToList();
+            IList<JToken> Structures = MapToBeLoaded.Value<JToken>("Entity").ToList();
             world = new GameWorld(MapToBeLoaded.Value<int>("Grid"), mapSize);
             serializers.Converters.Add(new BaseGameObjectConverter(world, grid));
             serializers.Converters.Add(new CharacterConverter(world, grid));
@@ -67,14 +65,7 @@ namespace MelloMario.LevelGen
                 var temp = obj.ToObject<EncapsulatedObject<PlayerMario>>(serializers);
                 character = temp.RealObj.Pop();
                 world.AddObject(character);
-                //TODO: Add support for IEnumerables<IGameCharacter>
-                //else if (temp is IEnumerable<IGameCharacter> gameCharacters)
-                //{
-                //    foreach (var gameChar in gameCharacters)
-                //    {
-                //        gameWorld.AddObject(gameChar);
-                //    }
-                //}
+                //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
             }
             return new Tuple<IGameWorld, IGameCharacter>(world, character);
         }
@@ -82,7 +73,7 @@ namespace MelloMario.LevelGen
         public override bool CanWrite => false;
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            //TODO: Implement serializer
         }
     }
 

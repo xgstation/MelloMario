@@ -28,7 +28,6 @@ namespace MelloMario.LevelGen
         {
             JToken jsonToken = JToken.Load(reader);
             var characterStack = new Stack<PlayerMario>();
-            var type = jsonToken["Type"].ToObject<string>();
             var startPoint = jsonToken["SpawnPoint"].ToObject<Point>();
             var state = jsonToken["State"].ToObject<string>();
             startPoint.X = startPoint.X * grid;
