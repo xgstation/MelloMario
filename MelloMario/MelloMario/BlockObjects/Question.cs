@@ -9,7 +9,7 @@ namespace MelloMario.BlockObjects
     class Question : BaseCollidableObject
     {
         private IBlockState state;
-        private IEnumerator<IGameObject> items;
+        private IList<IGameObject> items;
         private IGameObject item;
 
         private void UpdateSprite()
@@ -18,17 +18,22 @@ namespace MelloMario.BlockObjects
             {
                 HideSprite();
             }
+            else if (HasItem)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
+            }
             else
             {
-                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite(state.GetType().Name));
+                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
             }
         }
-
+        internal bool HasItem { get { return item != null || items.Count != 0; } }
         private void LoadItem()
         {
-            if (items.MoveNext())
+            if (items.Count != 0)
             {
-                item = items.Current;
+                item = items[0];
+                items.RemoveAt(0);
             }
             else
             {
@@ -70,7 +75,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        public Question(IGameWorld world, Point location, IEnumerable<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
+        public Question(IGameWorld world, Point location, IList<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
         {
             if (isHidden)
             {
@@ -80,10 +85,9 @@ namespace MelloMario.BlockObjects
             {
                 state = new Normal(this);
             }
-            UpdateSprite();
-
-            this.items = items.GetEnumerator();
+            this.items = items;
             LoadItem();
+            UpdateSprite();
         }
 
         public void Bump(Mario mario)
@@ -96,15 +100,13 @@ namespace MelloMario.BlockObjects
             Move(new Point(0, delta));
         }
 
-        public bool ReleaseNextItem()
+        public void ReleaseNextItem()
         {
             if (item != null)
             {
                 World.AddObject(item);
                 LoadItem();
             }
-
-            return item != null;
         }
     }
 }

@@ -23,7 +23,14 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Show()
         {
-            Owner.State = new Normal(Owner);
+            if (Owner.HasItem)
+            {
+                Owner.State = new Normal(Owner);
+            }
+            else
+            {
+                Owner.State = new Used(Owner);
+            }
         }
 
         public void Hide()

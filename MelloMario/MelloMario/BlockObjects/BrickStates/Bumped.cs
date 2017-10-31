@@ -22,7 +22,21 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Show()
         {
-            Owner.State = new Normal(Owner);
+            if (Owner.HasInitialItem)
+            {
+                if (Owner.HasItem)
+                {
+                    Owner.State = new Normal(Owner);
+                }
+                else
+                {
+                    Owner.State = new Used(Owner);
+                }
+            }
+            else
+            {
+                Owner.State = new Normal(Owner);
+            }
         }
 
         public void Hide()

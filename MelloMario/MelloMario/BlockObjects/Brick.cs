@@ -9,26 +9,43 @@ namespace MelloMario.BlockObjects
     class Brick : BaseCollidableObject
     {
         private IBlockState state;
-        private IEnumerator<IGameObject> items;
+        private IList<IGameObject> items;
         private IGameObject item;
-
+        private readonly bool hasInitialItem;
         private void UpdateSprite()
         {
             if (state is Hidden)
             {
                 HideSprite();
             }
+            else if (hasInitialItem)
+            {
+                if (HasItem)
+                {
+                    ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
+                }
+                else
+                {
+                    ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Used"));
+                }
+            }
+            else if (state is Destroyed)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Destroyed"));
+            }
             else
             {
-                ShowSprite(SpriteFactory.Instance.CreateBrickSprite(state.GetType().Name));
+                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
             }
         }
-
+        internal bool HasItem { get { return item != null || items.Count != 0; } }
+        internal bool HasInitialItem { get { return hasInitialItem; } }
         private void LoadItem()
         {
-            if (items.MoveNext())
+            if (items.Count != 0)
             {
-                item = items.Current;
+                item = items[0];
+                items.RemoveAt(0);
             }
             else
             {
@@ -75,7 +92,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        public Brick(IGameWorld world, Point location, IEnumerable<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
+        public Brick(IGameWorld world, Point location, IList<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
         {
             if (isHidden)
             {
@@ -85,10 +102,13 @@ namespace MelloMario.BlockObjects
             {
                 state = new Normal(this);
             }
+            this.items = items;
+            if (items != null && items.Count != 0)
+            {
+                LoadItem();
+                hasInitialItem = true;
+            }
             UpdateSprite();
-
-            this.items = items.GetEnumerator();
-            LoadItem();
         }
 
 
@@ -104,15 +124,13 @@ namespace MelloMario.BlockObjects
 
         }
 
-        public bool ReleaseNextItem()
+        public void ReleaseNextItem()
         {
             if (item != null)
             {
                 World.AddObject(item);
                 LoadItem();
             }
-
-            return item != null;
         }
     }
 }

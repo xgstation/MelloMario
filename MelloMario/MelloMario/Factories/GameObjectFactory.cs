@@ -49,8 +49,6 @@ namespace MelloMario.Factories
 
         public IGameObject CreateGameObject(string type, IGameWorld world, Point location)
         {
-            IEnumerable<IGameObject> items;
-
             switch (type)
             {
                 //blocks
@@ -63,35 +61,9 @@ namespace MelloMario.Factories
                 case "Stair":
                     return new Stair(world, location);
                 case "Question":
-                    items = new List<IGameObject>()
-                    {
-                        CreateGameObject("FireFlowerUnveil", world, location),
-                    };
-                    return new Question(world, location, items, false);
-                case "QuestionCoin":
-                    items = new List<IGameObject>()
-                    {
-                        CreateGameObject("CoinUnveil", world, location),
-                        CreateGameObject("CoinUnveil", world, location),
-                        CreateGameObject("CoinUnveil", world, location),
-                        CreateGameObject("CoinUnveil", world, location),
-                    };
-                    return new Question(world, location, items, false);
+                    return new Question(world, location, false);
                 case "HiddenQuestion":
-                    items = new List<IGameObject>()
-                    {
-                        CreateGameObject("CoinUnveil", world, location),
-                        CreateGameObject("CoinUnveil", world, location),
-                        CreateGameObject("CoinUnveil", world, location),
-                        CreateGameObject("CoinUnveil", world, location),
-                    };
-                    return new Question(world, location, items, true);
-                case "HiddenQuestionFlower":
-                    items = new List<IGameObject>()
-                    {
-                        CreateGameObject("FireFlowerUnveil", world, location),
-                    };
-                    return new Question(world, location, items, true);
+                    return new Question(world, location, true);
                 case "PipelineLeftIn":
                     return new Pipeline(world, location, "LeftIn");
                 case "PipelineRightIn":
