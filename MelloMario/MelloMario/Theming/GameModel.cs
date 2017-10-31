@@ -23,7 +23,7 @@ namespace MelloMario
                 return isPaused;
             }
         }
-
+        internal IGameCharacter Character { get { return character != null ? character: null; } }
         public GameModel(Game1 game, GameScript script, LevelIOJson reader)
         {
             this.game = game;
@@ -73,6 +73,7 @@ namespace MelloMario
 
         public void Reset()
         {
+            reader.SetModel(this);
             Tuple<IGameWorld, IGameCharacter> pair = reader.Load("Main");
             world = pair.Item1;
             character = pair.Item2;

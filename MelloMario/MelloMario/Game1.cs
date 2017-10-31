@@ -43,7 +43,7 @@ namespace MelloMario
             };
 
             model.LoadControllers(controllers);
-
+            
             model.Reset(); // Create the level for the first time
         }
 

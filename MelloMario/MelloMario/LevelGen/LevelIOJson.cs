@@ -13,15 +13,21 @@ namespace MelloMario.LevelGen
   
             
         private string path;
+        private GameModel model;
+
         private string levelString;
         public LevelIOJson(string jsonPath)
         {
             path = jsonPath;
         }
+        public void SetModel(GameModel model)
+        {
+            this.model = model;
+        }
         public Tuple<IGameWorld, IGameCharacter> Load(string index)
         {
             levelString = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IGameCharacter>>(levelString, new GameConverter(index));
+            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IGameCharacter>>(levelString, new GameConverter(index, model));
         }
         //public void Close()
         //{

@@ -44,9 +44,19 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnUpdate(GameTime time)
         {
-          
-            if (move&& !(state is Defeated))
+            ApplyGravity();
+            if (World.Model.Character != null && !move)
             {
+                move = Boundary.Intersects(World.Model.Character.Viewport);
+            }
+            else
+            {
+                move = true;
+
+            }
+            if (move && !(state is Defeated))
+            {
+               
                 if (Facing == FacingMode.right)
                 {
                     Move(new Point(VELOCITY_LR, 0));
@@ -56,8 +66,8 @@ namespace MelloMario.EnemyObjects
                     Move(new Point(-VELOCITY_LR, 0));
                 }
             }
-        
-    }
+            
+        }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
@@ -101,6 +111,10 @@ namespace MelloMario.EnemyObjects
                     Bounce(mode, new Vector2(), 1);
                     ChangeFacing(FacingMode.left);
                 }
+                else if (mode == CollisionMode.Bottom)
+                {
+                    Bounce(mode, new Vector2());
+                }
             }
         }
 
@@ -126,10 +140,10 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        public Koopa(IGameWorld world, Point location, Rectangle marioViewport, ShellColor color) : base(world, location, new Point(32, 32), 32)
+        public Koopa(IGameWorld world, Point location, Point marioLoc, ShellColor color) : base(world, location, new Point(32, 32), 32)
         {
 
-            if (marioViewport.Location.X < location.X)
+            if (marioLoc.X < location.X)
                 {
                     Facing = FacingMode.left;
                 }
@@ -137,14 +151,7 @@ namespace MelloMario.EnemyObjects
                 {
                     Facing = FacingMode.right;
                 }
-            if((marioViewport.Location.X-location.X)<marioViewport.Size.X|| (marioViewport.Location.X - location.X)> -marioViewport.Size.X)
-            {
-                move = true;
-            }
-            else
-            {
-                move = false;
-            }
+            move = false;
             this.color = color;
             state = new Normal(this);
             UpdateSprite();

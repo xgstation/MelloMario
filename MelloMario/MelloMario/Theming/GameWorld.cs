@@ -14,6 +14,8 @@ namespace MelloMario
         private ISet<IGameObject> toMove;
         private ISet<IGameObject> toRemove;
 
+        private GameModel model;
+        public GameModel Model { get { return model; } }
         private void DoAdd(IGameObject gameObject)
         {
             if (gameObject != null && !locations.ContainsKey(gameObject))
@@ -50,10 +52,11 @@ namespace MelloMario
             }
         }
 
-        public GameWorld(int grid, Point size)
+        public GameWorld(int grid, Point size, GameModel model)
         {
             this.grid = grid;
             this.size = size;
+            this.model = model;
 
             objects = new HashSet<IGameObject>[size.X, size.Y];
             for (int i = objects.GetLowerBound(0); i <= objects.GetUpperBound(0); ++i)
