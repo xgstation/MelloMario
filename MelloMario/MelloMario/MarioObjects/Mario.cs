@@ -144,6 +144,7 @@ namespace MelloMario.MarioObjects
                         {
                             PowerUpState.Downgrade();
                         }
+                      
                     }
 
                     break;
@@ -152,6 +153,9 @@ namespace MelloMario.MarioObjects
                     {
                         if (koopa.State is EnemyObjects.KoopaStates.Normal && !(ProtectionState is Starred))
                         {
+                            PowerUpState.Downgrade();
+                        }
+                        else if (koopa.State is EnemyObjects.KoopaStates.MovingShell && !(ProtectionState is Starred)){
                             PowerUpState.Downgrade();
                         }
                     }

@@ -4,6 +4,7 @@ using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.KoopaStates;
 using MelloMario.BlockObjects;
 
+
 namespace MelloMario.EnemyObjects
 {
     class Koopa : BasePhysicalObject
@@ -45,16 +46,7 @@ namespace MelloMario.EnemyObjects
         protected override void OnUpdate(GameTime time)
         {
             ApplyGravity();
-            if (World.Model.Character != null && !move)
-            {
-                move = Boundary.Intersects(World.Model.Character.Viewport);
-            }
-            else
-            {
-                move = true;
-
-            }
-            if (move && !(state is Defeated))
+            if (move&&!(state is Defeated))
             {
                
                 if (Facing == FacingMode.right)
@@ -66,7 +58,16 @@ namespace MelloMario.EnemyObjects
                     Move(new Point(-VELOCITY_LR, 0));
                 }
             }
-            
+            if (World.Model.Character != null && !move)
+            {
+                move = Boundary.Intersects(World.Model.Character.Viewport);
+            }
+            else
+            {
+                move = true;
+
+            }
+
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
@@ -77,29 +78,40 @@ namespace MelloMario.EnemyObjects
                 if (mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
                 {
                     Defeat();
+            
                 }
                 else
                 {
                     if (state is Normal)
                     {
                         if (mode == CollisionMode.Top)
+                        {
                             JumpOn();
+                        }
                     }
-                    else if (state is Shell)
-                    {
-                        if (mode == CollisionMode.Left || mode == CollisionMode.Top)
-                        {
-                            Pushed();
-                        }
-                        else
-                        {
-                            Pushed();
-                        }
+                     else if (state is Defeated)
+                    { 
 
-                    }
+                        if (mode == CollisionMode.Left||mode == CollisionMode.Right)
+                        {
+                            Pushed();
+                        }
+                        else if (mode == CollisionMode.Top && corner == CornerMode.Left)
+                            {
+                                ChangeFacing(FacingMode.right);
+                                JumpOn();
+
+                            }
+                        else if(mode == CollisionMode.Top && corner == CornerMode.Right)
+                        {
+                            ChangeFacing(FacingMode.left);
+                            JumpOn();
+                        }
+                    }   
+                
                 }
             }
-            else if(target is Brick || target is Question || target is Floor || target is Stair || target is Pipeline)
+            else if(target is Brick || target is Question || target is Floor || target is Pipeline)
             {
                 if (mode == CollisionMode.Left)
                 {

@@ -21,7 +21,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void JumpOn()
         {
-            Owner.State = new Shell(Owner);
+            Owner.State = new MovingShell(Owner);
         }
 
         public void Defeat()
@@ -34,6 +34,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void Pushed()
         {
+            Owner.State = new MovingShell(Owner);
             //do nothing for this sprint
         }
     }

@@ -150,6 +150,8 @@ namespace MelloMario.Factories
             {
                 case "DefeatedLeft":
                 case "DefeatedRight":
+                case "MovingShellLeft":
+                case "MovingShellRight":
                     return new StaticSprite(spriteBatch, greenKoopaDeadSpritesheet);
                 case "ShellLeft":
                 case "ShellRight":
@@ -171,6 +173,8 @@ namespace MelloMario.Factories
             {
                 case "DefeatedLeft":
                 case "DefeatedRight":
+                case "MovingShellLeft":
+                case "MovingShellRight":
                     return new StaticSprite(spriteBatch, redKoopaDeadSpritesheet);
                 case "ShellLeft":
                 case "ShellRight":
