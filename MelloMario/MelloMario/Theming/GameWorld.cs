@@ -7,6 +7,9 @@ namespace MelloMario
     {
         private int grid;
         private Point size;
+        //supressing this recomendation to change to a jagged array since this will always be a
+        //rectangular shape and there is no need to change to a jagged array.
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId = "Member")]
         private ISet<IGameObject>[,] objects;
         private IDictionary<IGameObject, Point> locations;
 
