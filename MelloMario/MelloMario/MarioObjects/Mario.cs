@@ -68,6 +68,7 @@ namespace MelloMario.MarioObjects
             base.OnSimulation(time);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
             switch (target.GetType().Name)
@@ -77,7 +78,7 @@ namespace MelloMario.MarioObjects
                 case "Brick":
                 case "Question":
                     bool isHidden;
-                    bool isBumping; // TODO: remove later
+                    bool isBumping;
 
                     if (target is Brick brick)
                     {
@@ -95,8 +96,7 @@ namespace MelloMario.MarioObjects
                         isHidden = false;
                         isBumping = false;
                     }
-
-                    // if (mode == CollisionMode.Top && corner == CollisionCornerMode.Center) // TODO
+                    
                     if (mode == CollisionMode.Top)
                     {
                         if (Bounce(mode, new Vector2(), 1))
