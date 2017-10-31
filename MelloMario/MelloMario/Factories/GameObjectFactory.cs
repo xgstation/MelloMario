@@ -42,6 +42,7 @@ namespace MelloMario.Factories
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public IGameObject CreateGameObject(string type, IGameWorld world, Point location)
         {
             switch (type)
