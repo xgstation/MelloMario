@@ -41,8 +41,7 @@ namespace MelloMario.Controllers
             previousState = currentState;
         }
 
-        public GamepadController()
-            : base()
+        public GamepadController() : base()
         {
             previousState = GamePad.GetState(PlayerIndex.One);
         }
