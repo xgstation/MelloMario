@@ -21,6 +21,12 @@ namespace MelloMario.MarioObjects.ProtectionStates
         {
         }
 
+        public void Protect()
+        {
+            //refresh protection
+            Owner.ProtectionState = new Protected(Owner);
+        }
+
         public void Star()
         {
             Owner.ProtectionState = new Starred(Owner);
