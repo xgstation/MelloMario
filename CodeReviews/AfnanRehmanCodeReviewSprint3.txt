@@ -10,7 +10,7 @@ Number of minutes taken to complete the review:
 
 Specific Comments on Code Quality:
 The code in this class is very clean and well-organized. I noticed one small issue that would bring up a warning in code analysis, which is that the CreateGameObject
-method has a large cyclomatic complexity. I do not think this can be easily avoided, but it is a concern nonetheless.The file is 106 lines long, 
+method has a large cyclomatic complexity. I do not think this can be easily avoided, but it is a concern nonetheless. The file is 106 lines long, 
 which is a good length and there are not too many methods. 
 
 A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
