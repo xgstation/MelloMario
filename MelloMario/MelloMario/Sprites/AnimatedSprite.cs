@@ -12,9 +12,6 @@ namespace MelloMario.Sprites
         private int width;
         private int height;
 
-        private Random random;
-        private bool flicker;
-
         private int frames;
         private int elapsed;
         private int interval;
@@ -34,11 +31,7 @@ namespace MelloMario.Sprites
             if (elapsed >= interval)
             {
                 UpdateSourceRectangle();
-
-                if (flicker)
-                    color = new Color(random.Next(255), random.Next(255),random.Next(255));
-                else
-                    color = Color.White;
+                OnFrame();
 
                 frames += 1;
                 if (frames == rows * columns)
@@ -50,19 +43,22 @@ namespace MelloMario.Sprites
             }
         }
 
-        public AnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, ZIndex activeZIndex = ZIndex.main, int interval = 250, bool flicker = false) : base(
+        protected virtual void OnFrame()
+        {
+            // nothing by default
+        }
+
+        public AnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, ZIndex activeZIndex = ZIndex.main, int interval = 100) : base(
             spriteBatch, texture, new Point(), new Point(texture.Width / columns, texture.Height / rows), activeZIndex
         )
         {
             this.columns = columns;
             this.rows = rows;
             this.interval = interval;
-            this.flicker = flicker;
             width = texture.Width;
             height = texture.Height;
             frames = 0;
             elapsed = 0;
-            random = new Random();
         }
     }
 }

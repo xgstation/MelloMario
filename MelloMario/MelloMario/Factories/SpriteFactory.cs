@@ -110,16 +110,27 @@ namespace MelloMario.Factories
         {
             ISprite sprite;
 
-            if (isStatic && !isStar)
+            if (isStatic)
             {
-                sprite = new StaticSprite(spriteBatch, stringToMarioTexture[status]);
+                if (isStar)
+                {
+                    sprite = new FlickingAnimatedSprite(spriteBatch, stringToMarioTexture[status], 1, 1, ZIndex.main, 250);
+                }
+                else
+                {
+                    sprite = new StaticSprite(spriteBatch, stringToMarioTexture[status]);
+                }
             }
-            else if(isStatic)
+            else
             {
-                sprite = new AnimatedSprite(spriteBatch, stringToMarioTexture[status], 1, 1, ZIndex.main, 250, isStar);
-            } else
-            {
-                sprite = new AnimatedSprite(spriteBatch, stringToMarioTexture[status], 3, 1, ZIndex.main, 250, isStar);
+                if (isStar)
+                {
+                    sprite = new FlickingAnimatedSprite(spriteBatch, stringToMarioTexture[status], 3, 1, ZIndex.main, 250);
+                }
+                else
+                {
+                    sprite = new AnimatedSprite(spriteBatch, stringToMarioTexture[status], 3, 1, ZIndex.main, 250);
+                }
             }
 
             return sprite;

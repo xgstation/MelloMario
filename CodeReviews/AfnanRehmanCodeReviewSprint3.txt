@@ -1,0 +1,20 @@
+Author: Afnan Rehman
+Date: 10/31/2017
+Sprint Number: 3
+
+Name of .cs file being reviewed: GameObjectFactory.cs
+Author of the .cs file being reviewed: Chenzhang Hu
+
+Number of minutes taken to complete the review:
+15 minutes
+
+Specific Comments on Code Quality:
+The code in this class is very clean and well-organized. I noticed one small issue that would bring up a warning in code analysis, which is that the CreateGameObject
+method has a large cyclomatic complexity. I do not think this can be easily avoided, but it is a concern nonetheless.The file is 106 lines long, 
+which is a good length and there are not too many methods. 
+
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+I propose splitting up the CreateGameObject method into CreateItemObject, CreateEnemyObject, and CreateBlockObject, to reduce the cyclomatic complexity 
+for the CreateGameObject class in the future. It would also make it easier to edit the creation methods for all the game objects. I see this potentially
+being a hard to implement change, since there are many classes and methods dependent on this factory, so making a major change here would require changes
+in other classes.
