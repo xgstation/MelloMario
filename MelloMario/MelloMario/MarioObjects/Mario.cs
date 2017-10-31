@@ -161,7 +161,10 @@ namespace MelloMario.MarioObjects
                         }
                         else if (koopa.State is EnemyObjects.KoopaStates.MovingShell && !(ProtectionState is Starred))
                         {
-                            Downgrade();
+                            if(koopa.Facing is FacingMode.right && (mode is CollisionMode.InnerRight || mode is CollisionMode.Left))
+                                Downgrade();
+                            if (koopa.Facing is FacingMode.left && (mode is CollisionMode.InnerLeft || mode is CollisionMode.Right))
+                                Downgrade();
                         }
                     }
                     else if (!(protectionState is Starred))
