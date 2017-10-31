@@ -101,13 +101,12 @@ namespace MelloMario
         {
             foreach (IGameObject target in World.ScanNearbyObjects(this))
             {
-                foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(target.Boundary))
+                if (target is BaseCollidableObject obj)
                 {
-                    OnCollision(target, pair.Item1, pair.Item3, pair.Item4);
-
-                    if (target is BaseCollidableObject gameObject)
+                    foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(target.Boundary))
                     {
-                        gameObject.OnCollision(this, pair.Item2, pair.Item4, pair.Item3);
+                        OnCollision(target, pair.Item1, pair.Item3, pair.Item4);
+                        obj.OnCollision(this, pair.Item2, pair.Item4, pair.Item3);
                     }
                 }
             }

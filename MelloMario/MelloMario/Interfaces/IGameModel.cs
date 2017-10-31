@@ -5,6 +5,7 @@ namespace MelloMario
     interface IGameModel
     {
         bool IsPaused { get; }
+
         void Pause();
         void Reset();
         void Quit();
