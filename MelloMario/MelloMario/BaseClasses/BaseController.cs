@@ -14,8 +14,7 @@ namespace MelloMario.Controllers
         {
             if (commands[behavior].ContainsKey(key))
             {
-                if (!model.IsPaused || commands[behavior][key] is Pause || commands[behavior][key] is Reset || commands[behavior][key] is Quit)
-                    commands[behavior][key].Execute();
+                commands[behavior][key].Execute();
             }
         }
 

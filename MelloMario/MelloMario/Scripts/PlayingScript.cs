@@ -2,23 +2,22 @@
 using System.Collections.Generic;
 using MelloMario.Factories;
 
-namespace MelloMario
+namespace MelloMario.Scripts
 {
-    class GameScript
+    class PlayingScript : IScript
     {
-        private ICommandFactory factory;
-        public GameScript()
+        public PlayingScript()
         {
         }
 
         public void Bind(IEnumerable<IController> controllers, IGameCharacter character, IGameModel model)
         {
-            factory = CommandFactory.Instance;
+            ICommandFactory factory = CommandFactory.Instance;
 
             foreach (IController controller in controllers)
             {
                 controller.Reset();
-                
+
                 controller.AddCommand(Keys.Space, factory.CreateGameCharacterCommand("Action", character)); // Needs to be implemented
                 controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("CrouchPress", character), KeyBehavior.press);
@@ -51,11 +50,6 @@ namespace MelloMario
                 controller.AddCommand(Keys.R, factory.CreateGameControlCommand("Reset", model), KeyBehavior.press);
                 controller.AddCommand(Keys.P, factory.CreateGameControlCommand("Pause", model), KeyBehavior.press);
                 controller.AddCommand(Keys.F12, factory.CreateGameControlCommand("ToggleFullScreen", model), KeyBehavior.press);
-
-                // sprint 2 cheat commands
-                controller.AddCommand(Keys.Y, factory.CreateGameObjectCommand("StandardState", character));
-                controller.AddCommand(Keys.U, factory.CreateGameObjectCommand("SuperState", character));
-                controller.AddCommand(Keys.I, factory.CreateGameObjectCommand("FireState", character));
 
                 controller.AddCommand(Buttons.B, factory.CreateGameCharacterCommand("Action", character));
                 controller.AddCommand(Buttons.DPadDown, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);

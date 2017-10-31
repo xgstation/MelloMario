@@ -20,7 +20,7 @@ namespace MelloMario
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            model = new GameModel(this, new GameScript(), new LevelIOJson("Content/ExampleLevel.json"));
+            model = new GameModel(this, new LevelIOJson("Content/ExampleLevel.json"));
         }
         internal void ToggleFullScreen()
         {
@@ -43,7 +43,7 @@ namespace MelloMario
             };
 
             model.LoadControllers(controllers);
-            
+
             model.Reset(); // Create the level for the first time
         }
 
@@ -92,11 +92,6 @@ namespace MelloMario
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
-
-            if (model.IsPaused)
-            {
-                ResetElapsedTime();
-            }
 
             spriteBatch.Begin();
             model.Draw(time, ZIndex.back);
