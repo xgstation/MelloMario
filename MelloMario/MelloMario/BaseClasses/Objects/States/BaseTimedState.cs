@@ -11,7 +11,7 @@ namespace MelloMario
         {
             get
             {
-                return elapsed / interval;
+                return (float)elapsed / interval;
             }
         }
 
@@ -20,6 +20,7 @@ namespace MelloMario
         public BaseTimedState(T owner, int interval) : base(owner)
         {
             this.interval = interval;
+            elapsed = 0;
         }
 
         public override void Update(GameTime time)

@@ -17,18 +17,13 @@ namespace MelloMario.MarioObjects.ProtectionStates
             Owner.ProtectionState = new Normal(Owner);
         }
 
-        public Starred(Mario owner) : base(owner, 15000)
+        public Starred(Mario owner) : base(owner, 10000)//orignially 15000
         {
         }
 
         public void Star()
         {
             Owner.ProtectionState = new Starred(Owner);
-        }
-
-        public override void Update(GameTime time)
-        {
-
         }
     }
 }

@@ -57,6 +57,7 @@ namespace MelloMario.MarioObjects
             ApplyGravity();
             ApplyHorizontalFriction(FORCE_F_AIR);
             ApplyVerticalFriction(FORCE_F_AIR);
+            protectionState.Update(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
