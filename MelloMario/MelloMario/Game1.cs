@@ -35,8 +35,8 @@ namespace MelloMario
 
             IEnumerable<IController> controllers = new List<IController>
             {
-                new GamepadController(model),
-                new KeyboardController(model)
+                new GamepadController(),
+                new KeyboardController()
             };
 
             model.LoadControllers(controllers);

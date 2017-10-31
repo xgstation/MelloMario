@@ -4,7 +4,6 @@ namespace MelloMario.Controllers
 {
     abstract class BaseController<T> : IController
     {
-        private IGameModel model;
         private IDictionary<KeyBehavior, IDictionary<T, ICommand>> commands;
 
         protected abstract void OnUpdate();
@@ -17,9 +16,8 @@ namespace MelloMario.Controllers
             }
         }
 
-        public BaseController(IGameModel model)
+        public BaseController()
         {
-            this.model = model;
             commands = new Dictionary<KeyBehavior, IDictionary<T, ICommand>>() {
                 { KeyBehavior.press, new Dictionary<T, ICommand>() },
                 { KeyBehavior.release, new Dictionary<T, ICommand>() },

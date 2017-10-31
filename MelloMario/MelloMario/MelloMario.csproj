@@ -154,7 +154,6 @@
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Commands\FireState.cs" />
     <Compile Include="Theming\GameModel.cs" />
-    <Compile Include="Theming\Camera.cs" />
     <Compile Include="Theming\GameWorld.cs" />
     <Compile Include="Scripts\PlayingScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
