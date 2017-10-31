@@ -148,7 +148,7 @@ namespace MelloMario.MarioObjects
                     }
                     else if (!(protectionState is Starred))
                     {
-                        Bounce(mode, new Vector2(0, -20), 0.5f);
+                        Bounce(mode, new Vector2(), 1f);
                     }
 
                     break;
@@ -166,7 +166,7 @@ namespace MelloMario.MarioObjects
                     }
                     else if (!(protectionState is Starred))
                     {
-                        Bounce(mode, new Vector2(0, -20), 0.5f);
+                        Bounce(mode, new Vector2(), 2f);
                     }
 
                     break;
