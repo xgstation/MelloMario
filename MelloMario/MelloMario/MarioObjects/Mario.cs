@@ -174,7 +174,8 @@ namespace MelloMario.MarioObjects
                         ProtectionState.Star();
                     break;
                 case "SuperMushroom":
-                    if (((ItemObjects.SuperMushroom)target).State is ItemObjects.SuperMushroomStates.Normal)
+                    if (((ItemObjects.SuperMushroom)target).State is ItemObjects.SuperMushroomStates.Normal &&
+                        PowerUpState is Standard)
                         PowerUpState.UpgradeToSuper();
                     break;
             }
