@@ -31,7 +31,7 @@ namespace MelloMario.MarioObjects.MovementStates
             }
         }
 
-        public Jumping(Mario owner) : base(owner, 200)
+        public Jumping(Mario owner) : base(owner, 250)
         {
             previous = owner.MovementState;
             finished = false;
