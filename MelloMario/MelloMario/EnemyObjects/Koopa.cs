@@ -87,7 +87,7 @@ namespace MelloMario.EnemyObjects
                     }
                 }
             }
-            else if(target is Brick brick || target is Question question || target is Floor floor || target is Stair stair || target is Pipeline pipeline)
+            else if(target is Brick || target is Question || target is Floor || target is Stair || target is Pipeline)
             {
                 if (mode == CollisionMode.Left)
                 {
