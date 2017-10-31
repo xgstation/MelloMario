@@ -21,7 +21,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void JumpOn()
         {
-            Owner.State = new Shell(Owner);
+            Owner.State = new Defeated(Owner);
         }
 
         public void Defeat()

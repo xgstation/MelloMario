@@ -12,6 +12,7 @@ namespace MelloMario.EnemyObjects
         private IGoombaState state;
         private float timeFromDeath;
         private const int VELOCITY_LR = 1;
+        private bool move;
         private void UpdateSprite()
         {
          
@@ -24,9 +25,9 @@ namespace MelloMario.EnemyObjects
         {
             
             state.Update(time);
-            if(state is Defeated)
+            if (state is Defeated)
             {
-                timeFromDeath += (float) time.ElapsedGameTime.TotalMilliseconds;
+                timeFromDeath += (float)time.ElapsedGameTime.TotalMilliseconds;
                 if (timeFromDeath > 1000f)
                 {
                     RemoveSelf();
@@ -34,6 +35,8 @@ namespace MelloMario.EnemyObjects
             }
             else
             {
+                if (move)
+                {
                     ApplyGravity();
                     if (Facing == FacingMode.right)
                     {
@@ -44,6 +47,7 @@ namespace MelloMario.EnemyObjects
                         Move(new Point(-VELOCITY_LR, 0));
                     }
                 }
+            }
            
             }
         
@@ -108,15 +112,23 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        public Goomba(IGameWorld world, Point location, Point marioLocation) : base(world, location, new Point(32, 32), 32)
+        public Goomba(IGameWorld world, Point location, Rectangle marioViewport) : base(world, location, new Point(32, 32), 32)
         {
-            if (marioLocation.X < location.X)
+            if (marioViewport.Location.X < location.X)
             {
                 Facing = FacingMode.left;
             }
             else
             {
                 Facing = FacingMode.right;
+            }
+            if ((marioViewport.Location.X - location.X) < marioViewport.Size.X || (marioViewport.Location.X - location.X) > -marioViewport.Size.X)
+            {
+                move = true;
+            }
+            else
+            {
+                move = false;
             }
             timeFromDeath = 0;
             state = new Normal(this);

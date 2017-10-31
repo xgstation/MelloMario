@@ -45,7 +45,7 @@ namespace MelloMario.EnemyObjects
         protected override void OnUpdate(GameTime time)
         {
           
-            if (move)
+            if (move&& !(state is Defeated))
             {
                 if (Facing == FacingMode.right)
                 {
