@@ -11,7 +11,7 @@ namespace MelloMario.EnemyObjects
         private ShellColor color;
         private IKoopaState state;
         private const int VELOCITY_LR = 1;
-
+        private bool move;
         private void UpdateSprite()
         {
             string facingString;
@@ -44,16 +44,18 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnUpdate(GameTime time)
         {
-     
-            if (Facing == FacingMode.right)
+          
+            if (move)
             {
-                Move(new Point(VELOCITY_LR, 0));
+                if (Facing == FacingMode.right)
+                {
+                    Move(new Point(VELOCITY_LR, 0));
+                }
+                else
+                {
+                    Move(new Point(-VELOCITY_LR, 0));
+                }
             }
-            else
-            {             
-                Move(new Point(-VELOCITY_LR, 0));
-            }
-         
         
     }
 
@@ -124,18 +126,26 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        public Koopa(IGameWorld world, Point location, Point marioLocation,ShellColor color) : base(world, location, new Point(32, 32), 32)
+        public Koopa(IGameWorld world, Point location, Rectangle marioViewport, ShellColor color) : base(world, location, new Point(32, 32), 32)
         {
-            if (marioLocation.X < location.X)
+
+            if (marioViewport.Location.X < location.X)
+                {
+                    Facing = FacingMode.left;
+                }
+                else
+                {
+                    Facing = FacingMode.right;
+                }
+            if((marioViewport.Location.X-location.X)<marioViewport.Size.X|| (marioViewport.Location.X - location.X)> -marioViewport.Size.X)
             {
-                Facing = FacingMode.left;
+                move = true;
             }
             else
             {
-                Facing = FacingMode.right;
+                move = false;
             }
             this.color = color;
-
             state = new Normal(this);
             UpdateSprite();
         }

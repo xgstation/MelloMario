@@ -14,12 +14,14 @@ namespace MelloMario.Factories
         private const int SCALE = 32;
         // TODO: remove this later and use the collision between the camera and objects to "activate" objects' movement
         private Point marioLoc;
+        private Rectangle marioViewport;
 
         private static IGameObjectFactory instance = new GameObjectFactory();
 
         private GameObjectFactory()
         {
             marioLoc = new Point(0, 0);
+            marioViewport = new Rectangle(new Point(0, 0), new Point(0, 0));
         }
 
         public static IGameObjectFactory Instance
@@ -41,6 +43,7 @@ namespace MelloMario.Factories
                 case "Mario":
                     PlayerMario mario = new PlayerMario(world, location);
                     marioLoc = location;
+                    marioViewport = mario.Viewport;
                     return new Tuple<IGameCharacter, IGameObject>(mario, mario);
                 default:
                     return null;
@@ -77,9 +80,9 @@ namespace MelloMario.Factories
                 case "Goomba":
                     return new Goomba(world, location, marioLoc);
                 case "GreenKoopa":
-                    return new Koopa(world, location, marioLoc, Koopa.ShellColor.green);
+                    return new Koopa(world, location, marioViewport, Koopa.ShellColor.green);
                 case "RedKoopa":
-                    return new Koopa(world, location, marioLoc, Koopa.ShellColor.red);
+                    return new Koopa(world, location, marioViewport, Koopa.ShellColor.red);
 
                 //entities
                 case "Coin":
