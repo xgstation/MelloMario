@@ -211,7 +211,7 @@ namespace MelloMario.EnemyObjects
         }
         public void Defeat()
         {
-            State.Defeat();
+            RemoveSelf();
         }
     }
 }
