@@ -39,8 +39,7 @@ namespace MelloMario.MarioObjects
 
                 ShowSprite(SpriteFactory.Instance.CreateMarioSprite(
                     powerUpState.GetType().Name + movementState.GetType().Name + facingString,
-                    !(movementState is Walking)
-                ));
+                    !(movementState is Walking), protectionState is Starred));
             }
         }
 
@@ -190,17 +189,6 @@ namespace MelloMario.MarioObjects
 
         protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
-            if (ProtectionState is Starred)
-            {
-                if (time.TotalGameTime.Milliseconds % 8 == 0)
-                {
-                    HideSprite();
-                }
-                else
-                {
-                    UpdateSprite();
-                }
-            }
         }
 
         public IMarioMovementState MovementState

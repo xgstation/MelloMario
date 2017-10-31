@@ -107,15 +107,23 @@ namespace MelloMario.Factories
 
         public ISprite CreateMarioSprite(string status, bool isStatic)
         {
+            return CreateMarioSprite(status, isStatic, false);
+        }
+
+        public ISprite CreateMarioSprite(string status, bool isStatic, bool isStar)
+        {
             ISprite sprite;
 
-            if (isStatic)
+            if (isStatic && !isStar)
             {
                 sprite = new StaticSprite(spriteBatch, stringToMarioTexture[status]);
             }
-            else
+            else if(isStatic)
             {
-                sprite = new AnimatedSprite(spriteBatch, stringToMarioTexture[status], 3, 1);
+                sprite = new AnimatedSprite(spriteBatch, stringToMarioTexture[status], 1, 1, ZIndex.main, 250, isStar);
+            } else
+            {
+                sprite = new AnimatedSprite(spriteBatch, stringToMarioTexture[status], 3, 1, ZIndex.main, 250, isStar);
             }
 
             return sprite;

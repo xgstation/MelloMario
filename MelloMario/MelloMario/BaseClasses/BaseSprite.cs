@@ -10,6 +10,7 @@ namespace MelloMario.Sprites
         private Point source;
         private Point size;
         private ZIndex activeZIndex;
+        protected Color color;
 
         protected abstract void OnAnimate(GameTime time);
 
@@ -33,6 +34,7 @@ namespace MelloMario.Sprites
             this.source = source;
             this.size = size;
             this.activeZIndex = activeZIndex;
+            color = Color.White;
         }
 
         public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
@@ -41,7 +43,7 @@ namespace MelloMario.Sprites
             {
                 OnAnimate(time);
 
-                spriteBatch.Draw(texture, destination, new Rectangle(source, size), Color.White);
+                spriteBatch.Draw(texture, destination, new Rectangle(source, size), color);
             }
         }
     }
