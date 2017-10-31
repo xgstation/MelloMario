@@ -14,7 +14,7 @@ namespace MelloMario
         private GameScript script;
         private LevelIOJson reader;
         private bool isPaused;
-        private Game game;
+        private Game1 game;
 
         public bool IsPaused
         {
@@ -24,7 +24,7 @@ namespace MelloMario
             }
         }
 
-        public GameModel(Game game, GameScript script, LevelIOJson reader)
+        public GameModel(Game1 game, GameScript script, LevelIOJson reader)
         {
             this.game = game;
             this.script = script;
@@ -62,6 +62,10 @@ namespace MelloMario
             }
         }
 
+        public void ToggleFullScreen()
+        {
+            game.ToggleFullScreen();
+        }
         public void Pause()
         {
             isPaused = !isPaused;

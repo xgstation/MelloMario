@@ -20,9 +20,12 @@ namespace MelloMario
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            model = new GameModel(this, new GameScript(), new LevelIOJson("Content/ExampleLevel.json", model));
+            model = new GameModel(this, new GameScript(), new LevelIOJson("Content/ExampleLevel.json"));
         }
-
+        internal void ToggleFullScreen()
+        {
+            graphics.ToggleFullScreen();
+        }
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic

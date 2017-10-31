@@ -1,13 +1,10 @@
-﻿using MelloMario.Factories;
-using MelloMario.MarioObjects;
+﻿using MelloMario.MarioObjects;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MelloMario.LevelGen
 {
@@ -19,7 +16,7 @@ namespace MelloMario.LevelGen
 
         private GameWorld world;
         private IGameCharacter character;
-        public GameConverter(string index, GameModel gameModel)
+        public GameConverter(string index)
         {
             this.index = index;
             serializers = new JsonSerializer();

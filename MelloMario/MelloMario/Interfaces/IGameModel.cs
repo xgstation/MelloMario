@@ -5,7 +5,7 @@ namespace MelloMario
     interface IGameModel
     {
         bool IsPaused { get; }
-
+        void ToggleFullScreen();
         void Pause();
         void Reset();
         void Quit();

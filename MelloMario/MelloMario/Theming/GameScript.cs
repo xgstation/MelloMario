@@ -18,8 +18,7 @@ namespace MelloMario
             foreach (IController controller in controllers)
             {
                 controller.Reset();
-
-                //controller.AddCommand(Keys.Escape, factory.CreateGameModelCommand("Pause", objects));
+                
                 controller.AddCommand(Keys.Space, factory.CreateGameCharacterCommand("Action", character)); // Needs to be implemented
                 controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("CrouchPress", character), KeyBehavior.press);
@@ -51,6 +50,7 @@ namespace MelloMario
                 controller.AddCommand(Keys.Q, factory.CreateGameControlCommand("Quit", model), KeyBehavior.press);
                 controller.AddCommand(Keys.R, factory.CreateGameControlCommand("Reset", model), KeyBehavior.press);
                 controller.AddCommand(Keys.P, factory.CreateGameControlCommand("Pause", model), KeyBehavior.press);
+                controller.AddCommand(Keys.F12, factory.CreateGameControlCommand("ToggleFullScreen", model), KeyBehavior.press);
 
                 // sprint 2 cheat commands
                 controller.AddCommand(Keys.Y, factory.CreateGameObjectCommand("StandardState", character));
