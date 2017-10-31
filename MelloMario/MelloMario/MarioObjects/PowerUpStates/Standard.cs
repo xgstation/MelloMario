@@ -32,6 +32,7 @@ namespace MelloMario.MarioObjects.PowerUpStates
             if (Owner.ProtectionState is ProtectionStates.Dead)
                 Owner.ProtectionState = new ProtectionStates.Normal(Owner);
         }
+
         public override void Update(GameTime time)
         {
 

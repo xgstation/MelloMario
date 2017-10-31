@@ -4,7 +4,7 @@
     {
         void Crouch();
         void Idle();
-        void Landing();
+        void Land();
         void Jump();
         void Walk();
     }

@@ -15,9 +15,6 @@ namespace MelloMario.MarioObjects
 
         protected override void OnUpdate(GameTime time)
         {
-            // TODO
-            elapsedFromPreviousFrame += time.ElapsedGameTime.Milliseconds;
-
             ApplyForce(userInput);
             userInput.X = 0;
             userInput.Y = 0;
@@ -42,11 +39,7 @@ namespace MelloMario.MarioObjects
         {
             if (!(MovementState is Crouching))
             {
-                userInput.X -= FORCE_INPUT;
-            }
-            if (MovementState is Standing)
-            {
-                MovementState.Walk();
+                userInput.X -= FORCE_INPUT_X;
             }
         }
 
@@ -56,25 +49,21 @@ namespace MelloMario.MarioObjects
             {
                 ChangeFacing(FacingMode.left);
             }
+            MovementState.Walk();
+
+            Left();
         }
 
         public void LeftRelease()
         {
-            if (MovementState is Walking)
-            {
-                MovementState.Idle();
-            }
+            MovementState.Idle();
         }
 
         public void Right()
         {
             if (!(MovementState is Crouching))
             {
-                userInput.X += FORCE_INPUT;
-            }
-            if (MovementState is Standing)
-            {
-                MovementState.Walk();
+                userInput.X += FORCE_INPUT_X;
             }
         }
 
@@ -84,67 +73,49 @@ namespace MelloMario.MarioObjects
             {
                 ChangeFacing(FacingMode.right);
             }
+            MovementState.Walk();
+
+            Right();
         }
 
         public void RightRelease()
         {
-            if (MovementState is Walking)
-            {
-                MovementState.Idle();
-            }
+            MovementState.Idle();
         }
 
-        int secondsPerFrame = 500; //Update every half second
-        int elapsedFromPreviousFrame = 0; //Accumulate the elapsed time
         public void Jump()
         {
-            if (!(MovementState is Jumping) || elapsedFromPreviousFrame < secondsPerFrame)
+            if (MovementState is Jumping jumping && !jumping.Finished)
             {
-                userInput.Y -= FORCE_INPUT;
+                userInput.Y -= FORCE_INPUT_Y;
                 userInput.Y -= FORCE_G;
-                
-                MovementState.Jump();
             }
         }
 
         public void JumpPress()
         {
-            if (MovementState is Standing || MovementState is Walking)
-                elapsedFromPreviousFrame = 0;
+            MovementState.Jump();
+
+            Jump();
         }
 
         public void JumpRelease()
         {
-            //if ((MovementState is Jumping))
-            //{
-            //    isFalling = true;
-            //} 
-            //else
-            //{
-            //    isFalling = false;
-            //}
-            // if (MovementState is Walking)
-            // {
-            //if (Facing == FacingMode.left)
-            // {
-            //  Left();
-            // LeftRelease();
-            //  }
-            // else
-            //{
-            // Right();
-            // RightRelease();
-            //}
-            // }
+            if (MovementState is Jumping jumping)
+            {
+                jumping.Finished = true;
+            }
         }
 
         public void Crouch()
         {
-            MovementState.Crouch();
         }
 
         public void CrouchPress()
         {
+            MovementState.Crouch();
+
+            Crouch();
         }
 
         public void CrouchRelease()

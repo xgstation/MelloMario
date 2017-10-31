@@ -29,6 +29,7 @@ namespace MelloMario.MarioObjects.PowerUpStates
         {
 
         }
+
         public override void Update(GameTime time)
         {
 

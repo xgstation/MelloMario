@@ -9,24 +9,43 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.MarioObjects.MovementStates
 {
-    class Jumping : BaseState<Mario>, IMarioMovementState
+    class Jumping : BaseTimedState<Mario>, IMarioMovementState
     {
         private IMarioMovementState previous;
+        private bool finished;
 
-        public Jumping(Mario owner) : base(owner)
+        protected override void OnTimer(GameTime time)
+        {
+            finished = true;
+        }
+
+        public bool Finished
+        {
+            get
+            {
+                return finished;
+            }
+            set
+            {
+                finished = value; // TODO: use a better solution for "free jump/fall"
+            }
+        }
+
+        public Jumping(Mario owner) : base(owner, 200)
         {
             previous = owner.MovementState;
+            finished = false;
         }
 
         public void Crouch()
         {
-           
+            Owner.MovementState = new Crouching(Owner);
         }
         public void Idle()
         {
-            Owner.MovementState = new Standing(Owner);
+            previous = new Standing(Owner);
         }
-        public void Landing()
+        public void Land()
         {
             Owner.MovementState = previous;
         }
@@ -36,12 +55,7 @@ namespace MelloMario.MarioObjects.MovementStates
         }
         public void Walk()
         {
-            Owner.MovementState = new Walking(Owner);
-        }
-       
-        public override void Update(GameTime time)
-        {
-            //sprite.Update(game);
+            previous = new Walking(Owner);
         }
     }
 }

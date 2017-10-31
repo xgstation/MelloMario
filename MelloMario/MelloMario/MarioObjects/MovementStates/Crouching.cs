@@ -23,19 +23,17 @@ namespace MelloMario.MarioObjects.MovementStates
         {
             Owner.MovementState = new Standing(Owner);
         }
-
-        public void Landing()
+        public void Land()
         {
 
         }
         public void Jump()
         {
-            Owner.MovementState = new Standing(Owner);
         }
         public void Walk()
         {
-            Owner.MovementState = new Walking(Owner);
         }
+
         public override void Update(GameTime time)
         {
             //sprite.Update(game);

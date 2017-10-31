@@ -13,12 +13,13 @@ namespace MelloMario.MarioObjects
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-  
+
 
         private void UpdateSprite()
         {
             if (movementState is Crouching && powerUpState is Standard)
             {
+                // TODO: this method should not be responsible for changing the state
                 movementState.Idle();
             }
             else if (protectionState is Dead)
@@ -53,10 +54,18 @@ namespace MelloMario.MarioObjects
 
         protected override void OnUpdate(GameTime time)
         {
+            movementState.Update(time);
+            powerUpState.Update(time);
+            protectionState.Update(time);
+        }
+
+        protected override void OnSimulation(GameTime time)
+        {
             ApplyGravity();
             ApplyHorizontalFriction(FORCE_F_AIR);
             ApplyVerticalFriction(FORCE_F_AIR);
-            protectionState.Update(time);
+
+            base.OnSimulation(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
@@ -116,24 +125,14 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Floor":
-                    Bounce(mode, new Vector2());
-                    if (MovementState is Jumping)
-                    {
-                        MovementState.Idle();
-                    }
-                    break;
                 case "Pipeline":
                 case "Stair":
-                    Bounce(mode, new Vector2());
-
-                    if (mode == CollisionMode.Bottom)
+                    if (Bounce(mode, new Vector2()))
                     {
-                        ApplyHorizontalFriction(FORCE_F_GROUND);
-                        if (MovementState is Jumping)
+                        if (mode == CollisionMode.Bottom)
                         {
-                            MovementState.Idle();
-                           
-
+                            ApplyHorizontalFriction(FORCE_F_GROUND);
+                            MovementState.Land();
                         }
                     }
 
@@ -175,8 +174,7 @@ namespace MelloMario.MarioObjects
                         ProtectionState.Star();
                     break;
                 case "SuperMushroom":
-                    if (((ItemObjects.SuperMushroom)target).State is ItemObjects.SuperMushroomStates.Normal &&
-                        powerUpState is Standard)
+                    if (((ItemObjects.SuperMushroom)target).State is ItemObjects.SuperMushroomStates.Normal)
                         PowerUpState.UpgradeToSuper();
                     break;
             }
