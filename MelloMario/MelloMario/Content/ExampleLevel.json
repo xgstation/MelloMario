@@ -11,7 +11,7 @@
         {
           "Type": "Mario",
           "SpawnPoint": {
-            "X": 10,
+            "X": 8,
             "Y": 14
           },
           "State": "Normal"
@@ -125,8 +125,8 @@
         {
           "Type": "GreenKoopa",
           "Point": {
-            "X": 10,
-            "Y": 10
+            "X": 9,
+            "Y": 11
           }
         },
         {
