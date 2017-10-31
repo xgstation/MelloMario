@@ -1,3 +1,4 @@
+using MelloMario.Commands;
 using System.Collections.Generic;
 
 namespace MelloMario.Controllers
@@ -13,7 +14,8 @@ namespace MelloMario.Controllers
         {
             if (commands[behavior].ContainsKey(key))
             {
-                commands[behavior][key].Execute();
+                if (!model.IsPaused || commands[behavior][key] is Pause || commands[behavior][key] is Reset || commands[behavior][key] is Quit)
+                    commands[behavior][key].Execute();
             }
         }
 
