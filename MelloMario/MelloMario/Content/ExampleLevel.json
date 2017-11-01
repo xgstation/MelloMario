@@ -400,7 +400,106 @@
             }
           ]
         },
-
+		{
+          "Type": "Stair",
+          "Point": {
+            "X": 90,
+            "Y": 6
+          }
+        },
+		{
+          "Type": "Stair",
+          "Point": {
+            "X": 100,
+            "Y": 6
+          }
+        },
+		{
+          "Type": "Brick",
+          "Point": {
+            "X": 120,
+            "Y": 9
+          },
+          "Quantity": {
+            "X": 6,
+            "Y": 1
+          },
+          "Properties": [
+            {
+              "Index": {
+                "X": 0,
+                "Y": 0
+              },
+              "isHidden": false,
+              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            }
+          ]
+        }, 
+		
+		{
+          "Type": "Brick",
+          "Point": {
+            "X": 160,
+            "Y": 9
+          },
+          "Quantity": {
+            "X": 6,
+            "Y": 1
+          },
+          "Properties": [
+            {
+              "Index": {
+                "X": 0,
+                "Y": 0
+              },
+              "isHidden": false,
+              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            }
+          ]
+        }, 
+		{
+          "Type": "Brick",
+          "Point": {
+            "X": 180,
+            "Y": 7
+          },
+          "Quantity": {
+            "X": 6,
+            "Y": 1
+          },
+          "Properties": [
+            {
+              "Index": {
+                "X": 0,
+                "Y": 0
+              },
+              "isHidden": false,
+              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            }
+          ]
+        }, 
+		
+		{
+          "Type": "Brick",
+          "Point": {
+            "X": 170,
+            "Y": 9
+          },
+          "Quantity": {
+            "X": 4,
+            "Y": 1
+          },
+          "Properties": [
+            {
+              "Index": {
+                "X": 0,
+                "Y": 0
+              },
+              "isHidden": false,
+              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            }
+          ]
+        }, 
 
         {
           "Type": "Brick",
