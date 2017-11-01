@@ -1,5 +1,6 @@
 ﻿using MelloMario.BlockObjects;
 using MelloMario.Factories;
+using MelloMario.MiscObjects;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -9,11 +10,11 @@ using System.Linq;
 
 namespace MelloMario.LevelGen
 {
-    class BaseGameObjectConverter : JsonConverter
+    class GameEntityConverter : JsonConverter
     {
         private GameWorld gameWorld;
         private int grid;
-        public BaseGameObjectConverter(GameWorld parentGameWorld, int gridSize)
+        public GameEntityConverter(GameWorld parentGameWorld, int gridSize)
         {
             gameWorld = parentGameWorld;
             grid = gridSize;
@@ -83,7 +84,6 @@ namespace MelloMario.LevelGen
                         }
                         switch (type)
                         {
-                            //TODO: Add items parameter in constructors for Brick and Question
                             case "Brick":
                                 if (list != null)
                                 {
@@ -112,6 +112,12 @@ namespace MelloMario.LevelGen
                                 break;
                             case "Stair":
                                 objectStack.Push(new Stair(gameWorld, location));
+                                break;
+                            case "ShortCloud":
+                            case "ShortSmileCloud":
+                            case "LongCloud":
+                            case "LongSmileCloud":
+                                objectStack.Push(new Background(gameWorld, location, type));
                                 break;
                             default:
                                 objectStack.Push(GameObjectFactory.Instance.CreateGameObject(type, gameWorld, location));
