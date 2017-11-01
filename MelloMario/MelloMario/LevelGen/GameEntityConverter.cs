@@ -73,7 +73,7 @@ namespace MelloMario.LevelGen
                     {
                         Point location = new Point((startPoint.X + i) * grid, (startPoint.Y + j) * grid);
                         Tuple<bool, string[]> property = null;
-                        IList<IGameObject> list = null;
+                        IList<IGameObject> list = new List<IGameObject>();
                         if (Properties == null || !Properties.TryGetValue(new Point(i, j), out property))
                         {
                             property = new Tuple<bool, string[]>(false, null);
@@ -82,47 +82,7 @@ namespace MelloMario.LevelGen
                         {
                             list = CreateItemList(gameWorld, location, property.Item2);
                         }
-                        switch (type)
-                        {
-                            case "Brick":
-                                if (list != null)
-                                {
-                                    objectStack.Push(new Brick(gameWorld, location, list, property.Item1));
-                                }
-                                else
-                                {
-                                    objectStack.Push(new Brick(gameWorld, location, property.Item1));
-                                }
-                                break;
-                            case "Question":
-                                if (list != null)
-                                {
-                                    objectStack.Push(new Question(gameWorld, location, list, property.Item1));
-                                }
-                                else
-                                {
-                                    objectStack.Push(new Question(gameWorld, location));
-                                }
-                                break;
-                            case "Pipeline":
-                                objectStack.Push(new Pipeline(gameWorld, location, property.Item2[0]));
-                                break;
-                            case "Floor":
-                                objectStack.Push(new Floor(gameWorld, location));
-                                break;
-                            case "Stair":
-                                objectStack.Push(new Stair(gameWorld, location));
-                                break;
-                            case "ShortCloud":
-                            case "ShortSmileCloud":
-                            case "LongCloud":
-                            case "LongSmileCloud":
-                                objectStack.Push(new Background(gameWorld, location, type));
-                                break;
-                            default:
-                                objectStack.Push(GameObjectFactory.Instance.CreateGameObject(type, gameWorld, location));
-                                break;
-                        }
+                        PushNewObject(objectStack, type, location, list, property);
                     }
                 }
             }
@@ -162,6 +122,36 @@ namespace MelloMario.LevelGen
                 return list;
             }
             return null;
+        }
+        private void PushNewObject(Stack<IGameObject> objectStack, string type, Point location, IList<IGameObject> list, Tuple<bool,string[]> property)
+        {
+            switch (type)
+            {
+                case "Brick":
+                    objectStack.Push(new Brick(gameWorld, location, list, property.Item1));
+                    break;
+                case "Question":
+                    objectStack.Push(new Question(gameWorld, location, list, property.Item1));
+                    break;
+                case "Pipeline":
+                    objectStack.Push(new Pipeline(gameWorld, location, property.Item2[0]));
+                    break;
+                case "Floor":
+                    objectStack.Push(new Floor(gameWorld, location));
+                    break;
+                case "Stair":
+                    objectStack.Push(new Stair(gameWorld, location));
+                    break;
+                case "ShortCloud":
+                case "ShortSmileCloud":
+                case "LongCloud":
+                case "LongSmileCloud":
+                    objectStack.Push(new Background(gameWorld, location, type));
+                    break;
+                default:
+                    objectStack.Push(GameObjectFactory.Instance.CreateGameObject(type, gameWorld, location));
+                    break;
+            }
         }
     }
 }
