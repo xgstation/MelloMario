@@ -6,6 +6,7 @@ using MelloMario.EnemyObjects;
 using MelloMario.ItemObjects;
 using MelloMario.MarioObjects;
 using System.Collections.Generic;
+using MelloMario.MiscObjects;
 
 namespace MelloMario.Factories
 {
@@ -73,7 +74,7 @@ namespace MelloMario.Factories
                 case "Goomba":
                     return new Goomba(world, location, marioLoc);
                 case "GreenKoopa":
-                   return new Koopa(world, location, marioLoc, Koopa.ShellColor.green);
+                    return new Koopa(world, location, marioLoc, Koopa.ShellColor.green);
                 case "RedKoopa":
                     return new Koopa(world, location, marioLoc, Koopa.ShellColor.red);
 
@@ -98,6 +99,13 @@ namespace MelloMario.Factories
                     return new Star(world, location, marioLoc);
                 case "StarUnveil":
                     return new Star(world, location, marioLoc, true);
+
+                //others
+                case "ShortCloud":
+                case "ShortSmileCloud":
+                case "LongCloud":
+                case "LongSmileCloud":
+                    return new Background(world, location, type);
 
                 default:
                     return null;

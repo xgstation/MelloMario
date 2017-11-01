@@ -124,6 +124,7 @@
     <Compile Include="EnemyObjects\KoopaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\KoopaStates\Normal.cs" />
     <Compile Include="ItemObjects\SuperMushroomStates\Unveil.cs" />
+    <Compile Include="MiscObjects\Background.cs" />
     <Compile Include="Scripts\PausedScript.cs" />
     <Compile Include="LevelGen\BaseGameObjectConverter.cs" />
     <Compile Include="LevelGen\CharacterConverter.cs" />
@@ -229,6 +230,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
