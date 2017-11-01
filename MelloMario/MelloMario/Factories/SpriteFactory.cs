@@ -281,18 +281,18 @@ namespace MelloMario.Factories
             }
         }
 
-        public ISprite CreateSceneSprite(String type)
+        public ISprite CreateSceneSprite(String type, ZIndex zIndex)
         {
             switch (type)
             {
                 case "ShortCloud":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 20, 3, 2, ZIndex.background);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 20, 3, 2, zIndex);
                 case "ShortSmileCloud":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 4, 21, 1, 1, ZIndex.background);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 4, 21, 1, 1, zIndex);
                 case "LongCloud":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 8, 22, 4, 1, ZIndex.background);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 8, 22, 4, 1, zIndex);
                 case "LongSmileCloud":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 5, 20, 3, 2, ZIndex.background);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 5, 20, 3, 2, zIndex);
                 default:
                     return null;
             }
