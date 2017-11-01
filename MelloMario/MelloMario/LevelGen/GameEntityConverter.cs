@@ -125,32 +125,43 @@ namespace MelloMario.LevelGen
         }
         private void PushNewObject(Stack<IGameObject> objectStack, string type, Point location, IList<IGameObject> list, Tuple<bool,string[]> property)
         {
+            IGameObject objectToPush = null;
             switch (type)
             {
                 case "Brick":
-                    objectStack.Push(new Brick(gameWorld, location, list, property.Item1));
+                    objectToPush = new Brick(gameWorld, location, list, property.Item1);
                     break;
                 case "Question":
-                    objectStack.Push(new Question(gameWorld, location, list, property.Item1));
+                    objectToPush = new Question(gameWorld, location, list, property.Item1);
                     break;
                 case "Pipeline":
-                    objectStack.Push(new Pipeline(gameWorld, location, property.Item2[0]));
+                    objectToPush = new Pipeline(gameWorld, location, property.Item2[0]);
                     break;
                 case "Floor":
-                    objectStack.Push(new Floor(gameWorld, location));
+                    objectToPush = new Floor(gameWorld, location);
                     break;
                 case "Stair":
-                    objectStack.Push(new Stair(gameWorld, location));
+                    objectToPush = new Stair(gameWorld, location);
                     break;
                 case "ShortCloud":
+                    objectToPush = new Background(gameWorld, location, type, ZIndex.background3);
+                    break;
                 case "ShortSmileCloud":
+                    objectToPush = new Background(gameWorld, location, type, ZIndex.background);
+                    break;
                 case "LongCloud":
+                    objectToPush = new Background(gameWorld, location, type, ZIndex.background1);
+                    break;
                 case "LongSmileCloud":
-                    objectStack.Push(new Background(gameWorld, location, type));
+                    objectToPush = new Background(gameWorld, location, type, ZIndex.background2);
                     break;
                 default:
-                    objectStack.Push(GameObjectFactory.Instance.CreateGameObject(type, gameWorld, location));
+                    objectToPush = GameObjectFactory.Instance.CreateGameObject(type, gameWorld, location);
                     break;
+            }
+            if (objectToPush != null)
+            {
+                objectStack.Push(objectToPush);
             }
         }
     }
