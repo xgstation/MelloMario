@@ -33,7 +33,7 @@ namespace MelloMario.Sprites.BlockSprites
 
         public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
         {
-            if (zIndex == ZIndex.front)
+            if (zIndex == ZIndex.level)
             {
                 elapsed += time.ElapsedGameTime.Milliseconds;
 

@@ -38,8 +38,8 @@ namespace MelloMario.BlockObjects
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
             }
         }
-        internal bool HasItem { get { return item != null || items.Count != 0; } }
-        internal bool HasInitialItem { get { return hasInitialItem; } }
+        public bool HasItem { get { return item != null || items.Count != 0; } }
+        public bool HasInitialItem { get { return hasInitialItem; } }
         private void LoadItem()
         {
             if (items.Count != 0)

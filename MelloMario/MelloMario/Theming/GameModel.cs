@@ -17,7 +17,7 @@ namespace MelloMario
         private Game1 game;
 
         // TODO: remove this
-        internal IGameCharacter Character { get { return character != null ? character : null; } }
+        public IGameCharacter Character { get { return character; } }
 
         public GameModel(Game1 game, LevelIOJson reader)
         {
@@ -83,7 +83,7 @@ namespace MelloMario
             }
         }
 
-        public void Draw(GameTime time, ZIndex zIndex)
+        public void Draw(GameTime time)
         {
             if (isPaused)
             {
@@ -91,9 +91,12 @@ namespace MelloMario
                 time.ElapsedGameTime = new TimeSpan();
             }
 
-            foreach (IGameObject obj in world.ScanObjects())
+            foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
-                obj.Draw(time, character.Viewport, zIndex);
+                foreach (IGameObject obj in world.ScanObjects())
+                {
+                    obj.Draw(time, character.Viewport, zIndex);
+                }
             }
         }
     }

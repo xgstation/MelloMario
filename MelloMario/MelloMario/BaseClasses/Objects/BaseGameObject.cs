@@ -100,6 +100,13 @@ namespace MelloMario
 
             if (sprite != null)
             {
+                if (zIndex == ZIndex.background)
+                {
+                    Point location = viewport.Location;
+                    location.X = (int)(location.X * 0.5);
+                    viewport.Location = location;
+                }
+
                 sprite.Draw(time, new Rectangle(Boundary.Location - viewport.Location, Boundary.Size), zIndex);
             }
         }

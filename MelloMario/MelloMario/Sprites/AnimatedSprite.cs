@@ -48,7 +48,7 @@ namespace MelloMario.Sprites
             // nothing by default
         }
 
-        public AnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, ZIndex activeZIndex = ZIndex.main, int interval = 100) : base(
+        public AnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, ZIndex activeZIndex = ZIndex.item, int interval = 100) : base(
             spriteBatch, texture, new Point(), new Point(texture.Width / columns, texture.Height / rows), activeZIndex
         )
         {

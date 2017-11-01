@@ -2,7 +2,14 @@
 
 namespace MelloMario
 {
-    enum ZIndex { back, main, front };
+    enum ZIndex
+    {
+        background,
+        item,
+        level,
+        foreground,
+        hud
+    };
 
     interface ISprite
     {

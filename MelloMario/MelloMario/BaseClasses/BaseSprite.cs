@@ -28,7 +28,7 @@ namespace MelloMario.Sprites
         {
             get
             {
-                return new Point(size.X, size.Y); // Do copy to prevent unintended change of value
+                return size;
             }
         }
 

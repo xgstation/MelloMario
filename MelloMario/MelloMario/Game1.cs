@@ -91,9 +91,7 @@ namespace MelloMario
             base.Draw(time);
 
             spriteBatch.Begin();
-            model.Draw(time, ZIndex.back);
-            model.Draw(time, ZIndex.main);
-            model.Draw(time, ZIndex.front);
+            model.Draw(time);
             spriteBatch.End();
         }
 
