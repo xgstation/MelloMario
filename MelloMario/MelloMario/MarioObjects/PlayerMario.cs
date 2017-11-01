@@ -100,6 +100,8 @@ namespace MelloMario.MarioObjects
 
         public void Jump()
         {
+            MovementState.Jump();
+
             if (MovementState is Jumping jumping && !jumping.Finished)
             {
                 userInput.Y -= FORCE_INPUT_Y;
@@ -109,8 +111,6 @@ namespace MelloMario.MarioObjects
 
         public void JumpPress()
         {
-            MovementState.Jump();
-
             Jump();
         }
 
@@ -124,12 +124,11 @@ namespace MelloMario.MarioObjects
 
         public void Crouch()
         {
+            MovementState.Crouch();
         }
 
         public void CrouchPress()
         {
-            MovementState.Crouch();
-
             Crouch();
         }
 
