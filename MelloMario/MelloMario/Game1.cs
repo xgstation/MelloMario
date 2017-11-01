@@ -20,6 +20,8 @@ namespace MelloMario
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferHeight = 800;
+            graphics.PreferredBackBufferHeight = 600;
             model = new GameModel(this, new LevelIOJson("Content/ExampleLevel.json"));
         }
 
