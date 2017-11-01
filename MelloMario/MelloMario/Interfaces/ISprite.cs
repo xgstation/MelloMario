@@ -5,6 +5,7 @@ namespace MelloMario
     enum ZIndex
     {
         background,
+        background1,
         background2,
         background3,
         item,
