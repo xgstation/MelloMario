@@ -22,7 +22,6 @@ namespace MelloMario.MiscObjects
 
         protected override void OnSimulation(GameTime time)
         {
-            throw new System.NotImplementedException();
         }
 
         public Background(IGameWorld world, Point location, string type) : base(world, location, new Point(32, 32))

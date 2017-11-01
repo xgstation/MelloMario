@@ -126,7 +126,7 @@
     <Compile Include="ItemObjects\SuperMushroomStates\Unveil.cs" />
     <Compile Include="MiscObjects\Background.cs" />
     <Compile Include="Scripts\PausedScript.cs" />
-    <Compile Include="LevelGen\BaseGameObjectConverter.cs" />
+    <Compile Include="LevelGen\GameEntityConverter.cs" />
     <Compile Include="LevelGen\CharacterConverter.cs" />
     <Compile Include="LevelGen\EncapsulatedObject.cs" />
     <Compile Include="LevelGen\GameConverter.cs" />
