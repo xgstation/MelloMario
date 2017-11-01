@@ -1,0 +1,12 @@
+Author: Wenli Wu
+Date: 10/31/2017
+Sprint number: 3
+Name of file being reviewed:Mario.cs, SuperMushroom.cs, OneUpMushroom.cs
+Author of file being reviewed: multiple authors
+Number of minutes taken to complete the review: 40 minutes
+In the Mario.cs, the method Downgrade has two if statements, 
+since the conditions of those two if statements are the same, I suggest merging them into one if statement.
+In the SuperMushroom.cs, the if conditions when supermushroom collides with block objects contain innearLeft and center of corner, 
+which is the case that will not happen. I suggest just checking the left and right collision modes,and when supermushroom enmerge from a hidden block, its location should compare to mario's current location to determine the mushroom's direction, 
+but mario's location is not updated.
+In oneUpMushroom.cs, when checking against hidden blocks, mushroom's moving direction should be determined by mario's current location rather than collision mode.I suggest just getting character from Gamemodel and determining which the mushroom should head to.
