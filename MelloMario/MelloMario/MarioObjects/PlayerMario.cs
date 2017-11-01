@@ -20,7 +20,7 @@ namespace MelloMario.MarioObjects
             get
             {
                 Point location = Boundary.Location - new Point(320, 320);
-                Point size = new Point(800, 480); // TODO: currently, size of viewport does nothing
+                Point size = new Point(800, 600); // TODO: currently, size of viewport does nothing
 
                 Rectangle worldBoundary = World.Boundary;
 
