@@ -167,7 +167,7 @@ namespace MelloMario.MarioObjects
                     //            Downgrade();
                     //    }
                     //}
-                    if(target is Koopa koopa)
+                    if(target is Koopa)
                     {
                         if(!(ProtectionState is Starred))
                         {
