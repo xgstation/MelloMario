@@ -153,24 +153,51 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Koopa":
-                    if (target is Koopa koopa && mode != CollisionMode.Bottom)
+                    //if (target is Koopa koopa && mode != CollisionMode.Bottom)
+                    //{
+                    //    if (koopa.State is EnemyObjects.KoopaStates.Normal && !(ProtectionState is Starred))
+                    //    {
+                    //        Downgrade();
+                    //    }
+                    //    else if (koopa.State is EnemyObjects.KoopaStates.MovingShell && !(ProtectionState is Starred))
+                    //    {
+                    //        if(koopa.Facing is FacingMode.right && (mode is CollisionMode.InnerRight || mode is CollisionMode.Left))
+                    //            Downgrade();
+                    //        if (koopa.Facing is FacingMode.left && (mode is CollisionMode.InnerLeft || mode is CollisionMode.Right))
+                    //            Downgrade();
+                    //    }
+                    //}
+                    if(target is Koopa koopa)
                     {
-                        if (koopa.State is EnemyObjects.KoopaStates.Normal && !(ProtectionState is Starred))
+                        if(!(ProtectionState is Starred))
                         {
-                            Downgrade();
-                        }
-                        else if (koopa.State is EnemyObjects.KoopaStates.MovingShell && !(ProtectionState is Starred))
-                        {
-                            if(koopa.Facing is FacingMode.right && (mode is CollisionMode.InnerRight || mode is CollisionMode.Left))
-                                Downgrade();
-                            if (koopa.Facing is FacingMode.left && (mode is CollisionMode.InnerLeft || mode is CollisionMode.Right))
-                                Downgrade();
+                            if (mode is CollisionMode.Bottom)
+                            {
+                                if (corner is CornerMode.Right)
+                                {
+                                    Bounce(mode, new Vector2(1f, -5f), 1f);
+                                }
+                                else if (corner is CornerMode.Left)
+                                {
+                                    Bounce(mode, new Vector2(-1f, -5f), 1f);
+                                }
+                                else
+                                {
+                                    Bounce(mode, new Vector2(0, -5f), 1f);
+                                }
+
+                            }
+                            else if (mode is CollisionMode.Left || mode is CollisionMode.Right)
+                            {
+                                    Bounce(mode, new Vector2(), -0.5f);
+                            }
                         }
                     }
-                    else if (!(protectionState is Starred))
-                    {
-                        Bounce(mode, new Vector2(0, -5f), 1f);
-                    }
+                        
+                    //else if (!(protectionState is Starred))
+                    //{
+                    //    Bounce(mode, new Vector2(0, -5f), 1f);
+                    //}
 
                     break;
                 case "Coin":

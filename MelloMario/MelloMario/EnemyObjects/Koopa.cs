@@ -12,7 +12,7 @@ namespace MelloMario.EnemyObjects
         private ShellColor color;
         private IKoopaState state;
         private const int VELOCITY_LR = 1;
-        private const int VELOCITY_SHELL = 3;
+        private const int VELOCITY_SHELL =7;
         private bool move;
         private void UpdateSprite()
         {
@@ -97,10 +97,13 @@ namespace MelloMario.EnemyObjects
                             {
                                 JumpOn();
                             }
+                            else
+                            {
+                                mario.Downgrade();
+                            }
                         }
                         else if (state is Defeated)
                         {
-
                             if (mode == CollisionMode.Left)
                             {
                                 ChangeFacing(FacingMode.right);
@@ -207,6 +210,16 @@ namespace MelloMario.EnemyObjects
         }
         public void Pushed()
         {
+            // TODO: temporary fix
+            if (Facing == FacingMode.right)
+            {
+                    Move(new Point(1, 0));
+            }
+            else
+            {
+                    Move(new Point(-1, 0));
+            }
+
             State.Pushed();
         }
         public void Defeat()

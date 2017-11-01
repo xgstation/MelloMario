@@ -286,13 +286,13 @@ namespace MelloMario.Factories
             switch (type)
             {
                 case "ShortCloud":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 14, 1, 1, ZIndex.front);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 20, 3, 2, ZIndex.front);
                 case "ShortSmileCloud":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 14, 1, 1, ZIndex.front);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 4, 21, 1, 1, ZIndex.front);
                 case "LongCloud":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 3, 14, 1, 1, ZIndex.front);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 8, 22, 4, 1, ZIndex.front);
                 case "LongSmileCloud":
-                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 2, 14, 1, 1, ZIndex.front);
+                    return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 5, 20, 3, 2, ZIndex.front);
                 default:
                     return null;
             }
