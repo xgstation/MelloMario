@@ -11,8 +11,8 @@
         {
           "Type": "Mario",
           "SpawnPoint": {
-            "X": 8,
-            "Y": 14
+            "X": 16,
+            "Y": 10
           },
           "State": "Normal"
         }
@@ -23,13 +23,21 @@
           "Point": {
             "X": 3,
             "Y": 5
+          },
+          "Quantity": {
+            "X": 100,
+            "Y": 1
           }
         },
         {
           "Type": "ShortSmileCloud",
           "Point": {
             "X": 7,
-            "Y": 4
+            "Y": 5
+          },
+          "Quantity": {
+            "X": 100,
+            "Y": 1
           }
         },
         {
@@ -37,13 +45,21 @@
           "Point": {
             "X": 13,
             "Y": 3
+          },
+          "Quantity": {
+            "X": 100,
+            "Y": 1
           }
         },
         {
           "Type": "LongSmileCloud",
           "Point": {
             "X": 15,
-            "Y": 4
+            "Y": 2
+          },
+          "Quantity": {
+            "X": 100,
+            "Y": 1
           }
         },
         {
@@ -305,13 +321,6 @@
           }
         },
         {
-          "Type": "Question",
-          "Point": {
-            "X": 19,
-            "Y": 10
-          }
-        },
-        {
           "Type": "Stair",
           "Point": {
             "X": 1,
@@ -340,10 +349,10 @@
           "Type": "Brick",
           "Point": {
             "X": 4,
-            "Y": 3
+            "Y": 2
           },
           "Quantity": {
-            "X": 6,
+            "X": 100,
             "Y": 1
           },
           "Properties": [
@@ -400,21 +409,21 @@
             }
           ]
         },
-		{
+        {
           "Type": "Stair",
           "Point": {
             "X": 90,
             "Y": 6
           }
         },
-		{
+        {
           "Type": "Stair",
           "Point": {
             "X": 100,
             "Y": 6
           }
         },
-		{
+        {
           "Type": "Brick",
           "Point": {
             "X": 120,
@@ -434,9 +443,9 @@
               "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
             }
           ]
-        }, 
-		
-		{
+        },
+
+        {
           "Type": "Brick",
           "Point": {
             "X": 160,
@@ -456,8 +465,8 @@
               "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
             }
           ]
-        }, 
-		{
+        },
+        {
           "Type": "Brick",
           "Point": {
             "X": 180,
@@ -477,9 +486,9 @@
               "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
             }
           ]
-        }, 
-		
-		{
+        },
+
+        {
           "Type": "Brick",
           "Point": {
             "X": 170,
@@ -499,7 +508,7 @@
               "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
             }
           ]
-        }, 
+        },
 
         {
           "Type": "Brick",
