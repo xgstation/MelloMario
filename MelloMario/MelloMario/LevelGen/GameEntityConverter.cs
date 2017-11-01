@@ -82,7 +82,7 @@ namespace MelloMario.LevelGen
                         {
                             list = CreateItemList(gameWorld, location, property.Item2);
                         }
-                        PushNewObject(objectStack, type, location, list, property);
+                        PushNewObject(objectStack,type,location,list,property);
                     }
                 }
             }
