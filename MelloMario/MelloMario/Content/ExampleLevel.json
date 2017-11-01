@@ -47,11 +47,17 @@
           }
         },
         {
-          "Type": "HiddenQuestion",
+          "Type": "Question",
           "Point": {
-            "X": 8,
-            "Y": 16
-          }
+            "X": 2,
+            "Y": 11
+          },
+		  "Properties": [
+            {
+              "isHidden": true,
+              "ItemValue": [ "CoinUnveil", "CoinUnveil" ]
+            }
+          ]
         },
         {
           "Type": "HiddenBrick",
@@ -84,6 +90,57 @@
           "Type": "Brick",
           "Point": {
             "X": 6,
+            "Y": 11
+          },
+          "Quantity": {
+            "X": 3,
+            "Y": 1
+          }
+        },
+        {
+          "Type": "HiddenBrick",
+          "Point": {
+            "X": 46,
+            "Y": 11
+          }
+        },
+        {
+          "Type": "Brick",
+          "Point": {
+            "X": 47,
+            "Y": 11
+          }
+        },
+        {
+          "Type": "Question",
+          "Point": {
+            "X": 48,
+            "Y": 11
+          },
+          "Properties": [
+            {
+              "isHidden": false,
+              "ItemValue": [ "FireFlowerUnveil" ]
+            }
+          ]
+        },
+		{
+          "Type": "Question",
+          "Point": {
+            "X": 49,
+            "Y": 11
+          },
+		  "Properties": [
+            {
+              "isHidden": true,
+              "ItemValue": [ "CoinUnveil", "CoinUnveil" ]
+            }
+          ]
+        },
+        {
+          "Type": "Brick",
+          "Point": {
+            "X": 50,
             "Y": 11
           },
           "Quantity": {
@@ -183,6 +240,17 @@
             "Y": 2
           }
         },
+		{
+          "Type": "Stair",
+          "Point": {
+            "X": 70,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 2,
+            "Y": 2
+          }
+        },
         {
           "Type": "OneUpMushroom",
           "Point": {
@@ -260,6 +328,101 @@
               "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
             }
           ]
+        },
+		
+		{
+          "Type": "Brick",
+          "Point": {
+            "X": 50,
+            "Y": 7
+          },
+          "Quantity": {
+            "X": 6,
+            "Y": 1
+          },
+          "Properties": [
+            {
+              "Index": {
+                "X": 0,
+                "Y": 0
+              },
+              "isHidden": false,
+              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            }
+          ]
+        },
+		{
+          "Type": "Brick",
+          "Point": {
+            "X": 60,
+            "Y": 5
+          },
+          "Quantity": {
+            "X": 6,
+            "Y": 1
+          },
+          "Properties": [
+            {
+              "Index": {
+                "X": 0,
+                "Y": 0
+              },
+              "isHidden": false,
+              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            }
+          ]
+        },
+		
+		
+		{
+          "Type": "Brick",
+          "Point": {
+            "X": 70,
+            "Y": 3
+          },
+          "Quantity": {
+            "X": 6,
+            "Y": 1
+          },
+          "Properties": [
+            {
+              "Index": {
+                "X": 0,
+                "Y": 0
+              },
+              "isHidden": false,
+              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            }
+          ]
+        }, 
+		{
+          "Type": "Brick",
+          "Point": {
+            "X": 76,
+            "Y": 2
+          }
+        },
+		{
+          "Type": "Brick",
+          "Point": {
+            "X": 69,
+            "Y": 2
+          }
+        },
+		{
+          "Type": "SuperMushroom",
+          "Point": {
+            "X": 70,
+            "Y": 2
+          }
+        },
+		
+		{
+          "Type": "RedKoopa",
+          "Point": {
+            "X": 60,
+            "Y": 14
+          }
         }
       ]
     },
