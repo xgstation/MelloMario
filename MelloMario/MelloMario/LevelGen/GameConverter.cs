@@ -46,7 +46,7 @@ namespace MelloMario.LevelGen
 
             IList<JToken> Structures = MapToBeLoaded.Value<JToken>("Entity").ToList();
             world = new GameWorld(MapToBeLoaded.Value<int>("Grid"), mapSize, model);
-            serializers.Converters.Add(new BaseGameObjectConverter(world, grid));
+            serializers.Converters.Add(new GameEntityConverter(world, grid));
             serializers.Converters.Add(new CharacterConverter(world, grid));
 
             foreach (var jToken in Structures)
