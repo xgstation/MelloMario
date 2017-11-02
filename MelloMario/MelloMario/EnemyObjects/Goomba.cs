@@ -108,7 +108,10 @@ namespace MelloMario.EnemyObjects
                     Defeat();
                 }
             }
+        }
 
+        protected override void OnSeen(IPlayer player, CollisionMode mode)
+        {
         }
 
         protected override void OnOut(CollisionMode mode)

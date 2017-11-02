@@ -96,7 +96,7 @@ namespace MelloMario.MarioObjects
                         isHidden = false;
                         isBumping = false;
                     }
-                    
+
                     if (mode == CollisionMode.Top)
                     {
                         if (Bounce(mode, new Vector2(), 1))
@@ -167,9 +167,9 @@ namespace MelloMario.MarioObjects
                     //            Downgrade();
                     //    }
                     //}
-                    if(target is Koopa)
+                    if (target is Koopa)
                     {
-                        if(!(ProtectionState is Starred))
+                        if (!(ProtectionState is Starred))
                         {
                             if (mode is CollisionMode.Bottom)
                             {
@@ -189,11 +189,11 @@ namespace MelloMario.MarioObjects
                             }
                             else if (mode is CollisionMode.Left || mode is CollisionMode.Right)
                             {
-                                    Bounce(mode, new Vector2(), -0.5f);
+                                Bounce(mode, new Vector2(), -0.5f);
                             }
                         }
                     }
-                        
+
                     //else if (!(protectionState is Starred))
                     //{
                     //    Bounce(mode, new Vector2(0, -5f), 1f);
@@ -222,6 +222,10 @@ namespace MelloMario.MarioObjects
                         PowerUpState.UpgradeToSuper();
                     break;
             }
+        }
+
+        protected override void OnSeen(IPlayer player, CollisionMode mode)
+        {
         }
 
         protected override void OnOut(CollisionMode mode)

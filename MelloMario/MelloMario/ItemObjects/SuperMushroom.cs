@@ -64,6 +64,10 @@ namespace MelloMario.ItemObjects
             }
         }
 
+        protected override void OnSeen(IPlayer player, CollisionMode mode)
+        {
+        }
+
         protected override void OnOut(CollisionMode mode)
         {
         }

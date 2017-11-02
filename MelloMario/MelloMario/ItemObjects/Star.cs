@@ -66,6 +66,10 @@ namespace MelloMario.ItemObjects
                 }
         }
 
+        protected override void OnSeen(IPlayer player, CollisionMode mode)
+        {
+        }
+
         protected override void OnOut(CollisionMode mode)
         {
         }
@@ -106,7 +110,7 @@ namespace MelloMario.ItemObjects
         public Star(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }
-        
+
         public void Collect()
         {
             RemoveSelf();

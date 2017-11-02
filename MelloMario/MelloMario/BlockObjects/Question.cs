@@ -50,6 +50,10 @@ namespace MelloMario.BlockObjects
         {
         }
 
+        protected override void OnSeen(IPlayer player, CollisionMode mode)
+        {
+        }
+
         protected override void OnOut(CollisionMode mode)
         {
         }
