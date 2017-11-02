@@ -6,9 +6,6 @@ namespace MelloMario
 {
     interface ICharacter
     {
-        Rectangle Viewport { get; }
-
-        void Spawn(IGameWorld newWorld);
         void Left();
         void LeftPress();
         void LeftRelease();

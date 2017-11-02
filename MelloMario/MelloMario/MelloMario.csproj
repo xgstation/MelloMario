@@ -94,6 +94,7 @@
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
     <Compile Include="Interfaces\Factories\ICommandFactory.cs" />
     <Compile Include="Interfaces\Factories\IGameObjectFactory.cs" />
+    <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IScript.cs" />
     <Compile Include="Interfaces\IGameModel.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />

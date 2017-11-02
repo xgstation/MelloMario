@@ -15,13 +15,10 @@ namespace MelloMario
 
         private IEnumerable<IController> controllers;
         private IGameWorld world;
-        private ICharacter character;
+        private IPlayer player;
         private LevelIOJson reader;
         private bool isPaused;
         private Game1 game;
-
-        // TODO: remove this
-        public ICharacter Character { get { return character; } }
 
         public GameModel(Game1 game, LevelIOJson reader)
         {
@@ -45,23 +42,23 @@ namespace MelloMario
 
             if (isPaused)
             {
-                new PausedScript().Bind(controllers, this, character);
+                new PausedScript().Bind(controllers, this, player);
             }
             else
             {
-                new PlayingScript().Bind(controllers, this, character);
+                new PlayingScript().Bind(controllers, this, player);
             }
         }
 
         public void Reset()
         {
             reader.SetModel(this);
-            Tuple<IGameWorld, ICharacter> pair = reader.Load("Main");
+            Tuple<IGameWorld, IPlayer> pair = reader.Load("Main");
             world = pair.Item1;
-            character = pair.Item2;
+            player = pair.Item2;
 
             isPaused = false;
-            new PlayingScript().Bind(controllers, this, character);
+            new PlayingScript().Bind(controllers, this, player);
         }
 
         public void Quit()
@@ -99,7 +96,7 @@ namespace MelloMario
             {
                 foreach (IGameObject obj in world.ScanObjects())
                 {
-                    obj.Draw(time, character.Viewport, zIndex);
+                    obj.Draw(time, player.Viewport, zIndex);
                 }
             }
         }
@@ -107,17 +104,19 @@ namespace MelloMario
         public void SwitchWorld(string index)
         {
             Point newLoc = new Point(1, 1);
+
             if (worlds.ContainsKey(index))
             {
                 currentWorld = worlds[index];
             }
             else
             {
-                var pair = reader.Load(index);
+                Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
                 worlds.Add(currentWorldIndex, currentWorld);
                 currentWorld = pair.Item1;
             }
-            character.Spawn(currentWorld);
+
+            player.Spawn(currentWorld);
         }
     }
 }
