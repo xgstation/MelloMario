@@ -7,53 +7,19 @@ namespace MelloMario
     {
         private int grid;
         private Point size;
+        private GameModel model;
         //supressing this recomendation to change to a jagged array since this will always be a
         //rectangular shape and there is no need to change to a jagged array.
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId = "Member")]
         private ISet<IGameObject>[,] objects;
+        private ISet<Point> respawnPoints;
         private IDictionary<IGameObject, Point> locations;
-
         private ISet<IGameObject> toAdd;
         private ISet<IGameObject> toMove;
         private ISet<IGameObject> toRemove;
 
-        private GameModel model;
-        public GameModel Model { get { return model; } }
-        private void DoAdd(IGameObject gameObject)
-        {
-            if (!locations.ContainsKey(gameObject))
-            {
-                Point location = new Point(
-                    gameObject.Boundary.Center.X / grid,
-                    gameObject.Boundary.Center.Y / grid
-                );
-
-                if (location.X >= 0 && location.X < size.X && location.Y >= 0 && location.Y < size.Y)
-                {
-                    locations[gameObject] = location;
-                    objects[location.X, location.Y].Add(gameObject);
-                }
-            }
-        }
-
-        private void DoRemove(IGameObject gameObject)
-        {
-            if (locations.ContainsKey(gameObject))
-            {
-                Point location = locations[gameObject];
-
-                locations.Remove(gameObject);
-                objects[location.X, location.Y].Remove(gameObject);
-            }
-        }
-
-        public Rectangle Boundary
-        {
-            get
-            {
-                return new Rectangle(0, 0, size.X * grid, size.Y * grid);
-            }
-        }
+        public GameModel Model => model;
+        public Rectangle Boundary => new Rectangle(0, 0, size.X * grid, size.Y * grid);
 
         public GameWorld(int grid, Point size, GameModel model)
         {
@@ -75,7 +41,34 @@ namespace MelloMario
             toMove = new HashSet<IGameObject>();
             toRemove = new HashSet<IGameObject>();
         }
-
+        public void AddObject(IGameObject gameObject)
+        {
+            toAdd.Add(gameObject);
+        }
+        public void MoveObject(IGameObject gameObject)
+        {
+            toMove.Add(gameObject);
+        }
+        public void RemoveObject(IGameObject gameObject)
+        {
+            toRemove.Add(gameObject);
+        }
+        public bool AddRespawnPoint(Point newPoint)
+        {
+            return respawnPoints.Add(newPoint);
+        }
+        public Point GetRespawnPoint(Point givenPoint)
+        {
+            Point resPoint = givenPoint;
+            foreach (var p in respawnPoints)
+            {
+                if (givenPoint.X > p.X)
+                {
+                    resPoint = p;
+                }
+            }
+            return resPoint;
+        }
         public IEnumerable<IGameObject> ScanObjects()
         {
             for (int i = objects.GetLowerBound(0); i <= objects.GetUpperBound(0); ++i)
@@ -93,7 +86,6 @@ namespace MelloMario
                 }
             }
         }
-
         public IEnumerable<IGameObject> ScanNearbyObjects(IGameObject gameObject)
         {
             if (locations.ContainsKey(gameObject))
@@ -122,30 +114,49 @@ namespace MelloMario
                 }
             }
         }
-
-        public void AddObject(IGameObject gameObject)
-        {
-            toAdd.Add(gameObject);
-        }
-
-        public void MoveObject(IGameObject gameObject)
-        {
-            toMove.Add(gameObject);
-        }
-
-        public void RemoveObject(IGameObject gameObject)
-        {
-            toRemove.Add(gameObject);
-        }
-
         public void Update()
+        {
+            UpdateAdd();
+            UpdateMove();
+            UpdateRemove();
+        }
+
+        private void DoAdd(IGameObject gameObject)
+        {
+            if (!locations.ContainsKey(gameObject))
+            {
+                Point location = new Point(
+                    gameObject.Boundary.Center.X / grid,
+                    gameObject.Boundary.Center.Y / grid
+                );
+
+                if (location.X >= 0 && location.X < size.X && location.Y >= 0 && location.Y < size.Y)
+                {
+                    locations[gameObject] = location;
+                    objects[location.X, location.Y].Add(gameObject);
+                }
+            }
+        }
+        private void DoRemove(IGameObject gameObject)
+        {
+            if (locations.ContainsKey(gameObject))
+            {
+                Point location = locations[gameObject];
+
+                locations.Remove(gameObject);
+                objects[location.X, location.Y].Remove(gameObject);
+            }
+        }
+        private void UpdateAdd()
         {
             foreach (IGameObject obj in toAdd)
             {
                 DoAdd(obj);
             }
             toAdd.Clear();
-
+        }
+        private void UpdateMove()
+        {
             foreach (IGameObject obj in toMove)
             {
                 if (locations.ContainsKey(obj))
@@ -155,12 +166,17 @@ namespace MelloMario
                 }
             }
             toMove.Clear();
-
+        }
+        private void UpdateRemove()
+        {
             foreach (IGameObject obj in toRemove)
             {
                 DoRemove(obj);
             }
             toRemove.Clear();
         }
+
+
+
     }
 }
