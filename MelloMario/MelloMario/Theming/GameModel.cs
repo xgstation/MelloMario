@@ -106,13 +106,21 @@ namespace MelloMario
 
         public void SwitchWorld(string index)
         {
-            var pair = reader.Load(index);
+            Point newLoc = new Point(1,1);
             currentWorld.RemoveObject(character);
             currentWorld.Update();
-            worlds.Add(currentWorldIndex, currentWorld);
-            currentWorld = pair.Item1;
-            //character.changeworld();
-            //character.changelocation();
+            if (worlds.ContainsKey(index))
+            {
+                currentWorld = worlds[index];
+            }
+            else
+            {
+                var pair = reader.Load(index);
+                worlds.Add(currentWorldIndex, currentWorld);
+                currentWorld = pair.Item1;
+            }
+            character.SetWorld(currentWorld);
+            character.SetLocation(newLoc);
         }
     }
 }
