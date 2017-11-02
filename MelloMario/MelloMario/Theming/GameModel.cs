@@ -9,6 +9,10 @@ namespace MelloMario
 {
     class GameModel : IGameModel
     {
+        private IDictionary<string, IGameWorld> worlds;
+        private IGameWorld currentWorld;
+        private string currentWorldIndex;
+
         private IEnumerable<IController> controllers;
         private IGameWorld world;
         private IGameCharacter character;
@@ -98,6 +102,17 @@ namespace MelloMario
                     obj.Draw(time, character.Viewport, zIndex);
                 }
             }
+        }
+
+        public void SwitchWorld(string index)
+        {
+            var pair = reader.Load(index);
+            currentWorld.RemoveObject(character);
+            currentWorld.Update();
+            worlds.Add(currentWorldIndex, currentWorld);
+            currentWorld = pair.Item1;
+            //character.changeworld();
+            //character.changelocation();
         }
     }
 }
