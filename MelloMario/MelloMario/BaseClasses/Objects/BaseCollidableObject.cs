@@ -121,6 +121,7 @@ namespace MelloMario
         protected enum CornerMode { Left, Right, Top, Bottom, Center };
 
         protected abstract void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive);
+        protected abstract void OnSeen(IPlayer player, CollisionMode mode);
         protected abstract void OnOut(CollisionMode mode);
 
         protected void Move(Point delta)
