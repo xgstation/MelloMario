@@ -14,17 +14,15 @@ namespace MelloMario.EnemyObjects
         private float timeFromDeath;
         private const int VELOCITY_LR = 1;
         private bool move;
+
         private void UpdateSprite()
         {
-         
-            ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name)); 
+            ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name));
         }
-
-
 
         protected override void OnUpdate(GameTime time)
         {
-            
+
             state.Update(time);
             if (state is Defeated)
             {
@@ -42,30 +40,30 @@ namespace MelloMario.EnemyObjects
                     if (Facing == FacingMode.right)
                     {
                         Move(new Point(VELOCITY_LR, 0));
-                       
+
                     }
                     else
                     {
                         Move(new Point(-VELOCITY_LR, 0));
-                       
                     }
                 }
-                if (World.Model.Control != null && !move)
+                if (!move)
                 {
-                    move = Boundary.Intersects(World.Model.Control.Viewport);
+                    // TODO: use collision detection system to do this job
+                    //       similar as GameObject.OnOut
+                    move = true; // Boundary.Intersects(World.Model.Control.Viewport);
                 }
                 else
                 {
                     move = true;
                 }
             }
-           
-            }
-        
+
+        }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-            switch(target.GetType().Name)
+            switch (target.GetType().Name)
             {
                 case "PlayerMario":
                     //TODO: Fire to be added
@@ -119,8 +117,6 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
-
-
         }
 
         public IGoombaState State
@@ -134,7 +130,6 @@ namespace MelloMario.EnemyObjects
                 state = value;
                 UpdateSprite();
             }
-
         }
 
         private void ChangeFacing(FacingMode facing)
@@ -147,7 +142,6 @@ namespace MelloMario.EnemyObjects
 
         public Goomba(IGameWorld world, Point location, Point marioLoc) : base(world, location, new Point(32, 32), 32)
         {
-            
             if (marioLoc.X < location.X)
             {
                 Facing = FacingMode.left;

@@ -6,7 +6,6 @@ namespace MelloMario
     interface IGameWorld
     {
         Rectangle Boundary { get; }
-        GameModel Model { get; } // TODO: remove this
 
         IEnumerable<IGameObject> ScanObjects();
         IEnumerable<IGameObject> ScanNearbyObjects(IGameObject gameObject);

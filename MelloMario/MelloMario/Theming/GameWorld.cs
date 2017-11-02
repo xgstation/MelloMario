@@ -7,25 +7,30 @@ namespace MelloMario
     {
         private int grid;
         private Point size;
-        private GameModel model;
         //supressing this recomendation to change to a jagged array since this will always be a
         //rectangular shape and there is no need to change to a jagged array.
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1814:PreferJaggedArraysOverMultidimensional", MessageId = "Member")]
         private ISet<IGameObject>[,] objects;
         private ISet<Point> respawnPoints;
         private IDictionary<IGameObject, Point> locations;
+
         private ISet<IGameObject> toAdd;
         private ISet<IGameObject> toMove;
         private ISet<IGameObject> toRemove;
 
-        public GameModel Model => model;
-        public Rectangle Boundary => new Rectangle(0, 0, size.X * grid, size.Y * grid);
 
-        public GameWorld(int grid, Point size, GameModel model)
+        public Rectangle Boundary
+        {
+            get
+            {
+                return new Rectangle(0, 0, size.X * grid, size.Y * grid);
+            }
+        }
+
+        public GameWorld(int grid, Point size)
         {
             this.grid = grid;
             this.size = size;
-            this.model = model;
 
             objects = new HashSet<IGameObject>[size.X, size.Y];
             for (int i = objects.GetLowerBound(0); i <= objects.GetUpperBound(0); ++i)
@@ -86,6 +91,7 @@ namespace MelloMario
                 }
             }
         }
+
         public IEnumerable<IGameObject> ScanNearbyObjects(IGameObject gameObject)
         {
             if (locations.ContainsKey(gameObject))
@@ -175,8 +181,5 @@ namespace MelloMario
             }
             toRemove.Clear();
         }
-
-
-
     }
 }

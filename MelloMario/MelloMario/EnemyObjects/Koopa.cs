@@ -12,7 +12,7 @@ namespace MelloMario.EnemyObjects
         private ShellColor color;
         private IKoopaState state;
         private const int VELOCITY_LR = 1;
-        private const int VELOCITY_SHELL =7;
+        private const int VELOCITY_SHELL = 7;
         private bool move;
         private void UpdateSprite()
         {
@@ -47,9 +47,9 @@ namespace MelloMario.EnemyObjects
         protected override void OnUpdate(GameTime time)
         {
             ApplyGravity();
-            if (move&&!(state is Defeated))
+            if (move && !(state is Defeated))
             {
-               
+
                 if (Facing == FacingMode.right)
                 {
                     if (state is MovingShell)
@@ -65,21 +65,20 @@ namespace MelloMario.EnemyObjects
                         Move(new Point(-1 * VELOCITY_LR, 0));
                 }
             }
-            if (World.Model.Control != null && !move)
+            if (!move)
             {
-                move = Boundary.Intersects(World.Model.Control.Viewport);
+                // TODO: use collision detection system to do this job
+                //       similar as GameObject.OnOut
+                move = true; // Boundary.Intersects(World.Model.Control.Viewport);
             }
             else
             {
                 move = true;
-
             }
-
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-
             switch (target.GetType().Name)
             {
                 case "PlayerMario":
@@ -118,7 +117,6 @@ namespace MelloMario.EnemyObjects
                             {
                                 ChangeFacing(FacingMode.right);
                                 Pushed();
-
                             }
                             else if (mode == CollisionMode.Top && corner == CornerMode.Right)
                             {
@@ -127,6 +125,7 @@ namespace MelloMario.EnemyObjects
                             }
                         }
                     }
+
                     break;
                 case "Brick":
                     if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
@@ -174,6 +173,7 @@ namespace MelloMario.EnemyObjects
         }
 
         public enum ShellColor { green, red };
+
         public IKoopaState State
         {
             get
@@ -191,19 +191,19 @@ namespace MelloMario.EnemyObjects
         {
 
             if (marioLoc.X < location.X)
-                {
-                    Facing = FacingMode.left;
-                }
-                else
-                {
-                    Facing = FacingMode.right;
-                }
+            {
+                Facing = FacingMode.left;
+            }
+            else
+            {
+                Facing = FacingMode.right;
+            }
             move = false;
             this.color = color;
             state = new Normal(this);
             UpdateSprite();
         }
-        
+
         public void JumpOn()
         {
             State.JumpOn();
@@ -213,11 +213,11 @@ namespace MelloMario.EnemyObjects
             // TODO: temporary fix
             if (Facing == FacingMode.right)
             {
-                    Move(new Point(1, 0));
+                Move(new Point(1, 0));
             }
             else
             {
-                    Move(new Point(-1, 0));
+                Move(new Point(-1, 0));
             }
 
             State.Pushed();
