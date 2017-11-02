@@ -77,7 +77,7 @@ namespace MelloMario
         public Point GetRespawnPoint(Point givenPoint)
         {
             Point resPoint = givenPoint;
-            foreach (var p in respawnPoints)
+            foreach (Point p in respawnPoints)
             {
                 if (givenPoint.X > p.X)
                 {
