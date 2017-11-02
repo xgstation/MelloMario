@@ -52,10 +52,14 @@ namespace MelloMario.LevelGen
             foreach (var jToken in Structures)
             {
                 var gameObjs = jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
-                foreach (var gameObj in gameObjs.RealObj)
+                if (gameObjs != null)
                 {
-                    world.AddObject(gameObj);
+                    foreach (var gameObj in gameObjs.RealObj)
+                    {
+                        world.AddObject(gameObj);
+                    }
                 }
+
             }
 
             IList<JToken> Characters = MapToBeLoaded.Value<JToken>("Characters").ToList();
