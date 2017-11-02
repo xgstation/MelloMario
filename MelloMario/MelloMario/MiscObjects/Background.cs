@@ -6,10 +6,11 @@ namespace MelloMario.MiscObjects
     class Background : BaseGameObject
     {
         private string type;
-        private ZIndex initialZIndex;
+        private ZIndex zIndex;
+
         private void UpdateSprite()
         {
-            ShowSprite(SpriteFactory.Instance.CreateSceneSprite(type, initialZIndex));
+            ShowSprite(SpriteFactory.Instance.CreateSceneSprite(type, zIndex));
         }
 
         protected override void OnUpdate(GameTime time)
@@ -27,7 +28,7 @@ namespace MelloMario.MiscObjects
         public Background(IGameWorld world, Point location, string type, ZIndex zIndex) : base(world, location, new Point(32, 32))
         {
             this.type = type;
-            this.initialZIndex = zIndex;
+            this.zIndex = zIndex;
             UpdateSprite();
         }
     }
