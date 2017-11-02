@@ -77,34 +77,5 @@ namespace MelloMario.Factories
                     return null;
             }
         }
-
-        // For demo only
-        // This method and all of the commands will be removed in the final game
-        public ICommand CreateGameObjectCommand(string action, IGameObject gameObject)
-        {
-            if (gameObject is Mario mario)
-            {
-                switch (action)
-                {
-
-                    case "FireState":
-                        return new FireState(mario);
-                    case "StandardState":
-                        return new StandardState(mario);
-                    case "SuperState":
-                        return new SuperState(mario);
-                    default:
-                        //it should never hit this case, if it does there is an error somewhere
-                        //else in the code
-                        return null;
-                }
-            }
-            else
-            {
-                //it should never hit this case, if it does there is an error somewhere
-                //else in the code
-                return null;
-            }
-        }
     }
 }
