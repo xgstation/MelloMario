@@ -574,7 +574,7 @@
       ]
     },
     {
-      "Type": "Sub"
+      "Type": "Sub",
       "Index": "1-2",
       "Grid": 32,
       "Size": {
