@@ -66,8 +66,9 @@ namespace MelloMario.LevelGen
             foreach (var obj in Characters)
             {
                 var temp = obj.ToObject<EncapsulatedObject<PlayerMario>>(serializers);
-                character = temp.RealObj.Pop();
-                world.AddObject(character);
+                var mario = temp.RealObj.Pop();
+                character = mario;
+                world.AddObject(mario);
                 //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
             }
             return new Tuple<IGameWorld, IGameCharacter>(world, character);

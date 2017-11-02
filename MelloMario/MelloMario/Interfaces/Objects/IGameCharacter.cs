@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    interface IGameCharacter : IGameObject
+    interface IGameCharacter
     {
         Rectangle Viewport { get; }
 
