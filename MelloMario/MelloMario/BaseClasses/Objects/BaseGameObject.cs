@@ -100,32 +100,25 @@ namespace MelloMario
 
             if (sprite != null)
             {
-                if (zIndex == ZIndex.background)
+                Point offset = viewport.Location;
+
+                switch (zIndex)
                 {
-                    Point newLoc = viewport.Location;
-                    newLoc.X = (int)(newLoc.X * 0.5);
-                    viewport.Location = newLoc;
-                }
-                else if (zIndex == ZIndex.background1)
-                {
-                    Point newLoc = viewport.Location;
-                    newLoc.X = (int)(newLoc.X * 0.325);
-                    viewport.Location = newLoc;
-                }
-                else if (zIndex == ZIndex.background2)
-                {
-                    Point newLoc = viewport.Location;
-                    newLoc.X = (int)(newLoc.X * 0.65);
-                    viewport.Location = newLoc;
-                }
-                else if (zIndex == ZIndex.background3)
-                {
-                    Point newLoc = viewport.Location;
-                    newLoc.X = (int)(newLoc.X * 0.82);
-                    viewport.Location = newLoc;
+                    case ZIndex.background:
+                        offset.X = offset.X / 2;
+                        break;
+                    case ZIndex.background1:
+                        offset.X = offset.X / 3;
+                        break;
+                    case ZIndex.background2:
+                        offset.X = offset.X * 2 / 3;
+                        break;
+                    case ZIndex.background3:
+                        offset.X = offset.X * 3 / 4;
+                        break;
                 }
 
-                sprite.Draw(time, new Rectangle(Boundary.Location - viewport.Location, Boundary.Size), zIndex);
+                sprite.Draw(time, new Rectangle(Boundary.Location - offset, Boundary.Size), zIndex);
             }
         }
 
