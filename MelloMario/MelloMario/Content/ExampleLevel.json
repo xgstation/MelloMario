@@ -1,12 +1,23 @@
 ﻿{
   "Maps": [
     {
+      "Type": "Main",
       "Index": "Main",
       "Grid": 32,
       "Size": {
         "X": 212,
         "Y": 17
       },
+      "RespawnPoints": [
+        {
+          "X": 3,
+          "Y": 5
+        },
+        {
+          "X": 53,
+          "Y": 5
+        }
+      ],
       "Characters": [
         {
           "Type": "Mario",
@@ -563,6 +574,7 @@
       ]
     },
     {
+      "Type": "Sub"
       "Index": "1-2",
       "Grid": 32,
       "Size": {
@@ -573,6 +585,11 @@
         "X": 3,
         "Y": 3
       }
+    },
+    {
+      "Type": "Link",
+      "Index": "Link1",
+      "FilePath": ""
     }
   ]
 }
