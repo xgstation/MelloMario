@@ -15,13 +15,13 @@ namespace MelloMario
 
         private IEnumerable<IController> controllers;
         private IGameWorld world;
-        private IGameControl control;
+        private ICharacter character;
         private LevelIOJson reader;
         private bool isPaused;
         private Game1 game;
 
         // TODO: remove this
-        public IGameControl Control { get { return control; } }
+        public ICharacter Character { get { return character; } }
 
         public GameModel(Game1 game, LevelIOJson reader)
         {
@@ -45,23 +45,23 @@ namespace MelloMario
 
             if (isPaused)
             {
-                new PausedScript().Bind(controllers, this, control);
+                new PausedScript().Bind(controllers, this, character);
             }
             else
             {
-                new PlayingScript().Bind(controllers, this, control);
+                new PlayingScript().Bind(controllers, this, character);
             }
         }
 
         public void Reset()
         {
             reader.SetModel(this);
-            Tuple<IGameWorld, IGameControl> pair = reader.Load("Main");
+            Tuple<IGameWorld, ICharacter> pair = reader.Load("Main");
             world = pair.Item1;
-            control = pair.Item2;
+            character = pair.Item2;
 
             isPaused = false;
-            new PlayingScript().Bind(controllers, this, control);
+            new PlayingScript().Bind(controllers, this, character);
         }
 
         public void Quit()
@@ -99,7 +99,7 @@ namespace MelloMario
             {
                 foreach (IGameObject obj in world.ScanObjects())
                 {
-                    obj.Draw(time, control.Viewport, zIndex);
+                    obj.Draw(time, character.Viewport, zIndex);
                 }
             }
         }
@@ -117,7 +117,7 @@ namespace MelloMario
                 worlds.Add(currentWorldIndex, currentWorld);
                 currentWorld = pair.Item1;
             }
-            control.Spawn(currentWorld);
+            character.Spawn(currentWorld);
         }
     }
 }

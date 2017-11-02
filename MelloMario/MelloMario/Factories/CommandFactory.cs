@@ -41,36 +41,36 @@ namespace MelloMario.Factories
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        public ICommand CreateControlCommand(string action, IGameControl control)
+        public ICommand CreateCharacterCommand(string action, ICharacter character)
         {
             switch (action)
             {
                 case "Action":
-                    return new Commands.Action(control);
+                    return new Commands.Action(character);
                 case "Crouch":
-                    return new Crouch(control);
+                    return new Crouch(character);
                 case "CrouchPress":
-                    return new CrouchPress(control);
+                    return new CrouchPress(character);
                 case "CrouchRelease":
-                    return new CrouchRelease(control);
+                    return new CrouchRelease(character);
                 case "Jump":
-                    return new Jump(control);
+                    return new Jump(character);
                 case "JumpPress":
-                    return new JumpPress(control);
+                    return new JumpPress(character);
                 case "JumpRelease":
-                    return new JumpRelease(control);
+                    return new JumpRelease(character);
                 case "Left":
-                    return new Left(control);
+                    return new Left(character);
                 case "LeftPress":
-                    return new LeftPress(control);
+                    return new LeftPress(character);
                 case "LeftRelease":
-                    return new LeftRelease(control);
+                    return new LeftRelease(character);
                 case "Right":
-                    return new Right(control);
+                    return new Right(character);
                 case "RightPress":
-                    return new RightPress(control);
+                    return new RightPress(character);
                 case "RightRelease":
-                    return new RightRelease(control);
+                    return new RightRelease(character);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code

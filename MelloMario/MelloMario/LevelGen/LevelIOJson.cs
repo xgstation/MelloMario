@@ -24,10 +24,10 @@ namespace MelloMario.LevelGen
         {
             Model = model;
         }
-        public Tuple<IGameWorld, IGameControl> Load(string index)
+        public Tuple<IGameWorld, ICharacter> Load(string index)
         {
             levelString = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IGameControl>>(levelString, new GameConverter(index, Model));
+            return JsonConvert.DeserializeObject<Tuple<IGameWorld, ICharacter>>(levelString, new GameConverter(index, Model));
         }
         //public void Close()
         //{

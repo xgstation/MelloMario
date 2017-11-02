@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class Left : BaseCommand<IGameControl>
+    class Left : BaseCommand<ICharacter>
     {
-        public Left(IGameControl control) : base(control)
+        public Left(ICharacter character) : base(character)
         {
         }
 

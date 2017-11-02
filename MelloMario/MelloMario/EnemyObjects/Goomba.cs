@@ -51,7 +51,7 @@ namespace MelloMario.EnemyObjects
                 {
                     // TODO: use collision detection system to do this job
                     //       similar as GameObject.OnOut
-                    move = true; // Boundary.Intersects(World.Model.Control.Viewport);
+                    move = true; // Boundary.Intersects(World.Model.Character.Viewport);
                 }
                 else
                 {

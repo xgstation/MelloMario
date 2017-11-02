@@ -3,7 +3,7 @@ using MelloMario.MarioObjects.MovementStates;
 
 namespace MelloMario.MarioObjects
 {
-    class PlayerMario : Mario, IGameControl
+    class PlayerMario : Mario, ICharacter
     {
         private Vector2 userInput;
 

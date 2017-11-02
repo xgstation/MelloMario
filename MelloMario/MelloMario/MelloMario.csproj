@@ -96,7 +96,7 @@
     <Compile Include="Interfaces\Factories\IGameObjectFactory.cs" />
     <Compile Include="Interfaces\IScript.cs" />
     <Compile Include="Interfaces\IGameModel.cs" />
-    <Compile Include="Interfaces\IGameControl.cs" />
+    <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Interfaces\IGameWorld.cs" />
     <Compile Include="Interfaces\Objects\States\IState.cs" />
     <Compile Include="Interfaces\Objects\States\IGoombaState.cs" />

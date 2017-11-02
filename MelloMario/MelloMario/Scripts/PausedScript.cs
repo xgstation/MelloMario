@@ -10,7 +10,7 @@ namespace MelloMario.Scripts
         {
         }
 
-        public void Bind(IEnumerable<IController> controllers, IGameModel model, IGameControl control)
+        public void Bind(IEnumerable<IController> controllers, IGameModel model, ICharacter character)
         {
             ICommandFactory factory = CommandFactory.Instance;
 
@@ -18,7 +18,7 @@ namespace MelloMario.Scripts
             {
                 controller.Reset();
 
-                // game control commands
+                // game character commands
                 controller.AddCommand(Keys.Q, factory.CreateModelCommand("Quit", model), KeyBehavior.press);
                 controller.AddCommand(Keys.R, factory.CreateModelCommand("Reset", model), KeyBehavior.press);
                 controller.AddCommand(Keys.P, factory.CreateModelCommand("Pause", model), KeyBehavior.press);

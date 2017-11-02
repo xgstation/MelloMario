@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class RightPress : BaseCommand<IGameControl>
+    class RightPress : BaseCommand<ICharacter>
     {
-        public RightPress(IGameControl control) : base(control)
+        public RightPress(ICharacter character) : base(character)
         {
         }
 

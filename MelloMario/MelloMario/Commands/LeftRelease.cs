@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class LeftRelease : BaseCommand<IGameControl>
+    class LeftRelease : BaseCommand<ICharacter>
     {
-        public LeftRelease(IGameControl control) : base(control)
+        public LeftRelease(ICharacter character) : base(character)
         {
         }
 

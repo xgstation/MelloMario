@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class Jump : BaseCommand<IGameControl>
+    class Jump : BaseCommand<ICharacter>
     {
-        public Jump(IGameControl control) : base(control)
+        public Jump(ICharacter character) : base(character)
         {
         }
 
