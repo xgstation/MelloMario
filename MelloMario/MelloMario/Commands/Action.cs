@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class Action : BaseCommand<IGameCharacter>
+    class Action : BaseCommand<IGameControl>
     {
-        public Action(IGameCharacter character) : base(character)
+        public Action(IGameControl control) : base(control)
         {
         }
 

@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class Crouch : BaseCommand<IGameCharacter>
+    class Crouch : BaseCommand<IGameControl>
     {
-        public Crouch(IGameCharacter character) : base(character)
+        public Crouch(IGameControl control) : base(control)
         {
         }
 

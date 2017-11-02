@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class JumpRelease : BaseCommand<IGameCharacter>
+    class JumpRelease : BaseCommand<IGameControl>
     {
-        public JumpRelease(IGameCharacter character) : base(character)
+        public JumpRelease(IGameControl control) : base(control)
         {
         }
 
