@@ -86,14 +86,6 @@ namespace MelloMario
             this.size = size;
         }
 
-        // TODO: move to class PlayerMario
-        public void Spawn(IGameWorld newWorld)
-        {
-            World.RemoveObject(this);
-            World = newWorld;
-            location = newWorld.GetRespawnPoint(location);
-        }
-
         public void Update(GameTime time)
         {
             // TODO: override OnUpdate for states etc.

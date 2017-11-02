@@ -117,7 +117,7 @@ namespace MelloMario
                 worlds.Add(currentWorldIndex, currentWorld);
                 currentWorld = pair.Item1;
             }
-            ((IGameObject)control).Spawn(currentWorld);
+            control.Spawn(currentWorld);
         }
     }
 }

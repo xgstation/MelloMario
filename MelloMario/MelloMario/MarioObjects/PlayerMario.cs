@@ -143,5 +143,13 @@ namespace MelloMario.MarioObjects
         {
             throw new System.NotImplementedException();
         }
+
+        public void Spawn(IGameWorld world)
+        {
+            World.RemoveObject(this);
+            World = world;
+            Relocate(world.GetRespawnPoint(new Point(Boundary.Center.X, Boundary.Bottom)));
+        }
+
     }
 }
