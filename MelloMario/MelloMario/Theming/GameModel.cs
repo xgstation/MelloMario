@@ -15,13 +15,13 @@ namespace MelloMario
 
         private IEnumerable<IController> controllers;
         private IGameWorld world;
-        private IGameCharacter character;
+        private IGameControl control;
         private LevelIOJson reader;
         private bool isPaused;
         private Game1 game;
 
         // TODO: remove this
-        public IGameCharacter Character { get { return character; } }
+        public IGameControl Control { get { return control; } }
 
         public GameModel(Game1 game, LevelIOJson reader)
         {
@@ -45,23 +45,23 @@ namespace MelloMario
 
             if (isPaused)
             {
-                new PausedScript().Bind(controllers, character, this);
+                new PausedScript().Bind(controllers, this, control);
             }
             else
             {
-                new PlayingScript().Bind(controllers, character, this);
+                new PlayingScript().Bind(controllers, this, control);
             }
         }
 
         public void Reset()
         {
             reader.SetModel(this);
-            Tuple<IGameWorld, IGameCharacter> pair = reader.Load("Main");
+            Tuple<IGameWorld, IGameControl> pair = reader.Load("Main");
             world = pair.Item1;
-            character = pair.Item2;
+            control = pair.Item2;
 
             isPaused = false;
-            new PlayingScript().Bind(controllers, character, this);
+            new PlayingScript().Bind(controllers, this, control);
         }
 
         public void Quit()
@@ -99,7 +99,7 @@ namespace MelloMario
             {
                 foreach (IGameObject obj in world.ScanObjects())
                 {
-                    obj.Draw(time, character.Viewport, zIndex);
+                    obj.Draw(time, control.Viewport, zIndex);
                 }
             }
         }

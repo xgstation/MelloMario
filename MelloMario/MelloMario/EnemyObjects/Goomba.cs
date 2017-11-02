@@ -50,9 +50,9 @@ namespace MelloMario.EnemyObjects
                        
                     }
                 }
-                if (World.Model.Character != null && !move)
+                if (World.Model.Control != null && !move)
                 {
-                    move = Boundary.Intersects(World.Model.Character.Viewport);
+                    move = Boundary.Intersects(World.Model.Control.Viewport);
                 }
                 else
                 {

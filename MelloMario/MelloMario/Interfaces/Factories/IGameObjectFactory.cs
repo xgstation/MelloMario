@@ -5,7 +5,7 @@ namespace MelloMario
 {
     interface IGameObjectFactory
     {
-        Tuple<IGameCharacter, IGameObject> CreateGameCharacter(string type, IGameWorld world, Point location);
+        Tuple<IGameControl, IGameObject> CreateGameCharacter(string type, IGameWorld world, Point location);
         IGameObject CreateGameObject(string type, IGameWorld world, Point location);
     }
 }
