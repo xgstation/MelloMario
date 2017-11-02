@@ -16,7 +16,8 @@ namespace MelloMario.LevelGen
         JsonSerializer serializers;
 
         private GameWorld world;
-        private ICharacter character;
+        private IPlayer character;
+
         public GameConverter(string index, GameModel model)
         {
             this.model = model;
@@ -71,7 +72,7 @@ namespace MelloMario.LevelGen
                 world.AddObject(mario);
                 //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
             }
-            return new Tuple<IGameWorld, ICharacter>(world, character);
+            return new Tuple<IGameWorld, IPlayer>(world, character);
         }
         //TODO: Add serialize method and change CanWrite 
         public override bool CanWrite => false;
