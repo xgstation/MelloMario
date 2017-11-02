@@ -52,6 +52,8 @@ namespace MelloMario.MarioObjects
 
         public void Left()
         {
+            MovementState.Walk();
+
             if (!(MovementState is Crouching))
             {
                 userInput.X -= FORCE_INPUT_X;
@@ -64,7 +66,6 @@ namespace MelloMario.MarioObjects
             {
                 ChangeFacing(FacingMode.left);
             }
-            MovementState.Walk();
 
             Left();
         }
@@ -76,6 +77,8 @@ namespace MelloMario.MarioObjects
 
         public void Right()
         {
+            MovementState.Walk();
+
             if (!(MovementState is Crouching))
             {
                 userInput.X += FORCE_INPUT_X;
@@ -88,7 +91,6 @@ namespace MelloMario.MarioObjects
             {
                 ChangeFacing(FacingMode.right);
             }
-            MovementState.Walk();
 
             Right();
         }
