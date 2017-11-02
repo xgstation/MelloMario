@@ -6,7 +6,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 
 namespace MelloMario.LevelGen
 {
@@ -29,7 +31,25 @@ namespace MelloMario.LevelGen
             JToken objToken = JToken.Load(reader);
             var objectStack = new Stack<IGameObject>();
 
-            var type = TryGet<string>(objToken, "Type");
+            string typeStr = TryGet<string>(objToken, "Type");
+            Type type = null;
+            var assemblyTypes = AppDomain.CurrentDomain.GetAssemblies()[1].GetTypes();
+            foreach (var t in assemblyTypes)
+            {
+                type = t.Name == typeStr ? t : null;
+                if (type != null)
+                    break;
+            }
+            if (type == null)
+            {
+                Debug.Print("Deserialize fail: " + typeStr + " not found!");
+                return null;
+            }
+
+
+
+
+
             var startPoint = TryGet<Point>(objToken, "Point");
 
             //Read quantity of object
@@ -82,7 +102,7 @@ namespace MelloMario.LevelGen
                         {
                             list = CreateItemList(gameWorld, location, property.Item2);
                         }
-                        PushNewObject(objectStack,type,location,list,property);
+                        PushNewObject(objectStack, typeStr, location, list, property);
                     }
                 }
             }
@@ -123,7 +143,7 @@ namespace MelloMario.LevelGen
             }
             return null;
         }
-        private void PushNewObject(Stack<IGameObject> objectStack, string type, Point location, IList<IGameObject> list, Tuple<bool,string[]> property)
+        private void PushNewObject(Stack<IGameObject> objectStack, string type, Point location, IList<IGameObject> list, Tuple<bool, string[]> property)
         {
             IGameObject objectToPush = null;
             switch (type)
