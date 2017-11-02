@@ -4,6 +4,7 @@ namespace MelloMario
 {
     interface IGameModel
     {
+        void SwitchWorld(string index);
         void ToggleFullScreen();
         void Pause();
         void Reset();
