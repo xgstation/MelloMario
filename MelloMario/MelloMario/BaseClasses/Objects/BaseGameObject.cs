@@ -128,5 +128,15 @@ namespace MelloMario
                 sprite.Draw(time, new Rectangle(Boundary.Location - viewport.Location, Boundary.Size), zIndex);
             }
         }
+
+        public void SetLocation(Point newPoint)
+        {
+            location = newPoint;
+        }
+
+        public void SetWorld(IGameWorld newWorld)
+        {
+            World = newWorld;
+        }
     }
 }
