@@ -86,6 +86,14 @@ namespace MelloMario
             this.size = size;
         }
 
+        // TODO: move to class PlayerMario
+        public void Spawn(IGameWorld newWorld)
+        {
+            World.RemoveObject(this);
+            World = newWorld;
+            location = newWorld.GetRespawnPoint(location);
+        }
+
         public void Update(GameTime time)
         {
             // TODO: override OnUpdate for states etc.
@@ -120,16 +128,6 @@ namespace MelloMario
 
                 sprite.Draw(time, new Rectangle(Boundary.Location - offset, Boundary.Size), zIndex);
             }
-        }
-
-        public void SetLocation(Point newPoint)
-        {
-            location = newPoint;
-        }
-
-        public void SetWorld(IGameWorld newWorld)
-        {
-            World = newWorld;
         }
     }
 }

@@ -8,8 +8,7 @@ namespace MelloMario
     {
         Rectangle Boundary { get; }
 
-        void SetLocation(Point newPoint);
-        void SetWorld(IGameWorld newWorld);
+        void Spawn(IGameWorld newWorld);
         void Update(GameTime time);
         void Draw(GameTime time, Rectangle viewport, ZIndex zIndex);
     }

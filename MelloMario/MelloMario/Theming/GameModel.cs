@@ -106,9 +106,7 @@ namespace MelloMario
 
         public void SwitchWorld(string index)
         {
-            Point newLoc = new Point(1,1);
-            currentWorld.RemoveObject(character);
-            currentWorld.Update();
+            Point newLoc = new Point(1, 1);
             if (worlds.ContainsKey(index))
             {
                 currentWorld = worlds[index];
@@ -119,8 +117,7 @@ namespace MelloMario
                 worlds.Add(currentWorldIndex, currentWorld);
                 currentWorld = pair.Item1;
             }
-            character.SetWorld(currentWorld);
-            character.SetLocation(newLoc);
+            ((IGameObject)control).Spawn(currentWorld);
         }
     }
 }

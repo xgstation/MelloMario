@@ -222,6 +222,7 @@ namespace MelloMario.EnemyObjects
 
             State.Pushed();
         }
+
         public void Defeat()
         {
             RemoveSelf();

@@ -18,6 +18,33 @@ namespace MelloMario
         private ISet<IGameObject> toMove;
         private ISet<IGameObject> toRemove;
 
+        private void DoAdd(IGameObject gameObject)
+        {
+            if (!locations.ContainsKey(gameObject))
+            {
+                Point location = new Point(
+                    gameObject.Boundary.Center.X / grid,
+                    gameObject.Boundary.Center.Y / grid
+                );
+
+                if (location.X >= 0 && location.X < size.X && location.Y >= 0 && location.Y < size.Y)
+                {
+                    locations[gameObject] = location;
+                    objects[location.X, location.Y].Add(gameObject);
+                }
+            }
+        }
+
+        private void DoRemove(IGameObject gameObject)
+        {
+            if (locations.ContainsKey(gameObject))
+            {
+                Point location = locations[gameObject];
+
+                locations.Remove(gameObject);
+                objects[location.X, location.Y].Remove(gameObject);
+            }
+        }
 
         public Rectangle Boundary
         {
@@ -46,22 +73,7 @@ namespace MelloMario
             toMove = new HashSet<IGameObject>();
             toRemove = new HashSet<IGameObject>();
         }
-        public void AddObject(IGameObject gameObject)
-        {
-            toAdd.Add(gameObject);
-        }
-        public void MoveObject(IGameObject gameObject)
-        {
-            toMove.Add(gameObject);
-        }
-        public void RemoveObject(IGameObject gameObject)
-        {
-            toRemove.Add(gameObject);
-        }
-        public bool AddRespawnPoint(Point newPoint)
-        {
-            return respawnPoints.Add(newPoint);
-        }
+
         public Point GetRespawnPoint(Point givenPoint)
         {
             Point resPoint = givenPoint;
@@ -74,6 +86,7 @@ namespace MelloMario
             }
             return resPoint;
         }
+
         public IEnumerable<IGameObject> ScanObjects()
         {
             for (int i = objects.GetLowerBound(0); i <= objects.GetUpperBound(0); ++i)
@@ -120,49 +133,30 @@ namespace MelloMario
                 }
             }
         }
+
+        public void AddObject(IGameObject gameObject)
+        {
+            toAdd.Add(gameObject);
+        }
+
+        public void MoveObject(IGameObject gameObject)
+        {
+            toMove.Add(gameObject);
+        }
+
+        public void RemoveObject(IGameObject gameObject)
+        {
+            toRemove.Add(gameObject);
+        }
+
         public void Update()
-        {
-            UpdateAdd();
-            UpdateMove();
-            UpdateRemove();
-        }
-
-        private void DoAdd(IGameObject gameObject)
-        {
-            if (!locations.ContainsKey(gameObject))
-            {
-                Point location = new Point(
-                    gameObject.Boundary.Center.X / grid,
-                    gameObject.Boundary.Center.Y / grid
-                );
-
-                if (location.X >= 0 && location.X < size.X && location.Y >= 0 && location.Y < size.Y)
-                {
-                    locations[gameObject] = location;
-                    objects[location.X, location.Y].Add(gameObject);
-                }
-            }
-        }
-        private void DoRemove(IGameObject gameObject)
-        {
-            if (locations.ContainsKey(gameObject))
-            {
-                Point location = locations[gameObject];
-
-                locations.Remove(gameObject);
-                objects[location.X, location.Y].Remove(gameObject);
-            }
-        }
-        private void UpdateAdd()
         {
             foreach (IGameObject obj in toAdd)
             {
                 DoAdd(obj);
             }
             toAdd.Clear();
-        }
-        private void UpdateMove()
-        {
+
             foreach (IGameObject obj in toMove)
             {
                 if (locations.ContainsKey(obj))
@@ -172,9 +166,7 @@ namespace MelloMario
                 }
             }
             toMove.Clear();
-        }
-        private void UpdateRemove()
-        {
+
             foreach (IGameObject obj in toRemove)
             {
                 DoRemove(obj);

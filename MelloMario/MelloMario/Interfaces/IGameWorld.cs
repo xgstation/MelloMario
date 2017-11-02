@@ -7,6 +7,7 @@ namespace MelloMario
     {
         Rectangle Boundary { get; }
 
+        Point GetRespawnPoint(Point givenPoint);
         IEnumerable<IGameObject> ScanObjects();
         IEnumerable<IGameObject> ScanNearbyObjects(IGameObject gameObject);
         void AddObject(IGameObject gameObject);
