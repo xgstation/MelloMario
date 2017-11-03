@@ -110,7 +110,7 @@
           "Properties": [
             {
               "isHidden": true,
-              "ItemValue": [ "CoinUnveil", "CoinUnveil" ]
+              "ItemValue": ["CoinUnveil", "CoinUnveil"]
             }
           ]
         },
@@ -137,7 +137,7 @@
           "Properties": [
             {
               "isHidden": false,
-              "ItemValue": [ "FireFlowerUnveil" ]
+              "ItemValue": ["FireFlowerUnveil"]
             }
           ]
         },
@@ -175,7 +175,7 @@
           "Properties": [
             {
               "isHidden": false,
-              "ItemValue": [ "FireFlowerUnveil" ]
+              "ItemValue": ["FireFlowerUnveil"]
             }
           ]
         },
@@ -188,7 +188,7 @@
           "Properties": [
             {
               "isHidden": true,
-              "ItemValue": [ "CoinUnveil", "CoinUnveil" ]
+              "ItemValue": ["CoinUnveil", "CoinUnveil"]
             }
           ]
         },
@@ -216,7 +216,7 @@
                 "Y": 0
               },
               "isHidden": false,
-              "ItemValue": [ "StarUnveil" ]
+              "ItemValue": ["StarUnveil"]
             }
           ]
         },
@@ -373,11 +373,10 @@
                 "Y": 0
               },
               "isHidden": false,
-              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+              "ItemValue": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
             }
           ]
         },
-
         {
           "Type": "Brick",
           "Point": {
@@ -395,7 +394,7 @@
                 "Y": 0
               },
               "isHidden": false,
-              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+              "ItemValue": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
             }
           ]
         },
@@ -416,7 +415,7 @@
                 "Y": 0
               },
               "isHidden": false,
-              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+              "ItemValue": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
             }
           ]
         },
@@ -451,11 +450,10 @@
                 "Y": 0
               },
               "isHidden": false,
-              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+              "ItemValue": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
             }
           ]
         },
-
         {
           "Type": "Brick",
           "Point": {
@@ -473,7 +471,7 @@
                 "Y": 0
               },
               "isHidden": false,
-              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+              "ItemValue": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
             }
           ]
         },
@@ -494,11 +492,10 @@
                 "Y": 0
               },
               "isHidden": false,
-              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+              "ItemValue": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
             }
           ]
         },
-
         {
           "Type": "Brick",
           "Point": {
@@ -516,11 +513,10 @@
                 "Y": 0
               },
               "isHidden": false,
-              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+              "ItemValue": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
             }
           ]
         },
-
         {
           "Type": "Brick",
           "Point": {
@@ -538,7 +534,7 @@
                 "Y": 0
               },
               "isHidden": false,
-              "ItemValue": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+              "ItemValue": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
             }
           ]
         },
@@ -563,7 +559,6 @@
             "Y": 2
           }
         },
-
         {
           "Type": "RedKoopa",
           "Point": {

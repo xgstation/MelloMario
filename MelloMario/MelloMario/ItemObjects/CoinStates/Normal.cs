@@ -14,7 +14,6 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public void Collect()
         {
-
         }
 
         public override void Update(GameTime time)

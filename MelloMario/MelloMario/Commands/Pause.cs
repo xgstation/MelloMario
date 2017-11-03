@@ -5,6 +5,7 @@
         public Pause(IGameModel model) : base(model)
         {
         }
+
         public override void Execute()
         {
             Receiver.Pause();

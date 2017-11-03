@@ -64,7 +64,6 @@ namespace MelloMario.Scripts
                 controller.AddCommand(Buttons.DPadRight, factory.CreateCharacterCommand("Right", character), KeyBehavior.hold);
                 controller.AddCommand(Buttons.DPadRight, factory.CreateCharacterCommand("RightPress", character), KeyBehavior.press);
                 controller.AddCommand(Buttons.DPadRight, factory.CreateCharacterCommand("RightRelease", character), KeyBehavior.release);
-
             }
         }
     }

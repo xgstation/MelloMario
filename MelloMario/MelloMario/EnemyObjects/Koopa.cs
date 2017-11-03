@@ -4,7 +4,6 @@ using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.KoopaStates;
 using MelloMario.BlockObjects;
 
-
 namespace MelloMario.EnemyObjects
 {
     class Koopa : BasePhysicalObject
@@ -14,6 +13,7 @@ namespace MelloMario.EnemyObjects
         private const int VELOCITY_LR = 1;
         private const int VELOCITY_SHELL = 7;
         private bool move;
+
         private void UpdateSprite()
         {
             string facingString;
@@ -49,20 +49,27 @@ namespace MelloMario.EnemyObjects
             ApplyGravity();
             if (move && !(state is Defeated))
             {
-
                 if (Facing == FacingMode.right)
                 {
                     if (state is MovingShell)
+                    {
                         Move(new Point(VELOCITY_SHELL, 0));
+                    }
                     else
+                    {
                         Move(new Point(VELOCITY_LR, 0));
+                    }
                 }
                 else
                 {
                     if (state is MovingShell)
+                    {
                         Move(new Point(-1 * VELOCITY_SHELL, 0));
+                    }
                     else
+                    {
                         Move(new Point(-1 * VELOCITY_LR, 0));
+                    }
                 }
             }
             if (!move)
@@ -83,7 +90,7 @@ namespace MelloMario.EnemyObjects
             {
                 case "PlayerMario":
                     //TODO: Fire to be added
-                    Mario mario = (Mario)target;//TODO: fire as target to be added
+                    Mario mario = (Mario) target; //TODO: fire as target to be added
                     if (mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
                     {
                         Defeat();
@@ -128,12 +135,16 @@ namespace MelloMario.EnemyObjects
 
                     break;
                 case "Brick":
-                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                    if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Question":
-                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Floor":
                 case "Pipeline":
@@ -151,7 +162,6 @@ namespace MelloMario.EnemyObjects
                     else if (mode == CollisionMode.Bottom)
                     {
                         Bounce(mode, new Vector2());
-
                     }
                     break;
             }
@@ -176,7 +186,11 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        public enum ShellColor { green, red };
+        public enum ShellColor
+        {
+            green,
+            red
+        };
 
         public IKoopaState State
         {
@@ -193,7 +207,6 @@ namespace MelloMario.EnemyObjects
 
         public Koopa(IGameWorld world, Point location, Point marioLoc, ShellColor color) : base(world, location, new Point(32, 32), 32)
         {
-
             if (marioLoc.X < location.X)
             {
                 Facing = FacingMode.left;
@@ -212,6 +225,7 @@ namespace MelloMario.EnemyObjects
         {
             State.JumpOn();
         }
+
         public void Pushed()
         {
             // TODO: temporary fix

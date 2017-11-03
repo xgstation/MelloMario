@@ -150,6 +150,5 @@ namespace MelloMario.MarioObjects
             World = world;
             Relocate(world.GetRespawnPoint(new Point(Boundary.Center.X, Boundary.Bottom)));
         }
-
     }
 }

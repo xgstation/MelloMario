@@ -6,7 +6,7 @@ namespace MelloMario.Controllers
 {
     class GamepadController : BaseController<Buttons>
     {
-        GamePadState previousState;
+        private GamePadState previousState;
 
         protected override void OnUpdate()
         {

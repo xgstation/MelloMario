@@ -48,6 +48,7 @@ namespace MelloMario.Containers
         }
 
         private ISet<Point> respawnPoints; // TODO: temporary code
+
         public Point GetRespawnPoint(Point location)
         {
             Point target = location;

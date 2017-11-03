@@ -15,11 +15,13 @@ namespace MelloMario.LevelGen
     {
         private IGameWorld gameWorld;
         private int grid;
+
         public GameEntityConverter(IGameWorld parentGameWorld, int gridSize)
         {
             gameWorld = parentGameWorld;
             grid = gridSize;
         }
+
         public override bool CanConvert(Type objectType)
         {
             return typeof(EncapsulatedObject<IGameObject>).IsAssignableFrom(objectType) || objectType is IGameObject;
@@ -28,16 +30,18 @@ namespace MelloMario.LevelGen
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JToken objToken = JToken.Load(reader);
-            var objectStack = new Stack<IGameObject>();
+            Stack<IGameObject> objectStack = new Stack<IGameObject>();
 
             string typeStr = TryGet<string>(objToken, "Type");
             Type type = null;
-            var assemblyTypes = AppDomain.CurrentDomain.GetAssemblies()[1].GetTypes();
-            foreach (var t in assemblyTypes)
+            Type[] assemblyTypes = AppDomain.CurrentDomain.GetAssemblies()[1].GetTypes();
+            foreach (Type t in assemblyTypes)
             {
                 type = t.Name == typeStr ? t : null;
                 if (type != null)
+                {
                     break;
+                }
             }
             if (type == null)
             {
@@ -45,11 +49,7 @@ namespace MelloMario.LevelGen
                 return null;
             }
 
-
-
-
-
-            var startPoint = TryGet<Point>(objToken, "Point");
+            Point startPoint = TryGet<Point>(objToken, "Point");
 
             //Read quantity of object
             //If "Quantity" does not exist, default value is 1
@@ -63,22 +63,22 @@ namespace MelloMario.LevelGen
 
             //Read object properties if given
             IDictionary<Point, Tuple<bool, string[]>> Properties = null;
-            var propertiesJToken = objToken["Properties"];
+            JToken propertiesJToken = objToken["Properties"];
             if (propertiesJToken != null && propertiesJToken.HasValues)
             {
                 Properties = propertiesJToken.ToDictionary(
-                  token => TryGet<Point>(token, "Index"),
-                  token => new Tuple<bool, string[]>(
-                      TryGet<bool>(token, "isHidden"),
-                      TryGet<string[]>(token, "ItemValue")));
+                    token => TryGet<Point>(token, "Index"),
+                    token => new Tuple<bool, string[]>(
+                        TryGet<bool>(token, "isHidden"),
+                        TryGet<string[]>(token, "ItemValue")));
             }
 
             //Read ignored entry
             ISet<Point> toBeIgnored = new HashSet<Point>();
             if (objToken["Ignored"] != null)
             {
-                var ignoredToken = objToken["Ignored"].ToList();
-                foreach (var p in ignoredToken)
+                List<JToken> ignoredToken = objToken["Ignored"].ToList();
+                foreach (JToken p in ignoredToken)
                 {
                     toBeIgnored.Add(p.ToObject<Point>());
                 }
@@ -107,21 +107,31 @@ namespace MelloMario.LevelGen
             }
             return new EncapsulatedObject<IGameObject>(objectStack);
         }
+
         //TODO: Add serialize method and change CanWrite 
-        public override bool CanWrite { get { return false; } }
+        public override bool CanWrite
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             //TODO: Implement serializer
         }
 
-        static private T TryGet<T>(JToken token, params string[] p)
+        private static T TryGet<T>(JToken token, params string[] p)
         {
             T obj = default(T);
             JToken tempToken = token;
             for (int i = 0; i < p.Length - 1; i++)
             {
                 if (tempToken[p[i]] != null)
+                {
                     tempToken = tempToken[p[i]];
+                }
             }
             if (tempToken[p[p.Length - 1]] != null)
             {
@@ -129,11 +139,12 @@ namespace MelloMario.LevelGen
             }
             return obj;
         }
-        static private IList<IGameObject> CreateItemList(IGameWorld world, Point point, params string[] s)
+
+        private static IList<IGameObject> CreateItemList(IGameWorld world, Point point, params string[] s)
         {
             if (s != null)
             {
-                var list = new List<IGameObject>();
+                List<IGameObject> list = new List<IGameObject>();
                 for (int i = 0; i < s.Length; i++)
                 {
                     list.Add(GameObjectFactory.Instance.CreateGameObject(s[i], world, point));
@@ -142,6 +153,7 @@ namespace MelloMario.LevelGen
             }
             return null;
         }
+
         private void PushNewObject(Stack<IGameObject> objectStack, string type, Point location, IList<IGameObject> list, Tuple<bool, string[]> property)
         {
             IGameObject objectToPush = null;

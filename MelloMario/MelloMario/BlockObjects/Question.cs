@@ -27,7 +27,15 @@ namespace MelloMario.BlockObjects
                 ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
             }
         }
-        public bool HasItem { get { return item != null || items.Count != 0; } }
+
+        public bool HasItem
+        {
+            get
+            {
+                return item != null || items.Count != 0;
+            }
+        }
+
         private void LoadItem()
         {
             if (items.Count != 0)

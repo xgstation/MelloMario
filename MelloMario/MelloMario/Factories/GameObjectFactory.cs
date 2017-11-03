@@ -11,6 +11,7 @@ namespace MelloMario.Factories
     class GameObjectFactory : IGameObjectFactory
     {
         private const int SCALE = 32;
+
         // TODO: remove this later and use the collision between the camera and objects to "activate" objects' movement
         private Point marioLoc;
 
@@ -28,6 +29,7 @@ namespace MelloMario.Factories
                 return instance;
             }
         }
+
         public Tuple<ICharacter, IGameObject> CreateGameCharacter(string type, IGameWorld world, Point location)
         {
             switch (type)

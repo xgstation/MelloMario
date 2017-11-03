@@ -12,19 +12,20 @@ namespace MelloMario.MarioObjects.MovementStates
         {
             Owner.MovementState = new Crouching(Owner);
         }
+
         public void Idle()
         {
-
         }
 
         public void Land()
         {
-
         }
+
         public void Jump()
         {
             Owner.MovementState = new Jumping(Owner);
         }
+
         public void Walk()
         {
             Owner.MovementState = new Walking(Owner);

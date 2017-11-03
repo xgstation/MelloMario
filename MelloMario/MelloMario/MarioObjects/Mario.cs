@@ -14,7 +14,6 @@ namespace MelloMario.MarioObjects
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
 
-
         private void UpdateSprite()
         {
             if (movementState is Crouching && powerUpState is Standard)
@@ -146,7 +145,6 @@ namespace MelloMario.MarioObjects
                         {
                             Downgrade();
                         }
-
                     }
                     else if (!(protectionState is Starred))
                     {
@@ -187,7 +185,6 @@ namespace MelloMario.MarioObjects
                                 {
                                     Bounce(mode, new Vector2(0, -5f), 1f);
                                 }
-
                             }
                             else if (mode is CollisionMode.Left || mode is CollisionMode.Right)
                             {
@@ -203,25 +200,35 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Coin":
-                    if (((ItemObjects.Coin)target).State is ItemObjects.CoinStates.Normal) { }
+                    if (((ItemObjects.Coin) target).State is ItemObjects.CoinStates.Normal)
+                    {
+                    }
                     // TODO: implement coins count
                     break;
                 case "FireFlower":
-                    if (((ItemObjects.FireFlower)target).State is ItemObjects.FireFlowerStates.Normal)
+                    if (((ItemObjects.FireFlower) target).State is ItemObjects.FireFlowerStates.Normal)
+                    {
                         PowerUpState.UpgradeToFire();
+                    }
                     break;
                 case "OneUpMushroom":
-                    if (((ItemObjects.OneUpMushroom)target).State is ItemObjects.OneUpMushroomStates.Normal) { }
+                    if (((ItemObjects.OneUpMushroom) target).State is ItemObjects.OneUpMushroomStates.Normal)
+                    {
+                    }
                     // TODO: implement +1s
                     break;
                 case "Star":
-                    if (((ItemObjects.Star)target).State is ItemObjects.StarStates.Normal)
+                    if (((ItemObjects.Star) target).State is ItemObjects.StarStates.Normal)
+                    {
                         ProtectionState.Star();
+                    }
                     break;
                 case "SuperMushroom":
-                    if (((ItemObjects.SuperMushroom)target).State is ItemObjects.SuperMushroomStates.Normal &&
+                    if (((ItemObjects.SuperMushroom) target).State is ItemObjects.SuperMushroomStates.Normal &&
                         PowerUpState is Standard)
+                    {
                         PowerUpState.UpgradeToSuper();
+                    }
                     break;
             }
         }
@@ -238,6 +245,7 @@ namespace MelloMario.MarioObjects
         protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
             if (protectionState is Protected)
+            {
                 if (time.TotalGameTime.Milliseconds % 3 == 0)
                 {
                     HideSprite();
@@ -246,7 +254,7 @@ namespace MelloMario.MarioObjects
                 {
                     UpdateSprite();
                 }
-
+            }
         }
 
         public IMarioMovementState MovementState
@@ -261,6 +269,7 @@ namespace MelloMario.MarioObjects
                 UpdateSprite();
             }
         }
+
         public IMarioPowerUpState PowerUpState
         {
             get
@@ -273,6 +282,7 @@ namespace MelloMario.MarioObjects
                 UpdateSprite();
             }
         }
+
         public IMarioProtectionState ProtectionState
         {
             get
@@ -306,12 +316,14 @@ namespace MelloMario.MarioObjects
 
         public void Downgrade()
         {
-
             if (protectionState is Normal)
+            {
                 PowerUpState.Downgrade();
-            if ((protectionState is Normal))
+            }
+            if (protectionState is Normal)
+            {
                 protectionState.Protect();
+            }
         }
-
     }
 }

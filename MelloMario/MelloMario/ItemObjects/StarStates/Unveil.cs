@@ -4,7 +4,6 @@ namespace MelloMario.ItemObjects.StarStates
 {
     class Unveil : BaseState<Star>, IItemState
     {
-
         private float elapsed;
         private float realOffset;
 
@@ -37,7 +36,6 @@ namespace MelloMario.ItemObjects.StarStates
                     Owner.UnveilMove(-1);
                     --realOffset;
                 }
-
             }
         }
     }

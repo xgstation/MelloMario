@@ -10,7 +10,6 @@ namespace MelloMario.EnemyObjects.GoombaStates
 
         public void Show()
         {
-
         }
 
         public void Defeat()
@@ -20,7 +19,6 @@ namespace MelloMario.EnemyObjects.GoombaStates
 
         public override void Update(GameTime time)
         {
-
         }
     }
 }

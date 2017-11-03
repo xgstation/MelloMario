@@ -43,7 +43,7 @@ namespace MelloMario.Factories
             switch (action)
             {
                 case "Action":
-                    return new Commands.Action(character);
+                    return new Action(character);
                 case "Crouch":
                     return new Crouch(character);
                 case "CrouchPress":

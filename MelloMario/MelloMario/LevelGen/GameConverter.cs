@@ -13,7 +13,7 @@ namespace MelloMario.LevelGen
     class GameConverter : JsonConverter
     {
         private string index;
-        JsonSerializer serializers;
+        private JsonSerializer serializers;
 
         private IGameWorld world;
         private IPlayer character;
@@ -23,17 +23,19 @@ namespace MelloMario.LevelGen
             this.index = index;
             serializers = new JsonSerializer();
         }
+
         public override bool CanConvert(Type objectType)
         {
             return true;
         }
+
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JToken jsonToken = JToken.Load(reader);
             JToken MapList = jsonToken.Value<JToken>("Maps");
             JToken MapToBeLoaded = null;
             //Get item "Maps"
-            foreach (var obj in MapList)
+            foreach (JToken obj in MapList)
             {
                 if (obj.Value<string>("Index") == index)
                 {
@@ -49,36 +51,42 @@ namespace MelloMario.LevelGen
             serializers.Converters.Add(new GameEntityConverter(world, grid));
             serializers.Converters.Add(new CharacterConverter(world, grid));
 
-            foreach (var jToken in Structures)
+            foreach (JToken jToken in Structures)
             {
-                var gameObjs = jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
+                EncapsulatedObject<IGameObject> gameObjs = jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
                 if (gameObjs != null)
                 {
-                    foreach (var gameObj in gameObjs.RealObj)
+                    foreach (IGameObject gameObj in gameObjs.RealObj)
                     {
                         world.Add(gameObj);
                     }
                 }
-
             }
 
             IList<JToken> Characters = MapToBeLoaded.Value<JToken>("Characters").ToList();
-            foreach (var obj in Characters)
+            foreach (JToken obj in Characters)
             {
-                var temp = obj.ToObject<EncapsulatedObject<PlayerMario>>(serializers);
-                var mario = temp.RealObj.Pop();
+                EncapsulatedObject<PlayerMario> temp = obj.ToObject<EncapsulatedObject<PlayerMario>>(serializers);
+                PlayerMario mario = temp.RealObj.Pop();
                 character = mario;
                 world.Add(mario);
                 //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
             }
             return new Tuple<IGameWorld, IPlayer>(world, character);
         }
+
         //TODO: Add serialize method and change CanWrite 
-        public override bool CanWrite { get { return false; } }
+        public override bool CanWrite
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             //TODO: Implement serializer
         }
     }
-
 }

@@ -6,7 +6,7 @@ namespace MelloMario.Sprites
 {
     class FlickingAnimatedSprite : AnimatedSprite
     {
-        Random random;
+        private Random random;
 
         protected override void OnFrame()
         {

@@ -4,7 +4,7 @@ namespace MelloMario.Controllers
 {
     class KeyboardController : BaseController<Keys>
     {
-        KeyboardState previousState;
+        private KeyboardState previousState;
 
         protected override void OnUpdate()
         {

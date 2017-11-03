@@ -10,7 +10,7 @@ namespace MelloMario.Factories
     {
         private static ISpriteFactory instance = new SpriteFactory();
 
-        IDictionary<string, Texture2D> stringToMarioTexture;
+        private IDictionary<string, Texture2D> stringToMarioTexture;
 
         private SpriteBatch spriteBatch;
 
@@ -74,18 +74,75 @@ namespace MelloMario.Factories
             //dictionary
             stringToMarioTexture = new Dictionary<string, Texture2D>
             {
-                { "Dead", content.Load<Texture2D>("Dead")},
-                { "FireCrouchingLeft",content.Load<Texture2D>("FireCrouchingLeft")},{"FireStandingLeft",content.Load<Texture2D>("FireStandingLeft")},
-                { "FireJumpingLeft",content.Load<Texture2D>("FireJumpingLeft")},{"FireWalkingLeft",content.Load<Texture2D>("FireWalkingLeft")},
-                { "FireCrouchingRight",content.Load<Texture2D>("FireCrouchingRight")},{"FireStandingRight",content.Load<Texture2D>("FireStandingRight")},
-                { "FireJumpingRight",content.Load<Texture2D>("FireJumpingRight")},{"FireWalkingRight",content.Load<Texture2D>("FireWalkingRight")},
-                { "StandardStandingLeft",content.Load<Texture2D>("StandardStandingLeft")},{"StandardJumpingLeft",content.Load<Texture2D>("StandardJumpingLeft")},
-                { "StandardWalkingLeft",content.Load<Texture2D>("StandardWalkingLeft")},{"StandardStandingRight",content.Load<Texture2D>("StandardStandingRight")},
-                { "StandardJumpingRight",content.Load<Texture2D>("StandardJumpingRight")},{"StandardWalkingRight",content.Load<Texture2D>("StandardWalkingRight")},
-                { "SuperCrouchingLeft",content.Load<Texture2D>("SuperCrouchingLeft")},{"SuperStandingLeft",content.Load<Texture2D>("SuperStandingLeft")},
-                { "SuperJumpingLeft",content.Load<Texture2D>("SuperJumpingLeft")},{"SuperWalkingLeft",content.Load<Texture2D>("SuperWalkingLeft")},
-                { "SuperCrouchingRight",content.Load<Texture2D>("SuperCrouchingRight")},{"SuperStandingRight",content.Load<Texture2D>("SuperStandingRight")},
-                { "SuperJumpingRight",content.Load<Texture2D>("SuperJumpingRight")},{"SuperWalkingRight",content.Load<Texture2D>("SuperWalkingRight")},
+                {
+                    "Dead", content.Load<Texture2D>("Dead")
+                },
+                {
+                    "FireCrouchingLeft", content.Load<Texture2D>("FireCrouchingLeft")
+                },
+                {
+                    "FireStandingLeft", content.Load<Texture2D>("FireStandingLeft")
+                },
+                {
+                    "FireJumpingLeft", content.Load<Texture2D>("FireJumpingLeft")
+                },
+                {
+                    "FireWalkingLeft", content.Load<Texture2D>("FireWalkingLeft")
+                },
+                {
+                    "FireCrouchingRight", content.Load<Texture2D>("FireCrouchingRight")
+                },
+                {
+                    "FireStandingRight", content.Load<Texture2D>("FireStandingRight")
+                },
+                {
+                    "FireJumpingRight", content.Load<Texture2D>("FireJumpingRight")
+                },
+                {
+                    "FireWalkingRight", content.Load<Texture2D>("FireWalkingRight")
+                },
+                {
+                    "StandardStandingLeft", content.Load<Texture2D>("StandardStandingLeft")
+                },
+                {
+                    "StandardJumpingLeft", content.Load<Texture2D>("StandardJumpingLeft")
+                },
+                {
+                    "StandardWalkingLeft", content.Load<Texture2D>("StandardWalkingLeft")
+                },
+                {
+                    "StandardStandingRight", content.Load<Texture2D>("StandardStandingRight")
+                },
+                {
+                    "StandardJumpingRight", content.Load<Texture2D>("StandardJumpingRight")
+                },
+                {
+                    "StandardWalkingRight", content.Load<Texture2D>("StandardWalkingRight")
+                },
+                {
+                    "SuperCrouchingLeft", content.Load<Texture2D>("SuperCrouchingLeft")
+                },
+                {
+                    "SuperStandingLeft", content.Load<Texture2D>("SuperStandingLeft")
+                },
+                {
+                    "SuperJumpingLeft", content.Load<Texture2D>("SuperJumpingLeft")
+                },
+                {
+                    "SuperWalkingLeft", content.Load<Texture2D>("SuperWalkingLeft")
+                },
+                {
+                    "SuperCrouchingRight", content.Load<Texture2D>("SuperCrouchingRight")
+                },
+                {
+                    "SuperStandingRight", content.Load<Texture2D>("SuperStandingRight")
+                },
+                {
+                    "SuperJumpingRight", content.Load<Texture2D>("SuperJumpingRight")
+                },
+                {
+                    "SuperWalkingRight", content.Load<Texture2D>("SuperWalkingRight")
+                },
             };
         }
 
@@ -295,7 +352,6 @@ namespace MelloMario.Factories
                 default:
                     return null;
             }
-
         }
     }
 }

@@ -20,8 +20,6 @@ namespace MelloMario.MarioObjects.ProtectionStates
 
         public override void Update(GameTime time)
         {
-
         }
     }
 }
-

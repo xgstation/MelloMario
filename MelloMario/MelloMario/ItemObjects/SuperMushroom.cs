@@ -23,9 +23,13 @@ namespace MelloMario.ItemObjects
             if (state is Normal)
             {
                 if (Facing == FacingMode.right)
+                {
                     Move(new Point(H_SPEED, 0));
+                }
                 else
+                {
                     Move(new Point(-1 * H_SPEED, 0));
+                }
             }
         }
 
@@ -35,15 +39,21 @@ namespace MelloMario.ItemObjects
             {
                 case "PlayerMario":
                     if (state is Normal)
+                    {
                         Collect();
+                    }
                     break;
                 case "Brick":
-                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                    if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Question":
-                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Floor":
                 case "Pipeline":
@@ -109,9 +119,11 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
+
         public SuperMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }
+
         public void Collect()
         {
             RemoveSelf();

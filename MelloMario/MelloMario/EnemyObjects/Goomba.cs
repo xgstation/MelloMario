@@ -8,7 +8,6 @@ namespace MelloMario.EnemyObjects
 {
     class Goomba : BasePhysicalObject
     {
-
         private IGoombaState state;
         private float timeFromDeath;
         private const int VELOCITY_LR = 1;
@@ -21,11 +20,10 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnUpdate(GameTime time)
         {
-
             state.Update(time);
             if (state is Defeated)
             {
-                timeFromDeath += (float)time.ElapsedGameTime.TotalMilliseconds;
+                timeFromDeath += (float) time.ElapsedGameTime.TotalMilliseconds;
                 if (timeFromDeath > 1000f)
                 {
                     RemoveSelf();
@@ -39,7 +37,6 @@ namespace MelloMario.EnemyObjects
                     if (Facing == FacingMode.right)
                     {
                         Move(new Point(VELOCITY_LR, 0));
-
                     }
                     else
                     {
@@ -57,7 +54,6 @@ namespace MelloMario.EnemyObjects
                     move = true;
                 }
             }
-
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
@@ -66,19 +62,23 @@ namespace MelloMario.EnemyObjects
             {
                 case "PlayerMario":
                     //TODO: Fire to be added
-                    Mario mario = (Mario)target;
+                    Mario mario = (Mario) target;
                     if (mode == CollisionMode.Top || mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
                     {
                         Defeat();
                     }
                     break;
                 case "Brick":
-                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                    if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Question":
-                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Floor":
                 case "Pipeline":
@@ -96,7 +96,6 @@ namespace MelloMario.EnemyObjects
                     else if (mode == CollisionMode.Bottom)
                     {
                         Bounce(mode, new Vector2());
-
                     }
                     break;
             }

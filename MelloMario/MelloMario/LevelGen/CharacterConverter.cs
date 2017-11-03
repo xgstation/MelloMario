@@ -11,11 +11,13 @@ namespace MelloMario.LevelGen
     {
         private IGameWorld gameWorld;
         private int grid;
+
         public CharacterConverter(IGameWorld gameWorld, int gridSize)
         {
             this.gameWorld = gameWorld;
             grid = gridSize;
         }
+
         public override bool CanConvert(Type objectType)
         {
             return typeof(EncapsulatedObject<PlayerMario>).IsAssignableFrom(objectType);
@@ -24,12 +26,12 @@ namespace MelloMario.LevelGen
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JToken jsonToken = JToken.Load(reader);
-            var characterStack = new Stack<PlayerMario>();
-            var startPoint = jsonToken["SpawnPoint"].ToObject<Point>();
-            var state = jsonToken["State"].ToObject<string>();
+            Stack<PlayerMario> characterStack = new Stack<PlayerMario>();
+            Point startPoint = jsonToken["SpawnPoint"].ToObject<Point>();
+            string state = jsonToken["State"].ToObject<string>();
             startPoint.X = startPoint.X * grid;
             startPoint.Y = startPoint.Y * grid;
-            var mario = new PlayerMario(gameWorld, startPoint);
+            PlayerMario mario = new PlayerMario(gameWorld, startPoint);
             characterStack.Push(mario);
             //TODO: Change with IDictionary to change the state of each characters
             switch (state)

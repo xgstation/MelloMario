@@ -4,7 +4,6 @@ namespace MelloMario.EnemyObjects.GoombaStates
 {
     class Defeated : BaseState<Goomba>, IGoombaState
     {
-
         public Defeated(Goomba owner) : base(owner)
         {
         }
@@ -16,12 +15,10 @@ namespace MelloMario.EnemyObjects.GoombaStates
 
         public void Defeat()
         {
-
         }
 
         public override void Update(GameTime time)
         {
-
         }
     }
 }

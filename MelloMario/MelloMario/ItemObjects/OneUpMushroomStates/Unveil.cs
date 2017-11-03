@@ -36,7 +36,6 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
                     Owner.UnveilMove(-1);
                     --realOffset;
                 }
-
             }
         }
     }

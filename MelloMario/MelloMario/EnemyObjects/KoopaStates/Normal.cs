@@ -10,7 +10,6 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public void Show()
         {
-
         }
 
         public void JumpOn()

@@ -8,8 +8,19 @@ namespace MelloMario
         private Point size;
         private ISprite sprite;
 
-        protected enum ResizeModeX { Left, Center, Right };
-        protected enum ResizeModeY { Top, Center, Bottom };
+        protected enum ResizeModeX
+        {
+            Left,
+            Center,
+            Right
+        };
+
+        protected enum ResizeModeY
+        {
+            Top,
+            Center,
+            Bottom
+        };
 
         protected IGameWorld World;
 

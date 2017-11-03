@@ -7,6 +7,7 @@ namespace MelloMario.BlockObjects.BrickStates
     {
         private int elapsed;
         private int move;
+
         public Bumped(Brick owner) : base(owner)
         {
             elapsed = 0;

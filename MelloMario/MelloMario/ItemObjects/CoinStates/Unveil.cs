@@ -38,7 +38,6 @@ namespace MelloMario.ItemObjects.CoinStates
                     Owner.UnveilMove(-1);
                     --realOffset;
                 }
-
             }
         }
     }

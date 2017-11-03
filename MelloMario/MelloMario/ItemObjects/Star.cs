@@ -23,28 +23,39 @@ namespace MelloMario.ItemObjects
             {
                 ApplyGravity();
                 if (goingRight)
+                {
                     Move(new Point(H_SPEED, 0));
+                }
                 else
+                {
                     Move(new Point(-1 * H_SPEED, 0));
+                }
             }
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
             if (state is Normal)
+            {
                 switch (target.GetType().Name)
                 {
                     case "PlayerMario":
                         if (state is Normal)
+                        {
                             Collect();
+                        }
                         break;
                     case "Brick":
-                        if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                        if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                        {
                             break;
+                        }
                         goto case "Stair";
                     case "Question":
-                        if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                        if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                        {
                             break;
+                        }
                         goto case "Stair";
                     case "Floor":
                     case "Pipeline":
@@ -61,9 +72,12 @@ namespace MelloMario.ItemObjects
                             goingRight = false;
                         }
                         if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
+                        {
                             ApplyForce(new Vector2(0, -160f));
+                        }
                         break;
                 }
+            }
         }
 
         protected override void OnSeen(IPlayer player, CollisionMode mode)
@@ -94,9 +108,13 @@ namespace MelloMario.ItemObjects
         public Star(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
         {
             if (marioLocation.X < location.X)
+            {
                 goingRight = true;
+            }
             else
+            {
                 goingRight = false;
+            }
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -107,6 +125,7 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
+
         public Star(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }

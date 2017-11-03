@@ -2,7 +2,6 @@
 
 namespace MelloMario.ItemObjects.FireFlowerStates
 {
-
     class Unveil : BaseState<FireFlower>, IItemState
     {
         private float elapsed;
@@ -24,7 +23,6 @@ namespace MelloMario.ItemObjects.FireFlowerStates
 
         public override void Update(GameTime time)
         {
-
             elapsed += time.ElapsedGameTime.Milliseconds;
             realOffset += 32 * time.ElapsedGameTime.Milliseconds / 1000f;
             if (elapsed >= 1000)
