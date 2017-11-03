@@ -326,6 +326,13 @@ namespace MelloMario.Factories
                     return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 9, 1, 1, ZIndex.level);
                 case "Right":
                     return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 1, 9, 1, 1, ZIndex.level);
+                    //TODO: Implement cases below
+                case "TopLeftIn":
+                case "BottomLeftIn":
+                case "TopRightIn":
+                case "BottomRightIn":
+                case "Top":
+                case "Bottom":
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
