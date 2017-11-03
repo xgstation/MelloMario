@@ -1,0 +1,74 @@
+﻿{
+  "Maps": [
+    {
+      "Characters": [
+        {
+          "SpawnPoint": {
+            "X": 16,
+            "Y": 10
+          },
+          "State": "Normal",
+          "Type": "Mario"
+        }
+      ],
+      "Entity": [
+        {
+          "Point": {
+            "X": 10,
+            "Y": 12
+          },
+          "Property": {
+            "Direction": "V", // "V", "HL", "HR", "NV", "NH"
+            "Entrance": "1-1-1",
+            "Length": 2
+          },
+          "Type": "Pipeline"
+        },
+        {
+          "Point": {
+            "X": 30,
+            "Y": 12
+          },
+          "Property": {
+
+          }
+        }
+      ],
+      "Grid": 32,
+      "Index": "Main",
+      "RespawnPoints": [
+        {
+          "X": 3,
+          "Y": 5
+        },
+        {
+          "X": 53,
+          "Y": 5
+        }
+      ],
+      "Size": {
+        "X": 212,
+        "Y": 17
+      },
+      "Type": "Main"
+    },
+    {
+      "Type": "Sub",
+      "Index": "1-2",
+      "Grid": 32,
+      "Size": {
+        "X": 15,
+        "Y": 15
+      },
+      "SpawnPoint": {
+        "X": 3,
+        "Y": 3
+      }
+    },
+    {
+      "Type": "Link",
+      "Index": "Link-1",
+      "FilePath": ""
+    }
+  ]
+}

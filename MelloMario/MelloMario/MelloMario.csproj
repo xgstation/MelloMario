@@ -225,6 +225,9 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="Content\Level1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\ExampleLevel.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
