@@ -248,7 +248,6 @@ namespace MelloMario.LevelGen
         }
         private bool BlockConverter(Type type, JToken token, ref Stack<BaseGameObject> stackToBeEncapsulated)
         {
-            object createFunction;
             var quantity = TryGet(out Point p, token, "Quantity") ? p : new Point(1, 1);
             if (quantity.X == 1 && quantity.Y == 1)
             {
@@ -264,6 +263,7 @@ namespace MelloMario.LevelGen
             }
             if (typeof(Brick).IsAssignableFrom(type) || typeof(Question).IsAssignableFrom(type))
             {
+                if (quantity.X != 1 || quantity.Y != 1)
                 stackToBeEncapsulated.Push(Activator.CreateInstance(type, world, startPoint) as BaseGameObject);
             }
             else if (typeof(Pipeline).IsAssignableFrom(type))
