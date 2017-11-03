@@ -146,10 +146,9 @@ namespace MelloMario.MarioObjects
 
         public void Spawn(IGameWorld world)
         {
-            World.RemoveObject(this);
+            World.Remove(this);
             World = world;
             Relocate(world.GetRespawnPoint(new Point(Boundary.Center.X, Boundary.Bottom)));
         }
-
     }
 }

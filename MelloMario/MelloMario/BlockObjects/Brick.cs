@@ -12,6 +12,7 @@ namespace MelloMario.BlockObjects
         private IList<IGameObject> items;
         private IGameObject item;
         private readonly bool hasInitialItem;
+
         private void UpdateSprite()
         {
             if (state is Hidden)
@@ -38,8 +39,23 @@ namespace MelloMario.BlockObjects
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
             }
         }
-        public bool HasItem { get { return item != null || items.Count != 0; } }
-        public bool HasInitialItem { get { return hasInitialItem; } }
+
+        public bool HasItem
+        {
+            get
+            {
+                return item != null || items.Count != 0;
+            }
+        }
+
+        public bool HasInitialItem
+        {
+            get
+            {
+                return hasInitialItem;
+            }
+        }
+
         private void LoadItem()
         {
             if (items.Count != 0)
@@ -115,24 +131,21 @@ namespace MelloMario.BlockObjects
             UpdateSprite();
         }
 
-
         public void Bump(Mario mario)
         {
             State.Bump(mario);
-
         }
 
         public void BumpMove(int delta)
         {
             Move(new Point(0, delta));
-
         }
 
         public void ReleaseNextItem()
         {
             if (item != null)
             {
-                World.AddObject(item);
+                World.Add(item);
                 LoadItem();
             }
         }

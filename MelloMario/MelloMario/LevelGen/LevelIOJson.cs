@@ -17,15 +17,18 @@ namespace MelloMario.LevelGen
         {
             path = jsonPath;
         }
+
         public void SetModel(GameModel model)
         {
             Model = model;
         }
+
         public Tuple<IGameWorld, IPlayer> Load(string index)
         {
             levelString = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, new GameConverter(index, Model));
+            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, new GameConverter(index));
         }
+
         //public void Close()
         //{
         //TODO: Implement IO stream close
@@ -34,7 +37,5 @@ namespace MelloMario.LevelGen
         {
             //TODO: Implement dispose
         }
-
-
     }
 }

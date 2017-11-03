@@ -1,12 +1,4 @@
-﻿using MelloMario.ItemObjects;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MelloMario.Factories;
+﻿using Microsoft.Xna.Framework;
 
 namespace MelloMario.ItemObjects.CoinStates
 {
@@ -22,7 +14,6 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public void Collect()
         {
-
         }
 
         public override void Update(GameTime time)

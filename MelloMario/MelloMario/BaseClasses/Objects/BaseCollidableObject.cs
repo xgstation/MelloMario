@@ -98,9 +98,9 @@ namespace MelloMario
 
         private void CollideAll()
         {
-            foreach (IGameObject target in World.ScanNearbyObjects(this))
+            foreach (IGameObject target in World.ScanNearby(Boundary))
             {
-                if (target is BaseCollidableObject obj)
+                if (target != this && target is BaseCollidableObject obj)
                 {
                     foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(target.Boundary))
                     {
@@ -116,8 +116,26 @@ namespace MelloMario
             }
         }
 
-        protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom };
-        protected enum CornerMode { Left, Right, Top, Bottom, Center };
+        protected enum CollisionMode
+        {
+            Left,
+            Right,
+            Top,
+            Bottom,
+            InnerLeft,
+            InnerRight,
+            InnerTop,
+            InnerBottom
+        };
+
+        protected enum CornerMode
+        {
+            Left,
+            Right,
+            Top,
+            Bottom,
+            Center
+        };
 
         protected abstract void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive);
         protected abstract void OnSeen(IPlayer player, CollisionMode mode);
@@ -127,7 +145,7 @@ namespace MelloMario
         {
             movement += delta;
 
-            World.MoveObject(this);
+            World.Move(this);
         }
 
         protected void StopHorizontalMovement()
@@ -145,7 +163,7 @@ namespace MelloMario
             StopHorizontalMovement();
             StopVerticalMovement();
 
-            World.RemoveObject(this);
+            World.Remove(this);
         }
 
         protected override void OnSimulation(GameTime time)

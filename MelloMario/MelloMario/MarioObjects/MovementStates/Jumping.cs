@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 
 namespace MelloMario.MarioObjects.MovementStates
 {
@@ -41,18 +34,21 @@ namespace MelloMario.MarioObjects.MovementStates
         {
             Owner.MovementState = new Crouching(Owner);
         }
+
         public void Idle()
         {
             previous = new Standing(Owner);
         }
+
         public void Land()
         {
             Owner.MovementState = previous;
         }
+
         public void Jump()
         {
-
         }
+
         public void Walk()
         {
             previous = new Walking(Owner);

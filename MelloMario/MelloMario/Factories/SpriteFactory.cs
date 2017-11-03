@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MelloMario.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
@@ -11,7 +10,7 @@ namespace MelloMario.Factories
     {
         private static ISpriteFactory instance = new SpriteFactory();
 
-        IDictionary<String, Texture2D> stringToMarioTexture;
+        private IDictionary<string, Texture2D> stringToMarioTexture;
 
         private SpriteBatch spriteBatch;
 
@@ -73,20 +72,77 @@ namespace MelloMario.Factories
             starSpritesheet = content.Load<Texture2D>("Star");
 
             //dictionary
-            stringToMarioTexture = new Dictionary<String, Texture2D>
+            stringToMarioTexture = new Dictionary<string, Texture2D>
             {
-                { "Dead", content.Load<Texture2D>("Dead")},
-                { "FireCrouchingLeft",content.Load<Texture2D>("FireCrouchingLeft")},{"FireStandingLeft",content.Load<Texture2D>("FireStandingLeft")},
-                { "FireJumpingLeft",content.Load<Texture2D>("FireJumpingLeft")},{"FireWalkingLeft",content.Load<Texture2D>("FireWalkingLeft")},
-                { "FireCrouchingRight",content.Load<Texture2D>("FireCrouchingRight")},{"FireStandingRight",content.Load<Texture2D>("FireStandingRight")},
-                { "FireJumpingRight",content.Load<Texture2D>("FireJumpingRight")},{"FireWalkingRight",content.Load<Texture2D>("FireWalkingRight")},
-                { "StandardStandingLeft",content.Load<Texture2D>("StandardStandingLeft")},{"StandardJumpingLeft",content.Load<Texture2D>("StandardJumpingLeft")},
-                { "StandardWalkingLeft",content.Load<Texture2D>("StandardWalkingLeft")},{"StandardStandingRight",content.Load<Texture2D>("StandardStandingRight")},
-                { "StandardJumpingRight",content.Load<Texture2D>("StandardJumpingRight")},{"StandardWalkingRight",content.Load<Texture2D>("StandardWalkingRight")},
-                { "SuperCrouchingLeft",content.Load<Texture2D>("SuperCrouchingLeft")},{"SuperStandingLeft",content.Load<Texture2D>("SuperStandingLeft")},
-                { "SuperJumpingLeft",content.Load<Texture2D>("SuperJumpingLeft")},{"SuperWalkingLeft",content.Load<Texture2D>("SuperWalkingLeft")},
-                { "SuperCrouchingRight",content.Load<Texture2D>("SuperCrouchingRight")},{"SuperStandingRight",content.Load<Texture2D>("SuperStandingRight")},
-                { "SuperJumpingRight",content.Load<Texture2D>("SuperJumpingRight")},{"SuperWalkingRight",content.Load<Texture2D>("SuperWalkingRight")},
+                {
+                    "Dead", content.Load<Texture2D>("Dead")
+                },
+                {
+                    "FireCrouchingLeft", content.Load<Texture2D>("FireCrouchingLeft")
+                },
+                {
+                    "FireStandingLeft", content.Load<Texture2D>("FireStandingLeft")
+                },
+                {
+                    "FireJumpingLeft", content.Load<Texture2D>("FireJumpingLeft")
+                },
+                {
+                    "FireWalkingLeft", content.Load<Texture2D>("FireWalkingLeft")
+                },
+                {
+                    "FireCrouchingRight", content.Load<Texture2D>("FireCrouchingRight")
+                },
+                {
+                    "FireStandingRight", content.Load<Texture2D>("FireStandingRight")
+                },
+                {
+                    "FireJumpingRight", content.Load<Texture2D>("FireJumpingRight")
+                },
+                {
+                    "FireWalkingRight", content.Load<Texture2D>("FireWalkingRight")
+                },
+                {
+                    "StandardStandingLeft", content.Load<Texture2D>("StandardStandingLeft")
+                },
+                {
+                    "StandardJumpingLeft", content.Load<Texture2D>("StandardJumpingLeft")
+                },
+                {
+                    "StandardWalkingLeft", content.Load<Texture2D>("StandardWalkingLeft")
+                },
+                {
+                    "StandardStandingRight", content.Load<Texture2D>("StandardStandingRight")
+                },
+                {
+                    "StandardJumpingRight", content.Load<Texture2D>("StandardJumpingRight")
+                },
+                {
+                    "StandardWalkingRight", content.Load<Texture2D>("StandardWalkingRight")
+                },
+                {
+                    "SuperCrouchingLeft", content.Load<Texture2D>("SuperCrouchingLeft")
+                },
+                {
+                    "SuperStandingLeft", content.Load<Texture2D>("SuperStandingLeft")
+                },
+                {
+                    "SuperJumpingLeft", content.Load<Texture2D>("SuperJumpingLeft")
+                },
+                {
+                    "SuperWalkingLeft", content.Load<Texture2D>("SuperWalkingLeft")
+                },
+                {
+                    "SuperCrouchingRight", content.Load<Texture2D>("SuperCrouchingRight")
+                },
+                {
+                    "SuperStandingRight", content.Load<Texture2D>("SuperStandingRight")
+                },
+                {
+                    "SuperJumpingRight", content.Load<Texture2D>("SuperJumpingRight")
+                },
+                {
+                    "SuperWalkingRight", content.Load<Texture2D>("SuperWalkingRight")
+                },
             };
         }
 
@@ -262,7 +318,7 @@ namespace MelloMario.Factories
             return new SlicedSprite(spriteBatch, blockSpritesheet, 33, 28, 0, 1, 1, 1, ZIndex.level);
         }
 
-        public ISprite CreatePipelineSprite(String type)
+        public ISprite CreatePipelineSprite(string type)
         {
             switch (type)
             {
@@ -281,7 +337,7 @@ namespace MelloMario.Factories
             }
         }
 
-        public ISprite CreateSceneSprite(String type, ZIndex zIndex)
+        public ISprite CreateSceneSprite(string type, ZIndex zIndex)
         {
             switch (type)
             {
@@ -296,7 +352,6 @@ namespace MelloMario.Factories
                 default:
                     return null;
             }
-
         }
     }
 }

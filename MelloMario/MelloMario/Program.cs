@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 
 namespace MelloMario
 {
@@ -12,9 +13,11 @@ namespace MelloMario
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-            new Game1().Run();
+            Game game = new Game1();
+            game.Run();
+            game.Dispose();
         }
     }
 #endif

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using MelloMario.Factories;
+﻿using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.BrickStates
@@ -13,6 +6,7 @@ namespace MelloMario.BlockObjects.BrickStates
     class Destroyed : BaseState<Brick>, IBlockState
     {
         private float elapsed;
+
         public Destroyed(Brick owner) : base(owner)
         {
             elapsed = 0;
@@ -27,7 +21,6 @@ namespace MelloMario.BlockObjects.BrickStates
         {
             Owner.State = new Hidden(Owner);
         }
-        
 
         public void Bump(Mario mario)
         {
@@ -37,7 +30,7 @@ namespace MelloMario.BlockObjects.BrickStates
         public override void Update(GameTime time)
         {
             elapsed += time.ElapsedGameTime.Milliseconds;
-            if(elapsed>300)
+            if (elapsed > 300)
             {
                 Owner.Remove();
             }

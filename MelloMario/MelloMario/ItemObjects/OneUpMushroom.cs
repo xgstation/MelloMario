@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.ItemObjects.OneUpMushroomStates;
-using MelloMario.MarioObjects;
 
 namespace MelloMario.ItemObjects
 {
@@ -14,6 +13,7 @@ namespace MelloMario.ItemObjects
         {
             ShowSprite(SpriteFactory.Instance.CreateOneUpMushroomSprite());
         }
+
         protected override void OnUpdate(GameTime time)
         {
             ApplyGravity();
@@ -22,9 +22,13 @@ namespace MelloMario.ItemObjects
             if (state is Normal)
             {
                 if (Facing == FacingMode.right)
+                {
                     Move(new Point(H_SPEED, 0));
+                }
                 else
+                {
                     Move(new Point(-1 * H_SPEED, 0));
+                }
             }
         }
 
@@ -34,7 +38,9 @@ namespace MelloMario.ItemObjects
             {
                 case "PlayerMario":
                     if (state is Normal)
+                    {
                         Collect();
+                    }
                     break;
                 case "Brick":
                 case "Question":
@@ -103,6 +109,7 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
+
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }

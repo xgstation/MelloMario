@@ -1,6 +1,4 @@
-﻿using MelloMario.MarioObjects;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
     interface ICommandFactory
     {

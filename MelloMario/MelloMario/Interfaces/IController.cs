@@ -1,6 +1,11 @@
 namespace MelloMario
 {
-    enum KeyBehavior { press, release, hold };
+    enum KeyBehavior
+    {
+        press,
+        release,
+        hold
+    };
 
     interface IController
     {

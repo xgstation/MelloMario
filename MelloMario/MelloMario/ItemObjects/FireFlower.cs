@@ -51,6 +51,7 @@ namespace MelloMario.ItemObjects
                 UpdateSprite();
             }
         }
+
         public FireFlower(IGameWorld world, Point location, bool isUnveil) : base(world, location, new Point(32, 32))
         {
             if (isUnveil)
@@ -63,9 +64,11 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
+
         public FireFlower(IGameWorld world, Point location) : this(world, location, false)
         {
         }
+
         public void Collect()
         {
             RemoveSelf();

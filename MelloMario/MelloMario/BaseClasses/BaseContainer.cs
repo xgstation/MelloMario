@@ -13,7 +13,7 @@ namespace MelloMario.Containers
 
         private void DoAdd(Value value)
         {
-            Key key = getKey(value);
+            Key key = GetKey(value);
 
             if (!values.ContainsKey(key))
             {
@@ -32,20 +32,9 @@ namespace MelloMario.Containers
             values[key].Remove(value);
         }
 
-        protected abstract Key getKey(Value value);
+        protected abstract Key GetKey(Value value);
 
-        IEnumerable<Value> ScanAll()
-        {
-            foreach (KeyValuePair<Key, ISet<Value>> pair in values)
-            {
-                foreach (Value value in pair.Value)
-                {
-                    yield return value;
-                }
-            }
-        }
-
-        IEnumerable<Value> Scan(Key key)
+        protected IEnumerable<Value> Scan(Key key)
         {
             if (values.ContainsKey(key))
             {
@@ -63,6 +52,17 @@ namespace MelloMario.Containers
             toAdd = new HashSet<Value>();
             toMove = new HashSet<Value>();
             toRemove = new HashSet<Value>();
+        }
+
+        public IEnumerable<Value> ScanAll()
+        {
+            foreach (KeyValuePair<Key, ISet<Value>> pair in values)
+            {
+                foreach (Value value in pair.Value)
+                {
+                    yield return value;
+                }
+            }
         }
 
         public void Add(Value value)

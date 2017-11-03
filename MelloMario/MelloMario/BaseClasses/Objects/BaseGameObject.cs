@@ -1,7 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
 
 namespace MelloMario
 {
@@ -11,8 +8,19 @@ namespace MelloMario
         private Point size;
         private ISprite sprite;
 
-        protected enum ResizeModeX { Left, Center, Right };
-        protected enum ResizeModeY { Top, Center, Bottom };
+        protected enum ResizeModeX
+        {
+            Left,
+            Center,
+            Right
+        };
+
+        protected enum ResizeModeY
+        {
+            Top,
+            Center,
+            Bottom
+        };
 
         protected IGameWorld World;
 
@@ -57,7 +65,7 @@ namespace MelloMario
             Relocate(delta);
             size = newSize;
 
-            World.MoveObject(this);
+            World.Move(this);
         }
 
         protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
@@ -81,7 +89,7 @@ namespace MelloMario
 
         public BaseGameObject(IGameWorld world, Point location, Point size)
         {
-            this.World = world;
+            World = world;
             this.location = location;
             this.size = size;
         }

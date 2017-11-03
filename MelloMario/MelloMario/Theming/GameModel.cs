@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using MelloMario.LevelGen;
 using System;
 using MelloMario.Scripts;
@@ -75,7 +74,7 @@ namespace MelloMario
 
             if (!isPaused)
             {
-                foreach (IGameObject obj in world.ScanObjects())
+                foreach (IGameObject obj in world.ScanAll())
                 {
                     obj.Update(time);
                 }
@@ -94,7 +93,7 @@ namespace MelloMario
 
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
-                foreach (IGameObject obj in world.ScanObjects())
+                foreach (IGameObject obj in world.ScanNearby(world.Boundary))
                 {
                     obj.Draw(time, player.Viewport, zIndex);
                 }

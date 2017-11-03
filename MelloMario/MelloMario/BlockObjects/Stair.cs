@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
-using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects
 {
     class Stair : BaseCollidableObject
     {
-
         private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateStairSprite());
