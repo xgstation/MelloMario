@@ -19,9 +19,9 @@ namespace MelloMario.LevelGen
         private static readonly IEnumerable<Type> ItemTypes = from type in assemblyTypes where type.Namespace == "MelloMario.ItemObjects" select type;
         private static readonly IEnumerable<Type> EnemyTypes = from type in assemblyTypes where type.Namespace == "MelloMario.EnemyObjects" select type;
         private static readonly IEnumerable<Type> MiscTypes = from type in assemblyTypes where type.Namespace == "MelloMario.MiscObjects" select type;
-        private GameWorld world;
+        private IGameWorld world;
         private int grid;
-        public GameEntityConverter(GameWorld parentGameWorld, int gridSize)
+        public GameEntityConverter(IGameWorld parentGameWorld, int gridSize)
         {
             world = parentGameWorld;
             grid = gridSize;
@@ -166,7 +166,7 @@ namespace MelloMario.LevelGen
                 return false;
             }
         }
-        private static IList<IGameObject> CreateItemList(GameWorld world, Point point, params string[] s)
+        private static IList<IGameObject> CreateItemList(IGameWorld world, Point point, params string[] s)
         {
             if (s != null)
             {
