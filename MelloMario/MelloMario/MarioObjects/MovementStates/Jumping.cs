@@ -20,7 +20,7 @@ namespace MelloMario.MarioObjects.MovementStates
             }
             set
             {
-                finished = value; // TODO: use a better solution for "free jump/fall"
+                finished = value;
             }
         }
 

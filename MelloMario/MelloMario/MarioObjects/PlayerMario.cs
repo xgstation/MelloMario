@@ -141,7 +141,6 @@ namespace MelloMario.MarioObjects
 
         public void Action()
         {
-            throw new System.NotImplementedException();
         }
 
         public void Spawn(IGameWorld world)

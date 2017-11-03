@@ -51,10 +51,6 @@ namespace MelloMario.Factories
             blockSpritesheet = content.Load<Texture2D>("BlockSheet");
             brickPieceSpritesheet = content.Load<Texture2D>("BrickPieces");
             questionSpriteSheet = content.Load<Texture2D>("Question");
-            // TODO: Implement lazy-loading with singleton pattern?
-
-            //these files are not in the repository, i am assigning all of them to an existing
-            //texture so we can compile add the textures and restore this chunk
             goombaSpritesheet = content.Load<Texture2D>("Goomba");
             goombaDeadSpritesheet = content.Load<Texture2D>("GoombaDead");
             greenKoopaLeft = content.Load<Texture2D>("GreenKoopaLeft");
