@@ -12,12 +12,12 @@ namespace MelloMario.Theming
         private GameDataBase() { }
         public static GameDataBase GetInstance { get; } = new GameDataBase();
 
-        public bool IsHidden(IGameObject obj)
+        public static bool IsHidden(IGameObject obj)
         {
             return HiddenDb.ContainsKey(obj) && HiddenDb[obj];
         }
 
-        public void SetHidden(IGameObject obj, bool isHidden)
+        public static void SetHidden(IGameObject obj, bool isHidden)
         {
             if (HiddenDb.ContainsKey(obj))
             {
@@ -28,12 +28,12 @@ namespace MelloMario.Theming
                 HiddenDb.Add(obj, isHidden);
             }
         }
-        public bool HasItemEnclosed(IGameObject obj)
+        public static bool HasItemEnclosed(IGameObject obj)
         {
             return ItemEnclosedDb.ContainsKey(obj) && ItemEnclosedDb[obj].Count != 0;
         }
 
-        public IGameObject GetEnclosedItem(IGameObject obj)
+        public static IGameObject GetEnclosedItem(IGameObject obj)
         {
             try
             {
@@ -45,11 +45,11 @@ namespace MelloMario.Theming
             }
         }
 
-        public IList<IGameObject> GetEnclosedItems(IGameObject obj)
+        public static IList<IGameObject> GetEnclosedItems(IGameObject obj)
         {
             return HasItemEnclosed(obj) ? ItemEnclosedDb[obj] : null;
         }
-        public void SetEnclosedItem(IGameObject obj, IList<IGameObject> objs)
+        public static void SetEnclosedItem(IGameObject obj, IList<IGameObject> objs)
         {
             if (ItemEnclosedDb.ContainsKey(obj))
             {
@@ -60,17 +60,17 @@ namespace MelloMario.Theming
                 ItemEnclosedDb.Add(obj, objs);
             }
         }
-        public bool IsEntrance(Pipeline pipeline)
+        public static bool IsEntrance(Pipeline pipeline)
         {
             return PipelineEntranceDb.ContainsKey(pipeline);
         }
 
-        public string GetEntranceIndex(Pipeline pipeline)
+        public static string GetEntranceIndex(Pipeline pipeline)
         {
             return IsEntrance(pipeline) ? PipelineEntranceDb[pipeline] : null;
         }
 
-        public void SetEntranceIndex(Pipeline pipeline, string index)
+        public static void SetEntranceIndex(Pipeline pipeline, string index)
         {
             if (IsEntrance(pipeline))
             {
