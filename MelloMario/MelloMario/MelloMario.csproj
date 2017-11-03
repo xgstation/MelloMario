@@ -111,6 +111,7 @@
     <Compile Include="Interfaces\Containers\IContainer.cs" />
     <Compile Include="Interfaces\Factories\ICommandFactory.cs" />
     <Compile Include="Interfaces\Factories\IGameObjectFactory.cs" />
+    <Compile Include="Interfaces\Containers\IGameSession.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IScript.cs" />
     <Compile Include="Interfaces\IGameModel.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Sprites\SlicedSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Theming\GameModel.cs" />
+    <Compile Include="Containers\GameSession.cs" />
     <Compile Include="Containers\GameWorld.cs" />
     <Compile Include="Scripts\PlayingScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
