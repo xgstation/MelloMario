@@ -39,7 +39,7 @@ namespace MelloMario.LevelGen
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JToken objToken = JToken.Load(reader);
-            var objectStackToBeEncapsulated = new Stack<IGameObject>();
+            Stack<IGameObject> objectStackToBeEncapsulated = new Stack<IGameObject>();
 
             if (!TryGet(out string typeStr, objToken, "Type"))
             {
@@ -48,11 +48,13 @@ namespace MelloMario.LevelGen
             }
 
             Type type = null;
-            foreach (var t in assemblyTypes)
+            foreach (Type t in assemblyTypes)
             {
                 type = t.Name == typeStr ? t : null;
                 if (type != null)
+                {
                     break;
+                }
             }
             if (type == null)
             {
@@ -149,7 +151,14 @@ namespace MelloMario.LevelGen
             return new EncapsulatedObject<IGameObject>(objectStackToBeEncapsulated);
         }
         //TODO: Add serialize method and change CanWrite 
-        public override bool CanWrite => false;
+        public override bool CanWrite
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             //TODO: Implement serializer
@@ -162,9 +171,13 @@ namespace MelloMario.LevelGen
             for (int i = 0; i < p.Length - 1; i++)
             {
                 if (tempToken[p[i]] != null)
+                {
                     tempToken = tempToken[p[i]];
+                }
                 else
+                {
                     return false;
+                }
             }
             if (tempToken[p[p.Length - 1]] != null)
             {
@@ -180,7 +193,7 @@ namespace MelloMario.LevelGen
         {
             if (s != null)
             {
-                var list = new List<IGameObject>();
+                List<IGameObject> list = new List<IGameObject>();
                 for (int i = 0; i < s.Length; i++)
                 {
                     list.Add(GameObjectFactory.Instance.CreateGameObject(s[i], world, point));
@@ -233,31 +246,34 @@ namespace MelloMario.LevelGen
 
         private void BatchCreate(Func<Point, object> func, Point startPoint, Point quantity, Point objSize, ICollection<Point> ignoredSet, ref Stack<IGameObject> stack)
         {
-            for (var x = 0; x < quantity.X; x++)
+            for (int x = 0; x < quantity.X; x++)
             {
-                for (var y = 0; y < quantity.Y; y++)
+                for (int y = 0; y < quantity.Y; y++)
                 {
-                    var createLocation = new Point(startPoint.X * grid + x * objSize.X, startPoint.Y * grid + y * objSize.Y);
-                    var createIndex = new Point(x + 1, y + 1);
+                    Point createLocation = new Point(startPoint.X * grid + x * objSize.X, startPoint.Y * grid + y * objSize.Y);
+                    Point createIndex = new Point(x + 1, y + 1);
                     if (ignoredSet == null || !ignoredSet.Contains(createIndex))
+                    {
                         stack.Push(func(createLocation) as IGameObject);
+                    }
                 }
             }
         }
         private void BatchCreate(Func<Point, IEnumerable<IGameObject>> func, Point startPoint, Point quantity, Point objSize, ICollection<Point> ignoredSet, ref Stack<IGameObject> stack)
         {
-            for (var x = 0; x < quantity.X; x++)
+            for (int x = 0; x < quantity.X; x++)
             {
-                for (var y = 0; y < quantity.Y; y++)
+                for (int y = 0; y < quantity.Y; y++)
                 {
-                    var createLocation = new Point(startPoint.X * grid + x * objSize.X, startPoint.Y * grid + y * objSize.Y);
-                    var createIndex = new Point(x + 1, y + 1);
+                    Point createLocation = new Point(startPoint.X * grid + x * objSize.X, startPoint.Y * grid + y * objSize.Y);
+                    Point createIndex = new Point(x + 1, y + 1);
                     if (ignoredSet == null || !ignoredSet.Contains(createIndex))
-                        foreach (var obj in func(createLocation))
+                    {
+                        foreach (IGameObject obj in func(createLocation))
                         {
                             stack.Push(obj);
                         }
-
+                    }
                 }
             }
         }
@@ -265,9 +281,12 @@ namespace MelloMario.LevelGen
         private static bool TryReadIgnoreSet(JToken token, out HashSet<Point> toBeIgnored)
         {
             toBeIgnored = new HashSet<Point>();
-            if (token["Ignored"] == null) return false;
-            var ignoredToken = token["Ignored"].ToList();
-            foreach (var t in ignoredToken)
+            if (token["Ignored"] == null)
+            {
+                return false;
+            }
+            List<JToken> ignoredToken = token["Ignored"].ToList();
+            foreach (JToken t in ignoredToken)
             {
                 toBeIgnored.Add(t.ToObject<Point>());
             }
@@ -275,9 +294,9 @@ namespace MelloMario.LevelGen
         }
         private bool BlockConverter(Type type, JToken token, ref Stack<IGameObject> stackToBeEncapsulated)
         {
-            var quantity = TryGet(out Point p, token, "Quantity") ? p : new Point(1, 1);
-            var isSingle = quantity.X == 1 && quantity.Y == 1;
-            var ignoredSet = (!isSingle && TryReadIgnoreSet(token, out var newIgnoredSet)) ? newIgnoredSet : null;
+            Point quantity = TryGet(out Point p, token, "Quantity") ? p : new Point(1, 1);
+            bool isSingle = quantity.X == 1 && quantity.Y == 1;
+            HashSet<Point> ignoredSet = !isSingle && TryReadIgnoreSet(token, out HashSet<Point> newIgnoredSet) ? newIgnoredSet : null;
             if (!TryGet(out Point objPoint, token, "Point"))
             {
                 Debug.WriteLine("Deserialize fail: No start point provided!");
@@ -286,11 +305,11 @@ namespace MelloMario.LevelGen
             if ((type.IsAssignableFrom(typeof(Brick)) || type.IsAssignableFrom(typeof(Question))) && isSingle)
             {
                 objPoint = new Point(objPoint.X * grid, objPoint.Y * grid);
-                var propertyPair = new Tuple<bool, string[]>(
+                Tuple<bool, string[]> propertyPair = new Tuple<bool, string[]>(
                     TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden,
                     TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
-                var list = CreateItemList(world, objPoint, propertyPair.Item2);
-                var obj = Activator.CreateInstance(type, world, objPoint, propertyPair.Item1) as BaseGameObject;
+                IList<IGameObject> list = CreateItemList(world, objPoint, propertyPair.Item2);
+                BaseGameObject obj = Activator.CreateInstance(type, world, objPoint, propertyPair.Item1) as BaseGameObject;
                 GameDataBase.SetEnclosedItem(obj, list);
                 stackToBeEncapsulated.Push(obj);
             }
@@ -319,8 +338,8 @@ namespace MelloMario.LevelGen
                 }
                 if (isSingle)
                 {
-                    var pipelineComponents = CreateSinglePipeline(dir, length, objPoint);
-                    foreach (var pipelineComponent in pipelineComponents)
+                    List<Pipeline> pipelineComponents = CreateSinglePipeline(dir, length, objPoint);
+                    foreach (Pipeline pipelineComponent in pipelineComponents)
                     {
                         stackToBeEncapsulated.Push(pipelineComponent);
                     }
@@ -332,7 +351,7 @@ namespace MelloMario.LevelGen
                 }
                 else
                 {
-                    var pipelineSize = dir.Contains("V") ? new Point(64, 32 + 32 * length) : new Point(32 + 32 * length, 64);
+                    Point pipelineSize = dir.Contains("V") ? new Point(64, 32 + 32 * length) : new Point(32 + 32 * length, 64);
                     BatchCreate(point => CreateSinglePipeline(dir, length, point), objPoint, quantity, pipelineSize, ignoredSet, ref stackToBeEncapsulated);
                 }
             }
@@ -341,7 +360,7 @@ namespace MelloMario.LevelGen
 
         private List<Pipeline> CreateSinglePipeline(string type, int length, Point objPoint)
         {
-            var list = new List<Pipeline>();
+            List<Pipeline> list = new List<Pipeline>();
             objPoint = new Point(objPoint.X * grid, objPoint.Y * grid);
             Pipeline in1 = null;
             Pipeline in2 = null;
@@ -363,19 +382,19 @@ namespace MelloMario.LevelGen
                     objPoint = new Point(objPoint.X - length * grid, objPoint.Y);
                     goto case "NH";
                 case "NV":
-                    for (var y = 0; y < length; y++)
+                    for (int y = 0; y < length; y++)
                     {
-                        var loc1 = new Point(objPoint.X, objPoint.Y + grid * y);
-                        var loc2 = new Point(objPoint.X + grid, objPoint.Y + grid * y);
+                        Point loc1 = new Point(objPoint.X, objPoint.Y + grid * y);
+                        Point loc2 = new Point(objPoint.X + grid, objPoint.Y + grid * y);
                         list.Add(new Pipeline(world, loc1, "Left"));
                         list.Add(new Pipeline(world, loc2, "Right"));
                     }
                     break;
                 case "NH":
-                    for (var x = 0; x < length; x++)
+                    for (int x = 0; x < length; x++)
                     {
-                        var loc1 = new Point(objPoint.X + grid * x, objPoint.Y);
-                        var loc2 = new Point(objPoint.X + grid * x, objPoint.Y + grid);
+                        Point loc1 = new Point(objPoint.X + grid * x, objPoint.Y);
+                        Point loc2 = new Point(objPoint.X + grid * x, objPoint.Y + grid);
                         list.Add(new Pipeline(world, loc1, "Top"));
                         list.Add(new Pipeline(world, loc2, "Bottom"));
                     }
