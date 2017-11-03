@@ -31,7 +31,6 @@ namespace MelloMario.Factories
                 case "Reset":
                     return new Reset(model);
                 case "Quit":
-                    Console.WriteLine("Reached");
                     return new Quit(model);
                 default:
                     //it should never hit this case, if it does there is an error somewhere

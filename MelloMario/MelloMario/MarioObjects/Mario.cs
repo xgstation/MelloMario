@@ -80,12 +80,14 @@ namespace MelloMario.MarioObjects
                     bool isHidden;
                     bool isBumping;
 
-                    if (target is Brick brick)
+                    Brick brick = target as Brick;
+                    Question question = target as Question;
+                    if (brick != null)
                     {
                         isHidden = brick.State is BlockObjects.BrickStates.Hidden;
                         isBumping = brick.State is BlockObjects.BrickStates.Bumped;
                     }
-                    else if (target is Question question)
+                    else if (question != null)
                     {
                         isHidden = question.State is BlockObjects.QuestionStates.Hidden;
                         isBumping = question.State is BlockObjects.QuestionStates.Bumped;
@@ -107,13 +109,13 @@ namespace MelloMario.MarioObjects
                             }
                             else
                             {
-                                if (target is Brick brick1)
+                                if (brick != null)
                                 {
-                                    brick1.Bump(this);
+                                    brick.Bump(this);
                                 }
-                                else if (target is Question question1)
+                                else if (question != null)
                                 {
-                                    question1.Bump(this);
+                                    question.Bump(this);
                                 }
                             }
                         }

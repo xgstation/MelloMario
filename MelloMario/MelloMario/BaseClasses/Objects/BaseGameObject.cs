@@ -81,7 +81,7 @@ namespace MelloMario
 
         public BaseGameObject(IGameWorld world, Point location, Point size)
         {
-            this.World = world;
+            World = world;
             this.location = location;
             this.size = size;
         }

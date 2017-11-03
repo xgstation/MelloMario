@@ -13,7 +13,7 @@ namespace MelloMario.Containers
 
         private void DoAdd(Value value)
         {
-            Key key = getKey(value);
+            Key key = GetKey(value);
 
             if (!values.ContainsKey(key))
             {
@@ -32,7 +32,7 @@ namespace MelloMario.Containers
             values[key].Remove(value);
         }
 
-        protected abstract Key getKey(Value value);
+        protected abstract Key GetKey(Value value);
 
         protected IEnumerable<Value> Scan(Key key)
         {

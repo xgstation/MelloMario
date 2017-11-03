@@ -8,7 +8,7 @@ namespace MelloMario.Containers
         private int grid;
         private Point size;
 
-        protected override Point getKey(IGameObject value)
+        protected override Point GetKey(IGameObject value)
         {
             Point center = value.Boundary.Center;
             return new Point(center.X / grid, center.Y / grid);

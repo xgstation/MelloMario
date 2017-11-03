@@ -13,15 +13,13 @@ namespace MelloMario.LevelGen
     class GameConverter : JsonConverter
     {
         private string index;
-        private GameModel model;
         JsonSerializer serializers;
 
         private IGameWorld world;
         private IPlayer character;
 
-        public GameConverter(string index, GameModel model)
+        public GameConverter(string index)
         {
-            this.model = model;
             this.index = index;
             serializers = new JsonSerializer();
         }
@@ -37,7 +35,7 @@ namespace MelloMario.LevelGen
             //Get item "Maps"
             foreach (var obj in MapList)
             {
-                if (obj.Value<String>("Index") == index)
+                if (obj.Value<string>("Index") == index)
                 {
                     MapToBeLoaded = obj;
                     break;
@@ -76,7 +74,7 @@ namespace MelloMario.LevelGen
             return new Tuple<IGameWorld, IPlayer>(world, character);
         }
         //TODO: Add serialize method and change CanWrite 
-        public override bool CanWrite => false;
+        public override bool CanWrite { get { return false; } }
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             //TODO: Implement serializer

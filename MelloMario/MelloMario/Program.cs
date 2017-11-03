@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 
 namespace MelloMario
 {
@@ -14,7 +15,9 @@ namespace MelloMario
         [STAThread]
         static void Main()
         {
-            new Game1().Run();
+            Game game = new Game1();
+            game.Run();
+            game.Dispose();
         }
     }
 #endif

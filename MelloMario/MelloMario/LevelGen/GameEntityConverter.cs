@@ -92,9 +92,9 @@ namespace MelloMario.LevelGen
                     if (!toBeIgnored.Contains(new Point(i, j)))
                     {
                         Point location = new Point((startPoint.X + i) * grid, (startPoint.Y + j) * grid);
-                        Tuple<bool, string[]> property = null;
                         IList<IGameObject> list = new List<IGameObject>();
-                        if (Properties == null || !Properties.TryGetValue(new Point(i, j), out property))
+
+                        if (Properties == null || !Properties.TryGetValue(new Point(i, j), out Tuple<bool, string[]> property))
                         {
                             property = new Tuple<bool, string[]>(false, null);
                         }
@@ -109,7 +109,7 @@ namespace MelloMario.LevelGen
             return new EncapsulatedObject<IGameObject>(objectStack);
         }
         //TODO: Add serialize method and change CanWrite 
-        public override bool CanWrite => false;
+        public override bool CanWrite { get { return false; } }
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             //TODO: Implement serializer

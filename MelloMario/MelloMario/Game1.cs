@@ -13,8 +13,8 @@ namespace MelloMario
     class Game1 : Game
     {
         private GraphicsDeviceManager graphics;
+        private LevelIOJson reader;
         private GameModel model;
-
         private SpriteBatch spriteBatch;
 
         public Game1()
@@ -22,7 +22,8 @@ namespace MelloMario
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferHeight = 800;
             graphics.PreferredBackBufferHeight = 600;
-            model = new GameModel(this, new LevelIOJson("Content/ExampleLevel.json"));
+            reader = new LevelIOJson("Content/ExampleLevel.json");
+            model = new GameModel(this, reader);
         }
 
         /// <summary>
@@ -68,6 +69,7 @@ namespace MelloMario
         /// </summary>
         protected override void UnloadContent()
         {
+            reader.Dispose();
             base.UnloadContent();
         }
 
