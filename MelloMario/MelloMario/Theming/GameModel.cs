@@ -94,7 +94,7 @@ namespace MelloMario
 
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
-                foreach (IGameObject obj in world.ScanAll())
+                foreach (IGameObject obj in world.ScanNearby(world.Boundary))
                 {
                     obj.Draw(time, player.Viewport, zIndex);
                 }
