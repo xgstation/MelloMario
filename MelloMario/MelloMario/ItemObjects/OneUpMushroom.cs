@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.ItemObjects.OneUpMushroomStates;
-using MelloMario.MarioObjects;
 
 namespace MelloMario.ItemObjects
 {
