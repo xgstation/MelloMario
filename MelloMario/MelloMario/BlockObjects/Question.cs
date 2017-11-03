@@ -108,7 +108,7 @@ namespace MelloMario.BlockObjects
         {
             if (item != null)
             {
-                World.AddObject(item);
+                World.Add(item);
                 LoadItem();
             }
         }

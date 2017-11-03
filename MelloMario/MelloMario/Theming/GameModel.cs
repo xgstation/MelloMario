@@ -75,7 +75,7 @@ namespace MelloMario
 
             if (!isPaused)
             {
-                foreach (IGameObject obj in world.ScanObjects())
+                foreach (IGameObject obj in world.ScanAll())
                 {
                     obj.Update(time);
                 }
@@ -94,7 +94,7 @@ namespace MelloMario
 
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
-                foreach (IGameObject obj in world.ScanObjects())
+                foreach (IGameObject obj in world.ScanAll())
                 {
                     obj.Draw(time, player.Viewport, zIndex);
                 }

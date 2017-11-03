@@ -57,7 +57,7 @@ namespace MelloMario
             Relocate(delta);
             size = newSize;
 
-            World.MoveObject(this);
+            World.Move(this);
         }
 
         protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
