@@ -4,52 +4,39 @@ using MelloMario.BlockObjects;
 
 namespace MelloMario.Theming
 {
-    internal class GameDataBase
+    class GameDataBase
     {
-        private static readonly IDictionary<IGameObject, bool> HiddenDb = new Dictionary<IGameObject, bool>();
-        private static readonly IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
-        private static readonly IDictionary<Pipeline, string> PipelineEntranceDb = new Dictionary<Pipeline, string>();
+        private IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
+        private IDictionary<Pipeline, string> PipelineEntranceDb = new Dictionary<Pipeline, string>();
+
         private GameDataBase() { }
         public static GameDataBase GetInstance { get; } = new GameDataBase();
 
-        public static bool IsHidden(IGameObject obj)
-        {
-            return HiddenDb.ContainsKey(obj) && HiddenDb[obj];
-        }
-
-        public static void SetHidden(IGameObject obj, bool isHidden)
-        {
-            if (HiddenDb.ContainsKey(obj))
-            {
-                HiddenDb[obj] = isHidden;
-            }
-            else
-            {
-                HiddenDb.Add(obj, isHidden);
-            }
-        }
-        public static bool HasItemEnclosed(IGameObject obj)
+        public bool HasItemEnclosed(IGameObject obj)
         {
             return ItemEnclosedDb.ContainsKey(obj) && ItemEnclosedDb[obj].Count != 0;
         }
 
-        public static IGameObject GetEnclosedItem(IGameObject obj)
+        public IGameObject GetEnclosedItem(IGameObject obj)
         {
-            try
+            if (HasItemEnclosed(obj))
             {
-                return HasItemEnclosed(obj) ? ItemEnclosedDb[obj][0] : null;
-            }
-            finally
-            {
+                IGameObject item = ItemEnclosedDb[obj][0];
                 ItemEnclosedDb[obj].RemoveAt(0);
+                return item;
+            }
+            else
+            {
+                return null;
             }
         }
 
-        public static IList<IGameObject> GetEnclosedItems(IGameObject obj)
+        public IList<IGameObject> GetEnclosedItems(IGameObject obj)
         {
             return HasItemEnclosed(obj) ? ItemEnclosedDb[obj] : null;
         }
-        public static void SetEnclosedItem(IGameObject obj, IList<IGameObject> objs)
+
+        public void SetEnclosedItem(IGameObject obj, IList<IGameObject> objs)
         {
             if (ItemEnclosedDb.ContainsKey(obj))
             {
@@ -60,17 +47,18 @@ namespace MelloMario.Theming
                 ItemEnclosedDb.Add(obj, objs);
             }
         }
-        public static bool IsEntrance(Pipeline pipeline)
+
+        public bool IsEntrance(Pipeline pipeline)
         {
             return PipelineEntranceDb.ContainsKey(pipeline);
         }
 
-        public static string GetEntranceIndex(Pipeline pipeline)
+        public string GetEntranceIndex(Pipeline pipeline)
         {
             return IsEntrance(pipeline) ? PipelineEntranceDb[pipeline] : null;
         }
 
-        public static void SetEntranceIndex(Pipeline pipeline, string index)
+        public void SetEntranceIndex(Pipeline pipeline, string index)
         {
             if (IsEntrance(pipeline))
             {
