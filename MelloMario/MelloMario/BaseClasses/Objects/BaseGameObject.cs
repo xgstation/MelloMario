@@ -96,9 +96,9 @@ namespace MelloMario
 
         public void Update(GameTime time)
         {
-            // TODO: override OnUpdate for states etc.
-            //       override OnSimulation for movement and collision
+            // override OnUpdate for states etc.
             OnUpdate(time);
+            // override OnSimulation for movement and collision
             OnSimulation(time);
         }
 
