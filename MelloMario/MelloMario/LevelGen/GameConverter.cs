@@ -1,4 +1,5 @@
-﻿using MelloMario.MarioObjects;
+﻿using MelloMario.Containers;
+using MelloMario.MarioObjects;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -15,7 +16,7 @@ namespace MelloMario.LevelGen
         private GameModel model;
         JsonSerializer serializers;
 
-        private GameWorld world;
+        private IGameWorld world;
         private IPlayer character;
 
         public GameConverter(string index, GameModel model)
@@ -57,7 +58,7 @@ namespace MelloMario.LevelGen
                 {
                     foreach (var gameObj in gameObjs.RealObj)
                     {
-                        world.AddObject(gameObj);
+                        world.Add(gameObj);
                     }
                 }
 
@@ -69,7 +70,7 @@ namespace MelloMario.LevelGen
                 var temp = obj.ToObject<EncapsulatedObject<PlayerMario>>(serializers);
                 var mario = temp.RealObj.Pop();
                 character = mario;
-                world.AddObject(mario);
+                world.Add(mario);
                 //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
             }
             return new Tuple<IGameWorld, IPlayer>(world, character);

@@ -9,9 +9,9 @@ namespace MelloMario.LevelGen
 {
     class CharacterConverter : JsonConverter
     {
-        private GameWorld gameWorld;
+        private IGameWorld gameWorld;
         private int grid;
-        public CharacterConverter(GameWorld gameWorld, int gridSize)
+        public CharacterConverter(IGameWorld gameWorld, int gridSize)
         {
             this.gameWorld = gameWorld;
             grid = gridSize;

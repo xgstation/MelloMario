@@ -14,9 +14,9 @@ namespace MelloMario.LevelGen
 {
     class GameEntityConverter : JsonConverter
     {
-        private GameWorld gameWorld;
+        private IGameWorld gameWorld;
         private int grid;
-        public GameEntityConverter(GameWorld parentGameWorld, int gridSize)
+        public GameEntityConverter(IGameWorld parentGameWorld, int gridSize)
         {
             gameWorld = parentGameWorld;
             grid = gridSize;
@@ -130,7 +130,7 @@ namespace MelloMario.LevelGen
             }
             return obj;
         }
-        static private IList<IGameObject> CreateItemList(GameWorld world, Point point, params string[] s)
+        static private IList<IGameObject> CreateItemList(IGameWorld world, Point point, params string[] s)
         {
             if (s != null)
             {
