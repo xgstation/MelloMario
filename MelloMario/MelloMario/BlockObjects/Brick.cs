@@ -108,6 +108,9 @@ namespace MelloMario.BlockObjects
             }
         }
 
+        public Brick(IGameWorld world, Point location) : this(world, location, false)
+        {
+        }
         public Brick(IGameWorld world, Point location, bool isHidden = false) : this(world, location, new List<IGameObject>(), isHidden)
         {
         }
