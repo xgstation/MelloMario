@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using MelloMario.EnemyObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.LevelGen
@@ -68,13 +69,13 @@ namespace MelloMario.LevelGen
             {
                 Debug.WriteLine("Deserialize " + type.Name + " success!");
             }
-            else if (EnemyTypes.Contains(type))
+            else if (EnemyTypes.Contains(type) && EnemyConverter(type,objToken,ref objectStackToBeEncapsulated))
             {
-
+                Debug.WriteLine("Deserialize " + type.Name + " success!");
             }
-            else if (ItemTypes.Contains(type))
+            else if (ItemTypes.Contains(type) && ItemConverter(type, objToken, ref objectStackToBeEncapsulated))
             {
-
+                Debug.WriteLine("Deserialize " + type.Name + " success!");
             }
             else if (MiscTypes.Contains(type))
             {
@@ -82,7 +83,12 @@ namespace MelloMario.LevelGen
             }
             else
             {
-                //   Activator.CreateInstance(type, world, location);
+                if (!TryGet(out Point objPoint, objToken, "Point"))
+                {
+                    Debug.WriteLine("Deserialize fail: No start point provided!");
+                    return null;
+                }
+                objectStackToBeEncapsulated.Push((IGameObject)Activator.CreateInstance(type, world, objPoint));
             }
 #endif
 
@@ -148,13 +154,7 @@ namespace MelloMario.LevelGen
             return new EncapsulatedObject<IGameObject>(objectStackToBeEncapsulated);
         }
         //TODO: Add serialize method and change CanWrite 
-        public override bool CanWrite
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool CanWrite => false;
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -184,6 +184,7 @@ namespace MelloMario.LevelGen
         {
             return s ?.Select(t => GameObjectFactory.Instance.CreateGameObject(t, world, point)).ToList();
         }
+#if OLD
         private void PushNewObject(Stack<IGameObject> objectStack, string type, Point location, IList<IGameObject> list, Tuple<bool, string[]> property)
         {
             IGameObject objectToPush;
@@ -226,7 +227,7 @@ namespace MelloMario.LevelGen
             }
         }
 
-     
+#endif
         private void BatchCreate<T>(Func<Point, T> func, Point startPoint, Point quantity, Point objSize, ICollection<Point> ignoredSet, ref Stack<IGameObject> stack)
         {
             for (var x = 0; x < quantity.X; x++)
@@ -268,8 +269,60 @@ namespace MelloMario.LevelGen
             return true;
         }
 
+        private bool ItemConverter(Type type, JToken token, ref Stack<IGameObject> stack)
+        {
+            if (!TryGet(out Point objPoint, token, "Point"))
+            {
+                Debug.WriteLine("Deserialize fail: No start point provided!");
+                return false;
+            }
+            var quantity = TryGet(out Point p, token, "Quantity") ? p : new Point(1, 1);
+            var isSingle = quantity.X == 1 && quantity.Y == 1;
+            Func<Point, IGameObject> createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point);
+            if (isSingle)
+            {
+                stack.Push(createFunc(objPoint));
+            }
+            else
+            {
+                var ignoredSet = TryReadIgnoreSet(token, out var newIgnoredSet) ? newIgnoredSet : null;
+                BatchCreate(createFunc, objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
+            }
+            return true;
+        }
         private bool EnemyConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
+            if (!TryGet(out Point objPoint, token, "Point"))
+            {
+                Debug.WriteLine("Deserialize fail: No start point provided!");
+                return false;
+            }
+            if (type.IsAssignableFrom(typeof(Piranha)))
+            {
+                var hideTime = TryGet(out float f, token, "Property", "HideTime") ? f : 3;
+                stack.Push(Activator.CreateInstance(type, world, objPoint, hideTime) as BasePhysicalObject);
+            }
+            else
+            {
+                var quantity = TryGet(out Point p, token, "Quantity") ? p : new Point(1, 1);
+                var isSingle = quantity.X == 1 && quantity.Y == 1;
+                var ignoredSet = !isSingle && TryReadIgnoreSet(token, out var newIgnoredSet) ? newIgnoredSet : null;
+                Func<Point, IGameObject> createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point);
+                if (type.IsAssignableFrom(typeof(Koopa)))
+                {
+                    Koopa.ShellColor shellColor = TryGet(out string color, token, "Property", "Color") ? (color == "Green" ? Koopa.ShellColor.green : Koopa.ShellColor.red) : (Koopa.ShellColor.green);
+                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, shellColor);
+                }
+                if (isSingle)
+                {
+                    stack.Push(Activator.CreateInstance(type, world, objPoint) as BasePhysicalObject);
+                }
+                else
+                {
+                    BatchCreate(createFunc, objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
+                }
+
+            }
             return true;
         }
         private bool BlockConverter(Type type, JToken token, ref Stack<IGameObject> stack)
