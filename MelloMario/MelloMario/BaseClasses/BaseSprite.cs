@@ -42,7 +42,7 @@ namespace MelloMario.Sprites
             color = Color.White;
         }
 
-        public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
+        public virtual void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
         {
             if (activeZIndex == zIndex)
             {
