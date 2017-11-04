@@ -15,12 +15,23 @@ namespace MelloMario.MarioObjects
             base.OnUpdate(time);
         }
 
+        public Rectangle Sensing
+        {
+            get
+            {
+                Point location = Boundary.Location - new Point(800, 600);
+                Point size = new Point(1600, 1200); // notice: should be greater than viewport
+
+                return new Rectangle(location, size);
+            }
+        }
+
         public Rectangle Viewport
         {
             get
             {
                 Point location = Boundary.Location - new Point(320, 320);
-                Point size = new Point(800, 600); // TODO: currently, size of viewport does nothing
+                Point size = new Point(800, 600); // TODO: should be the same as resolution
 
                 Rectangle worldBoundary = World.Boundary;
 
