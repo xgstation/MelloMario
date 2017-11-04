@@ -55,10 +55,8 @@ namespace MelloMario
         {
             Content.RootDirectory = "Content";
             base.LoadContent();
+            SpriteFactory.Instance.BindContentManager(Content);
 
-            SpriteFactory.Instance.LoadAllTextures(Content);
-
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.BindSpriteBatch(spriteBatch);
         }
