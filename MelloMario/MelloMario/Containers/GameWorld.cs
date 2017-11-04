@@ -5,35 +5,36 @@ namespace MelloMario.Containers
 {
     class GameWorld : BaseContainer<Point, IGameObject>, IGameWorld
     {
-        private int grid;
+        private const int GRID = 32;
+        private const int SCAN = 24;
+
         private Point size;
 
         protected override Point GetKey(IGameObject value)
         {
             Point center = value.Boundary.Center;
-            return new Point(center.X / grid, center.Y / grid);
+            return new Point(center.X / GRID, center.Y / GRID);
         }
 
         public Rectangle Boundary
         {
             get
             {
-                return new Rectangle(0, 0, size.X * grid, size.Y * grid);
+                return new Rectangle(0, 0, size.X * GRID, size.Y * GRID);
             }
         }
 
-        public GameWorld(int grid, Point size)
+        public GameWorld(Point size)
         {
-            this.grid = grid;
             this.size = size;
         }
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
         {
-            int left = range.Left / grid - 1;
-            int right = range.Right / grid + 1;
-            int top = range.Top / grid - 1;
-            int bottom = range.Bottom / grid + 1;
+            int left = (range.Left - SCAN) / GRID;
+            int right = (range.Right + SCAN) / GRID;
+            int top = (range.Top - SCAN) / GRID;
+            int bottom = (range.Bottom + SCAN) / GRID;
 
             for (int i = left; i <= right; ++i)
             {

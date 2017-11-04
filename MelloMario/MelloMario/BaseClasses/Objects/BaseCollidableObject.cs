@@ -168,36 +168,39 @@ namespace MelloMario
 
         protected override void OnSimulation(GameTime time)
         {
-            CollideAll();
-
-            // Since each update is a very small iteration, the order does not matter.
-
-            while (movement.X < 0)
+            if (movement.X != 0 || movement.Y != 0)
             {
-                Relocate(new Point(-1, 0));
-                movement.X += 1;
                 CollideAll();
-            }
 
-            while (movement.X > 0)
-            {
-                Relocate(new Point(1, 0));
-                movement.X -= 1;
-                CollideAll();
-            }
+                // Since each update is a very small iteration, the order does not matter.
 
-            while (movement.Y < 0)
-            {
-                Relocate(new Point(0, -1));
-                movement.Y += 1;
-                CollideAll();
-            }
+                while (movement.X < 0)
+                {
+                    Relocate(new Point(-1, 0));
+                    movement.X += 1;
+                    CollideAll();
+                }
 
-            while (movement.Y > 0)
-            {
-                Relocate(new Point(0, 1));
-                movement.Y -= 1;
-                CollideAll();
+                while (movement.X > 0)
+                {
+                    Relocate(new Point(1, 0));
+                    movement.X -= 1;
+                    CollideAll();
+                }
+
+                while (movement.Y < 0)
+                {
+                    Relocate(new Point(0, -1));
+                    movement.Y += 1;
+                    CollideAll();
+                }
+
+                while (movement.Y > 0)
+                {
+                    Relocate(new Point(0, 1));
+                    movement.Y -= 1;
+                    CollideAll();
+                }
             }
         }
 
