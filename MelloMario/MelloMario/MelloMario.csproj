@@ -103,6 +103,7 @@
     <Compile Include="Commands\ToggleFullScreen.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="EnemyObjects\KoopaStates\MovingShell.cs" />
+    <Compile Include="EnemyObjects\Piranha.cs" />
     <Compile Include="Factories\GameObjectFactory.cs" />
     <Compile Include="Factories\CommandFactory.cs" />
     <Compile Include="Factories\SpriteFactory.cs" />
