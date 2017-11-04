@@ -73,6 +73,7 @@
     <Compile Include="BlockObjects\BrickStates\Hidden.cs" />
     <Compile Include="BlockObjects\BrickStates\Normal.cs" />
     <Compile Include="BlockObjects\BrickStates\Used.cs" />
+    <Compile Include="BlockObjects\CompressedBlock.cs" />
     <Compile Include="BlockObjects\Floor.cs" />
     <Compile Include="BlockObjects\Pipeline.cs" />
     <Compile Include="BlockObjects\Question.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="MarioObjects\ProtectionStates\Normal.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Protected.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Starred.cs" />
+    <Compile Include="Sprites\CompressedSprite.cs" />
     <Compile Include="Sprites\FlickingAnimatedSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BrickPieceSprite.cs" />
     <Compile Include="MarioObjects\Mario.cs" />
@@ -243,7 +245,6 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Content\Level1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
