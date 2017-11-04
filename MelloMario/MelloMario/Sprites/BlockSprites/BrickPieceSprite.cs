@@ -18,6 +18,14 @@ namespace MelloMario.Sprites.BlockSprites
             }
         }
 
+        public ZIndex ZIndex
+        {
+            get
+            {
+                return ZIndex.level;
+            }
+        }
+
         public BrickPieceSprite(SpriteBatch spriteBatch, Texture2D texture)
         {
             this.spriteBatch = spriteBatch;
@@ -28,40 +36,37 @@ namespace MelloMario.Sprites.BlockSprites
 
         public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
         {
-            if (zIndex == ZIndex.level)
-            {
-                elapsed += time.ElapsedGameTime.Milliseconds;
+            elapsed += time.ElapsedGameTime.Milliseconds;
 
-                int offsetX;
-                int offsetY;
-                Rectangle newDestination;
-                Rectangle source;
+            int offsetX;
+            int offsetY;
+            Rectangle newDestination;
+            Rectangle source;
 
-                offsetX = -elapsed / 5 + 4;
-                offsetY = elapsed * elapsed / 400 - elapsed + 16;
-                newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
-                source = new Rectangle(0, 0, texture.Width / 2, texture.Height / 2);
-                spriteBatch.Draw(texture, newDestination, source, Color.White);
+            offsetX = -elapsed / 5 + 4;
+            offsetY = elapsed * elapsed / 400 - elapsed + 16;
+            newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
+            source = new Rectangle(0, 0, texture.Width / 2, texture.Height / 2);
+            spriteBatch.Draw(texture, newDestination, source, Color.White);
 
-                offsetX = -elapsed / 5 + 4;
-                offsetY = elapsed * elapsed / 360 - elapsed + 32;
-                newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
-                source = new Rectangle(0, texture.Height / 2, texture.Width / 2, texture.Height / 2);
-                spriteBatch.Draw(texture, newDestination, source, Color.White);
+            offsetX = -elapsed / 5 + 4;
+            offsetY = elapsed * elapsed / 360 - elapsed + 32;
+            newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
+            source = new Rectangle(0, texture.Height / 2, texture.Width / 2, texture.Height / 2);
+            spriteBatch.Draw(texture, newDestination, source, Color.White);
 
-                offsetX = elapsed / 5 + 12;
-                offsetY = elapsed * elapsed / 400 - elapsed + 16;
-                newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
-                source = new Rectangle(texture.Width / 2, 0, texture.Width / 2, texture.Height / 2);
-                spriteBatch.Draw(texture, newDestination, source, Color.White);
+            offsetX = elapsed / 5 + 12;
+            offsetY = elapsed * elapsed / 400 - elapsed + 16;
+            newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
+            source = new Rectangle(texture.Width / 2, 0, texture.Width / 2, texture.Height / 2);
+            spriteBatch.Draw(texture, newDestination, source, Color.White);
 
-                offsetX = elapsed / 5 + 12;
-                offsetY = elapsed * elapsed / 360 - elapsed + 32;
-                newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
-                source = new Rectangle(texture.Width / 2, texture.Height / 2, texture.Width / 2, texture.Height / 2);
+            offsetX = elapsed / 5 + 12;
+            offsetY = elapsed * elapsed / 360 - elapsed + 32;
+            newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
+            source = new Rectangle(texture.Width / 2, texture.Height / 2, texture.Width / 2, texture.Height / 2);
 
-                spriteBatch.Draw(texture, newDestination, source, Color.White);
-            }
+            spriteBatch.Draw(texture, newDestination, source, Color.White);
         }
     }
 }
