@@ -72,9 +72,18 @@ namespace MelloMario
                 controller.Update();
             }
 
+
             if (!isPaused)
             {
-                foreach (IGameObject obj in world.ScanAll())
+                // reserved for multiplayer
+                ISet<IGameObject> updating = new HashSet<IGameObject>();
+
+                foreach (IGameObject obj in world.ScanNearby(player.Sensing))
+                {
+                    updating.Add(obj);
+                }
+
+                foreach (IGameObject obj in updating)
                 {
                     obj.Update(time);
                 }

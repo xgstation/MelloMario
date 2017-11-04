@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace MelloMario.Containers
 {
@@ -38,10 +39,11 @@ namespace MelloMario.Containers
         {
             if (values.ContainsKey(key))
             {
-                foreach (Value value in values[key])
-                {
-                    yield return value;
-                }
+                return values[key];
+            }
+            else
+            {
+                return Enumerable.Empty<Value>();
             }
         }
 
