@@ -104,19 +104,25 @@ namespace MelloMario
 
         public void Draw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
-            OnDraw(time, viewport, zIndex);
-
-            if (sprite != null)
+            if (sprite != null && zIndex == sprite.ZIndex)
             {
+                OnDraw(time, viewport, zIndex);
+
                 Point offset = viewport.Location;
 
                 switch (zIndex)
                 {
-                    case ZIndex.background:
-                        offset.X = offset.X / 2;
+                    case ZIndex.hud:
+                        offset.X = 0;
+                        offset.Y = 0;
+                        break;
+                    case ZIndex.background0:
+                        offset.X = offset.X / 3;
+                        offset.Y = offset.Y * 2 / 3;
                         break;
                     case ZIndex.background1:
-                        offset.X = offset.X / 3;
+                        offset.X = offset.X / 2;
+                        offset.Y = offset.Y * 3 / 4;
                         break;
                     case ZIndex.background2:
                         offset.X = offset.X * 2 / 3;

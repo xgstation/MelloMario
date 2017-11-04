@@ -32,6 +32,14 @@ namespace MelloMario.Sprites
             }
         }
 
+        public ZIndex ZIndex
+        {
+            get
+            {
+                return activeZIndex;
+            }
+        }
+
         public BaseSprite(SpriteBatch spriteBatch, Texture2D texture, Point source, Point size, ZIndex activeZIndex)
         {
             this.spriteBatch = spriteBatch;
@@ -44,12 +52,9 @@ namespace MelloMario.Sprites
         //Temporary virutal
         public virtual void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
         {
-            if (activeZIndex == zIndex)
-            {
-                OnAnimate(time);
+            OnAnimate(time);
 
-                spriteBatch.Draw(texture, destination, new Rectangle(source, size), color);
-            }
+            spriteBatch.Draw(texture, destination, new Rectangle(source, size), color);
         }
     }
 }

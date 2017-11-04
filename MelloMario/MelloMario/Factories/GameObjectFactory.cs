@@ -102,7 +102,7 @@ namespace MelloMario.Factories
 
                 //others
                 case "ShortCloud":
-                    return new Background(world, location, type, ZIndex.background);
+                    return new Background(world, location, type, ZIndex.background0);
                 case "ShortSmileCloud":
                     return new Background(world, location, type, ZIndex.background1);
                 case "LongCloud":
