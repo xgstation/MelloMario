@@ -30,10 +30,10 @@ namespace MelloMario.Containers
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
         {
-            int left = range.Left / grid - 2;
-            int right = range.Right / grid + 2;
-            int top = range.Top / grid - 2;
-            int bottom = range.Bottom / grid + 2;
+            int left = range.Left / grid - 1;
+            int right = range.Right / grid + 1;
+            int top = range.Top / grid - 1;
+            int bottom = range.Bottom / grid + 1;
 
             for (int i = left; i <= right; ++i)
             {
