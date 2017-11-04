@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.ItemObjects.OneUpMushroomStates;
+using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
 {
@@ -110,6 +111,7 @@ namespace MelloMario.ItemObjects
             UpdateSprite();
         }
 
+        public OneUpMushroom(IGameWorld world, Point location) : this(world, location, GameDataBase.GetCharacterLocation(), false){ }
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }
