@@ -5,8 +5,8 @@ namespace MelloMario
 {
     interface ISpriteFactory
     {
-        void LoadAllTextures(ContentManager content);
-        void BindSpriteBatch(SpriteBatch spriteBatch);
+        void BindContentManager(ContentManager newContentManager);
+        void BindSpriteBatch(SpriteBatch newSpriteBatch);
 
         ISprite CreateMarioSprite(string status, bool isStatic, bool isStar);
         ISprite CreateMarioSprite(string status, bool isStatic);
