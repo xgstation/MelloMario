@@ -112,11 +112,17 @@ namespace MelloMario
 
                 switch (zIndex)
                 {
+                    case ZIndex.hud:
+                        offset.X = 0;
+                        offset.Y = 0;
+                        break;
                     case ZIndex.background:
-                        offset.X = offset.X / 2;
+                        offset.X = offset.X / 3;
+                        offset.Y = offset.Y * 2 / 3;
                         break;
                     case ZIndex.background1:
-                        offset.X = offset.X / 3;
+                        offset.X = offset.X / 2;
+                        offset.Y = offset.Y * 3 / 4;
                         break;
                     case ZIndex.background2:
                         offset.X = offset.X * 2 / 3;

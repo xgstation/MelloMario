@@ -208,7 +208,7 @@ namespace MelloMario.LevelGen
                     objectToPush = new Background(world, location, type, ZIndex.background3);
                     break;
                 case "ShortSmileCloud":
-                    objectToPush = new Background(world, location, type, ZIndex.background);
+                    objectToPush = new Background(world, location, type, ZIndex.background0);
                     break;
                 case "LongCloud":
                     objectToPush = new Background(world, location, type, ZIndex.background1);
