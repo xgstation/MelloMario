@@ -6,20 +6,25 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.LevelGen
 {
     //Using for deserialize json to a single GameWorld(Map)
     class GameConverter : JsonConverter
     {
+        private GraphicsDevice graphicsDevice;
+        private GameModel model;
         private string index;
         private JsonSerializer serializers;
 
         private IGameWorld world;
         private IPlayer character;
 
-        public GameConverter(string index)
+        public GameConverter(GameModel model, GraphicsDevice graphicsDevice,string index)
         {
+            this.model = model;
+            this.graphicsDevice = graphicsDevice;
             this.index = index;
             serializers = new JsonSerializer();
         }
@@ -48,7 +53,7 @@ namespace MelloMario.LevelGen
 
             IList<JToken> Structures = MapToBeLoaded.Value<JToken>("Entity").ToList();
             world = new GameWorld(mapSize);
-            serializers.Converters.Add(new GameEntityConverter(world, grid));
+            serializers.Converters.Add(new GameEntityConverter(model, graphicsDevice, world, grid));
             serializers.Converters.Add(new CharacterConverter(world, grid));
 
             foreach (JToken jToken in Structures)

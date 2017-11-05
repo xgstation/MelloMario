@@ -2,6 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.StarStates;
 using MelloMario.BlockObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
 {
@@ -46,13 +47,13 @@ namespace MelloMario.ItemObjects
                         }
                         break;
                     case "Brick":
-                        if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                        if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
                         {
                             break;
                         }
                         goto case "Stair";
                     case "Question":
-                        if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                        if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
                         {
                             break;
                         }
@@ -105,7 +106,7 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public Star(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
+        public Star(IGameWorld world, Point location, Point marioLocation, bool isUnveil = true) : base(world, location, new Point(32, 32), 32)
         {
             if (marioLocation.X < location.X)
             {
@@ -125,7 +126,7 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
-
+        public Star(IGameWorld world, Point location) : this(world, location, GameDataBase.GetCharacterLocation()) { }
         public Star(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }

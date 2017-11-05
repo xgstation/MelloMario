@@ -1,41 +1,13 @@
 ﻿{
   "Maps": [
     {
-      "Characters": [
-        {
-          "SpawnPoint": {
-            "X": 16,
-            "Y": 10
-          },
-          "State": "Normal",
-          "Type": "Mario"
-        }
-      ],
-      "Entity": [
-        {
-          "Point": {
-            "X": 10,
-            "Y": 12
-          },
-          "Property": {
-            "Direction": "V", // "V", "HL", "HR", "NV", "NH"
-            "Entrance": "1-1-1",
-            "Length": 2
-          },
-          "Type": "Pipeline"
-        },
-        {
-          "Point": {
-            "X": 30,
-            "Y": 12
-          },
-          "Property": {
-
-          }
-        }
-      ],
-      "Grid": 32,
+      "Type": "Main",
       "Index": "Main",
+      "Grid": 32,
+      "Size": {
+        "X": 212,
+        "Y": 17
+      },
       "RespawnPoints": [
         {
           "X": 3,
@@ -46,11 +18,30 @@
           "Y": 5
         }
       ],
-      "Size": {
-        "X": 212,
-        "Y": 17
-      },
-      "Type": "Main"
+      "Characters": [
+        {
+          "Type": "Mario",
+          "SpawnPoint": {
+            "X": 2,
+            "Y": 10
+          },
+          "State": "Normal"
+        }
+      ],
+      "Entity": [
+        {
+          "Type": "Question",
+          "Point": {
+            "X": 2,
+            "Y": 11
+          },
+          "Property": {
+            "IsHidden": true,
+            "ItemValues": [ "CoinUnveil", "CoinUnveil" ]
+          }
+        },
+        {"Type": "Floor","Point": {"X": 0,"Y": 15},"Quantity": {"X": 10,"Y": 2}   }
+      ]
     },
     {
       "Type": "Sub",

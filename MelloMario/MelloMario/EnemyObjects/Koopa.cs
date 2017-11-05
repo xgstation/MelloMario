@@ -3,6 +3,7 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.KoopaStates;
 using MelloMario.BlockObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.EnemyObjects
 {
@@ -205,6 +206,7 @@ namespace MelloMario.EnemyObjects
             }
         }
 
+        public Koopa(IGameWorld world, Point location, ShellColor color) : this(world, location, GameDataBase.GetCharacterLocation(), color) { }
         public Koopa(IGameWorld world, Point location, Point marioLoc, ShellColor color) : base(world, location, new Point(32, 32), 32)
         {
             if (marioLoc.X < location.X)

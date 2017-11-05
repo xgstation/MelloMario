@@ -2,6 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.SuperMushroomStates;
 using MelloMario.BlockObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
 {
@@ -44,13 +45,13 @@ namespace MelloMario.ItemObjects
                     }
                     break;
                 case "Brick":
-                    if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
                     {
                         break;
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
                     {
                         break;
                     }
@@ -97,8 +98,8 @@ namespace MelloMario.ItemObjects
         protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
         }
-
-        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
+        public SuperMushroom(IGameWorld world, Point location) : this(world, location, GameDataBase.GetCharacterLocation()) { }
+        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil = true) : base(world, location, new Point(32, 32), 32)
         {
             if (marioLocation.X < location.X)
             {

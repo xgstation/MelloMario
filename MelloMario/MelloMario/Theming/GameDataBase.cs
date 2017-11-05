@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MelloMario.BlockObjects;
+using MelloMario.MarioObjects;
+using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming
 {
@@ -7,7 +10,20 @@ namespace MelloMario.Theming
     {
         private static IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
         private static IDictionary<Pipeline, string> PipelineEntranceDb = new Dictionary<Pipeline, string>();
+        private static IDictionary<ICharacter, Point> CharacterLocations = new Dictionary<ICharacter, Point>();
 
+        public static bool HasCharacters()
+        {
+            return CharacterLocations.Count != 0;
+        }
+        public static Point GetCharacterLocation()
+        {
+            return HasCharacters() ? CharacterLocations.Values.ToList()[0] : new Point();
+        }
+        public static Point GetCharacterLocation(ICharacter character)
+        {
+            return HasCharacters() ? CharacterLocations[character] : new Point();
+        }
         public static bool HasItemEnclosed(IGameObject obj)
         {
             return ItemEnclosedDb.ContainsKey(obj) && ItemEnclosedDb[obj].Count != 0;

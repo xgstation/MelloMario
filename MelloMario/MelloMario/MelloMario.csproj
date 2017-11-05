@@ -102,6 +102,7 @@
     <Compile Include="Commands\ToggleFullScreen.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="EnemyObjects\KoopaStates\MovingShell.cs" />
+    <Compile Include="EnemyObjects\Piranha.cs" />
     <Compile Include="Factories\GameObjectFactory.cs" />
     <Compile Include="Factories\CommandFactory.cs" />
     <Compile Include="Factories\SpriteFactory.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="MarioObjects\ProtectionStates\Normal.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Protected.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Starred.cs" />
+    <Compile Include="Sprites\CompressedSprite.cs" />
     <Compile Include="Sprites\FlickingAnimatedSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BrickPieceSprite.cs" />
     <Compile Include="MarioObjects\Mario.cs" />
@@ -243,7 +245,6 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Content\Level1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

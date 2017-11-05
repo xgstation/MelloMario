@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
@@ -23,6 +24,7 @@ namespace MelloMario
 
         ISprite CreateQuestionSprite(string status);
         ISprite CreateBrickSprite(string status);
+        ISprite CreateCompressedSprite(Point fullSize, string type);
         ISprite CreateFloorSprite();
         ISprite CreateStairSprite();
         ISprite CreatePipelineSprite(string type);

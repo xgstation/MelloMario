@@ -111,8 +111,6 @@ namespace MelloMario
 
         public void SwitchWorld(string index)
         {
-            Point newLoc = new Point(1, 1);
-
             if (worlds.ContainsKey(index))
             {
                 currentWorld = worlds[index];

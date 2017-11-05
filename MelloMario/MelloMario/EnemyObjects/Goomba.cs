@@ -3,6 +3,7 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.GoombaStates;
 using MelloMario.BlockObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.EnemyObjects
 {
@@ -140,7 +141,7 @@ namespace MelloMario.EnemyObjects
             // Notice: The effect should be the same as changing state
             UpdateSprite();
         }
-
+        public Goomba(IGameWorld world, Point location) : this(world, location, GameDataBase.GetCharacterLocation()) { }
         public Goomba(IGameWorld world, Point location, Point marioLoc) : base(world, location, new Point(32, 32), 32)
         {
             if (marioLoc.X < location.X)

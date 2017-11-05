@@ -3,6 +3,7 @@ using MelloMario.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using MelloMario.Sprites.BlockSprites;
+using Microsoft.Xna.Framework;
 
 namespace MelloMario.Factories
 {
@@ -193,7 +194,7 @@ namespace MelloMario.Factories
                 case "Bumped":
                     return new SlicedSprite(spriteBatch, GetTexture("BlockSheet"), 33, 28, 1, 0, 1, 1, ZIndex.level);
                 case "Destroyed":
-                    return new BrickPieceSprite(spriteBatch, GetTexture("BrickPiece"));
+                    return new BrickPieceSprite(spriteBatch, GetTexture("BrickPieces"));
                 case "Normal":
                     return new SlicedSprite(spriteBatch, GetTexture("BlockSheet"), 33, 28, 1, 0, 1, 1, ZIndex.level);
                 case "Used":
@@ -203,6 +204,11 @@ namespace MelloMario.Factories
                     //else in the code
                     return null;
             }
+        }
+
+        public ISprite CreateCompressedSprite(Point fullSize, string type)
+        {
+            return new CompressedSprite(spriteBatch, GetTexture("Blocksheet"), new Point(), fullSize, ZIndex.level, type);
         }
 
         public ISprite CreateFloorSprite()
