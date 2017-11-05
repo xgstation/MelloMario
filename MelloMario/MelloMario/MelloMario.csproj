@@ -73,7 +73,6 @@
     <Compile Include="BlockObjects\BrickStates\Hidden.cs" />
     <Compile Include="BlockObjects\BrickStates\Normal.cs" />
     <Compile Include="BlockObjects\BrickStates\Used.cs" />
-    <Compile Include="BlockObjects\CompressedBlock.cs" />
     <Compile Include="BlockObjects\Floor.cs" />
     <Compile Include="BlockObjects\Pipeline.cs" />
     <Compile Include="BlockObjects\Question.cs" />

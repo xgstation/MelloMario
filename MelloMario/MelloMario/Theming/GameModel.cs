@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using MelloMario.LevelGen;
 using System;
-using MelloMario.BlockObjects;
 using MelloMario.Scripts;
 
 namespace MelloMario
@@ -10,7 +9,6 @@ namespace MelloMario
     class GameModel : IGameModel
     {
         private IDictionary<string, IGameWorld> worlds;
-        private ISet<IGameObject> compressedObjectSet;
         private IGameWorld currentWorld;
         private string currentWorldIndex;
 
@@ -23,8 +21,6 @@ namespace MelloMario
 
         public GameModel(Game1 game, LevelIOJson reader)
         {
-            worlds = new Dictionary<string, IGameWorld>();
-            compressedObjectSet = new HashSet<IGameObject>();
             this.game = game;
             this.reader = reader;
         }
@@ -62,15 +58,6 @@ namespace MelloMario
 
             isPaused = false;
             new PlayingScript().Bind(controllers, this, player);
-
-            world.Update();
-            foreach (var obj in world.ScanAll())
-            {
-                if (obj is CompressedBlock)
-                {
-                    compressedObjectSet.Add(obj);
-                }
-            }
         }
 
         public void Quit()
@@ -120,14 +107,6 @@ namespace MelloMario
                     obj.Draw(time, player.Viewport, zIndex);
                 }
             }
-            foreach (var obj in compressedObjectSet)
-            {
-                if (!obj.Boundary.Intersects(player.Viewport)) continue;
-                foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
-                {
-                    obj.Draw(time, player.Viewport, zIndex);
-                }
-            }
         }
 
         public void SwitchWorld(string index)
@@ -145,6 +124,5 @@ namespace MelloMario
 
             player.Spawn(currentWorld);
         }
-
     }
 }
