@@ -10,7 +10,7 @@ namespace MelloMario.LevelGen
         //       The code analysis tool generates a warning here
 
         private string path;
-        private GameModel Model;
+        private GameModel model;
         private string levelString;
 
         public LevelIOJson(string jsonPath)
@@ -20,13 +20,13 @@ namespace MelloMario.LevelGen
 
         public void SetModel(GameModel model)
         {
-            Model = model;
+            this.model = model;
         }
 
         public Tuple<IGameWorld, IPlayer> Load(string index)
         {
             levelString = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, new GameConverter(index));
+            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, new GameConverter(model, index));
         }
 
         //public void Close()
