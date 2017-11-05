@@ -15,6 +15,7 @@ using System.Linq;
 using System.Reflection;
 using MelloMario.EnemyObjects;
 using MelloMario.Theming;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.LevelGen
 {
@@ -25,11 +26,13 @@ namespace MelloMario.LevelGen
         private static readonly IEnumerable<Type> ItemTypes = from type in assemblyTypes where type.Namespace == "MelloMario.ItemObjects" select type;
         private static readonly IEnumerable<Type> EnemyTypes = from type in assemblyTypes where type.Namespace == "MelloMario.EnemyObjects" select type;
         private static readonly IEnumerable<Type> MiscTypes = from type in assemblyTypes where type.Namespace == "MelloMario.MiscObjects" select type;
-        private GameModel model;
-        private IGameWorld world;
-        private int grid;
-        public GameEntityConverter(GameModel model, IGameWorld parentGameWorld, int gridSize)
+        private readonly GameModel model;
+        private readonly IGameWorld world;
+        private readonly int grid;
+        private readonly GraphicsDevice graphicsDevice;
+        public GameEntityConverter(GameModel model, GraphicsDevice graphicsDevice, IGameWorld parentGameWorld, int gridSize)
         {
+            this.graphicsDevice = graphicsDevice;
             this.model = model;
             world = parentGameWorld;
             grid = gridSize;
@@ -167,11 +170,13 @@ namespace MelloMario.LevelGen
         private static bool TryGet<T>(out T obj, JToken token, params string[] p)
         {
             obj = default(T);
+            if (token.Type is JTokenType.Array) return false;
             var tempToken = token;
             for (var i = 0; i < p.Length - 1; i++)
             {
                 if (tempToken[p[i]] != null)
                 {
+                    if (tempToken.Type is JTokenType.Array) return false;
                     tempToken = tempToken[p[i]];
                 }
                 else
@@ -180,6 +185,7 @@ namespace MelloMario.LevelGen
                 }
             }
             var str = p[p.Length - 1];
+            if (tempToken.Type is JTokenType.Array) return false;
             if (tempToken[str] == null) return false;
             obj = tempToken[p[p.Length - 1]].ToObject<T>();
             return true;
@@ -361,7 +367,7 @@ namespace MelloMario.LevelGen
                 else
                 {
                     //TODO:optimize it
-                    if ( isQuestionOrBrick)
+                    if (isQuestionOrBrick)
                     {
                         BatchCreate(point => (IGameObject)Activator.CreateInstance(type, world, point), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
                     }
@@ -370,21 +376,24 @@ namespace MelloMario.LevelGen
                         BatchCreate(point => (IGameObject)Activator.CreateInstance(type, world, point, true), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
                         objPoint = new Point(objPoint.X * grid, objPoint.Y * grid);
                         var fullSize = new Point(32 * quantity.X, 32 * quantity.Y);
-                        if (fullSize.X <= 2560)
+                        var safeSize = graphicsDevice.DisplayMode.TitleSafeArea;
+                        if (fullSize.X <= safeSize.Width && fullSize.Y <= safeSize.Height)
                         {
                             stack.Push(new CompressedBlock(world, objPoint, fullSize, type));
                         }
                         else
                         {
-                            var splitNumber = fullSize.X / 2560;
-                            var remain = fullSize.X % 2560;
-                            for (int i = 0; i < splitNumber; i++)
+                            var splitNumberX = fullSize.X / safeSize.Width;
+                            var splitNumberY = fullSize.Y / safeSize.Height;
+                            var remainX = fullSize.X % safeSize.Width;
+                            var remainY = fullSize.Y % safeSize.Height;
+                            for (int i = 0; i < splitNumberX; i++)
                             {
-                                stack.Push(new CompressedBlock(world, new Point(objPoint.X + i * 2560, objPoint.Y), new Point(2560, fullSize.Y), type));
+                                stack.Push(new CompressedBlock(world, new Point(objPoint.X + i * safeSize.Width, objPoint.Y), new Point(safeSize.Width, fullSize.Y), type));
                             }
-                            if (remain != 0)
+                            if (remainX != 0)
                             {
-                                stack.Push(new CompressedBlock(world, new Point(objPoint.X + splitNumber * 2560, objPoint.Y), new Point(remain, fullSize.Y), type));
+                                stack.Push(new CompressedBlock(world, new Point(objPoint.X + splitNumberX * safeSize.Width, objPoint.Y), new Point(remainX, fullSize.Y), type));
                             }
                         }
                     }

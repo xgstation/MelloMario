@@ -23,6 +23,7 @@ namespace MelloMario
 
         public GameModel(Game1 game, LevelIOJson reader)
         {
+            worlds = new Dictionary<string, IGameWorld>();
             compressedObjectSet = new HashSet<IGameObject>();
             this.game = game;
             this.reader = reader;
@@ -131,8 +132,6 @@ namespace MelloMario
 
         public void SwitchWorld(string index)
         {
-            Point newLoc = new Point(1, 1);
-
             if (worlds.ContainsKey(index))
             {
                 currentWorld = worlds[index];

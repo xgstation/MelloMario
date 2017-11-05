@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Microsoft.Xna.Framework.Graphics;
 using Newtonsoft.Json;
 
 namespace MelloMario.LevelGen
@@ -12,9 +13,10 @@ namespace MelloMario.LevelGen
         private string path;
         private GameModel model;
         private string levelString;
-
-        public LevelIOJson(string jsonPath)
+        private GraphicsDevice graphicsDevice;
+        public LevelIOJson(string jsonPath, GraphicsDevice graphicsDevice)
         {
+            this.graphicsDevice = graphicsDevice;
             path = jsonPath;
         }
 
@@ -26,7 +28,7 @@ namespace MelloMario.LevelGen
         public Tuple<IGameWorld, IPlayer> Load(string index)
         {
             levelString = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, new GameConverter(model, index));
+            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, new GameConverter(model, graphicsDevice, index));
         }
 
         //public void Close()
