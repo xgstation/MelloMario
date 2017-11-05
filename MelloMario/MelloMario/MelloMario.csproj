@@ -83,6 +83,7 @@
     <Compile Include="BlockObjects\Stair.cs" />
     <Compile Include="BaseClasses\BaseCommand.cs" />
     <Compile Include="Commands\Action.cs" />
+    <Compile Include="Commands\Resume.cs" />
     <Compile Include="Commands\Quit.cs" />
     <Compile Include="Commands\Reset.cs" />
     <Compile Include="Commands\RightPress.cs" />
@@ -176,7 +177,6 @@
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Theming\GameDataBase.cs" />
     <Compile Include="Theming\GameModel.cs" />
-    <Compile Include="Containers\GameSession.cs" />
     <Compile Include="Containers\GameWorld.cs" />
     <Compile Include="Scripts\PlayingScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />

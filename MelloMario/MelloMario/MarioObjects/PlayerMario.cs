@@ -15,7 +15,7 @@ namespace MelloMario.MarioObjects
             base.OnUpdate(time);
         }
 
-        public IGameWorld CurrrentWorld
+        public IGameWorld CurrentWorld
         {
             get
             {

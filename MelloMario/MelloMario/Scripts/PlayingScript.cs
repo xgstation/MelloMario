@@ -45,11 +45,10 @@ namespace MelloMario.Scripts
                 controller.AddCommand(Keys.D, factory.CreateCharacterCommand("RightPress", character), KeyBehavior.press);
                 controller.AddCommand(Keys.D, factory.CreateCharacterCommand("RightRelease", character), KeyBehavior.release);
 
-                // game character commands
-                controller.AddCommand(Keys.Q, factory.CreateModelCommand("Quit", model), KeyBehavior.press);
-                controller.AddCommand(Keys.R, factory.CreateModelCommand("Reset", model), KeyBehavior.press);
-                controller.AddCommand(Keys.P, factory.CreateModelCommand("Pause", model), KeyBehavior.press);
                 controller.AddCommand(Keys.F12, factory.CreateModelCommand("ToggleFullScreen", model), KeyBehavior.press);
+                controller.AddCommand(Keys.P, factory.CreateModelCommand("Pause", model), KeyBehavior.press);
+                controller.AddCommand(Keys.R, factory.CreateModelCommand("Reset", model), KeyBehavior.press);
+                controller.AddCommand(Keys.Q, factory.CreateModelCommand("Quit", model), KeyBehavior.press);
 
                 controller.AddCommand(Buttons.B, factory.CreateCharacterCommand("Action", character));
                 controller.AddCommand(Buttons.DPadDown, factory.CreateCharacterCommand("Crouch", character), KeyBehavior.hold);
