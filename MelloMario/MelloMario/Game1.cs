@@ -22,8 +22,6 @@ namespace MelloMario
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferHeight = 800;
             graphics.PreferredBackBufferHeight = 600;
-            reader = new LevelIOJson("Content/ExampleLevel.json");
-            model = new GameModel(this, reader);
         }
 
         /// <summary>
@@ -36,6 +34,8 @@ namespace MelloMario
         {
             base.Initialize();
 
+            reader = new LevelIOJson("Content/ExampleLevel.json", graphics.GraphicsDevice);
+            model = new GameModel(this, reader);
             IEnumerable<IController> controllers = new List<IController>
             {
                 new GamepadController(),
@@ -44,6 +44,7 @@ namespace MelloMario
 
             model.LoadControllers(controllers);
 
+            //reader = new LevelIOJson("Content/Level1.json");
             model.Reset(); // Create the level for the first time
         }
 
@@ -91,8 +92,11 @@ namespace MelloMario
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
-
+            spriteBatch.GraphicsDevice.Viewport = new Viewport(0, 0, 800, 600);
             spriteBatch.Begin();
+            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
+            //RasterizerState state = new RasterizerState();
+            //state.FillMode = FillMode.WireFrame;
             model.Draw(time);
             spriteBatch.End();
         }

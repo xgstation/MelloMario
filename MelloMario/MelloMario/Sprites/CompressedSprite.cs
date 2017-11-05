@@ -73,7 +73,7 @@ namespace MelloMario.Sprites
             if (activeZIndex == zIndex)
             {
                 OnAnimate(time);
-                spriteBatch.Draw(renderTarget,destination,Color.White);
+                spriteBatch.Draw(renderTarget, destination,Color.White);
             }
         }
     }

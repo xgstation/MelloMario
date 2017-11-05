@@ -15,6 +15,7 @@ using System.Linq;
 using System.Reflection;
 using MelloMario.EnemyObjects;
 using MelloMario.Theming;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.LevelGen
 {
@@ -25,10 +26,14 @@ namespace MelloMario.LevelGen
         private static readonly IEnumerable<Type> ItemTypes = from type in assemblyTypes where type.Namespace == "MelloMario.ItemObjects" select type;
         private static readonly IEnumerable<Type> EnemyTypes = from type in assemblyTypes where type.Namespace == "MelloMario.EnemyObjects" select type;
         private static readonly IEnumerable<Type> MiscTypes = from type in assemblyTypes where type.Namespace == "MelloMario.MiscObjects" select type;
-        private IGameWorld world;
-        private int grid;
-        public GameEntityConverter(IGameWorld parentGameWorld, int gridSize)
+        private readonly GameModel model;
+        private readonly IGameWorld world;
+        private readonly int grid;
+        private readonly GraphicsDevice graphicsDevice;
+        public GameEntityConverter(GameModel model, GraphicsDevice graphicsDevice, IGameWorld parentGameWorld, int gridSize)
         {
+            this.graphicsDevice = graphicsDevice;
+            this.model = model;
             world = parentGameWorld;
             grid = gridSize;
         }
@@ -65,9 +70,10 @@ namespace MelloMario.LevelGen
             }
 #if EXP
 
-            if (blockTypes.Contains(type) && BlockConverter(type, objToken, ref objectStackToBeEncapsulated))
+            if (blockTypes.Contains(type))
             {
-                Debug.WriteLine("Deserialize " + type.Name + " success!");
+                if(BlockConverter(type, objToken, ref objectStackToBeEncapsulated))
+                    Debug.WriteLine("Deserialize " + type.Name + " success!");
             }
             else if (EnemyTypes.Contains(type) && EnemyConverter(type,objToken,ref objectStackToBeEncapsulated))
             {
@@ -164,11 +170,13 @@ namespace MelloMario.LevelGen
         private static bool TryGet<T>(out T obj, JToken token, params string[] p)
         {
             obj = default(T);
+            if (token.Type is JTokenType.Array) return false;
             var tempToken = token;
             for (var i = 0; i < p.Length - 1; i++)
             {
                 if (tempToken[p[i]] != null)
                 {
+                    if (tempToken.Type is JTokenType.Array) return false;
                     tempToken = tempToken[p[i]];
                 }
                 else
@@ -177,6 +185,7 @@ namespace MelloMario.LevelGen
                 }
             }
             var str = p[p.Length - 1];
+            if (tempToken.Type is JTokenType.Array) return false;
             if (tempToken[str] == null) return false;
             obj = tempToken[p[p.Length - 1]].ToObject<T>();
             return true;
@@ -357,20 +366,42 @@ namespace MelloMario.LevelGen
                 }
                 else
                 {
-                    if (true || isQuestionOrBrick)
+                    //TODO:optimize it
+                    if (isQuestionOrBrick)
                     {
                         BatchCreate(point => (IGameObject)Activator.CreateInstance(type, world, point), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
                     }
                     else
                     {
                         BatchCreate(point => (IGameObject)Activator.CreateInstance(type, world, point, true), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
-                        stack.Push(new CompressedBlock(world, objPoint, new Point(32 * quantity.X / 2, 32 * quantity.Y), type));
+                        objPoint = new Point(objPoint.X * grid, objPoint.Y * grid);
+                        var fullSize = new Point(32 * quantity.X, 32 * quantity.Y);
+                        var safeSize = graphicsDevice.DisplayMode.TitleSafeArea;
+                        if (fullSize.X <= safeSize.Width && fullSize.Y <= safeSize.Height)
+                        {
+                            stack.Push(new CompressedBlock(world, objPoint, fullSize, type));
+                        }
+                        else
+                        {
+                            var splitNumberX = fullSize.X / safeSize.Width;
+                            var splitNumberY = fullSize.Y / safeSize.Height;
+                            var remainX = fullSize.X % safeSize.Width;
+                            var remainY = fullSize.Y % safeSize.Height;
+                            for (int i = 0; i < splitNumberX; i++)
+                            {
+                                stack.Push(new CompressedBlock(world, new Point(objPoint.X + i * safeSize.Width, objPoint.Y), new Point(safeSize.Width, fullSize.Y), type));
+                            }
+                            if (remainX != 0)
+                            {
+                                stack.Push(new CompressedBlock(world, new Point(objPoint.X + splitNumberX * safeSize.Width, objPoint.Y), new Point(remainX, fullSize.Y), type));
+                            }
+                        }
                     }
                 }
             }
             else if (type.IsAssignableFrom(typeof(Pipeline)))
             {
-                if (!TryGet(out int length, token, "Property", "Legnth"))
+                if (!TryGet(out int length, token, "Property", "Length"))
                 {
                     Debug.WriteLine("Deserialize fail: Length of Pipeline is missing.");
                     return false;
@@ -411,10 +442,10 @@ namespace MelloMario.LevelGen
             switch (type)
             {
                 case "V":
-                    in1 = new Pipeline(world, objPoint, "LeftIn");
-                    in2 = new Pipeline(world, new Point(objPoint.X + grid, objPoint.Y), "RightIn");
+                    in1 = new Pipeline(world, objPoint, "LeftIn",model);
+                    in2 = new Pipeline(world, new Point(objPoint.X + grid, objPoint.Y), "RightIn",model);
                     objPoint = new Point(objPoint.X, objPoint.Y + grid);
-                    goto case "NH";
+                    goto case "NV";
                 case "HL":
                     in1 = new Pipeline(world, objPoint, "TopLeftIn");
                     in2 = new Pipeline(world, new Point(objPoint.X, objPoint.Y + grid), "BottomLeftIn");

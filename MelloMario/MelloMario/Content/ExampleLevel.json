@@ -235,39 +235,15 @@
           }
         },
         {
-          "Type": "PipelineLeftIn",
+          "Type": "Pipeline",
           "Point": {
             "X": 23,
             "Y": 10
-          }
-        },
-        {
-          "Type": "PipelineRightIn",
-          "Point": {
-            "X": 24,
-            "Y": 10
-          }
-        },
-        {
-          "Type": "PipelineLeft",
-          "Point": {
-            "X": 23,
-            "Y": 11
           },
-          "Quantity": {
-            "X": 1,
-            "Y": 4
-          }
-        },
-        {
-          "Type": "PipelineRight",
-          "Point": {
-            "X": 24,
-            "Y": 11
-          },
-          "Quantity": {
-            "X": 1,
-            "Y": 4
+          "Property": {
+            "Length": 3, 
+            "Direction": "V",
+            "Entrance": "1-1-2"
           }
         },
         {

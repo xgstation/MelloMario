@@ -6,7 +6,7 @@ namespace MelloMario.Containers
     class GameWorld : BaseContainer<Point, IGameObject>, IGameWorld
     {
         private const int GRID = 32;
-        private const int SCAN = 24;
+        private const int SCANRANGE = 24;
 
         private Point size;
 
@@ -31,10 +31,10 @@ namespace MelloMario.Containers
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
         {
-            int left = (range.Left - SCAN) / GRID;
-            int right = (range.Right + SCAN) / GRID;
-            int top = (range.Top - SCAN) / GRID;
-            int bottom = (range.Bottom + SCAN) / GRID;
+            int left = (range.Left - SCANRANGE) / GRID;
+            int right = (range.Right + SCANRANGE) / GRID;
+            int top = (range.Top - SCANRANGE) / GRID;
+            int bottom = (range.Bottom + SCANRANGE) / GRID;
 
             for (int i = left; i <= right; ++i)
             {
