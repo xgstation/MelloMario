@@ -3,13 +3,13 @@ using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.BlockObjects.QuestionStates;
 using MelloMario.MarioObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.BlockObjects
 {
     class Question : BaseCollidableObject
     {
         private IBlockState state;
-        private IList<IGameObject> items;
         private IGameObject item;
 
         private void UpdateSprite()
@@ -18,7 +18,7 @@ namespace MelloMario.BlockObjects
             {
                 HideSprite();
             }
-            else if (HasItem)
+            else if (GameDataBase.HasItemEnclosed(this))
             {
                 ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
             }
@@ -27,21 +27,12 @@ namespace MelloMario.BlockObjects
                 ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
             }
         }
-
-        public bool HasItem
-        {
-            get
-            {
-                return item != null || items.Count != 0;
-            }
-        }
-
         private void LoadItem()
         {
-            if (items.Count != 0)
+            if (GameDataBase.HasItemEnclosed(this))
             {
-                item = items[0];
-                items.RemoveAt(0);
+                item = GameDataBase.GetEnclosedItems(this)[0];
+                GameDataBase.GetEnclosedItems(this).RemoveAt(0);
             }
             else
             {
@@ -51,6 +42,7 @@ namespace MelloMario.BlockObjects
 
         protected override void OnUpdate(GameTime time)
         {
+            UpdateSprite();
             state.Update(time);
         }
 
@@ -97,9 +89,6 @@ namespace MelloMario.BlockObjects
             {
                 state = new Normal(this);
             }
-            this.items = items;
-            LoadItem();
-            UpdateSprite();
         }
 
         public void Bump(Mario mario)
@@ -114,10 +103,10 @@ namespace MelloMario.BlockObjects
 
         public void ReleaseNextItem()
         {
+            LoadItem();
             if (item != null)
             {
                 World.Add(item);
-                LoadItem();
             }
         }
     }

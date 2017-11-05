@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
@@ -16,7 +17,7 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Show()
         {
-            if (Owner.HasItem)
+            if (GameDataBase.HasItemEnclosed(Owner))
             {
                 Owner.State = new Normal(Owner);
             }
