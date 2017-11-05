@@ -26,6 +26,8 @@ namespace MelloMario.Factories
                     return new ToggleFullScreen(model);
                 case "Pause":
                     return new Pause(model);
+                case "Resume":
+                    return new Resume(model);
                 case "Reset":
                     return new Reset(model);
                 case "Quit":
