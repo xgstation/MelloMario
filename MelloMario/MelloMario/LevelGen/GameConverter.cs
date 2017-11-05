@@ -12,14 +12,16 @@ namespace MelloMario.LevelGen
     //Using for deserialize json to a single GameWorld(Map)
     class GameConverter : JsonConverter
     {
+        private GameModel model;
         private string index;
         private JsonSerializer serializers;
 
         private IGameWorld world;
         private IPlayer character;
 
-        public GameConverter(string index)
+        public GameConverter(GameModel model, string index)
         {
+            this.model = model;
             this.index = index;
             serializers = new JsonSerializer();
         }
@@ -48,7 +50,7 @@ namespace MelloMario.LevelGen
 
             IList<JToken> Structures = MapToBeLoaded.Value<JToken>("Entity").ToList();
             world = new GameWorld(mapSize);
-            serializers.Converters.Add(new GameEntityConverter(world, grid));
+            serializers.Converters.Add(new GameEntityConverter(model, world, grid));
             serializers.Converters.Add(new CharacterConverter(world, grid));
 
             foreach (JToken jToken in Structures)
