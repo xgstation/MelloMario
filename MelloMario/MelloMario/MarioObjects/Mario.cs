@@ -125,6 +125,7 @@ namespace MelloMario.MarioObjects
                     }
 
                     break;
+                case "CompressedBlock":
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
