@@ -30,9 +30,17 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        public Floor(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
+        public Floor(IGameWorld world, Point location) : this(world, location, false) { }
+        public Floor(IGameWorld world, Point location, bool isHidden) : base(world, location, new Point(32, 32))
         {
-            UpdateSprite();
+            if (isHidden)
+            {
+                HideSprite();
+            }
+            else
+            {
+                UpdateSprite();
+            }
         }
     }
 }

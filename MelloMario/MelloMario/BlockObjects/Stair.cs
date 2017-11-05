@@ -29,10 +29,17 @@ namespace MelloMario.BlockObjects
         protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
         }
-
-        public Stair(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
+        public Stair(IGameWorld world, Point location) : this(world, location, false) { }
+        public Stair(IGameWorld world, Point location, bool isHidden) : base(world, location, new Point(32, 32))
         {
-            UpdateSprite();
+            if (isHidden)
+            {
+                HideSprite();
+            }
+            else
+            {
+                UpdateSprite();
+            }
         }
     }
 }
