@@ -15,6 +15,14 @@ namespace MelloMario.MarioObjects
             base.OnUpdate(time);
         }
 
+        public IGameWorld CurrrentWorld
+        {
+            get
+            {
+                return World;
+            }
+        }
+
         public Rectangle Sensing
         {
             get

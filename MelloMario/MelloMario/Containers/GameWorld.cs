@@ -9,6 +9,7 @@ namespace MelloMario.Containers
         private const int SCANRANGE = 24;
 
         private Point size;
+        private ISet<Point> respawnPoints; // TODO: temporary code
 
         protected override Point GetKey(IGameObject value)
         {
@@ -47,8 +48,6 @@ namespace MelloMario.Containers
                 }
             }
         }
-
-        private ISet<Point> respawnPoints; // TODO: temporary code
 
         public Point GetRespawnPoint(Point location)
         {
