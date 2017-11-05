@@ -56,8 +56,6 @@ namespace MelloMario
             Tuple<IGameWorld, IPlayer> pair = reader.Load("Main");
             world = pair.Item1;
             player = pair.Item2;
-            //For test use
-            //world.Add(new CompressedBlock(world,new Point(0,10), new Point(32*32,32*4), typeof(Floor) ));
             isPaused = false;
             new PlayingScript().Bind(controllers, this, player);
         }
