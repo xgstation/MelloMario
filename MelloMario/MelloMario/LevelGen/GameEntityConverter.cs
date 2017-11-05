@@ -360,14 +360,33 @@ namespace MelloMario.LevelGen
                 }
                 else
                 {
-                    if (true || isQuestionOrBrick)
+                    //TODO:optimize it
+                    if ( isQuestionOrBrick)
                     {
                         BatchCreate(point => (IGameObject)Activator.CreateInstance(type, world, point), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
                     }
                     else
                     {
                         BatchCreate(point => (IGameObject)Activator.CreateInstance(type, world, point, true), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
-                        stack.Push(new CompressedBlock(world, objPoint, new Point(32 * quantity.X / 2, 32 * quantity.Y), type));
+                        objPoint = new Point(objPoint.X * grid, objPoint.Y * grid);
+                        var fullSize = new Point(32 * quantity.X, 32 * quantity.Y);
+                        if (fullSize.X <= 2560)
+                        {
+                            stack.Push(new CompressedBlock(world, objPoint, fullSize, type));
+                        }
+                        else
+                        {
+                            var splitNumber = fullSize.X / 2560;
+                            var remain = fullSize.X % 2560;
+                            for (int i = 0; i < splitNumber; i++)
+                            {
+                                stack.Push(new CompressedBlock(world, new Point(objPoint.X + i * 2560, objPoint.Y), new Point(2560, fullSize.Y), type));
+                            }
+                            if (remain != 0)
+                            {
+                                stack.Push(new CompressedBlock(world, new Point(objPoint.X + splitNumber * 2560, objPoint.Y), new Point(remain, fullSize.Y), type));
+                            }
+                        }
                     }
                 }
             }
