@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using MelloMario.LevelGen;
 using System;
-using MelloMario.BlockObjects;
 using MelloMario.Scripts;
 
 namespace MelloMario
@@ -56,6 +55,7 @@ namespace MelloMario
             Tuple<IGameWorld, IPlayer> pair = reader.Load("Main");
             world = pair.Item1;
             player = pair.Item2;
+
             isPaused = false;
             new PlayingScript().Bind(controllers, this, player);
         }
