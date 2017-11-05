@@ -37,16 +37,32 @@ namespace MelloMario
 
         public void Pause()
         {
-            isPaused = !isPaused;
+            isPaused = true;
 
-            if (isPaused)
+            new PausedScript().Bind(controllers, this, player);
+        }
+
+        public void Resume()
+        {
+            isPaused = false;
+
+            new PlayingScript().Bind(controllers, this, player);
+        }
+
+        public void SwitchWorld(string index)
+        {
+            if (worlds.ContainsKey(index))
             {
-                new PausedScript().Bind(controllers, this, player);
+                currentWorld = worlds[index];
             }
             else
             {
-                new PlayingScript().Bind(controllers, this, player);
+                Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
+                worlds.Add(currentWorldIndex, currentWorld);
+                currentWorld = pair.Item1;
             }
+
+            player.Spawn(currentWorld);
         }
 
         public void Reset()
@@ -107,22 +123,6 @@ namespace MelloMario
                     obj.Draw(time, player.Viewport, zIndex);
                 }
             }
-        }
-
-        public void SwitchWorld(string index)
-        {
-            if (worlds.ContainsKey(index))
-            {
-                currentWorld = worlds[index];
-            }
-            else
-            {
-                Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
-                worlds.Add(currentWorldIndex, currentWorld);
-                currentWorld = pair.Item1;
-            }
-
-            player.Spawn(currentWorld);
         }
     }
 }
