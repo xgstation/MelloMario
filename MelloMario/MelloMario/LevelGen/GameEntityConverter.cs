@@ -25,10 +25,12 @@ namespace MelloMario.LevelGen
         private static readonly IEnumerable<Type> ItemTypes = from type in assemblyTypes where type.Namespace == "MelloMario.ItemObjects" select type;
         private static readonly IEnumerable<Type> EnemyTypes = from type in assemblyTypes where type.Namespace == "MelloMario.EnemyObjects" select type;
         private static readonly IEnumerable<Type> MiscTypes = from type in assemblyTypes where type.Namespace == "MelloMario.MiscObjects" select type;
+        private GameModel model;
         private IGameWorld world;
         private int grid;
-        public GameEntityConverter(IGameWorld parentGameWorld, int gridSize)
+        public GameEntityConverter(GameModel model, IGameWorld parentGameWorld, int gridSize)
         {
+            this.model = model;
             world = parentGameWorld;
             grid = gridSize;
         }
@@ -65,9 +67,10 @@ namespace MelloMario.LevelGen
             }
 #if EXP
 
-            if (blockTypes.Contains(type) && BlockConverter(type, objToken, ref objectStackToBeEncapsulated))
+            if (blockTypes.Contains(type))
             {
-                Debug.WriteLine("Deserialize " + type.Name + " success!");
+                if(BlockConverter(type, objToken, ref objectStackToBeEncapsulated))
+                    Debug.WriteLine("Deserialize " + type.Name + " success!");
             }
             else if (EnemyTypes.Contains(type) && EnemyConverter(type,objToken,ref objectStackToBeEncapsulated))
             {
@@ -370,7 +373,7 @@ namespace MelloMario.LevelGen
             }
             else if (type.IsAssignableFrom(typeof(Pipeline)))
             {
-                if (!TryGet(out int length, token, "Property", "Legnth"))
+                if (!TryGet(out int length, token, "Property", "Length"))
                 {
                     Debug.WriteLine("Deserialize fail: Length of Pipeline is missing.");
                     return false;
@@ -411,10 +414,10 @@ namespace MelloMario.LevelGen
             switch (type)
             {
                 case "V":
-                    in1 = new Pipeline(world, objPoint, "LeftIn");
-                    in2 = new Pipeline(world, new Point(objPoint.X + grid, objPoint.Y), "RightIn");
+                    in1 = new Pipeline(world, objPoint, "LeftIn",model);
+                    in2 = new Pipeline(world, new Point(objPoint.X + grid, objPoint.Y), "RightIn",model);
                     objPoint = new Point(objPoint.X, objPoint.Y + grid);
-                    goto case "NH";
+                    goto case "NV";
                 case "HL":
                     in1 = new Pipeline(world, objPoint, "TopLeftIn");
                     in2 = new Pipeline(world, new Point(objPoint.X, objPoint.Y + grid), "BottomLeftIn");
