@@ -146,6 +146,7 @@
     <Compile Include="EnemyObjects\KoopaStates\Normal.cs" />
     <Compile Include="ItemObjects\SuperMushroomStates\Unveil.cs" />
     <Compile Include="MiscObjects\Background.cs" />
+    <Compile Include="Scripts\EndedScript.cs" />
     <Compile Include="Scripts\PausedScript.cs" />
     <Compile Include="LevelGen\GameEntityConverter.cs" />
     <Compile Include="LevelGen\CharacterConverter.cs" />
