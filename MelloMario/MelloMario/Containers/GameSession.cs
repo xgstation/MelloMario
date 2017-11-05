@@ -12,7 +12,7 @@ namespace MelloMario.Containers
             return null; //return value.World;//TODO
         }
 
-        public GameSession() : base()
+        public GameSession()
         {
         }
 

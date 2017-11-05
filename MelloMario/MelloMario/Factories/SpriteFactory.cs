@@ -194,7 +194,7 @@ namespace MelloMario.Factories
                 case "Bumped":
                     return new SlicedSprite(spriteBatch, GetTexture("BlockSheet"), 33, 28, 1, 0, 1, 1, ZIndex.level);
                 case "Destroyed":
-                    return new BrickPieceSprite(spriteBatch, GetTexture("BrickPiece"));
+                    return new BrickPieceSprite(spriteBatch, GetTexture("BrickPieces"));
                 case "Normal":
                     return new SlicedSprite(spriteBatch, GetTexture("BlockSheet"), 33, 28, 1, 0, 1, 1, ZIndex.level);
                 case "Used":
