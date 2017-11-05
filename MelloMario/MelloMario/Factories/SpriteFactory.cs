@@ -208,8 +208,9 @@ namespace MelloMario.Factories
 
         public ISprite CreateCompressedSprite(Point fullSize, string type)
         {
-            return new CompressedSprite(spriteBatch,GetTexture("Blocksheet"), new Point(), fullSize, ZIndex.level, type);
+            return new CompressedSprite(spriteBatch, GetTexture("Blocksheet"), new Point(), fullSize, ZIndex.level, type);
         }
+
         public ISprite CreateFloorSprite()
         {
             return new SlicedSprite(spriteBatch, GetTexture("BlockSheet"), 33, 28, 0, 0, 1, 1, ZIndex.level);

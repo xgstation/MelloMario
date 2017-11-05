@@ -49,8 +49,8 @@ namespace MelloMario.Sprites
             this.activeZIndex = activeZIndex;
             color = Color.White;
         }
-        //Temporary virutal
-        public virtual void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
+
+        public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
         {
             OnAnimate(time);
 
