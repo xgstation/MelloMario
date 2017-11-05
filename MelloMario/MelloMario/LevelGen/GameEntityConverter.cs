@@ -176,7 +176,8 @@ namespace MelloMario.LevelGen
                     return false;
                 }
             }
-            if (tempToken[p[p.Length - 1]] == null) return false;
+            var str = p[p.Length - 1];
+            if (tempToken[str] == null) return false;
             obj = tempToken[p[p.Length - 1]].ToObject<T>();
             return true;
         }
@@ -330,12 +331,13 @@ namespace MelloMario.LevelGen
             var quantity = TryGet(out Point p, token, "Quantity") ? p : new Point(1, 1);
             var isSingle = quantity.X == 1 && quantity.Y == 1;
             var ignoredSet = !isSingle && TryReadIgnoreSet(token, out var newIgnoredSet) ? newIgnoredSet : null;
+            var isQuestionOrBrick = type.IsAssignableFrom(typeof(Brick)) || type.IsAssignableFrom(typeof(Question));
             if (!TryGet(out Point objPoint, token, "Point"))
             {
                 Debug.WriteLine("Deserialize fail: No start point provided!");
                 return false;
             }
-            if ((type.IsAssignableFrom(typeof(Brick)) || type.IsAssignableFrom(typeof(Question))) && isSingle)
+            if (isQuestionOrBrick && isSingle)
             {
                 objPoint = new Point(objPoint.X * grid, objPoint.Y * grid);
                 var propertyPair = new Tuple<bool, string[]>(
@@ -343,7 +345,8 @@ namespace MelloMario.LevelGen
                     TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
                 var list = CreateItemList(world, objPoint, propertyPair.Item2);
                 var obj = Activator.CreateInstance(type, world, objPoint, propertyPair.Item1) as BaseGameObject;
-                GameDataBase.SetEnclosedItem(obj, list);
+                if(list != null && list.Count != 0)
+                    GameDataBase.SetEnclosedItem(obj, list);
                 stack.Push(obj);
             }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
@@ -354,7 +357,15 @@ namespace MelloMario.LevelGen
                 }
                 else
                 {
-                    BatchCreate(point => (IGameObject)Activator.CreateInstance(type, world, point), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
+                    if (true || isQuestionOrBrick)
+                    {
+                        BatchCreate(point => (IGameObject)Activator.CreateInstance(type, world, point), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
+                    }
+                    else
+                    {
+                        BatchCreate(point => (IGameObject)Activator.CreateInstance(type, world, point, true), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
+                        stack.Push(new CompressedBlock(world, objPoint, new Point(32 * quantity.X / 2, 32 * quantity.Y), type));
+                    }
                 }
             }
             else if (type.IsAssignableFrom(typeof(Pipeline)))
