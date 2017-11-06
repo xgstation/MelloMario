@@ -35,7 +35,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnCollideCamera(CollisionMode mode)
+        protected override void OnCollideWorld(CollisionMode mode)
         {
         }
 

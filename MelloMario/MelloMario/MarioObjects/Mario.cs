@@ -238,7 +238,7 @@ namespace MelloMario.MarioObjects
         {
         }
 
-        protected override void OnCollideCamera(CollisionMode mode)
+        protected override void OnCollideWorld(CollisionMode mode)
         {
             Bounce(mode, new Vector2());
         }

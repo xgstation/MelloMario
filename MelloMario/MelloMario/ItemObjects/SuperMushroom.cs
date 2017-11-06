@@ -78,7 +78,7 @@ namespace MelloMario.ItemObjects
         {
         }
 
-        protected override void OnCollideCamera(CollisionMode mode)
+        protected override void OnCollideWorld(CollisionMode mode)
         {
         }
 

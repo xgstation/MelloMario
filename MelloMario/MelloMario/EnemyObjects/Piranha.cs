@@ -37,7 +37,7 @@ namespace MelloMario.EnemyObjects
             throw new NotImplementedException();
         }
 
-        protected override void OnCollideCamera(CollisionMode mode)
+        protected override void OnCollideWorld(CollisionMode mode)
         {
             throw new NotImplementedException();
         }

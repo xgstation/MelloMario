@@ -47,13 +47,13 @@ namespace MelloMario.ItemObjects
                         }
                         break;
                     case "Brick":
-                        if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                        if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
                         {
                             break;
                         }
                         goto case "Stair";
                     case "Question":
-                        if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                        if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
                         {
                             break;
                         }
@@ -85,7 +85,7 @@ namespace MelloMario.ItemObjects
         {
         }
 
-        protected override void OnCollideCamera(CollisionMode mode)
+        protected override void OnCollideWorld(CollisionMode mode)
         {
         }
 

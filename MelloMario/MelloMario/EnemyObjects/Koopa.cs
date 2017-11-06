@@ -76,7 +76,7 @@ namespace MelloMario.EnemyObjects
             if (!move)
             {
                 // TODO: use collision detection system to do this job
-                //       similar as GameObject.OnCollideCamera
+                //       similar as GameObject.OnCollideWorld
                 move = true; // Boundary.Intersects(World.Model.Character.Viewport);
             }
             else
@@ -179,7 +179,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        protected override void OnCollideCamera(CollisionMode mode)
+        protected override void OnCollideWorld(CollisionMode mode)
         {
         }
 
