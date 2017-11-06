@@ -81,7 +81,7 @@ namespace MelloMario
         {
             base.Update(time);
 
-            model.Update(time);
+            model.Update(time.ElapsedGameTime.Milliseconds);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace MelloMario
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
             //RasterizerState state = new RasterizerState();
             //state.FillMode = FillMode.WireFrame;
-            model.Draw(time);
+            model.Draw(time.ElapsedGameTime.Milliseconds);
             spriteBatch.End();
         }
 

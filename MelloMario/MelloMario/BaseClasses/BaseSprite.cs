@@ -12,7 +12,7 @@ namespace MelloMario.Sprites
         private ZIndex activeZIndex;
         private Color color;
 
-        protected abstract void OnAnimate(GameTime time);
+        protected abstract void OnAnimate(int time);
 
         protected void ChangeSource(Point newSource)
         {
@@ -50,7 +50,7 @@ namespace MelloMario.Sprites
             color = Color.White;
         }
 
-        public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
+        public void Draw(int time, Rectangle destination, ZIndex zIndex)
         {
             if (zIndex == activeZIndex)
             {

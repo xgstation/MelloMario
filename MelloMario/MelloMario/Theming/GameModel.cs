@@ -81,7 +81,7 @@ namespace MelloMario
             game.Exit();
         }
 
-        public void Update(GameTime time)
+        public void Update(int time)
         {
             foreach (IController controller in controllers)
             {
@@ -108,19 +108,20 @@ namespace MelloMario
             }
         }
 
-        public void Draw(GameTime time)
+        public void Draw(int time)
         {
-            if (isPaused)
-            {
-                // no animation on pause
-                time.ElapsedGameTime = new TimeSpan();
-            }
-
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
                 foreach (IGameObject obj in world.ScanNearby(player.Viewport))
                 {
-                    obj.Draw(time, player.Viewport, zIndex);
+                    if (isPaused)
+                    {
+                        obj.Draw(0, player.Viewport, zIndex);
+                    }
+                    else
+                    {
+                        obj.Draw(time, player.Viewport, zIndex);
+                    }
                 }
             }
         }

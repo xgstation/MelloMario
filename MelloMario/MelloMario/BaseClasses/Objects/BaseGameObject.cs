@@ -24,9 +24,9 @@ namespace MelloMario
 
         protected IGameWorld World;
 
-        protected abstract void OnUpdate(GameTime time);
-        protected abstract void OnSimulation(GameTime time);
-        protected abstract void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex);
+        protected abstract void OnUpdate(int time);
+        protected abstract void OnSimulation(int time);
+        protected abstract void OnDraw(int time, Rectangle viewport, ZIndex zIndex);
 
         protected void Relocate(Point delta)
         {
@@ -94,7 +94,7 @@ namespace MelloMario
             this.size = size;
         }
 
-        public void Update(GameTime time)
+        public void Update(int time)
         {
             // override OnUpdate for states etc.
             OnUpdate(time);
@@ -102,7 +102,7 @@ namespace MelloMario
             OnSimulation(time);
         }
 
-        public void Draw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        public void Draw(int time, Rectangle viewport, ZIndex zIndex)
         {
             if (sprite != null)
             {

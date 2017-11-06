@@ -166,7 +166,7 @@ namespace MelloMario
             World.Remove(this);
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnSimulation(int time)
         {
             if (movement.X != 0 || movement.Y != 0)
             {
