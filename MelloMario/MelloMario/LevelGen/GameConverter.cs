@@ -104,12 +104,16 @@ namespace MelloMario.LevelGen
                             }
                         }
                     }
-
+                    if(Util.TryGet(out Point p, MapToBeLoaded, "InitialSpawnPoint"))
+                    {
+                        world.InitialSpawnPoint = new Point(p.X * grid, p.Y * grid);
+                    }
                     if (Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints"))
                     {
                         foreach (var point in respawnPoints)
                         {
-                            world.AddRespawnPoint(point);
+                            var scaledPoint = new Point(point.X * grid, point.Y * grid);
+                            world.AddRespawnPoint(scaledPoint);
                         }
                     }
                     if (Util.TryGet(out IList<JToken> characters, MapToBeLoaded, "Characters"))
