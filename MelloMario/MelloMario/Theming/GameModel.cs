@@ -4,27 +4,25 @@ using MelloMario.LevelGen;
 using System;
 using MelloMario.Containers;
 using MelloMario.Scripts;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
     class GameModel : IGameModel
     {
+        private Game game;
         private IDictionary<string, IGameWorld> worlds;
         private IGameWorld currentWorld;
         private string currentWorldIndex;
-
         private IEnumerable<IController> controllers;
         private IPlayer player;
-        private LevelIOJson reader;
         private bool isPaused;
-        private Game1 game;
-
-        public GameModel(Game1 game, LevelIOJson reader)
+        
+        public GameModel(Game game)
         {
-            this.worlds = new Dictionary<string, IGameWorld>();
-            currentWorldIndex = "Main";
             this.game = game;
-            this.reader = reader;
+            worlds = new Dictionary<string, IGameWorld>();
+            currentWorldIndex = "Main";
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -34,7 +32,7 @@ namespace MelloMario
 
         public void ToggleFullScreen()
         {
-            game.ToggleFullScreen();
+            (game as Game1).ToggleFullScreen();
         }
 
         public void Pause()
@@ -59,9 +57,12 @@ namespace MelloMario
             }
             else
             {
-                Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
-                worlds.Add(currentWorldIndex, currentWorld);
-                currentWorld = pair.Item1;
+                using (var reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice))
+                {
+                    Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
+                    worlds.Add(currentWorldIndex, currentWorld);
+                    currentWorld = pair.Item1;
+                }
             }
 
             player.Spawn(currentWorld);
@@ -69,14 +70,16 @@ namespace MelloMario
 
         public void Reset()
         {
-            using (currentWorld) { }
-            reader.SetModel(this);
-            Tuple<IGameWorld, IPlayer> pair = reader.Load();
-            currentWorld = pair.Item1;
-            player = pair.Item2;
-            
-            isPaused = false;
-            new PlayingScript().Bind(controllers, this, player);
+            using (var reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice))
+            {
+                using (currentWorld){ }
+                reader.SetModel(this);
+                Tuple<IGameWorld, IPlayer> pair = reader.Load();
+                currentWorld = pair.Item1;
+                player = pair.Item2;
+                isPaused = false;
+                new PlayingScript().Bind(controllers, this, player);
+            }
         }
 
         public void Quit()

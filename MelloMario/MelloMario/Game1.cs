@@ -35,7 +35,7 @@ namespace MelloMario
             base.Initialize();
 
             reader = new LevelIOJson("Content/ExampleLevel.json", graphics.GraphicsDevice);
-            model = new GameModel(this, reader);
+            model = new GameModel(this);
             IEnumerable<IController> controllers = new List<IController>
             {
                 new GamepadController(),
