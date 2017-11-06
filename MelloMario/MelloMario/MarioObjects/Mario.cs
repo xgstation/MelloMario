@@ -23,7 +23,7 @@ namespace MelloMario.MarioObjects
             }
             else if (protectionState is Dead)
             {
-                ShowSprite(SpriteFactory.Instance.CreateMarioSprite(protectionState.GetType().Name, true));
+                ShowSprite(SpriteFactory.Instance.CreateMarioSprite(protectionState.GetType().Name, protectionState.GetType().Name, true));
             }
             else
             {
@@ -38,8 +38,8 @@ namespace MelloMario.MarioObjects
                 }
 
                 ShowSprite(SpriteFactory.Instance.CreateMarioSprite(
-                    powerUpState.GetType().Name + movementState.GetType().Name + facingString,
-                    !(movementState is Walking), protectionState is Starred));
+                    powerUpState.GetType().Name + movementState.GetType().Name + facingString, protectionState.GetType().Name,
+                    !(movementState is Walking)));
             }
         }
 

@@ -49,39 +49,22 @@ namespace MelloMario.Factories
             spriteBatch = newSpriteBatch;
         }
 
-        public ISprite CreateMarioSprite(string status, bool isStatic)
+        public ISprite CreateMarioSprite(string status, string protectionStatus, bool isStatic)
         {
-            return CreateMarioSprite(status, isStatic, false);
-        }
-
-        public ISprite CreateMarioSprite(string status, bool isStatic, bool isStar)
-        {
-            ISprite sprite;
-
-            if (isStatic)
+            switch (protectionStatus)
             {
-                if (isStar)
-                {
-                    sprite = new FlickingAnimatedSprite(spriteBatch, GetTexture(status), 1, 1, ZIndex.item, 250);
-                }
-                else
-                {
-                    sprite = new StaticSprite(spriteBatch, GetTexture(status));
-                }
+                case "Protected":
+                    return new FlashingAnimatedSprite(spriteBatch, GetTexture(status), isStatic ? 1 : 3, 1, ZIndex.item, 250);
+                case "Starred":
+                    return new FlickingAnimatedSprite(spriteBatch, GetTexture(status), isStatic ? 1 : 3, 1, ZIndex.item, 250);
+                case "Normal":
+                case "Dead":
+                    return new AnimatedSprite(spriteBatch, GetTexture(status), isStatic ? 1 : 3, 1, ZIndex.item, 250);
+                default:
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
             }
-            else
-            {
-                if (isStar)
-                {
-                    sprite = new FlickingAnimatedSprite(spriteBatch, GetTexture(status), 3, 1, ZIndex.item, 250);
-                }
-                else
-                {
-                    sprite = new AnimatedSprite(spriteBatch, GetTexture(status), 3, 1, ZIndex.item, 250);
-                }
-            }
-
-            return sprite;
         }
 
         public ISprite CreateGoombaSprite(string status)
