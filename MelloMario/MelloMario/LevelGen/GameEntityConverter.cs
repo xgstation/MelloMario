@@ -1,8 +1,4 @@
-﻿#define EXP
-//#undef EXP
-#define OLD
-#undef OLD
-using MelloMario.BlockObjects;
+﻿using MelloMario.BlockObjects;
 using MelloMario.Factories;
 using MelloMario.MiscObjects;
 using Microsoft.Xna.Framework;
@@ -21,11 +17,7 @@ namespace MelloMario.LevelGen
 {
     class GameEntityConverter : JsonConverter
     {
-        private static readonly IEnumerable<Type> assemblyTypes = from type in Assembly.GetExecutingAssembly().GetTypes() where typeof(IGameObject).IsAssignableFrom(type) select type;
-        private static readonly IEnumerable<Type> blockTypes = from type in assemblyTypes where type.Namespace == "MelloMario.BlockObjects" select type;
-        private static readonly IEnumerable<Type> ItemTypes = from type in assemblyTypes where type.Namespace == "MelloMario.ItemObjects" select type;
-        private static readonly IEnumerable<Type> EnemyTypes = from type in assemblyTypes where type.Namespace == "MelloMario.EnemyObjects" select type;
-        private static readonly IEnumerable<Type> MiscTypes = from type in assemblyTypes where type.Namespace == "MelloMario.MiscObjects" select type;
+        private static readonly IEnumerable<Type> AssemblyTypes = from type in Assembly.GetExecutingAssembly().GetTypes() where typeof(IGameObject).IsAssignableFrom(type) select type;
         private readonly GameModel model;
         private readonly IGameWorld world;
         private readonly int grid;
@@ -54,7 +46,7 @@ namespace MelloMario.LevelGen
             }
 
             Type type = null;
-            foreach (var t in assemblyTypes)
+            foreach (var t in AssemblyTypes)
             {
                 type = t.Name == typeStr ? t : null;
                 if (type != null)
@@ -68,95 +60,35 @@ namespace MelloMario.LevelGen
 
                 return null;
             }
-#if EXP
-
-            if (blockTypes.Contains(type))
+            
+            switch (type.Namespace)
             {
-                if (BlockConverter(type, objToken, ref objectStackToBeEncapsulated))
-                    Debug.WriteLine("Deserialize " + type.Name + " success!");
-            }
-            else if (EnemyTypes.Contains(type) && EnemyConverter(type, objToken, ref objectStackToBeEncapsulated))
-            {
-                Debug.WriteLine("Deserialize " + type.Name + " success!");
-            }
-            else if (ItemTypes.Contains(type) && ItemConverter(type, objToken, ref objectStackToBeEncapsulated))
-            {
-                Debug.WriteLine("Deserialize " + type.Name + " success!");
-            }
-            else if (MiscTypes.Contains(type))
-            {
-
-            }
-            else
-            {
-                if (!TryGet(out Point objPoint, objToken, "Point"))
-                {
-                    Debug.WriteLine("Deserialize fail: No start point provided!");
-                    return null;
-                }
-                objectStackToBeEncapsulated.Push((IGameObject) Activator.CreateInstance(type, world, objPoint));
-            }
-#endif
-
-#if OLD
-            if (!TryGet(out Point startPoint, objToken, "Point"))
-                return null;
-
-            //Read quantity of object
-            //If "Quantity" does not exist, default value is 1
-            int rows = 1;
-            int columns = 1;
-            if (TryGet(out Point Quantity, objToken, "Quantity"))
-            {
-                rows = Quantity.X;
-                columns = Quantity.Y;
-            }
-
-            //Read object properties if given
-            IDictionary<Point, Tuple<bool, string[]>> Properties = null;
-            var propertiesJToken = objToken["Properties"];
-            if (propertiesJToken != null && propertiesJToken.HasValues)
-            {
-                Properties = propertiesJToken.ToDictionary(
-                  token => TryGet(out Point p, token, "Index") ? p : new Point(),
-                  token => new Tuple<bool, string[]>(
-                      (TryGet(out bool b, token, "isHidden") ? b : false),
-                      (TryGet(out string[] s, token, "ItemValue")) ? s : null));
-            }
-
-            //Read ignored entry
-            ISet<Point> toBeIgnored = new HashSet<Point>();
-            if (objToken["Ignored"] != null)
-            {
-                var ignoredToken = objToken["Ignored"].ToList();
-                foreach (var p in ignoredToken)
-                {
-                    toBeIgnored.Add(p.ToObject<Point>());
-                }
-            }
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    if (!toBeIgnored.Contains(new Point(i, j)))
+                case "MelloMario.BlockObjects":
+                    if (BlockConverter(type, objToken, ref objectStackToBeEncapsulated))
+                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    break;
+                case "MelloMario.EnemyObjects":
+                    if (EnemyConverter(type, objToken, ref objectStackToBeEncapsulated))
+                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    break;
+                case "MelloMario.ItemObjects":
+                    if (ItemConverter(type, objToken, ref objectStackToBeEncapsulated))
+                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    break;
+                case "MelloMario.MiscObjects":
+                    if (BackgroundConverter(type, objToken, ref objectStackToBeEncapsulated))
+                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    break;
+                default:
+                    if (!TryGet(out Point objPoint, objToken, "Point"))
                     {
-                        Point location = new Point((startPoint.X + i) * grid, (startPoint.Y + j) * grid);
-                        Tuple<bool, string[]> property = null;
-                        IList<IGameObject> list = new List<IGameObject>();
-                        if (Properties == null || !Properties.TryGetValue(new Point(i, j), out property))
-                        {
-                            property = new Tuple<bool, string[]>(false, null);
-                        }
-                        else
-                        {
-                            list = CreateItemList(world, location, property.Item2);
-                        }
-                        PushNewObject(objectStackToBeEncapsulated, typeStr, location, list, property);
+                        Debug.WriteLine("Deserialize fail: No start point provided!");
+                        return null;
                     }
-                }
+                    objectStackToBeEncapsulated.Push((IGameObject)Activator.CreateInstance(type, world, objPoint));
+                    break;
             }
-#endif
+
             return new EncapsulatedObject<IGameObject>(objectStackToBeEncapsulated);
         }
         //TODO: Add serialize method and change CanWrite 
@@ -194,50 +126,6 @@ namespace MelloMario.LevelGen
         {
             return s?.Select(t => GameObjectFactory.Instance.CreateGameObject(t, world, point)).ToList();
         }
-#if OLD
-        private void PushNewObject(Stack<IGameObject> objectStack, string type, Point location, IList<IGameObject> list, Tuple<bool, string[]> property)
-        {
-            IGameObject objectToPush;
-            switch (type)   
-            {
-                case "Brick":
-                    objectToPush = new Brick(world, location, list, property.Item1);
-                    break;
-                case "Question":
-                    objectToPush = new Question(world, location, list, property.Item1);
-                    break;
-                case "Pipeline":
-                    objectToPush = new Pipeline(world, location, property.Item2[0]);
-                    break;
-                case "Floor":
-                    objectToPush = new Floor(world, location);
-                    break;
-                case "Stair":
-                    objectToPush = new Stair(world, location);
-                    break;
-                case "ShortCloud":
-                    objectToPush = new Background(world, location, type, ZIndex.background3);
-                    break;
-                case "ShortSmileCloud":
-                    objectToPush = new Background(world, location, type, ZIndex.background0);
-                    break;
-                case "LongCloud":
-                    objectToPush = new Background(world, location, type, ZIndex.background1);
-                    break;
-                case "LongSmileCloud":
-                    objectToPush = new Background(world, location, type, ZIndex.background2);
-                    break;
-                default:
-                    objectToPush = GameObjectFactory.Instance.CreateGameObject(type, world, location);
-                    break;
-            }
-            if (objectToPush != null)
-            {
-                objectStack.Push(objectToPush);
-            }
-        }
-
-#endif
         private void BatchCreate<T>(Func<Point, T> func, Point startPoint, Point quantity, Point objSize, ICollection<Point> ignoredSet, ref Stack<IGameObject> stack)
         {
             for (var x = 0; x < quantity.X; x++)
@@ -433,6 +321,35 @@ namespace MelloMario.LevelGen
             return true;
         }
 
+        private bool BackgroundConverter(Type type, JToken token, ref Stack<IGameObject> stack)
+        {
+            var quantity = TryGet(out Point p, token, "Quantity") ? p : new Point(1, 1);
+            var isSingle = quantity.X == 1 && quantity.Y == 1;
+            var ignoredSet = !isSingle && TryReadIgnoreSet(token, out var newIgnoredSet) ? newIgnoredSet : null;
+            if (TryGet(out string backGroundType, token, "Property", "Type"))
+            {
+                Debug.WriteLine("Deserialize fail: Type of background is not given!");
+            }
+            var zIndex = TryGet(out string s, token, "Property", "ZIndex") ? (ZIndex)Enum.Parse(typeof(ZIndex), s) : ZIndex.background0;
+            if (!TryGet(out Point objPoint, token, "Point"))
+            {
+                Debug.WriteLine("Deserialize fail: No start point provided!");
+                return false;
+            }
+            Func<Point, IGameObject> createFunc = point =>
+                (IGameObject) Activator.CreateInstance(type, world, point, backGroundType, zIndex);
+            var objSize = createFunc(new Point()).Boundary.Size;
+            if (isSingle)
+            {
+                objPoint = new Point(objPoint.X * grid, objPoint.Y * grid);
+                stack.Push(createFunc(objPoint));
+            }
+            else
+            {
+                BatchCreate(createFunc, objPoint, quantity, objSize, ignoredSet, ref stack);
+            }
+            return true;
+        }
         private List<Pipeline> CreateSinglePipeline(string type, int length, Point objPoint)
         {
             var list = new List<Pipeline>();
