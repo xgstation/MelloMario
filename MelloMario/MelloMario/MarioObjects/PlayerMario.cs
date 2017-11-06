@@ -170,7 +170,7 @@ namespace MelloMario.MarioObjects
             World = world;
 
             World.Add(this);
-            Relocate(World.InitialSpawnPoint);
+            Relocate(World.GetInitialPoint());
             World.Update();
         }
 

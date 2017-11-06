@@ -82,7 +82,10 @@ namespace MelloMario.LevelGen
                 Debug.WriteLine("Entities token loaded successfully!");
             }
 
-            world = new GameWorld(mapSize);
+            Util.TryGet(out Point initialPoint, MapToBeLoaded, "InitialSpawnPoint");
+            Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints");
+            world = new GameWorld(mapSize, initialPoint, respawnPoints);
+
             gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, grid);
 
             characterConverter = new CharacterConverter(world, grid);
@@ -106,18 +109,6 @@ namespace MelloMario.LevelGen
 
                 }
 
-                if (Util.TryGet(out Point p, MapToBeLoaded, "InitialSpawnPoint"))
-                {
-                    world.InitialSpawnPoint = new Point(p.X * grid, p.Y * grid);
-                }
-                if (Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints"))
-                {
-                    foreach (var point in respawnPoints)
-                    {
-                        var scaledPoint = new Point(point.X * grid, point.Y * grid);
-                        world.AddRespawnPoint(scaledPoint);
-                    }
-                }
                 if (Util.TryGet(out IList<JToken> characters, MapToBeLoaded, "Characters"))
                 {
                     Debug.WriteLine("Characters token loaded successfully!");
@@ -137,10 +128,9 @@ namespace MelloMario.LevelGen
                     }
                 }
             }
-            //if (character == null) return world;
-                return new Tuple<IGameWorld, IPlayer>(world, character);
 
-            
+            //if (character == null) return world;
+            return new Tuple<IGameWorld, IPlayer>(world, character);
         }
 
         //TODO: Add serialize method and change CanWrite 
