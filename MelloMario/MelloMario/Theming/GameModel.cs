@@ -69,8 +69,8 @@ namespace MelloMario
 
         public void Reset()
         {
-            reader.SetModel(this);
             using (currentWorld) { }
+            reader.SetModel(this);
             Tuple<IGameWorld, IPlayer> pair = reader.Load();
             currentWorld = pair.Item1;
             player = pair.Item2;

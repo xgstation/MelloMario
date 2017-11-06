@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MelloMario.LevelGen
 {
-    class EncapsulatedObject<T>
+    class EncapsulatedObject<T> : IDisposable
     {
         private Stack<T> stack;
 
@@ -16,6 +17,15 @@ namespace MelloMario.LevelGen
             get
             {
                 return stack;
+            }
+        }
+
+        public void Dispose()
+        {
+            if (stack != null)
+            {
+                stack.Clear();
+                stack = null;
             }
         }
     }

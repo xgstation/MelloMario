@@ -7,9 +7,14 @@ using System.Collections.Generic;
 
 namespace MelloMario.LevelGen
 {
-    class CharacterConverter : JsonConverter
+    class CharacterConverter : JsonConverter , IDisposable
     {
+        private JToken jsonToken;
+        private PlayerMario mario;
         private IGameWorld gameWorld;
+        private Stack<PlayerMario> characterStack;
+        private Point startPoint;
+        private string state;
         private int grid;
 
         public CharacterConverter(IGameWorld gameWorld, int gridSize)
@@ -25,13 +30,13 @@ namespace MelloMario.LevelGen
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            JToken jsonToken = JToken.Load(reader);
-            Stack<PlayerMario> characterStack = new Stack<PlayerMario>();
-            Point startPoint = jsonToken["SpawnPoint"].ToObject<Point>();
-            string state = jsonToken["State"].ToObject<string>();
+            jsonToken = JToken.Load(reader);
+            characterStack = new Stack<PlayerMario>();
+            startPoint = jsonToken["SpawnPoint"].ToObject<Point>();
+            state = jsonToken["State"].ToObject<string>();
             startPoint.X = startPoint.X * grid;
             startPoint.Y = startPoint.Y * grid;
-            PlayerMario mario = new PlayerMario(gameWorld, startPoint);
+            mario = new PlayerMario(gameWorld, startPoint);
             characterStack.Push(mario);
             //TODO: Change with IDictionary to change the state of each characters
             switch (state)
@@ -53,6 +58,19 @@ namespace MelloMario.LevelGen
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            jsonToken = null;
+            mario = null;
+            gameWorld = null;
+            if (characterStack != null)
+            {
+                characterStack.Clear();
+                characterStack = null;
+            }
+            state = null;
         }
     }
 }
