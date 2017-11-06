@@ -484,16 +484,39 @@
     },
     {
       "Type": "Sub",
-      "Index": "1-2",
+      "Index": "1-1-2",
       "Grid": 32,
       "Size": {
-        "X": 15,
+        "X": 30,
         "Y": 15
       },
-      "SpawnPoint": {
+      "InitialSpawnPoint": {
         "X": 3,
         "Y": 3
-      }
+      },
+      "RespawnPoints": [
+        {
+          "X": 3,
+          "Y": 5
+        },
+        {
+          "X": 6,
+          "Y": 5
+        }
+      ],
+      "Entity": [
+        {
+          "Type": "Floor",
+          "Point": {
+            "X": 0,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 30,
+            "Y": 2
+          }
+        }
+      ]
     },
     {
       "Type": "Link",

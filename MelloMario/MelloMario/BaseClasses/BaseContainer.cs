@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace MelloMario.Containers
 {
-    abstract class BaseContainer<Key, Value>
+    abstract class BaseContainer<Key, Value> :IDisposable
     {
         private IDictionary<Value, Key> keys;
         private IDictionary<Key, ISet<Value>> values;
@@ -111,6 +113,23 @@ namespace MelloMario.Containers
                 }
             }
             toRemove.Clear();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                keys = null;
+                values = null;
+                toAdd = null;
+                toMove = null;
+                toRemove = null;
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using MelloMario.LevelGen;
 using System;
+using MelloMario.Containers;
 using MelloMario.Scripts;
 
 namespace MelloMario
@@ -13,7 +14,6 @@ namespace MelloMario
         private string currentWorldIndex;
 
         private IEnumerable<IController> controllers;
-        private IGameWorld world;
         private IPlayer player;
         private LevelIOJson reader;
         private bool isPaused;
@@ -21,6 +21,8 @@ namespace MelloMario
 
         public GameModel(Game1 game, LevelIOJson reader)
         {
+            this.worlds = new Dictionary<string, IGameWorld>();
+            currentWorldIndex = "Main";
             this.game = game;
             this.reader = reader;
         }
@@ -68,10 +70,11 @@ namespace MelloMario
         public void Reset()
         {
             reader.SetModel(this);
-            Tuple<IGameWorld, IPlayer> pair = reader.Load("Main");
-            world = pair.Item1;
+            using (currentWorld) { }
+            Tuple<IGameWorld, IPlayer> pair = reader.Load();
+            currentWorld = pair.Item1;
             player = pair.Item2;
-
+            
             isPaused = false;
             new PlayingScript().Bind(controllers, this, player);
         }
@@ -94,7 +97,7 @@ namespace MelloMario
                 // reserved for multiplayer
                 ISet<IGameObject> updating = new HashSet<IGameObject>();
 
-                foreach (IGameObject obj in world.ScanNearby(player.Sensing))
+                foreach (IGameObject obj in currentWorld.ScanNearby(player.Sensing))
                 {
                     updating.Add(obj);
                 }
@@ -104,7 +107,7 @@ namespace MelloMario
                     obj.Update(time);
                 }
 
-                world.Update();
+                currentWorld.Update();
             }
         }
 
@@ -112,7 +115,7 @@ namespace MelloMario
         {
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
-                foreach (IGameObject obj in world.ScanNearby(player.Viewport))
+                foreach (IGameObject obj in currentWorld.ScanNearby(player.Viewport))
                 {
                     if (isPaused)
                     {
