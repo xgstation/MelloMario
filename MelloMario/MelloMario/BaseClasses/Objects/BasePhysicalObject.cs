@@ -1,13 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
+using MelloMario.Theming;
 
 namespace MelloMario
 {
     abstract class BasePhysicalObject : BaseCollidableObject
     {
-        private const float VELOCITY_MAX_LR = 10f;
-        private const float VELOCITY_MAX_U = 15f;
-        private const float VELOCITY_MAX_D = 20f;
-
         private float pixelScale;
         private Vector2 movement;
         private Vector2 velocity;
@@ -23,12 +20,6 @@ namespace MelloMario
             right
         };
 
-        protected const float FORCE_G = 40f;
-        protected const float FORCE_INPUT_X = 120f;
-        protected const float FORCE_INPUT_Y = 150f;
-        protected const float FORCE_F_GROUND = 100f;
-        protected const float FORCE_F_AIR = 20f;
-
         public FacingMode Facing;
 
         protected void ApplyForce(Vector2 delta)
@@ -36,7 +27,7 @@ namespace MelloMario
             force += delta;
         }
 
-        protected void ApplyGravity(float gravity = FORCE_G)
+        protected void ApplyGravity(float gravity = GameConst.FORCE_G)
         {
             ApplyForce(new Vector2(0, gravity));
         }
@@ -55,6 +46,16 @@ namespace MelloMario
             {
                 frictionalForce.Y = friction;
             }
+        }
+
+        protected void SetHorizontalVelocity(float constVelocity)
+        {
+            velocity.X = constVelocity;
+        }
+
+        protected void SetVerticalVelocity(float constVelocity)
+        {
+            velocity.Y = constVelocity;
         }
 
         protected bool Bounce(CollisionMode mode, Vector2 refVelocity, float rate = 0)
@@ -161,21 +162,21 @@ namespace MelloMario
 
             // Apply velocity
 
-            if (velocity.X > VELOCITY_MAX_LR)
+            if (velocity.X > GameConst.VELOCITY_MAX_LR)
             {
-                velocity.X = VELOCITY_MAX_LR;
+                velocity.X = GameConst.VELOCITY_MAX_LR;
             }
-            else if (velocity.X < -VELOCITY_MAX_LR)
+            else if (velocity.X < -GameConst.VELOCITY_MAX_LR)
             {
-                velocity.X = -VELOCITY_MAX_LR;
+                velocity.X = -GameConst.VELOCITY_MAX_LR;
             }
-            if (velocity.Y > VELOCITY_MAX_D)
+            if (velocity.Y > GameConst.VELOCITY_MAX_D)
             {
-                velocity.Y = VELOCITY_MAX_D;
+                velocity.Y = GameConst.VELOCITY_MAX_D;
             }
-            else if (velocity.Y < -VELOCITY_MAX_U)
+            else if (velocity.Y < -GameConst.VELOCITY_MAX_U)
             {
-                velocity.Y = -VELOCITY_MAX_U;
+                velocity.Y = -GameConst.VELOCITY_MAX_U;
             }
             movement += velocity * deltaTime;
 
