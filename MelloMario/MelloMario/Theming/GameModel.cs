@@ -11,15 +11,15 @@ namespace MelloMario
 {
     class GameModel : IGameModel
     {
-        private Game game;
+        private Game1 game;
         private IDictionary<string, IGameWorld> worlds;
         private IGameWorld currentWorld;
         private string currentWorldIndex;
         private IEnumerable<IController> controllers;
         private IPlayer player;
         private bool isPaused;
-        
-        public GameModel(Game game)
+
+        public GameModel(Game1 game)
         {
             this.game = game;
             worlds = new Dictionary<string, IGameWorld>();
@@ -33,7 +33,7 @@ namespace MelloMario
 
         public void ToggleFullScreen()
         {
-            (game as Game1).ToggleFullScreen();
+            game.ToggleFullScreen();
         }
 
         public void Pause()
@@ -58,16 +58,12 @@ namespace MelloMario
             }
             else
             {
-                using (var reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice))
-                {
-                    reader.SetModel(this);
-                    Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
-                    currentWorldIndex = index;
-                    GC.KeepAlive(currentWorld);
-                    worlds.Add(currentWorldIndex, currentWorld);
-                    currentWorld = pair.Item1;
-                    //GC.ReRegisterForFinalize(currentWorld);
-                }
+                LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
+                reader.SetModel(this);
+                Tuple<IGameWorld, IPlayer> pair = reader.Load();
+                currentWorldIndex = index;
+                worlds.Add(currentWorldIndex, currentWorld);
+                currentWorld = pair.Item1;
             }
 
             player.Spawn(currentWorld);
@@ -75,18 +71,19 @@ namespace MelloMario
 
         public void Reset()
         {
-            using (var reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice))
+            GameDatabase.Clear();
+
+            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
+            reader.SetModel(this);
+            Tuple<IGameWorld, IPlayer> pair = reader.Load();
+            currentWorld = pair.Item1;
+            player = pair.Item2;
+            if (!worlds.ContainsKey(currentWorldIndex))
             {
-                GameDatabase.Clear();
-                reader.SetModel(this);
-                Tuple<IGameWorld, IPlayer> pair = reader.Load();
-                currentWorld = pair.Item1;
-                player = pair.Item2;
-                if(!worlds.ContainsKey(currentWorldIndex))
-                    worlds.Add(currentWorldIndex,currentWorld);
-                isPaused = false;
-                new PlayingScript().Bind(controllers, this, player);
+                worlds.Add(currentWorldIndex, currentWorld);
             }
+            isPaused = false;
+            new PlayingScript().Bind(controllers, this, player);
         }
 
         public void Quit()

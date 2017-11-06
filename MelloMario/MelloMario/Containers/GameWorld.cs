@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.Containers
@@ -76,6 +75,5 @@ namespace MelloMario.Containers
 
             return target;
         }
-        
     }
 }
