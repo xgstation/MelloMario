@@ -1,0 +1,938 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MelloMario.Commands.BaseCommand&lt;T&gt;" Collapsed="true">
+    <Position X="21.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseClasses\BaseCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.Commands.Action" Collapsed="true">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Action.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.Crouch" Collapsed="true">
+    <Position X="9" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Crouch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.CrouchPress" Collapsed="true">
+    <Position X="13.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\CrouchPress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.CrouchRelease" Collapsed="true">
+    <Position X="18" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\CrouchRelease.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.Jump" Collapsed="true">
+    <Position X="22.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Jump.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.JumpPress" Collapsed="true">
+    <Position X="27" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\JumpPress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.JumpRelease" Collapsed="true">
+    <Position X="31.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\JumpRelease.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.Left" Collapsed="true">
+    <Position X="33.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Left.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.LeftPress" Collapsed="true">
+    <Position X="36" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\LeftPress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.LeftRelease" Collapsed="true">
+    <Position X="38.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\LeftRelease.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.Pause" Collapsed="true">
+    <Position X="40.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Pause.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.Quit" Collapsed="true">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Quit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.Reset" Collapsed="true">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Reset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.Resume" Collapsed="true">
+    <Position X="11.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Resume.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.Right" Collapsed="true">
+    <Position X="15.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Right.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.RightPress" Collapsed="true">
+    <Position X="20.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\RightPress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.RightRelease" Collapsed="true">
+    <Position X="24.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\RightRelease.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Commands.ToggleFullScreen" Collapsed="true">
+    <Position X="29.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\ToggleFullScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Containers.BaseContainer&lt;Key, Value&gt;" Collapsed="true">
+    <Position X="5.5" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAYAAAAAoIAIAAAAAAAABAQEAAAAACAAABAAAAAAABA=</HashCode>
+      <FileName>BaseClasses\BaseContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Containers.GameWorld" Collapsed="true">
+    <Position X="5.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAIAAAAAAAAAICAAAQAAAAAAAAAAAAAAABABEA=</HashCode>
+      <FileName>Containers\GameWorld.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.Controllers.BaseController&lt;T&gt;" Collapsed="true">
+    <Position X="11.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIABAACAAAAAAAAAAAAAAAAACAAAAEAAAA=</HashCode>
+      <FileName>BaseClasses\BaseController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.Controllers.GamepadController" Collapsed="true">
+    <Position X="10.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Controllers\GamePadController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Controllers.KeyboardController" Collapsed="true">
+    <Position X="12.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Controllers\KeyboardController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Sprites.BaseSprite" Collapsed="true">
+    <Position X="4" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACEAAAIAAIgIAAIAAAAAAAAAAAhCBAAAACAAAAAI=</HashCode>
+      <FileName>BaseClasses\BaseSprite.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.Sprites.AnimatedSprite" Collapsed="true">
+    <Position X="1.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAIAQAQARAAACAAgAAAAAACAAAAQAAAAA=</HashCode>
+      <FileName>Sprites\AnimatedSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Sprites.CompressedSprite" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="88.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACMAAAIAgAgAAAAAAAAAAAAAAAAABACAIAAAAAAA=</HashCode>
+      <FileName>Sprites\CompressedSprite.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MelloMario.Sprites.FlashingAnimatedSprite" Collapsed="true">
+    <Position X="0.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sprites\FlashingAnimatedSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Sprites.FlickingAnimatedSprite" Collapsed="true">
+    <Position X="3" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Sprites\FlickingAnimatedSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Sprites.SlicedSprite" Collapsed="true">
+    <Position X="5.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sprites\SlicedSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Sprites.StaticSprite" Collapsed="true">
+    <Position X="7.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sprites\StaticSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.BaseCollidableObject" Collapsed="true">
+    <Position X="18.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAEEBIAACAAAABAAIAAAAAIIAAAAAAAAAA=</HashCode>
+      <FileName>BaseClasses\Objects\BaseCollidableObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.BaseGameObject" Collapsed="true">
+    <Position X="17.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAACABAAAgAAAIBAAABCABAAAAAAAAAAAAEgRAA=</HashCode>
+      <FileName>BaseClasses\Objects\BaseGameObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.BasePhysicalObject" Collapsed="true">
+    <Position X="26.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAhBAAAAAAicAAABABAAAABAAAAgAAAAAAQAAAAAAAg=</HashCode>
+      <FileName>BaseClasses\Objects\BasePhysicalObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.BaseState&lt;T&gt;" Collapsed="true">
+    <Position X="42.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseClasses\Objects\States\BaseState.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.BaseTimedState&lt;T&gt;" Collapsed="true">
+    <Position X="67.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAIQAAACAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>BaseClasses\Objects\States\BaseTimedState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Game1" Collapsed="true">
+    <Position X="85" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAAAAIAAwAAAAAAAAAAAAAAAAgAAAAAAAAYAAQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Program" Collapsed="true">
+    <Position X="83.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.GameModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="83.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARgEAAAAAIABgAAAAAAAACAAAkAAAAJAAAAAAgQIQE=</HashCode>
+      <FileName>Theming\GameModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MelloMario.BlockObjects.Brick" Collapsed="true">
+    <Position X="4.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEgAAAAIQAAAAAAxCFAAAAIIAQAAMIAAABAEAAAA=</HashCode>
+      <FileName>BlockObjects\Brick.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.BlockObjects.Floor" Collapsed="true">
+    <Position X="6.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAABAAAAAAIAAAAAIIAAAAAEAAAA=</HashCode>
+      <FileName>BlockObjects\Floor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.BlockObjects.Pipeline" Collapsed="true">
+    <Position X="11" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAABAAAAAAIABAAAIIAAAAAEIAAA=</HashCode>
+      <FileName>BlockObjects\Pipeline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.BlockObjects.Question" Collapsed="true">
+    <Position X="15.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIQAAAAAARCAAAAAIIAQAAMIAAABAEAAAA=</HashCode>
+      <FileName>BlockObjects\Question.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.BlockObjects.Stair" Collapsed="true">
+    <Position X="17.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAABAAAAAAIAAAAAIIAAAAAEAAAA=</HashCode>
+      <FileName>BlockObjects\Stair.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.BlockObjects.BrickStates.Bumped" Collapsed="true">
+    <Position X="31.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAACAEAQAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockObjects\BrickStates\Bumped.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.BlockObjects.BrickStates.Destroyed" Collapsed="true">
+    <Position X="67.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAAAAEIQAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockObjects\BrickStates\Destroyed.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.BlockObjects.BrickStates.Hidden" Collapsed="true">
+    <Position X="44.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockObjects\BrickStates\Hidden.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.BlockObjects.BrickStates.Normal" Collapsed="true">
+    <Position X="51.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockObjects\BrickStates\Normal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.BlockObjects.BrickStates.Used" Collapsed="true">
+    <Position X="78.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockObjects\BrickStates\Used.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.BlockObjects.QuestionStates.Bumped" Collapsed="true">
+    <Position X="4.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAACAEAQAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockObjects\QuestionStates\Bumped.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.BlockObjects.QuestionStates.Hidden" Collapsed="true">
+    <Position X="8.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockObjects\QuestionStates\Hidden.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.BlockObjects.QuestionStates.Normal" Collapsed="true">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockObjects\QuestionStates\Normal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.BlockObjects.QuestionStates.Used" Collapsed="true">
+    <Position X="17.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockObjects\QuestionStates\Used.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.EnemyObjects.Goomba" Collapsed="true">
+    <Position X="20" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAQABAAAABAAAFAEIAAAAAMIAAABAEAAAA=</HashCode>
+      <FileName>EnemyObjects\Goomba.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.EnemyObjects.Koopa" Collapsed="true">
+    <Position X="22.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAACAAQAAAAAABAAEFAEIQAAACMIAAABAEAAAA=</HashCode>
+      <FileName>EnemyObjects\Koopa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.EnemyObjects.Piranha" Collapsed="true">
+    <Position X="26.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAABAAAAAAIAAAAAIIAAAAAEAAAA=</HashCode>
+      <FileName>EnemyObjects\Piranha.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.EnemyObjects.GoombaStates.Defeated" Collapsed="true">
+    <Position X="33.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EnemyObjects\GoombaStates\Defeated.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.EnemyObjects.GoombaStates.Normal" Collapsed="true">
+    <Position X="38" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EnemyObjects\GoombaStates\Normal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.EnemyObjects.KoopaStates.Defeated" Collapsed="true">
+    <Position X="47" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAAAAAAAAAAAAAEAAAAQEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EnemyObjects\KoopaStates\Defeated.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.EnemyObjects.KoopaStates.MovingShell" Collapsed="true">
+    <Position X="53.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAAAAAAAAAAAAAEAAAAQEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EnemyObjects\KoopaStates\MovingShell.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.EnemyObjects.KoopaStates.Normal" Collapsed="true">
+    <Position X="80.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAAAAAAAAAAAAAEAAAAQEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EnemyObjects\KoopaStates\Normal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.Factories.CommandFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="86.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAABAAAEAQAAAAAAAAAA=</HashCode>
+      <FileName>Factories\CommandFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MelloMario.Factories.GameObjectFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAACAAAgAAABAAAAAQAEAAAAAAAA=</HashCode>
+      <FileName>Factories\GameObjectFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MelloMario.Factories.SpriteFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="85" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEACCEAoAAACAEEIABAAgADQAgAAwAhIAAAAJAA=</HashCode>
+      <FileName>Factories\SpriteFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MelloMario.ItemObjects.Coin" Collapsed="true">
+    <Position X="8.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAgAABABAAAAAAIAAAAAMIAAABAEAAAA=</HashCode>
+      <FileName>ItemObjects\Coin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.ItemObjects.FireFlower" Collapsed="true">
+    <Position X="13.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAgAABABAAAAAAIAAAAAMIAAABAEAAAA=</HashCode>
+      <FileName>ItemObjects\FireFlower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.ItemObjects.OneUpMushroom" Collapsed="true">
+    <Position X="24.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAhAABABAAABAAIAAAAAMIAAABAEAAAA=</HashCode>
+      <FileName>ItemObjects\OneUpMushroom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.ItemObjects.Star" Collapsed="true">
+    <Position X="29" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAQAhAABABAAABAAIAAAAAMIAAABAEAAAA=</HashCode>
+      <FileName>ItemObjects\Star.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.ItemObjects.SuperMushroom" Collapsed="true">
+    <Position X="31.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAhAABABAAABAAIAAAAAMIAAABAEAAAA=</HashCode>
+      <FileName>ItemObjects\SuperMushroom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.ItemObjects.CoinStates.Normal" Collapsed="true">
+    <Position X="40.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemObjects\CoinStates\Normal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.ItemObjects.CoinStates.Unveil" Collapsed="true">
+    <Position X="69.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAIQAAAAAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemObjects\CoinStates\Unveil.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.ItemObjects.FireFlowerStates.Normal" Collapsed="true">
+    <Position X="56" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemObjects\FireFlowerStates\Normal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.ItemObjects.FireFlowerStates.Unveil" Collapsed="true">
+    <Position X="74" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAIQAAAAAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemObjects\FireFlowerStates\Unveil.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.ItemObjects.OneUpMushroomStates.Normal" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemObjects\OneUpMushroomStates\Normal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.ItemObjects.OneUpMushroomStates.Unveil" Collapsed="true">
+    <Position X="58.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAIQAAAAAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemObjects\OneUpMushroomStates\Unveil.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.ItemObjects.StarStates.Normal" Collapsed="true">
+    <Position X="15.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemObjects\StarStates\Normal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.ItemObjects.StarStates.Unveil" Collapsed="true">
+    <Position X="62.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAIQAAAAAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemObjects\StarStates\Unveil.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.ItemObjects.SuperMushroomStates.Normal" Collapsed="true">
+    <Position X="22.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemObjects\SuperMushroomStates\Normal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.ItemObjects.SuperMushroomStates.Unveil" Collapsed="true">
+    <Position X="65" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAIQAAAAAIAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ItemObjects\SuperMushroomStates\Unveil.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.LevelGen.CharacterConverter" Collapsed="true">
+    <Position X="85" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQYAAAAAAAAAAAAAAQAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>LevelGen\CharacterConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.LevelGen.EncapsulatedObject&lt;T&gt;" Collapsed="true">
+    <Position X="90.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAEAAAAAA=</HashCode>
+      <FileName>LevelGen\EncapsulatedObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.LevelGen.GameConverter" Collapsed="true">
+    <Position X="86.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAIEAAAAQQAAAAAEAAAAAAAAAAAAAQAAAAAAAAJCAA=</HashCode>
+      <FileName>LevelGen\GameConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.LevelGen.GameEntityConverter" Collapsed="true">
+    <Position X="90.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAR4CAAAIEAAAggAAAEQAAAQAAEABAAAICAA=</HashCode>
+      <FileName>LevelGen\GameEntityConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.LevelGen.LevelIOJson" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="86.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAACCAAAAAAAAACAAAAAAAAAAQAAAAIAAAIAAA=</HashCode>
+      <FileName>LevelGen\LevelIOJson.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.Mario" Collapsed="true">
+    <Position X="33.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAgAQEAAAABBAEAFAAJgAAAAIIAAABAEAAAQ=</HashCode>
+      <FileName>MarioObjects\Mario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.MarioObjects.PlayerMario" Collapsed="true">
+    <Position X="33.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAkAEBAIAAAEAAYACAAAQAAAQCACAAgEAAgQ=</HashCode>
+      <FileName>MarioObjects\PlayerMario.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.MovementStates.Crouching" Collapsed="true">
+    <Position X="11" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABAAgAAAAAAAAAAAAACAAAAIAAAAgAAAAAAAAA=</HashCode>
+      <FileName>MarioObjects\MovementStates\Crouching.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.MovementStates.Jumping" Collapsed="true">
+    <Position X="60.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAgAAAAAAAIYAAAAGAAAAIAAAAgAAAAAAAAA=</HashCode>
+      <FileName>MarioObjects\MovementStates\Jumping.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.MovementStates.Standing" Collapsed="true">
+    <Position X="20" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABAAgAAAAAAAAAAAAACAAAAIAAAAgAAAAAAAAA=</HashCode>
+      <FileName>MarioObjects\MovementStates\Standing.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.MovementStates.Walking" Collapsed="true">
+    <Position X="24.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABAAgAAAAAAAAAAAAACAAAAIAAAAgAAAAAAAAA=</HashCode>
+      <FileName>MarioObjects\MovementStates\Walking.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.PowerUpStates.Fire" Collapsed="true">
+    <Position X="26.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAAAAABAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MarioObjects\PowerUpStates\Fire.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.PowerUpStates.Standard" Collapsed="true">
+    <Position X="29" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAAAAABAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MarioObjects\PowerUpStates\Standard.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.PowerUpStates.Super" Collapsed="true">
+    <Position X="35.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAAAAABAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MarioObjects\PowerUpStates\Super.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.ProtectionStates.Dead" Collapsed="true">
+    <Position X="42.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAIAgAAAAAAAAAA=</HashCode>
+      <FileName>MarioObjects\ProtectionStates\Dead.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.ProtectionStates.Normal" Collapsed="true">
+    <Position X="49.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAIAgAAAAAAAAAA=</HashCode>
+      <FileName>MarioObjects\ProtectionStates\Normal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.ProtectionStates.Protected" Collapsed="true">
+    <Position X="71.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAIAgAAAAAAAAAA=</HashCode>
+      <FileName>MarioObjects\ProtectionStates\Protected.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MarioObjects.ProtectionStates.Starred" Collapsed="true">
+    <Position X="76.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAIAgAAAAAAAAAA=</HashCode>
+      <FileName>MarioObjects\ProtectionStates\Starred.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MelloMario.MiscObjects.Background" Collapsed="true">
+    <Position X="2" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAABAAABAAAABAAAAAAAAAAECAAA=</HashCode>
+      <FileName>MiscObjects\Background.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MelloMario.Scripts.EndedScript" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="83.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\EndedScript.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MelloMario.Scripts.PausedScript" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="88.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\PausedScript.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MelloMario.Scripts.PlayingScript" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="90.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scripts\PlayingScript.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MelloMario.Sprites.BlockSprites.BrickPieceSprite" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="83.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACEAAAAAAAgAAAAQAAAAAAAAAAgABAAAAAAAAAAA=</HashCode>
+      <FileName>Sprites\BlockSprites\BrickPieceSprite.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MelloMario.Theming.GameDatabase" Collapsed="true">
+    <Position X="88.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAARAQAAACAAAAABIAAUAAAAAACACAAQ=</HashCode>
+      <FileName>Theming\GameDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MelloMario.IContainer&lt;T&gt;" Collapsed="true">
+    <Position X="15.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAgIAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Containers\IContainer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IGameWorld" Collapsed="true">
+    <Position X="15.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAABEA=</HashCode>
+      <FileName>Interfaces\Containers\IGameWorld.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.ICommandFactory" Collapsed="true">
+    <Position X="85" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Factories\ICommandFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IGameObjectFactory" Collapsed="true">
+    <Position X="90.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Factories\IGameObjectFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.ISpriteFactory" Collapsed="true">
+    <Position X="86.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAoAAACAEEIABAAgACQAgAAgAhIAAAAJAA=</HashCode>
+      <FileName>Interfaces\Factories\ISpriteFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.ICharacter" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAkAABAIAAAAAAIACAAAQAAAACACAAgAAAgQ=</HashCode>
+      <FileName>Interfaces\ICharacter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.ICommand" Collapsed="true">
+    <Position X="83.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ICommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IController" Collapsed="true">
+    <Position X="86.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAABAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IGameModel" Collapsed="true">
+    <Position X="88.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAIABgAAAAAAAAAAAAgAAAAAAAAAAAgAAQA=</HashCode>
+      <FileName>Interfaces\IGameModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IPlayer" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAIAAAEAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IScript" Collapsed="true">
+    <Position X="83.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IScript.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.ISprite" Collapsed="true">
+    <Position X="85" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISprite.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IGameObject" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Interfaces\Objects\IGameObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IBlockState" Collapsed="true">
+    <Position X="1" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAEAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Objects\States\IBlockState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IGoombaState" Collapsed="true">
+    <Position X="3.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Objects\States\IGoombaState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IItemState" Collapsed="true">
+    <Position X="5.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Objects\States\IItemState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IKoopaState" Collapsed="true">
+    <Position X="7.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAEAAAAQEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Objects\States\IKoopaState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IMarioMovementState" Collapsed="true">
+    <Position X="10" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAgAAAAAAAAAAAAACAAAAIAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Objects\States\IMarioMovementState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IMarioPowerUpState" Collapsed="true">
+    <Position X="12.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAABAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Objects\States\IMarioPowerUpState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IMarioProtectionState" Collapsed="true">
+    <Position X="14.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAgAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Objects\States\IMarioProtectionState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MelloMario.IState" Collapsed="true">
+    <Position X="7.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\Objects\States\IState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MelloMario.KeyBehavior" Collapsed="true">
+    <Position X="83.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAABAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IController.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MelloMario.ZIndex" Collapsed="true">
+    <Position X="85" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgEAAggAAAAAQQAAAAAAAEAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Interfaces\ISprite.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
