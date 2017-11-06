@@ -33,6 +33,11 @@ namespace MelloMario
             location += delta;
         }
 
+        protected void Teleport(Point newLoc)
+        {
+            location = newLoc;
+        }
+
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
         {
             Point delta = new Point();
