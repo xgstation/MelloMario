@@ -13,7 +13,6 @@ namespace MelloMario.EnemyObjects
         private IKoopaState state;
         private const int VELOCITY_LR = 1;
         private const int VELOCITY_SHELL = 7;
-        private bool move;
 
         private void UpdateSprite()
         {
@@ -45,44 +44,38 @@ namespace MelloMario.EnemyObjects
             UpdateSprite();
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
+        {
+            state.Update(time);
+        }
+
+        protected override void OnSimulation(int time)
         {
             ApplyGravity();
-            if (move && !(state is Defeated))
+            if (Facing == FacingMode.right)
             {
-                if (Facing == FacingMode.right)
+                if (state is MovingShell)
                 {
-                    if (state is MovingShell)
-                    {
-                        Move(new Point(VELOCITY_SHELL, 0));
-                    }
-                    else
-                    {
-                        Move(new Point(VELOCITY_LR, 0));
-                    }
+                    Move(new Point(VELOCITY_SHELL, 0));
                 }
                 else
                 {
-                    if (state is MovingShell)
-                    {
-                        Move(new Point(-1 * VELOCITY_SHELL, 0));
-                    }
-                    else
-                    {
-                        Move(new Point(-1 * VELOCITY_LR, 0));
-                    }
+                    Move(new Point(VELOCITY_LR, 0));
                 }
-            }
-            if (!move)
-            {
-                // TODO: use collision detection system to do this job
-                //       similar as GameObject.OnCollideWorld
-                move = true; // Boundary.Intersects(World.Model.Character.Viewport);
             }
             else
             {
-                move = true;
+                if (state is MovingShell)
+                {
+                    Move(new Point(-1 * VELOCITY_SHELL, 0));
+                }
+                else
+                {
+                    Move(new Point(-1 * VELOCITY_LR, 0));
+                }
             }
+
+            base.OnSimulation(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
@@ -183,7 +176,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
@@ -217,7 +210,6 @@ namespace MelloMario.EnemyObjects
             {
                 Facing = FacingMode.right;
             }
-            move = false;
             this.color = color;
             state = new Normal(this);
             UpdateSprite();

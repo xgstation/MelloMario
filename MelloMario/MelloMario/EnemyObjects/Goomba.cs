@@ -12,53 +12,38 @@ namespace MelloMario.EnemyObjects
         private IGoombaState state;
         private float timeFromDeath;
         private const int VELOCITY_LR = 1;
-        private bool move;
 
         private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name));
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             state.Update(time);
-            if (state is Defeated)
+        }
+
+        protected override void OnSimulation(int time)
+        {
+            ApplyGravity();
+            if (Facing == FacingMode.right)
             {
-                timeFromDeath += (float) time.ElapsedGameTime.TotalMilliseconds;
-                if (timeFromDeath > 1000f)
-                {
-                    RemoveSelf();
-                }
+                Move(new Point(VELOCITY_LR, 0));
             }
             else
             {
-                if (move)
-                {
-                    ApplyGravity();
-                    if (Facing == FacingMode.right)
-                    {
-                        Move(new Point(VELOCITY_LR, 0));
-                    }
-                    else
-                    {
-                        Move(new Point(-VELOCITY_LR, 0));
-                    }
-                }
-                if (!move)
-                {
-                    // TODO: use collision detection system to do this job
-                    //       similar as GameObject.OnCollideWorld
-                    move = true; // Boundary.Intersects(World.Model.Character.Viewport);
-                }
-                else
-                {
-                    move = true;
-                }
+                Move(new Point(-VELOCITY_LR, 0));
             }
+
+            base.OnSimulation(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
+            if (state is Defeated)
+            {
+                return;
+            }
             switch (target.GetType().Name)
             {
                 case "PlayerMario":
@@ -99,13 +84,15 @@ namespace MelloMario.EnemyObjects
                         Bounce(mode, new Vector2());
                     }
                     break;
-            }
-            if (target is Koopa koopa)
-            {
-                if (koopa.State is KoopaStates.MovingShell)
-                {
-                    Defeat();
-                }
+                case "Koopa":
+                    if (target is Koopa koopa)
+                    {
+                        if (koopa.State is KoopaStates.MovingShell)
+                        {
+                            Defeat();
+                        }
+                    }
+                    break;
             }
         }
 
@@ -117,7 +104,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
@@ -152,7 +139,6 @@ namespace MelloMario.EnemyObjects
             {
                 Facing = FacingMode.right;
             }
-            move = false;
             timeFromDeath = 0;
             state = new Normal(this);
             UpdateSprite();

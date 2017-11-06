@@ -17,12 +17,12 @@ namespace MelloMario.EnemyObjects
             //ShowSprite(Factories.SpriteFactory.Instance.createPiranhaSprite());
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             throw new NotImplementedException();
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
             throw new NotImplementedException();
         }
