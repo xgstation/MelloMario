@@ -95,7 +95,7 @@ namespace MelloMario.LevelGen
             createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point);
             if (Util.TryGet(out quantity, objToken, "Quantity"))
             {
-                ignoredSet = !isSingle && TryReadIgnoreSet(objToken, out ignoredSet) ? ignoredSet : null;
+                ignoredSet = !isSingle && Util.TryReadIgnoreSet(objToken, out ignoredSet) ? ignoredSet : null;
             }
             else
             {
@@ -135,55 +135,6 @@ namespace MelloMario.LevelGen
         {
             //TODO: Implement serializer
         }
-
-
-        private static IList<IGameObject> CreateItemList(IGameWorld world, Point point, params string[] s)
-        {
-            return s?.Select(t => GameObjectFactory.Instance.CreateGameObject(t, world, point)).ToList();
-        }
-
-        private static void BatchCreate<T>(Func<Point, T> func, Point startPoint, Point quantity, Point objSize,
-            ICollection<Point> ignoredSet, int grid, ref Stack<IGameObject> stack)
-        {
-            for (var x = 0; x < quantity.X; x++)
-            {
-                for (var y = 0; y < quantity.Y; y++)
-                {
-                    var createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
-                    var createIndex = new Point(x + 1, y + 1);
-                    if (ignoredSet == null || !ignoredSet.Contains(createIndex))
-                    {
-                        if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
-                        {
-                            foreach (var obj in (IEnumerable<IGameObject>) func(createLocation))
-                            {
-                                stack.Push(obj);
-                            }
-                        }
-                        else
-                        {
-                            stack.Push((IGameObject) func(createLocation));
-                        }
-                    }
-                }
-            }
-        }
-
-        private static bool TryReadIgnoreSet(JToken token, out ISet<Point> toBeIgnored)
-        {
-            toBeIgnored = new HashSet<Point>();
-            if (token["Ignored"] == null)
-            {
-                return false;
-            }
-            var ignoredToken = token["Ignored"].ToList();
-            foreach (var t in ignoredToken)
-            {
-                toBeIgnored.Add(t.ToObject<Point>());
-            }
-            return true;
-        }
-
         private bool ItemConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
             if (isSingle)
@@ -192,7 +143,7 @@ namespace MelloMario.LevelGen
             }
             else
             {
-                BatchCreate(createFunc, objPoint, quantity, new Point(32, 32), ignoredSet, grid, ref stack);
+                Util.BatchCreate(createFunc, objPoint, quantity, new Point(32, 32), ignoredSet, grid, ref stack);
             }
             return true;
         }
@@ -220,7 +171,7 @@ namespace MelloMario.LevelGen
                 }
                 else
                 {
-                    BatchCreate(createFunc, objPoint, quantity, new Point(32, 32), ignoredSet, grid, ref stack);
+                    Util.BatchCreate(createFunc, objPoint, quantity, new Point(32, 32), ignoredSet, grid, ref stack);
                 }
 
             }
@@ -235,7 +186,7 @@ namespace MelloMario.LevelGen
                 propertyPair = new Tuple<bool, string[]>(
                     Util.TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden,
                     Util.TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
-                list = CreateItemList(world, objPoint, propertyPair.Item2);
+                list = Util.CreateItemList(world, objPoint, propertyPair.Item2);
                 objToBePushed = Activator.CreateInstance(type, world, objPoint, propertyPair.Item1) as IGameObject;
                 if (list != null && list.Count != 0)
                     GameDatabase.SetEnclosedItem(objToBePushed, list);
@@ -252,7 +203,7 @@ namespace MelloMario.LevelGen
                     ////TODO:optimize it
                     //if (isQuestionOrBrick)
                     //{
-                    BatchCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, false), objPoint,
+                    Util.BatchCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, false), objPoint,
                         quantity, new Point(32, 32), ignoredSet, grid, ref stack);
                     //}
                     //else
@@ -297,7 +248,7 @@ namespace MelloMario.LevelGen
                 }
                 if (isSingle)
                 {
-                    list = CreateSinglePipeline(direction, length, objPoint);
+                    list = Util.CreateSinglePipeline(model, world, grid, direction, length, objPoint);
                     foreach (Pipeline pipelineComponent in list)
                     {
                         stack.Push(pipelineComponent);
@@ -312,7 +263,7 @@ namespace MelloMario.LevelGen
                 else
                 {
                     objFullSize = direction.Contains("V") ? new Point(64, 32 + 32 * length) : new Point(32 + 32 * length, 64);
-                    BatchCreate(point => CreateSinglePipeline(direction, length, point), objPoint, quantity, objFullSize,
+                    Util.BatchCreate(point => Util.CreateSinglePipeline(model, world, grid, direction, length, point), objPoint, quantity, objFullSize,
                         ignoredSet, grid, ref stack);
                 }
             }
@@ -337,59 +288,10 @@ namespace MelloMario.LevelGen
             }
             else
             {
-                BatchCreate(createFunc, objPoint, quantity, objFullSize, ignoredSet, grid, ref stack);
+                Util.BatchCreate(createFunc, objPoint, quantity, objFullSize, ignoredSet, grid, ref stack);
             }
             return true;
         }
 
-        private List<IGameObject> CreateSinglePipeline(string pipelineType, int pipelineLength, Point pipelineLoc)
-        {
-            var listOfPipelineComponents = new List<IGameObject>();
-            Pipeline in1 = null;
-            Pipeline in2 = null;
-            switch (pipelineType)
-            {
-                case "V":
-                    in1 = new Pipeline(world, pipelineLoc, "LeftIn", model);
-                    in2 = new Pipeline(world, new Point(pipelineLoc.X + grid, pipelineLoc.Y), "RightIn", model);
-                    pipelineLoc = new Point(pipelineLoc.X, pipelineLoc.Y + grid);
-                    goto case "NV";
-                case "HL":
-                    in1 = new Pipeline(world, pipelineLoc, "TopLeftIn");
-                    in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), "BottomLeftIn");
-                    pipelineLoc = new Point(pipelineLoc.X + 32, pipelineLoc.Y);
-                    goto case "NH";
-                case "HR":
-                    in1 = new Pipeline(world, pipelineLoc, "TopRightIn");
-                    in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), "BottomRightIn");
-                    pipelineLoc = new Point(pipelineLoc.X - length * grid, pipelineLoc.Y);
-                    goto case "NH";
-                case "NV":
-                    for (var y = 0; y < pipelineLength; y++)
-                    {
-                        var loc1 = new Point(pipelineLoc.X, pipelineLoc.Y + grid * y);
-                        var loc2 = new Point(pipelineLoc.X + grid, pipelineLoc.Y + grid * y);
-                        listOfPipelineComponents.Add(new Pipeline(world, loc1, "Left"));
-                        listOfPipelineComponents.Add(new Pipeline(world, loc2, "Right"));
-                    }
-                    break;
-                case "NH":
-                    for (var x = 0; x < pipelineLength; x++)
-                    {
-                        var loc1 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y);
-                        var loc2 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y + grid);
-                        listOfPipelineComponents.Add(new Pipeline(world, loc1, "Top"));
-                        listOfPipelineComponents.Add(new Pipeline(world, loc2, "Bottom"));
-                    }
-                    break;
-                default:
-                    //DO NOTHING
-                    break;
-                    ;
-            }
-            listOfPipelineComponents.Insert(0, in1);
-            listOfPipelineComponents.Insert(1, in2);
-            return listOfPipelineComponents;
-        }
     }
 }
