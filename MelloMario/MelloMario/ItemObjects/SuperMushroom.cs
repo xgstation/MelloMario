@@ -16,13 +16,17 @@ namespace MelloMario.ItemObjects
             ShowSprite(SpriteFactory.Instance.CreateSuperMushroomSprite());
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
-            ApplyGravity();
-
             state.Update(time);
+        }
+
+        protected override void OnSimulation(int time)
+        {
             if (state is Normal)
             {
+                ApplyGravity();
+
                 if (Facing == FacingMode.right)
                 {
                     Move(new Point(H_SPEED, 0));
@@ -32,6 +36,8 @@ namespace MelloMario.ItemObjects
                     Move(new Point(-1 * H_SPEED, 0));
                 }
             }
+
+            base.OnSimulation(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
@@ -45,13 +51,13 @@ namespace MelloMario.ItemObjects
                     }
                     break;
                 case "Brick":
-                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                    if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
                     {
                         break;
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
                     {
                         break;
                     }
@@ -95,7 +101,7 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
         public SuperMushroom(IGameWorld world, Point location) : this(world, location, GameDataBase.GetCharacterLocation()) { }

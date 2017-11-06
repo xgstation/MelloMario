@@ -14,7 +14,7 @@ namespace MelloMario.ItemObjects
             ShowSprite(SpriteFactory.Instance.CreateFireFlowerSprite());
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             state.Update(time);
         }
@@ -35,7 +35,7 @@ namespace MelloMario.ItemObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 

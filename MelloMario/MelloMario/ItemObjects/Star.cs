@@ -17,12 +17,17 @@ namespace MelloMario.ItemObjects
             ShowSprite(SpriteFactory.Instance.CreateStarSprite());
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             state.Update(time);
+        }
+
+        protected override void OnSimulation(int time)
+        {
             if (state is Normal)
             {
                 ApplyGravity();
+
                 if (goingRight)
                 {
                     Move(new Point(H_SPEED, 0));
@@ -32,6 +37,8 @@ namespace MelloMario.ItemObjects
                     Move(new Point(-1 * H_SPEED, 0));
                 }
             }
+
+            base.OnSimulation(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
@@ -89,7 +96,7 @@ namespace MelloMario.ItemObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
@@ -126,7 +133,7 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
-        public Star(IGameWorld world, Point location) : this(world, location, GameDataBase.GetCharacterLocation()) { }
+
         public Star(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }
