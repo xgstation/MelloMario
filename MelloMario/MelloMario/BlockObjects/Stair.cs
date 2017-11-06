@@ -10,7 +10,7 @@ namespace MelloMario.BlockObjects
             ShowSprite(SpriteFactory.Instance.CreateStairSprite());
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
         }
 
@@ -26,7 +26,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
         public Stair(IGameWorld world, Point location) : this(world, location, false) { }

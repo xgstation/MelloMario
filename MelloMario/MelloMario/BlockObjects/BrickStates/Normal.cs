@@ -38,7 +38,7 @@ namespace MelloMario.BlockObjects.BrickStates
             }
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
         }
     }

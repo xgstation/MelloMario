@@ -15,7 +15,7 @@ namespace MelloMario.BlockObjects
             ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(type));
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
         }
 
@@ -39,14 +39,15 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
-        public Pipeline(IGameWorld world, Point location, string type, GameModel model) : this (world, location, type)
+        public Pipeline(IGameWorld world, Point location, string type, GameModel model) : this(world, location, type)
         {
             this.model = model;
         }
+
         public Pipeline(IGameWorld world, Point location, string type) : base(world, location, new Point(32, 32))
         {
             this.type = type;

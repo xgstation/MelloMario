@@ -10,7 +10,7 @@ namespace MelloMario.BlockObjects
             ShowSprite(SpriteFactory.Instance.CreateFloorSprite());
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
         }
 
@@ -26,12 +26,11 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
-        public Floor(IGameWorld world, Point location) : this(world, location, false) { }
-        public Floor(IGameWorld world, Point location, bool isHidden) : base(world, location, new Point(32, 32))
+        public Floor(IGameWorld world, Point location, bool isHidden = false) : base(world, location, new Point(32, 32))
         {
             if (isHidden)
             {

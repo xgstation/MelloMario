@@ -43,13 +43,14 @@ namespace MelloMario.BlockObjects.BrickStates
             // do nothing
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
+            // TODO: use BaseTimedState
             if (elapsed >= 70)
             {
                 move = 0;
             }
-            elapsed += time.ElapsedGameTime.Milliseconds;
+            elapsed += time;
             move += 3;
             if (elapsed >= 170)
             {

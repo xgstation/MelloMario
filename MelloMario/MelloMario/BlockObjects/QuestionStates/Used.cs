@@ -24,7 +24,7 @@ namespace MelloMario.BlockObjects.QuestionStates
             //do nothing
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
         }
     }
