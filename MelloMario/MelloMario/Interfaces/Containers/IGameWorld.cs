@@ -7,6 +7,7 @@ namespace MelloMario
     interface IGameWorld : IContainer<IGameObject>, IDisposable
     {
         Rectangle Boundary { get; }
+        Point InitialSpawnPoint { get; set; }
 
         IEnumerable<IGameObject> ScanNearby(Rectangle range);
         void AddRespawnPoint(Point newPoint);

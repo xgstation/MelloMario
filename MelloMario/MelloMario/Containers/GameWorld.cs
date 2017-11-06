@@ -10,6 +10,7 @@ namespace MelloMario.Containers
         private const int SCANRANGE = 24;
 
         private Point size;
+        private Point initialSpawnPoint;
         private ISet<Point> respawnPoints; // TODO: temporary code
 
         protected override Point GetKey(IGameObject value)
@@ -26,6 +27,11 @@ namespace MelloMario.Containers
             }
         }
 
+        public Point InitialSpawnPoint
+        {
+            get => initialSpawnPoint;
+            set => initialSpawnPoint = value;
+        }
         public GameWorld(Point size)
         {
             respawnPoints = new HashSet<Point>();
@@ -55,6 +61,7 @@ namespace MelloMario.Containers
         {
             respawnPoints.Add(newPoint);
         }
+        
         public Point GetRespawnPoint(Point location)
         {
             Point target = location;
