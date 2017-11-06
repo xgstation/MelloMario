@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.Containers
@@ -27,6 +28,7 @@ namespace MelloMario.Containers
 
         public GameWorld(Point size)
         {
+            respawnPoints = new HashSet<Point>();
             this.size = size;
         }
 
@@ -49,6 +51,10 @@ namespace MelloMario.Containers
             }
         }
 
+        public void AddRespawnPoint(Point newPoint)
+        {
+            respawnPoints.Add(newPoint);
+        }
         public Point GetRespawnPoint(Point location)
         {
             Point target = location;
@@ -63,5 +69,6 @@ namespace MelloMario.Containers
 
             return target;
         }
+        
     }
 }
