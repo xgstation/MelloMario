@@ -30,12 +30,11 @@ namespace MelloMario.LevelGen
         public Tuple<IGameWorld, IPlayer> Load(string index = "Main")
         {
             levelString = File.ReadAllText(path);
-            using (gameConverter = new GameConverter(model, graphicsDevice, index))
-            {
-                return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, gameConverter);
-            }
+            gameConverter = new GameConverter(model, graphicsDevice, index);
+            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, gameConverter);
+
         }
-        
+
         public void Dispose()
         {
             levelString = null;

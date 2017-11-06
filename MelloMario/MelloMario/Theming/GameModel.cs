@@ -77,7 +77,6 @@ namespace MelloMario
         {
             using (var reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice))
             {
-                using (currentWorld){ }
                 GameDatabase.Clear();
                 reader.SetModel(this);
                 Tuple<IGameWorld, IPlayer> pair = reader.Load();

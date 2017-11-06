@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.LevelGen
 {
-    class GameEntityConverter : JsonConverter, IDisposable
+    class GameEntityConverter : JsonConverter
     {
         private static readonly IEnumerable<Type> AssemblyTypes =
             from type in Assembly.GetExecutingAssembly().GetTypes()
@@ -416,33 +416,6 @@ namespace MelloMario.LevelGen
             listOfPipelineComponents.Insert(0, in1);
             listOfPipelineComponents.Insert(1, in2);
             return listOfPipelineComponents;
-        }
-
-        public void Dispose()
-        {
-            objToBePushed = null;
-            type = null;
-            direction = null;
-            entrance = null;
-            backgroundType = null;
-            createFunc = null;
-            if (objectStackToBeEncapsulated != null)
-            {
-                objectStackToBeEncapsulated.Clear();
-                objectStackToBeEncapsulated = null;
-            }
-            if (ignoredSet != null)
-            {
-                ignoredSet.Clear();
-                ignoredSet = null;
-            }
-            if (list != null)
-            {
-                list.Clear();
-                list = null;
-            }
-            propertyPair = null;
-
         }
     }
 }

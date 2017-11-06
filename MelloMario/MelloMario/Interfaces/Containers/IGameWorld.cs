@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario
 {
-    interface IGameWorld : IContainer<IGameObject>, IDisposable
+    interface IGameWorld : IContainer<IGameObject>
     {
         Rectangle Boundary { get; }
         Point InitialSpawnPoint { get; set; }

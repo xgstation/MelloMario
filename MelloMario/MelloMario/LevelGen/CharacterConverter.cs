@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace MelloMario.LevelGen
 {
-    class CharacterConverter : JsonConverter , IDisposable
+    class CharacterConverter : JsonConverter
     {
         private JToken jsonToken;
         private PlayerMario mario;
@@ -58,19 +58,6 @@ namespace MelloMario.LevelGen
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            jsonToken = null;
-            mario = null;
-            gameWorld = null;
-            if (characterStack != null)
-            {
-                characterStack.Clear();
-                characterStack = null;
-            }
-            state = null;
         }
     }
 }

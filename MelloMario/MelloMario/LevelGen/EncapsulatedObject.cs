@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MelloMario.LevelGen
 {
-    class EncapsulatedObject<T> : IDisposable
+    class EncapsulatedObject<T>
     {
         private Stack<T> stack;
 
@@ -14,19 +14,7 @@ namespace MelloMario.LevelGen
 
         public Stack<T> RealObj
         {
-            get
-            {
-                return stack;
-            }
-        }
-
-        public void Dispose()
-        {
-            if (stack != null)
-            {
-                stack.Clear();
-                stack = null;
-            }
+            get { return stack; }
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace MelloMario.LevelGen
 {
     //Using for deserialize json to a single GameWorld(Map)
-    class GameConverter : JsonConverter, IDisposable
+    class GameConverter : JsonConverter
     {
         private GameEntityConverter gameEntityConverter;
         private CharacterConverter characterConverter;
@@ -43,7 +43,9 @@ namespace MelloMario.LevelGen
         {
             return true;
         }
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
         {
             jsonToken = JToken.Load(reader);
             MapListToken = Util.TryGet(out JToken t, jsonToken, "Maps") ? t : null;
@@ -81,63 +83,64 @@ namespace MelloMario.LevelGen
             }
 
             world = new GameWorld(mapSize);
-            using (gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, grid))
+            gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, grid);
+
+            characterConverter = new CharacterConverter(world, grid);
+
+            serializers.Converters.Add(gameEntityConverter);
+            serializers.Converters.Add(characterConverter);
+            if (entities != null)
             {
-                using (characterConverter = new CharacterConverter(world, grid))
+                foreach (JToken jToken in entities)
                 {
-                    serializers.Converters.Add(gameEntityConverter);
-                    serializers.Converters.Add(characterConverter);
-                    if (entities != null)
+                    EncapsulatedObject<IGameObject> gameObjs =
+                        jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
+
+                    if (gameObjs != null)
                     {
-                        foreach (JToken jToken in entities)
+                        foreach (IGameObject gameObj in gameObjs.RealObj)
                         {
-                            using (EncapsulatedObject<IGameObject> gameObjs =
-                                jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers))
-                            {
-                                if (gameObjs != null)
-                                {
-                                    foreach (IGameObject gameObj in gameObjs.RealObj)
-                                    {
-                                        world.Add(gameObj);
-                                    }
-                                }
-                            }
+                            world.Add(gameObj);
                         }
                     }
-                    if(Util.TryGet(out Point p, MapToBeLoaded, "InitialSpawnPoint"))
+
+                }
+
+                if (Util.TryGet(out Point p, MapToBeLoaded, "InitialSpawnPoint"))
+                {
+                    world.InitialSpawnPoint = new Point(p.X * grid, p.Y * grid);
+                }
+                if (Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints"))
+                {
+                    foreach (var point in respawnPoints)
                     {
-                        world.InitialSpawnPoint = new Point(p.X * grid, p.Y * grid);
-                    }
-                    if (Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints"))
-                    {
-                        foreach (var point in respawnPoints)
-                        {
-                            var scaledPoint = new Point(point.X * grid, point.Y * grid);
-                            world.AddRespawnPoint(scaledPoint);
-                        }
-                    }
-                    if (Util.TryGet(out IList<JToken> characters, MapToBeLoaded, "Characters"))
-                    {
-                        Debug.WriteLine("Characters token loaded successfully!");
-                    }
-                    if (characters != null)
-                    {
-                        foreach (JToken obj in characters)
-                        {
-                            using (EncapsulatedObject<PlayerMario> temp =
-                                obj.ToObject<EncapsulatedObject<PlayerMario>>(serializers))
-                            {
-                                PlayerMario mario = temp.RealObj.Pop();
-                                character = mario;
-                                world.Add(mario);
-                            }
-                            //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
-                        }
+                        var scaledPoint = new Point(point.X * grid, point.Y * grid);
+                        world.AddRespawnPoint(scaledPoint);
                     }
                 }
-                //if (character == null) return world;
-                return new Tuple<IGameWorld, IPlayer>(world, character);
+                if (Util.TryGet(out IList<JToken> characters, MapToBeLoaded, "Characters"))
+                {
+                    Debug.WriteLine("Characters token loaded successfully!");
+                }
+                if (characters != null)
+                {
+                    foreach (JToken obj in characters)
+                    {
+                        EncapsulatedObject<PlayerMario> temp =
+                            obj.ToObject<EncapsulatedObject<PlayerMario>>(serializers);
+
+                        PlayerMario mario = temp.RealObj.Pop();
+                        character = mario;
+                        world.Add(mario);
+
+                        //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
+                    }
+                }
             }
+            //if (character == null) return world;
+                return new Tuple<IGameWorld, IPlayer>(world, character);
+
+            
         }
 
         //TODO: Add serialize method and change CanWrite 
@@ -152,19 +155,6 @@ namespace MelloMario.LevelGen
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             //TODO: Implement serializer
-        }
-
-        public void Dispose()
-        {
-            world = null;
-            character = null;
-            graphicsDevice = null;
-            model = null;
-            gameEntityConverter = null;
-            characterConverter = null;
-            jsonToken = null;
-            MapListToken = null;
-            MapToBeLoaded = null;
         }
     }
 }
