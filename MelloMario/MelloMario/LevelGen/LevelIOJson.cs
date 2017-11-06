@@ -35,11 +35,7 @@ namespace MelloMario.LevelGen
                 return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, gameConverter);
             }
         }
-
-        //public void Close()
-        //{
-        //TODO: Implement IO stream close
-        //}
+        
         public void Dispose()
         {
             levelString = null;
