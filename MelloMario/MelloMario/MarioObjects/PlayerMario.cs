@@ -171,14 +171,14 @@ namespace MelloMario.MarioObjects
 
             World.Add(this);
             var p = World.InitialSpawnPoint;
-            Relocate(p);
-            world.Update();
+            Teleport(p);
+            World.Update();
         }
 
         public void Respawn()
         {
             var p = World.GetRespawnPoint(Boundary.Location);
-            Relocate(p);
+            Teleport(p);
             World.Update();
         }
     }
