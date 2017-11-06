@@ -17,7 +17,7 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Show()
         {
-            if (GameDataBase.HasItemEnclosed(Owner))
+            if (GameDatabase.HasItemEnclosed(Owner))
             {
                 Owner.State = new Normal(Owner);
             }

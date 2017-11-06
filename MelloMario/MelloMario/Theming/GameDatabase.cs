@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming
 {
-    static class GameDataBase
+    static class GameDatabase
     {
         private static IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
         private static IDictionary<Pipeline, string> PipelineEntranceDb = new Dictionary<Pipeline, string>();

@@ -355,7 +355,7 @@ namespace MelloMario.LevelGen
                 var list = CreateItemList(world, objPoint, propertyPair.Item2);
                 var obj = Activator.CreateInstance(type, world, objPoint, propertyPair.Item1) as BaseGameObject;
                 if (list != null && list.Count != 0)
-                    GameDataBase.SetEnclosedItem(obj, list);
+                    GameDatabase.SetEnclosedItem(obj, list);
                 stack.Push(obj);
             }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
@@ -420,8 +420,8 @@ namespace MelloMario.LevelGen
                     }
                     if (dir != "NV" && dir != "NH" && TryGet(out string entrance, token, "Property", "Entrance"))
                     {
-                        GameDataBase.SetEntranceIndex(pipelineComponents[0], entrance);
-                        GameDataBase.SetEntranceIndex(pipelineComponents[1], entrance);
+                        GameDatabase.SetEntranceIndex(pipelineComponents[0], entrance);
+                        GameDatabase.SetEntranceIndex(pipelineComponents[1], entrance);
                     }
                 }
                 else
