@@ -10,7 +10,7 @@ namespace MelloMario.Containers
 
         private Point size;
         private Point initialPoint;
-        private IEnumerable<Point> respawnPoints;
+        private ISet<Point> respawnPoints;
 
         protected override Point GetKey(IGameObject value)
         {
@@ -26,11 +26,17 @@ namespace MelloMario.Containers
             }
         }
 
-        public GameWorld(Point size, Point initialPoint, IEnumerable<Point> respawnPoints)
+        public GameWorld(Point size, Point initial, IEnumerable<Point> respawn)
         {
             this.size = size;
-            this.initialPoint = initialPoint;
-            this.respawnPoints = respawnPoints;
+
+            initialPoint = new Point(initial.X * GRID, initial.Y * GRID);
+            respawnPoints = new HashSet<Point>();
+            foreach (Point p in respawn)
+            {
+                respawnPoints.Add(new Point(p.X * GRID, p.Y * GRID));
+            }
+
         }
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
