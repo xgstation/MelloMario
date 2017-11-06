@@ -10,5 +10,6 @@ namespace MelloMario
         Rectangle Viewport { get; }
 
         void Spawn(IGameWorld newWorld);
+        void Respawn();
     }
 }

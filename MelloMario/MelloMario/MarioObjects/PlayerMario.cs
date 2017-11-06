@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MelloMario.Containers;
+using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.Theming;
 
@@ -167,7 +168,18 @@ namespace MelloMario.MarioObjects
         {
             World.Remove(this);
             World = world;
-            Relocate(world.GetRespawnPoint(new Point(Boundary.Center.X, Boundary.Bottom)));
+
+            World.Add(this);
+            var p = World.InitialSpawnPoint;
+            Relocate(p);
+            world.Update();
+        }
+
+        public void Respawn()
+        {
+            var p = World.GetRespawnPoint(Boundary.Location);
+            Relocate(p);
+            World.Update();
         }
     }
 }
