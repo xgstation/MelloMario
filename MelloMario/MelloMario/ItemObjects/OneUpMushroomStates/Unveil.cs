@@ -28,6 +28,8 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
 
         public override void Update(int time)
         {
+            base.Update(time);
+
             elapsed += time;
             realOffset += 32 * time / 1000f;
 

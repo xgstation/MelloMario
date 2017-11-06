@@ -9,10 +9,7 @@ namespace MelloMario.ItemObjects.StarStates
 
         protected override void OnTimer(int time)
         {
-            if (Progress >= 2)
-            {
-                Owner.State = new Normal(Owner);
-            }
+            Owner.State = new Normal(Owner);
         }
 
         public Unveil(Star owner) : base(owner, 1000)
