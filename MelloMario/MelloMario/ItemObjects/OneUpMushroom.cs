@@ -117,7 +117,7 @@ namespace MelloMario.ItemObjects
             UpdateSprite();
         }
 
-        public OneUpMushroom(IGameWorld world, Point location) : this(world, location, GameDataBase.GetCharacterLocation(), false) { }
+        public OneUpMushroom(IGameWorld world, Point location) : this(world, location, GameDatabase.GetCharacterLocation(), false) { }
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }

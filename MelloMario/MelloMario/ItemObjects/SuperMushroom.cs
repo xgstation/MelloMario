@@ -104,7 +104,7 @@ namespace MelloMario.ItemObjects
         protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
-        public SuperMushroom(IGameWorld world, Point location) : this(world, location, GameDataBase.GetCharacterLocation()) { }
+        public SuperMushroom(IGameWorld world, Point location) : this(world, location, GameDatabase.GetCharacterLocation()) { }
         public SuperMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil = true) : base(world, location, new Point(32, 32), 32)
         {
             if (marioLocation.X < location.X)

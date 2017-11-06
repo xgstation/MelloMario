@@ -11,7 +11,7 @@ namespace MelloMario
         {
             get
             {
-                return ((float) elapsed) / interval;
+                return (float) elapsed / interval;
             }
         }
 

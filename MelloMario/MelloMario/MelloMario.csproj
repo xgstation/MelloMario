@@ -176,7 +176,8 @@
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\SlicedSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
-    <Compile Include="Theming\GameDataBase.cs" />
+    <Compile Include="Theming\GameConst.cs" />
+    <Compile Include="Theming\GameDatabase.cs" />
     <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Containers\GameWorld.cs" />
     <Compile Include="Scripts\PlayingScript.cs" />

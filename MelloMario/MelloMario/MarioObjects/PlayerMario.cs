@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects.MovementStates;
+using MelloMario.Theming;
 
 namespace MelloMario.MarioObjects
 {
@@ -75,7 +76,7 @@ namespace MelloMario.MarioObjects
 
             if (!(MovementState is Crouching))
             {
-                userInput.X -= FORCE_INPUT_X;
+                userInput.X -= GameConst.FORCE_INPUT_X;
             }
         }
 
@@ -100,7 +101,7 @@ namespace MelloMario.MarioObjects
 
             if (!(MovementState is Crouching))
             {
-                userInput.X += FORCE_INPUT_X;
+                userInput.X += GameConst.FORCE_INPUT_X;
             }
         }
 
@@ -125,8 +126,8 @@ namespace MelloMario.MarioObjects
 
             if (MovementState is Jumping jumping && !jumping.Finished)
             {
-                userInput.Y -= FORCE_INPUT_Y;
-                userInput.Y -= FORCE_G;
+                userInput.Y -= GameConst.FORCE_INPUT_Y;
+                userInput.Y -= GameConst.FORCE_G;
             }
         }
 

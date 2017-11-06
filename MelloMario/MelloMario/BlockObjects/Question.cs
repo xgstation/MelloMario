@@ -18,7 +18,7 @@ namespace MelloMario.BlockObjects
             {
                 HideSprite();
             }
-            else if (GameDataBase.HasItemEnclosed(this))
+            else if (GameDatabase.HasItemEnclosed(this))
             {
                 ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
             }
@@ -30,10 +30,10 @@ namespace MelloMario.BlockObjects
 
         private void LoadItem()
         {
-            if (GameDataBase.HasItemEnclosed(this))
+            if (GameDatabase.HasItemEnclosed(this))
             {
-                item = GameDataBase.GetEnclosedItems(this)[0];
-                GameDataBase.GetEnclosedItems(this).RemoveAt(0);
+                item = GameDatabase.GetEnclosedItems(this)[0];
+                GameDatabase.GetEnclosedItems(this).RemoveAt(0);
             }
             else
             {

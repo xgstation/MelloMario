@@ -5,6 +5,7 @@ using MelloMario.MarioObjects.PowerUpStates;
 using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.MarioObjects
 {
@@ -61,8 +62,8 @@ namespace MelloMario.MarioObjects
         protected override void OnSimulation(int time)
         {
             ApplyGravity();
-            ApplyHorizontalFriction(FORCE_F_AIR);
-            ApplyVerticalFriction(FORCE_F_AIR);
+            ApplyHorizontalFriction(GameConst.FORCE_F_AIR);
+            ApplyVerticalFriction(GameConst.FORCE_F_AIR);
 
             base.OnSimulation(time);
         }
@@ -133,7 +134,7 @@ namespace MelloMario.MarioObjects
                     {
                         if (mode == CollisionMode.Bottom)
                         {
-                            ApplyHorizontalFriction(FORCE_F_GROUND);
+                            ApplyHorizontalFriction(GameConst.FORCE_F_GROUND);
                             MovementState.Land();
                         }
                     }
