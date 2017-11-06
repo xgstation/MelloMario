@@ -362,14 +362,14 @@ namespace MelloMario.LevelGen
             {
                 if (isSingle)
                 {
-                    stack.Push(Activator.CreateInstance(type, world, objPoint) as BaseGameObject);
+                    stack.Push(Activator.CreateInstance(type, world, objPoint, false) as BaseGameObject);
                 }
                 else
                 {
                     ////TODO:optimize it
                     //if (isQuestionOrBrick)
                     //{
-                    BatchCreate(point => (IGameObject) Activator.CreateInstance(type, world, point), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
+                    BatchCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, false), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
                     //}
                     //else
                     //{
