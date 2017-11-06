@@ -28,14 +28,9 @@ namespace MelloMario
         protected abstract void OnSimulation(int time);
         protected abstract void OnDraw(int time, Rectangle viewport, ZIndex zIndex);
 
-        protected void Relocate(Point delta)
+        protected void Relocate(Point newLocation)
         {
-            location += delta;
-        }
-
-        protected void Teleport(Point newLoc)
-        {
-            location = newLoc;
+            location = newLocation;
         }
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
@@ -67,7 +62,7 @@ namespace MelloMario
                     break;
             }
 
-            Relocate(delta);
+            Relocate(location + delta);
             size = newSize;
 
             World.Move(this);
