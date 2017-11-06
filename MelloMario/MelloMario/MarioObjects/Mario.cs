@@ -101,22 +101,20 @@ namespace MelloMario.MarioObjects
 
                     if (mode == CollisionMode.Top)
                     {
-                        if (Bounce(mode, new Vector2(), 1))
+                        Bounce(mode, new Vector2(), 1);
+                        if (isBumping)
                         {
-                            if (isBumping)
+                            //Move(new Point(0, 1));
+                        }
+                        else
+                        {
+                            if (brick != null)
                             {
-                                Move(new Point(0, 1));
+                                brick.Bump(this);
                             }
-                            else
+                            else if (question != null)
                             {
-                                if (brick != null)
-                                {
-                                    brick.Bump(this);
-                                }
-                                else if (question != null)
-                                {
-                                    question.Bump(this);
-                                }
+                                question.Bump(this);
                             }
                         }
                     }
@@ -130,13 +128,11 @@ namespace MelloMario.MarioObjects
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
-                    if (Bounce(mode, new Vector2()))
+                    Bounce(mode, new Vector2());
+                    if (mode == CollisionMode.Bottom)
                     {
-                        if (mode == CollisionMode.Bottom)
-                        {
-                            ApplyHorizontalFriction(GameConst.FORCE_F_GROUND);
-                            MovementState.Land();
-                        }
+                        ApplyHorizontalFriction(GameConst.FORCE_F_GROUND);
+                        MovementState.Land();
                     }
 
                     break;
