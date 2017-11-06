@@ -41,9 +41,9 @@ namespace MelloMario.Sprites
             this.activeZIndex = activeZIndex;
             this.fullSize = fullSize;
 
-            var graphicDevice = texture.GraphicsDevice;
-            var cellLoc = new Point(0, 0);
-            var cellSize = new Point(32, 32);
+            GraphicsDevice graphicDevice = texture.GraphicsDevice;
+            Point cellLoc = new Point(0, 0);
+            Point cellSize = new Point(32, 32);
 
             switch (type)
             {
@@ -60,10 +60,10 @@ namespace MelloMario.Sprites
                     break;
             }
 
-            var sourceRectangle = new Rectangle(cellLoc, cellSize);
+            Rectangle sourceRectangle = new Rectangle(cellLoc, cellSize);
             cellTexture = new Texture2D(graphicDevice, sourceRectangle.Width, sourceRectangle.Height);
 
-            var data = new Color[sourceRectangle.Width * sourceRectangle.Height];
+            Color[] data = new Color[sourceRectangle.Width * sourceRectangle.Height];
             texture.GetData(0, sourceRectangle, data, 0, data.Length);
             cellTexture.SetData(data);
 
