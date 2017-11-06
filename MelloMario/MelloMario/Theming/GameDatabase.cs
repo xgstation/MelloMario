@@ -81,5 +81,12 @@ namespace MelloMario.Theming
                 PipelineEntranceDb.Add(pipeline, index);
             }
         }
+
+        public static void Clear()
+        {
+            ItemEnclosedDb.Clear();
+            PipelineEntranceDb.Clear();
+            CharacterLocations.Clear();
+        }
     }
 }

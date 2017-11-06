@@ -4,6 +4,7 @@ using MelloMario.LevelGen;
 using System;
 using MelloMario.Containers;
 using MelloMario.Scripts;
+using MelloMario.Theming;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
@@ -77,6 +78,7 @@ namespace MelloMario
             using (var reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice))
             {
                 using (currentWorld){ }
+                GameDatabase.Clear();
                 reader.SetModel(this);
                 Tuple<IGameWorld, IPlayer> pair = reader.Load();
                 currentWorld = pair.Item1;
