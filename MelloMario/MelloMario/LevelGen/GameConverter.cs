@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -16,12 +17,12 @@ namespace MelloMario.LevelGen
         private GraphicsDevice graphicsDevice;
         private GameModel model;
         private string index;
-        private JsonSerializer serializers;
+        private static JsonSerializer serializers;
 
         private IGameWorld world;
         private IPlayer character;
-
-        public GameConverter(GameModel model, GraphicsDevice graphicsDevice,string index)
+        
+        public GameConverter(GameModel model, GraphicsDevice graphicsDevice, string index = "Main")
         {
             this.model = model;
             this.graphicsDevice = graphicsDevice;
@@ -29,54 +30,93 @@ namespace MelloMario.LevelGen
             serializers = new JsonSerializer();
         }
 
+        public void SetIndex(string index)
+        {
+            this.index = index;
+        }
         public override bool CanConvert(Type objectType)
         {
             return true;
         }
-
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JToken jsonToken = JToken.Load(reader);
-            JToken MapList = jsonToken.Value<JToken>("Maps");
+            JToken MapList = Util.TryGet(out JToken t, jsonToken, "Maps") ? t : null;
+            if (MapList == null) return null;
             JToken MapToBeLoaded = null;
-            //Get item "Maps"
             foreach (JToken obj in MapList)
             {
-                if (obj.Value<string>("Index") == index)
+                if (Util.TryGet(out string s, obj, "Index") && s == index)
                 {
                     MapToBeLoaded = obj;
                     break;
                 }
             }
-            Point mapSize = MapToBeLoaded.Value<JToken>("Size").ToObject<Point>();
-            int grid = MapToBeLoaded["Grid"].ToObject<int>();
+            if (Util.TryGet(out Point mapSize, MapToBeLoaded, "Size"))
+            {
+                Debug.WriteLine("Map size:" + mapSize);
+            }
+            else
+            {
+                Debug.WriteLine("Deserialize fail: No map size provided!");
+            }
+            if (Util.TryGet(out int grid, MapToBeLoaded, "Grid"))
+            {
+                Debug.WriteLine("Grid size:" + grid);
+            }
+            else
+            {
+                grid = 32;
+                Debug.WriteLine("No grid size provided, using default value: 32.");
+            }
 
-            IList<JToken> Structures = MapToBeLoaded.Value<JToken>("Entity").ToList();
+            if (Util.TryGet(out IList<JToken> entities, MapToBeLoaded, "Entity"))
+            {
+                Debug.WriteLine("Entities token loaded successfully!");
+            }
+
             world = new GameWorld(mapSize);
             serializers.Converters.Add(new GameEntityConverter(model, graphicsDevice, world, grid));
             serializers.Converters.Add(new CharacterConverter(world, grid));
-
-            foreach (JToken jToken in Structures)
+            if (entities != null)
             {
-                EncapsulatedObject<IGameObject> gameObjs = jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
-                if (gameObjs != null)
+                foreach (JToken jToken in entities)
                 {
-                    foreach (IGameObject gameObj in gameObjs.RealObj)
+                    EncapsulatedObject<IGameObject> gameObjs =
+                        jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
+                    if (gameObjs != null)
                     {
-                        world.Add(gameObj);
+                        foreach (IGameObject gameObj in gameObjs.RealObj)
+                        {
+                            world.Add(gameObj);
+                        }
                     }
                 }
             }
 
-            IList<JToken> Characters = MapToBeLoaded.Value<JToken>("Characters").ToList();
-            foreach (JToken obj in Characters)
+            if (Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints"))
             {
-                EncapsulatedObject<PlayerMario> temp = obj.ToObject<EncapsulatedObject<PlayerMario>>(serializers);
-                PlayerMario mario = temp.RealObj.Pop();
-                character = mario;
-                world.Add(mario);
-                //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
+                foreach (var point in respawnPoints)
+                {
+                    world.AddRespawnPoint(point);
+                }
             }
+            if (Util.TryGet(out IList<JToken> characters, MapToBeLoaded, "Characters"))
+            {
+                Debug.WriteLine("Characters token loaded successfully!");
+            }
+            if (characters != null)
+            {
+                foreach (JToken obj in characters)
+                {
+                    EncapsulatedObject<PlayerMario> temp = obj.ToObject<EncapsulatedObject<PlayerMario>>(serializers);
+                    PlayerMario mario = temp.RealObj.Pop();
+                    character = mario;
+                    world.Add(mario);
+                    //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
+                }
+            }
+            //if (character == null) return world;
             return new Tuple<IGameWorld, IPlayer>(world, character);
         }
 
