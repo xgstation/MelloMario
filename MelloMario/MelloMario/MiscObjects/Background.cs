@@ -13,15 +13,15 @@ namespace MelloMario.MiscObjects
             ShowSprite(SpriteFactory.Instance.CreateSceneSprite(type, targetZIndex));
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnSimulation(int time)
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
