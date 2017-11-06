@@ -17,11 +17,11 @@ namespace MelloMario.MiscObjects
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnSimulation(GameTime time)
         {
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
         }
 

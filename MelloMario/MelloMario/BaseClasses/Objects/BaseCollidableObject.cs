@@ -112,7 +112,7 @@ namespace MelloMario
 
             foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(World.Boundary))
             {
-                OnOut(pair.Item1);
+                OnCollideCamera(pair.Item1);
             }
         }
 
@@ -138,8 +138,8 @@ namespace MelloMario
         };
 
         protected abstract void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive);
-        protected abstract void OnSeen(IPlayer player, CollisionMode mode);
-        protected abstract void OnOut(CollisionMode mode);
+        protected abstract void OnCollideViewport(IPlayer player, CollisionMode mode);
+        protected abstract void OnCollideCamera(CollisionMode mode);
 
         protected void Move(Point delta)
         {
