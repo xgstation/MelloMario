@@ -172,33 +172,39 @@ namespace MelloMario
             {
                 CollideAll();
 
+                Point location = Boundary.Location;
+
                 // Since each update is a very small iteration, the order does not matter.
 
                 while (movement.X < 0)
                 {
-                    Relocate(new Point(-1, 0));
+                    location.X -= 1;
                     movement.X += 1;
+                    Relocate(location);
                     CollideAll();
                 }
 
                 while (movement.X > 0)
                 {
-                    Relocate(new Point(1, 0));
+                    location.X += 1;
                     movement.X -= 1;
+                    Relocate(location);
                     CollideAll();
                 }
 
                 while (movement.Y < 0)
                 {
-                    Relocate(new Point(0, -1));
+                    location.Y -= 1;
                     movement.Y += 1;
+                    Relocate(location);
                     CollideAll();
                 }
 
                 while (movement.Y > 0)
                 {
-                    Relocate(new Point(0, 1));
+                    location.Y += 1;
                     movement.Y -= 1;
+                    Relocate(location);
                     CollideAll();
                 }
             }
