@@ -7,7 +7,7 @@ namespace MelloMario.MarioObjects
     {
         private Vector2 userInput;
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             ApplyForce(userInput);
             userInput.X = 0;

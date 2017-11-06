@@ -4,7 +4,7 @@ namespace MelloMario.MarioObjects.ProtectionStates
 {
     class Protected : BaseTimedState<Mario>, IMarioProtectionState
     {
-        protected override void OnTimer(GameTime time)
+        protected override void OnTimer(int time)
         {
             Owner.ProtectionState = new Normal(Owner);
         }

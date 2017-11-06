@@ -31,7 +31,7 @@ namespace MelloMario.MarioObjects.MovementStates
             Owner.MovementState = new Walking(Owner);
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
             //sprite.Update(game);
         }

@@ -51,14 +51,14 @@ namespace MelloMario.MarioObjects
             UpdateSprite();
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             movementState.Update(time);
             powerUpState.Update(time);
             protectionState.Update(time);
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnSimulation(int time)
         {
             ApplyGravity();
             ApplyHorizontalFriction(FORCE_F_AIR);
@@ -243,18 +243,19 @@ namespace MelloMario.MarioObjects
             Bounce(mode, new Vector2());
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
             if (protectionState is Protected)
             {
-                if (time.TotalGameTime.Milliseconds % 3 == 0)
-                {
-                    HideSprite();
-                }
-                else
-                {
-                    UpdateSprite();
-                }
+                // TODO
+                //if (time.TotalGameTime.Milliseconds % 3 == 0)
+                //{
+                //    HideSprite();
+                //}
+                //else
+                //{
+                //    UpdateSprite();
+                //}
             }
         }
 

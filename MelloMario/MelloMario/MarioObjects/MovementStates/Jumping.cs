@@ -7,7 +7,7 @@ namespace MelloMario.MarioObjects.MovementStates
         private IMarioMovementState previous;
         private bool finished;
 
-        protected override void OnTimer(GameTime time)
+        protected override void OnTimer(int time)
         {
             finished = true;
         }
