@@ -113,7 +113,6 @@
     <Compile Include="Interfaces\Containers\IContainer.cs" />
     <Compile Include="Interfaces\Factories\ICommandFactory.cs" />
     <Compile Include="Interfaces\Factories\IGameObjectFactory.cs" />
-    <Compile Include="Interfaces\Containers\IGameSession.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IScript.cs" />
     <Compile Include="Interfaces\IGameModel.cs" />

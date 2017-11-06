@@ -108,31 +108,7 @@ namespace MelloMario
             {
                 OnDraw(time, viewport, zIndex);
 
-                Point offset = viewport.Location;
-
-                switch (zIndex)
-                {
-                    case ZIndex.hud:
-                        offset.X = 0;
-                        offset.Y = 0;
-                        break;
-                    case ZIndex.background0:
-                        offset.X = offset.X / 3;
-                        offset.Y = offset.Y * 2 / 3;
-                        break;
-                    case ZIndex.background1:
-                        offset.X = offset.X / 2;
-                        offset.Y = offset.Y * 3 / 4;
-                        break;
-                    case ZIndex.background2:
-                        offset.X = offset.X * 2 / 3;
-                        break;
-                    case ZIndex.background3:
-                        offset.X = offset.X * 3 / 4;
-                        break;
-                }
-
-                sprite.Draw(time, new Rectangle(Boundary.Location - offset, Boundary.Size), zIndex);
+                sprite.Draw(time, new Rectangle(Boundary.Location - viewport.Location, Boundary.Size), zIndex);
             }
         }
     }

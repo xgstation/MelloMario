@@ -116,9 +116,9 @@ namespace MelloMario
                 time.ElapsedGameTime = new TimeSpan();
             }
 
-            foreach (IGameObject obj in world.ScanNearby(player.Viewport))
+            foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
-                foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
+                foreach (IGameObject obj in world.ScanNearby(player.Viewport))
                 {
                     obj.Draw(time, player.Viewport, zIndex);
                 }
