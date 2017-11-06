@@ -59,9 +59,13 @@ namespace MelloMario
             {
                 using (var reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice))
                 {
+                    reader.SetModel(this);
                     Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
+                    currentWorldIndex = index;
+                    GC.KeepAlive(currentWorld);
                     worlds.Add(currentWorldIndex, currentWorld);
                     currentWorld = pair.Item1;
+                    //GC.ReRegisterForFinalize(currentWorld);
                 }
             }
 
@@ -77,6 +81,8 @@ namespace MelloMario
                 Tuple<IGameWorld, IPlayer> pair = reader.Load();
                 currentWorld = pair.Item1;
                 player = pair.Item2;
+                if(!worlds.ContainsKey(currentWorldIndex))
+                    worlds.Add(currentWorldIndex,currentWorld);
                 isPaused = false;
                 new PlayingScript().Bind(controllers, this, player);
             }
