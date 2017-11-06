@@ -104,7 +104,7 @@ namespace MelloMario
 
         public void Draw(GameTime time, Rectangle viewport, ZIndex zIndex)
         {
-            if (sprite != null && zIndex == sprite.ZIndex)
+            if (sprite != null)
             {
                 OnDraw(time, viewport, zIndex);
 

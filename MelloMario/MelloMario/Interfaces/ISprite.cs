@@ -17,7 +17,6 @@ namespace MelloMario
     interface ISprite
     {
         Point PixelSize { get; }
-        ZIndex ZIndex { get; }
 
         void Draw(GameTime time, Rectangle destination, ZIndex zIndex);
     }

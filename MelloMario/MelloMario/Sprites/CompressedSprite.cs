@@ -83,7 +83,10 @@ namespace MelloMario.Sprites
 
         public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
         {
-            spriteBatch.Draw(renderTarget, destination, Color.White);
+            if (zIndex == activeZIndex)
+            {
+                spriteBatch.Draw(renderTarget, destination, Color.White);
+            }
         }
     }
 }
