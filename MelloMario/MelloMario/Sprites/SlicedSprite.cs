@@ -5,7 +5,7 @@ namespace MelloMario.Sprites
 {
     class SlicedSprite : BaseSprite
     {
-        protected override void OnAnimate(GameTime time)
+        protected override void OnAnimate(int time)
         {
             // Do nothing
         }

@@ -34,11 +34,11 @@ namespace MelloMario.Sprites.BlockSprites
             elapsed = 0;
         }
 
-        public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
+        public void Draw(int time, Rectangle destination, ZIndex zIndex)
         {
             if (zIndex == ZIndex.foreground)
             {
-                elapsed += time.ElapsedGameTime.Milliseconds;
+                elapsed += time;
 
                 int offsetX;
                 int offsetY;

@@ -81,7 +81,7 @@ namespace MelloMario.Sprites
             graphicDevice.SetRenderTarget(null);
         }
 
-        public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
+        public void Draw(int time, Rectangle destination, ZIndex zIndex)
         {
             if (zIndex == activeZIndex)
             {
