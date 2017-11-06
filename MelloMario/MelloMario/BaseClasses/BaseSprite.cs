@@ -11,6 +11,7 @@ namespace MelloMario.Sprites
         private Point size;
         private ZIndex activeZIndex;
         private Color color;
+        private bool visible;
 
         protected abstract void OnAnimate(int time);
 
@@ -22,6 +23,11 @@ namespace MelloMario.Sprites
         protected void ChangeColor(Color newColor)
         {
             color = newColor;
+        }
+
+        protected void Toggle()
+        {
+            visible = !visible;
         }
 
         public Point PixelSize
@@ -48,11 +54,12 @@ namespace MelloMario.Sprites
             this.size = size;
             this.activeZIndex = activeZIndex;
             color = Color.White;
+            visible = true;
         }
 
         public void Draw(int time, Rectangle destination, ZIndex zIndex)
         {
-            if (zIndex == activeZIndex)
+            if (visible && zIndex == activeZIndex)
             {
                 OnAnimate(time);
 

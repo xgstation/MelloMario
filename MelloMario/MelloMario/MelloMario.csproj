@@ -164,6 +164,7 @@
     <Compile Include="MarioObjects\ProtectionStates\Protected.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Starred.cs" />
     <Compile Include="Sprites\CompressedSprite.cs" />
+    <Compile Include="Sprites\FlashingAnimatedSprite.cs" />
     <Compile Include="Sprites\FlickingAnimatedSprite.cs" />
     <Compile Include="Sprites\BlockSprites\BrickPieceSprite.cs" />
     <Compile Include="MarioObjects\Mario.cs" />
