@@ -14,7 +14,13 @@ namespace MelloMario.BlockObjects
         private bool isHidden;
         private bool hasInitialItem;
 
-        public bool HasInitialItem => hasInitialItem;
+        public bool HasInitialItem
+        {
+            get
+            {
+                return hasInitialItem;
+            }
+        }
 
         public void Initialize()
         {

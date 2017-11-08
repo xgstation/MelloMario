@@ -13,7 +13,13 @@ namespace MelloMario.BlockObjects
         private string type;
         private bool isSwitching = false;
         private int elapsed;
-        public string Type => type;
+        public string Type
+        {
+            get
+            {
+                return type;
+            }
+        }
 
         private void switchWorld()
         {

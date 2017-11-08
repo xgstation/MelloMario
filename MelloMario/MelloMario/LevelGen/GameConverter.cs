@@ -49,7 +49,10 @@ namespace MelloMario.LevelGen
         {
             jsonToken = JToken.Load(reader);
             MapListToken = Util.TryGet(out JToken t, jsonToken, "Maps") ? t : null;
-            if (MapListToken == null) return null;
+            if (MapListToken == null)
+            {
+                return null;
+            }
             MapToBeLoaded = null;
             foreach (JToken obj in MapListToken)
             {
