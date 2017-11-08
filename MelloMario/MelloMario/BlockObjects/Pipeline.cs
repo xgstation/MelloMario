@@ -25,8 +25,7 @@ namespace MelloMario.BlockObjects
             {
                 if (mario.MovementState is Crouching && GameDatabase.IsEntrance(this))
                 {
-                    string str = GameDatabase.GetEntranceIndex(this);
-                    model.SwitchWorld(str);
+                    model.SwitchWorld(GameDatabase.GetEntranceIndex(this));
                 }
             }
         }
