@@ -643,3 +643,10 @@
 /processorParam:Quality=Best
 /build:SFX/smb_world_clear.wav
 
+#begin font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:font.spritefont
+

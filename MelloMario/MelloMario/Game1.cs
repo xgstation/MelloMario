@@ -16,6 +16,8 @@ namespace MelloMario
         private LevelIOJson reader;
         private GameModel model;
         private SpriteBatch spriteBatch;
+        private SpriteFont font;
+        private float timer = 400;
 
         public Game1()
         {
@@ -60,6 +62,7 @@ namespace MelloMario
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.BindSpriteBatch(spriteBatch);
+            font = Content.Load<SpriteFont>("font");
         }
 
         /// <summary>
@@ -80,6 +83,7 @@ namespace MelloMario
         protected override void Update(GameTime time)
         {
             base.Update(time);
+            timer -= (float)time.ElapsedGameTime.TotalSeconds;
 
             model.Update(time.ElapsedGameTime.Milliseconds);
         }
@@ -97,6 +101,8 @@ namespace MelloMario
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
             //RasterizerState state = new RasterizerState();
             //state.FillMode = FillMode.WireFrame;
+            spriteBatch.DrawString(font, "TIME", new Vector2(750, 0), Color.White);
+            spriteBatch.DrawString(font, timer.ToString("0"), new Vector2(750, 25), Color.White);
             model.Draw(time.ElapsedGameTime.Milliseconds);
             spriteBatch.End();
         }
