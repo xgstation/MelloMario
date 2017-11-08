@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
@@ -21,7 +22,7 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Bump(Mario mario)
         {
-            if (Owner.HasItem)
+            if (GameDatabase.HasItemEnclosed(Owner))
             {
                 Owner.State = new Bumped(Owner);
             }

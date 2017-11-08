@@ -11,7 +11,19 @@ namespace MelloMario.BlockObjects
     {
         private IBlockState state;
         private IGameObject item;
-
+        private bool isHidden;
+        public void Initialize()
+        {
+            if (isHidden)
+            {
+                state = new Hidden(this);
+            }
+            else
+            {
+                state = new Normal(this);
+            }
+            UpdateSprite();
+        }
         private void UpdateSprite()
         {
             if (state is Hidden)
@@ -75,20 +87,9 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public Question(IGameWorld world, Point location, bool isHidden = false) : this(world, location, new List<IGameObject>(), isHidden)
+        public Question(IGameWorld world, Point location, bool isHidden = false) : base(world, location, new Point(32, 32))
         {
-        }
-
-        public Question(IGameWorld world, Point location, IList<IGameObject> items, bool isHidden = false) : base(world, location, new Point(32, 32))
-        {
-            if (isHidden)
-            {
-                state = new Hidden(this);
-            }
-            else
-            {
-                state = new Normal(this);
-            }
+            this.isHidden = isHidden;
         }
 
         public void Bump(Mario mario)
