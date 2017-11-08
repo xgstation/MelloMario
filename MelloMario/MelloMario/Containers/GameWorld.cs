@@ -11,6 +11,7 @@ namespace MelloMario.Containers
         private Point size;
         private Point initialPoint;
         private ISet<Point> respawnPoints;
+        
 
         protected override Point GetKey(IGameObject value)
         {

@@ -79,6 +79,8 @@ namespace MelloMario
             reader.SetModel(this);
             Tuple<IGameWorld, IPlayer> pair = reader.Load(currentWorldIndex);
             currentWorld = pair.Item1;
+            currentWorld.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlagTop", currentWorld, new Point(10*32, 13*32)));
+            currentWorld.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlag", currentWorld, new Point(10*32, 14*32)));
             player = pair.Item2;
             if (!worlds.ContainsKey(currentWorldIndex))
             {

@@ -45,7 +45,7 @@ namespace MelloMario.Collision
             Rectangle objectBoundary = func(obj);
             int index = -1;
             Point middlePoint = boundary.Center;
-            bool topSide = objectBoundary.Bottom < middlePoint.Y && objectBoundary;
+            //bool topSide = objectBoundary.Bottom < middlePoint.Y && objectBoundary;
             return index;
         }
     }

@@ -12,6 +12,7 @@ namespace MelloMario
         ISprite CreateMarioSprite(string status, string protectionStatus, bool isStatic);
 
         ISprite CreateGoombaSprite(string status);
+        ISprite CreateFlagSprite(bool status);
         ISprite CreateGreenKoopaSprite(string status);
         ISprite CreateRedKoopaSprite(string status);
 

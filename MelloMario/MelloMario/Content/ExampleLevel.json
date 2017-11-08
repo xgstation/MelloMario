@@ -131,6 +131,13 @@
           }
         },
         {
+          "Type": "EndFlag",
+          "Point": {
+            "X": 4,
+            "Y": 31
+          }
+        },
+        {
           "Type": "Question",
           "Point": {
             "X": 5,
@@ -248,8 +255,8 @@
             "Length": 3,
             "Direction": "V",
             "Entrance": "1-1-2",
-            "Index":"Main-1",
-            "Portal":"1-1-2-1"
+            "Index": "Main-1",
+            "Portal": "1-1-2-1"
           }
         },
         {
