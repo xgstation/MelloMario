@@ -35,8 +35,7 @@ namespace MelloMario
         protected override void Initialize()
         {
             base.Initialize();
-
-            reader = new LevelIOJson("Content/ExampleLevel.json", graphics.GraphicsDevice);
+            
             model = new GameModel(this);
             IEnumerable<IController> controllers = new List<IController>
             {
@@ -71,7 +70,6 @@ namespace MelloMario
         /// </summary>
         protected override void UnloadContent()
         {
-            reader.Dispose();
             base.UnloadContent();
         }
 

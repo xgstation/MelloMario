@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Runtime.CompilerServices;
+using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.MarioObjects.MovementStates;
@@ -8,8 +9,20 @@ namespace MelloMario.BlockObjects
 {
     class Pipeline : BaseCollidableObject
     {
+        private static GameModel model;
         private string type;
-        private GameModel model;
+        private bool isSwitching = false;
+        private int elapsed;
+        public string Type => type;
+
+        private void switchWorld()
+        {
+            model.SwitchWorld(GameDatabase.GetEntranceIndex(this));
+        }
+        private static void SetModel(GameModel newModel)
+        {
+            model = newModel;
+        }
         private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(type));
@@ -17,15 +30,41 @@ namespace MelloMario.BlockObjects
 
         protected override void OnUpdate(int time)
         {
+            if (isSwitching)
+            {
+                elapsed += time;
+            }
+            if (isSwitching && elapsed > 500)
+            {
+                elapsed = 0;
+                isSwitching = false;
+                switchWorld();
+            }
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-            if (target is PlayerMario mario && mode is CollisionMode.Top)
+            if (target is PlayerMario mario && mode is CollisionMode.Top && !isSwitching)
             {
                 if (mario.MovementState is Crouching && GameDatabase.IsEntrance(this))
                 {
-                    model.SwitchWorld(GameDatabase.GetEntranceIndex(this));
+                    switch (type)
+                    {
+                        case "LeftIn":
+                            if (mario.Boundary.Center.X > Boundary.Center.X)
+                            {
+                                isSwitching = true;
+                            }
+                            break;
+                        case "RightIn":
+                            if (mario.Boundary.Center.X < Boundary.Center.X)
+                            {
+                                isSwitching = true;
+                            }
+                            break;
+                    }
+
+
                 }
             }
         }
@@ -44,7 +83,7 @@ namespace MelloMario.BlockObjects
 
         public Pipeline(IGameWorld world, Point location, string type, GameModel model) : this(world, location, type)
         {
-            this.model = model;
+            SetModel(model);
         }
 
         public Pipeline(IGameWorld world, Point location, string type) : base(world, location, new Point(32, 32))

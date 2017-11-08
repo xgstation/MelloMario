@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace MelloMario.LevelGen
 {
-    class LevelIOJson : IDisposable
+    class LevelIOJson
     {
         // Note: Without implementing IDisposable, it may cause resource leak
         //       The code analysis tool generates a warning here
@@ -33,15 +33,6 @@ namespace MelloMario.LevelGen
             gameConverter = new GameConverter(model, graphicsDevice, index);
             return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, gameConverter);
 
-        }
-
-        public void Dispose()
-        {
-            levelString = null;
-            path = null;
-            model = null;
-            graphicsDevice = null;
-            gameConverter = null;
         }
     }
 }

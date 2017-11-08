@@ -14,14 +14,15 @@ namespace MelloMario.MarioObjects
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-
+        
         private void UpdateSprite()
         {
+
             if (protectionState is Dead)
             {
                 ShowSprite(SpriteFactory.Instance.CreateMarioSprite(protectionState.GetType().Name, protectionState.GetType().Name, true));
             }
-            else
+            else if (!(movementState is Crouching && powerUpState is Standard))
             {
                 string facingString;
                 if (Facing == FacingMode.left)
@@ -119,9 +120,42 @@ namespace MelloMario.MarioObjects
                     }
 
                     break;
+                case "Pipeline":
+                    if (MovementState is Crouching && GameDatabase.IsEntrance((Pipeline)target))
+                    {
+                        var type = (target as Pipeline).Type;
+                        if (type == "LeftIn")
+                        {
+                            if (Boundary.Center.X > target.Boundary.Center.X)
+                            {
+                                Move(new Point(0, 3));
+                                StopHorizontalMovement();
+                            }
+                            else
+                            {
+                                goto case "Floor";
+                            }
+                        }
+                        else if (type == "RightIn")
+                        {
+                            if (Boundary.Center.X < target.Boundary.Center.X)
+                            {
+                                Move(new Point(0, 3));
+                            }
+                            else
+                            {
+                                goto case "Floor";
+                            }
+                        }
+                    
+                    }
+                    else
+                    {
+                        goto case "Floor";
+                    }
+                    break;
                 case "CompressedBlock":
                 case "Floor":
-                case "Pipeline":
                 case "Stair":
                     Bounce(mode, new Vector2());
                     if (mode == CollisionMode.Bottom)

@@ -190,6 +190,8 @@ namespace MelloMario.LevelGen
                 objToBePushed = Activator.CreateInstance(type, world, objPoint, propertyPair.Item1) as IGameObject;
                 if (list != null && list.Count != 0)
                     GameDatabase.SetEnclosedItem(objToBePushed, list);
+                if(type.Name == "Question") (objToBePushed as Question).Initialize();
+                if(type.Name == "Brick") (objToBePushed as Brick).Initialize();
                 stack.Push(objToBePushed);
             }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
@@ -197,41 +199,20 @@ namespace MelloMario.LevelGen
                 if (isSingle)
                 {
                     stack.Push(Activator.CreateInstance(type, world, objPoint, false) as BaseGameObject);
+                    if (type.Name == "Question") (objToBePushed as Question).Initialize();
+                    if (type.Name == "Brick") (objToBePushed as Brick).Initialize();
                 }
                 else
                 {
-                    ////TODO:optimize it
-                    //if (isQuestionOrBrick)
-                    //{
-                    Util.BatchCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, false), objPoint,
-                        quantity, new Point(32, 32), ignoredSet, grid, ref stack);
-                    //}
-                    //else
-                    //{
-                    //    BatchCreate(point => (IGameObject)Activator.CreateInstance(type, world, point, true), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
-                    //    objPoint = new Point(objPoint.X * grid, objPoint.Y * grid);
-                    //    var fullSize = new Point(32 * quantity.X, 32 * quantity.Y);
-                    //    var safeSize = graphicsDevice.DisplayMode.TitleSafeArea;
-                    //    if (fullSize.X <= safeSize.Width && fullSize.Y <= safeSize.Height)
-                    //    {
-                    //        stack.Push(new CompressedBlock(world, objPoint, fullSize, type));
-                    //    }
-                    //    else
-                    //    {
-                    //        var splitNumberX = fullSize.X / safeSize.Width;
-                    //        var splitNumberY = fullSize.Y / safeSize.Height;
-                    //        var remainX = fullSize.X % safeSize.Width;
-                    //        var remainY = fullSize.Y % safeSize.Height;
-                    //        for (int i = 0; i < splitNumberX; i++)
-                    //        {
-                    //            stack.Push(new CompressedBlock(world, new Point(objPoint.X + i * safeSize.Width, objPoint.Y), new Point(safeSize.Width, fullSize.Y), type));
-                    //        }
-                    //        if (remainX != 0)
-                    //        {
-                    //            stack.Push(new CompressedBlock(world, new Point(objPoint.X + splitNumberX * safeSize.Width, objPoint.Y), new Point(remainX, fullSize.Y), type));
-                    //        }
-                    //    }
-                    //}
+                    Util.BatchCreate(
+                        point =>
+                        {
+                            objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, false);
+                            if (type.Name == "Question") (objToBePushed as Question).Initialize();
+                            if (type.Name == "Brick") (objToBePushed as Brick).Initialize();
+                            return objToBePushed;
+                        }, 
+                        objPoint, quantity, new Point(32, 32), ignoredSet, grid, ref stack);
                 }
             }
             else if (type.Name == "Pipeline")

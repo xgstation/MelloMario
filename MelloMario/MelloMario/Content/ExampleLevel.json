@@ -247,7 +247,9 @@
           "Property": {
             "Length": 3,
             "Direction": "V",
-            "Entrance": "1-1-2"
+            "Entrance": "1-1-2",
+            "Index":"Main-1",
+            "Portal":"1-1-2-1"
           }
         },
         {
@@ -529,7 +531,9 @@
           "Property": {
             "Length": 2,
             "Direction": "V",
-            "Entrance": "Main"
+            "Entrance": "Main",
+            "Index": "1-1-2-1",
+            "PortalTo": "Main-1"
           }
         }
       ]
