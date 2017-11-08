@@ -17,12 +17,7 @@ namespace MelloMario.MarioObjects
 
         private void UpdateSprite()
         {
-            if (movementState is Crouching && powerUpState is Standard)
-            {
-                // TODO: this method should not be responsible for changing the state
-                movementState.Idle();
-            }
-            else if (protectionState is Dead)
+            if (protectionState is Dead)
             {
                 ShowSprite(SpriteFactory.Instance.CreateMarioSprite(protectionState.GetType().Name, protectionState.GetType().Name, true));
             }
