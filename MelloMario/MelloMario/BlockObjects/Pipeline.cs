@@ -36,15 +36,16 @@ namespace MelloMario.BlockObjects
             }
             if (isSwitching && elapsed > 500)
             {
+                switchWorld();
                 elapsed = 0;
                 isSwitching = false;
-                switchWorld();
+                model.IsSwitching = false;
             }
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-            if (target is PlayerMario mario && mode is CollisionMode.Top && !isSwitching)
+            if (target is PlayerMario mario && mode is CollisionMode.Top && !model.IsSwitching)
             {
                 if (mario.MovementState is Crouching && GameDatabase.IsEntrance(this))
                 {
@@ -54,12 +55,14 @@ namespace MelloMario.BlockObjects
                             if (mario.Boundary.Center.X > Boundary.Center.X)
                             {
                                 isSwitching = true;
+                                model.IsSwitching = true;
                             }
                             break;
                         case "RightIn":
                             if (mario.Boundary.Center.X < Boundary.Center.X)
                             {
                                 isSwitching = true;
+                                model.IsSwitching = true;
                             }
                             break;
                     }

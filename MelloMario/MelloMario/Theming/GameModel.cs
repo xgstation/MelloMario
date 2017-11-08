@@ -18,7 +18,7 @@ namespace MelloMario
         private IEnumerable<IController> controllers;
         private IPlayer player;
         private bool isPaused;
-
+        public bool IsSwitching { get; set; }
         public GameModel(Game1 game)
         {
             this.game = game;
