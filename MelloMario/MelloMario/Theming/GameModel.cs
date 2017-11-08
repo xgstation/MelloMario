@@ -52,18 +52,21 @@ namespace MelloMario
 
         public void SwitchWorld(string index)
         {
+            
             if (worlds.ContainsKey(index))
             {
                 currentWorld = worlds[index];
             }
             else
             {
-                LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
-                reader.SetModel(this);
-                Tuple<IGameWorld, IPlayer> pair = reader.Load();
-                currentWorldIndex = index;
-                worlds.Add(currentWorldIndex, currentWorld);
-                currentWorld = pair.Item1;
+                using (LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice))
+                {
+                    reader.SetModel(this);
+                    Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
+                    currentWorldIndex = index;
+                    currentWorld = pair.Item1;
+                    worlds.Add(currentWorldIndex, currentWorld);
+                }
             }
 
             player.Spawn(currentWorld);
@@ -75,7 +78,7 @@ namespace MelloMario
 
             LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
             reader.SetModel(this);
-            Tuple<IGameWorld, IPlayer> pair = reader.Load();
+            Tuple<IGameWorld, IPlayer> pair = reader.Load(currentWorldIndex);
             currentWorld = pair.Item1;
             player = pair.Item2;
             if (!worlds.ContainsKey(currentWorldIndex))

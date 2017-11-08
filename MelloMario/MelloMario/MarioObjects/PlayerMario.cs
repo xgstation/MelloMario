@@ -167,6 +167,7 @@ namespace MelloMario.MarioObjects
         public void Spawn(IGameWorld world)
         {
             World.Remove(this);
+            World.Update();
             World = world;
 
             World.Add(this);

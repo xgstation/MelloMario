@@ -27,7 +27,7 @@ namespace MelloMario.LevelGen
             this.model = model;
         }
 
-        public Tuple<IGameWorld, IPlayer> Load(string index = "Main")
+        public Tuple<IGameWorld, IPlayer> Load(string index)
         {
             levelString = File.ReadAllText(path);
             gameConverter = new GameConverter(model, graphicsDevice, index);
