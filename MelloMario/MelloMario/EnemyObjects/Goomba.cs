@@ -10,7 +10,6 @@ namespace MelloMario.EnemyObjects
     class Goomba : BasePhysicalObject
     {
         private IGoombaState state;
-        private float timeFromDeath;
         private const int VELOCITY_LR = 1;
 
         private void UpdateSprite()
@@ -139,7 +138,7 @@ namespace MelloMario.EnemyObjects
             {
                 Facing = FacingMode.right;
             }
-            timeFromDeath = 0;
+
             state = new Normal(this);
             UpdateSprite();
         }

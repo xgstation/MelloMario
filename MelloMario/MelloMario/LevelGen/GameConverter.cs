@@ -35,9 +35,9 @@ namespace MelloMario.LevelGen
             serializers = new JsonSerializer();
         }
 
-        public void SetIndex(string index)
+        public void SetIndex(string newIndex)
         {
-            this.index = index;
+            index = newIndex;
         }
         public override bool CanConvert(Type objectType)
         {

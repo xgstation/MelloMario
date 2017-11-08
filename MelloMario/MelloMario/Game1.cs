@@ -13,7 +13,6 @@ namespace MelloMario
     class Game1 : Game
     {
         private GraphicsDeviceManager graphics;
-        private LevelIOJson reader;
         private GameModel model;
         private SpriteBatch spriteBatch;
         private SpriteFont font;
@@ -35,7 +34,7 @@ namespace MelloMario
         protected override void Initialize()
         {
             base.Initialize();
-            
+
             model = new GameModel(this);
             IEnumerable<IController> controllers = new List<IController>
             {
@@ -81,7 +80,7 @@ namespace MelloMario
         protected override void Update(GameTime time)
         {
             base.Update(time);
-            timer -= (float)time.ElapsedGameTime.TotalSeconds;
+            timer -= (float) time.ElapsedGameTime.TotalSeconds;
 
             model.Update(time.ElapsedGameTime.Milliseconds);
         }
