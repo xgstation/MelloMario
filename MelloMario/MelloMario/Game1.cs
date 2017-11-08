@@ -101,7 +101,7 @@ namespace MelloMario
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
             //RasterizerState state = new RasterizerState();
             //state.FillMode = FillMode.WireFrame;
-            spriteBatch.DrawString(font, "TIME", new Vector2(750, 0), Color.White);
+            spriteBatch.DrawString(font, "TIME", new Vector2(730, 0), Color.White);
             spriteBatch.DrawString(font, timer.ToString("0"), new Vector2(750, 25), Color.White);
             model.Draw(time.ElapsedGameTime.Milliseconds);
             spriteBatch.End();
