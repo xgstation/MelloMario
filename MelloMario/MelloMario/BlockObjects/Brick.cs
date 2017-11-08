@@ -12,6 +12,7 @@ namespace MelloMario.BlockObjects
         private IList<IGameObject> items;
         private IGameObject item;
         private readonly bool hasInitialItem;
+
         private void UpdateSprite()
         {
             if (state is Hidden)
@@ -38,8 +39,23 @@ namespace MelloMario.BlockObjects
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
             }
         }
-        public bool HasItem { get { return item != null || items.Count != 0; } }
-        public bool HasInitialItem { get { return hasInitialItem; } }
+
+        public bool HasItem
+        {
+            get
+            {
+                return item != null || items.Count != 0;
+            }
+        }
+
+        public bool HasInitialItem
+        {
+            get
+            {
+                return hasInitialItem;
+            }
+        }
+
         private void LoadItem()
         {
             if (items.Count != 0)
@@ -53,7 +69,7 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             state.Update(time);
         }
@@ -62,11 +78,15 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnOut(CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnCollideWorld(CollisionMode mode)
+        {
+        }
+
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
@@ -88,6 +108,9 @@ namespace MelloMario.BlockObjects
             }
         }
 
+        public Brick(IGameWorld world, Point location) : this(world, location, false)
+        {
+        }
         public Brick(IGameWorld world, Point location, bool isHidden = false) : this(world, location, new List<IGameObject>(), isHidden)
         {
         }
@@ -111,24 +134,21 @@ namespace MelloMario.BlockObjects
             UpdateSprite();
         }
 
-
         public void Bump(Mario mario)
         {
             State.Bump(mario);
-
         }
 
         public void BumpMove(int delta)
         {
             Move(new Point(0, delta));
-
         }
 
         public void ReleaseNextItem()
         {
             if (item != null)
             {
-                World.AddObject(item);
+                World.Add(item);
                 LoadItem();
             }
         }

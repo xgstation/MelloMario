@@ -1,10 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MelloMario.EnemyObjects.KoopaStates
 {
@@ -29,7 +23,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
             Owner.State = new Defeated(Owner);
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
         }
 

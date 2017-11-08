@@ -2,12 +2,17 @@
 
 namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
-    class Unveil : BaseState<OneUpMushroom>, IItemState
+    class Unveil : BaseTimedState<OneUpMushroom>, IItemState
     {
         private float elapsed;
         private float realOffset;
 
-        public Unveil(OneUpMushroom owner) : base(owner)
+        protected override void OnTimer(int time)
+        {
+            Owner.State = new Normal(Owner);
+        }
+
+        public Unveil(OneUpMushroom owner) : base(owner, 1000)
         {
             elapsed = 0f;
         }
@@ -21,22 +26,17 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
         {
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
-            elapsed += time.ElapsedGameTime.Milliseconds;
-            realOffset += 32 * time.ElapsedGameTime.Milliseconds / 1000f;
-            if (elapsed >= 1000)
-            {
-                Show();
-            }
-            else
-            {
-                while (realOffset > 1)
-                {
-                    Owner.UnveilMove(-1);
-                    --realOffset;
-                }
+            base.Update(time);
 
+            elapsed += time;
+            realOffset += 32 * time / 1000f;
+
+            while (realOffset > 1)
+            {
+                Owner.UnveilMove(-1);
+                --realOffset;
             }
         }
     }

@@ -1,13 +1,7 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
-    interface IGameCharacter : IGameObject
+    interface ICharacter
     {
-        Rectangle Viewport { get; }
-
         void Left();
         void LeftPress();
         void LeftRelease();

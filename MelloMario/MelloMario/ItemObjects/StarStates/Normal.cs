@@ -1,11 +1,4 @@
-﻿using MelloMario.ItemObjects;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 
 namespace MelloMario.ItemObjects.StarStates
 {
@@ -23,7 +16,7 @@ namespace MelloMario.ItemObjects.StarStates
         {
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
         }
     }

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 
 namespace MelloMario
 {
@@ -8,7 +6,7 @@ namespace MelloMario
     {
         Rectangle Boundary { get; }
 
-        void Update(GameTime time);
-        void Draw(GameTime time, Rectangle viewport, ZIndex zIndex);
+        void Update(int time);
+        void Draw(int time, Rectangle viewport, ZIndex zIndex);
     }
 }

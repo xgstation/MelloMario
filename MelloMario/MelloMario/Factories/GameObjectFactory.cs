@@ -1,11 +1,9 @@
 ﻿using System;
-using MelloMario.Commands;
 using Microsoft.Xna.Framework;
 using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
 using MelloMario.ItemObjects;
 using MelloMario.MarioObjects;
-using System.Collections.Generic;
 using MelloMario.MiscObjects;
 
 namespace MelloMario.Factories
@@ -13,6 +11,7 @@ namespace MelloMario.Factories
     class GameObjectFactory : IGameObjectFactory
     {
         private const int SCALE = 32;
+
         // TODO: remove this later and use the collision between the camera and objects to "activate" objects' movement
         private Point marioLoc;
 
@@ -30,14 +29,15 @@ namespace MelloMario.Factories
                 return instance;
             }
         }
-        public Tuple<IGameCharacter, IGameObject> CreateGameCharacter(string type, IGameWorld world, Point location)
+
+        public Tuple<ICharacter, IGameObject> CreateGameCharacter(string type, IGameWorld world, Point location)
         {
             switch (type)
             {
                 case "Mario":
                     marioLoc = location;
                     PlayerMario mario = new PlayerMario(world, marioLoc);
-                    return new Tuple<IGameCharacter, IGameObject>(mario, mario);
+                    return new Tuple<ICharacter, IGameObject>(mario, mario);
                 default:
                     return null;
             }
@@ -102,10 +102,13 @@ namespace MelloMario.Factories
 
                 //others
                 case "ShortCloud":
+                    return new Background(world, location, type, ZIndex.background0);
                 case "ShortSmileCloud":
+                    return new Background(world, location, type, ZIndex.background1);
                 case "LongCloud":
+                    return new Background(world, location, type, ZIndex.background2);
                 case "LongSmileCloud":
-                    return new Background(world, location, type);
+                    return new Background(world, location, type, ZIndex.background3);
 
                 default:
                     return null;

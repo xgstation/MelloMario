@@ -5,6 +5,7 @@
         public Reset(IGameModel model) : base(model)
         {
         }
+
         public override void Execute()
         {
             Receiver.Reset();

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using MelloMario.Factories;
+﻿using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
@@ -23,7 +17,7 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Show()
         {
-            if (Owner.HasItem)
+            if (GameDatabase.HasItemEnclosed(Owner))
             {
                 Owner.State = new Normal(Owner);
             }
@@ -43,13 +37,14 @@ namespace MelloMario.BlockObjects.QuestionStates
             // do nothing
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
+            // TODO: use BaseTimedState
             if (elapsed >= 70)
             {
                 move = 0;
             }
-            elapsed += time.ElapsedGameTime.Milliseconds;
+            elapsed += time;
             move += 3;
             if (elapsed >= 170)
             {

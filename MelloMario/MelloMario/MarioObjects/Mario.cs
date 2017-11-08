@@ -5,6 +5,7 @@ using MelloMario.MarioObjects.PowerUpStates;
 using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.MarioObjects
 {
@@ -13,7 +14,6 @@ namespace MelloMario.MarioObjects
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-
 
         private void UpdateSprite()
         {
@@ -24,7 +24,7 @@ namespace MelloMario.MarioObjects
             }
             else if (protectionState is Dead)
             {
-                ShowSprite(SpriteFactory.Instance.CreateMarioSprite(protectionState.GetType().Name, true));
+                ShowSprite(SpriteFactory.Instance.CreateMarioSprite(protectionState.GetType().Name, protectionState.GetType().Name, true));
             }
             else
             {
@@ -39,8 +39,8 @@ namespace MelloMario.MarioObjects
                 }
 
                 ShowSprite(SpriteFactory.Instance.CreateMarioSprite(
-                    powerUpState.GetType().Name + movementState.GetType().Name + facingString,
-                    !(movementState is Walking), protectionState is Starred));
+                    powerUpState.GetType().Name + movementState.GetType().Name + facingString, protectionState.GetType().Name,
+                    !(movementState is Walking)));
             }
         }
 
@@ -52,18 +52,18 @@ namespace MelloMario.MarioObjects
             UpdateSprite();
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             movementState.Update(time);
             powerUpState.Update(time);
             protectionState.Update(time);
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnSimulation(int time)
         {
             ApplyGravity();
-            ApplyHorizontalFriction(FORCE_F_AIR);
-            ApplyVerticalFriction(FORCE_F_AIR);
+            ApplyHorizontalFriction(GameConst.FORCE_F_AIR);
+            ApplyVerticalFriction(GameConst.FORCE_F_AIR);
 
             base.OnSimulation(time);
         }
@@ -80,12 +80,14 @@ namespace MelloMario.MarioObjects
                     bool isHidden;
                     bool isBumping;
 
-                    if (target is Brick brick)
+                    Brick brick = target as Brick;
+                    Question question = target as Question;
+                    if (brick != null)
                     {
                         isHidden = brick.State is BlockObjects.BrickStates.Hidden;
                         isBumping = brick.State is BlockObjects.BrickStates.Bumped;
                     }
-                    else if (target is Question question)
+                    else if (question != null)
                     {
                         isHidden = question.State is BlockObjects.QuestionStates.Hidden;
                         isBumping = question.State is BlockObjects.QuestionStates.Bumped;
@@ -96,25 +98,23 @@ namespace MelloMario.MarioObjects
                         isHidden = false;
                         isBumping = false;
                     }
-                    
+
                     if (mode == CollisionMode.Top)
                     {
-                        if (Bounce(mode, new Vector2(), 1))
+                        Bounce(mode, new Vector2(), 1);
+                        if (isBumping)
                         {
-                            if (isBumping)
+                            //Move(new Point(0, 1));
+                        }
+                        else
+                        {
+                            if (brick != null)
                             {
-                                Move(new Point(0, 1));
+                                brick.Bump(this);
                             }
-                            else
+                            else if (question != null)
                             {
-                                if (target is Brick brick1)
-                                {
-                                    brick1.Bump(this);
-                                }
-                                else if (target is Question question1)
-                                {
-                                    question1.Bump(this);
-                                }
+                                question.Bump(this);
                             }
                         }
                     }
@@ -124,16 +124,15 @@ namespace MelloMario.MarioObjects
                     }
 
                     break;
+                case "CompressedBlock":
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
-                    if (Bounce(mode, new Vector2()))
+                    Bounce(mode, new Vector2());
+                    if (mode == CollisionMode.Bottom)
                     {
-                        if (mode == CollisionMode.Bottom)
-                        {
-                            ApplyHorizontalFriction(FORCE_F_GROUND);
-                            MovementState.Land();
-                        }
+                        ApplyHorizontalFriction(GameConst.FORCE_F_GROUND);
+                        MovementState.Land();
                     }
 
                     break;
@@ -144,7 +143,6 @@ namespace MelloMario.MarioObjects
                         {
                             Downgrade();
                         }
-
                     }
                     else if (!(protectionState is Starred))
                     {
@@ -167,9 +165,9 @@ namespace MelloMario.MarioObjects
                     //            Downgrade();
                     //    }
                     //}
-                    if(target is Koopa koopa)
+                    if (target is Koopa)
                     {
-                        if(!(ProtectionState is Starred))
+                        if (!(ProtectionState is Starred))
                         {
                             if (mode is CollisionMode.Bottom)
                             {
@@ -185,15 +183,14 @@ namespace MelloMario.MarioObjects
                                 {
                                     Bounce(mode, new Vector2(0, -5f), 1f);
                                 }
-
                             }
                             else if (mode is CollisionMode.Left || mode is CollisionMode.Right)
                             {
-                                    Bounce(mode, new Vector2(), -0.5f);
+                                Bounce(mode, new Vector2(), -0.5f);
                             }
                         }
                     }
-                        
+
                     //else if (!(protectionState is Starred))
                     //{
                     //    Bounce(mode, new Vector2(0, -5f), 1f);
@@ -201,46 +198,62 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Coin":
-                    if (((ItemObjects.Coin)target).State is ItemObjects.CoinStates.Normal) { }
+                    if (((ItemObjects.Coin) target).State is ItemObjects.CoinStates.Normal)
+                    {
+                    }
                     // TODO: implement coins count
                     break;
                 case "FireFlower":
-                    if (((ItemObjects.FireFlower)target).State is ItemObjects.FireFlowerStates.Normal)
+                    if (((ItemObjects.FireFlower) target).State is ItemObjects.FireFlowerStates.Normal)
+                    {
                         PowerUpState.UpgradeToFire();
+                    }
                     break;
                 case "OneUpMushroom":
-                    if (((ItemObjects.OneUpMushroom)target).State is ItemObjects.OneUpMushroomStates.Normal) { }
+                    if (((ItemObjects.OneUpMushroom) target).State is ItemObjects.OneUpMushroomStates.Normal)
+                    {
+                    }
                     // TODO: implement +1s
                     break;
                 case "Star":
-                    if (((ItemObjects.Star)target).State is ItemObjects.StarStates.Normal)
+                    if (((ItemObjects.Star) target).State is ItemObjects.StarStates.Normal)
+                    {
                         ProtectionState.Star();
+                    }
                     break;
                 case "SuperMushroom":
-                    if (((ItemObjects.SuperMushroom)target).State is ItemObjects.SuperMushroomStates.Normal &&
+                    if (((ItemObjects.SuperMushroom) target).State is ItemObjects.SuperMushroomStates.Normal &&
                         PowerUpState is Standard)
+                    {
                         PowerUpState.UpgradeToSuper();
+                    }
                     break;
             }
         }
 
-        protected override void OnOut(CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
+        {
+        }
+
+        protected override void OnCollideWorld(CollisionMode mode)
         {
             Bounce(mode, new Vector2());
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
             if (protectionState is Protected)
-                if (time.TotalGameTime.Milliseconds % 3 == 0)
-                {
-                    HideSprite();
-                }
-                else
-                {
-                    UpdateSprite();
-                }
-
+            {
+                // TODO
+                //if (time.TotalGameTime.Milliseconds % 3 == 0)
+                //{
+                //    HideSprite();
+                //}
+                //else
+                //{
+                //    UpdateSprite();
+                //}
+            }
         }
 
         public IMarioMovementState MovementState
@@ -255,6 +268,7 @@ namespace MelloMario.MarioObjects
                 UpdateSprite();
             }
         }
+
         public IMarioPowerUpState PowerUpState
         {
             get
@@ -267,6 +281,7 @@ namespace MelloMario.MarioObjects
                 UpdateSprite();
             }
         }
+
         public IMarioProtectionState ProtectionState
         {
             get
@@ -300,12 +315,14 @@ namespace MelloMario.MarioObjects
 
         public void Downgrade()
         {
-
             if (protectionState is Normal)
+            {
                 PowerUpState.Downgrade();
-            if ((protectionState is Normal))
+            }
+            if (protectionState is Normal)
+            {
                 protectionState.Protect();
+            }
         }
-
     }
 }

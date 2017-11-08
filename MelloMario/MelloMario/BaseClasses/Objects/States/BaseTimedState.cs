@@ -11,21 +11,21 @@ namespace MelloMario
         {
             get
             {
-                return (float)elapsed / interval;
+                return (float) elapsed / interval;
             }
         }
 
-        protected abstract void OnTimer(GameTime time);
+        protected abstract void OnTimer(int time);
 
         public BaseTimedState(T owner, int interval) : base(owner)
         {
             this.interval = interval;
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
             // Note: if we will support recording/replaying, use a constant number here
-            elapsed += time.ElapsedGameTime.Milliseconds;
+            elapsed += time;
 
             if (elapsed >= interval)
             {

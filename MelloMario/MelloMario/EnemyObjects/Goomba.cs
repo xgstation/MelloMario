@@ -3,85 +3,68 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.GoombaStates;
 using MelloMario.BlockObjects;
-using System.Diagnostics;
+using MelloMario.Theming;
 
 namespace MelloMario.EnemyObjects
 {
     class Goomba : BasePhysicalObject
     {
-
         private IGoombaState state;
         private float timeFromDeath;
         private const int VELOCITY_LR = 1;
-        private bool move;
+
         private void UpdateSprite()
         {
-         
-            ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name)); 
+            ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name));
         }
 
-
-
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
-            
             state.Update(time);
-            if (state is Defeated)
+        }
+
+        protected override void OnSimulation(int time)
+        {
+            ApplyGravity();
+            if (Facing == FacingMode.right)
             {
-                timeFromDeath += (float)time.ElapsedGameTime.TotalMilliseconds;
-                if (timeFromDeath > 1000f)
-                {
-                    RemoveSelf();
-                }
+                Move(new Point(VELOCITY_LR, 0));
             }
             else
             {
-                if (move)
-                {
-                    ApplyGravity();
-                    if (Facing == FacingMode.right)
-                    {
-                        Move(new Point(VELOCITY_LR, 0));
-                       
-                    }
-                    else
-                    {
-                        Move(new Point(-VELOCITY_LR, 0));
-                       
-                    }
-                }
-                if (World.Model.Character != null && !move)
-                {
-                    move = Boundary.Intersects(World.Model.Character.Viewport);
-                }
-                else
-                {
-                    move = true;
-                }
+                Move(new Point(-VELOCITY_LR, 0));
             }
-           
-            }
-        
+
+            base.OnSimulation(time);
+        }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-            switch(target.GetType().Name)
+            if (state is Defeated)
+            {
+                return;
+            }
+            switch (target.GetType().Name)
             {
                 case "PlayerMario":
                     //TODO: Fire to be added
-                    Mario mario = (Mario)target;
+                    Mario mario = (Mario) target;
                     if (mode == CollisionMode.Top || mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
                     {
                         Defeat();
                     }
                     break;
                 case "Brick":
-                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                    if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Question":
-                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Floor":
                 case "Pipeline":
@@ -99,28 +82,30 @@ namespace MelloMario.EnemyObjects
                     else if (mode == CollisionMode.Bottom)
                     {
                         Bounce(mode, new Vector2());
-
+                    }
+                    break;
+                case "Koopa":
+                    if (target is Koopa koopa)
+                    {
+                        if (koopa.State is KoopaStates.MovingShell)
+                        {
+                            Defeat();
+                        }
                     }
                     break;
             }
-            if (target is Koopa koopa)
-            {
-                if (koopa.State is KoopaStates.MovingShell)
-                {
-                    Defeat();
-                }
-            }
-
         }
 
-        protected override void OnOut(CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnCollideWorld(CollisionMode mode)
         {
+        }
 
-
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
+        {
         }
 
         public IGoombaState State
@@ -134,7 +119,6 @@ namespace MelloMario.EnemyObjects
                 state = value;
                 UpdateSprite();
             }
-
         }
 
         private void ChangeFacing(FacingMode facing)
@@ -144,10 +128,9 @@ namespace MelloMario.EnemyObjects
             // Notice: The effect should be the same as changing state
             UpdateSprite();
         }
-
+        public Goomba(IGameWorld world, Point location) : this(world, location, GameDatabase.GetCharacterLocation()) { }
         public Goomba(IGameWorld world, Point location, Point marioLoc) : base(world, location, new Point(32, 32), 32)
         {
-            
             if (marioLoc.X < location.X)
             {
                 Facing = FacingMode.left;
@@ -156,7 +139,6 @@ namespace MelloMario.EnemyObjects
             {
                 Facing = FacingMode.right;
             }
-            move = false;
             timeFromDeath = 0;
             state = new Normal(this);
             UpdateSprite();

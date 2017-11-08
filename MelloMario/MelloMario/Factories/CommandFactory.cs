@@ -1,6 +1,4 @@
-﻿using System;
-using MelloMario.Commands;
-using MelloMario.MarioObjects;
+﻿using MelloMario.Commands;
 
 namespace MelloMario.Factories
 {
@@ -20,7 +18,7 @@ namespace MelloMario.Factories
             }
         }
 
-        public ICommand CreateGameControlCommand(string action, IGameModel model)
+        public ICommand CreateModelCommand(string action, IGameModel model)
         {
             switch (action)
             {
@@ -28,10 +26,11 @@ namespace MelloMario.Factories
                     return new ToggleFullScreen(model);
                 case "Pause":
                     return new Pause(model);
+                case "Resume":
+                    return new Resume(model);
                 case "Reset":
                     return new Reset(model);
                 case "Quit":
-                    Console.WriteLine("Reached");
                     return new Quit(model);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
@@ -41,12 +40,12 @@ namespace MelloMario.Factories
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        public ICommand CreateGameCharacterCommand(string action, IGameCharacter character)
+        public ICommand CreateCharacterCommand(string action, ICharacter character)
         {
             switch (action)
             {
                 case "Action":
-                    return new Commands.Action(character);
+                    return new Action(character);
                 case "Crouch":
                     return new Crouch(character);
                 case "CrouchPress":
@@ -75,35 +74,6 @@ namespace MelloMario.Factories
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
                     return null;
-            }
-        }
-
-        // For demo only
-        // This method and all of the commands will be removed in the final game
-        public ICommand CreateGameObjectCommand(string action, IGameObject gameObject)
-        {
-            if (gameObject is Mario mario)
-            {
-                switch (action)
-                {
-
-                    case "FireState":
-                        return new FireState(mario);
-                    case "StandardState":
-                        return new StandardState(mario);
-                    case "SuperState":
-                        return new SuperState(mario);
-                    default:
-                        //it should never hit this case, if it does there is an error somewhere
-                        //else in the code
-                        return null;
-                }
-            }
-            else
-            {
-                //it should never hit this case, if it does there is an error somewhere
-                //else in the code
-                return null;
             }
         }
     }

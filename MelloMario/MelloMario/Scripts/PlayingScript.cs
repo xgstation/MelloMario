@@ -10,7 +10,7 @@ namespace MelloMario.Scripts
         {
         }
 
-        public void Bind(IEnumerable<IController> controllers, IGameCharacter character, IGameModel model)
+        public void Bind(IEnumerable<IController> controllers, IGameModel model, ICharacter character)
         {
             ICommandFactory factory = CommandFactory.Instance;
 
@@ -18,53 +18,51 @@ namespace MelloMario.Scripts
             {
                 controller.Reset();
 
-                controller.AddCommand(Keys.Space, factory.CreateGameCharacterCommand("Action", character)); // Needs to be implemented
-                controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
-                controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("CrouchPress", character), KeyBehavior.press);
-                controller.AddCommand(Keys.Down, factory.CreateGameCharacterCommand("CrouchRelease", character), KeyBehavior.release);
-                controller.AddCommand(Keys.Up, factory.CreateGameCharacterCommand("Jump", character), KeyBehavior.hold);
-                controller.AddCommand(Keys.Up, factory.CreateGameCharacterCommand("JumpPress", character), KeyBehavior.press);
-                controller.AddCommand(Keys.Up, factory.CreateGameCharacterCommand("JumpRelease", character), KeyBehavior.release);
-                controller.AddCommand(Keys.Left, factory.CreateGameCharacterCommand("Left", character), KeyBehavior.hold);
-                controller.AddCommand(Keys.Left, factory.CreateGameCharacterCommand("LeftPress", character), KeyBehavior.press);
-                controller.AddCommand(Keys.Left, factory.CreateGameCharacterCommand("LeftRelease", character), KeyBehavior.release);
-                controller.AddCommand(Keys.Right, factory.CreateGameCharacterCommand("Right", character), KeyBehavior.hold);
-                controller.AddCommand(Keys.Right, factory.CreateGameCharacterCommand("RightPress", character), KeyBehavior.press);
-                controller.AddCommand(Keys.Right, factory.CreateGameCharacterCommand("RightRelease", character), KeyBehavior.release);
+                controller.AddCommand(Keys.Space, factory.CreateCharacterCommand("Action", character)); // Needs to be implemented
+                controller.AddCommand(Keys.Down, factory.CreateCharacterCommand("Crouch", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.Down, factory.CreateCharacterCommand("CrouchPress", character), KeyBehavior.press);
+                controller.AddCommand(Keys.Down, factory.CreateCharacterCommand("CrouchRelease", character), KeyBehavior.release);
+                controller.AddCommand(Keys.Up, factory.CreateCharacterCommand("Jump", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.Up, factory.CreateCharacterCommand("JumpPress", character), KeyBehavior.press);
+                controller.AddCommand(Keys.Up, factory.CreateCharacterCommand("JumpRelease", character), KeyBehavior.release);
+                controller.AddCommand(Keys.Left, factory.CreateCharacterCommand("Left", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.Left, factory.CreateCharacterCommand("LeftPress", character), KeyBehavior.press);
+                controller.AddCommand(Keys.Left, factory.CreateCharacterCommand("LeftRelease", character), KeyBehavior.release);
+                controller.AddCommand(Keys.Right, factory.CreateCharacterCommand("Right", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.Right, factory.CreateCharacterCommand("RightPress", character), KeyBehavior.press);
+                controller.AddCommand(Keys.Right, factory.CreateCharacterCommand("RightRelease", character), KeyBehavior.release);
 
-                controller.AddCommand(Keys.S, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
-                controller.AddCommand(Keys.S, factory.CreateGameCharacterCommand("CrouchPress", character), KeyBehavior.press);
-                controller.AddCommand(Keys.S, factory.CreateGameCharacterCommand("CrouchRelease", character), KeyBehavior.release);
-                controller.AddCommand(Keys.Z, factory.CreateGameCharacterCommand("Jump", character), KeyBehavior.hold);
-                controller.AddCommand(Keys.Z, factory.CreateGameCharacterCommand("JumpPress", character), KeyBehavior.press);
-                controller.AddCommand(Keys.Z, factory.CreateGameCharacterCommand("JumpRelease", character), KeyBehavior.release);
-                controller.AddCommand(Keys.A, factory.CreateGameCharacterCommand("Left", character), KeyBehavior.hold);
-                controller.AddCommand(Keys.A, factory.CreateGameCharacterCommand("LeftPress", character), KeyBehavior.press);
-                controller.AddCommand(Keys.A, factory.CreateGameCharacterCommand("LeftRelease", character), KeyBehavior.release);
-                controller.AddCommand(Keys.D, factory.CreateGameCharacterCommand("Right", character), KeyBehavior.hold);
-                controller.AddCommand(Keys.D, factory.CreateGameCharacterCommand("RightPress", character), KeyBehavior.press);
-                controller.AddCommand(Keys.D, factory.CreateGameCharacterCommand("RightRelease", character), KeyBehavior.release);
+                controller.AddCommand(Keys.S, factory.CreateCharacterCommand("Crouch", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.S, factory.CreateCharacterCommand("CrouchPress", character), KeyBehavior.press);
+                controller.AddCommand(Keys.S, factory.CreateCharacterCommand("CrouchRelease", character), KeyBehavior.release);
+                controller.AddCommand(Keys.Z, factory.CreateCharacterCommand("Jump", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.Z, factory.CreateCharacterCommand("JumpPress", character), KeyBehavior.press);
+                controller.AddCommand(Keys.Z, factory.CreateCharacterCommand("JumpRelease", character), KeyBehavior.release);
+                controller.AddCommand(Keys.A, factory.CreateCharacterCommand("Left", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.A, factory.CreateCharacterCommand("LeftPress", character), KeyBehavior.press);
+                controller.AddCommand(Keys.A, factory.CreateCharacterCommand("LeftRelease", character), KeyBehavior.release);
+                controller.AddCommand(Keys.D, factory.CreateCharacterCommand("Right", character), KeyBehavior.hold);
+                controller.AddCommand(Keys.D, factory.CreateCharacterCommand("RightPress", character), KeyBehavior.press);
+                controller.AddCommand(Keys.D, factory.CreateCharacterCommand("RightRelease", character), KeyBehavior.release);
 
-                // game control commands
-                controller.AddCommand(Keys.Q, factory.CreateGameControlCommand("Quit", model), KeyBehavior.press);
-                controller.AddCommand(Keys.R, factory.CreateGameControlCommand("Reset", model), KeyBehavior.press);
-                controller.AddCommand(Keys.P, factory.CreateGameControlCommand("Pause", model), KeyBehavior.press);
-                controller.AddCommand(Keys.F12, factory.CreateGameControlCommand("ToggleFullScreen", model), KeyBehavior.press);
+                controller.AddCommand(Keys.F12, factory.CreateModelCommand("ToggleFullScreen", model), KeyBehavior.press);
+                controller.AddCommand(Keys.P, factory.CreateModelCommand("Pause", model), KeyBehavior.press);
+                controller.AddCommand(Keys.R, factory.CreateModelCommand("Reset", model), KeyBehavior.press);
+                controller.AddCommand(Keys.Q, factory.CreateModelCommand("Quit", model), KeyBehavior.press);
 
-                controller.AddCommand(Buttons.B, factory.CreateGameCharacterCommand("Action", character));
-                controller.AddCommand(Buttons.DPadDown, factory.CreateGameCharacterCommand("Crouch", character), KeyBehavior.hold);
-                controller.AddCommand(Buttons.DPadDown, factory.CreateGameCharacterCommand("CrouchPress", character), KeyBehavior.press);
-                controller.AddCommand(Buttons.DPadDown, factory.CreateGameCharacterCommand("CrouchRelease", character), KeyBehavior.release);
-                controller.AddCommand(Buttons.A, factory.CreateGameCharacterCommand("Jump", character), KeyBehavior.hold);
-                controller.AddCommand(Buttons.A, factory.CreateGameCharacterCommand("JumpPress", character), KeyBehavior.press);
-                controller.AddCommand(Buttons.A, factory.CreateGameCharacterCommand("JumpRelease", character), KeyBehavior.release);
-                controller.AddCommand(Buttons.DPadLeft, factory.CreateGameCharacterCommand("Left", character), KeyBehavior.hold);
-                controller.AddCommand(Buttons.DPadLeft, factory.CreateGameCharacterCommand("LeftPress", character), KeyBehavior.press);
-                controller.AddCommand(Buttons.DPadLeft, factory.CreateGameCharacterCommand("LeftRelease", character), KeyBehavior.release);
-                controller.AddCommand(Buttons.DPadRight, factory.CreateGameCharacterCommand("Right", character), KeyBehavior.hold);
-                controller.AddCommand(Buttons.DPadRight, factory.CreateGameCharacterCommand("RightPress", character), KeyBehavior.press);
-                controller.AddCommand(Buttons.DPadRight, factory.CreateGameCharacterCommand("RightRelease", character), KeyBehavior.release);
-
+                controller.AddCommand(Buttons.B, factory.CreateCharacterCommand("Action", character));
+                controller.AddCommand(Buttons.DPadDown, factory.CreateCharacterCommand("Crouch", character), KeyBehavior.hold);
+                controller.AddCommand(Buttons.DPadDown, factory.CreateCharacterCommand("CrouchPress", character), KeyBehavior.press);
+                controller.AddCommand(Buttons.DPadDown, factory.CreateCharacterCommand("CrouchRelease", character), KeyBehavior.release);
+                controller.AddCommand(Buttons.A, factory.CreateCharacterCommand("Jump", character), KeyBehavior.hold);
+                controller.AddCommand(Buttons.A, factory.CreateCharacterCommand("JumpPress", character), KeyBehavior.press);
+                controller.AddCommand(Buttons.A, factory.CreateCharacterCommand("JumpRelease", character), KeyBehavior.release);
+                controller.AddCommand(Buttons.DPadLeft, factory.CreateCharacterCommand("Left", character), KeyBehavior.hold);
+                controller.AddCommand(Buttons.DPadLeft, factory.CreateCharacterCommand("LeftPress", character), KeyBehavior.press);
+                controller.AddCommand(Buttons.DPadLeft, factory.CreateCharacterCommand("LeftRelease", character), KeyBehavior.release);
+                controller.AddCommand(Buttons.DPadRight, factory.CreateCharacterCommand("Right", character), KeyBehavior.hold);
+                controller.AddCommand(Buttons.DPadRight, factory.CreateCharacterCommand("RightPress", character), KeyBehavior.press);
+                controller.AddCommand(Buttons.DPadRight, factory.CreateCharacterCommand("RightRelease", character), KeyBehavior.release);
             }
         }
     }

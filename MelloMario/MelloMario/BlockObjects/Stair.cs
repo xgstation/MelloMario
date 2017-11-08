@@ -1,18 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
-using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects
 {
     class Stair : BaseCollidableObject
     {
-
         private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateStairSprite());
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
         }
 
@@ -20,17 +18,28 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnOut(CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnCollideWorld(CollisionMode mode)
         {
         }
 
-        public Stair(IGameWorld world, Point location) : base(world, location, new Point(32, 32))
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
-            UpdateSprite();
+        }
+
+        public Stair(IGameWorld world, Point location, bool isHidden = false) : base(world, location, new Point(32, 32))
+        {
+            if (isHidden)
+            {
+                HideSprite();
+            }
+            else
+            {
+                UpdateSprite();
+            }
         }
     }
 }

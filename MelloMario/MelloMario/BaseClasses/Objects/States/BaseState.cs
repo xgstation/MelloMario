@@ -11,6 +11,6 @@ namespace MelloMario
             Owner = owner;
         }
 
-        public abstract void Update(GameTime time);
+        public abstract void Update(int time);
     }
 }

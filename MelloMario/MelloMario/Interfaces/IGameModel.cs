@@ -6,9 +6,11 @@ namespace MelloMario
     {
         void ToggleFullScreen();
         void Pause();
+        void Resume();
+        void SwitchWorld(string index);
         void Reset();
         void Quit();
-        void Update(GameTime time);
-        void Draw(GameTime time);
+        void Update(int time);
+        void Draw(int time);
     }
 }

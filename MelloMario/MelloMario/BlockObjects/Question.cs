@@ -3,13 +3,13 @@ using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.BlockObjects.QuestionStates;
 using MelloMario.MarioObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.BlockObjects
 {
     class Question : BaseCollidableObject
     {
         private IBlockState state;
-        private IList<IGameObject> items;
         private IGameObject item;
 
         private void UpdateSprite()
@@ -18,7 +18,7 @@ namespace MelloMario.BlockObjects
             {
                 HideSprite();
             }
-            else if (HasItem)
+            else if (GameDatabase.HasItemEnclosed(this))
             {
                 ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
             }
@@ -27,13 +27,13 @@ namespace MelloMario.BlockObjects
                 ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
             }
         }
-        public bool HasItem { get { return item != null || items.Count != 0; } }
+
         private void LoadItem()
         {
-            if (items.Count != 0)
+            if (GameDatabase.HasItemEnclosed(this))
             {
-                item = items[0];
-                items.RemoveAt(0);
+                item = GameDatabase.GetEnclosedItems(this)[0];
+                GameDatabase.GetEnclosedItems(this).RemoveAt(0);
             }
             else
             {
@@ -41,7 +41,7 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             state.Update(time);
         }
@@ -50,11 +50,15 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnOut(CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnCollideWorld(CollisionMode mode)
+        {
+        }
+
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
@@ -85,9 +89,6 @@ namespace MelloMario.BlockObjects
             {
                 state = new Normal(this);
             }
-            this.items = items;
-            LoadItem();
-            UpdateSprite();
         }
 
         public void Bump(Mario mario)
@@ -102,10 +103,10 @@ namespace MelloMario.BlockObjects
 
         public void ReleaseNextItem()
         {
+            LoadItem();
             if (item != null)
             {
-                World.AddObject(item);
-                LoadItem();
+                World.Add(item);
             }
         }
     }

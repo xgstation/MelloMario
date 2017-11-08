@@ -1,0 +1,24 @@
+Gen Xu
+10/31/2017
+Sprint 3
+
+Spend: 15 minutes
+
+Code being reviewed: Mario.cs, Goomba.cs, Koopa.cs
+Code Written by: Sergey, Wenli
+Switch statement for method:
+	protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
+has a very high complexity which needs to be reduced.
+Also, bumping response should be splited into different methods if possible. Mario should not know what objects it collides with, but whether it was injured or stucked or bounced.
+All response logic to different game objects should be removed from this switch statement.
+Similarly for Goomba.cs and Koopa.cs, OnCollision is too complex and fat.
+In the future, there suppposed to be a better model to manage the collision logic, objects will only know how they are collides instead of who with what states collide itself.
+
+Code being reviewed: BaseCollidableObject.cs
+Code Written by: Chenzhang
+Switch statement for method:
+Collision logic is not sufficient to manage two collisions in very short time as it will continuously return the collision mode in method:
+	ScanCollideModes(Rectangle targetBoundary)
+which sometimes, from the perspective of player, will cause TWO collides at same time.
+For example, Koompa should become a shell after first being hitted from Top and then start moving after second collision from top.
+Since the collision model is lack of ability to handle two short collision, the Koompa will start moving at "first" collision from top, which need to be improved.

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Sprites.BlockSprites
@@ -23,6 +18,14 @@ namespace MelloMario.Sprites.BlockSprites
             }
         }
 
+        public ZIndex ZIndex
+        {
+            get
+            {
+                return ZIndex.level;
+            }
+        }
+
         public BrickPieceSprite(SpriteBatch spriteBatch, Texture2D texture)
         {
             this.spriteBatch = spriteBatch;
@@ -31,11 +34,11 @@ namespace MelloMario.Sprites.BlockSprites
             elapsed = 0;
         }
 
-        public void Draw(GameTime time, Rectangle destination, ZIndex zIndex)
+        public void Draw(int time, Rectangle destination, ZIndex zIndex)
         {
-            if (zIndex == ZIndex.level)
+            if (zIndex == ZIndex.foreground)
             {
-                elapsed += time.ElapsedGameTime.Milliseconds;
+                elapsed += time;
 
                 int offsetX;
                 int offsetY;

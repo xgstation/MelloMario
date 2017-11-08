@@ -1,7 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
 
 namespace MelloMario
 {
@@ -11,18 +8,29 @@ namespace MelloMario
         private Point size;
         private ISprite sprite;
 
-        protected enum ResizeModeX { Left, Center, Right };
-        protected enum ResizeModeY { Top, Center, Bottom };
+        protected enum ResizeModeX
+        {
+            Left,
+            Center,
+            Right
+        };
+
+        protected enum ResizeModeY
+        {
+            Top,
+            Center,
+            Bottom
+        };
 
         protected IGameWorld World;
 
-        protected abstract void OnUpdate(GameTime time);
-        protected abstract void OnSimulation(GameTime time);
-        protected abstract void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex);
+        protected abstract void OnUpdate(int time);
+        protected abstract void OnSimulation(int time);
+        protected abstract void OnDraw(int time, Rectangle viewport, ZIndex zIndex);
 
-        protected void Relocate(Point delta)
+        protected void Relocate(Point newLocation)
         {
-            location += delta;
+            location = newLocation;
         }
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
@@ -54,10 +62,10 @@ namespace MelloMario
                     break;
             }
 
-            Relocate(delta);
+            Relocate(location + delta);
             size = newSize;
 
-            World.MoveObject(this);
+            World.Move(this);
         }
 
         protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
@@ -81,31 +89,24 @@ namespace MelloMario
 
         public BaseGameObject(IGameWorld world, Point location, Point size)
         {
-            this.World = world;
+            World = world;
             this.location = location;
             this.size = size;
         }
 
-        public void Update(GameTime time)
+        public void Update(int time)
         {
-            // TODO: override OnUpdate for states etc.
-            //       override OnSimulation for movement and collision
+            // override OnUpdate for states etc.
             OnUpdate(time);
+            // override OnSimulation for movement and collision
             OnSimulation(time);
         }
 
-        public void Draw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        public void Draw(int time, Rectangle viewport, ZIndex zIndex)
         {
-            OnDraw(time, viewport, zIndex);
-
             if (sprite != null)
             {
-                if (zIndex == ZIndex.background)
-                {
-                    Point location = viewport.Location;
-                    location.X = (int)(location.X * 0.5);
-                    viewport.Location = location;
-                }
+                OnDraw(time, viewport, zIndex);
 
                 sprite.Draw(time, new Rectangle(Boundary.Location - viewport.Location, Boundary.Size), zIndex);
             }

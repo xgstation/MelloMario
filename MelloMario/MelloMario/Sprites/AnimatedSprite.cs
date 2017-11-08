@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System;
 
 namespace MelloMario.Sprites
 {
@@ -24,9 +23,9 @@ namespace MelloMario.Sprites
             ChangeSource(new Point(width * x / columns, height * y / rows));
         }
 
-        protected override void OnAnimate(GameTime time)
+        protected override void OnAnimate(int time)
         {
-            elapsed += time.ElapsedGameTime.Milliseconds;
+            elapsed += time;
 
             if (elapsed >= interval)
             {

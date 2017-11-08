@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class JumpPress : BaseCommand<IGameCharacter>
+    class JumpPress : BaseCommand<ICharacter>
     {
-        public JumpPress(IGameCharacter character) : base(character)
+        public JumpPress(ICharacter character) : base(character)
         {
         }
 

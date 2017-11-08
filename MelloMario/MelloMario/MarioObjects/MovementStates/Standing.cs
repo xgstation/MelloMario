@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using MelloMario.MarioObjects.PowerUpStates;
+﻿using Microsoft.Xna.Framework;
 
 namespace MelloMario.MarioObjects.MovementStates
 {
@@ -20,25 +12,26 @@ namespace MelloMario.MarioObjects.MovementStates
         {
             Owner.MovementState = new Crouching(Owner);
         }
+
         public void Idle()
         {
-
         }
 
         public void Land()
         {
-
         }
+
         public void Jump()
         {
             Owner.MovementState = new Jumping(Owner);
         }
+
         public void Walk()
         {
             Owner.MovementState = new Walking(Owner);
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
             //sprite.Update(game);
         }

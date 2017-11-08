@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using MelloMario.Factories;
+﻿using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.BrickStates
@@ -14,6 +7,7 @@ namespace MelloMario.BlockObjects.BrickStates
     {
         private int elapsed;
         private int move;
+
         public Bumped(Brick owner) : base(owner)
         {
             elapsed = 0;
@@ -49,13 +43,14 @@ namespace MelloMario.BlockObjects.BrickStates
             // do nothing
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
+            // TODO: use BaseTimedState
             if (elapsed >= 70)
             {
                 move = 0;
             }
-            elapsed += time.ElapsedGameTime.Milliseconds;
+            elapsed += time;
             move += 3;
             if (elapsed >= 170)
             {

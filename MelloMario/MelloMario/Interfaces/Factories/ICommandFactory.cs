@@ -1,11 +1,8 @@
-﻿using MelloMario.MarioObjects;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
     interface ICommandFactory
     {
-        ICommand CreateGameControlCommand(string action, IGameModel model);
-        ICommand CreateGameCharacterCommand(string action, IGameCharacter character);
-        ICommand CreateGameObjectCommand(string action, IGameObject gameObject);
+        ICommand CreateModelCommand(string action, IGameModel model);
+        ICommand CreateCharacterCommand(string action, ICharacter character);
     }
 }

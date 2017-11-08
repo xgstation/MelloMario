@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
@@ -99,9 +98,9 @@ namespace MelloMario
 
         private void CollideAll()
         {
-            foreach (IGameObject target in World.ScanNearbyObjects(this))
+            foreach (IGameObject target in World.ScanNearby(Boundary))
             {
-                if (target is BaseCollidableObject obj)
+                if (target != this && target is BaseCollidableObject obj)
                 {
                     foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(target.Boundary))
                     {
@@ -113,21 +112,40 @@ namespace MelloMario
 
             foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(World.Boundary))
             {
-                OnOut(pair.Item1);
+                OnCollideWorld(pair.Item1);
             }
         }
 
-        protected enum CollisionMode { Left, Right, Top, Bottom, InnerLeft, InnerRight, InnerTop, InnerBottom };
-        protected enum CornerMode { Left, Right, Top, Bottom, Center };
+        protected enum CollisionMode
+        {
+            Left,
+            Right,
+            Top,
+            Bottom,
+            InnerLeft,
+            InnerRight,
+            InnerTop,
+            InnerBottom
+        };
+
+        protected enum CornerMode
+        {
+            Left,
+            Right,
+            Top,
+            Bottom,
+            Center
+        };
 
         protected abstract void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive);
-        protected abstract void OnOut(CollisionMode mode);
+        protected abstract void OnCollideViewport(IPlayer player, CollisionMode mode);
+        protected abstract void OnCollideWorld(CollisionMode mode);
 
         protected void Move(Point delta)
         {
             movement += delta;
 
-            World.MoveObject(this);
+            World.Move(this);
         }
 
         protected void StopHorizontalMovement()
@@ -145,41 +163,50 @@ namespace MelloMario
             StopHorizontalMovement();
             StopVerticalMovement();
 
-            World.RemoveObject(this);
+            World.Remove(this);
         }
 
-        protected override void OnSimulation(GameTime time)
+        protected override void OnSimulation(int time)
         {
-            CollideAll();
-
-            // Since each update is a very small iteration, the order does not matter.
-
-            while (movement.X < 0)
+            if (movement.X != 0 || movement.Y != 0)
             {
-                Relocate(new Point(-1, 0));
-                movement.X += 1;
                 CollideAll();
-            }
 
-            while (movement.X > 0)
-            {
-                Relocate(new Point(1, 0));
-                movement.X -= 1;
-                CollideAll();
-            }
+                Point location = Boundary.Location;
 
-            while (movement.Y < 0)
-            {
-                Relocate(new Point(0, -1));
-                movement.Y += 1;
-                CollideAll();
-            }
+                // Since each update is a very small iteration, the order does not matter.
 
-            while (movement.Y > 0)
-            {
-                Relocate(new Point(0, 1));
-                movement.Y -= 1;
-                CollideAll();
+                while (movement.X < 0)
+                {
+                    location.X -= 1;
+                    movement.X += 1;
+                    Relocate(location);
+                    CollideAll();
+                }
+
+                while (movement.X > 0)
+                {
+                    location.X += 1;
+                    movement.X -= 1;
+                    Relocate(location);
+                    CollideAll();
+                }
+
+                while (movement.Y < 0)
+                {
+                    location.Y -= 1;
+                    movement.Y += 1;
+                    Relocate(location);
+                    CollideAll();
+                }
+
+                while (movement.Y > 0)
+                {
+                    location.Y += 1;
+                    movement.Y -= 1;
+                    Relocate(location);
+                    CollideAll();
+                }
             }
         }
 

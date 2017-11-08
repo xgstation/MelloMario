@@ -2,6 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.StarStates;
 using MelloMario.BlockObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
 {
@@ -16,35 +17,53 @@ namespace MelloMario.ItemObjects
             ShowSprite(SpriteFactory.Instance.CreateStarSprite());
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             state.Update(time);
+        }
+
+        protected override void OnSimulation(int time)
+        {
             if (state is Normal)
             {
                 ApplyGravity();
+
                 if (goingRight)
+                {
                     Move(new Point(H_SPEED, 0));
+                }
                 else
+                {
                     Move(new Point(-1 * H_SPEED, 0));
+                }
             }
+
+            base.OnSimulation(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
             if (state is Normal)
+            {
                 switch (target.GetType().Name)
                 {
                     case "PlayerMario":
                         if (state is Normal)
+                        {
                             Collect();
+                        }
                         break;
                     case "Brick":
-                        if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                        if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                        {
                             break;
+                        }
                         goto case "Stair";
                     case "Question":
-                        if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                        if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                        {
                             break;
+                        }
                         goto case "Stair";
                     case "Floor":
                     case "Pipeline":
@@ -61,16 +80,23 @@ namespace MelloMario.ItemObjects
                             goingRight = false;
                         }
                         if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
+                        {
                             ApplyForce(new Vector2(0, -160f));
+                        }
                         break;
                 }
+            }
         }
 
-        protected override void OnOut(CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnCollideWorld(CollisionMode mode)
+        {
+        }
+
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
@@ -87,12 +113,16 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public Star(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
+        public Star(IGameWorld world, Point location, Point marioLocation, bool isUnveil = true) : base(world, location, new Point(32, 32), 32)
         {
             if (marioLocation.X < location.X)
+            {
                 goingRight = true;
+            }
             else
+            {
                 goingRight = false;
+            }
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -103,10 +133,11 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
+
         public Star(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }
-        
+
         public void Collect()
         {
             RemoveSelf();

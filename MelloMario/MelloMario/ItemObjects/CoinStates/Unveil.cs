@@ -1,24 +1,20 @@
-﻿using MelloMario.ItemObjects;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MelloMario.Factories;
+﻿using Microsoft.Xna.Framework;
 
 namespace MelloMario.ItemObjects.CoinStates
 {
-    class Unveil : BaseState<Coin>, IItemState
+    class Unveil : BaseTimedState<Coin>, IItemState
     {
-        private int elapsed;
+        private float elapsed;
         private float realOffset;
 
-        public Unveil(Coin owner) : base(owner)
+        protected override void OnTimer(int time)
         {
-            elapsed = 0;
-            realOffset = 0f;
+            Owner.State = new Normal(Owner);
+        }
+
+        public Unveil(Coin owner) : base(owner, 1000)
+        {
+            elapsed = 0f;
         }
 
         public void Show()
@@ -28,25 +24,17 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public void Collect()
         {
-            Owner.Collect();
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
-            elapsed += time.ElapsedGameTime.Milliseconds;
-            realOffset += 256 * time.ElapsedGameTime.Milliseconds / 1000f;
-            if (elapsed >= 250)
-            {
-                Collect();
-            }
-            else
-            {
-                while (realOffset > 1)
-                {
-                    Owner.UnveilMove(-1);
-                    --realOffset;
-                }
+            elapsed += time;
+            realOffset += 32 * time / 1000f;
 
+            while (realOffset > 1)
+            {
+                Owner.UnveilMove(-1);
+                --realOffset;
             }
         }
     }

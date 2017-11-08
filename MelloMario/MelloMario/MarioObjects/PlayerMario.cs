@@ -1,13 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MelloMario.Containers;
+using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects.MovementStates;
+using MelloMario.Theming;
 
 namespace MelloMario.MarioObjects
 {
-    class PlayerMario : Mario, IGameCharacter
+    class PlayerMario : Mario, IPlayer
     {
         private Vector2 userInput;
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             ApplyForce(userInput);
             userInput.X = 0;
@@ -15,12 +17,31 @@ namespace MelloMario.MarioObjects
             base.OnUpdate(time);
         }
 
+        public IGameWorld CurrentWorld
+        {
+            get
+            {
+                return World;
+            }
+        }
+
+        public Rectangle Sensing
+        {
+            get
+            {
+                Point location = Boundary.Location - new Point(800, 600);
+                Point size = new Point(1600, 1200); // notice: should be greater than viewport
+
+                return new Rectangle(location, size);
+            }
+        }
+
         public Rectangle Viewport
         {
             get
             {
                 Point location = Boundary.Location - new Point(320, 320);
-                Point size = new Point(800, 480); // TODO: currently, size of viewport does nothing
+                Point size = new Point(800, 600); // TODO: should be the same as resolution
 
                 Rectangle worldBoundary = World.Boundary;
 
@@ -52,9 +73,11 @@ namespace MelloMario.MarioObjects
 
         public void Left()
         {
+            MovementState.Walk();
+
             if (!(MovementState is Crouching))
             {
-                userInput.X -= FORCE_INPUT_X;
+                userInput.X -= GameConst.FORCE_INPUT_X;
             }
         }
 
@@ -64,7 +87,6 @@ namespace MelloMario.MarioObjects
             {
                 ChangeFacing(FacingMode.left);
             }
-            MovementState.Walk();
 
             Left();
         }
@@ -76,9 +98,11 @@ namespace MelloMario.MarioObjects
 
         public void Right()
         {
+            MovementState.Walk();
+
             if (!(MovementState is Crouching))
             {
-                userInput.X += FORCE_INPUT_X;
+                userInput.X += GameConst.FORCE_INPUT_X;
             }
         }
 
@@ -88,7 +112,6 @@ namespace MelloMario.MarioObjects
             {
                 ChangeFacing(FacingMode.right);
             }
-            MovementState.Walk();
 
             Right();
         }
@@ -104,8 +127,8 @@ namespace MelloMario.MarioObjects
 
             if (MovementState is Jumping jumping && !jumping.Finished)
             {
-                userInput.Y -= FORCE_INPUT_Y;
-                userInput.Y -= FORCE_G;
+                userInput.Y -= GameConst.FORCE_INPUT_Y;
+                userInput.Y -= GameConst.FORCE_G;
             }
         }
 
@@ -139,7 +162,22 @@ namespace MelloMario.MarioObjects
 
         public void Action()
         {
-            throw new System.NotImplementedException();
+        }
+
+        public void Spawn(IGameWorld world)
+        {
+            World.Remove(this);
+            World = world;
+
+            World.Add(this);
+            Relocate(World.GetInitialPoint());
+            World.Update();
+        }
+
+        public void Respawn()
+        {
+            Relocate(World.GetRespawnPoint(Boundary.Location));
+            World.Update();
         }
     }
 }

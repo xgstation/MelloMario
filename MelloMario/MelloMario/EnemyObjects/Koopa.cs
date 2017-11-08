@@ -3,7 +3,7 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.KoopaStates;
 using MelloMario.BlockObjects;
-
+using MelloMario.Theming;
 
 namespace MelloMario.EnemyObjects
 {
@@ -12,8 +12,8 @@ namespace MelloMario.EnemyObjects
         private ShellColor color;
         private IKoopaState state;
         private const int VELOCITY_LR = 1;
-        private const int VELOCITY_SHELL =7;
-        private bool move;
+        private const int VELOCITY_SHELL = 7;
+
         private void UpdateSprite()
         {
             string facingString;
@@ -44,47 +44,47 @@ namespace MelloMario.EnemyObjects
             UpdateSprite();
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
+        {
+            state.Update(time);
+        }
+
+        protected override void OnSimulation(int time)
         {
             ApplyGravity();
-            if (move&&!(state is Defeated))
+            if (Facing == FacingMode.right)
             {
-               
-                if (Facing == FacingMode.right)
+                if (state is MovingShell)
                 {
-                    if (state is MovingShell)
-                        Move(new Point(VELOCITY_SHELL, 0));
-                    else
-                        Move(new Point(VELOCITY_LR, 0));
+                    Move(new Point(VELOCITY_SHELL, 0));
                 }
                 else
                 {
-                    if (state is MovingShell)
-                        Move(new Point(-1 * VELOCITY_SHELL, 0));
-                    else
-                        Move(new Point(-1 * VELOCITY_LR, 0));
+                    Move(new Point(VELOCITY_LR, 0));
                 }
-            }
-            if (World.Model.Character != null && !move)
-            {
-                move = Boundary.Intersects(World.Model.Character.Viewport);
             }
             else
             {
-                move = true;
-
+                if (state is MovingShell)
+                {
+                    Move(new Point(-1 * VELOCITY_SHELL, 0));
+                }
+                else
+                {
+                    Move(new Point(-1 * VELOCITY_LR, 0));
+                }
             }
 
+            base.OnSimulation(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-
             switch (target.GetType().Name)
             {
                 case "PlayerMario":
                     //TODO: Fire to be added
-                    Mario mario = (Mario)target;//TODO: fire as target to be added
+                    Mario mario = (Mario) target; //TODO: fire as target to be added
                     if (mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
                     {
                         Defeat();
@@ -118,7 +118,6 @@ namespace MelloMario.EnemyObjects
                             {
                                 ChangeFacing(FacingMode.right);
                                 Pushed();
-
                             }
                             else if (mode == CollisionMode.Top && corner == CornerMode.Right)
                             {
@@ -127,14 +126,19 @@ namespace MelloMario.EnemyObjects
                             }
                         }
                     }
+
                     break;
                 case "Brick":
-                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                    if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Question":
-                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Floor":
                 case "Pipeline":
@@ -152,7 +156,6 @@ namespace MelloMario.EnemyObjects
                     else if (mode == CollisionMode.Bottom)
                     {
                         Bounce(mode, new Vector2());
-
                     }
                     break;
             }
@@ -165,15 +168,24 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        protected override void OnOut(CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnCollideWorld(CollisionMode mode)
         {
         }
 
-        public enum ShellColor { green, red };
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
+        {
+        }
+
+        public enum ShellColor
+        {
+            green,
+            red
+        };
+
         public IKoopaState State
         {
             get
@@ -187,41 +199,42 @@ namespace MelloMario.EnemyObjects
             }
         }
 
+        public Koopa(IGameWorld world, Point location, ShellColor color) : this(world, location, GameDatabase.GetCharacterLocation(), color) { }
         public Koopa(IGameWorld world, Point location, Point marioLoc, ShellColor color) : base(world, location, new Point(32, 32), 32)
         {
-
             if (marioLoc.X < location.X)
-                {
-                    Facing = FacingMode.left;
-                }
-                else
-                {
-                    Facing = FacingMode.right;
-                }
-            move = false;
+            {
+                Facing = FacingMode.left;
+            }
+            else
+            {
+                Facing = FacingMode.right;
+            }
             this.color = color;
             state = new Normal(this);
             UpdateSprite();
         }
-        
+
         public void JumpOn()
         {
             State.JumpOn();
         }
+
         public void Pushed()
         {
             // TODO: temporary fix
             if (Facing == FacingMode.right)
             {
-                    Move(new Point(1, 0));
+                Move(new Point(1, 0));
             }
             else
             {
-                    Move(new Point(-1, 0));
+                Move(new Point(-1, 0));
             }
 
             State.Pushed();
         }
+
         public void Defeat()
         {
             RemoveSelf();

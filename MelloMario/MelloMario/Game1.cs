@@ -13,14 +13,15 @@ namespace MelloMario
     class Game1 : Game
     {
         private GraphicsDeviceManager graphics;
+        private LevelIOJson reader;
         private GameModel model;
-
         private SpriteBatch spriteBatch;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            model = new GameModel(this, new LevelIOJson("Content/ExampleLevel.json"));
+            graphics.PreferredBackBufferHeight = 800;
+            graphics.PreferredBackBufferHeight = 600;
         }
 
         /// <summary>
@@ -33,6 +34,8 @@ namespace MelloMario
         {
             base.Initialize();
 
+            reader = new LevelIOJson("Content/ExampleLevel.json", graphics.GraphicsDevice);
+            model = new GameModel(this);
             IEnumerable<IController> controllers = new List<IController>
             {
                 new GamepadController(),
@@ -41,6 +44,7 @@ namespace MelloMario
 
             model.LoadControllers(controllers);
 
+            //reader = new LevelIOJson("Content/Level1.json");
             model.Reset(); // Create the level for the first time
         }
 
@@ -52,10 +56,8 @@ namespace MelloMario
         {
             Content.RootDirectory = "Content";
             base.LoadContent();
+            SpriteFactory.Instance.BindContentManager(Content);
 
-            SpriteFactory.Instance.LoadAllTextures(Content);
-
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.BindSpriteBatch(spriteBatch);
         }
@@ -66,6 +68,7 @@ namespace MelloMario
         /// </summary>
         protected override void UnloadContent()
         {
+            reader.Dispose();
             base.UnloadContent();
         }
 
@@ -78,7 +81,7 @@ namespace MelloMario
         {
             base.Update(time);
 
-            model.Update(time);
+            model.Update(time.ElapsedGameTime.Milliseconds);
         }
 
         /// <summary>
@@ -89,9 +92,12 @@ namespace MelloMario
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
-
+            spriteBatch.GraphicsDevice.Viewport = new Viewport(0, 0, 800, 600);
             spriteBatch.Begin();
-            model.Draw(time);
+            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
+            //RasterizerState state = new RasterizerState();
+            //state.FillMode = FillMode.WireFrame;
+            model.Draw(time.ElapsedGameTime.Milliseconds);
             spriteBatch.End();
         }
 
@@ -101,6 +107,5 @@ namespace MelloMario
         {
             graphics.ToggleFullScreen();
         }
-
     }
 }

@@ -14,7 +14,7 @@ namespace MelloMario.ItemObjects
             ShowSprite(SpriteFactory.Instance.CreateFireFlowerSprite());
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             state.Update(time);
         }
@@ -27,11 +27,15 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        protected override void OnOut(CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnCollideWorld(CollisionMode mode)
+        {
+        }
+
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
@@ -47,6 +51,7 @@ namespace MelloMario.ItemObjects
                 UpdateSprite();
             }
         }
+
         public FireFlower(IGameWorld world, Point location, bool isUnveil) : base(world, location, new Point(32, 32))
         {
             if (isUnveil)
@@ -59,9 +64,11 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
+
         public FireFlower(IGameWorld world, Point location) : this(world, location, false)
         {
         }
+
         public void Collect()
         {
             RemoveSelf();

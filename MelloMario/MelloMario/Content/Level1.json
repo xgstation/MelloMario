@@ -1,0 +1,65 @@
+﻿{
+  "Maps": [
+    {
+      "Type": "Main",
+      "Index": "Main",
+      "Grid": 32,
+      "Size": {
+        "X": 212,
+        "Y": 17
+      },
+      "RespawnPoints": [
+        {
+          "X": 3,
+          "Y": 5
+        },
+        {
+          "X": 53,
+          "Y": 5
+        }
+      ],
+      "Characters": [
+        {
+          "Type": "Mario",
+          "SpawnPoint": {
+            "X": 2,
+            "Y": 10
+          },
+          "State": "Normal"
+        }
+      ],
+      "Entity": [
+        {
+          "Type": "Question",
+          "Point": {
+            "X": 2,
+            "Y": 11
+          },
+          "Property": {
+            "IsHidden": true,
+            "ItemValues": [ "CoinUnveil", "CoinUnveil" ]
+          }
+        },
+        {"Type": "Floor","Point": {"X": 0,"Y": 15},"Quantity": {"X": 10,"Y": 2}   }
+      ]
+    },
+    {
+      "Type": "Sub",
+      "Index": "1-2",
+      "Grid": 32,
+      "Size": {
+        "X": 15,
+        "Y": 15
+      },
+      "SpawnPoint": {
+        "X": 3,
+        "Y": 3
+      }
+    },
+    {
+      "Type": "Link",
+      "Index": "Link-1",
+      "FilePath": ""
+    }
+  ]
+}

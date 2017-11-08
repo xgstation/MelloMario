@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.ItemObjects.SuperMushroomStates;
-using MelloMario.MarioObjects;
 using MelloMario.BlockObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
 {
@@ -16,18 +16,28 @@ namespace MelloMario.ItemObjects
             ShowSprite(SpriteFactory.Instance.CreateSuperMushroomSprite());
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
-            ApplyGravity();
-
             state.Update(time);
+        }
+
+        protected override void OnSimulation(int time)
+        {
             if (state is Normal)
             {
+                ApplyGravity();
+
                 if (Facing == FacingMode.right)
+                {
                     Move(new Point(H_SPEED, 0));
+                }
                 else
+                {
                     Move(new Point(-1 * H_SPEED, 0));
+                }
             }
+
+            base.OnSimulation(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
@@ -36,15 +46,21 @@ namespace MelloMario.ItemObjects
             {
                 case "PlayerMario":
                     if (state is Normal)
+                    {
                         Collect();
+                    }
                     break;
                 case "Brick":
-                    if (((Brick)target).State is BlockObjects.BrickStates.Hidden)
+                    if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Question":
-                    if (((Question)target).State is BlockObjects.QuestionStates.Hidden)
+                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Floor":
                 case "Pipeline":
@@ -64,7 +80,11 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        protected override void OnOut(CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
+        {
+        }
+
+        protected override void OnCollideWorld(CollisionMode mode)
         {
         }
 
@@ -81,11 +101,11 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
-
-        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
+        public SuperMushroom(IGameWorld world, Point location) : this(world, location, GameDatabase.GetCharacterLocation()) { }
+        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil = true) : base(world, location, new Point(32, 32), 32)
         {
             if (marioLocation.X < location.X)
             {
@@ -106,9 +126,11 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
+
         public SuperMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }
+
         public void Collect()
         {
             RemoveSelf();

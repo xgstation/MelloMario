@@ -6,152 +6,292 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
+using MelloMario.EnemyObjects;
+using MelloMario.Theming;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.LevelGen
 {
     class GameEntityConverter : JsonConverter
     {
-        private GameWorld gameWorld;
-        private int grid;
-        public GameEntityConverter(GameWorld parentGameWorld, int gridSize)
+        private static readonly IEnumerable<Type> AssemblyTypes =
+            from type in Assembly.GetExecutingAssembly().GetTypes()
+            where typeof(IGameObject).IsAssignableFrom(type)
+            select type;
+
+        private readonly GameModel model;
+        private readonly IGameWorld world;
+        private readonly int grid;
+        private readonly GraphicsDevice graphicsDevice;
+
+        private IGameObject objToBePushed;
+        private Type type;
+        private Point objFullSize;
+        private Point objPoint;
+        private Point quantity;
+        private bool isSingle;
+        private string direction;
+        private string entrance;
+        private string backgroundType;
+        private Func<Point, IGameObject> createFunc;
+        private Stack<IGameObject> objectStackToBeEncapsulated;
+        private ISet<Point> ignoredSet;
+        private IList<IGameObject> list;
+        private Tuple<bool, string[]> propertyPair;
+        private bool isQuestionOrBrick;
+        private int length;
+        private JToken objToken;
+
+        public GameEntityConverter(GameModel model, GraphicsDevice graphicsDevice, IGameWorld parentGameWorld,
+            int gridSize)
         {
-            gameWorld = parentGameWorld;
+            this.graphicsDevice = graphicsDevice;
+            this.model = model;
+            world = parentGameWorld;
             grid = gridSize;
         }
+
         public override bool CanConvert(Type objectType)
         {
-            return typeof(EncapsulatedObject<IGameObject>).IsAssignableFrom(objectType) || objectType is IGameObject;
+            return typeof(EncapsulatedObject<IGameObject>).IsAssignableFrom(objectType);
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
         {
-            JToken objToken = JToken.Load(reader);
-            var objectStack = new Stack<IGameObject>();
-
-            var type = TryGet<string>(objToken, "Type");
-            var startPoint = TryGet<Point>(objToken, "Point");
-
-            //Read quantity of object
-            //If "Quantity" does not exist, default value is 1
-            int rows = 1;
-            int columns = 1;
-            if (objToken["Quantity"] != null)
+            objToken = JToken.Load(reader);
+            if (!Util.TryGet(out objPoint, objToken, "Point"))
             {
-                rows = TryGet<int>(objToken, "Quantity", "X");
-                columns = TryGet<int>(objToken, "Quantity", "Y");
+                Debug.WriteLine("Deserialize fail: No start point provided!");
+                return null;
+            }
+            objPoint = new Point(objPoint.X * grid, objPoint.Y * grid);
+            objectStackToBeEncapsulated = new Stack<IGameObject>();
+
+            if (!Util.TryGet(out string typeStr, objToken, "Type"))
+            {
+                Debug.Print("Deserialize fail: Object token does not contain property \"Type\"");
+                return null;
             }
 
-            //Read object properties if given
-            IDictionary<Point, Tuple<bool, string[]>> Properties = null;
-            var propertiesJToken = objToken["Properties"];
-            if (propertiesJToken != null && propertiesJToken.HasValues)
+            type = null;
+            foreach (var t in AssemblyTypes)
             {
-                Properties = propertiesJToken.ToDictionary(
-                  token => TryGet<Point>(token, "Index"),
-                  token => new Tuple<bool, string[]>(
-                      TryGet<bool>(token, "isHidden"),
-                      TryGet<string[]>(token, "ItemValue")));
-            }
-
-            //Read ignored entry
-            ISet<Point> toBeIgnored = new HashSet<Point>();
-            if (objToken["Ignored"] != null)
-            {
-                var ignoredToken = objToken["Ignored"].ToList();
-                foreach (var p in ignoredToken)
+                type = t.Name == typeStr ? t : null;
+                if (type != null)
                 {
-                    toBeIgnored.Add(p.ToObject<Point>());
+                    break;
                 }
             }
-
-            for (int i = 0; i < rows; i++)
+            if (type == null)
             {
-                for (int j = 0; j < columns; j++)
-                {
-                    if (!toBeIgnored.Contains(new Point(i, j)))
-                    {
-                        Point location = new Point((startPoint.X + i) * grid, (startPoint.Y + j) * grid);
-                        Tuple<bool, string[]> property = null;
-                        IList<IGameObject> list = new List<IGameObject>();
-                        if (Properties == null || !Properties.TryGetValue(new Point(i, j), out property))
-                        {
-                            property = new Tuple<bool, string[]>(false, null);
-                        }
-                        else
-                        {
-                            list = CreateItemList(gameWorld, location, property.Item2);
-                        }
-                        PushNewObject(objectStack,type,location,list,property);
-                    }
-                }
+                Debug.Print("Deserialize fail: " + typeStr + " not found!");
+
+                return null;
             }
-            return new EncapsulatedObject<IGameObject>(objectStack);
+            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point);
+            if (Util.TryGet(out quantity, objToken, "Quantity"))
+            {
+                ignoredSet = !isSingle && Util.TryReadIgnoreSet(objToken, out ignoredSet) ? ignoredSet : null;
+            }
+            else
+            {
+                quantity = new Point(1, 1);
+            }
+            isSingle = quantity.X == 1 && quantity.Y == 1;
+            switch (type.Namespace)
+            {
+                case "MelloMario.BlockObjects":
+                    if (BlockConverter(type, objToken, ref objectStackToBeEncapsulated))
+                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    break;
+                case "MelloMario.EnemyObjects":
+                    if (EnemyConverter(type, objToken, ref objectStackToBeEncapsulated))
+                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    break;
+                case "MelloMario.ItemObjects":
+                    if (ItemConverter(type, objToken, ref objectStackToBeEncapsulated))
+                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    break;
+                case "MelloMario.MiscObjects":
+                    if (BackgroundConverter(type, objToken, ref objectStackToBeEncapsulated))
+                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    break;
+                default:
+                    objectStackToBeEncapsulated.Push(createFunc(objPoint));
+                    break;
+            }
+
+            return new EncapsulatedObject<IGameObject>(objectStackToBeEncapsulated);
         }
+
         //TODO: Add serialize method and change CanWrite 
         public override bool CanWrite => false;
+
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             //TODO: Implement serializer
         }
+        private bool ItemConverter(Type type, JToken token, ref Stack<IGameObject> stack)
+        {
+            if (isSingle)
+            {
+                stack.Push(createFunc(objPoint));
+            }
+            else
+            {
+                Util.BatchCreate(createFunc, objPoint, quantity, new Point(32, 32), ignoredSet, grid, ref stack);
+            }
+            return true;
+        }
 
-        static private T TryGet<T>(JToken token, params string[] p)
+        private bool EnemyConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
-            T obj = default(T);
-            JToken tempToken = token;
-            for (int i = 0; i < p.Length - 1; i++)
+            
+            if (type.Name == "Piranha")
             {
-                if (tempToken[p[i]] != null)
-                    tempToken = tempToken[p[i]];
+                float hideTime = Util.TryGet(out hideTime, token, "Property", "HideTime") ? hideTime : 3;
+                stack.Push(Activator.CreateInstance(type, world, objPoint, hideTime) as BasePhysicalObject);
             }
-            if (tempToken[p[p.Length - 1]] != null)
+            else
             {
-                obj = tempToken[p[p.Length - 1]].ToObject<T>();
-            }
-            return obj;
-        }
-        static private IList<IGameObject> CreateItemList(GameWorld world, Point point, params string[] s)
-        {
-            if (s != null)
-            {
-                var list = new List<IGameObject>();
-                for (int i = 0; i < s.Length; i++)
+                if (type.Name == "Koopa")
                 {
-                    list.Add(GameObjectFactory.Instance.CreateGameObject(s[i], world, point));
+                    Koopa.ShellColor shellColor = Util.TryGet(out string color, token, "Property", "Color")
+                        ? (color == "Green" ? Koopa.ShellColor.green : Koopa.ShellColor.red)
+                        : (Koopa.ShellColor.green);
+                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, shellColor);
                 }
-                return list;
+                if (isSingle)
+                {
+                    stack.Push(createFunc(objPoint));
+                }
+                else
+                {
+                    Util.BatchCreate(createFunc, objPoint, quantity, new Point(32, 32), ignoredSet, grid, ref stack);
+                }
+
             }
-            return null;
+            return true;
         }
-        private void PushNewObject(Stack<IGameObject> objectStack, string type, Point location, IList<IGameObject> list, Tuple<bool,string[]> property)
+
+        private bool BlockConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
-            switch (type)
+            isQuestionOrBrick = type.Name == "Brick" || type.Name == "Question";
+            if (isQuestionOrBrick && isSingle)
             {
-                case "Brick":
-                    objectStack.Push(new Brick(gameWorld, location, list, property.Item1));
-                    break;
-                case "Question":
-                    objectStack.Push(new Question(gameWorld, location, list, property.Item1));
-                    break;
-                case "Pipeline":
-                    objectStack.Push(new Pipeline(gameWorld, location, property.Item2[0]));
-                    break;
-                case "Floor":
-                    objectStack.Push(new Floor(gameWorld, location));
-                    break;
-                case "Stair":
-                    objectStack.Push(new Stair(gameWorld, location));
-                    break;
-                case "ShortCloud":
-                case "ShortSmileCloud":
-                case "LongCloud":
-                case "LongSmileCloud":
-                    objectStack.Push(new Background(gameWorld, location, type));
-                    break;
-                default:
-                    objectStack.Push(GameObjectFactory.Instance.CreateGameObject(type, gameWorld, location));
-                    break;
+                propertyPair = new Tuple<bool, string[]>(
+                    Util.TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden,
+                    Util.TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
+                list = Util.CreateItemList(world, objPoint, propertyPair.Item2);
+                objToBePushed = Activator.CreateInstance(type, world, objPoint, propertyPair.Item1) as IGameObject;
+                if (list != null && list.Count != 0)
+                    GameDatabase.SetEnclosedItem(objToBePushed, list);
+                stack.Push(objToBePushed);
             }
+            else if (!type.IsAssignableFrom(typeof(Pipeline)))
+            {
+                if (isSingle)
+                {
+                    stack.Push(Activator.CreateInstance(type, world, objPoint, false) as BaseGameObject);
+                }
+                else
+                {
+                    ////TODO:optimize it
+                    //if (isQuestionOrBrick)
+                    //{
+                    Util.BatchCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, false), objPoint,
+                        quantity, new Point(32, 32), ignoredSet, grid, ref stack);
+                    //}
+                    //else
+                    //{
+                    //    BatchCreate(point => (IGameObject)Activator.CreateInstance(type, world, point, true), objPoint, quantity, new Point(32, 32), ignoredSet, ref stack);
+                    //    objPoint = new Point(objPoint.X * grid, objPoint.Y * grid);
+                    //    var fullSize = new Point(32 * quantity.X, 32 * quantity.Y);
+                    //    var safeSize = graphicsDevice.DisplayMode.TitleSafeArea;
+                    //    if (fullSize.X <= safeSize.Width && fullSize.Y <= safeSize.Height)
+                    //    {
+                    //        stack.Push(new CompressedBlock(world, objPoint, fullSize, type));
+                    //    }
+                    //    else
+                    //    {
+                    //        var splitNumberX = fullSize.X / safeSize.Width;
+                    //        var splitNumberY = fullSize.Y / safeSize.Height;
+                    //        var remainX = fullSize.X % safeSize.Width;
+                    //        var remainY = fullSize.Y % safeSize.Height;
+                    //        for (int i = 0; i < splitNumberX; i++)
+                    //        {
+                    //            stack.Push(new CompressedBlock(world, new Point(objPoint.X + i * safeSize.Width, objPoint.Y), new Point(safeSize.Width, fullSize.Y), type));
+                    //        }
+                    //        if (remainX != 0)
+                    //        {
+                    //            stack.Push(new CompressedBlock(world, new Point(objPoint.X + splitNumberX * safeSize.Width, objPoint.Y), new Point(remainX, fullSize.Y), type));
+                    //        }
+                    //    }
+                    //}
+                }
+            }
+            else if (type.Name == "Pipeline")
+            {
+                if (!Util.TryGet(out length, token, "Property", "Length"))
+                {
+                    Debug.WriteLine("Deserialize fail: Length of Pipeline is missing.");
+                    return false;
+                }
+                if (!Util.TryGet(out direction, token, "Property", "Direction"))
+                {
+                    Debug.WriteLine("Deserialize fail: Direction of Pipeline is missing.");
+                    return false;
+                }
+                if (isSingle)
+                {
+                    list = Util.CreateSinglePipeline(model, world, grid, direction, length, objPoint);
+                    foreach (Pipeline pipelineComponent in list)
+                    {
+                        stack.Push(pipelineComponent);
+                    }
+                    if (direction != "NV" && direction != "NH" &&
+                        Util.TryGet(out entrance, token, "Property", "Entrance"))
+                    {
+                        GameDatabase.SetEntranceIndex(list[0] as Pipeline, entrance);
+                        GameDatabase.SetEntranceIndex(list[1] as Pipeline, entrance);
+                    }
+                }
+                else
+                {
+                    objFullSize = direction.Contains("V") ? new Point(64, 32 + 32 * length) : new Point(32 + 32 * length, 64);
+                    Util.BatchCreate(point => Util.CreateSinglePipeline(model, world, grid, direction, length, point), objPoint, quantity, objFullSize,
+                        ignoredSet, grid, ref stack);
+                }
+            }
+            return true;
         }
+
+        private bool BackgroundConverter(Type type, JToken token, ref Stack<IGameObject> stack)
+        {
+            if (Util.TryGet(out backgroundType, token, "Property", "Type"))
+            {
+                Debug.WriteLine("Deserialize fail: Type of background is not given!");
+            }
+            var zIndex = Util.TryGet(out string s, token, "Property", "ZIndex")
+                ? (ZIndex) Enum.Parse(typeof(ZIndex), s)
+                : ZIndex.background0;
+            createFunc = point =>
+                (IGameObject) Activator.CreateInstance(type, world, point, backgroundType, zIndex);
+            objFullSize = createFunc(new Point()).Boundary.Size;
+            if (isSingle)
+            {
+                stack.Push(createFunc(objPoint));
+            }
+            else
+            {
+                Util.BatchCreate(createFunc, objPoint, quantity, objFullSize, ignoredSet, grid, ref stack);
+            }
+            return true;
+        }
+
     }
 }

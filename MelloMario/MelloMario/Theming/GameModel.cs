@@ -1,28 +1,29 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using MelloMario.LevelGen;
 using System;
+using MelloMario.Containers;
 using MelloMario.Scripts;
+using MelloMario.Theming;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
     class GameModel : IGameModel
     {
-        private IEnumerable<IController> controllers;
-        private IGameWorld world;
-        private IGameCharacter character;
-        private LevelIOJson reader;
-        private bool isPaused;
         private Game1 game;
+        private IDictionary<string, IGameWorld> worlds;
+        private IGameWorld currentWorld;
+        private string currentWorldIndex;
+        private IEnumerable<IController> controllers;
+        private IPlayer player;
+        private bool isPaused;
 
-        // TODO: remove this
-        public IGameCharacter Character { get { return character; } }
-
-        public GameModel(Game1 game, LevelIOJson reader)
+        public GameModel(Game1 game)
         {
             this.game = game;
-            this.reader = reader;
+            worlds = new Dictionary<string, IGameWorld>();
+            currentWorldIndex = "Main";
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -37,27 +38,52 @@ namespace MelloMario
 
         public void Pause()
         {
-            isPaused = !isPaused;
+            isPaused = true;
 
-            if (isPaused)
+            new PausedScript().Bind(controllers, this, player);
+        }
+
+        public void Resume()
+        {
+            isPaused = false;
+
+            new PlayingScript().Bind(controllers, this, player);
+        }
+
+        public void SwitchWorld(string index)
+        {
+            if (worlds.ContainsKey(index))
             {
-                new PausedScript().Bind(controllers, character, this);
+                currentWorld = worlds[index];
             }
             else
             {
-                new PlayingScript().Bind(controllers, character, this);
+                LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
+                reader.SetModel(this);
+                Tuple<IGameWorld, IPlayer> pair = reader.Load();
+                currentWorldIndex = index;
+                worlds.Add(currentWorldIndex, currentWorld);
+                currentWorld = pair.Item1;
             }
+
+            player.Spawn(currentWorld);
         }
 
         public void Reset()
         {
-            reader.SetModel(this);
-            Tuple<IGameWorld, IGameCharacter> pair = reader.Load("Main");
-            world = pair.Item1;
-            character = pair.Item2;
+            GameDatabase.Clear();
 
+            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
+            reader.SetModel(this);
+            Tuple<IGameWorld, IPlayer> pair = reader.Load();
+            currentWorld = pair.Item1;
+            player = pair.Item2;
+            if (!worlds.ContainsKey(currentWorldIndex))
+            {
+                worlds.Add(currentWorldIndex, currentWorld);
+            }
             isPaused = false;
-            new PlayingScript().Bind(controllers, character, this);
+            new PlayingScript().Bind(controllers, this, player);
         }
 
         public void Quit()
@@ -65,37 +91,47 @@ namespace MelloMario
             game.Exit();
         }
 
-        public void Update(GameTime time)
+        public void Update(int time)
         {
             foreach (IController controller in controllers)
             {
                 controller.Update();
             }
 
+
             if (!isPaused)
             {
-                foreach (IGameObject obj in world.ScanObjects())
+                // reserved for multiplayer
+                ISet<IGameObject> updating = new HashSet<IGameObject>();
+
+                foreach (IGameObject obj in currentWorld.ScanNearby(player.Sensing))
+                {
+                    updating.Add(obj);
+                }
+
+                foreach (IGameObject obj in updating)
                 {
                     obj.Update(time);
                 }
 
-                world.Update();
+                currentWorld.Update();
             }
         }
 
-        public void Draw(GameTime time)
+        public void Draw(int time)
         {
-            if (isPaused)
-            {
-                // no animation on pause
-                time.ElapsedGameTime = new TimeSpan();
-            }
-
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
-                foreach (IGameObject obj in world.ScanObjects())
+                foreach (IGameObject obj in currentWorld.ScanNearby(player.Viewport))
                 {
-                    obj.Draw(time, character.Viewport, zIndex);
+                    if (isPaused)
+                    {
+                        obj.Draw(0, player.Viewport, zIndex);
+                    }
+                    else
+                    {
+                        obj.Draw(time, player.Viewport, zIndex);
+                    }
                 }
             }
         }

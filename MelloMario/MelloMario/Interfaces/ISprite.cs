@@ -4,7 +4,10 @@ namespace MelloMario
 {
     enum ZIndex
     {
-        background,
+        background0,
+        background1,
+        background2,
+        background3,
         item,
         level,
         foreground,
@@ -15,6 +18,6 @@ namespace MelloMario
     {
         Point PixelSize { get; }
 
-        void Draw(GameTime time, Rectangle destination, ZIndex zIndex);
+        void Draw(int time, Rectangle destination, ZIndex zIndex);
     }
 }

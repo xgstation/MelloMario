@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
     class Hidden : BaseState<Question>, IBlockState
     {
-
         public Hidden(Question owner) : base(owner)
         {
         }
@@ -31,7 +24,7 @@ namespace MelloMario.BlockObjects.QuestionStates
             Owner.State = new Bumped(Owner);
         }
 
-        public override void Update(GameTime time)
+        public override void Update(int time)
         {
             //do nothing
         }

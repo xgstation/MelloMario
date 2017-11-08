@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.ItemObjects.OneUpMushroomStates;
-using MelloMario.MarioObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
 {
@@ -14,18 +14,29 @@ namespace MelloMario.ItemObjects
         {
             ShowSprite(SpriteFactory.Instance.CreateOneUpMushroomSprite());
         }
-        protected override void OnUpdate(GameTime time)
-        {
-            ApplyGravity();
 
+        protected override void OnUpdate(int time)
+        {
             state.Update(time);
+        }
+
+        protected override void OnSimulation(int time)
+        {
             if (state is Normal)
             {
+                ApplyGravity();
+
                 if (Facing == FacingMode.right)
+                {
                     Move(new Point(H_SPEED, 0));
+                }
                 else
+                {
                     Move(new Point(-1 * H_SPEED, 0));
+                }
             }
+
+            base.OnSimulation(time);
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
@@ -34,7 +45,9 @@ namespace MelloMario.ItemObjects
             {
                 case "PlayerMario":
                     if (state is Normal)
+                    {
                         Collect();
+                    }
                     break;
                 case "Brick":
                 case "Question":
@@ -57,11 +70,15 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        protected override void OnOut(CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnCollideWorld(CollisionMode mode)
+        {
+        }
+
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
@@ -99,6 +116,8 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
+
+        public OneUpMushroom(IGameWorld world, Point location) : this(world, location, GameDatabase.GetCharacterLocation(), false) { }
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
         }

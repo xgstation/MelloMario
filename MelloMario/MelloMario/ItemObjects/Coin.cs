@@ -12,13 +12,11 @@ namespace MelloMario.ItemObjects
         private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateCoinSprite());
-            
         }
 
-        protected override void OnUpdate(GameTime time)
+        protected override void OnUpdate(int time)
         {
             state.Update(time);
-     
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
@@ -29,11 +27,15 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        protected override void OnOut(CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
         {
         }
 
-        protected override void OnDraw(GameTime time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnCollideWorld(CollisionMode mode)
+        {
+        }
+
+        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
 
@@ -62,11 +64,11 @@ namespace MelloMario.ItemObjects
             }
             UpdateSprite();
         }
+
         public Coin(IGameWorld world, Point location) : this(world, location, false)
         {
-
         }
-        
+
         public void Collect()
         {
             RemoveSelf();

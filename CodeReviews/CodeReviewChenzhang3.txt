@@ -1,0 +1,10 @@
+﻿Chenzhang Hu
+10/31/2017
+Sprint 3
+
+Class: Mario
+Author: All team members
+
+The collision handling is still complicated. It would be better to move some of the code to other GameObject classes and create more base classes (like BaseEnemyObject) to merge duplicated code.
+
+This review took me 10 minutes.
