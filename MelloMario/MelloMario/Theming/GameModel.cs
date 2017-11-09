@@ -12,7 +12,7 @@ namespace MelloMario
     class GameModel : IGameModel
     {
         private Game1 game;
-        private IDictionary<string, IGameWorld> worlds;
+        private GameSession session;
         private IEnumerable<IController> controllers;
         private IPlayer player;
         private bool isPaused;
@@ -20,7 +20,7 @@ namespace MelloMario
         public GameModel(Game1 game)
         {
             this.game = game;
-            worlds = new Dictionary<string, IGameWorld>();
+            session = new GameSession();
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -47,41 +47,47 @@ namespace MelloMario
             new PlayingScript().Bind(controllers, this, player);
         }
 
-        public void SwitchWorld(string index)
+        public void SwitchWorld(string id)
         {
-            if (worlds.ContainsKey(index))
+            foreach (IGameWorld world in session.ScanWorlds())
             {
-                player.Spawn(worlds[index]);
+                if (world.Id == id)
+                {
+                    player.Spawn(world);
+                    return;
+                }
             }
-            else
-            {
-                LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
-                reader.SetModel(this);
-                Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
-                worlds.Add(index, pair.Item1);
 
-                player.Spawn(pair.Item1);
-            }
+            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
+            reader.SetModel(this);
+            Tuple<IGameWorld, IPlayer> pair = reader.Load(id);
+
+            session.Move(player);
+            player.Spawn(pair.Item1);
+        }
+
+        public void LoadLevel(string id)
+        {
+            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
+            reader.SetModel(this);
+            Tuple<IGameWorld, IPlayer> pair = reader.Load(id);
+
+            // TODO: move this to map initialization
+            pair.Item1.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlagTop", pair.Item1, new Point(10 * 32, 13 * 32)));
+            pair.Item1.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlag", pair.Item1, new Point(10 * 32, 14 * 32)));
+
+            player = pair.Item2;
+            session.Add(player);
+
+            Resume();
         }
 
         public void Reset()
         {
             GameDatabase.Clear();
+            session.Remove(player);
 
-            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
-            reader.SetModel(this);
-            Tuple<IGameWorld, IPlayer> pair = reader.Load("Main");
-            worlds.Add("Main", pair.Item1);
-
-            Tuple<IGameWorld, IPlayer> pair = reader.Load(currentWorldIndex);
-            currentWorld = pair.Item1;
-            pair.Item1.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlagTop", currentWorld, new Point(10 * 32, 13 * 32)));
-            pair.Item1.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlag", currentWorld, new Point(10 * 32, 14 * 32)));
-
-            player = pair.Item2;
-            player.Spawn(pair.Item1);
-
-            Resume();
+            LoadLevel(player.CurrentWorld.Id);
         }
 
         public void Quit()
@@ -99,6 +105,8 @@ namespace MelloMario
 
             if (!isPaused)
             {
+                session.Update();
+
                 // reserved for multiplayer
                 ISet<IGameObject> updating = new HashSet<IGameObject>();
 
