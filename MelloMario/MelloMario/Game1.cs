@@ -44,6 +44,7 @@ namespace MelloMario
 
             model.LoadControllers(controllers);
             model.LoadLevel("Main", true); // Create the level for the first time
+            model.Init();
         }
 
         /// <summary>
