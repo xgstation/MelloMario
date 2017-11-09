@@ -18,6 +18,7 @@ namespace MelloMario.LevelGen
         private CharacterConverter characterConverter;
         private GraphicsDevice graphicsDevice;
         private GameModel model;
+        private IGameSession session;
         private JToken jsonToken;
         private JToken MapListToken;
         private JToken MapToBeLoaded;
@@ -27,9 +28,10 @@ namespace MelloMario.LevelGen
         private IGameWorld world;
         private IPlayer character;
 
-        public GameConverter(GameModel model, GraphicsDevice graphicsDevice, string index = "Main")
+        public GameConverter(GameModel model, IGameSession session, GraphicsDevice graphicsDevice, string index = "Main")
         {
             this.model = model;
+            this.session = session;
             this.graphicsDevice = graphicsDevice;
             this.index = index;
             serializers = new JsonSerializer();
@@ -87,7 +89,7 @@ namespace MelloMario.LevelGen
 
             gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, grid);
 
-            characterConverter = new CharacterConverter(world, grid);
+            characterConverter = new CharacterConverter(session, world, grid);
 
             serializers.Converters.Add(gameEntityConverter);
             serializers.Converters.Add(characterConverter);
