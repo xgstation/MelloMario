@@ -97,12 +97,12 @@ namespace MelloMario.MarioObjects
 
                     if (mode == CollisionMode.Top)
                     {
-                        Bounce(mode, new Vector2(), 1);
+                        bool bumped = Bounce(mode, new Vector2(), 1);
                         if (isBumping)
                         {
                             //Move(new Point(0, 1));
                         }
-                        else
+                        else if (bumped)
                         {
                             if (brick != null)
                             {
