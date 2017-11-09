@@ -13,18 +13,14 @@ namespace MelloMario
     {
         private Game1 game;
         private IDictionary<string, IGameWorld> worlds;
-        private IGameWorld currentWorld;
-        private string currentWorldIndex;
         private IEnumerable<IController> controllers;
         private IPlayer player;
         private bool isPaused;
-        public bool IsSwitching { get; set; } // TODO: remove this
 
         public GameModel(Game1 game)
         {
             this.game = game;
             worlds = new Dictionary<string, IGameWorld>();
-            currentWorldIndex = "Main";
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -53,23 +49,18 @@ namespace MelloMario
 
         public void SwitchWorld(string index)
         {
-
             if (worlds.ContainsKey(index))
             {
-                currentWorld = worlds[index];
-                currentWorldIndex = index;
+                player.Spawn(worlds[index]);
             }
             else
             {
                 LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
                 reader.SetModel(this);
                 Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
-                currentWorldIndex = index;
-                currentWorld = pair.Item1;
-                worlds.Add(currentWorldIndex, currentWorld);
+                worlds.Add(index, pair.Item1);
+                player.Spawn(pair.Item1);
             }
-
-            player.Spawn(currentWorld);
         }
 
         public void Reset()
@@ -78,15 +69,12 @@ namespace MelloMario
 
             LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
             reader.SetModel(this);
-            Tuple<IGameWorld, IPlayer> pair = reader.Load(currentWorldIndex);
-            currentWorld = pair.Item1;
+            Tuple<IGameWorld, IPlayer> pair = reader.Load("Main");
+            worlds.Add("Main", pair.Item1);
             player = pair.Item2;
-            if (!worlds.ContainsKey(currentWorldIndex))
-            {
-                worlds.Add(currentWorldIndex, currentWorld);
-            }
-            isPaused = false;
-            new PlayingScript().Bind(controllers, this, player);
+            player.Spawn(pair.Item1);
+
+            Resume();
         }
 
         public void Quit()
@@ -107,7 +95,7 @@ namespace MelloMario
                 // reserved for multiplayer
                 ISet<IGameObject> updating = new HashSet<IGameObject>();
 
-                foreach (IGameObject obj in currentWorld.ScanNearby(player.Sensing))
+                foreach (IGameObject obj in player.CurrentWorld.ScanNearby(player.Sensing))
                 {
                     updating.Add(obj);
                 }
@@ -117,7 +105,7 @@ namespace MelloMario
                     obj.Update(time);
                 }
 
-                currentWorld.Update();
+                player.CurrentWorld.Update();
             }
         }
 
@@ -125,7 +113,7 @@ namespace MelloMario
         {
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
-                foreach (IGameObject obj in currentWorld.ScanNearby(player.Viewport))
+                foreach (IGameObject obj in player.CurrentWorld.ScanNearby(player.Viewport))
                 {
                     if (isPaused)
                     {
