@@ -10,7 +10,7 @@ namespace MelloMario.MarioObjects
     class PlayerMario : Mario, IPlayer
     {
         private Vector2 userInput;
-        SoundEffectInstance jumpSound;
+        private SoundEffectInstance jumpSound;
 
         protected IGameSession Session;
 
