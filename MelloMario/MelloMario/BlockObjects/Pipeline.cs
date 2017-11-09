@@ -9,9 +9,9 @@ namespace MelloMario.BlockObjects
 {
     class Pipeline : BaseCollidableObject
     {
-        private static GameModel model;
+        private static GameModel model; // TODO: model is not singleton now. either change it to singleton or use non-static member
+        private IPlayer switchingPlayer;
         private string type;
-        private bool isSwitching = false;
         private int elapsed;
 
         public string Type
@@ -26,6 +26,7 @@ namespace MelloMario.BlockObjects
         {
             model = newModel;
         }
+
         private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(type));
@@ -33,15 +34,16 @@ namespace MelloMario.BlockObjects
 
         protected override void OnUpdate(int time)
         {
-            if (isSwitching)
+            if (switchingPlayer != null)
             {
                 elapsed += time;
-            }
-            if (isSwitching && elapsed > 500)
-            {
-                model.SwitchWorld(GameDatabase.GetEntranceIndex(this));
-                elapsed = 0;
-                isSwitching = false;
+
+                if (elapsed > 500)
+                {
+                    switchingPlayer.Spawn(model.LoadLevel(GameDatabase.GetEntranceIndex(this)));
+                    elapsed = 0;
+                    switchingPlayer = null;
+                }
             }
         }
 
@@ -56,13 +58,13 @@ namespace MelloMario.BlockObjects
                         case "LeftIn":
                             if (mario.Boundary.Center.X > Boundary.Center.X)
                             {
-                                isSwitching = true;
+                                switchingPlayer = mario;
                             }
                             break;
                         case "RightIn":
                             if (mario.Boundary.Center.X < Boundary.Center.X)
                             {
-                                isSwitching = true;
+                                switchingPlayer = mario;
                             }
                             break;
                     }
