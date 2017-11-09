@@ -49,6 +49,12 @@ namespace MelloMario.Factories
             spriteBatch = newSpriteBatch;
         }
 
+        public ISprite CreateTextSprite(string text)
+        {
+
+            return null;
+        }
+
         public ISprite CreateMarioSprite(string status, string protectionStatus, bool isStatic)
         {
             switch (protectionStatus)

@@ -83,7 +83,7 @@
     <Compile Include="BlockObjects\QuestionStates\Used.cs" />
     <Compile Include="BlockObjects\Stair.cs" />
     <Compile Include="BaseClasses\BaseCommand.cs" />
-    <Compile Include="Collision\CollisionReponseModel.cs" />
+    <Compile Include="Collision\CollisionResponseModel.cs" />
     <Compile Include="Collision\QuadTree.cs" />
     <Compile Include="Collision\QuadTreeNode.cs" />
     <Compile Include="Commands\Action.cs" />
@@ -195,6 +195,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Theming\GameTimer.cs" />
     <Compile Include="Theming\Listener.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -259,10 +260,8 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="Content\Basic.spritefont">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Content\font.spritefont" />
+    <None Include="Content\emulogic.ttf" />
+    <None Include="Content\Font\text.spritefont" />
     <None Include="Content\Level1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
