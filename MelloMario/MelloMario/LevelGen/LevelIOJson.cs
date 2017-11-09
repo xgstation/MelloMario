@@ -16,8 +16,10 @@ namespace MelloMario.LevelGen
         private string levelString;
         private GraphicsDevice graphicsDevice;
         private GameConverter gameConverter;
-        public LevelIOJson(string jsonPath, GraphicsDevice graphicsDevice)
+        private Theming.Listener listener;
+        public LevelIOJson(string jsonPath, GraphicsDevice graphicsDevice, Theming.Listener listener)
         {
+            this.listener = listener;
             this.graphicsDevice = graphicsDevice;
             path = jsonPath;
         }
@@ -30,7 +32,7 @@ namespace MelloMario.LevelGen
         public Tuple<IGameWorld, IPlayer> Load(string index)
         {
             levelString = File.ReadAllText(path);
-            gameConverter = new GameConverter(model, graphicsDevice, index);
+            gameConverter = new GameConverter(model, graphicsDevice, listener, index);
             return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, gameConverter);
 
         }

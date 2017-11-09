@@ -5,6 +5,7 @@ using MelloMario.EnemyObjects;
 using MelloMario.ItemObjects;
 using MelloMario.MarioObjects;
 using MelloMario.MiscObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.Factories
 {
@@ -43,8 +44,13 @@ namespace MelloMario.Factories
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public IGameObject CreateGameObject(string type, IGameWorld world, Point location)
+        {
+            return CreateGameObject(type, world, location, null);
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
+        public IGameObject CreateGameObject(string type, IGameWorld world, Point location, Listener listener)
         {
             switch (type)
             {
@@ -84,9 +90,9 @@ namespace MelloMario.Factories
 
                 //entities
                 case "Coin":
-                    return new Coin(world, location);
+                    return new Coin(world, location, listener);
                 case "CoinUnveil":
-                    return new Coin(world, location, true);
+                    return new Coin(world, location, listener, true);
                 case "OneUpMushroom":
                     return new OneUpMushroom(world, location, marioLoc);
                 case "OneUpMushroomUnveil":
