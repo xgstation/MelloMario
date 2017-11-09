@@ -27,13 +27,15 @@ namespace MelloMario.LevelGen
 
         private IGameWorld world;
         private IPlayer character;
+        private Theming.Listener listener;
 
-        public GameConverter(GameModel model, IGameSession session, GraphicsDevice graphicsDevice, string index = "Main")
+        public GameConverter(GameModel model, IGameSession session, GraphicsDevice graphicsDevice, Theming.Listener listener, string index = "Main")
         {
             this.model = model;
             this.session = session;
             this.graphicsDevice = graphicsDevice;
             this.index = index;
+            this.listener = listener;
             serializers = new JsonSerializer();
         }
 
@@ -87,7 +89,7 @@ namespace MelloMario.LevelGen
             Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints");
             world = new GameWorld(index, mapSize, initialPoint, respawnPoints);
 
-            gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, grid);
+            gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, listener, grid);
 
             characterConverter = new CharacterConverter(session, world, grid);
 

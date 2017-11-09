@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,45 +10,97 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario.Collision
 {
-    class QuadTree<T>
+    class QuadTree<T> : ICollection<T>
     {
-        private const int MAXOBJECTS = 9;
-        private const int MAXDEPTH = 5;
+        public static readonly int MaxObjects = 9;
+        public static readonly Point MaxSize = new Point(1600,800);
 
-        private int level;
-        private IList<T> objects;
-        private Rectangle boundary;
-        private QuadTree<T>[] nodes;
-        private Func<T,Rectangle> func;
-        public QuadTree(int level, Func<T,Rectangle> func, Rectangle boundary)
+        private readonly IDictionary<T, QuadTreeNode<T>> dictTtoParentTree;
+        private readonly List<QuadTreeNode<T>> roots;
+        private readonly QuadTreeNode<T> root;
+        private readonly Func<T, Rectangle> funcTtoRec;
+
+        public QuadTree(Rectangle area, Func<T, Rectangle> funcTtoRec)
         {
-            this.level = level;
-            this.boundary = boundary;
-            objects = new List<T>();
-            nodes = new QuadTree<T>[4];
+            Debug.Assert(area.Size.X < MaxSize.X && area.Size.Y < MaxSize.Y);
+            root = new QuadTreeNode<T>(area, funcTtoRec, t => dictTtoParentTree?[t]);
+        }
+        public Rectangle Area { get { return root.Area; } }
+
+        public ICollection<T> GetRanged(Rectangle range)
+        {
+            ICollection<T> ranged = new List<T>();
+            root.GetRanged(range, ref ranged);
+            return ranged;
         }
 
-        public void Insert(T obj)
+        public ICollection<T> GetAll()
         {
-
+            ICollection<T> all = new List<T>();
+            root.GetAll(ref all);
+            return all;
         }
-        public void Clear()
+
+        public bool DoMove(T item)
         {
-            objects.Clear();
-            foreach (var quadTree in nodes)
+            if (!Contains(item)) return false;
+            root.DoMove(item);
+            return true;
+        }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return dictTtoParentTree.Keys.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void Add(T item)
+        {
+            if (item == null) return;
+            var squeezed = root.Insert(item);
+            foreach (var tuple in squeezed)
             {
-                if(nodes != null)
-                    quadTree.Clear();
+                if (dictTtoParentTree.ContainsKey(tuple.Item1))
+                {
+                    dictTtoParentTree[tuple.Item1] = tuple.Item2;
+                }
+                else
+                {
+                    dictTtoParentTree.Add(tuple.Item1, tuple.Item2);
+                }
             }
         }
 
-        private int GetIndex(T obj)
+        public void Clear()
         {
-            Rectangle objectBoundary = func(obj);
-            int index = -1;
-            Point middlePoint = boundary.Center;
-            //bool topSide = objectBoundary.Bottom < middlePoint.Y && objectBoundary;
-            return index;
+            root.Clear();
         }
+
+        public bool Contains(T item)
+        {
+            return item != null && dictTtoParentTree.ContainsKey(item);
+        }
+
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            dictTtoParentTree.Keys.CopyTo(array, arrayIndex);
+        }
+
+        public bool Remove(T item)
+        {
+            if (Contains(item))
+            {
+                root.Delete(item);
+                dictTtoParentTree.Remove(item);
+                return true;
+            }
+            return false;
+        }
+
+        public int Count { get { return dictTtoParentTree.Count; } }
+        public bool IsReadOnly { get { return false; } }
     }
 }

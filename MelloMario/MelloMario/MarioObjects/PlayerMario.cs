@@ -1,13 +1,16 @@
 ﻿using MelloMario.Containers;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.Theming;
+using MelloMario.Sounds;
 
 namespace MelloMario.MarioObjects
 {
     class PlayerMario : Mario, IPlayer
     {
         private Vector2 userInput;
+        SoundEffectInstance jumpSound;
 
         protected IGameSession Session;
 
@@ -75,6 +78,8 @@ namespace MelloMario.MarioObjects
             Session.Add(this);
 
             Relocate(World.GetInitialPoint());
+
+            jumpSound = SoundController.bounce.CreateInstance();
         }
 
         public void Left()
@@ -140,6 +145,7 @@ namespace MelloMario.MarioObjects
 
         public void JumpPress()
         {
+            jumpSound.Play();
             Jump();
         }
 

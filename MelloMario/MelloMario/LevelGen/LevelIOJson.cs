@@ -30,7 +30,7 @@ namespace MelloMario.LevelGen
         public Tuple<IGameWorld, IPlayer> Load(string index, IGameSession session)
         {
             levelString = File.ReadAllText(path);
-            gameConverter = new GameConverter(model, session, graphicsDevice, index);
+            gameConverter = new GameConverter(model, session, graphicsDevice, listener, index);
             return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, gameConverter);
 
         }

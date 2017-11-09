@@ -9,10 +9,10 @@ namespace MelloMario.ItemObjects.CoinStates
 
         protected override void OnTimer(int time)
         {
-            Owner.State = new Normal(Owner);
+            Owner.Collect();
         }
 
-        public Unveil(Coin owner) : base(owner, 1000)
+        public Unveil(Coin owner) : base(owner, 250)
         {
             elapsed = 0f;
         }
@@ -29,13 +29,15 @@ namespace MelloMario.ItemObjects.CoinStates
         public override void Update(int time)
         {
             elapsed += time;
-            realOffset += 32 * time / 1000f;
+            realOffset += 128 * time / 500f;
 
             while (realOffset > 1)
             {
                 Owner.UnveilMove(-1);
                 --realOffset;
             }
+
+            base.Update(time);
         }
     }
 }

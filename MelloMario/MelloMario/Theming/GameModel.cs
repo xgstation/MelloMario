@@ -14,6 +14,10 @@ namespace MelloMario
         private GameSession session;
         private IEnumerable<IController> controllers;
         private bool isPaused;
+        private Listener listener;
+        //TODO: temporary public until the can move hud out of game1
+        public int Coins;
+        public int Score;
 
         // for singleplayer game
         private IPlayer GetActivePlayer()
@@ -29,8 +33,11 @@ namespace MelloMario
 
         public GameModel(Game1 game)
         {
+            Score = 0;
+            Coins = 0;
             this.game = game;
             session = new GameSession();
+            listener = new Listener(this);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -67,7 +74,7 @@ namespace MelloMario
                 }
             }
 
-            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
+            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice, listener);
             reader.SetModel(this);
             Tuple<IGameWorld, IPlayer> pair = reader.Load(id, session);
 
