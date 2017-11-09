@@ -11,7 +11,6 @@ namespace MelloMario.MarioObjects
     {
         private Vector2 userInput;
         private SoundEffectInstance jumpSound;
-
         protected IGameSession Session;
 
         protected override void OnUpdate(int time)

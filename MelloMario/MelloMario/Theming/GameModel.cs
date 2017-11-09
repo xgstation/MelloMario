@@ -147,6 +147,7 @@ namespace MelloMario
         public void Draw(int time)
         {
             IPlayer player = GetActivePlayer();
+       
 
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
