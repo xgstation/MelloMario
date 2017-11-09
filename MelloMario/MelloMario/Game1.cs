@@ -43,9 +43,7 @@ namespace MelloMario
             };
 
             model.LoadControllers(controllers);
-
-            //reader = new LevelIOJson("Content/Level1.json");
-            model.LoadLevel("Main"); // Create the level for the first time
+            model.LoadLevel("Main", true); // Create the level for the first time
         }
 
         /// <summary>

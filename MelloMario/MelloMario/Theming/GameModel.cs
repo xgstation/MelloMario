@@ -4,8 +4,7 @@ using MelloMario.LevelGen;
 using System;
 using MelloMario.Containers;
 using MelloMario.Scripts;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario
 {
@@ -14,8 +13,19 @@ namespace MelloMario
         private Game1 game;
         private GameSession session;
         private IEnumerable<IController> controllers;
-        private IPlayer player;
         private bool isPaused;
+
+        // for singleplayer game
+        private IPlayer GetActivePlayer()
+        {
+            foreach (IPlayer player in session.ScanPlayers())
+            {
+                // take only one
+                return player;
+            }
+
+            return null; // error!
+        }
 
         public GameModel(Game1 game)
         {
@@ -37,57 +47,45 @@ namespace MelloMario
         {
             isPaused = true;
 
-            new PausedScript().Bind(controllers, this, player);
+            new PausedScript().Bind(controllers, this, GetActivePlayer());
         }
 
         public void Resume()
         {
             isPaused = false;
 
-            new PlayingScript().Bind(controllers, this, player);
+            new PlayingScript().Bind(controllers, this, GetActivePlayer());
         }
 
-        public void SwitchWorld(string id)
+        public IGameWorld LoadLevel(string id, bool init = false)
         {
             foreach (IGameWorld world in session.ScanWorlds())
             {
                 if (world.Id == id)
                 {
-                    player.Spawn(world);
-                    return;
+                    return world;
                 }
             }
 
             LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
             reader.SetModel(this);
-            Tuple<IGameWorld, IPlayer> pair = reader.Load(id);
-
-            session.Move(player);
-            player.Spawn(pair.Item1);
-        }
-
-        public void LoadLevel(string id)
-        {
-            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
-            reader.SetModel(this);
-            Tuple<IGameWorld, IPlayer> pair = reader.Load(id);
+            Tuple<IGameWorld, IPlayer> pair = reader.Load(id, session);
 
             // TODO: move this to map initialization
-            pair.Item1.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlagTop", pair.Item1, new Point(10 * 32, 13 * 32)));
-            pair.Item1.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlag", pair.Item1, new Point(10 * 32, 14 * 32)));
+            GameObjectFactory.Instance.CreateGameObject("EndFlagTop", pair.Item1, new Point(10 * 32, 13 * 32));
+            GameObjectFactory.Instance.CreateGameObject("EndFlag", pair.Item1, new Point(10 * 32, 14 * 32));
 
-            player = pair.Item2;
-            session.Add(player);
+            if (!init)
+            {
+                session.Remove(pair.Item2);
+            }
 
-            Resume();
+            return pair.Item1;
         }
 
         public void Reset()
         {
-            GameDatabase.Clear();
-            session.Remove(player);
-
-            LoadLevel(player.CurrentWorld.Id);
+            // TODO
         }
 
         public void Quit()
@@ -105,14 +103,15 @@ namespace MelloMario
 
             if (!isPaused)
             {
-                session.Update();
-
                 // reserved for multiplayer
                 ISet<IGameObject> updating = new HashSet<IGameObject>();
 
-                foreach (IGameObject obj in player.CurrentWorld.ScanNearby(player.Sensing))
+                foreach (IPlayer player in session.ScanPlayers())
                 {
-                    updating.Add(obj);
+                    foreach (IGameObject obj in player.CurrentWorld.ScanNearby(player.Sensing))
+                    {
+                        updating.Add(obj);
+                    }
                 }
 
                 foreach (IGameObject obj in updating)
@@ -120,12 +119,19 @@ namespace MelloMario
                     obj.Update(time);
                 }
 
-                player.CurrentWorld.Update();
+                foreach (IGameWorld world in session.ScanWorlds())
+                {
+                    world.Update();
+                }
+
+                session.Update();
             }
         }
 
         public void Draw(int time)
         {
+            IPlayer player = GetActivePlayer();
+
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
                 foreach (IGameObject obj in player.CurrentWorld.ScanNearby(player.Viewport))
