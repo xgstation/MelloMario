@@ -47,19 +47,19 @@ namespace MelloMario.BlockObjects.BrickStates
         public override void Update(int time)
         {
             // TODO: use BaseTimedState
-            if (elapsed >= 70)
+            if (elapsed >= 100)
             {
                 move = 0;
             }
             elapsed += time;
-            move += 3;
-            if (elapsed >= 170)
+            move += 1;
+            if (elapsed >= 350)
             {
                 Owner.BumpMove(0);
                 Owner.ReleaseNextItem();
                 Show();
             }
-            else if (elapsed >= 70)
+            else if (elapsed >= 100)
             {
                 Owner.BumpMove(move);
             }

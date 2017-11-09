@@ -11,10 +11,10 @@ namespace MelloMario.Sounds
 {
     class SoundController
     {
-        public static Song Normal;
-        public static SoundEffect bounce;
+        public static Song Normal, BelowGround, Hurry, Pause, TitleScreen;
+        public static SoundEffect bounce, bumpBlock, breakBlock, coin, fireFlower, sizeUp, sizeDown, enemyKill, GameOver;
 
-        public enum songs { normal }
+        public enum songs { normal, belowGround, hurry, pause, title }
         public static songs currentSong;
 
         public SoundController(Game1 game)
@@ -24,7 +24,7 @@ namespace MelloMario.Sounds
             currentSong = songs.normal;
         }
 
-        public static void PlayMusic()
+        public static void PlayMusic(songs song)
         {
             MediaPlayer.Play(Normal);
             MediaPlayer.IsRepeating = true;

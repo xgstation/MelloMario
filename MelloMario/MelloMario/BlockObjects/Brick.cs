@@ -45,6 +45,10 @@ namespace MelloMario.BlockObjects
             {
                 HideSprite();
             }
+            else if (state is Destroyed)
+            {
+                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Destroyed"));
+            }
             else
             {
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));

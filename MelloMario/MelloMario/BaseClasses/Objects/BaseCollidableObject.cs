@@ -168,7 +168,6 @@ namespace MelloMario
 
         protected override void OnSimulation(int time)
         {
-            Point location = Boundary.Location;
             float offset = 0;
 
             while (true)
@@ -190,6 +189,7 @@ namespace MelloMario
                 float offsetX = (float) Math.Sqrt(sqrY / (sqrX + sqrY));
                 float offsetY = (float) Math.Sqrt(sqrX / (sqrX + sqrY));
 
+                Point location = Boundary.Location;
                 if (Math.Abs(offset + offsetX) < Math.Abs(offset - offsetY))
                 {
                     if (movement.X < 0)
