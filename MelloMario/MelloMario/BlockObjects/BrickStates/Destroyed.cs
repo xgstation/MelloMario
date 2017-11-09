@@ -28,9 +28,5 @@ namespace MelloMario.BlockObjects.BrickStates
         {
             // do nothing
         }
-
-        public override void Update(int time)
-        {
-        }
     }
 }

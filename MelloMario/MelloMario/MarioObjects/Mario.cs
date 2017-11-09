@@ -79,8 +79,11 @@ namespace MelloMario.MarioObjects
 
                     Brick brick = target as Brick;
                     Question question = target as Question;
+
                     if (brick != null)
                     {
+                        if (brick.State is BlockObjects.BrickStates.Destroyed)
+                            break;
                         isHidden = brick.State is BlockObjects.BrickStates.Hidden;
                         isBumping = brick.State is BlockObjects.BrickStates.Bumped;
                     }
@@ -98,12 +101,12 @@ namespace MelloMario.MarioObjects
 
                     if (mode == CollisionMode.Top)
                     {
-                        Bounce(mode, new Vector2(), 1);
+                        bool bumped = Bounce(mode, new Vector2(), 1);
                         if (isBumping)
                         {
                             //Move(new Point(0, 1));
                         }
-                        else
+                        else if (bumped)
                         {
                             if (brick != null)
                             {

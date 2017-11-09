@@ -45,7 +45,7 @@ namespace MelloMario
                 new GamepadController(),
                 new KeyboardController()
             };
-            SoundController.PlayMusic();
+            SoundController.PlayMusic(SoundController.songs.normal);
             model.LoadControllers(controllers);
             model.LoadLevel("Main", true); // Create the level for the first time
             model.Init();
