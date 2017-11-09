@@ -75,7 +75,7 @@ namespace MelloMario
             GameObjectFactory.Instance.CreateGameObject("EndFlagTop", pair.Item1, new Point(10 * 32, 13 * 32));
             GameObjectFactory.Instance.CreateGameObject("EndFlag", pair.Item1, new Point(10 * 32, 14 * 32));
 
-            if (!init)
+            if (!init && pair.Item2 != null)
             {
                 session.Remove(pair.Item2);
             }
@@ -83,9 +83,17 @@ namespace MelloMario
             return pair.Item1;
         }
 
+        public void Init()
+        {
+            session.Update();//force flush
+            Resume();
+        }
+
         public void Reset()
         {
-            // TODO
+            // TODO: "forced" version of LoadLevel()
+            session.Update();//force flush
+            Resume();
         }
 
         public void Quit()
