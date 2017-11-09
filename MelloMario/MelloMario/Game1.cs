@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Controllers;
 using MelloMario.Factories;
 using MelloMario.LevelGen;
+using MelloMario.Sounds;
 
 namespace MelloMario
 {
@@ -13,6 +14,7 @@ namespace MelloMario
     class Game1 : Game
     {
         private GraphicsDeviceManager graphics;
+        private SoundController soundControl;
         private GameModel model;
         private SpriteBatch spriteBatch;
         private SpriteFont font;
@@ -34,14 +36,14 @@ namespace MelloMario
         protected override void Initialize()
         {
             base.Initialize();
-
+            soundControl = new SoundController(this);
             model = new GameModel(this);
             IEnumerable<IController> controllers = new List<IController>
             {
                 new GamepadController(),
                 new KeyboardController()
             };
-
+            SoundController.PlayMusic();
             model.LoadControllers(controllers);
 
             //reader = new LevelIOJson("Content/Level1.json");
