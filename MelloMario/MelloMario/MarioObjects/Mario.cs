@@ -20,6 +20,7 @@ namespace MelloMario.MarioObjects
 
             if (protectionState is Dead)
             {
+                
                 ShowSprite(SpriteFactory.Instance.CreateMarioSprite(protectionState.GetType().Name, protectionState.GetType().Name, true));
             }
             else if (!(movementState is Crouching && powerUpState is Standard))
