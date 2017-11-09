@@ -43,13 +43,15 @@ namespace MelloMario.LevelGen
         private Tuple<bool, string[]> propertyPair;
         private bool isQuestionOrBrick;
         private int length;
+        private Listener listener;
         private JToken objToken;
 
         public GameEntityConverter(GameModel model, GraphicsDevice graphicsDevice, IGameWorld parentGameWorld,
-            int gridSize)
+            Listener listener, int gridSize)
         {
             this.graphicsDevice = graphicsDevice;
             this.model = model;
+            this.listener = listener;
             world = parentGameWorld;
             grid = gridSize;
         }
@@ -105,7 +107,7 @@ namespace MelloMario.LevelGen
             switch (type.Namespace)
             {
                 case "MelloMario.BlockObjects":
-                    if (BlockConverter(type, objToken, ref objectStackToBeEncapsulated))
+                    if (BlockConverter(type, objToken, listener, ref objectStackToBeEncapsulated))
                     {
                         Debug.WriteLine("Deserialize " + type.Name + " success!");
                     }
@@ -192,7 +194,7 @@ namespace MelloMario.LevelGen
             return true;
         }
 
-        private bool BlockConverter(Type type, JToken token, ref Stack<IGameObject> stack)
+        private bool BlockConverter(Type type, JToken token, Listener listener, ref Stack<IGameObject> stack)
         {
             isQuestionOrBrick = type.Name == "Brick" || type.Name == "Question";
             if (isQuestionOrBrick && isSingle)
@@ -200,7 +202,7 @@ namespace MelloMario.LevelGen
                 propertyPair = new Tuple<bool, string[]>(
                     Util.TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden,
                     Util.TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
-                list = Util.CreateItemList(world, objPoint, propertyPair.Item2);
+                list = Util.CreateItemList(world, objPoint, listener, propertyPair.Item2);
                 objToBePushed = Activator.CreateInstance(type, world, objPoint, propertyPair.Item1) as IGameObject;
                 if (list != null && list.Count != 0)
                 {

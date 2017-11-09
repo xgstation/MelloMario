@@ -123,9 +123,9 @@ namespace MelloMario.LevelGen
             listOfPipelineComponents.Insert(1, in2);
             return listOfPipelineComponents;
         }
-        public static IList<IGameObject> CreateItemList(IGameWorld world, Point point, params string[] s)
+        public static IList<IGameObject> CreateItemList(IGameWorld world, Point point, Theming.Listener listener, params string[] s)
         {
-            return s?.Select(t => GameObjectFactory.Instance.CreateGameObject(t, world, point)).ToList();
+            return s?.Select(t => GameObjectFactory.Instance.CreateGameObject(t, world, point, listener)).ToList();
         }
         public static bool TryReadIgnoreSet(JToken token, out ISet<Point> toBeIgnored)
         {

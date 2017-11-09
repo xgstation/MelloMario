@@ -22,6 +22,7 @@ namespace MelloMario
             Bottom
         };
 
+        // TODO: World should only be used in base classes and PlayerMario
         protected IGameWorld World;
 
         protected abstract void OnUpdate(int time);
@@ -90,6 +91,8 @@ namespace MelloMario
         public BaseGameObject(IGameWorld world, Point location, Point size)
         {
             World = world;
+            World.Add(this);
+
             this.location = location;
             this.size = size;
         }

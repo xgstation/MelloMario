@@ -71,7 +71,7 @@ namespace MelloMario.ItemObjects
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.right;
                     }
-                    else if (mode == CollisionMode.Right|| mode == CollisionMode.InnerRight && corner == CornerMode.Center)
+                    else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.left;
@@ -104,6 +104,7 @@ namespace MelloMario.ItemObjects
         protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
         }
+
         public SuperMushroom(IGameWorld world, Point location) : this(world, location, GameDatabase.GetCharacterLocation()) { }
         public SuperMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil = true) : base(world, location, new Point(32, 32), 32)
         {
@@ -119,6 +120,7 @@ namespace MelloMario.ItemObjects
             if (isUnveil)
             {
                 state = new Unveil(this);
+                RemoveSelf();
             }
             else
             {

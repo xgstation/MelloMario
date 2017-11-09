@@ -173,9 +173,13 @@ namespace MelloMario.Factories
         public ISprite CreateFlagSprite(bool status)
         {
             if(status)
+            {
                 return new SlicedSprite(spriteBatch, GetTexture("BlockSheet"), 33, 28, 16, 8, 1, 1, ZIndex.level);
+            }
             else
+            {
                 return new SlicedSprite(spriteBatch, GetTexture("BlockSheet"), 33, 28, 16, 9, 1, 1, ZIndex.level);
+            }
         }
 
         public ISprite CreateBrickSprite(string status)

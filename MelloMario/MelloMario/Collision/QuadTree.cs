@@ -43,7 +43,10 @@ namespace MelloMario.Collision
 
         public bool DoMove(T item)
         {
-            if (!Contains(item)) return false;
+            if (!Contains(item))
+            {
+                return false;
+            }
             root.DoMove(item);
             return true;
         }
@@ -59,9 +62,12 @@ namespace MelloMario.Collision
 
         public void Add(T item)
         {
-            if (item == null) return;
-            var squeezed = root.Insert(item);
-            foreach (var tuple in squeezed)
+            if (item == null)
+            {
+                return;
+            }
+            IEnumerable<Tuple<T, QuadTreeNode<T>>> squeezed = root.Insert(item);
+            foreach (Tuple<T, QuadTreeNode<T>> tuple in squeezed)
             {
                 if (dictTtoParentTree.ContainsKey(tuple.Item1))
                 {

@@ -2,12 +2,17 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.CoinStates;
 using MelloMario.MarioObjects;
+using System;
+using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
 {
     class Coin : BaseCollidableObject
     {
         private IItemState state;
+        public event CoinHandler Handler;
+        private EventArgs eventInfo;
+        public delegate void CoinHandler(Coin m, EventArgs e);
 
         private void UpdateSprite()
         {
@@ -52,11 +57,15 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public Coin(IGameWorld world, Point location, bool isUnveil) : base(world, location, new Point(32, 32))
+        public Coin(IGameWorld world, Point location, Listener listener, bool isUnveil = false) : base(world, location, new Point(32, 32))
         {
+            listener.Subscribe(this);
+            //eventually if coin needs to pass info put it in eventinfo
+            eventInfo = null;
             if (isUnveil)
             {
                 state = new Unveil(this);
+                RemoveSelf();
             }
             else
             {
@@ -65,12 +74,9 @@ namespace MelloMario.ItemObjects
             UpdateSprite();
         }
 
-        public Coin(IGameWorld world, Point location) : this(world, location, false)
-        {
-        }
-
         public void Collect()
         {
+            Handler?.Invoke(this, eventInfo);
             RemoveSelf();
             //State.Collect();
         }

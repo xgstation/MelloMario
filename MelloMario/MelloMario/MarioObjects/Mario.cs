@@ -14,7 +14,7 @@ namespace MelloMario.MarioObjects
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-        
+
         private void UpdateSprite()
         {
 
@@ -121,7 +121,7 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Pipeline":
-                    if (MovementState is Crouching && GameDatabase.IsEntrance((Pipeline)target))
+                    if (MovementState is Crouching && GameDatabase.IsEntrance((Pipeline) target))
                     {
                         string type = (target as Pipeline).Type;
                         if (type == "LeftIn")
@@ -147,7 +147,7 @@ namespace MelloMario.MarioObjects
                                 goto case "Floor";
                             }
                         }
-                    
+
                     }
                     else
                     {
@@ -271,18 +271,6 @@ namespace MelloMario.MarioObjects
 
         protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
         {
-            if (protectionState is Protected)
-            {
-                // TODO
-                //if (time.TotalGameTime.Milliseconds % 3 == 0)
-                //{
-                //    HideSprite();
-                //}
-                //else
-                //{
-                //    UpdateSprite();
-                //}
-            }
         }
 
         public IMarioMovementState MovementState

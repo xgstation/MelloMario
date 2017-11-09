@@ -18,6 +18,7 @@ namespace MelloMario.LevelGen
         private CharacterConverter characterConverter;
         private GraphicsDevice graphicsDevice;
         private GameModel model;
+        private IGameSession session;
         private JToken jsonToken;
         private JToken MapListToken;
         private JToken MapToBeLoaded;
@@ -26,12 +27,15 @@ namespace MelloMario.LevelGen
 
         private IGameWorld world;
         private IPlayer character;
+        private Theming.Listener listener;
 
-        public GameConverter(GameModel model, GraphicsDevice graphicsDevice, string index = "Main")
+        public GameConverter(GameModel model, IGameSession session, GraphicsDevice graphicsDevice, Theming.Listener listener, string index = "Main")
         {
             this.model = model;
+            this.session = session;
             this.graphicsDevice = graphicsDevice;
             this.index = index;
+            this.listener = listener;
             serializers = new JsonSerializer();
         }
 
@@ -85,9 +89,9 @@ namespace MelloMario.LevelGen
             Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints");
             world = new GameWorld(index, mapSize, initialPoint, respawnPoints);
 
-            gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, grid);
+            gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, listener, grid);
 
-            characterConverter = new CharacterConverter(world, grid);
+            characterConverter = new CharacterConverter(session, world, grid);
 
             serializers.Converters.Add(gameEntityConverter);
             serializers.Converters.Add(characterConverter);
@@ -97,15 +101,6 @@ namespace MelloMario.LevelGen
                 {
                     EncapsulatedObject<IGameObject> gameObjs =
                         jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
-
-                    if (gameObjs != null)
-                    {
-                        foreach (IGameObject gameObj in gameObjs.RealObj)
-                        {
-                            world.Add(gameObj);
-                        }
-                    }
-
                 }
 
                 if (Util.TryGet(out IList<JToken> characters, MapToBeLoaded, "Characters"))
@@ -121,7 +116,6 @@ namespace MelloMario.LevelGen
 
                         PlayerMario mario = temp.RealObj.Pop();
                         character = mario;
-                        world.Add(mario);
 
                         //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
                     }

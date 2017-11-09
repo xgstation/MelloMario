@@ -1,13 +1,18 @@
 ﻿using MelloMario.Containers;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.Theming;
+using MelloMario.Sounds;
 
 namespace MelloMario.MarioObjects
 {
     class PlayerMario : Mario, IPlayer
     {
         private Vector2 userInput;
+        private SoundEffectInstance jumpSound;
+
+        protected IGameSession Session;
 
         protected override void OnUpdate(int time)
         {
@@ -67,8 +72,14 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        public PlayerMario(IGameWorld world, Point location) : base(world, location)
+        public PlayerMario(IGameSession session, IGameWorld world, Point location) : base(world, location)
         {
+            Session = session;
+            Session.Add(this);
+
+            Relocate(World.GetInitialPoint());
+
+            jumpSound = SoundController.bounce.CreateInstance();
         }
 
         public void Left()
@@ -134,6 +145,7 @@ namespace MelloMario.MarioObjects
 
         public void JumpPress()
         {
+            jumpSound.Play();
             Jump();
         }
 
@@ -168,9 +180,20 @@ namespace MelloMario.MarioObjects
         {
             World.Remove(this);
             World = world;
+            World.Add(this);
+
+            Session.Move(this);
 
             Relocate(World.GetInitialPoint());
-            World.Add(this);
+        }
+
+        public void Reset()
+        {
+            RemoveSelf();
+            Session.Remove(this);
+
+            // note: Boundary.Location or Boundary.Center? sometimes confusing
+            new PlayerMario(Session, World, World.GetRespawnPoint(Boundary.Location));
         }
     }
 }

@@ -10,8 +10,8 @@ namespace MelloMario.BlockObjects
 {
     class Flag : BaseCollidableObject
     {
-        bool top;
-        int height, maxHeight;
+        private bool top;
+        private int height, maxHeight;
 
         private void UpdateSprite()
         {
@@ -27,7 +27,9 @@ namespace MelloMario.BlockObjects
             //trigger game win and add points based on collision locations
             //temp: hurts mario just to demonstrate that a collision was detected.
             if (target is MarioObjects.PlayerMario)
+            {
                 ((MarioObjects.PlayerMario)target).Downgrade();
+            }
         }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode)

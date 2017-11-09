@@ -103,8 +103,8 @@ namespace MelloMario.Collision
             {
                 if (!HasSubTree())
                 {
-                    var divided = Divide();
-                    foreach (var tuple in divided)
+                    IEnumerable<Tuple<T, QuadTreeNode<T>>> divided = Divide();
+                    foreach (Tuple<T, QuadTreeNode<T>> tuple in divided)
                     {
                         yield return tuple;
                     }
@@ -117,9 +117,9 @@ namespace MelloMario.Collision
                 }
                 else
                 {
-                    var squeezed = destTree.Insert(item);
+                    IEnumerable<Tuple<T, QuadTreeNode<T>>> squeezed = destTree.Insert(item);
                     //TODO: Verify if it needs yield return new Tuple<>(item, destTree);
-                    foreach (var tuple in squeezed)
+                    foreach (Tuple<T, QuadTreeNode<T>> tuple in squeezed)
                     {
                         yield return tuple;
                     }
@@ -162,7 +162,7 @@ namespace MelloMario.Collision
         {
             if (objects != null)
             {
-                foreach (var o in objects)
+                foreach (T o in objects)
                 {
                     all.Add(o);
                 }
@@ -175,7 +175,10 @@ namespace MelloMario.Collision
 
         public void GetRanged(Rectangle range, ref ICollection<T> ranged)
         {
-            if (ranged == null) return;
+            if (ranged == null)
+            {
+                return;
+            }
             if (range.Contains(area))
             {
                 GetAll(ref ranged);
@@ -184,7 +187,7 @@ namespace MelloMario.Collision
             {
                 if (objects != null)
                 {
-                    foreach (var o in objects)
+                    foreach (T o in objects)
                     {
                         if (range.Intersects(funcTtoRec(o)))
                         {
@@ -257,20 +260,20 @@ namespace MelloMario.Collision
                 funcTtoRec, funcTtoParentTree);
 
             ISet<T> toRelocate = new HashSet<T>();
-            foreach (var o in objects)
+            foreach (T o in objects)
             {
                 QuadTreeNode<T> destTree = GetDestTree(o);
                 if (destTree != this)
                 {
-                    var squeezed = destTree.Insert(o);
-                    foreach (var tuple in squeezed)
+                    IEnumerable<Tuple<T, QuadTreeNode<T>>> squeezed = destTree.Insert(o);
+                    foreach (Tuple<T, QuadTreeNode<T>> tuple in squeezed)
                     {
                         yield return tuple;
                     }
                     toRelocate.Add(o);
                 }
             }
-            foreach (var o in toRelocate)
+            foreach (T o in toRelocate)
             {
                 Remove(o);
             }

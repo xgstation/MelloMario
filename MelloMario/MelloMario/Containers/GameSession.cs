@@ -14,5 +14,10 @@ namespace MelloMario.Containers
         {
             return ScanKeys();
         }
+
+        public IEnumerable<IPlayer> ScanPlayers()
+        {
+            return ScanValues();
+        }
     }
 }

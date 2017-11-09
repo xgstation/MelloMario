@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 using Newtonsoft.Json;
+using MelloMario.Theming;
 
 namespace MelloMario.LevelGen
 {
@@ -16,9 +17,12 @@ namespace MelloMario.LevelGen
         private string levelString;
         private GraphicsDevice graphicsDevice;
         private GameConverter gameConverter;
-        public LevelIOJson(string jsonPath, GraphicsDevice graphicsDevice)
+        private Listener listener;
+
+        public LevelIOJson(string jsonPath, GraphicsDevice graphicsDevice, Listener listener)
         {
             this.graphicsDevice = graphicsDevice;
+            this.listener = listener;
             path = jsonPath;
         }
 
@@ -27,10 +31,10 @@ namespace MelloMario.LevelGen
             this.model = model;
         }
 
-        public Tuple<IGameWorld, IPlayer> Load(string index)
+        public Tuple<IGameWorld, IPlayer> Load(string index, IGameSession session)
         {
             levelString = File.ReadAllText(path);
-            gameConverter = new GameConverter(model, graphicsDevice, index);
+            gameConverter = new GameConverter(model, session, graphicsDevice, listener, index);
             return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, gameConverter);
 
         }

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Controllers;
 using MelloMario.Factories;
 using MelloMario.LevelGen;
+using MelloMario.Sounds;
 
 namespace MelloMario
 {
@@ -13,6 +14,7 @@ namespace MelloMario
     class Game1 : Game
     {
         private GraphicsDeviceManager graphics;
+        private SoundController soundControl;
         private GameModel model;
         private SpriteBatch spriteBatch;
         private SpriteFont font;
@@ -34,18 +36,17 @@ namespace MelloMario
         protected override void Initialize()
         {
             base.Initialize();
-
+            soundControl = new SoundController(this);
             model = new GameModel(this);
             IEnumerable<IController> controllers = new List<IController>
             {
                 new GamepadController(),
                 new KeyboardController()
             };
-
+            SoundController.PlayMusic();
             model.LoadControllers(controllers);
-
-            //reader = new LevelIOJson("Content/Level1.json");
-            model.LoadLevel("Main"); // Create the level for the first time
+            model.LoadLevel("Main", true); // Create the level for the first time
+            model.Init();
         }
 
         /// <summary>
@@ -98,9 +99,17 @@ namespace MelloMario
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
             //RasterizerState state = new RasterizerState();
             //state.FillMode = FillMode.WireFrame;
+            model.Draw(time.ElapsedGameTime.Milliseconds);
+
+            //TODO: all of this stuff whould not be here
             spriteBatch.DrawString(font, "TIME", new Vector2(730, 0), Color.White);
             spriteBatch.DrawString(font, timer.ToString("0"), new Vector2(750, 25), Color.White);
-            model.Draw(time.ElapsedGameTime.Milliseconds);
+            spriteBatch.DrawString(font, "SCORE:", new Vector2(0, 0), Color.White);
+            spriteBatch.DrawString(font, model.Score.ToString(), new Vector2(110, 0), Color.White);
+            spriteBatch.DrawString(font, "COINS:", new Vector2(0, 35), Color.White);
+            spriteBatch.DrawString(font, model.Coins.ToString(), new Vector2(110, 35), Color.White);
+            //
+
             spriteBatch.End();
         }
 
