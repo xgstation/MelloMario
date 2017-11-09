@@ -8,6 +8,7 @@ namespace MelloMario.Containers
         private const int GRID = 32;
         private const int SCANRANGE = 24;
 
+        private string id;
         private Point size;
         private Point initialPoint;
         private ISet<Point> respawnPoints;
@@ -18,6 +19,14 @@ namespace MelloMario.Containers
             return new Point(center.X / GRID, center.Y / GRID);
         }
 
+        public string Id
+        {
+            get
+            {
+                return id;
+            }
+        }
+
         public Rectangle Boundary
         {
             get
@@ -26,8 +35,9 @@ namespace MelloMario.Containers
             }
         }
 
-        public GameWorld(Point size, Point initial, IEnumerable<Point> respawn)
+        public GameWorld(string id, Point size, Point initial, IEnumerable<Point> respawn)
         {
+            this.id = id;
             this.size = size;
 
             initialPoint = new Point(initial.X * GRID, initial.Y * GRID);
