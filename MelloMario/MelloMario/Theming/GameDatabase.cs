@@ -11,7 +11,23 @@ namespace MelloMario.Theming
         private static IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
         private static IDictionary<Pipeline, string> PipelineEntranceDb = new Dictionary<Pipeline, string>();
         private static IDictionary<ICharacter, Point> CharacterLocations = new Dictionary<ICharacter, Point>();
+        private static IDictionary<ICharacter, int> CharacterLifes = new Dictionary<ICharacter, int>();
 
+        public static void SetCharacterLifes(ICharacter character, int lifes)
+        {
+            if (CharacterLifes.ContainsKey(character))
+            {
+                CharacterLifes[character] = lifes;
+            }
+            else
+            {
+                CharacterLifes.Add(character, lifes);
+            }
+        }
+        public static int GetCharacterLifes(ICharacter character)
+        {
+            return CharacterLifes.ContainsKey(character) ? CharacterLifes[character] : 0;
+        }
         public static bool HasCharacters()
         {
             return CharacterLocations.Count != 0;
