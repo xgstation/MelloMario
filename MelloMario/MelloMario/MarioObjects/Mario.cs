@@ -78,8 +78,11 @@ namespace MelloMario.MarioObjects
 
                     Brick brick = target as Brick;
                     Question question = target as Question;
+
                     if (brick != null)
                     {
+                        if (brick.State is BlockObjects.BrickStates.Destroyed)
+                            break;
                         isHidden = brick.State is BlockObjects.BrickStates.Hidden;
                         isBumping = brick.State is BlockObjects.BrickStates.Bumped;
                     }
