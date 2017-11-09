@@ -18,7 +18,8 @@ namespace MelloMario
         private IEnumerable<IController> controllers;
         private IPlayer player;
         private bool isPaused;
-        public bool IsSwitching { get; set; }
+        public bool IsSwitching { get; set; } // TODO: remove this
+
         public GameModel(Game1 game)
         {
             this.game = game;
@@ -52,7 +53,7 @@ namespace MelloMario
 
         public void SwitchWorld(string index)
         {
-            
+
             if (worlds.ContainsKey(index))
             {
                 currentWorld = worlds[index];

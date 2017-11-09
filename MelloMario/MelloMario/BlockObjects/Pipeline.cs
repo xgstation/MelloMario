@@ -13,6 +13,7 @@ namespace MelloMario.BlockObjects
         private string type;
         private bool isSwitching = false;
         private int elapsed;
+
         public string Type
         {
             get
@@ -21,10 +22,6 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        private void switchWorld()
-        {
-            model.SwitchWorld(GameDatabase.GetEntranceIndex(this));
-        }
         private static void SetModel(GameModel newModel)
         {
             model = newModel;
@@ -42,7 +39,7 @@ namespace MelloMario.BlockObjects
             }
             if (isSwitching && elapsed > 500)
             {
-                switchWorld();
+                model.SwitchWorld(GameDatabase.GetEntranceIndex(this));
                 elapsed = 0;
                 isSwitching = false;
                 model.IsSwitching = false;
