@@ -650,3 +650,9 @@
 /processorParam:TextureFormat=Compressed
 /build:font.spritefont
 
+#begin Music/01-main-theme-overworld.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Music/01-main-theme-overworld.mp3
+

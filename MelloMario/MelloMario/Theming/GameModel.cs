@@ -5,6 +5,7 @@ using System;
 using MelloMario.Containers;
 using MelloMario.Scripts;
 using MelloMario.Theming;
+using MelloMario.Sounds;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
@@ -24,6 +25,7 @@ namespace MelloMario
             this.game = game;
             worlds = new Dictionary<string, IGameWorld>();
             currentWorldIndex = "Main";
+            SoundController.PlayMusic();
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)

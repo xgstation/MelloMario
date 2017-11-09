@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Controllers;
 using MelloMario.Factories;
 using MelloMario.LevelGen;
+using MelloMario.Sounds;
 
 namespace MelloMario
 {
@@ -14,6 +15,7 @@ namespace MelloMario
     {
         private GraphicsDeviceManager graphics;
         private LevelIOJson reader;
+        private SoundController soundControl;
         private GameModel model;
         private SpriteBatch spriteBatch;
         private SpriteFont font;
@@ -42,8 +44,9 @@ namespace MelloMario
                 new GamepadController(),
                 new KeyboardController()
             };
-
+            soundControl = new SoundController(this);
             model.LoadControllers(controllers);
+            SoundController.PlayMusic();
 
             //reader = new LevelIOJson("Content/Level1.json");
             model.Reset(); // Create the level for the first time
