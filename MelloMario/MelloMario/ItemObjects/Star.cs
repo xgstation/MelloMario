@@ -126,6 +126,7 @@ namespace MelloMario.ItemObjects
             if (isUnveil)
             {
                 state = new Unveil(this);
+                RemoveSelf();
             }
             else
             {

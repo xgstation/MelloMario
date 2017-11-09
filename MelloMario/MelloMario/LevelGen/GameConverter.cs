@@ -97,15 +97,6 @@ namespace MelloMario.LevelGen
                 {
                     EncapsulatedObject<IGameObject> gameObjs =
                         jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
-
-                    if (gameObjs != null)
-                    {
-                        foreach (IGameObject gameObj in gameObjs.RealObj)
-                        {
-                            world.Add(gameObj);
-                        }
-                    }
-
                 }
 
                 if (Util.TryGet(out IList<JToken> characters, MapToBeLoaded, "Characters"))
@@ -121,7 +112,6 @@ namespace MelloMario.LevelGen
 
                         PlayerMario mario = temp.RealObj.Pop();
                         character = mario;
-                        world.Add(mario);
 
                         //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
                     }
