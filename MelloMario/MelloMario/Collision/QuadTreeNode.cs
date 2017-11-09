@@ -11,7 +11,6 @@ namespace MelloMario.Collision
     class QuadTreeNode<T>
     {
         #region Private Members
-        private const int MAXOBJECTS = 9;
         private Rectangle area;
         private IList<T> objects;
         private Func<T, Rectangle> funcTtoRec;
@@ -95,7 +94,7 @@ namespace MelloMario.Collision
                     yield return new Tuple<T, QuadTreeNode<T>>(item, this);
                 }
             }
-            else if (objects == null || HasSubTree() && objects.Count < MAXOBJECTS)
+            else if (objects == null || HasSubTree() && objects.Count < QuadTree<T>.MaxObjects)
             {
                 Add(item);
                 yield return new Tuple<T, QuadTreeNode<T>>(item, this);
