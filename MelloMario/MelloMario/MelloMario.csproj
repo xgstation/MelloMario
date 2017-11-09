@@ -104,6 +104,7 @@
     <Compile Include="Commands\Right.cs" />
     <Compile Include="BaseClasses\BaseController.cs" />
     <Compile Include="Commands\ToggleFullScreen.cs" />
+    <Compile Include="Containers\GameSession.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="EnemyObjects\KoopaStates\MovingShell.cs" />
     <Compile Include="EnemyObjects\Piranha.cs" />
