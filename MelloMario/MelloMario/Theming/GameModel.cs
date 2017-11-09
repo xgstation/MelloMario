@@ -59,6 +59,7 @@ namespace MelloMario
                 reader.SetModel(this);
                 Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
                 worlds.Add(index, pair.Item1);
+
                 player.Spawn(pair.Item1);
             }
         }
@@ -71,6 +72,12 @@ namespace MelloMario
             reader.SetModel(this);
             Tuple<IGameWorld, IPlayer> pair = reader.Load("Main");
             worlds.Add("Main", pair.Item1);
+
+            Tuple<IGameWorld, IPlayer> pair = reader.Load(currentWorldIndex);
+            currentWorld = pair.Item1;
+            pair.Item1.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlagTop", currentWorld, new Point(10 * 32, 13 * 32)));
+            pair.Item1.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlag", currentWorld, new Point(10 * 32, 14 * 32)));
+
             player = pair.Item2;
             player.Spawn(pair.Item1);
 

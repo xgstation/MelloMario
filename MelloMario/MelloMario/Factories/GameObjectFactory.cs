@@ -61,6 +61,10 @@ namespace MelloMario.Factories
                     return new Question(world, location, false);
                 case "HiddenQuestion":
                     return new Question(world, location, true);
+                case "EndFlag":
+                    return new Flag(world, location, 0, 1);
+                case "EndFlagTop":
+                    return new Flag(world, location, 1, 1);
                 case "PipelineLeftIn":
                     return new Pipeline(world, location, "LeftIn");
                 case "PipelineRightIn":
