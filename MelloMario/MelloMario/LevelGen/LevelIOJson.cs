@@ -8,8 +8,8 @@ namespace MelloMario.LevelGen
 {
     class LevelIOJson
     {
-        // Note: Without implementing IDisposable, it may cause resource leak
-        //       The code analysis tool generates a warning here
+        // Note: As File.ReadAllText will take care of dispose itself,
+        // there is no need to implement IDisposable
 
         private string path;
         private GameModel model;

@@ -83,6 +83,7 @@
     <Compile Include="BlockObjects\QuestionStates\Used.cs" />
     <Compile Include="BlockObjects\Stair.cs" />
     <Compile Include="BaseClasses\BaseCommand.cs" />
+    <Compile Include="Collision\CollisionReponseModel.cs" />
     <Compile Include="Collision\QuadTree.cs" />
     <Compile Include="Collision\QuadTreeNode.cs" />
     <Compile Include="Commands\Action.cs" />
