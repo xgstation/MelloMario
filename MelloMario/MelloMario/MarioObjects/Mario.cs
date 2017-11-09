@@ -123,7 +123,7 @@ namespace MelloMario.MarioObjects
                 case "Pipeline":
                     if (MovementState is Crouching && GameDatabase.IsEntrance((Pipeline)target))
                     {
-                        var type = (target as Pipeline).Type;
+                        string type = (target as Pipeline).Type;
                         if (type == "LeftIn")
                         {
                             if (Boundary.Center.X > target.Boundary.Center.X)

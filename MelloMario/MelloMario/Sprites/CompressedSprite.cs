@@ -14,7 +14,6 @@ namespace MelloMario.Sprites
     {
         private SpriteBatch spriteBatch;
         private ZIndex activeZIndex;
-        private Texture2D mergedTexture;
         private Texture2D cellTexture;
         private Point fullSize;
         private RenderTarget2D renderTarget;

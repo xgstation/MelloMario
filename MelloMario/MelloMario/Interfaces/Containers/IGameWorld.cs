@@ -6,6 +6,7 @@ namespace MelloMario
 {
     interface IGameWorld : IContainer<IGameObject>
     {
+        string Id { get; }
         Rectangle Boundary { get; }
 
         IEnumerable<IGameObject> ScanNearby(Rectangle range);

@@ -13,12 +13,15 @@ namespace MelloMario.BlockObjects
         private string type;
         private bool isSwitching = false;
         private int elapsed;
-        public string Type => type;
 
-        private void switchWorld()
+        public string Type
         {
-            model.SwitchWorld(GameDatabase.GetEntranceIndex(this));
+            get
+            {
+                return type;
+            }
         }
+
         private static void SetModel(GameModel newModel)
         {
             model = newModel;
@@ -36,16 +39,15 @@ namespace MelloMario.BlockObjects
             }
             if (isSwitching && elapsed > 500)
             {
-                switchWorld();
+                model.SwitchWorld(GameDatabase.GetEntranceIndex(this));
                 elapsed = 0;
                 isSwitching = false;
-                model.IsSwitching = false;
             }
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-            if (target is PlayerMario mario && mode is CollisionMode.Top && !model.IsSwitching)
+            if (target is PlayerMario mario && mode is CollisionMode.Top)
             {
                 if (mario.MovementState is Crouching && GameDatabase.IsEntrance(this))
                 {
@@ -55,19 +57,18 @@ namespace MelloMario.BlockObjects
                             if (mario.Boundary.Center.X > Boundary.Center.X)
                             {
                                 isSwitching = true;
-                                model.IsSwitching = true;
                             }
                             break;
                         case "RightIn":
                             if (mario.Boundary.Center.X < Boundary.Center.X)
                             {
                                 isSwitching = true;
-                                model.IsSwitching = true;
                             }
                             break;
                     }
 
-
+                    mario.CrouchRelease();
+                    // TODO: mario.freeze
                 }
             }
         }

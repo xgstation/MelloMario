@@ -10,11 +10,18 @@ namespace MelloMario.BlockObjects
     class Brick : BaseCollidableObject
     {
         private IBlockState state;
-        private IList<IGameObject> items;
         private IGameObject item;
         private bool isHidden;
-        public bool hasInitialItem;
-        public bool HasInitialItem => hasInitialItem;
+        private bool hasInitialItem;
+
+        public bool HasInitialItem
+        {
+            get
+            {
+                return hasInitialItem;
+            }
+        }
+
         public void Initialize()
         {
             if (isHidden)
@@ -43,7 +50,7 @@ namespace MelloMario.BlockObjects
                 ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
             }
         }
-        
+
 
         private void LoadItem()
         {

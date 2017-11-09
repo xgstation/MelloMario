@@ -78,7 +78,7 @@ namespace MelloMario.LevelGen
             }
 
             type = null;
-            foreach (var t in AssemblyTypes)
+            foreach (Type t in AssemblyTypes)
             {
                 type = t.Name == typeStr ? t : null;
                 if (type != null)
@@ -92,7 +92,7 @@ namespace MelloMario.LevelGen
 
                 return null;
             }
-            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point);
+            createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point);
             if (Util.TryGet(out quantity, objToken, "Quantity"))
             {
                 ignoredSet = !isSingle && Util.TryReadIgnoreSet(objToken, out ignoredSet) ? ignoredSet : null;
@@ -106,19 +106,27 @@ namespace MelloMario.LevelGen
             {
                 case "MelloMario.BlockObjects":
                     if (BlockConverter(type, objToken, ref objectStackToBeEncapsulated))
+                    {
                         Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    }
                     break;
                 case "MelloMario.EnemyObjects":
                     if (EnemyConverter(type, objToken, ref objectStackToBeEncapsulated))
+                    {
                         Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    }
                     break;
                 case "MelloMario.ItemObjects":
                     if (ItemConverter(type, objToken, ref objectStackToBeEncapsulated))
+                    {
                         Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    }
                     break;
                 case "MelloMario.MiscObjects":
                     if (BackgroundConverter(type, objToken, ref objectStackToBeEncapsulated))
+                    {
                         Debug.WriteLine("Deserialize " + type.Name + " success!");
+                    }
                     break;
                 default:
                     objectStackToBeEncapsulated.Push(createFunc(objPoint));
@@ -129,7 +137,13 @@ namespace MelloMario.LevelGen
         }
 
         //TODO: Add serialize method and change CanWrite 
-        public override bool CanWrite => false;
+        public override bool CanWrite
+        {
+            get
+            {
+                return false;
+            }
+        }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -150,7 +164,7 @@ namespace MelloMario.LevelGen
 
         private bool EnemyConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
-            
+
             if (type.Name == "Piranha")
             {
                 float hideTime = Util.TryGet(out hideTime, token, "Property", "HideTime") ? hideTime : 3;
@@ -162,7 +176,7 @@ namespace MelloMario.LevelGen
                 {
                     Koopa.ShellColor shellColor = Util.TryGet(out string color, token, "Property", "Color")
                         ? (color == "Green" ? Koopa.ShellColor.green : Koopa.ShellColor.red)
-                        : (Koopa.ShellColor.green);
+                        : Koopa.ShellColor.green;
                     createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, shellColor);
                 }
                 if (isSingle)
@@ -189,9 +203,17 @@ namespace MelloMario.LevelGen
                 list = Util.CreateItemList(world, objPoint, propertyPair.Item2);
                 objToBePushed = Activator.CreateInstance(type, world, objPoint, propertyPair.Item1) as IGameObject;
                 if (list != null && list.Count != 0)
+                {
                     GameDatabase.SetEnclosedItem(objToBePushed, list);
-                if(type.Name == "Question") (objToBePushed as Question).Initialize();
-                if(type.Name == "Brick") (objToBePushed as Brick).Initialize();
+                }
+                if (type.Name == "Question")
+                {
+                    (objToBePushed as Question).Initialize();
+                }
+                if (type.Name == "Brick")
+                {
+                    (objToBePushed as Brick).Initialize();
+                }
                 stack.Push(objToBePushed);
             }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
@@ -199,19 +221,31 @@ namespace MelloMario.LevelGen
                 if (isSingle)
                 {
                     stack.Push(Activator.CreateInstance(type, world, objPoint, false) as BaseGameObject);
-                    if (type.Name == "Question") (objToBePushed as Question).Initialize();
-                    if (type.Name == "Brick") (objToBePushed as Brick).Initialize();
+                    if (type.Name == "Question")
+                    {
+                        (objToBePushed as Question).Initialize();
+                    }
+                    if (type.Name == "Brick")
+                    {
+                        (objToBePushed as Brick).Initialize();
+                    }
                 }
                 else
                 {
                     Util.BatchCreate(
                         point =>
                         {
-                            objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, false);
-                            if (type.Name == "Question") (objToBePushed as Question).Initialize();
-                            if (type.Name == "Brick") (objToBePushed as Brick).Initialize();
+                            objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, false);
+                            if (type.Name == "Question")
+                            {
+                                (objToBePushed as Question).Initialize();
+                            }
+                            if (type.Name == "Brick")
+                            {
+                                (objToBePushed as Brick).Initialize();
+                            }
                             return objToBePushed;
-                        }, 
+                        },
                         objPoint, quantity, new Point(32, 32), ignoredSet, grid, ref stack);
                 }
             }
@@ -257,7 +291,7 @@ namespace MelloMario.LevelGen
             {
                 Debug.WriteLine("Deserialize fail: Type of background is not given!");
             }
-            var zIndex = Util.TryGet(out string s, token, "Property", "ZIndex")
+            ZIndex zIndex = Util.TryGet(out string s, token, "Property", "ZIndex")
                 ? (ZIndex) Enum.Parse(typeof(ZIndex), s)
                 : ZIndex.background0;
             createFunc = point =>

@@ -168,45 +168,56 @@ namespace MelloMario
 
         protected override void OnSimulation(int time)
         {
-            if (movement.X != 0 || movement.Y != 0)
+            Point location = Boundary.Location;
+            float offset = 0;
+
+            while (true)
             {
+                if (movement.X == 0 && movement.Y == 0)
+                {
+                    break;
+                }
+
                 CollideAll();
 
-                Point location = Boundary.Location;
-
-                // Since each update is a very small iteration, the order does not matter.
-
-                while (movement.X < 0)
+                if (movement.X == 0 && movement.Y == 0)
                 {
-                    location.X -= 1;
-                    movement.X += 1;
-                    Relocate(location);
-                    CollideAll();
+                    break;
                 }
 
-                while (movement.X > 0)
+                float sqrX = movement.X * movement.X;
+                float sqrY = movement.Y * movement.Y;
+                float offsetX = (float) Math.Sqrt(sqrY / (sqrX + sqrY));
+                float offsetY = (float) Math.Sqrt(sqrX / (sqrX + sqrY));
+
+                if (Math.Abs(offset + offsetX) < Math.Abs(offset - offsetY))
                 {
-                    location.X += 1;
-                    movement.X -= 1;
-                    Relocate(location);
-                    CollideAll();
+                    if (movement.X < 0)
+                    {
+                        location.X -= 1;
+                        movement.X += 1;
+                    }
+                    else
+                    {
+                        location.X += 1;
+                        movement.X -= 1;
+                    }
+                }
+                else
+                {
+                    if (movement.Y < 0)
+                    {
+                        location.Y -= 1;
+                        movement.Y += 1;
+                    }
+                    else
+                    {
+                        location.Y += 1;
+                        movement.Y -= 1;
+                    }
                 }
 
-                while (movement.Y < 0)
-                {
-                    location.Y -= 1;
-                    movement.Y += 1;
-                    Relocate(location);
-                    CollideAll();
-                }
-
-                while (movement.Y > 0)
-                {
-                    location.Y += 1;
-                    movement.Y -= 1;
-                    Relocate(location);
-                    CollideAll();
-                }
+                Relocate(location);
             }
         }
 

@@ -35,10 +35,6 @@ namespace MelloMario.LevelGen
             serializers = new JsonSerializer();
         }
 
-        public void SetIndex(string index)
-        {
-            this.index = index;
-        }
         public override bool CanConvert(Type objectType)
         {
             return true;
@@ -49,7 +45,10 @@ namespace MelloMario.LevelGen
         {
             jsonToken = JToken.Load(reader);
             MapListToken = Util.TryGet(out JToken t, jsonToken, "Maps") ? t : null;
-            if (MapListToken == null) return null;
+            if (MapListToken == null)
+            {
+                return null;
+            }
             MapToBeLoaded = null;
             foreach (JToken obj in MapListToken)
             {
@@ -84,7 +83,7 @@ namespace MelloMario.LevelGen
 
             Util.TryGet(out Point initialPoint, MapToBeLoaded, "InitialSpawnPoint");
             Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints");
-            world = new GameWorld(mapSize, initialPoint, respawnPoints);
+            world = new GameWorld(index, mapSize, initialPoint, respawnPoints);
 
             gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, grid);
 

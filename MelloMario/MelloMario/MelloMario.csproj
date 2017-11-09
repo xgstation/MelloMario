@@ -73,6 +73,7 @@
     <Compile Include="BlockObjects\BrickStates\Hidden.cs" />
     <Compile Include="BlockObjects\BrickStates\Normal.cs" />
     <Compile Include="BlockObjects\BrickStates\Used.cs" />
+    <Compile Include="BlockObjects\Flag.cs" />
     <Compile Include="BlockObjects\Floor.cs" />
     <Compile Include="BlockObjects\Pipeline.cs" />
     <Compile Include="BlockObjects\Question.cs" />
@@ -82,6 +83,8 @@
     <Compile Include="BlockObjects\QuestionStates\Used.cs" />
     <Compile Include="BlockObjects\Stair.cs" />
     <Compile Include="BaseClasses\BaseCommand.cs" />
+    <Compile Include="Collision\QuadTree.cs" />
+    <Compile Include="Collision\QuadTreeNode.cs" />
     <Compile Include="Commands\Action.cs" />
     <Compile Include="Commands\Resume.cs" />
     <Compile Include="Commands\Quit.cs" />
@@ -101,6 +104,7 @@
     <Compile Include="Commands\Right.cs" />
     <Compile Include="BaseClasses\BaseController.cs" />
     <Compile Include="Commands\ToggleFullScreen.cs" />
+    <Compile Include="Containers\GameSession.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="EnemyObjects\KoopaStates\MovingShell.cs" />
     <Compile Include="EnemyObjects\Piranha.cs" />
@@ -111,6 +115,7 @@
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
     <Compile Include="Interfaces\Containers\IContainer.cs" />
+    <Compile Include="Interfaces\Containers\IGameSession.cs" />
     <Compile Include="Interfaces\Factories\ICommandFactory.cs" />
     <Compile Include="Interfaces\Factories\IGameObjectFactory.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
