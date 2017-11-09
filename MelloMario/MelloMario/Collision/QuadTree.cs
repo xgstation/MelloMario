@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +12,17 @@ namespace MelloMario.Collision
 {
     class QuadTree<T> : ICollection<T>
     {
-        private const int MAXOBJECTS = 9;
-        private const int MAXDEPTH = 5;
+        public static readonly int MaxObjects = 9;
+        public static readonly Point MaxSize = new Point(1600,800);
 
         private readonly IDictionary<T, QuadTreeNode<T>> dictTtoParentTree;
+        private readonly List<QuadTreeNode<T>> roots;
         private readonly QuadTreeNode<T> root;
         private readonly Func<T, Rectangle> funcTtoRec;
 
         public QuadTree(Rectangle area, Func<T, Rectangle> funcTtoRec)
         {
-            this.funcTtoRec = funcTtoRec;
+            Debug.Assert(area.Size.X < MaxSize.X && area.Size.Y < MaxSize.Y);
             root = new QuadTreeNode<T>(area, funcTtoRec, t => dictTtoParentTree?[t]);
         }
         public Rectangle Area { get { return root.Area; } }
