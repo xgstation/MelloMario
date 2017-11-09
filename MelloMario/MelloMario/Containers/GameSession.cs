@@ -3,11 +3,16 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario.Containers
 {
-    class GameSession : BaseContainer<IGameWorld, IPlayer>
+    class GameSession : BaseContainer<IGameWorld, IPlayer>, IGameSession
     {
         protected override IGameWorld GetKey(IPlayer value)
         {
             return value.CurrentWorld;
+        }
+
+        public IEnumerable<IGameWorld> ScanWorlds()
+        {
+            return ScanKeys();
         }
     }
 }
