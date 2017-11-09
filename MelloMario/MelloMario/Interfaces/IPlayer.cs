@@ -2,10 +2,10 @@
 
 namespace MelloMario
 {
-    interface IPlayer : IGameObject, ICharacter
+    interface IPlayer
     {
-        IGameWorld CurrentWorld { get; }
-        // TODO: spilt PlayerMario as class MarioCharacter + class Player
+        IGameWorld World { get; }
+        ICharacter Character { get; }
         Rectangle Sensing { get; }
         Rectangle Viewport { get; }
 

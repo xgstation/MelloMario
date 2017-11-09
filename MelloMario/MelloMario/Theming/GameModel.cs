@@ -55,14 +55,14 @@ namespace MelloMario
         {
             isPaused = true;
 
-            new PausedScript().Bind(controllers, this, GetActivePlayer());
+            new PausedScript().Bind(controllers, this, GetActivePlayer().Character);
         }
 
         public void Resume()
         {
             isPaused = false;
 
-            new PlayingScript().Bind(controllers, this, GetActivePlayer());
+            new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
         }
 
         public IGameWorld LoadLevel(string id, bool init = false)
@@ -124,7 +124,7 @@ namespace MelloMario
 
                 foreach (IPlayer player in session.ScanPlayers())
                 {
-                    foreach (IGameObject obj in player.CurrentWorld.ScanNearby(player.Sensing))
+                    foreach (IGameObject obj in player.World.ScanNearby(player.Sensing))
                     {
                         updating.Add(obj);
                     }
@@ -150,7 +150,7 @@ namespace MelloMario
 
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
-                foreach (IGameObject obj in player.CurrentWorld.ScanNearby(player.Viewport))
+                foreach (IGameObject obj in player.World.ScanNearby(player.Viewport))
                 {
                     if (isPaused)
                     {

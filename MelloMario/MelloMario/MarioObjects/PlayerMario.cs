@@ -7,7 +7,7 @@ using MelloMario.Sounds;
 
 namespace MelloMario.MarioObjects
 {
-    class PlayerMario : Mario, IPlayer
+    class PlayerMario : Mario, IPlayer, ICharacter // TODO: split
     {
         private Vector2 userInput;
         private SoundEffectInstance jumpSound;
@@ -22,11 +22,19 @@ namespace MelloMario.MarioObjects
             base.OnUpdate(time);
         }
 
-        public IGameWorld CurrentWorld
+        public IGameWorld World
         {
             get
             {
-                return World;
+                return base.World;
+            }
+        }
+
+        public ICharacter Character
+        {
+            get
+            {
+                return this;
             }
         }
 
@@ -179,7 +187,7 @@ namespace MelloMario.MarioObjects
         public void Spawn(IGameWorld world)
         {
             World.Remove(this);
-            World = world;
+            base.World = world;
             World.Add(this);
 
             Session.Move(this);

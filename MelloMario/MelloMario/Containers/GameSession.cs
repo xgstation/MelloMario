@@ -7,7 +7,7 @@ namespace MelloMario.Containers
     {
         protected override IGameWorld GetKey(IPlayer value)
         {
-            return value.CurrentWorld;
+            return value.World;
         }
 
         public IEnumerable<IGameWorld> ScanWorlds()
