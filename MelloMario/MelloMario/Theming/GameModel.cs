@@ -12,18 +12,15 @@ namespace MelloMario
     class GameModel : IGameModel
     {
         private Game1 game;
-        private IDictionary<string, IGameWorld> worlds;
-        private IGameWorld currentWorld;
-        private string currentWorldIndex;
+        private GameSession session;
         private IEnumerable<IController> controllers;
         private IPlayer player;
         private bool isPaused;
-        public bool IsSwitching { get; set; }
+
         public GameModel(Game1 game)
         {
             this.game = game;
-            worlds = new Dictionary<string, IGameWorld>();
-            currentWorldIndex = "Main";
+            session = new GameSession();
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -50,42 +47,47 @@ namespace MelloMario
             new PlayingScript().Bind(controllers, this, player);
         }
 
-        public void SwitchWorld(string index)
+        public void SwitchWorld(string id)
         {
-            
-            if (worlds.ContainsKey(index))
+            foreach (IGameWorld world in session.ScanWorlds())
             {
-                currentWorld = worlds[index];
-                currentWorldIndex = index;
-            }
-            else
-            {
-                LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
-                reader.SetModel(this);
-                Tuple<IGameWorld, IPlayer> pair = reader.Load(index);
-                currentWorldIndex = index;
-                currentWorld = pair.Item1;
-                worlds.Add(currentWorldIndex, currentWorld);
+                if (world.Id == id)
+                {
+                    player.Spawn(world);
+                    return;
+                }
             }
 
-            player.Spawn(currentWorld);
+            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
+            reader.SetModel(this);
+            Tuple<IGameWorld, IPlayer> pair = reader.Load(id);
+
+            session.Move(player);
+            player.Spawn(pair.Item1);
+        }
+
+        public void LoadLevel(string id)
+        {
+            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
+            reader.SetModel(this);
+            Tuple<IGameWorld, IPlayer> pair = reader.Load(id);
+
+            // TODO: move this to map initialization
+            pair.Item1.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlagTop", pair.Item1, new Point(10 * 32, 13 * 32)));
+            pair.Item1.Add(Factories.GameObjectFactory.Instance.CreateGameObject("EndFlag", pair.Item1, new Point(10 * 32, 14 * 32)));
+
+            player = pair.Item2;
+            session.Add(player);
+
+            Resume();
         }
 
         public void Reset()
         {
             GameDatabase.Clear();
+            session.Remove(player);
 
-            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice);
-            reader.SetModel(this);
-            Tuple<IGameWorld, IPlayer> pair = reader.Load(currentWorldIndex);
-            currentWorld = pair.Item1;
-            player = pair.Item2;
-            if (!worlds.ContainsKey(currentWorldIndex))
-            {
-                worlds.Add(currentWorldIndex, currentWorld);
-            }
-            isPaused = false;
-            new PlayingScript().Bind(controllers, this, player);
+            LoadLevel(player.CurrentWorld.Id);
         }
 
         public void Quit()
@@ -103,10 +105,12 @@ namespace MelloMario
 
             if (!isPaused)
             {
+                session.Update();
+
                 // reserved for multiplayer
                 ISet<IGameObject> updating = new HashSet<IGameObject>();
 
-                foreach (IGameObject obj in currentWorld.ScanNearby(player.Sensing))
+                foreach (IGameObject obj in player.CurrentWorld.ScanNearby(player.Sensing))
                 {
                     updating.Add(obj);
                 }
@@ -116,7 +120,7 @@ namespace MelloMario
                     obj.Update(time);
                 }
 
-                currentWorld.Update();
+                player.CurrentWorld.Update();
             }
         }
 
@@ -124,7 +128,7 @@ namespace MelloMario
         {
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
-                foreach (IGameObject obj in currentWorld.ScanNearby(player.Viewport))
+                foreach (IGameObject obj in player.CurrentWorld.ScanNearby(player.Viewport))
                 {
                     if (isPaused)
                     {

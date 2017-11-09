@@ -49,6 +49,22 @@ namespace MelloMario.Containers
             }
         }
 
+        protected IEnumerable<Key> ScanKeys()
+        {
+            return values.Keys;
+        }
+
+        protected IEnumerable<Value> ScanValues()
+        {
+            foreach (ISet<Value> value in values.Values)
+            {
+                foreach (Value item in value)
+                {
+                    yield return item;
+                }
+            }
+        }
+
         public BaseContainer()
         {
             keys = new Dictionary<Value, Key>();
@@ -56,17 +72,6 @@ namespace MelloMario.Containers
             toAdd = new HashSet<Value>();
             toMove = new HashSet<Value>();
             toRemove = new HashSet<Value>();
-        }
-
-        public IEnumerable<Value> ScanAll()
-        {
-            foreach (KeyValuePair<Key, ISet<Value>> pair in values)
-            {
-                foreach (Value value in pair.Value)
-                {
-                    yield return value;
-                }
-            }
         }
 
         public void Add(Value value)
