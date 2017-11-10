@@ -36,7 +36,7 @@ namespace MelloMario.Containers
             {
                 this.respawnPoints.Add(respawnPoint);
             }
-            objContainer = new QuadTree<IGameObject>(new Rectangle(0, 0, worldSize.X * grid, worldSize.Y * grid), obj => obj.Boundary);
+            objContainer = new QuadTree<IGameObject>(new Rectangle(0, 0, worldSize.X * grid, worldSize.Y * grid));
 
             toAdd = new Stack<IGameObject>();
             toMove = new Stack<IGameObject>();
