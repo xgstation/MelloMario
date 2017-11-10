@@ -17,6 +17,8 @@ namespace MelloMario
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private Listener listener;
+
+        private GameTimer timer;
         //TODO: temporary public until the can move hud out of game1
         public int Coins;
         public int Score;
@@ -35,6 +37,7 @@ namespace MelloMario
 
         public GameModel(Game1 game)
         {
+            timer = new GameTimer(400);
             Score = 0;
             Coins = 0;
             this.game = game;
@@ -117,7 +120,7 @@ namespace MelloMario
                 controller.Update();
             }
 
-
+            timer.Update(time);
             if (!isPaused)
             {
                 // reserved for multiplayer
@@ -148,6 +151,7 @@ namespace MelloMario
 
         public void Draw(int time)
         {
+            timer.Draw(time);
             IPlayer player = GetActivePlayer();
        
 

@@ -267,6 +267,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Content\emulogic.ttf" />
     <None Include="Content\Font\text.spritefont" />
     <None Include="Content\Level1.json">
