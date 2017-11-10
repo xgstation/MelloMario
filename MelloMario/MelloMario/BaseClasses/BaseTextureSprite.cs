@@ -5,7 +5,6 @@ namespace MelloMario.Sprites
 {
     abstract class BaseTextureSprite : BaseSprite
     {
-        private SpriteBatch spriteBatch;
         private Texture2D texture;
         private Point source;
         private Color color;
@@ -52,9 +51,8 @@ namespace MelloMario.Sprites
             spriteBatch.Draw(texture, destination, new Rectangle(source, PixelSize), color);
         }
 
-        public BaseTextureSprite(SpriteBatch spriteBatch, Texture2D texture, Point source, Point size, ZIndex activeZIndex) : base(size, activeZIndex)
+        public BaseTextureSprite(SpriteBatch spriteBatch, Texture2D texture, Point source, Point size, ZIndex activeZIndex) : base(spriteBatch, size, activeZIndex)
         {
-            this.spriteBatch = spriteBatch;
             this.texture = texture;
             this.source = source;
             color = Color.White;

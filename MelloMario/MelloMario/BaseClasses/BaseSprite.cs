@@ -9,6 +9,8 @@ namespace MelloMario.Sprites
         private ZIndex activeZIndex;
         private bool visible;
 
+        protected SpriteBatch spriteBatch;
+
         protected abstract void OnDraw(int time, Rectangle destination);
 
         protected void Toggle()
@@ -32,8 +34,9 @@ namespace MelloMario.Sprites
             }
         }
 
-        public BaseSprite(Point size, ZIndex activeZIndex)
+        public BaseSprite(SpriteBatch spriteBatch, Point size, ZIndex activeZIndex)
         {
+            this.spriteBatch = spriteBatch;
             this.size = size;
             this.activeZIndex = activeZIndex;
             visible = true;

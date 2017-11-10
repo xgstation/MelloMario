@@ -51,8 +51,7 @@ namespace MelloMario.Factories
 
         public ISprite CreateTextSprite(string text)
         {
-
-            return null;
+            return new TextSprite(spriteBatch, text, content.Load<SpriteFont>("Font\\text"), new Point(), ZIndex.hud);
         }
 
         public ISprite CreateMarioSprite(string status, string protectionStatus, bool isStatic)

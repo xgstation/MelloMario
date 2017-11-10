@@ -105,7 +105,9 @@ namespace MelloMario
                 //state.FillMode = FillMode.WireFrame;
                 model.Draw(time.ElapsedGameTime.Milliseconds);
 
-                //TODO: all of this stuff whould not be here
+            //TODO: all of this stuff whould not be here
+                ISprite s = SpriteFactory.Instance.CreateTextSprite("TIME");
+            s.Draw(0, new Rectangle(new Point(650, 0), new Point()), ZIndex.hud);
                 //spriteBatch.DrawString(font, "TIME", new Vector2(730, 0), Color.White);
                 ///spriteBatch.DrawString(font, timer.ToString("0"), new Vector2(750, 25), Color.White);
                 ////spriteBatch.DrawString(font, "SCORE:", new Vector2(0, 0), Color.White);

@@ -11,6 +11,7 @@ namespace MelloMario
 {
     class GameModel : IGameModel
     {
+         
         private Game1 game;
         private GameSession session;
         private IEnumerable<IController> controllers;
@@ -142,6 +143,7 @@ namespace MelloMario
 
                 session.Update();
             }
+            
         }
 
         public void Draw(int time)
