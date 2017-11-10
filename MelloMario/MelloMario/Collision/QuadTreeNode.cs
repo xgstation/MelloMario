@@ -11,6 +11,8 @@ namespace MelloMario.Collision
     class QuadTreeNode<T> where T : IGameObject
     {
         #region Private Members
+
+        private const int MAXOBJECTS = 5;
         private Rectangle areaCovered;
         private IList<EncapsulatedQuadTreeObject<T>> objects;
 
@@ -42,17 +44,7 @@ namespace MelloMario.Collision
         {
             get { return areaCovered; }
         }
-
-        internal IList<EncapsulatedQuadTreeObject<T>> Objects
-        {
-            get { return objects; }
-        }
-
-        internal QuadTreeNode<T> Parent
-        {
-            get { return parent; }
-        }
-
+        
         internal int Count
         {
             get { return CountObjects(); }
@@ -68,26 +60,6 @@ namespace MelloMario.Collision
             //Debug.Assert((topLeft != null) ^ (topRight != null) ^ (bottomRight != null) ^ (bottomLeft != null),
             //    "Internal Error: Null-conditions of subtrees are not same!");
             get { return topLeft != null && topRight != null && bottomRight != null && bottomLeft != null; }
-        }
-
-        internal QuadTreeNode<T> TopLeft
-        {
-            get { return topLeft; }
-        }
-
-        internal QuadTreeNode<T> TopRight
-        {
-            get { return topRight; }
-        }
-
-        internal QuadTreeNode<T> BottomLeft
-        {
-            get { return BottomLeft; }
-        }
-
-        internal QuadTreeNode<T> BottomRight
-        {
-            get { return BottomRight; }
         }
 
         #endregion
@@ -115,7 +87,7 @@ namespace MelloMario.Collision
                 }
             }
 
-            if (objects == null || (!HasSubTree && objects.Count < QuadTree<T>.MaxObjects))
+            if (objects == null || (!HasSubTree && objects.Count < MAXOBJECTS))
             {
                 Add(item);
             }
@@ -244,12 +216,11 @@ namespace MelloMario.Collision
 
         private int CountObjects()
         {
-            int count =
-                (objects?.Count ?? 0) +
-                (topLeft?.Count ?? 0) +
-                (topRight?.Count ?? 0) +
-                (bottomLeft?.Count ?? 0) +
-                (bottomRight?.Count ?? 0);
+            int count = objects?.Count ?? 0;
+            if (HasSubTree)
+            {
+                count += topLeft.Count + topRight.Count + bottomLeft.Count + bottomRight.Count;
+            }
             return count;
         }
 
