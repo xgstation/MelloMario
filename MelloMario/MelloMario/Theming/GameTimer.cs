@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,6 @@ namespace MelloMario.Theming
             UpdateSprite();
         }
         public int GetTimeRemain { get { return timeRemain / 1000; } }
-
         private void UpdateSprite()
         {
             timeSprite = Factories.SpriteFactory.Instance.CreateTextSprite((timeRemain / 1000).ToString());
@@ -26,7 +26,7 @@ namespace MelloMario.Theming
         public void Update(int time)
         {
             elapsed += time;
-            if (elapsed >= 500)
+            if (elapsed >= 50)
             {
                 UpdateSprite();
                 elapsed = 0;
