@@ -94,31 +94,20 @@ namespace MelloMario
         /// <param name="time">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime time)
         {
-            
-                GraphicsDevice.Clear(Color.CornflowerBlue);
-                base.Draw(time);
 
-                spriteBatch.GraphicsDevice.Viewport = new Viewport(0, 0, 800, 600);
-                spriteBatch.Begin();
-                //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
-                //RasterizerState state = new RasterizerState();
-                //state.FillMode = FillMode.WireFrame;
-                model.Draw(time.ElapsedGameTime.Milliseconds);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+            base.Draw(time);
 
-            //TODO: all of this stuff whould not be here
-                ISprite s = SpriteFactory.Instance.CreateTextSprite("TIME");
-            s.Draw(0, new Rectangle(new Point(650, 0), new Point()), ZIndex.hud);
-                //spriteBatch.DrawString(font, "TIME", new Vector2(730, 0), Color.White);
-                ///spriteBatch.DrawString(font, timer.ToString("0"), new Vector2(750, 25), Color.White);
-                ////spriteBatch.DrawString(font, "SCORE:", new Vector2(0, 0), Color.White);
-                //spriteBatch.DrawString(font, model.Score.ToString(), new Vector2(110, 0), Color.White);
-                ///spriteBatch.DrawString(font, "COINS:", new Vector2(0, 35), Color.White);
-                //spriteBatch.DrawString(font, model.Coins.ToString(), new Vector2(110, 35), Color.White);
-                //
+            spriteBatch.GraphicsDevice.Viewport = new Viewport(0, 0, 800, 600);
+            spriteBatch.Begin();
+            //Debug Code
+            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
+            //RasterizerState state = new RasterizerState();
+            //state.FillMode = FillMode.WireFrame;
+            //spriteBatch.GraphicsDevice.RasterizerState = state;
+            model.Draw(time.ElapsedGameTime.Milliseconds);
 
-                spriteBatch.End();
-            
-        
+            spriteBatch.End();
         }
 
         // game controlling

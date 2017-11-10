@@ -266,11 +266,8 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="Content\Basic.spritefont">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Content\emulogic.ttf" />
-    <None Include="Content\font.spritefont" />
+    <None Include="Content\Font\text.spritefont" />
     <None Include="Content\Level1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
