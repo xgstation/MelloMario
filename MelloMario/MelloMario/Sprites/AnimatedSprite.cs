@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario.Sprites
 {
-    class AnimatedSprite : BaseSprite
+    class AnimatedSprite : BaseTextureSprite
     {
         private int columns;
         private int rows;

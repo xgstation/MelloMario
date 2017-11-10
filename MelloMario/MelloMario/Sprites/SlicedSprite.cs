@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Sprites
 {
-    class SlicedSprite : BaseSprite
+    class SlicedSprite : BaseTextureSprite
     {
         protected override void OnAnimate(int time)
         {

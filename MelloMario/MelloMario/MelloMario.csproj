@@ -62,6 +62,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseClasses\BaseContainer.cs" />
+    <Compile Include="BaseClasses\BaseSprite.cs" />
     <Compile Include="BaseClasses\Objects\BaseCollidableObject.cs" />
     <Compile Include="BaseClasses\Objects\BasePhysicalObject.cs" />
     <Compile Include="BaseClasses\Objects\BaseGameObject.cs" />
@@ -170,7 +171,7 @@
     <Compile Include="MarioObjects\ProtectionStates\Dead.cs" />
     <Compile Include="MarioObjects\PowerUpStates\Fire.cs" />
     <Compile Include="MarioObjects\PowerUpStates\Standard.cs" />
-    <Compile Include="BaseClasses\BaseSprite.cs" />
+    <Compile Include="BaseClasses\BaseTextureSprite.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Normal.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Protected.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Starred.cs" />
