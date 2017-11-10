@@ -22,7 +22,8 @@ namespace MelloMario.Collision
 
         public QuadTree(Rectangle area, Func<T, Rectangle> funcTtoRec)
         {
-            Debug.Assert(area.Size.X < MaxSize.X && area.Size.Y < MaxSize.Y);
+            this.funcTtoRec = funcTtoRec;
+            dictTtoParentTree = new Dictionary<T, QuadTreeNode<T>>();
             root = new QuadTreeNode<T>(area, funcTtoRec, t => dictTtoParentTree?[t]);
         }
         public Rectangle Area { get { return root.Area; } }

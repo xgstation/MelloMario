@@ -31,6 +31,7 @@ namespace MelloMario.Collision
         public QuadTreeNode(QuadTreeNode<T> parent, Rectangle area, Func<T, Rectangle> funcTtoRec,
             Func<T, QuadTreeNode<T>> funcTtoParentTree)
         {
+            objects = new List<T>();
             this.parent = parent;
             this.area = area;
             this.funcTtoRec = funcTtoRec;
@@ -308,8 +309,8 @@ namespace MelloMario.Collision
 
         private bool HasSubTree()
         {
-            Debug.Assert((topLeft != null) ^ (topRight != null) ^ (bottomRight != null) ^ (bottomLeft != null),
-                "Internal Error: Null-conditions of subtrees are not same!");
+            //Debug.Assert((topLeft != null) ^ (topRight != null) ^ (bottomRight != null) ^ (bottomLeft != null),
+            //    "Internal Error: Null-conditions of subtrees are not same!");
             return topLeft != null && topRight != null && bottomRight != null && bottomLeft != null;
         }
         #endregion
