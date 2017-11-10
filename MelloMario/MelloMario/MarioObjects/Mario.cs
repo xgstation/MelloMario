@@ -17,10 +17,8 @@ namespace MelloMario.MarioObjects
 
         private void UpdateSprite()
         {
-
             if (protectionState is Dead)
             {
-                
                 ShowSprite(SpriteFactory.Instance.CreateMarioSprite(protectionState.GetType().Name, protectionState.GetType().Name, true));
             }
             else if (!(movementState is Crouching && powerUpState is Standard))
@@ -83,7 +81,9 @@ namespace MelloMario.MarioObjects
                     if (brick != null)
                     {
                         if (brick.State is BlockObjects.BrickStates.Destroyed)
+                        {
                             break;
+                        }
                         isHidden = brick.State is BlockObjects.BrickStates.Hidden;
                         isBumping = brick.State is BlockObjects.BrickStates.Bumped;
                     }
