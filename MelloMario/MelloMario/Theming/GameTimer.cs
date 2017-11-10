@@ -11,19 +11,27 @@ namespace MelloMario.Theming
     {
         private ISprite timeSprite;
         private int timeRemain; //in mileSeconds
+        private int elapsed;
         public GameTimer(int startTime)
         {
             timeRemain = startTime * 1000;
+            UpdateSprite();
         }
+        public int GetTimeRemain { get { return timeRemain / 1000; } }
 
         private void UpdateSprite()
         {
-            timeSprite = Factories.SpriteFactory.Instance.CreateTextSprite((timeRemain/1000).ToString());
+            timeSprite = Factories.SpriteFactory.Instance.CreateTextSprite((timeRemain / 1000).ToString());
         }
         public void Update(int time)
         {
+            elapsed += time;
+            if (elapsed >= 500)
+            {
+                UpdateSprite();
+                elapsed = 0;
+            }
             timeRemain -= time;
-            UpdateSprite();
         }
 
         public void Draw(int time)
