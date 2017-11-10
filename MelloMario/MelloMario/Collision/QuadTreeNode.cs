@@ -31,7 +31,6 @@ namespace MelloMario.Collision
         public QuadTreeNode(QuadTreeNode<T> parent, Rectangle area, Func<T, Rectangle> funcTtoRec,
             Func<T, QuadTreeNode<T>> funcTtoParentTree)
         {
-            objects = new List<T>();
             this.parent = parent;
             this.area = area;
             this.funcTtoRec = funcTtoRec;
@@ -93,12 +92,14 @@ namespace MelloMario.Collision
                 {
                     Add(item);
                     yield return new Tuple<T, QuadTreeNode<T>>(item, this);
+                    yield break;
                 }
             }
             else if (objects == null || HasSubTree() && objects.Count < QuadTree<T>.MaxObjects)
             {
                 Add(item);
                 yield return new Tuple<T, QuadTreeNode<T>>(item, this);
+                yield break;
             }
             else
             {

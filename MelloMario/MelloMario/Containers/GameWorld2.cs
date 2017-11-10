@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario.Containers
 {
-    class GameWorld2 :IGameWorld
+    class GameWorld2 : IGameWorld
     {
         private readonly int scanRange;
         private readonly int grid;
@@ -47,17 +47,20 @@ namespace MelloMario.Containers
         public Rectangle Boundary { get { return new Rectangle(new Point(), worldSize); } }
         public void Add(IGameObject obj)
         {
-           objContainer.Add(obj);
+            toAdd.Push(obj);
+            //objContainer.Add(obj);
         }
 
         public void Move(IGameObject obj)
         {
-            objContainer.DoMove(obj);
+            toMove.Push(obj);
+            //objContainer.DoMove(obj);
         }
 
         public void Remove(IGameObject obj)
         {
-            objContainer.Remove(obj);
+            toRemove.Push(obj);
+            //objContainer.Remove(obj);
         }
 
         public IEnumerable<IGameObject> GetRanged(Rectangle range)
@@ -92,18 +95,18 @@ namespace MelloMario.Containers
 
         public void Update()
         {
-            //while (toAdd.Count > 0)
-            //{
-            //    objContainer.Add(toAdd.Pop());
-            //}
-            //while (toMove.Count > 0)
-            //{
-            //    objContainer.DoMove(toMove.Pop());
-            //}
-            //while (toRemove.Count > 0)
-            //{
-            //    objContainer.Remove(toRemove.Pop());
-            //}
+            while (toAdd.Count > 0)
+            {
+                objContainer.Add(toAdd.Pop());
+            }
+            while (toMove.Count > 0)
+            {
+                objContainer.DoMove(toMove.Pop());
+            }
+            while (toRemove.Count > 0)
+            {
+                objContainer.Remove(toRemove.Pop());
+            }
         }
     }
 }

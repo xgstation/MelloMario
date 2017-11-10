@@ -151,6 +151,9 @@ namespace MelloMario.LevelGen
         {
             //TODO: Implement serializer
         }
+
+        #region IGameObject Converters
+        
         private bool ItemConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
             if (isSingle)
@@ -310,5 +313,6 @@ namespace MelloMario.LevelGen
             return true;
         }
 
+        #endregion
     }
 }

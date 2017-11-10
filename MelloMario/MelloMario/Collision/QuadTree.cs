@@ -13,17 +13,21 @@ namespace MelloMario.Collision
     class QuadTree<T> : ICollection<T>
     {
         public static readonly int MaxObjects = 9;
-        public static readonly Point MaxSize = new Point(1600,800);
+        public static readonly Point MaxSize = new Point(1600, 800);
 
-        private readonly IDictionary<T, QuadTreeNode<T>> dictTtoParentTree;
-        private readonly List<QuadTreeNode<T>> roots;
-        private readonly QuadTreeNode<T> root;
-        private readonly Func<T, Rectangle> funcTtoRec;
+        private IDictionary<T, QuadTreeNode<T>> dictTtoParentTree;
+        private IDictionary<T, Point> dictTtoLocation;
+        private IDictionary<Point, ISet<T>> dictLocationToT;
+        private List<QuadTreeNode<T>> roots;
+        private QuadTreeNode<T> root;
+        private Func<T, Rectangle> funcTtoRec;
 
         public QuadTree(Rectangle area, Func<T, Rectangle> funcTtoRec)
         {
             this.funcTtoRec = funcTtoRec;
             dictTtoParentTree = new Dictionary<T, QuadTreeNode<T>>();
+            dictLocationToT = new Dictionary<Point, ISet<T>>();
+            dictTtoLocation = new Dictionary<T, Point>();
             root = new QuadTreeNode<T>(area, funcTtoRec, t => dictTtoParentTree?[t]);
         }
         public Rectangle Area { get { return root.Area; } }
@@ -77,6 +81,18 @@ namespace MelloMario.Collision
                 else
                 {
                     dictTtoParentTree.Add(tuple.Item1, tuple.Item2);
+                }
+            }
+            if (!dictTtoLocation.ContainsKey(item))
+            {
+                dictTtoLocation.Add(item,funcTtoRec(item).Location);
+                if (dictLocationToT.ContainsKey(funcTtoRec(item).Location))
+                {
+                    dictLocationToT[funcTtoRec(item).Location].Add(item);
+                }
+                else
+                {
+                    dictLocationToT.Add(funcTtoRec(item).Location, new HashSet<T>{item});
                 }
             }
         }
