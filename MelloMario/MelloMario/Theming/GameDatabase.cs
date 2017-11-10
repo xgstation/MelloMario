@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using MelloMario.BlockObjects;
 using MelloMario.MarioObjects;
@@ -13,6 +14,26 @@ namespace MelloMario.Theming
         private static IDictionary<ICharacter, Point> CharacterLocations = new Dictionary<ICharacter, Point>();
         private static IDictionary<ICharacter, int> CharacterLifes = new Dictionary<ICharacter, int>();
 
+        public static void AddOneLife(ICharacter character)
+        {
+            if (CharacterLifes.ContainsKey(character))
+            {
+                ++CharacterLifes[character];
+            }
+        }
+
+        public static void SubtractOneLife(ICharacter character)
+        {
+            if (CharacterLifes.ContainsKey(character))
+            {
+                if (CharacterLifes[character] <= 0)
+                {
+                    Debug.WriteLine("If you insist having negative lifes.");
+                }
+                --CharacterLifes[character];
+                
+            }
+        }
         public static void SetCharacterLifes(ICharacter character, int lifes)
         {
             if (CharacterLifes.ContainsKey(character))
