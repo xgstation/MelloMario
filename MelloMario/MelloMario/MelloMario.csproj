@@ -85,6 +85,7 @@
     <Compile Include="BlockObjects\Stair.cs" />
     <Compile Include="BaseClasses\BaseCommand.cs" />
     <Compile Include="Collision\CollisionDistributer.cs" />
+    <Compile Include="Collision\EncapsulatedQuadTreeObject.cs" />
     <Compile Include="Collision\QuadTree.cs" />
     <Compile Include="Collision\QuadTreeNode.cs" />
     <Compile Include="Commands\Action.cs" />
@@ -269,6 +270,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Content\emulogic.ttf" />
     <None Include="Content\Font\text.spritefont" />
     <None Include="Content\Level1.json">
