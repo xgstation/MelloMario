@@ -104,6 +104,7 @@
     <Compile Include="Commands\Right.cs" />
     <Compile Include="BaseClasses\BaseController.cs" />
     <Compile Include="Commands\ToggleFullScreen.cs" />
+    <Compile Include="Containers\GameCollisionModel.cs" />
     <Compile Include="Containers\GameSession.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="EnemyObjects\KoopaStates\MovingShell.cs" />
@@ -266,6 +267,7 @@
     <None Include="Content\Basic.spritefont">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Content\emulogic.ttf" />
     <None Include="Content\font.spritefont" />
     <None Include="Content\Level1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
