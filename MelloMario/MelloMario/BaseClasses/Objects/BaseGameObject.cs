@@ -90,11 +90,11 @@ namespace MelloMario
 
         public BaseGameObject(IGameWorld world, Point location, Point size)
         {
+            this.location = location;
+            this.size = size;
             World = world;
             World.Add(this);
 
-            this.location = location;
-            this.size = size;
         }
 
         public void Update(int time)
