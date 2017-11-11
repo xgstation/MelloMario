@@ -84,10 +84,7 @@ namespace MelloMario.Theming
             LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice, listener);
             reader.SetModel(this);
             Tuple<IGameWorld, IPlayer> pair = reader.Load(id, session);
-
-            // TODO: move this to map initialization
-            GameObjectFactory.Instance.CreateGameObject("EndFlagTop", pair.Item1, new Point(10 * 32, 13 * 32));
-            GameObjectFactory.Instance.CreateGameObject("EndFlag", pair.Item1, new Point(10 * 32, 14 * 32));
+            
 
             if (!init && pair.Item2 != null)
             {
@@ -99,7 +96,7 @@ namespace MelloMario.Theming
 
         public void Init()
         {
-            Resume();
+
         }
 
         public void Reset()

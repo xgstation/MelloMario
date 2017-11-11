@@ -46,6 +46,7 @@ namespace MelloMario
             SoundController.PlayMusic(SoundController.Songs.normal);
             model.LoadControllers(controllers);
             model.LoadLevel("Main", true); // Create the level for the first time
+            model.Update(0);
             model.Init();
         }
 
@@ -58,7 +59,7 @@ namespace MelloMario
             Content.RootDirectory = "Content";
             base.LoadContent();
             SpriteFactory.Instance.BindContentManager(Content);
-
+            SoundFactory.Instance.BindContentManager(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.BindSpriteBatch(spriteBatch);
 
