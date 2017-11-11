@@ -115,6 +115,7 @@
     <Compile Include="EnemyObjects\Piranha.cs" />
     <Compile Include="Factories\GameObjectFactory.cs" />
     <Compile Include="Factories\CommandFactory.cs" />
+    <Compile Include="Factories\SoundFactory.cs" />
     <Compile Include="Factories\SpriteFactory.cs" />
     <Compile Include="EnemyObjects\Goomba.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Interfaces\Containers\IGameSession.cs" />
     <Compile Include="Interfaces\Factories\ICommandFactory.cs" />
     <Compile Include="Interfaces\Factories\IGameObjectFactory.cs" />
+    <Compile Include="Interfaces\Factories\ISoundFactory.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IScript.cs" />
     <Compile Include="Interfaces\IGameModel.cs" />
