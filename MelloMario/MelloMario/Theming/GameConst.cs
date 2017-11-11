@@ -8,6 +8,8 @@ namespace MelloMario.Theming
 {
     static class GameConst
     {
+        // physics
+
         public const float VELOCITY_MAX_LR = 10f;
         public const float VELOCITY_MAX_U = 15f;
         public const float VELOCITY_MAX_D = 20f;
@@ -17,5 +19,8 @@ namespace MelloMario.Theming
         public const float FORCE_INPUT_Y = 150f;
         public const float FORCE_F_GROUND = 100f;
         public const float FORCE_F_AIR = 20f;
+
+        // gameplay
+        public const int SCORE_COIN = 200;
     }
 }

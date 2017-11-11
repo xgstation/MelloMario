@@ -20,7 +20,7 @@ namespace MelloMario.Theming
         private void OnCollect(Coin m, EventArgs e)
         {
             model.Coins += 1;
-            model.Score += 200;
+            model.Score += GameConst.SCORE_COIN;
         }
     }
 }
