@@ -27,7 +27,7 @@ namespace MelloMario
 
         protected abstract void OnUpdate(int time);
         protected abstract void OnSimulation(int time);
-        protected abstract void OnDraw(int time, Rectangle viewport, ZIndex zIndex);
+        protected abstract void OnDraw(int time, Rectangle viewport);
 
         protected void Relocate(Point newLocation)
         {
@@ -105,13 +105,13 @@ namespace MelloMario
             OnSimulation(time);
         }
 
-        public void Draw(int time, Rectangle viewport, ZIndex zIndex)
+        public void Draw(int time, Rectangle viewport)
         {
             if (sprite != null)
             {
-                OnDraw(time, viewport, zIndex);
+                OnDraw(time, viewport);
 
-                sprite.Draw(time, new Rectangle(Boundary.Location - viewport.Location, Boundary.Size), zIndex);
+                sprite.Draw(time, new Rectangle(Boundary.Location - viewport.Location, Boundary.Size));
             }
         }
     }
