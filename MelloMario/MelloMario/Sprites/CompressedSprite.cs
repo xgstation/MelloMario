@@ -74,12 +74,9 @@ namespace MelloMario.Sprites
             graphicDevice.SetRenderTarget(null);
         }
 
-        public void Draw(int time, Rectangle destination, ZIndex zIndex)
+        public void Draw(int time, Rectangle destination)
         {
-            if (zIndex == activeZIndex)
-            {
-                spriteBatch.Draw(renderTarget, destination, Color.White);
-            }
+            spriteBatch.Draw(renderTarget, destination, Color.White);
         }
     }
 }

@@ -13,8 +13,8 @@ namespace MelloMario.Sprites
             ChangeColor(new Color(random.Next(255), random.Next(255), random.Next(255)));
         }
 
-        public FlickingAnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int interval, int columns, int rows, ZIndex activeZIndex = ZIndex.item) : base(
-            spriteBatch, texture, interval, columns, rows, activeZIndex
+        public FlickingAnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int interval, int columns, int rows, ZIndex zIndex = ZIndex.item) : base(
+            spriteBatch, texture, interval, columns, rows, zIndex
         )
         {
             random = new Random();

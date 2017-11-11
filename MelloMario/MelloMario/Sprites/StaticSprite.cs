@@ -10,9 +10,8 @@ namespace MelloMario.Sprites
             // Do nothing
         }
 
-        public StaticSprite(SpriteBatch spriteBatch, Texture2D texture, ZIndex activeZIndex = ZIndex.item) : base(
-            spriteBatch, texture, new Point(), new Point(texture.Width, texture.Height), activeZIndex
-        )
+        public StaticSprite(SpriteBatch spriteBatch, Texture2D texture, ZIndex zIndex = ZIndex.item) :
+            base(spriteBatch, texture, new Point(), new Point(texture.Width, texture.Height), zIndex)
         {
         }
     }

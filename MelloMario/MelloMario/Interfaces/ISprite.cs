@@ -18,6 +18,6 @@ namespace MelloMario
     {
         Point PixelSize { get; }
 
-        void Draw(int time, Rectangle destination, ZIndex zIndex);
+        void Draw(int time, Rectangle destination);
     }
 }

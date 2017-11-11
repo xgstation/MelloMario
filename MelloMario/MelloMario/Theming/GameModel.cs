@@ -149,22 +149,19 @@ namespace MelloMario.Theming
         {
             IPlayer player = GetActivePlayer();
 
-            foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
+            foreach (IGameObject obj in player.World.ScanNearby(player.Viewport))
             {
-                foreach (IGameObject obj in player.World.ScanNearby(player.Viewport))
+                if (isPaused)
                 {
-                    if (isPaused)
-                    {
-                        obj.Draw(0, player.Viewport, zIndex);
-                    }
-                    else
-                    {
-                        obj.Draw(time, player.Viewport, zIndex);
-                    }
+                    obj.Draw(0, player.Viewport);
                 }
-
-                hud.Draw(time, player.Viewport, zIndex);
+                else
+                {
+                    obj.Draw(time, player.Viewport);
+                }
             }
+
+            hud.Draw(time, player.Viewport);
         }
     }
 }

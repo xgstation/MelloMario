@@ -24,34 +24,19 @@ namespace MelloMario.Sprites
         protected override void OnDraw(int time, Rectangle destination)
         {
             OnAnimate(time);
-
-            // TODO
-            //switch (zIndex)
-            //{
-            //    case ZIndex.hud:
-            //        offset.X = 0;
-            //        offset.Y = 0;
-            //        break;
-            //    case ZIndex.background0:
-            //        offset.X = offset.X / 3;
-            //        offset.Y = offset.Y * 2 / 3;
-            //        break;
-            //    case ZIndex.background1:
-            //        offset.X = offset.X / 2;
-            //        offset.Y = offset.Y * 3 / 4;
-            //        break;
-            //    case ZIndex.background2:
-            //        offset.X = offset.X * 2 / 3;
-            //        break;
-            //    case ZIndex.background3:
-            //        offset.X = offset.X * 3 / 4;
-            //        break;
-            //}
-
-            spriteBatch.Draw(texture, destination, new Rectangle(source, PixelSize), color);
+            spriteBatch.Draw(
+                texture,
+                destination,
+                new Rectangle(source, PixelSize),
+                color,
+                0f,//rotation
+                new Vector2(), //origin
+                SpriteEffects.None,
+                LayerDepth
+                );
         }
 
-        public BaseTextureSprite(SpriteBatch spriteBatch, Texture2D texture, Point source, Point size, ZIndex activeZIndex) : base(spriteBatch, size, activeZIndex)
+        public BaseTextureSprite(SpriteBatch spriteBatch, Texture2D texture, Point source, Point size, ZIndex zIndex) : base(spriteBatch, size, zIndex)
         {
             this.texture = texture;
             this.source = source;

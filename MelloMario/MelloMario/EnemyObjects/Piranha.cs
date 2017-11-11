@@ -18,7 +18,7 @@ namespace MelloMario.EnemyObjects
             throw new NotImplementedException();
         }
 
-        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport)
         {
             throw new NotImplementedException();
         }
