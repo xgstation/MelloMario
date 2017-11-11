@@ -15,26 +15,35 @@ namespace MelloMario.Theming
         private ISprite textSprite;
         private int timeRemain; //in mileSeconds
         private int elapsed;
-
+        private int Coin;
+        private int Score;
         private string firstLine;
+        private string secondLine;
         public GameHUD(GameModel model, int startTime)
         {
             this.model = model;
-            firstLine = "MARIO           WORLD    TIME";
+            Coin = model.Coins;
+            Score = model.Score;
             timeRemain = startTime * 1000;
+            firstLine = "MARIO           WORLD    TIME";
+            secondLine = Score.ToString().PadLeft(6, '0') + "    *" + Coin.ToString().PadLeft(2, '0') + "    " +
+                         model.WorldIndex + "      " + timeRemain / 1000;
             UpdateSprite();
         }
         public int GetTimeRemain { get { return timeRemain / 1000; } }
         private void UpdateSprite()
         {
-            string combined = model.Score.ToString().PadLeft(6, '0') + "    *" + model.Coins.ToString().PadLeft(2, '0') + "    " + model.WorldIndex + "      " + timeRemain / 1000;
-            textSprite = Factories.SpriteFactory.Instance.CreateTextSprite(firstLine + "\n" + combined);
+            textSprite = Factories.SpriteFactory.Instance.CreateTextSprite(firstLine + "\n" + secondLine);
         }
         public void Update(int time)
         {
             elapsed += time;
-            if (elapsed >= 50)
+            if (elapsed > 50 || Coin != model.Coins || Score != model.Score)
             {
+                Score = model.Score;
+                Coin = model.Coins;
+                secondLine = Score.ToString().PadLeft(6, '0') + "    *" + Coin.ToString().PadLeft(2, '0') + "    " +
+                             model.WorldIndex + "      " + timeRemain / 1000;
                 UpdateSprite();
                 elapsed = 0;
             }
