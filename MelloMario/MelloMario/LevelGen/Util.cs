@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MelloMario.BlockObjects;
 using MelloMario.Factories;
+using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json.Linq;
 
@@ -60,14 +59,14 @@ namespace MelloMario.LevelGen
                     {
                         if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                         {
-                            foreach (IGameObject obj in (IEnumerable<IGameObject>)func(createLocation))
+                            foreach (IGameObject obj in (IEnumerable<IGameObject>) func(createLocation))
                             {
                                 stack.Push(obj);
                             }
                         }
                         else
                         {
-                            stack.Push((IGameObject)func(createLocation));
+                            stack.Push((IGameObject) func(createLocation));
                         }
                     }
                 }

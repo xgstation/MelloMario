@@ -11,8 +11,8 @@ namespace MelloMario.Sprites
             Toggle();
         }
 
-        public FlashingAnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, ZIndex activeZIndex = ZIndex.item, int interval = 100) : base(
-            spriteBatch, texture, columns, rows, activeZIndex, interval
+        public FlashingAnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int interval, int columns, int rows, ZIndex activeZIndex = ZIndex.item) : base(
+            spriteBatch, texture, interval, columns, rows, activeZIndex
         )
         {
         }

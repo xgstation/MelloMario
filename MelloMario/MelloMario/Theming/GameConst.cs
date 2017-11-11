@@ -31,6 +31,6 @@ namespace MelloMario.Theming
         public const int SCORE_COIN = 200;
 
         // visual
-        public const int INTERVAL_FLASH = 100;
+        public const int ANIMATION_INTERVAL = 100;
     }
 }

@@ -120,7 +120,6 @@ namespace MelloMario.Theming
                 controller.Update();
             }
 
-
             if (!isPaused)
             {
                 // reserved for multiplayer
@@ -140,6 +139,9 @@ namespace MelloMario.Theming
                 {
                     obj.Update(time);
                 }
+
+                // TODO: move to correct place
+                Time -= time;
             }
         }
 
