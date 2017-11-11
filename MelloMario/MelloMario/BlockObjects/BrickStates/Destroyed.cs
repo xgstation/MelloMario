@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.MarioObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
@@ -10,7 +11,7 @@ namespace MelloMario.BlockObjects.BrickStates
             Owner.Remove();
         }
 
-        public Destroyed(Brick owner) : base(owner, 1000)
+        public Destroyed(Brick owner) : base(owner, 50000 / (int)GameConst.FORCE_G)
         {
         }
 
