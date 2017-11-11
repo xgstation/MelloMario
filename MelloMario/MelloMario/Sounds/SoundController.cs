@@ -16,7 +16,10 @@ namespace MelloMario.Sounds
         public SoundController(Game1 game)
         {
             bounce = SoundFactory.Instance.CreateSoundEffect("smb_jumpsmall");
+            //bumpBlock = SoundFactory.Instance.CreateSoundEffect("smb_bump");
             Normal = SoundFactory.Instance.CreateSong("01-main-theme-overworld");
+            BelowGround = SoundFactory.Instance.CreateSong("02-underworld");
+            Hurry = SoundFactory.Instance.CreateSong("18-hurry-overworld-");
             currentSong = Songs.normal;
         }
 
