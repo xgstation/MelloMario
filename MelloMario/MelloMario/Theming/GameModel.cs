@@ -17,9 +17,11 @@ namespace MelloMario
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private Listener listener;
-        //TODO: temporary public until the can move hud out of game1
+        //TODO: temporary public
+        //note: we will have an extra class called Player which contains these information
         public int Coins;
         public int Score;
+        public int Time;
         public IGameObject hud;
 
         // for singleplayer game
@@ -42,7 +44,8 @@ namespace MelloMario
 
             Score = 0;
             Coins = 0;
-            hud = new HUD(this, 400);
+            Time = 400 * 1000;
+            hud = new HUD(this);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)

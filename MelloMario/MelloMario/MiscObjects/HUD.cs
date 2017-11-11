@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using MelloMario.Factories;
 
 namespace MelloMario.MiscObjects
 {
@@ -7,7 +8,7 @@ namespace MelloMario.MiscObjects
         private GameModel model;
 
         private ISprite textSprite;
-        private int timeRemain; //in mileSeconds
+        private ISprite coinSprite;
         private int elapsed;
 
         public Rectangle Boundary
@@ -23,11 +24,12 @@ namespace MelloMario.MiscObjects
             string firstLine = "MARIO           WORLD    TIME";
             string secondLine = model.Score.ToString().PadLeft(6, '0') + "    *"
                 + model.Coins.ToString().PadLeft(2, '0') + "    "
-                + "1-1" + "      " + timeRemain / 1000; // TODO: get world name from player.CurrentWorld
-            textSprite = Factories.SpriteFactory.Instance.CreateTextSprite(firstLine + "\n" + secondLine);
+                + "1-1" + "      " + model.Time / 1000; // TODO: get world name from player.CurrentWorld
+            textSprite = SpriteFactory.Instance.CreateTextSprite(firstLine + "\n" + secondLine);
+            coinSprite = SpriteFactory.Instance.CreateCoinSprite();
         }
 
-        public HUD(GameModel model, int startTime)
+        public HUD(GameModel model)
         {
             this.model = model;
             UpdateSprite();
@@ -41,12 +43,12 @@ namespace MelloMario.MiscObjects
                 UpdateSprite();
                 elapsed = 0;
             }
-            timeRemain -= time;
         }
 
         public void Draw(int time, Rectangle viewport, ZIndex zIndex)
         {
             textSprite.Draw(time, new Rectangle(42, 42, 800, 200), ZIndex.hud);
+            coinSprite.Draw(time, new Rectangle(255, 74, 26, 30), ZIndex.hud);
         }
     }
 }
