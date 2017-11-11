@@ -8,7 +8,7 @@ namespace MelloMario.BlockObjects
 {
     class Pipeline : BaseCollidableObject
     {
-        private static GameModel model; // TODO: model is not singleton now. either change it to singleton or use non-static member
+        private static GameModel model;
         private IPlayer switchingPlayer;
         private string type;
         private int elapsed;
