@@ -23,8 +23,8 @@ namespace MelloMario
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = 800;
-            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferHeight = GameConst.SCREEN_WIDTH;
+            graphics.PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT;
         }
 
         /// <summary>
@@ -94,7 +94,6 @@ namespace MelloMario
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
 
-            spriteBatch.GraphicsDevice.Viewport = new Viewport(0, 0, 800, 600);
             spriteBatch.Begin();
             //Debug Code
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);

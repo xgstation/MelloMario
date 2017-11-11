@@ -43,7 +43,7 @@ namespace MelloMario.Theming
 
             Score = 0;
             Coins = 0;
-            Time = 400 * 1000;
+            Time = GameConst.LEVEL_TIME * 1000;
             hud = new HUD(this);
         }
 
