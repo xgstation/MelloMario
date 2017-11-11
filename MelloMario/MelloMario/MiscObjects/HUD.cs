@@ -24,14 +24,14 @@ namespace MelloMario.MiscObjects
             string firstLine = "MARIO           WORLD    TIME";
             string secondLine = model.Score.ToString().PadLeft(6, '0') + "    *"
                 + model.Coins.ToString().PadLeft(2, '0') + "    "
-                + "1-1" + "      " + model.Time / 1000; // TODO: get world name from player.CurrentWorld
+                + "1-1" + "      " + model.Time; // TODO: get world name from player.CurrentWorld
             textSprite = SpriteFactory.Instance.CreateTextSprite(firstLine + "\n" + secondLine);
-            coinSprite = SpriteFactory.Instance.CreateCoinSprite();
         }
 
         public HUD(GameModel model)
         {
             this.model = model;
+            coinSprite = SpriteFactory.Instance.CreateCoinSprite();
             UpdateSprite();
         }
 
@@ -43,6 +43,7 @@ namespace MelloMario.MiscObjects
                 UpdateSprite();
                 elapsed = 0;
             }
+
         }
 
         public void Draw(int time, Rectangle viewport)
