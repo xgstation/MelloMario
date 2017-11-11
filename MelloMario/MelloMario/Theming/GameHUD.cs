@@ -13,46 +13,49 @@ namespace MelloMario.Theming
         private GameModel model;
 
         private ISprite textSprite;
-        private int timeRemain; //in mileSeconds
+        private ISprite coinSprite;
         private int elapsed;
-        private int Coin;
-        private int Score;
+
+        private int timeRemain;
+        private int coins;
+        private int score;
         private string firstLine;
         private string secondLine;
-        public GameHUD(GameModel model, int startTime)
+        public GameHUD(GameModel model)
         {
             this.model = model;
-            Coin = model.Coins;
-            Score = model.Score;
-            timeRemain = startTime * 1000;
+            timeRemain = model.Time;
+            coins = model.Coins;
+            score = model.Score;
             firstLine = "MARIO           WORLD    TIME";
-            secondLine = Score.ToString().PadLeft(6, '0') + "    *" + Coin.ToString().PadLeft(2, '0') + "    " +
-                         model.WorldIndex + "      " + timeRemain / 1000;
-            UpdateSprite();
+            secondLine = score.ToString().PadLeft(6, '0') + "    *" + coins.ToString().PadLeft(2, '0') + "    " +
+                         model.WorldIndex + "      " + timeRemain;
+            coinSprite = Factories.SpriteFactory.Instance.CreateCoinSprite();
+            UpdateTextSprite();
         }
-        public int GetTimeRemain { get { return timeRemain / 1000; } }
-        private void UpdateSprite()
+        private void UpdateTextSprite()
         {
             textSprite = Factories.SpriteFactory.Instance.CreateTextSprite(firstLine + "\n" + secondLine);
         }
         public void Update(int time)
         {
             elapsed += time;
-            if (elapsed > 50 || Coin != model.Coins || Score != model.Score)
+            if (elapsed > 50 || coins != model.Coins || score != model.Score)
             {
-                Score = model.Score;
-                Coin = model.Coins;
-                secondLine = Score.ToString().PadLeft(6, '0') + "    *" + Coin.ToString().PadLeft(2, '0') + "    " +
-                             model.WorldIndex + "      " + timeRemain / 1000;
-                UpdateSprite();
+                score = model.Score;
+                coins = model.Coins;
+                timeRemain = model.Time;
+                secondLine = score.ToString().PadLeft(6, '0') + "    *" + coins.ToString().PadLeft(2, '0') + "    " +
+                             model.WorldIndex + "      " + timeRemain;
+                UpdateTextSprite();
                 elapsed = 0;
             }
-            timeRemain -= time;
         }
 
         public void Draw(int time)
         {
             textSprite.Draw(time, new Rectangle(42, 42, 800, 200), ZIndex.hud);
+            coinSprite.Draw(time, new Rectangle(255, 74, 26, 30), ZIndex.item);
         }
     }
 }
