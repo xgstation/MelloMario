@@ -8,7 +8,7 @@ namespace MelloMario.BlockObjects
 {
     class Pipeline : BaseCollidableObject
     {
-        private static GameModel model;
+        private GameModel model;
         private IPlayer switchingPlayer;
         private string type;
         private int elapsed;
@@ -21,7 +21,7 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        private static void SetModel(GameModel newModel)
+        private void SetModel(GameModel newModel)
         {
             model = newModel;
         }
