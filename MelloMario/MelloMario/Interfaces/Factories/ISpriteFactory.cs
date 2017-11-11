@@ -21,7 +21,7 @@ namespace MelloMario
         ISprite CreateSuperMushroomSprite();
         ISprite CreateFireFlowerSprite();
         ISprite CreateOneUpMushroomSprite();
-        ISprite CreateTextSprite(string text);
+        ISprite CreateTextSprite(string text, ZIndex zIndex = ZIndex.hud);
         ISprite CreateQuestionSprite(string status);
         ISprite CreateBrickSprite(string status);
         ISprite CreateCompressedSprite(Point fullSize, string type);
