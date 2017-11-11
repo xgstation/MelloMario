@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
     interface IContainer<T>
     {

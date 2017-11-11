@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario.ItemObjects.CoinStates
+﻿namespace MelloMario.ItemObjects.CoinStates
 {
     class Normal : BaseState<Coin>, IItemState
     {

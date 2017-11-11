@@ -1,10 +1,5 @@
 ﻿using MelloMario.Factories;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MelloMario.BlockObjects
 {
@@ -28,7 +23,7 @@ namespace MelloMario.BlockObjects
             //temp: hurts mario just to demonstrate that a collision was detected.
             if (target is MarioObjects.PlayerMario)
             {
-                ((MarioObjects.PlayerMario)target).Downgrade();
+                ((MarioObjects.PlayerMario) target).Downgrade();
             }
         }
 

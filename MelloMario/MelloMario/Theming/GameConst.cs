@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using MelloMario.BlockObjects;
-using MelloMario.MarioObjects;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario.Theming
+﻿namespace MelloMario.Theming
 {
     static class GameConst
     {

@@ -1,6 +1,4 @@
 ﻿using MelloMario.BlockObjects;
-using MelloMario.Factories;
-using MelloMario.MiscObjects;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -153,7 +151,7 @@ namespace MelloMario.LevelGen
         }
 
         #region IGameObject Converters
-        
+
         private bool ItemConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
             if (isSingle)

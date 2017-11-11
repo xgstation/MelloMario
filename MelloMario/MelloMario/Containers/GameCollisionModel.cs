@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MelloMario.MarioObjects;
 
 namespace MelloMario.Containers
@@ -10,7 +6,7 @@ namespace MelloMario.Containers
     //Work in progress
     class GameCollisionModel
     {
-        public enum CollisionResponse { Attack, Bounce, Obstacle, Squeeze}
+        public enum CollisionResponse { Attack, Bounce, Obstacle, Squeeze }
         private ISet<ICharacter> characterSet;
         private GameWorld world;
 
@@ -27,24 +23,24 @@ namespace MelloMario.Containers
             {
                 if (nearByObj.Boundary.Intersects(mario.Boundary))
                 {
-                    
+
                 }
             }
         }
 
         private void UpdateEnemyCollision()
         {
-            
+
         }
 
         private void UpdateBlockCollision()
         {
-            
+
         }
 
         private void UpdateItemCollision()
         {
-            
+
         }
     }
 }

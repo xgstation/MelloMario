@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.Collision
@@ -44,7 +40,7 @@ namespace MelloMario.Collision
         {
             get { return areaCovered; }
         }
-        
+
         internal int Count
         {
             get { return CountObjects(); }
