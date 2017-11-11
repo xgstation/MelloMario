@@ -273,7 +273,7 @@ namespace MelloMario.MarioObjects
             Bounce(mode, new Vector2());
         }
 
-        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport)
         {
         }
 
@@ -316,7 +316,7 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        public Mario(IGameWorld world, Point location) : base(world, location, new Point(32, 32), 32)
+        public Mario(IGameWorld world, Point location) : base(world, location, new Point(), 32)
         {
             movementState = new Standing(this);
             powerUpState = new Standard(this);

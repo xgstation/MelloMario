@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario.ItemObjects.StarStates
+﻿namespace MelloMario.ItemObjects.StarStates
 {
     class Normal : BaseState<Star>, IItemState
     {

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.EnemyObjects
@@ -22,7 +18,7 @@ namespace MelloMario.EnemyObjects
             throw new NotImplementedException();
         }
 
-        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport)
         {
             throw new NotImplementedException();
         }

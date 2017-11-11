@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario.ItemObjects.SuperMushroomStates
+﻿namespace MelloMario.ItemObjects.SuperMushroomStates
 {
     class Unveil : BaseTimedState<SuperMushroom>, IItemState
     {

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.BlockObjects.QuestionStates;
 using MelloMario.MarioObjects;
@@ -70,7 +69,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport)
         {
         }
 

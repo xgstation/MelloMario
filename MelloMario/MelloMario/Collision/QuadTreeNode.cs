@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.Collision
 {
-    class QuadTreeNode<T>
+    class QuadTreeNode<T> where T : IGameObject
     {
         #region Private Members
-        private Rectangle area;
-        private IList<T> objects;
-        private Func<T, Rectangle> funcTtoRec;
-        private Func<T, QuadTreeNode<T>> funcTtoParentTree;
+
+        private const int MAXOBJECTS = 5;
+        private Rectangle areaCovered;
+        private IList<EncapsulatedQuadTreeObject<T>> objects;
+
         private QuadTreeNode<T> parent = null;
         private QuadTreeNode<T> topLeft = null;
         private QuadTreeNode<T> topRight = null;
@@ -22,129 +19,105 @@ namespace MelloMario.Collision
         private QuadTreeNode<T> bottomRight = null;
         #endregion
 
+
         #region Construtors
-        public QuadTreeNode(Rectangle area, Func<T, Rectangle> funcTtoRec, Func<T, QuadTreeNode<T>> funcTtoParentTree) :
-            this(null, area, funcTtoRec, funcTtoParentTree)
+        internal QuadTreeNode(Rectangle area) : this(null, area)
         {
         }
 
-        public QuadTreeNode(QuadTreeNode<T> parent, Rectangle area, Func<T, Rectangle> funcTtoRec,
-            Func<T, QuadTreeNode<T>> funcTtoParentTree)
+        internal QuadTreeNode(QuadTreeNode<T> parent, Rectangle areaCovered)
         {
             this.parent = parent;
-            this.area = area;
-            this.funcTtoRec = funcTtoRec;
-            this.funcTtoParentTree = funcTtoParentTree;
+            this.areaCovered = areaCovered;
         }
 
         #endregion
 
-        #region Public Properties
-        public Rectangle Area
+
+        #region Internal Properties
+
+        internal Rectangle AreaCovered
         {
-            get { return area; }
+            get { return areaCovered; }
         }
 
-        public IList<T> Objects
+        internal int Count
         {
-            get { return objects; }
+            get { return CountObjects(); }
         }
 
-        public QuadTreeNode<T> Parent
+        internal bool IsEmpty
         {
-            get { return parent; }
+            get { return CountObjects() == 0 && !HasSubTree; }
         }
 
-        public QuadTreeNode<T> TopLeft
+        internal bool HasSubTree
         {
-            get { return topLeft; }
-        }
-
-        public QuadTreeNode<T> TopRight
-        {
-            get { return topRight; }
-        }
-
-        public QuadTreeNode<T> BottomLeft
-        {
-            get { return BottomLeft; }
-        }
-
-        public QuadTreeNode<T> BottomRight
-        {
-            get { return BottomRight; }
+            //Debug.Assert((topLeft != null) ^ (topRight != null) ^ (bottomRight != null) ^ (bottomLeft != null),
+            //    "Internal Error: Null-conditions of subtrees are not same!");
+            get { return topLeft != null && topRight != null && bottomRight != null && bottomLeft != null; }
         }
 
         #endregion
 
-        #region Public Methods
-        public bool IsIn(T item)
+
+        #region Internal Methods
+
+        internal bool IsFit(EncapsulatedQuadTreeObject<T> item)
         {
-            return area.Contains(funcTtoRec(item));
+            return areaCovered.Contains(item.Boundary);
         }
 
-        public IEnumerable<Tuple<T, QuadTreeNode<T>>> Insert(T item)
+        internal void Insert(EncapsulatedQuadTreeObject<T> item)
         {
-            if (!IsIn(item))
+            if (!IsFit(item))
             {
-                Debug.WriteLine("Force Insert! (item does not perfectly fit!)");
                 if (parent == null)
                 {
+                    Debug.WriteLine("Object does not perfectly fit, force insert");
                     Add(item);
-                    yield return new Tuple<T, QuadTreeNode<T>>(item, this);
+                }
+                else
+                {
+                    return;
                 }
             }
-            else if (objects == null || HasSubTree() && objects.Count < QuadTree<T>.MaxObjects)
+
+            if (objects == null || !HasSubTree && objects.Count < MAXOBJECTS)
             {
                 Add(item);
-                yield return new Tuple<T, QuadTreeNode<T>>(item, this);
             }
             else
             {
-                if (!HasSubTree())
+                if (!HasSubTree)
                 {
-                    IEnumerable<Tuple<T, QuadTreeNode<T>>> divided = Divide();
-                    foreach (Tuple<T, QuadTreeNode<T>> tuple in divided)
-                    {
-                        yield return tuple;
-                    }
-                }
-                QuadTreeNode<T> destTree = GetDestTree(item);
-                if (destTree == this)
-                {
-                    Add(item);
-                    yield return new Tuple<T, QuadTreeNode<T>>(item, this);
+                    Divide();
                 }
                 else
                 {
-                    IEnumerable<Tuple<T, QuadTreeNode<T>>> squeezed = destTree.Insert(item);
-                    //TODO: Verify if it needs yield return new Tuple<>(item, destTree);
-                    foreach (Tuple<T, QuadTreeNode<T>> tuple in squeezed)
-                    {
-                        yield return tuple;
-                    }
+                    GetDestTree(item).Insert(item);
                 }
             }
-
         }
 
-        public bool Delete(T item)
+        internal void Delete(EncapsulatedQuadTreeObject<T> item)
         {
-            if (funcTtoParentTree(item) != null)
+            if (item.Owner == null)
             {
-                if (funcTtoParentTree(item) == this)
-                {
-                    return Remove(item);
-                }
-                else
-                {
-                    return funcTtoParentTree(item).Delete(item);
-                }
+                return;
             }
-            return false;
+            if (item.Owner == this)
+            {
+                Remove(item);
+                Clean();
+            }
+            else
+            {
+                item.Owner.Delete(item);
+            }
         }
 
-        public void Clear()
+        internal void Clear()
         {
             topLeft?.Clear();
             topRight?.Clear();
@@ -158,160 +131,187 @@ namespace MelloMario.Collision
             bottomRight = null;
         }
 
-        public void GetAll(ref ICollection<T> all)
+        internal void GetAll(ref ICollection<T> all)
         {
             if (objects != null)
             {
-                foreach (T o in objects)
+                foreach (EncapsulatedQuadTreeObject<T> o in objects)
                 {
-                    all.Add(o);
+                    all.Add(o.realObj);
                 }
             }
-            topLeft?.GetAll(ref all);
-            topRight?.GetAll(ref all);
-            bottomRight?.GetAll(ref all);
-            bottomLeft?.GetAll(ref all);
+            if (HasSubTree)
+            {
+                topLeft.GetAll(ref all);
+                topRight.GetAll(ref all);
+                bottomRight.GetAll(ref all);
+                bottomLeft.GetAll(ref all);
+            }
         }
 
-        public void GetRanged(Rectangle range, ref ICollection<T> ranged)
+        internal void GetRanged(Rectangle range, ref ICollection<T> ranged)
         {
             if (ranged == null)
             {
                 return;
             }
-            if (range.Contains(area))
+            if (range.Contains(areaCovered))
             {
                 GetAll(ref ranged);
             }
-            else if (range.Intersects(area))
+            else if (range.Intersects(areaCovered))
             {
                 if (objects != null)
                 {
-                    foreach (T o in objects)
+                    foreach (EncapsulatedQuadTreeObject<T> o in objects)
                     {
-                        if (range.Intersects(funcTtoRec(o)))
+                        if (range.Intersects(o.Boundary))
                         {
-                            ranged.Add(o);
+                            ranged.Add(o.realObj);
                         }
                     }
                 }
-                topLeft?.GetRanged(range, ref ranged);
-                topRight?.GetRanged(range, ref ranged);
-                bottomLeft?.GetRanged(range, ref ranged);
-                bottomRight?.GetRanged(range, ref ranged);
-
+                if (HasSubTree)
+                {
+                    topLeft.GetRanged(range, ref ranged);
+                    topRight.GetRanged(range, ref ranged);
+                    bottomLeft.GetRanged(range, ref ranged);
+                    bottomRight.GetRanged(range, ref ranged);
+                }
             }
         }
 
-        public void DoMove(T item)
+        internal void DoMove(EncapsulatedQuadTreeObject<T> item)
         {
-            if (funcTtoParentTree(item) != null)
+            if (item.Owner != null)
             {
-                funcTtoParentTree(item).Relocate(item);
+                item.Owner.Relocate(item);
             }
             else
             {
                 Relocate(item);
             }
         }
+
         #endregion
 
+
         #region Private Methods
-        private void Add(T item)
+
+        private void Add(EncapsulatedQuadTreeObject<T> item)
         {
             if (objects == null)
             {
-                objects = new List<T>();
+                objects = new List<EncapsulatedQuadTreeObject<T>>();
             }
             objects.Add(item);
+            item.Owner = this;
         }
 
-        private bool Remove(T item)
+        private void Remove(EncapsulatedQuadTreeObject<T> item)
         {
             if (objects != null && objects.Contains(item))
             {
                 objects.Remove(item);
-                return true;
             }
-            return false;
         }
 
-        private int Count()
+        private int CountObjects()
         {
-            int count =
-                (objects?.Count ?? 0) +
-                (topLeft?.Count() ?? 0) +
-                (topRight?.Count() ?? 0) +
-                (bottomLeft?.Count() ?? 0) +
-                (bottomRight?.Count() ?? 0);
+            int count = objects?.Count ?? 0;
+            if (HasSubTree)
+            {
+                count += topLeft.Count + topRight.Count + bottomLeft.Count + bottomRight.Count;
+            }
             return count;
         }
 
-        private IEnumerable<Tuple<T, QuadTreeNode<T>>> Divide()
+        private void Divide()
         {
-            Point newSize = new Point(area.Width / 2, area.Height / 2);
+            Point newSize = new Point(areaCovered.Width / 2, areaCovered.Height / 2);
 
-            topLeft = new QuadTreeNode<T>(this, new Rectangle(area.Location, newSize), funcTtoRec, funcTtoParentTree);
-            topRight = new QuadTreeNode<T>(this, new Rectangle(new Point(area.Center.X, area.Top), newSize), funcTtoRec,
-                funcTtoParentTree);
-            bottomLeft = new QuadTreeNode<T>(this, new Rectangle(new Point(area.Left, area.Bottom), newSize),
-                funcTtoRec, funcTtoParentTree);
-            bottomRight = new QuadTreeNode<T>(this, new Rectangle(new Point(area.Right, area.Bottom), newSize),
-                funcTtoRec, funcTtoParentTree);
+            topLeft = new QuadTreeNode<T>(this, new Rectangle(areaCovered.Location, newSize));
+            topRight = new QuadTreeNode<T>(this, new Rectangle(new Point(areaCovered.Center.X, areaCovered.Top), newSize));
+            bottomLeft = new QuadTreeNode<T>(this, new Rectangle(new Point(areaCovered.Left, areaCovered.Bottom), newSize));
+            bottomRight = new QuadTreeNode<T>(this, new Rectangle(new Point(areaCovered.Right, areaCovered.Bottom), newSize));
 
-            ISet<T> toRelocate = new HashSet<T>();
-            foreach (T o in objects)
+            Stack<EncapsulatedQuadTreeObject<T>> toBeRelocated = new Stack<EncapsulatedQuadTreeObject<T>>();
+            foreach (EncapsulatedQuadTreeObject<T> o in objects)
             {
                 QuadTreeNode<T> destTree = GetDestTree(o);
                 if (destTree != this)
                 {
-                    IEnumerable<Tuple<T, QuadTreeNode<T>>> squeezed = destTree.Insert(o);
-                    foreach (Tuple<T, QuadTreeNode<T>> tuple in squeezed)
-                    {
-                        yield return tuple;
-                    }
-                    toRelocate.Add(o);
+                    destTree.Insert(o);
+                    toBeRelocated.Push(o);
                 }
             }
-            foreach (T o in toRelocate)
+            foreach (EncapsulatedQuadTreeObject<T> o in toBeRelocated)
             {
                 Remove(o);
             }
         }
-        private QuadTreeNode<T> GetDestTree(T item)
+
+        private QuadTreeNode<T> GetDestTree(EncapsulatedQuadTreeObject<T> item)
         {
-            switch (funcTtoRec(item))
+            switch (item.Boundary)
             {
-                case Rectangle rect when topLeft.area.Contains(rect):
+                case Rectangle rect when topLeft.areaCovered.Contains(rect):
                     return topLeft;
-                case Rectangle rect when topRight.area.Contains(rect):
+                case Rectangle rect when topRight.areaCovered.Contains(rect):
                     return topRight;
-                case Rectangle rect when bottomLeft.area.Contains(rect):
+                case Rectangle rect when bottomLeft.areaCovered.Contains(rect):
                     return bottomLeft;
-                case Rectangle rect when bottomRight.area.Contains(rect):
+                case Rectangle rect when bottomRight.areaCovered.Contains(rect):
                     return bottomRight;
                 default:
                     return this;
             }
         }
-        private QuadTreeNode<T> Relocate(T item)
+
+        private void Relocate(EncapsulatedQuadTreeObject<T> item)
         {
-            if (area.Contains(funcTtoRec(item)) && topLeft != null)
+            if (areaCovered.Contains(item.Boundary))
             {
-                QuadTreeNode<T> destTree = GetDestTree(item);
-                destTree.Add(item);
-                Remove(item);
-                return destTree;
+                if (HasSubTree)
+                {
+                    QuadTreeNode<T> destNode = GetDestTree(item);
+                    if (item.Owner == this)
+                    {
+                        return;
+                    }
+                    QuadTreeNode<T> oldOwner = item.Owner;
+                    Delete(item);
+                    destNode.Insert(item);
+                    oldOwner.Clean();
+                }
             }
-            return parent != null ? parent.Relocate(item) : funcTtoParentTree(item);
         }
 
-        private bool HasSubTree()
+        private void Clean()
         {
-            Debug.Assert((topLeft != null) ^ (topRight != null) ^ (bottomRight != null) ^ (bottomLeft != null),
-                "Internal Error: Null-conditions of subtrees are not same!");
-            return topLeft != null && topRight != null && bottomRight != null && bottomLeft != null;
+            if (HasSubTree)
+            {
+                if (topLeft.IsEmpty && topRight.IsEmpty && bottomLeft.IsEmpty && bottomRight.IsEmpty)
+                {
+                    topLeft = null;
+                    topRight = null;
+                    bottomLeft = null;
+                    bottomRight = null;
+                }
+                if (parent != null && CountObjects() == 0)
+                {
+                    parent.Clean();
+                }
+            }
+            else
+            {
+                if (parent != null && CountObjects() == 0)
+                {
+                    parent.Clean();
+                }
+            }
         }
+
         #endregion
     }
 }

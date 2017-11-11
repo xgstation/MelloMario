@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using MelloMario.MarioObjects;
+﻿using MelloMario.MarioObjects;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {

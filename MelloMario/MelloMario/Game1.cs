@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Controllers;
 using MelloMario.Factories;
-using MelloMario.LevelGen;
+using MelloMario.Theming;
 using MelloMario.Sounds;
 
 namespace MelloMario
@@ -17,16 +17,14 @@ namespace MelloMario
         private SoundController soundControl;
         private GameModel model;
         private SpriteBatch spriteBatch;
-       
-        private float timer = 400;
-  
+
 
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = 800;
-            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferHeight = GameConst.SCREEN_WIDTH;
+            graphics.PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT;
         }
 
         /// <summary>
@@ -45,7 +43,7 @@ namespace MelloMario
                 new GamepadController(),
                 new KeyboardController()
             };
-            SoundController.PlayMusic(SoundController.songs.normal);
+            SoundController.PlayMusic(SoundController.Songs.normal);
             model.LoadControllers(controllers);
             model.LoadLevel("Main", true); // Create the level for the first time
             model.Init();
@@ -60,7 +58,7 @@ namespace MelloMario
             Content.RootDirectory = "Content";
             base.LoadContent();
             SpriteFactory.Instance.BindContentManager(Content);
-
+            SoundFactory.Instance.BindContentManager(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.BindSpriteBatch(spriteBatch);
 
@@ -83,8 +81,6 @@ namespace MelloMario
         protected override void Update(GameTime time)
         {
             base.Update(time);
-            timer -= (float) time.ElapsedGameTime.TotalSeconds;
-
             model.Update(time.ElapsedGameTime.Milliseconds);
         }
 
@@ -98,8 +94,7 @@ namespace MelloMario
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
 
-            spriteBatch.GraphicsDevice.Viewport = new Viewport(0, 0, 800, 600);
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront);
             //Debug Code
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
             //RasterizerState state = new RasterizerState();

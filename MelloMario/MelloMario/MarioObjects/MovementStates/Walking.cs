@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario.MarioObjects.MovementStates
+﻿namespace MelloMario.MarioObjects.MovementStates
 {
     class Walking : BaseState<Mario>, IMarioMovementState
     {

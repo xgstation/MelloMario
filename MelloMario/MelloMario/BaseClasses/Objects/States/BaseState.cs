@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
     abstract class BaseState<T> : IState
     {

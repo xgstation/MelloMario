@@ -5,23 +5,23 @@ using System;
 using MelloMario.Containers;
 using MelloMario.Scripts;
 using MelloMario.Factories;
-using MelloMario.Theming;
+using MelloMario.MiscObjects;
 
-namespace MelloMario
+namespace MelloMario.Theming
 {
     class GameModel : IGameModel
     {
-         
         private Game1 game;
         private GameSession session;
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private Listener listener;
-
-        private GameTimer timer;
-        //TODO: temporary public until the can move hud out of game1
+        //TODO: temporary public
+        //note: we will have an extra class called Player which contains these information
         public int Coins;
         public int Score;
+        public int Time;
+        public IGameObject hud;
 
         // for singleplayer game
         private IPlayer GetActivePlayer()
@@ -37,12 +37,14 @@ namespace MelloMario
 
         public GameModel(Game1 game)
         {
-            timer = new GameTimer(400);
-            Score = 0;
-            Coins = 0;
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
+
+            Score = 0;
+            Coins = 0;
+            Time = GameConst.LEVEL_TIME * 1000;
+            hud = new HUD(this);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -82,29 +84,24 @@ namespace MelloMario
             LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice, listener);
             reader.SetModel(this);
             Tuple<IGameWorld, IPlayer> pair = reader.Load(id, session);
-
-            // TODO: move this to map initialization
-            GameObjectFactory.Instance.CreateGameObject("EndFlagTop", pair.Item1, new Point(10 * 32, 13 * 32));
-            GameObjectFactory.Instance.CreateGameObject("EndFlag", pair.Item1, new Point(10 * 32, 14 * 32));
+            
 
             if (!init && pair.Item2 != null)
             {
                 session.Remove(pair.Item2);
             }
-
+            session.Update();
             return pair.Item1;
         }
 
         public void Init()
         {
-            session.Update();//force flush
-            Resume();
+            Resume();   
         }
 
         public void Reset()
         {
             // TODO: "forced" version of LoadLevel()
-            session.Update();//force flush
             Resume();
         }
 
@@ -120,7 +117,6 @@ namespace MelloMario
                 controller.Update();
             }
 
-            timer.Update(time);
             if (!isPaused)
             {
                 // reserved for multiplayer
@@ -128,47 +124,42 @@ namespace MelloMario
 
                 foreach (IPlayer player in session.ScanPlayers())
                 {
+                    player.World.Update();
                     foreach (IGameObject obj in player.World.ScanNearby(player.Sensing))
                     {
                         updating.Add(obj);
                     }
                 }
 
+                updating.Add(hud);
+
                 foreach (IGameObject obj in updating)
                 {
                     obj.Update(time);
                 }
 
-                foreach (IGameWorld world in session.ScanWorlds())
-                {
-                    world.Update();
-                }
-
-                session.Update();
+                // TODO: move to correct place
+                Time -= time;
             }
-            
         }
 
         public void Draw(int time)
         {
-            timer.Draw(time);
             IPlayer player = GetActivePlayer();
-       
 
-            foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
+            foreach (IGameObject obj in player.World.ScanNearby(player.Viewport))
             {
-                foreach (IGameObject obj in player.World.ScanNearby(player.Viewport))
+                if (isPaused)
                 {
-                    if (isPaused)
-                    {
-                        obj.Draw(0, player.Viewport, zIndex);
-                    }
-                    else
-                    {
-                        obj.Draw(time, player.Viewport, zIndex);
-                    }
+                    obj.Draw(0, player.Viewport);
+                }
+                else
+                {
+                    obj.Draw(time, player.Viewport);
                 }
             }
+
+            hud.Draw(time, player.Viewport);
         }
     }
 }

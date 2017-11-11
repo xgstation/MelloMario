@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.MarioObjects.MovementStates;
@@ -9,7 +8,7 @@ namespace MelloMario.BlockObjects
 {
     class Pipeline : BaseCollidableObject
     {
-        private static GameModel model; // TODO: model is not singleton now. either change it to singleton or use non-static member
+        private GameModel model;
         private IPlayer switchingPlayer;
         private string type;
         private int elapsed;
@@ -22,7 +21,7 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        private static void SetModel(GameModel newModel)
+        private void SetModel(GameModel newModel)
         {
             model = newModel;
         }
@@ -83,7 +82,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnDraw(int time, Rectangle viewport, ZIndex zIndex)
+        protected override void OnDraw(int time, Rectangle viewport)
         {
         }
 

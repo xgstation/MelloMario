@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 //Work in progress
@@ -80,12 +74,9 @@ namespace MelloMario.Sprites
             graphicDevice.SetRenderTarget(null);
         }
 
-        public void Draw(int time, Rectangle destination, ZIndex zIndex)
+        public void Draw(int time, Rectangle destination)
         {
-            if (zIndex == activeZIndex)
-            {
-                spriteBatch.Draw(renderTarget, destination, Color.White);
-            }
+            spriteBatch.Draw(renderTarget, destination, Color.White);
         }
     }
 }

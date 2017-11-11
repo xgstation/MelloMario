@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario.ItemObjects.OneUpMushroomStates
+﻿namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
     class Normal : BaseState<OneUpMushroom>, IItemState
     {

@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario.EnemyObjects.KoopaStates
+﻿namespace MelloMario.EnemyObjects.KoopaStates
 {
     class Defeated : BaseState<Koopa>, IKoopaState
     {
