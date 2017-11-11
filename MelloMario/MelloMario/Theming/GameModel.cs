@@ -18,10 +18,26 @@ namespace MelloMario
         private bool isPaused;
         private Listener listener;
 
-        private GameHUD timer;
-        //TODO: temporary public until the can move hud out of game1
-        public int Coins;
-        public int Score;
+        private GameHUD HUD;
+        private int coins;
+        private int score;
+        private int timeRemain;
+        public int Coins
+        {
+            get { return coins; }
+            set { coins = value; }
+        }
+
+        public int Score
+        {
+            get { return score; }
+            set { score = value; }
+        }
+
+        public int Time
+        {
+            get { return timeRemain / 1000; }
+        } //in milSeconds
         public string WorldIndex;
 
         // for singleplayer game
@@ -38,13 +54,14 @@ namespace MelloMario
 
         public GameModel(Game1 game)
         {
-            timer = new GameHUD(this,400);
             Score = 0;
             Coins = 0;
+            timeRemain = 400 * 1000;
             WorldIndex = "1-1";
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
+            HUD = new GameHUD(this);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -117,12 +134,14 @@ namespace MelloMario
 
         public void Update(int time)
         {
+            HUD.Update(time);
+            timeRemain -= time;
+            
             foreach (IController controller in controllers)
             {
                 controller.Update();
             }
 
-            timer.Update(time);
             if (!isPaused)
             {
                 // reserved for multiplayer
@@ -153,7 +172,7 @@ namespace MelloMario
 
         public void Draw(int time)
         {
-            timer.Draw(time);
+            HUD.Draw(time);
             IPlayer player = GetActivePlayer();
        
 
