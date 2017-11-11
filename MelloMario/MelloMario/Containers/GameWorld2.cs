@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using MelloMario.Collision;
+using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.Containers
 {
     class GameWorld2 : IGameWorld
     {
-        private readonly int scanRange;
-        private readonly int grid;
         private readonly Point maxSize;
         private readonly QuadTree<IGameObject> objContainer;
         private readonly Stack<IGameObject> toAdd;
@@ -19,12 +18,11 @@ namespace MelloMario.Containers
         private Point initialPoint;
         private ISet<Point> respawnPoints;
 
-        public GameWorld2(string id, Point worldSize, Point initialPoint, IEnumerable<Point> respawnPoints, int grid = 32,
-            int scanRange = 24)
+        public GameWorld2(string id, Point worldSize, Point initialPoint, IEnumerable<Point> respawnPoints)
         {
             this.id = id;
             this.worldSize = worldSize;
-            this.initialPoint = new Point(initialPoint.X * grid, initialPoint.Y * grid);
+            this.initialPoint = new Point(initialPoint.X * GameConst.GRID, initialPoint.Y * GameConst.GRID);
             respawnPoints = new List<Point>();
 
             foreach (Point respawnPoint in respawnPoints)
@@ -36,7 +34,7 @@ namespace MelloMario.Containers
             toMove = new Stack<IGameObject>();
             toRemove = new Stack<IGameObject>();
 
-            objContainer = new QuadTree<IGameObject>(new Rectangle(0, 0, worldSize.X * grid, worldSize.Y * grid));
+            objContainer = new QuadTree<IGameObject>(new Rectangle(0, 0, worldSize.X * GameConst.GRID, worldSize.Y * GameConst.GRID));
         }
 
         public string Id { get { return id; } }

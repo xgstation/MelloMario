@@ -88,7 +88,7 @@ namespace MelloMario.LevelGen
                 case "HL":
                     in1 = new Pipeline(world, pipelineLoc, "TopLeftIn");
                     in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), "BottomLeftIn");
-                    pipelineLoc = new Point(pipelineLoc.X + 32, pipelineLoc.Y);
+                    pipelineLoc = new Point(pipelineLoc.X + GameConst.GRID, pipelineLoc.Y);
                     goto case "NH";
                 case "HR":
                     in1 = new Pipeline(world, pipelineLoc, "TopRightIn");
@@ -122,7 +122,7 @@ namespace MelloMario.LevelGen
             listOfPipelineComponents.Insert(1, in2);
             return listOfPipelineComponents;
         }
-        public static IList<IGameObject> CreateItemList(IGameWorld world, Point point, Theming.Listener listener, params string[] s)
+        public static IList<IGameObject> CreateItemList(IGameWorld world, Point point, Listener listener, params string[] s)
         {
             return s?.Select(t => GameObjectFactory.Instance.CreateGameObject(t, world, point, listener)).ToList();
         }

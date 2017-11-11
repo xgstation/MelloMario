@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using MelloMario.Theming;
 
 namespace MelloMario.Containers
 {
     class GameWorld : BaseContainer<Point, IGameObject>, IGameWorld
     {
-        private const int GRID = 32;
-        private const int SCANRANGE = 24;
-
         private string id;
         private Point size;
         private Point initialPoint;
@@ -16,7 +14,7 @@ namespace MelloMario.Containers
         protected override Point GetKey(IGameObject value)
         {
             Point center = value.Boundary.Center;
-            return new Point(center.X / GRID, center.Y / GRID);
+            return new Point(center.X / GameConst.GRID, center.Y / GameConst.GRID);
         }
 
         public string Id
@@ -31,7 +29,7 @@ namespace MelloMario.Containers
         {
             get
             {
-                return new Rectangle(0, 0, size.X * GRID, size.Y * GRID);
+                return new Rectangle(0, 0, size.X * GameConst.GRID, size.Y * GameConst.GRID);
             }
         }
 
@@ -40,21 +38,21 @@ namespace MelloMario.Containers
             this.id = id;
             this.size = size;
 
-            initialPoint = new Point(initial.X * GRID, initial.Y * GRID);
+            initialPoint = new Point(initial.X * GameConst.GRID, initial.Y * GameConst.GRID);
             respawnPoints = new HashSet<Point>();
             foreach (Point p in respawn)
             {
-                respawnPoints.Add(new Point(p.X * GRID, p.Y * GRID));
+                respawnPoints.Add(new Point(p.X * GameConst.GRID, p.Y * GameConst.GRID));
             }
 
         }
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
         {
-            int left = (range.Left - SCANRANGE) / GRID;
-            int right = (range.Right + SCANRANGE) / GRID;
-            int top = (range.Top - SCANRANGE) / GRID;
-            int bottom = (range.Bottom + SCANRANGE) / GRID;
+            int left = (range.Left - GameConst.SCANRANGE) / GameConst.GRID;
+            int right = (range.Right + GameConst.SCANRANGE) / GameConst.GRID;
+            int top = (range.Top - GameConst.SCANRANGE) / GameConst.GRID;
+            int bottom = (range.Bottom + GameConst.SCANRANGE) / GameConst.GRID;
 
             for (int i = left; i <= right; ++i)
             {

@@ -70,15 +70,6 @@ namespace MelloMario.LevelGen
             {
                 Debug.WriteLine("Deserialize fail: No map size provided!");
             }
-            if (Util.TryGet(out int grid, MapToBeLoaded, "Grid"))
-            {
-                Debug.WriteLine("Grid size:" + grid);
-            }
-            else
-            {
-                grid = 32;
-                Debug.WriteLine("No grid size provided, using default value: 32.");
-            }
 
             if (Util.TryGet(out IList<JToken> entities, MapToBeLoaded, "Entity"))
             {
@@ -89,9 +80,9 @@ namespace MelloMario.LevelGen
             Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints");
             world = new GameWorld(index, mapSize, initialPoint, respawnPoints);
 
-            gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, listener, grid);
+            gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, listener, GameConst.GRID);
 
-            characterConverter = new CharacterConverter(session, world, grid);
+            characterConverter = new CharacterConverter(session, world, GameConst.GRID);
 
             serializers.Converters.Add(gameEntityConverter);
             serializers.Converters.Add(characterConverter);

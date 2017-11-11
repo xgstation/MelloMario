@@ -316,7 +316,7 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        public Mario(IGameWorld world, Point location) : base(world, location, new Point(32, 32), 32)
+        public Mario(IGameWorld world, Point location) : base(world, location, new Point(), 32)
         {
             movementState = new Standing(this);
             powerUpState = new Standard(this);

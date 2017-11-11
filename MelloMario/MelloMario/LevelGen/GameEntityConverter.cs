@@ -160,7 +160,7 @@ namespace MelloMario.LevelGen
             }
             else
             {
-                Util.BatchCreate(createFunc, objPoint, quantity, new Point(32, 32), ignoredSet, grid, ref stack);
+                Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
             }
             return true;
         }
@@ -188,7 +188,7 @@ namespace MelloMario.LevelGen
                 }
                 else
                 {
-                    Util.BatchCreate(createFunc, objPoint, quantity, new Point(32, 32), ignoredSet, grid, ref stack);
+                    Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
                 }
 
             }
@@ -249,7 +249,7 @@ namespace MelloMario.LevelGen
                             }
                             return objToBePushed;
                         },
-                        objPoint, quantity, new Point(32, 32), ignoredSet, grid, ref stack);
+                        objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
                 }
             }
             else if (type.Name == "Pipeline")
@@ -280,7 +280,7 @@ namespace MelloMario.LevelGen
                 }
                 else
                 {
-                    objFullSize = direction.Contains("V") ? new Point(64, 32 + 32 * length) : new Point(32 + 32 * length, 64);
+                    objFullSize = direction.Contains("V") ? new Point(GameConst.GRID * 2, GameConst.GRID + GameConst.GRID * length) : new Point(GameConst.GRID + GameConst.GRID * length, GameConst.GRID * 2);
                     Util.BatchCreate(point => Util.CreateSinglePipeline(model, world, grid, direction, length, point), objPoint, quantity, objFullSize,
                         ignoredSet, grid, ref stack);
                 }
