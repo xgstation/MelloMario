@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using MelloMario.LevelGen;
 using System;
 using MelloMario.Containers;
@@ -108,6 +110,10 @@ namespace MelloMario.Theming
         public void Quit()
         {
             game.Exit();
+        }
+        public void Mute()
+        {
+            MediaPlayer.Stop();
         }
 
         public void Update(int time)

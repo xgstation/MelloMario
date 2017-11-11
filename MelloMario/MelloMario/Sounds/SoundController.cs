@@ -7,7 +7,7 @@ namespace MelloMario.Sounds
     class SoundController
     {
         // TODO: use a factory
-        public static Song Normal, BelowGround, Hurry, Pause, TitleScreen;
+        public static Song Normal, BelowGround, Hurry;
         public static SoundEffect bounce, bumpBlock, breakBlock, coin, fireFlower, sizeUp, sizeDown, enemyKill, GameOver;
 
         public enum Songs { normal, belowGround, hurry, pause, title }

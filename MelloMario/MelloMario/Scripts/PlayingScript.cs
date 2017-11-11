@@ -50,6 +50,8 @@ namespace MelloMario.Scripts
                 controller.AddCommand(Keys.R, factory.CreateModelCommand("Reset", model), KeyBehavior.press);
                 controller.AddCommand(Keys.Q, factory.CreateModelCommand("Quit", model), KeyBehavior.press);
 
+                controller.AddCommand(Keys.M, factory.CreateModelCommand("Mute", model), KeyBehavior.press);
+
                 controller.AddCommand(Buttons.B, factory.CreateCharacterCommand("Action", character));
                 controller.AddCommand(Buttons.DPadDown, factory.CreateCharacterCommand("Crouch", character), KeyBehavior.hold);
                 controller.AddCommand(Buttons.DPadDown, factory.CreateCharacterCommand("CrouchPress", character), KeyBehavior.press);

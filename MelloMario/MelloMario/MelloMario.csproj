@@ -89,6 +89,7 @@
     <Compile Include="Collision\QuadTree.cs" />
     <Compile Include="Collision\QuadTreeNode.cs" />
     <Compile Include="Commands\Action.cs" />
+    <Compile Include="Commands\Mute.cs" />
     <Compile Include="Commands\Resume.cs" />
     <Compile Include="Commands\Quit.cs" />
     <Compile Include="Commands\Reset.cs" />

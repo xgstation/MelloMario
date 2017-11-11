@@ -32,6 +32,8 @@ namespace MelloMario.Factories
                     return new Reset(model);
                 case "Quit":
                     return new Quit(model);
+                case "Mute":
+                    return new Mute(model);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code

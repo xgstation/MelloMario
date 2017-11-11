@@ -10,5 +10,6 @@
         void Quit();
         void Update(int time);
         void Draw(int time);
+        void Mute();
     }
 }
