@@ -57,13 +57,14 @@ namespace MelloMario.ItemObjects
             if (isUnveil)
             {
                 state = new Unveil(this);
+                UpdateSprite();
                 RemoveSelf();
             }
             else
             {
                 state = new Normal(this);
+                UpdateSprite();
             }
-            UpdateSprite();
         }
 
         public FireFlower(IGameWorld world, Point location) : this(world, location, false)
