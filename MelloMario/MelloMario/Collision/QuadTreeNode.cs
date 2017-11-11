@@ -87,7 +87,7 @@ namespace MelloMario.Collision
                 }
             }
 
-            if (objects == null || (!HasSubTree && objects.Count < MAXOBJECTS))
+            if (objects == null || !HasSubTree && objects.Count < MAXOBJECTS)
             {
                 Add(item);
             }
@@ -106,7 +106,10 @@ namespace MelloMario.Collision
 
         internal void Delete(EncapsulatedQuadTreeObject<T> item)
         {
-            if (item.Owner == null) return;
+            if (item.Owner == null)
+            {
+                return;
+            }
             if (item.Owner == this)
             {
                 Remove(item);
@@ -136,7 +139,7 @@ namespace MelloMario.Collision
         {
             if (objects != null)
             {
-                foreach (var o in objects)
+                foreach (EncapsulatedQuadTreeObject<T> o in objects)
                 {
                     all.Add(o.realObj);
                 }
@@ -152,7 +155,10 @@ namespace MelloMario.Collision
 
         internal void GetRanged(Rectangle range, ref ICollection<T> ranged)
         {
-            if (ranged == null) return;
+            if (ranged == null)
+            {
+                return;
+            }
             if (range.Contains(areaCovered))
             {
                 GetAll(ref ranged);
@@ -161,7 +167,7 @@ namespace MelloMario.Collision
             {
                 if (objects != null)
                 {
-                    foreach (var o in objects)
+                    foreach (EncapsulatedQuadTreeObject<T> o in objects)
                     {
                         if (range.Intersects(o.Boundary))
                         {
@@ -233,8 +239,8 @@ namespace MelloMario.Collision
             bottomLeft = new QuadTreeNode<T>(this, new Rectangle(new Point(areaCovered.Left, areaCovered.Bottom), newSize));
             bottomRight = new QuadTreeNode<T>(this, new Rectangle(new Point(areaCovered.Right, areaCovered.Bottom), newSize));
 
-            var toBeRelocated = new Stack<EncapsulatedQuadTreeObject<T>>();
-            foreach (var o in objects)
+            Stack<EncapsulatedQuadTreeObject<T>> toBeRelocated = new Stack<EncapsulatedQuadTreeObject<T>>();
+            foreach (EncapsulatedQuadTreeObject<T> o in objects)
             {
                 QuadTreeNode<T> destTree = GetDestTree(o);
                 if (destTree != this)
@@ -243,7 +249,7 @@ namespace MelloMario.Collision
                     toBeRelocated.Push(o);
                 }
             }
-            foreach (var o in toBeRelocated)
+            foreach (EncapsulatedQuadTreeObject<T> o in toBeRelocated)
             {
                 Remove(o);
             }
@@ -273,8 +279,11 @@ namespace MelloMario.Collision
                 if (HasSubTree)
                 {
                     QuadTreeNode<T> destNode = GetDestTree(item);
-                    if (item.Owner == this) return;
-                    var oldOwner = item.Owner;
+                    if (item.Owner == this)
+                    {
+                        return;
+                    }
+                    QuadTreeNode<T> oldOwner = item.Owner;
                     Delete(item);
                     destNode.Insert(item);
                     oldOwner.Clean();

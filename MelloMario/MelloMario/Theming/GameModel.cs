@@ -5,10 +5,9 @@ using System;
 using MelloMario.Containers;
 using MelloMario.Scripts;
 using MelloMario.Factories;
-using MelloMario.Theming;
 using MelloMario.MiscObjects;
 
-namespace MelloMario
+namespace MelloMario.Theming
 {
     class GameModel : IGameModel
     {
@@ -100,14 +99,12 @@ namespace MelloMario
 
         public void Init()
         {
-            session.Update();//force flush
             Resume();
         }
 
         public void Reset()
         {
             // TODO: "forced" version of LoadLevel()
-            session.Update();//force flush
             Resume();
         }
 
@@ -143,13 +140,6 @@ namespace MelloMario
                 {
                     obj.Update(time);
                 }
-
-                foreach (IGameWorld world in session.ScanWorlds())
-                {
-                    world.Update();
-                }
-
-                session.Update();
             }
         }
 

@@ -14,12 +14,16 @@ namespace MelloMario.Containers
         private ISet<ICharacter> characterSet;
         private GameWorld world;
 
-        void UpdateCharacterCollision(ICharacter character)
+        private void UpdateCharacterCollision(ICharacter character)
         {
-            var mario = character.GetType().IsAssignableFrom(typeof(PlayerMario)) ? character as PlayerMario : null;
-            if (mario == null) return;;
-            var nearByObjects = world.ScanNearby(mario.Viewport);
-            foreach (var nearByObj in nearByObjects)
+            PlayerMario mario = character.GetType().IsAssignableFrom(typeof(PlayerMario)) ? character as PlayerMario : null;
+            if (mario == null)
+            {
+                return;
+            }
+            ;
+            IEnumerable<IGameObject> nearByObjects = world.ScanNearby(mario.Viewport);
+            foreach (IGameObject nearByObj in nearByObjects)
             {
                 if (nearByObj.Boundary.Intersects(mario.Boundary))
                 {
@@ -28,17 +32,17 @@ namespace MelloMario.Containers
             }
         }
 
-        void UpdateEnemyCollision()
+        private void UpdateEnemyCollision()
         {
             
         }
 
-        void UpdateBlockCollision()
+        private void UpdateBlockCollision()
         {
             
         }
 
-        void UpdateItemCollision()
+        private void UpdateItemCollision()
         {
             
         }

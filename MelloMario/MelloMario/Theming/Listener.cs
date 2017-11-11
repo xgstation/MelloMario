@@ -1,9 +1,5 @@
 ﻿using MelloMario.ItemObjects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MelloMario.Theming
 {
@@ -20,6 +16,7 @@ namespace MelloMario.Theming
         {
             m.Handler += new Coin.CoinHandler(OnCollect);
         }
+
         private void OnCollect(Coin m, EventArgs e)
         {
             model.Coins += 1;

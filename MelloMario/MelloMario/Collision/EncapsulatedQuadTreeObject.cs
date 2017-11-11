@@ -13,7 +13,7 @@ namespace MelloMario.Collision
         private QuadTreeNode<T> owner;
         public EncapsulatedQuadTreeObject(T obj)
         {
-            this.realObject = obj;
+            realObject = obj;
         }
         public Rectangle Boundary { get { return realObject.Boundary; } }
         public QuadTreeNode<T> Owner { get { return owner; } set { owner = value; }}

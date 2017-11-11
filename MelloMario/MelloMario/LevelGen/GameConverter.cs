@@ -1,12 +1,12 @@
 ﻿using MelloMario.Containers;
 using MelloMario.MarioObjects;
+using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.LevelGen
@@ -27,9 +27,9 @@ namespace MelloMario.LevelGen
 
         private IGameWorld world;
         private IPlayer character;
-        private Theming.Listener listener;
+        private Listener listener;
 
-        public GameConverter(GameModel model, IGameSession session, GraphicsDevice graphicsDevice, Theming.Listener listener, string index = "Main")
+        public GameConverter(GameModel model, IGameSession session, GraphicsDevice graphicsDevice, Listener listener, string index = "Main")
         {
             this.model = model;
             this.session = session;

@@ -67,7 +67,7 @@ namespace MelloMario.Collision
         {
             if (!dictTtoEncapsulated.ContainsKey(item))
             {
-                var encapsulated = new EncapsulatedQuadTreeObject<T>(item);
+                EncapsulatedQuadTreeObject<T> encapsulated = new EncapsulatedQuadTreeObject<T>(item);
                 dictTtoEncapsulated.Add(item, encapsulated);
                 root.Insert(encapsulated);
             }

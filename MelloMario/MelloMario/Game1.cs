@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Controllers;
 using MelloMario.Factories;
-using MelloMario.LevelGen;
+using MelloMario.Theming;
 using MelloMario.Sounds;
 
 namespace MelloMario
@@ -17,7 +17,7 @@ namespace MelloMario
         private SoundController soundControl;
         private GameModel model;
         private SpriteBatch spriteBatch;
-  
+
 
 
         public Game1()
