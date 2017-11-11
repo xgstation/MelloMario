@@ -17,8 +17,6 @@ namespace MelloMario
         private SoundController soundControl;
         private GameModel model;
         private SpriteBatch spriteBatch;
-       
-        private float timer = 400;
   
 
 
@@ -83,8 +81,6 @@ namespace MelloMario
         protected override void Update(GameTime time)
         {
             base.Update(time);
-            timer -= (float) time.ElapsedGameTime.TotalSeconds;
-
             model.Update(time.ElapsedGameTime.Milliseconds);
         }
 

@@ -8,20 +8,27 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming
 {
-    class GameTimer
+    class GameHUD
     {
-        private ISprite timeSprite;
+        private GameModel model;
+
+        private ISprite textSprite;
         private int timeRemain; //in mileSeconds
         private int elapsed;
-        public GameTimer(int startTime)
+
+        private string firstLine;
+        public GameHUD(GameModel model, int startTime)
         {
+            this.model = model;
+            firstLine = "MARIO           WORLD    TIME";
             timeRemain = startTime * 1000;
             UpdateSprite();
         }
         public int GetTimeRemain { get { return timeRemain / 1000; } }
         private void UpdateSprite()
         {
-            timeSprite = Factories.SpriteFactory.Instance.CreateTextSprite((timeRemain / 1000).ToString());
+            string combined = model.Score.ToString().PadLeft(6, '0') + "    *" + model.Coins.ToString().PadLeft(2, '0') + "    " + model.WorldIndex + "      " + timeRemain / 1000;
+            textSprite = Factories.SpriteFactory.Instance.CreateTextSprite(firstLine + "\n" + combined);
         }
         public void Update(int time)
         {
@@ -36,7 +43,7 @@ namespace MelloMario.Theming
 
         public void Draw(int time)
         {
-            timeSprite.Draw(time, new Rectangle(650, 0, 350, 350), ZIndex.hud);
+            textSprite.Draw(time, new Rectangle(42, 42, 800, 200), ZIndex.hud);
         }
     }
 }

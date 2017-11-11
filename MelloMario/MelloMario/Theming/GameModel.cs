@@ -18,10 +18,11 @@ namespace MelloMario
         private bool isPaused;
         private Listener listener;
 
-        private GameTimer timer;
+        private GameHUD timer;
         //TODO: temporary public until the can move hud out of game1
         public int Coins;
         public int Score;
+        public string WorldIndex;
 
         // for singleplayer game
         private IPlayer GetActivePlayer()
@@ -37,9 +38,10 @@ namespace MelloMario
 
         public GameModel(Game1 game)
         {
-            timer = new GameTimer(400);
+            timer = new GameHUD(this,400);
             Score = 0;
             Coins = 0;
+            WorldIndex = "1-1";
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
