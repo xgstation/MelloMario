@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Linq;
 using MelloMario.BlockObjects;
-using MelloMario.MarioObjects;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming
@@ -31,7 +30,7 @@ namespace MelloMario.Theming
                     Debug.WriteLine("If you insist having negative lifes.");
                 }
                 --CharacterLifes[character];
-                
+
             }
         }
         public static void SetCharacterLifes(ICharacter character, int lifes)

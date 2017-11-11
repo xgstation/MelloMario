@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MelloMario.BlockObjects;
 using MelloMario.Factories;
+using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json.Linq;
 
@@ -60,14 +59,14 @@ namespace MelloMario.LevelGen
                     {
                         if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                         {
-                            foreach (IGameObject obj in (IEnumerable<IGameObject>)func(createLocation))
+                            foreach (IGameObject obj in (IEnumerable<IGameObject>) func(createLocation))
                             {
                                 stack.Push(obj);
                             }
                         }
                         else
                         {
-                            stack.Push((IGameObject)func(createLocation));
+                            stack.Push((IGameObject) func(createLocation));
                         }
                     }
                 }
@@ -89,7 +88,7 @@ namespace MelloMario.LevelGen
                 case "HL":
                     in1 = new Pipeline(world, pipelineLoc, "TopLeftIn");
                     in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), "BottomLeftIn");
-                    pipelineLoc = new Point(pipelineLoc.X + 32, pipelineLoc.Y);
+                    pipelineLoc = new Point(pipelineLoc.X + GameConst.GRID, pipelineLoc.Y);
                     goto case "NH";
                 case "HR":
                     in1 = new Pipeline(world, pipelineLoc, "TopRightIn");
@@ -123,7 +122,7 @@ namespace MelloMario.LevelGen
             listOfPipelineComponents.Insert(1, in2);
             return listOfPipelineComponents;
         }
-        public static IList<IGameObject> CreateItemList(IGameWorld world, Point point, Theming.Listener listener, params string[] s)
+        public static IList<IGameObject> CreateItemList(IGameWorld world, Point point, Listener listener, params string[] s)
         {
             return s?.Select(t => GameObjectFactory.Instance.CreateGameObject(t, world, point, listener)).ToList();
         }

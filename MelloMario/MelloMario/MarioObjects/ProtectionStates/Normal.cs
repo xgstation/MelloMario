@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario.MarioObjects.ProtectionStates
+﻿namespace MelloMario.MarioObjects.ProtectionStates
 {
     class Normal : BaseState<Mario>, IMarioProtectionState
     {

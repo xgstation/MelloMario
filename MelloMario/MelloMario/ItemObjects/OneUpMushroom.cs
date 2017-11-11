@@ -109,13 +109,14 @@ namespace MelloMario.ItemObjects
             if (isUnveil)
             {
                 state = new Unveil(this);
+                UpdateSprite();
                 RemoveSelf();
             }
             else
             {
                 state = new Normal(this);
+                UpdateSprite();
             }
-            UpdateSprite();
         }
 
         public OneUpMushroom(IGameWorld world, Point location) : this(world, location, GameDatabase.GetCharacterLocation(), false) { }

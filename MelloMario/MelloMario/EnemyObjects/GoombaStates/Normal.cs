@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario.EnemyObjects.GoombaStates
+﻿namespace MelloMario.EnemyObjects.GoombaStates
 {
     class Normal : BaseState<Goomba>, IGoombaState
     {

@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario.MarioObjects.PowerUpStates
+﻿namespace MelloMario.MarioObjects.PowerUpStates
 {
     class Fire : BaseState<Mario>, IMarioPowerUpState
     {

@@ -2,6 +2,7 @@
 using MelloMario.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using MelloMario.Theming;
 using MelloMario.Sprites.BlockSprites;
 using Microsoft.Xna.Framework;
 
@@ -49,9 +50,9 @@ namespace MelloMario.Factories
             spriteBatch = newSpriteBatch;
         }
 
-        public ISprite CreateTextSprite(string text, ZIndex zIndex = ZIndex.hud)
+        public ISprite CreateTextSprite(string text)
         {
-            return new TextSprite(spriteBatch, text, content.Load<SpriteFont>("Font\\text"), new Point(), zIndex);
+            return new TextSprite(spriteBatch, text, content.Load<SpriteFont>("Font\\text"), new Point(), ZIndex.hud);
         }
 
         public ISprite CreateMarioSprite(string status, string protectionStatus, bool isStatic)
@@ -59,12 +60,12 @@ namespace MelloMario.Factories
             switch (protectionStatus)
             {
                 case "Protected":
-                    return new FlashingAnimatedSprite(spriteBatch, GetTexture(status), isStatic ? 1 : 3, 1, ZIndex.item, 250);
+                    return new FlashingAnimatedSprite(spriteBatch, GetTexture(status), GameConst.ANIMATION_INTERVAL, isStatic ? 1 : 3, 1, ZIndex.item);
                 case "Starred":
-                    return new FlickingAnimatedSprite(spriteBatch, GetTexture(status), isStatic ? 1 : 3, 1, ZIndex.item, 250);
+                    return new FlickingAnimatedSprite(spriteBatch, GetTexture(status), GameConst.ANIMATION_INTERVAL, isStatic ? 1 : 3, 1, ZIndex.item);
                 case "Normal":
                 case "Dead":
-                    return new AnimatedSprite(spriteBatch, GetTexture(status), isStatic ? 1 : 3, 1, ZIndex.item, 250);
+                    return new AnimatedSprite(spriteBatch, GetTexture(status), GameConst.ANIMATION_INTERVAL, isStatic ? 1 : 3, 1, ZIndex.item);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -79,7 +80,7 @@ namespace MelloMario.Factories
                 case "Defeated":
                     return new StaticSprite(spriteBatch, GetTexture("GoombaDead"));
                 case "Normal":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Goomba"), 2, 1);
+                    return new AnimatedSprite(spriteBatch, GetTexture("Goomba"), GameConst.ANIMATION_INTERVAL, 2, 1);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -100,9 +101,9 @@ namespace MelloMario.Factories
                 case "ShellRight":
                     return new StaticSprite(spriteBatch, GetTexture("GreenKoopaStepped"));
                 case "NormalLeft":
-                    return new AnimatedSprite(spriteBatch, GetTexture("GreenKoopaLeft"), 2, 1);
+                    return new AnimatedSprite(spriteBatch, GetTexture("GreenKoopaLeft"), GameConst.ANIMATION_INTERVAL, 2, 1);
                 case "NormalRight":
-                    return new AnimatedSprite(spriteBatch, GetTexture("GreenKoopaRight"), 2, 1);
+                    return new AnimatedSprite(spriteBatch, GetTexture("GreenKoopaRight"), GameConst.ANIMATION_INTERVAL, 2, 1);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -123,9 +124,9 @@ namespace MelloMario.Factories
                 case "ShellRight":
                     return new StaticSprite(spriteBatch, GetTexture("RedKoopaStepped"));
                 case "NormalLeft":
-                    return new AnimatedSprite(spriteBatch, GetTexture("RedKoopaLeft"), 2, 1);
+                    return new AnimatedSprite(spriteBatch, GetTexture("RedKoopaLeft"), GameConst.ANIMATION_INTERVAL, 2, 1);
                 case "NormalRight":
-                    return new AnimatedSprite(spriteBatch, GetTexture("RedKoopaRight"), 2, 1);
+                    return new AnimatedSprite(spriteBatch, GetTexture("RedKoopaRight"), GameConst.ANIMATION_INTERVAL, 2, 1);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -135,12 +136,12 @@ namespace MelloMario.Factories
 
         public ISprite CreateStarSprite()
         {
-            return new AnimatedSprite(spriteBatch, GetTexture("Star"), 4, 1);
+            return new AnimatedSprite(spriteBatch, GetTexture("Star"), GameConst.ANIMATION_INTERVAL, 4, 1);
         }
 
         public ISprite CreateCoinSprite()
         {
-            return new AnimatedSprite(spriteBatch, GetTexture("Coin"), 4, 1);
+            return new AnimatedSprite(spriteBatch, GetTexture("Coin"), GameConst.ANIMATION_INTERVAL, 4, 1);
         }
 
         public ISprite CreateSuperMushroomSprite()
@@ -150,7 +151,7 @@ namespace MelloMario.Factories
 
         public ISprite CreateFireFlowerSprite()
         {
-            return new AnimatedSprite(spriteBatch, GetTexture("FireFlower"), 8, 1);
+            return new AnimatedSprite(spriteBatch, GetTexture("FireFlower"), GameConst.ANIMATION_INTERVAL, 8, 1);
         }
 
         public ISprite CreateOneUpMushroomSprite()
@@ -163,9 +164,9 @@ namespace MelloMario.Factories
             switch (status)
             {
                 case "Bumped":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Question"), 3, 1, ZIndex.level);
+                    return new AnimatedSprite(spriteBatch, GetTexture("Question"), GameConst.ANIMATION_INTERVAL, 3, 1, ZIndex.level);
                 case "Normal":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Question"), 3, 1, ZIndex.level);
+                    return new AnimatedSprite(spriteBatch, GetTexture("Question"), GameConst.ANIMATION_INTERVAL, 3, 1, ZIndex.level);
                 case "Used":
                     return new SlicedSprite(spriteBatch, GetTexture("BlockSheet"), 33, 28, 27, 0, 1, 1, ZIndex.level);
                 default:
@@ -177,7 +178,7 @@ namespace MelloMario.Factories
 
         public ISprite CreateFlagSprite(bool status)
         {
-            if(status)
+            if (status)
             {
                 return new SlicedSprite(spriteBatch, GetTexture("BlockSheet"), 33, 28, 16, 8, 1, 1, ZIndex.level);
             }

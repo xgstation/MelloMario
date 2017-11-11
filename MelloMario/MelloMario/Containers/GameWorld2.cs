@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MelloMario.Collision;
+using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.Containers
 {
     class GameWorld2 : IGameWorld
     {
-        private readonly int scanRange;
-        private readonly int grid;
         private readonly Point maxSize;
         private readonly QuadTree<IGameObject> objContainer;
         private readonly Stack<IGameObject> toAdd;
@@ -23,28 +18,28 @@ namespace MelloMario.Containers
         private Point initialPoint;
         private ISet<Point> respawnPoints;
 
-
-
-        public GameWorld2(string id, Point worldSize, Point initialPoint, IEnumerable<Point> respawnPoints, int grid = 32,
-            int scanRange = 24)
+        public GameWorld2(string id, Point worldSize, Point initialPoint, IEnumerable<Point> respawnPoints)
         {
             this.id = id;
             this.worldSize = worldSize;
-            this.initialPoint = new Point(initialPoint.X * grid, initialPoint.Y * grid);
+            this.initialPoint = new Point(initialPoint.X * GameConst.GRID, initialPoint.Y * GameConst.GRID);
             respawnPoints = new List<Point>();
-            foreach (var respawnPoint in respawnPoints)
+
+            foreach (Point respawnPoint in respawnPoints)
             {
                 this.respawnPoints.Add(respawnPoint);
             }
-            objContainer = new QuadTree<IGameObject>(new Rectangle(0, 0, worldSize.X * grid, worldSize.Y * grid));
 
             toAdd = new Stack<IGameObject>();
             toMove = new Stack<IGameObject>();
             toRemove = new Stack<IGameObject>();
 
+            objContainer = new QuadTree<IGameObject>(new Rectangle(0, 0, worldSize.X * GameConst.GRID, worldSize.Y * GameConst.GRID));
         }
+
         public string Id { get { return id; } }
         public Rectangle Boundary { get { return new Rectangle(new Point(), worldSize); } }
+
         public void Add(IGameObject obj)
         {
             toAdd.Push(obj);
@@ -60,7 +55,7 @@ namespace MelloMario.Containers
         public void Remove(IGameObject obj)
         {
             toRemove.Push(obj);
-            //objContainer.Remove(obj);
+            // objContainer.Remove(obj);
         }
 
         public IEnumerable<IGameObject> GetRanged(Rectangle range)

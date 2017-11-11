@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.MarioObjects.MovementStates;

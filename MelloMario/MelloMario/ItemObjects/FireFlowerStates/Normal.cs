@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario.ItemObjects.FireFlowerStates
+﻿namespace MelloMario.ItemObjects.FireFlowerStates
 {
     class Normal : BaseState<FireFlower>, IItemState
     {

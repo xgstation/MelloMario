@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
 
@@ -67,7 +62,7 @@ namespace MelloMario.Collision
         {
             if (!dictTtoEncapsulated.ContainsKey(item))
             {
-                var encapsulated = new EncapsulatedQuadTreeObject<T>(item);
+                EncapsulatedQuadTreeObject<T> encapsulated = new EncapsulatedQuadTreeObject<T>(item);
                 dictTtoEncapsulated.Add(item, encapsulated);
                 root.Insert(encapsulated);
             }
@@ -97,6 +92,6 @@ namespace MelloMario.Collision
             }
             return false;
         }
-        
+
     }
 }
