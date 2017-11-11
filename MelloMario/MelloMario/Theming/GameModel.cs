@@ -11,7 +11,7 @@ namespace MelloMario
 {
     class GameModel : IGameModel
     {
-         
+
         private Game1 game;
         private GameSession session;
         private IEnumerable<IController> controllers;
@@ -136,7 +136,7 @@ namespace MelloMario
         {
             HUD.Update(time);
             timeRemain -= time;
-            
+
             foreach (IController controller in controllers)
             {
                 controller.Update();
@@ -167,27 +167,22 @@ namespace MelloMario
 
                 session.Update();
             }
-            
+
         }
 
         public void Draw(int time)
         {
             HUD.Draw(time);
             IPlayer player = GetActivePlayer();
-       
-
-            foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
+            foreach (IGameObject obj in player.World.ScanNearby(player.Viewport))
             {
-                foreach (IGameObject obj in player.World.ScanNearby(player.Viewport))
+                if (isPaused)
                 {
-                    if (isPaused)
-                    {
-                        obj.Draw(0, player.Viewport, zIndex);
-                    }
-                    else
-                    {
-                        obj.Draw(time, player.Viewport, zIndex);
-                    }
+                    obj.Draw(0, player.Viewport);
+                }
+                else
+                {
+                    obj.Draw(time, player.Viewport);
                 }
             }
         }
