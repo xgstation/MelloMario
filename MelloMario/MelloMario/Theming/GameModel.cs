@@ -6,23 +6,21 @@ using MelloMario.Containers;
 using MelloMario.Scripts;
 using MelloMario.Factories;
 using MelloMario.Theming;
+using MelloMario.MiscObjects;
 
 namespace MelloMario
 {
     class GameModel : IGameModel
     {
-         
         private Game1 game;
         private GameSession session;
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private Listener listener;
-
-        private GameHUD timer;
         //TODO: temporary public until the can move hud out of game1
         public int Coins;
         public int Score;
-        public string WorldIndex;
+        public IGameObject hud;
 
         // for singleplayer game
         private IPlayer GetActivePlayer()
@@ -38,13 +36,13 @@ namespace MelloMario
 
         public GameModel(Game1 game)
         {
-            timer = new GameHUD(this,400);
-            Score = 0;
-            Coins = 0;
-            WorldIndex = "1-1";
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
+
+            Score = 0;
+            Coins = 0;
+            hud = new HUD(this, 400);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -122,7 +120,7 @@ namespace MelloMario
                 controller.Update();
             }
 
-            timer.Update(time);
+
             if (!isPaused)
             {
                 // reserved for multiplayer
@@ -136,6 +134,8 @@ namespace MelloMario
                     }
                 }
 
+                updating.Add(hud);
+
                 foreach (IGameObject obj in updating)
                 {
                     obj.Update(time);
@@ -148,14 +148,11 @@ namespace MelloMario
 
                 session.Update();
             }
-            
         }
 
         public void Draw(int time)
         {
-            timer.Draw(time);
             IPlayer player = GetActivePlayer();
-       
 
             foreach (ZIndex zIndex in Enum.GetValues(typeof(ZIndex)))
             {
@@ -170,6 +167,8 @@ namespace MelloMario
                         obj.Draw(time, player.Viewport, zIndex);
                     }
                 }
+
+                hud.Draw(time, player.Viewport, zIndex);
             }
         }
     }
