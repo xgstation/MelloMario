@@ -95,7 +95,7 @@ namespace MelloMario
             base.Draw(time);
 
             spriteBatch.GraphicsDevice.Viewport = new Viewport(0, 0, 800, 600);
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront);
             //Debug Code
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
             //RasterizerState state = new RasterizerState();
