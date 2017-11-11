@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics.PackedVector;
 
 namespace MelloMario.Sprites.BlockSprites
 {
@@ -22,7 +23,7 @@ namespace MelloMario.Sprites.BlockSprites
         {
             get
             {
-                return ZIndex.level;
+                return ZIndex.foreground;
             }
         }
         protected float LayerDepth
@@ -64,35 +65,43 @@ namespace MelloMario.Sprites.BlockSprites
         {
             elapsed += time;
 
-            int offsetX;
-            int offsetY;
-            Rectangle newDestination;
-            Rectangle source;
+            Vector2 origin = destination.Location.ToVector2();
+            Vector2[] destinations = new Vector2[4];
+            float[] offsetX = new float[4];
+            float[] offsetY = new float[4];
+            Rectangle[] source = new Rectangle[4];
+            
+            //LB
+            offsetX[0] = -elapsed / 5f + 4f;
+            offsetY[0] = elapsed * elapsed / 400f - elapsed + 16f;
+            destinations[0] = new Vector2(offsetX[0], offsetY[0]) + origin;
+            source[0] = new Rectangle(0, 0, texture.Width / 2, texture.Height / 2);
 
-            offsetX = -elapsed / 5 + 4;
-            offsetY = elapsed * elapsed / 400 - elapsed + 16;
-            newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
-            source = new Rectangle(0, 0, texture.Width / 2, texture.Height / 2);
-            spriteBatch.Draw(texture, newDestination, source, Color.White);
+            //LT
+            offsetX[1] = -elapsed / 5f + 4f;
+            offsetY[1] = elapsed * elapsed / 360f - elapsed + 32f;
+            destinations[1] = new Vector2(offsetX[1], offsetY[1]) + origin;
+            source[1] = new Rectangle(0, texture.Height / 2, texture.Width / 2, texture.Height / 2);
 
-            offsetX = -elapsed / 5 + 4;
-            offsetY = elapsed * elapsed / 360 - elapsed + 32;
-            newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
-            source = new Rectangle(0, texture.Height / 2, texture.Width / 2, texture.Height / 2);
-            spriteBatch.Draw(texture, newDestination, source, Color.White);
+            //RB
+            offsetX[2] = elapsed / 5f + 12f;
+            offsetY[2] = elapsed * elapsed / 400f - elapsed + 16f;
+            destinations[2] = new Vector2(offsetX[2], offsetY[2]) + origin;
+            source[2] = new Rectangle(texture.Width / 2, 0, texture.Width / 2, texture.Height / 2);
 
-            offsetX = elapsed / 5 + 12;
-            offsetY = elapsed * elapsed / 400 - elapsed + 16;
-            newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
-            source = new Rectangle(texture.Width / 2, 0, texture.Width / 2, texture.Height / 2);
-            spriteBatch.Draw(texture, newDestination, source, Color.White);
+            //RT
+            offsetX[3] = elapsed / 5f + 12f;
+            offsetY[3] = elapsed * elapsed / 360f - elapsed + 32f;
+            destinations[3] = new Vector2(offsetX[3], offsetY[3]) + origin;
+            source[3] = new Rectangle(texture.Width / 2, texture.Height / 2, texture.Width / 2, texture.Height / 2);
 
-            offsetX = elapsed / 5 + 12;
-            offsetY = elapsed * elapsed / 360 - elapsed + 32;
-            newDestination = new Rectangle(destination.Left + offsetX, destination.Top + offsetY, destination.Width, destination.Height);
-            source = new Rectangle(texture.Width / 2, texture.Height / 2, texture.Width / 2, texture.Height / 2);
-
-            spriteBatch.Draw(texture, newDestination, source, Color.White,0,new Vector2(),SpriteEffects.None, LayerDepth );
+            var spriteOrigin = new Vector2(8f, 8f);
+            var scale = new Vector2(1.25f, 1.25f);
+            var rotation = elapsed * 1.5f;
+            spriteBatch.Draw(texture, destinations[0], source[0], Color.White, rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
+            spriteBatch.Draw(texture, destinations[1], source[1], Color.White, rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
+            spriteBatch.Draw(texture, destinations[2], source[2], Color.White, -rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
+            spriteBatch.Draw(texture, destinations[3], source[3], Color.White, -rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
         }
     }
 }
