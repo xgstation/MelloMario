@@ -45,10 +45,10 @@ namespace MelloMario.MiscObjects
             }
         }
 
-        public void Draw(int time, Rectangle viewport, ZIndex zIndex)
+        public void Draw(int time, Rectangle viewport)
         {
-            textSprite.Draw(time, new Rectangle(42, 42, 800, 200), ZIndex.hud);
-            coinSprite.Draw(time, new Rectangle(255, 74, 26, 30), ZIndex.hud);
+            textSprite.Draw(time, new Rectangle(42, 42, 800, 200));
+            coinSprite.Draw(time, new Rectangle(255, 74, 26, 30));
         }
     }
 }

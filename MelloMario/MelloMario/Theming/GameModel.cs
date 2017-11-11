@@ -5,6 +5,7 @@ using System;
 using MelloMario.Containers;
 using MelloMario.Scripts;
 using MelloMario.Factories;
+using MelloMario.MiscObjects;
 using MelloMario.Theming;
 
 namespace MelloMario
@@ -18,7 +19,7 @@ namespace MelloMario
         private bool isPaused;
         private Listener listener;
 
-        private GameHUD HUD;
+        private HUD HUD;
         private int coins;
         private int score;
         private int timeRemain;
@@ -61,7 +62,7 @@ namespace MelloMario
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
-            HUD = new GameHUD(this);
+            HUD = new HUD(this);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -172,7 +173,6 @@ namespace MelloMario
 
         public void Draw(int time)
         {
-            HUD.Draw(time);
             IPlayer player = GetActivePlayer();
             foreach (IGameObject obj in player.World.ScanNearby(player.Viewport))
             {
@@ -185,6 +185,7 @@ namespace MelloMario
                     obj.Draw(time, player.Viewport);
                 }
             }
+            HUD.Draw(time, player.Viewport);
         }
     }
 }
