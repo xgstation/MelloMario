@@ -42,7 +42,7 @@ namespace MelloMario.Factories
         {
             if (!songs.ContainsKey(name))
             {
-                songs.Add(name, content.Load<Song>(name));
+                songs.Add(name, content.Load<Song>("Music/" + name));
             }
 
             return songs[name];
@@ -52,7 +52,7 @@ namespace MelloMario.Factories
         {
             if (!soundEffects.ContainsKey(name))
             {
-                soundEffects.Add(name, content.Load<SoundEffect>(name));
+                soundEffects.Add(name, content.Load<SoundEffect>("SFX/" + name));
             }
 
             return soundEffects[name];

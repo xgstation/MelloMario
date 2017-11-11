@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
+using MelloMario.Factories;
 
 namespace MelloMario.Sounds
 {
@@ -14,8 +15,8 @@ namespace MelloMario.Sounds
 
         public SoundController(Game1 game)
         {
-            bounce = game.Content.Load<SoundEffect>("SFX/smb_jumpsmall");
-            Normal = game.Content.Load<Song>("Music/01-main-theme-overworld");
+            bounce = SoundFactory.Instance.CreateSoundEffect("smb_jumpsmall");
+            Normal = SoundFactory.Instance.CreateSong("01-main-theme-overworld");
             currentSong = Songs.normal;
         }
 
