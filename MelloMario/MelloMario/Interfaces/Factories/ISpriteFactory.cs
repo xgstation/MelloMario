@@ -24,7 +24,6 @@ namespace MelloMario
         ISprite CreateTextSprite(string text);
         ISprite CreateQuestionSprite(string status);
         ISprite CreateBrickSprite(string status);
-        ISprite CreateCompressedSprite(Point fullSize, string type);
         ISprite CreateFloorSprite();
         ISprite CreateStairSprite();
         ISprite CreatePipelineSprite(string type);

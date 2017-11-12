@@ -201,7 +201,6 @@
     <Compile Include="MarioObjects\MovementStates\Walking.cs" />
     <Compile Include="MarioObjects\PowerUpStates\Super.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
-    <Compile Include="Sprites\SlicedSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
     <Compile Include="Theming\GameConst.cs" />
     <Compile Include="Theming\GameDatabase.cs" />
