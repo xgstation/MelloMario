@@ -7,15 +7,29 @@ namespace MelloMario.Collision
 {
     class QuadTree<T> : ICollection<T> where T : IGameObject
     {
-        internal static readonly int MaxObjects = 5;
+        internal static readonly int MaxObjects = 10;
         //private static readonly Point MaxSize = new Point(1600, 800);
         private IDictionary<T, EncapsulatedQuadTreeObject<T>> dictTtoEncapsulated;
         //private List<QuadTreeNode<T>> roots;
         private QuadTreeNode<T> root;
 
+        private int width;
+        private int height;
+
         public QuadTree(Rectangle fullCoveredArea)
         {
-            root = new QuadTreeNode<T>(fullCoveredArea);
+            width = fullCoveredArea.Width;
+            height = fullCoveredArea.Height;
+            float ratio = height / (float)width;
+            if (ratio < 0.8)
+            {
+                height = width;
+            }
+            else if (ratio > 1.2)
+            {
+                width = height;
+            }
+            root = new QuadTreeNode<T>(new Rectangle(0, 0, width, height));
             dictTtoEncapsulated = new Dictionary<T, EncapsulatedQuadTreeObject<T>>();
         }
 

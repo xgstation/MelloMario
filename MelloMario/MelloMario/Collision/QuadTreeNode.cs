@@ -8,7 +8,7 @@ namespace MelloMario.Collision
     {
         #region Private Members
 
-        private const int MAXOBJECTS = 5;
+        private const int MAXOBJECTS = 10;
         private Rectangle areaCovered;
         private IList<EncapsulatedQuadTreeObject<T>> objects;
 
@@ -25,7 +25,7 @@ namespace MelloMario.Collision
         {
         }
 
-        internal QuadTreeNode(QuadTreeNode<T> parent, Rectangle areaCovered)
+        private QuadTreeNode(QuadTreeNode<T> parent, Rectangle areaCovered)
         {
             this.parent = parent;
             this.areaCovered = areaCovered;
@@ -282,7 +282,7 @@ namespace MelloMario.Collision
                     QuadTreeNode<T> oldOwner = item.Owner;
                     Delete(item);
                     destNode.Insert(item);
-                    oldOwner.Clean();
+                    oldOwner?.Clean();
                 }
             }
         }
