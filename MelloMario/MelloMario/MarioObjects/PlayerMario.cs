@@ -188,6 +188,10 @@ namespace MelloMario.MarioObjects
 
         public void Action()
         {
+            if (PowerUpState is PowerUpStates.Fire)
+            {
+                new Fire(World, Boundary.Location, Facing == FacingMode.right);
+            }
         }
 
         public void Spawn(IGameWorld world)

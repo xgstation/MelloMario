@@ -18,7 +18,7 @@ namespace MelloMario.Scripts
             {
                 controller.Reset();
 
-                controller.AddCommand(Keys.Space, factory.CreateCharacterCommand("Action", character)); // Needs to be implemented
+                controller.AddCommand(Keys.Space, factory.CreateCharacterCommand("Action", character));
                 controller.AddCommand(Keys.Down, factory.CreateCharacterCommand("Crouch", character), KeyBehavior.hold);
                 controller.AddCommand(Keys.Down, factory.CreateCharacterCommand("CrouchPress", character), KeyBehavior.press);
                 controller.AddCommand(Keys.Down, factory.CreateCharacterCommand("CrouchRelease", character), KeyBehavior.release);

@@ -152,6 +152,10 @@ namespace MelloMario.Factories
             }
         }
 
+        public ISprite CreateFireSprite()
+        {
+            return new AnimatedSprite(spriteBatch,GetTexture("Fire"), GameConst.ANIMATION_INTERVAL, 2, 2);
+        }
         public ISprite CreateStarSprite()
         {
             return new AnimatedSprite(spriteBatch, GetTexture("Star"), 4, 1);
