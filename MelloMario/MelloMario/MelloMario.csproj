@@ -164,6 +164,7 @@
     <Compile Include="EnemyObjects\KoopaStates\Normal.cs" />
     <Compile Include="ItemObjects\SuperMushroomStates\Unveil.cs" />
     <Compile Include="LevelGen\Util.cs" />
+    <Compile Include="MarioObjects\Fire.cs" />
     <Compile Include="MiscObjects\Background.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -232,6 +233,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BrickPieces.png" />
+    <Content Include="Content\Fire.png" />
     <Content Include="Content\FireStandingLeft.png" />
     <Content Include="Content\FireStandingRight.png" />
     <Content Include="Content\GoombaDead.png" />
