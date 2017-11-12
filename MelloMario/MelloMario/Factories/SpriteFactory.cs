@@ -32,6 +32,20 @@ namespace MelloMario.Factories
             return textures[name];
         }
 
+        
+        private Texture2D GetTexture(string spriteSheetName, string color, Rectangle range)
+        {
+            if (!textures.ContainsKey(spriteSheetName + color))
+            {
+                var fullSheet = content.Load<Texture2D>(spriteSheetName);
+                var subTexture = new Texture2D(fullSheet.GraphicsDevice, range.Width, range.Height);
+                var colors = new Color[range.Width * range.Height];
+                fullSheet.GetData(0, range, colors, 0, colors.Length);
+                subTexture.SetData(colors);
+                textures.Add(spriteSheetName + color, subTexture);
+            }
+            return textures[spriteSheetName + color];
+        }
         public static ISpriteFactory Instance
         {
             get
@@ -130,6 +144,23 @@ namespace MelloMario.Factories
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
+                    return null;
+            }
+        }
+
+        public ISprite CreatePiranhaSprite(string color)
+        {
+            switch (color)
+            {
+                case "Green":
+                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Green", new Rectangle(0, 0, 32, 24)), GameConst.ANIMATION_INTERVAL, 2, 1);
+                case "Cyan":
+                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Cyan", new Rectangle(0, 24, 32, 24)), GameConst.ANIMATION_INTERVAL, 2, 1);
+                case "Red":
+                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Red", new Rectangle(0, 48, 32, 24)), GameConst.ANIMATION_INTERVAL, 2, 1);
+                case "Gray":
+                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Gray", new Rectangle(0, 72, 32, 24)), GameConst.ANIMATION_INTERVAL, 2, 1);
+                default:
                     return null;
             }
         }
