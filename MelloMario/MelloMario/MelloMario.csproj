@@ -36,7 +36,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;WINDOWS;CONTRACTS_FULL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
@@ -114,6 +114,11 @@
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="EnemyObjects\KoopaStates\MovingShell.cs" />
     <Compile Include="EnemyObjects\Piranha.cs" />
+    <Compile Include="EnemyObjects\PiranhaStates\Defeated.cs" />
+    <Compile Include="EnemyObjects\PiranhaStates\Hidden.cs" />
+    <Compile Include="EnemyObjects\PiranhaStates\MovingDown.cs" />
+    <Compile Include="EnemyObjects\PiranhaStates\MovingUp.cs" />
+    <Compile Include="EnemyObjects\PiranhaStates\Show.cs" />
     <Compile Include="Factories\GameObjectFactory.cs" />
     <Compile Include="Factories\CommandFactory.cs" />
     <Compile Include="Factories\SoundFactory.cs" />
@@ -131,6 +136,7 @@
     <Compile Include="Interfaces\IGameModel.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Interfaces\Containers\IGameWorld.cs" />
+    <Compile Include="Interfaces\Objects\States\IPiranhaState.cs" />
     <Compile Include="Interfaces\Objects\States\IState.cs" />
     <Compile Include="Interfaces\Objects\States\IGoombaState.cs" />
     <Compile Include="Interfaces\Objects\IGameObject.cs" />
@@ -246,6 +252,7 @@
     <Content Include="Content\FireWalkingRight.png" />
     <Content Include="Content\Goomba.png" />
     <Content Include="Content\GreenKoopa.png" />
+    <Content Include="Content\Piranha.png" />
     <Content Include="Content\Question.png" />
     <Content Include="Content\RedKoopa.png" />
     <Content Include="Content\RedKoopaDead.png" />
@@ -296,6 +303,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
