@@ -1,9 +1,13 @@
-﻿namespace MelloMario.ItemObjects.FireFlowerStates
+﻿using Microsoft.Xna.Framework.Audio;
+using MelloMario.Sounds;
+
+namespace MelloMario.ItemObjects.FireFlowerStates
 {
     class Unveil : BaseTimedState<FireFlower>, IItemState
     {
         private float elapsed;
         private float realOffset;
+        private SoundEffectInstance fireFlowerUnveilSound;
 
         protected override void OnTimer(int time)
         {
@@ -13,6 +17,7 @@
         public Unveil(FireFlower owner) : base(owner, 1000)
         {
             elapsed = 0f;
+            fireFlowerUnveilSound = SoundController.sizeUpAppear.CreateInstance();
         }
 
         public void Show()
@@ -26,6 +31,7 @@
 
         public override void Update(int time)
         {
+            fireFlowerUnveilSound.Play();
             base.Update(time);
 
             elapsed += time;

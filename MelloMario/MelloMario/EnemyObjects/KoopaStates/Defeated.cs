@@ -1,9 +1,17 @@
-﻿namespace MelloMario.EnemyObjects.KoopaStates
+﻿using Microsoft.Xna.Framework.Audio;
+using MelloMario.Sounds;
+
+namespace MelloMario.EnemyObjects.KoopaStates
 {
     class Defeated : BaseState<Koopa>, IKoopaState
     {
+        private SoundEffectInstance stompSound;
+        private int played;
+
         public Defeated(Koopa owner) : base(owner)
         {
+            stompSound = SoundController.enemyKill.CreateInstance();
+            played = 0;
         }
 
         public void Show()
@@ -22,6 +30,11 @@
 
         public override void Update(int time)
         {
+            if (played <= 2)
+            {
+                stompSound.Play();
+                played += 1;
+            }
         }
 
         public void Pushed()

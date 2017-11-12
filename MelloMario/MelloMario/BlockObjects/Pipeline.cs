@@ -3,6 +3,8 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.Theming;
+using Microsoft.Xna.Framework.Audio;
+using MelloMario.Sounds;
 
 namespace MelloMario.BlockObjects
 {
@@ -12,6 +14,7 @@ namespace MelloMario.BlockObjects
         private IPlayer switchingPlayer;
         private string type;
         private int elapsed;
+        private SoundEffectInstance pipeTravelSound;
 
         public string Type
         {
@@ -52,6 +55,7 @@ namespace MelloMario.BlockObjects
             {
                 if (mario.MovementState is Crouching && GameDatabase.IsEntrance(this))
                 {
+                    pipeTravelSound.Play();
                     switch (type)
                     {
                         case "LeftIn":
@@ -94,6 +98,7 @@ namespace MelloMario.BlockObjects
         public Pipeline(IGameWorld world, Point location, string type) : base(world, location, new Point(32, 32))
         {
             this.type = type;
+            pipeTravelSound = SoundController.pipe.CreateInstance();
             UpdateSprite();
         }
     }

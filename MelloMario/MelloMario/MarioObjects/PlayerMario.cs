@@ -152,7 +152,7 @@ namespace MelloMario.MarioObjects
 
         public void JumpPress()
         {
-            if (PowerUpState is PowerUpStates.Super) {
+            if (PowerUpState is PowerUpStates.Super || PowerUpState is PowerUpStates.Fire) {
                 powerJumpSound.Play();
             }
             else

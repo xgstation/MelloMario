@@ -1,9 +1,13 @@
-﻿namespace MelloMario.ItemObjects.StarStates
+﻿using Microsoft.Xna.Framework.Audio;
+using MelloMario.Sounds;
+
+namespace MelloMario.ItemObjects.StarStates
 {
     class Unveil : BaseTimedState<Star>, IItemState
     {
         private float elapsed;
         private float realOffset;
+        private SoundEffectInstance starUnveilSound;
 
         protected override void OnTimer(int time)
         {
@@ -13,6 +17,7 @@
         public Unveil(Star owner) : base(owner, 1000)
         {
             elapsed = 0f;
+            starUnveilSound = SoundController.sizeUpAppear.CreateInstance();
         }
 
         public void Show()
@@ -26,6 +31,7 @@
 
         public override void Update(int time)
         {
+            starUnveilSound.Play();
             base.Update(time);
 
             elapsed += time;

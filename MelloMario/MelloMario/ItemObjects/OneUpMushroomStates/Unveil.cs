@@ -1,9 +1,13 @@
-﻿namespace MelloMario.ItemObjects.OneUpMushroomStates
+﻿using Microsoft.Xna.Framework.Audio;
+using MelloMario.Sounds;
+
+namespace MelloMario.ItemObjects.OneUpMushroomStates
 {
     class Unveil : BaseTimedState<OneUpMushroom>, IItemState
     {
         private float elapsed;
         private float realOffset;
+        private SoundEffectInstance oneupMushUnveilSound;
 
         protected override void OnTimer(int time)
         {
@@ -13,6 +17,7 @@
         public Unveil(OneUpMushroom owner) : base(owner, 1000)
         {
             elapsed = 0f;
+            oneupMushUnveilSound = SoundController.sizeUpAppear.CreateInstance();
         }
 
         public void Show()
@@ -26,6 +31,7 @@
 
         public override void Update(int time)
         {
+            oneupMushUnveilSound.Play();
             base.Update(time);
 
             elapsed += time;

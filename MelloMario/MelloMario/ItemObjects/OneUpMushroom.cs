@@ -2,6 +2,8 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.OneUpMushroomStates;
 using MelloMario.Theming;
+using Microsoft.Xna.Framework.Audio;
+using MelloMario.Sounds;
 
 namespace MelloMario.ItemObjects
 {
@@ -9,6 +11,7 @@ namespace MelloMario.ItemObjects
     {
         private const int H_SPEED = 3;
         private IItemState state;
+        private SoundEffectInstance oneupMushCollectSound;
 
         private void UpdateSprite()
         {
@@ -97,6 +100,7 @@ namespace MelloMario.ItemObjects
 
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
         {
+            oneupMushCollectSound = SoundController.oneUpCollect.CreateInstance();
             if (marioLocation.X < location.X)
             {
                 Facing = FacingMode.left;
@@ -122,10 +126,12 @@ namespace MelloMario.ItemObjects
         public OneUpMushroom(IGameWorld world, Point location) : this(world, location, GameDatabase.GetCharacterLocation(), false) { }
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
         {
+            oneupMushCollectSound = SoundController.oneUpCollect.CreateInstance();
         }
 
         public void Collect()
         {
+            oneupMushCollectSound.Play();
             RemoveSelf();
             //State.Collect();
         }

@@ -7,10 +7,10 @@ namespace MelloMario.Sounds
     class SoundController
     {
         // TODO: use a factory
-        public static Song Normal, BelowGround, Hurry;
-        public static SoundEffect bounce, powerBounce, bumpBlock, breakBlock, coin, death, sizeUp, sizeUpAppear, sizeDown, enemyKill, GameOver;
+        public static Song Normal, BelowGround, Hurry, gameOver;
+        public static SoundEffect bounce, powerBounce, bumpBlock, breakBlock, coin, death, sizeUp, sizeUpAppear, oneUpCollect, enemyKill, pipe;
 
-        public enum Songs { normal, belowGround, hurry, pause, title }
+        public enum Songs { normal, belowGround, hurry, pause, title , gameOver}
         public static Songs currentSong;
 
         public SoundController(Game1 game)
@@ -22,12 +22,17 @@ namespace MelloMario.Sounds
             coin = SoundFactory.Instance.CreateSoundEffect("smb_coin");
             death = SoundFactory.Instance.CreateSoundEffect("smb_mariodie");
             sizeUp = SoundFactory.Instance.CreateSoundEffect("smb_powerup");
+            enemyKill = SoundFactory.Instance.CreateSoundEffect("smb_stomp");
+            pipe = SoundFactory.Instance.CreateSoundEffect("smb_pipe");
+            
 
             sizeUpAppear = SoundFactory.Instance.CreateSoundEffect("smb_powerup_appears");
+            oneUpCollect = SoundFactory.Instance.CreateSoundEffect("smb_1-up");
 
             Normal = SoundFactory.Instance.CreateSong("01-main-theme-overworld");
             BelowGround = SoundFactory.Instance.CreateSong("02-underworld");
             Hurry = SoundFactory.Instance.CreateSong("18-hurry-overworld-");
+            gameOver = SoundFactory.Instance.CreateSong("09-game-over");
             currentSong = Songs.normal;
         }
 
