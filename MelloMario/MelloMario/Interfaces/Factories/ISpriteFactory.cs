@@ -16,6 +16,7 @@ namespace MelloMario
         ISprite CreateGreenKoopaSprite(string status);
         ISprite CreateRedKoopaSprite(string status);
         ISprite CreatePiranhaSprite(string color);
+        ISprite CreateFireSprite();
         ISprite CreateStarSprite();
         ISprite CreateCoinSprite();
         ISprite CreateSuperMushroomSprite();
