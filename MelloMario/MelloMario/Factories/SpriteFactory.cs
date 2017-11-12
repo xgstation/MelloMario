@@ -55,17 +55,18 @@ namespace MelloMario.Factories
             return new TextSprite(spriteBatch, text, content.Load<SpriteFont>("Font\\text"), new Point(), ZIndex.hud);
         }
 
-        public ISprite CreateMarioSprite(string status, string protectionStatus, bool isStatic)
+        public ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing)
         {
             switch (protectionStatus)
             {
                 case "Protected":
-                    return new FlashingAnimatedSprite(spriteBatch, GetTexture(status), isStatic ? 1 : 3, 1, 0, 0, 2, 3);
+                    return new FlashingAnimatedSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : 4);
                 case "Starred":
-                    return new FlickingAnimatedSprite(spriteBatch, GetTexture(status), isStatic ? 1 : 3, 1, 0, 0, 2, 3);
+                    return new FlickingAnimatedSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : 4);
                 case "Normal":
+                    return new AnimatedSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : 4);
                 case "Dead":
-                    return new AnimatedSprite(spriteBatch, GetTexture(status), isStatic ? 1 : 3, 1);
+                    return new StaticSprite(spriteBatch, GetTexture(protectionStatus));
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code

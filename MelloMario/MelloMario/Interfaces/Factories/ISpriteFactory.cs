@@ -9,7 +9,7 @@ namespace MelloMario
         void BindContentManager(ContentManager newContentManager);
         void BindSpriteBatch(SpriteBatch newSpriteBatch);
 
-        ISprite CreateMarioSprite(string status, string protectionStatus, bool isStatic);
+        ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing);
 
         ISprite CreateGoombaSprite(string status);
         ISprite CreateFlagSprite(bool status);
