@@ -1,41 +1,85 @@
 ﻿using System;
+using MelloMario.EnemyObjects.PiranhaStates;
+using MelloMario.Interfaces.Objects.States;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.EnemyObjects
 {
     class Piranha : BasePhysicalObject
     {
-        private float hideTime;
-        public Piranha(IGameWorld world, Point location, Point size, float hideTime, float pixelScale) : base(world, location, size, pixelScale)
+        private int hiddenTime;
+        private int showTime;
+        private IPiranhaState state;
+
+        public Piranha(IGameWorld world, Point location, Point size, int hiddenTime, int showTime, float pixelScale, string color = "Green") : base(world, location, size, pixelScale)
         {
-            this.hideTime = hideTime;
-            //TODO: Implment Piranha sprite, factory method and update interface.
-            //ShowSprite(Factories.SpriteFactory.Instance.createPiranhaSprite());
+            this.hiddenTime = hiddenTime;
+            this.showTime = showTime;
+            state = new Hidden(this);
+            ShowSprite(Factories.SpriteFactory.Instance.CreatePiranhaSprite(color));
+        }
+
+        public IPiranhaState State
+        {
+            set { state = value; }
+        }
+
+        public int ShowTime
+        {
+            get { return showTime; }
+        }
+
+        public int HiddenTime
+        {
+            get { return hiddenTime; }
+        }
+        protected override void OnSimulation(int time)
+        {
+            switch (state.GetType().Name)
+            {
+                case "MovingUp":
+                    Move(new Point(0, -1));
+                    break;
+                case "MovingDown":
+                    Move(new Point(0, 1));
+                    break;
+                case "Hidden":
+                    break;
+                case "Show":
+                    break;
+                case "Defeated":
+                    break;
+                default:
+                    break;
+            }
+            base.OnSimulation(time);
+            
         }
 
         protected override void OnUpdate(int time)
         {
-            throw new NotImplementedException();
+            state.Update(time);
+            //throw new NotImplementedException();
         }
 
         protected override void OnDraw(int time, Rectangle viewport)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         protected override void OnCollideWorld(CollisionMode mode)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
