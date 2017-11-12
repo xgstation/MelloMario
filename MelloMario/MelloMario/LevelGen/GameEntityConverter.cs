@@ -271,6 +271,18 @@ namespace MelloMario.LevelGen
                     {
                         stack.Push(pipelineComponent);
                     }
+                    JToken PiranhaToken;
+                    if (Util.TryGet(out PiranhaToken, token, "Property", "Piranha"))
+                    {
+                        if (
+                        Util.TryGet(out string color, PiranhaToken, "Color") &&
+                        Util.TryGet(out float hiddenTime, PiranhaToken, "HiddenTime") &&
+                        Util.TryGet(out float showTime, PiranhaToken, "ShowTime"))
+                        {
+                            new Piranha(world, new Point(objPoint.X + 16, objPoint.Y), new Point(32, 32),
+                                (int)(hiddenTime * 1000), (int)(showTime * 1000), 32, color);
+                        }
+                    }
                     if (direction != "NV" && direction != "NH" &&
                         Util.TryGet(out entrance, token, "Property", "Entrance"))
                     {
