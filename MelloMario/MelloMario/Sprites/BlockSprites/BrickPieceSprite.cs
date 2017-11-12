@@ -98,9 +98,9 @@ namespace MelloMario.Sprites.BlockSprites
             destinations[3] = new Vector2(offsetX[3], offsetY[3]) + origin;
             source[3] = new Rectangle(texture.Width / 2, texture.Height / 2, texture.Width / 2, texture.Height / 2);
 
-            var spriteOrigin = new Vector2(8f, 8f);
-            var scale = new Vector2(1.25f, 1.25f);
-            var rotation = elapsed * 30f / GameConst.FORCE_F_AIR;
+            Vector2 spriteOrigin = new Vector2(8f, 8f);
+            Vector2 scale = new Vector2(1.25f, 1.25f);
+            float rotation = elapsed * 30f / GameConst.FORCE_F_AIR;
             spriteBatch.Draw(texture, destinations[0], source[0], Color.White, rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
             spriteBatch.Draw(texture, destinations[1], source[1], Color.White, rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
             spriteBatch.Draw(texture, destinations[2], source[2], Color.White, -rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);

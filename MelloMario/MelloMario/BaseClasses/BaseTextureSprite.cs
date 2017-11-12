@@ -6,14 +6,14 @@ namespace MelloMario.Sprites
     abstract class BaseTextureSprite : BaseSprite
     {
         private Texture2D texture;
-        private Point source;
+        private Rectangle source;
         private Color color;
 
         protected abstract void OnAnimate(int time);
 
-        protected void ChangeSource(Point newSource)
+        protected void ChangeSource(Point location)
         {
-            source = newSource;
+            source.Location = location;
         }
 
         protected void ChangeColor(Color newColor)
@@ -27,16 +27,16 @@ namespace MelloMario.Sprites
             spriteBatch.Draw(
                 texture,
                 destination,
-                new Rectangle(source, PixelSize),
+                source,
                 color,
-                0f,//rotation
+                0f, //rotation
                 new Vector2(), //origin
                 SpriteEffects.None,
                 LayerDepth
-                );
+            );
         }
 
-        public BaseTextureSprite(SpriteBatch spriteBatch, Texture2D texture, Point source, Point size, ZIndex zIndex) : base(spriteBatch, size, zIndex)
+        public BaseTextureSprite(SpriteBatch spriteBatch, Texture2D texture, Rectangle source, ZIndex zIndex) : base(spriteBatch, source.Size, zIndex)
         {
             this.texture = texture;
             this.source = source;

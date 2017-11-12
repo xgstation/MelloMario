@@ -11,32 +11,30 @@ namespace MelloMario.MarioObjects
 {
     class Mario : BasePhysicalObject
     {
-        private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
+        private IMarioMovementState movementState;
         private IMarioProtectionState protectionState;
 
         private void UpdateSprite()
         {
-            if (protectionState is Dead)
+            if (movementState is Crouching && powerUpState is Standard)
             {
-                ShowSprite(SpriteFactory.Instance.CreateMarioSprite(protectionState.GetType().Name, protectionState.GetType().Name, true));
+                return; // status is still updating
             }
-            else if (!(movementState is Crouching && powerUpState is Standard))
-            {
-                string facingString;
-                if (Facing == FacingMode.left)
-                {
-                    facingString = "Left";
-                }
-                else
-                {
-                    facingString = "Right";
-                }
 
-                ShowSprite(SpriteFactory.Instance.CreateMarioSprite(
-                    powerUpState.GetType().Name + movementState.GetType().Name + facingString, protectionState.GetType().Name,
-                    !(movementState is Walking)));
+            string facingString;
+            if (Facing == FacingMode.left)
+            {
+                facingString = "Left";
             }
+            else
+            {
+                facingString = "Right";
+            }
+
+            ShowSprite(SpriteFactory.Instance.CreateMarioSprite(
+                powerUpState.GetType().Name, movementState.GetType().Name, protectionState.GetType().Name, facingString
+            ));
         }
 
         protected void ChangeFacing(FacingMode facing)
@@ -49,8 +47,8 @@ namespace MelloMario.MarioObjects
 
         protected override void OnUpdate(int time)
         {
-            movementState.Update(time);
             powerUpState.Update(time);
+            movementState.Update(time);
             protectionState.Update(time);
         }
 
@@ -318,8 +316,8 @@ namespace MelloMario.MarioObjects
 
         public Mario(IGameWorld world, Point location) : base(world, location, new Point(), 32)
         {
-            movementState = new Standing(this);
             powerUpState = new Standard(this);
+            movementState = new Standing(this);
             protectionState = new Normal(this);
             UpdateSprite();
         }

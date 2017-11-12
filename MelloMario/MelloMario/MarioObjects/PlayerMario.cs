@@ -94,6 +94,11 @@ namespace MelloMario.MarioObjects
         {
             MovementState.Walk();
 
+            if (Facing == FacingMode.right)
+            {
+                ChangeFacing(FacingMode.left);
+            }
+
             if (!(MovementState is Crouching))
             {
                 userInput.X -= GameConst.FORCE_INPUT_X;
@@ -102,11 +107,6 @@ namespace MelloMario.MarioObjects
 
         public void LeftPress()
         {
-            if (Facing == FacingMode.right)
-            {
-                ChangeFacing(FacingMode.left);
-            }
-
             Left();
         }
 
@@ -119,6 +119,11 @@ namespace MelloMario.MarioObjects
         {
             MovementState.Walk();
 
+            if (Facing == FacingMode.left)
+            {
+                ChangeFacing(FacingMode.right);
+            }
+
             if (!(MovementState is Crouching))
             {
                 userInput.X += GameConst.FORCE_INPUT_X;
@@ -127,11 +132,6 @@ namespace MelloMario.MarioObjects
 
         public void RightPress()
         {
-            if (Facing == FacingMode.left)
-            {
-                ChangeFacing(FacingMode.right);
-            }
-
             Right();
         }
 
@@ -159,7 +159,7 @@ namespace MelloMario.MarioObjects
             {
                 jumpSound.Play();
             }
-            
+
             Jump();
         }
 
@@ -188,6 +188,10 @@ namespace MelloMario.MarioObjects
 
         public void Action()
         {
+            if (PowerUpState is PowerUpStates.Fire)
+            {
+                new Fire(World, Boundary.Location, Facing == FacingMode.right);
+            }
         }
 
         public void Spawn(IGameWorld world)
