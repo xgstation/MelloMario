@@ -155,8 +155,9 @@ namespace MelloMario.Factories
 
         public ISprite CreateFireSprite()
         {
-            return new AnimatedSprite(spriteBatch, GetTexture("Fire"), GameConst.ANIMATION_INTERVAL, 2, 2);
+            return new AnimatedSprite(spriteBatch, GetTexture("Fire"), 2, 2, 0, 0, 1, 1);
         }
+
         public ISprite CreateStarSprite()
         {
             return new AnimatedSprite(spriteBatch, GetTexture("Star"), 4, 1);
@@ -174,7 +175,7 @@ namespace MelloMario.Factories
 
         public ISprite CreateFireFlowerSprite()
         {
-            return new AnimatedSprite(spriteBatch, GetTexture("FireFlower"), 2, 2, 0, 0, 1, 1);
+            return new AnimatedSprite(spriteBatch, GetTexture("FireFlower"), 8, 1);
         }
 
         public ISprite CreateOneUpMushroomSprite()
