@@ -1,9 +1,13 @@
-﻿using MelloMario.MarioObjects;
+﻿using Microsoft.Xna.Framework.Audio;
+using MelloMario.MarioObjects;
+using MelloMario.Sounds;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
     class Destroyed : BaseTimedState<Brick>, IBlockState
     {
+        private SoundEffectInstance breakSound;
+
         protected override void OnTimer(int time)
         {
             Owner.Remove();
@@ -11,6 +15,8 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public Destroyed(Brick owner) : base(owner, 1000)
         {
+            breakSound = SoundController.breakBlock.CreateInstance();
+            breakSound.Play();
         }
 
         public void Show()

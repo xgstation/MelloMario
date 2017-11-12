@@ -1,9 +1,16 @@
-﻿namespace MelloMario.MarioObjects.PowerUpStates
+﻿using Microsoft.Xna.Framework.Audio;
+using MelloMario.Sounds;
+
+namespace MelloMario.MarioObjects.PowerUpStates
 {
     class Super : BaseState<Mario>, IMarioPowerUpState
     {
+        private SoundEffectInstance powerupSound;
+
         public Super(Mario owner) : base(owner)
         {
+            powerupSound = SoundController.sizeUp.CreateInstance();
+            powerupSound.Play();
         }
 
         public void UpgradeToFire()

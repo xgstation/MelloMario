@@ -1,10 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using MelloMario.Factories;
 using MelloMario.BlockObjects.BrickStates;
 using MelloMario.MarioObjects;
 using MelloMario.Theming;
-using MelloMario.Sounds;
 
 namespace MelloMario.BlockObjects
 {
@@ -14,7 +12,6 @@ namespace MelloMario.BlockObjects
         private IGameObject item;
         private bool isHidden;
         private bool hasInitialItem;
-        private SoundEffectInstance bumpSound;
 
         public bool HasInitialItem
         {
@@ -26,7 +23,6 @@ namespace MelloMario.BlockObjects
 
         public void Initialize()
         {
-            bumpSound = SoundController.bumpBlock.CreateInstance();
             if (isHidden)
             {
                 state = new Hidden(this);
@@ -124,7 +120,6 @@ namespace MelloMario.BlockObjects
 
         public void Bump(Mario mario)
         {
-            bumpSound.Play();
             State.Bump(mario);
         }
 

@@ -1,9 +1,13 @@
-﻿namespace MelloMario.ItemObjects.CoinStates
+﻿using Microsoft.Xna.Framework.Audio;
+using MelloMario.Sounds;
+
+namespace MelloMario.ItemObjects.CoinStates
 {
     class Unveil : BaseTimedState<Coin>, IItemState
     {
         private float elapsed;
         private float realOffset;
+        private SoundEffectInstance coinSound;
 
         protected override void OnTimer(int time)
         {
@@ -13,6 +17,7 @@
         public Unveil(Coin owner) : base(owner, 250)
         {
             elapsed = 0f;
+            coinSound = SoundController.coin.CreateInstance();
         }
 
         public void Show()
@@ -26,6 +31,7 @@
 
         public override void Update(int time)
         {
+            coinSound.Play();
             elapsed += time;
             realOffset += 128 * time / 500f;
 

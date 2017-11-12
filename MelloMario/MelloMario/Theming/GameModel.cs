@@ -114,6 +114,7 @@ namespace MelloMario.Theming
         public void Mute()
         {
             MediaPlayer.Stop();
+            
         }
 
         public void Update(int time)

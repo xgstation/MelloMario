@@ -1,5 +1,7 @@
-﻿using MelloMario.MarioObjects;
+﻿using Microsoft.Xna.Framework.Audio;
+using MelloMario.MarioObjects;
 using MelloMario.Theming;
+using MelloMario.Sounds;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
@@ -7,11 +9,13 @@ namespace MelloMario.BlockObjects.BrickStates
     {
         private int elapsed;
         private int move;
+        private SoundEffectInstance bumpSound;
 
         public Bumped(Brick owner) : base(owner)
         {
             elapsed = 0;
             move = 0;
+            bumpSound = SoundController.bumpBlock.CreateInstance();
         }
 
         public void Show()
@@ -45,6 +49,7 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public override void Update(int time)
         {
+            bumpSound.Play();
             // TODO: use BaseTimedState
             if (elapsed >= 100)
             {

@@ -10,6 +10,7 @@ namespace MelloMario.MarioObjects
     {
         private Vector2 userInput;
         private SoundEffectInstance jumpSound;
+        private SoundEffectInstance powerJumpSound;
         protected IGameSession Session;
 
         protected override void OnUpdate(int time)
@@ -86,6 +87,7 @@ namespace MelloMario.MarioObjects
             Relocate(World.GetInitialPoint());
 
             jumpSound = SoundController.bounce.CreateInstance();
+            powerJumpSound = SoundController.powerBounce.CreateInstance();
         }
 
         public void Left()
@@ -141,7 +143,6 @@ namespace MelloMario.MarioObjects
         public void Jump()
         {
             MovementState.Jump();
-
             if (MovementState is Jumping jumping && !jumping.Finished)
             {
                 userInput.Y -= GameConst.FORCE_INPUT_Y;
@@ -151,7 +152,14 @@ namespace MelloMario.MarioObjects
 
         public void JumpPress()
         {
-            jumpSound.Play();
+            if (PowerUpState is PowerUpStates.Super) {
+                powerJumpSound.Play();
+            }
+            else
+            {
+                jumpSound.Play();
+            }
+            
             Jump();
         }
 
