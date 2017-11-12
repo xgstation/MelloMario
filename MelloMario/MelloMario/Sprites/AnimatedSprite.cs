@@ -46,7 +46,7 @@ namespace MelloMario.Sprites
             // nothing by default
         }
 
-        public AnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, int x, int y, int width, int height, int interval = GameConst.ANIMATION_INTERVAL, ZIndex zIndex = ZIndex.item) : base(
+        public AnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, int x = 0, int y = 0, int width = 2, int height = 2, int interval = GameConst.ANIMATION_INTERVAL, ZIndex zIndex = ZIndex.item) : base(
             spriteBatch,
             texture,
             new Rectangle(
