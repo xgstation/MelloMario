@@ -30,6 +30,7 @@
         public const int SCORE_COIN = 200;
 
         // visual
+        public const int TEXTURE_GRID = 16;
         public const int ANIMATION_INTERVAL = 100;
     }
 }

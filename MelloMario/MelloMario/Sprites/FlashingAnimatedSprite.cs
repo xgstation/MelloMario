@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using MelloMario.Theming;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Sprites
 {
@@ -9,8 +10,8 @@ namespace MelloMario.Sprites
             Toggle();
         }
 
-        public FlashingAnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int interval, int columns, int rows, ZIndex zIndex = ZIndex.item) : base(
-            spriteBatch, texture, interval, columns, rows, zIndex
+        public FlashingAnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, int x, int y, int width, int height, int interval = GameConst.ANIMATION_INTERVAL, ZIndex zIndex = ZIndex.item) : base(
+            spriteBatch, texture, columns, rows, x, y, width, height, interval, zIndex
         )
         {
         }

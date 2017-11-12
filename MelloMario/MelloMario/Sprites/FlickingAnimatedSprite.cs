@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
+using MelloMario.Theming;
 
 namespace MelloMario.Sprites
 {
@@ -13,8 +14,8 @@ namespace MelloMario.Sprites
             ChangeColor(new Color(random.Next(255), random.Next(255), random.Next(255)));
         }
 
-        public FlickingAnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int interval, int columns, int rows, ZIndex zIndex = ZIndex.item) : base(
-            spriteBatch, texture, interval, columns, rows, zIndex
+        public FlickingAnimatedSprite(SpriteBatch spriteBatch, Texture2D texture, int columns, int rows, int x, int y, int width, int height, int interval = GameConst.ANIMATION_INTERVAL, ZIndex zIndex = ZIndex.item) : base(
+            spriteBatch, texture, columns, rows, x, y, width, height, interval, zIndex
         )
         {
             random = new Random();

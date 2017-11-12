@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Theming;
 
 namespace MelloMario.Sprites
 {
@@ -10,8 +11,16 @@ namespace MelloMario.Sprites
             // Do nothing
         }
 
-        public StaticSprite(SpriteBatch spriteBatch, Texture2D texture, ZIndex zIndex = ZIndex.item) :
-            base(spriteBatch, texture, new Point(), new Point(texture.Width, texture.Height), zIndex)
+        public StaticSprite(SpriteBatch spriteBatch, Texture2D texture, int x, int y, int width, int height, ZIndex zIndex = ZIndex.item) :
+            base(
+                spriteBatch,
+                texture,
+                new Rectangle(
+                    x * GameConst.TEXTURE_GRID, y * GameConst.TEXTURE_GRID,
+                    width * GameConst.TEXTURE_GRID, height * GameConst.TEXTURE_GRID
+                ),
+                zIndex
+            )
         {
         }
     }
