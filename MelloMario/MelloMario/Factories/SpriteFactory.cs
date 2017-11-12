@@ -153,13 +153,13 @@ namespace MelloMario.Factories
             switch (color)
             {
                 case "Green":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Green", new Rectangle(0, 0, 32, 24)), GameConst.ANIMATION_INTERVAL, 2, 1);
+                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Green", new Rectangle(0, 0, 64, 48)), GameConst.ANIMATION_INTERVAL, 2, 1);
                 case "Cyan":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Cyan", new Rectangle(0, 24, 32, 24)), GameConst.ANIMATION_INTERVAL, 2, 1);
+                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Cyan", new Rectangle(0, 48, 64, 48)), GameConst.ANIMATION_INTERVAL, 2, 1);
                 case "Red":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Red", new Rectangle(0, 48, 32, 24)), GameConst.ANIMATION_INTERVAL, 2, 1);
+                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Red", new Rectangle(0, 96, 64, 48)), GameConst.ANIMATION_INTERVAL, 2, 1);
                 case "Gray":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Gray", new Rectangle(0, 72, 32, 24)), GameConst.ANIMATION_INTERVAL, 2, 1);
+                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha", "Gray", new Rectangle(0, 144, 64, 48)), GameConst.ANIMATION_INTERVAL, 2, 1);
                 default:
                     return null;
             }

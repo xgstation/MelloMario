@@ -279,7 +279,7 @@ namespace MelloMario.LevelGen
                         Util.TryGet(out float hiddenTime, PiranhaToken, "HiddenTime") &&
                         Util.TryGet(out float showTime, PiranhaToken, "ShowTime"))
                         {
-                            new Piranha(world, new Point(objPoint.X + 16, objPoint.Y), new Point(32, 32),
+                            new Piranha(world, new Point(objPoint.X + 16, objPoint.Y), new Point(32, 48),
                                 (int)(hiddenTime * 1000), (int)(showTime * 1000), 32, color);
                         }
                     }
