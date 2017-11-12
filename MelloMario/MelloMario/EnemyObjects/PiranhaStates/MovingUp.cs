@@ -9,11 +9,10 @@ namespace MelloMario.EnemyObjects.PiranhaStates
 {
     class MovingUp : BaseState<Piranha>, IPiranhaState
     {
-        private int elapsed;
+        private int initialY;
         public override void Update(int time)
         {
-            elapsed += time;
-            if (elapsed > 1000)
+            if (Owner.Boundary.Y <= initialY - 48)
             {
                 Owner.State = new Show(Owner);
             }
@@ -21,7 +20,7 @@ namespace MelloMario.EnemyObjects.PiranhaStates
 
         public MovingUp(Piranha owner) : base(owner)
         {
-            elapsed = 0;
+            initialY = owner.Boundary.Y;
         }
     }
 }
