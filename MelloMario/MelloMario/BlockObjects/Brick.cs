@@ -57,8 +57,6 @@ namespace MelloMario.BlockObjects
 
         private void LoadItem()
         {
-            
-
             if (GameDatabase.HasItemEnclosed(this))
             {
                 item = GameDatabase.GetEnclosedItems(this)[0];

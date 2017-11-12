@@ -92,13 +92,13 @@ namespace MelloMario.Theming
             {
                 session.Remove(pair.Item2);
             }
-            session.Update();
+
             return pair.Item1;
         }
 
         public void Init()
         {
-            Resume();   
+            Resume();
         }
 
         public void Reset()
@@ -131,7 +131,6 @@ namespace MelloMario.Theming
 
                 foreach (IPlayer player in session.ScanPlayers())
                 {
-                    player.World.Update();
                     foreach (IGameObject obj in player.World.ScanNearby(player.Sensing))
                     {
                         updating.Add(obj);

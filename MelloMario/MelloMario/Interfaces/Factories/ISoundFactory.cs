@@ -7,11 +7,12 @@ namespace MelloMario
 {
     interface ISoundFactory
     {
+        void BindContentManager(ContentManager content);
+
         // note: probably need another abstraction layer?
         //       like Texture2D -> ISprite, it is good to do Song/SoundEffect -> ISound
         //       but do not add it until we know the use of sound in the whole game very well
         Song CreateSong(string name);
         SoundEffect CreateSoundEffect(string name);
-        void BindContentManager(ContentManager content);
     }
 }
