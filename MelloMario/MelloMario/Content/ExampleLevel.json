@@ -252,6 +252,11 @@
             "Y": 11
           },
           "Property": {
+            "Piranha": {
+              "Color": "Red",
+              "HiddenTime": 1.5,
+              "ShowTime": 2.5 
+            },
             "Length": 3,
             "Direction": "V",
             "Entrance": "1-1-2",
