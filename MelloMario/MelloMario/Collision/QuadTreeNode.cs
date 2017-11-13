@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Collision
 {
@@ -21,8 +20,6 @@ namespace MelloMario.Collision
         private QuadTreeNode<T> topRight;
         private QuadTreeNode<T> bottomLeft;
         private QuadTreeNode<T> bottomRight;
-
-        private Texture2D t;
         #endregion
 
 
@@ -42,77 +39,24 @@ namespace MelloMario.Collision
 
         #region Internal Properties
 
-        internal QuadTreeNode<T> TopLeft
-        {
-            get
-            {
-                return topLeft;
-            }
-        }
+        internal QuadTreeNode<T> TopLeft => topLeft;
 
-        internal QuadTreeNode<T> TopRight
-        {
-            get
-            {
-                return topRight;
-            }
-        }
+        internal QuadTreeNode<T> TopRight => topRight;
 
-        internal QuadTreeNode<T> BottomLeft
-        {
-            get
-            {
-                return bottomLeft;
-            }
-        }
+        internal QuadTreeNode<T> BottomLeft => bottomLeft;
 
-        internal QuadTreeNode<T> BottomRight
-        {
-            get
-            {
-                return bottomRight;
-            }
-        }
+        internal QuadTreeNode<T> BottomRight => bottomRight;
 
-        internal QuadTreeNode<T> Parent
-        {
-            get
-            {
-                return parent;
-            }
-        }
+        internal QuadTreeNode<T> Parent => parent;
 
-        internal Rectangle Rect
-        {
-            get
-            {
-                return rect;
-            }
-        }
 
-        internal int Count
-        {
-            get
-            {
-                return CountObjects();
-            }
-        }
+        internal Rectangle Rect => rect;
 
-        internal bool IsEmpty
-        {
-            get
-            {
-                return CountObjects() == 0 && !HasSubTree;
-            }
-        }
+        internal int Count => CountObjects();
 
-        internal bool HasSubTree
-        {
-            get
-            {
-                return topLeft != null;
-            }
-        }
+        internal bool IsEmpty => CountObjects() == 0 && !HasSubTree;
+
+        internal bool HasSubTree => topLeft != null;
 
         #endregion
 
@@ -126,7 +70,7 @@ namespace MelloMario.Collision
 
         internal void Insert(EncapsulatedQuadTreeObject<T> item)
         {
-            if (!rect.Contains(item.Boundary))
+            if (IsFit(item))
             {
                 if (parent == null)
                 {
@@ -135,15 +79,13 @@ namespace MelloMario.Collision
                 }
                 else
                 {
-                    Debug.WriteLine("Object is not inserted.");
                     return;
                 }
             }
 
-            if (objects == null || topLeft == null && objects.Count < MAXOBJECTS)
+            if (objects == null || (topLeft == null && objects.Count < MAXOBJECTS))
             {
                 Add(item);
-                Debug.WriteLine("Object inserted.");
             }
             else
             {
@@ -151,26 +93,21 @@ namespace MelloMario.Collision
                 {
                     Divide();
                 }
-                QuadTreeNode<T> dest = GetDestTree(item);
+                var dest = GetDestTree(item);
                 if (dest == this)
                 {
                     Add(item);
-                    Debug.WriteLine("Object inserted.");
                 }
                 else
                 {
                     dest.Insert(item);
-                    Debug.WriteLine("Object inserted in subtree.");
                 }
             }
         }
 
         internal void Delete(EncapsulatedQuadTreeObject<T> item, bool clean)
         {
-            if (item.Owner == null)
-            {
-                return;
-            }
+            if (item.Owner == null) return;
             if (item.Owner == this)
             {
                 Remove(item);
@@ -203,15 +140,12 @@ namespace MelloMario.Collision
         {
             if (objects != null)
             {
-                foreach (EncapsulatedQuadTreeObject<T> o in objects)
+                foreach (var o in objects)
                 {
-                    container.Add(o.RealObject);
+                    container.Add(o.RealObj);
                 }
             }
-            if (!HasSubTree)
-            {
-                return;
-            }
+            if (!HasSubTree) return;
             topLeft.GetObjects(ref container);
             topRight.GetObjects(ref container);
             bottomRight.GetObjects(ref container);
@@ -232,11 +166,11 @@ namespace MelloMario.Collision
             {
                 if (objects != null)
                 {
-                    foreach (EncapsulatedQuadTreeObject<T> o in objects)
+                    foreach (var o in objects)
                     {
                         if (range.Intersects(o.Boundary))
                         {
-                            container.Add(o.RealObject);
+                            container.Add(o.RealObj);
                         }
                     }
                 }
@@ -279,15 +213,9 @@ namespace MelloMario.Collision
 
         private void Remove(EncapsulatedQuadTreeObject<T> item)
         {
-            if (objects == null || !objects.Contains(item))
-            {
-                return;
-            }
+            if (objects == null || !objects.Contains(item)) return;
             int removeIndex = objects.IndexOf(item);
-            if (removeIndex < 0)
-            {
-                return;
-            }
+            if (removeIndex < 0) return;
             objects[removeIndex] = objects[objects.Count - 1];
             objects.RemoveAt(objects.Count - 1);
         }
@@ -299,10 +227,7 @@ namespace MelloMario.Collision
             {
                 count += objects.Count;
             }
-            if (!HasSubTree)
-            {
-                return count;
-            }
+            if (!HasSubTree) return count;
             count += topLeft.CountObjects();
             count += topRight.CountObjects();
             count += bottomLeft.CountObjects();
@@ -312,7 +237,7 @@ namespace MelloMario.Collision
 
         private void Divide()
         {
-            Point newSize = new Point(rect.Width / 2, rect.Height / 2);
+            var newSize = new Point(rect.Width / 2, rect.Height / 2);
             topLeft = new QuadTreeNode<T>(this, new Rectangle(new Point(rect.Left, rect.Top), newSize));
             topRight = new QuadTreeNode<T>(this, new Rectangle(new Point(rect.Center.X, rect.Top), newSize));
             bottomLeft = new QuadTreeNode<T>(this, new Rectangle(new Point(rect.Left, rect.Center.Y), newSize));
@@ -320,12 +245,9 @@ namespace MelloMario.Collision
 
             for (int i = 0; i < objects.Count; i++)
             {
-                QuadTreeNode<T> destTree = GetDestTree(objects[i]);
+                var destTree = GetDestTree(objects[i]);
 
-                if (destTree == this)
-                {
-                    continue;
-                }
+                if (destTree == this) continue;
                 destTree.Insert(objects[i]);
                 Remove(objects[i]);
                 i--;
@@ -353,16 +275,10 @@ namespace MelloMario.Collision
         {
             if (rect.Contains(item.Boundary))
             {
-                if (!HasSubTree)
-                {
-                    return;
-                }
-                QuadTreeNode<T> destNode = GetDestTree(item);
-                if (item.Owner == destNode)
-                {
-                    return;
-                }
-                QuadTreeNode<T> former = item.Owner;
+                if (!HasSubTree) return;
+                var destNode = GetDestTree(item);
+                if (item.Owner == destNode) return;
+                var former = item.Owner;
                 Delete(item, false);
                 destNode.Insert(item);
                 former.Clean();
@@ -399,23 +315,5 @@ namespace MelloMario.Collision
         }
 
         #endregion
-
-        public void DrawBoundary(SpriteBatch spriteBatch)
-        {
-            t = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
-            t.SetData(new[] { Color.White });
-            spriteBatch.Draw(t, new Rectangle(rect.Left, rect.Top, 3, rect.Height), Color.Black); // Left
-            spriteBatch.Draw(t, new Rectangle(rect.Right, rect.Top, 3, rect.Height), Color.Black); // Right
-            spriteBatch.Draw(t, new Rectangle(rect.Left, rect.Top, rect.Width, 3), Color.Black); // Top
-            spriteBatch.Draw(t, new Rectangle(rect.Left, rect.Bottom, rect.Width, 3), Color.Black); // Bottom
-            if (topLeft != null)
-            {
-                topLeft.DrawBoundary(spriteBatch);
-                topRight.DrawBoundary(spriteBatch);
-                bottomRight.DrawBoundary(spriteBatch);
-                bottomLeft.DrawBoundary(spriteBatch);
-            }
-
-        }
     }
 }

@@ -102,7 +102,7 @@ namespace MelloMario.Theming
             Resume();
         }
 
-        public void switchMusic(int time)
+        public void SwitchMusic(int time)
         {
             if (time < 90000 && SoundController.CurrentSong != SoundController.Songs.hurry)
             {
@@ -157,7 +157,7 @@ namespace MelloMario.Theming
 
                 // TODO: move to correct place
                 Time -= time;
-                switchMusic(Time);
+                SwitchMusic(Time);
             }
         }
 
@@ -177,8 +177,6 @@ namespace MelloMario.Theming
                 }
             }
 
-            //Debug code, remove later
-            //(player.World as GameWorld2).Draw(game.GetSpriteBatch);
             hud.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
         }
     }
