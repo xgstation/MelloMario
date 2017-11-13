@@ -9,9 +9,9 @@ namespace MelloMario.Collision
     {
         internal static readonly int MaxObjects = 10;
         //private static readonly Point MaxSize = new Point(1600, 800);
-        private IDictionary<T, EncapsulatedQuadTreeObject<T>> dictTtoEncapsulated;
+        private readonly IDictionary<T, EncapsulatedQuadTreeObject<T>> dictTtoEncapsulated;
         //private List<QuadTreeNode<T>> roots;
-        private QuadTreeNode<T> root;
+        private readonly QuadTreeNode<T> quadTreeRoot;
 
         private int width;
         private int height;
@@ -29,37 +29,41 @@ namespace MelloMario.Collision
             {
                 width = height;
             }
-            root = new QuadTreeNode<T>(new Rectangle(0, 0, width, height));
+            quadTreeRoot = new QuadTreeNode<T>(new Rectangle(0, 0, width, height));
             dictTtoEncapsulated = new Dictionary<T, EncapsulatedQuadTreeObject<T>>();
         }
 
-        public Rectangle AreaCovered { get { return root.AreaCovered; } }
+        public Rectangle QuadTreeRect { get { return quadTreeRoot.Rect; } }
 
         public int Count { get { return dictTtoEncapsulated.Count; } }
 
         public bool IsReadOnly { get { return false; } }
 
-        public ICollection<T> GetRanged(Rectangle range)
+        public ICollection<T> GetNearby()
+        {
+            return null;
+        }
+        public ICollection<T> GetObjects(Rectangle range)
         {
             ICollection<T> ranged = new List<T>();
-            root.GetRanged(range, ref ranged);
+            quadTreeRoot.GetRanged(range, ref ranged);
             return ranged;
         }
 
-        public ICollection<T> GetAll()
+        public ICollection<T> GetObjects()
         {
             ICollection<T> all = new List<T>();
-            root.GetAll(ref all);
+            quadTreeRoot.GetAll(ref all);
             return all;
         }
 
-        public bool DoMove(T item)
+        public bool Move(T item)
         {
             if (!Contains(item))
             {
                 return false;
             }
-            root.DoMove(dictTtoEncapsulated[item]);
+            quadTreeRoot.Move(dictTtoEncapsulated[item]);
             return true;
         }
         public IEnumerator<T> GetEnumerator()
@@ -78,13 +82,14 @@ namespace MelloMario.Collision
             {
                 EncapsulatedQuadTreeObject<T> encapsulated = new EncapsulatedQuadTreeObject<T>(item);
                 dictTtoEncapsulated.Add(item, encapsulated);
-                root.Insert(encapsulated);
+                quadTreeRoot.Insert(encapsulated);
             }
         }
 
         public void Clear()
         {
-            root.Clear();
+            dictTtoEncapsulated.Clear();
+            quadTreeRoot.Clear();
         }
 
         public bool Contains(T item)
@@ -101,7 +106,8 @@ namespace MelloMario.Collision
         {
             if (Contains(item))
             {
-                root.Delete(dictTtoEncapsulated[item]);
+                quadTreeRoot.Delete(dictTtoEncapsulated[item], false);
+                dictTtoEncapsulated.Remove(item);
                 return true;
             }
             return false;

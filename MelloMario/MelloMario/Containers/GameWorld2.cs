@@ -49,7 +49,7 @@ namespace MelloMario.Containers
         public void Move(IGameObject obj)
         {
             toMove.Push(obj);
-            //objContainer.DoMove(obj);
+            //objContainer.Move(obj);
         }
 
         public void Remove(IGameObject obj)
@@ -60,7 +60,7 @@ namespace MelloMario.Containers
 
         public IEnumerable<IGameObject> GetRanged(Rectangle range)
         {
-            return objContainer.GetRanged(range);
+            return objContainer.GetObjects(range);
         }
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
@@ -96,7 +96,7 @@ namespace MelloMario.Containers
             }
             while (toMove.Count > 0)
             {
-                objContainer.DoMove(toMove.Pop());
+                objContainer.Move(toMove.Pop());
             }
             while (toRemove.Count > 0)
             {
