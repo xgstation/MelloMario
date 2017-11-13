@@ -151,7 +151,7 @@ namespace MelloMario.Theming
                 // TODO: move to correct place
                 Time -= time;
             }
-            if (Time == 390)
+            if (Time < 390)
             {
                 SoundController.PlayMusic(SoundController.Songs.hurry);
             }
