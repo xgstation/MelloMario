@@ -236,13 +236,15 @@ namespace MelloMario.LevelGen
                     Util.BatchCreate(
                         point =>
                         {
-                            objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
+                            
                             if (type.Name == "Question")
                             {
+                                objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, false);
                                 (objToBePushed as Question).Initialize();
                             }
                             if (type.Name == "Brick")
                             {
+                                objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
                                 (objToBePushed as Brick).Initialize();
                             }
                             return objToBePushed;
