@@ -139,8 +139,12 @@ namespace MelloMario.Factories
             return new AnimatedSprite(spriteBatch, GetTexture("Star"), 4, 1);
         }
 
-        public ISprite CreateCoinSprite()
+        public ISprite CreateCoinSprite(bool isHud = false)
         {
+            if (isHud)
+            {
+                return new AnimatedSprite(spriteBatch, GetTexture("Coin"), 4, 1, 0, 0, 1, 2, 100, ZIndex.hud);
+            }
             return new AnimatedSprite(spriteBatch, GetTexture("Coin"), 4, 1, 0, 0, 1, 2);
         }
 
