@@ -19,7 +19,6 @@ namespace MelloMario.Theming
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private Listener listener;
-        private SoundController soundControl;
         //TODO: temporary public
         //note: we will have an extra class called Player which contains these information
         public int Coins;
@@ -44,14 +43,13 @@ namespace MelloMario.Theming
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
-            soundControl = new SoundController(this.game);
             SoundController.PlayMusic(SoundController.Songs.normal);
 
             Score = 0;
             Coins = 0;
             Time = GameConst.LEVEL_TIME * 1000;
             hud = new HUD(this);
-            
+
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -91,7 +89,7 @@ namespace MelloMario.Theming
             LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice, listener);
             reader.SetModel(this);
             Tuple<IGameWorld, IPlayer> pair = reader.Load(id, session);
-            
+
 
             if (!init && pair.Item2 != null)
             {
@@ -106,14 +104,12 @@ namespace MelloMario.Theming
             Resume();
         }
 
-        private bool isHurry = false;
         public void switchMusic(int time)
         {
-            if (time < 90000 && !isHurry)
+            if (time < 90000 && SoundController.CurrentSong != SoundController.Songs.hurry)
             {
                 MediaPlayer.Stop();
                 SoundController.PlayMusic(SoundController.Songs.hurry);
-                isHurry = true;
             }
         }
 
@@ -127,6 +123,7 @@ namespace MelloMario.Theming
         {
             game.Exit();
         }
+
         public void Mute()
         {
             MediaPlayer.Stop();
