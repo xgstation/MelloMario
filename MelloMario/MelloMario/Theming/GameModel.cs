@@ -177,6 +177,8 @@ namespace MelloMario.Theming
                 }
             }
 
+            //Debug code, remove later
+            //(player.World as GameWorld2).Draw(game.GetSpriteBatch);
             hud.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
         }
     }
