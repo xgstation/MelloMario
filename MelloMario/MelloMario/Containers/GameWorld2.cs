@@ -82,7 +82,7 @@ namespace MelloMario.Containers
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            objContainer.DrawBoundary(spriteBatch);
+            //objContainer.DrawBoundary(spriteBatch);
         }
         public void Update()
         {
