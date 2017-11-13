@@ -206,6 +206,7 @@ namespace MelloMario.EnemyObjects
 
         public void JumpOn()
         {
+            ScorePoints(GameConst.SCORE_KOOPA);
             State.JumpOn();
         }
 
@@ -226,6 +227,7 @@ namespace MelloMario.EnemyObjects
 
         public void Defeat()
         {
+            ScorePoints(GameConst.SCORE_KOOPA);
             RemoveSelf();
         }
     }

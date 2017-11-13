@@ -148,6 +148,7 @@ namespace MelloMario.EnemyObjects
 
         public void Defeat()
         {
+            ScorePoints(GameConst.SCORE_GOOMBA);
             State.Defeat();
         }
     }

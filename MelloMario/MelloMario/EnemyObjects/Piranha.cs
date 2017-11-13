@@ -82,5 +82,12 @@ namespace MelloMario.EnemyObjects
         {
             //throw new NotImplementedException();
         }
+
+        public void Defeat()
+        {
+            ScorePoints(GameConst.SCORE_KOOPA);
+            //TODO: implement defeat
+            //state.Defeated();
+        }
     }
 }
