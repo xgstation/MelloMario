@@ -89,8 +89,7 @@ namespace MelloMario.Factories
             }
         }
 
-        // TODO: use a param "color"
-        public ISprite CreateGreenKoopaSprite(string status)
+        public ISprite CreateKoopaSprite(string color, string status)
         {
             switch (status)
             {
@@ -98,37 +97,14 @@ namespace MelloMario.Factories
                 case "DefeatedRight":
                 case "MovingShellLeft":
                 case "MovingShellRight":
-                    return new StaticSprite(spriteBatch, GetTexture("GreenKoopaDead"), 0, 0, 2, 3);
+                    return new StaticSprite(spriteBatch, GetTexture(color + "KoopaDead"), 0, 0, 2, 3);
                 case "ShellLeft":
                 case "ShellRight":
-                    return new StaticSprite(spriteBatch, GetTexture("GreenKoopaStepped"), 0, 0, 2, 3);
+                    return new StaticSprite(spriteBatch, GetTexture(color + "KoopaStepped"), 0, 0, 2, 3);
                 case "NormalLeft":
-                    return new AnimatedSprite(spriteBatch, GetTexture("GreenKoopaLeft"), 2, 1, 0, 0, 2, 3);
+                    return new AnimatedSprite(spriteBatch, GetTexture(color + "KoopaLeft"), 2, 1, 0, 0, 2, 3);
                 case "NormalRight":
-                    return new AnimatedSprite(spriteBatch, GetTexture("GreenKoopaRight"), 2, 1, 0, 0, 2, 3);
-                default:
-                    //it should never hit this case, if it does there is an error somewhere
-                    //else in the code
-                    return null;
-            }
-        }
-
-        public ISprite CreateRedKoopaSprite(string status)
-        {
-            switch (status)
-            {
-                case "DefeatedLeft":
-                case "DefeatedRight":
-                case "MovingShellLeft":
-                case "MovingShellRight":
-                    return new StaticSprite(spriteBatch, GetTexture("RedKoopaDead"), 0, 0, 2, 3);
-                case "ShellLeft":
-                case "ShellRight":
-                    return new StaticSprite(spriteBatch, GetTexture("RedKoopaStepped"), 0, 0, 2, 3);
-                case "NormalLeft":
-                    return new AnimatedSprite(spriteBatch, GetTexture("RedKoopaLeft"), 2, 1, 0, 0, 2, 3);
-                case "NormalRight":
-                    return new AnimatedSprite(spriteBatch, GetTexture("RedKoopaRight"), 2, 1, 0, 0, 2, 3);
+                    return new AnimatedSprite(spriteBatch, GetTexture(color + "KoopaRight"), 2, 1, 0, 0, 2, 3);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code

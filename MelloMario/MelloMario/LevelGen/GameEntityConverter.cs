@@ -177,10 +177,8 @@ namespace MelloMario.LevelGen
             {
                 if (type.Name == "Koopa")
                 {
-                    Koopa.ShellColor shellColor = Util.TryGet(out string color, token, "Property", "Color")
-                        ? (color == "Green" ? Koopa.ShellColor.green : Koopa.ShellColor.red)
-                        : Koopa.ShellColor.green;
-                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, shellColor);
+                    Util.TryGet(out string color, token, "Property", "Color");
+                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, color);
                 }
                 if (isSingle)
                 {
@@ -279,7 +277,7 @@ namespace MelloMario.LevelGen
                         Util.TryGet(out float showTime, piranhaToken, "ShowTime"))
                         {
                             new Piranha(world, new Point(objPoint.X + 16, objPoint.Y), new Point(32, 48),
-                                (int)(hiddenTime * 1000), (int)(showTime * 1000), 32, color);
+                                (int) (hiddenTime * 1000), (int) (showTime * 1000), 32, color);
                         }
                     }
                     if (direction != "NV" && direction != "NH" &&

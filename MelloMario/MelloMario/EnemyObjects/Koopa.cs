@@ -9,7 +9,7 @@ namespace MelloMario.EnemyObjects
 {
     class Koopa : BasePhysicalObject
     {
-        private ShellColor color;
+        private string color;
         private IKoopaState state;
         private const int VELOCITY_LR = 1;
         private const int VELOCITY_SHELL = 7;
@@ -25,15 +25,8 @@ namespace MelloMario.EnemyObjects
             {
                 facingString = "Right";
             }
-            switch (color)
-            {
-                case ShellColor.green:
-                    ShowSprite(SpriteFactory.Instance.CreateGreenKoopaSprite(state.GetType().Name + facingString));
-                    break;
-                case ShellColor.red:
-                    ShowSprite(SpriteFactory.Instance.CreateRedKoopaSprite(state.GetType().Name + facingString));
-                    break;
-            }
+
+            ShowSprite(SpriteFactory.Instance.CreateKoopaSprite(color, state.GetType().Name + facingString));
         }
 
         private void ChangeFacing(FacingMode facing)
@@ -180,12 +173,6 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        public enum ShellColor
-        {
-            green,
-            red
-        };
-
         public IKoopaState State
         {
             get
@@ -199,8 +186,8 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        public Koopa(IGameWorld world, Point location, ShellColor color) : this(world, location, GameDatabase.GetCharacterLocation(), color) { }
-        public Koopa(IGameWorld world, Point location, Point marioLoc, ShellColor color) : base(world, location, new Point(32, 32), 32)
+        public Koopa(IGameWorld world, Point location, string color) : this(world, location, GameDatabase.GetCharacterLocation(), color) { }
+        public Koopa(IGameWorld world, Point location, Point marioLoc, string color) : base(world, location, new Point(32, 32), 32)
         {
             if (marioLoc.X < location.X)
             {
