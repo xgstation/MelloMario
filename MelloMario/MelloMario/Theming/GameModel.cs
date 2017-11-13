@@ -8,6 +8,7 @@ using MelloMario.Containers;
 using MelloMario.Scripts;
 using MelloMario.Factories;
 using MelloMario.MiscObjects;
+using MelloMario.Sounds;
 
 namespace MelloMario.Theming
 {
@@ -18,6 +19,7 @@ namespace MelloMario.Theming
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private Listener listener;
+        private SoundController soundControl;
         //TODO: temporary public
         //note: we will have an extra class called Player which contains these information
         public int Coins;
@@ -42,11 +44,13 @@ namespace MelloMario.Theming
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
+            soundControl = new SoundController(this.game);
 
             Score = 0;
             Coins = 0;
             Time = GameConst.LEVEL_TIME * 1000;
             hud = new HUD(this);
+            
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -114,7 +118,6 @@ namespace MelloMario.Theming
         public void Mute()
         {
             MediaPlayer.Stop();
-            
         }
 
         public void Update(int time)
@@ -147,6 +150,10 @@ namespace MelloMario.Theming
 
                 // TODO: move to correct place
                 Time -= time;
+            }
+            if (Time == 390)
+            {
+                SoundController.PlayMusic(SoundController.Songs.hurry);
             }
         }
 
