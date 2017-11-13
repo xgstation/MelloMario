@@ -10,6 +10,7 @@ namespace MelloMario.ItemObjects
     {
         private const int H_SPEED = 2;
         private IItemState state;
+        private bool collected;
 
         private void UpdateSprite()
         {
@@ -110,6 +111,8 @@ namespace MelloMario.ItemObjects
         public SuperMushroom(IGameWorld world, Point location, Listener listener) : this(world, location, GameDatabase.GetCharacterLocation(), listener) { }
         public SuperMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
         {
+
+            collected = false;
             if (marioLocation.X < location.X)
             {
                 Facing = FacingMode.left;
@@ -134,7 +137,9 @@ namespace MelloMario.ItemObjects
 
         public void Collect()
         {
-            ScorePoints(GameConst.SCORE_POWER_UP);
+            if(!collected)
+                ScorePoints(GameConst.SCORE_POWER_UP);
+            collected = true;
             RemoveSelf();
             //State.Collect();
         }

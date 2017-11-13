@@ -9,6 +9,7 @@ namespace MelloMario.ItemObjects
     class FireFlower : BaseCollidableObject
     {
         private IItemState state;
+        private bool collected;
 
         private void UpdateSprite()
         {
@@ -55,7 +56,7 @@ namespace MelloMario.ItemObjects
 
         public FireFlower(IGameWorld world, Point location, Listener listener, bool isUnveil) : base(world, location, listener, new Point(32, 32))
         {
-
+            collected = false;
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -75,7 +76,9 @@ namespace MelloMario.ItemObjects
 
         public void Collect()
         {
-            ScorePoints(GameConst.SCORE_POWER_UP);
+            if (!collected)
+                ScorePoints(GameConst.SCORE_POWER_UP);
+            collected = true;
             RemoveSelf();
             //State.Collect();
         }
