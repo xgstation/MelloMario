@@ -77,9 +77,9 @@ namespace MelloMario.Factories
                 case "Goomba":
                     return new Goomba(world, location, marioLoc, listener);
                 case "GreenKoopa":
-                    return new Koopa(world, location, marioLoc, listener, Koopa.ShellColor.green);
+                    return new Koopa(world, location, marioLoc, listener, "Green");
                 case "RedKoopa":
-                    return new Koopa(world, location, marioLoc, listener, Koopa.ShellColor.red);
+                    return new Koopa(world, location, marioLoc, listener, "Red");
 
                 //entities
                 case "Coin":
