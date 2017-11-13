@@ -1,5 +1,4 @@
-﻿
-namespace MelloMario.Commands
+﻿namespace MelloMario.Commands
 {
     class Mute : BaseCommand<IGameModel>
     {
