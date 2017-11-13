@@ -177,10 +177,8 @@ namespace MelloMario.LevelGen
             {
                 if (type.Name == "Koopa")
                 {
-                    Koopa.ShellColor shellColor = Util.TryGet(out string color, token, "Property", "Color")
-                        ? (color == "Green" ? Koopa.ShellColor.green : Koopa.ShellColor.red)
-                        : Koopa.ShellColor.green;
-                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, shellColor);
+                    Util.TryGet(out string color, token, "Property", "Color");
+                    createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, color);
                 }
                 if (isSingle)
                 {
