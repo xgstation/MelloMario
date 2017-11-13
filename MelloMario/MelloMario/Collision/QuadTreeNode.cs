@@ -70,7 +70,7 @@ namespace MelloMario.Collision
 
         internal void Insert(EncapsulatedQuadTreeObject<T> item)
         {
-            if (IsFit(item))
+            if (!IsFit(item))
             {
                 if (parent == null)
                 {
@@ -174,13 +174,11 @@ namespace MelloMario.Collision
                         }
                     }
                 }
-                if (HasSubTree)
-                {
-                    topLeft.GetObjects(range, ref container);
-                    topRight.GetObjects(range, ref container);
-                    bottomLeft.GetObjects(range, ref container);
-                    bottomRight.GetObjects(range, ref container);
-                }
+                if (!HasSubTree) return;
+                topLeft.GetObjects(range, ref container);
+                topRight.GetObjects(range, ref container);
+                bottomLeft.GetObjects(range, ref container);
+                bottomRight.GetObjects(range, ref container);
             }
         }
 
@@ -258,13 +256,13 @@ namespace MelloMario.Collision
         {
             switch (item.Boundary)
             {
-                case Rectangle rect when topLeft.rect.Contains(rect):
+                case Rectangle r when topLeft.rect.Contains(r):
                     return topLeft;
-                case Rectangle rect when topRight.rect.Contains(rect):
+                case Rectangle r when topRight.rect.Contains(r):
                     return topRight;
-                case Rectangle rect when bottomLeft.rect.Contains(rect):
+                case Rectangle r when bottomLeft.rect.Contains(r):
                     return bottomLeft;
-                case Rectangle rect when bottomRight.rect.Contains(rect):
+                case Rectangle r when bottomRight.rect.Contains(r):
                     return bottomRight;
                 default:
                     return this;
