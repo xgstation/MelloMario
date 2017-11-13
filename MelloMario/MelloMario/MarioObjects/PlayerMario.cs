@@ -74,14 +74,7 @@ namespace MelloMario.MarioObjects
                 {
                     location.Y = worldBoundary.Bottom - size.Y;
                 }
-                if (location.X < 0)
-                {
-                    location.X = 0;
-                }
-                if (location.Y < 0)
-                {
-                    location.Y = 0;
-                }
+
                 return new Rectangle(location, size);
             }
         }

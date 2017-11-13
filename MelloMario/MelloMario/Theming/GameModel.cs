@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using MelloMario.LevelGen;
 using System;
 using MelloMario.Containers;
 using MelloMario.Scripts;
-using MelloMario.Factories;
 using MelloMario.MiscObjects;
 using MelloMario.Sounds;
+using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming
 {
@@ -144,8 +142,7 @@ namespace MelloMario.Theming
                 foreach (IPlayer player in session.ScanPlayers())
                 {
                     player.World.Update();
-                    var loc = new Point(player.Sensing.X < 0 ? 0 : player.Sensing.X, player.Sensing.Y < 0 ? 0 : player.Sensing.Y);
-                    foreach (IGameObject obj in player.World.ScanNearby(new Rectangle(loc, player.Sensing.Size)))
+                    foreach (IGameObject obj in player.World.ScanNearby(player.Character.Sensing))
                     {
                         updating.Add(obj);
                     }
@@ -167,21 +164,20 @@ namespace MelloMario.Theming
         public void Draw(int time)
         {
             IPlayer player = GetActivePlayer();
-            var loc = new Point(player.Viewport.X < 0 ? 0 : player.Viewport.X, player.Viewport.Y < 0 ? 0 : player.Viewport.Y);
-            foreach (IGameObject obj in player.World.ScanNearby(new Rectangle(loc, player.Viewport.Size)))
+
+            foreach (IGameObject obj in player.World.ScanNearby(player.Character.Viewport))
             {
                 if (isPaused)
                 {
-                    obj.Draw(0, player.Viewport);
+                    obj.Draw(0, player.Character.Viewport);
                 }
                 else
                 {
-                    obj.Draw(time, player.Viewport);
+                    obj.Draw(time, player.Character.Viewport);
                 }
             }
-            //Debug code, remove later
-            //(player.World as GameWorld2).Draw(game.GetSpriteBatch);
-            hud.Draw(time, player.Viewport);
+
+            hud.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using MelloMario.EnemyObjects.PiranhaStates;
+﻿using MelloMario.EnemyObjects.PiranhaStates;
 using MelloMario.Interfaces.Objects.States;
 using Microsoft.Xna.Framework;
 using MelloMario.Theming;
@@ -54,7 +53,7 @@ namespace MelloMario.EnemyObjects
                     break;
             }
             base.OnSimulation(time);
-            
+
         }
 
         protected override void OnUpdate(int time)
