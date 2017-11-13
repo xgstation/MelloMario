@@ -23,7 +23,7 @@ namespace MelloMario.Collision
                 {
                     location.Y = 0;
                 }
-                return new Point(location, realObject.Boundary.Size);
+                return new Rectangle(location, realObject.Boundary.Size);
             }
         }
         public QuadTreeNode<T> Owner { get { return owner; } set { owner = value; } }
