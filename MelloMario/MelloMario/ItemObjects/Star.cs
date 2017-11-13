@@ -11,6 +11,7 @@ namespace MelloMario.ItemObjects
         private const int H_SPEED = 3;
         private IItemState state;
         private bool goingRight;
+        private bool collected;
 
         private void UpdateSprite()
         {
@@ -115,6 +116,7 @@ namespace MelloMario.ItemObjects
 
         public Star(IGameWorld world, Point location, Point marioLocation, Listener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
         {
+            collected = false;
 
             if (marioLocation.X < location.X)
             {
@@ -141,7 +143,9 @@ namespace MelloMario.ItemObjects
 
         public void Collect()
         {
-            ScorePoints(GameConst.SCORE_POWER_UP);
+            if (!collected)
+                ScorePoints(GameConst.SCORE_POWER_UP);
+            collected = true;
             RemoveSelf();
             //State.Collect();
         }

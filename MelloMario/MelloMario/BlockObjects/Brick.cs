@@ -89,6 +89,11 @@ namespace MelloMario.BlockObjects
         {
         }
 
+        public void OnDestoy()
+        {
+            ScorePoints(GameConst.SCORE_BRICK);
+        }
+
         public void Remove()
         {
             RemoveSelf();
