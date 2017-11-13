@@ -10,18 +10,22 @@ namespace MelloMario.Collision
         {
             realObject = obj;
         }
-        public Rectangle Boundary { get {
-            Rectangle b = realObject.Boundary;
-            if (b.Location.X < 0)
+        public Rectangle Boundary
+        {
+            get
             {
-                b.Location.X = 0;
+                Point location = realObject.Boundary.Location;
+                if (location.X < 0)
+                {
+                    location.X = 0;
+                }
+                if (location.Y < 0)
+                {
+                    location.Y = 0;
+                }
+                return new Point(location, realObject.Boundary.Size);
             }
-            if (b.Location.Y < 0)
-            {
-                b.Location.Y = 0;
-            }
-            return b;
-        } }
+        }
         public QuadTreeNode<T> Owner { get { return owner; } set { owner = value; } }
         public T realObj { get { return realObject; } }
     }
