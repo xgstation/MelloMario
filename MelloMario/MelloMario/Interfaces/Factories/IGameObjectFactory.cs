@@ -8,5 +8,6 @@ namespace MelloMario
     {
         Tuple<ICharacter, IGameObject> CreateGameCharacter(string type, IGameSession session, IGameWorld world, Point location, Listener listener);
         IGameObject CreateGameObject(string type, IGameWorld world, Point location, Listener listener);
+        IGameObject[] CreateFlagPole(IGameWorld world, Point location, Listener listener, int height);
     }
 }

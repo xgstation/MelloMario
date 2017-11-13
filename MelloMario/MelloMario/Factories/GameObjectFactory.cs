@@ -60,10 +60,6 @@ namespace MelloMario.Factories
                     return new Question(world, location, listener, false);
                 case "HiddenQuestion":
                     return new Question(world, location, listener, true);
-                case "EndFlag":
-                    return new Flag(world, location, listener, 0, 1);
-                case "EndFlagTop":
-                    return new Flag(world, location, listener, 1, 1);
                 case "PipelineLeftIn":
                     return new Pipeline(world, location, listener, "LeftIn");
                 case "PipelineRightIn":
@@ -116,6 +112,16 @@ namespace MelloMario.Factories
                 default:
                     return null;
             }
+        }
+
+        public IGameObject[] CreateFlagPole(IGameWorld world, Point location, Listener listener, int height)
+        {
+            IGameObject[] flagPole = new IGameObject[height];
+            for(int i = 0; i < height; ++i)
+            {
+                flagPole[i] = new Flag(world, location, listener, i, height-1);
+            }
+            return flagPole;
         }
     }
 }
