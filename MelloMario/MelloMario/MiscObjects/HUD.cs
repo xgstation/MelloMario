@@ -32,7 +32,7 @@ namespace MelloMario.MiscObjects
         public HUD(GameModel model)
         {
             this.model = model;
-            coinSprite = SpriteFactory.Instance.CreateCoinSprite();
+            coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             UpdateSprite();
         }
 
