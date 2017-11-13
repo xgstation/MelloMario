@@ -8,6 +8,7 @@ namespace MelloMario.BlockObjects
     {
         private bool top;
         private int height, maxHeight;
+        private bool collected;
 
         private void UpdateSprite()
         {
@@ -25,6 +26,10 @@ namespace MelloMario.BlockObjects
             if (target is MarioObjects.PlayerMario)
             {
                 ((MarioObjects.PlayerMario) target).Downgrade();
+                if(!collected)
+                    ScorePoints((int)((1f * height / maxHeight) * GameConst.SCORE_FLAG_MAX));
+                collected = true;
+                //TODO: trigger game win
             }
         }
 
@@ -42,6 +47,7 @@ namespace MelloMario.BlockObjects
 
         public Flag(IGameWorld world, Point location, Listener listener, int height, int maxHeight) : base(world, location, listener, new Point(32, 32))
         {
+            collected = false;
             this.height = height;
             this.maxHeight = maxHeight;
             top = height == maxHeight;

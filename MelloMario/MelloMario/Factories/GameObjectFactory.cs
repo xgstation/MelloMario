@@ -119,7 +119,7 @@ namespace MelloMario.Factories
             IGameObject[] flagPole = new IGameObject[height];
             for(int i = 0; i < height; ++i)
             {
-                flagPole[i] = new Flag(world, new Point(location.X, location.Y + 32*i), listener, i, height-1);
+                flagPole[i] = new Flag(world, new Point(location.X, location.Y - 32*i), listener, i, height-1);
             }
             return flagPole;
         }
