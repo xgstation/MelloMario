@@ -14,12 +14,12 @@ namespace MelloMario.Collision
 
         private IList<EncapsulatedQuadTreeObject<T>> objects;
 
-        private QuadTreeNode<T> parent = null;
+        private readonly QuadTreeNode<T> parent;
 
-        private QuadTreeNode<T> topLeft = null;
-        private QuadTreeNode<T> topRight = null;
-        private QuadTreeNode<T> bottomLeft = null;
-        private QuadTreeNode<T> bottomRight = null;
+        private QuadTreeNode<T> topLeft;
+        private QuadTreeNode<T> topRight;
+        private QuadTreeNode<T> bottomLeft;
+        private QuadTreeNode<T> bottomRight;
         #endregion
 
 
@@ -70,7 +70,7 @@ namespace MelloMario.Collision
 
         internal void Insert(EncapsulatedQuadTreeObject<T> item)
         {
-            if (rect.Contains(item.Boundary))
+            if (IsFit(item))
             {
                 if (parent == null)
                 {
@@ -83,7 +83,7 @@ namespace MelloMario.Collision
                 }
             }
 
-            if (objects == null || (topLeft == null && objects.Count + 1 <= MAXOBJECTS))
+            if (objects == null || (topLeft == null && objects.Count < MAXOBJECTS))
             {
                 Add(item);
             }
@@ -107,20 +107,18 @@ namespace MelloMario.Collision
 
         internal void Delete(EncapsulatedQuadTreeObject<T> item, bool clean)
         {
-            if (item.Owner != null)
+            if (item.Owner == null) return;
+            if (item.Owner == this)
             {
-                if (item.Owner == this)
+                Remove(item);
+                if (clean)
                 {
-                    Remove(item);
-                    if (clean)
-                    {
-                        Clean();
-                    }
+                    Clean();
                 }
-                else
-                {
-                    item.Owner.Delete(item, clean);
-                }
+            }
+            else
+            {
+                item.Owner.Delete(item, clean);
             }
         }
 
@@ -138,52 +136,50 @@ namespace MelloMario.Collision
             bottomRight = null;
         }
 
-        internal void GetAll(ref ICollection<T> all)
+        internal void GetObjects(ref ICollection<T> container)
         {
             if (objects != null)
             {
-                foreach (EncapsulatedQuadTreeObject<T> o in objects)
+                foreach (var o in objects)
                 {
-                    all.Add(o.realObj);
+                    container.Add(o.realObj);
                 }
             }
-            if (HasSubTree)
-            {
-                topLeft.GetAll(ref all);
-                topRight.GetAll(ref all);
-                bottomRight.GetAll(ref all);
-                bottomLeft.GetAll(ref all);
-            }
+            if (!HasSubTree) return;
+            topLeft.GetObjects(ref container);
+            topRight.GetObjects(ref container);
+            bottomRight.GetObjects(ref container);
+            bottomLeft.GetObjects(ref container);
         }
 
-        internal void GetRanged(Rectangle range, ref ICollection<T> ranged)
+        internal void GetObjects(Rectangle range, ref ICollection<T> container)
         {
-            if (ranged == null)
+            if (container == null)
             {
                 return;
             }
             if (range.Contains(rect))
             {
-                GetAll(ref ranged);
+                GetObjects(ref container);
             }
             else if (range.Intersects(rect))
             {
                 if (objects != null)
                 {
-                    foreach (EncapsulatedQuadTreeObject<T> o in objects)
+                    foreach (var o in objects)
                     {
                         if (range.Intersects(o.Boundary))
                         {
-                            ranged.Add(o.realObj);
+                            container.Add(o.realObj);
                         }
                     }
                 }
                 if (HasSubTree)
                 {
-                    topLeft.GetRanged(range, ref ranged);
-                    topRight.GetRanged(range, ref ranged);
-                    bottomLeft.GetRanged(range, ref ranged);
-                    bottomRight.GetRanged(range, ref ranged);
+                    topLeft.GetObjects(range, ref container);
+                    topRight.GetObjects(range, ref container);
+                    bottomLeft.GetObjects(range, ref container);
+                    bottomRight.GetObjects(range, ref container);
                 }
             }
         }
@@ -217,15 +213,11 @@ namespace MelloMario.Collision
 
         private void Remove(EncapsulatedQuadTreeObject<T> item)
         {
-            if (objects != null && objects.Contains(item))
-            {
-                int removeIndex = objects.IndexOf(item);
-                if (removeIndex >= 0)
-                {
-                    objects[removeIndex] = objects[objects.Count - 1];
-                    objects.RemoveAt(objects.Count - 1);
-                }
-            }
+            if (objects == null || !objects.Contains(item)) return;
+            int removeIndex = objects.IndexOf(item);
+            if (removeIndex < 0) return;
+            objects[removeIndex] = objects[objects.Count - 1];
+            objects.RemoveAt(objects.Count - 1);
         }
 
         private int CountObjects()
@@ -235,19 +227,17 @@ namespace MelloMario.Collision
             {
                 count += objects.Count;
             }
-            if (HasSubTree)
-            {
-                count += topLeft.CountObjects();
-                count += topRight.CountObjects();
-                count += bottomLeft.CountObjects();
-                count += bottomRight.CountObjects();
-            }
+            if (!HasSubTree) return count;
+            count += topLeft.CountObjects();
+            count += topRight.CountObjects();
+            count += bottomLeft.CountObjects();
+            count += bottomRight.CountObjects();
             return count;
         }
 
         private void Divide()
         {
-            Point newSize = new Point(rect.Width / 2, rect.Height / 2);
+            var newSize = new Point(rect.Width / 2, rect.Height / 2);
             topLeft = new QuadTreeNode<T>(this, new Rectangle(new Point(rect.Left, rect.Top), newSize));
             topRight = new QuadTreeNode<T>(this, new Rectangle(new Point(rect.Center.X, rect.Top), newSize));
             bottomLeft = new QuadTreeNode<T>(this, new Rectangle(new Point(rect.Left, rect.Center.Y), newSize));
@@ -255,15 +245,12 @@ namespace MelloMario.Collision
 
             for (int i = 0; i < objects.Count; i++)
             {
-                QuadTreeNode<T> destTree = GetDestTree(objects[i]);
+                var destTree = GetDestTree(objects[i]);
 
-                if (destTree != this)
-                {
-                    // Insert to the appropriate tree, remove the object, and back up one in the loop
-                    destTree.Insert(objects[i]);
-                    Remove(objects[i]);
-                    i--;
-                }
+                if (destTree == this) continue;
+                destTree.Insert(objects[i]);
+                Remove(objects[i]);
+                i--;
             }
         }
 
@@ -288,24 +275,17 @@ namespace MelloMario.Collision
         {
             if (rect.Contains(item.Boundary))
             {
-                if (HasSubTree)
-                {
-                    var destNode = GetDestTree(item);
-                    if (item.Owner != destNode)
-                    {
-                        var former = item.Owner;
-                        Delete(item, false);
-                        destNode.Insert(item);
-                        former.Clean();
-                    }
-                }
+                if (!HasSubTree) return;
+                var destNode = GetDestTree(item);
+                if (item.Owner == destNode) return;
+                var former = item.Owner;
+                Delete(item, false);
+                destNode.Insert(item);
+                former.Clean();
             }
             else
             {
-                if (parent != null)
-                {
-                    parent.Relocate(item);
-                }
+                parent?.Relocate(item);
             }
         }
 
