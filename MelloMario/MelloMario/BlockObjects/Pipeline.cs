@@ -71,8 +71,7 @@ namespace MelloMario.BlockObjects
                             }
                             break;
                     }
-
-                    mario.CrouchRelease();
+                    
                     // TODO: mario.freeze
                 }
             }

@@ -34,75 +34,47 @@
       ],
       "Entity": [
         {
-          "Type": "ShortCloud",
-          "Point": {
-            "X": 3,
-            "Y": 5
-          },
-          "Quantity": {
-            "X": 100,
-            "Y": 1
-          }
-        },
-        {
-          "Type": "ShortSmileCloud",
-          "Point": {
-            "X": 7,
-            "Y": 5
-          },
-          "Quantity": {
-            "X": 100,
-            "Y": 1
-          }
-        },
-        {
-          "Type": "LongCloud",
-          "Point": {
-            "X": 13,
-            "Y": 3
-          },
-          "Quantity": {
-            "X": 100,
-            "Y": 1
-          }
-        },
-        {
-          "Type": "LongSmileCloud",
-          "Point": {
-            "X": 15,
-            "Y": 2
-          },
-          "Quantity": {
-            "X": 100,
-            "Y": 1
-          }
-        },
-        {
           "Type": "Floor",
           "Point": {
             "X": 0,
             "Y": 15
           },
           "Quantity": {
-            "X": 212,
-            "Y": 2
-          },
-          "Ignored": [
-            {
-              "X": 3,
-              "Y": 0
-            },
-            {
-              "X": 4,
-              "u": 0
-            }
-          ]
+            "X": 69,
+            "Y": 3
+          }
         },
         {
           "Type": "Floor",
           "Point": {
-            "x": 2,
-            "y": 14
+            "X": 71,
+            "y": 15
+          },
+          "Quantity": {
+            "X": 15,
+            "Y": 3
+          }
+        },
+        {
+          "Type": "Floor",
+          "Point": {
+            "X": 88,
+            "y": 15
+          },
+          "Quantity": {
+            "X": 65,
+            "Y": 3
+          }
+        },
+        {
+          "Type": "Floor",
+          "Point": {
+            "X": 155,
+            "y": 15
+          },
+          "Quantity": {
+            "X": 57,
+            "Y": 3
           }
         },
         {
@@ -133,7 +105,7 @@
         {
           "Type": "Flag",
           "Point": {
-            "X": 45,
+            "X": 200,
             "Y": 14
           }
         },
@@ -255,35 +227,13 @@
             "Piranha": {
               "Color": "Red",
               "HiddenTime": 1.5,
-              "ShowTime": 2.5 
+              "ShowTime": 2.5
             },
             "Length": 3,
             "Direction": "V",
             "Entrance": "1-1-2",
             "Index": "Main-1",
             "Portal": "1-1-2-1"
-          }
-        },
-        {
-          "Type": "Stair",
-          "Point": {
-            "X": 26,
-            "Y": 13
-          },
-          "Quantity": {
-            "X": 2,
-            "Y": 2
-          }
-        },
-        {
-          "Type": "Stair",
-          "Point": {
-            "X": 70,
-            "Y": 13
-          },
-          "Quantity": {
-            "X": 2,
-            "Y": 2
           }
         },
         {

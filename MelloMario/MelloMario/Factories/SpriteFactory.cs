@@ -222,13 +222,13 @@ namespace MelloMario.Factories
             switch (type)
             {
                 case "LeftIn":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 16, zIndex: ZIndex.level);
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 16, zIndex: ZIndex.foreground);
                 case "RightIn":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 16, zIndex: ZIndex.level);
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 16, zIndex: ZIndex.foreground);
                 case "Left":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 18, zIndex: ZIndex.level);
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 18, zIndex: ZIndex.foreground);
                 case "Right":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 18, zIndex: ZIndex.level);
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 18, zIndex: ZIndex.foreground);
                 //TODO: Implement cases below
                 case "TopLeftIn":
                 case "BottomLeftIn":
