@@ -21,6 +21,8 @@ namespace MelloMario.Collision
         private QuadTreeNode<T> topRight;
         private QuadTreeNode<T> bottomLeft;
         private QuadTreeNode<T> bottomRight;
+
+        private Texture2D t;
         #endregion
 
 
@@ -400,14 +402,12 @@ namespace MelloMario.Collision
 
         public void DrawBoundary(SpriteBatch spriteBatch)
         {
-            var t = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
+            t = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
             t.SetData(new[] { Color.White });
-            int bw = 2; // Border width
-            var r = rect;
-            spriteBatch.Draw(t, new Rectangle(r.Left, r.Top, bw, r.Height), Color.Black); // Left
-            spriteBatch.Draw(t, new Rectangle(r.Right, r.Top, bw, r.Height), Color.Black); // Right
-            spriteBatch.Draw(t, new Rectangle(r.Left, r.Top, r.Width, bw), Color.Black); // Top
-            spriteBatch.Draw(t, new Rectangle(r.Left, r.Bottom, r.Width, bw), Color.Black); // Bottom
+            spriteBatch.Draw(t, new Rectangle(rect.Left, rect.Top, 3, rect.Height), Color.Black); // Left
+            spriteBatch.Draw(t, new Rectangle(rect.Right, rect.Top, 3, rect.Height), Color.Black); // Right
+            spriteBatch.Draw(t, new Rectangle(rect.Left, rect.Top, rect.Width, 3), Color.Black); // Top
+            spriteBatch.Draw(t, new Rectangle(rect.Left, rect.Bottom, rect.Width, 3), Color.Black); // Bottom
             if (topLeft != null)
             {
                 topLeft.DrawBoundary(spriteBatch);
