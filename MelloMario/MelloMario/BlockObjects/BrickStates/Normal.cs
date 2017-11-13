@@ -33,6 +33,7 @@ namespace MelloMario.BlockObjects.BrickStates
                 }
                 else
                 {
+                    
                     Owner.State = new Destroyed(Owner);
                 }
             }

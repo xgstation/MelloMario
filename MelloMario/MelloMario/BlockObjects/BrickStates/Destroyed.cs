@@ -17,6 +17,7 @@ namespace MelloMario.BlockObjects.BrickStates
         {
             breakSound = SoundController.breakBlock.CreateInstance();
             breakSound.Play();
+            Owner.OnDestoy();
         }
 
         public void Show()
