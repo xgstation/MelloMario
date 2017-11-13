@@ -14,7 +14,7 @@ namespace MelloMario
     class Game1 : Game
     {
         private GraphicsDeviceManager graphics;
-        private SoundController soundControl;
+        //private SoundController soundControl;
         private GameModel model;
         private SpriteBatch spriteBatch;
 
@@ -36,14 +36,14 @@ namespace MelloMario
         protected override void Initialize()
         {
             base.Initialize();
-            soundControl = new SoundController(this);
+            //soundControl = new SoundController(this);
             model = new GameModel(this);
             IEnumerable<IController> controllers = new List<IController>
             {
                 new GamepadController(),
                 new KeyboardController()
             };
-            SoundController.PlayMusic(SoundController.Songs.normal);
+            //SoundController.PlayMusic(SoundController.Songs.normal);
             model.LoadControllers(controllers);
             model.LoadLevel("Main", true); // Create the level for the first time
             model.Init();

@@ -45,6 +45,7 @@ namespace MelloMario.Theming
             session = new GameSession();
             listener = new Listener(this);
             soundControl = new SoundController(this.game);
+            SoundController.PlayMusic(SoundController.Songs.normal);
 
             Score = 0;
             Coins = 0;
@@ -105,6 +106,17 @@ namespace MelloMario.Theming
             Resume();
         }
 
+        private bool isHurry = false;
+        public void switchMusic(int time)
+        {
+            if (time < 90000 && !isHurry)
+            {
+                MediaPlayer.Stop();
+                SoundController.PlayMusic(SoundController.Songs.hurry);
+                isHurry = true;
+            }
+        }
+
         public void Reset()
         {
             // TODO: "forced" version of LoadLevel()
@@ -150,10 +162,7 @@ namespace MelloMario.Theming
 
                 // TODO: move to correct place
                 Time -= time;
-            }
-            if (Time < 390)
-            {
-                SoundController.PlayMusic(SoundController.Songs.hurry);
+                switchMusic(Time);
             }
         }
 

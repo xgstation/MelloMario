@@ -38,7 +38,19 @@ namespace MelloMario.Sounds
 
         public static void PlayMusic(Songs song)
         {
-            MediaPlayer.Play(Normal);
+            switch (song)
+            {
+                case Songs.normal:
+                    MediaPlayer.Play(Normal);
+                    //MediaPlayer.IsRepeating = true;
+                    break;
+                case Songs.hurry:
+                    MediaPlayer.Play(Hurry);
+                    //MediaPlayer.IsRepeating = true;
+                    break;
+                default:
+                    break;
+            }
             MediaPlayer.IsRepeating = true;
         }
 
