@@ -7,11 +7,12 @@ namespace MelloMario.Containers
 {
     class GameWorld2 : IGameWorld
     {
-        private readonly Point maxSize;
         private readonly QuadTree<IGameObject> objContainer;
+
         private readonly Stack<IGameObject> toAdd;
         private readonly Stack<IGameObject> toMove;
         private readonly Stack<IGameObject> toRemove;
+
 
         private string id;
         private Point worldSize;
