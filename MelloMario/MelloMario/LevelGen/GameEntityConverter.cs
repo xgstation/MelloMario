@@ -222,7 +222,9 @@ namespace MelloMario.LevelGen
             {
                 IGameObject[] flagPole = GameObjectFactory.Instance.CreateFlagPole(world, objPoint, listener, 7);
                 for (int i = 0; i < flagPole.Length; ++i)
+                {
                     stack.Push(flagPole[i]);
+                }
             }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
             {
