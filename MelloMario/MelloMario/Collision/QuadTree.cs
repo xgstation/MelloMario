@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace MelloMario.Collision
@@ -80,6 +82,7 @@ namespace MelloMario.Collision
                 EncapsulatedQuadTreeObject<T> encapsulated = new EncapsulatedQuadTreeObject<T>(item);
                 dictTtoEncapsulated.Add(item, encapsulated);
                 quadTreeRoot.Insert(encapsulated);
+                Debug.Print(quadTreeRoot.Count.ToString());
             }
         }
 
@@ -110,5 +113,9 @@ namespace MelloMario.Collision
             return false;
         }
 
+        public void DrawBoundary(SpriteBatch spriteBatch)
+        {
+            quadTreeRoot.DrawBoundary(spriteBatch);
+        }
     }
 }

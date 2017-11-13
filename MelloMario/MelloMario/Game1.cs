@@ -18,7 +18,8 @@ namespace MelloMario
         private GameModel model;
         private SpriteBatch spriteBatch;
 
-
+        //Debug code, remove later.
+        //public SpriteBatch GetSpriteBatch => spriteBatch;
 
         public Game1()
         {

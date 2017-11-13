@@ -144,7 +144,8 @@ namespace MelloMario.Theming
                 foreach (IPlayer player in session.ScanPlayers())
                 {
                     player.World.Update();
-                    foreach (IGameObject obj in player.World.ScanNearby(player.Sensing))
+                    var loc = new Point(player.Sensing.X < 0 ? 0 : player.Sensing.X, player.Sensing.Y < 0 ? 0 : player.Sensing.Y);
+                    foreach (IGameObject obj in player.World.ScanNearby(new Rectangle(loc, player.Sensing.Size)))
                     {
                         updating.Add(obj);
                     }
@@ -166,8 +167,8 @@ namespace MelloMario.Theming
         public void Draw(int time)
         {
             IPlayer player = GetActivePlayer();
-
-            foreach (IGameObject obj in player.World.ScanNearby(player.Viewport))
+            var loc = new Point(player.Viewport.X < 0 ? 0 : player.Viewport.X, player.Viewport.Y < 0 ? 0 : player.Viewport.Y);
+            foreach (IGameObject obj in player.World.ScanNearby(new Rectangle(loc, player.Viewport.Size)))
             {
                 if (isPaused)
                 {
@@ -178,7 +179,8 @@ namespace MelloMario.Theming
                     obj.Draw(time, player.Viewport);
                 }
             }
-
+            //Debug code, remove later
+            //(player.World as GameWorld2).Draw(game.GetSpriteBatch);
             hud.Draw(time, player.Viewport);
         }
     }

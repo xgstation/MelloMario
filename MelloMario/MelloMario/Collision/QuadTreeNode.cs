@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Collision
 {
@@ -70,7 +71,7 @@ namespace MelloMario.Collision
 
         internal void Insert(EncapsulatedQuadTreeObject<T> item)
         {
-            if (IsFit(item))
+            if (!rect.Contains(item.Boundary))
             {
                 if (parent == null)
                 {
@@ -79,6 +80,7 @@ namespace MelloMario.Collision
                 }
                 else
                 {
+                    Debug.WriteLine("Object is not inserted.");
                     return;
                 }
             }
@@ -86,6 +88,7 @@ namespace MelloMario.Collision
             if (objects == null || (topLeft == null && objects.Count < MAXOBJECTS))
             {
                 Add(item);
+                Debug.WriteLine("Object inserted.");
             }
             else
             {
@@ -97,10 +100,12 @@ namespace MelloMario.Collision
                 if (dest == this)
                 {
                     Add(item);
+                    Debug.WriteLine("Object inserted.");
                 }
                 else
                 {
                     dest.Insert(item);
+                    Debug.WriteLine("Object inserted in subtree.");
                 }
             }
         }
@@ -142,7 +147,7 @@ namespace MelloMario.Collision
             {
                 foreach (var o in objects)
                 {
-                    container.Add(o.realObj);
+                    container.Add(o.RealObj);
                 }
             }
             if (!HasSubTree) return;
@@ -170,7 +175,7 @@ namespace MelloMario.Collision
                     {
                         if (range.Intersects(o.Boundary))
                         {
-                            container.Add(o.realObj);
+                            container.Add(o.RealObj);
                         }
                     }
                 }
@@ -315,5 +320,25 @@ namespace MelloMario.Collision
         }
 
         #endregion
+
+        public void DrawBoundary(SpriteBatch spriteBatch)
+        {
+            var t = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
+            t.SetData(new[] { Color.White });
+            int bw = 2; // Border width
+            var r = rect;
+            spriteBatch.Draw(t, new Rectangle(r.Left, r.Top, bw, r.Height), Color.Black); // Left
+            spriteBatch.Draw(t, new Rectangle(r.Right, r.Top, bw, r.Height), Color.Black); // Right
+            spriteBatch.Draw(t, new Rectangle(r.Left, r.Top, r.Width, bw), Color.Black); // Top
+            spriteBatch.Draw(t, new Rectangle(r.Left, r.Bottom, r.Width, bw), Color.Black); // Bottom
+            if (topLeft != null)
+            {
+                topLeft.DrawBoundary(spriteBatch);
+                topRight.DrawBoundary(spriteBatch);
+                bottomRight.DrawBoundary(spriteBatch);
+                bottomLeft.DrawBoundary(spriteBatch);
+            }
+
+        }
     }
 }
