@@ -238,7 +238,7 @@ namespace MelloMario
 
         public BaseCollidableObject(IGameWorld world, Point location, Listener listener, Point size) : base(world, location, size)
         {
-            listener.Subscribe(this);
+            listener?.Subscribe(this);
             movement = new Point();
         }
     }
