@@ -17,12 +17,11 @@ namespace MelloMario
         private GameModel model;
         private SpriteBatch spriteBatch;
 
-        //Debug code, remove later.
-        //public SpriteBatch GetSpriteBatch => spriteBatch;
+
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this) { };
             graphics.PreferredBackBufferHeight = GameConst.SCREEN_WIDTH;
             graphics.PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT;
         }
