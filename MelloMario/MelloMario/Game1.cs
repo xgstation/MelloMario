@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Controllers;
 using MelloMario.Factories;
 using MelloMario.Theming;
-using MelloMario.Sounds;
 
 namespace MelloMario
 {

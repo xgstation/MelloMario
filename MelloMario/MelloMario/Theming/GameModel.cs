@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using MelloMario.LevelGen;
 using System;
 using MelloMario.Containers;
 using MelloMario.Scripts;
-using MelloMario.Factories;
 using MelloMario.MiscObjects;
 using MelloMario.Sounds;
 

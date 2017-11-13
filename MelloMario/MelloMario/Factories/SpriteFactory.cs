@@ -2,7 +2,6 @@
 using MelloMario.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-using MelloMario.Theming;
 using MelloMario.Sprites.BlockSprites;
 using Microsoft.Xna.Framework;
 

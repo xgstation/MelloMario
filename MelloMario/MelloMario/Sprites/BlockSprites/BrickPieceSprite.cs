@@ -2,7 +2,6 @@
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Graphics.PackedVector;
 
 namespace MelloMario.Sprites.BlockSprites
 {
@@ -73,7 +72,7 @@ namespace MelloMario.Sprites.BlockSprites
             float[] offsetY = new float[4];
             Rectangle[] source = new Rectangle[4];
 
-            float k = 5f / Math.Abs(2f - GameConst.FORCE_F_AIR/20f);
+            float k = 5f / Math.Abs(2f - GameConst.FORCE_F_AIR / 20f);
             //LB
             offsetX[0] = -elapsed / k + 4f;
             offsetY[0] = GameConst.FORCE_G * elapsed * elapsed / 16000f - elapsed + 16f;
