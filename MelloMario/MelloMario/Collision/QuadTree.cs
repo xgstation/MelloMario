@@ -112,10 +112,5 @@ namespace MelloMario.Collision
             }
             return false;
         }
-
-        public void DrawBoundary(SpriteBatch spriteBatch)
-        {
-            quadTreeRoot.DrawBoundary(spriteBatch);
-        }
     }
 }
