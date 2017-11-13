@@ -165,7 +165,7 @@ namespace MelloMario.Factories
 
         public ISprite CreateCoinSprite()
         {
-            return new AnimatedSprite(spriteBatch, GetTexture("Coin"), 4, 1);
+            return new AnimatedSprite(spriteBatch, GetTexture("Coin"), 4, 1, 0, 0, 1, 2);
         }
 
         public ISprite CreateSuperMushroomSprite()
