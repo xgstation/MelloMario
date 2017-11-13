@@ -27,6 +27,6 @@ namespace MelloMario.Collision
             }
         }
         public QuadTreeNode<T> Owner { get { return owner; } set { owner = value; } }
-        public T realObj { get { return realObject; } }
+        public T RealObject { get { return realObject; } }
     }
 }

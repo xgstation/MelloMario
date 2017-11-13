@@ -203,7 +203,7 @@ namespace MelloMario.Collision
             {
                 foreach (EncapsulatedQuadTreeObject<T> o in objects)
                 {
-                    container.Add(o.RealObj);
+                    container.Add(o.RealObject);
                 }
             }
             if (!HasSubTree)
@@ -234,7 +234,7 @@ namespace MelloMario.Collision
                     {
                         if (range.Intersects(o.Boundary))
                         {
-                            container.Add(o.RealObj);
+                            container.Add(o.RealObject);
                         }
                     }
                 }
