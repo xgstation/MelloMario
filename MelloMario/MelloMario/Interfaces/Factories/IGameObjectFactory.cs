@@ -1,6 +1,7 @@
 ﻿using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace MelloMario
 {
@@ -8,6 +9,6 @@ namespace MelloMario
     {
         Tuple<ICharacter, IGameObject> CreateGameCharacter(string type, IGameSession session, IGameWorld world, Point location, Listener listener);
         IGameObject CreateGameObject(string type, IGameWorld world, Point location, Listener listener);
-        IGameObject[] CreateFlagPole(IGameWorld world, Point location, Listener listener, int height);
+        IEnumerable<IGameObject> CreateGameObjectGroup(string type, IGameWorld world, Point location, int count, Listener listener);
     }
 }

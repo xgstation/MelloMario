@@ -138,7 +138,9 @@ namespace MelloMario.ItemObjects
         public void Collect()
         {
             if(!collected)
+            {
                 ScorePoints(GameConst.SCORE_POWER_UP);
+            }
             collected = true;
             RemoveSelf();
             //State.Collect();
