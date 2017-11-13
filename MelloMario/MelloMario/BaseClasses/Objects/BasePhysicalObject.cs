@@ -190,7 +190,7 @@ namespace MelloMario
             base.OnSimulation(time);
         }
 
-        public BasePhysicalObject(IGameWorld world, Point location, Point size, float pixelScale, float velocityLimit = 1) : base(world, location, size)
+        public BasePhysicalObject(IGameWorld world, Point location, Listener listener, Point size, float pixelScale, float velocityLimit = 1) : base(world, location, listener, size)
         {
             this.pixelScale = pixelScale;
             this.velocityLimit = velocityLimit;

@@ -105,8 +105,10 @@ namespace MelloMario.ItemObjects
         {
         }
 
-        public SuperMushroom(IGameWorld world, Point location) : this(world, location, GameDatabase.GetCharacterLocation()) { }
-        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil = true) : base(world, location, new Point(32, 32), 32)
+
+        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener) : this(world, location, marioLocation, listener, false) { }
+        public SuperMushroom(IGameWorld world, Point location, Listener listener) : this(world, location, GameDatabase.GetCharacterLocation(), listener) { }
+        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
         {
             if (marioLocation.X < location.X)
             {
@@ -130,12 +132,9 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public SuperMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
-        {
-        }
-
         public void Collect()
         {
+            ScorePoints(GameConst.SCORE_POWER_UP);
             RemoveSelf();
             //State.Collect();
         }

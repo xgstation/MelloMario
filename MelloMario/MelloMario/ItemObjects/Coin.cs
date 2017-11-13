@@ -10,8 +10,8 @@ namespace MelloMario.ItemObjects
     class Coin : BaseCollidableObject
     {
         private IItemState state;
-        public event CoinHandler Handler;
-        private EventArgs eventInfo;
+        public event CoinHandler HandlerCoins;
+        private EventArgs coinEventInfo;
         public delegate void CoinHandler(Coin m, EventArgs e);
 
         private void UpdateSprite()
@@ -57,11 +57,11 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public Coin(IGameWorld world, Point location, Listener listener, bool isUnveil = false) : base(world, location, new Point(32, 32))
+        public Coin(IGameWorld world, Point location, Listener listener, bool isUnveil = false) : base(world, location, listener, new Point(32, 32))
         {
             listener.Subscribe(this);
             //eventually if coin needs to pass info put it in eventinfo
-            eventInfo = null;
+            coinEventInfo = null;
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -77,7 +77,8 @@ namespace MelloMario.ItemObjects
 
         public void Collect()
         {
-            Handler?.Invoke(this, eventInfo);
+            HandlerCoins?.Invoke(this, coinEventInfo);
+            ScorePoints(GameConst.SCORE_COIN);
             RemoveSelf();
             //State.Collect();
         }

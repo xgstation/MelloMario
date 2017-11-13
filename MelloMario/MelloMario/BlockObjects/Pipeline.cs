@@ -90,12 +90,12 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        public Pipeline(IGameWorld world, Point location, string type, GameModel model) : this(world, location, type)
+        public Pipeline(IGameWorld world, Point location, Listener listener, string type, GameModel model) : this(world, location, listener, type)
         {
             SetModel(model);
         }
 
-        public Pipeline(IGameWorld world, Point location, string type) : base(world, location, new Point(32, 32))
+        public Pipeline(IGameWorld world, Point location, Listener listener, string type) : base(world, location, listener, new Point(32, 32))
         {
             this.type = type;
             pipeTravelSound = SoundController.pipe.CreateInstance();

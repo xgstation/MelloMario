@@ -92,7 +92,7 @@ namespace MelloMario.LevelGen
 
                 return null;
             }
-            createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point);
+            createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, listener);
             if (Util.TryGet(out quantity, objToken, "Quantity"))
             {
                 ignoredSet = !isSingle && Util.TryReadIgnoreSet(objToken, out ignoredSet) ? ignoredSet : null;
@@ -204,7 +204,7 @@ namespace MelloMario.LevelGen
                     Util.TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden,
                     Util.TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
                 list = Util.CreateItemList(world, objPoint, listener, propertyPair.Item2);
-                objToBePushed = Activator.CreateInstance(type, world, objPoint, propertyPair.Item1) as IGameObject;
+                objToBePushed = Activator.CreateInstance(type, world, objPoint, listener, propertyPair.Item1) as IGameObject;
                 if (list != null && list.Count != 0)
                 {
                     GameDatabase.SetEnclosedItem(objToBePushed, list);
@@ -223,7 +223,7 @@ namespace MelloMario.LevelGen
             {
                 if (isSingle)
                 {
-                    stack.Push(Activator.CreateInstance(type, world, objPoint, false) as BaseGameObject);
+                    stack.Push(Activator.CreateInstance(type, world, objPoint, listener, false) as BaseGameObject);
                     if (type.Name == "Question")
                     {
                         (objToBePushed as Question).Initialize();
@@ -238,13 +238,15 @@ namespace MelloMario.LevelGen
                     Util.BatchCreate(
                         point =>
                         {
-                            objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, false);
+                            
                             if (type.Name == "Question")
                             {
+                                objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, false);
                                 (objToBePushed as Question).Initialize();
                             }
                             if (type.Name == "Brick")
                             {
+                                objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
                                 (objToBePushed as Brick).Initialize();
                             }
                             return objToBePushed;
@@ -266,7 +268,7 @@ namespace MelloMario.LevelGen
                 }
                 if (isSingle)
                 {
-                    list = Util.CreateSinglePipeline(model, world, grid, direction, length, objPoint);
+                    list = Util.CreateSinglePipeline(model, world, listener, grid, direction, length, objPoint);
                     foreach (Pipeline pipelineComponent in list)
                     {
                         stack.Push(pipelineComponent);
@@ -278,7 +280,7 @@ namespace MelloMario.LevelGen
                         Util.TryGet(out float hiddenTime, piranhaToken, "HiddenTime") &&
                         Util.TryGet(out float showTime, piranhaToken, "ShowTime"))
                         {
-                            new Piranha(world, new Point(objPoint.X + 16, objPoint.Y), new Point(32, 48),
+                            new Piranha(world, new Point(objPoint.X + 16, objPoint.Y), listener, new Point(32, 48),
                                 (int)(hiddenTime * 1000), (int)(showTime * 1000), 32, color);
                         }
                     }
@@ -292,7 +294,7 @@ namespace MelloMario.LevelGen
                 else
                 {
                     objFullSize = direction.Contains("V") ? new Point(GameConst.GRID * 2, GameConst.GRID + GameConst.GRID * length) : new Point(GameConst.GRID + GameConst.GRID * length, GameConst.GRID * 2);
-                    Util.BatchCreate(point => Util.CreateSinglePipeline(model, world, grid, direction, length, point), objPoint, quantity, objFullSize,
+                    Util.BatchCreate(point => Util.CreateSinglePipeline(model, world, listener, grid, direction, length, point), objPoint, quantity, objFullSize,
                         ignoredSet, grid, ref stack);
                 }
             }

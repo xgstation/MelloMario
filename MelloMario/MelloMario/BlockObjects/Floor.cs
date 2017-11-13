@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
+using MelloMario.Theming;
 
 namespace MelloMario.BlockObjects
 {
@@ -30,7 +31,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        public Floor(IGameWorld world, Point location, bool isHidden = false) : base(world, location, new Point(32, 32))
+        public Floor(IGameWorld world, Point location, Listener listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
         {
             if (isHidden)
             {

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MelloMario.Theming;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -7,6 +8,9 @@ namespace MelloMario
     abstract class BaseCollidableObject : BaseGameObject
     {
         private Point movement;
+        public event PointHandler HandlerPoints;
+        private PointEventArgs pointEventInfo;
+        public delegate void PointHandler(BaseCollidableObject m, PointEventArgs e);
 
         private IEnumerable<Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>> ScanCollideModes(Rectangle targetBoundary)
         {
@@ -221,8 +225,20 @@ namespace MelloMario
             }
         }
 
-        public BaseCollidableObject(IGameWorld world, Point location, Point size) : base(world, location, size)
+        protected void ScorePoints(int points)
         {
+            pointEventInfo = new PointEventArgs
+            {
+                Points = points
+            };
+
+            HandlerPoints?.Invoke(this, pointEventInfo);
+
+        }
+
+        public BaseCollidableObject(IGameWorld world, Point location, Listener listener, Point size) : base(world, location, size)
+        {
+            listener.Subscribe(this);
             movement = new Point();
         }
     }

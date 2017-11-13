@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MelloMario.Factories;
 using Microsoft.Xna.Framework;
+using MelloMario.Theming;
 
 namespace MelloMario.MarioObjects
 {
@@ -43,7 +44,7 @@ namespace MelloMario.MarioObjects
             //throw new NotImplementedException();
         }
 
-        public Fire(IGameWorld world, Point location, bool isRight = true) : base(world, location, new Point(16, 16), 32, 5f)
+        public Fire(IGameWorld world, Point location, Listener listener, bool isRight = true) : base(world, location, listener, new Point(16, 16), 32, 5f)
         {
             ShowSprite(SpriteFactory.Instance.CreateFireSprite());
         }

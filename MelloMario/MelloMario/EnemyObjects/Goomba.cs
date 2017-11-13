@@ -11,6 +11,7 @@ namespace MelloMario.EnemyObjects
     {
         private IGoombaState state;
         private const int VELOCITY_LR = 1;
+        private Listener listener;
 
         private void UpdateSprite()
         {
@@ -127,9 +128,11 @@ namespace MelloMario.EnemyObjects
             // Notice: The effect should be the same as changing state
             UpdateSprite();
         }
-        public Goomba(IGameWorld world, Point location) : this(world, location, GameDatabase.GetCharacterLocation()) { }
-        public Goomba(IGameWorld world, Point location, Point marioLoc) : base(world, location, new Point(32, 32), 32)
+        public Goomba(IGameWorld world, Point location, Listener listener) : this(world, location, GameDatabase.GetCharacterLocation(), listener) { }
+        public Goomba(IGameWorld world, Point location, Point marioLoc, Listener listener) : base(world, location, listener, new Point(32, 32), 32)
         {
+            this.listener = listener;
+
             if (marioLoc.X < location.X)
             {
                 Facing = FacingMode.left;

@@ -79,7 +79,7 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        public PlayerMario(IGameSession session, IGameWorld world, Point location) : base(world, location)
+        public PlayerMario(IGameSession session, IGameWorld world, Point location, Listener listener) : base(world, location, listener)
         {
             Session = session;
             Session.Add(this);
@@ -190,7 +190,8 @@ namespace MelloMario.MarioObjects
         {
             if (PowerUpState is PowerUpStates.Fire)
             {
-                new Fire(World, Boundary.Location, Facing == FacingMode.right);
+                // note: listener is passed as null so score points will not do anything
+                new Fire(World, Boundary.Location, null, Facing == FacingMode.right);
             }
         }
 
@@ -211,7 +212,8 @@ namespace MelloMario.MarioObjects
             Session.Remove(this);
 
             // note: Boundary.Location or Boundary.Center? sometimes confusing
-            new PlayerMario(Session, World, World.GetRespawnPoint(Boundary.Location));
+            // note: listener is passed as null so score points will not do anything
+            new PlayerMario(Session, World, World.GetRespawnPoint(Boundary.Location), null);
         }
     }
 }

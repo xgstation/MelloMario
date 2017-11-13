@@ -2,6 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.StarStates;
 using MelloMario.BlockObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
 {
@@ -112,8 +113,9 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public Star(IGameWorld world, Point location, Point marioLocation, bool isUnveil = true) : base(world, location, new Point(32, 32), 32)
+        public Star(IGameWorld world, Point location, Point marioLocation, Listener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
         {
+
             if (marioLocation.X < location.X)
             {
                 goingRight = true;
@@ -135,12 +137,11 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public Star(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
-        {
-        }
+        public Star(IGameWorld world, Point location, Point marioLocation, Listener listener) : this(world, location, marioLocation, listener, false) { }
 
         public void Collect()
         {
+            ScorePoints(GameConst.SCORE_POWER_UP);
             RemoveSelf();
             //State.Collect();
         }

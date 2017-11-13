@@ -29,13 +29,13 @@ namespace MelloMario.Factories
             }
         }
 
-        public Tuple<ICharacter, IGameObject> CreateGameCharacter(string type, IGameSession session, IGameWorld world, Point location)
+        public Tuple<ICharacter, IGameObject> CreateGameCharacter(string type, IGameSession session, IGameWorld world, Point location, Listener listener)
         {
             switch (type)
             {
                 case "Mario":
                     marioLoc = location;
-                    PlayerMario mario = new PlayerMario(session, world, marioLoc);
+                    PlayerMario mario = new PlayerMario(session, world, marioLoc, listener);
                     return new Tuple<ICharacter, IGameObject>(mario, mario);
                 default:
                     return null;
@@ -43,43 +43,43 @@ namespace MelloMario.Factories
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        public IGameObject CreateGameObject(string type, IGameWorld world, Point location, Listener listener = null)
+        public IGameObject CreateGameObject(string type, IGameWorld world, Point location, Listener listener)
         {
             switch (type)
             {
                 //blocks
                 case "Floor":
-                    return new Floor(world, location);
+                    return new Floor(world, location, listener);
                 case "Brick":
-                    return new Brick(world, location);
+                    return new Brick(world, location, listener);
                 case "HiddenBrick":
-                    return new Brick(world, location, true);
+                    return new Brick(world, location, listener, true);
                 case "Stair":
-                    return new Stair(world, location);
+                    return new Stair(world, location, listener);
                 case "Question":
-                    return new Question(world, location, false);
+                    return new Question(world, location, listener, false);
                 case "HiddenQuestion":
-                    return new Question(world, location, true);
+                    return new Question(world, location, listener, true);
                 case "EndFlag":
-                    return new Flag(world, location, 0, 1);
+                    return new Flag(world, location, listener, 0, 1);
                 case "EndFlagTop":
-                    return new Flag(world, location, 1, 1);
+                    return new Flag(world, location, listener, 1, 1);
                 case "PipelineLeftIn":
-                    return new Pipeline(world, location, "LeftIn");
+                    return new Pipeline(world, location, listener, "LeftIn");
                 case "PipelineRightIn":
-                    return new Pipeline(world, location, "RightIn");
+                    return new Pipeline(world, location, listener, "RightIn");
                 case "PipelineLeft":
-                    return new Pipeline(world, location, "Left");
+                    return new Pipeline(world, location, listener, "Left");
                 case "PipelineRight":
-                    return new Pipeline(world, location, "Right");
+                    return new Pipeline(world, location, listener, "Right");
 
                 //enemy
                 case "Goomba":
-                    return new Goomba(world, location, marioLoc);
+                    return new Goomba(world, location, marioLoc, listener);
                 case "GreenKoopa":
-                    return new Koopa(world, location, marioLoc, Koopa.ShellColor.green);
+                    return new Koopa(world, location, marioLoc, listener, Koopa.ShellColor.green);
                 case "RedKoopa":
-                    return new Koopa(world, location, marioLoc, Koopa.ShellColor.red);
+                    return new Koopa(world, location, marioLoc, listener, Koopa.ShellColor.red);
 
                 //entities
                 case "Coin":
@@ -87,21 +87,21 @@ namespace MelloMario.Factories
                 case "CoinUnveil":
                     return new Coin(world, location, listener, true);
                 case "OneUpMushroom":
-                    return new OneUpMushroom(world, location, marioLoc);
+                    return new OneUpMushroom(world, location, marioLoc, listener);
                 case "OneUpMushroomUnveil":
-                    return new OneUpMushroom(world, location, marioLoc, true);
+                    return new OneUpMushroom(world, location, marioLoc, listener, true);
                 case "FireFlower":
-                    return new FireFlower(world, location);
+                    return new FireFlower(world, location, listener);
                 case "FireFlowerUnveil":
-                    return new FireFlower(world, location, true);
+                    return new FireFlower(world, location, listener, true);
                 case "SuperMushroom":
-                    return new SuperMushroom(world, location, marioLoc);
+                    return new SuperMushroom(world, location, marioLoc, listener);
                 case "SuperMushroomUnveil":
-                    return new SuperMushroom(world, location, marioLoc, true);
+                    return new SuperMushroom(world, location, marioLoc, listener, true);
                 case "Star":
-                    return new Star(world, location, marioLoc);
+                    return new Star(world, location, marioLoc, listener);
                 case "StarUnveil":
-                    return new Star(world, location, marioLoc, true);
+                    return new Star(world, location, marioLoc, listener, true);
 
                 //others
                 case "ShortCloud":

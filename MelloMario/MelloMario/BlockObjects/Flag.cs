@@ -1,4 +1,5 @@
 ﻿using MelloMario.Factories;
+using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.BlockObjects
@@ -39,7 +40,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        public Flag(IGameWorld world, Point location, int height, int maxHeight) : base(world, location, new Point(32, 32))
+        public Flag(IGameWorld world, Point location, Listener listener, int height, int maxHeight) : base(world, location, listener, new Point(32, 32))
         {
             this.height = height;
             this.maxHeight = maxHeight;

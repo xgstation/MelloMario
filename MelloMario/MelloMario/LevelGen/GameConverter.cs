@@ -82,7 +82,7 @@ namespace MelloMario.LevelGen
 
             gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, listener, GameConst.GRID);
 
-            characterConverter = new CharacterConverter(session, world, GameConst.GRID);
+            characterConverter = new CharacterConverter(session, world, listener, GameConst.GRID);
 
             serializers.Converters.Add(gameEntityConverter);
             serializers.Converters.Add(characterConverter);

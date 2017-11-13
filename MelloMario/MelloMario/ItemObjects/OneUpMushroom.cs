@@ -98,9 +98,10 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, bool isUnveil) : base(world, location, new Point(32, 32), 32)
+        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener, bool isUnveil) : base(world, location, listener, new Point(32, 32), 32)
         {
             oneupMushCollectSound = SoundController.oneUpCollect.CreateInstance();
+
             if (marioLocation.X < location.X)
             {
                 Facing = FacingMode.left;
@@ -123,11 +124,8 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public OneUpMushroom(IGameWorld world, Point location) : this(world, location, GameDatabase.GetCharacterLocation(), false) { }
-        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation) : this(world, location, marioLocation, false)
-        {
-            oneupMushCollectSound = SoundController.oneUpCollect.CreateInstance();
-        }
+        public OneUpMushroom(IGameWorld world, Point location, Listener listener) : this(world, location, GameDatabase.GetCharacterLocation(), listener, false) { }
+        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener) : this(world, location, marioLocation, listener, false) { }
 
         public void Collect()
         {

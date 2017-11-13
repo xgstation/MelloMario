@@ -2,6 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.FireFlowerStates;
 using MelloMario.MarioObjects;
+using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
 {
@@ -52,8 +53,9 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public FireFlower(IGameWorld world, Point location, bool isUnveil) : base(world, location, new Point(32, 32))
+        public FireFlower(IGameWorld world, Point location, Listener listener, bool isUnveil) : base(world, location, listener, new Point(32, 32))
         {
+
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -67,12 +69,13 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public FireFlower(IGameWorld world, Point location) : this(world, location, false)
+        public FireFlower(IGameWorld world, Point location, Listener listener) : this(world, location, listener, false)
         {
         }
 
         public void Collect()
         {
+            ScorePoints(GameConst.SCORE_POWER_UP);
             RemoveSelf();
             //State.Collect();
         }

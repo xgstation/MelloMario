@@ -91,7 +91,7 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public Question(IGameWorld world, Point location, bool isHidden = false) : base(world, location, new Point(32, 32))
+        public Question(IGameWorld world, Point location, Listener listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
         {
             this.isHidden = isHidden;
         }

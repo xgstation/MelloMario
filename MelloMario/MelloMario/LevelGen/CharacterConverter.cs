@@ -1,4 +1,5 @@
 ﻿using MelloMario.MarioObjects;
+using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -17,11 +18,13 @@ namespace MelloMario.LevelGen
         private Point startPoint;
         private string state;
         private int grid;
+        private Listener listener;
 
-        public CharacterConverter(IGameSession gameSession, IGameWorld gameWorld, int gridSize)
+        public CharacterConverter(IGameSession gameSession, IGameWorld gameWorld, Listener listener, int gridSize)
         {
             this.gameSession = gameSession;
             this.gameWorld = gameWorld;
+            this.listener = listener;
             grid = gridSize;
         }
 
@@ -38,7 +41,7 @@ namespace MelloMario.LevelGen
             state = jsonToken["State"].ToObject<string>();
             startPoint.X = startPoint.X * grid;
             startPoint.Y = startPoint.Y * grid;
-            mario = new PlayerMario(gameSession, gameWorld, startPoint);
+            mario = new PlayerMario(gameSession, gameWorld, startPoint, listener);
             characterStack.Push(mario);
             //TODO: Change with IDictionary to change the state of each characters
             switch (state)

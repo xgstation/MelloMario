@@ -73,26 +73,27 @@ namespace MelloMario.LevelGen
             }
         }
 
-        public static List<IGameObject> CreateSinglePipeline(GameModel model, IGameWorld world, int grid, string pipelineType, int pipelineLength, Point pipelineLoc)
+        public static List<IGameObject> CreateSinglePipeline(GameModel model, IGameWorld world, Listener listener, int grid, string pipelineType, int pipelineLength, Point pipelineLoc)
         {
             List<IGameObject> listOfPipelineComponents = new List<IGameObject>();
             Pipeline in1 = null;
             Pipeline in2 = null;
             switch (pipelineType)
             {
+                //TODO: this is sloppy, this should use the game object factory.
                 case "V":
-                    in1 = new Pipeline(world, pipelineLoc, "LeftIn", model);
-                    in2 = new Pipeline(world, new Point(pipelineLoc.X + grid, pipelineLoc.Y), "RightIn", model);
+                    in1 = new Pipeline(world, pipelineLoc, listener, "LeftIn", model);
+                    in2 = new Pipeline(world, new Point(pipelineLoc.X + grid, pipelineLoc.Y), listener, "RightIn", model);
                     pipelineLoc = new Point(pipelineLoc.X, pipelineLoc.Y + grid);
                     goto case "NV";
                 case "HL":
-                    in1 = new Pipeline(world, pipelineLoc, "TopLeftIn");
-                    in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), "BottomLeftIn");
+                    in1 = new Pipeline(world, pipelineLoc, listener, "TopLeftIn");
+                    in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), listener, "BottomLeftIn");
                     pipelineLoc = new Point(pipelineLoc.X + GameConst.GRID, pipelineLoc.Y);
                     goto case "NH";
                 case "HR":
-                    in1 = new Pipeline(world, pipelineLoc, "TopRightIn");
-                    in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), "BottomRightIn");
+                    in1 = new Pipeline(world, pipelineLoc, listener, "TopRightIn");
+                    in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), listener, "BottomRightIn");
                     pipelineLoc = new Point(pipelineLoc.X - pipelineLength * grid, pipelineLoc.Y);
                     goto case "NH";
                 case "NV":
@@ -100,8 +101,8 @@ namespace MelloMario.LevelGen
                     {
                         Point loc1 = new Point(pipelineLoc.X, pipelineLoc.Y + grid * y);
                         Point loc2 = new Point(pipelineLoc.X + grid, pipelineLoc.Y + grid * y);
-                        listOfPipelineComponents.Add(new Pipeline(world, loc1, "Left"));
-                        listOfPipelineComponents.Add(new Pipeline(world, loc2, "Right"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, "Left"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc2, listener, "Right"));
                     }
                     break;
                 case "NH":
@@ -109,8 +110,8 @@ namespace MelloMario.LevelGen
                     {
                         Point loc1 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y);
                         Point loc2 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y + grid);
-                        listOfPipelineComponents.Add(new Pipeline(world, loc1, "Top"));
-                        listOfPipelineComponents.Add(new Pipeline(world, loc2, "Bottom"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, "Top"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc2, listener, "Bottom"));
                     }
                     break;
                 default:

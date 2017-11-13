@@ -2,6 +2,7 @@
 using MelloMario.EnemyObjects.PiranhaStates;
 using MelloMario.Interfaces.Objects.States;
 using Microsoft.Xna.Framework;
+using MelloMario.Theming;
 
 namespace MelloMario.EnemyObjects
 {
@@ -11,7 +12,7 @@ namespace MelloMario.EnemyObjects
         private int showTime;
         private IPiranhaState state;
 
-        public Piranha(IGameWorld world, Point location, Point size, int hiddenTime, int showTime, float pixelScale, string color = "Green") : base(world, location, size, pixelScale)
+        public Piranha(IGameWorld world, Point location, Listener listener, Point size, int hiddenTime, int showTime, float pixelScale, string color = "Green") : base(world, location, listener, size, pixelScale)
         {
             this.hiddenTime = hiddenTime;
             this.showTime = showTime;
