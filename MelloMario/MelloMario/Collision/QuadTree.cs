@@ -7,10 +7,7 @@ namespace MelloMario.Collision
 {
     class QuadTree<T> : ICollection<T> where T : IGameObject
     {
-        internal static readonly int MaxObjects = 10;
-        //private static readonly Point MaxSize = new Point(1600, 800);
         private readonly IDictionary<T, EncapsulatedQuadTreeObject<T>> dictTtoEncapsulated;
-        //private List<QuadTreeNode<T>> roots;
         private readonly QuadTreeNode<T> quadTreeRoot;
 
         private int width;
@@ -43,17 +40,17 @@ namespace MelloMario.Collision
         {
             return null;
         }
-        public ICollection<T> GetObjects(Rectangle range)
+        public ICollection<T> GetObjects(Rectangle searchRange)
         {
             ICollection<T> ranged = new List<T>();
-            quadTreeRoot.GetRanged(range, ref ranged);
+            quadTreeRoot.GetObjects(searchRange, ref ranged);
             return ranged;
         }
 
         public ICollection<T> GetObjects()
         {
             ICollection<T> all = new List<T>();
-            quadTreeRoot.GetAll(ref all);
+            quadTreeRoot.GetObjects(ref all);
             return all;
         }
 
