@@ -34,6 +34,7 @@
         public const int SCORE_BRICK = 50;
         public const int SCORE_POWER_UP = 1000;
         public const int SCORE_PIRANHA = 200;
+        public const int SCORE_FLAG_MAX = 5000;
 
         // visual
         public const int TEXTURE_GRID = 16;

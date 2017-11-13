@@ -10,6 +10,7 @@ using System.Reflection;
 using MelloMario.EnemyObjects;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario.LevelGen
 {
@@ -216,6 +217,12 @@ namespace MelloMario.LevelGen
                     (objToBePushed as Brick).Initialize();
                 }
                 stack.Push(objToBePushed);
+            }
+            else if (type.Name == "Flag")
+            {
+                IGameObject[] flagPole = GameObjectFactory.Instance.CreateFlagPole(world, objPoint, listener, 7);
+                for (int i = 0; i < flagPole.Length; ++i)
+                    stack.Push(flagPole[i]);
             }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
             {

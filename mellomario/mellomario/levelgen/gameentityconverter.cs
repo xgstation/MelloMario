@@ -237,6 +237,7 @@ namespace MelloMario.LevelGen
                         point =>
                         {
                             objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
+                            
                             if (type.Name == "Question")
                             {
                                 (objToBePushed as Question).Initialize();
