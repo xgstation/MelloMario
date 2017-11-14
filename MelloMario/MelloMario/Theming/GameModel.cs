@@ -43,10 +43,7 @@ namespace MelloMario.Theming
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
-            if (!worldSwitched)
-            {
-                SoundController.PlayMusic(SoundController.Songs.normal);
-            }
+            SoundController.PlayMusic(SoundController.Songs.normal);
 
             Score = 0;
             Coins = 0;
