@@ -7,7 +7,6 @@ namespace MelloMario.BlockObjects
     class Flag : BaseCollidableObject
     {
         private bool top;
-        private bool touched;
         private int height, maxHeight;
 
         private void UpdateSprite()
@@ -21,16 +20,16 @@ namespace MelloMario.BlockObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-            if (target is MarioObjects.PlayerMario)
+            if (target is MarioObjects.PlayerMario mario)
             {
-                if (!touched)
+                if (mario.Active)
                 {
                     if (top)
                     {
                         ChangeLives(1);
                     }
                     ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
-                    touched = true;
+                    mario.Active = false;
 
                     //TODO: trigger game win
                 }
