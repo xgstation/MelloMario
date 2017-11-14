@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using MelloMario.BlockObjects;
 using MelloMario.Factories;
@@ -72,7 +73,44 @@ namespace MelloMario.LevelGen
                 }
             }
         }
-
+        public static void BatchCreateWithProperties<T1, T2>(Func<Point, T1> createFunc, Point startPoint, Point quantity, Point objSize,
+            ICollection<Point> ignoredSet, int grid, ref Stack<IGameObject> stack, IDictionary<Point, T2> properties, Action<IGameObject, T2> applyProperties)
+        {
+            Contract.Assume(!(properties == null ^ applyProperties == null));
+            for (int x = 0; x < quantity.X; x++)
+            {
+                for (int y = 0; y < quantity.Y; y++)
+                {
+                    var createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
+                    var createIndex = new Point(x + 1, y + 1);
+                    if (ignoredSet == null || !ignoredSet.Contains(createIndex))
+                    {
+                        if (typeof(T1).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
+                        {
+                            foreach (IGameObject obj in (IEnumerable<IGameObject>)createFunc(createLocation))
+                            {
+                                var index = new Point(x, y);
+                                if (properties != null && properties.ContainsKey(index))
+                                {
+                                    applyProperties(obj, properties[index]);
+                                }
+                                stack.Push(obj);
+                            }
+                        }
+                        else
+                        {
+                            var newObject = (IGameObject) createFunc(createLocation);
+                            var index = new Point(x, y);
+                            if (properties != null && properties.ContainsKey(index))
+                            {
+                                applyProperties(newObject, properties[index]);
+                            }
+                            stack.Push(newObject);
+                        }
+                    }
+                }
+            }
+        }
         public static List<IGameObject> CreateSinglePipeline(GameModel model, IGameWorld world, Listener listener, int grid, string pipelineType, int pipelineLength, Point pipelineLoc)
         {
             List<IGameObject> listOfPipelineComponents = new List<IGameObject>();

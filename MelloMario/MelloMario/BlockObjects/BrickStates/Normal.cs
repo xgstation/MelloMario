@@ -21,20 +21,13 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Bump(Mario mario)
         {
-            if (GameDatabase.HasItemEnclosed(Owner))
+            if (mario.PowerUpState is MarioObjects.PowerUpStates.Standard || Owner.HasInitialItem)
             {
                 Owner.State = new Bumped(Owner);
             }
             else
             {
-                if (mario.PowerUpState is MarioObjects.PowerUpStates.Standard)
-                {
-                    Owner.State = new Bumped(Owner);
-                }
-                else
-                {
-                    Owner.State = new Destroyed(Owner);
-                }
+                Owner.State = new Destroyed(Owner);
             }
         }
 

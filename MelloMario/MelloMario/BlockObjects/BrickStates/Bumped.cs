@@ -20,16 +20,9 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Show()
         {
-            if (Owner.HasInitialItem)
+            if (Owner.HasInitialItem && !GameDatabase.HasItemEnclosed(Owner))
             {
-                if (GameDatabase.HasItemEnclosed(Owner))
-                {
-                    Owner.State = new Normal(Owner);
-                }
-                else
-                {
-                    Owner.State = new Used(Owner);
-                }
+                Owner.State = new Used(Owner);
             }
             else
             {

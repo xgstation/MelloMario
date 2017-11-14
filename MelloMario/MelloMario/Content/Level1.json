@@ -6,7 +6,7 @@
       "Grid": 32,
       "Size": {
         "X": 212,
-        "Y": 17
+        "Y": 15
       },
       "RespawnPoints": [
         {
@@ -30,17 +30,294 @@
       ],
       "Entity": [
         {
-          "Type": "Question",
           "Point": {
-            "X": 2,
+            "X": 0,
+            "Y": 0
+          },
+          "Quantity": {
+            "X": 0,
+            "Y": 0
+          },
+          "Type": "Idel"
+        },
+        {
+          "Point": {
+            "X": 0,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 69,
+            "Y": 2
+          },
+          "Type": "Floor"
+        },
+        {
+          "Point": {
+            "X": 71,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 15,
+            "Y": 2
+          },
+          "Type": "Floor"
+        },
+        {
+          "Point": {
+            "X": 89,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 64,
+            "Y": 2
+          },
+          "Type": "Floor"
+        },
+        {
+          "Point": {
+            "X": 155,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 57,
+            "Y": 2
+          },
+          "Type": "Floor"
+        },
+        {
+          "Property": {
+            "IsHidden": false,
+            "ItemValues": [
+              "CoinUnveil"
+            ]
+          },
+          "Point": {
+            "X": 16,
+            "Y": 9
+          },
+          "Type": "Question"
+        },
+        {
+          "Point": {
+            "X": 20,
+            "Y": 9
+          },
+          "Type": "Brick"
+        },
+        {
+          "Property": {
+            "IsHidden": false,
+            "ItemValues": [
+              "SuperMushroomUnveil"
+            ]
+          },
+          "Point": {
+            "X": 21,
+            "Y": 9
+          },
+          "Type": "Question"
+        },
+        {
+          "Point": {
+            "X": 22,
+            "Y": 9
+          },
+          "Type": "Brick"
+        },
+        {
+          "Property": {
+            "IsHidden": false,
+            "ItemValues": [
+              "CoinUnveil"
+            ]
+          },
+          "Point": {
+            "X": 23,
+            "Y": 9
+          },
+          "Type": "Question"
+        },
+        {
+          "Point": {
+            "X": 24,
+            "Y": 9
+          },
+          "Type": "Brick"
+        },
+        {
+          "Property": {
+            "IsHidden": false,
+            "ItemValues": [
+              "CoinUnveil"
+            ]
+          },
+          "Point": {
+            "X": 22,
+            "Y": 5
+          },
+          "Type": "Question"
+        },
+        {
+          "Type": "Pipeline",
+          "Point": {
+            "X": 28,
             "Y": 11
           },
           "Property": {
-            "IsHidden": false,
-            "ItemValues": [ "CoinUnveil", "CoinUnveil" ]
+            "Length": 1,
+            "Direction": "V"
           }
         },
-        {"Type": "Floor","Point": {"X": 0,"Y": 15},"Quantity": {"X": 10,"Y": 2}   }
+        {
+          "Type": "Pipeline",
+          "Point": {
+            "X": 38,
+            "Y": 10
+          },
+          "Property": {
+            "Length": 2,
+            "Direction": "V"
+          }
+        },
+        {
+          "Type": "Pipeline",
+          "Point": {
+            "X": 46,
+            "Y": 9
+          },
+          "Property": {
+            "Length": 3,
+            "Direction": "V"
+          }
+        },
+        {
+          "Type": "Pipeline",
+          "Point": {
+            "X": 57,
+            "Y": 9
+          },
+          "Property": {
+            "Length": 3,
+            "Direction": "V",
+            "Entrance": "1-1",
+            "Index": "1"
+          }
+        },
+        {
+          "Point": {
+            "X": 77,
+            "Y": 9
+          },
+          "Type": "Brick"
+        },
+        {
+          "Property": {
+            "IsHidden": false,
+            "ItemValues": [
+              "SuperMushroomUnveil"
+            ]
+          },
+          "Point": {
+            "X": 78,
+            "Y": 9
+          },
+          "Type": "Question"
+        },
+        {
+          "Point": {
+            "X": 79,
+            "Y": 9
+          },
+          "Type": "Brick"
+        },
+        {
+          "Quantity": {
+            "X": 8,
+            "Y": 1
+          },
+          "Point": {
+            "X": 80,
+            "Y": 5
+          },
+          "Type": "Brick"
+        },
+        {
+          "Quantity": {
+            "X": 3,
+            "Y": 1
+          },
+          "Point": {
+            "X": 91,
+            "Y": 5
+          },
+          "Type": "Brick"
+        },
+        {
+          "Property": {
+            "IsHidden": false,
+            "ItemValues": [
+              "CoinUnveil"
+            ]
+          },
+          "Point": {
+            "X": 94,
+            "Y": 5
+          },
+          "Type": "Question"
+        },
+        {
+          "Property": {
+            "ItemValues": [
+              "CoinUnveil",
+              "CoinUnveil",
+              "CoinUnveil",
+              "CoinUnveil"
+            ]
+          },
+          "Point": {
+            "X": 94,
+            "Y": 9
+          },
+          "Type": "Brick"
+        },
+        {
+          "Properties": [
+            {
+              "Index": {
+                "X": 1,
+                "Y": 0
+              },
+              "Property": {
+                "IsHidden": false, 
+                "ItemValues": [
+                  "StarUnveil"
+                ]
+              }
+            }
+          ],
+          "Quantity": {
+            "X": 2,
+            "Y": 1
+          },
+          "Point": {
+            "X": 100,
+            "Y": 9
+          },
+          "Type": "Brick"
+        },
+        {
+          "Property": {
+            "IsHidden": false,
+            "ItemValues": [
+              "CoinUnveil"
+            ]
+          },
+          "Point": {
+            "X": 106,
+            "Y": 9
+          },
+          "Type": "Question"
+        }
       ]
     },
     {

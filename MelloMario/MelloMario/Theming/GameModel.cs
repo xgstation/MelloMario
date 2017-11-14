@@ -7,6 +7,7 @@ using MelloMario.Scripts;
 using MelloMario.MiscObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 
 namespace MelloMario.Theming
 {
@@ -42,10 +43,7 @@ namespace MelloMario.Theming
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
-            if (!worldSwitched)
-            {
-                SoundController.PlayMusic(SoundController.Songs.normal);
-            }
+            SoundController.PlayMusic(SoundController.Songs.normal);
 
             Score = 0;
             Coins = 0;
@@ -79,7 +77,6 @@ namespace MelloMario.Theming
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
         }
 
-        private bool worldSwitched = false;
         public IGameWorld LoadLevel(string id, bool init = false)
         {
 
@@ -91,29 +88,26 @@ namespace MelloMario.Theming
                 }
             }
 
-            LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice, listener);
+            LevelIOJson reader = new LevelIOJson("Content/Level1.json", game.GraphicsDevice, listener);
             reader.SetModel(this);
             Tuple<IGameWorld, IPlayer> pair = reader.Load(id, session);
-
 
             if (!init && pair.Item2 != null)
             {
                 session.Remove(pair.Item2);
             }
             session.Update();
-            if (!worldSwitched)
+            if (id == "Main") // TODO: load music name from level file
             {
                 MediaPlayer.Stop();
                 SoundController.PlayMusic(SoundController.Songs.normal);
-                worldSwitched = true;
             }
             else
             {
                 MediaPlayer.Stop();
                 SoundController.PlayMusic(SoundController.Songs.belowGround);
-                worldSwitched = false;
             }
-            Console.WriteLine(worldSwitched);
+
             return pair.Item1;
         }
 
@@ -122,15 +116,14 @@ namespace MelloMario.Theming
             Resume();
         }
 
-        // Method switches to "hurry" music when there are 90 seconds remaining
-        private bool isHurry = false;
-        public void switchMusic(int time)
+        public void SwitchMusic(int time)
         {
             if (time < 90000 && SoundController.CurrentSong != SoundController.Songs.hurry)
             {
                 MediaPlayer.Stop();
                 SoundController.PlayMusic(SoundController.Songs.hurry);
             }
+            // TODO: Songs.gameOver should be triggered by gameover event
             if (time == 0 || Lives < 1)
             {
                 MediaPlayer.Stop();
@@ -151,7 +144,16 @@ namespace MelloMario.Theming
 
         public void Mute()
         {
-            MediaPlayer.Stop();
+            if (MediaPlayer.Volume > 0)
+            {
+                MediaPlayer.Volume = 0;
+                SoundEffect.MasterVolume = 0;
+            }
+            else
+            {
+                MediaPlayer.Volume = 100;
+                SoundEffect.MasterVolume = 1.0f;
+            }
         }
 
         public void Update(int time)
@@ -184,7 +186,7 @@ namespace MelloMario.Theming
 
                 // TODO: move to correct place
                 Time -= time;
-                switchMusic(Time);
+                SwitchMusic(Time);
             }
         }
 

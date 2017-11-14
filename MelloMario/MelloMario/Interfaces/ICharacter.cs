@@ -4,6 +4,7 @@ namespace MelloMario
 {
     interface ICharacter
     {
+        bool Active { get; set; }
         Rectangle Sensing { get; }
         Rectangle Viewport { get; }
 
