@@ -15,7 +15,7 @@ namespace MelloMario.BlockObjects
         private string type;
         private int elapsed;
         private SoundEffectInstance pipeTravelSound;
-        private SoundController soundControl;
+        //private SoundController soundControl;
 
         public string Type
         {

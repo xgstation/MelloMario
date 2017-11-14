@@ -131,7 +131,7 @@ namespace MelloMario.Theming
                 MediaPlayer.Stop();
                 SoundController.PlayMusic(SoundController.Songs.hurry);
             }
-            if (time == 0)
+            if (time == 0 || Lives < 1)
             {
                 MediaPlayer.Stop();
                 SoundController.PlayMusic(SoundController.Songs.gameOver);
