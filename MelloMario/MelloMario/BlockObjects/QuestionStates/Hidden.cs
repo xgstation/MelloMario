@@ -20,7 +20,8 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public void Bump(Mario mario)
         {
-            Owner.State = new Bumped(Owner);
+            Owner.State = new Normal(Owner);
+            Owner.Bump(mario);
         }
 
         public override void Update(int time)
