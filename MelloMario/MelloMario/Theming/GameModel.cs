@@ -7,6 +7,7 @@ using MelloMario.Scripts;
 using MelloMario.MiscObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 
 namespace MelloMario.Theming
 {
@@ -143,7 +144,16 @@ namespace MelloMario.Theming
 
         public void Mute()
         {
-            MediaPlayer.Stop();
+            if (MediaPlayer.Volume > 0)
+            {
+                MediaPlayer.Volume = 0;
+                SoundEffect.MasterVolume = 0;
+            }
+            else
+            {
+                MediaPlayer.Volume = 100;
+                SoundEffect.MasterVolume = 1.0f;
+            }
         }
 
         public void Update(int time)
