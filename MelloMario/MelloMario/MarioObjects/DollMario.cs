@@ -196,7 +196,16 @@ namespace MelloMario.MarioObjects
                 {
                     userInput.Y -= GameConst.FORCE_INPUT_Y;
                     userInput.Y -= GameConst.FORCE_G;
+                    if (PowerUpState is PowerUpStates.Super || PowerUpState is PowerUpStates.Fire)
+                    {
+                        powerJumpSound.Play();
+                    }
+                    else
+                    {
+                        jumpSound.Play();
+                    }
                 }
+
             }
         }
 
@@ -204,15 +213,6 @@ namespace MelloMario.MarioObjects
         {
             if (animation == Animation.none)
             {
-                if (PowerUpState is PowerUpStates.Super || PowerUpState is PowerUpStates.Fire)
-                {
-                    powerJumpSound.Play();
-                }
-                else
-                {
-                    jumpSound.Play();
-                }
-
                 Jump();
             }
         }
