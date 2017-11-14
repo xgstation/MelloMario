@@ -56,7 +56,6 @@ namespace MelloMario.BlockObjects
 
         public Flag(IGameWorld world, Point location, Listener listener, int height, int maxHeight) : base(world, location, listener, new Point(32, 32))
         {
-            listener.Subscribe(this);
             this.height = height;
             this.maxHeight = maxHeight;
             top = height == maxHeight;

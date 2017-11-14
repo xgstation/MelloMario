@@ -104,7 +104,7 @@ namespace MelloMario
 
         private void CollideAll()
         {
-            foreach (IGameObject target in world.ScanNearby(Boundary))
+            foreach (IGameObject target in World.ScanNearby(Boundary))
             {
                 if (target != this && target is BaseCollidableObject obj)
                 {
@@ -116,7 +116,7 @@ namespace MelloMario
                 }
             }
 
-            foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(world.Boundary))
+            foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(World.Boundary))
             {
                 OnCollideWorld(pair.Item1);
             }
@@ -151,7 +151,7 @@ namespace MelloMario
         {
             movement += delta;
 
-            world.Move(this);
+            World.Move(this);
         }
 
         protected void StopHorizontalMovement()
@@ -169,7 +169,7 @@ namespace MelloMario
             StopHorizontalMovement();
             StopVerticalMovement();
 
-            world.Remove(this);
+            World.Remove(this);
         }
 
         protected override void OnSimulation(int time)

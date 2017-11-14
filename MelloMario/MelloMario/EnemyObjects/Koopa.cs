@@ -13,6 +13,7 @@ namespace MelloMario.EnemyObjects
         private IKoopaState state;
         private const int VELOCITY_LR = 1;
         private const int VELOCITY_SHELL = 7;
+        private Listener listener;
 
         private void UpdateSprite()
         {
@@ -185,8 +186,10 @@ namespace MelloMario.EnemyObjects
             }
         }
 
+        public Koopa(IGameWorld world, Point location, Listener listener, string color) : this(world, location, GameDatabase.GetCharacterLocation(), listener, color) { }
         public Koopa(IGameWorld world, Point location, Point marioLoc, Listener listener, string color) : base(world, location, listener, new Point(32, 32), 32)
         {
+            this.listener = listener;
 
             if (marioLoc.X < location.X)
             {
