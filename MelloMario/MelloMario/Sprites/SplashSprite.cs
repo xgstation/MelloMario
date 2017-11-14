@@ -25,7 +25,7 @@ namespace MelloMario.Sprites
 
         protected override void OnDraw(int time, Rectangle destination)
         {
-            spriteBatch.Draw(screen, new Vector2(0, 0));
+            spriteBatch.Draw(screen, destination,Color.Black);
         }
     }
 }
