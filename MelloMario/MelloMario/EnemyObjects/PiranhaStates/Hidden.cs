@@ -7,7 +7,10 @@ namespace MelloMario.EnemyObjects.PiranhaStates
         private int elapsed;
         public override void Update(int time)
         {
-            if (Owner.HasMarioAbove) return;
+            if (Owner.HasMarioAbove)
+            {
+                return;
+            }
             elapsed += time;
             if (elapsed > Owner.HiddenTime)
             {

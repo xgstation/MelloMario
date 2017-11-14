@@ -24,9 +24,9 @@ namespace MelloMario.LevelGen
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var token = JToken.Load(reader);
-            var X = token["X"].ToObject<float>();
-            var Y = token["Y"].ToObject<float>();
+            JToken token = JToken.Load(reader);
+            float X = token["X"].ToObject<float>();
+            float Y = token["Y"].ToObject<float>();
             return new Vector2(X, Y);
         }
 

@@ -26,7 +26,7 @@ namespace MelloMario.SplashObjects
             }
             else
             {
-                RemoveSelf();
+                world.Remove(this);
             }
         }
 

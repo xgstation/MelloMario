@@ -3,6 +3,7 @@ using MelloMario.Factories;
 using MelloMario.ItemObjects.SuperMushroomStates;
 using MelloMario.BlockObjects;
 using MelloMario.Containers;
+using MelloMario.SplashObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
@@ -13,7 +14,7 @@ namespace MelloMario.ItemObjects
         private IItemState state;
         private bool collected;
 
-        public FireFlower GetFireFlower()
+        public IGameObject GetFireFlower()
         {
             return GameObjectFactory.Instance.CreateGameObject("FireFlowerUnveil", world, Boundary.Location, GetListener) as FireFlower;
         }
@@ -149,6 +150,7 @@ namespace MelloMario.ItemObjects
             if (!collected)
             {
                 ScorePoints(GameConst.SCORE_POWER_UP);
+                new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_POWER_UP);
             }
             collected = true;
             RemoveSelf();
