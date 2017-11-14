@@ -15,7 +15,7 @@ namespace MelloMario.ItemObjects
 
         public FireFlower GetFireFlower()
         {
-            return new FireFlower(World, Boundary.Location, GetListener, true);
+            return new FireFlower(world, Boundary.Location, GetListener, true);
         }
         private void UpdateSprite()
         {

@@ -121,8 +121,8 @@ namespace MelloMario.BlockObjects
         {
             if (!GameDatabase.HasItemEnclosed(this)) return;
             var item = GameDatabase.GetNextItem(this);
-            World.Update();
-            World.Add(item);
+            world.Update();
+            world.Add(item);
         }
     }
 }
