@@ -169,12 +169,11 @@ namespace MelloMario
             movement.Y = 0;
         }
 
-        protected void RemoveSelf()
+        protected override void RemoveSelf()
         {
             StopHorizontalMovement();
             StopVerticalMovement();
-
-            world.Remove(this);
+            base.RemoveSelf();
         }
 
         protected override void OnSimulation(int time)
