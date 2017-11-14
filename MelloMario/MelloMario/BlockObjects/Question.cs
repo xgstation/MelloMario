@@ -11,12 +11,12 @@ namespace MelloMario.BlockObjects
     class Question : BaseCollidableObject
     {
         private IBlockState state;
-        private IGameObject item;
         private bool isHidden;
         private SoundEffectInstance bumpSound;
 
-        public void Initialize()
+        public void Initialize(bool hidden = false)
         {
+            isHidden = hidden;
             bumpSound = SoundController.bumpBlock.CreateInstance();
             if (isHidden)
             {
@@ -30,30 +30,17 @@ namespace MelloMario.BlockObjects
         }
         private void UpdateSprite()
         {
-            if (state is Hidden)
+            switch (state)
             {
-                HideSprite();
-            }
-            else if (GameDatabase.HasItemEnclosed(this))
-            {
-                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
-            }
-            else
-            {
-                ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
-            }
-        }
-
-        private void LoadItem()
-        {
-            if (GameDatabase.HasItemEnclosed(this))
-            {
-                item = GameDatabase.GetEnclosedItems(this)[0];
-                GameDatabase.GetEnclosedItems(this).RemoveAt(0);
-            }
-            else
-            {
-                item = null;
+                case IState s when s is Hidden:
+                    HideSprite();
+                    break;
+                case IState s when s is Normal:
+                    ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
+                    break;
+                case IState s when s is Used:
+                    ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
+                    break;
             }
         }
 
@@ -106,13 +93,12 @@ namespace MelloMario.BlockObjects
         {
             Move(new Point(0, delta));
         }
-
         public void ReleaseNextItem()
         {
-            LoadItem();
-            if (item != null)
+            if (GameDatabase.HasItemEnclosed(this))
             {
-                World.Add(item);
+                World.Add(GameDatabase.GetEnclosedItems(this)[0]);
+                GameDatabase.GetEnclosedItems(this).RemoveAt(0);
             }
         }
     }
