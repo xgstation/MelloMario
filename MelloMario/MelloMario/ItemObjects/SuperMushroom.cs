@@ -16,7 +16,7 @@ namespace MelloMario.ItemObjects
 
         public IGameObject GetFireFlower()
         {
-            return GameObjectFactory.Instance.CreateGameObject("FireFlowerUnveil", world, Boundary.Location, GetListener) as FireFlower;
+            return GameObjectFactory.Instance.CreateGameObject("FireFlowerUnveil", world, Boundary.Location, GetListener);
         }
 
         private void UpdateSprite()
