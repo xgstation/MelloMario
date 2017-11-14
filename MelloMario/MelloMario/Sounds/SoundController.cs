@@ -39,6 +39,9 @@ namespace MelloMario.Sounds
                     MediaPlayer.Play(Hurry);
                     //MediaPlayer.IsRepeating = true;
                     break;
+                case Songs.belowGround:
+                    MediaPlayer.Play(BelowGround);
+                    break;
                 default:
                     break;
             }

@@ -50,11 +50,14 @@ namespace MelloMario.BlockObjects.QuestionStates
             }
             elapsed += time;
             move += 3;
+            if (elapsed >= 180)
+            {
+                Show();
+            }
             if (elapsed >= 170)
             {
                 Owner.BumpMove(0);
                 Owner.ReleaseNextItem();
-                Show();
             }
             else if (elapsed >= 70)
             {

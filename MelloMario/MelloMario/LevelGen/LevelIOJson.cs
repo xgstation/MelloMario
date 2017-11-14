@@ -23,6 +23,7 @@ namespace MelloMario.LevelGen
             this.graphicsDevice = graphicsDevice;
             this.listener = listener;
             path = jsonPath;
+            Util.Initilalize();
         }
 
         public void SetModel(GameModel model)

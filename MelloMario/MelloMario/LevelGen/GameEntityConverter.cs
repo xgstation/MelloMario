@@ -47,6 +47,7 @@ namespace MelloMario.LevelGen
         private IGameObject objToBePushed;
         private Type type;
         private Point objFullSize;
+        private Vector2 objVector;
         private Point objPoint;
         private Point quantity;
         private Point triangleSize;
@@ -82,12 +83,13 @@ namespace MelloMario.LevelGen
             JsonSerializer serializer)
         {
             objToken = JToken.Load(reader);
-            if (!Util.TryGet(out objPoint, objToken, "Point"))
+
+            if (!Util.TryGet(out objVector, objToken, "Point"))
             {
                 Debug.WriteLine("Deserialize fail: No start point provided!");
                 return null;
             }
-            objPoint = new Point(objPoint.X * grid, objPoint.Y * grid);
+            objPoint = new Point((int)(objVector.X * grid), (int)(objVector.Y * grid));
             objectStackToBeEncapsulated = new Stack<IGameObject>();
 
             if (!Util.TryGet(out string typeStr, objToken, "Type"))
@@ -182,6 +184,7 @@ namespace MelloMario.LevelGen
 
         private bool ItemConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
+            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
             if (produceMode is ProduceMode.One)
             {
                 stack.Push(createFunc(objPoint));
@@ -280,7 +283,7 @@ namespace MelloMario.LevelGen
                                 }
                             });
                     }
-                    else
+                    else if (produceMode is ProduceMode.Rectangle)
                     {
                         Util.BatchCreate(
                             point =>
@@ -298,8 +301,29 @@ namespace MelloMario.LevelGen
                             },
                             objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
                     }
-
-                    
+                    else if (produceMode is ProduceMode.Triangle)
+                    {
+                        Util.TriganleCreate(
+                            point =>
+                            {
+                                objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
+                                if (type.Name == "Question")
+                                {
+                                    (objToBePushed as Question).Initialize();
+                                }
+                                if (type.Name == "Brick")
+                                {
+                                    (objToBePushed as Brick).Initialize();
+                                }
+                                return objToBePushed;
+                            },
+                            objPoint, 
+                            triangleSize,
+                            new Point(GameConst.GRID, GameConst.GRID),
+                            ignoredSet,
+                            grid,
+                            ref stack);
+                    }
                     return true;
                 }
                 propertyPair = GetPropertyPair(token);
@@ -311,32 +335,44 @@ namespace MelloMario.LevelGen
                 }
                 if (type.Name == "Question")
                 {
-                    (objToBePushed as Question).Initialize();
+                    (objToBePushed as Question).Initialize(propertyPair.Item1);
                 }
                 if (type.Name == "Brick")
                 {
-                    (objToBePushed as Brick).Initialize();
+                    (objToBePushed as Brick).Initialize(propertyPair.Item1);
                 }
                 stack.Push(objToBePushed);
             }
             else if (type.Name == "Flag")
             {
-                foreach (IGameObject obj in GameObjectFactory.Instance.CreateGameObjectGroup("FlagPole", world, objPoint, 7, listener))
+                bool hasHeight = Util.TryGet(out int Height, token, "Property", "Height");
+                foreach (IGameObject obj in GameObjectFactory.Instance.CreateGameObjectGroup("FlagPole", world, objPoint, hasHeight ? Height : 7, listener))
                 {
                     stack.Push(obj);
                 }
             }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
             {
-                if (produceMode is ProduceMode.One)
+                switch (produceMode)
                 {
-                    stack.Push(Activator.CreateInstance(type, world, objPoint, listener, false) as BaseGameObject);
-                }
-                else
-                {
-                    Util.BatchCreate(
-                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                        objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
+                    case ProduceMode.One:
+                        stack.Push(Activator.CreateInstance(type, world, objPoint, listener, false) as BaseGameObject);
+                        break;
+                    case ProduceMode.Rectangle:
+                        {
+                            Util.BatchCreate(
+                                point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false),
+                                objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
+                            break;
+                        }
+
+                    case ProduceMode.Triangle:
+                        {
+                            Util.TriganleCreate(
+                                point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false),
+                                objPoint, triangleSize, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
+                            break;
+                        }
                 }
             }
             else if (type.Name == "Pipeline")
