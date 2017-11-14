@@ -57,7 +57,6 @@ namespace MelloMario.MarioObjects
                 ApplyForce(userInput);
                 userInput.X = 0;
                 userInput.Y = 0;
-                initial = Boundary.Location;
             }
 
             base.OnUpdate(time);
