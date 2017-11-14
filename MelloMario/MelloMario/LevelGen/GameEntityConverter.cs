@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Reflection;
 using MelloMario.EnemyObjects;
@@ -14,6 +15,18 @@ using MelloMario.Factories;
 
 namespace MelloMario.LevelGen
 {
+    internal class PointCompare : IEqualityComparer<Point>
+    {
+        public bool Equals(Point x, Point y)
+        {
+            return x == y;
+        }
+
+        public int GetHashCode(Point obj)
+        {
+            return obj.GetHashCode();
+        }
+    }
     class GameEntityConverter : JsonConverter
     {
         private static readonly IEnumerable<Type> AssemblyTypes =
@@ -194,14 +207,88 @@ namespace MelloMario.LevelGen
             return true;
         }
 
+        private Tuple<bool,string[]> GetPropertyPair(JToken token)
+        {
+            return new Tuple<bool, string[]>(
+                Util.TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden,
+                Util.TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
+        }
         private bool BlockConverter(Type type, JToken token, Listener listener, ref Stack<IGameObject> stack)
         {
             isQuestionOrBrick = type.Name == "Brick" || type.Name == "Question";
-            if (isQuestionOrBrick && isSingle)
+            if (isQuestionOrBrick)
             {
-                propertyPair = new Tuple<bool, string[]>(
-                    Util.TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden,
-                    Util.TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
+                if (!isSingle)
+                {
+                    var dictProperties = new Dictionary<Point, Tuple<bool, string[]>>(new PointCompare());
+                    if (Util.TryGet(out JToken propertiesToken, token, "Properties"))
+                    {
+                        foreach (var propertyToken in propertiesToken)
+                        {
+                            Util.TryGet(out Point index, propertyToken, "Index");
+                            var newPair = GetPropertyPair(propertyToken);
+                            dictProperties.Add(index, newPair);
+                        }
+                        Util.BatchCreateWithProperties(
+                            point =>
+                            {
+                                objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
+                                if (type.Name == "Question")
+                                {
+                                    (objToBePushed as Question).Initialize();
+                                }
+                                if (type.Name == "Brick")
+                                {
+                                    (objToBePushed as Brick).Initialize();
+                                }
+                                return objToBePushed;
+                            },
+                            objPoint,
+                            quantity,
+                            new Point(32,32), 
+                            ignoredSet,
+                            grid, ref stack,
+                            dictProperties,
+                            (obj, pair) =>
+                            {
+                                var newList = Util.CreateItemList(world, obj.Boundary.Location, listener, pair.Item2);
+                                if (newList != null && newList.Count != 0)
+                                {
+                                    GameDatabase.SetEnclosedItem(obj, newList);
+                                }
+                                if (type.Name == "Question")
+                                {
+                                    (obj as Question).Initialize();
+                                }
+                                if (type.Name == "Brick")
+                                {
+                                    (obj as Brick).Initialize();
+                                }
+                            });
+                    }
+                    else
+                    {
+                        Util.BatchCreate(
+                            point =>
+                            {
+                                objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
+                                if (type.Name == "Question")
+                                {
+                                    (objToBePushed as Question).Initialize();
+                                }
+                                if (type.Name == "Brick")
+                                {
+                                    (objToBePushed as Brick).Initialize();
+                                }
+                                return objToBePushed;
+                            },
+                            objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
+                    }
+
+                    
+                    return true;
+                }
+                propertyPair = GetPropertyPair(token);
                 list = Util.CreateItemList(world, objPoint, listener, propertyPair.Item2);
                 objToBePushed = Activator.CreateInstance(type, world, objPoint, listener, propertyPair.Item1) as IGameObject;
                 if (list != null && list.Count != 0)
@@ -230,31 +317,11 @@ namespace MelloMario.LevelGen
                 if (isSingle)
                 {
                     stack.Push(Activator.CreateInstance(type, world, objPoint, listener, false) as BaseGameObject);
-                    if (type.Name == "Question")
-                    {
-                        (objToBePushed as Question).Initialize();
-                    }
-                    if (type.Name == "Brick")
-                    {
-                        (objToBePushed as Brick).Initialize();
-                    }
                 }
                 else
                 {
                     Util.BatchCreate(
-                        point =>
-                        {
-                            objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
-                            if (type.Name == "Question")
-                            {
-                                (objToBePushed as Question).Initialize();
-                            }
-                            if (type.Name == "Brick")
-                            {
-                                (objToBePushed as Brick).Initialize();
-                            }
-                            return objToBePushed;
-                        },
+                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
                         objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
                 }
             }
