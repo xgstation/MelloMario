@@ -6,6 +6,8 @@
 
         public const int SCREEN_WIDTH = 800;
         public const int SCREEN_HEIGHT = 600;
+        public const int FOCUS_X = 360;
+        public const int FOCUS_Y = 360;
 
         // boundary and collision
 
@@ -38,8 +40,8 @@
         public const int SCORE_PIRANHA = 200;
         public const int SCORE_FLAG_MAX = 4000;
 
-
         // visual
+
         public const int TEXTURE_GRID = 16;
         public const int ANIMATION_INTERVAL = 100;
     }
