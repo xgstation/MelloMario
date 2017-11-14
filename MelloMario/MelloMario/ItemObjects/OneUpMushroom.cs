@@ -88,10 +88,6 @@ namespace MelloMario.ItemObjects
 
         public IItemState State
         {
-            get
-            {
-                return state;
-            }
             set
             {
                 state = value;
@@ -126,6 +122,9 @@ namespace MelloMario.ItemObjects
             }
         }
 
+        //This suppression exists because this constructor is inderectly used by the json parser.
+        //removing this constructor will cause a runtime error when trying to read in the level.
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public OneUpMushroom(IGameWorld world, Point location, Listener listener) : this(world, location, GameDatabase.GetCharacterLocation(), listener, false) { }
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener) : this(world, location, marioLocation, listener, false) { }
 
