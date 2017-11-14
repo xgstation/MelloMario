@@ -42,7 +42,6 @@ namespace MelloMario.Theming
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
-            soundControl = new SoundController(this.game);
             if (!worldSwitched)
             {
                 SoundController.PlayMusic(SoundController.Songs.normal);
@@ -135,7 +134,7 @@ namespace MelloMario.Theming
             if (time == 0)
             {
                 MediaPlayer.Stop();
-                SoundController.PlayMusic(SoundController.Songs.gameover);
+                SoundController.PlayMusic(SoundController.Songs.gameOver);
             }
         }
 
@@ -185,7 +184,7 @@ namespace MelloMario.Theming
 
                 // TODO: move to correct place
                 Time -= time;
-                SwitchMusic(Time);
+                switchMusic(Time);
             }
         }
 
