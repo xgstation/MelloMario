@@ -9,8 +9,6 @@ using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 
-
-
 namespace MelloMario.Theming
 {
     class GameModel : IGameModel

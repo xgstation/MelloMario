@@ -38,7 +38,9 @@ namespace MelloMario.MarioObjects
             World.Remove(this);
             base.World = world;
             World.Add(this);
+
             Session.Move(this);
+
             Relocate(World.GetInitialPoint());
         }
 
