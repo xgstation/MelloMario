@@ -8,10 +8,10 @@ namespace MelloMario
         void BindContentManager(ContentManager newContentManager);
         void BindSpriteBatch(SpriteBatch newSpriteBatch);
 
+        ISprite CreateTextSprite(string text);
+        ISprite CreatSplashSprite();
         ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing);
-
         ISprite CreateGoombaSprite(string status);
-        ISprite CreateFlagSprite(bool status);
         ISprite CreateKoopaSprite(string color, string status);
         ISprite CreatePiranhaSprite(string color);
         ISprite CreateFireSprite();
@@ -20,13 +20,12 @@ namespace MelloMario
         ISprite CreateSuperMushroomSprite();
         ISprite CreateFireFlowerSprite();
         ISprite CreateOneUpMushroomSprite();
-        ISprite CreateTextSprite(string text);
         ISprite CreateQuestionSprite(string status);
         ISprite CreateBrickSprite(string status);
         ISprite CreateFloorSprite();
         ISprite CreateStairSprite();
         ISprite CreatePipelineSprite(string type);
+        ISprite CreateFlagSprite(bool isTop);
         ISprite CreateSceneSprite(string type, ZIndex zIndex);
-        ISprite CreatSplashSprite();
     }
 }
