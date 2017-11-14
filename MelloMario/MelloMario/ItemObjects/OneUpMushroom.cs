@@ -88,10 +88,6 @@ namespace MelloMario.ItemObjects
 
         public IItemState State
         {
-            get
-            {
-                return state;
-            }
             set
             {
                 state = value;
@@ -126,7 +122,6 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public OneUpMushroom(IGameWorld world, Point location, Listener listener) : this(world, location, GameDatabase.GetCharacterLocation(), listener, false) { }
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener) : this(world, location, marioLocation, listener, false) { }
 
         public void Collect()

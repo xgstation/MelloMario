@@ -97,7 +97,7 @@ namespace MelloMario.BlockObjects
         {
             if (GameDatabase.HasItemEnclosed(this))
             {
-                World.Add(GameDatabase.GetEnclosedItems(this)[0]);
+                world.Add(GameDatabase.GetEnclosedItems(this)[0]);
                 GameDatabase.GetEnclosedItems(this).RemoveAt(0);
             }
         }
