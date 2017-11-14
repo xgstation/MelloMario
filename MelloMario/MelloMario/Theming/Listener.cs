@@ -41,8 +41,9 @@ namespace MelloMario.Theming
         private void OnCoinCollect(Coin m, EventArgs e)
         {
             model.Coins += 1;
-            if(model.Coins >= 99)
+            if(model.Coins >= GameConst.COINS_FOR_LIVE)
             {
+                //TODO: play a one up sound
                 model.Coins = 0;
                 ++model.Lives;
             }

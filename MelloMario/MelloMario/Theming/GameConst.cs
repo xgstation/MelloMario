@@ -27,6 +27,8 @@
         // gameplay
 
         public const int LEVEL_TIME = 400;
+        public const int COINS_FOR_LIVE = 100;
+
         public const int SCORE_TIME_MULT = 50;
         public const int SCORE_COIN = 200;
         public const int SCORE_GOOMBA = 100;
@@ -35,6 +37,7 @@
         public const int SCORE_POWER_UP = 1000;
         public const int SCORE_PIRANHA = 200;
         public const int SCORE_FLAG_MAX = 5000;
+
 
         // visual
         public const int TEXTURE_GRID = 16;
