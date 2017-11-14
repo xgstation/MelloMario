@@ -25,6 +25,7 @@ namespace MelloMario.Sprites
                 return size;
             }
         }
+
         protected float LayerDepth
         {
             get
@@ -52,6 +53,7 @@ namespace MelloMario.Sprites
                 }
             }
         }
+
         public BaseSprite(SpriteBatch spriteBatch, Point size, ZIndex zIndex)
         {
             this.spriteBatch = spriteBatch;
