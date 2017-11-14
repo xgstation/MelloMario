@@ -7,6 +7,7 @@ namespace MelloMario
 {
     abstract class BaseCollidableObject : BaseGameObject
     {
+        private Listener listener;
         private Point movement;
         public event PointHandler HandlerPoints;
         private PointEventArgs pointEventInfo;
@@ -147,6 +148,10 @@ namespace MelloMario
         protected abstract void OnCollideViewport(IPlayer player, CollisionMode mode);
         protected abstract void OnCollideWorld(CollisionMode mode);
 
+        protected Listener GetListener
+        {
+            get { return listener; }
+        }
         protected void Move(Point delta)
         {
             movement += delta;
@@ -251,6 +256,7 @@ namespace MelloMario
 
         public BaseCollidableObject(IGameWorld world, Point location, Listener listener, Point size) : base(world, location, size)
         {
+            this.listener = listener;
             listener?.Subscribe(this);
             movement = new Point();
         }

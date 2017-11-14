@@ -43,7 +43,7 @@ namespace MelloMario.Theming
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
-
+            GameDatabase.Initialize(session);
             Score = 0;
             Coins = 0;
             Lives = 3;

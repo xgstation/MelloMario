@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using MelloMario.BlockObjects;
+using MelloMario.Factories;
+using MelloMario.ItemObjects;
+using MelloMario.MarioObjects;
+using MelloMario.MarioObjects.PowerUpStates;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming
@@ -15,6 +19,12 @@ namespace MelloMario.Theming
         private static IDictionary<string, Tuple<Pipeline, Pipeline>> PipelineIndex = new Dictionary<string, Tuple<Pipeline, Pipeline>>();
         private static IDictionary<ICharacter, Point> CharacterLocations = new Dictionary<ICharacter, Point>();
         private static IDictionary<ICharacter, int> CharacterLifes = new Dictionary<ICharacter, int>();
+        private static IGameSession session;
+
+        public static void Initialize(IGameSession session)
+        {
+            GameDatabase.session = session;
+        }
 
         public static void AddPipelineIndex(string index, Tuple<Pipeline,Pipeline> pipeline)
         {
@@ -107,9 +117,20 @@ namespace MelloMario.Theming
             }
         }
 
-        public static IList<IGameObject> GetEnclosedItems(IGameObject obj)
+        public static IGameObject GetNextItem(IGameObject obj)
         {
-            return HasItemEnclosed(obj) ? ItemEnclosedDb[obj] : null;
+            if (!HasItemEnclosed(obj)) return null;
+            if (ItemEnclosedDb[obj][0] is SuperMushroom mushroom)
+            {
+                if (session.ScanPlayers().Any(c => (c as PlayerMario)?.PowerUpState is Super))
+                {
+                    ItemEnclosedDb[obj].RemoveAt(0);
+                    return mushroom.GetFireFlower();
+                }
+            }
+            var toBeRemoved = ItemEnclosedDb[obj][0];
+            ItemEnclosedDb[obj].RemoveAt(0);
+            return toBeRemoved;
         }
 
         public static void SetEnclosedItem(IGameObject obj, IList<IGameObject> objs)

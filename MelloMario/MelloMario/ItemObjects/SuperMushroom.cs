@@ -2,6 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.SuperMushroomStates;
 using MelloMario.BlockObjects;
+using MelloMario.Containers;
 using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
@@ -12,6 +13,10 @@ namespace MelloMario.ItemObjects
         private IItemState state;
         private bool collected;
 
+        public FireFlower GetFireFlower()
+        {
+            return new FireFlower(World, Boundary.Location, GetListener, true);
+        }
         private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateSuperMushroomSprite());
@@ -111,7 +116,6 @@ namespace MelloMario.ItemObjects
         public SuperMushroom(IGameWorld world, Point location, Listener listener) : this(world, location, GameDatabase.GetCharacterLocation(), listener) { }
         public SuperMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
         {
-
             collected = false;
             if (marioLocation.X < location.X)
             {

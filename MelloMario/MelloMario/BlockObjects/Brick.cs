@@ -119,11 +119,10 @@ namespace MelloMario.BlockObjects
 
         public void ReleaseNextItem()
         {
-            if (GameDatabase.HasItemEnclosed(this))
-            {
-                World.Add(GameDatabase.GetEnclosedItems(this)[0]);
-                GameDatabase.GetEnclosedItems(this).RemoveAt(0);
-            }
+            if (!GameDatabase.HasItemEnclosed(this)) return;
+            var item = GameDatabase.GetNextItem(this);
+            World.Update();
+            World.Add(item);
         }
     }
 }
