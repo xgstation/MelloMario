@@ -17,8 +17,7 @@ namespace MelloMario.MarioObjects
         }
 
         private Animation animation;
-        private Point initial;
-        private int traveled;
+        private int toBeTraveled;
 
         private Vector2 userInput;
         private SoundEffectInstance jumpSound;
@@ -27,6 +26,7 @@ namespace MelloMario.MarioObjects
         protected void Teleport()
         {
             animation = Animation.teleport;
+            toBeTraveled = Boundary.Height;
             // TODO: initialize
         }
 
@@ -39,12 +39,12 @@ namespace MelloMario.MarioObjects
         {
             if (animation == Animation.teleport)
             {
-                Move(new Point(0, -2));
+                Move(new Point(0, 2));
 
-                if (traveled >= initial.Y - Boundary.Y)
+                toBeTraveled -= 2;
+                if (toBeTraveled <= 0)
                 {
                     animation = Animation.none;
-                    traveled = 0;
                 }
             }
             base.OnSimulation(time);
