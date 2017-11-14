@@ -9,7 +9,6 @@ namespace MelloMario.BlockObjects
     class Brick : BaseCollidableObject
     {
         private IBlockState state;
-        private IGameObject item;
         private bool isHidden;
         private bool hasInitialItem;
 
@@ -21,8 +20,9 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        public void Initialize()
+        public void Initialize(bool hidden = false)
         {
+            isHidden = hidden;
             if (isHidden)
             {
                 state = new Hidden(this);
@@ -32,39 +32,25 @@ namespace MelloMario.BlockObjects
                 state = new Normal(this);
             }
             hasInitialItem = GameDatabase.HasItemEnclosed(this);
-            if (hasInitialItem)
-            {
-                LoadItem();
-            }
             UpdateSprite();
         }
+
         private void UpdateSprite()
         {
-            if (state is Hidden)
+            switch (state)
             {
-                HideSprite();
-            }
-            else if (state is Destroyed)
-            {
-                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Destroyed"));
-            }
-            else
-            {
-                ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
-            }
-        }
-
-
-        private void LoadItem()
-        {
-            if (GameDatabase.HasItemEnclosed(this))
-            {
-                item = GameDatabase.GetEnclosedItems(this)[0];
-                GameDatabase.GetEnclosedItems(this).RemoveAt(0);
-            }
-            else
-            {
-                item = null;
+                case IState s when s is Hidden:
+                    HideSprite();
+                    break;
+                case IState s when s is Destroyed:
+                    ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Destroyed"));
+                    break;
+                case IState s when s is Normal:
+                    ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
+                    break;
+                case IState s when s is Used:
+                    ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
+                    break;
             }
         }
 
@@ -133,10 +119,10 @@ namespace MelloMario.BlockObjects
 
         public void ReleaseNextItem()
         {
-            LoadItem();
-            if (item != null)
+            if (GameDatabase.HasItemEnclosed(this))
             {
-                World.Add(item);
+                World.Add(GameDatabase.GetEnclosedItems(this)[0]);
+                GameDatabase.GetEnclosedItems(this).RemoveAt(0);
             }
         }
     }
