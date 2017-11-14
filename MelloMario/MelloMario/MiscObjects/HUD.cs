@@ -10,6 +10,7 @@ namespace MelloMario.MiscObjects
 
         private ISprite textSprite;
         private ISprite coinSprite;
+        private ISprite oneUpSprite;
         private int elapsed;
 
         public Rectangle Boundary
@@ -22,7 +23,7 @@ namespace MelloMario.MiscObjects
 
         private void UpdateSprite()
         {
-            string firstLine = "MARIO           WORLD    TIME";
+            string firstLine = "MARIO     *" + model.Lives.ToString().PadLeft(2, '0') + "   WORLD    TIME";
             string secondLine = model.Score.ToString().PadLeft(6, '0') + "    *"
                 + model.Coins.ToString().PadLeft(2, '0') + "    "
                 + "1-1" + "      " + model.Time / 1000; // TODO: get world name from player.CurrentWorld
@@ -33,6 +34,7 @@ namespace MelloMario.MiscObjects
         {
             this.model = model;
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
+            oneUpSprite = SpriteFactory.Instance.CreateOneUpMushroomSprite();
             UpdateSprite();
         }
 
@@ -51,6 +53,7 @@ namespace MelloMario.MiscObjects
         {
             textSprite.Draw(time, new Rectangle(42, 42, 800, 200));
             coinSprite.Draw(time, new Rectangle(255, 74, 26, 30));
+            oneUpSprite.Draw(time, new Rectangle(255, 42, 26, 30));
         }
     }
 }

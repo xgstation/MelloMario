@@ -21,6 +21,7 @@ namespace MelloMario.Theming
         //note: we will have an extra class called Player which contains these information
         public int Coins;
         public int Score;
+        public int Lives;
         public int Time;
         public IGameObject hud;
 
@@ -45,6 +46,7 @@ namespace MelloMario.Theming
 
             Score = 0;
             Coins = 0;
+            Lives = 3;
             Time = GameConst.LEVEL_TIME * 1000;
             hud = new HUD(this);
 

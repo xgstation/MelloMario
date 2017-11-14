@@ -25,6 +25,12 @@ namespace MelloMario.Theming
         public void Subscribe(BaseCollidableObject m)
         {
             m.HandlerPoints += new BaseCollidableObject.PointHandler(OnPointGain);
+            m.HandlerLives += new BaseCollidableObject.LivesHandler(OnLivesChange);
+        }
+
+        private void OnLivesChange(BaseCollidableObject m, PointEventArgs e)
+        {
+            model.Lives += e.Points;
         }
 
         private void OnPointGain(BaseCollidableObject m, PointEventArgs e)

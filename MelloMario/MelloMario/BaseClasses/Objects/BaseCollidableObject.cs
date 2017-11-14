@@ -11,6 +11,8 @@ namespace MelloMario
         public event PointHandler HandlerPoints;
         private PointEventArgs pointEventInfo;
         public delegate void PointHandler(BaseCollidableObject m, PointEventArgs e);
+        public event LivesHandler HandlerLives;
+        public delegate void LivesHandler(BaseCollidableObject m, PointEventArgs e);
 
         private IEnumerable<Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>> ScanCollideModes(Rectangle targetBoundary)
         {
@@ -233,6 +235,17 @@ namespace MelloMario
             };
 
             HandlerPoints?.Invoke(this, pointEventInfo);
+
+        }
+
+        protected void ChangeLives(int change)
+        {
+            pointEventInfo = new PointEventArgs
+            {
+                Points = change
+            };
+
+            HandlerLives?.Invoke(this, pointEventInfo);
 
         }
 
