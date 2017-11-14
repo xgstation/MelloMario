@@ -6,6 +6,7 @@ using MelloMario.ItemObjects;
 using MelloMario.MarioObjects;
 using MelloMario.MiscObjects;
 using MelloMario.Theming;
+using System.Collections.Generic;
 
 namespace MelloMario.Factories
 {
@@ -114,14 +115,21 @@ namespace MelloMario.Factories
             }
         }
 
-        public IGameObject[] CreateFlagPole(IGameWorld world, Point location, Listener listener, int height)
+        public IEnumerable<IGameObject> CreateGameObjectGroup(string type, IGameWorld world, Point location, int count, Listener listener)
         {
-            IGameObject[] flagPole = new IGameObject[height];
-            for(int i = 0; i < height; ++i)
+            switch (type)
             {
-                flagPole[i] = new Flag(world, new Point(location.X, location.Y - 32*i), listener, i, height-1);
+                case "FlagPole":
+                    for (int i = 0; i < count; ++i)
+                    {
+                        yield return new Flag(world, new Point(location.X, location.Y - 32 * i), listener, i, count - 1);
+                    }
+                    yield break;
+
+                default:
+                    yield return null; // should never reach
+                    yield break;
             }
-            return flagPole;
         }
     }
 }

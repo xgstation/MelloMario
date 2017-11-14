@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Controllers;
 using MelloMario.Factories;
 using MelloMario.Theming;
-using MelloMario.Sounds;
 
 namespace MelloMario
 {
@@ -22,7 +21,7 @@ namespace MelloMario
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this) { };
             graphics.PreferredBackBufferHeight = GameConst.SCREEN_WIDTH;
             graphics.PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT;
         }

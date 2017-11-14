@@ -179,7 +179,7 @@ namespace MelloMario.LevelGen
                 if (type.Name == "Koopa")
                 {
                     Util.TryGet(out string color, token, "Property", "Color");
-                    createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, color);
+                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, color);
                 }
                 if (isSingle)
                 {
@@ -220,9 +220,10 @@ namespace MelloMario.LevelGen
             }
             else if (type.Name == "Flag")
             {
-                IGameObject[] flagPole = GameObjectFactory.Instance.CreateFlagPole(world, objPoint, listener, 7);
-                for (int i = 0; i < flagPole.Length; ++i)
-                    stack.Push(flagPole[i]);
+                foreach (IGameObject obj in GameObjectFactory.Instance.CreateGameObjectGroup("FlagPole", world, objPoint, 7, listener))
+                {
+                    stack.Push(obj);
+                }
             }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
             {
@@ -243,7 +244,7 @@ namespace MelloMario.LevelGen
                     Util.BatchCreate(
                         point =>
                         {
-                            objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
+                            objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
                             if (type.Name == "Question")
                             {
                                 (objToBePushed as Question).Initialize();
@@ -284,7 +285,7 @@ namespace MelloMario.LevelGen
                         Util.TryGet(out float showTime, piranhaToken, "ShowTime"))
                         {
                             new Piranha(world, new Point(objPoint.X + 16, objPoint.Y), listener, new Point(32, 48),
-                                (int)(hiddenTime * 1000), (int)(showTime * 1000), 32, color);
+                                (int) (hiddenTime * 1000), (int) (showTime * 1000), 32, color);
                         }
                     }
                     if (direction != "NV" && direction != "NH" &&

@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using MelloMario.LevelGen;
 using System;
 using MelloMario.Containers;
 using MelloMario.Scripts;
-using MelloMario.Factories;
 using MelloMario.MiscObjects;
 using MelloMario.Sounds;
+using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming
 {
@@ -19,11 +17,11 @@ namespace MelloMario.Theming
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private Listener listener;
-        private SoundController soundControl;
         //TODO: temporary public
         //note: we will have an extra class called Player which contains these information
         public int Coins;
         public int Score;
+        public int Lives;
         public int Time;
         public IGameObject hud;
 
@@ -52,9 +50,10 @@ namespace MelloMario.Theming
 
             Score = 0;
             Coins = 0;
+            Lives = 3;
             Time = GameConst.LEVEL_TIME * 1000;
             hud = new HUD(this);
-            
+
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -96,7 +95,7 @@ namespace MelloMario.Theming
             LevelIOJson reader = new LevelIOJson("Content/ExampleLevel.json", game.GraphicsDevice, listener);
             reader.SetModel(this);
             Tuple<IGameWorld, IPlayer> pair = reader.Load(id, session);
-            
+
 
             if (!init && pair.Item2 != null)
             {
@@ -128,11 +127,10 @@ namespace MelloMario.Theming
         private bool isHurry = false;
         public void switchMusic(int time)
         {
-            if (time < 90000 && !isHurry)
+            if (time < 90000 && SoundController.CurrentSong != SoundController.Songs.hurry)
             {
                 MediaPlayer.Stop();
                 SoundController.PlayMusic(SoundController.Songs.hurry);
-                isHurry = true;
             }
             if (time == 0)
             {
@@ -151,6 +149,7 @@ namespace MelloMario.Theming
         {
             game.Exit();
         }
+
         public void Mute()
         {
             MediaPlayer.Stop();
@@ -171,7 +170,7 @@ namespace MelloMario.Theming
                 foreach (IPlayer player in session.ScanPlayers())
                 {
                     player.World.Update();
-                    foreach (IGameObject obj in player.World.ScanNearby(player.Sensing))
+                    foreach (IGameObject obj in player.World.ScanNearby(player.Character.Sensing))
                     {
                         updating.Add(obj);
                     }
@@ -186,7 +185,7 @@ namespace MelloMario.Theming
 
                 // TODO: move to correct place
                 Time -= time;
-                switchMusic(Time);
+                SwitchMusic(Time);
             }
         }
 
@@ -194,19 +193,19 @@ namespace MelloMario.Theming
         {
             IPlayer player = GetActivePlayer();
 
-            foreach (IGameObject obj in player.World.ScanNearby(player.Viewport))
+            foreach (IGameObject obj in player.World.ScanNearby(player.Character.Viewport))
             {
                 if (isPaused)
                 {
-                    obj.Draw(0, player.Viewport);
+                    obj.Draw(0, player.Character.Viewport);
                 }
                 else
                 {
-                    obj.Draw(time, player.Viewport);
+                    obj.Draw(time, player.Character.Viewport);
                 }
             }
 
-            hud.Draw(time, player.Viewport);
+            hud.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
         }
     }
 }

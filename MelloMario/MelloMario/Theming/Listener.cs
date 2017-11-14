@@ -25,6 +25,12 @@ namespace MelloMario.Theming
         public void Subscribe(BaseCollidableObject m)
         {
             m.HandlerPoints += new BaseCollidableObject.PointHandler(OnPointGain);
+            m.HandlerLives += new BaseCollidableObject.LivesHandler(OnLivesChange);
+        }
+
+        private void OnLivesChange(BaseCollidableObject m, PointEventArgs e)
+        {
+            model.Lives += e.Points;
         }
 
         private void OnPointGain(BaseCollidableObject m, PointEventArgs e)
@@ -35,6 +41,12 @@ namespace MelloMario.Theming
         private void OnCoinCollect(Coin m, EventArgs e)
         {
             model.Coins += 1;
+            if(model.Coins >= GameConst.COINS_FOR_LIVE)
+            {
+                //TODO: play a one up sound
+                model.Coins = 0;
+                ++model.Lives;
+            }
         }
     }
 }

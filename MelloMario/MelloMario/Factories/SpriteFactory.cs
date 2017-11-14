@@ -2,7 +2,6 @@
 using MelloMario.Sprites;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-using MelloMario.Theming;
 using MelloMario.Sprites.BlockSprites;
 using Microsoft.Xna.Framework;
 
@@ -139,8 +138,12 @@ namespace MelloMario.Factories
             return new AnimatedSprite(spriteBatch, GetTexture("Star"), 4, 1);
         }
 
-        public ISprite CreateCoinSprite()
+        public ISprite CreateCoinSprite(bool isHud = false)
         {
+            if (isHud)
+            {
+                return new AnimatedSprite(spriteBatch, GetTexture("Coin"), 4, 1, 0, 0, 1, 2, 100, ZIndex.hud);
+            }
             return new AnimatedSprite(spriteBatch, GetTexture("Coin"), 4, 1, 0, 0, 1, 2);
         }
 
@@ -222,13 +225,13 @@ namespace MelloMario.Factories
             switch (type)
             {
                 case "LeftIn":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 16, zIndex: ZIndex.level);
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 16, zIndex: ZIndex.foreground);
                 case "RightIn":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 16, zIndex: ZIndex.level);
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 16, zIndex: ZIndex.foreground);
                 case "Left":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 18, zIndex: ZIndex.level);
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 18, zIndex: ZIndex.foreground);
                 case "Right":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 18, zIndex: ZIndex.level);
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 18, zIndex: ZIndex.foreground);
                 //TODO: Implement cases below
                 case "TopLeftIn":
                 case "BottomLeftIn":

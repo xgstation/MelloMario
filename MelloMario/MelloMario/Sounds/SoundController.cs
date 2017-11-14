@@ -4,37 +4,28 @@ using MelloMario.Factories;
 
 namespace MelloMario.Sounds
 {
-    class SoundController
+    static class SoundController
     {
-        // TODO: use a factory
-        public static Song Normal, BelowGround, Hurry, gameOver;
-        public static SoundEffect bounce, powerBounce, bumpBlock, breakBlock, coin, death, sizeUp, sizeUpAppear, oneUpCollect, enemyKill, pipe;
+        public static Song Normal = SoundFactory.Instance.CreateSong("01-main-theme-overworld");
+        public static Song BelowGround = SoundFactory.Instance.CreateSong("02-underworld");
+        public static Song Hurry = SoundFactory.Instance.CreateSong("18-hurry-overworld-");
+        public static Song GameOver = SoundFactory.Instance.CreateSong("09-game-over");
 
-        public enum Songs { normal, belowGround, hurry, pause, title , gameover}
-        public static Songs currentSong;
+        public static SoundEffect bounce = SoundFactory.Instance.CreateSoundEffect("smb_jumpsmall");
+        public static SoundEffect powerBounce = SoundFactory.Instance.CreateSoundEffect("smb_jump-super");
+        public static SoundEffect bumpBlock = SoundFactory.Instance.CreateSoundEffect("smb_bump");
+        public static SoundEffect breakBlock = SoundFactory.Instance.CreateSoundEffect("smb_breakblock");
+        public static SoundEffect coin = SoundFactory.Instance.CreateSoundEffect("smb_coin");
+        public static SoundEffect death = SoundFactory.Instance.CreateSoundEffect("smb_mariodie");
+        public static SoundEffect sizeUp = SoundFactory.Instance.CreateSoundEffect("smb_powerup");
+        public static SoundEffect enemyKill = SoundFactory.Instance.CreateSoundEffect("smb_stomp");
+        public static SoundEffect pipe = SoundFactory.Instance.CreateSoundEffect("smb_pipe");
 
-        public SoundController(Game1 game)
-        {
-            bounce = SoundFactory.Instance.CreateSoundEffect("smb_jumpsmall");
-            powerBounce = SoundFactory.Instance.CreateSoundEffect("smb_jump-super");
-            bumpBlock = SoundFactory.Instance.CreateSoundEffect("smb_bump");
-            breakBlock = SoundFactory.Instance.CreateSoundEffect("smb_breakblock");
-            coin = SoundFactory.Instance.CreateSoundEffect("smb_coin");
-            death = SoundFactory.Instance.CreateSoundEffect("smb_mariodie");
-            sizeUp = SoundFactory.Instance.CreateSoundEffect("smb_powerup");
-            enemyKill = SoundFactory.Instance.CreateSoundEffect("smb_stomp");
-            pipe = SoundFactory.Instance.CreateSoundEffect("smb_pipe");
-            
+        public static SoundEffect sizeUpAppear = SoundFactory.Instance.CreateSoundEffect("smb_powerup_appears");
+        public static SoundEffect oneUpCollect = SoundFactory.Instance.CreateSoundEffect("smb_1-up");
 
-            sizeUpAppear = SoundFactory.Instance.CreateSoundEffect("smb_powerup_appears");
-            oneUpCollect = SoundFactory.Instance.CreateSoundEffect("smb_1-up");
-
-            Normal = SoundFactory.Instance.CreateSong("01-main-theme-overworld");
-            BelowGround = SoundFactory.Instance.CreateSong("02-underworld");
-            Hurry = SoundFactory.Instance.CreateSong("18-hurry-overworld-");
-            gameOver = SoundFactory.Instance.CreateSong("09-game-over");
-            currentSong = Songs.normal;
-        }
+        public enum Songs { normal, belowGround, hurry, pause, title, gameOver }
+        public static Songs CurrentSong = Songs.normal;
 
         public static void PlayMusic(Songs song)
         {
@@ -42,23 +33,21 @@ namespace MelloMario.Sounds
             {
                 case Songs.normal:
                     MediaPlayer.Play(Normal);
+                    //MediaPlayer.IsRepeating = true;
                     break;
                 case Songs.hurry:
                     MediaPlayer.Play(Hurry);
-                    break;
-                case Songs.gameover:
-                    MediaPlayer.Play(gameOver);
-                    break;
-                case Songs.belowGround:
-                    MediaPlayer.Play(BelowGround);
+                    //MediaPlayer.IsRepeating = true;
                     break;
                 default:
                     break;
             }
             MediaPlayer.IsRepeating = true;
+
+            CurrentSong = song;
         }
 
-        public void Mute()
+        public static void Mute()
         {
             MediaPlayer.Stop();
         }

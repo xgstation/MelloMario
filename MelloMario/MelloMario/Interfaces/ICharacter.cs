@@ -1,7 +1,12 @@
-﻿namespace MelloMario
+﻿using Microsoft.Xna.Framework;
+
+namespace MelloMario
 {
     interface ICharacter
     {
+        Rectangle Sensing { get; }
+        Rectangle Viewport { get; }
+
         void Left();
         void LeftPress();
         void LeftRelease();

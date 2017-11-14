@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
@@ -17,7 +16,7 @@ namespace MelloMario
         ISprite CreatePiranhaSprite(string color);
         ISprite CreateFireSprite();
         ISprite CreateStarSprite();
-        ISprite CreateCoinSprite();
+        ISprite CreateCoinSprite(bool isHud = false);
         ISprite CreateSuperMushroomSprite();
         ISprite CreateFireFlowerSprite();
         ISprite CreateOneUpMushroomSprite();
