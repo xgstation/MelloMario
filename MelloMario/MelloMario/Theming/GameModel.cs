@@ -42,10 +42,7 @@ namespace MelloMario.Theming
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
-            if (!worldSwitched)
-            {
-                SoundController.PlayMusic(SoundController.Songs.normal);
-            }
+            SoundController.PlayMusic(SoundController.Songs.normal);
 
             Score = 0;
             Coins = 0;
@@ -118,7 +115,7 @@ namespace MelloMario.Theming
             Resume();
         }
 
-        public void switchMusic(int time)
+        public void SwitchMusic(int time)
         {
             if (time < 90000 && SoundController.CurrentSong != SoundController.Songs.hurry)
             {
@@ -179,7 +176,7 @@ namespace MelloMario.Theming
 
                 // TODO: move to correct place
                 Time -= time;
-                switchMusic(Time);
+                SwitchMusic(Time);
             }
         }
 

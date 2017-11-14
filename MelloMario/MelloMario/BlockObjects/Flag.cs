@@ -26,8 +26,10 @@ namespace MelloMario.BlockObjects
                 if (!touched)
                 {
                     if (top)
+                    {
                         ChangeLives(1);
-                    ScorePoints((int) (1f * height / maxHeight * GameConst.SCORE_FLAG_MAX));
+                    }
+                    ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
                     touched = true;
 
                     //TODO: trigger game win
