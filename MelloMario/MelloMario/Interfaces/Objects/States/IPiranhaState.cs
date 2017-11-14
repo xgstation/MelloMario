@@ -2,5 +2,6 @@
 {
     interface IPiranhaState : IState
     {
+        void Defeat();
     }
 }
