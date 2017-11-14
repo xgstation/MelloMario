@@ -11,7 +11,7 @@ namespace MelloMario.MarioObjects
         private bool active;
         private bool teleporting;
         private Point initial;
-        private int traveled;
+        private int toBeTraveled;
         private Vector2 userInput;
         private SoundEffectInstance jumpSound;
         private SoundEffectInstance powerJumpSound;
@@ -21,11 +21,11 @@ namespace MelloMario.MarioObjects
             if (teleporting)
             {
                 Move(new Point(0, -2));
-                if (traveled >= initial.Y - Boundary.Y)
+                if (toBeTraveled >= initial.Y - Boundary.Y)
                 {
                     teleporting = false;
                     active = true;
-                    traveled = 0;
+                    toBeTraveled = 0;
                 }
             }
             base.OnSimulation(time);
@@ -39,7 +39,9 @@ namespace MelloMario.MarioObjects
                 userInput.X = 0;
                 userInput.Y = 0;
                 initial = Boundary.Location;
+                toBeTraveled = Boundary.Height;
             }
+
 
             base.OnUpdate(time);
         }

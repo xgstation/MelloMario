@@ -194,7 +194,7 @@ namespace MelloMario.Theming
 
         public void Draw(int time)
         {
-            if ((Time / 1000) < 0||Lives)
+            if ((Time / 1000) < 0 || Lives == 0)
             {
 
             }
