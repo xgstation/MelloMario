@@ -27,5 +27,6 @@ namespace MelloMario
         ISprite CreateStairSprite();
         ISprite CreatePipelineSprite(string type);
         ISprite CreateSceneSprite(string type, ZIndex zIndex);
+        ISprite CreatSplashSprite();
     }
 }

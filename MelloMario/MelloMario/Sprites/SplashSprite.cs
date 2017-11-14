@@ -12,7 +12,7 @@ namespace MelloMario.Sprites
     class SplashSprite : BaseSprite
     {
         private Texture2D screen;
-        public SplashSprite(SpriteBatch spriteBatch, string text, SpriteFont font, Point size, ZIndex zIndex) : base(spriteBatch, size, zIndex)
+        public SplashSprite(SpriteBatch spriteBatch,Point size, ZIndex zIndex) : base(spriteBatch, size, zIndex)
         {
             screen = new Texture2D(spriteBatch.GraphicsDevice, size.X, size.Y);
             Color[] data = new Color[size.X * size.Y];
