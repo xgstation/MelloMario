@@ -41,6 +41,11 @@ namespace MelloMario.Theming
         private void OnCoinCollect(Coin m, EventArgs e)
         {
             model.Coins += 1;
+            if(model.Coins >= 99)
+            {
+                model.Coins = 0;
+                ++model.Lives;
+            }
         }
     }
 }
