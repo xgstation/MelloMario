@@ -1,4 +1,5 @@
-﻿using MelloMario.EnemyObjects.PiranhaStates;
+﻿using System.Linq;
+using MelloMario.EnemyObjects.PiranhaStates;
 using MelloMario.Interfaces.Objects.States;
 using MelloMario.MarioObjects;
 using Microsoft.Xna.Framework;
@@ -22,15 +23,9 @@ namespace MelloMario.EnemyObjects
 
         private bool DetectMario()
         {
-            foreach (var gameObject in World.ScanNearby(Boundary))
-            {
-                if (gameObject is Mario m)
-                {
-                    return m.Boundary.Intersects(new Rectangle(Boundary.X - 6, Boundary.Y - 4, Boundary.Width + 12,
-                        Boundary.Height));
-                }
-            }
-            return false;
+            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X,Boundary.Y,Boundary.Height,16))
+                    where obj is PlayerMario select obj).Any();
+
         }
         public IPiranhaState State
         {
