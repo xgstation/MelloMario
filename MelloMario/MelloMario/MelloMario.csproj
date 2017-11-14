@@ -163,6 +163,7 @@
     <Compile Include="EnemyObjects\KoopaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\KoopaStates\Normal.cs" />
     <Compile Include="ItemObjects\SuperMushroomStates\Unveil.cs" />
+    <Compile Include="LevelGen\gameentityconverter.cs" />
     <Compile Include="LevelGen\Util.cs" />
     <Compile Include="MarioObjects\Fire.cs" />
     <Compile Include="MiscObjects\Background.cs" />
