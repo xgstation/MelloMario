@@ -1,5 +1,4 @@
-﻿using MelloMario.BlockObjects;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace MelloMario
 {
@@ -8,8 +7,7 @@ namespace MelloMario
         IGameWorld World { get; }
         ICharacter Character { get; }
 
-        void Spawn(IGameWorld newWorld);
-        void Spawn(IGameWorld newWorld, Pipeline pipeline);
+        void Spawn(IGameWorld newWorld, Point location);
         void Reset();
     }
 }

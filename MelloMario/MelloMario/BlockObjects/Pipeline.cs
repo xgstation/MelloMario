@@ -43,14 +43,17 @@ namespace MelloMario.BlockObjects
 
                 if (elapsed > 500)
                 {
+                    IGameWorld world = model.LoadLevel(GameDatabase.GetEntranceIndex(this));
+
                     if (GameDatabase.IsPortal(this))
                     {
-                        switchingPlayer.Spawn(model.LoadLevel(GameDatabase.GetEntranceIndex(this)), GameDatabase.GetPortal(this));
+                        switchingPlayer.Spawn(world, GameDatabase.GetPortal(this).Boundary.Location);
                     }
                     else
                     {
-                        switchingPlayer.Spawn(model.LoadLevel(GameDatabase.GetEntranceIndex(this)));
+                        switchingPlayer.Spawn(world, world.GetInitialPoint());
                     }
+
                     elapsed = 0;
                     switchingPlayer = null;
                 }
@@ -79,7 +82,7 @@ namespace MelloMario.BlockObjects
                             }
                             break;
                     }
-                    
+
                     // TODO: mario.freeze
                 }
             }
@@ -107,7 +110,7 @@ namespace MelloMario.BlockObjects
             this.type = type;
             //pipeTravelSound = SoundController.pipe.CreateInstance();
             //soundControl = new SoundController(model.);
-            
+
             UpdateSprite();
         }
     }
