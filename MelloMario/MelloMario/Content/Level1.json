@@ -288,7 +288,7 @@
                 "Y": 0
               },
               "Property": {
-                "IsHidden": false, 
+                "IsHidden": false,
                 "ItemValues": [
                   "StarUnveil"
                 ]
@@ -317,6 +317,387 @@
             "Y": 9
           },
           "Type": "Question"
+        },
+        {
+          "Property": {
+            "IsHidden": false,
+            "ItemValues": [
+              "CoinUnveil"
+            ]
+          },
+          "Point": {
+            "X": 109,
+            "Y": 9
+          },
+          "Type": "Question"
+        },
+        {
+          "Property": {
+            "IsHidden": false,
+            "ItemValues": [
+              "CoinUnveil"
+            ]
+          },
+          "Point": {
+            "X": 112,
+            "Y": 9
+          },
+          "Type": "Question"
+        },
+        {
+          "Property": {
+            "IsHidden": false,
+            "ItemValues": [
+              "CoinUnveil"
+            ]
+          },
+          "Point": {
+            "X": 109,
+            "Y": 5
+          },
+          "Type": "Question"
+        },
+        {
+          "Point": {
+            "X": 118,
+            "Y": 9
+          },
+          "Type": "Brick"
+        },
+        {
+          "Quantity": {
+            "X": 3,
+            "Y": 1
+          },
+          "Point": {
+            "X": 121,
+            "Y": 5
+          },
+          "Type": "Brick"
+        },
+        {
+          "Point": {
+            "X": 128,
+            "Y": 5
+          },
+          "Type": "Brick"
+        },
+        {
+          "Property": {
+            "ItemValues": [
+              "CoinUnveil"
+            ]
+          },
+          "Point": {
+            "X": 129,
+            "Y": 5
+          },
+          "Type": "Question"
+        },
+        {
+          "Property": {
+            "ItemValues": [
+              "CoinUnveil"
+            ]
+          },
+          "Point": {
+            "X": 130,
+            "Y": 5
+          },
+          "Type": "Question"
+        },
+        {
+          "Point": {
+            "X": 131,
+            "Y": 5
+          },
+          "Type": "Brick"
+        },
+        {
+          "Quantity": {
+            "X": 2,
+            "Y": 1
+          },
+          "Point": {
+            "X": 129,
+            "Y": 9
+          },
+          "Type": "Brick"
+        },
+        {
+          "Triangle": {
+            "X": -4,
+            "Y": 4
+          },
+          "Point": {
+            "X": 137,
+            "Y": 9
+          },
+          "Type": "Stair"
+        },
+        {
+          "Triangle": {
+            "X": 4,
+            "Y": 4
+          },
+          "Point": {
+            "X": 140,
+            "Y": 9
+          },
+          "Type": "Stair"
+        },
+        {
+          "Triangle": {
+            "X": -4,
+            "Y": 4
+          },
+          "Point": {
+            "X": 151,
+            "Y": 9
+          },
+          "Type": "Stair"
+        },
+        {
+          "Quantity": {
+            "X": 1,
+            "Y": 4
+          },
+          "Point": {
+            "X": 152,
+            "Y": 9
+          },
+          "Type": "Stair"
+        },
+        {
+          "Triangle": {
+            "X": 4,
+            "Y": 4
+          },
+          "Point": {
+            "X": 155,
+            "Y": 9
+          },
+          "Type": "Stair"
+        },
+        {
+          "Type": "Pipeline",
+          "Point": {
+            "X": 163,
+            "Y": 11
+          },
+          "Property": {
+            "Length": 1,
+            "Direction": "V",
+            "Index": "2"
+          }
+        },
+        {
+          "Type": "Brick",
+          "Point": {
+            "X": 168,
+            "Y": 9
+          },
+          "Quantity": {
+            "X": 2,
+            "Y": 1
+          }
+        },
+        {
+          "Type": "Question",
+          "Point": {
+            "X": 170,
+            "Y": 9
+          },
+          "Property": {
+            "ItemValue": "CoinUnveil"
+          }
+        },
+        {
+          "Type": "Brick",
+          "Point": {
+            "X": 171,
+            "Y": 9
+          }
+        },
+        {
+          "Type": "Pipeline",
+          "Point": {
+            "X": 179,
+            "Y": 11
+          },
+          "Property": {
+            "Length": 1,
+            "Direction": "V"
+          }
+        },
+        {
+          "Type": "Stair",
+          "Point": {
+            "X": 188,
+            "Y": 5
+          },
+          "Triangle": {
+            "X": -8,
+            "Y": 8
+          }
+        },
+        {
+          "Type": "Stair",
+          "Point": {
+            "X": 189,
+            "Y": 5
+          },
+          "Quantity": {
+            "X": 1,
+            "Y": 8
+          }
+        },
+        {
+          "Type": "Stair",
+          "Point": {
+            "X": 198,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Flag",
+          "Point": {
+            "X": 198,
+            "Y": 3
+          }
+        },
+        {
+          "Type": "Castle",
+          "Point": {
+            "X": 202,
+            "Y": 8
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 22,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 40,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 51,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 52.5,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 80,
+            "Y": 4
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 82,
+            "Y": 4
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 97,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 98.5,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 98.5,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "GreenKoopa",
+          "Point": {
+            "X": 107,
+            "Y": 4
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 114,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 115.5,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 124,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 125.5,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 128,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 129.5,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 174,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 175.5,
+            "Y": 12
+          }
         }
       ]
     },
