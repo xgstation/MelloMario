@@ -9,8 +9,6 @@ using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 
-
-
 namespace MelloMario.Theming
 {
     class GameModel : IGameModel
@@ -27,7 +25,6 @@ namespace MelloMario.Theming
         public int Lives;
         public int Time;
         public IGameObject hud;
-        public GameOver screen;
 
         // for singleplayer game
         private IPlayer GetActivePlayer()
@@ -194,28 +191,21 @@ namespace MelloMario.Theming
 
         public void Draw(int time)
         {
-            if ((Time / 1000) < 0 || Lives == 0)
-            {
+            IPlayer player = GetActivePlayer();
 
-            }
-            else
+            foreach (IGameObject obj in player.World.ScanNearby(player.Character.Viewport))
             {
-                IPlayer player = GetActivePlayer();
-
-                foreach (IGameObject obj in player.World.ScanNearby(player.Character.Viewport))
+                if (isPaused)
                 {
-                    if (isPaused)
-                    {
-                        obj.Draw(0, player.Character.Viewport);
-                    }
-                    else
-                    {
-                        obj.Draw(time, player.Character.Viewport);
-                    }
+                    obj.Draw(0, player.Character.Viewport);
                 }
-
-                hud.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
+                else
+                {
+                    obj.Draw(time, player.Character.Viewport);
+                }
             }
+
+            hud.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
         }
     }
 }
