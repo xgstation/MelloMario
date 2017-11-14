@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿//#define DEBUGSPRITE
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Controllers;
@@ -89,16 +90,18 @@ namespace MelloMario
         /// <param name="time">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime time)
         {
-
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
-
+#if !DEBUGSPRITE
             spriteBatch.Begin(SpriteSortMode.BackToFront);
+#endif
+#if DEBUGSPRITE
             //Debug Code
-            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
-            //RasterizerState state = new RasterizerState();
-            //state.FillMode = FillMode.WireFrame;
-            //spriteBatch.GraphicsDevice.RasterizerState = state;
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
+            RasterizerState state = new RasterizerState();
+            state.FillMode = FillMode.WireFrame;
+            spriteBatch.GraphicsDevice.RasterizerState = state;
+#endif
             model.Draw(time.ElapsedGameTime.Milliseconds);
 
             spriteBatch.End();
