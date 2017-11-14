@@ -54,6 +54,10 @@ namespace MelloMario.Factories
             return new TextSprite(spriteBatch, text, content.Load<SpriteFont>("Font\\text"), new Point(), ZIndex.hud);
         }
 
+        public ISprite CreatSplashSprite()
+        {
+            return new SplashSprite(spriteBatch, new Point(), ZIndex.hud);
+        }
         public ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing)
         {
             switch (protectionStatus)
