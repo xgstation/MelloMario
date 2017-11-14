@@ -323,8 +323,6 @@ namespace MelloMario.LevelGen
                             grid,
                             ref stack);
                     }
-
-                    
                     return true;
                 }
                 propertyPair = GetPropertyPair(token);
@@ -336,11 +334,11 @@ namespace MelloMario.LevelGen
                 }
                 if (type.Name == "Question")
                 {
-                    (objToBePushed as Question).Initialize();
+                    (objToBePushed as Question).Initialize(propertyPair.Item1);
                 }
                 if (type.Name == "Brick")
                 {
-                    (objToBePushed as Brick).Initialize();
+                    (objToBePushed as Brick).Initialize(propertyPair.Item1);
                 }
                 stack.Push(objToBePushed);
             }
