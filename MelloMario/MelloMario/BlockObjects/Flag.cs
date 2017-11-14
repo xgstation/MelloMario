@@ -29,7 +29,7 @@ namespace MelloMario.BlockObjects
                         ChangeLives(1);
                     }
                     ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
-                    mario.Active = false;
+                    // mario.Active = false; // TODO: handle this in mario's collision
 
                     //TODO: trigger game win
                 }
