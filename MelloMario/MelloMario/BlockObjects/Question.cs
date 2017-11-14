@@ -17,7 +17,7 @@ namespace MelloMario.BlockObjects
         public void Initialize(bool hidden = false)
         {
             isHidden = hidden;
-           // bumpSound = SoundController.bumpBlock.CreateInstance();
+            bumpSound = SoundController.bumpBlock.CreateInstance();
             if (isHidden)
             {
                 state = new Hidden(this);
