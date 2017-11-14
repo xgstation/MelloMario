@@ -727,7 +727,8 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:SFX/smb_world_clear.mp3
-#begin SFX/marioTitle.png
+
+#begin marioTitle.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -737,5 +738,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:SFX/marioTitle.png
+/build:marioTitle.png
 
