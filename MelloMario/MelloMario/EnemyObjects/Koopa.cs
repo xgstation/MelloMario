@@ -3,6 +3,7 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.KoopaStates;
 using MelloMario.BlockObjects;
+using MelloMario.SplashObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.EnemyObjects
@@ -228,6 +229,7 @@ namespace MelloMario.EnemyObjects
         public void Defeat()
         {
             ScorePoints(GameConst.SCORE_KOOPA);
+            new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_KOOPA);
             RemoveSelf();
         }
     }

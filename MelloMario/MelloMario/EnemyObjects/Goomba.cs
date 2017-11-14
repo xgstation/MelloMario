@@ -3,6 +3,7 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.GoombaStates;
 using MelloMario.BlockObjects;
+using MelloMario.SplashObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.EnemyObjects
@@ -152,6 +153,7 @@ namespace MelloMario.EnemyObjects
         public void Defeat()
         {
             ScorePoints(GameConst.SCORE_GOOMBA);
+            new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_GOOMBA);
             State.Defeat();
         }
     }

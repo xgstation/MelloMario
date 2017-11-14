@@ -29,9 +29,14 @@ namespace MelloMario
         protected abstract void OnSimulation(int time);
         protected abstract void OnDraw(int time, Rectangle viewport);
 
+        protected virtual void RemoveSelf()
+        {
+            world.Remove(this);
+        }
         protected void Relocate(Point newLocation)
         {
             location = newLocation;
+            world.Move(this);
         }
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
