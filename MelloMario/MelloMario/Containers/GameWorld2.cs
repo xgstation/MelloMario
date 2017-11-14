@@ -41,22 +41,50 @@ namespace MelloMario.Containers
 
 
         public string Id { get; }
-        public Rectangle Boundary => new Rectangle(new Point(), worldSize);
+        public Rectangle Boundary
+        {
+            get
+            {
+                return new Rectangle(new Point(), worldSize);
+            }
+        }
 
         public bool FlagTouched
         {
-            get => flagTouched;
-            set => flagTouched = value;
+            get
+            {
+                return flagTouched;
+            }
+            set
+            {
+                flagTouched = value;
+            }
         }
 
-        public void Add(IGameObject obj) => toAdd.Push(obj);
+        public void Add(IGameObject obj)
+        {
+            toAdd.Push(obj);
+        }
 
-        public void Move(IGameObject obj) => toMove.Push(obj);
+        public void Move(IGameObject obj)
+        {
+            toMove.Push(obj);
+        }
 
-        public void Remove(IGameObject obj) => toRemove.Push(obj);
+        public void Remove(IGameObject obj)
+        {
+            toRemove.Push(obj);
+        }
 
-        public IEnumerable<IGameObject> GetObjects() => objContainer.GetObjects();
-        public IEnumerable<IGameObject> GetObjects(Rectangle range) => objContainer.GetObjects(range);
+        public IEnumerable<IGameObject> GetObjects()
+        {
+            return objContainer.GetObjects();
+        }
+
+        public IEnumerable<IGameObject> GetObjects(Rectangle range)
+        {
+            return objContainer.GetObjects(range);
+        }
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
         {
@@ -74,9 +102,9 @@ namespace MelloMario.Containers
 
         public Point GetRespawnPoint(Point location)
         {
-            var respawnLoc = location;
+            Point respawnLoc = location;
 
-            foreach (var point in respawnPoints)
+            foreach (Point point in respawnPoints)
             {
                 if (point.X <= location.X && point.X > respawnLoc.X)
                 {

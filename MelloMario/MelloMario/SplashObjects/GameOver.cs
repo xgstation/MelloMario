@@ -27,9 +27,9 @@ namespace MelloMario.SplashObjects
             ISprite S = SpriteFactory.Instance.CreateTextSprite(model.Score.ToString());
             S.Draw(time, new Rectangle(30, 100, 50, 50));
             ISprite Coin = SpriteFactory.Instance.CreateCoinSprite(true);
-            Coin.Draw(time, new Rectangle(30 + (GameConst.SCREEN_WIDTH / 4), 100, 50, 50));
+            Coin.Draw(time, new Rectangle(30 + GameConst.SCREEN_WIDTH / 4, 100, 50, 50));
             ISprite Ctext = SpriteFactory.Instance.CreateTextSprite("X" + Coin.ToString());
-            Ctext.Draw(time, new Rectangle(80 + (GameConst.SCREEN_WIDTH / 4), 100, 50, 50));
+            Ctext.Draw(time, new Rectangle(80 + GameConst.SCREEN_WIDTH / 4, 100, 50, 50));
             if (model.Lives > 0)
             {
                 ISprite text = SpriteFactory.Instance.CreateTextSprite("WORLD");
