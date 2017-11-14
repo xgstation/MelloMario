@@ -14,14 +14,15 @@ namespace MelloMario.Containers
         private readonly Stack<IGameObject> toMove;
         private readonly Stack<IGameObject> toRemove;
 
-
+        private bool flagTouched;
         private Point worldSize;
         private Point initialPoint;
         private ISet<Point> respawnPoints;
 
         public GameWorld2(string id, Point worldSize, Point initialPoint, IEnumerable<Point> respawnPoints)
         {
-            this.Id = id;
+            Id = id;
+            flagTouched = false;
             this.worldSize = worldSize;
             this.initialPoint = new Point(initialPoint.X * GameConst.GRID, initialPoint.Y * GameConst.GRID);
             respawnPoints = new List<Point>();
@@ -41,6 +42,12 @@ namespace MelloMario.Containers
 
         public string Id { get; }
         public Rectangle Boundary => new Rectangle(new Point(), worldSize);
+
+        public bool FlagTouched
+        {
+            get => flagTouched;
+            set => flagTouched = value;
+        }
 
         public void Add(IGameObject obj) => toAdd.Push(obj);
 

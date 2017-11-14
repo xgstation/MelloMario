@@ -7,6 +7,7 @@ namespace MelloMario
     {
         string Id { get; }
         Rectangle Boundary { get; }
+        bool FlagTouched { get; set; }
 
         IEnumerable<IGameObject> ScanNearby(Rectangle range);
         Point GetInitialPoint();
