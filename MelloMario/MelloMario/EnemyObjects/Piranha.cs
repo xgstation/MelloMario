@@ -24,7 +24,7 @@ namespace MelloMario.EnemyObjects
         private bool DetectMario()
         {
             return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X,Boundary.Y,Boundary.Height,16))
-                    where obj is PlayerMario select obj).Any();
+                    where obj is ICharacter select obj).Any();
 
         }
         public IPiranhaState State
