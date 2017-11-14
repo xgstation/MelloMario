@@ -27,7 +27,7 @@ namespace MelloMario.BlockObjects.BrickStates
             }
             else
             {
-                if (mario.PowerUpState is MarioObjects.PowerUpStates.Standard)
+                if (mario.PowerUpState is MarioObjects.PowerUpStates.Standard || Owner.HasInitialItem)
                 {
                     Owner.State = new Bumped(Owner);
                 }
