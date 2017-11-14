@@ -2,6 +2,7 @@
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using System;
+using MelloMario.SplashObjects;
 
 namespace MelloMario.BlockObjects
 {
@@ -35,6 +36,7 @@ namespace MelloMario.BlockObjects
                     eventInfo = null;
                     HandlerTimeScore?.Invoke(this, eventInfo);
                     ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
+                    new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_FLAG_MAX * height / maxHeight);
                     // mario.Active = false; // TODO: handle this in mario's collision
 
                     //TODO: trigger game win
@@ -56,6 +58,7 @@ namespace MelloMario.BlockObjects
 
         public Flag(IGameWorld world, Point location, Listener listener, int height, int maxHeight) : base(world, location, listener, new Point(32, 32))
         {
+            listener.Subscribe(this);
             this.height = height;
             this.maxHeight = maxHeight;
             top = height == maxHeight;

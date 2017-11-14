@@ -7,6 +7,7 @@ namespace MelloMario
 {
     abstract class BaseCollidableObject : BaseGameObject
     {
+        private Listener listener;
         private Point movement;
         public event PointHandler HandlerPoints;
         private PointEventArgs pointEventInfo;
@@ -104,7 +105,7 @@ namespace MelloMario
 
         private void CollideAll()
         {
-            foreach (IGameObject target in World.ScanNearby(Boundary))
+            foreach (IGameObject target in world.ScanNearby(Boundary))
             {
                 if (target != this && target is BaseCollidableObject obj)
                 {
@@ -116,7 +117,7 @@ namespace MelloMario
                 }
             }
 
-            foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(World.Boundary))
+            foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(world.Boundary))
             {
                 OnCollideWorld(pair.Item1);
             }
@@ -147,11 +148,15 @@ namespace MelloMario
         protected abstract void OnCollideViewport(IPlayer player, CollisionMode mode);
         protected abstract void OnCollideWorld(CollisionMode mode);
 
+        protected Listener GetListener
+        {
+            get { return listener; }
+        }
         protected void Move(Point delta)
         {
             movement += delta;
 
-            World.Move(this);
+            world.Move(this);
         }
 
         protected void StopHorizontalMovement()
@@ -164,12 +169,11 @@ namespace MelloMario
             movement.Y = 0;
         }
 
-        protected void RemoveSelf()
+        protected override void RemoveSelf()
         {
             StopHorizontalMovement();
             StopVerticalMovement();
-
-            World.Remove(this);
+            base.RemoveSelf();
         }
 
         protected override void OnSimulation(int time)
@@ -251,6 +255,7 @@ namespace MelloMario
 
         public BaseCollidableObject(IGameWorld world, Point location, Listener listener, Point size) : base(world, location, size)
         {
+            this.listener = listener;
             listener?.Subscribe(this);
             movement = new Point();
         }

@@ -88,7 +88,7 @@ namespace MelloMario.MarioObjects
                 Point location = Boundary.Location - new Point(GameConst.FOCUS_X, GameConst.FOCUS_Y);
                 Point size = new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
 
-                Rectangle worldBoundary = World.Boundary;
+                Rectangle worldBoundary = world.Boundary;
 
                 // NOTE: this is a temporary solution, this should be moved to the collision detection system
                 if (location.X < worldBoundary.Left)
@@ -259,7 +259,7 @@ namespace MelloMario.MarioObjects
                 if (PowerUpState is PowerUpStates.Fire)
                 {
                     // note: listener is passed as null so score points will not do anything
-                    new Fire(World, Boundary.Location, null, Facing == FacingMode.right);
+                    new Fire(world, Boundary.Location, null, Facing == FacingMode.right);
                 }
             }
         }

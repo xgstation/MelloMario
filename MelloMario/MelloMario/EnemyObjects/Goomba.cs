@@ -3,6 +3,7 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.GoombaStates;
 using MelloMario.BlockObjects;
+using MelloMario.SplashObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.EnemyObjects
@@ -11,7 +12,6 @@ namespace MelloMario.EnemyObjects
     {
         private IGoombaState state;
         private const int VELOCITY_LR = 1;
-        private Listener listener;
 
         private void UpdateSprite()
         {
@@ -38,6 +38,7 @@ namespace MelloMario.EnemyObjects
             base.OnSimulation(time);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
             if (state is Defeated)
@@ -128,10 +129,13 @@ namespace MelloMario.EnemyObjects
             // Notice: The effect should be the same as changing state
             UpdateSprite();
         }
+
+        //This suppression exists because this constructor is inderectly used by the json parser.
+        //removing this constructor will cause a runtime error when trying to read in the level.
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public Goomba(IGameWorld world, Point location, Listener listener) : this(world, location, GameDatabase.GetCharacterLocation(), listener) { }
         public Goomba(IGameWorld world, Point location, Point marioLoc, Listener listener) : base(world, location, listener, new Point(32, 32), 32)
         {
-            this.listener = listener;
 
             if (marioLoc.X < location.X)
             {
@@ -149,6 +153,7 @@ namespace MelloMario.EnemyObjects
         public void Defeat()
         {
             ScorePoints(GameConst.SCORE_GOOMBA);
+            new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_GOOMBA);
             State.Defeat();
         }
     }

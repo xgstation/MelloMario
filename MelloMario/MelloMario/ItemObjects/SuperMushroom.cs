@@ -2,6 +2,8 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.SuperMushroomStates;
 using MelloMario.BlockObjects;
+using MelloMario.Containers;
+using MelloMario.SplashObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
@@ -11,6 +13,11 @@ namespace MelloMario.ItemObjects
         private const int H_SPEED = 2;
         private IItemState state;
         private bool collected;
+
+        public FireFlower GetFireFlower()
+        {
+            return GameObjectFactory.Instance.CreateGameObject("FireFlowerUnveil", world, Boundary.Location, GetListener) as FireFlower;
+        }
 
         private void UpdateSprite()
         {
@@ -108,10 +115,13 @@ namespace MelloMario.ItemObjects
 
 
         public SuperMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener) : this(world, location, marioLocation, listener, false) { }
+
+        //This suppression exists because this constructor is inderectly used by the json parser.
+        //removing this constructor will cause a runtime error when trying to read in the level.
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public SuperMushroom(IGameWorld world, Point location, Listener listener) : this(world, location, GameDatabase.GetCharacterLocation(), listener) { }
         public SuperMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
         {
-
             collected = false;
             if (marioLocation.X < location.X)
             {
@@ -137,9 +147,10 @@ namespace MelloMario.ItemObjects
 
         public void Collect()
         {
-            if(!collected)
+            if (!collected)
             {
                 ScorePoints(GameConst.SCORE_POWER_UP);
+                new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_POWER_UP);
             }
             collected = true;
             RemoveSelf();

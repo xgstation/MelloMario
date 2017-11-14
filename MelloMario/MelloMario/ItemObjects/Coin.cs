@@ -3,6 +3,7 @@ using MelloMario.Factories;
 using MelloMario.ItemObjects.CoinStates;
 using MelloMario.MarioObjects;
 using System;
+using MelloMario.SplashObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
@@ -47,10 +48,6 @@ namespace MelloMario.ItemObjects
 
         public IItemState State
         {
-            get
-            {
-                return state;
-            }
             set
             {
                 state = value;
@@ -84,6 +81,7 @@ namespace MelloMario.ItemObjects
                 HandlerCoins?.Invoke(this, coinEventInfo);
                 ScorePoints(GameConst.SCORE_COIN);
                 collected = true;
+                new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_COIN);
             }
             RemoveSelf();
             //State.Collect();

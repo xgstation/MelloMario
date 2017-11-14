@@ -2,6 +2,7 @@
 using MelloMario.EnemyObjects.PiranhaStates;
 using MelloMario.Interfaces.Objects.States;
 using MelloMario.MarioObjects;
+using MelloMario.SplashObjects;
 using Microsoft.Xna.Framework;
 using MelloMario.Theming;
 
@@ -23,7 +24,7 @@ namespace MelloMario.EnemyObjects
 
         private bool DetectMario()
         {
-            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4,Boundary.Y,Boundary.Height,0))
+            return (from obj in world.ScanNearby(new Rectangle(Boundary.Center.X - 4,Boundary.Y,Boundary.Height,0))
                     where obj is ICharacter select obj).Any();
 
         }
@@ -95,7 +96,8 @@ namespace MelloMario.EnemyObjects
 
         public void Defeat()
         {
-            ScorePoints(GameConst.SCORE_KOOPA);
+            ScorePoints(GameConst.SCORE_PIRANHA);
+            new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_PIRANHA);
             state.Defeat();
             RemoveSelf();
         }

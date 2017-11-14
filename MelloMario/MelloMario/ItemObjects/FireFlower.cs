@@ -2,6 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.FireFlowerStates;
 using MelloMario.MarioObjects;
+using MelloMario.SplashObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
@@ -79,6 +80,7 @@ namespace MelloMario.ItemObjects
             if (!collected)
             {
                 ScorePoints(GameConst.SCORE_POWER_UP);
+                new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_POWER_UP);
             }
             collected = true;
             RemoveSelf();

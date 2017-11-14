@@ -23,15 +23,20 @@ namespace MelloMario
         };
 
         // TODO: World should only be used in base classes and PlayerMario
-        protected IGameWorld World;
+        protected IGameWorld world;
 
         protected abstract void OnUpdate(int time);
         protected abstract void OnSimulation(int time);
         protected abstract void OnDraw(int time, Rectangle viewport);
 
+        protected virtual void RemoveSelf()
+        {
+            world.Remove(this);
+        }
         protected void Relocate(Point newLocation)
         {
             location = newLocation;
+            world.Move(this);
         }
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
@@ -66,7 +71,7 @@ namespace MelloMario
             Relocate(location + delta);
             size = newSize;
 
-            World.Move(this);
+            world.Move(this);
         }
 
         protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
@@ -92,8 +97,8 @@ namespace MelloMario
         {
             this.location = location;
             this.size = size;
-            World = world;
-            World.Add(this);
+            this.world = world;
+            this.world.Add(this);
 
         }
 
