@@ -5,6 +5,7 @@ using MelloMario.MarioObjects.PowerUpStates;
 using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
+using MelloMario.Interfaces.Objects.States;
 using MelloMario.Theming;
 
 namespace MelloMario.MarioObjects
@@ -257,6 +258,15 @@ namespace MelloMario.MarioObjects
                         PowerUpState is Standard)
                     {
                         PowerUpState.UpgradeToSuper();
+                    }
+                    break;
+                case "Piranha":
+                    if (!(ProtectionState is Starred))
+                    {
+                        if (!(((Piranha)target).State is EnemyObjects.PiranhaStates.Hidden))
+                        {
+                            Downgrade();
+                        }
                     }
                     break;
             }
