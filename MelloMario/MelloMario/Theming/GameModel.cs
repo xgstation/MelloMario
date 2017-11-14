@@ -7,6 +7,7 @@ using MelloMario.Scripts;
 using MelloMario.MiscObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 
 namespace MelloMario.Theming
 {
@@ -21,6 +22,7 @@ namespace MelloMario.Theming
         //note: we will have an extra class called Player which contains these information
         public int Coins;
         public int Score;
+        public int Lives;
         public int Time;
         public IGameObject hud;
 
@@ -45,6 +47,7 @@ namespace MelloMario.Theming
 
             Score = 0;
             Coins = 0;
+            Lives = 3;
             Time = GameConst.LEVEL_TIME * 1000;
             hud = new HUD(this);
 
@@ -76,6 +79,7 @@ namespace MelloMario.Theming
 
         public IGameWorld LoadLevel(string id, bool init = false)
         {
+
             foreach (IGameWorld world in session.ScanWorlds())
             {
                 if (world.Id == id)
@@ -88,12 +92,22 @@ namespace MelloMario.Theming
             reader.SetModel(this);
             Tuple<IGameWorld, IPlayer> pair = reader.Load(id, session);
 
-
             if (!init && pair.Item2 != null)
             {
                 session.Remove(pair.Item2);
             }
             session.Update();
+            if (id == "Main") // TODO: load music name from level file
+            {
+                MediaPlayer.Stop();
+                SoundController.PlayMusic(SoundController.Songs.normal);
+            }
+            else
+            {
+                MediaPlayer.Stop();
+                SoundController.PlayMusic(SoundController.Songs.belowGround);
+            }
+
             return pair.Item1;
         }
 
@@ -108,6 +122,12 @@ namespace MelloMario.Theming
             {
                 MediaPlayer.Stop();
                 SoundController.PlayMusic(SoundController.Songs.hurry);
+            }
+            // TODO: Songs.gameOver should be triggered by gameover event
+            if (time == 0 || Lives < 1)
+            {
+                MediaPlayer.Stop();
+                SoundController.PlayMusic(SoundController.Songs.gameOver);
             }
         }
 
@@ -124,7 +144,16 @@ namespace MelloMario.Theming
 
         public void Mute()
         {
-            MediaPlayer.Stop();
+            if (MediaPlayer.Volume > 0)
+            {
+                MediaPlayer.Volume = 0;
+                SoundEffect.MasterVolume = 0;
+            }
+            else
+            {
+                MediaPlayer.Volume = 100;
+                SoundEffect.MasterVolume = 1.0f;
+            }
         }
 
         public void Update(int time)

@@ -1,4 +1,5 @@
-﻿using MelloMario.MarioObjects;
+﻿using MelloMario.Factories;
+using MelloMario.MarioObjects;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
@@ -11,7 +12,6 @@ namespace MelloMario.LevelGen
     class CharacterConverter : JsonConverter
     {
         private JToken jsonToken;
-        private PlayerMario mario;
         private IGameSession gameSession;
         private IGameWorld gameWorld;
         private Stack<PlayerMario> characterStack;
@@ -41,22 +41,9 @@ namespace MelloMario.LevelGen
             state = jsonToken["State"].ToObject<string>();
             startPoint.X = startPoint.X * grid;
             startPoint.Y = startPoint.Y * grid;
-            mario = new PlayerMario(gameSession, gameWorld, startPoint, listener);
-            characterStack.Push(mario);
-            //TODO: Change with IDictionary to change the state of each characters
-            switch (state)
-            {
-                //TODO: Finish switch statement
-                case "FireMario":
-                    mario.UpgradeToFire();
-                    break;
-                case "SuperMario":
-                    mario.UpgradeToSuper();
-                    break;
-                default:
-                    //Do nothing
-                    break;
-            }
+
+            characterStack.Push((PlayerMario) GameObjectFactory.Instance.CreateGameCharacter("Mario", gameSession, gameWorld, startPoint, listener).Item1);
+
             return new EncapsulatedObject<PlayerMario>(characterStack);
         }
 

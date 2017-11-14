@@ -13,6 +13,7 @@ namespace MelloMario.ItemObjects
         public event CoinHandler HandlerCoins;
         private EventArgs coinEventInfo;
         public delegate void CoinHandler(Coin m, EventArgs e);
+        private bool collected;
 
         private void UpdateSprite()
         {
@@ -60,6 +61,7 @@ namespace MelloMario.ItemObjects
         public Coin(IGameWorld world, Point location, Listener listener, bool isUnveil = false) : base(world, location, listener, new Point(32, 32))
         {
             listener.Subscribe(this);
+            collected = false;
             //eventually if coin needs to pass info put it in eventinfo
             coinEventInfo = null;
             if (isUnveil)
@@ -77,8 +79,12 @@ namespace MelloMario.ItemObjects
 
         public void Collect()
         {
-            HandlerCoins?.Invoke(this, coinEventInfo);
-            ScorePoints(GameConst.SCORE_COIN);
+            if (!collected)
+            {
+                HandlerCoins?.Invoke(this, coinEventInfo);
+                ScorePoints(GameConst.SCORE_COIN);
+                collected = true;
+            }
             RemoveSelf();
             //State.Collect();
         }

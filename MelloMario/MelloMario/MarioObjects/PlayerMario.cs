@@ -84,8 +84,6 @@ namespace MelloMario.MarioObjects
             Session = session;
             Session.Add(this);
 
-            Relocate(World.GetInitialPoint());
-
             jumpSound = SoundController.bounce.CreateInstance();
             powerJumpSound = SoundController.powerBounce.CreateInstance();
         }
@@ -152,7 +150,8 @@ namespace MelloMario.MarioObjects
 
         public void JumpPress()
         {
-            if (PowerUpState is PowerUpStates.Super || PowerUpState is PowerUpStates.Fire) {
+            if (PowerUpState is PowerUpStates.Super || PowerUpState is PowerUpStates.Fire)
+            {
                 powerJumpSound.Play();
             }
             else

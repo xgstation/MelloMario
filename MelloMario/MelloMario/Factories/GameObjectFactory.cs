@@ -35,8 +35,7 @@ namespace MelloMario.Factories
             switch (type)
             {
                 case "Mario":
-                    marioLoc = location;
-                    PlayerMario mario = new PlayerMario(session, world, marioLoc, listener);
+                    PlayerMario mario = new PlayerMario(session, world, location, listener);
                     return new Tuple<ICharacter, IGameObject>(mario, mario);
                 default:
                     return null;
