@@ -164,10 +164,15 @@
             "Y": 11
           },
           "Property": {
+            "Piranha": {
+              "Color": "Green",
+              "HiddenTime": 1.5,
+              "ShowTime": 2.5
+            },
             "Length": 1,
             "Direction": "V",
             "Entrance": "Main",
-            "PortalTo": "2" 
+            "PortalTo": "2"
           }
         },
         {
