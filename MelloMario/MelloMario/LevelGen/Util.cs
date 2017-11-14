@@ -76,20 +76,20 @@ namespace MelloMario.LevelGen
         public static void BatchCreateWithProperties<T1, T2>(Func<Point, T1> createFunc, Point startPoint, Point quantity, Point objSize,
             ICollection<Point> ignoredSet, int grid, ref Stack<IGameObject> stack, IDictionary<Point, T2> properties, Action<IGameObject, T2> applyProperties)
         {
-            Contract.Assume(!(properties == null ^ applyProperties == null));
+            Contract.Assume(!((properties == null) ^ (applyProperties == null)));
             for (int x = 0; x < quantity.X; x++)
             {
                 for (int y = 0; y < quantity.Y; y++)
                 {
-                    var createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
-                    var createIndex = new Point(x + 1, y + 1);
+                    Point createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
+                    Point createIndex = new Point(x + 1, y + 1);
                     if (ignoredSet == null || !ignoredSet.Contains(createIndex))
                     {
                         if (typeof(T1).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                         {
                             foreach (IGameObject obj in (IEnumerable<IGameObject>)createFunc(createLocation))
                             {
-                                var index = new Point(x, y);
+                                Point index = new Point(x, y);
                                 if (properties != null && properties.ContainsKey(index))
                                 {
                                     applyProperties(obj, properties[index]);
@@ -99,8 +99,8 @@ namespace MelloMario.LevelGen
                         }
                         else
                         {
-                            var newObject = (IGameObject) createFunc(createLocation);
-                            var index = new Point(x, y);
+                            IGameObject newObject = (IGameObject) createFunc(createLocation);
+                            Point index = new Point(x, y);
                             if (properties != null && properties.ContainsKey(index))
                             {
                                 applyProperties(newObject, properties[index]);
