@@ -270,7 +270,7 @@ namespace MelloMario.Factories
 
         public ISprite CreateTitle(ZIndex zIndex)
         {
-            return new StaticSprite(spriteBatch, GetTexture("marioTitle"), 10, 10, 10, 10, zIndex);
+            return new StaticSprite(spriteBatch, GetTexture("marioTitle"), 0, 3, 11, 6, zIndex);
         }
     }
 }
