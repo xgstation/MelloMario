@@ -232,23 +232,11 @@ namespace MelloMario.MarioObjects
                     //}
 
                     break;
-                case "Coin":
-                    if (((ItemObjects.Coin) target).State is ItemObjects.CoinStates.Normal)
-                    {
-                    }
-                    // TODO: implement coins count
-                    break;
                 case "FireFlower":
                     if (((ItemObjects.FireFlower) target).State is ItemObjects.FireFlowerStates.Normal)
                     {
-                        PowerUpState.UpgradeToFire();
+                        UpgradeToFire();
                     }
-                    break;
-                case "OneUpMushroom":
-                    if (((ItemObjects.OneUpMushroom) target).State is ItemObjects.OneUpMushroomStates.Normal)
-                    {
-                    }
-                    // TODO: implement +1s
                     break;
                 case "Star":
                     if (((ItemObjects.Star) target).State is ItemObjects.StarStates.Normal)
@@ -260,7 +248,7 @@ namespace MelloMario.MarioObjects
                     if (((ItemObjects.SuperMushroom) target).State is ItemObjects.SuperMushroomStates.Normal &&
                         PowerUpState is Standard)
                     {
-                        PowerUpState.UpgradeToSuper();
+                        UpgradeToSuper();
                     }
                     break;
                 case "Piranha":
