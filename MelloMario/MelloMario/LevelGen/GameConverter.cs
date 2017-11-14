@@ -62,6 +62,7 @@ namespace MelloMario.LevelGen
                     break;
                 }
             }
+            Util.TryGet(out string MapType, MapToBeLoaded, "Type");
             if (Util.TryGet(out Point mapSize, MapToBeLoaded, "Size"))
             {
                 Debug.WriteLine("Map size:" + mapSize);
