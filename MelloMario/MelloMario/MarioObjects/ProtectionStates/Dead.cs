@@ -13,6 +13,7 @@ namespace MelloMario.MarioObjects.ProtectionStates
             deadSound = SoundController.death.CreateInstance();
             deadSound.Play();
             MediaPlayer.Stop();
+            owner.OnDeath();
         }
 
         public void Star()

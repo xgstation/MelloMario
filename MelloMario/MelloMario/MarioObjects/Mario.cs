@@ -289,6 +289,11 @@ namespace MelloMario.MarioObjects
             }
         }
 
+        public void OnDeath()
+        {
+            ChangeLives(-1);
+        }
+
         protected override void OnDraw(int time, Rectangle viewport)
         {
         }
