@@ -28,7 +28,7 @@ namespace MelloMario.SplashObjects
             S.Draw(time, new Rectangle(30, 100, 50, 50));
             ISprite Coin = SpriteFactory.Instance.CreateCoinSprite(true);
             Coin.Draw(time, new Rectangle(30 + GameConst.SCREEN_WIDTH / 4, 100, 50, 50));
-            ISprite Ctext = SpriteFactory.Instance.CreateTextSprite("X" + Coin.ToString());
+            ISprite Ctext = SpriteFactory.Instance.CreateTextSprite("*" + Coin.ToString());
             Ctext.Draw(time, new Rectangle(80 + GameConst.SCREEN_WIDTH / 4, 100, 50, 50));
             if (model.Lives > 0)
             {
@@ -36,7 +36,7 @@ namespace MelloMario.SplashObjects
                 text.Draw(time, new Rectangle(300, 400, 80, 80));
                 ISprite marioSprite = SpriteFactory.Instance.CreateMarioSprite("Normal", "Standing", "Normal", "Right");
                 marioSprite.Draw(time, new Rectangle(400, 500, 80, 80));
-                ISprite Life = SpriteFactory.Instance.CreateTextSprite("X     " + model.Lives.ToString());
+                ISprite Life = SpriteFactory.Instance.CreateTextSprite("*     " + model.Lives.ToString());
                 Life.Draw(time, new Rectangle(450, 500, 80, 80));
 
             }

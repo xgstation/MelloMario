@@ -82,8 +82,8 @@ namespace MelloMario.MarioObjects
         public DollMario(IGameWorld world, Point location, Listener listener) : base(world, location, listener)
         {
             active = true;
-            jumpSound = SoundController.bounce.CreateInstance();
-            powerJumpSound = SoundController.powerBounce.CreateInstance();
+            //jumpSound = SoundController.bounce.CreateInstance();
+            //powerJumpSound = SoundController.powerBounce.CreateInstance();
         }
 
         public void Left()
