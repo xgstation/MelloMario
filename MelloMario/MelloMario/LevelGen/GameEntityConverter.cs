@@ -184,6 +184,7 @@ namespace MelloMario.LevelGen
 
         private bool ItemConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
+            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
             if (produceMode is ProduceMode.One)
             {
                 stack.Push(createFunc(objPoint));

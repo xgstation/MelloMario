@@ -706,16 +706,112 @@
     },
     {
       "Type": "Sub",
-      "Index": "1-2",
+      "Index": "1-1",
       "Grid": 32,
       "Size": {
-        "X": 15,
+        "X": 16,
         "Y": 15
       },
-      "SpawnPoint": {
-        "X": 3,
-        "Y": 3
-      }
+      "RespawnPoints": [
+        {
+          "X": 3,
+          "Y": 3
+        }
+      ],
+      "Entity": [
+        {
+          "Type": "Floor",
+          "Quantity": {
+            "X": 16,
+            "Y": 2
+          },
+          "Point": {
+            "X": 0,
+            "Y": 13
+          }
+        },
+        {
+          "Type": "Brick",
+          "Quantity": {
+            "X": 1,
+            "Y": 11
+          },
+          "Point": {
+            "X": 0,
+            "Y": 2
+          }
+        },
+        {
+          "Type": "Brick",
+          "Quantity": {
+            "X": 7,
+            "Y": 1
+          },
+          "Point": {
+            "X": 4,
+            "Y": 2
+          }
+        },
+        {
+          "Type": "Brick",
+          "Quantity": {
+            "X": 7,
+            "Y": 3
+          },
+          "Point": {
+            "X": 4,
+            "Y": 10
+          }
+        },
+        {
+          "Type": "IdelForPipelineH",
+          "Point": {
+            "X": 13,
+            "Y": 11
+          }
+        },
+        {
+          "Type": "IdelForPipelineV",
+          "Point": {
+            "X": 15,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Coin",
+          "Point": {
+            "X": 5,
+            "Y": 5
+          },
+          "Quantity": {
+            "X": 5,
+            "Y": 1
+          }
+        },
+        {
+          "Type": "Coin",
+          "Point": {
+            "X": 4,
+            "Y": 7
+          },
+          "Quantity": {
+            "X": 7,
+            "Y": 1
+          }
+        },
+        {
+          "Type": "Coin",
+          "Point": {
+            "X": 4,
+            "Y": 9
+          },
+          "Quantity": {
+            "X": 7,
+            "Y": 1
+          }
+        }
+
+      ]
     },
     {
       "Type": "Link",
