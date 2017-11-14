@@ -1,0 +1,223 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using MelloMario.MarioObjects.MovementStates;
+using MelloMario.Theming;
+using MelloMario.Sounds;
+
+namespace MelloMario.MarioObjects
+{
+    class DollMario : Mario, ICharacter
+    {
+        private Vector2 userInput;
+        private SoundEffectInstance jumpSound;
+        private SoundEffectInstance powerJumpSound;
+
+        protected bool Active;
+
+        protected override void OnUpdate(int time)
+        {
+            if (Active)
+            {
+                ApplyForce(userInput);
+                userInput.X = 0;
+                userInput.Y = 0;
+            }
+
+            base.OnUpdate(time);
+        }
+
+        public Rectangle Sensing
+        {
+            get
+            {
+                Point location = Boundary.Location - new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
+                Point size = new Point(GameConst.SCREEN_WIDTH * 2, GameConst.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
+
+                return new Rectangle(location, size);
+            }
+        }
+
+        public Rectangle Viewport
+        {
+            get
+            {
+                Point location = Boundary.Location - new Point(GameConst.FOCUS_X, GameConst.FOCUS_Y);
+                Point size = new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
+
+                Rectangle worldBoundary = World.Boundary;
+
+                // NOTE: this is a temporary solution, this should be moved to the collision detection system
+                if (location.X < worldBoundary.Left)
+                {
+                    location.X = worldBoundary.Left;
+                }
+                if (location.Y < worldBoundary.Top)
+                {
+                    location.Y = worldBoundary.Top;
+                }
+                if (location.X > worldBoundary.Right - size.X)
+                {
+                    location.X = worldBoundary.Right - size.X;
+                }
+                if (location.Y > worldBoundary.Bottom - size.Y)
+                {
+                    location.Y = worldBoundary.Bottom - size.Y;
+                }
+
+                return new Rectangle(location, size);
+            }
+        }
+
+        public DollMario(IGameWorld world, Point location, Listener listener) : base(world, location, listener)
+        {
+            jumpSound = SoundController.bounce.CreateInstance();
+            powerJumpSound = SoundController.powerBounce.CreateInstance();
+        }
+
+        public void Left()
+        {
+            if (Active)
+            {
+                MovementState.Walk();
+
+                if (Facing == FacingMode.right)
+                {
+                    ChangeFacing(FacingMode.left);
+                }
+
+                if (!(MovementState is Crouching))
+                {
+                    userInput.X -= GameConst.FORCE_INPUT_X;
+                }
+            }
+        }
+
+        public void LeftPress()
+        {
+            if (Active)
+            {
+                Left();
+            }
+        }
+
+        public void LeftRelease()
+        {
+            if (Active)
+            {
+                MovementState.Idle();
+            }
+        }
+
+        public void Right()
+        {
+            if (Active)
+            {
+                MovementState.Walk();
+
+                if (Facing == FacingMode.left)
+                {
+                    ChangeFacing(FacingMode.right);
+                }
+
+                if (!(MovementState is Crouching))
+                {
+                    userInput.X += GameConst.FORCE_INPUT_X;
+                }
+            }
+        }
+
+        public void RightPress()
+        {
+            if (Active)
+            {
+                Right();
+            }
+        }
+
+        public void RightRelease()
+        {
+            if (Active)
+            {
+                MovementState.Idle();
+            }
+        }
+
+        public void Jump()
+        {
+            if (Active)
+            {
+                MovementState.Jump();
+
+                if (MovementState is Jumping jumping && !jumping.Finished)
+                {
+                    userInput.Y -= GameConst.FORCE_INPUT_Y;
+                    userInput.Y -= GameConst.FORCE_G;
+                }
+            }
+        }
+
+        public void JumpPress()
+        {
+            if (Active)
+            {
+                if (PowerUpState is PowerUpStates.Super || PowerUpState is PowerUpStates.Fire)
+                {
+                    powerJumpSound.Play();
+                }
+                else
+                {
+                    jumpSound.Play();
+                }
+
+                Jump();
+            }
+        }
+
+        public void JumpRelease()
+        {
+            if (Active)
+            {
+                if (MovementState is Jumping jumping)
+                {
+                    jumping.Finished = true;
+                }
+            }
+        }
+
+        public void Crouch()
+        {
+            if (Active)
+            {
+                MovementState.Crouch();
+            }
+        }
+
+        public void CrouchPress()
+        {
+            if (Active)
+            {
+                Crouch();
+            }
+        }
+
+        public void CrouchRelease()
+        {
+            if (Active)
+            {
+                MovementState.Idle();
+            }
+        }
+
+        public void Action()
+        {
+            if (Active)
+            {
+                if (PowerUpState is PowerUpStates.Fire)
+                {
+                    // note: listener is passed as null so score points will not do anything
+                    new Fire(World, Boundary.Location, null, Facing == FacingMode.right);
+                }
+            }
+        }
+    }
+}
