@@ -9,9 +9,27 @@ namespace MelloMario.MarioObjects
     class DollMario : Mario, ICharacter
     {
         private bool active;
+        private bool teleporting;
+        private Point initial;
+        private int traveled;
         private Vector2 userInput;
         private SoundEffectInstance jumpSound;
         private SoundEffectInstance powerJumpSound;
+
+        protected override void OnSimulation(int time)
+        {
+            if (teleporting)
+            {
+                Move(new Point(0, -2));
+                if (traveled >= initial.Y - Boundary.Y)
+                {
+                    teleporting = false;
+                    active = true;
+                    traveled = 0;
+                }
+            }
+            base.OnSimulation(time);
+        }
 
         protected override void OnUpdate(int time)
         {
@@ -20,6 +38,7 @@ namespace MelloMario.MarioObjects
                 ApplyForce(userInput);
                 userInput.X = 0;
                 userInput.Y = 0;
+                initial = Boundary.Location;
             }
 
             base.OnUpdate(time);
@@ -37,6 +56,11 @@ namespace MelloMario.MarioObjects
             }
         }
 
+        protected void Teleporting()
+        {
+            active = false;
+            teleporting = true;
+        }
         public Rectangle Sensing
         {
             get
@@ -82,6 +106,7 @@ namespace MelloMario.MarioObjects
         public DollMario(IGameWorld world, Point location, Listener listener) : base(world, location, listener)
         {
             active = true;
+            teleporting = false;
             jumpSound = SoundController.bounce.CreateInstance();
             powerJumpSound = SoundController.powerBounce.CreateInstance();
         }

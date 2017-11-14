@@ -165,7 +165,9 @@
           },
           "Property": {
             "Length": 1,
-            "Direction": "V"
+            "Direction": "V",
+            "Entrance": "Main",
+            "PortalTo": "2" 
           }
         },
         {

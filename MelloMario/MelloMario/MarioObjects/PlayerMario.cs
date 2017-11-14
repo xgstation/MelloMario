@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MelloMario.BlockObjects;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.Theming;
@@ -37,10 +38,18 @@ namespace MelloMario.MarioObjects
             World.Remove(this);
             base.World = world;
             World.Add(this);
-
             Session.Move(this);
-
             Relocate(World.GetInitialPoint());
+        }
+
+        public void Spawn(IGameWorld world, Pipeline pipeline)
+        {
+            World.Remove(this);
+            base.World = world;
+            World.Add(this);
+            Session.Move(this);
+            Relocate(pipeline.Boundary.Location + new Point(16, - Boundary.Height));
+            Teleporting();
         }
 
         public void Reset()

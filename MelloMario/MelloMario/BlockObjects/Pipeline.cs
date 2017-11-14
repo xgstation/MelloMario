@@ -43,7 +43,14 @@ namespace MelloMario.BlockObjects
 
                 if (elapsed > 500)
                 {
-                    switchingPlayer.Spawn(model.LoadLevel(GameDatabase.GetEntranceIndex(this)));
+                    if (GameDatabase.IsPortal(this))
+                    {
+                        switchingPlayer.Spawn(model.LoadLevel(GameDatabase.GetEntranceIndex(this)), GameDatabase.GetPortal(this));
+                    }
+                    else
+                    {
+                        switchingPlayer.Spawn(model.LoadLevel(GameDatabase.GetEntranceIndex(this)));
+                    }
                     elapsed = 0;
                     switchingPlayer = null;
                 }

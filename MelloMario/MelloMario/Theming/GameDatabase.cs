@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using MelloMario.BlockObjects;
@@ -10,9 +11,36 @@ namespace MelloMario.Theming
     {
         private static IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
         private static IDictionary<Pipeline, string> PipelineEntranceDb = new Dictionary<Pipeline, string>();
+        private static IDictionary<Pipeline, string> PipelinePortalDb = new Dictionary<Pipeline, string>();
+        private static IDictionary<string, Tuple<Pipeline, Pipeline>> PipelineIndex = new Dictionary<string, Tuple<Pipeline, Pipeline>>();
         private static IDictionary<ICharacter, Point> CharacterLocations = new Dictionary<ICharacter, Point>();
         private static IDictionary<ICharacter, int> CharacterLifes = new Dictionary<ICharacter, int>();
 
+        public static void AddPipelineIndex(string index, Tuple<Pipeline,Pipeline> pipeline)
+        {
+            if (!PipelineIndex.ContainsKey(index))
+            {
+                PipelineIndex.Add(index, pipeline);
+            }
+        }
+        public static void AddPortal(Pipeline pipeline, string portalTo)
+        {
+            if (!PipelinePortalDb.ContainsKey(pipeline))
+            {
+                PipelinePortalDb.Add(pipeline, portalTo);
+            }
+        }
+        public static bool IsPortal(Pipeline pipeline)
+        {
+            return PipelinePortalDb.ContainsKey(pipeline);
+        }
+        public static Pipeline GetPortal(Pipeline pipeline)
+        {
+            return PipelinePortalDb.ContainsKey(pipeline) && 
+                PipelineIndex.ContainsKey(PipelinePortalDb[pipeline])
+                ? PipelineIndex[PipelinePortalDb[pipeline]].Item1
+                : null;
+        }
         public static void AddOneLife(ICharacter character)
         {
             if (CharacterLifes.ContainsKey(character))

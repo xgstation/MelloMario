@@ -387,6 +387,8 @@ namespace MelloMario.LevelGen
                     Debug.WriteLine("Deserialize fail: Direction of Pipeline is missing.");
                     return false;
                 }
+                bool hasIndex = Util.TryGet(out string pipelineIndex, token, "Property", "Index");
+                bool isPortalTo = Util.TryGet(out string portalTo, token, "Property", "PortalTo");
                 if (produceMode is ProduceMode.One)
                 {
                     list = Util.CreateSinglePipeline(model, world, listener, grid, direction, length, objPoint);
@@ -405,12 +407,24 @@ namespace MelloMario.LevelGen
                                 (int) (hiddenTime * 1000), (int) (showTime * 1000), 32, color);
                         }
                     }
-                    if (direction != "NV" && direction != "NH" &&
-                        Util.TryGet(out entrance, token, "Property", "Entrance"))
+                    if (direction != "NV" && direction != "NH")
                     {
-                        GameDatabase.SetEntranceIndex(list[0] as Pipeline, entrance);
-                        GameDatabase.SetEntranceIndex(list[1] as Pipeline, entrance);
+                        if(Util.TryGet(out entrance, token, "Property", "Entrance"))
+                        {
+                            GameDatabase.SetEntranceIndex(list[0] as Pipeline, entrance);
+                            GameDatabase.SetEntranceIndex(list[1] as Pipeline, entrance);
+                        }
+                        if (hasIndex)
+                        {
+                            GameDatabase.AddPipelineIndex(pipelineIndex, new Tuple<Pipeline, Pipeline>(list[0] as Pipeline, list[1] as Pipeline));
+                        }
+                        if (isPortalTo)
+                        {
+                            GameDatabase.AddPortal(list[0] as Pipeline, portalTo);
+                            GameDatabase.AddPortal(list[1] as Pipeline, portalTo);
+                        }
                     }
+
                 }
                 else
                 {
