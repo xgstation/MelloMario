@@ -8,10 +8,10 @@ namespace MelloMario.MiscObjects
     {
         private GameModel model;
 
+        private string text;
         private ISprite textSprite;
         private ISprite coinSprite;
         private ISprite oneUpSprite;
-        private int elapsed;
 
         public Rectangle Boundary
         {
@@ -23,11 +23,16 @@ namespace MelloMario.MiscObjects
 
         private void UpdateSprite()
         {
-            string firstLine = "MARIO     *" + model.Lives.ToString().PadLeft(2, '0') + "   WORLD    TIME";
-            string secondLine = model.Score.ToString().PadLeft(6, '0') + "    *"
+            string newText = "MARIO     *" + model.Lives.ToString().PadLeft(2, '0') + "   WORLD    TIME\n"
+                + model.Score.ToString().PadLeft(6, '0') + "    *"
                 + model.Coins.ToString().PadLeft(2, '0') + "    "
                 + "1-1" + "      " + model.Time / 1000; // TODO: get world name from player.CurrentWorld
-            textSprite = SpriteFactory.Instance.CreateTextSprite(firstLine + "\n" + secondLine);
+
+            if (newText != text)
+            {
+                text = newText;
+                textSprite = SpriteFactory.Instance.CreateTextSprite(text);
+            }
         }
 
         public HUD(GameModel model)
@@ -40,13 +45,7 @@ namespace MelloMario.MiscObjects
 
         public void Update(int time)
         {
-            elapsed += time;
-            if (elapsed > 50)
-            {
-                UpdateSprite();
-                elapsed = 0;
-            }
-
+            UpdateSprite();
         }
 
         public void Draw(int time, Rectangle viewport)
