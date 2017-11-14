@@ -15,6 +15,7 @@ namespace MelloMario.BlockObjects
         private string type;
         private int elapsed;
         private SoundEffectInstance pipeTravelSound;
+        private SoundController soundControl;
 
         public string Type
         {
@@ -99,6 +100,8 @@ namespace MelloMario.BlockObjects
         {
             this.type = type;
             pipeTravelSound = SoundController.pipe.CreateInstance();
+            //soundControl = new SoundController(model.);
+            
             UpdateSprite();
         }
     }

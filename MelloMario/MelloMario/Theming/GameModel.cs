@@ -45,7 +45,10 @@ namespace MelloMario.Theming
             session = new GameSession();
             listener = new Listener(this);
             soundControl = new SoundController(this.game);
-            SoundController.PlayMusic(SoundController.Songs.normal);
+            if (!worldSwitched)
+            {
+                SoundController.PlayMusic(SoundController.Songs.normal);
+            }
 
             Score = 0;
             Coins = 0;
@@ -78,8 +81,10 @@ namespace MelloMario.Theming
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
         }
 
+        private bool worldSwitched = false;
         public IGameWorld LoadLevel(string id, bool init = false)
         {
+
             foreach (IGameWorld world in session.ScanWorlds())
             {
                 if (world.Id == id)
@@ -98,6 +103,19 @@ namespace MelloMario.Theming
                 session.Remove(pair.Item2);
             }
             session.Update();
+            if (!worldSwitched)
+            {
+                MediaPlayer.Stop();
+                SoundController.PlayMusic(SoundController.Songs.normal);
+                worldSwitched = true;
+            }
+            else
+            {
+                MediaPlayer.Stop();
+                SoundController.PlayMusic(SoundController.Songs.belowGround);
+                worldSwitched = false;
+            }
+            Console.WriteLine(worldSwitched);
             return pair.Item1;
         }
 
@@ -106,6 +124,7 @@ namespace MelloMario.Theming
             Resume();
         }
 
+        // Method switches to "hurry" music when there are 90 seconds remaining
         private bool isHurry = false;
         public void switchMusic(int time)
         {
@@ -114,6 +133,11 @@ namespace MelloMario.Theming
                 MediaPlayer.Stop();
                 SoundController.PlayMusic(SoundController.Songs.hurry);
                 isHurry = true;
+            }
+            if (time == 0)
+            {
+                MediaPlayer.Stop();
+                SoundController.PlayMusic(SoundController.Songs.gameover);
             }
         }
 

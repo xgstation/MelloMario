@@ -10,6 +10,7 @@ using System.Reflection;
 using MelloMario.EnemyObjects;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario.LevelGen
 {
@@ -217,6 +218,12 @@ namespace MelloMario.LevelGen
                 }
                 stack.Push(objToBePushed);
             }
+            else if (type.Name == "Flag")
+            {
+                IGameObject[] flagPole = GameObjectFactory.Instance.CreateFlagPole(world, objPoint, listener, 7);
+                for (int i = 0; i < flagPole.Length; ++i)
+                    stack.Push(flagPole[i]);
+            }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
             {
                 if (isSingle)
@@ -237,7 +244,6 @@ namespace MelloMario.LevelGen
                         point =>
                         {
                             objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
-                            
                             if (type.Name == "Question")
                             {
                                 (objToBePushed as Question).Initialize();

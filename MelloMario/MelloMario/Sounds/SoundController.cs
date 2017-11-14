@@ -10,7 +10,7 @@ namespace MelloMario.Sounds
         public static Song Normal, BelowGround, Hurry, gameOver;
         public static SoundEffect bounce, powerBounce, bumpBlock, breakBlock, coin, death, sizeUp, sizeUpAppear, oneUpCollect, enemyKill, pipe;
 
-        public enum Songs { normal, belowGround, hurry, pause, title , gameOver}
+        public enum Songs { normal, belowGround, hurry, pause, title , gameover}
         public static Songs currentSong;
 
         public SoundController(Game1 game)
@@ -42,11 +42,15 @@ namespace MelloMario.Sounds
             {
                 case Songs.normal:
                     MediaPlayer.Play(Normal);
-                    //MediaPlayer.IsRepeating = true;
                     break;
                 case Songs.hurry:
                     MediaPlayer.Play(Hurry);
-                    //MediaPlayer.IsRepeating = true;
+                    break;
+                case Songs.gameover:
+                    MediaPlayer.Play(gameOver);
+                    break;
+                case Songs.belowGround:
+                    MediaPlayer.Play(BelowGround);
                     break;
                 default:
                     break;
