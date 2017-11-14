@@ -1,4 +1,5 @@
 ﻿using MelloMario.Interfaces.Objects.States;
+using MelloMario.Sounds;
 
 namespace MelloMario.EnemyObjects.PiranhaStates
 {
@@ -8,6 +9,10 @@ namespace MelloMario.EnemyObjects.PiranhaStates
         {
         }
 
+        public void Defeat()
+        {
+            //Do nothing
+        }
         public override void Update(int time)
         {
         }

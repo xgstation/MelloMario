@@ -7,11 +7,19 @@ namespace MelloMario.EnemyObjects.PiranhaStates
         private int elapsed;
         public override void Update(int time)
         {
-            elapsed += time;
-            if (elapsed > Owner.HiddenTime)
+            if (!Owner.HasMarioAbove)
             {
-                Owner.State = new MovingUp(Owner);
+                elapsed += time;
+                if (elapsed > Owner.HiddenTime)
+                {
+                    Owner.State = new MovingUp(Owner);
+                }
             }
+        }
+
+        public void Defeat()
+        {
+            //CANNOT be defeated at this stae
         }
 
         public Hidden(Piranha owner) : base(owner)

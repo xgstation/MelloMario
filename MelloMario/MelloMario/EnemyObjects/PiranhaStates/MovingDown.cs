@@ -17,5 +17,10 @@ namespace MelloMario.EnemyObjects.PiranhaStates
                 Owner.State = new Hidden(Owner);
             }
         }
+
+        public void Defeat()
+        {
+            Owner.State = new Defeated(Owner);
+        }
     }
 }

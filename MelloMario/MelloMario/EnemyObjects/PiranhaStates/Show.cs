@@ -10,6 +10,10 @@ namespace MelloMario.EnemyObjects.PiranhaStates
             elapsed = 0;
         }
 
+        public void Defeat()
+        {
+            Owner.State = new Defeated(Owner);
+        }
         public override void Update(int time)
         {
             elapsed += time;
