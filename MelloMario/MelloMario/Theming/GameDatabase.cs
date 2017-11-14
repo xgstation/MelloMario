@@ -26,7 +26,7 @@ namespace MelloMario.Theming
             GameDatabase.session = session;
         }
 
-        public static void AddPipelineIndex(string index, Tuple<Pipeline,Pipeline> pipeline)
+        public static void AddPipelineIndex(string index, Tuple<Pipeline, Pipeline> pipeline)
         {
             if (!PipelineIndex.ContainsKey(index))
             {
@@ -46,7 +46,7 @@ namespace MelloMario.Theming
         }
         public static Pipeline GetPortal(Pipeline pipeline)
         {
-            return PipelinePortalDb.ContainsKey(pipeline) && 
+            return PipelinePortalDb.ContainsKey(pipeline) &&
                 PipelineIndex.ContainsKey(PipelinePortalDb[pipeline])
                 ? PipelineIndex[PipelinePortalDb[pipeline]].Item1
                 : null;
@@ -119,7 +119,10 @@ namespace MelloMario.Theming
 
         public static IGameObject GetNextItem(IGameObject obj)
         {
-            if (!HasItemEnclosed(obj)) return null;
+            if (!HasItemEnclosed(obj))
+            {
+                return null;
+            }
             if (ItemEnclosedDb[obj][0] is SuperMushroom mushroom)
             {
                 if (session.ScanPlayers().Any(c => (c as PlayerMario)?.PowerUpState is Super))
@@ -128,7 +131,7 @@ namespace MelloMario.Theming
                     return mushroom.GetFireFlower();
                 }
             }
-            var toBeRemoved = ItemEnclosedDb[obj][0];
+            IGameObject toBeRemoved = ItemEnclosedDb[obj][0];
             ItemEnclosedDb[obj].RemoveAt(0);
             return toBeRemoved;
         }
