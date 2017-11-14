@@ -267,5 +267,10 @@ namespace MelloMario.Factories
                     return null;
             }
         }
+
+        public ISprite CreateTitle(ZIndex zIndex)
+        {
+            return new StaticSprite(spriteBatch, GetTexture("marioTitle"), 10, 10, 10, 10, zIndex);
+        }
     }
 }

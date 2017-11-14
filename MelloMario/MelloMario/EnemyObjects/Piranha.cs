@@ -2,6 +2,7 @@
 using MelloMario.EnemyObjects.PiranhaStates;
 using MelloMario.Interfaces.Objects.States;
 using MelloMario.MarioObjects;
+using MelloMario.SplashObjects;
 using Microsoft.Xna.Framework;
 using MelloMario.Theming;
 
@@ -95,7 +96,8 @@ namespace MelloMario.EnemyObjects
 
         public void Defeat()
         {
-            ScorePoints(GameConst.SCORE_KOOPA);
+            ScorePoints(GameConst.SCORE_PIRANHA);
+            new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_PIRANHA);
             state.Defeat();
             RemoveSelf();
         }
