@@ -169,7 +169,7 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Flag":
-                    
+
                     break;
                 case "Goomba":
                     if (target is Goomba goomba && mode != CollisionMode.Bottom)
@@ -254,7 +254,7 @@ namespace MelloMario.MarioObjects
                 case "Piranha":
                     if (!(ProtectionState is Starred))
                     {
-                        if (!(((Piranha)target).State is EnemyObjects.PiranhaStates.Hidden))
+                        if (!(((Piranha) target).State is EnemyObjects.PiranhaStates.Hidden))
                         {
                             Downgrade();
                         }
@@ -269,11 +269,11 @@ namespace MelloMario.MarioObjects
 
         protected override void OnCollideWorld(CollisionMode mode)
         {
-            
+
             Bounce(mode, new Vector2());
-            if(mode == CollisionMode.InnerBottom)
+            if (mode == CollisionMode.InnerBottom)
             {
-                KillWithBypass();
+                ProtectionState = new Dead(this);
             }
         }
 
@@ -341,14 +341,6 @@ namespace MelloMario.MarioObjects
         public void UpgradeToFire()
         {
             PowerUpState.UpgradeToFire();
-        }
-
-        public void KillWithBypass()
-        {
-            PowerUpState.Downgrade();
-            PowerUpState.Downgrade();
-            PowerUpState.Downgrade();
-            PowerUpState.Downgrade();
         }
 
         public void Downgrade()
