@@ -1,8 +1,8 @@
-﻿using System;
-using MelloMario.BlockObjects;
+﻿using MelloMario.BlockObjects;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,6 +10,7 @@ using System.Reflection;
 using MelloMario.EnemyObjects;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Factories;
 
 namespace MelloMario.LevelGen
 {
@@ -216,6 +217,13 @@ namespace MelloMario.LevelGen
                     (objToBePushed as Brick).Initialize();
                 }
                 stack.Push(objToBePushed);
+            }
+            else if (type.Name == "Flag")
+            {
+                foreach (IGameObject obj in GameObjectFactory.Instance.CreateGameObjectGroup("FlagPole", world, objPoint, 7, listener))
+                {
+                    stack.Push(obj);
+                }
             }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
             {
