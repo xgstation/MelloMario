@@ -16,8 +16,9 @@ namespace MelloMario.ItemObjects
 
         public FireFlower GetFireFlower()
         {
-            return new FireFlower(world, Boundary.Location, GetListener, true);
+            return GameObjectFactory.Instance.CreateGameObject("FireFlowerUnveil", world, Boundary.Location, GetListener);
         }
+
         private void UpdateSprite()
         {
             ShowSprite(SpriteFactory.Instance.CreateSuperMushroomSprite());
@@ -146,7 +147,7 @@ namespace MelloMario.ItemObjects
 
         public void Collect()
         {
-            if(!collected)
+            if (!collected)
             {
                 ScorePoints(GameConst.SCORE_POWER_UP);
                 new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_POWER_UP);
