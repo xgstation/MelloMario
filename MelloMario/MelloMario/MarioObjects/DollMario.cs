@@ -8,15 +8,14 @@ namespace MelloMario.MarioObjects
 {
     class DollMario : Mario, ICharacter
     {
+        private bool active;
         private Vector2 userInput;
         private SoundEffectInstance jumpSound;
         private SoundEffectInstance powerJumpSound;
 
-        protected bool Active;
-
         protected override void OnUpdate(int time)
         {
-            if (Active)
+            if (active)
             {
                 ApplyForce(userInput);
                 userInput.X = 0;
@@ -24,6 +23,18 @@ namespace MelloMario.MarioObjects
             }
 
             base.OnUpdate(time);
+        }
+
+        public bool Active
+        {
+            get
+            {
+                return active;
+            }
+            set
+            {
+                active = value;
+            }
         }
 
         public Rectangle Sensing
@@ -70,13 +81,14 @@ namespace MelloMario.MarioObjects
 
         public DollMario(IGameWorld world, Point location, Listener listener) : base(world, location, listener)
         {
+            active = true;
             jumpSound = SoundController.bounce.CreateInstance();
             powerJumpSound = SoundController.powerBounce.CreateInstance();
         }
 
         public void Left()
         {
-            if (Active)
+            if (active)
             {
                 MovementState.Walk();
 
@@ -94,7 +106,7 @@ namespace MelloMario.MarioObjects
 
         public void LeftPress()
         {
-            if (Active)
+            if (active)
             {
                 Left();
             }
@@ -102,7 +114,7 @@ namespace MelloMario.MarioObjects
 
         public void LeftRelease()
         {
-            if (Active)
+            if (active)
             {
                 MovementState.Idle();
             }
@@ -110,7 +122,7 @@ namespace MelloMario.MarioObjects
 
         public void Right()
         {
-            if (Active)
+            if (active)
             {
                 MovementState.Walk();
 
@@ -128,7 +140,7 @@ namespace MelloMario.MarioObjects
 
         public void RightPress()
         {
-            if (Active)
+            if (active)
             {
                 Right();
             }
@@ -136,7 +148,7 @@ namespace MelloMario.MarioObjects
 
         public void RightRelease()
         {
-            if (Active)
+            if (active)
             {
                 MovementState.Idle();
             }
@@ -144,7 +156,7 @@ namespace MelloMario.MarioObjects
 
         public void Jump()
         {
-            if (Active)
+            if (active)
             {
                 MovementState.Jump();
 
@@ -158,7 +170,7 @@ namespace MelloMario.MarioObjects
 
         public void JumpPress()
         {
-            if (Active)
+            if (active)
             {
                 if (PowerUpState is PowerUpStates.Super || PowerUpState is PowerUpStates.Fire)
                 {
@@ -175,7 +187,7 @@ namespace MelloMario.MarioObjects
 
         public void JumpRelease()
         {
-            if (Active)
+            if (active)
             {
                 if (MovementState is Jumping jumping)
                 {
@@ -186,7 +198,7 @@ namespace MelloMario.MarioObjects
 
         public void Crouch()
         {
-            if (Active)
+            if (active)
             {
                 MovementState.Crouch();
             }
@@ -194,7 +206,7 @@ namespace MelloMario.MarioObjects
 
         public void CrouchPress()
         {
-            if (Active)
+            if (active)
             {
                 Crouch();
             }
@@ -202,7 +214,7 @@ namespace MelloMario.MarioObjects
 
         public void CrouchRelease()
         {
-            if (Active)
+            if (active)
             {
                 MovementState.Idle();
             }
@@ -210,7 +222,7 @@ namespace MelloMario.MarioObjects
 
         public void Action()
         {
-            if (Active)
+            if (active)
             {
                 if (PowerUpState is PowerUpStates.Fire)
                 {
