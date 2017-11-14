@@ -38,13 +38,18 @@ namespace MelloMario.LevelGen
         private readonly IGameWorld world;
         private readonly int grid;
         private readonly GraphicsDevice graphicsDevice;
+        private enum ProduceMode
+        {
+            One, Rectangle, Triangle
+        }
 
+        private ProduceMode produceMode;
         private IGameObject objToBePushed;
         private Type type;
         private Point objFullSize;
         private Point objPoint;
         private Point quantity;
-        private bool isSingle;
+        private Point triangleSize;
         private string direction;
         private string entrance;
         private string backgroundType;
@@ -107,15 +112,24 @@ namespace MelloMario.LevelGen
                 return null;
             }
             createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, listener);
+
+            produceMode = ProduceMode.One;
             if (Util.TryGet(out quantity, objToken, "Quantity"))
             {
-                ignoredSet = !isSingle && Util.TryReadIgnoreSet(objToken, out ignoredSet) ? ignoredSet : null;
+                if (quantity.X * quantity.Y > 1)
+                {
+                    produceMode = ProduceMode.Rectangle;
+                }
             }
-            else
+            if (Util.TryGet(out triangleSize, objToken, "Triangle"))
             {
-                quantity = new Point(1, 1);
+                if (Math.Abs(triangleSize.X) > 1 && Math.Abs(triangleSize.Y) > 1)
+                {
+                    produceMode = ProduceMode.Triangle;
+                }
             }
-            isSingle = quantity.X == 1 && quantity.Y == 1;
+            ignoredSet = !(produceMode is ProduceMode.One) && Util.TryReadIgnoreSet(objToken, out ignoredSet) ? ignoredSet : null;
+
             switch (type.Namespace)
             {
                 case "MelloMario.BlockObjects":
@@ -168,11 +182,11 @@ namespace MelloMario.LevelGen
 
         private bool ItemConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
-            if (isSingle)
+            if (produceMode is ProduceMode.One)
             {
                 stack.Push(createFunc(objPoint));
             }
-            else
+            else if (produceMode is ProduceMode.Rectangle)
             {
                 Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
             }
@@ -194,11 +208,11 @@ namespace MelloMario.LevelGen
                     Util.TryGet(out string color, token, "Property", "Color");
                     createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, color);
                 }
-                if (isSingle)
+                if (produceMode is ProduceMode.One)
                 {
                     stack.Push(createFunc(objPoint));
                 }
-                else
+                else if (produceMode is ProduceMode.Rectangle)
                 {
                     Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
                 }
@@ -218,7 +232,7 @@ namespace MelloMario.LevelGen
             isQuestionOrBrick = type.Name == "Brick" || type.Name == "Question";
             if (isQuestionOrBrick)
             {
-                if (!isSingle)
+                if (!(produceMode is ProduceMode.One))
                 {
                     var dictProperties = new Dictionary<Point, Tuple<bool, string[]>>(new PointCompare());
                     if (Util.TryGet(out JToken propertiesToken, token, "Properties"))
@@ -314,7 +328,7 @@ namespace MelloMario.LevelGen
             }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
             {
-                if (isSingle)
+                if (produceMode is ProduceMode.One)
                 {
                     stack.Push(Activator.CreateInstance(type, world, objPoint, listener, false) as BaseGameObject);
                 }
@@ -337,7 +351,7 @@ namespace MelloMario.LevelGen
                     Debug.WriteLine("Deserialize fail: Direction of Pipeline is missing.");
                     return false;
                 }
-                if (isSingle)
+                if (produceMode is ProduceMode.One)
                 {
                     list = Util.CreateSinglePipeline(model, world, listener, grid, direction, length, objPoint);
                     foreach (Pipeline pipelineComponent in list)
@@ -384,7 +398,7 @@ namespace MelloMario.LevelGen
             createFunc = point =>
                 (IGameObject) Activator.CreateInstance(type, world, point, backgroundType, zIndex);
             objFullSize = createFunc(new Point()).Boundary.Size;
-            if (isSingle)
+            if (produceMode is ProduceMode.One)
             {
                 stack.Push(createFunc(objPoint));
             }
