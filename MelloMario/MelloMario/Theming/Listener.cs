@@ -1,7 +1,6 @@
 ﻿using MelloMario.BlockObjects;
 using MelloMario.ItemObjects;
 using System;
-using MelloMario.SplashObjects;
 
 namespace MelloMario.Theming
 {
