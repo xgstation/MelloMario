@@ -14,7 +14,7 @@ namespace MelloMario.MarioObjects
         {
             get
             {
-                return base.World;
+                return base.world;
             }
         }
 
@@ -35,7 +35,7 @@ namespace MelloMario.MarioObjects
         public void Spawn(IGameWorld world, Point location)
         {
             World.Remove(this);
-            base.World = world;
+            base.world = world;
             World.Add(this);
 
             Session.Move(this);
