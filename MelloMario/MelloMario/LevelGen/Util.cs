@@ -6,12 +6,43 @@ using MelloMario.BlockObjects;
 using MelloMario.Factories;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace MelloMario.LevelGen
 {
+    class VectorConverter: JsonConverter
+    {
+        public VectorConverter()
+        {
+            
+        }
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            //DO NOTHING
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            var token = JToken.Load(reader);
+            var X = token["X"].ToObject<float>();
+            var Y = token["Y"].ToObject<float>();
+            return new Vector2(X, Y);
+        }
+
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType.IsAssignableFrom(typeof(Vector2));
+        }
+    }
+
     class Util
     {
+        private static readonly JsonSerializer serializers = new JsonSerializer();
+        public static void Initilalize()
+        {
+            serializers.Converters.Add(new VectorConverter());
+        }
         public static bool TryGet<T>(out T obj, JToken token, params string[] p)
         {
             obj = default(T);
@@ -44,7 +75,7 @@ namespace MelloMario.LevelGen
             {
                 return false;
             }
-            obj = tempToken[p[p.Length - 1]].ToObject<T>();
+            obj = tempToken[p[p.Length - 1]].ToObject<T>(serializers);
             return true;
         }
         public static void BatchCreate<T>(Func<Point, T> func, Point startPoint, Point quantity, Point objSize,
@@ -72,6 +103,43 @@ namespace MelloMario.LevelGen
                     }
                 }
             }
+        }
+
+        public static void TriganleCreate<T>(Func<Point, T> createFunc, Point startPoint, Point triangleSize,
+            Point objSize, ICollection<Point> ignoredSet, int grid, ref Stack<IGameObject> stack)
+        {
+            int X = triangleSize.X;
+            int Y = triangleSize.Y;
+            bool directionToRight = X > 0;
+            bool directionToDown = Y > 0;
+            X = Math.Abs(X);
+            Y = Math.Abs(Y);
+            for (int y = 0; y < Y; y++)
+            {
+                for (int x = 0; x <= y; x++)
+                {
+                    Point createLocation = new Point
+                        (startPoint.X + (directionToRight ? x : -x) * objSize.X, 
+                        startPoint.Y + (directionToDown ? y : -y) * objSize.Y);
+                    Point createIndex = new Point(x + 1, y + 1);
+                    if (ignoredSet == null || !ignoredSet.Contains(createIndex))
+                    {
+                        if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
+                        {
+                            foreach (IGameObject obj in (IEnumerable<IGameObject>)createFunc(createLocation))
+                            {
+                                stack.Push(obj);
+                            }
+                        }
+                        else
+                        {
+                            IGameObject newObject = (IGameObject)createFunc(createLocation);
+                            stack.Push(newObject);
+                        }
+                    }
+                }
+            }
+            
         }
         public static void BatchCreateWithProperties<T1, T2>(Func<Point, T1> createFunc, Point startPoint, Point quantity, Point objSize,
             ICollection<Point> ignoredSet, int grid, ref Stack<IGameObject> stack, IDictionary<Point, T2> properties, Action<IGameObject, T2> applyProperties)
