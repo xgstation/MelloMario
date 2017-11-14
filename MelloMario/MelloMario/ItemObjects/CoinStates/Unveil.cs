@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Audio;
 using MelloMario.Sounds;
 
-
-
 namespace MelloMario.ItemObjects.CoinStates
 {
     class Unveil : BaseTimedState<Coin>, IItemState
