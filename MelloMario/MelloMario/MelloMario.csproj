@@ -190,6 +190,7 @@
     <Compile Include="MarioObjects\ProtectionStates\Protected.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Starred.cs" />
     <Compile Include="Sounds\SoundController.cs" />
+    <Compile Include="Sprites\SplashSprite.cs" />
     <Compile Include="Sprites\TextSprite.cs" />
     <Compile Include="Sprites\FlashingAnimatedSprite.cs" />
     <Compile Include="Sprites\FlickingAnimatedSprite.cs" />
