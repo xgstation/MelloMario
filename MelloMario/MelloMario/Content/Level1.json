@@ -778,11 +778,16 @@
           }
         },
         {
-          "Type": "IdelForPipelineV",
+          "Type": "Pipeline",
           "Point": {
-            "X": 15,
+            "X": 14,
             "Y": 12
-          }
+          },
+          "Property": {
+            "Entrance": "Main",
+            "Length": 3,
+            "Direction": "V"
+          } 
         },
         {
           "Type": "Coin",

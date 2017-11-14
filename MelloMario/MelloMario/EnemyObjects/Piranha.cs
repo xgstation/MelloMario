@@ -1,5 +1,7 @@
-﻿using MelloMario.EnemyObjects.PiranhaStates;
+﻿using System.Linq;
+using MelloMario.EnemyObjects.PiranhaStates;
 using MelloMario.Interfaces.Objects.States;
+using MelloMario.MarioObjects;
 using Microsoft.Xna.Framework;
 using MelloMario.Theming;
 
@@ -10,7 +12,7 @@ namespace MelloMario.EnemyObjects
         private int hiddenTime;
         private int showTime;
         private IPiranhaState state;
-
+        public bool HasMarioAbove { get; private set; }
         public Piranha(IGameWorld world, Point location, Listener listener, Point size, int hiddenTime, int showTime, float pixelScale, string color = "Green") : base(world, location, listener, size, pixelScale)
         {
             this.hiddenTime = hiddenTime;
@@ -19,8 +21,15 @@ namespace MelloMario.EnemyObjects
             ShowSprite(Factories.SpriteFactory.Instance.CreatePiranhaSprite(color));
         }
 
+        private bool DetectMario()
+        {
+            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X,Boundary.Y,Boundary.Height,16))
+                    where obj is ICharacter select obj).Any();
+
+        }
         public IPiranhaState State
         {
+            get { return state; }
             set { state = value; }
         }
 
@@ -59,17 +68,19 @@ namespace MelloMario.EnemyObjects
         protected override void OnUpdate(int time)
         {
             state.Update(time);
-            //throw new NotImplementedException();
+            HasMarioAbove = DetectMario();
         }
 
         protected override void OnDraw(int time, Rectangle viewport)
         {
-            //throw new NotImplementedException();
         }
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
-            //throw new NotImplementedException();
+            if (target is Fire)
+            {
+                Defeat();
+            }
         }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
@@ -85,8 +96,8 @@ namespace MelloMario.EnemyObjects
         public void Defeat()
         {
             ScorePoints(GameConst.SCORE_KOOPA);
-            //TODO: implement defeat
-            //state.Defeated();
+            state.Defeat();
+            RemoveSelf();
         }
     }
 }

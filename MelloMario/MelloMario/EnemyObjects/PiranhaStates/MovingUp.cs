@@ -13,6 +13,10 @@ namespace MelloMario.EnemyObjects.PiranhaStates
             }
         }
 
+        public void Defeat()
+        {
+            Owner.State = new Defeated(Owner);
+        }
         public MovingUp(Piranha owner) : base(owner)
         {
             initialY = owner.Boundary.Y;
