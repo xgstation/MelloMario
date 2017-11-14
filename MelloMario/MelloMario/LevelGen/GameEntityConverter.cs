@@ -209,7 +209,7 @@ namespace MelloMario.LevelGen
                 if (type.Name == "Koopa")
                 {
                     Util.TryGet(out string color, token, "Property", "Color");
-                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, color);
+                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point,listener, color);
                 }
                 if (produceMode is ProduceMode.One)
                 {
