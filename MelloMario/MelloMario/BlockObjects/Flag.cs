@@ -1,6 +1,7 @@
 ﻿using MelloMario.Factories;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace MelloMario.BlockObjects
 {
@@ -8,6 +9,9 @@ namespace MelloMario.BlockObjects
     {
         private bool top;
         private int height, maxHeight;
+        public event TimeScoreHandler HandlerTimeScore;
+        private EventArgs eventInfo;
+        public delegate void TimeScoreHandler(Flag m, EventArgs e);
 
         private void UpdateSprite()
         {
@@ -28,6 +32,8 @@ namespace MelloMario.BlockObjects
                     {
                         ChangeLives(1);
                     }
+                    eventInfo = null;
+                    HandlerTimeScore?.Invoke(this, eventInfo);
                     ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
                     // mario.Active = false; // TODO: handle this in mario's collision
 

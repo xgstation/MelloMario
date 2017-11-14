@@ -167,6 +167,9 @@ namespace MelloMario.MarioObjects
                     }
 
                     break;
+                case "Flag":
+                    
+                    break;
                 case "Goomba":
                     if (target is Goomba goomba && mode != CollisionMode.Bottom)
                     {
@@ -268,7 +271,12 @@ namespace MelloMario.MarioObjects
 
         protected override void OnCollideWorld(CollisionMode mode)
         {
+            
             Bounce(mode, new Vector2());
+            if(mode == CollisionMode.InnerBottom)
+            {
+                KillWithBypass();
+            }
         }
 
         protected override void OnDraw(int time, Rectangle viewport)
@@ -330,6 +338,14 @@ namespace MelloMario.MarioObjects
         public void UpgradeToFire()
         {
             PowerUpState.UpgradeToFire();
+        }
+
+        public void KillWithBypass()
+        {
+            PowerUpState.Downgrade();
+            PowerUpState.Downgrade();
+            PowerUpState.Downgrade();
+            PowerUpState.Downgrade();
         }
 
         public void Downgrade()

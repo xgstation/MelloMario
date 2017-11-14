@@ -1,4 +1,5 @@
-﻿using MelloMario.ItemObjects;
+﻿using MelloMario.BlockObjects;
+using MelloMario.ItemObjects;
 using System;
 
 namespace MelloMario.Theming
@@ -11,15 +12,22 @@ namespace MelloMario.Theming
     class Listener
     {
         private GameModel model;
+        private bool won;
 
         public Listener(GameModel model)
         {
             this.model = model;
+            won = false;
         }
 
         public void Subscribe(Coin m)
         {
             m.HandlerCoins += new Coin.CoinHandler(OnCoinCollect);
+        }
+
+        public void Subscribe(Flag m)
+        {
+            m.HandlerTimeScore += new Flag.TimeScoreHandler(OnLevelWon);
         }
 
         public void Subscribe(BaseCollidableObject m)
@@ -36,6 +44,18 @@ namespace MelloMario.Theming
         private void OnPointGain(BaseCollidableObject m, PointEventArgs e)
         {
             model.Score += e.Points;
+        }
+
+        private void OnLevelWon(Flag m, EventArgs e)
+        {
+
+            //TODO: this if should eventually be unneeded
+            if (!won)
+            {
+                model.Score += GameConst.SCORE_TIME_MULT * model.Time;
+                model.Time = 0;
+                won = true;
+            }
         }
 
         private void OnCoinCollect(Coin m, EventArgs e)
