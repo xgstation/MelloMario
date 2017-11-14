@@ -12,7 +12,6 @@ namespace MelloMario.SplashObjects
         private ISprite textSprite;
         private ISprite coinSprite;
         private ISprite oneUpSprite;
-       
 
         public Rectangle Boundary
         {
