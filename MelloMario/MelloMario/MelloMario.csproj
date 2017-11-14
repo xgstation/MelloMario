@@ -126,7 +126,7 @@
     <Compile Include="EnemyObjects\Goomba.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
-    <Compile Include="GameOverScreen\Screen.cs" />
+    <Compile Include="SplashObjects\GameOver.cs" />
     <Compile Include="Interfaces\Containers\IContainer.cs" />
     <Compile Include="Interfaces\Containers\IGameSession.cs" />
     <Compile Include="Interfaces\Factories\ICommandFactory.cs" />
@@ -216,7 +216,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MiscObjects\HUD.cs" />
+    <Compile Include="SplashObjects\HUD.cs" />
     <Compile Include="Theming\Listener.cs" />
   </ItemGroup>
   <ItemGroup>

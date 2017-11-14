@@ -2,7 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.Theming;
 
-namespace MelloMario.MiscObjects
+namespace MelloMario.SplashObjects
 {
     class HUD : IGameObject
     {
