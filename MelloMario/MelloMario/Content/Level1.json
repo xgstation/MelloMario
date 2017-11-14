@@ -31,14 +31,14 @@
       "Entity": [
         {
           "Point": {
-            "X": 0,
-            "Y": 0
+            "X": 64,
+            "Y": 8
           },
-          "Quantity": {
-            "X": 0,
-            "Y": 0
+          "Property": {
+            "IsHidden": true,
+            "ItemValues": ["OneUpMushroomUnveil"] 
           },
-          "Type": "Idel"
+          "Type": "Question"
         },
         {
           "Point": {
