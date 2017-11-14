@@ -564,7 +564,10 @@
           "Point": {
             "X": 198,
             "Y": 3
-          }
+          },
+          "Property": {
+            "Height": 9
+          } 
         },
         {
           "Type": "Castle",

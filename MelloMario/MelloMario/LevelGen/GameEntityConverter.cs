@@ -344,7 +344,8 @@ namespace MelloMario.LevelGen
             }
             else if (type.Name == "Flag")
             {
-                foreach (IGameObject obj in GameObjectFactory.Instance.CreateGameObjectGroup("FlagPole", world, objPoint, 7, listener))
+                bool hasHeight = Util.TryGet(out int Height, token, "Property", "Height");
+                foreach (IGameObject obj in GameObjectFactory.Instance.CreateGameObjectGroup("FlagPole", world, objPoint, hasHeight ? Height : 7, listener))
                 {
                     stack.Push(obj);
                 }
