@@ -15,7 +15,7 @@ using MelloMario.Factories;
 
 namespace MelloMario.LevelGen
 {
-    internal class PointCompare : IEqualityComparer<Point>
+    class PointCompare : IEqualityComparer<Point>
     {
         public bool Equals(Point x, Point y)
         {
@@ -234,13 +234,13 @@ namespace MelloMario.LevelGen
             {
                 if (!(produceMode is ProduceMode.One))
                 {
-                    var dictProperties = new Dictionary<Point, Tuple<bool, string[]>>(new PointCompare());
+                    Dictionary<Point, Tuple<bool, string[]>> dictProperties = new Dictionary<Point, Tuple<bool, string[]>>(new PointCompare());
                     if (Util.TryGet(out JToken propertiesToken, token, "Properties"))
                     {
-                        foreach (var propertyToken in propertiesToken)
+                        foreach (JToken propertyToken in propertiesToken)
                         {
                             Util.TryGet(out Point index, propertyToken, "Index");
-                            var newPair = GetPropertyPair(propertyToken);
+                            Tuple<bool, string[]> newPair = GetPropertyPair(propertyToken);
                             dictProperties.Add(index, newPair);
                         }
                         Util.BatchCreateWithProperties(
@@ -265,7 +265,7 @@ namespace MelloMario.LevelGen
                             dictProperties,
                             (obj, pair) =>
                             {
-                                var newList = Util.CreateItemList(world, obj.Boundary.Location, listener, pair.Item2);
+                                IList<IGameObject> newList = Util.CreateItemList(world, obj.Boundary.Location, listener, pair.Item2);
                                 if (newList != null && newList.Count != 0)
                                 {
                                     GameDatabase.SetEnclosedItem(obj, newList);

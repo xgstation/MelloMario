@@ -5,64 +5,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Sprites.BlockSprites
 {
-    class BrickPieceSprite : ISprite
+    class BrickPieceSprite : BaseSprite
     {
-        private SpriteBatch spriteBatch;
         private Texture2D texture;
 
         private int elapsed;
 
-        public Point PixelSize
-        {
-            get
-            {
-                return new Point(texture.Width, texture.Height);
-            }
-        }
-
-        public ZIndex ZIndex
-        {
-            get
-            {
-                return ZIndex.foreground;
-            }
-        }
-        protected float LayerDepth
-        {
-            get
-            {
-                switch (ZIndex)
-                {
-                    case ZIndex.hud:
-                        return 0.05f;
-                    case ZIndex.foreground:
-                        return 0.1f;
-                    case ZIndex.level:
-                        return 0.25f;
-                    case ZIndex.item:
-                        return 0.4f;
-                    case ZIndex.background3:
-                        return 0.5f;
-                    case ZIndex.background2:
-                        return 0.6f;
-                    case ZIndex.background1:
-                        return 0.85f;
-                    case ZIndex.background0:
-                        return 0.95f;
-                    default:
-                        return 1f;
-                }
-            }
-        }
-        public BrickPieceSprite(SpriteBatch spriteBatch, Texture2D texture)
-        {
-            this.spriteBatch = spriteBatch;
-            this.texture = texture;
-
-            elapsed = 0;
-        }
-
-        public void Draw(int time, Rectangle destination)
+        protected override void OnDraw(int time, Rectangle destination)
         {
             elapsed += time;
 
@@ -104,6 +53,13 @@ namespace MelloMario.Sprites.BlockSprites
             spriteBatch.Draw(texture, destinations[1], source[1], Color.White, rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
             spriteBatch.Draw(texture, destinations[2], source[2], Color.White, -rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
             spriteBatch.Draw(texture, destinations[3], source[3], Color.White, -rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
+        }
+
+        public BrickPieceSprite(SpriteBatch spriteBatch, Texture2D texture) : base(spriteBatch, new Point(texture.Width, texture.Height), ZIndex.foreground)
+        {
+            this.texture = texture;
+
+            elapsed = 0;
         }
     }
 }

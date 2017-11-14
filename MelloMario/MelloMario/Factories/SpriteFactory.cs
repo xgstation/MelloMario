@@ -58,6 +58,7 @@ namespace MelloMario.Factories
         {
             return new SplashSprite(spriteBatch, new Point(), ZIndex.hud);
         }
+
         public ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing)
         {
             switch (protectionStatus)
@@ -183,18 +184,6 @@ namespace MelloMario.Factories
             }
         }
 
-        public ISprite CreateFlagSprite(bool status)
-        {
-            if (status)
-            {
-                return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 32, 16, zIndex: ZIndex.level);
-            }
-            else
-            {
-                return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 32, 18, zIndex: ZIndex.level);
-            }
-        }
-
         public ISprite CreateBrickSprite(string status)
         {
             switch (status)
@@ -247,6 +236,18 @@ namespace MelloMario.Factories
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
                     return null;
+            }
+        }
+
+        public ISprite CreateFlagSprite(bool isTop)
+        {
+            if (isTop)
+            {
+                return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 32, 16, zIndex: ZIndex.level);
+            }
+            else
+            {
+                return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 32, 18, zIndex: ZIndex.level);
             }
         }
 

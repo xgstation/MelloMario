@@ -4,7 +4,7 @@ using MelloMario.LevelGen;
 using System;
 using MelloMario.Containers;
 using MelloMario.Scripts;
-using MelloMario.MiscObjects;
+using MelloMario.SplashObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
