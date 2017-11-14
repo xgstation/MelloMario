@@ -28,9 +28,11 @@ namespace MelloMario.BlockObjects
                 ((MarioObjects.PlayerMario) target).Downgrade();
                 if(!collected)
                 {
+                    if (top)
+                        ChangeLives(1);
                     ScorePoints((int)(1f * height / maxHeight * GameConst.SCORE_FLAG_MAX));
+                    collected = true;
                 }
-                collected = true;
                 //TODO: trigger game win
             }
         }
