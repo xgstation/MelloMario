@@ -27,6 +27,7 @@ namespace MelloMario.Theming
         public int Lives;
         public int Time;
         public IGameObject hud;
+        public GameOver screen;
 
         // for singleplayer game
         private IPlayer GetActivePlayer()
@@ -194,21 +195,28 @@ namespace MelloMario.Theming
 
         public void Draw(int time)
         {
-            IPlayer player = GetActivePlayer();
-
-            foreach (IGameObject obj in player.World.ScanNearby(player.Character.Viewport))
+            if ((Time / 1000) < 0||Lives)
             {
-                if (isPaused)
-                {
-                    obj.Draw(0, player.Character.Viewport);
-                }
-                else
-                {
-                    obj.Draw(time, player.Character.Viewport);
-                }
-            }
 
-            hud.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
+            }
+            else
+            {
+                IPlayer player = GetActivePlayer();
+
+                foreach (IGameObject obj in player.World.ScanNearby(player.Character.Viewport))
+                {
+                    if (isPaused)
+                    {
+                        obj.Draw(0, player.Character.Viewport);
+                    }
+                    else
+                    {
+                        obj.Draw(time, player.Character.Viewport);
+                    }
+                }
+
+                hud.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
+            }
         }
     }
 }
