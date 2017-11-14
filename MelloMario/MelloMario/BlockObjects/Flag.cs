@@ -7,6 +7,7 @@ namespace MelloMario.BlockObjects
     class Flag : BaseCollidableObject
     {
         private bool top;
+        private bool touched;
         private int height, maxHeight;
 
         private void UpdateSprite()
@@ -22,13 +23,13 @@ namespace MelloMario.BlockObjects
         {
             if (target is MarioObjects.PlayerMario)
             {
-                if(!World.FlagTouched)
+                if (!touched)
                 {
                     if (top)
                         ChangeLives(1);
-                    ScorePoints((int)(1f * height / maxHeight * GameConst.SCORE_FLAG_MAX));
-                    World.FlagTouched = true;
-                
+                    ScorePoints((int) (1f * height / maxHeight * GameConst.SCORE_FLAG_MAX));
+                    touched = true;
+
                     //TODO: trigger game win
                 }
             }

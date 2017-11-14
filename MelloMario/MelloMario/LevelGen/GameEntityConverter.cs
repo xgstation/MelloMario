@@ -93,7 +93,7 @@ namespace MelloMario.LevelGen
 
                 return null;
             }
-            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, listener);
+            createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, listener);
             if (Util.TryGet(out quantity, objToken, "Quantity"))
             {
                 ignoredSet = !isSingle && Util.TryReadIgnoreSet(objToken, out ignoredSet) ? ignoredSet : null;
@@ -179,7 +179,7 @@ namespace MelloMario.LevelGen
                 if (type.Name == "Koopa")
                 {
                     Util.TryGet(out string color, token, "Property", "Color");
-                    createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, color);
+                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, color);
                 }
                 if (isSingle)
                 {
@@ -244,7 +244,7 @@ namespace MelloMario.LevelGen
                     Util.BatchCreate(
                         point =>
                         {
-                            objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
+                            objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
                             if (type.Name == "Question")
                             {
                                 (objToBePushed as Question).Initialize();
@@ -285,7 +285,7 @@ namespace MelloMario.LevelGen
                         Util.TryGet(out float showTime, piranhaToken, "ShowTime"))
                         {
                             new Piranha(world, new Point(objPoint.X + 16, objPoint.Y), listener, new Point(32, 48),
-                                (int)(hiddenTime * 1000), (int)(showTime * 1000), 32, color);
+                                (int) (hiddenTime * 1000), (int) (showTime * 1000), 32, color);
                         }
                     }
                     if (direction != "NV" && direction != "NH" &&
@@ -312,10 +312,10 @@ namespace MelloMario.LevelGen
                 Debug.WriteLine("Deserialize fail: Type of background is not given!");
             }
             ZIndex zIndex = Util.TryGet(out string s, token, "Property", "ZIndex")
-                ? (ZIndex)Enum.Parse(typeof(ZIndex), s)
+                ? (ZIndex) Enum.Parse(typeof(ZIndex), s)
                 : ZIndex.background0;
             createFunc = point =>
-                (IGameObject)Activator.CreateInstance(type, world, point, backgroundType, zIndex);
+                (IGameObject) Activator.CreateInstance(type, world, point, backgroundType, zIndex);
             objFullSize = createFunc(new Point()).Boundary.Size;
             if (isSingle)
             {
