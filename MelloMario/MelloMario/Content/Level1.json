@@ -170,9 +170,7 @@
               "ShowTime": 2.5
             },
             "Length": 1,
-            "Direction": "V",
-            "Entrance": "Main",
-            "PortalTo": "2"
+            "Direction": "V"
           }
         },
         {
@@ -494,8 +492,7 @@
           },
           "Property": {
             "Length": 1,
-            "Direction": "V",
-            "Index": "2"
+            "Direction": "V"
           }
         },
         {
@@ -781,7 +778,7 @@
           }
         },
         {
-          "Type": "Pipeline",
+          "Type": "PipelineH",
           "Point": {
             "X": 14,
             "Y": 12
