@@ -15,13 +15,13 @@ namespace MelloMario
         // TODO: make this private again once we have a better collision event dispatch mechanism
         //       a goomba/koopa should "know" in which case it can hurt/bounce mario
         //       instead of doing runtime type-checking on all enemys in mario's class
-        public enum FacingMode
+        protected enum FacingMode
         {
             left,
             right
         };
 
-        public FacingMode Facing;
+        protected FacingMode Facing;
 
         protected void ApplyForce(Vector2 delta)
         {

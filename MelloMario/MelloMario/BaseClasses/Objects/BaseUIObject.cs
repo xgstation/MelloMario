@@ -6,8 +6,6 @@ namespace MelloMario
 {
     abstract class BaseUIObject : IGameObject
     {
-        private IEnumerable<ISprite> sprites;
-
         protected abstract void OnUpdate(int time);
         protected abstract void OnDraw(int time, Rectangle viewport);
 
@@ -19,11 +17,6 @@ namespace MelloMario
             }
         }
 
-        public BaseUIObject(IEnumerable<ISprite> sprites)
-        {
-            this.sprites = sprites;
-        }
-
         public void Update(int time)
         {
             OnUpdate(time);
@@ -32,11 +25,6 @@ namespace MelloMario
         public void Draw(int time, Rectangle viewport)
         {
             OnDraw(time, viewport);
-
-            foreach (ISprite sprite in sprites)
-            {
-                sprite.Draw(time, new Rectangle(Boundary.Location - viewport.Location, Boundary.Size));
-            }
         }
     }
 }

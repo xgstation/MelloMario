@@ -85,7 +85,7 @@ namespace MelloMario.Theming
 
             GetActivePlayer().Reset();
         }
-        
+
         public void TransistGameWon()
         {
             isPaused = true;
@@ -101,9 +101,9 @@ namespace MelloMario.Theming
             isPaused = false;
 
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
-           
+
             splash = new HUD(this);
-          
+
         }
 
         public void Init()
@@ -112,7 +112,7 @@ namespace MelloMario.Theming
 
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            splash = new StartScreen(this);
+            splash = new GameStart();
             splashElapsed = 0;
         }
 
@@ -148,7 +148,7 @@ namespace MelloMario.Theming
 
             return pair.Item1;
         }
-        
+
         public void SwitchMusic(int time)
         {
             if (GetActivePlayer() is PlayerMario mario &&
@@ -177,7 +177,7 @@ namespace MelloMario.Theming
                 currentMusic = "Normal";
             }
             // TODO: Songs.gameOver should be triggered by gameover event
-            if ((time == 0 || Lives < 1) && currentMusic!="GameOver")
+            if ((time == 0 || Lives < 1) && currentMusic != "GameOver")
             {
                 MediaPlayer.Stop();
                 SoundController.PlayMusic(SoundController.Songs.gameOver);
