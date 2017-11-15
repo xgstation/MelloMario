@@ -72,6 +72,12 @@ namespace MelloMario.Factories
                     return new RightPress(character);
                 case "RightRelease":
                     return new RightRelease(character);
+                case "BecomeFire":
+                    return new FireCreate(character);
+                case "BecomeSuper":
+                    return new SuperCreate(character);
+                case "BecomeNormal":
+                    return new NormalCreate(character);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code

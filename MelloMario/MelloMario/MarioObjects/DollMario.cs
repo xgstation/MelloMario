@@ -258,6 +258,27 @@ namespace MelloMario.MarioObjects
             }
         }
 
+        public void FireCreate()
+        {
+            PowerUpState.UpgradeToFire();
+        }
+        public void SuperCreate()
+        {
+            PowerUpState.UpgradeToSuper();
+        }
+        public void NormalCreate()
+        {
+            if (PowerUpState is PowerUpStates.Fire)
+            {
+                PowerUpState.Downgrade();
+                PowerUpState.Downgrade();
+            }
+            else if (PowerUpState is PowerUpStates.Super)
+            {
+                PowerUpState.Downgrade();
+            }
+        }
+
         public void Action()
         {
             if (animation == Animation.none)

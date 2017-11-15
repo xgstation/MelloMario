@@ -8,7 +8,7 @@ namespace MelloMario.Sprites
     {
         private Texture2D screen;
 
-        public SplashSprite(SpriteBatch spriteBatch, ZIndex zIndex) : base(spriteBatch, new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT), zIndex)
+        public SplashSprite(SpriteBatch spriteBatch, ZIndex zIndex = ZIndex.foreground) : base(spriteBatch, new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT), zIndex)
         {
             screen = new Texture2D(spriteBatch.GraphicsDevice, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
 
@@ -23,7 +23,16 @@ namespace MelloMario.Sprites
 
         protected override void OnDraw(int time, Rectangle destination)
         {
-            spriteBatch.Draw(screen, destination, Color.Black);
+            spriteBatch.Draw(
+                screen,
+                destination,
+                null,
+                Color.Black,
+                0f, //rotation
+                new Vector2(), //origin
+                SpriteEffects.None,
+                LayerDepth
+            );
         }
     }
 }

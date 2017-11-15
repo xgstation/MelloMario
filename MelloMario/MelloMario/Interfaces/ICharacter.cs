@@ -20,6 +20,9 @@ namespace MelloMario
         void Crouch();
         void CrouchPress();
         void CrouchRelease();
+        void FireCreate();
+        void SuperCreate();
+        void NormalCreate();
         void Action();
     }
 }
