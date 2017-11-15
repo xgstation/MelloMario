@@ -18,7 +18,6 @@ namespace MelloMario.Theming
         private GameSession session;
         private IEnumerable<IController> controllers;
         private bool isPaused;
-        private string currentMusic;
         private Listener listener;
         private int splashElapsed; // TODO: for sprint 4, refactor later
         //TODO: temporary public
@@ -27,8 +26,8 @@ namespace MelloMario.Theming
         public int Score;
         public int Lives;
         public int Time;
-        public IGameObject splash;
-
+        public IGameObject Splash;
+        public SoundController.Songs ThemeMusic { get; private set; }
         // for singleplayer game
         private IPlayer GetActivePlayer()
         {
@@ -51,7 +50,8 @@ namespace MelloMario.Theming
             Coins = 0;
             Lives = 3;
             Time = GameConst.LEVEL_TIME * 1000;
-            currentMusic = "Normal";
+            ThemeMusic = SoundController.Songs.Idle;
+            SoundController.Initialize(this);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -79,7 +79,7 @@ namespace MelloMario.Theming
 
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            splash = new GameOver(this);
+            Splash = new GameOver(this);
             Time = GameConst.LEVEL_TIME * 1000;
             splashElapsed = 0;
 
@@ -92,7 +92,7 @@ namespace MelloMario.Theming
 
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            splash = new GameWon(this);
+            Splash = new GameWon(this);
             splashElapsed = -1;
         }
 
@@ -102,7 +102,7 @@ namespace MelloMario.Theming
 
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            splash = new HUD(this);
+            Splash = new HUD(this);
 
         }
 
@@ -112,7 +112,7 @@ namespace MelloMario.Theming
 
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            splash = new GameStart();
+            Splash = new GameStart();
             splashElapsed = 0;
         }
 
@@ -135,53 +135,29 @@ namespace MelloMario.Theming
                 session.Remove(pair.Item2);
             }
             session.Update();
-            if (id == "Main") // TODO: load music name from level file
-            {
-                MediaPlayer.Stop();
-                SoundController.PlayMusic(SoundController.Songs.normal);
-            }
-            else
-            {
-                MediaPlayer.Stop();
-                SoundController.PlayMusic(SoundController.Songs.belowGround);
-            }
+            ThemeMusic = id == "Main" ? SoundController.Songs.Normal : SoundController.Songs.BelowGround;
 
             return pair.Item1;
         }
 
-        public void SwitchMusic(int time)
+        public void UpdateMusicScene()
         {
             if (GetActivePlayer() is PlayerMario mario &&
                 mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
             {
-                if (currentMusic != "Star")
-                {
-                    MediaPlayer.Stop();
-                    SoundController.PlayMusic(SoundController.Songs.star);
-                    currentMusic = "Star";
-                }
+                ThemeMusic = SoundController.Songs.Star;
             }
-            else if (time < 90000 && SoundController.CurrentSong != SoundController.Songs.hurry)
+            else if (Time < 90000)
             {
-                if (currentMusic != "Hurry")
-                {
-                    MediaPlayer.Stop();
-                    SoundController.PlayMusic(SoundController.Songs.hurry);
-                    currentMusic = "Hurry";
-                }
+                ThemeMusic = SoundController.Songs.Hurry;
             }
-            else if (currentMusic != "Normal")
+            else
             {
-                MediaPlayer.Stop();
-                SoundController.PlayMusic(SoundController.Songs.normal);
-                currentMusic = "Normal";
+                ThemeMusic = SoundController.Songs.Normal;
             }
-            // TODO: Songs.gameOver should be triggered by gameover event
-            if ((time == 0 || Lives < 1) && currentMusic != "GameOver")
+            if (Time == 0 || Lives < 1)
             {
-                MediaPlayer.Stop();
-                SoundController.PlayMusic(SoundController.Songs.gameOver);
-                currentMusic = "GameOver";
+                ThemeMusic = SoundController.Songs.GameOver;
             }
         }
 
@@ -197,18 +173,9 @@ namespace MelloMario.Theming
             game.Exit();
         }
 
-        public void Mute()
+        public void ToggleMute()
         {
-            if (MediaPlayer.Volume > 0)
-            {
-                MediaPlayer.Volume = 0;
-                SoundEffect.MasterVolume = 0;
-            }
-            else
-            {
-                MediaPlayer.Volume = 100;
-                SoundEffect.MasterVolume = 1.0f;
-            }
+            SoundController.ToggleMute();
         }
 
         public void Update(int time)
@@ -216,6 +183,8 @@ namespace MelloMario.Theming
             // TODO: clean this part
             // TODO: use const
 
+            SoundController.Update();
+            UpdateMusicScene();
             foreach (IController controller in controllers)
             {
                 controller.Update();
@@ -246,7 +215,7 @@ namespace MelloMario.Theming
                     }
                 }
 
-                updating.Add(splash);
+                updating.Add(Splash);
 
                 foreach (IGameObject obj in updating)
                 {
@@ -255,7 +224,6 @@ namespace MelloMario.Theming
 
                 // TODO: move to correct place
                 Time -= time;
-                SwitchMusic(Time);
             }
         }
 
@@ -275,7 +243,7 @@ namespace MelloMario.Theming
                 }
             }
 
-            splash.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
+            Splash.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
         }
     }
 }
