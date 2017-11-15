@@ -577,7 +577,7 @@
           } 
         },
         {
-          "Type": "Castle",
+          "Type": "CastleIdle",
           "Point": {
             "X": 202,
             "Y": 8
