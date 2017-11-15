@@ -47,7 +47,7 @@ namespace MelloMario.Controllers
 
         public void Reset()
         {
-            foreach (Dictionary<T, ICommand> dict in commands.Values)
+            foreach (IDictionary<T, ICommand> dict in commands.Values)
             {
                 dict.Clear();
             }
