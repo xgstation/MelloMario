@@ -36,6 +36,11 @@ namespace MelloMario.MarioObjects
             animation = Animation.flagpole;
         }
 
+        protected void ResetA()
+        {
+            animation = Animation.none;
+        }
+
         protected override void OnSimulation(int time)
         {
             if (animation == Animation.teleport)

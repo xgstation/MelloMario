@@ -80,7 +80,10 @@ namespace MelloMario.Theming
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
             splash = new GameOver(this);
+            Time = GameConst.LEVEL_TIME * 1000;
             splashElapsed = 0;
+
+            GetActivePlayer().Reset();
         }
 
         public void Resume()
@@ -88,8 +91,9 @@ namespace MelloMario.Theming
             isPaused = false;
 
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
-
+           
             splash = new HUD(this);
+          
         }
 
         public void Init()

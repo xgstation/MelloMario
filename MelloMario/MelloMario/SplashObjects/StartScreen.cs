@@ -27,6 +27,7 @@ namespace MelloMario.SplashObjects
         {
             this.model = model;
             startSprite = SpriteFactory.Instance.CreateTitle(MelloMario.ZIndex.hud);
+            textSprite = SpriteFactory.Instance.CreateTextSprite("Mellop");
         }
 
         public void Update(int time)
@@ -37,6 +38,7 @@ namespace MelloMario.SplashObjects
         public void Draw(int time, Rectangle viewport)
         {
             startSprite.Draw(time, new Rectangle(100, 100, 352, 176));
+            textSprite.Draw(time, new Rectangle(0,400,200,200));
         }
     }
 }

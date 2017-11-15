@@ -298,7 +298,6 @@ namespace MelloMario.MarioObjects
         {
             eventInfo = null;
             HandlerGameOver?.Invoke(this, eventInfo);
-
         }
 
         protected override void OnDraw(int time, Rectangle viewport)

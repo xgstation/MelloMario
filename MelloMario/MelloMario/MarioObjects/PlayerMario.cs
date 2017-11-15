@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using MelloMario.MarioObjects.MovementStates;
+using MelloMario.MarioObjects.PowerUpStates;
+using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.Theming;
 using MelloMario.Sounds;
 
@@ -45,12 +47,19 @@ namespace MelloMario.MarioObjects
 
         public void Reset()
         {
-            RemoveSelf();
-            Session.Remove(this);
-
             // note: Boundary.Location or Boundary.Center? sometimes confusing
-            // note: listener is passed as null so score points will not do anything
-            new PlayerMario(Session, World, World.GetRespawnPoint(Boundary.Location), null);
+            // new PlayerMario(Session, World, World.GetRespawnPoint(Boundary.Location), this.GetListener);
+            // new PlayerMario(Session, World, World.GetInitialPoint(), this.GetListener);
+
+            Relocate(World.GetInitialPoint() + new Point(32, 32));
+
+            PowerUpState = new Standard(this);
+            ProtectionState = new Protected(this);
+
+            ResetA();
+
+            World.Move(this);
+            Session.Move(this);
         }
     }
 }
