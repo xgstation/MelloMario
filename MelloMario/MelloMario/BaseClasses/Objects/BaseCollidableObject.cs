@@ -9,11 +9,12 @@ namespace MelloMario
     {
         private Listener listener;
         private Point movement;
+
         public event PointHandler HandlerPoints;
-        private PointEventArgs pointEventInfo;
-        public delegate void PointHandler(BaseCollidableObject m, PointEventArgs e);
+        private GameEventArgs gameEventInfo;
+        public delegate void PointHandler(BaseCollidableObject m, GameEventArgs e);
         public event LivesHandler HandlerLives;
-        public delegate void LivesHandler(BaseCollidableObject m, PointEventArgs e);
+        public delegate void LivesHandler(BaseCollidableObject m, GameEventArgs e);
 
         private IEnumerable<Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>> ScanCollideModes(Rectangle targetBoundary)
         {
@@ -111,15 +112,23 @@ namespace MelloMario
                 {
                     foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(target.Boundary))
                     {
-                        OnCollision(target, pair.Item1, pair.Item3, pair.Item4);
-                        obj.OnCollision(this, pair.Item2, pair.Item4, pair.Item3);
+                        OnCollision(target, pair.Item1, pair.Item2, pair.Item3, pair.Item4);
+                        obj.OnCollision(this, pair.Item2, pair.Item1, pair.Item4, pair.Item3);
                     }
                 }
             }
 
+            //foreach (IPlayer player in session.???)
+            //{
+            //    foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(world.Boundary))
+            //    {
+            //        OnCollideViewport(player, pair.Item1, pair.Item2);
+            //    }
+            //}
+
             foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(world.Boundary))
             {
-                OnCollideWorld(pair.Item1);
+                OnCollideWorld(pair.Item1, pair.Item2);
             }
         }
 
@@ -144,14 +153,10 @@ namespace MelloMario
             Center
         };
 
-        protected abstract void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive);
-        protected abstract void OnCollideViewport(IPlayer player, CollisionMode mode);
-        protected abstract void OnCollideWorld(CollisionMode mode);
+        protected abstract void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive);
+        protected abstract void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive);
+        protected abstract void OnCollideWorld(CollisionMode mode, CollisionMode modePassive);
 
-        protected Listener GetListener
-        {
-            get { return listener; }
-        }
         protected void Move(Point delta)
         {
             movement += delta;
@@ -234,24 +239,22 @@ namespace MelloMario
 
         protected void ScorePoints(int points)
         {
-            pointEventInfo = new PointEventArgs
+            gameEventInfo = new GameEventArgs
             {
                 Points = points
             };
 
-            HandlerPoints?.Invoke(this, pointEventInfo);
-
+            HandlerPoints?.Invoke(this, gameEventInfo);
         }
 
-        protected void ChangeLives(int change)
+        protected void ChangeLives(int lives)
         {
-            pointEventInfo = new PointEventArgs
+            gameEventInfo = new GameEventArgs
             {
-                Points = change
+                Points = lives
             };
 
-            HandlerLives?.Invoke(this, pointEventInfo);
-
+            HandlerLives?.Invoke(this, gameEventInfo);
         }
 
         public BaseCollidableObject(IGameWorld world, Point location, Listener listener, Point size) : base(world, location, size)

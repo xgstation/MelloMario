@@ -3,7 +3,7 @@ using MelloMario.Factories;
 using MelloMario.ItemObjects.SuperMushroomStates;
 using MelloMario.BlockObjects;
 using MelloMario.Containers;
-using MelloMario.SplashObjects;
+using MelloMario.UIObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
@@ -14,10 +14,11 @@ namespace MelloMario.ItemObjects
         private IItemState state;
         private bool collected;
 
-        
+
         public IGameObject GetFireFlower()
         {
-            return GameObjectFactory.Instance.CreateGameObject("FireFlowerUnveil", world, Boundary.Location, GetListener);
+            // TODO: listener?
+            return GameObjectFactory.Instance.CreateGameObject("FireFlowerUnveil", world, Boundary.Location, null);
         }
 
         private void UpdateSprite()
@@ -49,7 +50,7 @@ namespace MelloMario.ItemObjects
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             switch (target.GetType().Name)
             {
@@ -89,11 +90,11 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)
         {
         }
 
-        protected override void OnCollideWorld(CollisionMode mode)
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
         }
 

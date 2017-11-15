@@ -47,15 +47,15 @@ namespace MelloMario.BlockObjects
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
         }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)
         {
         }
 
-        protected override void OnCollideWorld(CollisionMode mode)
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
         }
 

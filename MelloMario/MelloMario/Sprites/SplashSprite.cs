@@ -4,13 +4,11 @@ using MelloMario.Theming;
 
 namespace MelloMario.Sprites
 {
-    class SplashSprite : BaseSprite
+    class SplashSprite : BaseTextureSprite
     {
-        private Texture2D screen;
-
-        public SplashSprite(SpriteBatch spriteBatch, ZIndex zIndex = ZIndex.foreground) : base(spriteBatch, new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT), zIndex)
+        private static Texture2D CreateTexture(SpriteBatch spriteBatch)
         {
-            screen = new Texture2D(spriteBatch.GraphicsDevice, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
+            Texture2D screen = new Texture2D(spriteBatch.GraphicsDevice, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
 
             Color[] data = new Color[GameConst.SCREEN_WIDTH * GameConst.SCREEN_HEIGHT];
             for (int i = 0; i < data.Length; i++)
@@ -19,20 +17,22 @@ namespace MelloMario.Sprites
             }
 
             screen.SetData(data);
+
+            return screen;
         }
 
-        protected override void OnDraw(int time, Rectangle destination)
+        protected override void OnAnimate(int time)
         {
-            spriteBatch.Draw(
-                screen,
-                destination,
-                null,
-                Color.Black,
-                0f, //rotation
-                new Vector2(), //origin
-                SpriteEffects.None,
-                LayerDepth
-            );
+            // Do nothing
+        }
+
+        public SplashSprite(SpriteBatch spriteBatch) : base(
+            spriteBatch,
+            CreateTexture(spriteBatch),
+            new Rectangle(0, 0, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT),
+            ZIndex.splash
+        )
+        {
         }
     }
 }

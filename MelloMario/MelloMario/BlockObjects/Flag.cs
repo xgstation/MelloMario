@@ -2,7 +2,7 @@
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using System;
-using MelloMario.SplashObjects;
+using MelloMario.UIObjects;
 
 namespace MelloMario.BlockObjects
 {
@@ -23,11 +23,11 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             if (target is MarioObjects.PlayerMario mario)
             {
-                if (mario.Active && !world.FlagIsTouched)
+                if (mario.Active)
                 {
                     if (top)
                     {
@@ -36,20 +36,17 @@ namespace MelloMario.BlockObjects
                     eventInfo = null;
                     HandlerTimeScore?.Invoke(this, eventInfo);
                     ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
-                    world.FlagIsTouched = true;
                     new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_FLAG_MAX * height / maxHeight);
                     mario.FlagPole();
-
-                    //TODO: trigger game win
                 }
             }
         }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)
         {
         }
 
-        protected override void OnCollideWorld(CollisionMode mode)
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
         }
 

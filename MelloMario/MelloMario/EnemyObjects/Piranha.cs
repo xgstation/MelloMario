@@ -2,7 +2,7 @@
 using MelloMario.EnemyObjects.PiranhaStates;
 using MelloMario.Interfaces.Objects.States;
 using MelloMario.MarioObjects;
-using MelloMario.SplashObjects;
+using MelloMario.UIObjects;
 using Microsoft.Xna.Framework;
 using MelloMario.Theming;
 
@@ -76,7 +76,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Fire)
             {
@@ -84,12 +84,12 @@ namespace MelloMario.EnemyObjects
             }
         }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)
         {
             //throw new NotImplementedException();
         }
 
-        protected override void OnCollideWorld(CollisionMode mode)
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
             //throw new NotImplementedException();
         }

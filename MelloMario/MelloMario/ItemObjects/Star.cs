@@ -2,7 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.StarStates;
 using MelloMario.BlockObjects;
-using MelloMario.SplashObjects;
+using MelloMario.UIObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects
@@ -43,7 +43,7 @@ namespace MelloMario.ItemObjects
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             if (state is Normal)
             {
@@ -90,11 +90,11 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode)
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)
         {
         }
 
-        protected override void OnCollideWorld(CollisionMode mode)
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
         }
 
