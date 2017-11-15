@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Media;
 using MelloMario.LevelGen;
 using System;
 using MelloMario.Scripts;
@@ -8,7 +7,9 @@ using MelloMario.MarioObjects;
 using MelloMario.UIObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
+#if PARALLEL
+using System.Threading.Tasks;
+#endif
 
 namespace MelloMario.Theming
 {
@@ -35,7 +36,10 @@ namespace MelloMario.Theming
 
             return null; // error!
         }
-
+#if PARALLEL
+        public delegate void performUpdate(int time);
+        private performUpdate[] updateHandler;
+#endif
         public GameModel(Game1 game)
         {
             this.game = game;
@@ -44,6 +48,9 @@ namespace MelloMario.Theming
             ThemeMusic = SoundController.Songs.Idle;
             GameDatabase.Initialize(session);
             SoundController.Initialize(this);
+#if PARALLEL
+            updateHandler = new performUpdate[] { UpdateMusicScene, UpdateGameObjects, SoundController.Update, GameDatabase.Update };
+#endif
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -98,7 +105,7 @@ namespace MelloMario.Theming
 
         }
 
-        public void Init()
+        public void Initialize()
         {
             isPaused = true;
 
@@ -151,7 +158,7 @@ namespace MelloMario.Theming
             SoundController.ToggleMute();
         }
 
-        private void UpdateMusicScene()
+        private void UpdateMusicScene(int time)
         {
             if (GetActivePlayer() is PlayerMario mario &&
                 mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
@@ -202,6 +209,8 @@ namespace MelloMario.Theming
             }
         }
 
+
+
         public void Update(int time)
         {
             // TODO: clean this part
@@ -217,16 +226,32 @@ namespace MelloMario.Theming
                 }
                 return;
             }
-            SoundController.Update();
-            UpdateMusicScene();
+#if PARALLEL
+            Parallel.ForEach(updateHandler, update => update(time));
+#else
+            SoundController.Update(time);
+            UpdateMusicScene(time);
             UpdateGameObjects(time);
             GameDatabase.Update(time);
+#endif
         }
 
         public void Draw(int time)
         {
             IPlayer player = GetActivePlayer();
-
+#if PARALLEL
+            Parallel.ForEach(player.World.ScanNearby(player.Character.Viewport), o =>
+            {
+                if (isPaused)
+                {
+                    o.Draw(0, player.Character.Viewport);
+                }
+                else
+                {
+                    o.Draw(time, player.Character.Viewport);
+                }
+            });
+#else
             foreach (IGameObject obj in player.World.ScanNearby(player.Character.Viewport))
             {
                 if (isPaused)
@@ -238,7 +263,7 @@ namespace MelloMario.Theming
                     obj.Draw(time, player.Character.Viewport);
                 }
             }
-
+#endif
             Splash.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
         }
     }

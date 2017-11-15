@@ -12,11 +12,10 @@ namespace MelloMario
     /// </summary>
     class Game1 : Game
     {
-        private GraphicsDeviceManager graphics;
-        //private SoundController soundControl;
+        private readonly GraphicsDeviceManager graphics;
         private GameModel model;
         private SpriteBatch spriteBatch;
-
+        
 
 
         public Game1()
@@ -38,7 +37,7 @@ namespace MelloMario
             //SoundController.PlayMusic(SoundController.Songs.normal);
             model.LoadControllers(controllers);
             model.LoadLevel("Main", true); // Create the level for the first time
-            model.Init();
+            model.Initialize();
         }
 
         /// <summary>
