@@ -26,13 +26,9 @@ namespace MelloMario.MarioObjects.ProtectionStates
             Owner.ProtectionState = new Protected(Owner);
         }
 
-        public override void Update(int time)
-        {
-        }
-
         protected override void OnTimer(int time)
         {
-            //calll fydydtydty
+            Owner.TransToGameOver();
         }
     }
 }
