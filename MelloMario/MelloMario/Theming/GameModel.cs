@@ -163,6 +163,11 @@ namespace MelloMario.Theming
                 controller.Update();
             }
 
+            if (Lives < 1)
+            {
+                Reset();
+            }
+
             if (!isPaused)
             {
                 // reserved for multiplayer
