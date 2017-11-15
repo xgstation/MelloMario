@@ -13,7 +13,8 @@ namespace MelloMario.MarioObjects
         {
             none,
             teleport,
-            flagpole
+            flagpole,
+            dead
         }
 
         private Animation animation;
@@ -52,6 +53,11 @@ namespace MelloMario.MarioObjects
 
         protected override void OnUpdate(int time)
         {
+            if (ProtectionState is ProtectionStates.Dead)
+            {
+                animation = Animation.dead;
+            }
+
             if (animation == Animation.none)
             {
                 ApplyForce(userInput);
