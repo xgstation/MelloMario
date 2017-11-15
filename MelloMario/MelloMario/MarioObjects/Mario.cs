@@ -273,11 +273,13 @@ namespace MelloMario.MarioObjects
 
         protected override void OnCollideWorld(CollisionMode mode)
         {
-
-            Bounce(mode, new Vector2());
-            if (mode == CollisionMode.InnerBottom)
+            if (!(protectionState is Dead))
             {
-                ProtectionState = new Dead(this);
+                Bounce(mode, new Vector2());
+                if (mode == CollisionMode.InnerBottom)
+                {
+                    ProtectionState = new Dead(this);
+                }
             }
         }
 

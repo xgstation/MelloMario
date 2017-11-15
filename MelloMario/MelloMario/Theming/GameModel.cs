@@ -76,14 +76,16 @@ namespace MelloMario.Theming
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
         }
 
-        public IGameWorld LoadLevel(string id, bool init = false)
+        public IGameWorld LoadLevel(string id, bool init = false, bool forceRestart = false)
         {
-
-            foreach (IGameWorld world in session.ScanWorlds())
+            if (!forceRestart)
             {
-                if (world.Id == id)
+                foreach (IGameWorld world in session.ScanWorlds())
                 {
-                    return world;
+                    if (world.Id == id)
+                    {
+                        return world;
+                    }
                 }
             }
 
@@ -133,7 +135,7 @@ namespace MelloMario.Theming
         public void Reset()
         {
             // TODO: "forced" version of LoadLevel()
-            LoadLevel("Main", true);
+            game.Reset();
             Resume();
         }
 

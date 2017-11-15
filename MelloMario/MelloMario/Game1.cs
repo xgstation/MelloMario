@@ -27,16 +27,9 @@ namespace MelloMario
             graphics.PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT;
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
-        protected override void Initialize()
+        public void Reset()
         {
-            base.Initialize();
-            //soundControl = new SoundController(this);
+
             model = new GameModel(this);
             IEnumerable<IController> controllers = new List<IController>
             {
@@ -47,6 +40,19 @@ namespace MelloMario
             model.LoadControllers(controllers);
             model.LoadLevel("Main", true); // Create the level for the first time
             model.Init();
+        }
+
+        /// <summary>
+        /// Allows the game to perform any initialization it needs to before starting to run.
+        /// This is where it can query for any required services and load any non-graphic
+        /// related content.  Calling base.Initialize will enumerate through any components
+        /// and initialize them as well.
+        /// </summary>
+        protected override void Initialize()
+        {
+            base.Initialize();
+            //soundControl = new SoundController(this);
+            Reset();
         }
 
         /// <summary>
