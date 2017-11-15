@@ -15,10 +15,10 @@ namespace MelloMario.UIObjects
 
         protected override void OnUpdate(int time)
         {
-            string newText = "MARIO     *" + model.Lives.ToString().PadLeft(2, '0') + "   WORLD    TIME\n"
-                + model.Score.ToString().PadLeft(6, '0') + "    *"
-                + model.Coins.ToString().PadLeft(2, '0') + "    "
-                + "1-1" + "      " + model.Time / 1000; // TODO: get world name from player.CurrentWorld
+            string newText = "MARIO     *" + GameDatabase.Lifes.ToString().PadLeft(2, '0') + "   WORLD    TIME\n"
+                + GameDatabase.Score.ToString().PadLeft(6, '0') + "    *"
+                + GameDatabase.Coins.ToString().PadLeft(2, '0') + "    "
+                + "1-1" + "      " + GameDatabase.TimeRemain / 1000; // TODO: get world name from player.CurrentWorld
 
             if (newText != text)
             {

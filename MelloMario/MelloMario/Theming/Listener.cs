@@ -2,6 +2,7 @@
 using MelloMario.ItemObjects;
 using MelloMario.MarioObjects;
 using System;
+using MelloMario.Sounds;
 
 namespace MelloMario.Theming
 {
@@ -45,16 +46,16 @@ namespace MelloMario.Theming
 
         private void OnLivesChange(BaseCollidableObject m, GameEventArgs e)
         {
-            model.Lives += e.Points;
-            if (model.Lives > 99)
-                model.Lives = 99;
+            GameDatabase.Lifes += e.Points;
+            if (GameDatabase.Lifes > 99)
+                GameDatabase.Lifes = 99;
         }
 
         private void OnPointGain(BaseCollidableObject m, GameEventArgs e)
         {
-            model.Score += e.Points;
-            if (model.Score > 999999)
-                model.Score = 999999;
+            GameDatabase.Score += e.Points;
+            if (GameDatabase.Score > 999999)
+                GameDatabase.Score = 999999;
         }
 
         private void OnLevelWon(Flag m, EventArgs e)
@@ -62,8 +63,8 @@ namespace MelloMario.Theming
             //TODO: this if should eventually be unneeded
             if (!won)
             {
-                model.Score += GameConst.SCORE_TIME_MULT * model.Time / 1000;
-                model.Time = 0;
+                GameDatabase.Score += GameConst.SCORE_TIME_MULT * GameDatabase.TimeRemain / 1000;
+                GameDatabase.TimeRemain = 0;
                 model.TransistGameWon();
                 won = true;
             }
@@ -76,12 +77,12 @@ namespace MelloMario.Theming
 
         private void OnCoinCollect(Coin m, EventArgs e)
         {
-            model.Coins += 1;
-            if (model.Coins >= GameConst.COINS_FOR_LIVE)
+            GameDatabase.Coins += 1;
+            if (GameDatabase.Coins >= GameConst.COINS_FOR_LIVE)
             {
-                //TODO: play a one up sound
-                model.Coins = 0;
-                ++model.Lives;
+                GameDatabase.Coins = 0;
+                ++GameDatabase.Lifes;
+                SoundController.OneUpCollect.CreateInstance().Play();
             }
         }
     }

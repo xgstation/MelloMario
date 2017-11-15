@@ -18,12 +18,21 @@ namespace MelloMario.Theming
         private static IDictionary<Pipeline, string> PipelinePortalDb = new Dictionary<Pipeline, string>();
         private static IDictionary<string, Tuple<Pipeline, Pipeline>> PipelineIndex = new Dictionary<string, Tuple<Pipeline, Pipeline>>();
         private static IDictionary<ICharacter, Point> CharacterLocations = new Dictionary<ICharacter, Point>();
-        private static IDictionary<ICharacter, int> CharacterLifes = new Dictionary<ICharacter, int>();
-        private static IGameSession session;
+        private static IGameSession Session;
 
-        public static void Initialize(IGameSession session)
+        public static int Coins { get; set; }
+        public static int Score { get; set; }
+        public static int Lifes { get; set; }
+        public static int TimeRemain { get; set; }
+
+        public static void Initialize(IGameSession newSession, int newCoins = 0, int newScore = 0, int newLifes = 3, int newTimeRemain = GameConst.LEVEL_TIME * 1000)
         {
-            GameDatabase.session = session;
+            Session = newSession;
+            Coins = newCoins;
+            Score = newScore;
+            Lifes = newLifes;
+            TimeRemain = newTimeRemain;
+
         }
 
         public static void AddPipelineIndex(string index, Tuple<Pipeline, Pipeline> pipeline)
@@ -51,41 +60,7 @@ namespace MelloMario.Theming
                 ? PipelineIndex[PipelinePortalDb[pipeline]].Item1
                 : null;
         }
-        public static void AddOneLife(ICharacter character)
-        {
-            if (CharacterLifes.ContainsKey(character))
-            {
-                ++CharacterLifes[character];
-            }
-        }
 
-        public static void SubtractOneLife(ICharacter character)
-        {
-            if (CharacterLifes.ContainsKey(character))
-            {
-                if (CharacterLifes[character] <= 0)
-                {
-                    Debug.WriteLine("If you insist having negative lifes.");
-                }
-                --CharacterLifes[character];
-
-            }
-        }
-        public static void SetCharacterLifes(ICharacter character, int lifes)
-        {
-            if (CharacterLifes.ContainsKey(character))
-            {
-                CharacterLifes[character] = lifes;
-            }
-            else
-            {
-                CharacterLifes.Add(character, lifes);
-            }
-        }
-        public static int GetCharacterLifes(ICharacter character)
-        {
-            return CharacterLifes.ContainsKey(character) ? CharacterLifes[character] : 0;
-        }
         public static bool HasCharacters()
         {
             return CharacterLocations.Count != 0;
@@ -125,7 +100,7 @@ namespace MelloMario.Theming
             }
             if (ItemEnclosedDb[obj][0] is SuperMushroom mushroom)
             {
-                if (session.ScanPlayers().Any(c => (c as PlayerMario)?.PowerUpState is Super))
+                if (Session.ScanPlayers().Any(c => (c as PlayerMario)?.PowerUpState is Super))
                 {
                     ItemEnclosedDb[obj].RemoveAt(0);
                     return mushroom.GetFireFlower();
@@ -175,6 +150,11 @@ namespace MelloMario.Theming
             ItemEnclosedDb.Clear();
             PipelineEntranceDb.Clear();
             CharacterLocations.Clear();
+        }
+
+        public static void Update(int time)
+        {
+            TimeRemain -= time;
         }
     }
 }

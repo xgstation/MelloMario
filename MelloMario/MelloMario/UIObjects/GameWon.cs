@@ -34,8 +34,8 @@ namespace MelloMario.UIObjects
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "Normal", "Right");
             Text = "MARIO        " + "   WORLD    TIME\n"
-                + model.Score.ToString().PadLeft(6, '0') + "    *"
-                + model.Coins.ToString().PadLeft(2, '0') + "    "
+                + GameDatabase.Score.ToString().PadLeft(6, '0') + "    *"
+                + GameDatabase.Coins.ToString().PadLeft(2, '0') + "    "
                 + "1-1" + "      ";
             textSprite = SpriteFactory.Instance.CreateTextSprite(Text);
         }

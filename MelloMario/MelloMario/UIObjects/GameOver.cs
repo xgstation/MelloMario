@@ -25,12 +25,12 @@ namespace MelloMario.UIObjects
             textSprite.Draw(time, new Rectangle(42, 42, 800, 200));
             coinSprite.Draw(time, new Rectangle(255, 74, 26, 30));
 
-            if (model.Lives > 0)
+            if (GameDatabase.Lifes > 0)
             {
                 ISprite text = SpriteFactory.Instance.CreateTextSprite("WORLD");
                 text.Draw(time, new Rectangle(300, 200, 80, 80));
                 marioSprite.Draw(time, new Rectangle(250, 250, 40, 40));
-                ISprite Life = SpriteFactory.Instance.CreateTextSprite("*  " + model.Lives.ToString());
+                ISprite Life = SpriteFactory.Instance.CreateTextSprite("*  " + GameDatabase.Lifes);
                 Life.Draw(time, new Rectangle(350, 250, 80, 80));
             }
             else
@@ -47,8 +47,8 @@ namespace MelloMario.UIObjects
             marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
             gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
             Text = "MARIO        " + "   WORLD    TIME\n"
-                + model.Score.ToString().PadLeft(6, '0') + "    *"
-                + model.Coins.ToString().PadLeft(2, '0') + "    "
+                + GameDatabase.Score.ToString().PadLeft(6, '0') + "    *"
+                + GameDatabase.Coins.ToString().PadLeft(2, '0') + "    "
                 + "1-1" + "      ";
             textSprite = SpriteFactory.Instance.CreateTextSprite(Text);
         }

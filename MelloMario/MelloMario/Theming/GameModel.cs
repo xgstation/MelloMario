@@ -14,18 +14,14 @@ namespace MelloMario.Theming
 {
     class GameModel : IGameModel
     {
-        private Game1 game;
-        private GameSession session;
+        private readonly Game1 game;
+        private readonly GameSession session;
         private IEnumerable<IController> controllers;
         private bool isPaused;
-        private Listener listener;
+        private readonly Listener listener;
         private int splashElapsed; // TODO: for sprint 4, refactor later
         //TODO: temporary public
         //note: we will have an extra class called Player which contains these information
-        public int Coins;
-        public int Score;
-        public int Lives;
-        public int Time;
         public IGameObject Splash;
         public SoundController.Songs ThemeMusic { get; private set; }
         // for singleplayer game
@@ -45,12 +41,8 @@ namespace MelloMario.Theming
             this.game = game;
             session = new GameSession();
             listener = new Listener(this);
-            GameDatabase.Initialize(session);
-            Score = 0;
-            Coins = 0;
-            Lives = 3;
-            Time = GameConst.LEVEL_TIME * 1000;
             ThemeMusic = SoundController.Songs.Idle;
+            GameDatabase.Initialize(session);
             SoundController.Initialize(this);
         }
 
@@ -80,7 +72,7 @@ namespace MelloMario.Theming
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
             Splash = new GameOver(this);
-            Time = GameConst.LEVEL_TIME * 1000;
+            GameDatabase.TimeRemain = GameConst.LEVEL_TIME * 1000;
             splashElapsed = 0;
 
             GetActivePlayer().Reset();
@@ -166,7 +158,7 @@ namespace MelloMario.Theming
             {
                 ThemeMusic = SoundController.Songs.Star;
             }
-            else if (Time < 90000)
+            else if (GameDatabase.TimeRemain < 90000)
             {
                 ThemeMusic = SoundController.Songs.Hurry;
             }
@@ -174,7 +166,7 @@ namespace MelloMario.Theming
             {
                 ThemeMusic = SoundController.Songs.Normal;
             }
-            if (Time == 0 || Lives < 1)
+            if (GameDatabase.TimeRemain == 0 || GameDatabase.Lifes < 1)
             {
                 ThemeMusic = SoundController.Songs.GameOver;
             }
@@ -228,8 +220,7 @@ namespace MelloMario.Theming
             SoundController.Update();
             UpdateMusicScene();
             UpdateGameObjects(time);
-            // TODO: move to correct place
-            Time -= time;
+            GameDatabase.Update(time);
         }
 
         public void Draw(int time)
