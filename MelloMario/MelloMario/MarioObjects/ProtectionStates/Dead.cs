@@ -4,11 +4,11 @@ using MelloMario.Sounds;
 
 namespace MelloMario.MarioObjects.ProtectionStates
 {
-    class Dead : BaseState<Mario>, IMarioProtectionState
+    class Dead : BaseTimedState<Mario>, IMarioProtectionState
     {
         private SoundEffectInstance deadSound;
 
-        public Dead(Mario owner) : base(owner)
+        public Dead(Mario owner) : base(owner, 1500)
         {
             deadSound = SoundController.death.CreateInstance();
             deadSound.Play();
@@ -28,6 +28,11 @@ namespace MelloMario.MarioObjects.ProtectionStates
 
         public override void Update(int time)
         {
+        }
+
+        protected override void OnTimer(int time)
+        {
+            //calll fydydtydty
         }
     }
 }
