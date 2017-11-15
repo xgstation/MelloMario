@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,12 +14,12 @@ namespace MelloMario.Theming
 {
     static class GameDatabase
     {
-        private static IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
-        private static IDictionary<Pipeline, string> PipelineEntranceDb = new Dictionary<Pipeline, string>();
-        private static IDictionary<Pipeline, string> PipelinePortalDb = new Dictionary<Pipeline, string>();
-        private static IDictionary<string, Tuple<Pipeline, Pipeline>> PipelineIndex = new Dictionary<string, Tuple<Pipeline, Pipeline>>();
-        private static IDictionary<ICharacter, Point> CharacterLocations = new Dictionary<ICharacter, Point>();
-        private static IGameSession Session;
+        private static readonly IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
+        private static readonly IDictionary<Pipeline, string> PipelineEntranceDb = new Dictionary<Pipeline, string>();
+        private static readonly IDictionary<Pipeline, string> PipelinePortalDb = new Dictionary<Pipeline, string>();
+        private static readonly IDictionary<string, Tuple<Pipeline, Pipeline>> PipelineIndex = new Dictionary<string, Tuple<Pipeline, Pipeline>>();
+        private static readonly ConcurrentDictionary<ICharacter, Point> CharacterLocations = new ConcurrentDictionary<ICharacter, Point>();
+        private static IGameSession session;
 
         public static int Coins { get; set; }
         public static int Score { get; set; }
@@ -27,7 +28,7 @@ namespace MelloMario.Theming
 
         public static void Initialize(IGameSession newSession, int newCoins = 0, int newScore = 0, int newLifes = 3, int newTimeRemain = GameConst.LEVEL_TIME * 1000)
         {
-            Session = newSession;
+            session = newSession;
             Coins = newCoins;
             Score = newScore;
             Lifes = newLifes;
@@ -100,7 +101,7 @@ namespace MelloMario.Theming
             }
             if (ItemEnclosedDb[obj][0] is SuperMushroom mushroom)
             {
-                if (Session.ScanPlayers().Any(c => (c as PlayerMario)?.PowerUpState is Super))
+                if (session.ScanPlayers().Any(c => (c as PlayerMario)?.PowerUpState is Super))
                 {
                     ItemEnclosedDb[obj].RemoveAt(0);
                     return mushroom.GetFireFlower();
@@ -154,6 +155,14 @@ namespace MelloMario.Theming
 
         public static void Update(int time)
         {
+            foreach (var player in session.ScanPlayers())
+            {
+                CharacterLocations.AddOrUpdate(
+                    player.Character,
+                    ((IGameObject) player.Character).Boundary.Location,
+                    (p, loc) => ((IGameObject) p).Boundary.Location
+                );
+            }
             TimeRemain -= time;
         }
     }
