@@ -11,7 +11,6 @@ namespace MelloMario.ItemObjects
     {
         private const int H_SPEED = 3;
         private IItemState state;
-        private SoundEffectInstance oneupMushCollectSound;
         private bool collected;
 
         private void UpdateSprite()
@@ -97,7 +96,6 @@ namespace MelloMario.ItemObjects
 
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener, bool isUnveil) : base(world, location, listener, new Point(32, 32), 32)
         {
-            oneupMushCollectSound = SoundController.oneUpCollect.CreateInstance();
             collected = false;
 
             if (marioLocation.X < location.X)
@@ -130,8 +128,8 @@ namespace MelloMario.ItemObjects
 
         public void Collect()
         {
-            oneupMushCollectSound.Play();
-            if(!collected)
+            SoundController.oneUpCollect.CreateInstance().Play();
+            if (!collected)
             {
                 ChangeLives(1);
                 collected = true;
