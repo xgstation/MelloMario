@@ -14,7 +14,6 @@ namespace MelloMario.BlockObjects
         private IPlayer switchingPlayer;
         private string type;
         private int elapsed;
-        private SoundEffectInstance pipeTravelSound;
         //private SoundController soundControl;
 
         public string Type
@@ -66,7 +65,7 @@ namespace MelloMario.BlockObjects
             {
                 if (mario.MovementState is Crouching && GameDatabase.IsEntrance(this))
                 {
-                    pipeTravelSound.Play();
+                    SoundController.pipe.CreateInstance().Play();
                     switch (type)
                     {
                         case "LeftIn":
@@ -108,7 +107,6 @@ namespace MelloMario.BlockObjects
         public Pipeline(IGameWorld world, Point location, Listener listener, string type) : base(world, location, listener, new Point(32, 32))
         {
             this.type = type;
-            pipeTravelSound = SoundController.pipe.CreateInstance();
 
             UpdateSprite();
         }
