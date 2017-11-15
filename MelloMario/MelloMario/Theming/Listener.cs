@@ -27,6 +27,7 @@ namespace MelloMario.Theming
 
         public void Subscribe(Flag m)
         {
+           
             m.HandlerTimeScore += new Flag.TimeScoreHandler(OnLevelWon);
         }
 
