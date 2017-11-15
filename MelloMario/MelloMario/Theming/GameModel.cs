@@ -140,7 +140,26 @@ namespace MelloMario.Theming
             return pair.Item1;
         }
 
-        public void UpdateMusicScene()
+
+
+        public void Reset()
+        {
+            // TODO: "forced" version of LoadLevel()
+            game.Reset();
+            Resume();
+        }
+
+        public void Quit()
+        {
+            game.Exit();
+        }
+
+        public void ToggleMute()
+        {
+            SoundController.ToggleMute();
+        }
+
+        private void UpdateMusicScene()
         {
             if (GetActivePlayer() is PlayerMario mario &&
                 mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
@@ -161,70 +180,56 @@ namespace MelloMario.Theming
             }
         }
 
-        public void Reset()
+        private void UpdateController()
         {
-            // TODO: "forced" version of LoadLevel()
-            game.Reset();
-            Resume();
+            foreach (IController controller in controllers)
+            {
+                controller.Update();
+            }
         }
 
-        public void Quit()
+        private void UpdateGameObjects(int time)
         {
-            game.Exit();
-        }
+            // reserved for multiplayer
+            ISet<IGameObject> updating = new HashSet<IGameObject>();
 
-        public void ToggleMute()
-        {
-            SoundController.ToggleMute();
+            foreach (IPlayer player in session.ScanPlayers())
+            {
+                player.World.Update();
+                foreach (IGameObject obj in player.World.ScanNearby(player.Character.Sensing))
+                {
+                    updating.Add(obj);
+                }
+            }
+
+            updating.Add(Splash);
+
+            foreach (IGameObject obj in updating)
+            {
+                obj.Update(time);
+            }
         }
 
         public void Update(int time)
         {
             // TODO: clean this part
             // TODO: use const
-
-            SoundController.Update();
-            UpdateMusicScene();
-            foreach (IController controller in controllers)
-            {
-                controller.Update();
-            }
-
+            UpdateController();
             if (isPaused)
             {
-                if (splashElapsed >= 0)
+                if (splashElapsed < 0) return;
+                splashElapsed += time;
+                if (splashElapsed >= 1000 * 3)
                 {
-                    splashElapsed += time;
-                    if (splashElapsed >= 1000 * 3)
-                    {
-                        Resume();
-                    }
+                    Resume();
                 }
+                return;
             }
-            else
-            {
-                // reserved for multiplayer
-                ISet<IGameObject> updating = new HashSet<IGameObject>();
-
-                foreach (IPlayer player in session.ScanPlayers())
-                {
-                    player.World.Update();
-                    foreach (IGameObject obj in player.World.ScanNearby(player.Character.Sensing))
-                    {
-                        updating.Add(obj);
-                    }
-                }
-
-                updating.Add(Splash);
-
-                foreach (IGameObject obj in updating)
-                {
-                    obj.Update(time);
-                }
-
-                // TODO: move to correct place
-                Time -= time;
-            }
+            SoundController.Update();
+            UpdateMusicScene();
+            UpdateGameObjects(time);
+            // TODO: move to correct place
+            Time -= time;
         }
 
         public void Draw(int time)
