@@ -56,7 +56,7 @@ namespace MelloMario.Factories
 
         public ISprite CreatSplashSprite()
         {
-            return new SplashSprite(spriteBatch, ZIndex.hud);
+            return new SplashSprite(spriteBatch, ZIndex.foreground);
         }
 
         public ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing)
@@ -71,6 +71,8 @@ namespace MelloMario.Factories
                     return new AnimatedSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Dead":
                     return new StaticSprite(spriteBatch, GetTexture(protectionStatus), zIndex: ZIndex.foreground);
+                case "GameOver":
+                    return new StaticSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), zIndex: ZIndex.hud);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -263,6 +265,20 @@ namespace MelloMario.Factories
                     return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 16, 44, 8, 2, zIndex);
                 case "LongSmileCloud":
                     return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 10, 40, 6, 4, zIndex);
+                case "CastleTop":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 22, 0, 2, 2, zIndex);
+                case "CastleTopSolid":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 22, 2, 2, 2, zIndex);
+                case "CastleBody":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 26, 0, 2, 2, zIndex);
+                case "CastleDoorLeft":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 24, 0, 2, 2, zIndex);
+                case "CastleDoorRight":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 28, 0, 2, 2, zIndex);
+                case "CastleDoorTop":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 24, 2, 2, 2, zIndex);
+                case "CastleDoor":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 26, 2, 2, 2, zIndex);
                 default:
                     return null;
             }

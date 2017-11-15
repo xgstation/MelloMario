@@ -94,7 +94,6 @@ namespace MelloMario
             this.size = size;
             this.world = world;
             this.world.Add(this);
-
         }
 
         public void Update(int time)
