@@ -7,6 +7,7 @@ using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
 using MelloMario.Interfaces.Objects.States;
 using MelloMario.Theming;
+using System;
 
 namespace MelloMario.MarioObjects
 {
@@ -15,6 +16,10 @@ namespace MelloMario.MarioObjects
         private IMarioPowerUpState powerUpState;
         private IMarioMovementState movementState;
         private IMarioProtectionState protectionState;
+
+        public event GameOverHandler HandlerGameOver;
+        private EventArgs eventInfo;
+        public delegate void GameOverHandler(Mario m, EventArgs e);
 
         private void UpdateSprite()
         {
@@ -289,6 +294,13 @@ namespace MelloMario.MarioObjects
             ChangeLives(-1);
         }
 
+        public void TransToGameOver()
+        {
+            eventInfo = null;
+            HandlerGameOver?.Invoke(this, eventInfo);
+
+        }
+
         protected override void OnDraw(int time, Rectangle viewport)
         {
         }
@@ -334,6 +346,7 @@ namespace MelloMario.MarioObjects
 
         public Mario(IGameWorld world, Point location, Listener listener) : base(world, location, listener, new Point(), 32)
         {
+            listener.Subscribe(this);
             powerUpState = new Standard(this);
             movementState = new Standing(this);
             protectionState = new Normal(this);
