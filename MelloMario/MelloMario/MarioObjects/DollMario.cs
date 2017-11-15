@@ -31,7 +31,7 @@ namespace MelloMario.MarioObjects
             // TODO: initialize
         }
 
-        protected void FlagPole()
+        public void FlagPole()
         {
             animation = Animation.flagpole;
         }
