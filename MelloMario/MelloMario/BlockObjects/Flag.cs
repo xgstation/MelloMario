@@ -27,7 +27,7 @@ namespace MelloMario.BlockObjects
         {
             if (target is MarioObjects.PlayerMario mario)
             {
-                if (mario.Active)
+                if (mario.Active && !world.FlagIsTouched)
                 {
                     if (top)
                     {
@@ -36,6 +36,7 @@ namespace MelloMario.BlockObjects
                     eventInfo = null;
                     HandlerTimeScore?.Invoke(this, eventInfo);
                     ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
+                    world.FlagIsTouched = true;
                     new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_FLAG_MAX * height / maxHeight);
                     // mario.Active = false; // TODO: handle this in mario's collision
 
