@@ -14,10 +14,11 @@ namespace MelloMario.ItemObjects
         private IItemState state;
         private bool collected;
 
-        
+
         public IGameObject GetFireFlower()
         {
-            return GameObjectFactory.Instance.CreateGameObject("FireFlowerUnveil", world, Boundary.Location, GetListener);
+            // TODO: listener?
+            return GameObjectFactory.Instance.CreateGameObject("FireFlowerUnveil", world, Boundary.Location, null);
         }
 
         private void UpdateSprite()

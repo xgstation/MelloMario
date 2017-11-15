@@ -112,8 +112,8 @@ namespace MelloMario
                 {
                     foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(target.Boundary))
                     {
-                        OnCollision(target, pair.Item1, pair.Item3, pair.Item4);
-                        obj.OnCollision(this, pair.Item2, pair.Item4, pair.Item3);
+                        OnCollision(target, pair.Item1, pair.Item2, pair.Item3, pair.Item4);
+                        obj.OnCollision(this, pair.Item2, pair.Item1, pair.Item4, pair.Item3);
                     }
                 }
             }
