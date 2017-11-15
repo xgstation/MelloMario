@@ -100,10 +100,6 @@
     <Compile Include="BlockObjects\QuestionStates\Used.cs" />
     <Compile Include="BlockObjects\Stair.cs" />
     <Compile Include="BaseClasses\BaseCommand.cs" />
-    <Compile Include="Collision\CollisionDistributer.cs" />
-    <Compile Include="Collision\EncapsulatedQuadTreeObject.cs" />
-    <Compile Include="Collision\QuadTree.cs" />
-    <Compile Include="Collision\QuadTreeNode.cs" />
     <Compile Include="Commands\Action.cs" />
     <Compile Include="Commands\FireCreate.cs" />
     <Compile Include="Commands\Mute.cs" />
@@ -128,7 +124,6 @@
     <Compile Include="Commands\SuperCreate.cs" />
     <Compile Include="Commands\ToggleFullScreen.cs" />
     <Compile Include="Containers\GameSession.cs" />
-    <Compile Include="Containers\GameWorld2.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="EnemyObjects\KoopaStates\MovingShell.cs" />
     <Compile Include="EnemyObjects\Piranha.cs" />
