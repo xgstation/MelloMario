@@ -1,10 +1,10 @@
-﻿using MelloMario.Factories;
+using MelloMario.Factories;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 
-namespace MelloMario.SplashObjects
+namespace MelloMario.UIObjects
 {
-    class GameWon : BaseUIObject
+    class GameOver : BaseUIObject
     {
         private GameModel model;
         private ISprite splashSprite;
@@ -16,23 +16,36 @@ namespace MelloMario.SplashObjects
 
         protected override void OnUpdate(int time)
         {
+            //UpdateSprite();
         }
 
         protected override void OnDraw(int time, Rectangle viewport)
         {
             splashSprite.Draw(time, new Rectangle(0, 0, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT));
-            textSprite.Draw(time, new Rectangle(10, 10, 80, 80));
-            ISprite text = SpriteFactory.Instance.CreateTextSprite("You won!\n\nPress R to restart\n\nPress Q to quit");
-            text.Draw(time, new Rectangle(200, 200, 200, 80));
+            textSprite.Draw(time, new Rectangle(42, 42, 800, 200));
+            coinSprite.Draw(time, new Rectangle(255, 74, 26, 30));
 
+            if (model.Lives > 0)
+            {
+                ISprite text = SpriteFactory.Instance.CreateTextSprite("WORLD");
+                text.Draw(time, new Rectangle(300, 200, 80, 80));
+                marioSprite.Draw(time, new Rectangle(250, 250, 40, 40));
+                ISprite Life = SpriteFactory.Instance.CreateTextSprite("*  " + model.Lives.ToString());
+                Life.Draw(time, new Rectangle(350, 250, 80, 80));
+            }
+            else
+            {
+                gameOverSprite.Draw(time, new Rectangle(400, 250, 80, 80));
+            }
         }
 
-        public GameWon(GameModel model)
+        public GameOver(GameModel model)
         {
             this.model = model;
             splashSprite = SpriteFactory.Instance.CreatSplashSprite();
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
-            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "Normal", "Right");
+            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
+            gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
             Text = "MARIO        " + "   WORLD    TIME\n"
                 + model.Score.ToString().PadLeft(6, '0') + "    *"
                 + model.Coins.ToString().PadLeft(2, '0') + "    "

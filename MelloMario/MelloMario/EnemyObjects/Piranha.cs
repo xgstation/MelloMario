@@ -2,7 +2,7 @@
 using MelloMario.EnemyObjects.PiranhaStates;
 using MelloMario.Interfaces.Objects.States;
 using MelloMario.MarioObjects;
-using MelloMario.SplashObjects;
+using MelloMario.UIObjects;
 using Microsoft.Xna.Framework;
 using MelloMario.Theming;
 

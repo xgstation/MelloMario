@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using MelloMario.Factories;
+﻿using MelloMario.Factories;
 using MelloMario.Theming;
+using Microsoft.Xna.Framework;
 
-namespace MelloMario.SplashObjects
+namespace MelloMario.UIObjects
 {
     class HUD : BaseUIObject
     {

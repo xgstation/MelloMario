@@ -3,7 +3,7 @@ using MelloMario.Factories;
 using MelloMario.ItemObjects.SuperMushroomStates;
 using MelloMario.BlockObjects;
 using MelloMario.Containers;
-using MelloMario.SplashObjects;
+using MelloMario.UIObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects

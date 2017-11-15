@@ -2,7 +2,7 @@
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using System;
-using MelloMario.SplashObjects;
+using MelloMario.UIObjects;
 
 namespace MelloMario.BlockObjects
 {

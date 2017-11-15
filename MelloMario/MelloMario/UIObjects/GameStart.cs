@@ -1,8 +1,7 @@
 ﻿using MelloMario.Factories;
-using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 
-namespace MelloMario.SplashObjects
+namespace MelloMario.UIObjects
 {
     class GameStart : BaseUIObject
     {

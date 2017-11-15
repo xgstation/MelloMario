@@ -1,7 +1,7 @@
 ﻿using MelloMario.Factories;
 using Microsoft.Xna.Framework;
 
-namespace MelloMario.SplashObjects
+namespace MelloMario.UIObjects
 {
     class PopingUpPoints : BaseGameObject
     {

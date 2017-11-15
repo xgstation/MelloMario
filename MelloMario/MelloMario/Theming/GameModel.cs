@@ -5,7 +5,7 @@ using System;
 using MelloMario.Scripts;
 using MelloMario.Containers;
 using MelloMario.MarioObjects;
-using MelloMario.SplashObjects;
+using MelloMario.UIObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;

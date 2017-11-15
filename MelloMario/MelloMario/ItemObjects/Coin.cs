@@ -3,7 +3,7 @@ using MelloMario.Factories;
 using MelloMario.ItemObjects.CoinStates;
 using MelloMario.MarioObjects;
 using System;
-using MelloMario.SplashObjects;
+using MelloMario.UIObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects

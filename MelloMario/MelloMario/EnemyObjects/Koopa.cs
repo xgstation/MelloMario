@@ -3,7 +3,7 @@ using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.KoopaStates;
 using MelloMario.BlockObjects;
-using MelloMario.SplashObjects;
+using MelloMario.UIObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.EnemyObjects

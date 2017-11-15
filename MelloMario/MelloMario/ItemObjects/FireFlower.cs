@@ -2,7 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.FireFlowerStates;
 using MelloMario.MarioObjects;
-using MelloMario.SplashObjects;
+using MelloMario.UIObjects;
 using MelloMario.Theming;
 
 namespace MelloMario.ItemObjects

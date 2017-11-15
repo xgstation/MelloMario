@@ -131,9 +131,9 @@
     <Compile Include="EnemyObjects\Goomba.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
-    <Compile Include="SplashObjects\GameWon.cs" />
-    <Compile Include="SplashObjects\GameStart.cs" />
-    <Compile Include="SplashObjects\GameOver.cs" />
+    <Compile Include="UIObjects\GameWon.cs" />
+    <Compile Include="UIObjects\GameStart.cs" />
+    <Compile Include="UIObjects\GameOver.cs" />
     <Compile Include="Interfaces\Containers\IContainer.cs" />
     <Compile Include="Interfaces\Containers\IGameSession.cs" />
     <Compile Include="Interfaces\Factories\ICommandFactory.cs" />
@@ -199,7 +199,7 @@
     <Compile Include="MarioObjects\ProtectionStates\Protected.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Starred.cs" />
     <Compile Include="Sounds\SoundController.cs" />
-    <Compile Include="SplashObjects\PopingUpPoints.cs" />
+    <Compile Include="UIObjects\PopingUpPoints.cs" />
     <Compile Include="Sprites\SplashSprite.cs" />
     <Compile Include="Sprites\TextSprite.cs" />
     <Compile Include="Sprites\FlashingAnimatedSprite.cs" />
@@ -224,7 +224,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SplashObjects\HUD.cs" />
+    <Compile Include="UIObjects\HUD.cs" />
     <Compile Include="Theming\Listener.cs" />
   </ItemGroup>
   <ItemGroup>
