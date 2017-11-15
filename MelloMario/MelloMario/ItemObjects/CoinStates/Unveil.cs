@@ -17,7 +17,7 @@ namespace MelloMario.ItemObjects.CoinStates
         public Unveil(Coin owner) : base(owner, 250)
         {
             elapsed = 0f;
-            coinSound = SoundController.coin.CreateInstance();
+            coinSound = SoundController.Coin.CreateInstance();
         }
 
         public void Show()

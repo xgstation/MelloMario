@@ -15,7 +15,7 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public Destroyed(Brick owner) : base(owner, 1000)
         {
-            breakSound = SoundController.breakBlock.CreateInstance();
+            breakSound = SoundController.BreakBlock.CreateInstance();
             breakSound.Play();
             Owner.OnDestoy();
         }

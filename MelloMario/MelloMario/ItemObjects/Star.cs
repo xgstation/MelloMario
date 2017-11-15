@@ -2,6 +2,7 @@
 using MelloMario.Factories;
 using MelloMario.ItemObjects.StarStates;
 using MelloMario.BlockObjects;
+using MelloMario.Sounds;
 using MelloMario.UIObjects;
 using MelloMario.Theming;
 
@@ -146,6 +147,7 @@ namespace MelloMario.ItemObjects
         {
             if (!collected)
             {
+                SoundController.SizeUp.CreateInstance().Play();
                 ScorePoints(GameConst.SCORE_POWER_UP);
                 new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_POWER_UP);
             }

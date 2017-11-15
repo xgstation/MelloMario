@@ -9,7 +9,7 @@ namespace MelloMario.MarioObjects.PowerUpStates
 
         public Super(Mario owner) : base(owner)
         {
-            powerupSound = SoundController.sizeUp.CreateInstance();
+            powerupSound = SoundController.SizeUp.CreateInstance();
             powerupSound.Play();
         }
 

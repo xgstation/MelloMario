@@ -10,7 +10,7 @@ namespace MelloMario.MarioObjects.ProtectionStates
 
         public Dead(Mario owner) : base(owner, 1500)
         {
-            deadSound = SoundController.death.CreateInstance();
+            deadSound = SoundController.Death.CreateInstance();
             deadSound.Play();
             MediaPlayer.Stop();
             owner.OnDeath();

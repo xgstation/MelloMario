@@ -10,7 +10,7 @@ namespace MelloMario.EnemyObjects.GoombaStates
 
         public Defeated(Goomba owner) : base(owner)
         {
-            stompSound = SoundController.enemyKill.CreateInstance();
+            stompSound = SoundController.EnemyKill.CreateInstance();
             played = 0;
         }
 

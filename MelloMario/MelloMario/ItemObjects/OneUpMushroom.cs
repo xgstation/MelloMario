@@ -97,7 +97,7 @@ namespace MelloMario.ItemObjects
 
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener, bool isUnveil) : base(world, location, listener, new Point(32, 32), 32)
         {
-            oneupMushCollectSound = SoundController.oneUpCollect.CreateInstance();
+            oneupMushCollectSound = SoundController.OneUpCollect.CreateInstance();
             collected = false;
 
             if (marioLocation.X < location.X)

@@ -8,7 +8,7 @@
 
         public override void Execute()
         {
-            Receiver.Mute();
+            Receiver.ToggleMute();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace MelloMario.EnemyObjects.KoopaStates
 
         public Defeated(Koopa owner) : base(owner)
         {
-            stompSound = SoundController.enemyKill.CreateInstance();
+            stompSound = SoundController.EnemyKill.CreateInstance();
             played = 0;
         }
 

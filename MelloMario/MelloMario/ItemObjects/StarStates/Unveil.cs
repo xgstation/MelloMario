@@ -17,7 +17,7 @@ namespace MelloMario.ItemObjects.StarStates
         public Unveil(Star owner) : base(owner, 1000)
         {
             elapsed = 0f;
-            starUnveilSound = SoundController.sizeUpAppear.CreateInstance();
+            starUnveilSound = SoundController.SizeUpAppear.CreateInstance();
         }
 
         public void Show()

@@ -17,7 +17,7 @@ namespace MelloMario.ItemObjects.OneUpMushroomStates
         public Unveil(OneUpMushroom owner) : base(owner, 1000)
         {
             elapsed = 0f;
-            oneupMushUnveilSound = SoundController.sizeUpAppear.CreateInstance();
+            oneupMushUnveilSound = SoundController.SizeUpAppear.CreateInstance();
         }
 
         public void Show()

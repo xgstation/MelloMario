@@ -9,7 +9,7 @@ namespace MelloMario.MarioObjects.PowerUpStates
 
         public Fire(Mario owner) : base(owner)
         {
-            fireupSound = SoundController.sizeUp.CreateInstance();
+            fireupSound = SoundController.SizeUp.CreateInstance();
             fireupSound.Play();
         }
 

@@ -15,7 +15,7 @@ namespace MelloMario.BlockObjects.BrickStates
         {
             elapsed = 0;
             move = 0;
-            bumpSound = SoundController.bumpBlock.CreateInstance();
+            bumpSound = SoundController.BumpBlock.CreateInstance();
         }
 
         public void Show()
