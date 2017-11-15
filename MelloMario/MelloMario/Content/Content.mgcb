@@ -734,9 +734,9 @@
 /processorParam:TextureFormat=Color
 /build:marioTitle.png
 
-#begin SFX/smb_jumpsmall.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Medium
-/build:SFX/smb_jumpsmall.wav
+#begin SFX/smb_jumpsmall.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:SFX/smb_jumpsmall.mp3
 
