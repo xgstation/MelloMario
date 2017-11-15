@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Theming;
 
 namespace MelloMario.Sprites
 {
@@ -7,11 +8,11 @@ namespace MelloMario.Sprites
     {
         private Texture2D screen;
 
-        public SplashSprite(SpriteBatch spriteBatch, Point size, ZIndex zIndex) : base(spriteBatch, size, zIndex)
+        public SplashSprite(SpriteBatch spriteBatch, ZIndex zIndex) : base(spriteBatch, new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT), zIndex)
         {
-            screen = new Texture2D(spriteBatch.GraphicsDevice, size.X, size.Y);
+            screen = new Texture2D(spriteBatch.GraphicsDevice, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
 
-            Color[] data = new Color[size.X * size.Y];
+            Color[] data = new Color[GameConst.SCREEN_WIDTH * GameConst.SCREEN_HEIGHT];
             for (int i = 0; i < data.Length; i++)
             {
                 data[i] = Color.Black;

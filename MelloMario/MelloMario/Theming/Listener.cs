@@ -1,5 +1,6 @@
 ﻿using MelloMario.BlockObjects;
 using MelloMario.ItemObjects;
+using MelloMario.MarioObjects;
 using System;
 
 namespace MelloMario.Theming
@@ -25,8 +26,14 @@ namespace MelloMario.Theming
             m.HandlerCoins += new Coin.CoinHandler(OnCoinCollect);
         }
 
+        public void Subscribe(Mario m)
+        {
+            m.HandlerGameOver += new Mario.GameOverHandler(OnGameOver);
+        }
+
         public void Subscribe(Flag m)
         {
+           
             m.HandlerTimeScore += new Flag.TimeScoreHandler(OnLevelWon);
         }
 
@@ -59,6 +66,11 @@ namespace MelloMario.Theming
                 model.Time = 0;
                 won = true;
             }
+        }
+
+        private void OnGameOver(Mario m, EventArgs e)
+        {
+            model.Transist();
         }
 
         private void OnCoinCollect(Coin m, EventArgs e)
