@@ -11,10 +11,10 @@ namespace MelloMario
         private Point movement;
 
         public event PointHandler HandlerPoints;
-        private PointEventArgs pointEventInfo;
-        public delegate void PointHandler(BaseCollidableObject m, PointEventArgs e);
+        private GameEventArgs gameEventInfo;
+        public delegate void PointHandler(BaseCollidableObject m, GameEventArgs e);
         public event LivesHandler HandlerLives;
-        public delegate void LivesHandler(BaseCollidableObject m, PointEventArgs e);
+        public delegate void LivesHandler(BaseCollidableObject m, GameEventArgs e);
 
         private IEnumerable<Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>> ScanCollideModes(Rectangle targetBoundary)
         {
@@ -149,10 +149,6 @@ namespace MelloMario
         protected abstract void OnCollideViewport(IPlayer player, CollisionMode mode);
         protected abstract void OnCollideWorld(CollisionMode mode);
 
-        protected Listener GetListener
-        {
-            get { return listener; }
-        }
         protected void Move(Point delta)
         {
             movement += delta;
@@ -235,24 +231,22 @@ namespace MelloMario
 
         protected void ScorePoints(int points)
         {
-            pointEventInfo = new PointEventArgs
+            gameEventInfo = new GameEventArgs
             {
                 Points = points
             };
 
-            HandlerPoints?.Invoke(this, pointEventInfo);
-
+            HandlerPoints?.Invoke(this, gameEventInfo);
         }
 
-        protected void ChangeLives(int change)
+        protected void ChangeLives(int lives)
         {
-            pointEventInfo = new PointEventArgs
+            gameEventInfo = new GameEventArgs
             {
-                Points = change
+                Points = lives
             };
 
-            HandlerLives?.Invoke(this, pointEventInfo);
-
+            HandlerLives?.Invoke(this, gameEventInfo);
         }
 
         public BaseCollidableObject(IGameWorld world, Point location, Listener listener, Point size) : base(world, location, size)

@@ -5,7 +5,7 @@ using System;
 
 namespace MelloMario.Theming
 {
-    class PointEventArgs : EventArgs
+    class GameEventArgs : EventArgs
     {
         public int Points { get; set; }
     }
@@ -33,7 +33,7 @@ namespace MelloMario.Theming
 
         public void Subscribe(Flag m)
         {
-           
+
             m.HandlerTimeScore += new Flag.TimeScoreHandler(OnLevelWon);
         }
 
@@ -43,14 +43,14 @@ namespace MelloMario.Theming
             m.HandlerLives += new BaseCollidableObject.LivesHandler(OnLivesChange);
         }
 
-        private void OnLivesChange(BaseCollidableObject m, PointEventArgs e)
+        private void OnLivesChange(BaseCollidableObject m, GameEventArgs e)
         {
             model.Lives += e.Points;
             if (model.Lives > 99)
                 model.Lives = 99;
         }
 
-        private void OnPointGain(BaseCollidableObject m, PointEventArgs e)
+        private void OnPointGain(BaseCollidableObject m, GameEventArgs e)
         {
             model.Score += e.Points;
             if (model.Score > 999999)
@@ -62,7 +62,7 @@ namespace MelloMario.Theming
             //TODO: this if should eventually be unneeded
             if (!won)
             {
-                model.Score += GameConst.SCORE_TIME_MULT * model.Time/1000;
+                model.Score += GameConst.SCORE_TIME_MULT * model.Time / 1000;
                 model.Time = 0;
                 model.TransistGameWon();
                 won = true;
@@ -77,7 +77,7 @@ namespace MelloMario.Theming
         private void OnCoinCollect(Coin m, EventArgs e)
         {
             model.Coins += 1;
-            if(model.Coins >= GameConst.COINS_FOR_LIVE)
+            if (model.Coins >= GameConst.COINS_FOR_LIVE)
             {
                 //TODO: play a one up sound
                 model.Coins = 0;
