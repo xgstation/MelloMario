@@ -273,14 +273,12 @@
     <Content Include="Content\RedKoopaLeft.png" />
     <Content Include="Content\RedKoopaRight.png" />
     <Content Include="Content\RedKoopaStepped.png" />
-    <Content Include="Content\SFX\smb_1.mp3" />
     <Content Include="Content\SFX\smb_breakblock.mp3" />
     <Content Include="Content\SFX\smb_bump.mp3" />
     <Content Include="Content\SFX\smb_coin.mp3" />
     <Content Include="Content\SFX\smb_fireball.mp3" />
     <Content Include="Content\SFX\smb_fireworks.mp3" />
     <Content Include="Content\SFX\smb_flagpole.mp3" />
-    <Content Include="Content\SFX\smb_jump.mp3" />
     <Content Include="Content\SFX\smb_jumpsmall.mp3" />
     <Content Include="Content\SFX\smb_kick.mp3" />
     <Content Include="Content\SFX\smb_mariodie.mp3" />
