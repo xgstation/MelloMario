@@ -70,7 +70,7 @@ namespace MelloMario.Factories
                 case "Normal":
                     return new AnimatedSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Dead":
-                    return new StaticSprite(spriteBatch, GetTexture(protectionStatus));
+                    return new StaticSprite(spriteBatch, GetTexture(protectionStatus), zIndex: ZIndex.foreground);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -270,7 +270,7 @@ namespace MelloMario.Factories
 
         public ISprite CreateTitle(ZIndex zIndex)
         {
-            return new StaticSprite(spriteBatch, GetTexture("marioTitle"), 0, 3, 11, 6, zIndex);
+            return new StaticSprite(spriteBatch, GetTexture("Title"), 0, 0, 22, 11, zIndex);
         }
     }
 }

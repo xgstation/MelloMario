@@ -13,15 +13,14 @@ namespace MelloMario.MarioObjects
         {
             none,
             teleport,
-            flagpole
+            flagpole,
+            dead
         }
 
         private Animation animation;
         private int toBeTraveled;
 
         private Vector2 userInput;
-        private SoundEffectInstance jumpSound;
-        private SoundEffectInstance powerJumpSound;
 
         protected void Teleport()
         {
@@ -52,6 +51,11 @@ namespace MelloMario.MarioObjects
 
         protected override void OnUpdate(int time)
         {
+            if (ProtectionState is ProtectionStates.Dead)
+            {
+                animation = Animation.dead;
+            }
+
             if (animation == Animation.none)
             {
                 ApplyForce(userInput);
@@ -114,8 +118,6 @@ namespace MelloMario.MarioObjects
 
         public DollMario(IGameWorld world, Point location, Listener listener) : base(world, location, listener)
         {
-            jumpSound = SoundController.bounce.CreateInstance();
-            powerJumpSound = SoundController.powerBounce.CreateInstance();
         }
 
         public void Left()
@@ -198,11 +200,11 @@ namespace MelloMario.MarioObjects
                     userInput.Y -= GameConst.FORCE_G;
                     if (PowerUpState is PowerUpStates.Super || PowerUpState is PowerUpStates.Fire)
                     {
-                        powerJumpSound.Play();
+                        SoundController.powerBounce.CreateInstance().Play();
                     }
                     else
                     {
-                        jumpSound.Play();
+                        SoundController.bounce.CreateInstance().Play();
                     }
                 }
 

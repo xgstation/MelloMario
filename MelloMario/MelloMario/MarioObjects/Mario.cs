@@ -65,6 +65,10 @@ namespace MelloMario.MarioObjects
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
         {
+            if (ProtectionState is Dead)
+            {
+                return;
+            }
             switch (target.GetType().Name)
             {
                 //TODO: add cases when collision mode is OutLeftTop/OutRightTop that Mario will be squeezed to side of the brick
@@ -279,6 +283,7 @@ namespace MelloMario.MarioObjects
 
         public void OnDeath()
         {
+            SetVerticalVelocity(-20);
             ChangeLives(-1);
         }
 
