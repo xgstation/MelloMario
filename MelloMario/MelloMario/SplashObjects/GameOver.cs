@@ -13,6 +13,7 @@ namespace MelloMario.SplashObjects
         private ISprite coinSprite;
         private ISprite marioSprite;
         private ISprite gameOverSprite;
+        private string Text;
 
         public Rectangle Boundary
         {
@@ -29,21 +30,26 @@ namespace MelloMario.SplashObjects
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "Normal", "Right");
             gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
+            Text= "MARIO        " + "   WORLD    TIME\n"
+                + model.Score.ToString().PadLeft(6, '0') + "    *"
+                + model.Coins.ToString().PadLeft(2, '0') + "    "
+                + "1-1" + "      ";
+            textSprite = SpriteFactory.Instance.CreateTextSprite(Text);
         }
 
         private void UpdateSprite()
         {
-            string Text = "MARIO        " + "   WORLD    TIME\n"
-                + model.Score.ToString().PadLeft(6, '0') + "    *"
-                + model.Coins.ToString().PadLeft(2, '0') + "    "
-                + "1-1" + "      ";
+            //string Text = "MARIO        " + "   WORLD    TIME\n"
+               // + model.Score.ToString().PadLeft(6, '0') + "    *"
+                //+ model.Coins.ToString().PadLeft(2, '0') + "    "
+                //+ "1-1" + "      ";
 
-            textSprite = SpriteFactory.Instance.CreateTextSprite(Text);
+            //textSprite = SpriteFactory.Instance.CreateTextSprite(Text);
         }
 
         public void Update(int time)
         {
-            UpdateSprite();
+            //UpdateSprite();
         }
 
         public void Draw(int time, Rectangle viewport)
@@ -55,14 +61,14 @@ namespace MelloMario.SplashObjects
             if (model.Lives > 0)
             {
                 ISprite text = SpriteFactory.Instance.CreateTextSprite("WORLD");
-                text.Draw(time, new Rectangle(300, 400, 80, 80));
-                marioSprite.Draw(time, new Rectangle(400, 500, 80, 80));
-                ISprite Life = SpriteFactory.Instance.CreateTextSprite("*     " + model.Lives.ToString());
-                Life.Draw(time, new Rectangle(450, 500, 80, 80));
+                text.Draw(time, new Rectangle(300, 200, 80, 80));
+                marioSprite.Draw(time, new Rectangle(400, 250, 80, 80));
+                ISprite Life = SpriteFactory.Instance.CreateTextSprite("*  " + model.Lives.ToString());
+                Life.Draw(time, new Rectangle(450, 250, 80, 80));
             }
             else
             {
-                gameOverSprite.Draw(time, new Rectangle(400, 500, 80, 80));
+                gameOverSprite.Draw(time, new Rectangle(400, 250, 80, 80));
             }
         }
     }
