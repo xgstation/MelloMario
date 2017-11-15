@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MelloMario.BlockObjects;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.Theming;
@@ -14,6 +15,7 @@ namespace MelloMario.MarioObjects
             none,
             teleport,
             flagpole,
+            movingToWin,
             dead
         }
 
@@ -31,9 +33,28 @@ namespace MelloMario.MarioObjects
             // TODO: initialize
         }
 
-        protected void FlagPole()
+        public void FlagPole()
         {
             animation = Animation.flagpole;
+        }
+
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
+        {
+            if (animation != Animation.flagpole)
+            {
+                if (target is Flag)
+                {
+                    Move(new Point(16,0));
+                }
+            }
+            else if (target is Brick || target is Stair || target is Floor)
+            {
+                Move(new Point(32, 0));
+                animation = Animation.none;
+                Bounce(mode, new Vector2());
+            }
+            base.OnCollision(target, mode, corner, cornerPassive);
+
         }
 
         protected override void OnSimulation(int time)
@@ -47,6 +68,10 @@ namespace MelloMario.MarioObjects
                 {
                     animation = Animation.none;
                 }
+            }
+            else if(animation == Animation.flagpole)
+            {
+                Move(new Point(0, 3));
             }
             base.OnSimulation(time);
         }

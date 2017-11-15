@@ -94,6 +94,9 @@ namespace MelloMario.EnemyObjects
                         }
                     }
                     break;
+                case "Fire":
+                    Defeat();
+                    break;
             }
         }
 

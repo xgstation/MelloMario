@@ -169,16 +169,13 @@ namespace MelloMario.MarioObjects
                 case "CompressedBlock":
                 case "Floor":
                 case "Stair":
+                case "Flag":
                     Bounce(mode, new Vector2());
                     if (mode == CollisionMode.Bottom)
                     {
                         ApplyHorizontalFriction(GameConst.FORCE_F_GROUND);
                         MovementState.Land();
                     }
-
-                    break;
-                case "Flag":
-
                     break;
                 case "Goomba":
                     if (target is Goomba goomba && mode != CollisionMode.Bottom)
