@@ -118,9 +118,17 @@ namespace MelloMario
                 }
             }
 
+            //foreach (IPlayer player in session.???)
+            //{
+            //    foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(world.Boundary))
+            //    {
+            //        OnCollideViewport(player, pair.Item1, pair.Item2);
+            //    }
+            //}
+
             foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(world.Boundary))
             {
-                OnCollideWorld(pair.Item1);
+                OnCollideWorld(pair.Item1, pair.Item2);
             }
         }
 
@@ -146,8 +154,8 @@ namespace MelloMario
         };
 
         protected abstract void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive);
-        protected abstract void OnCollideViewport(IPlayer player, CollisionMode mode);
-        protected abstract void OnCollideWorld(CollisionMode mode);
+        protected abstract void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive);
+        protected abstract void OnCollideWorld(CollisionMode mode, CollisionMode modePassive);
 
         protected void Move(Point delta)
         {
