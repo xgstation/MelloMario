@@ -127,7 +127,6 @@
     <Compile Include="BaseClasses\BaseController.cs" />
     <Compile Include="Commands\SuperCreate.cs" />
     <Compile Include="Commands\ToggleFullScreen.cs" />
-    <Compile Include="Containers\GameCollisionModel.cs" />
     <Compile Include="Containers\GameSession.cs" />
     <Compile Include="Containers\GameWorld2.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
