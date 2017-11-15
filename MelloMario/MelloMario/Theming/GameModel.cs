@@ -90,7 +90,7 @@ namespace MelloMario.Theming
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
             splash = new GameWon(this);
-            splashElapsed = 0;
+            splashElapsed = -1;
         }
 
         public void Resume()
@@ -114,7 +114,6 @@ namespace MelloMario.Theming
 
         public IGameWorld LoadLevel(string id, bool init = false)
         {
-
             foreach (IGameWorld world in session.ScanWorlds())
             {
                 if (world.Id == id)
@@ -185,7 +184,7 @@ namespace MelloMario.Theming
         public void Reset()
         {
             // TODO: "forced" version of LoadLevel()
-            LoadLevel("Main", true);
+            game.Reset();
             Resume();
         }
 
