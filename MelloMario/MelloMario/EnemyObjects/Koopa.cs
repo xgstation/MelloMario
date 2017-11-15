@@ -151,6 +151,9 @@ namespace MelloMario.EnemyObjects
                         Bounce(mode, new Vector2());
                     }
                     break;
+                case "Fire":
+                    Defeat();
+                    break;
             }
             if (target is Koopa koopa)
             {
