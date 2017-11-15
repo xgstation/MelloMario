@@ -4,6 +4,7 @@ using MelloMario.LevelGen;
 using System;
 using MelloMario.Scripts;
 using MelloMario.Containers;
+using MelloMario.MarioObjects;
 using MelloMario.SplashObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
@@ -17,6 +18,7 @@ namespace MelloMario.Theming
         private GameSession session;
         private IEnumerable<IController> controllers;
         private bool isPaused;
+        private string currentMusic;
         private Listener listener;
         private int splashElapsed; // TODO: for sprint 4, refactor later
         //TODO: temporary public
@@ -49,6 +51,7 @@ namespace MelloMario.Theming
             Coins = 0;
             Lives = 3;
             Time = GameConst.LEVEL_TIME * 1000;
+            currentMusic = "Normal";
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -135,16 +138,37 @@ namespace MelloMario.Theming
         
         public void SwitchMusic(int time)
         {
-            if (time < 90000 && SoundController.CurrentSong != SoundController.Songs.hurry)
+            if (GetActivePlayer() is PlayerMario mario &&
+                mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
+            {
+                if (currentMusic != "Star")
+                {
+                    MediaPlayer.Stop();
+                    SoundController.PlayMusic(SoundController.Songs.star);
+                    currentMusic = "Star";
+                }
+            }
+            else if (time < 90000 && SoundController.CurrentSong != SoundController.Songs.hurry)
+            {
+                if (currentMusic != "Hurry")
+                {
+                    MediaPlayer.Stop();
+                    SoundController.PlayMusic(SoundController.Songs.hurry);
+                    currentMusic = "Hurry";
+                }
+            }
+            else if (currentMusic != "Normal")
             {
                 MediaPlayer.Stop();
-                SoundController.PlayMusic(SoundController.Songs.hurry);
+                SoundController.PlayMusic(SoundController.Songs.normal);
+                currentMusic = "Normal";
             }
             // TODO: Songs.gameOver should be triggered by gameover event
-            if (time == 0 || Lives < 1)
+            if ((time == 0 || Lives < 1) && currentMusic!="GameOver")
             {
                 MediaPlayer.Stop();
                 SoundController.PlayMusic(SoundController.Songs.gameOver);
+                currentMusic = "GameOver";
             }
         }
 
