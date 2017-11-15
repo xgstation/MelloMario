@@ -6,7 +6,6 @@ namespace MelloMario.UIObjects
 {
     class GameOver : BaseUIObject
     {
-        private GameModel model;
         private ISprite splashSprite;
         private ISprite textSprite;
         private ISprite coinSprite;
@@ -39,9 +38,8 @@ namespace MelloMario.UIObjects
             }
         }
 
-        public GameOver(GameModel model)
+        public GameOver()
         {
-            this.model = model;
             splashSprite = SpriteFactory.Instance.CreatSplashSprite();
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");

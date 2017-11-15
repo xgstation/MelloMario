@@ -62,17 +62,10 @@ namespace MelloMario.Theming
                 : null;
         }
 
-        public static bool HasCharacters()
-        {
-            return CharacterLocations.Count != 0;
-        }
         public static Point GetCharacterLocation()
         {
-            return HasCharacters() ? CharacterLocations.Values.ToList()[0] : new Point();
-        }
-        public static Point GetCharacterLocation(ICharacter character)
-        {
-            return HasCharacters() ? CharacterLocations[character] : new Point();
+            // TODO: use viewport collision
+            return CharacterLocations.Count != 0 ? CharacterLocations.Values.ToList()[0] : new Point();
         }
         public static bool HasItemEnclosed(IGameObject obj)
         {
@@ -146,16 +139,9 @@ namespace MelloMario.Theming
             }
         }
 
-        public static void Clear()
-        {
-            ItemEnclosedDb.Clear();
-            PipelineEntranceDb.Clear();
-            CharacterLocations.Clear();
-        }
-
         public static void Update(int time)
         {
-            foreach (var player in session.ScanPlayers())
+            foreach (IPlayer player in session.ScanPlayers())
             {
                 CharacterLocations.AddOrUpdate(
                     player.Character,

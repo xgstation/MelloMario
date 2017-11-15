@@ -40,7 +40,10 @@ namespace MelloMario.Sounds
 
         private static void PlayMusic(Songs song)
         {
-            if (CurrentSong == song) return;
+            if (CurrentSong == song)
+            {
+                return;
+            }
             MediaPlayer.Stop();
             switch (song)
             {

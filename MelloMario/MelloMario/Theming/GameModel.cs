@@ -71,7 +71,7 @@ namespace MelloMario.Theming
 
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new GameOver(this);
+            Splash = new GameOver();
             GameDatabase.TimeRemain = GameConst.LEVEL_TIME * 1000;
             splashElapsed = 0;
 
@@ -84,7 +84,7 @@ namespace MelloMario.Theming
 
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new GameWon(this);
+            Splash = new GameWon();
             splashElapsed = -1;
         }
 
@@ -94,7 +94,7 @@ namespace MelloMario.Theming
 
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new HUD(this);
+            Splash = new HUD();
 
         }
 
@@ -209,7 +209,10 @@ namespace MelloMario.Theming
             UpdateController();
             if (isPaused)
             {
-                if (splashElapsed < 0) return;
+                if (splashElapsed < 0)
+                {
+                    return;
+                }
                 splashElapsed += time;
                 if (splashElapsed >= 1000 * 3)
                 {

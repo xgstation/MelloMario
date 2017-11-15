@@ -291,7 +291,8 @@ namespace MelloMario.MarioObjects
                 if (PowerUpState is PowerUpStates.Fire)
                 {
                     // note: listener is passed as null so score points will not do anything
-                    new Fire(world, Boundary.Location, null, Facing == FacingMode.right);
+                    // new Fire(world, Boundary.Location, null, Facing == FacingMode.right);
+                    new Fire(world, Boundary.Location, null);
                 }
             }
         }

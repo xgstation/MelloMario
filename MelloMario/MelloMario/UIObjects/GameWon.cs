@@ -6,12 +6,8 @@ namespace MelloMario.UIObjects
 {
     class GameWon : BaseUIObject
     {
-        private GameModel model;
         private ISprite splashSprite;
         private ISprite textSprite;
-        private ISprite coinSprite;
-        private ISprite marioSprite;
-        private ISprite gameOverSprite;
         private string Text;
 
         protected override void OnUpdate(int time)
@@ -27,12 +23,9 @@ namespace MelloMario.UIObjects
 
         }
 
-        public GameWon(GameModel model)
+        public GameWon()
         {
-            this.model = model;
             splashSprite = SpriteFactory.Instance.CreatSplashSprite();
-            coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
-            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "Normal", "Right");
             Text = "MARIO        " + "   WORLD    TIME\n"
                 + GameDatabase.Score.ToString().PadLeft(6, '0') + "    *"
                 + GameDatabase.Coins.ToString().PadLeft(2, '0') + "    "

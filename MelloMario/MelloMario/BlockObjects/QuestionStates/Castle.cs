@@ -9,8 +9,8 @@ namespace MelloMario.BlockObjects.QuestionStates
 {
     class Castle : BaseGameObject
     {
-        
-        public Castle(IGameWorld world, Point location, Point size) : base(world, location, Point.Zero)
+
+        public Castle(IGameWorld world, Point location, Point size) : base(world, location, size)
         {
         }
 

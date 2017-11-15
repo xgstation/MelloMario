@@ -16,7 +16,6 @@ namespace MelloMario.LevelGen
     {
         private GameEntityConverter gameEntityConverter;
         private CharacterConverter characterConverter;
-        private GraphicsDevice graphicsDevice;
         private GameModel model;
         private IGameSession session;
         private JToken jsonToken;
@@ -29,11 +28,10 @@ namespace MelloMario.LevelGen
         private IPlayer character;
         private Listener listener;
 
-        public GameConverter(GameModel model, IGameSession session, GraphicsDevice graphicsDevice, Listener listener, string index = "Main")
+        public GameConverter(GameModel model, IGameSession session, Listener listener, string index = "Main")
         {
             this.model = model;
             this.session = session;
-            this.graphicsDevice = graphicsDevice;
             this.index = index;
             this.listener = listener;
             serializers = new JsonSerializer();
@@ -81,9 +79,9 @@ namespace MelloMario.LevelGen
             Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints");
             world = new GameWorld(index, mapSize, initialPoint, respawnPoints);
 
-            gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, listener, GameConst.GRID);
+            gameEntityConverter = new GameEntityConverter(model, world, listener);
 
-            characterConverter = new CharacterConverter(session, world, listener, GameConst.GRID);
+            characterConverter = new CharacterConverter(session, world, listener);
 
             serializers.Converters.Add(gameEntityConverter);
             serializers.Converters.Add(characterConverter);
@@ -91,8 +89,7 @@ namespace MelloMario.LevelGen
             {
                 foreach (JToken jToken in entities)
                 {
-                    EncapsulatedObject<IGameObject> gameObjs =
-                        jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
+                    jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
                 }
 
                 if (Util.TryGet(out IList<JToken> characters, MapToBeLoaded, "Characters"))

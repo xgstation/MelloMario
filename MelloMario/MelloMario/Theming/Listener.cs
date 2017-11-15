@@ -48,14 +48,18 @@ namespace MelloMario.Theming
         {
             GameDatabase.Lifes += e.Points;
             if (GameDatabase.Lifes > 99)
+            {
                 GameDatabase.Lifes = 99;
+            }
         }
 
         private void OnPointGain(BaseCollidableObject m, GameEventArgs e)
         {
             GameDatabase.Score += e.Points;
             if (GameDatabase.Score > 999999)
+            {
                 GameDatabase.Score = 999999;
+            }
         }
 
         private void OnLevelWon(Flag m, EventArgs e)

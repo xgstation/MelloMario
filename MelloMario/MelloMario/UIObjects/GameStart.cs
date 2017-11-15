@@ -21,7 +21,7 @@ namespace MelloMario.UIObjects
 
         public GameStart()
         {
-            startSprite = SpriteFactory.Instance.CreateTitle(MelloMario.ZIndex.hud);
+            startSprite = SpriteFactory.Instance.CreateTitle(ZIndex.hud);
             textSprite = SpriteFactory.Instance.CreateTextSprite("Mellop");
         }
     }

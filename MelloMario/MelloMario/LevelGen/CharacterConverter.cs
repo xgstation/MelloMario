@@ -16,16 +16,13 @@ namespace MelloMario.LevelGen
         private IGameWorld gameWorld;
         private Stack<PlayerMario> characterStack;
         private Point startPoint;
-        private string state;
-        private int grid;
         private Listener listener;
 
-        public CharacterConverter(IGameSession gameSession, IGameWorld gameWorld, Listener listener, int gridSize)
+        public CharacterConverter(IGameSession gameSession, IGameWorld gameWorld, Listener listener)
         {
             this.gameSession = gameSession;
             this.gameWorld = gameWorld;
             this.listener = listener;
-            grid = gridSize;
         }
 
         public override bool CanConvert(Type objectType)
@@ -38,9 +35,8 @@ namespace MelloMario.LevelGen
             jsonToken = JToken.Load(reader);
             characterStack = new Stack<PlayerMario>();
             startPoint = jsonToken["SpawnPoint"].ToObject<Point>();
-            state = jsonToken["State"].ToObject<string>();
-            startPoint.X = startPoint.X * grid;
-            startPoint.Y = startPoint.Y * grid;
+            startPoint.X = startPoint.X * GameConst.GRID;
+            startPoint.Y = startPoint.Y * GameConst.GRID;
 
             characterStack.Push((PlayerMario) GameObjectFactory.Instance.CreateGameCharacter("Mario", gameSession, gameWorld, startPoint, listener).Item1);
 

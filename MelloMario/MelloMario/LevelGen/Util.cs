@@ -11,11 +11,11 @@ using Newtonsoft.Json.Linq;
 
 namespace MelloMario.LevelGen
 {
-    class VectorConverter: JsonConverter
+    class VectorConverter : JsonConverter
     {
         public VectorConverter()
         {
-            
+
         }
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -79,7 +79,7 @@ namespace MelloMario.LevelGen
             return true;
         }
         public static void BatchCreate<T>(Func<Point, T> func, Point startPoint, Point quantity, Point objSize,
-            ICollection<Point> ignoredSet, int grid, ref Stack<IGameObject> stack)
+            ICollection<Point> ignoredSet, ref Stack<IGameObject> stack)
         {
             for (int x = 0; x < quantity.X; x++)
             {
@@ -106,7 +106,7 @@ namespace MelloMario.LevelGen
         }
 
         public static void TriganleCreate<T>(Func<Point, T> createFunc, Point startPoint, Point triangleSize,
-            Point objSize, ICollection<Point> ignoredSet, int grid, ref Stack<IGameObject> stack)
+            Point objSize, ICollection<Point> ignoredSet, ref Stack<IGameObject> stack)
         {
             int X = triangleSize.X;
             int Y = triangleSize.Y;
@@ -119,30 +119,30 @@ namespace MelloMario.LevelGen
                 for (int x = 0; x <= y; x++)
                 {
                     Point createLocation = new Point
-                        (startPoint.X + (directionToRight ? x : -x) * objSize.X, 
+                        (startPoint.X + (directionToRight ? x : -x) * objSize.X,
                         startPoint.Y + (directionToDown ? y : -y) * objSize.Y);
                     Point createIndex = new Point(x + 1, y + 1);
                     if (ignoredSet == null || !ignoredSet.Contains(createIndex))
                     {
                         if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                         {
-                            foreach (IGameObject obj in (IEnumerable<IGameObject>)createFunc(createLocation))
+                            foreach (IGameObject obj in (IEnumerable<IGameObject>) createFunc(createLocation))
                             {
                                 stack.Push(obj);
                             }
                         }
                         else
                         {
-                            IGameObject newObject = (IGameObject)createFunc(createLocation);
+                            IGameObject newObject = (IGameObject) createFunc(createLocation);
                             stack.Push(newObject);
                         }
                     }
                 }
             }
-            
+
         }
         public static void BatchCreateWithProperties<T1, T2>(Func<Point, T1> createFunc, Point startPoint, Point quantity, Point objSize,
-            ICollection<Point> ignoredSet, int grid, ref Stack<IGameObject> stack, IDictionary<Point, T2> properties, Action<IGameObject, T2> applyProperties)
+            ICollection<Point> ignoredSet, ref Stack<IGameObject> stack, IDictionary<Point, T2> properties, Action<IGameObject, T2> applyProperties)
         {
             Contract.Assume(!((properties == null) ^ (applyProperties == null)));
             for (int x = 0; x < quantity.X; x++)
@@ -155,7 +155,7 @@ namespace MelloMario.LevelGen
                     {
                         if (typeof(T1).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                         {
-                            foreach (IGameObject obj in (IEnumerable<IGameObject>)createFunc(createLocation))
+                            foreach (IGameObject obj in (IEnumerable<IGameObject>) createFunc(createLocation))
                             {
                                 Point index = new Point(x, y);
                                 if (properties != null && properties.ContainsKey(index))
@@ -179,8 +179,9 @@ namespace MelloMario.LevelGen
                 }
             }
         }
-        public static List<IGameObject> CreateSinglePipeline(GameModel model, IGameWorld world, Listener listener, int grid, string pipelineType, int pipelineLength, Point pipelineLoc)
+        public static List<IGameObject> CreateSinglePipeline(GameModel model, IGameWorld world, Listener listener, string pipelineType, int pipelineLength, Point pipelineLoc)
         {
+            int grid = GameConst.GRID;
             List<IGameObject> listOfPipelineComponents = new List<IGameObject>();
             Pipeline in1 = null;
             Pipeline in2 = null;

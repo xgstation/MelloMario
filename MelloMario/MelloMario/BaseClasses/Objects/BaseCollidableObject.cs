@@ -7,7 +7,6 @@ namespace MelloMario
 {
     abstract class BaseCollidableObject : BaseGameObject
     {
-        private Listener listener;
         private Point movement;
 
         public event PointHandler HandlerPoints;
@@ -259,7 +258,6 @@ namespace MelloMario
 
         public BaseCollidableObject(IGameWorld world, Point location, Listener listener, Point size) : base(world, location, size)
         {
-            this.listener = listener;
             listener?.Subscribe(this);
             movement = new Point();
         }

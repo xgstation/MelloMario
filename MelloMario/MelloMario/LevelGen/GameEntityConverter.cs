@@ -36,8 +36,7 @@ namespace MelloMario.LevelGen
 
         private readonly GameModel model;
         private readonly IGameWorld world;
-        private readonly int grid;
-        private readonly GraphicsDevice graphicsDevice;
+
         private enum ProduceMode
         {
             One, Rectangle, Triangle
@@ -45,7 +44,7 @@ namespace MelloMario.LevelGen
 
         private ProduceMode produceMode;
         private IGameObject objToBePushed;
-        private Type type;
+        private Type selftype;
         private Point objFullSize;
         private Vector2 objVector;
         private Point objPoint;
@@ -61,17 +60,15 @@ namespace MelloMario.LevelGen
         private Tuple<bool, string[]> propertyPair;
         private bool isQuestionOrBrick;
         private int length;
-        private Listener listener;
+        private Listener selflistener;
         private JToken objToken;
 
-        public GameEntityConverter(GameModel model, GraphicsDevice graphicsDevice, IGameWorld parentGameWorld,
-            Listener listener, int gridSize)
+        public GameEntityConverter(GameModel model, IGameWorld parentGameWorld,
+            Listener selflistener)
         {
-            this.graphicsDevice = graphicsDevice;
             this.model = model;
-            this.listener = listener;
+            this.selflistener = selflistener;
             world = parentGameWorld;
-            grid = gridSize;
         }
 
         public override bool CanConvert(Type objectType)
@@ -89,7 +86,7 @@ namespace MelloMario.LevelGen
                 Debug.WriteLine("Deserialize fail: No start point provided!");
                 return null;
             }
-            objPoint = new Point((int)(objVector.X * grid), (int)(objVector.Y * grid));
+            objPoint = new Point((int) (objVector.X * GameConst.GRID), (int) (objVector.Y * GameConst.GRID));
             objectStackToBeEncapsulated = new Stack<IGameObject>();
 
             if (!Util.TryGet(out string typeStr, objToken, "Type"))
@@ -98,22 +95,22 @@ namespace MelloMario.LevelGen
                 return null;
             }
 
-            type = null;
+            selftype = null;
             foreach (Type t in AssemblyTypes)
             {
-                type = t.Name == typeStr ? t : null;
-                if (type != null)
+                selftype = t.Name == typeStr ? t : null;
+                if (selftype != null)
                 {
                     break;
                 }
             }
-            if (type == null)
+            if (selftype == null)
             {
                 Debug.Print("Deserialize fail: " + typeStr + " not found!");
 
                 return null;
             }
-            createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, listener);
+            createFunc = point => (IGameObject) Activator.CreateInstance(selftype, world, point, selflistener);
 
             produceMode = ProduceMode.One;
             if (Util.TryGet(out quantity, objToken, "Quantity"))
@@ -132,30 +129,30 @@ namespace MelloMario.LevelGen
             }
             ignoredSet = !(produceMode is ProduceMode.One) && Util.TryReadIgnoreSet(objToken, out ignoredSet) ? ignoredSet : null;
 
-            switch (type.Namespace)
+            switch (selftype.Namespace)
             {
                 case "MelloMario.BlockObjects":
-                    if (BlockConverter(type, objToken, listener, ref objectStackToBeEncapsulated))
+                    if (BlockConverter(selftype, objToken, selflistener, ref objectStackToBeEncapsulated))
                     {
-                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                        Debug.WriteLine("Deserialize " + selftype.Name + " success!");
                     }
                     break;
                 case "MelloMario.EnemyObjects":
-                    if (EnemyConverter(type, objToken, ref objectStackToBeEncapsulated))
+                    if (EnemyConverter(selftype, objToken, ref objectStackToBeEncapsulated))
                     {
-                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                        Debug.WriteLine("Deserialize " + selftype.Name + " success!");
                     }
                     break;
                 case "MelloMario.ItemObjects":
-                    if (ItemConverter(type, objToken, ref objectStackToBeEncapsulated))
+                    if (ItemConverter(selftype, ref objectStackToBeEncapsulated))
                     {
-                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                        Debug.WriteLine("Deserialize " + selftype.Name + " success!");
                     }
                     break;
                 case "MelloMario.MiscObjects":
-                    if (BackgroundConverter(type, objToken, ref objectStackToBeEncapsulated))
+                    if (BackgroundConverter(selftype, objToken, ref objectStackToBeEncapsulated))
                     {
-                        Debug.WriteLine("Deserialize " + type.Name + " success!");
+                        Debug.WriteLine("Deserialize " + selftype.Name + " success!");
                     }
                     break;
                 default:
@@ -182,16 +179,16 @@ namespace MelloMario.LevelGen
 
         #region IGameObject Converters
 
-        private bool ItemConverter(Type type, JToken token, ref Stack<IGameObject> stack)
+        private bool ItemConverter(Type type, ref Stack<IGameObject> stack)
         {
-            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
+            createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, selflistener, false);
             if (produceMode is ProduceMode.One)
             {
                 stack.Push(createFunc(objPoint));
             }
             else if (produceMode is ProduceMode.Rectangle)
             {
-                Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
+                Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
             }
             return true;
         }
@@ -209,7 +206,7 @@ namespace MelloMario.LevelGen
                 if (type.Name == "Koopa")
                 {
                     Util.TryGet(out string color, token, "Property", "Color");
-                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point,listener, color);
+                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, selflistener, color);
                 }
                 if (produceMode is ProduceMode.One)
                 {
@@ -217,14 +214,14 @@ namespace MelloMario.LevelGen
                 }
                 else if (produceMode is ProduceMode.Rectangle)
                 {
-                    Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
+                    Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
                 }
 
             }
             return true;
         }
 
-        private Tuple<bool,string[]> GetPropertyPair(JToken token)
+        private static Tuple<bool, string[]> GetPropertyPair(JToken token)
         {
             return new Tuple<bool, string[]>(
                 Util.TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden,
@@ -249,7 +246,7 @@ namespace MelloMario.LevelGen
                         Util.BatchCreateWithProperties(
                             point =>
                             {
-                                objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
+                                objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
                                 if (type.Name == "Question")
                                 {
                                     (objToBePushed as Question).Initialize();
@@ -262,9 +259,9 @@ namespace MelloMario.LevelGen
                             },
                             objPoint,
                             quantity,
-                            new Point(32,32), 
+                            new Point(32, 32),
                             ignoredSet,
-                            grid, ref stack,
+                            ref stack,
                             dictProperties,
                             (obj, pair) =>
                             {
@@ -288,7 +285,7 @@ namespace MelloMario.LevelGen
                         Util.BatchCreate(
                             point =>
                             {
-                                objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
+                                objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
                                 if (type.Name == "Question")
                                 {
                                     (objToBePushed as Question).Initialize();
@@ -299,14 +296,14 @@ namespace MelloMario.LevelGen
                                 }
                                 return objToBePushed;
                             },
-                            objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
+                            objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
                     }
                     else if (produceMode is ProduceMode.Triangle)
                     {
                         Util.TriganleCreate(
                             point =>
                             {
-                                objToBePushed = (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
+                                objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
                                 if (type.Name == "Question")
                                 {
                                     (objToBePushed as Question).Initialize();
@@ -317,11 +314,10 @@ namespace MelloMario.LevelGen
                                 }
                                 return objToBePushed;
                             },
-                            objPoint, 
+                            objPoint,
                             triangleSize,
                             new Point(GameConst.GRID, GameConst.GRID),
                             ignoredSet,
-                            grid,
                             ref stack);
                     }
                     return true;
@@ -361,16 +357,16 @@ namespace MelloMario.LevelGen
                     case ProduceMode.Rectangle:
                         {
                             Util.BatchCreate(
-                                point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false),
-                                objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
+                                point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                                objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
                             break;
                         }
 
                     case ProduceMode.Triangle:
                         {
                             Util.TriganleCreate(
-                                point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false),
-                                objPoint, triangleSize, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, grid, ref stack);
+                                point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                                objPoint, triangleSize, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
                             break;
                         }
                 }
@@ -391,7 +387,7 @@ namespace MelloMario.LevelGen
                 bool isPortalTo = Util.TryGet(out string portalTo, token, "Property", "PortalTo");
                 if (produceMode is ProduceMode.One)
                 {
-                    list = Util.CreateSinglePipeline(model, world, listener, grid, direction, length, objPoint);
+                    list = Util.CreateSinglePipeline(model, world, listener, direction, length, objPoint);
                     foreach (Pipeline pipelineComponent in list)
                     {
                         stack.Push(pipelineComponent);
@@ -409,7 +405,7 @@ namespace MelloMario.LevelGen
                     }
                     if (direction != "NV" && direction != "NH")
                     {
-                        if(Util.TryGet(out entrance, token, "Property", "Entrance"))
+                        if (Util.TryGet(out entrance, token, "Property", "Entrance"))
                         {
                             GameDatabase.SetEntranceIndex(list[0] as Pipeline, entrance);
                             GameDatabase.SetEntranceIndex(list[1] as Pipeline, entrance);
@@ -429,8 +425,8 @@ namespace MelloMario.LevelGen
                 else
                 {
                     objFullSize = direction.Contains("V") ? new Point(GameConst.GRID * 2, GameConst.GRID + GameConst.GRID * length) : new Point(GameConst.GRID + GameConst.GRID * length, GameConst.GRID * 2);
-                    Util.BatchCreate(point => Util.CreateSinglePipeline(model, world, listener, grid, direction, length, point), objPoint, quantity, objFullSize,
-                        ignoredSet, grid, ref stack);
+                    Util.BatchCreate(point => Util.CreateSinglePipeline(model, world, listener, direction, length, point), objPoint, quantity, objFullSize,
+                        ignoredSet, ref stack);
                 }
             }
             return true;
@@ -454,7 +450,7 @@ namespace MelloMario.LevelGen
             }
             else
             {
-                Util.BatchCreate(createFunc, objPoint, quantity, objFullSize, ignoredSet, grid, ref stack);
+                Util.BatchCreate(createFunc, objPoint, quantity, objFullSize, ignoredSet, ref stack);
             }
             return true;
         }

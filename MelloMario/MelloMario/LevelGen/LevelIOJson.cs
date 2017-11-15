@@ -26,15 +26,15 @@ namespace MelloMario.LevelGen
             Util.Initilalize();
         }
 
-        public void SetModel(GameModel model)
+        public void SetModel(GameModel newModel)
         {
-            this.model = model;
+            model = newModel;
         }
 
         public Tuple<IGameWorld, IPlayer> Load(string index, IGameSession session)
         {
             levelString = File.ReadAllText(path);
-            gameConverter = new GameConverter(model, session, graphicsDevice, listener, index);
+            gameConverter = new GameConverter(model, session, listener, index);
             return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, gameConverter);
 
         }

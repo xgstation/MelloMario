@@ -6,8 +6,6 @@ namespace MelloMario.UIObjects
 {
     class HUD : BaseUIObject
     {
-        private GameModel model;
-
         private string text;
         private ISprite textSprite;
         private ISprite coinSprite;
@@ -34,9 +32,8 @@ namespace MelloMario.UIObjects
             oneUpSprite.Draw(time, new Rectangle(255, 42, 26, 30));
         }
 
-        public HUD(GameModel model)
+        public HUD()
         {
-            this.model = model;
             textSprite = SpriteFactory.Instance.CreateTextSprite("");
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             oneUpSprite = SpriteFactory.Instance.CreateOneUpMushroomSprite();
