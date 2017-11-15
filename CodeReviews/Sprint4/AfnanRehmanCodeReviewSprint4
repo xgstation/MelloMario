@@ -1,0 +1,19 @@
+Author: Afnan Rehman
+Date: 11/14/2017
+Sprint Number: 4
+
+Name of .cs file being reviewed: GameModel.cs
+Author of the .cs file being reviewed: All Group Members
+
+Number of minutes taken to complete the review:
+10 minutes
+
+Specific Comments on Code Quality:
+The code in this class is somewhat organized and clean. It manages all of the aspects of the gameplay well. The length has grown to over 200 lines, 
+making it somewhat long but not overly so. It does manage the world and HUD updates as expected. There are a few TODO comments 
+but not much else in the way of explaining what certain parts of the code do. 
+
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+I propose changing the availability of some of the variables to allow other classes to see and make decisions based upon them. One issue ran into during 
+this sprint was not being able to conveniently access variables such as time or lives to make decisions on music or win/game over states.
+I also suggest making more comments for everyone to understand all parts of the code. 
