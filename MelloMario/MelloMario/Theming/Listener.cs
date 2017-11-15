@@ -52,7 +52,6 @@ namespace MelloMario.Theming
 
         private void OnLevelWon(Flag m, EventArgs e)
         {
-
             //TODO: this if should eventually be unneeded
             if (!won)
             {

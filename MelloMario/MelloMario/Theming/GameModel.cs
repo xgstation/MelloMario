@@ -18,13 +18,14 @@ namespace MelloMario.Theming
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private Listener listener;
+        private int splashElapsed; // TODO: for sprint 4, refactor later
         //TODO: temporary public
         //note: we will have an extra class called Player which contains these information
         public int Coins;
         public int Score;
         public int Lives;
         public int Time;
-        public IGameObject hud;
+        public IGameObject splash;
 
         // for singleplayer game
         private IPlayer GetActivePlayer()
@@ -48,8 +49,6 @@ namespace MelloMario.Theming
             Coins = 0;
             Lives = 3;
             Time = GameConst.LEVEL_TIME * 1000;
-            hud = new HUD(this);
-
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -67,6 +66,18 @@ namespace MelloMario.Theming
             isPaused = true;
 
             new PausedScript().Bind(controllers, this, GetActivePlayer().Character);
+
+            splashElapsed = -1;
+        }
+
+        public void Transist()
+        {
+            isPaused = true;
+
+            new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
+
+            splash = new GameOver(this);
+            splashElapsed = 0;
         }
 
         public void Resume()
@@ -74,6 +85,18 @@ namespace MelloMario.Theming
             isPaused = false;
 
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
+
+            splash = new HUD(this);
+        }
+
+        public void Init()
+        {
+            isPaused = true;
+
+            new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
+
+            splash = new HUD(this);
+            splashElapsed = 0;
         }
 
         public IGameWorld LoadLevel(string id, bool init = false)
@@ -109,12 +132,7 @@ namespace MelloMario.Theming
 
             return pair.Item1;
         }
-
-        public void Init()
-        {
-            Resume();
-        }
-
+        
         public void SwitchMusic(int time)
         {
             if (time < 90000 && SoundController.CurrentSong != SoundController.Songs.hurry)
@@ -158,12 +176,26 @@ namespace MelloMario.Theming
 
         public void Update(int time)
         {
+            // TODO: clean this part
+            // TODO: use const
+
             foreach (IController controller in controllers)
             {
                 controller.Update();
             }
 
-            if (!isPaused)
+            if (isPaused)
+            {
+                if (splashElapsed >= 0)
+                {
+                    splashElapsed += time;
+                    if (splashElapsed >= 1000 * 3)
+                    {
+                        Resume();
+                    }
+                }
+            }
+            else
             {
                 // reserved for multiplayer
                 ISet<IGameObject> updating = new HashSet<IGameObject>();
@@ -177,7 +209,7 @@ namespace MelloMario.Theming
                     }
                 }
 
-                updating.Add(hud);
+                updating.Add(splash);
 
                 foreach (IGameObject obj in updating)
                 {
@@ -206,7 +238,7 @@ namespace MelloMario.Theming
                 }
             }
 
-            hud.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
+            splash.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
         }
     }
 }
