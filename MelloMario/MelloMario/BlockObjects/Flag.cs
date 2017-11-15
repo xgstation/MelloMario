@@ -38,7 +38,7 @@ namespace MelloMario.BlockObjects
                     ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
                     world.FlagIsTouched = true;
                     new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_FLAG_MAX * height / maxHeight);
-                    // mario.Active = false; // TODO: handle this in mario's collision
+                    //mario.Active = false;
 
                     //TODO: trigger game win
                 }
