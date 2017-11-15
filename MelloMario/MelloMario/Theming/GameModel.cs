@@ -133,6 +133,7 @@ namespace MelloMario.Theming
         public void Reset()
         {
             // TODO: "forced" version of LoadLevel()
+            LoadLevel("Main", true);
             Resume();
         }
 
