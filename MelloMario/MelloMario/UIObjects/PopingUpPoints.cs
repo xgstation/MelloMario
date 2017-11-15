@@ -32,7 +32,7 @@ namespace MelloMario.UIObjects
 
         public PopingUpPoints(IGameWorld world, Point location, int points) : base(world, location, new Point())
         {
-            ShowSprite(SpriteFactory.Instance.CreateTextSprite(points.ToString()));
+            ShowSprite(SpriteFactory.Instance.CreateTextSprite(points.ToString(), 10f));
         }
     }
 }
