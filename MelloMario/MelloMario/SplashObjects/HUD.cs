@@ -55,8 +55,7 @@ namespace MelloMario.SplashObjects
             textSprite.Draw(time, new Rectangle(42, 42, 800, 200));
             coinSprite.Draw(time, new Rectangle(255, 74, 26, 30));
             oneUpSprite.Draw(time, new Rectangle(255, 42, 26, 30));
-            startSprite.Draw(time, new Rectangle(100,100,100,100));
-
+            //startSprite.Draw(time, new Rectangle(100,100,352,176));
         }
     }
 }

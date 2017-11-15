@@ -722,7 +722,13 @@
 /processorParam:Quality=Best
 /build:SFX/smb_world_clear.mp3
 
-#begin marioTitle.png
+#begin SFX/smb_jumpsmall.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SFX/smb_jumpsmall.mp3
+
+#begin Title.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -732,11 +738,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:marioTitle.png
-
-#begin SFX/smb_jumpsmall.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:SFX/smb_jumpsmall.mp3
+/build:Title.png
 

@@ -243,7 +243,6 @@
     <Content Include="Content\GreenKoopaLeft.png" />
     <Content Include="Content\GreenKoopaRight.png" />
     <Content Include="Content\GreenKoopaStepped.png" />
-    <Content Include="Content\marioTitle.png" />
     <Content Include="Content\Music\01-main-theme-overworld.mp3" />
     <Content Include="Content\Music\02-underworld.mp3" />
     <Content Include="Content\Music\05-starman.mp3" />
