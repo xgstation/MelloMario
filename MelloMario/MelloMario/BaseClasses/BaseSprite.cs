@@ -33,23 +33,25 @@ namespace MelloMario.Sprites
                 switch (zIndex)
                 {
                     case ZIndex.hud:
-                        return 0.05f;
-                    case ZIndex.foreground:
                         return 0.1f;
+                    case ZIndex.splash:
+                        return 0.2f;
+                    case ZIndex.foreground:
+                        return 0.3f;
                     case ZIndex.level:
-                        return 0.25f;
-                    case ZIndex.item:
                         return 0.4f;
-                    case ZIndex.background3:
+                    case ZIndex.item:
                         return 0.5f;
-                    case ZIndex.background2:
+                    case ZIndex.background3:
                         return 0.6f;
+                    case ZIndex.background2:
+                        return 0.7f;
                     case ZIndex.background1:
-                        return 0.85f;
+                        return 0.8f;
                     case ZIndex.background0:
-                        return 0.95f;
+                        return 0.9f;
                     default:
-                        return 1f;
+                        return float.NaN;
                 }
             }
         }
