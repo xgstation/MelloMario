@@ -126,6 +126,7 @@
     <Compile Include="EnemyObjects\Goomba.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
+    <Compile Include="SplashObjects\GameWon.cs" />
     <Compile Include="SplashObjects\StartScreen.cs" />
     <Compile Include="SplashObjects\GameOver.cs" />
     <Compile Include="Interfaces\Containers\IContainer.cs" />

@@ -82,6 +82,16 @@ namespace MelloMario.Theming
             splash = new GameOver(this);
             splashElapsed = 0;
         }
+        
+        public void TransistGameWon()
+        {
+            isPaused = true;
+
+            new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
+
+            splash = new GameWon(this);
+            splashElapsed = 0;
+        }
 
         public void Resume()
         {

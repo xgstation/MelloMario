@@ -64,6 +64,7 @@ namespace MelloMario.Theming
             {
                 model.Score += GameConst.SCORE_TIME_MULT * model.Time/1000;
                 model.Time = 0;
+                model.TransistGameWon();
                 won = true;
             }
         }
