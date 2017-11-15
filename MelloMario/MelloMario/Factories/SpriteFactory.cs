@@ -263,6 +263,20 @@ namespace MelloMario.Factories
                     return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 16, 44, 8, 2, zIndex);
                 case "LongSmileCloud":
                     return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 10, 40, 6, 4, zIndex);
+                case "CastleTop":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 22, 0, 2, 2, zIndex);
+                case "CastleTopSolid":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 22, 2, 2, 2, zIndex);
+                case "CastleBody":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 26, 0, 2, 2, zIndex);
+                case "CastleDoorLeft":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 24, 0, 2, 2, zIndex);
+                case "CastleDoorRight":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 28, 0, 2, 2, zIndex);
+                case "CastleDoorTop":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 24, 2, 2, 2, zIndex);
+                case "CastleDoor":
+                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 26, 2, 2, 2, zIndex);
                 default:
                     return null;
             }
