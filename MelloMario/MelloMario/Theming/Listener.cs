@@ -39,11 +39,15 @@ namespace MelloMario.Theming
         private void OnLivesChange(BaseCollidableObject m, PointEventArgs e)
         {
             model.Lives += e.Points;
+            if (model.Lives > 99)
+                model.Lives = 99;
         }
 
         private void OnPointGain(BaseCollidableObject m, PointEventArgs e)
         {
             model.Score += e.Points;
+            if (model.Score > 999999)
+                model.Score = 999999;
         }
 
         private void OnLevelWon(Flag m, EventArgs e)
@@ -52,7 +56,7 @@ namespace MelloMario.Theming
             //TODO: this if should eventually be unneeded
             if (!won)
             {
-                model.Score += GameConst.SCORE_TIME_MULT * model.Time;
+                model.Score += GameConst.SCORE_TIME_MULT * model.Time/1000;
                 model.Time = 0;
                 won = true;
             }
