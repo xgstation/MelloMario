@@ -12,10 +12,12 @@ namespace MelloMario.BlockObjects
     {
         private IBlockState state;
         private bool isHidden;
+        private SoundEffectInstance bumpSound;
 
         public void Initialize(bool hidden = false)
         {
             isHidden = hidden;
+            bumpSound = SoundController.bumpBlock.CreateInstance();
             if (isHidden)
             {
                 state = new Hidden(this);
@@ -83,7 +85,7 @@ namespace MelloMario.BlockObjects
 
         public void Bump(Mario mario)
         {
-            SoundController.bumpBlock.CreateInstance().Play();
+            bumpSound.Play();
             State.Bump(mario);
         }
 

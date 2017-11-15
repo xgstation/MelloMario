@@ -7,6 +7,7 @@ namespace MelloMario.ItemObjects.CoinStates
     {
         private float elapsed;
         private float realOffset;
+        private SoundEffectInstance coinSound;
 
         protected override void OnTimer(int time)
         {
@@ -16,6 +17,7 @@ namespace MelloMario.ItemObjects.CoinStates
         public Unveil(Coin owner) : base(owner, 250)
         {
             elapsed = 0f;
+            coinSound = SoundController.coin.CreateInstance();
         }
 
         public void Show()
@@ -29,7 +31,7 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public override void Update(int time)
         {
-            SoundController.coin.CreateInstance().Play();
+            coinSound.Play();
             elapsed += time;
             realOffset += 128 * time / 500f;
 

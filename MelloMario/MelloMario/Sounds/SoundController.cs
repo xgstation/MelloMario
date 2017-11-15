@@ -12,7 +12,7 @@ namespace MelloMario.Sounds
         public static Song GameOver = SoundFactory.Instance.CreateSong("09-game-over");
 
         public static SoundEffect bounce = SoundFactory.Instance.CreateSoundEffect("smb_jumpsmall");
-        public static SoundEffect powerBounce = SoundFactory.Instance.CreateSoundEffect("smb_jump-super");
+        public static SoundEffect powerBounce = SoundFactory.Instance.CreateSoundEffect("smb_jump");
         public static SoundEffect bumpBlock = SoundFactory.Instance.CreateSoundEffect("smb_bump");
         public static SoundEffect breakBlock = SoundFactory.Instance.CreateSoundEffect("smb_breakblock");
         public static SoundEffect coin = SoundFactory.Instance.CreateSoundEffect("smb_coin");
@@ -22,7 +22,7 @@ namespace MelloMario.Sounds
         public static SoundEffect pipe = SoundFactory.Instance.CreateSoundEffect("smb_pipe");
 
         public static SoundEffect sizeUpAppear = SoundFactory.Instance.CreateSoundEffect("smb_powerup_appears");
-        public static SoundEffect oneUpCollect = SoundFactory.Instance.CreateSoundEffect("smb_1-up");
+        public static SoundEffect oneUpCollect = SoundFactory.Instance.CreateSoundEffect("smb_1");
 
         public enum Songs { normal, belowGround, hurry, pause, title, gameOver }
         public static Songs CurrentSong = Songs.normal;
