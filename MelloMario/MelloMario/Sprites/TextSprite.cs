@@ -6,6 +6,7 @@ namespace MelloMario.Sprites
     class TextSprite : BaseSprite
     {
         private string text;
+        private float fontSize;
         private SpriteFont font;
         private Color color;
 
@@ -18,16 +19,17 @@ namespace MelloMario.Sprites
                 color,
                 0f,//rotation
                 new Vector2(), //origin
-                1, //scale
+                fontSize / 18f, //scale
                 SpriteEffects.None,
                 LayerDepth
             );
         }
 
-        public TextSprite(SpriteBatch spriteBatch, string text, SpriteFont font, Point size, ZIndex zIndex) : base(spriteBatch, size, zIndex)
+        public TextSprite(SpriteBatch spriteBatch, string text, SpriteFont font, Point size, ZIndex zIndex, float fontSize = 18f) : base(spriteBatch, size, zIndex)
         {
             this.text = text;
             this.font = font;
+            this.fontSize = fontSize;
             color = Color.White;
         }
     }
