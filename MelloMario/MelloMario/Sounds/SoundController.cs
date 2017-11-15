@@ -74,7 +74,7 @@ namespace MelloMario.Sounds
             SoundEffectVolume = MediaPlayer.IsMuted ? SoundEffectVolume : SoundEffect.MasterVolume;
         }
 
-        public static void Update()
+        public static void Update(int time)
         {
             PlayMusic(Model.ThemeMusic);
         }
