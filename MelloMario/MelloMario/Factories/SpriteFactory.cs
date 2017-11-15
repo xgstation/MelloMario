@@ -71,6 +71,8 @@ namespace MelloMario.Factories
                     return new AnimatedSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Dead":
                     return new StaticSprite(spriteBatch, GetTexture(protectionStatus), zIndex: ZIndex.foreground);
+                case "GameOver":
+                    return new StaticSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), zIndex: ZIndex.hud);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
