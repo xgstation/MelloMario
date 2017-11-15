@@ -280,8 +280,8 @@
     <Content Include="Content\SFX\smb_fireball.mp3" />
     <Content Include="Content\SFX\smb_fireworks.mp3" />
     <Content Include="Content\SFX\smb_flagpole.mp3" />
-    <Content Include="Content\SFX\smb_jump-super.mp3" />
     <Content Include="Content\SFX\smb_jump.mp3" />
+    <Content Include="Content\SFX\smb_jumpsmall.mp3" />
     <Content Include="Content\SFX\smb_kick.mp3" />
     <Content Include="Content\SFX\smb_mariodie.mp3" />
     <Content Include="Content\SFX\smb_pause.mp3" />

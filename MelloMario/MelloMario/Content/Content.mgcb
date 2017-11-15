@@ -617,7 +617,7 @@
 #begin SFX/smb_1.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/processorParam:Quality=Medium
 /build:SFX/smb_1.mp3
 
 #begin SFX/smb_breakblock.mp3
@@ -733,4 +733,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:marioTitle.png
+
+#begin SFX/smb_jumpsmall.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:SFX/smb_jumpsmall.mp3
 
