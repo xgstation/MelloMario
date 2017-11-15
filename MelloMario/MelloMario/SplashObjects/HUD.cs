@@ -41,6 +41,7 @@ namespace MelloMario.SplashObjects
             this.model = model;
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             oneUpSprite = SpriteFactory.Instance.CreateOneUpMushroomSprite();
+            startSprite = SpriteFactory.Instance.CreateTitle(MelloMario.ZIndex.hud);
             UpdateSprite();
         }
 
