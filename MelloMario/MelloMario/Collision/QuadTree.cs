@@ -1,6 +1,8 @@
 ﻿using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -9,8 +11,15 @@ namespace MelloMario.Collision
 {
     class QuadTree<T> : ICollection<T> where T : IGameObject
     {
+        enum UpdatingMode
+        {
+            Add,
+            Remove,
+            Move
+        }
         private readonly IDictionary<T, EncapsulatedQuadTreeObject<T>> dictTtoEncapsulated;
         private readonly QuadTreeNode<T> quadTreeRoot;
+        private readonly ConcurrentDictionary<T, UpdatingMode> toBeUpdated; 
 
         private int width;
         private int height;
@@ -30,17 +39,23 @@ namespace MelloMario.Collision
             }
             quadTreeRoot = new QuadTreeNode<T>(new Rectangle(0, 0, width, height));
             dictTtoEncapsulated = new Dictionary<T, EncapsulatedQuadTreeObject<T>>();
+            toBeUpdated = new ConcurrentDictionary<T, UpdatingMode>();
         }
 
-        public Rectangle QuadTreeRect { get { return quadTreeRoot.Rect; } }
+        public Rectangle QuadTreeRect => quadTreeRoot.Rect;
 
-        public int Count { get { return dictTtoEncapsulated.Count; } }
+        public int Count => dictTtoEncapsulated.Count;
 
-        public bool IsReadOnly { get { return false; } }
+        public bool IsReadOnly => false;
 
-        public ICollection<T> GetNearby()
+        public ICollection<T> GetNearby(T origin)
         {
-            return null;
+            if (!dictTtoEncapsulated.ContainsKey(origin)) return null;
+            var o = dictTtoEncapsulated[origin];
+            ICollection<T> list = new List<T>();
+            o.Owner?.GetObjects(ref list);
+            o.Owner?.Parent?.GetObjects(ref list);
+            return list;
         }
         public ICollection<T> GetObjects(Rectangle searchRange)
         {
@@ -58,6 +73,15 @@ namespace MelloMario.Collision
 
         public bool Move(T item)
         {
+            toBeUpdated.AddOrUpdate(
+                item,
+                UpdatingMode.Move,
+                (key, operation) => operation == UpdatingMode.Remove ? operation : UpdatingMode.Move
+            );
+            return true;
+        }
+        private bool DoMove(T item)
+        {
             if (!Contains(item))
             {
                 return false;
@@ -65,6 +89,7 @@ namespace MelloMario.Collision
             quadTreeRoot.Move(dictTtoEncapsulated[item]);
             return true;
         }
+
         public IEnumerator<T> GetEnumerator()
         {
             return dictTtoEncapsulated.Keys.GetEnumerator();
@@ -75,7 +100,7 @@ namespace MelloMario.Collision
             return GetEnumerator();
         }
 
-        public void Add(T item)
+        private void DoAdd(T item)
         {
             if (!dictTtoEncapsulated.ContainsKey(item))
             {
@@ -84,6 +109,14 @@ namespace MelloMario.Collision
                 quadTreeRoot.Insert(encapsulated);
                 Debug.Print(quadTreeRoot.Count.ToString());
             }
+        }
+        public void Add(T item)
+        {
+            toBeUpdated.AddOrUpdate(
+                item,
+                UpdatingMode.Add,
+                (key, operation) => operation == UpdatingMode.Remove ? operation : UpdatingMode.Add
+            );
         }
 
         public void Clear()
@@ -104,6 +137,15 @@ namespace MelloMario.Collision
 
         public bool Remove(T item)
         {
+            toBeUpdated.AddOrUpdate(
+                item,
+                UpdatingMode.Remove,
+                (key, operation) => UpdatingMode.Remove
+            );
+            return true;
+        }
+        private bool DoRemove(T item)
+        {
             if (Contains(item))
             {
                 quadTreeRoot.Delete(dictTtoEncapsulated[item], false);
@@ -111,6 +153,25 @@ namespace MelloMario.Collision
                 return true;
             }
             return false;
+        }
+
+        public void Update()
+        {
+            foreach (var pair in toBeUpdated)
+            {
+                switch (pair.Value)
+                {
+                    case UpdatingMode.Add:
+                        DoAdd(pair.Key);
+                        break;
+                    case UpdatingMode.Move:
+                        DoMove(pair.Key);
+                        break;
+                    case UpdatingMode.Remove:
+                        DoRemove(pair.Key);
+                        break;
+                }
+            }
         }
     }
 }

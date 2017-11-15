@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using MelloMario.Collision;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
@@ -8,22 +10,16 @@ namespace MelloMario.Containers
 {
     class GameWorld2 : IGameWorld
     {
-        private readonly QuadTree<IGameObject> objContainer;
-
-        private readonly Stack<IGameObject> toAdd;
-        private readonly Stack<IGameObject> toMove;
-        private readonly Stack<IGameObject> toRemove;
-
+        private QuadTree<IGameObject> objContainer;
+        private string id;
         private Point worldSize;
         private Point initialPoint;
         private ISet<Point> respawnPoints;
-        private bool flagIsTouched;
-
 
 
         public GameWorld2(string id, Point worldSize, Point initialPoint, IEnumerable<Point> respawnPoints)
         {
-            flagIsTouched = false;
+            FlagIsTouched = false;
             Id = id;
             this.worldSize = worldSize;
             this.initialPoint = new Point(initialPoint.X * GameConst.GRID, initialPoint.Y * GameConst.GRID);
@@ -33,39 +29,28 @@ namespace MelloMario.Containers
             {
                 this.respawnPoints.Add(respawnPoint);
             }
-
-            toAdd = new Stack<IGameObject>();
-            toMove = new Stack<IGameObject>();
-            toRemove = new Stack<IGameObject>();
-
             objContainer = new QuadTree<IGameObject>(new Rectangle(0, 0, worldSize.X * GameConst.GRID, worldSize.Y * GameConst.GRID));
         }
 
 
         public string Id { get; }
-        public Rectangle Boundary
-        {
-            get
-            {
-                return new Rectangle(new Point(), worldSize);
-            }
-        }
+        public Rectangle Boundary => new Rectangle(new Point(), worldSize);
 
-        public bool FlagIsTouched { get => flagIsTouched; set => flagIsTouched = value; }
+        public bool FlagIsTouched { get; set; }
 
         public void Add(IGameObject obj)
         {
-            toAdd.Push(obj);
+            objContainer.Add(obj);
         }
 
         public void Move(IGameObject obj)
         {
-            toMove.Push(obj);
+            objContainer.Add(obj);
         }
 
         public void Remove(IGameObject obj)
         {
-            toRemove.Push(obj);
+            objContainer.Remove(obj);
         }
 
         public IEnumerable<IGameObject> GetObjects()
@@ -80,11 +65,19 @@ namespace MelloMario.Containers
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
         {
-            int x = range.Left - GameConst.SCANRANGE;
-            int y = range.Top - GameConst.SCANRANGE;
-            int width = range.Width + GameConst.SCANRANGE;
-            int height = range.Height + GameConst.SCANRANGE;
-            return GetObjects(new Rectangle(x < 0 ? 0 : x, y < 0 ? 0 : y, width, height));
+            int x = range.Left - 64;
+            int y = range.Top - 64;
+            int width = range.Width + 64;
+            int height = range.Height + 64;
+            foreach (var gameObject in GetObjects(new Rectangle(x < 0 ? 0 : x, y < 0 ? 0 : y, width, height)))
+            {
+                yield return gameObject;
+            }
+        }
+
+        public IEnumerable<IGameObject> ScanNearby(IGameObject obj)
+        {
+            return objContainer.GetNearby(obj);
         }
 
         public Point GetInitialPoint()
@@ -113,18 +106,7 @@ namespace MelloMario.Containers
         }
         public void Update()
         {
-            while (toAdd.Count > 0)
-            {
-                objContainer.Add(toAdd.Pop());
-            }
-            while (toMove.Count > 0)
-            {
-                objContainer.Move(toMove.Pop());
-            }
-            while (toRemove.Count > 0)
-            {
-                objContainer.Remove(toRemove.Pop());
-            }
+            objContainer.Update();
         }
     }
 }

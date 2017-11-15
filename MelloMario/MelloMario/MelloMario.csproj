@@ -112,7 +112,6 @@
     <Compile Include="BaseClasses\BaseController.cs" />
     <Compile Include="Commands\SuperCreate.cs" />
     <Compile Include="Commands\ToggleFullScreen.cs" />
-    <Compile Include="Containers\GameCollisionModel.cs" />
     <Compile Include="Containers\GameSession.cs" />
     <Compile Include="Containers\GameWorld2.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
@@ -199,6 +198,7 @@
     <Compile Include="MarioObjects\ProtectionStates\Starred.cs" />
     <Compile Include="Sounds\SoundController.cs" />
     <Compile Include="SplashObjects\PopingUpPoints.cs" />
+    <Compile Include="Sprites\CastleSprite.cs" />
     <Compile Include="Sprites\SplashSprite.cs" />
     <Compile Include="Sprites\TextSprite.cs" />
     <Compile Include="Sprites\FlashingAnimatedSprite.cs" />
