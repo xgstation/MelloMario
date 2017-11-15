@@ -308,6 +308,8 @@
     <Content Include="Content\SuperStandingRight.png" />
     <Content Include="Content\SuperWalkingLeft.png" />
     <Content Include="Content\SuperWalkingRight.png" />
+    <Content Include="FakesAssemblies\SharpDX.Direct2D1.3.1.1.0.Fakes.dll" />
+    <Content Include="FakesAssemblies\SharpDX.Direct2D1.3.1.1.0.Fakes.xml" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -321,6 +323,8 @@
     <None Include="Content\ExampleLevel.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="FakesAssemblies\SharpDX.Direct2D1.3.1.1.0.Fakes.fakesconfig" />
+    <None Include="FakesAssemblies\SharpDX.Direct2D1.3.1.1.0.Fakes.messages" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
