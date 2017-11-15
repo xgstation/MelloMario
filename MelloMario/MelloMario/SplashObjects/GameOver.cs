@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.SplashObjects
 {
-    class GameOver: IGameObject
+    class GameOver : IGameObject
     {
         private GameModel model;
         private ISprite splashSprite;
@@ -27,7 +27,7 @@ namespace MelloMario.SplashObjects
             this.model = model;
             splashSprite = SpriteFactory.Instance.CreatSplashSprite();
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
-            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Normal", "Standing", "Normal", "Right");
+            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "Normal", "Right");
             gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
         }
 

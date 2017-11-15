@@ -56,7 +56,7 @@ namespace MelloMario.Factories
 
         public ISprite CreatSplashSprite()
         {
-            return new SplashSprite(spriteBatch, new Point(), ZIndex.hud);
+            return new SplashSprite(spriteBatch, ZIndex.hud);
         }
 
         public ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing)
