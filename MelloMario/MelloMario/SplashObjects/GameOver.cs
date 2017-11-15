@@ -28,7 +28,7 @@ namespace MelloMario.SplashObjects
             this.model = model;
             splashSprite = SpriteFactory.Instance.CreatSplashSprite();
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
-            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "Normal", "Right");
+            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
             gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
             Text= "MARIO        " + "   WORLD    TIME\n"
                 + model.Score.ToString().PadLeft(6, '0') + "    *"
@@ -62,9 +62,9 @@ namespace MelloMario.SplashObjects
             {
                 ISprite text = SpriteFactory.Instance.CreateTextSprite("WORLD");
                 text.Draw(time, new Rectangle(300, 200, 80, 80));
-                marioSprite.Draw(time, new Rectangle(400, 250, 80, 80));
+                marioSprite.Draw(time, new Rectangle(250, 250, 40, 40));
                 ISprite Life = SpriteFactory.Instance.CreateTextSprite("*  " + model.Lives.ToString());
-                Life.Draw(time, new Rectangle(450, 250, 80, 80));
+                Life.Draw(time, new Rectangle(350, 250, 80, 80));
             }
             else
             {

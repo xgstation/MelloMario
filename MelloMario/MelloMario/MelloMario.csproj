@@ -79,6 +79,7 @@
     <Compile Include="BlockObjects\Pipeline.cs" />
     <Compile Include="BlockObjects\Question.cs" />
     <Compile Include="BlockObjects\QuestionStates\Bumped.cs" />
+    <Compile Include="BlockObjects\QuestionStates\Castle.cs" />
     <Compile Include="BlockObjects\QuestionStates\Hidden.cs" />
     <Compile Include="BlockObjects\QuestionStates\Normal.cs" />
     <Compile Include="BlockObjects\QuestionStates\Used.cs" />
@@ -89,7 +90,9 @@
     <Compile Include="Collision\QuadTree.cs" />
     <Compile Include="Collision\QuadTreeNode.cs" />
     <Compile Include="Commands\Action.cs" />
+    <Compile Include="Commands\FireCreate.cs" />
     <Compile Include="Commands\Mute.cs" />
+    <Compile Include="Commands\NormalCreate.cs" />
     <Compile Include="Commands\Resume.cs" />
     <Compile Include="Commands\Quit.cs" />
     <Compile Include="Commands\Reset.cs" />
@@ -107,6 +110,7 @@
     <Compile Include="Commands\Pause.cs" />
     <Compile Include="Commands\Right.cs" />
     <Compile Include="BaseClasses\BaseController.cs" />
+    <Compile Include="Commands\SuperCreate.cs" />
     <Compile Include="Commands\ToggleFullScreen.cs" />
     <Compile Include="Containers\GameCollisionModel.cs" />
     <Compile Include="Containers\GameSession.cs" />
