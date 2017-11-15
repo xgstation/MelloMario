@@ -8,7 +8,7 @@ namespace MelloMario.Sprites
         private string text;
         private SpriteFont font;
         private Color color;
-        
+
         protected override void OnDraw(int time, Rectangle destination)
         {
             spriteBatch.DrawString(
@@ -21,7 +21,7 @@ namespace MelloMario.Sprites
                 1, //scale
                 SpriteEffects.None,
                 LayerDepth
-                );
+            );
         }
 
         public TextSprite(SpriteBatch spriteBatch, string text, SpriteFont font, Point size, ZIndex zIndex) : base(spriteBatch, size, zIndex)

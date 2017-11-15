@@ -9,6 +9,7 @@ namespace MelloMario
     {
         private Listener listener;
         private Point movement;
+
         public event PointHandler HandlerPoints;
         private PointEventArgs pointEventInfo;
         public delegate void PointHandler(BaseCollidableObject m, PointEventArgs e);
