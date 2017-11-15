@@ -95,7 +95,7 @@ namespace MelloMario.Theming
 
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            splash = new HUD(this);
+            splash = new StartScreen(this);
             splashElapsed = 0;
         }
 
