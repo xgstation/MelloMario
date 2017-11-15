@@ -4,9 +4,9 @@ using MelloMario.Factories;
 
 namespace MelloMario.Scripts
 {
-    class EndedScript : IScript
+    class TransistScript : IScript
     {
-        public EndedScript()
+        public TransistScript()
         {
         }
 

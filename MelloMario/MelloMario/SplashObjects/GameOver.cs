@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.SplashObjects
 {
-    class GameOver
+    class GameOver: IGameObject
     {
         private GameModel model;
         private ISprite splashSprite;
@@ -13,6 +13,14 @@ namespace MelloMario.SplashObjects
         private ISprite coinSprite;
         private ISprite marioSprite;
         private ISprite gameOverSprite;
+
+        public Rectangle Boundary
+        {
+            get
+            {
+                return new Rectangle();
+            }
+        }
 
         public GameOver(GameModel model)
         {
@@ -38,7 +46,7 @@ namespace MelloMario.SplashObjects
             UpdateSprite();
         }
 
-        public void Draw(int time)
+        public void Draw(int time, Rectangle viewport)
         {
             splashSprite.Draw(time, new Rectangle(0, 0, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT));
             textSprite.Draw(time, new Rectangle(42, 42, 800, 200));

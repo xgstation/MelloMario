@@ -174,7 +174,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Scripts\EndedScript.cs" />
+    <Compile Include="Scripts\TransistScript.cs" />
     <Compile Include="Scripts\PausedScript.cs" />
     <Compile Include="LevelGen\CharacterConverter.cs" />
     <Compile Include="LevelGen\EncapsulatedObject.cs" />
