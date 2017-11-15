@@ -10,6 +10,7 @@ namespace MelloMario.Containers
         private Point size;
         private Point initialPoint;
         private ISet<Point> respawnPoints;
+        private bool flagIsTouched;
 
         protected override Point GetKey(IGameObject value)
         {
@@ -33,10 +34,13 @@ namespace MelloMario.Containers
             }
         }
 
+        public bool FlagIsTouched { get => flagIsTouched; set => flagIsTouched = value; }
+
         public GameWorld(string id, Point size, Point initial, IEnumerable<Point> respawn)
         {
             this.id = id;
             this.size = size;
+            flagIsTouched = false;
 
             initialPoint = new Point(initial.X * GameConst.GRID, initial.Y * GameConst.GRID);
             respawnPoints = new HashSet<Point>();
