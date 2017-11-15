@@ -145,7 +145,7 @@ namespace MelloMario
             Center
         };
 
-        protected abstract void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive);
+        protected abstract void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive);
         protected abstract void OnCollideViewport(IPlayer player, CollisionMode mode);
         protected abstract void OnCollideWorld(CollisionMode mode);
 

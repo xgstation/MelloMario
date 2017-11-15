@@ -21,7 +21,7 @@ namespace MelloMario.MarioObjects
             //throw new NotImplementedException();
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario)
             {

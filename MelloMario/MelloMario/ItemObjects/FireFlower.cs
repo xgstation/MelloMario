@@ -22,7 +22,7 @@ namespace MelloMario.ItemObjects
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario && state is Normal)
             {
