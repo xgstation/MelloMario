@@ -4,7 +4,7 @@ using MelloMario.Theming;
 
 namespace MelloMario.SplashObjects
 {
-    class HUD : IGameObject
+    class HUD : BaseUIObject
     {
         private GameModel model;
 
@@ -12,17 +12,8 @@ namespace MelloMario.SplashObjects
         private ISprite textSprite;
         private ISprite coinSprite;
         private ISprite oneUpSprite;
-        private ISprite startSprite;
 
-        public Rectangle Boundary
-        {
-            get
-            {
-                return new Rectangle(); // TODO
-            }
-        }
-
-        private void UpdateSprite()
+        protected override void OnUpdate(int time)
         {
             string newText = "MARIO     *" + model.Lives.ToString().PadLeft(2, '0') + "   WORLD    TIME\n"
                 + model.Score.ToString().PadLeft(6, '0') + "    *"
@@ -36,26 +27,19 @@ namespace MelloMario.SplashObjects
             }
         }
 
-        public HUD(GameModel model)
-        {
-            this.model = model;
-            coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
-            oneUpSprite = SpriteFactory.Instance.CreateOneUpMushroomSprite();
-            startSprite = SpriteFactory.Instance.CreateTitle(MelloMario.ZIndex.hud);
-            UpdateSprite();
-        }
-
-        public void Update(int time)
-        {
-            UpdateSprite();
-        }
-
-        public void Draw(int time, Rectangle viewport)
+        protected override void OnDraw(int time, Rectangle viewport)
         {
             textSprite.Draw(time, new Rectangle(42, 42, 800, 200));
             coinSprite.Draw(time, new Rectangle(255, 74, 26, 30));
             oneUpSprite.Draw(time, new Rectangle(255, 42, 26, 30));
-   
+        }
+
+        public HUD(GameModel model)
+        {
+            this.model = model;
+            textSprite = SpriteFactory.Instance.CreateTextSprite("");
+            coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
+            oneUpSprite = SpriteFactory.Instance.CreateOneUpMushroomSprite();
         }
     }
 }

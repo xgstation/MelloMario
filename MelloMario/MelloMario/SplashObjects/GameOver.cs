@@ -1,11 +1,10 @@
 ﻿using MelloMario.Factories;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.SplashObjects
 {
-    class GameOver : IGameObject
+    class GameOver : BaseUIObject
     {
         private GameModel model;
         private ISprite splashSprite;
@@ -15,44 +14,12 @@ namespace MelloMario.SplashObjects
         private ISprite gameOverSprite;
         private string Text;
 
-        public Rectangle Boundary
-        {
-            get
-            {
-                return new Rectangle();
-            }
-        }
-
-        public GameOver(GameModel model)
-        {
-            this.model = model;
-            splashSprite = SpriteFactory.Instance.CreatSplashSprite();
-            coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
-            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
-            gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
-            Text= "MARIO        " + "   WORLD    TIME\n"
-                + model.Score.ToString().PadLeft(6, '0') + "    *"
-                + model.Coins.ToString().PadLeft(2, '0') + "    "
-                + "1-1" + "      ";
-            textSprite = SpriteFactory.Instance.CreateTextSprite(Text);
-        }
-
-        private void UpdateSprite()
-        {
-            //string Text = "MARIO        " + "   WORLD    TIME\n"
-               // + model.Score.ToString().PadLeft(6, '0') + "    *"
-                //+ model.Coins.ToString().PadLeft(2, '0') + "    "
-                //+ "1-1" + "      ";
-
-            //textSprite = SpriteFactory.Instance.CreateTextSprite(Text);
-        }
-
-        public void Update(int time)
+        protected override void OnUpdate(int time)
         {
             //UpdateSprite();
         }
 
-        public void Draw(int time, Rectangle viewport)
+        protected override void OnDraw(int time, Rectangle viewport)
         {
             splashSprite.Draw(time, new Rectangle(0, 0, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT));
             textSprite.Draw(time, new Rectangle(42, 42, 800, 200));
@@ -70,6 +37,20 @@ namespace MelloMario.SplashObjects
             {
                 gameOverSprite.Draw(time, new Rectangle(400, 250, 80, 80));
             }
+        }
+
+        public GameOver(GameModel model)
+        {
+            this.model = model;
+            splashSprite = SpriteFactory.Instance.CreatSplashSprite();
+            coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
+            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
+            gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
+            Text = "MARIO        " + "   WORLD    TIME\n"
+                + model.Score.ToString().PadLeft(6, '0') + "    *"
+                + model.Coins.ToString().PadLeft(2, '0') + "    "
+                + "1-1" + "      ";
+            textSprite = SpriteFactory.Instance.CreateTextSprite(Text);
         }
     }
 }
