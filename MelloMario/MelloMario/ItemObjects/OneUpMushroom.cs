@@ -9,7 +9,7 @@ namespace MelloMario.ItemObjects
 {
     class OneUpMushroom : BasePhysicalObject
     {
-        private const int H_SPEED = 3;
+        private const int H_SPEED = 6;
         private IItemState state;
         private SoundEffectInstance oneupMushCollectSound;
         private bool collected;
@@ -30,13 +30,13 @@ namespace MelloMario.ItemObjects
             {
                 ApplyGravity();
 
-                if (Facing == FacingMode.right)
+                if (Facing == FacingMode.left)
                 {
-                    Move(new Point(H_SPEED, 0));
+                    SetHorizontalVelocity(-H_SPEED);
                 }
                 else
                 {
-                    Move(new Point(-1 * H_SPEED, 0));
+                    SetHorizontalVelocity(H_SPEED);
                 }
             }
 
@@ -59,7 +59,10 @@ namespace MelloMario.ItemObjects
                 case "Pipeline":
                 case "Stair":
                     // TODO: check against hidden
-                    Bounce(mode, new Vector2());
+                    if (mode == CollisionMode.Top || mode == CollisionMode.Bottom)
+                    {
+                        Bounce(mode, new Vector2());
+                    }
                     if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);

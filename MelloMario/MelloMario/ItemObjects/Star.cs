@@ -10,7 +10,8 @@ namespace MelloMario.ItemObjects
 {
     class Star : BasePhysicalObject
     {
-        private const int H_SPEED = 3;
+        private const int H_SPEED = 6;
+        private const int V_SPEED = 10;
         private IItemState state;
         private bool goingRight;
         private bool collected;
@@ -31,13 +32,13 @@ namespace MelloMario.ItemObjects
             {
                 ApplyGravity();
 
-                if (goingRight)
+                if (Facing == FacingMode.left)
                 {
-                    Move(new Point(H_SPEED, 0));
+                    SetHorizontalVelocity(-H_SPEED);
                 }
                 else
                 {
-                    Move(new Point(-1 * H_SPEED, 0));
+                    SetHorizontalVelocity(H_SPEED);
                 }
             }
 
@@ -71,7 +72,10 @@ namespace MelloMario.ItemObjects
                     case "Floor":
                     case "Pipeline":
                     case "Stair":
-                        Bounce(mode, new Vector2());
+                        if (mode == CollisionMode.Top)
+                        {
+                            Bounce(mode, new Vector2());
+                        }
                         if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2(), 1);
@@ -84,7 +88,8 @@ namespace MelloMario.ItemObjects
                         }
                         if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
                         {
-                            ApplyForce(new Vector2(0, -160f));
+                            Bounce(mode, new Vector2());
+                            ApplyVerticalFriction(V_SPEED);
                         }
                         break;
                 }

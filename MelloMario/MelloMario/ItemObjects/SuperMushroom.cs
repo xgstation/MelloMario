@@ -10,7 +10,7 @@ namespace MelloMario.ItemObjects
 {
     class SuperMushroom : BasePhysicalObject
     {
-        private const int H_SPEED = 2;
+        private const int H_SPEED = 4;
         private IItemState state;
         private bool collected;
 
@@ -37,13 +37,13 @@ namespace MelloMario.ItemObjects
             {
                 ApplyGravity();
 
-                if (Facing == FacingMode.right)
+                if (Facing == FacingMode.left)
                 {
-                    Move(new Point(H_SPEED, 0));
+                    SetHorizontalVelocity(-H_SPEED);
                 }
                 else
                 {
-                    Move(new Point(-1 * H_SPEED, 0));
+                    SetHorizontalVelocity(H_SPEED);
                 }
             }
 
@@ -75,7 +75,10 @@ namespace MelloMario.ItemObjects
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
-                    Bounce(mode, new Vector2());
+                    if (mode == CollisionMode.Top || mode == CollisionMode.Bottom)
+                    {
+                        Bounce(mode, new Vector2());
+                    }
                     if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
