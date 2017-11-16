@@ -14,7 +14,6 @@ namespace MelloMario.BlockObjects
         private IPlayer switchingPlayer;
         private string type;
         private int elapsed;
-        //private SoundController soundControl;
 
         public string Type
         {

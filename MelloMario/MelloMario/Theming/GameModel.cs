@@ -61,7 +61,7 @@ namespace MelloMario.Theming
             isPaused = true;
 
             new PausedScript().Bind(controllers, this, GetActivePlayer().Character);
-
+            MediaPlayer.Pause();
             splashElapsed = -1;
         }
 
@@ -91,7 +91,7 @@ namespace MelloMario.Theming
         public void Resume()
         {
             isPaused = false;
-
+            MediaPlayer.Resume();
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
             Splash = new HUD();

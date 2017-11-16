@@ -81,6 +81,5 @@ namespace MelloMario.Sounds
         {
             PlayMusic(Model.ThemeMusic);
         }
-        
     }
 }
