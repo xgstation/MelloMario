@@ -37,6 +37,7 @@
 
         // gameplay
 
+        public const int INIT_LIFES = 3;
         public const int LEVEL_TIME = 400;
         public const int COINS_FOR_LIVE = 100;
 

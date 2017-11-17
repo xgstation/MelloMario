@@ -72,7 +72,6 @@ namespace MelloMario.Theming
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
             Splash = new GameOver();
-            GameDatabase.TimeRemain = GameConst.LEVEL_TIME * 1000;
             splashElapsed = 0;
 
             GetActivePlayer().Reset(null); // TODO
@@ -153,27 +152,27 @@ namespace MelloMario.Theming
 
         private void UpdateMusicScene(int time)
         {
-            if (GetActivePlayer() is MarioCharacter marioD &&
+            if (GetActivePlayer().Character is MarioCharacter marioD &&
                 marioD.ProtectionState is MarioObjects.ProtectionStates.Dead)
             {
                 MediaPlayer.Play(SoundController.Normal);
             }
-            if (GetActivePlayer() is MarioCharacter mario &&
+            if (GetActivePlayer().Character is MarioCharacter mario &&
                 mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
             {
                 ThemeMusic = SoundController.Songs.Star;
             }
-            else if (GameDatabase.TimeRemain < 90000)
+            else if (GetActivePlayer().Lifes <= 1)
+            {
+                ThemeMusic = SoundController.Songs.GameOver;
+            }
+            else if (GetActivePlayer().TimeRemain <= 90000)
             {
                 ThemeMusic = SoundController.Songs.Hurry;
             }
             else
             {
                 ThemeMusic = SoundController.Songs.Normal;
-            }
-            if (GameDatabase.TimeRemain == 0 || GameDatabase.Lifes < 1)
-            {
-                ThemeMusic = SoundController.Songs.GameOver;
             }
         }
 

@@ -27,20 +27,20 @@ namespace MelloMario.LevelGen
 
         public override bool CanConvert(Type objectType)
         {
-            return typeof(EncapsulatedObject<PlayerMario>).IsAssignableFrom(objectType);
+            return typeof(EncapsulatedObject<MarioCharacter>).IsAssignableFrom(objectType);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             jsonToken = JToken.Load(reader);
-            characterStack = new Stack<PlayerMario>();
+            characterStack = new Stack<MarioCharacter>();
             startPoint = jsonToken["SpawnPoint"].ToObject<Point>();
             startPoint.X = startPoint.X * GameConst.GRID;
             startPoint.Y = startPoint.Y * GameConst.GRID;
 
-            characterStack.Push((PlayerMario) GameObjectFactory.Instance.CreateGameCharacter("Mario", gameSession, gameWorld, startPoint, listener).Item1);
+            characterStack.Push((MarioCharacter) GameObjectFactory.Instance.CreateGameCharacter("Mario", gameSession, gameWorld, startPoint, listener).Item1);
 
-            return new EncapsulatedObject<PlayerMario>(characterStack);
+            return new EncapsulatedObject<MarioCharacter>(characterStack);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
