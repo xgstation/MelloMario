@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MelloMario.Interfaces;
 using Microsoft.Xna.Framework;
 using MelloMario.Theming;
 
@@ -7,7 +8,7 @@ namespace MelloMario
     abstract class BaseUIObject : IGameObject
     {
         protected IPlayer Player;
-
+        protected IGameCamera Camera;
         protected abstract void OnUpdate(int time);
         protected abstract void OnDraw(int time);
 
@@ -19,8 +20,9 @@ namespace MelloMario
             }
         }
 
-        public BaseUIObject(IPlayer player)
+        public BaseUIObject(IPlayer player, IGameCamera camera)
         {
+            Camera = camera;
             Player = player;
         }
 

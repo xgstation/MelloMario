@@ -238,15 +238,15 @@ namespace MelloMario.Theming
             {
                 if (isPaused)
                 {
-                    obj.Draw(0, player.Character.Viewport);
+                    obj.Draw(0);
                 }
                 else
                 {
-                    obj.Draw(time, player.Character.Viewport);
+                    obj.Draw(time);
                 }
             }
 
-            Splash.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
+            Splash.Draw(time);
         }
     }
 }

@@ -40,7 +40,7 @@ namespace MelloMario.UIObjects
             oneUpSprite.Draw(time, oneUpRec);
         }
 
-        public HUD()
+        public HUD(IPlayer player, IGameCamera camera) : base(player, camera)
         {
             this.camera = camera;
             textSprite = SpriteFactory.Instance.CreateTextSprite("");
