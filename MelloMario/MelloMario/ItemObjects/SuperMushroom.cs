@@ -17,7 +17,7 @@ namespace MelloMario.ItemObjects
         public IGameObject GetFireFlower()
         {
             // TODO: listener?
-            return GameObjectFactory.Instance.CreateGameObject("FireFlowerUnveil", world, Boundary.Location, null);
+            return GameObjectFactory.Instance.CreateGameObject("FireFlowerUnveil", World, Boundary.Location, null);
         }
 
         private void UpdateSprite()
@@ -154,7 +154,7 @@ namespace MelloMario.ItemObjects
             if (!collected)
             {
                 ScorePoints(GameConst.SCORE_POWER_UP);
-                new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_POWER_UP);
+                new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_POWER_UP);
             }
             collected = true;
             RemoveSelf();

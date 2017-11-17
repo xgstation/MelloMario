@@ -77,7 +77,7 @@ namespace MelloMario
         }
 
         /// <summary>
-        /// Allows the game to run logic such as updating the world,
+        /// Allows the game to run logic such as updating the World,
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="time">Provides a snapshot of timing values.</param>

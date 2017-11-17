@@ -18,7 +18,7 @@ namespace MelloMario.UIObjects
             string newText = "MARIO     *" + GameDatabase.Lifes.ToString().PadLeft(2, '0') + "   WORLD    TIME\n"
                 + GameDatabase.Score.ToString().PadLeft(6, '0') + "    *"
                 + GameDatabase.Coins.ToString().PadLeft(2, '0') + "    "
-                + "1-1" + "      " + GameDatabase.TimeRemain / 1000; // TODO: get world name from player.CurrentWorld
+                + "1-1" + "      " + GameDatabase.TimeRemain / 1000; // TODO: get World name from player.CurrentWorld
 
             if (newText != text)
             {

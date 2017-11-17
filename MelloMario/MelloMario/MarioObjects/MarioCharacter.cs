@@ -6,7 +6,7 @@ using MelloMario.Sounds;
 
 namespace MelloMario.MarioObjects
 {
-    class DollMario : Mario, ICharacter
+    class MarioCharacter : Mario, ICharacter
     {
         // TODO: create AnimationStates
         private enum Animation
@@ -81,6 +81,14 @@ namespace MelloMario.MarioObjects
             }
         }
 
+        public IGameWorld CurrentWorld
+        {
+            get
+            {
+                return World;
+            }
+        }
+
         public Rectangle Sensing
         {
             get
@@ -99,7 +107,7 @@ namespace MelloMario.MarioObjects
                 Point location = Boundary.Location - new Point(GameConst.FOCUS_X, GameConst.FOCUS_Y);
                 Point size = new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
 
-                Rectangle worldBoundary = world.Boundary;
+                Rectangle worldBoundary = World.Boundary;
 
                 // NOTE: this is a temporary solution, this should be moved to the collision detection system
                 if (location.X < worldBoundary.Left)
@@ -123,7 +131,7 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        public DollMario(IGameWorld world, Point location, Listener listener) : base(world, location, listener)
+        public MarioCharacter(IGameWorld world, Point location, Listener listener) : base(world, location, listener)
         {
             jumpSound = SoundController.Bounce.CreateInstance();
             powerJumpSound = SoundController.PowerBounce.CreateInstance();
@@ -291,10 +299,23 @@ namespace MelloMario.MarioObjects
                 if (PowerUpState is PowerUpStates.Fire)
                 {
                     // note: listener is passed as null so score points will not do anything
-                    // new Fire(world, Boundary.Location, null, Facing == FacingMode.right);
-                    new Fire(world, Boundary.Location, null);
+                    // new Fire(World, Boundary.Location, null, Facing == FacingMode.right);
+                    new Fire(World, Boundary.Location, null);
                 }
             }
+        }
+
+        public void Move(IGameWorld newWorld, Point newLocation)
+        {
+            World.Remove(this);
+            World = newWorld;
+            World.Add(this);
+            Relocate(newLocation);
+        }
+
+        public void Remove()
+        {
+            RemoveSelf();
         }
     }
 }

@@ -5,13 +5,22 @@ namespace MelloMario.MarioObjects
 {
     class Player : IPlayer
     {
-        public IGameSession Session { get; set; }
+        private IGameSession session;
+        private ICharacter character;
+
+        public IGameSession Session
+        {
+            get
+            {
+                return session;
+            }
+        }
 
         public IGameWorld World
         {
             get
             {
-                return base.world;
+                return character.CurrentWorld;
             }
         }
 
@@ -19,35 +28,27 @@ namespace MelloMario.MarioObjects
         {
             get
             {
-                return this;
+                return character;
             }
         }
 
-        public PlayerMario(IGameSession session, IGameWorld world, Point location, Listener listener) : base(world, location, listener)
+        public Player(IGameSession session, ICharacter character)
         {
-            Session = session;
-            Session.Add(this);
+            this.session = session;
+            this.session.Add(this);
+            this.character = character;
         }
 
-        public void Spawn(IGameWorld world, Point location)
+        public void Spawn(IGameWorld newWorld, Point newLocation)
         {
-            World.Remove(this);
-            base.world = world;
-            World.Add(this);
-
+            character.Move(newWorld, newLocation);
             Session.Move(this);
-
-            Relocate(location);
         }
 
-        public void Reset()
+        public void Reset(ICharacter newCharacter)
         {
-            RemoveSelf();
-            Session.Remove(this);
-
-            // note: Boundary.Location or Boundary.Center? sometimes confusing
-            // note: listener is passed as null so score points will not do anything
-            new PlayerMario(Session, World, World.GetRespawnPoint(Boundary.Location), null);
+            character.Remove();
+            character = newCharacter;
         }
     }
 }

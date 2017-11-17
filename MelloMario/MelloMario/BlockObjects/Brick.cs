@@ -124,8 +124,8 @@ namespace MelloMario.BlockObjects
                 return;
             }
             IGameObject item = GameDatabase.GetNextItem(this);
-            world.Update();
-            world.Add(item);
+            World.Update();
+            World.Add(item);
         }
     }
 }
