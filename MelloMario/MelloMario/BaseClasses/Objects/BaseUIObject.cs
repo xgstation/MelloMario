@@ -6,7 +6,7 @@ namespace MelloMario
 {
     abstract class BaseUIObject : IGameObject
     {
-        protected IPlayer player;
+        protected IPlayer Player;
 
         protected abstract void OnUpdate(int time);
         protected abstract void OnDraw(int time, Rectangle viewport);
@@ -21,7 +21,7 @@ namespace MelloMario
 
         public BaseUIObject(IPlayer player)
         {
-            this.player = player;
+            Player = player;
         }
 
         public void Update(int time)

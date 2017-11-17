@@ -38,7 +38,7 @@ namespace MelloMario.LevelGen
             startPoint.X = startPoint.X * GameConst.GRID;
             startPoint.Y = startPoint.Y * GameConst.GRID;
 
-            characterStack.Push((MarioCharacter) GameObjectFactory.Instance.CreateGameCharacter("Mario", gameSession, gameWorld, startPoint, listener).Item1);
+            characterStack.Push((MarioCharacter) GameObjectFactory.Instance.CreateGameCharacter("Mario", gameWorld, startPoint, listener).Item1);
 
             return new EncapsulatedObject<MarioCharacter>(characterStack);
         }
