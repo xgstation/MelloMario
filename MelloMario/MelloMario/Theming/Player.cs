@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using MelloMario.Theming;
 
-namespace MelloMario.MarioObjects
+namespace MelloMario.Theming
 {
     class Player : IPlayer
     {

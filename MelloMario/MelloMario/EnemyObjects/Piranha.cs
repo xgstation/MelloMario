@@ -5,6 +5,7 @@ using MelloMario.MarioObjects;
 using MelloMario.UIObjects;
 using Microsoft.Xna.Framework;
 using MelloMario.Theming;
+using MelloMario.ItemObjects;
 
 namespace MelloMario.EnemyObjects
 {
@@ -79,7 +80,7 @@ namespace MelloMario.EnemyObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
-            if (target is Fire)
+            if (target is FireBall)
             {
                 Defeat();
             }

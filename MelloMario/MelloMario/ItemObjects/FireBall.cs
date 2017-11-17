@@ -1,10 +1,11 @@
 ﻿using MelloMario.Factories;
 using Microsoft.Xna.Framework;
 using MelloMario.Theming;
+using MelloMario.MarioObjects;
 
-namespace MelloMario.MarioObjects
+namespace MelloMario.ItemObjects
 {
-    class Fire : BasePhysicalObject
+    class FireBall : BasePhysicalObject
     {
         protected override void OnSimulation(int time)
         {
@@ -39,7 +40,7 @@ namespace MelloMario.MarioObjects
             //throw new NotImplementedException();
         }
 
-        public Fire(IGameWorld world, Point location, Listener listener) : base(world, location, listener, new Point(16, 16), 32)
+        public FireBall(IGameWorld world, Point location, Listener listener) : base(world, location, listener, new Point(16, 16), 32)
         {
             ShowSprite(SpriteFactory.Instance.CreateFireSprite());
         }

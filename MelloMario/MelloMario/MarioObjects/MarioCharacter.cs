@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Audio;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.Theming;
 using MelloMario.Sounds;
+using MelloMario.ItemObjects;
 
 namespace MelloMario.MarioObjects
 {
@@ -300,7 +301,7 @@ namespace MelloMario.MarioObjects
                 {
                     // note: listener is passed as null so score points will not do anything
                     // new Fire(World, Boundary.Location, null, Facing == FacingMode.right);
-                    new Fire(World, Boundary.Location, null);
+                    new FireBall(World, Boundary.Location, null);
                 }
             }
         }
