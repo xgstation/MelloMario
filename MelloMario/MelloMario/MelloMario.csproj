@@ -139,6 +139,7 @@
     <Compile Include="EnemyObjects\Goomba.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
+    <Compile Include="MarioObjects\Player.cs" />
     <Compile Include="UIObjects\GameWon.cs" />
     <Compile Include="UIObjects\GameStart.cs" />
     <Compile Include="UIObjects\GameOver.cs" />
@@ -182,7 +183,7 @@
     <Compile Include="LevelGen\GameEntityConverter.cs" />
     <Compile Include="LevelGen\Util.cs" />
     <Compile Include="MarioObjects\Fire.cs" />
-    <Compile Include="MarioObjects\DollMario.cs" />
+    <Compile Include="MarioObjects\MarioCharacter.cs" />
     <Compile Include="MiscObjects\Background.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -198,7 +199,6 @@
     <Compile Include="Interfaces\Objects\States\IMarioProtectionState.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioMovementState.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioPowerUpState.cs" />
-    <Compile Include="MarioObjects\PlayerMario.cs" />
     <Compile Include="MarioObjects\ProtectionStates\Dead.cs" />
     <Compile Include="MarioObjects\PowerUpStates\Fire.cs" />
     <Compile Include="MarioObjects\PowerUpStates\Standard.cs" />

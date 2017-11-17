@@ -7,7 +7,7 @@ namespace MelloMario
         IGameWorld World { get; }
         ICharacter Character { get; }
 
-        void Spawn(IGameWorld newWorld, Point location);
-        void Reset();
+        void Spawn(IGameWorld newWorld, Point newLocation);
+        void Reset(ICharacter newCharacter);
     }
 }
