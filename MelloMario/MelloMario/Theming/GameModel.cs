@@ -187,12 +187,12 @@ namespace MelloMario.Theming
         private void UpdateGameObjects(int time)
         {
             // reserved for multiplayer
-            ISet<IGameObject> updating = new HashSet<IGameObject>();
+            ISet<IObject> updating = new HashSet<IObject>();
 
             foreach (IPlayer player in session.ScanPlayers())
             {
                 player.World.Update();
-                foreach (IGameObject obj in player.World.ScanNearby(player.Character.Sensing))
+                foreach (IObject obj in player.World.ScanNearby(player.Character.Sensing))
                 {
                     updating.Add(obj);
                 }
@@ -200,7 +200,7 @@ namespace MelloMario.Theming
 
             updating.Add(Splash);
 
-            foreach (IGameObject obj in updating)
+            foreach (IObject obj in updating)
             {
                 obj.Update(time);
             }
@@ -234,7 +234,7 @@ namespace MelloMario.Theming
         {
             IPlayer player = GetActivePlayer();
 
-            foreach (IGameObject obj in player.World.ScanNearby(player.Character.Viewport))
+            foreach (IObject obj in player.World.ScanNearby(player.Character.Viewport))
             {
                 if (isPaused)
                 {
