@@ -14,12 +14,11 @@ namespace MelloMario.Theming
     class Listener
     {
         private GameModel model;
-        private bool won;
+        private IPlayer player;
 
         public Listener(GameModel model)
         {
             this.model = model;
-            won = false;
         }
 
         public void Subscribe(Coin m)
@@ -46,32 +45,18 @@ namespace MelloMario.Theming
 
         private void OnLivesChange(BaseCollidableObject m, GameEventArgs e)
         {
-            GameDatabase.Lifes += e.Points;
-            if (GameDatabase.Lifes > 99)
-            {
-                GameDatabase.Lifes = 99;
-            }
+            player.AddLife();
         }
 
         private void OnPointGain(BaseCollidableObject m, GameEventArgs e)
         {
-            GameDatabase.Score += e.Points;
-            if (GameDatabase.Score > 999999)
-            {
-                GameDatabase.Score = 999999;
-            }
+            player.AddScore(e.Points);
         }
 
         private void OnLevelWon(Flag m, EventArgs e)
         {
-            //TODO: this if should eventually be unneeded
-            if (!won)
-            {
-                GameDatabase.Score += GameConst.SCORE_TIME_MULT * GameDatabase.TimeRemain / 1000;
-                GameDatabase.TimeRemain = 0;
-                model.TransistGameWon();
-                won = true;
-            }
+            player.LevelWon();
+            model.TransistGameWon();
         }
 
         private void OnGameOver(Mario m, EventArgs e)

@@ -14,8 +14,10 @@ namespace MelloMario
 
         void Spawn(IGameWorld newWorld, Point newLocation);
         void AddCoin();
+        void AddLife();
         void AddScore(int delta);
-        void Reset(ICharacter newCharacter);
+        void LevelReset(ICharacter newCharacter);
+        void LevelWon();
         void Update(int time);
     }
 }

@@ -37,9 +37,10 @@
 
         // gameplay
 
-        public const int INIT_LIFES = 3;
         public const int LEVEL_TIME = 400;
-        public const int COINS_FOR_LIVE = 100;
+        public const int COINS_FOR_LIFE = 100;
+        public const int LIFES_INIT = 3;
+        public const int LIFES_MAX = 99;
 
         public const int SCORE_TIME_MULT = 50;
         public const int SCORE_COIN = 200;

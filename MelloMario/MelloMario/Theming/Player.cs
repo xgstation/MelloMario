@@ -71,7 +71,7 @@ namespace MelloMario.Theming
             this.session.Add(this);
             this.character = character;
 
-            lifes = GameConst.INIT_LIFES;
+            lifes = GameConst.LIFES_INIT;
             timeRemain = GameConst.LEVEL_TIME * 1000;
         }
 
@@ -79,18 +79,26 @@ namespace MelloMario.Theming
         {
             character.Move(newWorld, newLocation);
             Session.Move(this);
-
-            timeRemain = GameConst.LEVEL_TIME * 1000;
         }
 
         public void AddCoin()
         {
             coins += 1;
 
-            if (coins == GameConst.COINS_FOR_LIVE)
+            if (coins == GameConst.COINS_FOR_LIFE)
             {
                 coins = 0;
                 lifes += 1;
+            }
+        }
+
+        public void AddLife()
+        {
+            lifes += 1;
+
+            if (lifes > GameConst.LIFES_MAX)
+            {
+                lifes = GameConst.LIFES_MAX;
             }
         }
 
@@ -99,12 +107,18 @@ namespace MelloMario.Theming
             score += delta;
         }
 
-        public void Reset(ICharacter newCharacter)
+        public void LevelReset(ICharacter newCharacter)
         {
             character.Remove();
             character = newCharacter;
 
             lifes -= 1;
+            timeRemain = GameConst.LEVEL_TIME * 1000;
+        }
+
+        public void LevelWon()
+        {
+            score += GameConst.SCORE_TIME_MULT * timeRemain / 1000;
             timeRemain = GameConst.LEVEL_TIME * 1000;
         }
 
