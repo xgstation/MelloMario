@@ -21,7 +21,7 @@ namespace MelloMario.Theming
         private int splashElapsed; // TODO: for sprint 4, refactor later
         //TODO: temporary public
         //note: we will have an extra class called Player which contains these information
-        public IGameObject Splash;
+        public IObject Splash;
         public SoundController.Songs ThemeMusic { get; private set; }
 
         // for singleplayer game
@@ -246,7 +246,7 @@ namespace MelloMario.Theming
                 }
             }
 
-            Splash.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
+            Splash.Draw(time);
         }
     }
 }

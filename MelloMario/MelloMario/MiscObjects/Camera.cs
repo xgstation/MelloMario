@@ -9,9 +9,9 @@ using static System.Single;
 
 namespace MelloMario.MiscObjects
 {
-    class GameCamera : IGameCamera
+    class Camera : ICamera
     {
-        public GameCamera(Viewport viewport)
+        public Camera(Viewport viewport)
         {
             this.viewport = viewport;
             Origin = new Vector2(this.viewport.Width / 2.0f, this.viewport.Height / 2.0f);

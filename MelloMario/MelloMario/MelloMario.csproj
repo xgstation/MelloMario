@@ -139,8 +139,8 @@
     <Compile Include="EnemyObjects\Goomba.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
-    <Compile Include="Interfaces\IGameCamera.cs" />
-    <Compile Include="MiscObjects\GameCamera.cs" />
+    <Compile Include="Interfaces\ICamera.cs" />
+    <Compile Include="MiscObjects\Camera.cs" />
     <Compile Include="Theming\Player.cs" />
     <Compile Include="UIObjects\GameWon.cs" />
     <Compile Include="UIObjects\GameStart.cs" />
