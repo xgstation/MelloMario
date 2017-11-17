@@ -74,7 +74,7 @@ namespace MelloMario.Theming
             Splash = new GameOver();
             splashElapsed = 0;
 
-            GetActivePlayer().Reset(null); // TODO
+            GetActivePlayer().LevelReset(null); // TODO
         }
 
         public void TransistGameWon()
