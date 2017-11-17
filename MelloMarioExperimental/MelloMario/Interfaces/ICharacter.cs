@@ -6,7 +6,6 @@ namespace MelloMario
     {
         bool Active { get; }
         Rectangle Sensing { get; }
-        Rectangle Viewport { get; }
 
         void Left();
         void LeftPress();

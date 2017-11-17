@@ -72,7 +72,7 @@ namespace MelloMario.EnemyObjects
             HasMarioAbove = DetectMario();
         }
 
-        protected override void OnDraw(int time, Rectangle viewport)
+        protected override void OnDraw(int time)
         {
         }
 

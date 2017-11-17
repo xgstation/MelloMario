@@ -26,9 +26,8 @@ namespace MelloMario.Theming
         public static int Lifes { get; set; }
         public static int TimeRemain { get; set; }
 
-        public static void Initialize(IGameSession newSession, int newCoins = 0, int newScore = 0, int newLifes = 3, int newTimeRemain = GameConst.LEVEL_TIME * 1000)
+        public static void Initialize(int newCoins = 0, int newScore = 0, int newLifes = 3, int newTimeRemain = GameConst.LEVEL_TIME * 1000)
         {
-            session = newSession;
             Coins = newCoins;
             Score = newScore;
             Lifes = newLifes;

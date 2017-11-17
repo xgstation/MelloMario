@@ -25,7 +25,7 @@ namespace MelloMario.UIObjects
 
         }
 
-        protected override void OnDraw(int time, Rectangle viewport)
+        protected override void OnDraw(int time)
         {
 
         }

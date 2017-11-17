@@ -15,7 +15,8 @@ namespace MelloMario
         private readonly GraphicsDeviceManager graphics;
         private GameModel model;
         private SpriteBatch spriteBatch;
-        
+
+        public Camera Camera { get; set; }
 
 
         public Game1()
@@ -23,6 +24,7 @@ namespace MelloMario
             graphics = new GraphicsDeviceManager(this) { };
             graphics.PreferredBackBufferHeight = GameConst.SCREEN_WIDTH;
             graphics.PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT;
+
         }
 
         public void Reset()
@@ -37,7 +39,6 @@ namespace MelloMario
             //SoundController.PlayMusic(SoundController.Songs.normal);
             model.LoadControllers(controllers);
             model.LoadLevel("Main", true); // Create the level for the first time
-            model.Initialize();
         }
 
         /// <summary>
@@ -51,6 +52,7 @@ namespace MelloMario
             base.Initialize();
             //soundControl = new SoundController(this);
             Reset();
+            model.Initialize();
         }
 
         /// <summary>
@@ -97,7 +99,7 @@ namespace MelloMario
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
 #if !DEBUGSPRITE
-            spriteBatch.Begin(SpriteSortMode.BackToFront);
+            spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null ,Camera.GetViewMatrix(new Vector2(1f)));
 #endif
 #if DEBUGSPRITE
             //Debug Code

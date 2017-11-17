@@ -79,7 +79,7 @@ namespace MelloMario.LevelGen
 
             Util.TryGet(out Point initialPoint, MapToBeLoaded, "InitialSpawnPoint");
             Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints");
-            world = new GameWorld(index, mapSize, initialPoint, respawnPoints);
+            world = new GameWorld2(index, mapSize, initialPoint, respawnPoints);
 
             gameEntityConverter = new GameEntityConverter(model, graphicsDevice, world, listener, GameConst.GRID);
 
@@ -93,6 +93,11 @@ namespace MelloMario.LevelGen
                 {
                     EncapsulatedObject<IGameObject> gameObjs =
                         jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
+                    if (gameObjs?.RealObj != null)
+                        foreach (var gameObject in gameObjs?.RealObj)
+                        {
+                            world.Add(gameObject);
+                        }
                 }
 
                 if (Util.TryGet(out IList<JToken> characters, MapToBeLoaded, "Characters"))

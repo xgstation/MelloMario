@@ -92,37 +92,6 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        public Rectangle Viewport
-        {
-            get
-            {
-                Point location = Boundary.Location - new Point(GameConst.FOCUS_X, GameConst.FOCUS_Y);
-                Point size = new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
-
-                Rectangle worldBoundary = world.Boundary;
-
-                // NOTE: this is a temporary solution, this should be moved to the collision detection system
-                if (location.X < worldBoundary.Left)
-                {
-                    location.X = worldBoundary.Left;
-                }
-                if (location.Y < worldBoundary.Top)
-                {
-                    location.Y = worldBoundary.Top;
-                }
-                if (location.X > worldBoundary.Right - size.X)
-                {
-                    location.X = worldBoundary.Right - size.X;
-                }
-                if (location.Y > worldBoundary.Bottom - size.Y)
-                {
-                    location.Y = worldBoundary.Bottom - size.Y;
-                }
-
-                return new Rectangle(location, size);
-            }
-        }
-
         public DollMario(IGameWorld world, Point location, Listener listener) : base(world, location, listener)
         {
             jumpSound = SoundController.Bounce.CreateInstance();

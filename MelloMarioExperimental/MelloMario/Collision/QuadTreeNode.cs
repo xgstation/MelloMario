@@ -8,9 +8,9 @@ namespace MelloMario.Collision
     {
         #region Private Members
 
-        private const int MAXOBJECTS = 10;
+        private const int MAXOBJECTS = 30;
 
-        private Rectangle rect;
+        private Rectangle nodeArea;
 
         private IList<EncapsulatedQuadTreeObject<T>> objects;
 
@@ -28,10 +28,10 @@ namespace MelloMario.Collision
         {
         }
 
-        private QuadTreeNode(QuadTreeNode<T> parent, Rectangle rect)
+        private QuadTreeNode(QuadTreeNode<T> parent, Rectangle nodeArea)
         {
             this.parent = parent;
-            this.rect = rect;
+            this.nodeArea = nodeArea;
         }
 
         #endregion
@@ -79,11 +79,11 @@ namespace MelloMario.Collision
             }
         }
 
-        internal Rectangle Rect
+        internal Rectangle NodeArea
         {
             get
             {
-                return rect;
+                return nodeArea;
             }
         }
 
@@ -118,7 +118,7 @@ namespace MelloMario.Collision
 
         internal bool IsFit(EncapsulatedQuadTreeObject<T> item)
         {
-            return rect.Contains(item.Boundary);
+            return nodeArea.Contains(item.Boundary);
         }
 
         internal void Insert(EncapsulatedQuadTreeObject<T> item)
@@ -196,7 +196,7 @@ namespace MelloMario.Collision
         {
             if (objects != null)
             {
-                foreach (EncapsulatedQuadTreeObject<T> o in objects)
+                foreach (var o in objects)
                 {
                     container.Add(o.RealObj);
                 }
@@ -211,25 +211,22 @@ namespace MelloMario.Collision
             bottomLeft.GetObjects(ref container);
         }
 
-        internal void GetObjects(Rectangle range, ref ICollection<T> container)
+        internal void GetObjects(Rectangle range, ref ICollection<T> objInRange)
         {
-            if (container == null)
+            //If search range fully contains this, return all objects
+            if (range.Contains(nodeArea))
             {
-                return;
+                GetObjects(ref objInRange);
             }
-            if (range.Contains(rect))
-            {
-                GetObjects(ref container);
-            }
-            else if (range.Intersects(rect))
+            else if (range.Intersects(nodeArea))
             {
                 if (objects != null)
                 {
-                    foreach (EncapsulatedQuadTreeObject<T> o in objects)
+                    foreach (var o in objects)
                     {
                         if (range.Intersects(o.Boundary))
                         {
-                            container.Add(o.RealObj);
+                            objInRange.Add(o.RealObj);
                         }
                     }
                 }
@@ -237,10 +234,10 @@ namespace MelloMario.Collision
                 {
                     return;
                 }
-                topLeft.GetObjects(range, ref container);
-                topRight.GetObjects(range, ref container);
-                bottomLeft.GetObjects(range, ref container);
-                bottomRight.GetObjects(range, ref container);
+                topLeft.GetObjects(range, ref objInRange);
+                topRight.GetObjects(range, ref objInRange);
+                bottomLeft.GetObjects(range, ref objInRange);
+                bottomRight.GetObjects(range, ref objInRange);
             }
         }
 
@@ -306,11 +303,11 @@ namespace MelloMario.Collision
 
         private void Divide()
         {
-            Point newSize = new Point(rect.Width / 2, rect.Height / 2);
-            topLeft = new QuadTreeNode<T>(this, new Rectangle(new Point(rect.Left, rect.Top), newSize));
-            topRight = new QuadTreeNode<T>(this, new Rectangle(new Point(rect.Center.X, rect.Top), newSize));
-            bottomLeft = new QuadTreeNode<T>(this, new Rectangle(new Point(rect.Left, rect.Center.Y), newSize));
-            bottomRight = new QuadTreeNode<T>(this, new Rectangle(new Point(rect.Center.X, rect.Center.Y), newSize));
+            Point newSize = new Point(nodeArea.Width / 2, nodeArea.Height / 2);
+            topLeft = new QuadTreeNode<T>(this, new Rectangle(new Point(nodeArea.Left, nodeArea.Top), newSize));
+            topRight = new QuadTreeNode<T>(this, new Rectangle(new Point(nodeArea.Center.X, nodeArea.Top), newSize));
+            bottomLeft = new QuadTreeNode<T>(this, new Rectangle(new Point(nodeArea.Left, nodeArea.Center.Y), newSize));
+            bottomRight = new QuadTreeNode<T>(this, new Rectangle(new Point(nodeArea.Center.X, nodeArea.Center.Y), newSize));
 
             for (int i = 0; i < objects.Count; i++)
             {
@@ -330,13 +327,13 @@ namespace MelloMario.Collision
         {
             switch (item.Boundary)
             {
-                case Rectangle r when topLeft.rect.Contains(r):
+                case Rectangle r when topLeft.nodeArea.Contains(r):
                     return topLeft;
-                case Rectangle r when topRight.rect.Contains(r):
+                case Rectangle r when topRight.nodeArea.Contains(r):
                     return topRight;
-                case Rectangle r when bottomLeft.rect.Contains(r):
+                case Rectangle r when bottomLeft.nodeArea.Contains(r):
                     return bottomLeft;
-                case Rectangle r when bottomRight.rect.Contains(r):
+                case Rectangle r when bottomRight.nodeArea.Contains(r):
                     return bottomRight;
                 default:
                     return this;
@@ -345,7 +342,7 @@ namespace MelloMario.Collision
 
         private void Relocate(EncapsulatedQuadTreeObject<T> item)
         {
-            if (rect.Contains(item.Boundary))
+            if (nodeArea.Contains(item.Boundary))
             {
                 if (!HasSubTree)
                 {

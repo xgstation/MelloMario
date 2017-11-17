@@ -19,7 +19,7 @@ namespace MelloMario.Collision
         }
         private readonly IDictionary<T, EncapsulatedQuadTreeObject<T>> dictTtoEncapsulated;
         private readonly QuadTreeNode<T> quadTreeRoot;
-        private readonly ConcurrentDictionary<T, UpdatingMode> toBeUpdated; 
+        private readonly ConcurrentDictionary<T, UpdatingMode> toBeUpdated;
 
         private int width;
         private int height;
@@ -42,7 +42,7 @@ namespace MelloMario.Collision
             toBeUpdated = new ConcurrentDictionary<T, UpdatingMode>();
         }
 
-        public Rectangle QuadTreeRect => quadTreeRoot.Rect;
+        public Rectangle QuadTreeRect => quadTreeRoot.NodeArea;
 
         public int Count => dictTtoEncapsulated.Count;
 
@@ -59,7 +59,7 @@ namespace MelloMario.Collision
         }
         public ICollection<T> GetObjects(Rectangle searchRange)
         {
-            ICollection<T> ranged = new List<T>();
+            ICollection<T> ranged = new HashSet<T>();
             quadTreeRoot.GetObjects(searchRange, ref ranged);
             return ranged;
         }
@@ -82,10 +82,7 @@ namespace MelloMario.Collision
         }
         private bool DoMove(T item)
         {
-            if (!Contains(item))
-            {
-                return false;
-            }
+            if (!Contains(item)) return false;
             quadTreeRoot.Move(dictTtoEncapsulated[item]);
             return true;
         }
@@ -127,7 +124,7 @@ namespace MelloMario.Collision
 
         public bool Contains(T item)
         {
-            return dictTtoEncapsulated.ContainsKey(item);
+            return item != null && dictTtoEncapsulated.ContainsKey(item);
         }
 
         public void CopyTo(T[] array, int arrayIndex)
@@ -146,13 +143,10 @@ namespace MelloMario.Collision
         }
         private bool DoRemove(T item)
         {
-            if (Contains(item))
-            {
-                quadTreeRoot.Delete(dictTtoEncapsulated[item], false);
-                dictTtoEncapsulated.Remove(item);
-                return true;
-            }
-            return false;
+            if (!Contains(item)) return false;
+            quadTreeRoot.Delete(dictTtoEncapsulated[item], false);
+            dictTtoEncapsulated.Remove(item);
+            return true;
         }
 
         public void Update()

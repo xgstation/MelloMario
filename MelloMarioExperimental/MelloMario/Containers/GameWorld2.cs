@@ -10,10 +10,10 @@ namespace MelloMario.Containers
 {
     class GameWorld2 : IGameWorld
     {
-        private QuadTree<IGameObject> objContainer;
+        private readonly QuadTree<IGameObject> objContainer;
         private string id;
-        private Point worldSize;
-        private Point initialPoint;
+        private readonly Point worldSize;
+        private readonly Point initialPoint;
         private ISet<Point> respawnPoints;
 
 
@@ -69,10 +69,7 @@ namespace MelloMario.Containers
             int y = range.Top - 64;
             int width = range.Width + 64;
             int height = range.Height + 64;
-            foreach (var gameObject in GetObjects(new Rectangle(x < 0 ? 0 : x, y < 0 ? 0 : y, width, height)))
-            {
-                yield return gameObject;
-            }
+            return GetObjects(new Rectangle(x < 0 ? 0 : x, y < 0 ? 0 : y, width, height));
         }
 
         public IEnumerable<IGameObject> ScanNearby(IGameObject obj)

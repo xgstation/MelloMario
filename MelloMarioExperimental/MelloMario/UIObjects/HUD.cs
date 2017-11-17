@@ -27,7 +27,7 @@ namespace MelloMario.UIObjects
             }
         }
 
-        protected override void OnDraw(int time, Rectangle viewport)
+        protected override void OnDraw(int time)
         {
             textSprite.Draw(time, new Rectangle(42, 42, 800, 200));
             coinSprite.Draw(time, new Rectangle(255, 74, 26, 30));

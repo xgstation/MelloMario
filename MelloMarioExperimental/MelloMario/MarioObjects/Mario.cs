@@ -297,7 +297,7 @@ namespace MelloMario.MarioObjects
             HandlerGameOver?.Invoke(this, eventInfo);
         }
 
-        protected override void OnDraw(int time, Rectangle viewport)
+        protected override void OnDraw(int time)
         {
         }
 

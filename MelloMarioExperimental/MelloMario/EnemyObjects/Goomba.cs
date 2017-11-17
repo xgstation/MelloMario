@@ -108,7 +108,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        protected override void OnDraw(int time, Rectangle viewport)
+        protected override void OnDraw(int time)
         {
         }
 

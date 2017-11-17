@@ -7,6 +7,8 @@ using MelloMario.MarioObjects;
 using MelloMario.UIObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
 #if PARALLEL
 using System.Threading.Tasks;
 #endif
@@ -16,8 +18,8 @@ namespace MelloMario.Theming
     class GameModel : IGameModel
     {
         public static readonly object Sync = new object();
+        
         private readonly Game1 game;
-        private readonly GameSession session;
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private readonly Listener listener;
@@ -26,32 +28,16 @@ namespace MelloMario.Theming
         //note: we will have an extra class called Player which contains these information
         public IGameObject Splash;
         public SoundController.Songs ThemeMusic { get; private set; }
-        // for singleplayer game
-        private IPlayer GetActivePlayer()
-        {
-            foreach (IPlayer player in session.ScanPlayers())
-            {
-                // take only one
-                return player;
-            }
-
-            return null; // error!
-        }
-#if PARALLEL
         public delegate void performUpdate(int time);
-        private performUpdate[] updateHandler;
-#endif
+        private readonly performUpdate[] updateHandler;
         public GameModel(Game1 game)
         {
             this.game = game;
-            session = new GameSession();
             listener = new Listener(this);
             ThemeMusic = SoundController.Songs.Idle;
-            GameDatabase.Initialize(session);
+            GameDatabase.Initialize();
             SoundController.Initialize(this);
-#if PARALLEL
-            updateHandler = new performUpdate[]{ UpdateMusicScene, UpdateGameObjects, SoundController.Update, GameDatabase.Update };
-#endif
+           updateHandler = new performUpdate[]{ UpdateMusicScene, UpdateGameObjects, SoundController.Update, GameDatabase.Update };
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -137,6 +123,8 @@ namespace MelloMario.Theming
             session.Update();
             ThemeMusic = id == "Main" ? SoundController.Songs.Normal : SoundController.Songs.BelowGround;
 
+            game.Camera = new Camera(game.GraphicsDevice.Viewport) { Limits = new Rectangle(0, 0, 212 * 32, 600) };
+            game.Camera.LookAt();
             return pair.Item1;
         }
 
@@ -234,6 +222,7 @@ namespace MelloMario.Theming
             UpdateMusicScene(time);
             UpdateGameObjects(time);
             GameDatabase.Update(time);
+            game.Camera.Move(game.Camera.Position - ((IGameObject)GetActivePlayer().Character).Boundary.Location.ToVector2());
 #endif
         }
 
@@ -254,15 +243,15 @@ namespace MelloMario.Theming
             {
                 if (isPaused)
                 {
-                    obj.Draw(0, player.Character.Viewport);
+                    obj.Draw(0);
                 }
                 else
                 {
-                    obj.Draw(time, player.Character.Viewport);
+                    obj.Draw(time);
                 }
             }
 #endif
-            Splash.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
+            Splash.Draw(time);
         }
     }
 }
