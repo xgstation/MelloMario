@@ -151,8 +151,13 @@ namespace MelloMario.Theming
             SoundController.ToggleMute();
         }
 
-        private void UpdateMusicScene()
+        private void UpdateMusicScene(int time)
         {
+            if (GetActivePlayer() is PlayerMario marioD &&
+                marioD.ProtectionState is MarioObjects.ProtectionStates.Dead)
+            {
+                MediaPlayer.Play(SoundController.Normal);
+            }
             if (GetActivePlayer() is PlayerMario mario &&
                 mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
             {
@@ -221,7 +226,7 @@ namespace MelloMario.Theming
                 return;
             }
             SoundController.Update();
-            UpdateMusicScene();
+            UpdateMusicScene(time);
             UpdateGameObjects(time);
             GameDatabase.Update(time);
         }
