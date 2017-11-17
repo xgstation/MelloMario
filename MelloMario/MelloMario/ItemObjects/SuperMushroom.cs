@@ -10,7 +10,6 @@ namespace MelloMario.ItemObjects
 {
     class SuperMushroom : BasePhysicalObject
     {
-        private const int H_SPEED = 4;
         private IItemState state;
         private bool collected;
 
@@ -39,11 +38,11 @@ namespace MelloMario.ItemObjects
 
                 if (Facing == FacingMode.left)
                 {
-                    SetHorizontalVelocity(-H_SPEED);
+                    SetHorizontalVelocity(-GameConst.VELOCITY_SUPER_MUSHROOM);
                 }
                 else
                 {
-                    SetHorizontalVelocity(H_SPEED);
+                    SetHorizontalVelocity(GameConst.VELOCITY_SUPER_MUSHROOM);
                 }
             }
 

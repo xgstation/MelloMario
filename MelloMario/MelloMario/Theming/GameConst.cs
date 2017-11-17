@@ -20,6 +20,11 @@
         public const float VELOCITY_MAX_U = 15f;
         public const float VELOCITY_MAX_D = 20f;
 
+        public const float VELOCITY_SUPER_MUSHROOM = 4f;
+        public const float VELOCITY_STAR_H = 6f;
+        public const float VELOCITY_STAR_V = 10f;
+        public const float VELOCITY_ONE_UP_MUSHROOM = 6f;
+
         public const float FORCE_G = 40f;
         public const float FORCE_INPUT_X = 120f;
         public const float FORCE_INPUT_Y = 150f;

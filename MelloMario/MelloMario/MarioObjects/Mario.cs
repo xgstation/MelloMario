@@ -140,8 +140,8 @@ namespace MelloMario.MarioObjects
                         {
                             if (Boundary.Center.X > target.Boundary.Center.X)
                             {
-                                Move(new Point(0, 3));
-                                StopHorizontalMovement();
+                                Bounce(CollisionMode.Left, new Vector2());
+                                Bounce(CollisionMode.Right, new Vector2());
                             }
                             else
                             {
@@ -152,7 +152,8 @@ namespace MelloMario.MarioObjects
                         {
                             if (Boundary.Center.X < target.Boundary.Center.X)
                             {
-                                Move(new Point(0, 3));
+                                Bounce(CollisionMode.Left, new Vector2());
+                                Bounce(CollisionMode.Right, new Vector2());
                             }
                             else
                             {

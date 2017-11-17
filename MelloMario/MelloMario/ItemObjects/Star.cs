@@ -10,8 +10,6 @@ namespace MelloMario.ItemObjects
 {
     class Star : BasePhysicalObject
     {
-        private const int H_SPEED = 6;
-        private const int V_SPEED = 10;
         private IItemState state;
         private bool goingRight;
         private bool collected;
@@ -34,11 +32,11 @@ namespace MelloMario.ItemObjects
 
                 if (Facing == FacingMode.left)
                 {
-                    SetHorizontalVelocity(-H_SPEED);
+                    SetHorizontalVelocity(-GameConst.VELOCITY_STAR_H);
                 }
                 else
                 {
-                    SetHorizontalVelocity(H_SPEED);
+                    SetHorizontalVelocity(GameConst.VELOCITY_STAR_H);
                 }
             }
 
@@ -89,7 +87,7 @@ namespace MelloMario.ItemObjects
                         if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2());
-                            ApplyVerticalFriction(V_SPEED);
+                            ApplyVerticalFriction(GameConst.VELOCITY_STAR_V);
                         }
                         break;
                 }

@@ -9,7 +9,6 @@ namespace MelloMario.ItemObjects
 {
     class OneUpMushroom : BasePhysicalObject
     {
-        private const int H_SPEED = 6;
         private IItemState state;
         private SoundEffectInstance oneupMushCollectSound;
         private bool collected;
@@ -32,11 +31,11 @@ namespace MelloMario.ItemObjects
 
                 if (Facing == FacingMode.left)
                 {
-                    SetHorizontalVelocity(-H_SPEED);
+                    SetHorizontalVelocity(-GameConst.VELOCITY_ONE_UP_MUSHROOM);
                 }
                 else
                 {
-                    SetHorizontalVelocity(H_SPEED);
+                    SetHorizontalVelocity(GameConst.VELOCITY_ONE_UP_MUSHROOM);
                 }
             }
 
