@@ -11,7 +11,6 @@ namespace MelloMario.EnemyObjects
     class Goomba : BasePhysicalObject
     {
         private IGoombaState state;
-        private const int VELOCITY_LR = 1;
 
         private void UpdateSprite()
         {
@@ -26,13 +25,14 @@ namespace MelloMario.EnemyObjects
         protected override void OnSimulation(int time)
         {
             ApplyGravity();
-            if (Facing == FacingMode.right)
+
+            if (Facing == FacingMode.left)
             {
-                Move(new Point(VELOCITY_LR, 0));
+                SetHorizontalVelocity(-GameConst.VELOCITY_GOOMBA);
             }
             else
             {
-                Move(new Point(-VELOCITY_LR, 0));
+                SetHorizontalVelocity(GameConst.VELOCITY_GOOMBA);
             }
 
             base.OnSimulation(time);

@@ -12,8 +12,6 @@ namespace MelloMario.EnemyObjects
     {
         private string color;
         private IKoopaState state;
-        private const int VELOCITY_LR = 1;
-        private const int VELOCITY_SHELL = 7;
 
         private void UpdateSprite()
         {
@@ -45,28 +43,32 @@ namespace MelloMario.EnemyObjects
         protected override void OnSimulation(int time)
         {
             ApplyGravity();
-            if (Facing == FacingMode.right)
+
+            if (state is MovingShell)
             {
-                if (state is MovingShell)
+
+                if (Facing == FacingMode.left)
                 {
-                    Move(new Point(VELOCITY_SHELL, 0));
+                    SetHorizontalVelocity(-GameConst.VELOCITY_KOOPA_SHELL);
                 }
                 else
                 {
-                    Move(new Point(VELOCITY_LR, 0));
+                    SetHorizontalVelocity(GameConst.VELOCITY_KOOPA_SHELL);
                 }
             }
             else
             {
-                if (state is MovingShell)
+
+                if (Facing == FacingMode.left)
                 {
-                    Move(new Point(-1 * VELOCITY_SHELL, 0));
+                    SetHorizontalVelocity(-GameConst.VELOCITY_KOOPA);
                 }
                 else
                 {
-                    Move(new Point(-1 * VELOCITY_LR, 0));
+                    SetHorizontalVelocity(GameConst.VELOCITY_KOOPA);
                 }
             }
+
 
             base.OnSimulation(time);
         }
