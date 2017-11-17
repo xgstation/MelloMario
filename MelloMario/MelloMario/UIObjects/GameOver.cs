@@ -38,7 +38,7 @@ namespace MelloMario.UIObjects
             }
         }
 
-        public GameOver(IPlayer player, IGameCamera camera) : base(player, camera)
+        public GameOver(IPlayer player) : base(player)
         {
             splashSprite = SpriteFactory.Instance.CreatSplashSprite();
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);

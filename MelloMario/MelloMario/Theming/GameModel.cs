@@ -5,7 +5,6 @@ using System;
 using MelloMario.Scripts;
 using MelloMario.Containers;
 using MelloMario.MarioObjects;
-using MelloMario.MiscObjects;
 using MelloMario.UIObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
@@ -16,7 +15,6 @@ namespace MelloMario.Theming
     {
         private readonly Game1 game;
         private readonly GameSession session;
-        private readonly IGameCamera camera;
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private readonly Listener listener;
@@ -46,7 +44,6 @@ namespace MelloMario.Theming
             ThemeMusic = SoundController.Songs.Idle;
             GameDatabase.Initialize(session);
             SoundController.Initialize(this);
-            camera = new GameCamera(game.GraphicsDevice.Viewport);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -74,7 +71,7 @@ namespace MelloMario.Theming
 
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new GameOver(GetActivePlayer(), camera);
+            Splash = new GameOver(GetActivePlayer());
             splashElapsed = 0;
 
             GetActivePlayer().LevelReset(null); // TODO
@@ -86,7 +83,7 @@ namespace MelloMario.Theming
 
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new GameWon(GetActivePlayer(), camera);
+            Splash = new GameWon(GetActivePlayer());
             splashElapsed = -1;
         }
 
@@ -96,7 +93,7 @@ namespace MelloMario.Theming
             MediaPlayer.Resume();
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new HUD(GetActivePlayer(), camera);
+            Splash = new HUD(GetActivePlayer());
 
         }
 
@@ -106,7 +103,7 @@ namespace MelloMario.Theming
 
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new GameStart(GetActivePlayer(), camera); // TODO: move these constructors to the factory
+            Splash = new GameStart(GetActivePlayer()); // TODO: move these constructors to the factory
             splashElapsed = 0;
         }
 
@@ -231,7 +228,6 @@ namespace MelloMario.Theming
             UpdateMusicScene(time);
             UpdateGameObjects(time);
             GameDatabase.Update(time);
-            camera.LookAt(new Vector2((GetActivePlayer().Character as IGameObject).Boundary.Location.X, 200f));
         }
 
         public void Draw(int time)
@@ -250,12 +246,7 @@ namespace MelloMario.Theming
                 }
             }
 
-            Splash.Draw(time);
-        }
-
-        public Matrix? GetViewMatrix(Vector2 vector2)
-        {
-            return camera.GetViewMatrix(vector2);
+            Splash.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
         }
     }
 }
