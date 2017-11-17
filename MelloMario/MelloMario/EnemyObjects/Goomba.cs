@@ -156,7 +156,7 @@ namespace MelloMario.EnemyObjects
         public void Defeat()
         {
             ScorePoints(GameConst.SCORE_GOOMBA);
-            new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_GOOMBA);
+            new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_GOOMBA);
             State.Defeat();
         }
     }

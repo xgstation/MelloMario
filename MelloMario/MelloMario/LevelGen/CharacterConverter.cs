@@ -14,7 +14,7 @@ namespace MelloMario.LevelGen
         private JToken jsonToken;
         private IGameSession gameSession;
         private IGameWorld gameWorld;
-        private Stack<PlayerMario> characterStack;
+        private Stack<MarioCharacter> characterStack;
         private Point startPoint;
         private Listener listener;
 

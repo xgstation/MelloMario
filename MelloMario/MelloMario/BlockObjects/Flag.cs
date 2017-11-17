@@ -25,7 +25,7 @@ namespace MelloMario.BlockObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
-            if (target is MarioObjects.PlayerMario mario)
+            if (target is MarioObjects.MarioCharacter mario)
             {
                 if (mario.Active)
                 {
@@ -36,7 +36,7 @@ namespace MelloMario.BlockObjects
                     eventInfo = null;
                     HandlerTimeScore?.Invoke(this, eventInfo);
                     ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
-                    new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_FLAG_MAX * height / maxHeight);
+                    new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_FLAG_MAX * height / maxHeight);
                     mario.FlagPole();
                 }
             }

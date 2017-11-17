@@ -111,7 +111,7 @@ namespace MelloMario.LevelGen
                 }
             }
 
-            //if (character == null) return world;
+            //if (character == null) return World;
             return new Tuple<IGameWorld, IPlayer>(world, character);
         }
 

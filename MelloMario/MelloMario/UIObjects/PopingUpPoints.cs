@@ -16,7 +16,7 @@ namespace MelloMario.UIObjects
             }
             else
             {
-                world.Remove(this);
+                World.Remove(this);
             }
         }
 

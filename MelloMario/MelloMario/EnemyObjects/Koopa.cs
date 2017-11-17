@@ -234,7 +234,7 @@ namespace MelloMario.EnemyObjects
         public void Defeat()
         {
             ScorePoints(GameConst.SCORE_KOOPA);
-            new PopingUpPoints(world, Boundary.Location, GameConst.SCORE_KOOPA);
+            new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_KOOPA);
             RemoveSelf();
         }
     }

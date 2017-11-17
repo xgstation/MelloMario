@@ -5,6 +5,7 @@ namespace MelloMario
     interface ICharacter
     {
         bool Active { get; }
+        IGameWorld CurrentWorld { get; }
         Rectangle Sensing { get; }
         Rectangle Viewport { get; }
 
@@ -24,5 +25,8 @@ namespace MelloMario
         void SuperCreate();
         void NormalCreate();
         void Action();
+
+        void Move(IGameWorld newWorld, Point newLocation);
+        void Remove();
     }
 }
