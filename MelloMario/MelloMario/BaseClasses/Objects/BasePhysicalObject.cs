@@ -6,7 +6,6 @@ namespace MelloMario
     abstract class BasePhysicalObject : BaseCollidableObject
     {
         private float pixelScale;
-        private float velocityLimit;
         private Vector2 movement;
         private Vector2 velocity;
         private Vector2 force;
@@ -163,23 +162,23 @@ namespace MelloMario
 
             // Apply velocity
 
-            if (velocity.X > GameConst.VELOCITY_MAX_LR * velocityLimit)
-            {
-                velocity.X = GameConst.VELOCITY_MAX_LR * velocityLimit;
-            }
-            else if (velocity.X < -GameConst.VELOCITY_MAX_LR * velocityLimit)
-            {
-                velocity.X = -GameConst.VELOCITY_MAX_LR * velocityLimit;
-            }
-            if (velocity.Y > GameConst.VELOCITY_MAX_D * velocityLimit)
-            {
-                velocity.Y = GameConst.VELOCITY_MAX_D * velocityLimit;
-            }
-            else if (velocity.Y < -GameConst.VELOCITY_MAX_U * velocityLimit)
-            {
-                velocity.Y = -GameConst.VELOCITY_MAX_U * velocityLimit;
-            }
             movement += velocity * deltaTime;
+            if (velocity.X > GameConst.VELOCITY_MAX_LR)
+            {
+                velocity.X = GameConst.VELOCITY_MAX_LR;
+            }
+            else if (velocity.X < -GameConst.VELOCITY_MAX_LR)
+            {
+                velocity.X = -GameConst.VELOCITY_MAX_LR;
+            }
+            if (velocity.Y > GameConst.VELOCITY_MAX_D)
+            {
+                velocity.Y = GameConst.VELOCITY_MAX_D;
+            }
+            else if (velocity.Y < -GameConst.VELOCITY_MAX_U)
+            {
+                velocity.Y = -GameConst.VELOCITY_MAX_U;
+            }
 
             // Apply movement
 
@@ -190,10 +189,9 @@ namespace MelloMario
             base.OnSimulation(time);
         }
 
-        public BasePhysicalObject(IGameWorld world, Point location, Listener listener, Point size, float pixelScale, float velocityLimit = 1) : base(world, location, listener, size)
+        public BasePhysicalObject(IGameWorld world, Point location, Listener listener, Point size, float pixelScale) : base(world, location, listener, size)
         {
             this.pixelScale = pixelScale;
-            this.velocityLimit = velocityLimit;
 
             movement = new Vector2();
             velocity = new Vector2();

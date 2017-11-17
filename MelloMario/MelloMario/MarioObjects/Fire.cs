@@ -39,7 +39,7 @@ namespace MelloMario.MarioObjects
             //throw new NotImplementedException();
         }
 
-        public Fire(IGameWorld world, Point location, Listener listener) : base(world, location, listener, new Point(16, 16), 32, 5f)
+        public Fire(IGameWorld world, Point location, Listener listener) : base(world, location, listener, new Point(16, 16), 32)
         {
             ShowSprite(SpriteFactory.Instance.CreateFireSprite());
         }
