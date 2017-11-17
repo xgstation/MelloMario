@@ -2,11 +2,8 @@
 
 namespace MelloMario
 {
-    interface IGameObject
+    interface IGameObject : IObject
     {
         Rectangle Boundary { get; }
-
-        void Update(int time);
-        void Draw(int time);
     }
 }
