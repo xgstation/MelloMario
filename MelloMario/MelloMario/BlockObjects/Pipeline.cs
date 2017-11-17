@@ -60,7 +60,7 @@ namespace MelloMario.BlockObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
-            if (target is PlayerMario mario && mode is CollisionMode.Top)
+            if (target is Mario mario && mode is CollisionMode.Top)
             {
                 if (mario.MovementState is Crouching && GameDatabase.IsEntrance(this))
                 {
@@ -70,13 +70,15 @@ namespace MelloMario.BlockObjects
                         case "LeftIn":
                             if (mario.Boundary.Center.X > Boundary.Center.X)
                             {
-                                switchingPlayer = mario;
+                                // TODO
+                                // switchingPlayer = mario;
                             }
                             break;
                         case "RightIn":
                             if (mario.Boundary.Center.X < Boundary.Center.X)
                             {
-                                switchingPlayer = mario;
+                                // TODO
+                                // switchingPlayer = mario;
                             }
                             break;
                     }

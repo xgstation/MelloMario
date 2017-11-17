@@ -16,9 +16,10 @@ namespace MelloMario.Theming
         private GameModel model;
         private IPlayer player;
 
-        public Listener(GameModel model)
+        public Listener(GameModel model, IPlayer player)
         {
             this.model = model;
+            this.player = player;
         }
 
         public void Subscribe(Coin m)

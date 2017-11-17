@@ -40,7 +40,7 @@ namespace MelloMario.Theming
         {
             this.game = game;
             session = new GameSession();
-            listener = new Listener(this);
+            listener = new Listener(this, new Player(session, null)); // TODO
             ThemeMusic = SoundController.Songs.Idle;
             GameDatabase.Initialize(session);
             SoundController.Initialize(this);
