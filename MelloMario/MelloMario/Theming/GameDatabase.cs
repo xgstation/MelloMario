@@ -21,18 +21,9 @@ namespace MelloMario.Theming
         private static readonly ConcurrentDictionary<ICharacter, Point> CharacterLocations = new ConcurrentDictionary<ICharacter, Point>();
         private static IGameSession session;
 
-        public static int Coins { get; set; }
-        public static int Score { get; set; }
-        public static int Lifes { get; set; }
-        public static int TimeRemain { get; set; }
-
-        public static void Initialize(IGameSession newSession, int newCoins = 0, int newScore = 0, int newLifes = 3, int newTimeRemain = GameConst.LEVEL_TIME * 1000)
+        public static void Initialize(IGameSession newSession, int newTimeRemain = GameConst.LEVEL_TIME * 1000)
         {
             session = newSession;
-            Coins = newCoins;
-            Score = newScore;
-            Lifes = newLifes;
-            TimeRemain = newTimeRemain;
 
         }
 
@@ -94,7 +85,7 @@ namespace MelloMario.Theming
             }
             if (ItemEnclosedDb[obj][0] is SuperMushroom mushroom)
             {
-                if (session.ScanPlayers().Any(c => (c as PlayerMario)?.PowerUpState is Super))
+                if (session.ScanPlayers().Any(c => (c as MarioCharacter)?.PowerUpState is Super))
                 {
                     ItemEnclosedDb[obj].RemoveAt(0);
                     return mushroom.GetFireFlower();
@@ -149,7 +140,6 @@ namespace MelloMario.Theming
                     (p, loc) => ((IGameObject) p).Boundary.Location
                 );
             }
-            TimeRemain -= time;
         }
     }
 }

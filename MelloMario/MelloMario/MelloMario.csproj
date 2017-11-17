@@ -139,8 +139,7 @@
     <Compile Include="EnemyObjects\Goomba.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
-    <Compile Include="Interfaces\IGameCamera.cs" />
-    <Compile Include="MiscObjects\Camera.cs" />
+    <Compile Include="MarioObjects\Player.cs" />
     <Compile Include="UIObjects\GameWon.cs" />
     <Compile Include="UIObjects\GameStart.cs" />
     <Compile Include="UIObjects\GameOver.cs" />
@@ -183,7 +182,7 @@
     <Compile Include="ItemObjects\SuperMushroomStates\Unveil.cs" />
     <Compile Include="LevelGen\GameEntityConverter.cs" />
     <Compile Include="LevelGen\Util.cs" />
-    <Compile Include="MarioObjects\Fire.cs" />
+    <Compile Include="ItemObjects\FireBall.cs" />
     <Compile Include="MarioObjects\MarioCharacter.cs" />
     <Compile Include="MiscObjects\Background.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

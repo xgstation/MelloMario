@@ -25,7 +25,7 @@ namespace MelloMario.LevelGen
         private static JsonSerializer serializers;
 
         private IGameWorld world;
-        private IPlayer character;
+        private ICharacter character;
         private Listener listener;
 
         public GameConverter(GameModel model, IGameSession session, Listener listener, string index = "Main")
@@ -100,10 +100,10 @@ namespace MelloMario.LevelGen
                 {
                     foreach (JToken obj in characters)
                     {
-                        EncapsulatedObject<PlayerMario> temp =
-                            obj.ToObject<EncapsulatedObject<PlayerMario>>(serializers);
+                        EncapsulatedObject<MarioCharacter> temp =
+                            obj.ToObject<EncapsulatedObject<MarioCharacter>>(serializers);
 
-                        PlayerMario mario = temp.RealObj.Pop();
+                        MarioCharacter mario = temp.RealObj.Pop();
                         character = mario;
 
                         //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
@@ -112,7 +112,7 @@ namespace MelloMario.LevelGen
             }
 
             //if (character == null) return World;
-            return new Tuple<IGameWorld, IPlayer>(world, character);
+            return new Tuple<IGameWorld, ICharacter>(world, character);
         }
 
         //TODO: Add serialize method and change CanWrite 

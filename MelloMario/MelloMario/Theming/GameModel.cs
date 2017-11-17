@@ -4,13 +4,10 @@ using MelloMario.LevelGen;
 using System;
 using MelloMario.Scripts;
 using MelloMario.Containers;
-using MelloMario.Interfaces;
 using MelloMario.MarioObjects;
-using MelloMario.MiscObjects;
 using MelloMario.UIObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 
 namespace MelloMario.Theming
 {
@@ -18,7 +15,6 @@ namespace MelloMario.Theming
     {
         private readonly Game1 game;
         private readonly GameSession session;
-        private readonly IGameCamera camera;
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private readonly Listener listener;
@@ -27,6 +23,7 @@ namespace MelloMario.Theming
         //note: we will have an extra class called Player which contains these information
         public IGameObject Splash;
         public SoundController.Songs ThemeMusic { get; private set; }
+
         // for singleplayer game
         private IPlayer GetActivePlayer()
         {
@@ -47,7 +44,6 @@ namespace MelloMario.Theming
             ThemeMusic = SoundController.Songs.Idle;
             GameDatabase.Initialize(session);
             SoundController.Initialize(this);
-            camera = new GameCamera(game.GraphicsDevice.Viewport);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -75,11 +71,10 @@ namespace MelloMario.Theming
 
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new GameOver();
-            GameDatabase.TimeRemain = GameConst.LEVEL_TIME * 1000;
+            Splash = new GameOver(GetActivePlayer());
             splashElapsed = 0;
 
-            GetActivePlayer().Reset();
+            GetActivePlayer().LevelReset(null); // TODO
         }
 
         public void TransistGameWon()
@@ -88,7 +83,7 @@ namespace MelloMario.Theming
 
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new GameWon();
+            Splash = new GameWon(GetActivePlayer());
             splashElapsed = -1;
         }
 
@@ -98,7 +93,7 @@ namespace MelloMario.Theming
             MediaPlayer.Resume();
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new HUD(camera);
+            Splash = new HUD(GetActivePlayer());
 
         }
 
@@ -108,7 +103,7 @@ namespace MelloMario.Theming
 
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new GameStart();
+            Splash = new GameStart(GetActivePlayer()); // TODO: move these constructors to the factory
             splashElapsed = 0;
         }
 
@@ -157,27 +152,27 @@ namespace MelloMario.Theming
 
         private void UpdateMusicScene(int time)
         {
-            if (GetActivePlayer() is PlayerMario marioD &&
+            if (GetActivePlayer().Character is MarioCharacter marioD &&
                 marioD.ProtectionState is MarioObjects.ProtectionStates.Dead)
             {
                 MediaPlayer.Play(SoundController.Normal);
             }
-            if (GetActivePlayer() is PlayerMario mario &&
+            if (GetActivePlayer().Character is MarioCharacter mario &&
                 mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
             {
                 ThemeMusic = SoundController.Songs.Star;
             }
-            else if (GameDatabase.TimeRemain < 90000)
+            else if (GetActivePlayer().Lifes <= 1)
+            {
+                ThemeMusic = SoundController.Songs.GameOver;
+            }
+            else if (GetActivePlayer().TimeRemain <= 90000)
             {
                 ThemeMusic = SoundController.Songs.Hurry;
             }
             else
             {
                 ThemeMusic = SoundController.Songs.Normal;
-            }
-            if (GameDatabase.TimeRemain == 0 || GameDatabase.Lifes < 1)
-            {
-                ThemeMusic = SoundController.Songs.GameOver;
             }
         }
 
@@ -233,8 +228,6 @@ namespace MelloMario.Theming
             UpdateMusicScene(time);
             UpdateGameObjects(time);
             GameDatabase.Update(time);
-            var cameraLoc = ((IGameObject) GetActivePlayer().Character).Boundary.Location.ToVector2();
-            camera.LookAt(new Vector2(cameraLoc.X, 190f));
         }
 
         public void Draw(int time)
@@ -245,20 +238,15 @@ namespace MelloMario.Theming
             {
                 if (isPaused)
                 {
-                    obj.Draw(0);
+                    obj.Draw(0, player.Character.Viewport);
                 }
                 else
                 {
-                    obj.Draw(time);
+                    obj.Draw(time, player.Character.Viewport);
                 }
             }
 
-            Splash.Draw(time);
-        }
-
-        public Matrix? GetViewMatrix(Vector2 vector2)
-        {
-            return camera.GetViewMatrix(vector2);
+            Splash.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
         }
     }
 }

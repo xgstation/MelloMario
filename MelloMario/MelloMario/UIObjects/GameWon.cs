@@ -23,12 +23,12 @@ namespace MelloMario.UIObjects
 
         }
 
-        public GameWon()
+        public GameWon(IPlayer player) : base(player)
         {
             splashSprite = SpriteFactory.Instance.CreatSplashSprite();
             Text = "MARIO        " + "   WORLD    TIME\n"
-                + GameDatabase.Score.ToString().PadLeft(6, '0') + "    *"
-                + GameDatabase.Coins.ToString().PadLeft(2, '0') + "    "
+                + Player.Score.ToString().PadLeft(6, '0') + "    *"
+                + Player.Coins.ToString().PadLeft(2, '0') + "    "
                 + "1-1" + "      ";
             textSprite = SpriteFactory.Instance.CreateTextSprite(Text);
         }
