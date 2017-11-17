@@ -22,7 +22,7 @@
             }
         }
 
-        public Jumping(Mario owner) : base(owner, 250)
+        public Jumping(Mario owner) : base(owner, 200)
         {
             previous = owner.MovementState;
             finished = false;

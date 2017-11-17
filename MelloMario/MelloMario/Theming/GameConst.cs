@@ -30,9 +30,9 @@
         public const float VELOCITY_KOOPA_SHELL = 20f;
 
         public const float FORCE_G = 40f;
-        public const float FORCE_INPUT_X = 120f;
+        public const float FORCE_INPUT_X = 150f;
         public const float FORCE_INPUT_Y = 150f;
-        public const float FORCE_F_GROUND = 100f;
+        public const float FORCE_F_GROUND = 120f;
         public const float FORCE_F_AIR = 20f;
 
         // gameplay
