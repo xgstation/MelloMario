@@ -1,4 +1,5 @@
 ﻿using MelloMario.Factories;
+using MelloMario.Interfaces;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 
@@ -6,6 +7,7 @@ namespace MelloMario.UIObjects
 {
     class HUD : BaseUIObject
     {
+        private IGameCamera camera;
         private string text;
         private ISprite textSprite;
         private ISprite coinSprite;
@@ -25,15 +27,22 @@ namespace MelloMario.UIObjects
             }
         }
 
-        protected override void OnDraw(int time, Rectangle viewport)
+        protected override void OnDraw(int time)
         {
-            textSprite.Draw(time, new Rectangle(42, 42, 800, 200));
-            coinSprite.Draw(time, new Rectangle(255, 74, 26, 30));
-            oneUpSprite.Draw(time, new Rectangle(255, 42, 26, 30));
+            var textRec = new Rectangle(42, 42, 800, 200);
+            var coinRec = new Rectangle(255, 74, 26, 30);
+            var oneUpRec = new Rectangle(255, 42, 26, 30);
+            textRec.Offset(camera.Location);
+            coinRec.Offset(camera.Location);
+            oneUpRec.Offset(camera.Location);
+            textSprite.Draw(time, textRec);
+            coinSprite.Draw(time, coinRec);
+            oneUpSprite.Draw(time, oneUpRec);
         }
 
-        public HUD()
+        public HUD(IGameCamera camera)
         {
+            this.camera = camera;
             textSprite = SpriteFactory.Instance.CreateTextSprite("");
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             oneUpSprite = SpriteFactory.Instance.CreateOneUpMushroomSprite();

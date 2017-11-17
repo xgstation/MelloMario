@@ -7,7 +7,7 @@ namespace MelloMario
     abstract class BaseUIObject : IGameObject
     {
         protected abstract void OnUpdate(int time);
-        protected abstract void OnDraw(int time, Rectangle viewport);
+        protected abstract void OnDraw(int time);
 
         public Rectangle Boundary
         {
@@ -22,9 +22,9 @@ namespace MelloMario
             OnUpdate(time);
         }
 
-        public void Draw(int time, Rectangle viewport)
+        public void Draw(int time)
         {
-            OnDraw(time, viewport);
+            OnDraw(time);
         }
     }
 }

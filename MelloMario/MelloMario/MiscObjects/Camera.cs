@@ -2,37 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using MelloMario.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using static System.Single;
 
-namespace MelloMario
+namespace MelloMario.MiscObjects
 {
-    public class Camera
+    class GameCamera : IGameCamera
     {
-        public Camera(Viewport viewport)
+        public GameCamera(Viewport viewport)
         {
-            _viewport = viewport;
-            Origin = new Vector2(_viewport.Width / 2.0f, _viewport.Height / 2.0f);
+            this.viewport = viewport;
+            Origin = new Vector2(this.viewport.Width / 2.0f, this.viewport.Height / 2.0f);
             Zoom = 1.0f;
         }
 
-        public Vector2 Position
+        public Vector2 Location
         {
-            get
-            {
-                return _position;
-            }
+            get => location;
             set
             {
-                _position = value;
+                location = value;
 
-                // If there's a limit set and there's no zoom or rotation clamp the position
-                if (Limits != null && Zoom == 1.0f && Rotation == 0.0f)
-                {
-                    _position.X = MathHelper.Clamp(_position.X, Limits.Value.X, Limits.Value.X + Limits.Value.Width - _viewport.Width);
-                    _position.Y = MathHelper.Clamp(_position.Y, Limits.Value.Y, Limits.Value.Y + Limits.Value.Height - _viewport.Height);
-                }
+                if (Limit == null || !(Math.Abs(Zoom - 1.0f) < Epsilon) || !(Math.Abs(Rotation) < Epsilon)) return;
+                location.X = MathHelper.Clamp(location.X, Limit.Value.X, Limit.Value.X + Limit.Value.Width - viewport.Width);
+                location.Y = MathHelper.Clamp(location.Y, Limit.Value.Y, Limit.Value.Y + Limit.Value.Height - viewport.Height);
             }
         }
 
@@ -43,47 +38,44 @@ namespace MelloMario
         public float Rotation { get; set; }
 
 
-        public Rectangle? Limits
+        public Rectangle? Limit
         {
-            get
-            {
-                return _limits;
-            }
+            get => limit;
             set
             {
                 if (value != null)
                 {
                     // Assign limit but make sure it's always bigger than the viewport
-                    _limits = new Rectangle
+                    limit = new Rectangle
                     {
                         X = value.Value.X,
                         Y = value.Value.Y,
-                        Width = System.Math.Max(_viewport.Width, value.Value.Width),
-                        Height = System.Math.Max(_viewport.Height, value.Value.Height)
+                        Width = System.Math.Max(viewport.Width, value.Value.Width),
+                        Height = System.Math.Max(viewport.Height, value.Value.Height)
                     };
 
-                    // Validate camera position with new limit
-                    Position = Position;
+                    // Validate gameCamera newLocation with new limit
+                    Location = Location;
                 }
                 else
                 {
-                    _limits = null;
+                    limit = null;
                 }
             }
         }
 
         public Matrix GetViewMatrix(Vector2 parallax)
         {
-            return Matrix.CreateTranslation(new Vector3(-Position * parallax, 0.0f)) *
+            return Matrix.CreateTranslation(new Vector3(-Location * parallax, 0.0f)) *
                    Matrix.CreateTranslation(new Vector3(-Origin, 0.0f)) *
                    Matrix.CreateRotationZ(Rotation) *
                    Matrix.CreateScale(Zoom, Zoom, 1.0f) *
                    Matrix.CreateTranslation(new Vector3(Origin, 0.0f));
         }
 
-        public void LookAt(Vector2 position)
+        public void LookAt(Vector2 newLocation)
         {
-            Position = position - new Vector2(_viewport.Width / 2.0f, _viewport.Height / 2.0f);
+            Location = newLocation - new Vector2(viewport.Width / 2.0f, viewport.Height / 2.0f);
         }
 
         public void Move(Vector2 displacement, bool respectRotation = false)
@@ -93,11 +85,11 @@ namespace MelloMario
                 displacement = Vector2.Transform(displacement, Matrix.CreateRotationZ(-Rotation));
             }
 
-            Position += displacement;
+            Location += displacement;
         }
 
-        private readonly Viewport _viewport;
-        private Vector2 _position;
-        private Rectangle? _limits;
+        private readonly Viewport viewport;
+        private Vector2 location;
+        private Rectangle? limit;
     }
 }

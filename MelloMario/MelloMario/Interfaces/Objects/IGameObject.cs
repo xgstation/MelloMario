@@ -7,6 +7,6 @@ namespace MelloMario
         Rectangle Boundary { get; }
 
         void Update(int time);
-        void Draw(int time, Rectangle viewport);
+        void Draw(int time);
     }
 }

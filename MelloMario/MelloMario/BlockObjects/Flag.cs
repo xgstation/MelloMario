@@ -50,7 +50,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnDraw(int time, Rectangle viewport)
+        protected override void OnDraw(int time)
         {
         }
 

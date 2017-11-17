@@ -4,7 +4,9 @@ using MelloMario.LevelGen;
 using System;
 using MelloMario.Scripts;
 using MelloMario.Containers;
+using MelloMario.Interfaces;
 using MelloMario.MarioObjects;
+using MelloMario.MiscObjects;
 using MelloMario.UIObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
@@ -16,6 +18,7 @@ namespace MelloMario.Theming
     {
         private readonly Game1 game;
         private readonly GameSession session;
+        private readonly IGameCamera camera;
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private readonly Listener listener;
@@ -44,6 +47,7 @@ namespace MelloMario.Theming
             ThemeMusic = SoundController.Songs.Idle;
             GameDatabase.Initialize(session);
             SoundController.Initialize(this);
+            camera = new GameCamera(game.GraphicsDevice.Viewport);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -94,7 +98,7 @@ namespace MelloMario.Theming
             MediaPlayer.Resume();
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new HUD();
+            Splash = new HUD(camera);
 
         }
 
@@ -229,6 +233,8 @@ namespace MelloMario.Theming
             UpdateMusicScene(time);
             UpdateGameObjects(time);
             GameDatabase.Update(time);
+            var cameraLoc = ((IGameObject) GetActivePlayer().Character).Boundary.Location.ToVector2();
+            camera.LookAt(new Vector2(cameraLoc.X, 190f));
         }
 
         public void Draw(int time)
@@ -239,15 +245,20 @@ namespace MelloMario.Theming
             {
                 if (isPaused)
                 {
-                    obj.Draw(0, player.Character.Viewport);
+                    obj.Draw(0);
                 }
                 else
                 {
-                    obj.Draw(time, player.Character.Viewport);
+                    obj.Draw(time);
                 }
             }
 
-            Splash.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
+            Splash.Draw(time);
+        }
+
+        public Matrix? GetViewMatrix(Vector2 vector2)
+        {
+            return camera.GetViewMatrix(vector2);
         }
     }
 }

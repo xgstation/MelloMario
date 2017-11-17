@@ -96,7 +96,7 @@ namespace MelloMario
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
 #if !DEBUGSPRITE
-            spriteBatch.Begin(SpriteSortMode.BackToFront);
+            spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, model.GetViewMatrix(new Vector2(1f)));
 #endif
 #if DEBUGSPRITE
             //Debug Code

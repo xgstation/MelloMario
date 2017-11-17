@@ -18,7 +18,7 @@ namespace MelloMario.UIObjects
             //UpdateSprite();
         }
 
-        protected override void OnDraw(int time, Rectangle viewport)
+        protected override void OnDraw(int time)
         {
             splashSprite.Draw(time, new Rectangle(0, 0, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT));
             textSprite.Draw(time, new Rectangle(42, 42, 800, 200));

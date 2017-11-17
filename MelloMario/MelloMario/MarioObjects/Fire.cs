@@ -16,7 +16,7 @@ namespace MelloMario.MarioObjects
             //throw new NotImplementedException();
         }
 
-        protected override void OnDraw(int time, Rectangle viewport)
+        protected override void OnDraw(int time)
         {
             //throw new NotImplementedException();
         }
