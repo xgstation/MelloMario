@@ -8,7 +8,6 @@ using MelloMario.MarioObjects;
 using MelloMario.UIObjects;
 using MelloMario.Sounds;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 
 namespace MelloMario.Theming
 {
@@ -24,6 +23,7 @@ namespace MelloMario.Theming
         //note: we will have an extra class called Player which contains these information
         public IGameObject Splash;
         public SoundController.Songs ThemeMusic { get; private set; }
+
         // for singleplayer game
         private IPlayer GetActivePlayer()
         {
@@ -75,7 +75,7 @@ namespace MelloMario.Theming
             GameDatabase.TimeRemain = GameConst.LEVEL_TIME * 1000;
             splashElapsed = 0;
 
-            GetActivePlayer().Reset();
+            GetActivePlayer().Reset(null); // TODO
         }
 
         public void TransistGameWon()
@@ -153,12 +153,12 @@ namespace MelloMario.Theming
 
         private void UpdateMusicScene(int time)
         {
-            if (GetActivePlayer() is PlayerMario marioD &&
+            if (GetActivePlayer() is MarioCharacter marioD &&
                 marioD.ProtectionState is MarioObjects.ProtectionStates.Dead)
             {
                 MediaPlayer.Play(SoundController.Normal);
             }
-            if (GetActivePlayer() is PlayerMario mario &&
+            if (GetActivePlayer() is MarioCharacter mario &&
                 mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
             {
                 ThemeMusic = SoundController.Songs.Star;

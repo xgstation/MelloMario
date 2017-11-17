@@ -94,7 +94,7 @@ namespace MelloMario.Theming
             }
             if (ItemEnclosedDb[obj][0] is SuperMushroom mushroom)
             {
-                if (session.ScanPlayers().Any(c => (c as PlayerMario)?.PowerUpState is Super))
+                if (session.ScanPlayers().Any(c => (c as MarioCharacter)?.PowerUpState is Super))
                 {
                     ItemEnclosedDb[obj].RemoveAt(0);
                     return mushroom.GetFireFlower();
