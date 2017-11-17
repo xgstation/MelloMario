@@ -19,7 +19,7 @@ namespace MelloMario.UIObjects
             textSprite.Draw(time, new Rectangle(0, 400, 200, 200));
         }
 
-        public GameStart()
+        public GameStart(IPlayer player) : base(player)
         {
             startSprite = SpriteFactory.Instance.CreateTitle(ZIndex.hud);
             textSprite = SpriteFactory.Instance.CreateTextSprite("Mellop");

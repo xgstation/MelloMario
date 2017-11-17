@@ -24,12 +24,12 @@ namespace MelloMario.UIObjects
             textSprite.Draw(time, new Rectangle(42, 42, 800, 200));
             coinSprite.Draw(time, new Rectangle(255, 74, 26, 30));
 
-            if (GameDatabase.Lifes > 0)
+            if (Player.Lifes > 0)
             {
                 ISprite text = SpriteFactory.Instance.CreateTextSprite("WORLD");
                 text.Draw(time, new Rectangle(300, 200, 80, 80));
                 marioSprite.Draw(time, new Rectangle(250, 250, 40, 40));
-                ISprite Life = SpriteFactory.Instance.CreateTextSprite("*  " + GameDatabase.Lifes);
+                ISprite Life = SpriteFactory.Instance.CreateTextSprite("*  " + Player.Lifes);
                 Life.Draw(time, new Rectangle(350, 250, 80, 80));
             }
             else
@@ -38,15 +38,15 @@ namespace MelloMario.UIObjects
             }
         }
 
-        public GameOver()
+        public GameOver(IPlayer player) : base(player)
         {
             splashSprite = SpriteFactory.Instance.CreatSplashSprite();
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
             gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
             Text = "MARIO        " + "   WORLD    TIME\n"
-                + GameDatabase.Score.ToString().PadLeft(6, '0') + "    *"
-                + GameDatabase.Coins.ToString().PadLeft(2, '0') + "    "
+                + Player.Score.ToString().PadLeft(6, '0') + "    *"
+                + Player.Coins.ToString().PadLeft(2, '0') + "    "
                 + "1-1" + "      ";
             textSprite = SpriteFactory.Instance.CreateTextSprite(Text);
         }

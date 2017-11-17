@@ -13,10 +13,10 @@ namespace MelloMario.UIObjects
 
         protected override void OnUpdate(int time)
         {
-            string newText = "MARIO     *" + GameDatabase.Lifes.ToString().PadLeft(2, '0') + "   WORLD    TIME\n"
-                + GameDatabase.Score.ToString().PadLeft(6, '0') + "    *"
-                + GameDatabase.Coins.ToString().PadLeft(2, '0') + "    "
-                + "1-1" + "      " + GameDatabase.TimeRemain / 1000; // TODO: get World name from player.CurrentWorld
+            string newText = "MARIO     *" + Player.Lifes.ToString().PadLeft(2, '0') + "   WORLD    TIME\n"
+                + Player.Score.ToString().PadLeft(6, '0') + "    *"
+                + Player.Coins.ToString().PadLeft(2, '0') + "    "
+                + "1-1" + "      " + Player.TimeRemain / 1000; // TODO: get World name from player.CurrentWorld
 
             if (newText != text)
             {
@@ -32,7 +32,7 @@ namespace MelloMario.UIObjects
             oneUpSprite.Draw(time, new Rectangle(255, 42, 26, 30));
         }
 
-        public HUD()
+        public HUD(IPlayer player) : base(player)
         {
             textSprite = SpriteFactory.Instance.CreateTextSprite("");
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);

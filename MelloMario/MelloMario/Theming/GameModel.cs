@@ -71,7 +71,7 @@ namespace MelloMario.Theming
 
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new GameOver();
+            Splash = new GameOver(GetActivePlayer());
             splashElapsed = 0;
 
             GetActivePlayer().LevelReset(null); // TODO
@@ -83,7 +83,7 @@ namespace MelloMario.Theming
 
             new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new GameWon();
+            Splash = new GameWon(GetActivePlayer());
             splashElapsed = -1;
         }
 
@@ -93,7 +93,7 @@ namespace MelloMario.Theming
             MediaPlayer.Resume();
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new HUD();
+            Splash = new HUD(GetActivePlayer());
 
         }
 
@@ -103,7 +103,7 @@ namespace MelloMario.Theming
 
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
-            Splash = new GameStart();
+            Splash = new GameStart(GetActivePlayer()); // TODO: move these constructors to the factory
             splashElapsed = 0;
         }
 
