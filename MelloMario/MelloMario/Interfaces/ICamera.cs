@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario
 {
-    interface IGameCamera
+    interface ICamera
     {
         Vector2 Location { get; set; }
 

@@ -246,7 +246,7 @@ namespace MelloMario.Theming
                 }
             }
 
-            Splash.Draw(time, new Rectangle(new Point(), player.Character.Viewport.Size));
+            Splash.Draw(time);
         }
     }
 }
