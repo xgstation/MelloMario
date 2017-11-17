@@ -4,6 +4,8 @@ namespace MelloMario
 {
     abstract class BaseGameObject : IGameObject
     {
+        private static readonly object sync = new object();
+        public object Sync => sync;
         private Point location;
         private Point size;
         private ISprite sprite;
@@ -112,6 +114,7 @@ namespace MelloMario
 
                 sprite.Draw(time, new Rectangle(Boundary.Location - viewport.Location, Boundary.Size));
             }
+
         }
     }
 }

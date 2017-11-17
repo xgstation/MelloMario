@@ -6,6 +6,7 @@ namespace MelloMario
 {
     abstract class BaseUIObject : IGameObject
     {
+        private static readonly object sync = new object();
         protected abstract void OnUpdate(int time);
         protected abstract void OnDraw(int time, Rectangle viewport);
 
@@ -16,6 +17,8 @@ namespace MelloMario
                 return new Rectangle(0, 0, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
             }
         }
+
+        public object Sync => sync;
 
         public void Update(int time)
         {

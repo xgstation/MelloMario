@@ -15,6 +15,7 @@ namespace MelloMario.Theming
 {
     class GameModel : IGameModel
     {
+        public static readonly object Sync = new object();
         private readonly Game1 game;
         private readonly GameSession session;
         private IEnumerable<IController> controllers;
@@ -49,7 +50,7 @@ namespace MelloMario.Theming
             GameDatabase.Initialize(session);
             SoundController.Initialize(this);
 #if PARALLEL
-            updateHandler = new performUpdate[] { UpdateMusicScene, UpdateGameObjects, SoundController.Update, GameDatabase.Update };
+            updateHandler = new performUpdate[]{ UpdateMusicScene, UpdateGameObjects, SoundController.Update, GameDatabase.Update };
 #endif
         }
 
@@ -242,14 +243,11 @@ namespace MelloMario.Theming
 #if PARALLEL
             Parallel.ForEach(player.World.ScanNearby(player.Character.Viewport), o =>
             {
-                if (isPaused)
+                lock (o.Sync)
                 {
-                    o.Draw(0, player.Character.Viewport);
+                    o.Draw(isPaused ? 0 : time, player.Character.Viewport);
                 }
-                else
-                {
-                    o.Draw(time, player.Character.Viewport);
-                }
+                
             });
 #else
             foreach (IGameObject obj in player.World.ScanNearby(player.Character.Viewport))
