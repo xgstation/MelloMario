@@ -564,7 +564,7 @@
           }
         },
         {
-          "Type": "FlagH",
+          "Type": "Flag",
           "Point": {
             "X": 198,
             "Y": 3

@@ -143,6 +143,7 @@
     <Compile Include="Interfaces\IListener.cs" />
     <Compile Include="Interfaces\Objects\IObject.cs" />
     <Compile Include="LevelGen\InfiniteGenerator.cs" />
+    <Compile Include="LevelGen\PerlinNoiseGenerator.cs" />
     <Compile Include="MiscObjects\Camera.cs" />
     <Compile Include="Theming\Player.cs" />
     <Compile Include="UIObjects\GameWon.cs" />
