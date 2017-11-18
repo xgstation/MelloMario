@@ -93,7 +93,8 @@ namespace MelloMario.Theming
         public void Update(int time)
         {
             TimeRemain -= time;
-            PlayerCamera?.LookAt(new Vector2((Character as IGameObject).Boundary.Location.X, 180f));
+            if (Character != null)
+                PlayerCamera?.LookAt(new Vector2(((IGameObject) Character).Boundary.Location.X, 180f));
         }
 
         public void Draw(int time, SpriteBatch spriteBatch) { }
