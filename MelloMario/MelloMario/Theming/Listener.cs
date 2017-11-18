@@ -56,7 +56,7 @@ namespace MelloMario.Theming
 
         private void OnLevelWon(Flag m, EventArgs e)
         {
-            player.LevelWon();
+            player.Won();
             model.TransistGameWon();
         }
 

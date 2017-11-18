@@ -40,7 +40,7 @@ namespace MelloMario.Theming
         {
             this.game = game;
             session = new GameSession();
-            listener = new Listener(this, new Player(session, null)); // TODO
+            listener = new Listener(this, new Player(session)); // TODO
             ThemeMusic = SoundController.Songs.Idle;
             GameDatabase.Initialize(session);
             SoundController.Initialize(this);
@@ -65,6 +65,38 @@ namespace MelloMario.Theming
             splashElapsed = -1;
         }
 
+        public IGameWorld LoadLevel(string id)
+        {
+            ThemeMusic = id == "Main" ? SoundController.Songs.Normal : SoundController.Songs.BelowGround;
+
+            foreach (IGameWorld world in session.ScanWorlds())
+            {
+                if (world.Id == id)
+                {
+                    return world;
+                }
+            }
+
+            // IGameWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
+
+            LevelIOJson reader = new LevelIOJson("Content/Level1.json", game.GraphicsDevice, listener);
+            reader.SetModel(this);
+
+            return reader.Load(id, session);
+        }
+
+        public void Init()
+        {
+            isPaused = true;
+
+            new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
+
+            Splash = new GameStart(GetActivePlayer()); // TODO: move these constructors to the factory
+            splashElapsed = 0;
+
+            LoadLevel("Main");
+        }
+
         public void Transist()
         {
             isPaused = true;
@@ -74,7 +106,7 @@ namespace MelloMario.Theming
             Splash = new GameOver(GetActivePlayer());
             splashElapsed = 0;
 
-            GetActivePlayer().LevelReset(null); // TODO
+            GetActivePlayer().Reset(null); // TODO
         }
 
         public void TransistGameWon()
@@ -94,44 +126,7 @@ namespace MelloMario.Theming
             new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
 
             Splash = new HUD(GetActivePlayer());
-
         }
-
-        public void Init()
-        {
-            isPaused = true;
-
-            new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
-
-            Splash = new GameStart(GetActivePlayer()); // TODO: move these constructors to the factory
-            splashElapsed = 0;
-        }
-
-        public IGameWorld LoadLevel(string id, bool init = false)
-        {
-            foreach (IGameWorld world in session.ScanWorlds())
-            {
-                if (world.Id == id)
-                {
-                    return world;
-                }
-            }
-
-            LevelIOJson reader = new LevelIOJson("Content/Level1.json", game.GraphicsDevice, listener);
-            reader.SetModel(this);
-            Tuple<IGameWorld, IPlayer> pair = reader.Load(id, session);
-
-            if (!init && pair.Item2 != null)
-            {
-                session.Remove(pair.Item2);
-            }
-            session.Update();
-            ThemeMusic = id == "Main" ? SoundController.Songs.Normal : SoundController.Songs.BelowGround;
-
-            return pair.Item1;
-        }
-
-
 
         public void Reset()
         {

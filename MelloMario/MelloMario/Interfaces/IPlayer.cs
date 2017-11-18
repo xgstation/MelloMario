@@ -12,12 +12,13 @@ namespace MelloMario
         int Lifes { get; }
         int TimeRemain { get; }
 
-        void Spawn(IGameWorld newWorld, Point newLocation);
         void AddCoin();
         void AddLife();
         void AddScore(int delta);
-        void LevelReset(ICharacter newCharacter);
-        void LevelWon();
+        void Init(string type, Theming.Listener listener); // TODO: interface should not depend on implementation; make listener an interface?
+        void Spawn(IGameWorld newWorld, Point newLocation);
+        void Reset(string type, Theming.Listener listener);
+        void Won();
         void Update(int time);
     }
 }

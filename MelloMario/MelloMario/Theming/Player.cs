@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using MelloMario.Factories;
 
 namespace MelloMario.Theming
 {
@@ -65,20 +66,9 @@ namespace MelloMario.Theming
             }
         }
 
-        public Player(IGameSession session, ICharacter character)
+        public Player(IGameSession session)
         {
             this.session = session;
-            this.session.Add(this);
-            this.character = character;
-
-            lifes = GameConst.LIFES_INIT;
-            timeRemain = GameConst.LEVEL_TIME * 1000;
-        }
-
-        public void Spawn(IGameWorld newWorld, Point newLocation)
-        {
-            character.Move(newWorld, newLocation);
-            Session.Move(this);
         }
 
         public void AddCoin()
@@ -107,16 +97,31 @@ namespace MelloMario.Theming
             score += delta;
         }
 
-        public void LevelReset(ICharacter newCharacter)
+        public void Init(string type, Listener listener)
+        {
+            character = GameObjectFactory.Instance.CreateGameCharacter(type, character.CurrentWorld, character.CurrentWorld.GetInitialPoint(), listener);
+            session.Add(this);
+
+            lifes = GameConst.LIFES_INIT;
+            timeRemain = GameConst.LEVEL_TIME * 1000;
+        }
+
+        public void Spawn(IGameWorld newWorld, Point newLocation)
+        {
+            character.Move(newWorld, newLocation);
+            session.Move(this);
+        }
+
+        public void Reset(string type, Listener listener)
         {
             character.Remove();
-            character = newCharacter;
+            character = GameObjectFactory.Instance.CreateGameCharacter(type, character.CurrentWorld, character.CurrentWorld.GetInitialPoint(), listener);
 
             lifes -= 1;
             timeRemain = GameConst.LEVEL_TIME * 1000;
         }
 
-        public void LevelWon()
+        public void Won()
         {
             score += GameConst.SCORE_TIME_MULT * timeRemain / 1000;
             timeRemain = GameConst.LEVEL_TIME * 1000;
