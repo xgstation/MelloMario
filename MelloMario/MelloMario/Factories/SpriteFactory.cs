@@ -12,7 +12,6 @@ namespace MelloMario.Factories
         private static ISpriteFactory instance = new SpriteFactory();
 
         private ContentManager content;
-        private SpriteBatch spriteBatch;
 
         private IDictionary<string, Texture2D> textures;
 
@@ -44,19 +43,14 @@ namespace MelloMario.Factories
             content = newContentManager;
         }
 
-        public void BindSpriteBatch(SpriteBatch newSpriteBatch)
-        {
-            spriteBatch = newSpriteBatch;
-        }
-
         public ISprite CreateTextSprite(string text, float fontSize = 18f)
         {
-            return new TextSprite(spriteBatch, text, content.Load<SpriteFont>("Font\\text"), new Point(), ZIndex.hud, fontSize);
+            return new TextSprite(text, content.Load<SpriteFont>("Font\\text"), new Point(), ZIndex.hud, fontSize);
         }
 
         public ISprite CreatSplashSprite()
         {
-            return new SplashSprite(spriteBatch);
+            return new SplashSprite();
         }
 
         public ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing)
@@ -64,15 +58,15 @@ namespace MelloMario.Factories
             switch (protectionStatus)
             {
                 case "Protected":
-                    return new FlashingAnimatedSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
+                    return new FlashingAnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Starred":
-                    return new FlickingAnimatedSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
+                    return new FlickingAnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Normal":
-                    return new AnimatedSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
+                    return new AnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Dead":
-                    return new StaticSprite(spriteBatch, GetTexture(protectionStatus), zIndex: ZIndex.foreground);
+                    return new StaticSprite(GetTexture(protectionStatus), zIndex: ZIndex.foreground);
                 case "GameOver":
-                    return new StaticSprite(spriteBatch, GetTexture(powerUpStatus + movementStatus + facing), zIndex: ZIndex.hud);
+                    return new StaticSprite(GetTexture(powerUpStatus + movementStatus + facing), zIndex: ZIndex.hud);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -85,9 +79,9 @@ namespace MelloMario.Factories
             switch (status)
             {
                 case "Defeated":
-                    return new StaticSprite(spriteBatch, GetTexture("GoombaDead"));
+                    return new StaticSprite(GetTexture("GoombaDead"));
                 case "Normal":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Goomba"), 2, 1);
+                    return new AnimatedSprite(GetTexture("Goomba"), 2, 1);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -103,14 +97,14 @@ namespace MelloMario.Factories
                 case "DefeatedRight":
                 case "MovingShellLeft":
                 case "MovingShellRight":
-                    return new StaticSprite(spriteBatch, GetTexture(color + "KoopaDead"), 0, 0, 2, 3);
+                    return new StaticSprite(GetTexture(color + "KoopaDead"), 0, 0, 2, 3);
                 case "ShellLeft":
                 case "ShellRight":
-                    return new StaticSprite(spriteBatch, GetTexture(color + "KoopaStepped"), 0, 0, 2, 3);
+                    return new StaticSprite(GetTexture(color + "KoopaStepped"), 0, 0, 2, 3);
                 case "NormalLeft":
-                    return new AnimatedSprite(spriteBatch, GetTexture(color + "KoopaLeft"), 2, 1, 0, 0, 2, 3);
+                    return new AnimatedSprite(GetTexture(color + "KoopaLeft"), 2, 1, 0, 0, 2, 3);
                 case "NormalRight":
-                    return new AnimatedSprite(spriteBatch, GetTexture(color + "KoopaRight"), 2, 1, 0, 0, 2, 3);
+                    return new AnimatedSprite(GetTexture(color + "KoopaRight"), 2, 1, 0, 0, 2, 3);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -123,13 +117,13 @@ namespace MelloMario.Factories
             switch (color)
             {
                 case "Green":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha"), 2, 1, 0, 0, 2, 3);
+                    return new AnimatedSprite(GetTexture("Piranha"), 2, 1, 0, 0, 2, 3);
                 case "Cyan":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha"), 2, 1, 0, 3, 2, 3);
+                    return new AnimatedSprite(GetTexture("Piranha"), 2, 1, 0, 3, 2, 3);
                 case "Red":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha"), 2, 1, 0, 6, 2, 3);
+                    return new AnimatedSprite(GetTexture("Piranha"), 2, 1, 0, 6, 2, 3);
                 case "Gray":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Piranha"), 2, 1, 0, 9, 2, 3);
+                    return new AnimatedSprite(GetTexture("Piranha"), 2, 1, 0, 9, 2, 3);
                 default:
                     return null;
             }
@@ -137,36 +131,36 @@ namespace MelloMario.Factories
 
         public ISprite CreateFireSprite()
         {
-            return new AnimatedSprite(spriteBatch, GetTexture("Fire"), 2, 2, 0, 0, 1, 1);
+            return new AnimatedSprite(GetTexture("Fire"), 2, 2, 0, 0, 1, 1);
         }
 
         public ISprite CreateStarSprite()
         {
-            return new AnimatedSprite(spriteBatch, GetTexture("Star"), 4, 1);
+            return new AnimatedSprite(GetTexture("Star"), 4, 1);
         }
 
         public ISprite CreateCoinSprite(bool isHud = false)
         {
             if (isHud)
             {
-                return new AnimatedSprite(spriteBatch, GetTexture("Coin"), 4, 1, 0, 0, 1, 2, 100, ZIndex.hud);
+                return new AnimatedSprite(GetTexture("Coin"), 4, 1, 0, 0, 1, 2, 100, ZIndex.hud);
             }
-            return new AnimatedSprite(spriteBatch, GetTexture("Coin"), 4, 1, 0, 0, 1, 2);
+            return new AnimatedSprite(GetTexture("Coin"), 4, 1, 0, 0, 1, 2);
         }
 
         public ISprite CreateSuperMushroomSprite()
         {
-            return new StaticSprite(spriteBatch, GetTexture("SuperMushroom"));
+            return new StaticSprite(GetTexture("SuperMushroom"));
         }
 
         public ISprite CreateFireFlowerSprite()
         {
-            return new AnimatedSprite(spriteBatch, GetTexture("FireFlower"), 8, 1);
+            return new AnimatedSprite(GetTexture("FireFlower"), 8, 1);
         }
 
         public ISprite CreateOneUpMushroomSprite()
         {
-            return new StaticSprite(spriteBatch, GetTexture("OneUpMushroom"));
+            return new StaticSprite(GetTexture("OneUpMushroom"));
         }
 
         public ISprite CreateQuestionSprite(string status)
@@ -174,11 +168,11 @@ namespace MelloMario.Factories
             switch (status)
             {
                 case "Bumped":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Question"), 3, 1, zIndex: ZIndex.level);
+                    return new AnimatedSprite(GetTexture("Question"), 3, 1, zIndex: ZIndex.level);
                 case "Normal":
-                    return new AnimatedSprite(spriteBatch, GetTexture("Question"), 3, 1, zIndex: ZIndex.level);
+                    return new AnimatedSprite(GetTexture("Question"), 3, 1, zIndex: ZIndex.level);
                 case "Used":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 54, 0, zIndex: ZIndex.level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 54, 0, zIndex: ZIndex.level);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -191,13 +185,13 @@ namespace MelloMario.Factories
             switch (status)
             {
                 case "Bumped":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 0, zIndex: ZIndex.level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 0, zIndex: ZIndex.level);
                 case "Destroyed":
-                    return new BrickPieceSprite(spriteBatch, GetTexture("BrickPieces"));
+                    return new BrickPieceSprite(GetTexture("BrickPieces"));
                 case "Normal":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 0, zIndex: ZIndex.level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 0, zIndex: ZIndex.level);
                 case "Used":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 54, 0, zIndex: ZIndex.level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 54, 0, zIndex: ZIndex.level);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -207,12 +201,12 @@ namespace MelloMario.Factories
 
         public ISprite CreateFloorSprite()
         {
-            return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 0, zIndex: ZIndex.level);
+            return new StaticSprite(GetTexture("BlockSheet"), 0, 0, zIndex: ZIndex.level);
         }
 
         public ISprite CreateStairSprite()
         {
-            return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 2, zIndex: ZIndex.level);
+            return new StaticSprite(GetTexture("BlockSheet"), 0, 2, zIndex: ZIndex.level);
         }
 
         public ISprite CreatePipelineSprite(string type)
@@ -220,13 +214,13 @@ namespace MelloMario.Factories
             switch (type)
             {
                 case "LeftIn":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 16, zIndex: ZIndex.foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 0, 16, zIndex: ZIndex.foreground);
                 case "RightIn":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 16, zIndex: ZIndex.foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 16, zIndex: ZIndex.foreground);
                 case "Left":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 18, zIndex: ZIndex.foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 0, 18, zIndex: ZIndex.foreground);
                 case "Right":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 2, 18, zIndex: ZIndex.foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 18, zIndex: ZIndex.foreground);
                 //TODO: Implement cases below
                 case "TopLeftIn":
                 case "BottomLeftIn":
@@ -245,11 +239,11 @@ namespace MelloMario.Factories
         {
             if (isTop)
             {
-                return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 32, 16, zIndex: ZIndex.level);
+                return new StaticSprite(GetTexture("BlockSheet"), 32, 16, zIndex: ZIndex.level);
             }
             else
             {
-                return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 32, 18, zIndex: ZIndex.level);
+                return new StaticSprite(GetTexture("BlockSheet"), 32, 18, zIndex: ZIndex.level);
             }
         }
 
@@ -258,27 +252,27 @@ namespace MelloMario.Factories
             switch (type)
             {
                 case "ShortCloud":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 0, 40, 6, 4, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 0, 40, 6, 4, zIndex);
                 case "ShortSmileCloud":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 8, 42, 2, 2, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 8, 42, 2, 2, zIndex);
                 case "LongCloud":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 16, 44, 8, 2, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 16, 44, 8, 2, zIndex);
                 case "LongSmileCloud":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 10, 40, 6, 4, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 10, 40, 6, 4, zIndex);
                 case "CastleTop":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 22, 0, 2, 2, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 22, 0, 2, 2, zIndex);
                 case "CastleTopSolid":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 22, 2, 2, 2, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 22, 2, 2, 2, zIndex);
                 case "CastleBody":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 26, 0, 2, 2, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 26, 0, 2, 2, zIndex);
                 case "CastleDoorLeft":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 24, 0, 2, 2, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 24, 0, 2, 2, zIndex);
                 case "CastleDoorRight":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 28, 0, 2, 2, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 28, 0, 2, 2, zIndex);
                 case "CastleDoorTop":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 24, 2, 2, 2, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 24, 2, 2, 2, zIndex);
                 case "CastleDoor":
-                    return new StaticSprite(spriteBatch, GetTexture("BlockSheet"), 26, 2, 2, 2, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 26, 2, 2, 2, zIndex);
                 default:
                     return null;
             }
@@ -286,7 +280,7 @@ namespace MelloMario.Factories
 
         public ISprite CreateTitle(ZIndex zIndex)
         {
-            return new StaticSprite(spriteBatch, GetTexture("Title"), 0, 0, 22, 11, zIndex);
+            return new StaticSprite(GetTexture("Title"), 0, 0, 22, 11, zIndex);
         }
     }
 }

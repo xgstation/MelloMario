@@ -21,7 +21,7 @@ namespace MelloMario.Sprites
             color = newColor;
         }
 
-        protected override void OnDraw(int time, Rectangle destination)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch, Rectangle destination)
         {
             OnAnimate(time);
             spriteBatch.Draw(
@@ -36,7 +36,7 @@ namespace MelloMario.Sprites
             );
         }
 
-        public BaseTextureSprite(SpriteBatch spriteBatch, Texture2D texture, Rectangle source, ZIndex zIndex) : base(spriteBatch, source.Size, zIndex)
+        public BaseTextureSprite(Texture2D texture, Rectangle source, ZIndex zIndex) : base(source.Size, zIndex)
         {
             this.texture = texture;
             this.source = source;

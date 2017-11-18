@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
@@ -19,6 +20,6 @@ namespace MelloMario
     {
         Point PixelSize { get; }
 
-        void Draw(int time, Rectangle destination);
+        void Draw(int time, SpriteBatch spriteBatch, Rectangle destination);
     }
 }

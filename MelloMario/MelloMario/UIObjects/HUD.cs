@@ -1,6 +1,7 @@
 ﻿using MelloMario.Factories;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.UIObjects
 {
@@ -25,11 +26,11 @@ namespace MelloMario.UIObjects
             }
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
-            textSprite.Draw(time, new Rectangle(42, 42, 800, 200));
-            coinSprite.Draw(time, new Rectangle(255, 74, 26, 30));
-            oneUpSprite.Draw(time, new Rectangle(255, 42, 26, 30));
+            textSprite.Draw(time, spriteBatch, new Rectangle(42, 42, 800, 200));
+            coinSprite.Draw(time, spriteBatch, new Rectangle(255, 74, 26, 30));
+            oneUpSprite.Draw(time, spriteBatch, new Rectangle(255, 42, 26, 30));
         }
 
         public HUD(IPlayer player) : base(player)

@@ -67,7 +67,6 @@ namespace MelloMario
             SpriteFactory.Instance.BindContentManager(Content);
             SoundFactory.Instance.BindContentManager(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            SpriteFactory.Instance.BindSpriteBatch(spriteBatch);
         }
 
         /// <summary>
@@ -110,7 +109,7 @@ namespace MelloMario
             spriteBatch.Begin(SpriteSortMode.BackToFront);
 #endif
 
-            model.Draw(time.ElapsedGameTime.Milliseconds);
+            model.Draw(time.ElapsedGameTime.Milliseconds, spriteBatch);
             spriteBatch.End();
         }
     }

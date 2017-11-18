@@ -6,9 +6,9 @@ namespace MelloMario.Sprites
 {
     class SplashSprite : BaseTextureSprite
     {
-        private static Texture2D CreateTexture(SpriteBatch spriteBatch)
+        private static Texture2D CreateTexture(GraphicsDevice device)
         {
-            Texture2D screen = new Texture2D(spriteBatch.GraphicsDevice, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
+            Texture2D screen = new Texture2D(device, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
 
             Color[] data = new Color[GameConst.SCREEN_WIDTH * GameConst.SCREEN_HEIGHT];
             for (int i = 0; i < data.Length; i++)
@@ -26,9 +26,8 @@ namespace MelloMario.Sprites
             // Do nothing
         }
 
-        public SplashSprite(SpriteBatch spriteBatch) : base(
-            spriteBatch,
-            CreateTexture(spriteBatch),
+        public SplashSprite() : base(
+            CreateTexture(new GraphicsDevice(new GraphicsAdapter(), new GraphicsProfile(), new PresentationParameters())), // TODO
             new Rectangle(0, 0, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT),
             ZIndex.splash
         )

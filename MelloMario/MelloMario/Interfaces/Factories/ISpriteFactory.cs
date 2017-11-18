@@ -6,7 +6,6 @@ namespace MelloMario
     interface ISpriteFactory
     {
         void BindContentManager(ContentManager newContentManager);
-        void BindSpriteBatch(SpriteBatch newSpriteBatch);
 
         ISprite CreateTextSprite(string text, float fontSize = 18f);
         ISprite CreatSplashSprite();

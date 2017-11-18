@@ -1,5 +1,6 @@
 ﻿using MelloMario.Factories;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.UIObjects
 {
@@ -13,10 +14,10 @@ namespace MelloMario.UIObjects
 
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
-            startSprite.Draw(time, new Rectangle(100, 100, 352, 176));
-            textSprite.Draw(time, new Rectangle(0, 400, 200, 200));
+            startSprite.Draw(time, spriteBatch, new Rectangle(100, 100, 352, 176));
+            textSprite.Draw(time, spriteBatch, new Rectangle(0, 400, 200, 200));
         }
 
         public GameStart(IPlayer player) : base(player)

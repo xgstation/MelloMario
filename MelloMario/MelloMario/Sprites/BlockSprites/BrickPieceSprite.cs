@@ -11,7 +11,7 @@ namespace MelloMario.Sprites.BlockSprites
 
         private int elapsed;
 
-        protected override void OnDraw(int time, Rectangle destination)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch, Rectangle destination)
         {
             elapsed += time;
 
@@ -55,7 +55,7 @@ namespace MelloMario.Sprites.BlockSprites
             spriteBatch.Draw(texture, destinations[3], source[3], Color.White, -rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
         }
 
-        public BrickPieceSprite(SpriteBatch spriteBatch, Texture2D texture) : base(spriteBatch, new Point(texture.Width, texture.Height), ZIndex.foreground)
+        public BrickPieceSprite(Texture2D texture) : base(new Point(texture.Width, texture.Height), ZIndex.foreground)
         {
             this.texture = texture;
 

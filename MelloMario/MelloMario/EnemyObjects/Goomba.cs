@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.EnemyObjects.GoombaStates;
@@ -108,7 +109,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
         }
 

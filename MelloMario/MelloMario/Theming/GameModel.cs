@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Graphics;
 using MelloMario.LevelGen;
 using System;
 using MelloMario.Scripts;
@@ -7,7 +8,6 @@ using MelloMario.Containers;
 using MelloMario.MarioObjects;
 using MelloMario.UIObjects;
 using MelloMario.Sounds;
-using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming
 {
@@ -226,7 +226,7 @@ namespace MelloMario.Theming
             GameDatabase.Update(time);
         }
 
-        public void Draw(int time)
+        public void Draw(int time, SpriteBatch spriteBatch)
         {
             IPlayer player = activePlayer;
 
@@ -234,15 +234,15 @@ namespace MelloMario.Theming
             {
                 if (isPaused)
                 {
-                    obj.Draw(0);
+                    obj.Draw(0, spriteBatch);
                 }
                 else
                 {
-                    obj.Draw(time);
+                    obj.Draw(time, spriteBatch);
                 }
             }
 
-            Splash.Draw(time);
+            Splash.Draw(time, spriteBatch);
         }
     }
 }

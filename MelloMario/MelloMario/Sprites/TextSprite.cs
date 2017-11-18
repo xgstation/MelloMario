@@ -10,7 +10,7 @@ namespace MelloMario.Sprites
         private SpriteFont font;
         private Color color;
 
-        protected override void OnDraw(int time, Rectangle destination)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch, Rectangle destination)
         {
             spriteBatch.DrawString(
                 font,
@@ -25,7 +25,7 @@ namespace MelloMario.Sprites
             );
         }
 
-        public TextSprite(SpriteBatch spriteBatch, string text, SpriteFont font, Point size, ZIndex zIndex, float fontSize = 18f) : base(spriteBatch, size, zIndex)
+        public TextSprite(string text, SpriteFont font, Point size, ZIndex zIndex, float fontSize = 18f) : base(size, zIndex)
         {
             this.text = text;
             this.font = font;

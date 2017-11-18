@@ -1,5 +1,6 @@
 ﻿using MelloMario.Factories;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.UIObjects
 {
@@ -25,7 +26,7 @@ namespace MelloMario.UIObjects
 
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
 
         }

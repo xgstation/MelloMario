@@ -11,9 +11,8 @@ namespace MelloMario.Sprites
             // Do nothing
         }
 
-        public StaticSprite(SpriteBatch spriteBatch, Texture2D texture, int x = 0, int y = 0, int width = 2, int height = 2, ZIndex zIndex = ZIndex.item) :
+        public StaticSprite(Texture2D texture, int x = 0, int y = 0, int width = 2, int height = 2, ZIndex zIndex = ZIndex.item) :
             base(
-                spriteBatch,
                 texture,
                 new Rectangle(
                     x * GameConst.TEXTURE_GRID, y * GameConst.TEXTURE_GRID,

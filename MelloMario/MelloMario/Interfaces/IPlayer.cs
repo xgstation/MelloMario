@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
@@ -20,5 +21,6 @@ namespace MelloMario
         void Reset(string type, Theming.Listener listener);
         void Win();
         void Update(int time);
+        void Draw(int time, SpriteBatch spriteBatch);
     }
 }

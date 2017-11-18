@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Theming
 {
@@ -128,6 +129,11 @@ namespace MelloMario.Theming
         }
 
         public void Update(int time)
+        {
+            timeRemain -= time;
+        }
+
+        public void Draw(int time, SpriteBatch spriteBatch)
         {
             timeRemain -= time;
         }

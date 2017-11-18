@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
@@ -27,7 +28,7 @@ namespace MelloMario
 
         protected abstract void OnUpdate(int time);
         protected abstract void OnSimulation(int time);
-        protected abstract void OnDraw(int time);
+        protected abstract void OnDraw(int time, SpriteBatch spriteBatch);
 
         protected void Relocate(Point newLocation)
         {
@@ -104,13 +105,13 @@ namespace MelloMario
             OnSimulation(time);
         }
 
-        public void Draw(int time)
+        public void Draw(int time, SpriteBatch spriteBatch)
         {
             if (sprite != null)
             {
-                OnDraw(time);
+                OnDraw(time, spriteBatch);
 
-                sprite.Draw(time, new Rectangle(Boundary.Location, Boundary.Size));
+                sprite.Draw(time, spriteBatch, new Rectangle(Boundary.Location, Boundary.Size));
             }
         }
     }

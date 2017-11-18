@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.MiscObjects
 {
@@ -21,7 +22,7 @@ namespace MelloMario.MiscObjects
         {
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
         }
 

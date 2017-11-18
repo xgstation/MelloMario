@@ -4,6 +4,7 @@ using MelloMario.MarioObjects;
 using MelloMario.MarioObjects.MovementStates;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Sounds;
 
 namespace MelloMario.BlockObjects
@@ -96,7 +97,7 @@ namespace MelloMario.BlockObjects
         {
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
         }
 

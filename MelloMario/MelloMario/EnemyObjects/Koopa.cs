@@ -5,6 +5,7 @@ using MelloMario.EnemyObjects.KoopaStates;
 using MelloMario.BlockObjects;
 using MelloMario.UIObjects;
 using MelloMario.Theming;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.EnemyObjects
 {
@@ -174,7 +175,7 @@ namespace MelloMario.EnemyObjects
         {
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
         }
 

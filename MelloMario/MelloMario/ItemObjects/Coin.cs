@@ -5,6 +5,7 @@ using MelloMario.MarioObjects;
 using System;
 using MelloMario.UIObjects;
 using MelloMario.Theming;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.ItemObjects
 {
@@ -42,7 +43,7 @@ namespace MelloMario.ItemObjects
         {
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
         }
 

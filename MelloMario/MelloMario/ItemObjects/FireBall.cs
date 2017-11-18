@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using MelloMario.Theming;
 using MelloMario.MarioObjects;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.ItemObjects
 {
@@ -17,7 +18,7 @@ namespace MelloMario.ItemObjects
             //throw new NotImplementedException();
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
             //throw new NotImplementedException();
         }

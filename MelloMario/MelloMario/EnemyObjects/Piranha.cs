@@ -6,6 +6,7 @@ using MelloMario.UIObjects;
 using Microsoft.Xna.Framework;
 using MelloMario.Theming;
 using MelloMario.ItemObjects;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.EnemyObjects
 {
@@ -74,7 +75,7 @@ namespace MelloMario.EnemyObjects
             HasMarioAbove = DetectMario();
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
         }
 

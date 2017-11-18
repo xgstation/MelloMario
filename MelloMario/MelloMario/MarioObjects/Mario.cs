@@ -7,6 +7,7 @@ using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
 using MelloMario.Interfaces.Objects.States;
 using MelloMario.Theming;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace MelloMario.MarioObjects
@@ -297,7 +298,7 @@ namespace MelloMario.MarioObjects
             HandlerGameOver?.Invoke(this, eventInfo);
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
         }
 

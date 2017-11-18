@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Factories;
 using MelloMario.ItemObjects.SuperMushroomStates;
 using MelloMario.BlockObjects;
@@ -113,7 +114,7 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        protected override void OnDraw(int time)
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
         }
 
