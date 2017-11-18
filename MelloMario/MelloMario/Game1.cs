@@ -105,8 +105,8 @@ namespace MelloMario
             state.FillMode = FillMode.WireFrame;
             spriteBatch.GraphicsDevice.RasterizerState = state;
 #else
-            // spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, model.GetViewMatrix(new Vector2(1f)));
-            spriteBatch.Begin(SpriteSortMode.BackToFront);
+            spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, model.GetActiveViewMatrix);
+            //spriteBatch.Begin(SpriteSortMode.BackToFront);
 #endif
 
             model.Draw(time.ElapsedGameTime.Milliseconds, spriteBatch);

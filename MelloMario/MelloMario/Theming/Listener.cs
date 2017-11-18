@@ -10,10 +10,10 @@ namespace MelloMario.Theming
         public int Points { get; set; }
     }
 
-    class Listener
+    class Listener : IListener
     {
-        private GameModel model;
-        private IPlayer player;
+        private readonly GameModel model;
+        private readonly IPlayer player;
 
         public Listener(GameModel model, IPlayer player)
         {
@@ -21,25 +21,24 @@ namespace MelloMario.Theming
             this.player = player;
         }
 
-        public void Subscribe(Coin m)
+        public void Subscribe(IGameObject gameObject)
         {
-            m.HandlerCoins += OnCoinCollect;
-        }
-
-        public void Subscribe(Mario m)
-        {
-            m.HandlerGameOver += OnGameOver;
-        }
-
-        public void Subscribe(Flag m)
-        {
-            m.HandlerTimeScore += OnLevelWon;
-        }
-
-        public void Subscribe(BaseCollidableObject m)
-        {
-            m.HandlerPoints += OnPointGain;
-            m.HandlerLives += OnLivesChange;
+            switch (gameObject)
+            {
+                case Coin coin:
+                    coin.HandlerCoins += OnCoinCollect;
+                    break;
+                case Mario mario:
+                    mario.HandlerGameOver += OnGameOver;
+                    break;
+                case Flag flag:
+                    flag.HandlerTimeScore += OnLevelWon;
+                    break;
+                case BaseCollidableObject collidableObject:
+                    collidableObject.HandlerPoints += OnPointGain;
+                    collidableObject.HandlerLives += OnLivesChange;
+                    break;
+            }
         }
 
         private void OnLivesChange(BaseCollidableObject m, GameEventArgs e)

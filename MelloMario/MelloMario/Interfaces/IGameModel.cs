@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    interface IGameModel
+    internal interface IGameModel
     {
         void ToggleFullScreen();
         void Pause();

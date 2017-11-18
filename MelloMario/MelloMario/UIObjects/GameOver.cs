@@ -7,11 +7,11 @@ namespace MelloMario.UIObjects
 {
     class GameOver : BaseUIObject
     {
-        private ISprite splashSprite;
-        private ISprite textSprite;
-        private ISprite coinSprite;
-        private ISprite marioSprite;
-        private ISprite gameOverSprite;
+        private readonly ISprite splashSprite;
+        private readonly ISprite textSprite;
+        private readonly ISprite coinSprite;
+        private readonly ISprite marioSprite;
+        private readonly ISprite gameOverSprite;
         private string Text;
 
         protected override void OnUpdate(int time)

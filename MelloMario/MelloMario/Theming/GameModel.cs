@@ -6,8 +6,10 @@ using System;
 using MelloMario.Scripts;
 using MelloMario.Containers;
 using MelloMario.MarioObjects;
+using MelloMario.MiscObjects;
 using MelloMario.UIObjects;
 using MelloMario.Sounds;
+using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming
 {
@@ -15,14 +17,16 @@ namespace MelloMario.Theming
     {
         private readonly Game1 game;
         private readonly GameSession session;
-        private IPlayer activePlayer; // TODO: for singleplayer only
+        private readonly IListener listener;
+        private readonly IPlayer activePlayer; // TODO: for singleplayer only
+        private ICamera activeCamera;
         private IEnumerable<IController> controllers;
         private bool isPaused;
-        private readonly Listener listener;
         private int splashElapsed; // TODO: for sprint 4, refactor later
         //TODO: temporary public
         //note: we will have an extra class called Player which contains these information
         public IObject Splash;
+        public Matrix GetActiveViewMatrix => activeCamera.GetViewMatrix(new Vector2(1f));
 
         public GameModel(Game1 game)
         {
@@ -72,7 +76,8 @@ namespace MelloMario.Theming
 
         public void Init()
         {
-            activePlayer.Init("Mario", LoadLevel("Main"), listener);
+            activeCamera = new Camera(game.GraphicsDevice.Viewport);
+            activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
 
             isPaused = true;
             new PlayingScript().Bind(controllers, this, activePlayer.Character);

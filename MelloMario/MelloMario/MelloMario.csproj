@@ -140,6 +140,7 @@
     <Compile Include="EnemyObjects\GoombaStates\Defeated.cs" />
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
     <Compile Include="Interfaces\ICamera.cs" />
+    <Compile Include="Interfaces\IListener.cs" />
     <Compile Include="Interfaces\Objects\IObject.cs" />
     <Compile Include="MiscObjects\Camera.cs" />
     <Compile Include="Theming\Player.cs" />

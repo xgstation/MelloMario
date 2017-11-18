@@ -9,6 +9,7 @@ namespace MelloMario.Theming
     {
         private IGameSession session;
         private ICharacter character;
+        private ICamera camera;
 
         private int coins;
         private int score;
@@ -36,6 +37,14 @@ namespace MelloMario.Theming
             get
             {
                 return character;
+            }
+        }
+
+        public ICamera PlayerCamera
+        {
+            get
+            {
+                return camera;
             }
         }
 
@@ -101,10 +110,11 @@ namespace MelloMario.Theming
             score += delta;
         }
 
-        public void Init(string type, IGameWorld world, Listener listener)
+        public void Init(string type, IGameWorld world, Listener listener, ICamera newCamera)
         {
             character = GameObjectFactory.Instance.CreateGameCharacter(type, world, this, world.GetInitialPoint(), listener);
             session.Add(this);
+            camera = newCamera;
 
             lifes = GameConst.LIFES_INIT;
             timeRemain = GameConst.LEVEL_TIME * 1000;
@@ -134,6 +144,7 @@ namespace MelloMario.Theming
         public void Update(int time)
         {
             timeRemain -= time;
+            camera?.LookAt(new Vector2((character as IGameObject).Boundary.Location.X, 180f));
         }
 
         public void Draw(int time, SpriteBatch spriteBatch)
