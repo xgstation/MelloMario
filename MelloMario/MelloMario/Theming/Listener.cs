@@ -24,24 +24,24 @@ namespace MelloMario.Theming
 
         public void Subscribe(Coin m)
         {
-            m.HandlerCoins += new Coin.CoinHandler(OnCoinCollect);
+            m.HandlerCoins += OnCoinCollect;
         }
 
         public void Subscribe(Mario m)
         {
-            m.HandlerGameOver += new Mario.GameOverHandler(OnGameOver);
+            m.HandlerGameOver += OnGameOver;
         }
 
         public void Subscribe(Flag m)
         {
 
-            m.HandlerTimeScore += new Flag.TimeScoreHandler(OnLevelWon);
+            m.HandlerTimeScore += OnLevelWon;
         }
 
         public void Subscribe(BaseCollidableObject m)
         {
-            m.HandlerPoints += new BaseCollidableObject.PointHandler(OnPointGain);
-            m.HandlerLives += new BaseCollidableObject.LivesHandler(OnLivesChange);
+            m.HandlerPoints += OnPointGain;
+            m.HandlerLives += OnLivesChange;
         }
 
         private void OnLivesChange(BaseCollidableObject m, GameEventArgs e)
@@ -56,7 +56,6 @@ namespace MelloMario.Theming
 
         private void OnLevelWon(Flag m, EventArgs e)
         {
-            player.Won();
             model.TransistGameWon();
         }
 

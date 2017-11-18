@@ -94,7 +94,10 @@ namespace MelloMario.Theming
             Splash = new GameStart(GetActivePlayer()); // TODO: move these constructors to the factory
             splashElapsed = 0;
 
-            LoadLevel("Main");
+            IGameWorld world = LoadLevel("Main");
+
+            GetActivePlayer().Init("Mario", listener);
+            GetActivePlayer().Spawn(world, world.GetInitialPoint());
         }
 
         public void Transist()
@@ -106,7 +109,7 @@ namespace MelloMario.Theming
             Splash = new GameOver(GetActivePlayer());
             splashElapsed = 0;
 
-            GetActivePlayer().Reset(null); // TODO
+            GetActivePlayer().Reset("Mario", listener);
         }
 
         public void TransistGameWon()
@@ -117,6 +120,8 @@ namespace MelloMario.Theming
 
             Splash = new GameWon(GetActivePlayer());
             splashElapsed = -1;
+
+            GetActivePlayer().Won();
         }
 
         public void Resume()
