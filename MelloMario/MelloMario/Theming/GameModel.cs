@@ -176,7 +176,7 @@ namespace MelloMario.Theming
 
             foreach (IPlayer player in session.ScanPlayers())
             {
-                player.World.Update();
+                player.Update(time);
                 foreach (IObject obj in player.World.ScanNearby(player.Character.Sensing))
                 {
                     updating.Add(obj);
@@ -191,10 +191,17 @@ namespace MelloMario.Theming
             }
         }
 
+        private void UpdateContainers()
+        {
+            session.Update();
+            foreach (IGameWorld world in session.ScanWorlds())
+            {
+                world.Update();
+            }
+        }
+
         public void Update(int time)
         {
-            // TODO: clean this part
-            // TODO: use const
             UpdateController();
             if (isPaused)
             {
@@ -209,9 +216,13 @@ namespace MelloMario.Theming
                 }
                 return;
             }
+
             SoundController.Update();
             UpdateMusicScene(time);
+
             UpdateGameObjects(time);
+            UpdateContainers();
+
             GameDatabase.Update(time);
         }
 
