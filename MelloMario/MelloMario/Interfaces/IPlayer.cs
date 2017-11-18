@@ -15,10 +15,10 @@ namespace MelloMario
         void AddCoin();
         void AddLife();
         void AddScore(int delta);
-        void Init(string type, Theming.Listener listener); // TODO: interface should not depend on implementation; make listener an interface?
+        void Init(string type, IGameWorld newWorld, Theming.Listener listener); // TODO: interface should not depend on implementation; make listener an interface?
         void Spawn(IGameWorld newWorld, Point newLocation);
         void Reset(string type, Theming.Listener listener);
-        void Won();
+        void Win();
         void Update(int time);
     }
 }

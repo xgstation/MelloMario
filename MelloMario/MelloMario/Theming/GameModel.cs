@@ -15,6 +15,7 @@ namespace MelloMario.Theming
     {
         private readonly Game1 game;
         private readonly GameSession session;
+        private IPlayer activePlayer; // TODO: for singleplayer only
         private IEnumerable<IController> controllers;
         private bool isPaused;
         private readonly Listener listener;
@@ -24,23 +25,12 @@ namespace MelloMario.Theming
         public IObject Splash;
         public SoundController.Songs ThemeMusic { get; private set; }
 
-        // for singleplayer game
-        private IPlayer GetActivePlayer()
-        {
-            foreach (IPlayer player in session.ScanPlayers())
-            {
-                // take only one
-                return player;
-            }
-
-            return null; // error!
-        }
-
         public GameModel(Game1 game)
         {
             this.game = game;
             session = new GameSession();
-            listener = new Listener(this, new Player(session)); // TODO
+            activePlayer = new Player(session);
+            listener = new Listener(this, activePlayer);
             ThemeMusic = SoundController.Songs.Idle;
             GameDatabase.Initialize(session);
             SoundController.Initialize(this);
@@ -60,7 +50,7 @@ namespace MelloMario.Theming
         {
             isPaused = true;
 
-            new PausedScript().Bind(controllers, this, GetActivePlayer().Character);
+            new PausedScript().Bind(controllers, this, activePlayer.Character);
             MediaPlayer.Pause();
             splashElapsed = -1;
         }
@@ -87,50 +77,45 @@ namespace MelloMario.Theming
 
         public void Init()
         {
+            activePlayer.Init("Mario", LoadLevel("Main"), listener);
+
             isPaused = true;
+            new PlayingScript().Bind(controllers, this, activePlayer.Character);
 
-            new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
-
-            Splash = new GameStart(GetActivePlayer()); // TODO: move these constructors to the factory
+            Splash = new GameStart(activePlayer); // TODO: move these constructors to the factory
             splashElapsed = 0;
-
-            IGameWorld world = LoadLevel("Main");
-
-            GetActivePlayer().Init("Mario", listener);
-            GetActivePlayer().Spawn(world, world.GetInitialPoint());
         }
 
         public void Transist()
         {
+            activePlayer.Reset("Mario", listener);
+
             isPaused = true;
+            new TransistScript().Bind(controllers, this, activePlayer.Character);
 
-            new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
-
-            Splash = new GameOver(GetActivePlayer());
+            Splash = new GameOver(activePlayer);
             splashElapsed = 0;
-
-            GetActivePlayer().Reset("Mario", listener);
         }
 
         public void TransistGameWon()
         {
+            activePlayer.Win();
+
             isPaused = true;
+            MediaPlayer.Pause();
+            new TransistScript().Bind(controllers, this, activePlayer.Character);
 
-            new TransistScript().Bind(controllers, this, GetActivePlayer().Character);
-
-            Splash = new GameWon(GetActivePlayer());
+            Splash = new GameWon(activePlayer);
             splashElapsed = -1;
-
-            GetActivePlayer().Won();
         }
 
         public void Resume()
         {
             isPaused = false;
             MediaPlayer.Resume();
-            new PlayingScript().Bind(controllers, this, GetActivePlayer().Character);
+            new PlayingScript().Bind(controllers, this, activePlayer.Character);
 
-            Splash = new HUD(GetActivePlayer());
+            Splash = new HUD(activePlayer);
         }
 
         public void Reset()
@@ -152,21 +137,21 @@ namespace MelloMario.Theming
 
         private void UpdateMusicScene(int time)
         {
-            if (GetActivePlayer().Character is MarioCharacter marioD &&
+            if (activePlayer.Character is MarioCharacter marioD &&
                 marioD.ProtectionState is MarioObjects.ProtectionStates.Dead)
             {
                 MediaPlayer.Play(SoundController.Normal);
             }
-            if (GetActivePlayer().Character is MarioCharacter mario &&
+            if (activePlayer.Character is MarioCharacter mario &&
                 mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
             {
                 ThemeMusic = SoundController.Songs.Star;
             }
-            else if (GetActivePlayer().Lifes <= 1)
+            else if (activePlayer.Lifes <= 1)
             {
                 ThemeMusic = SoundController.Songs.GameOver;
             }
-            else if (GetActivePlayer().TimeRemain <= 90000)
+            else if (activePlayer.TimeRemain <= 90000)
             {
                 ThemeMusic = SoundController.Songs.Hurry;
             }
@@ -232,7 +217,7 @@ namespace MelloMario.Theming
 
         public void Draw(int time)
         {
-            IPlayer player = GetActivePlayer();
+            IPlayer player = activePlayer;
 
             foreach (IObject obj in player.World.ScanNearby(player.Character.Viewport))
             {

@@ -97,9 +97,9 @@ namespace MelloMario.Theming
             score += delta;
         }
 
-        public void Init(string type, Listener listener)
+        public void Init(string type, IGameWorld world, Listener listener)
         {
-            character = GameObjectFactory.Instance.CreateGameCharacter(type, character.CurrentWorld, character.CurrentWorld.GetInitialPoint(), listener);
+            character = GameObjectFactory.Instance.CreateGameCharacter(type, world, this, world.GetInitialPoint(), listener);
             session.Add(this);
 
             lifes = GameConst.LIFES_INIT;
@@ -115,13 +115,13 @@ namespace MelloMario.Theming
         public void Reset(string type, Listener listener)
         {
             character.Remove();
-            character = GameObjectFactory.Instance.CreateGameCharacter(type, character.CurrentWorld, character.CurrentWorld.GetInitialPoint(), listener);
+            character = GameObjectFactory.Instance.CreateGameCharacter(type, character.CurrentWorld, this, character.CurrentWorld.GetInitialPoint(), listener);
 
             lifes -= 1;
             timeRemain = GameConst.LEVEL_TIME * 1000;
         }
 
-        public void Won()
+        public void Win()
         {
             score += GameConst.SCORE_TIME_MULT * timeRemain / 1000;
             timeRemain = GameConst.LEVEL_TIME * 1000;
