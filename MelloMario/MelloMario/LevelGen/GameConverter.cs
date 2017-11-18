@@ -16,7 +16,6 @@ namespace MelloMario.LevelGen
     {
         private GameEntityConverter gameEntityConverter;
         private GameModel model;
-        private IGameSession session;
         private JToken jsonToken;
         private JToken MapListToken;
         private JToken MapToBeLoaded;
@@ -26,10 +25,9 @@ namespace MelloMario.LevelGen
         private IGameWorld world;
         private Listener listener;
 
-        public GameConverter(GameModel model, IGameSession session, Listener listener, string index = "Main")
+        public GameConverter(GameModel model, Listener listener, string index = "Main")
         {
             this.model = model;
-            this.session = session;
             this.index = index;
             this.listener = listener;
             serializers = new JsonSerializer();

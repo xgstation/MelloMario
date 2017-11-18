@@ -48,7 +48,7 @@ namespace MelloMario.Factories
             return new TextSprite(text, content.Load<SpriteFont>("Font\\text"), new Point(), ZIndex.hud, fontSize);
         }
 
-        public ISprite CreatSplashSprite()
+        public ISprite CreateSplashSprite()
         {
             return new SplashSprite();
         }

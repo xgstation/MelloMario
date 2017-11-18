@@ -8,7 +8,7 @@ namespace MelloMario
         void BindContentManager(ContentManager newContentManager);
 
         ISprite CreateTextSprite(string text, float fontSize = 18f);
-        ISprite CreatSplashSprite();
+        ISprite CreateSplashSprite();
         ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing);
         ISprite CreateGoombaSprite(string status);
         ISprite CreateKoopaSprite(string color, string status);

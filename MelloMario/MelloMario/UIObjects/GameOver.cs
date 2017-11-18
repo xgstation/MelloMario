@@ -41,7 +41,7 @@ namespace MelloMario.UIObjects
 
         public GameOver(IPlayer player) : base(player)
         {
-            splashSprite = SpriteFactory.Instance.CreatSplashSprite();
+            splashSprite = SpriteFactory.Instance.CreateSplashSprite();
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
             gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");

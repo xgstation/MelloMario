@@ -14,13 +14,11 @@ namespace MelloMario.LevelGen
         private string path;
         private GameModel model;
         private string levelString;
-        private GraphicsDevice graphicsDevice;
         private GameConverter gameConverter;
         private Listener listener;
 
-        public LevelIOJson(string jsonPath, GraphicsDevice graphicsDevice, Listener listener)
+        public LevelIOJson(string jsonPath, Listener listener)
         {
-            this.graphicsDevice = graphicsDevice;
             this.listener = listener;
             path = jsonPath;
             Util.Initilalize();
@@ -34,7 +32,7 @@ namespace MelloMario.LevelGen
         public IGameWorld Load(string index, IGameSession session)
         {
             levelString = File.ReadAllText(path);
-            gameConverter = new GameConverter(model, session, listener, index);
+            gameConverter = new GameConverter(model, listener, index);
 
             return JsonConvert.DeserializeObject<IGameWorld>(levelString, gameConverter);
         }

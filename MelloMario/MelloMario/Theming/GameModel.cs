@@ -64,7 +64,7 @@ namespace MelloMario.Theming
 
             // IGameWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
 
-            LevelIOJson reader = new LevelIOJson("Content/Level1.json", game.GraphicsDevice, listener);
+            LevelIOJson reader = new LevelIOJson("Content/Level1.json", listener);
             reader.SetModel(this);
 
             return reader.Load(id, session);
