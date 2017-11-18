@@ -22,7 +22,7 @@ namespace MelloMario
             Bottom
         };
 
-        // TODO: World should only be used in base classes and PlayerMario
+        // TODO: World should only be used in base classes and MarioCharacter
         protected IGameWorld World;
 
         protected abstract void OnUpdate(int time);

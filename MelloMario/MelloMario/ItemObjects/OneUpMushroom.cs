@@ -46,7 +46,7 @@ namespace MelloMario.ItemObjects
         {
             switch (target.GetType().Name)
             {
-                case "PlayerMario":
+                case "MarioCharacter":
                     if (state is Normal)
                     {
                         Collect();
@@ -135,7 +135,7 @@ namespace MelloMario.ItemObjects
             oneupMushCollectSound.Play();
             if (!collected)
             {
-                ChangeLives(1);
+                ChangeLives();
                 collected = true;
             }
             RemoveSelf();

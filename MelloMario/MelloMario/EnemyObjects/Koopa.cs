@@ -77,7 +77,7 @@ namespace MelloMario.EnemyObjects
         {
             switch (target.GetType().Name)
             {
-                case "PlayerMario":
+                case "MarioCharacter":
                     //TODO: Fire to be added
                     Mario mario = (Mario) target; //TODO: fire as target to be added
                     if (mario.ProtectionState is MarioObjects.ProtectionStates.Starred)

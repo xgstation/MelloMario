@@ -31,7 +31,7 @@ namespace MelloMario.BlockObjects
                 {
                     if (top)
                     {
-                        ChangeLives(1);
+                        ChangeLives();
                     }
                     eventInfo = null;
                     HandlerTimeScore?.Invoke(this, eventInfo);

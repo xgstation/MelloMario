@@ -47,7 +47,7 @@ namespace MelloMario.EnemyObjects
             }
             switch (target.GetType().Name)
             {
-                case "PlayerMario":
+                case "MarioCharacter":
                     //TODO: Fire to be added
                     Mario mario = (Mario) target;
                     if (mode == CollisionMode.Top || mario.ProtectionState is MarioObjects.ProtectionStates.Starred)

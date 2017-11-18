@@ -289,7 +289,6 @@ namespace MelloMario.MarioObjects
         public void OnDeath()
         {
             SetVerticalVelocity(-20);
-            ChangeLives(-1);
         }
 
         public void TransToGameOver()

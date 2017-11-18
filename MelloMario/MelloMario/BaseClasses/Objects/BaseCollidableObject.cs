@@ -246,11 +246,11 @@ namespace MelloMario
             HandlerPoints?.Invoke(this, gameEventInfo);
         }
 
-        protected void ChangeLives(int lives)
+        protected void ChangeLives()
         {
             gameEventInfo = new GameEventArgs
             {
-                Points = lives
+                Points = 1
             };
 
             HandlerLives?.Invoke(this, gameEventInfo);

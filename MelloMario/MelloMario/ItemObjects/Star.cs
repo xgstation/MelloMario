@@ -49,7 +49,7 @@ namespace MelloMario.ItemObjects
             {
                 switch (target.GetType().Name)
                 {
-                    case "PlayerMario":
+                    case "MarioCharacter":
                         if (state is Normal)
                         {
                             Collect();

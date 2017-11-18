@@ -51,9 +51,9 @@ namespace MelloMario.ItemObjects
 
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
-            switch (target.GetType().Name)
+            switch (target.GetType().Name) // not safe!
             {
-                case "PlayerMario":
+                case "MarioCharacter":
                     if (state is Normal)
                     {
                         Collect();
