@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using MelloMario.BlockObjects;
-using MelloMario.Factories;
 using MelloMario.ItemObjects;
 using MelloMario.MarioObjects;
 using MelloMario.MarioObjects.PowerUpStates;
@@ -12,43 +10,47 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming
 {
-    static class GameDatabase
+    internal static class GameDatabase
     {
-        private static readonly IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
+        private static readonly IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb =
+            new Dictionary<IGameObject, IList<IGameObject>>();
+
         private static readonly IDictionary<Pipeline, string> PipelineEntranceDb = new Dictionary<Pipeline, string>();
         private static readonly IDictionary<Pipeline, string> PipelinePortalDb = new Dictionary<Pipeline, string>();
-        private static readonly IDictionary<string, Tuple<Pipeline, Pipeline>> PipelineIndex = new Dictionary<string, Tuple<Pipeline, Pipeline>>();
-        private static readonly ConcurrentDictionary<ICharacter, Point> CharacterLocations = new ConcurrentDictionary<ICharacter, Point>();
-        private static IGameSession session;
+
+        private static readonly IDictionary<string, Tuple<Pipeline, Pipeline>> PipelineIndex =
+            new Dictionary<string, Tuple<Pipeline, Pipeline>>();
+
+        private static readonly ConcurrentDictionary<ICharacter, Point> CharacterLocations =
+            new ConcurrentDictionary<ICharacter, Point>();
+
+        private static IGameSession Session;
 
         public static void Initialize(IGameSession newSession)
         {
-            session = newSession;
+            Session = newSession;
         }
 
         public static void AddPipelineIndex(string index, Tuple<Pipeline, Pipeline> pipeline)
         {
             if (!PipelineIndex.ContainsKey(index))
-            {
                 PipelineIndex.Add(index, pipeline);
-            }
         }
 
         public static void AddPortal(Pipeline pipeline, string portalTo)
         {
             if (!PipelinePortalDb.ContainsKey(pipeline))
-            {
                 PipelinePortalDb.Add(pipeline, portalTo);
-            }
         }
+
         public static bool IsPortal(Pipeline pipeline)
         {
             return PipelinePortalDb.ContainsKey(pipeline);
         }
+
         public static Pipeline GetPortal(Pipeline pipeline)
         {
-            return PipelinePortalDb.ContainsKey(pipeline) &&
-                PipelineIndex.ContainsKey(PipelinePortalDb[pipeline])
+            return PipelinePortalDb.ContainsKey(pipeline) && PipelineIndex.ContainsKey(PipelinePortalDb[pipeline])
                 ? PipelineIndex[PipelinePortalDb[pipeline]].Item1
                 : null;
         }
@@ -58,6 +60,7 @@ namespace MelloMario.Theming
             // TODO: use viewport collision
             return CharacterLocations.Count != 0 ? CharacterLocations.Values.ToList()[0] : new Point();
         }
+
         public static bool HasItemEnclosed(IGameObject obj)
         {
             return ItemEnclosedDb.ContainsKey(obj) && ItemEnclosedDb[obj].Count != 0;
@@ -65,33 +68,24 @@ namespace MelloMario.Theming
 
         public static IGameObject GetEnclosedItem(IGameObject obj)
         {
-            if (HasItemEnclosed(obj))
-            {
-                IGameObject item = ItemEnclosedDb[obj][0];
-                ItemEnclosedDb[obj].RemoveAt(0);
-                return item;
-            }
-            else
-            {
+            if (!HasItemEnclosed(obj))
                 return null;
-            }
+            var item = ItemEnclosedDb[obj][0];
+            ItemEnclosedDb[obj].RemoveAt(0);
+            return item;
         }
 
         public static IGameObject GetNextItem(IGameObject obj)
         {
             if (!HasItemEnclosed(obj))
-            {
                 return null;
-            }
             if (ItemEnclosedDb[obj][0] is SuperMushroom mushroom)
-            {
-                if (session.ScanPlayers().Any(c => (c as MarioCharacter)?.PowerUpState is Super))
+                if (Session.ScanPlayers().Any(c => (c.Character as MarioCharacter)?.PowerUpState is Super))
                 {
                     ItemEnclosedDb[obj].RemoveAt(0);
                     return mushroom.GetFireFlower();
                 }
-            }
-            IGameObject toBeRemoved = ItemEnclosedDb[obj][0];
+            var toBeRemoved = ItemEnclosedDb[obj][0];
             ItemEnclosedDb[obj].RemoveAt(0);
             return toBeRemoved;
         }
@@ -99,13 +93,9 @@ namespace MelloMario.Theming
         public static void SetEnclosedItem(IGameObject obj, IList<IGameObject> objs)
         {
             if (ItemEnclosedDb.ContainsKey(obj))
-            {
                 ItemEnclosedDb[obj] = objs;
-            }
             else
-            {
                 ItemEnclosedDb.Add(obj, objs);
-            }
         }
 
         public static bool IsEntrance(Pipeline pipeline)
@@ -121,25 +111,16 @@ namespace MelloMario.Theming
         public static void SetEntranceIndex(Pipeline pipeline, string index)
         {
             if (IsEntrance(pipeline))
-            {
                 PipelineEntranceDb[pipeline] = index;
-            }
             else
-            {
                 PipelineEntranceDb.Add(pipeline, index);
-            }
         }
 
         public static void Update(int time)
         {
-            foreach (IPlayer player in session.ScanPlayers())
-            {
-                CharacterLocations.AddOrUpdate(
-                    player.Character,
-                    ((IGameObject) player.Character).Boundary.Location,
-                    (p, loc) => ((IGameObject) p).Boundary.Location
-                );
-            }
+            foreach (var player in Session.ScanPlayers())
+                CharacterLocations.AddOrUpdate(player.Character, ((IGameObject) player.Character).Boundary.Location,
+                    (p, loc) => ((IGameObject) p).Boundary.Location);
         }
     }
 }

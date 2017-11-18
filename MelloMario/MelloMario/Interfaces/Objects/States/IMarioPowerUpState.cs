@@ -1,6 +1,6 @@
 ﻿namespace MelloMario
 {
-    interface IMarioPowerUpState : IState
+    internal interface IMarioPowerUpState : IState
     {
         void UpgradeToSuper();
         void UpgradeToFire();

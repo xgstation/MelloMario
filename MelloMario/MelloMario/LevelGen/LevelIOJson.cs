@@ -1,23 +1,22 @@
-﻿using System;
-using System.IO;
-using Microsoft.Xna.Framework.Graphics;
-using Newtonsoft.Json;
+﻿using System.IO;
 using MelloMario.Theming;
+using Newtonsoft.Json;
 
 namespace MelloMario.LevelGen
 {
-    class LevelIOJson
+    internal class LevelIOJson
     {
+        private GameConverter gameConverter;
+        private string levelString;
+        private readonly IListener listener;
+
+        private GameModel model;
         // Note: As File.ReadAllText will take care of dispose itself,
         // there is no need to implement IDisposable
 
-        private string path;
-        private GameModel model;
-        private string levelString;
-        private GameConverter gameConverter;
-        private Listener listener;
+        private readonly string path;
 
-        public LevelIOJson(string jsonPath, Listener listener)
+        public LevelIOJson(string jsonPath, IListener listener)
         {
             this.listener = listener;
             path = jsonPath;

@@ -1,17 +1,11 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using MelloMario.Sounds;
+﻿using MelloMario.Sounds;
 
 namespace MelloMario.ItemObjects.CoinStates
 {
-    class Unveil : BaseTimedState<Coin>, IItemState
+    internal class Unveil : BaseTimedState<Coin>, IItemState
     {
         private float elapsed;
         private float realOffset;
-
-        protected override void OnTimer(int time)
-        {
-            Owner.Collect();
-        }
 
         public Unveil(Coin owner) : base(owner, 250)
         {
@@ -23,9 +17,7 @@ namespace MelloMario.ItemObjects.CoinStates
             Owner.State = new Normal(Owner);
         }
 
-        public void Collect()
-        {
-        }
+        public void Collect() { }
 
         public override void Update(int time)
         {
@@ -40,6 +32,11 @@ namespace MelloMario.ItemObjects.CoinStates
             }
 
             base.Update(time);
+        }
+
+        protected override void OnTimer(int time)
+        {
+            Owner.Collect();
         }
     }
 }

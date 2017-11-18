@@ -1,62 +1,20 @@
-﻿using Microsoft.Xna.Framework;
-using MelloMario.Factories;
+﻿using MelloMario.Factories;
 using MelloMario.ItemObjects.FireFlowerStates;
 using MelloMario.MarioObjects;
-using MelloMario.UIObjects;
 using MelloMario.Theming;
+using MelloMario.UIObjects;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.ItemObjects
 {
-    class FireFlower : BaseCollidableObject
+    internal class FireFlower : BaseCollidableObject
     {
-        private IItemState state;
         private bool collected;
+        private IItemState state;
 
-        private void UpdateSprite()
-        {
-            ShowSprite(SpriteFactory.Instance.CreateFireFlowerSprite());
-        }
-
-        protected override void OnUpdate(int time)
-        {
-            state.Update(time);
-        }
-
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
-        {
-            if (target is Mario && state is Normal)
-            {
-                Collect();
-            }
-        }
-
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)
-        {
-        }
-
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
-        {
-        }
-
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
-        {
-        }
-
-        public IItemState State
-        {
-            get
-            {
-                return state;
-            }
-            set
-            {
-                state = value;
-                UpdateSprite();
-            }
-        }
-
-        public FireFlower(IGameWorld world, Point location, Listener listener, bool isUnveil) : base(world, location, listener, new Point(32, 32))
+        public FireFlower(IGameWorld world, Point location, IListener listener, bool isUnveil) : base(world, location,
+            listener, new Point(32, 32))
         {
             collected = false;
             if (isUnveil)
@@ -72,9 +30,41 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public FireFlower(IGameWorld world, Point location, Listener listener) : this(world, location, listener, false)
+        public FireFlower(IGameWorld world, Point location, IListener listener) :
+            this(world, location, listener, false) { }
+
+        public IItemState State
         {
+            get { return state; }
+            set
+            {
+                state = value;
+                UpdateSprite();
+            }
         }
+
+        private void UpdateSprite()
+        {
+            ShowSprite(SpriteFactory.Instance.CreateFireFlowerSprite());
+        }
+
+        protected override void OnUpdate(int time)
+        {
+            state.Update(time);
+        }
+
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
+            CornerMode corner, CornerMode cornerPassive)
+        {
+            if (target is Mario && state is Normal)
+                Collect();
+        }
+
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
+
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
+
+        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
 
         public void Collect()
         {

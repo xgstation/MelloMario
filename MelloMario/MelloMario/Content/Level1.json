@@ -36,7 +36,7 @@
           },
           "Property": {
             "IsHidden": true,
-            "ItemValues": ["OneUpMushroomUnveil"] 
+            "ItemValues": ["OneUpMushroomUnveil"]
           },
           "Type": "Question"
         },
@@ -571,7 +571,7 @@
           },
           "Property": {
             "Height": 9
-          } 
+          }
         },
         {
           "Type": "CastleIdle",
@@ -787,7 +787,7 @@
             "Entrance": "Main",
             "Length": 3,
             "Direction": "V"
-          } 
+          }
         },
         {
           "Type": "Coin",
@@ -822,7 +822,6 @@
             "Y": 1
           }
         }
-
       ]
     },
     {

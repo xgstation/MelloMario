@@ -85,7 +85,7 @@
           },
           "Property": {
             "IsHidden": true,
-            "ItemValues": [ "CoinUnveil", "CoinUnveil" ]
+            "ItemValues": ["CoinUnveil", "CoinUnveil"]
           }
         },
         {
@@ -117,7 +117,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": [ "SuperMushroomUnveil" ]
+            "ItemValues": ["SuperMushroomUnveil"]
           }
         },
         {
@@ -153,7 +153,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": [ "FireFlowerUnveil" ]
+            "ItemValues": ["FireFlowerUnveil"]
           }
         },
         {
@@ -164,7 +164,7 @@
           },
           "Property": {
             "IsHidden": true,
-            "ItemValues": [ "CoinUnveil", "CoinUnveil" ]
+            "ItemValues": ["CoinUnveil", "CoinUnveil"]
           }
         },
         {
@@ -186,7 +186,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": [ "StarUnveil" ]
+            "ItemValues": ["StarUnveil"]
           }
         },
         {
@@ -298,7 +298,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            "ItemValues": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
           }
 
         },
@@ -314,7 +314,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            "ItemValues": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
           }
 
         },
@@ -326,7 +326,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            "ItemValues": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
           }
 
         },
@@ -356,7 +356,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            "ItemValues": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
           }
         },
         {
@@ -371,7 +371,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            "ItemValues": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
           }
 
         },
@@ -387,7 +387,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            "ItemValues": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
           }
         },
         {
@@ -402,7 +402,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            "ItemValues": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
           }
         },
         {
@@ -417,7 +417,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": [ "CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil" ]
+            "ItemValues": ["CoinUnveil", "CoinUnveil", "CoinUnveil", "CoinUnveil"]
           }
         },
         {

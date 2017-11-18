@@ -1,5 +1,4 @@
-﻿using MelloMario.Sounds;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {

@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using MelloMario.Sounds;
+﻿using MelloMario.Sounds;
+using Microsoft.Xna.Framework.Audio;
 
 namespace MelloMario.EnemyObjects.KoopaStates
 {
-    class Defeated : BaseState<Koopa>, IKoopaState
+    internal class Defeated : BaseState<Koopa>, IKoopaState
     {
         private int played;
 
@@ -22,18 +22,14 @@ namespace MelloMario.EnemyObjects.KoopaStates
             Owner.State = new MovingShell(Owner);
         }
 
-        public void Defeat()
-        {
-        }
+        public void Defeat() { }
 
         public override void Update(int time)
         {
             if (played <= 2)
             {
                 if (SoundController.EnemyKill.State == SoundState.Stopped)
-                {
                     played += 1;
-                }
                 SoundController.EnemyKill.Play();
             }
         }

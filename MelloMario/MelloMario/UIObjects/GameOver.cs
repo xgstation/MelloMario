@@ -5,14 +5,24 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.UIObjects
 {
-    class GameOver : BaseUIObject
+    internal class GameOver : BaseUIObject
     {
+        private readonly ISprite coinSprite;
+        private readonly ISprite gameOverSprite;
+        private readonly ISprite marioSprite;
         private readonly ISprite splashSprite;
         private readonly ISprite textSprite;
-        private readonly ISprite coinSprite;
-        private readonly ISprite marioSprite;
-        private readonly ISprite gameOverSprite;
-        private string Text;
+
+        public GameOver(IPlayer player) : base(player)
+        {
+            splashSprite = SpriteFactory.Instance.CreateSplashSprite();
+            coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
+            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
+            gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
+            string text = "MARIO        " + "   WORLD    TIME\n" + Player.Score.ToString().PadLeft(6, '0') + "    *" +
+                          Player.Coins.ToString().PadLeft(2, '0') + "    " + "1-1" + "      ";
+            textSprite = SpriteFactory.Instance.CreateTextSprite(text);
+        }
 
         protected override void OnUpdate(int time)
         {
@@ -27,29 +37,14 @@ namespace MelloMario.UIObjects
 
             if (Player.Lifes > 0)
             {
-                ISprite text = SpriteFactory.Instance.CreateTextSprite("WORLD");
-                text.Draw(time, spriteBatch, new Rectangle(300, 200, 80, 80));
+                var textSprite2 = SpriteFactory.Instance.CreateTextSprite("WORLD");
+                textSprite2.Draw(time, spriteBatch, new Rectangle(300, 200, 80, 80));
                 marioSprite.Draw(time, spriteBatch, new Rectangle(250, 250, 40, 40));
-                ISprite Life = SpriteFactory.Instance.CreateTextSprite("*  " + Player.Lifes);
-                Life.Draw(time, spriteBatch, new Rectangle(350, 250, 80, 80));
+                var lifeSprite = SpriteFactory.Instance.CreateTextSprite("*  " + Player.Lifes);
+                lifeSprite.Draw(time, spriteBatch, new Rectangle(350, 250, 80, 80));
             }
             else
-            {
                 gameOverSprite.Draw(time, spriteBatch, new Rectangle(400, 250, 80, 80));
-            }
-        }
-
-        public GameOver(IPlayer player) : base(player)
-        {
-            splashSprite = SpriteFactory.Instance.CreateSplashSprite();
-            coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
-            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
-            gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
-            Text = "MARIO        " + "   WORLD    TIME\n"
-                + Player.Score.ToString().PadLeft(6, '0') + "    *"
-                + Player.Coins.ToString().PadLeft(2, '0') + "    "
-                + "1-1" + "      ";
-            textSprite = SpriteFactory.Instance.CreateTextSprite(Text);
         }
     }
 }

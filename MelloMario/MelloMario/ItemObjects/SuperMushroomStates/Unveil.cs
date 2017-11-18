@@ -1,17 +1,11 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using MelloMario.Sounds;
+﻿using MelloMario.Sounds;
 
 namespace MelloMario.ItemObjects.SuperMushroomStates
 {
-    class Unveil : BaseTimedState<SuperMushroom>, IItemState
+    internal class Unveil : BaseTimedState<SuperMushroom>, IItemState
     {
         private float elapsed;
         private float realOffset;
-
-        protected override void OnTimer(int time)
-        {
-            Owner.State = new Normal(Owner);
-        }
 
         public Unveil(SuperMushroom owner) : base(owner, 1000)
         {
@@ -23,9 +17,7 @@ namespace MelloMario.ItemObjects.SuperMushroomStates
             Owner.State = new Normal(Owner);
         }
 
-        public void Collect()
-        {
-        }
+        public void Collect() { }
 
         public override void Update(int time)
         {
@@ -40,6 +32,11 @@ namespace MelloMario.ItemObjects.SuperMushroomStates
                 Owner.UnveilMove(-1);
                 --realOffset;
             }
+        }
+
+        protected override void OnTimer(int time)
+        {
+            Owner.State = new Normal(Owner);
         }
     }
 }

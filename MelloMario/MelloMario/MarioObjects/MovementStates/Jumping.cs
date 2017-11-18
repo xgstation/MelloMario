@@ -1,32 +1,16 @@
 ﻿namespace MelloMario.MarioObjects.MovementStates
 {
-    class Jumping : BaseTimedState<Mario>, IMarioMovementState
+    internal class Jumping : BaseTimedState<Mario>, IMarioMovementState
     {
         private IMarioMovementState previous;
-        private bool finished;
-
-        protected override void OnTimer(int time)
-        {
-            finished = true;
-        }
-
-        public bool Finished
-        {
-            get
-            {
-                return finished;
-            }
-            set
-            {
-                finished = value;
-            }
-        }
 
         public Jumping(Mario owner) : base(owner, 200)
         {
             previous = owner.MovementState;
-            finished = false;
+            Finished = false;
         }
+
+        public bool Finished { get; set; }
 
         public void Crouch()
         {
@@ -43,13 +27,16 @@
             Owner.MovementState = previous;
         }
 
-        public void Jump()
-        {
-        }
+        public void Jump() { }
 
         public void Walk()
         {
             previous = new Walking(Owner);
+        }
+
+        protected override void OnTimer(int time)
+        {
+            Finished = true;
         }
     }
 }

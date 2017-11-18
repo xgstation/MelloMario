@@ -1,10 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class JumpPress : BaseCommand<ICharacter>
+    internal class JumpPress : BaseCommand<ICharacter>
     {
-        public JumpPress(ICharacter character) : base(character)
-        {
-        }
+        public JumpPress(ICharacter character) : base(character) { }
 
         public override void Execute()
         {

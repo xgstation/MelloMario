@@ -1,21 +1,13 @@
 ﻿namespace MelloMario.ItemObjects.StarStates
 {
-    class Normal : BaseState<Star>, IItemState
+    internal class Normal : BaseState<Star>, IItemState
     {
-        public Normal(Star owner) : base(owner)
-        {
-        }
+        public Normal(Star owner) : base(owner) { }
 
-        public void Show()
-        {
-        }
+        public void Show() { }
 
-        public void Collect()
-        {
-        }
+        public void Collect() { }
 
-        public override void Update(int time)
-        {
-        }
+        public override void Update(int time) { }
     }
 }

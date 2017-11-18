@@ -1,22 +1,13 @@
-﻿using MelloMario.Commands;
+﻿using System.Diagnostics.CodeAnalysis;
+using MelloMario.Commands;
 
 namespace MelloMario.Factories
 {
-    class CommandFactory : ICommandFactory
+    internal class CommandFactory : ICommandFactory
     {
-        private static ICommandFactory instance = new CommandFactory();
+        private CommandFactory() { }
 
-        private CommandFactory()
-        {
-        }
-
-        public static ICommandFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        public static ICommandFactory Instance { get; } = new CommandFactory();
 
         public ICommand CreateModelCommand(string action, IGameModel model)
         {
@@ -41,7 +32,7 @@ namespace MelloMario.Factories
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
+        [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public ICommand CreateCharacterCommand(string action, ICharacter character)
         {
             switch (action)

@@ -1,16 +1,10 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using MelloMario.MarioObjects;
+﻿using MelloMario.MarioObjects;
 using MelloMario.Sounds;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
-    class Destroyed : BaseTimedState<Brick>, IBlockState
+    internal class Destroyed : BaseTimedState<Brick>, IBlockState
     {
-        protected override void OnTimer(int time)
-        {
-            Owner.Remove();
-        }
-
         public Destroyed(Brick owner) : base(owner, 1000)
         {
             SoundController.BreakBlock.Play();
@@ -30,6 +24,11 @@ namespace MelloMario.BlockObjects.BrickStates
         public void Bump(Mario mario)
         {
             // do nothing
+        }
+
+        protected override void OnTimer(int time)
+        {
+            Owner.Remove();
         }
     }
 }

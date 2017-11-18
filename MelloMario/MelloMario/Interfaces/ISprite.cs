@@ -3,20 +3,20 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    enum ZIndex
+    internal enum ZIndex
     {
-        background0,
-        background1,
-        background2,
-        background3,
-        item,
-        level,
-        foreground,
-        splash,
-        hud
-    };
+        Background0,
+        Background1,
+        Background2,
+        Background3,
+        Item,
+        Level,
+        Foreground,
+        Splash,
+        Hud
+    }
 
-    interface ISprite
+    internal interface ISprite
     {
         Point PixelSize { get; }
 

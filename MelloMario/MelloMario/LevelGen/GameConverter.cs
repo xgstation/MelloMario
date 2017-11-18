@@ -1,36 +1,40 @@
-﻿using MelloMario.Containers;
-using MelloMario.MarioObjects;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using MelloMario.Containers;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.LevelGen
 {
     //Using for deserialize json to a single GameWorld(Map)
-    class GameConverter : JsonConverter
+    internal class GameConverter : JsonConverter
     {
+        private static JsonSerializer Serializers;
+        private readonly GameModel model;
+        private readonly IListener listener;
+        private readonly string index;
         private GameEntityConverter gameEntityConverter;
-        private GameModel model;
         private JToken jsonToken;
-        private JToken MapListToken;
-        private JToken MapToBeLoaded;
-        private string index;
-        private static JsonSerializer serializers;
+        private JToken mapListToken;
+        private JToken mapToBeLoaded;
 
         private IGameWorld world;
-        private Listener listener;
 
-        public GameConverter(GameModel model, Listener listener, string index = "Main")
+        public GameConverter(GameModel model, IListener listener, string index = "Main")
         {
             this.model = model;
             this.index = index;
             this.listener = listener;
-            serializers = new JsonSerializer();
+            Serializers = new JsonSerializer();
+        }
+
+        //TODO: Add serialize method and change CanWrite 
+        public override bool CanWrite
+        {
+            get { return false; }
         }
 
         public override bool CanConvert(Type objectType)
@@ -42,60 +46,38 @@ namespace MelloMario.LevelGen
             JsonSerializer serializer)
         {
             jsonToken = JToken.Load(reader);
-            MapListToken = Util.TryGet(out JToken t, jsonToken, "Maps") ? t : null;
-            if (MapListToken == null)
-            {
+            mapListToken = Util.TryGet(out JToken t, jsonToken, "Maps") ? t : null;
+            if (mapListToken == null)
                 return null;
-            }
-            MapToBeLoaded = null;
-            foreach (JToken obj in MapListToken)
-            {
+            mapToBeLoaded = null;
+            foreach (var obj in mapListToken)
                 if (Util.TryGet(out string s, obj, "Index") && s == index)
                 {
-                    MapToBeLoaded = obj;
+                    mapToBeLoaded = obj;
                     break;
                 }
-            }
-            Util.TryGet(out string MapType, MapToBeLoaded, "Type");
-            if (Util.TryGet(out Point mapSize, MapToBeLoaded, "Size"))
-            {
+            Util.TryGet(out string mapType, mapToBeLoaded, "Type");
+            if (Util.TryGet(out Point mapSize, mapToBeLoaded, "Size"))
                 Debug.WriteLine("Map size:" + mapSize);
-            }
             else
-            {
                 Debug.WriteLine("Deserialize fail: No map size provided!");
-            }
 
-            if (Util.TryGet(out IList<JToken> entities, MapToBeLoaded, "Entity"))
-            {
+            if (Util.TryGet(out IList<JToken> entities, mapToBeLoaded, "Entity"))
                 Debug.WriteLine("Entities token loaded successfully!");
-            }
 
-            Util.TryGet(out Point initialPoint, MapToBeLoaded, "InitialSpawnPoint");
-            Util.TryGet(out IList<Point> respawnPoints, MapToBeLoaded, "RespawnPoints");
+            Util.TryGet(out Point initialPoint, mapToBeLoaded, "InitialSpawnPoint");
+            Util.TryGet(out IList<Point> respawnPoints, mapToBeLoaded, "RespawnPoints");
             world = new GameWorld(index, mapSize, new Point(2, 2), respawnPoints);
 
             gameEntityConverter = new GameEntityConverter(model, world, listener);
 
-            serializers.Converters.Add(gameEntityConverter);
-            if (entities != null)
-            {
-                foreach (JToken jToken in entities)
-                {
-                    jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
-                }
-            }
+            Serializers.Converters.Add(gameEntityConverter);
+            if (entities == null)
+                return world;
+            foreach (var jToken in entities)
+                jToken.ToObject<EncapsulatedObject<IGameObject>>(Serializers);
 
             return world;
-        }
-
-        //TODO: Add serialize method and change CanWrite 
-        public override bool CanWrite
-        {
-            get
-            {
-                return false;
-            }
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

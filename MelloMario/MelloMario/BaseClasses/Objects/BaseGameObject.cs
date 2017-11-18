@@ -3,28 +3,45 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    abstract class BaseGameObject : IGameObject
+    internal abstract class BaseGameObject : IGameObject
     {
         private Point location;
         private Point size;
         private ISprite sprite;
 
-        protected enum ResizeModeX
-        {
-            Left,
-            Center,
-            Right
-        };
-
-        protected enum ResizeModeY
-        {
-            Top,
-            Center,
-            Bottom
-        };
-
         // TODO: World should only be used in base classes and MarioCharacter
         protected IGameWorld World;
+
+        public BaseGameObject(IGameWorld world, Point location, Point size)
+        {
+            this.location = location;
+            this.size = size;
+            World = world;
+            World.Add(this);
+        }
+
+        public Rectangle Boundary
+        {
+            get { return new Rectangle(location.X, location.Y, size.X, size.Y); }
+        }
+
+        public void Update(int time)
+        {
+            // override OnUpdate for states etc.
+            OnUpdate(time);
+            // override OnSimulation for movement and collision
+            OnSimulation(time);
+        }
+
+        public void Draw(int time, SpriteBatch spriteBatch)
+        {
+            if (sprite != null)
+            {
+                OnDraw(time, spriteBatch);
+
+                sprite.Draw(time, spriteBatch, new Rectangle(Boundary.Location, Boundary.Size));
+            }
+        }
 
         protected abstract void OnUpdate(int time);
         protected abstract void OnSimulation(int time);
@@ -37,7 +54,7 @@ namespace MelloMario
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
         {
-            Point delta = new Point();
+            var delta = new Point();
 
             switch (modeX)
             {
@@ -70,7 +87,8 @@ namespace MelloMario
             World.Move(this);
         }
 
-        protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
+        protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center,
+            ResizeModeY modeY = ResizeModeY.Bottom)
         {
             sprite = newSprite;
             Resize(sprite.PixelSize, modeX, modeY);
@@ -81,38 +99,18 @@ namespace MelloMario
             sprite = null;
         }
 
-        public Rectangle Boundary
+        protected enum ResizeModeX
         {
-            get
-            {
-                return new Rectangle(location.X, location.Y, size.X, size.Y);
-            }
+            Left,
+            Center,
+            Right
         }
 
-        public BaseGameObject(IGameWorld world, Point location, Point size)
+        protected enum ResizeModeY
         {
-            this.location = location;
-            this.size = size;
-            World = world;
-            World.Add(this);
-        }
-
-        public void Update(int time)
-        {
-            // override OnUpdate for states etc.
-            OnUpdate(time);
-            // override OnSimulation for movement and collision
-            OnSimulation(time);
-        }
-
-        public void Draw(int time, SpriteBatch spriteBatch)
-        {
-            if (sprite != null)
-            {
-                OnDraw(time, spriteBatch);
-
-                sprite.Draw(time, spriteBatch, new Rectangle(Boundary.Location, Boundary.Size));
-            }
+            Top,
+            Center,
+            Bottom
         }
     }
 }

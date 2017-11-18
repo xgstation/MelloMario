@@ -1,16 +1,10 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    abstract class BaseUIObject : IObject
+    internal abstract class BaseUIObject : IObject
     {
         protected IPlayer Player;
-
-        protected abstract void OnUpdate(int time);
-        protected abstract void OnDraw(int time, SpriteBatch spriteBatch);
 
         public BaseUIObject(IPlayer player)
         {
@@ -26,5 +20,8 @@ namespace MelloMario
         {
             OnDraw(time, spriteBatch);
         }
+
+        protected abstract void OnUpdate(int time);
+        protected abstract void OnDraw(int time, SpriteBatch spriteBatch);
     }
 }

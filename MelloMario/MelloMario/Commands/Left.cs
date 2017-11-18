@@ -1,10 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class Left : BaseCommand<ICharacter>
+    internal class Left : BaseCommand<ICharacter>
     {
-        public Left(ICharacter character) : base(character)
-        {
-        }
+        public Left(ICharacter character) : base(character) { }
 
         public override void Execute()
         {

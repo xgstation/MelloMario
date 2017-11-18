@@ -2,9 +2,10 @@
 
 namespace MelloMario.EnemyObjects.PiranhaStates
 {
-    class MovingDown : BaseState<Piranha>, IPiranhaState
+    internal class MovingDown : BaseState<Piranha>, IPiranhaState
     {
-        private int initialY;
+        private readonly int initialY;
+
         public MovingDown(Piranha owner) : base(owner)
         {
             initialY = owner.Boundary.Y;
@@ -13,9 +14,7 @@ namespace MelloMario.EnemyObjects.PiranhaStates
         public override void Update(int time)
         {
             if (Owner.Boundary.Y >= initialY + 48)
-            {
                 Owner.State = new Hidden(Owner);
-            }
         }
 
         public void Defeat()

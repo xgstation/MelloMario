@@ -1,18 +1,62 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using System.Diagnostics.CodeAnalysis;
+using MelloMario.BlockObjects;
+using MelloMario.BlockObjects.BrickStates;
 using MelloMario.Factories;
 using MelloMario.ItemObjects.SuperMushroomStates;
-using MelloMario.BlockObjects;
-using MelloMario.Containers;
-using MelloMario.UIObjects;
 using MelloMario.Theming;
+using MelloMario.UIObjects;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Normal = MelloMario.ItemObjects.SuperMushroomStates.Normal;
 
 namespace MelloMario.ItemObjects
 {
-    class SuperMushroom : BasePhysicalObject
+    internal class SuperMushroom : BasePhysicalObject
     {
-        private IItemState state;
         private bool collected;
+        private IItemState state;
+
+
+        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(world,
+            location, marioLocation, listener, false) { }
+
+        //This suppression exists because this constructor is inderectly used by the json parser.
+        //removing this constructor will cause a runtime error when trying to read in the level.
+        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        public SuperMushroom(IGameWorld world, Point location, IListener listener) : this(world, location,
+            GameDatabase.GetCharacterLocation(), listener) { }
+
+        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener,
+            bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
+        {
+            collected = false;
+            if (marioLocation.X < location.X)
+                Facing = FacingMode.left;
+            else
+                Facing = FacingMode.right;
+
+            if (isUnveil)
+            {
+                state = new Unveil(this);
+                UpdateSprite();
+                RemoveSelf();
+            }
+            else
+            {
+                state = new Normal(this);
+                UpdateSprite();
+            }
+        }
+
+        public IItemState State
+        {
+            get { return state; }
+            set
+            {
+                state = value;
+                UpdateSprite();
+            }
+        }
 
 
         public IGameObject GetFireFlower()
@@ -38,53 +82,43 @@ namespace MelloMario.ItemObjects
                 ApplyGravity();
 
                 if (Facing == FacingMode.left)
-                {
                     SetHorizontalVelocity(-GameConst.VELOCITY_SUPER_MUSHROOM);
-                }
                 else
-                {
                     SetHorizontalVelocity(GameConst.VELOCITY_SUPER_MUSHROOM);
-                }
             }
 
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
+            CornerMode corner, CornerMode cornerPassive)
         {
             switch (target.GetType().Name) // not safe!
             {
                 case "MarioCharacter":
                     if (state is Normal)
-                    {
                         Collect();
-                    }
                     break;
                 case "Brick":
-                    if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
-                    {
+                    if (((Brick) target).State is Hidden)
                         break;
-                    }
                     goto case "Stair";
                 case "Question":
                     if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
-                    {
                         break;
-                    }
                     goto case "Stair";
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
                     if (mode == CollisionMode.Top || mode == CollisionMode.Bottom)
-                    {
                         Bounce(mode, new Vector2());
-                    }
                     if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.right;
                     }
-                    else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
+                    else if (mode == CollisionMode.Right ||
+                             mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.left;
@@ -93,62 +127,11 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)
-        {
-        }
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
-        {
-        }
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
 
-        public IItemState State
-        {
-            get
-            {
-                return state;
-            }
-            set
-            {
-                state = value;
-                UpdateSprite();
-            }
-        }
-
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
-        {
-        }
-
-
-        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener) : this(world, location, marioLocation, listener, false) { }
-
-        //This suppression exists because this constructor is inderectly used by the json parser.
-        //removing this constructor will cause a runtime error when trying to read in the level.
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public SuperMushroom(IGameWorld world, Point location, Listener listener) : this(world, location, GameDatabase.GetCharacterLocation(), listener) { }
-        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, Listener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
-        {
-            collected = false;
-            if (marioLocation.X < location.X)
-            {
-                Facing = FacingMode.left;
-            }
-            else
-            {
-                Facing = FacingMode.right;
-            }
-
-            if (isUnveil)
-            {
-                state = new Unveil(this);
-                UpdateSprite();
-                RemoveSelf();
-            }
-            else
-            {
-                state = new Normal(this);
-                UpdateSprite();
-            }
-        }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
 
         public void Collect()
         {

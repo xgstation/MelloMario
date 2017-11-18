@@ -1,6 +1,6 @@
 ﻿namespace MelloMario
 {
-    interface IItemState : IState
+    internal interface IItemState : IState
     {
         void Show();
         void Collect();

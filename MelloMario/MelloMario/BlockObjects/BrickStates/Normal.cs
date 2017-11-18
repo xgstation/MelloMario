@@ -1,13 +1,11 @@
 ﻿using MelloMario.MarioObjects;
-using MelloMario.Theming;
+using MelloMario.MarioObjects.PowerUpStates;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
-    class Normal : BaseState<Brick>, IBlockState
+    internal class Normal : BaseState<Brick>, IBlockState
     {
-        public Normal(Brick owner) : base(owner)
-        {
-        }
+        public Normal(Brick owner) : base(owner) { }
 
         public void Show()
         {
@@ -21,18 +19,12 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Bump(Mario mario)
         {
-            if (mario.PowerUpState is MarioObjects.PowerUpStates.Standard || Owner.HasInitialItem)
-            {
+            if (mario.PowerUpState is Standard || Owner.HasInitialItem)
                 Owner.State = new Bumped(Owner);
-            }
             else
-            {
                 Owner.State = new Destroyed(Owner);
-            }
         }
 
-        public override void Update(int time)
-        {
-        }
+        public override void Update(int time) { }
     }
 }

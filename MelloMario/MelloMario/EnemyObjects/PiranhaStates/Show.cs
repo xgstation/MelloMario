@@ -2,9 +2,10 @@
 
 namespace MelloMario.EnemyObjects.PiranhaStates
 {
-    class Show : BaseState<Piranha>, IPiranhaState
+    internal class Show : BaseState<Piranha>, IPiranhaState
     {
         private int elapsed;
+
         public Show(Piranha owner) : base(owner)
         {
             elapsed = 0;
@@ -14,13 +15,12 @@ namespace MelloMario.EnemyObjects.PiranhaStates
         {
             Owner.State = new Defeated(Owner);
         }
+
         public override void Update(int time)
         {
             elapsed += time;
             if (elapsed > Owner.ShowTime)
-            {
                 Owner.State = new MovingDown(Owner);
-            }
         }
     }
 }

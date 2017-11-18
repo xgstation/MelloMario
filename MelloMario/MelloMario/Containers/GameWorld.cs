@@ -1,50 +1,31 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using MelloMario.Theming;
+using Microsoft.Xna.Framework;
 
 namespace MelloMario.Containers
 {
-    class GameWorld : BaseContainer<Point, IGameObject>, IGameWorld
+    internal class GameWorld : BaseContainer<Point, IGameObject>, IGameWorld
     {
-        private string id;
+        private readonly Point initialPoint;
+        private readonly ISet<Point> respawnPoints;
         private Point size;
-        private Point initialPoint;
-        private ISet<Point> respawnPoints;
-
-        protected override Point GetKey(IGameObject value)
-        {
-            Point center = value.Boundary.Center;
-            return new Point(center.X / GameConst.GRID, center.Y / GameConst.GRID);
-        }
-
-        public string Id
-        {
-            get
-            {
-                return id;
-            }
-        }
-
-        public Rectangle Boundary
-        {
-            get
-            {
-                return new Rectangle(0, 0, size.X * GameConst.GRID, size.Y * GameConst.GRID);
-            }
-        }
 
         public GameWorld(string id, Point size, Point initial, IEnumerable<Point> respawn)
         {
-            this.id = id;
+            Id = id;
             this.size = size;
 
             initialPoint = new Point(initial.X * GameConst.GRID, initial.Y * GameConst.GRID);
             respawnPoints = new HashSet<Point>();
-            foreach (Point p in respawn)
-            {
+            foreach (var p in respawn)
                 respawnPoints.Add(new Point(p.X * GameConst.GRID, p.Y * GameConst.GRID));
-            }
+        }
 
+        public string Id { get; }
+
+        public Rectangle Boundary
+        {
+            get { return new Rectangle(0, 0, size.X * GameConst.GRID, size.Y * GameConst.GRID); }
         }
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
@@ -55,15 +36,9 @@ namespace MelloMario.Containers
             int bottom = (range.Bottom + GameConst.SCANRANGE) / GameConst.GRID;
 
             for (int i = left; i <= right; ++i)
-            {
-                for (int j = top; j <= bottom; ++j)
-                {
-                    foreach (IGameObject obj in Scan(new Point(i, j)))
-                    {
-                        yield return obj;
-                    }
-                }
-            }
+            for (int j = top; j <= bottom; ++j)
+                foreach (var obj in Scan(new Point(i, j)))
+                    yield return obj;
         }
 
         public Point GetInitialPoint()
@@ -73,17 +48,19 @@ namespace MelloMario.Containers
 
         public Point GetRespawnPoint(Point location)
         {
-            Point target = location;
+            var target = location;
 
-            foreach (Point p in respawnPoints)
-            {
+            foreach (var p in respawnPoints)
                 if (p.X <= location.X && p.X > target.X)
-                {
                     target = p;
-                }
-            }
 
             return target;
+        }
+
+        protected override Point GetKey(IGameObject value)
+        {
+            var center = value.Boundary.Center;
+            return new Point(center.X / GameConst.GRID, center.Y / GameConst.GRID);
         }
     }
 }

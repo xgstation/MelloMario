@@ -5,21 +5,27 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Sprites.BlockSprites
 {
-    class BrickPieceSprite : BaseSprite
+    internal class BrickPieceSprite : BaseSprite
     {
-        private Texture2D texture;
-
         private int elapsed;
+        private readonly Texture2D texture;
+
+        public BrickPieceSprite(Texture2D texture) : base(new Point(texture.Width, texture.Height), ZIndex.Foreground)
+        {
+            this.texture = texture;
+
+            elapsed = 0;
+        }
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch, Rectangle destination)
         {
             elapsed += time;
 
-            Vector2 origin = destination.Location.ToVector2();
-            Vector2[] destinations = new Vector2[4];
-            float[] offsetX = new float[4];
-            float[] offsetY = new float[4];
-            Rectangle[] source = new Rectangle[4];
+            var origin = destination.Location.ToVector2();
+            var destinations = new Vector2[4];
+            var offsetX = new float[4];
+            var offsetY = new float[4];
+            var source = new Rectangle[4];
 
             float k = 5f / Math.Abs(2f - GameConst.FORCE_F_AIR / 20f);
             //LB
@@ -46,20 +52,17 @@ namespace MelloMario.Sprites.BlockSprites
             destinations[3] = new Vector2(offsetX[3], offsetY[3]) + origin;
             source[3] = new Rectangle(texture.Width / 2, texture.Height / 2, texture.Width / 2, texture.Height / 2);
 
-            Vector2 spriteOrigin = new Vector2(8f, 8f);
-            Vector2 scale = new Vector2(1.25f, 1.25f);
+            var spriteOrigin = new Vector2(8f, 8f);
+            var scale = new Vector2(1.25f, 1.25f);
             float rotation = elapsed * 30f / GameConst.FORCE_F_AIR;
-            spriteBatch.Draw(texture, destinations[0], source[0], Color.White, rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
-            spriteBatch.Draw(texture, destinations[1], source[1], Color.White, rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
-            spriteBatch.Draw(texture, destinations[2], source[2], Color.White, -rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
-            spriteBatch.Draw(texture, destinations[3], source[3], Color.White, -rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
-        }
-
-        public BrickPieceSprite(Texture2D texture) : base(new Point(texture.Width, texture.Height), ZIndex.foreground)
-        {
-            this.texture = texture;
-
-            elapsed = 0;
+            spriteBatch.Draw(texture, destinations[0], source[0], Color.White, rotation, spriteOrigin, scale,
+                SpriteEffects.None, LayerDepth);
+            spriteBatch.Draw(texture, destinations[1], source[1], Color.White, rotation, spriteOrigin, scale,
+                SpriteEffects.None, LayerDepth);
+            spriteBatch.Draw(texture, destinations[2], source[2], Color.White, -rotation, spriteOrigin, scale,
+                SpriteEffects.None, LayerDepth);
+            spriteBatch.Draw(texture, destinations[3], source[3], Color.White, -rotation, spriteOrigin, scale,
+                SpriteEffects.None, LayerDepth);
         }
     }
 }

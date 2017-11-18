@@ -1,21 +1,13 @@
 ﻿namespace MelloMario.ItemObjects.SuperMushroomStates
 {
-    class Normal : BaseState<SuperMushroom>, IItemState
+    internal class Normal : BaseState<SuperMushroom>, IItemState
     {
-        public Normal(SuperMushroom owner) : base(owner)
-        {
-        }
+        public Normal(SuperMushroom owner) : base(owner) { }
 
-        public void Show()
-        {
-        }
+        public void Show() { }
 
-        public void Collect()
-        {
-        }
+        public void Collect() { }
 
-        public override void Update(int time)
-        {
-        }
+        public override void Update(int time) { }
     }
 }

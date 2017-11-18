@@ -1,13 +1,13 @@
 namespace MelloMario
 {
-    enum KeyBehavior
+    internal enum KeyBehavior
     {
         press,
         release,
         hold
-    };
+    }
 
-    interface IController
+    internal interface IController
     {
         void AddCommand(object key, ICommand value, KeyBehavior behavior = KeyBehavior.press);
         void Update();

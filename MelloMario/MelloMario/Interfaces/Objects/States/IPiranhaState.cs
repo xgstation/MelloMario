@@ -1,6 +1,6 @@
 ﻿namespace MelloMario.Interfaces.Objects.States
 {
-    interface IPiranhaState : IState
+    internal interface IPiranhaState : IState
     {
         void Defeat();
     }

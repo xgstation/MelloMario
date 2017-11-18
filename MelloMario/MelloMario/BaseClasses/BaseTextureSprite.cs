@@ -1,13 +1,20 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Sprites
 {
-    abstract class BaseTextureSprite : BaseSprite
+    internal abstract class BaseTextureSprite : BaseSprite
     {
-        private Texture2D texture;
-        private Rectangle source;
         private Color color;
+        private Rectangle source;
+        private readonly Texture2D texture;
+
+        public BaseTextureSprite(Texture2D texture, Rectangle source, ZIndex zIndex) : base(source.Size, zIndex)
+        {
+            this.texture = texture;
+            this.source = source;
+            color = Color.White;
+        }
 
         protected abstract void OnAnimate(int time);
 
@@ -24,23 +31,9 @@ namespace MelloMario.Sprites
         protected override void OnDraw(int time, SpriteBatch spriteBatch, Rectangle destination)
         {
             OnAnimate(time);
-            spriteBatch.Draw(
-                texture,
-                destination,
-                source,
-                color,
-                0f, //rotation
+            spriteBatch.Draw(texture, destination, source, color, 0f, //rotation
                 new Vector2(), //origin
-                SpriteEffects.None,
-                LayerDepth
-            );
-        }
-
-        public BaseTextureSprite(Texture2D texture, Rectangle source, ZIndex zIndex) : base(source.Size, zIndex)
-        {
-            this.texture = texture;
-            this.source = source;
-            color = Color.White;
+                SpriteEffects.None, LayerDepth);
         }
     }
 }

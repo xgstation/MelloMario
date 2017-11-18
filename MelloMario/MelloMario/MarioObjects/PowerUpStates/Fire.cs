@@ -1,18 +1,16 @@
-﻿using Microsoft.Xna.Framework.Audio;
+﻿using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.Sounds;
 
 namespace MelloMario.MarioObjects.PowerUpStates
 {
-    class Fire : BaseState<Mario>, IMarioPowerUpState
+    internal class Fire : BaseState<Mario>, IMarioPowerUpState
     {
         public Fire(Mario owner) : base(owner)
         {
             SoundController.SizeUp.Play();
         }
 
-        public void UpgradeToFire()
-        {
-        }
+        public void UpgradeToFire() { }
 
         public void Downgrade()
         {
@@ -22,14 +20,10 @@ namespace MelloMario.MarioObjects.PowerUpStates
         public void UpgradeToSuper()
         {
             Owner.PowerUpState = new Super(Owner);
-            if (Owner.ProtectionState is ProtectionStates.Dead)
-            {
-                Owner.ProtectionState = new ProtectionStates.Normal(Owner);
-            }
+            if (Owner.ProtectionState is Dead)
+                Owner.ProtectionState = new Normal(Owner);
         }
 
-        public override void Update(int time)
-        {
-        }
+        public override void Update(int time) { }
     }
 }

@@ -2,18 +2,13 @@
 
 namespace MelloMario.LevelGen
 {
-    class EncapsulatedObject<T>
+    internal class EncapsulatedObject<T>
     {
-        private Stack<T> stack;
-
         public EncapsulatedObject(Stack<T> stack)
         {
-            this.stack = stack;
+            RealObj = stack;
         }
 
-        public Stack<T> RealObj
-        {
-            get { return stack; }
-        }
+        public Stack<T> RealObj { get; }
     }
 }

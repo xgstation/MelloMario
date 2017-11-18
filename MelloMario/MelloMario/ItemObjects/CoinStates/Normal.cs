@@ -1,21 +1,13 @@
 ﻿namespace MelloMario.ItemObjects.CoinStates
 {
-    class Normal : BaseState<Coin>, IItemState
+    internal class Normal : BaseState<Coin>, IItemState
     {
-        public Normal(Coin owner) : base(owner)
-        {
-        }
+        public Normal(Coin owner) : base(owner) { }
 
-        public void Show()
-        {
-        }
+        public void Show() { }
 
-        public void Collect()
-        {
-        }
+        public void Collect() { }
 
-        public override void Update(int time)
-        {
-        }
+        public override void Update(int time) { }
     }
 }

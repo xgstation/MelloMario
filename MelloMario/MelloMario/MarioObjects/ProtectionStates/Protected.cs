@@ -1,15 +1,8 @@
 ﻿namespace MelloMario.MarioObjects.ProtectionStates
 {
-    class Protected : BaseTimedState<Mario>, IMarioProtectionState
+    internal class Protected : BaseTimedState<Mario>, IMarioProtectionState
     {
-        protected override void OnTimer(int time)
-        {
-            Owner.ProtectionState = new Normal(Owner);
-        }
-
-        public Protected(Mario owner) : base(owner, 1000)
-        {
-        }
+        public Protected(Mario owner) : base(owner, 1000) { }
 
         public void Protect()
         {
@@ -20,6 +13,11 @@
         public void Star()
         {
             Owner.ProtectionState = new Starred(Owner);
+        }
+
+        protected override void OnTimer(int time)
+        {
+            Owner.ProtectionState = new Normal(Owner);
         }
     }
 }

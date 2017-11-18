@@ -1,24 +1,21 @@
 ﻿namespace MelloMario
 {
-    abstract class BaseTimedState<T> : BaseState<T>
+    internal abstract class BaseTimedState<T> : BaseState<T>
     {
         private int elapsed;
-        private int interval;
-
-        protected float Progress
-        {
-            get
-            {
-                return (float) elapsed / interval;
-            }
-        }
-
-        protected abstract void OnTimer(int time);
+        private readonly int interval;
 
         public BaseTimedState(T owner, int interval) : base(owner)
         {
             this.interval = interval;
         }
+
+        protected float Progress
+        {
+            get { return (float) elapsed / interval; }
+        }
+
+        protected abstract void OnTimer(int time);
 
         public override void Update(int time)
         {

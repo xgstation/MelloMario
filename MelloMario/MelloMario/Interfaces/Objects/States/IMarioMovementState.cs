@@ -1,6 +1,6 @@
 ﻿namespace MelloMario
 {
-    interface IMarioMovementState : IState
+    internal interface IMarioMovementState : IState
     {
         void Crouch();
         void Idle();

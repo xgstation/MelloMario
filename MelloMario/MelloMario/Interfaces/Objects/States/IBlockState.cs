@@ -2,7 +2,7 @@
 
 namespace MelloMario
 {
-    interface IBlockState : IState
+    internal interface IBlockState : IState
     {
         void Show();
         void Hide();

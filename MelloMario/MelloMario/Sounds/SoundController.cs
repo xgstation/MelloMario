@@ -1,12 +1,23 @@
-﻿using Microsoft.Xna.Framework.Audio;
+﻿using MelloMario.Factories;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
-using MelloMario.Factories;
-using MelloMario.Theming;
 
 namespace MelloMario.Sounds
 {
-    static class SoundController
+    internal static class SoundController
     {
+        public enum Songs
+        {
+            Idle,
+            Normal,
+            BelowGround,
+            Hurry,
+            Pause,
+            Title,
+            GameOver,
+            Star
+        }
+
         private static Songs CurrentSong = Songs.Idle;
         private static float SoundEffectVolume = SoundEffect.MasterVolume;
 
@@ -28,8 +39,6 @@ namespace MelloMario.Sounds
 
         public static SoundEffectInstance SizeUpAppear = SoundFactory.Instance.CreateSoundEffect("smb_powerup_appears");
         public static SoundEffectInstance OneUpCollect = SoundFactory.Instance.CreateSoundEffect("smb_1");
-
-        public enum Songs { Idle, Normal, BelowGround, Hurry, Pause, Title, GameOver, Star }
 
         public static void PlayMusic(Songs song, bool reset = false)
         {

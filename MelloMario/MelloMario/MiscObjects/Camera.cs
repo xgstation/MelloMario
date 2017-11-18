@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MelloMario.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using static System.Single;
 
 namespace MelloMario.MiscObjects
 {
-    class Camera : ICamera
+    internal class Camera : ICamera
     {
+        private readonly Viewport viewport;
+        private Rectangle? limit;
+        private Vector2 location;
+
         public Camera(Viewport viewport)
         {
             this.viewport = viewport;
@@ -20,14 +20,17 @@ namespace MelloMario.MiscObjects
 
         public Vector2 Location
         {
-            get => location;
+            get { return location; }
             set
             {
                 location = value;
 
-                if (Limit == null || !(Math.Abs(Zoom - 1.0f) < Epsilon) || !(Math.Abs(Rotation) < Epsilon)) return;
-                location.X = MathHelper.Clamp(location.X, Limit.Value.X, Limit.Value.X + Limit.Value.Width - viewport.Width);
-                location.Y = MathHelper.Clamp(location.Y, Limit.Value.Y, Limit.Value.Y + Limit.Value.Height - viewport.Height);
+                if (Limit == null || !(Math.Abs(Zoom - 1.0f) < Epsilon) || !(Math.Abs(Rotation) < Epsilon))
+                    return;
+                location.X = MathHelper.Clamp(location.X, Limit.Value.X,
+                    Limit.Value.X + Limit.Value.Width - viewport.Width);
+                location.Y = MathHelper.Clamp(location.Y, Limit.Value.Y,
+                    Limit.Value.Y + Limit.Value.Height - viewport.Height);
             }
         }
 
@@ -40,7 +43,7 @@ namespace MelloMario.MiscObjects
 
         public Rectangle? Limit
         {
-            get => limit;
+            get { return limit; }
             set
             {
                 if (value != null)
@@ -50,27 +53,23 @@ namespace MelloMario.MiscObjects
                     {
                         X = value.Value.X,
                         Y = value.Value.Y,
-                        Width = System.Math.Max(viewport.Width, value.Value.Width),
-                        Height = System.Math.Max(viewport.Height, value.Value.Height)
+                        Width = Math.Max(viewport.Width, value.Value.Width),
+                        Height = Math.Max(viewport.Height, value.Value.Height)
                     };
 
                     // Validate gameCamera newLocation with new limit
                     Location = Location;
                 }
                 else
-                {
                     limit = null;
-                }
             }
         }
 
         public Matrix GetViewMatrix(Vector2 parallax)
         {
             return Matrix.CreateTranslation(new Vector3(-Location * parallax, 0.0f)) *
-                   Matrix.CreateTranslation(new Vector3(-Origin, 0.0f)) *
-                   Matrix.CreateRotationZ(Rotation) *
-                   Matrix.CreateScale(Zoom, Zoom, 1.0f) *
-                   Matrix.CreateTranslation(new Vector3(Origin, 0.0f));
+                   Matrix.CreateTranslation(new Vector3(-Origin, 0.0f)) * Matrix.CreateRotationZ(Rotation) *
+                   Matrix.CreateScale(Zoom, Zoom, 1.0f) * Matrix.CreateTranslation(new Vector3(Origin, 0.0f));
         }
 
         public void LookAt(Vector2 newLocation)
@@ -81,15 +80,9 @@ namespace MelloMario.MiscObjects
         public void Move(Vector2 displacement, bool respectRotation = false)
         {
             if (respectRotation)
-            {
                 displacement = Vector2.Transform(displacement, Matrix.CreateRotationZ(-Rotation));
-            }
 
             Location += displacement;
         }
-
-        private readonly Viewport viewport;
-        private Vector2 location;
-        private Rectangle? limit;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace MelloMario
 {
-    interface IScript
+    internal interface IScript
     {
         void Bind(IEnumerable<IController> controllers, IGameModel model, ICharacter character);
     }

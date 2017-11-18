@@ -1,23 +1,29 @@
 ﻿using MelloMario.Factories;
-using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.UIObjects
 {
-    class HUD : BaseUIObject
+    internal class HUD : BaseUIObject
     {
+        private readonly ISprite coinSprite;
+        private readonly ISprite oneUpSprite;
         private string text;
         private ISprite textSprite;
-        private ISprite coinSprite;
-        private ISprite oneUpSprite;
+
+        public HUD(IPlayer player) : base(player)
+        {
+            textSprite = SpriteFactory.Instance.CreateTextSprite("");
+            coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
+            oneUpSprite = SpriteFactory.Instance.CreateOneUpMushroomSprite();
+        }
 
         protected override void OnUpdate(int time)
         {
-            string newText = "MARIO     *" + Player.Lifes.ToString().PadLeft(2, '0') + "   WORLD    TIME\n"
-                + Player.Score.ToString().PadLeft(6, '0') + "    *"
-                + Player.Coins.ToString().PadLeft(2, '0') + "    "
-                + "1-1" + "      " + Player.TimeRemain / 1000; // TODO: get World name from player.CurrentWorld
+            string newText = "MARIO     *" + Player.Lifes.ToString().PadLeft(2, '0') + "   WORLD    TIME\n" +
+                             Player.Score.ToString().PadLeft(6, '0') + "    *" +
+                             Player.Coins.ToString().PadLeft(2, '0') + "    " + "1-1" + "      " +
+                             Player.TimeRemain / 1000; // TODO: get World name from player.CurrentWorld
 
             if (newText != text)
             {
@@ -31,13 +37,6 @@ namespace MelloMario.UIObjects
             textSprite.Draw(time, spriteBatch, new Rectangle(42, 42, 800, 200));
             coinSprite.Draw(time, spriteBatch, new Rectangle(255, 74, 26, 30));
             oneUpSprite.Draw(time, spriteBatch, new Rectangle(255, 42, 26, 30));
-        }
-
-        public HUD(IPlayer player) : base(player)
-        {
-            textSprite = SpriteFactory.Instance.CreateTextSprite("");
-            coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
-            oneUpSprite = SpriteFactory.Instance.CreateOneUpMushroomSprite();
         }
     }
 }

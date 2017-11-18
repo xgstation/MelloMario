@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework.Audio;
+﻿using MelloMario.Sounds;
 using Microsoft.Xna.Framework.Media;
-using MelloMario.Sounds;
 
 namespace MelloMario.MarioObjects.ProtectionStates
 {
-    class Dead : BaseTimedState<Mario>, IMarioProtectionState
+    internal class Dead : BaseTimedState<Mario>, IMarioProtectionState
     {
         public Dead(Mario owner) : base(owner, 1500)
         {

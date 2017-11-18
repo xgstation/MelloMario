@@ -1,6 +1,6 @@
 ﻿namespace MelloMario
 {
-    interface ICommand
+    internal interface ICommand
     {
         void Execute();
     }

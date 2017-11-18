@@ -2,11 +2,9 @@
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
-    class Normal : BaseState<Question>, IBlockState
+    internal class Normal : BaseState<Question>, IBlockState
     {
-        public Normal(Question owner) : base(owner)
-        {
-        }
+        public Normal(Question owner) : base(owner) { }
 
         public void Show()
         {
@@ -23,8 +21,6 @@ namespace MelloMario.BlockObjects.QuestionStates
             Owner.State = new Bumped(Owner);
         }
 
-        public override void Update(int time)
-        {
-        }
+        public override void Update(int time) { }
     }
 }

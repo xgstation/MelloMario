@@ -2,7 +2,7 @@
 
 namespace MelloMario
 {
-    interface IGameSession : IContainer<IPlayer>
+    internal interface IGameSession : IContainer<IPlayer>
     {
         IEnumerable<IGameWorld> ScanWorlds();
         IEnumerable<IPlayer> ScanPlayers();

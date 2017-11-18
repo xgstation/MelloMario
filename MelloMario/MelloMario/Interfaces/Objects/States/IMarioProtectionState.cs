@@ -1,6 +1,6 @@
 ﻿namespace MelloMario
 {
-    interface IMarioProtectionState : IState
+    internal interface IMarioProtectionState : IState
     {
         void Star();
         void Protect();

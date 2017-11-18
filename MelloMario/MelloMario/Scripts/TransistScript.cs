@@ -1,25 +1,22 @@
-﻿using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MelloMario.Factories;
+using Microsoft.Xna.Framework.Input;
 
 namespace MelloMario.Scripts
 {
-    class TransistScript : IScript
+    internal class TransistScript : IScript
     {
-        public TransistScript()
-        {
-        }
-
         public void Bind(IEnumerable<IController> controllers, IGameModel model, ICharacter character)
         {
-            ICommandFactory factory = CommandFactory.Instance;
+            var factory = CommandFactory.Instance;
 
-            foreach (IController controller in controllers)
+            foreach (var controller in controllers)
             {
                 controller.Reset();
 
                 // game character commands
-                controller.AddCommand(Keys.F12, factory.CreateModelCommand("ToggleFullScreen", model), KeyBehavior.press);
+                controller.AddCommand(Keys.F12, factory.CreateModelCommand("ToggleFullScreen", model),
+                    KeyBehavior.press);
                 controller.AddCommand(Keys.R, factory.CreateModelCommand("Reset", model), KeyBehavior.press);
                 controller.AddCommand(Keys.Q, factory.CreateModelCommand("Quit", model), KeyBehavior.press);
             }

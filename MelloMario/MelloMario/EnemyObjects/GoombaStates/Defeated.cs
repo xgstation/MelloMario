@@ -1,9 +1,8 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using MelloMario.Sounds;
+﻿using MelloMario.Sounds;
 
 namespace MelloMario.EnemyObjects.GoombaStates
 {
-    class Defeated : BaseState<Goomba>, IGoombaState
+    internal class Defeated : BaseState<Goomba>, IGoombaState
     {
         private int played;
 
@@ -15,13 +14,9 @@ namespace MelloMario.EnemyObjects.GoombaStates
         public void Show()
         {
             Owner.State = new Normal(Owner);
-
         }
 
-        public void Defeat()
-        {
-
-        }
+        public void Defeat() { }
 
         public override void Update(int time)
         {

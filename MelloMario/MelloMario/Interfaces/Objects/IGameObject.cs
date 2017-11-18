@@ -2,7 +2,7 @@
 
 namespace MelloMario
 {
-    interface IGameObject : IObject
+    internal interface IGameObject : IObject
     {
         Rectangle Boundary { get; }
     }

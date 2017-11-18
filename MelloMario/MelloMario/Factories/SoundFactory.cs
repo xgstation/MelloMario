@@ -1,18 +1,16 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 
 namespace MelloMario.Factories
 {
-    class SoundFactory : ISoundFactory
+    internal class SoundFactory : ISoundFactory
     {
-        private static ISoundFactory instance = new SoundFactory();
-
         private ContentManager content;
 
-        private IDictionary<string, Song> songs;
-        private IDictionary<string, SoundEffectInstance> soundEffects;
+        private readonly IDictionary<string, Song> songs;
+        private readonly IDictionary<string, SoundEffectInstance> soundEffects;
 
         private SoundFactory()
         {
@@ -20,13 +18,7 @@ namespace MelloMario.Factories
             soundEffects = new Dictionary<string, SoundEffectInstance>();
         }
 
-        public static ISoundFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        public static ISoundFactory Instance { get; } = new SoundFactory();
 
         public void BindContentManager(ContentManager newContentManager)
         {
@@ -36,9 +28,7 @@ namespace MelloMario.Factories
         public Song CreateSong(string name)
         {
             if (!songs.ContainsKey(name))
-            {
                 songs.Add(name, content.Load<Song>("Music/" + name));
-            }
 
             return songs[name];
         }
@@ -46,9 +36,7 @@ namespace MelloMario.Factories
         public SoundEffectInstance CreateSoundEffect(string name)
         {
             if (!soundEffects.ContainsKey(name))
-            {
                 soundEffects.Add(name, content.Load<SoundEffect>("SFX/" + name).CreateInstance());
-            }
 
             return soundEffects[name];
         }

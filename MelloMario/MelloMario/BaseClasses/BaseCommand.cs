@@ -1,6 +1,6 @@
 ﻿namespace MelloMario.Commands
 {
-    abstract class BaseCommand<T> : ICommand
+    internal abstract class BaseCommand<T> : ICommand
     {
         protected T Receiver;
 

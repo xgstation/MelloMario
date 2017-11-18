@@ -2,11 +2,9 @@
 
 namespace MelloMario.BlockObjects.BrickStates
 {
-    class Used : BaseState<Brick>, IBlockState
+    internal class Used : BaseState<Brick>, IBlockState
     {
-        public Used(Brick owner) : base(owner)
-        {
-        }
+        public Used(Brick owner) : base(owner) { }
 
         public void Show()
         {
@@ -23,8 +21,6 @@ namespace MelloMario.BlockObjects.BrickStates
             // nothing
         }
 
-        public override void Update(int time)
-        {
-        }
+        public override void Update(int time) { }
     }
 }

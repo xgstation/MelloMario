@@ -1,26 +1,28 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Controllers;
 using MelloMario.Factories;
 using MelloMario.Theming;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
     /// <summary>
-    /// This is the main type for Mello Mario game.
+    ///     This is the main type for Mello Mario game.
     /// </summary>
-    class Game1 : Game
+    internal class Game1 : Game
     {
-        private GraphicsDeviceManager graphics;
+        private readonly GraphicsDeviceManager graphics;
         private GameModel model;
         private SpriteBatch spriteBatch;
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this) { };
-            graphics.PreferredBackBufferHeight = GameConst.SCREEN_WIDTH;
-            graphics.PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT;
+            graphics = new GraphicsDeviceManager(this)
+            {
+                PreferredBackBufferWidth = GameConst.SCREEN_WIDTH,
+                PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT
+            };
         }
 
         // game controlling
@@ -32,20 +34,17 @@ namespace MelloMario
         public void Reset()
         {
             model = new GameModel(this);
-            IEnumerable<IController> controllers = new List<IController>
-            {
-                new GamepadController(),
-                new KeyboardController()
-            };
+            IEnumerable<IController> controllers =
+                new List<IController> { new GamepadController(), new KeyboardController() };
             model.LoadControllers(controllers);
             model.Init();
         }
 
         /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
+        ///     Allows the game to perform any initialization it needs to before starting to run.
+        ///     This is where it can query for any required services and load any non-graphic
+        ///     related content.  Calling base.Initialize will enumerate through any components
+        ///     and initialize them as well.
         /// </summary>
         protected override void Initialize()
         {
@@ -56,8 +55,8 @@ namespace MelloMario
         }
 
         /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
+        ///     LoadContent will be called once per game and is the place to load
+        ///     all of your content.
         /// </summary>
         protected override void LoadContent()
         {
@@ -70,8 +69,8 @@ namespace MelloMario
         }
 
         /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
+        ///     UnloadContent will be called once per game and is the place to unload
+        ///     game-specific content.
         /// </summary>
         protected override void UnloadContent()
         {
@@ -79,8 +78,8 @@ namespace MelloMario
         }
 
         /// <summary>
-        /// Allows the game to run logic such as updating the World,
-        /// checking for collisions, gathering input, and playing audio.
+        ///     Allows the game to run logic such as updating the World,
+        ///     checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="time">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime time)
@@ -90,7 +89,7 @@ namespace MelloMario
         }
 
         /// <summary>
-        /// This is called when the game should draw itself.
+        ///     This is called when the game should draw itself.
         /// </summary>
         /// <param name="time">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime time)
@@ -98,8 +97,7 @@ namespace MelloMario
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
 
-#if DEBUGSPRITE
-            //Debug Code
+#if DEBUGSPRITE //Debug Code
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
             RasterizerState state = new RasterizerState();
             state.FillMode = FillMode.WireFrame;

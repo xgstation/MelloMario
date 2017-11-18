@@ -2,7 +2,7 @@
 
 namespace MelloMario
 {
-    interface ICharacter
+    internal interface ICharacter
     {
         bool Active { get; }
         IGameWorld CurrentWorld { get; }

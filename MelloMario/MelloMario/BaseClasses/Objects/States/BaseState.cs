@@ -1,6 +1,6 @@
 ﻿namespace MelloMario
 {
-    abstract class BaseState<T> : IState
+    internal abstract class BaseState<T> : IState
     {
         protected T Owner;
 

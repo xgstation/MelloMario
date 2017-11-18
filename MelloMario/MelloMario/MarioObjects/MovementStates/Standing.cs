@@ -1,23 +1,17 @@
 ﻿namespace MelloMario.MarioObjects.MovementStates
 {
-    class Standing : BaseState<Mario>, IMarioMovementState
+    internal class Standing : BaseState<Mario>, IMarioMovementState
     {
-        public Standing(Mario owner) : base(owner)
-        {
-        }
+        public Standing(Mario owner) : base(owner) { }
 
         public void Crouch()
         {
             Owner.MovementState = new Crouching(Owner);
         }
 
-        public void Idle()
-        {
-        }
+        public void Idle() { }
 
-        public void Land()
-        {
-        }
+        public void Land() { }
 
         public void Jump()
         {

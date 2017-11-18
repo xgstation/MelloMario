@@ -1,6 +1,6 @@
 ﻿namespace MelloMario
 {
-    interface IState
+    internal interface IState
     {
         void Update(int time);
     }

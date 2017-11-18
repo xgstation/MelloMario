@@ -1,10 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class CrouchPress : BaseCommand<ICharacter>
+    internal class CrouchPress : BaseCommand<ICharacter>
     {
-        public CrouchPress(ICharacter character) : base(character)
-        {
-        }
+        public CrouchPress(ICharacter character) : base(character) { }
 
         public override void Execute()
         {

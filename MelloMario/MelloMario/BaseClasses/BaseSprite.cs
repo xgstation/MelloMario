@@ -1,27 +1,18 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Sprites
 {
-    abstract class BaseSprite : ISprite
+    internal abstract class BaseSprite : ISprite
     {
-        private Point size;
-        private ZIndex zIndex;
         private bool visible;
+        private readonly ZIndex zIndex;
 
-        protected abstract void OnDraw(int time, SpriteBatch spriteBatch, Rectangle destination);
-
-        protected void Toggle()
+        public BaseSprite(Point size, ZIndex zIndex)
         {
-            visible = !visible;
-        }
-
-        public Point PixelSize
-        {
-            get
-            {
-                return size;
-            }
+            PixelSize = size;
+            this.zIndex = zIndex;
+            visible = true;
         }
 
         protected float LayerDepth
@@ -30,23 +21,23 @@ namespace MelloMario.Sprites
             {
                 switch (zIndex)
                 {
-                    case ZIndex.hud:
+                    case ZIndex.Hud:
                         return 0.1f;
-                    case ZIndex.splash:
+                    case ZIndex.Splash:
                         return 0.2f;
-                    case ZIndex.foreground:
+                    case ZIndex.Foreground:
                         return 0.3f;
-                    case ZIndex.level:
+                    case ZIndex.Level:
                         return 0.4f;
-                    case ZIndex.item:
+                    case ZIndex.Item:
                         return 0.5f;
-                    case ZIndex.background3:
+                    case ZIndex.Background3:
                         return 0.6f;
-                    case ZIndex.background2:
+                    case ZIndex.Background2:
                         return 0.7f;
-                    case ZIndex.background1:
+                    case ZIndex.Background1:
                         return 0.8f;
-                    case ZIndex.background0:
+                    case ZIndex.Background0:
                         return 0.9f;
                     default:
                         return float.NaN;
@@ -54,19 +45,19 @@ namespace MelloMario.Sprites
             }
         }
 
-        public BaseSprite(Point size, ZIndex zIndex)
-        {
-            this.size = size;
-            this.zIndex = zIndex;
-            visible = true;
-        }
+        public Point PixelSize { get; }
 
         public void Draw(int time, SpriteBatch spriteBatch, Rectangle destination)
         {
             if (visible)
-            {
                 OnDraw(time, spriteBatch, destination);
-            }
+        }
+
+        protected abstract void OnDraw(int time, SpriteBatch spriteBatch, Rectangle destination);
+
+        protected void Toggle()
+        {
+            visible = !visible;
         }
     }
 }

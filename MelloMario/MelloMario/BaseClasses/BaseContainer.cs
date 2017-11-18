@@ -3,23 +3,30 @@ using System.Linq;
 
 namespace MelloMario.Containers
 {
-    abstract class BaseContainer<Key, Value>
+    internal abstract class BaseContainer<Key, Value>
     {
-        private IDictionary<Value, Key> keys;
-        private IDictionary<Key, ISet<Value>> values;
+        private readonly IDictionary<Value, Key> keys;
 
-        private ISet<Value> toAdd;
-        private ISet<Value> toMove;
-        private ISet<Value> toRemove;
+        private readonly ISet<Value> toAdd;
+        private readonly ISet<Value> toMove;
+        private readonly ISet<Value> toRemove;
+        private readonly IDictionary<Key, ISet<Value>> values;
+
+        public BaseContainer()
+        {
+            keys = new Dictionary<Value, Key>();
+            values = new Dictionary<Key, ISet<Value>>();
+            toAdd = new HashSet<Value>();
+            toMove = new HashSet<Value>();
+            toRemove = new HashSet<Value>();
+        }
 
         private void DoAdd(Value value)
         {
-            Key key = GetKey(value);
+            var key = GetKey(value);
 
             if (!values.ContainsKey(key))
-            {
                 values.Add(key, new HashSet<Value>());
-            }
 
             keys.Add(value, key);
             values[key].Add(value);
@@ -27,7 +34,7 @@ namespace MelloMario.Containers
 
         private void DoRemove(Value value)
         {
-            Key key = keys[value];
+            var key = keys[value];
 
             keys.Remove(value);
             values[key].Remove(value);
@@ -38,13 +45,8 @@ namespace MelloMario.Containers
         protected IEnumerable<Value> Scan(Key key)
         {
             if (values.ContainsKey(key))
-            {
                 return values[key];
-            }
-            else
-            {
-                return Enumerable.Empty<Value>();
-            }
+            return Enumerable.Empty<Value>();
         }
 
         protected IEnumerable<Key> ScanKeys()
@@ -54,22 +56,9 @@ namespace MelloMario.Containers
 
         protected IEnumerable<Value> ScanValues()
         {
-            foreach (ISet<Value> value in values.Values)
-            {
-                foreach (Value item in value)
-                {
-                    yield return item;
-                }
-            }
-        }
-
-        public BaseContainer()
-        {
-            keys = new Dictionary<Value, Key>();
-            values = new Dictionary<Key, ISet<Value>>();
-            toAdd = new HashSet<Value>();
-            toMove = new HashSet<Value>();
-            toRemove = new HashSet<Value>();
+            foreach (var value in values.Values)
+            foreach (var item in value)
+                yield return item;
         }
 
         public void Add(Value value)
@@ -89,32 +78,22 @@ namespace MelloMario.Containers
 
         public void Update()
         {
-            foreach (Value value in toAdd)
-            {
+            foreach (var value in toAdd)
                 if (!keys.ContainsKey(value))
-                {
                     DoAdd(value);
-                }
-            }
             toAdd.Clear();
 
-            foreach (Value value in toMove)
-            {
+            foreach (var value in toMove)
                 if (keys.ContainsKey(value))
                 {
                     DoRemove(value);
                     DoAdd(value);
                 }
-            }
             toMove.Clear();
 
-            foreach (Value value in toRemove)
-            {
+            foreach (var value in toRemove)
                 if (keys.ContainsKey(value))
-                {
                     DoRemove(value);
-                }
-            }
             toRemove.Clear();
         }
     }

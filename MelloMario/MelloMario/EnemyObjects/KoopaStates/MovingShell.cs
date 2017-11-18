@@ -1,10 +1,8 @@
 ﻿namespace MelloMario.EnemyObjects.KoopaStates
 {
-    class MovingShell : BaseState<Koopa>, IKoopaState
+    internal class MovingShell : BaseState<Koopa>, IKoopaState
     {
-        public MovingShell(Koopa owner) : base(owner)
-        {
-        }
+        public MovingShell(Koopa owner) : base(owner) { }
 
         public void Show()
         {
@@ -21,9 +19,7 @@
             Owner.State = new Defeated(Owner);
         }
 
-        public override void Update(int time)
-        {
-        }
+        public override void Update(int time) { }
 
         public void Pushed()
         {

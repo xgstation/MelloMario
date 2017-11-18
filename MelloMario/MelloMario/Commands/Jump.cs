@@ -1,10 +1,8 @@
 ﻿namespace MelloMario.Commands
 {
-    class Jump : BaseCommand<ICharacter>
+    internal class Jump : BaseCommand<ICharacter>
     {
-        public Jump(ICharacter character) : base(character)
-        {
-        }
+        public Jump(ICharacter character) : base(character) { }
 
         public override void Execute()
         {

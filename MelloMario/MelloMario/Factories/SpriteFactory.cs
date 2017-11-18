@@ -1,42 +1,24 @@
 ﻿using System.Collections.Generic;
 using MelloMario.Sprites;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
 using MelloMario.Sprites.BlockSprites;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Factories
 {
-    class SpriteFactory : ISpriteFactory
+    internal class SpriteFactory : ISpriteFactory
     {
-        private static ISpriteFactory instance = new SpriteFactory();
-
         private ContentManager content;
 
-        private IDictionary<string, Texture2D> textures;
+        private readonly IDictionary<string, Texture2D> textures;
 
         private SpriteFactory()
         {
             textures = new Dictionary<string, Texture2D>();
         }
 
-        private Texture2D GetTexture(string name)
-        {
-            if (!textures.ContainsKey(name))
-            {
-                textures.Add(name, content.Load<Texture2D>(name));
-            }
-
-            return textures[name];
-        }
-
-        public static ISpriteFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        public static ISpriteFactory Instance { get; } = new SpriteFactory();
 
         public void BindContentManager(ContentManager newContentManager)
         {
@@ -45,7 +27,7 @@ namespace MelloMario.Factories
 
         public ISprite CreateTextSprite(string text, float fontSize = 18f)
         {
-            return new TextSprite(text, content.Load<SpriteFont>("Font\\text"), new Point(), ZIndex.hud, fontSize);
+            return new TextSprite(text, content.Load<SpriteFont>("Font\\text"), new Point(), ZIndex.Hud, fontSize);
         }
 
         public ISprite CreateSplashSprite()
@@ -53,20 +35,27 @@ namespace MelloMario.Factories
             return new SplashSprite();
         }
 
-        public ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing)
+        public ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus,
+            string facing)
         {
             switch (protectionStatus)
             {
                 case "Protected":
-                    return new FlashingAnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
+                    return new FlashingAnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing),
+                        movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2,
+                        powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Starred":
-                    return new FlickingAnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
+                    return new FlickingAnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing),
+                        movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2,
+                        powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Normal":
-                    return new AnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
+                    return new AnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing),
+                        movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2,
+                        powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Dead":
-                    return new StaticSprite(GetTexture(protectionStatus), zIndex: ZIndex.foreground);
+                    return new StaticSprite(GetTexture(protectionStatus), zIndex: ZIndex.Foreground);
                 case "GameOver":
-                    return new StaticSprite(GetTexture(powerUpStatus + movementStatus + facing), zIndex: ZIndex.hud);
+                    return new StaticSprite(GetTexture(powerUpStatus + movementStatus + facing), zIndex: ZIndex.Hud);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -142,9 +131,7 @@ namespace MelloMario.Factories
         public ISprite CreateCoinSprite(bool isHud = false)
         {
             if (isHud)
-            {
-                return new AnimatedSprite(GetTexture("Coin"), 4, 1, 0, 0, 1, 2, 100, ZIndex.hud);
-            }
+                return new AnimatedSprite(GetTexture("Coin"), 4, 1, 0, 0, 1, 2, 100, ZIndex.Hud);
             return new AnimatedSprite(GetTexture("Coin"), 4, 1, 0, 0, 1, 2);
         }
 
@@ -168,11 +155,11 @@ namespace MelloMario.Factories
             switch (status)
             {
                 case "Bumped":
-                    return new AnimatedSprite(GetTexture("Question"), 3, 1, zIndex: ZIndex.level);
+                    return new AnimatedSprite(GetTexture("Question"), 3, 1, zIndex: ZIndex.Level);
                 case "Normal":
-                    return new AnimatedSprite(GetTexture("Question"), 3, 1, zIndex: ZIndex.level);
+                    return new AnimatedSprite(GetTexture("Question"), 3, 1, zIndex: ZIndex.Level);
                 case "Used":
-                    return new StaticSprite(GetTexture("BlockSheet"), 54, 0, zIndex: ZIndex.level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 54, 0, zIndex: ZIndex.Level);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -185,13 +172,13 @@ namespace MelloMario.Factories
             switch (status)
             {
                 case "Bumped":
-                    return new StaticSprite(GetTexture("BlockSheet"), 2, 0, zIndex: ZIndex.level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 0, zIndex: ZIndex.Level);
                 case "Destroyed":
                     return new BrickPieceSprite(GetTexture("BrickPieces"));
                 case "Normal":
-                    return new StaticSprite(GetTexture("BlockSheet"), 2, 0, zIndex: ZIndex.level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 0, zIndex: ZIndex.Level);
                 case "Used":
-                    return new StaticSprite(GetTexture("BlockSheet"), 54, 0, zIndex: ZIndex.level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 54, 0, zIndex: ZIndex.Level);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -201,12 +188,12 @@ namespace MelloMario.Factories
 
         public ISprite CreateFloorSprite()
         {
-            return new StaticSprite(GetTexture("BlockSheet"), 0, 0, zIndex: ZIndex.level);
+            return new StaticSprite(GetTexture("BlockSheet"), 0, 0, zIndex: ZIndex.Level);
         }
 
         public ISprite CreateStairSprite()
         {
-            return new StaticSprite(GetTexture("BlockSheet"), 0, 2, zIndex: ZIndex.level);
+            return new StaticSprite(GetTexture("BlockSheet"), 0, 2, zIndex: ZIndex.Level);
         }
 
         public ISprite CreatePipelineSprite(string type)
@@ -214,13 +201,13 @@ namespace MelloMario.Factories
             switch (type)
             {
                 case "LeftIn":
-                    return new StaticSprite(GetTexture("BlockSheet"), 0, 16, zIndex: ZIndex.foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 0, 16, zIndex: ZIndex.Foreground);
                 case "RightIn":
-                    return new StaticSprite(GetTexture("BlockSheet"), 2, 16, zIndex: ZIndex.foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 16, zIndex: ZIndex.Foreground);
                 case "Left":
-                    return new StaticSprite(GetTexture("BlockSheet"), 0, 18, zIndex: ZIndex.foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 0, 18, zIndex: ZIndex.Foreground);
                 case "Right":
-                    return new StaticSprite(GetTexture("BlockSheet"), 2, 18, zIndex: ZIndex.foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 18, zIndex: ZIndex.Foreground);
                 //TODO: Implement cases below
                 case "TopLeftIn":
                 case "BottomLeftIn":
@@ -238,13 +225,8 @@ namespace MelloMario.Factories
         public ISprite CreateFlagSprite(bool isTop)
         {
             if (isTop)
-            {
-                return new StaticSprite(GetTexture("BlockSheet"), 32, 16, zIndex: ZIndex.level);
-            }
-            else
-            {
-                return new StaticSprite(GetTexture("BlockSheet"), 32, 18, zIndex: ZIndex.level);
-            }
+                return new StaticSprite(GetTexture("BlockSheet"), 32, 16, zIndex: ZIndex.Level);
+            return new StaticSprite(GetTexture("BlockSheet"), 32, 18, zIndex: ZIndex.Level);
         }
 
         public ISprite CreateSceneSprite(string type, ZIndex zIndex)
@@ -281,6 +263,14 @@ namespace MelloMario.Factories
         public ISprite CreateTitle(ZIndex zIndex)
         {
             return new StaticSprite(GetTexture("Title"), 0, 0, 22, 11, zIndex);
+        }
+
+        private Texture2D GetTexture(string name)
+        {
+            if (!textures.ContainsKey(name))
+                textures.Add(name, content.Load<Texture2D>(name));
+
+            return textures[name];
         }
     }
 }

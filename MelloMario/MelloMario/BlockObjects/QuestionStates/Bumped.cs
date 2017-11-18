@@ -1,11 +1,10 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using MelloMario.MarioObjects;
-using MelloMario.Theming;
+﻿using MelloMario.MarioObjects;
 using MelloMario.Sounds;
+using MelloMario.Theming;
 
 namespace MelloMario.BlockObjects.QuestionStates
 {
-    class Bumped : BaseState<Question>, IBlockState
+    internal class Bumped : BaseState<Question>, IBlockState
     {
         private int elapsed;
         private int move;
@@ -19,13 +18,9 @@ namespace MelloMario.BlockObjects.QuestionStates
         public void Show()
         {
             if (GameDatabase.HasItemEnclosed(Owner))
-            {
                 Owner.State = new Normal(Owner);
-            }
             else
-            {
                 Owner.State = new Used(Owner);
-            }
         }
 
         public void Hide()
@@ -43,28 +38,20 @@ namespace MelloMario.BlockObjects.QuestionStates
             SoundController.BumpBlock.Play();
             // TODO: use BaseTimedState
             if (elapsed >= 70)
-            {
                 move = 0;
-            }
             elapsed += time;
             move += 3;
             if (elapsed >= 180)
-            {
                 Show();
-            }
             if (elapsed >= 170)
             {
                 Owner.BumpMove(0);
                 Owner.ReleaseNextItem();
             }
             else if (elapsed >= 70)
-            {
                 Owner.BumpMove(move);
-            }
             else
-            {
                 Owner.BumpMove(-move);
-            }
         }
     }
 }

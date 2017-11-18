@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario
 {
-    interface ISpriteFactory
+    internal interface ISpriteFactory
     {
         void BindContentManager(ContentManager newContentManager);
 

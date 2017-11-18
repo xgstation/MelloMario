@@ -1,36 +1,30 @@
-﻿namespace MelloMario.MarioObjects.PowerUpStates
+﻿using MelloMario.MarioObjects.ProtectionStates;
+
+namespace MelloMario.MarioObjects.PowerUpStates
 {
-    class Standard : BaseState<Mario>, IMarioPowerUpState
+    internal class Standard : BaseState<Mario>, IMarioPowerUpState
     {
-        public Standard(Mario owner) : base(owner)
-        {
-        }
+        public Standard(Mario owner) : base(owner) { }
 
         public void UpgradeToFire()
         {
             Owner.PowerUpState = new Fire(Owner);
-            if (Owner.ProtectionState is ProtectionStates.Dead)
-            {
-                Owner.ProtectionState = new ProtectionStates.Normal(Owner);
-            }
+            if (Owner.ProtectionState is Dead)
+                Owner.ProtectionState = new Normal(Owner);
         }
 
         public void Downgrade()
         {
-            Owner.ProtectionState = new ProtectionStates.Dead(Owner);
+            Owner.ProtectionState = new Dead(Owner);
         }
 
         public void UpgradeToSuper()
         {
             Owner.PowerUpState = new Super(Owner);
-            if (Owner.ProtectionState is ProtectionStates.Dead)
-            {
-                Owner.ProtectionState = new ProtectionStates.Normal(Owner);
-            }
+            if (Owner.ProtectionState is Dead)
+                Owner.ProtectionState = new Normal(Owner);
         }
 
-        public override void Update(int time)
-        {
-        }
+        public override void Update(int time) { }
     }
 }

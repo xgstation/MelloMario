@@ -1,17 +1,11 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using MelloMario.Sounds;
+﻿using MelloMario.Sounds;
 
 namespace MelloMario.ItemObjects.StarStates
 {
-    class Unveil : BaseTimedState<Star>, IItemState
+    internal class Unveil : BaseTimedState<Star>, IItemState
     {
         private float elapsed;
         private float realOffset;
-
-        protected override void OnTimer(int time)
-        {
-            Owner.State = new Normal(Owner);
-        }
 
         public Unveil(Star owner) : base(owner, 1000)
         {
@@ -23,9 +17,7 @@ namespace MelloMario.ItemObjects.StarStates
             Owner.State = new Normal(Owner);
         }
 
-        public void Collect()
-        {
-        }
+        public void Collect() { }
 
         public override void Update(int time)
         {
@@ -42,6 +34,10 @@ namespace MelloMario.ItemObjects.StarStates
                 --realOffset;
             }
         }
+
+        protected override void OnTimer(int time)
+        {
+            Owner.State = new Normal(Owner);
+        }
     }
 }
-

@@ -1,26 +1,27 @@
-﻿using Microsoft.Xna.Framework;
-using MelloMario.Theming;
+﻿using MelloMario.Theming;
+using Microsoft.Xna.Framework;
 
 namespace MelloMario
 {
-    abstract class BasePhysicalObject : BaseCollidableObject
+    internal abstract class BasePhysicalObject : BaseCollidableObject
     {
-        private float pixelScale;
-        private Vector2 movement;
-        private Vector2 velocity;
+        protected FacingMode Facing;
         private Vector2 force;
         private Vector2 frictionalForce;
+        private Vector2 movement;
+        private readonly float pixelScale;
+        private Vector2 velocity;
 
-        // TODO: make this private again once we have a better collision event dispatch mechanism
-        //       a goomba/koopa should "know" in which case it can hurt/bounce mario
-        //       instead of doing runtime type-checking on all enemys in mario's class
-        protected enum FacingMode
+        public BasePhysicalObject(IGameWorld world, Point location, IListener listener, Point size, float pixelScale) :
+            base(world, location, listener, size)
         {
-            left,
-            right
-        };
+            this.pixelScale = pixelScale;
 
-        protected FacingMode Facing;
+            movement = new Vector2();
+            velocity = new Vector2();
+            force = new Vector2();
+            Facing = FacingMode.right;
+        }
 
         protected void ApplyForce(Vector2 delta)
         {
@@ -35,17 +36,13 @@ namespace MelloMario
         protected void ApplyHorizontalFriction(float friction)
         {
             if (frictionalForce.X < friction)
-            {
                 frictionalForce.X = friction;
-            }
         }
 
         protected void ApplyVerticalFriction(float friction)
         {
             if (frictionalForce.Y < friction)
-            {
                 frictionalForce.Y = friction;
-            }
         }
 
         protected void SetHorizontalVelocity(float constVelocity)
@@ -129,33 +126,21 @@ namespace MelloMario
 
             // Apply frictional force
 
-            Vector2 deltaV = frictionalForce * deltaTime;
+            var deltaV = frictionalForce * deltaTime;
 
             if (velocity.X > deltaV.X)
-            {
                 velocity.X -= deltaV.X;
-            }
             else if (velocity.X < -deltaV.X)
-            {
                 velocity.X += deltaV.X;
-            }
             else
-            {
                 velocity.X = 0;
-            }
 
             if (velocity.Y > deltaV.Y)
-            {
                 velocity.Y -= deltaV.Y;
-            }
             else if (velocity.Y < -deltaV.Y)
-            {
                 velocity.Y += deltaV.Y;
-            }
             else
-            {
                 velocity.Y = 0;
-            }
 
             frictionalForce.X = 0;
             frictionalForce.X = 0;
@@ -164,39 +149,30 @@ namespace MelloMario
 
             movement += velocity * deltaTime;
             if (velocity.X > GameConst.VELOCITY_MAX_LR)
-            {
                 velocity.X = GameConst.VELOCITY_MAX_LR;
-            }
             else if (velocity.X < -GameConst.VELOCITY_MAX_LR)
-            {
                 velocity.X = -GameConst.VELOCITY_MAX_LR;
-            }
             if (velocity.Y > GameConst.VELOCITY_MAX_D)
-            {
                 velocity.Y = GameConst.VELOCITY_MAX_D;
-            }
             else if (velocity.Y < -GameConst.VELOCITY_MAX_U)
-            {
                 velocity.Y = -GameConst.VELOCITY_MAX_U;
-            }
 
             // Apply movement
 
-            Point pixelMovement = (movement * pixelScale).ToPoint();
+            var pixelMovement = (movement * pixelScale).ToPoint();
             movement -= pixelMovement.ToVector2() / pixelScale;
             Move(pixelMovement);
 
             base.OnSimulation(time);
         }
 
-        public BasePhysicalObject(IGameWorld world, Point location, Listener listener, Point size, float pixelScale) : base(world, location, listener, size)
+        // TODO: make this private again once we have a better collision event dispatch mechanism
+        //       a goomba/koopa should "know" in which case it can hurt/bounce mario
+        //       instead of doing runtime type-checking on all enemys in mario's class
+        protected enum FacingMode
         {
-            this.pixelScale = pixelScale;
-
-            movement = new Vector2();
-            velocity = new Vector2();
-            force = new Vector2();
-            Facing = FacingMode.right;
+            left,
+            right
         }
     }
 }

@@ -1,21 +1,19 @@
-﻿using MelloMario.BlockObjects;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using MelloMario.BlockObjects;
+using MelloMario.EnemyObjects;
+using MelloMario.Factories;
+using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Reflection;
-using MelloMario.EnemyObjects;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework.Graphics;
-using MelloMario.Factories;
 
 namespace MelloMario.LevelGen
 {
-    class PointCompare : IEqualityComparer<Point>
+    internal class PointCompare : IEqualityComparer<Point>
     {
         public bool Equals(Point x, Point y)
         {
@@ -27,7 +25,8 @@ namespace MelloMario.LevelGen
             return obj.GetHashCode();
         }
     }
-    class GameEntityConverter : JsonConverter
+
+    internal class GameEntityConverter : JsonConverter
     {
         private static readonly IEnumerable<Type> AssemblyTypes =
             from type in Assembly.GetExecutingAssembly().GetTypes()
@@ -36,39 +35,39 @@ namespace MelloMario.LevelGen
 
         private readonly GameModel model;
         private readonly IGameWorld world;
-
-        private enum ProduceMode
-        {
-            One, Rectangle, Triangle
-        }
-
-        private ProduceMode produceMode;
-        private IGameObject objToBePushed;
-        private Type selftype;
-        private Point objFullSize;
-        private Vector2 objVector;
-        private Point objPoint;
-        private Point quantity;
-        private Point triangleSize;
-        private string direction;
-        private string entrance;
         private string backgroundType;
         private Func<Point, IGameObject> createFunc;
-        private Stack<IGameObject> objectStackToBeEncapsulated;
+        private string direction;
+        private string entrance;
         private ISet<Point> ignoredSet;
-        private IList<IGameObject> list;
-        private Tuple<bool, string[]> propertyPair;
         private bool isQuestionOrBrick;
         private int length;
-        private Listener selflistener;
+        private IList<IGameObject> list;
+        private Stack<IGameObject> objectStackToBeEncapsulated;
+        private Point objFullSize;
+        private Point objPoint;
+        private IGameObject objToBePushed;
         private JToken objToken;
+        private Vector2 objVector;
 
-        public GameEntityConverter(GameModel model, IGameWorld parentGameWorld,
-            Listener selflistener)
+        private ProduceMode produceMode;
+        private Tuple<bool, string[]> propertyPair;
+        private Point quantity;
+        private readonly IListener selflistener;
+        private Type selftype;
+        private Point triangleSize;
+
+        public GameEntityConverter(GameModel model, IGameWorld parentGameWorld, IListener selflistener)
         {
             this.model = model;
             this.selflistener = selflistener;
             world = parentGameWorld;
+        }
+
+        //TODO: Add serialize method and change CanWrite 
+        public override bool CanWrite
+        {
+            get { return false; }
         }
 
         public override bool CanConvert(Type objectType)
@@ -96,13 +95,11 @@ namespace MelloMario.LevelGen
             }
 
             selftype = null;
-            foreach (Type t in AssemblyTypes)
+            foreach (var t in AssemblyTypes)
             {
                 selftype = t.Name == typeStr ? t : null;
                 if (selftype != null)
-                {
                     break;
-                }
             }
             if (selftype == null)
             {
@@ -114,46 +111,32 @@ namespace MelloMario.LevelGen
 
             produceMode = ProduceMode.One;
             if (Util.TryGet(out quantity, objToken, "Quantity"))
-            {
                 if (quantity.X * quantity.Y > 1)
-                {
                     produceMode = ProduceMode.Rectangle;
-                }
-            }
             if (Util.TryGet(out triangleSize, objToken, "Triangle"))
-            {
                 if (Math.Abs(triangleSize.X) > 1 && Math.Abs(triangleSize.Y) > 1)
-                {
                     produceMode = ProduceMode.Triangle;
-                }
-            }
-            ignoredSet = !(produceMode is ProduceMode.One) && Util.TryReadIgnoreSet(objToken, out ignoredSet) ? ignoredSet : null;
+            ignoredSet = !(produceMode is ProduceMode.One) && Util.TryReadIgnoreSet(objToken, out ignoredSet)
+                ? ignoredSet
+                : null;
 
             switch (selftype.Namespace)
             {
                 case "MelloMario.BlockObjects":
                     if (BlockConverter(selftype, objToken, selflistener, ref objectStackToBeEncapsulated))
-                    {
                         Debug.WriteLine("Deserialize " + selftype.Name + " success!");
-                    }
                     break;
                 case "MelloMario.EnemyObjects":
                     if (EnemyConverter(selftype, objToken, ref objectStackToBeEncapsulated))
-                    {
                         Debug.WriteLine("Deserialize " + selftype.Name + " success!");
-                    }
                     break;
                 case "MelloMario.ItemObjects":
                     if (ItemConverter(selftype, ref objectStackToBeEncapsulated))
-                    {
                         Debug.WriteLine("Deserialize " + selftype.Name + " success!");
-                    }
                     break;
                 case "MelloMario.MiscObjects":
                     if (BackgroundConverter(selftype, objToken, ref objectStackToBeEncapsulated))
-                    {
                         Debug.WriteLine("Deserialize " + selftype.Name + " success!");
-                    }
                     break;
                 default:
                     objectStackToBeEncapsulated.Push(createFunc(objPoint));
@@ -163,18 +146,16 @@ namespace MelloMario.LevelGen
             return new EncapsulatedObject<IGameObject>(objectStackToBeEncapsulated);
         }
 
-        //TODO: Add serialize method and change CanWrite 
-        public override bool CanWrite
-        {
-            get
-            {
-                return false;
-            }
-        }
-
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             //TODO: Implement serializer
+        }
+
+        private enum ProduceMode
+        {
+            One,
+            Rectangle,
+            Triangle
         }
 
         #region IGameObject Converters
@@ -183,19 +164,15 @@ namespace MelloMario.LevelGen
         {
             createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, selflistener, false);
             if (produceMode is ProduceMode.One)
-            {
                 stack.Push(createFunc(objPoint));
-            }
             else if (produceMode is ProduceMode.Rectangle)
-            {
-                Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
-            }
+                Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet,
+                    ref stack);
             return true;
         }
 
         private bool EnemyConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
-
             if (type.Name == "Piranha")
             {
                 float hideTime = Util.TryGet(out hideTime, token, "Property", "HideTime") ? hideTime : 3;
@@ -206,171 +183,122 @@ namespace MelloMario.LevelGen
                 if (type.Name == "Koopa")
                 {
                     Util.TryGet(out string color, token, "Property", "Color");
-                    createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, selflistener, color);
+                    createFunc = point =>
+                        (IGameObject) Activator.CreateInstance(type, world, point, selflistener, color);
                 }
                 if (produceMode is ProduceMode.One)
-                {
                     stack.Push(createFunc(objPoint));
-                }
                 else if (produceMode is ProduceMode.Rectangle)
-                {
-                    Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
-                }
-
+                    Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID),
+                        ignoredSet, ref stack);
             }
             return true;
         }
 
         private static Tuple<bool, string[]> GetPropertyPair(JToken token)
         {
-            return new Tuple<bool, string[]>(
-                Util.TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden,
+            return new Tuple<bool, string[]>(Util.TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden,
                 Util.TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
         }
-        private bool BlockConverter(Type type, JToken token, Listener listener, ref Stack<IGameObject> stack)
+
+        private bool BlockConverter(Type type, JToken token, IListener listener, ref Stack<IGameObject> stack)
         {
             isQuestionOrBrick = type.Name == "Brick" || type.Name == "Question";
             if (isQuestionOrBrick)
             {
                 if (!(produceMode is ProduceMode.One))
                 {
-                    Dictionary<Point, Tuple<bool, string[]>> dictProperties = new Dictionary<Point, Tuple<bool, string[]>>(new PointCompare());
+                    var dictProperties = new Dictionary<Point, Tuple<bool, string[]>>(new PointCompare());
                     if (Util.TryGet(out JToken propertiesToken, token, "Properties"))
                     {
-                        foreach (JToken propertyToken in propertiesToken)
+                        foreach (var propertyToken in propertiesToken)
                         {
                             Util.TryGet(out Point index, propertyToken, "Index");
-                            Tuple<bool, string[]> newPair = GetPropertyPair(propertyToken);
+                            var newPair = GetPropertyPair(propertyToken);
                             dictProperties.Add(index, newPair);
                         }
-                        Util.BatchCreateWithProperties(
-                            point =>
-                            {
-                                objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
-                                if (type.Name == "Question")
-                                {
-                                    (objToBePushed as Question).Initialize();
-                                }
-                                if (type.Name == "Brick")
-                                {
-                                    (objToBePushed as Brick).Initialize();
-                                }
-                                return objToBePushed;
-                            },
-                            objPoint,
-                            quantity,
-                            new Point(32, 32),
-                            ignoredSet,
-                            ref stack,
-                            dictProperties,
-                            (obj, pair) =>
-                            {
-                                IList<IGameObject> newList = Util.CreateItemList(world, obj.Boundary.Location, listener, pair.Item2);
-                                if (newList != null && newList.Count != 0)
-                                {
-                                    GameDatabase.SetEnclosedItem(obj, newList);
-                                }
-                                if (type.Name == "Question")
-                                {
-                                    (obj as Question).Initialize();
-                                }
-                                if (type.Name == "Brick")
-                                {
-                                    (obj as Brick).Initialize();
-                                }
-                            });
+                        Util.BatchCreateWithProperties(point =>
+                        {
+                            objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
+                            if (type.Name == "Question")
+                                (objToBePushed as Question).Initialize();
+                            if (type.Name == "Brick")
+                                (objToBePushed as Brick).Initialize();
+                            return objToBePushed;
+                        }, objPoint, quantity, new Point(32, 32), ignoredSet, ref stack, dictProperties, (obj, pair) =>
+                        {
+                            var newList = Util.CreateItemList(world, obj.Boundary.Location, listener, pair.Item2);
+                            if (newList != null && newList.Count != 0)
+                                GameDatabase.SetEnclosedItem(obj, newList);
+                            if (type.Name == "Question")
+                                (obj as Question).Initialize();
+                            if (type.Name == "Brick")
+                                (obj as Brick).Initialize();
+                        });
                     }
                     else if (produceMode is ProduceMode.Rectangle)
-                    {
-                        Util.BatchCreate(
-                            point =>
-                            {
-                                objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
-                                if (type.Name == "Question")
-                                {
-                                    (objToBePushed as Question).Initialize();
-                                }
-                                if (type.Name == "Brick")
-                                {
-                                    (objToBePushed as Brick).Initialize();
-                                }
-                                return objToBePushed;
-                            },
-                            objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
-                    }
+                        Util.BatchCreate(point =>
+                        {
+                            objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
+                            if (type.Name == "Question")
+                                (objToBePushed as Question).Initialize();
+                            if (type.Name == "Brick")
+                                (objToBePushed as Brick).Initialize();
+                            return objToBePushed;
+                        }, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
                     else if (produceMode is ProduceMode.Triangle)
-                    {
-                        Util.TriganleCreate(
-                            point =>
-                            {
-                                objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
-                                if (type.Name == "Question")
-                                {
-                                    (objToBePushed as Question).Initialize();
-                                }
-                                if (type.Name == "Brick")
-                                {
-                                    (objToBePushed as Brick).Initialize();
-                                }
-                                return objToBePushed;
-                            },
-                            objPoint,
-                            triangleSize,
-                            new Point(GameConst.GRID, GameConst.GRID),
-                            ignoredSet,
-                            ref stack);
-                    }
+                        Util.TriganleCreate(point =>
+                        {
+                            objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
+                            if (type.Name == "Question")
+                                (objToBePushed as Question).Initialize();
+                            if (type.Name == "Brick")
+                                (objToBePushed as Brick).Initialize();
+                            return objToBePushed;
+                        }, objPoint, triangleSize, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
                     return true;
                 }
                 propertyPair = GetPropertyPair(token);
                 list = Util.CreateItemList(world, objPoint, listener, propertyPair.Item2);
-                objToBePushed = Activator.CreateInstance(type, world, objPoint, listener, propertyPair.Item1) as IGameObject;
+                objToBePushed =
+                    Activator.CreateInstance(type, world, objPoint, listener, propertyPair.Item1) as IGameObject;
                 if (list != null && list.Count != 0)
-                {
                     GameDatabase.SetEnclosedItem(objToBePushed, list);
-                }
                 if (type.Name == "Question")
-                {
                     (objToBePushed as Question).Initialize(propertyPair.Item1);
-                }
                 if (type.Name == "Brick")
-                {
                     (objToBePushed as Brick).Initialize(propertyPair.Item1);
-                }
                 stack.Push(objToBePushed);
             }
             else if (type.Name == "Flag")
             {
                 bool hasHeight = Util.TryGet(out int Height, token, "Property", "Height");
-                foreach (IGameObject obj in GameObjectFactory.Instance.CreateGameObjectGroup("FlagPole", world, objPoint, hasHeight ? Height : 7, listener))
-                {
+                foreach (var obj in GameObjectFactory.Instance.CreateGameObjectGroup("FlagPole", world, objPoint,
+                    hasHeight ? Height : 7, listener))
                     stack.Push(obj);
-                }
             }
             else if (!type.IsAssignableFrom(typeof(Pipeline)))
-            {
                 switch (produceMode)
                 {
                     case ProduceMode.One:
                         stack.Push(Activator.CreateInstance(type, world, objPoint, listener, false) as BaseGameObject);
                         break;
                     case ProduceMode.Rectangle:
-                        {
-                            Util.BatchCreate(
-                                point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                                objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
-                            break;
-                        }
+                    {
+                        Util.BatchCreate(
+                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                            objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
+                        break;
+                    }
 
                     case ProduceMode.Triangle:
-                        {
-                            Util.TriganleCreate(
-                                point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                                objPoint, triangleSize, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
-                            break;
-                        }
+                    {
+                        Util.TriganleCreate(
+                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                            objPoint, triangleSize, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
+                        break;
+                    }
                 }
-            }
             else if (type.Name == "Pipeline")
             {
                 if (!Util.TryGet(out length, token, "Property", "Length"))
@@ -389,20 +317,13 @@ namespace MelloMario.LevelGen
                 {
                     list = Util.CreateSinglePipeline(model, world, listener, direction, length, objPoint);
                     foreach (Pipeline pipelineComponent in list)
-                    {
                         stack.Push(pipelineComponent);
-                    }
                     if (Util.TryGet(out JToken piranhaToken, token, "Property", "Piranha"))
-                    {
-                        if (
-                        Util.TryGet(out string color, piranhaToken, "Color") &&
-                        Util.TryGet(out float hiddenTime, piranhaToken, "HiddenTime") &&
-                        Util.TryGet(out float showTime, piranhaToken, "ShowTime"))
-                        {
+                        if (Util.TryGet(out string color, piranhaToken, "Color") &&
+                            Util.TryGet(out float hiddenTime, piranhaToken, "HiddenTime") &&
+                            Util.TryGet(out float showTime, piranhaToken, "ShowTime"))
                             new Piranha(world, new Point(objPoint.X + 16, objPoint.Y), listener, new Point(32, 48),
                                 (int) (hiddenTime * 1000), (int) (showTime * 1000), 32, color);
-                        }
-                    }
                     if (direction != "NV" && direction != "NH")
                     {
                         if (Util.TryGet(out entrance, token, "Property", "Entrance"))
@@ -411,22 +332,23 @@ namespace MelloMario.LevelGen
                             GameDatabase.SetEntranceIndex(list[1] as Pipeline, entrance);
                         }
                         if (hasIndex)
-                        {
-                            GameDatabase.AddPipelineIndex(pipelineIndex, new Tuple<Pipeline, Pipeline>(list[0] as Pipeline, list[1] as Pipeline));
-                        }
+                            GameDatabase.AddPipelineIndex(pipelineIndex,
+                                new Tuple<Pipeline, Pipeline>(list[0] as Pipeline, list[1] as Pipeline));
                         if (isPortalTo)
                         {
                             GameDatabase.AddPortal(list[0] as Pipeline, portalTo);
                             GameDatabase.AddPortal(list[1] as Pipeline, portalTo);
                         }
                     }
-
                 }
                 else
                 {
-                    objFullSize = direction.Contains("V") ? new Point(GameConst.GRID * 2, GameConst.GRID + GameConst.GRID * length) : new Point(GameConst.GRID + GameConst.GRID * length, GameConst.GRID * 2);
-                    Util.BatchCreate(point => Util.CreateSinglePipeline(model, world, listener, direction, length, point), objPoint, quantity, objFullSize,
-                        ignoredSet, ref stack);
+                    objFullSize = direction.Contains("V")
+                        ? new Point(GameConst.GRID * 2, GameConst.GRID + GameConst.GRID * length)
+                        : new Point(GameConst.GRID + GameConst.GRID * length, GameConst.GRID * 2);
+                    Util.BatchCreate(
+                        point => Util.CreateSinglePipeline(model, world, listener, direction, length, point), objPoint,
+                        quantity, objFullSize, ignoredSet, ref stack);
                 }
             }
             return true;
@@ -435,23 +357,16 @@ namespace MelloMario.LevelGen
         private bool BackgroundConverter(Type type, JToken token, ref Stack<IGameObject> stack)
         {
             if (Util.TryGet(out backgroundType, token, "Property", "Type"))
-            {
                 Debug.WriteLine("Deserialize fail: Type of background is not given!");
-            }
-            ZIndex zIndex = Util.TryGet(out string s, token, "Property", "ZIndex")
+            var zIndex = Util.TryGet(out string s, token, "Property", "ZIndex")
                 ? (ZIndex) Enum.Parse(typeof(ZIndex), s)
-                : ZIndex.background0;
-            createFunc = point =>
-                (IGameObject) Activator.CreateInstance(type, world, point, backgroundType, zIndex);
+                : ZIndex.Background0;
+            createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, backgroundType, zIndex);
             objFullSize = createFunc(new Point()).Boundary.Size;
             if (produceMode is ProduceMode.One)
-            {
                 stack.Push(createFunc(objPoint));
-            }
             else
-            {
                 Util.BatchCreate(createFunc, objPoint, quantity, objFullSize, ignoredSet, ref stack);
-            }
             return true;
         }
 

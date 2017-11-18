@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace MelloMario
 {
-    interface ICamera
+    internal interface ICamera
     {
         Vector2 Location { get; set; }
 

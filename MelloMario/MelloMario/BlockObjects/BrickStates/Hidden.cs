@@ -1,13 +1,12 @@
 ﻿using MelloMario.MarioObjects;
+using MelloMario.MarioObjects.PowerUpStates;
 using MelloMario.Theming;
 
 namespace MelloMario.BlockObjects.BrickStates
 {
-    class Hidden : BaseState<Brick>, IBlockState
+    internal class Hidden : BaseState<Brick>, IBlockState
     {
-        public Hidden(Brick owner) : base(owner)
-        {
-        }
+        public Hidden(Brick owner) : base(owner) { }
 
         public void Show()
         {
@@ -22,19 +21,13 @@ namespace MelloMario.BlockObjects.BrickStates
         public void Bump(Mario mario)
         {
             if (GameDatabase.HasItemEnclosed(Owner))
-            {
                 Owner.State = new Bumped(Owner);
-            }
             else
             {
-                if (mario.PowerUpState is MarioObjects.PowerUpStates.Standard || Owner.HasInitialItem)
-                {
+                if (mario.PowerUpState is Standard || Owner.HasInitialItem)
                     Owner.State = new Bumped(Owner);
-                }
                 else
-                {
                     Owner.State = new Destroyed(Owner);
-                }
             }
         }
 
