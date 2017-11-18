@@ -2,7 +2,6 @@
 using MelloMario.ItemObjects;
 using MelloMario.MarioObjects;
 using System;
-using MelloMario.Sounds;
 
 namespace MelloMario.Theming
 {
@@ -66,10 +65,6 @@ namespace MelloMario.Theming
         private void OnCoinCollect(Coin m, EventArgs e)
         {
             player.AddCoin();
-            if (player.Coins == 0)
-            {
-                SoundController.OneUpCollect.CreateInstance().Play();
-            }
         }
     }
 }

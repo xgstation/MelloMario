@@ -65,7 +65,7 @@ namespace MelloMario.BlockObjects
             {
                 if (mario.MovementState is Crouching && GameDatabase.IsEntrance(this))
                 {
-                    SoundController.Pipe.CreateInstance().Play();
+                    SoundController.Pipe.Play();
                     switch (type)
                     {
                         case "LeftIn":

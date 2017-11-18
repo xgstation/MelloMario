@@ -12,12 +12,12 @@ namespace MelloMario.Factories
         private ContentManager content;
 
         private IDictionary<string, Song> songs;
-        private IDictionary<string, SoundEffect> soundEffects;
+        private IDictionary<string, SoundEffectInstance> soundEffects;
 
         private SoundFactory()
         {
             songs = new Dictionary<string, Song>();
-            soundEffects = new Dictionary<string, SoundEffect>();
+            soundEffects = new Dictionary<string, SoundEffectInstance>();
         }
 
         public static ISoundFactory Instance
@@ -43,11 +43,11 @@ namespace MelloMario.Factories
             return songs[name];
         }
 
-        public SoundEffect CreateSoundEffect(string name)
+        public SoundEffectInstance CreateSoundEffect(string name)
         {
             if (!soundEffects.ContainsKey(name))
             {
-                soundEffects.Add(name, content.Load<SoundEffect>("SFX/" + name));
+                soundEffects.Add(name, content.Load<SoundEffect>("SFX/" + name).CreateInstance());
             }
 
             return soundEffects[name];

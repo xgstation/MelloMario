@@ -12,6 +12,6 @@ namespace MelloMario
         //       like Texture2D -> ISprite, it is good to do Song/SoundEffect -> ISound
         //       but do not add it until we know the use of sound in the whole game very well
         Song CreateSong(string name);
-        SoundEffect CreateSoundEffect(string name);
+        SoundEffectInstance CreateSoundEffect(string name);
     }
 }

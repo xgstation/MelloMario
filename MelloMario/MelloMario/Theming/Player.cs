@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using MelloMario.Factories;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Sounds;
 
 namespace MelloMario.Theming
 {
@@ -80,6 +81,8 @@ namespace MelloMario.Theming
             {
                 coins = 0;
                 lifes += 1;
+
+                SoundController.OneUpCollect.Play();
             }
         }
 

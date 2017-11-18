@@ -151,7 +151,7 @@ namespace MelloMario.ItemObjects
         {
             if (!collected)
             {
-                SoundController.SizeUp.CreateInstance().Play();
+                SoundController.SizeUp.Play();
                 ScorePoints(GameConst.SCORE_POWER_UP);
                 new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_POWER_UP);
             }

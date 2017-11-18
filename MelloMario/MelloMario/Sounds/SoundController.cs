@@ -16,18 +16,18 @@ namespace MelloMario.Sounds
         public static Song Star = SoundFactory.Instance.CreateSong("05-starman");
 
 
-        public static SoundEffect Bounce = SoundFactory.Instance.CreateSoundEffect("smb_jumpsmall");
-        public static SoundEffect PowerBounce = SoundFactory.Instance.CreateSoundEffect("smb_jump");
-        public static SoundEffect BumpBlock = SoundFactory.Instance.CreateSoundEffect("smb_bump");
-        public static SoundEffect BreakBlock = SoundFactory.Instance.CreateSoundEffect("smb_breakblock");
-        public static SoundEffect Coin = SoundFactory.Instance.CreateSoundEffect("smb_coin");
-        public static SoundEffect Death = SoundFactory.Instance.CreateSoundEffect("smb_mariodie");
-        public static SoundEffect SizeUp = SoundFactory.Instance.CreateSoundEffect("smb_powerup");
-        public static SoundEffect EnemyKill = SoundFactory.Instance.CreateSoundEffect("smb_stomp");
-        public static SoundEffect Pipe = SoundFactory.Instance.CreateSoundEffect("smb_pipe");
+        public static SoundEffectInstance Bounce = SoundFactory.Instance.CreateSoundEffect("smb_jumpsmall");
+        public static SoundEffectInstance PowerBounce = SoundFactory.Instance.CreateSoundEffect("smb_jump");
+        public static SoundEffectInstance BumpBlock = SoundFactory.Instance.CreateSoundEffect("smb_bump");
+        public static SoundEffectInstance BreakBlock = SoundFactory.Instance.CreateSoundEffect("smb_breakblock");
+        public static SoundEffectInstance Coin = SoundFactory.Instance.CreateSoundEffect("smb_coin");
+        public static SoundEffectInstance Death = SoundFactory.Instance.CreateSoundEffect("smb_mariodie");
+        public static SoundEffectInstance SizeUp = SoundFactory.Instance.CreateSoundEffect("smb_powerup");
+        public static SoundEffectInstance EnemyKill = SoundFactory.Instance.CreateSoundEffect("smb_stomp");
+        public static SoundEffectInstance Pipe = SoundFactory.Instance.CreateSoundEffect("smb_pipe");
 
-        public static SoundEffect SizeUpAppear = SoundFactory.Instance.CreateSoundEffect("smb_powerup_appears");
-        public static SoundEffect OneUpCollect = SoundFactory.Instance.CreateSoundEffect("smb_1");
+        public static SoundEffectInstance SizeUpAppear = SoundFactory.Instance.CreateSoundEffect("smb_powerup_appears");
+        public static SoundEffectInstance OneUpCollect = SoundFactory.Instance.CreateSoundEffect("smb_1");
 
         public enum Songs { Idle, Normal, BelowGround, Hurry, Pause, Title, GameOver, Star }
 
