@@ -138,7 +138,6 @@ namespace MelloMario.Theming
 
         public void Draw(int time, SpriteBatch spriteBatch)
         {
-            timeRemain -= time;
         }
     }
 }

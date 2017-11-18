@@ -21,10 +21,9 @@ namespace MelloMario.Theming
         private static readonly ConcurrentDictionary<ICharacter, Point> CharacterLocations = new ConcurrentDictionary<ICharacter, Point>();
         private static IGameSession session;
 
-        public static void Initialize(IGameSession newSession, int newTimeRemain = GameConst.LEVEL_TIME * 1000)
+        public static void Initialize(IGameSession newSession)
         {
             session = newSession;
-
         }
 
         public static void AddPipelineIndex(string index, Tuple<Pipeline, Pipeline> pipeline)
@@ -34,6 +33,7 @@ namespace MelloMario.Theming
                 PipelineIndex.Add(index, pipeline);
             }
         }
+
         public static void AddPortal(Pipeline pipeline, string portalTo)
         {
             if (!PipelinePortalDb.ContainsKey(pipeline))

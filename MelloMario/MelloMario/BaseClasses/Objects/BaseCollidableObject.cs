@@ -117,6 +117,7 @@ namespace MelloMario
                 }
             }
 
+            // TODO: build a list of players that observed this objects
             //foreach (IPlayer player in session.???)
             //{
             //    foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(World.Boundary))
