@@ -6,8 +6,6 @@ namespace MelloMario.BlockObjects.BrickStates
 {
     class Destroyed : BaseTimedState<Brick>, IBlockState
     {
-        private SoundEffectInstance breakSound;
-
         protected override void OnTimer(int time)
         {
             Owner.Remove();
@@ -15,8 +13,7 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public Destroyed(Brick owner) : base(owner, 1000)
         {
-            breakSound = SoundController.BreakBlock.CreateInstance();
-            breakSound.Play();
+            SoundController.BreakBlock.Play();
             Owner.OnDestoy();
         }
 

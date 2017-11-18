@@ -7,7 +7,6 @@ namespace MelloMario.ItemObjects.StarStates
     {
         private float elapsed;
         private float realOffset;
-        private SoundEffectInstance starUnveilSound;
 
         protected override void OnTimer(int time)
         {
@@ -17,7 +16,6 @@ namespace MelloMario.ItemObjects.StarStates
         public Unveil(Star owner) : base(owner, 1000)
         {
             elapsed = 0f;
-            starUnveilSound = SoundController.SizeUpAppear.CreateInstance();
         }
 
         public void Show()
@@ -31,8 +29,9 @@ namespace MelloMario.ItemObjects.StarStates
 
         public override void Update(int time)
         {
-            starUnveilSound.Play();
             base.Update(time);
+
+            SoundController.SizeUpAppear.Play();
 
             elapsed += time;
             realOffset += 32 * time / 1000f;

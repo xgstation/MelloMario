@@ -5,7 +5,6 @@ namespace MelloMario
 {
     interface IGameModel
     {
-        SoundController.Songs ThemeMusic { get; }
         void ToggleFullScreen();
         void Pause();
         void Resume();

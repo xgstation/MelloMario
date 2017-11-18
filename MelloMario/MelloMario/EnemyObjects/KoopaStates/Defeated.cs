@@ -5,12 +5,10 @@ namespace MelloMario.EnemyObjects.KoopaStates
 {
     class Defeated : BaseState<Koopa>, IKoopaState
     {
-        private SoundEffectInstance stompSound;
         private int played;
 
         public Defeated(Koopa owner) : base(owner)
         {
-            stompSound = SoundController.EnemyKill.CreateInstance();
             played = 0;
         }
 
@@ -32,8 +30,11 @@ namespace MelloMario.EnemyObjects.KoopaStates
         {
             if (played <= 2)
             {
-                stompSound.Play();
-                played += 1;
+                if (SoundController.EnemyKill.State == SoundState.Stopped)
+                {
+                    played += 1;
+                }
+                SoundController.EnemyKill.Play();
             }
         }
 

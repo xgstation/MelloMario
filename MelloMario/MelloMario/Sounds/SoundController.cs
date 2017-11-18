@@ -7,14 +7,14 @@ namespace MelloMario.Sounds
 {
     static class SoundController
     {
-        private static IGameModel Model;
+        private static Songs CurrentSong = Songs.Idle;
         private static float SoundEffectVolume = SoundEffect.MasterVolume;
+
         public static Song Normal = SoundFactory.Instance.CreateSong("01-main-theme-overworld");
         public static Song BelowGround = SoundFactory.Instance.CreateSong("02-underworld");
         public static Song Hurry = SoundFactory.Instance.CreateSong("18-hurry-overworld-");
         public static Song GameOver = SoundFactory.Instance.CreateSong("09-game-over");
         public static Song Star = SoundFactory.Instance.CreateSong("05-starman");
-
 
         public static SoundEffectInstance Bounce = SoundFactory.Instance.CreateSoundEffect("smb_jumpsmall");
         public static SoundEffectInstance PowerBounce = SoundFactory.Instance.CreateSoundEffect("smb_jump");
@@ -31,43 +31,35 @@ namespace MelloMario.Sounds
 
         public enum Songs { Idle, Normal, BelowGround, Hurry, Pause, Title, GameOver, Star }
 
-        public static Songs CurrentSong = Songs.Idle;
-
-        public static void Initialize(IGameModel newModel)
+        public static void PlayMusic(Songs song, bool reset = false)
         {
-            Model = newModel;
-        }
-
-        private static void PlayMusic(Songs song)
-        {
-            if (CurrentSong == song)
+            if (CurrentSong != song || reset)
             {
-                return;
+                MediaPlayer.Stop();
+                switch (song)
+                {
+                    case Songs.Normal:
+                        MediaPlayer.Play(Normal);
+                        break;
+                    case Songs.Hurry:
+                        MediaPlayer.Play(Hurry);
+                        break;
+                    case Songs.BelowGround:
+                        MediaPlayer.Play(BelowGround);
+                        break;
+                    case Songs.Star:
+                        MediaPlayer.Play(Star);
+                        break;
+                    case Songs.GameOver:
+                        MediaPlayer.Play(GameOver);
+                        break;
+                    default:
+                        MediaPlayer.Stop();
+                        break;
+                }
+                MediaPlayer.IsRepeating = true;
+                CurrentSong = song;
             }
-            MediaPlayer.Stop();
-            switch (song)
-            {
-                case Songs.Normal:
-                    MediaPlayer.Play(Normal);
-                    break;
-                case Songs.Hurry:
-                    MediaPlayer.Play(Hurry);
-                    break;
-                case Songs.BelowGround:
-                    MediaPlayer.Play(BelowGround);
-                    break;
-                case Songs.Star:
-                    MediaPlayer.Play(Star);
-                    break;
-                case Songs.GameOver:
-                    MediaPlayer.Play(GameOver);
-                    break;
-                default:
-                    MediaPlayer.Stop();
-                    break;
-            }
-            MediaPlayer.IsRepeating = true;
-            CurrentSong = song;
         }
 
         public static void ToggleMute()
@@ -75,11 +67,6 @@ namespace MelloMario.Sounds
             MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
             SoundEffect.MasterVolume = MediaPlayer.IsMuted ? 0 : SoundEffectVolume;
             SoundEffectVolume = MediaPlayer.IsMuted ? SoundEffectVolume : SoundEffect.MasterVolume;
-        }
-
-        public static void Update()
-        {
-            PlayMusic(Model.ThemeMusic);
         }
     }
 }

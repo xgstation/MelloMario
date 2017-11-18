@@ -23,7 +23,6 @@ namespace MelloMario.Theming
         //TODO: temporary public
         //note: we will have an extra class called Player which contains these information
         public IObject Splash;
-        public SoundController.Songs ThemeMusic { get; private set; }
 
         public GameModel(Game1 game)
         {
@@ -31,9 +30,7 @@ namespace MelloMario.Theming
             session = new GameSession();
             activePlayer = new Player(session);
             listener = new Listener(this, activePlayer);
-            ThemeMusic = SoundController.Songs.Idle;
             GameDatabase.Initialize(session);
-            SoundController.Initialize(this);
         }
 
         public void LoadControllers(IEnumerable<IController> newControllers)
@@ -57,8 +54,6 @@ namespace MelloMario.Theming
 
         public IGameWorld LoadLevel(string id)
         {
-            ThemeMusic = id == "Main" ? SoundController.Songs.Normal : SoundController.Songs.BelowGround;
-
             foreach (IGameWorld world in session.ScanWorlds())
             {
                 if (world.Id == id)
@@ -145,19 +140,23 @@ namespace MelloMario.Theming
             if (activePlayer.Character is MarioCharacter mario &&
                 mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
             {
-                ThemeMusic = SoundController.Songs.Star;
+                MediaPlayer.Play(SoundController.Star);
             }
             else if (activePlayer.Lifes <= 1)
             {
-                ThemeMusic = SoundController.Songs.GameOver;
+                SoundController.PlayMusic(SoundController.Songs.GameOver);
             }
             else if (activePlayer.TimeRemain <= 90000)
             {
-                ThemeMusic = SoundController.Songs.Hurry;
+                SoundController.PlayMusic(SoundController.Songs.Hurry);
+            }
+            else if (activePlayer.Character.CurrentWorld.Id == "Main")
+            {
+                SoundController.PlayMusic(SoundController.Songs.Normal);
             }
             else
             {
-                ThemeMusic = SoundController.Songs.Normal;
+                SoundController.PlayMusic(SoundController.Songs.BelowGround);
             }
         }
 
@@ -217,7 +216,6 @@ namespace MelloMario.Theming
                 return;
             }
 
-            SoundController.Update();
             UpdateMusicScene(time);
 
             UpdateGameObjects(time);

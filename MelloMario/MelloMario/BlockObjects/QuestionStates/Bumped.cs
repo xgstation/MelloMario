@@ -9,13 +9,11 @@ namespace MelloMario.BlockObjects.QuestionStates
     {
         private int elapsed;
         private int move;
-        private SoundEffectInstance bumpSound;
 
         public Bumped(Question owner) : base(owner)
         {
             elapsed = 0;
             move = 0;
-            bumpSound = SoundController.BumpBlock.CreateInstance();
         }
 
         public void Show()
@@ -42,7 +40,7 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public override void Update(int time)
         {
-            bumpSound.Play();
+            SoundController.BumpBlock.Play();
             // TODO: use BaseTimedState
             if (elapsed >= 70)
             {
