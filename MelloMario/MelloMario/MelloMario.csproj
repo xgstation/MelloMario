@@ -195,7 +195,6 @@
     </Compile>
     <Compile Include="Scripts\TransistScript.cs" />
     <Compile Include="Scripts\PausedScript.cs" />
-    <Compile Include="LevelGen\CharacterConverter.cs" />
     <Compile Include="LevelGen\EncapsulatedObject.cs" />
     <Compile Include="LevelGen\GameConverter.cs" />
     <Compile Include="LevelGen\LevelIOJson.cs" />
