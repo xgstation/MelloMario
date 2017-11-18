@@ -16,8 +16,6 @@ namespace MelloMario
         private GameModel model;
         private SpriteBatch spriteBatch;
 
-
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this) { };
@@ -25,9 +23,14 @@ namespace MelloMario
             graphics.PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT;
         }
 
+        // game controlling
+        public void ToggleFullScreen()
+        {
+            graphics.ToggleFullScreen();
+        }
+
         public void Reset()
         {
-
             model = new GameModel(this);
             IEnumerable<IController> controllers = new List<IController>
             {
@@ -35,7 +38,6 @@ namespace MelloMario
                 new KeyboardController()
             };
             model.LoadControllers(controllers);
-            model.LoadLevel("Main", true); // Create the level for the first time
             model.Init();
         }
 
@@ -48,6 +50,7 @@ namespace MelloMario
         protected override void Initialize()
         {
             base.Initialize();
+
             //soundControl = new SoundController(this);
             Reset();
         }
@@ -60,11 +63,11 @@ namespace MelloMario
         {
             Content.RootDirectory = "Content";
             base.LoadContent();
+
             SpriteFactory.Instance.BindContentManager(Content);
             SoundFactory.Instance.BindContentManager(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Instance.BindSpriteBatch(spriteBatch);
-
         }
 
         /// <summary>
@@ -95,26 +98,20 @@ namespace MelloMario
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
-#if !DEBUGSPRITE
-            spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, model.GetViewMatrix(new Vector2(1f)));
-#endif
+
 #if DEBUGSPRITE
             //Debug Code
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
             RasterizerState state = new RasterizerState();
             state.FillMode = FillMode.WireFrame;
             spriteBatch.GraphicsDevice.RasterizerState = state;
+#else
+            // spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, model.GetViewMatrix(new Vector2(1f)));
+            spriteBatch.Begin(SpriteSortMode.BackToFront);
 #endif
+
             model.Draw(time.ElapsedGameTime.Milliseconds);
-
             spriteBatch.End();
-        }
-
-        // game controlling
-
-        public void ToggleFullScreen()
-        {
-            graphics.ToggleFullScreen();
         }
     }
 }

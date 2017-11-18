@@ -30,13 +30,13 @@ namespace MelloMario.Factories
             }
         }
 
-        public Tuple<ICharacter, IGameObject> CreateGameCharacter(string type, IGameWorld world, Point location, Listener listener)
+        public ICharacter CreateGameCharacter(string type, IGameWorld world, IPlayer player, Point location, Listener listener)
         {
             switch (type)
             {
                 case "Mario":
-                    MarioCharacter mario = new MarioCharacter(world, location, listener);
-                    return new Tuple<ICharacter, IGameObject>(mario, mario);
+                    MarioCharacter mario = new MarioCharacter(world, player, location, listener);
+                    return mario;
                 default:
                     return null;
             }
