@@ -1,28 +1,34 @@
-﻿using Microsoft.Xna.Framework;
-using MelloMario.Factories;
+﻿using MelloMario.Factories;
 using MelloMario.MarioObjects;
 using MelloMario.MarioObjects.MovementStates;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Sounds;
+using MelloMario.Theming;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.BlockObjects
 {
-    class Pipeline : BaseCollidableObject
+    internal class Pipeline : BaseCollidableObject
     {
+        private int elapsed;
         private GameModel model;
         private IPlayer switchingPlayer;
-        private string type;
-        private int elapsed;
 
-        public string Type
+        public Pipeline(IGameWorld world, Point location, IListener listener, string type, GameModel model) : this(
+            world, location, listener, type)
         {
-            get
-            {
-                return type;
-            }
+            SetModel(model);
         }
+
+        public Pipeline(IGameWorld world, Point location, IListener listener, string type) : base(world, location,
+            listener, new Point(32, 32))
+        {
+            Type = type;
+
+            UpdateSprite();
+        }
+
+        public string Type { get; }
 
         private void SetModel(GameModel newModel)
         {
@@ -31,7 +37,7 @@ namespace MelloMario.BlockObjects
 
         private void UpdateSprite()
         {
-            ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(type));
+            ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(Type));
         }
 
         protected override void OnUpdate(int time)
@@ -42,16 +48,12 @@ namespace MelloMario.BlockObjects
 
                 if (elapsed > 500)
                 {
-                    IGameWorld world = model.LoadLevel(GameDatabase.GetEntranceIndex(this));
+                    var world = model.LoadLevel(GameDatabase.GetEntranceIndex(this));
 
                     if (GameDatabase.IsPortal(this))
-                    {
                         switchingPlayer.Spawn(world, GameDatabase.GetPortal(this).Boundary.Location);
-                    }
                     else
-                    {
                         switchingPlayer.Spawn(world, world.GetInitialPoint());
-                    }
 
                     elapsed = 0;
                     switchingPlayer = null;
@@ -59,14 +61,14 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
+            CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario mario && mode is CollisionMode.Top)
-            {
                 if (mario.MovementState is Crouching && GameDatabase.IsEntrance(this))
                 {
                     SoundController.Pipe.Play();
-                    switch (type)
+                    switch (Type)
                     {
                         case "LeftIn":
                             if (mario.Boundary.Center.X > Boundary.Center.X)
@@ -86,31 +88,12 @@ namespace MelloMario.BlockObjects
 
                     // TODO: mario.freeze
                 }
-            }
         }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)
-        {
-        }
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
-        {
-        }
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
-        {
-        }
-
-        public Pipeline(IGameWorld world, Point location, Listener listener, string type, GameModel model) : this(world, location, listener, type)
-        {
-            SetModel(model);
-        }
-
-        public Pipeline(IGameWorld world, Point location, Listener listener, string type) : base(world, location, listener, new Point(32, 32))
-        {
-            this.type = type;
-
-            UpdateSprite();
-        }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
     }
 }

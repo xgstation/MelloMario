@@ -1,30 +1,58 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Diagnostics.CodeAnalysis;
+using MelloMario.BlockObjects;
+using MelloMario.BlockObjects.BrickStates;
+using MelloMario.EnemyObjects.KoopaStates;
 using MelloMario.Factories;
 using MelloMario.MarioObjects;
-using MelloMario.EnemyObjects.KoopaStates;
-using MelloMario.BlockObjects;
-using MelloMario.UIObjects;
+using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.Theming;
+using MelloMario.UIObjects;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Normal = MelloMario.EnemyObjects.KoopaStates.Normal;
 
 namespace MelloMario.EnemyObjects
 {
-    class Koopa : BasePhysicalObject
+    internal class Koopa : BasePhysicalObject
     {
-        private string color;
+        private readonly string color;
         private IKoopaState state;
+
+        //This suppression exists because this constructor is inderectly used by the json parser.
+        //removing this constructor will cause a runtime error when trying to read in the level.
+        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        public Koopa(IGameWorld world, Point location, IListener listener, string color) : this(world, location,
+            GameDatabase.GetCharacterLocation(), listener, color) { }
+
+        public Koopa(IGameWorld world, Point location, Point marioLoc, IListener listener, string color) : base(world,
+            location, listener, new Point(32, 32), 32)
+        {
+            if (marioLoc.X < location.X)
+                Facing = FacingMode.left;
+            else
+                Facing = FacingMode.right;
+            this.color = color;
+            state = new Normal(this);
+            UpdateSprite();
+        }
+
+        public IKoopaState State
+        {
+            get { return state; }
+            set
+            {
+                state = value;
+                UpdateSprite();
+            }
+        }
 
         private void UpdateSprite()
         {
             string facingString;
             if (Facing == FacingMode.left)
-            {
                 facingString = "Left";
-            }
             else
-            {
                 facingString = "Right";
-            }
             ShowSprite(SpriteFactory.Instance.CreateKoopaSprite(color, state.GetType().Name + facingString));
         }
 
@@ -46,60 +74,40 @@ namespace MelloMario.EnemyObjects
             ApplyGravity();
 
             if (state is MovingShell)
-            {
-
                 if (Facing == FacingMode.left)
-                {
                     SetHorizontalVelocity(-GameConst.VELOCITY_KOOPA_SHELL);
-                }
                 else
-                {
                     SetHorizontalVelocity(GameConst.VELOCITY_KOOPA_SHELL);
-                }
-            }
             else
             {
-
                 if (Facing == FacingMode.left)
-                {
                     SetHorizontalVelocity(-GameConst.VELOCITY_KOOPA);
-                }
                 else
-                {
                     SetHorizontalVelocity(GameConst.VELOCITY_KOOPA);
-                }
             }
 
 
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
+            CornerMode corner, CornerMode cornerPassive)
         {
             switch (target.GetType().Name)
             {
                 case "MarioCharacter":
                     //TODO: Fire to be added
-                    Mario mario = (Mario) target; //TODO: fire as target to be added
-                    if (mario.ProtectionState is MarioObjects.ProtectionStates.Starred)
-                    {
+                    var mario = (Mario) target; //TODO: fire as target to be added
+                    if (mario.ProtectionState is Starred)
                         Defeat();
-                    }
                     else
                     {
                         if (state is Normal || state is MovingShell)
-                        {
                             if (mode == CollisionMode.Top)
-                            {
                                 JumpOn();
-                            }
                             else
-                            {
                                 mario.Downgrade();
-                            }
-                        }
                         else if (state is Defeated)
-                        {
                             if (mode == CollisionMode.Left)
                             {
                                 ChangeFacing(FacingMode.right);
@@ -120,21 +128,16 @@ namespace MelloMario.EnemyObjects
                                 ChangeFacing(FacingMode.left);
                                 Pushed();
                             }
-                        }
                     }
 
                     break;
                 case "Brick":
-                    if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
-                    {
+                    if (((Brick) target).State is Hidden)
                         break;
-                    }
                     goto case "Stair";
                 case "Question":
                     if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
-                    {
                         break;
-                    }
                     goto case "Stair";
                 case "Floor":
                 case "Pipeline":
@@ -150,66 +153,22 @@ namespace MelloMario.EnemyObjects
                         ChangeFacing(FacingMode.left);
                     }
                     else if (mode == CollisionMode.Bottom)
-                    {
                         Bounce(mode, new Vector2());
-                    }
                     break;
                 case "Fire":
                     Defeat();
                     break;
             }
             if (target is Koopa koopa)
-            {
                 if (koopa.State is MovingShell)
-                {
                     Defeat();
-                }
-            }
         }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)
-        {
-        }
+        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
-        {
-        }
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
-        {
-        }
-
-        public IKoopaState State
-        {
-            get
-            {
-                return state;
-            }
-            set
-            {
-                state = value;
-                UpdateSprite();
-            }
-        }
-
-        //This suppression exists because this constructor is inderectly used by the json parser.
-        //removing this constructor will cause a runtime error when trying to read in the level.
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public Koopa(IGameWorld world, Point location, Listener listener, string color) : this(world, location, GameDatabase.GetCharacterLocation(), listener, color) { }
-        public Koopa(IGameWorld world, Point location, Point marioLoc, Listener listener, string color) : base(world, location, listener, new Point(32, 32), 32)
-        {
-            if (marioLoc.X < location.X)
-            {
-                Facing = FacingMode.left;
-            }
-            else
-            {
-                Facing = FacingMode.right;
-            }
-            this.color = color;
-            state = new Normal(this);
-            UpdateSprite();
-        }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
 
         public void JumpOn()
         {
@@ -221,13 +180,9 @@ namespace MelloMario.EnemyObjects
         {
             // TODO: temporary fix
             if (Facing == FacingMode.right)
-            {
                 Move(new Point(1, 0));
-            }
             else
-            {
                 Move(new Point(-1, 0));
-            }
 
             State.Pushed();
         }

@@ -1,16 +1,16 @@
-﻿using MelloMario.BlockObjects;
+﻿using System;
+using MelloMario.BlockObjects;
 using MelloMario.ItemObjects;
 using MelloMario.MarioObjects;
-using System;
 
 namespace MelloMario.Theming
 {
-    class GameEventArgs : EventArgs
+    internal class GameEventArgs : EventArgs
     {
         public int Points { get; set; }
     }
 
-    class Listener : IListener
+    internal class Listener : IListener
     {
         private readonly GameModel model;
         private readonly IPlayer player;

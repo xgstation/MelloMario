@@ -1,49 +1,41 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using MelloMario.BlockObjects;
 using MelloMario.EnemyObjects;
 using MelloMario.ItemObjects;
 using MelloMario.MarioObjects;
 using MelloMario.MiscObjects;
-using MelloMario.Theming;
-using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace MelloMario.Factories
 {
-    class GameObjectFactory : IGameObjectFactory
+    internal class GameObjectFactory : IGameObjectFactory
     {
         // TODO: remove this later and use the collision between the camera and objects to "activate" objects' movement
-        private Point marioLoc;
-
-        private static IGameObjectFactory instance = new GameObjectFactory();
+        private readonly Point marioLoc;
 
         private GameObjectFactory()
         {
             marioLoc = new Point(0, 0);
         }
 
-        public static IGameObjectFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        public static IGameObjectFactory Instance { get; } = new GameObjectFactory();
 
-        public ICharacter CreateGameCharacter(string type, IGameWorld world, IPlayer player, Point location, Listener listener)
+        public ICharacter CreateGameCharacter(string type, IGameWorld world, IPlayer player, Point location,
+            IListener listener)
         {
             switch (type)
             {
                 case "Mario":
-                    MarioCharacter mario = new MarioCharacter(world, player, location, listener);
+                    var mario = new MarioCharacter(world, player, location, listener);
                     return mario;
                 default:
                     return null;
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        public IGameObject CreateGameObject(string type, IGameWorld world, Point location, Listener listener)
+        [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
+        public IGameObject CreateGameObject(string type, IGameWorld world, Point location, IListener listener)
         {
             switch (type)
             {
@@ -101,28 +93,28 @@ namespace MelloMario.Factories
 
                 //others
                 case "ShortCloud":
-                    return new Background(world, location, type, ZIndex.background0);
+                    return new Background(world, location, type, ZIndex.Background0);
                 case "ShortSmileCloud":
-                    return new Background(world, location, type, ZIndex.background1);
+                    return new Background(world, location, type, ZIndex.Background1);
                 case "LongCloud":
-                    return new Background(world, location, type, ZIndex.background2);
+                    return new Background(world, location, type, ZIndex.Background2);
                 case "LongSmileCloud":
-                    return new Background(world, location, type, ZIndex.background3);
+                    return new Background(world, location, type, ZIndex.Background3);
 
                 default:
                     return null;
             }
         }
 
-        public IEnumerable<IGameObject> CreateGameObjectGroup(string type, IGameWorld world, Point location, int count, Listener listener)
+        public IEnumerable<IGameObject> CreateGameObjectGroup(string type, IGameWorld world, Point location, int count,
+            IListener listener)
         {
             switch (type)
             {
                 case "FlagPole":
                     for (int i = 0; i < count; ++i)
-                    {
-                        yield return new Flag(world, new Point(location.X, location.Y + 32 * i), listener, count - i, count);
-                    }
+                        yield return new Flag(world, new Point(location.X, location.Y + 32 * i), listener, count - i,
+                            count);
                     yield break;
 
                 default:

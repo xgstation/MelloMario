@@ -1,95 +1,44 @@
-﻿using Microsoft.Xna.Framework;
-using MelloMario.Factories;
-using Microsoft.Xna.Framework.Graphics;
+﻿using MelloMario.Factories;
 using MelloMario.Sounds;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Theming
 {
-    class Player : IPlayer
+    internal class Player : IPlayer
     {
-        private IGameSession session;
-        private ICharacter character;
-        private ICamera camera;
-
-        private int coins;
-        private int score;
-        private int lifes;
-        private int timeRemain;
-
-        public IGameSession Session
+        public Player(IGameSession session)
         {
-            get
-            {
-                return session;
-            }
+            Session = session;
         }
+
+        public IGameSession Session { get; }
 
         public IGameWorld World
         {
-            get
-            {
-                return character.CurrentWorld;
-            }
+            get { return Character.CurrentWorld; }
         }
 
-        public ICharacter Character
-        {
-            get
-            {
-                return character;
-            }
-        }
+        public ICharacter Character { get; private set; }
 
-        public ICamera PlayerCamera
-        {
-            get
-            {
-                return camera;
-            }
-        }
+        public ICamera PlayerCamera { get; private set; }
 
-        public int Coins
-        {
-            get
-            {
-                return coins;
-            }
-        }
-        public int Score
-        {
-            get
-            {
-                return score;
-            }
-        }
-        public int Lifes
-        {
-            get
-            {
-                return lifes;
-            }
-        }
-        public int TimeRemain
-        {
-            get
-            {
-                return timeRemain;
-            }
-        }
+        public int Coins { get; private set; }
 
-        public Player(IGameSession session)
-        {
-            this.session = session;
-        }
+        public int Score { get; private set; }
+
+        public int Lifes { get; private set; }
+
+        public int TimeRemain { get; private set; }
 
         public void AddCoin()
         {
-            coins += 1;
+            Coins += 1;
 
-            if (coins == GameConst.COINS_FOR_LIFE)
+            if (Coins == GameConst.COINS_FOR_LIFE)
             {
-                coins = 0;
-                lifes += 1;
+                Coins = 0;
+                Lifes += 1;
 
                 SoundController.OneUpCollect.Play();
             }
@@ -97,58 +46,56 @@ namespace MelloMario.Theming
 
         public void AddLife()
         {
-            lifes += 1;
+            Lifes += 1;
 
-            if (lifes > GameConst.LIFES_MAX)
-            {
-                lifes = GameConst.LIFES_MAX;
-            }
+            if (Lifes > GameConst.LIFES_MAX)
+                Lifes = GameConst.LIFES_MAX;
         }
 
         public void AddScore(int delta)
         {
-            score += delta;
+            Score += delta;
         }
 
-        public void Init(string type, IGameWorld world, Listener listener, ICamera newCamera)
+        public void Init(string type, IGameWorld world, IListener listener, ICamera newCamera)
         {
-            character = GameObjectFactory.Instance.CreateGameCharacter(type, world, this, world.GetInitialPoint(), listener);
-            session.Add(this);
-            camera = newCamera;
+            Character = GameObjectFactory.Instance.CreateGameCharacter(type, world, this, world.GetInitialPoint(),
+                listener);
+            Session.Add(this);
+            PlayerCamera = newCamera;
 
-            lifes = GameConst.LIFES_INIT;
-            timeRemain = GameConst.LEVEL_TIME * 1000;
+            Lifes = GameConst.LIFES_INIT;
+            TimeRemain = GameConst.LEVEL_TIME * 1000;
         }
 
         public void Spawn(IGameWorld newWorld, Point newLocation)
         {
-            character.Move(newWorld, newLocation);
-            session.Move(this);
+            Character.Move(newWorld, newLocation);
+            Session.Move(this);
         }
 
-        public void Reset(string type, Listener listener)
+        public void Reset(string type, IListener listener)
         {
-            character.Remove();
-            character = GameObjectFactory.Instance.CreateGameCharacter(type, character.CurrentWorld, this, character.CurrentWorld.GetInitialPoint(), listener);
+            Character.Remove();
+            Character = GameObjectFactory.Instance.CreateGameCharacter(type, Character.CurrentWorld, this,
+                Character.CurrentWorld.GetInitialPoint(), listener);
 
-            lifes -= 1;
-            timeRemain = GameConst.LEVEL_TIME * 1000;
+            Lifes -= 1;
+            TimeRemain = GameConst.LEVEL_TIME * 1000;
         }
 
         public void Win()
         {
-            score += GameConst.SCORE_TIME_MULT * timeRemain / 1000;
-            timeRemain = GameConst.LEVEL_TIME * 1000;
+            Score += GameConst.SCORE_TIME_MULT * TimeRemain / 1000;
+            TimeRemain = GameConst.LEVEL_TIME * 1000;
         }
 
         public void Update(int time)
         {
-            timeRemain -= time;
-            camera?.LookAt(new Vector2((character as IGameObject).Boundary.Location.X, 180f));
+            TimeRemain -= time;
+            PlayerCamera?.LookAt(new Vector2((Character as IGameObject).Boundary.Location.X, 180f));
         }
 
-        public void Draw(int time, SpriteBatch spriteBatch)
-        {
-        }
+        public void Draw(int time, SpriteBatch spriteBatch) { }
     }
 }
