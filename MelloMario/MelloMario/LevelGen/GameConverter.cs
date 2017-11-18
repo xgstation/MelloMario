@@ -15,7 +15,6 @@ namespace MelloMario.LevelGen
     class GameConverter : JsonConverter
     {
         private GameEntityConverter gameEntityConverter;
-        private CharacterConverter characterConverter;
         private GameModel model;
         private IGameSession session;
         private JToken jsonToken;
@@ -25,7 +24,6 @@ namespace MelloMario.LevelGen
         private static JsonSerializer serializers;
 
         private IGameWorld world;
-        private ICharacter character;
         private Listener listener;
 
         public GameConverter(GameModel model, IGameSession session, Listener listener, string index = "Main")
@@ -81,38 +79,16 @@ namespace MelloMario.LevelGen
 
             gameEntityConverter = new GameEntityConverter(model, world, listener);
 
-            characterConverter = new CharacterConverter(session, world, listener);
-
             serializers.Converters.Add(gameEntityConverter);
-            serializers.Converters.Add(characterConverter);
             if (entities != null)
             {
                 foreach (JToken jToken in entities)
                 {
                     jToken.ToObject<EncapsulatedObject<IGameObject>>(serializers);
                 }
-
-                if (Util.TryGet(out IList<JToken> characters, MapToBeLoaded, "Characters"))
-                {
-                    Debug.WriteLine("Characters token loaded successfully!");
-                }
-                if (characters != null)
-                {
-                    foreach (JToken obj in characters)
-                    {
-                        EncapsulatedObject<MarioCharacter> temp =
-                            obj.ToObject<EncapsulatedObject<MarioCharacter>>(serializers);
-
-                        MarioCharacter mario = temp.RealObj.Pop();
-                        character = mario;
-
-                        //TODO: Add support for IEnumerables<IGameCharacter> for Multi Players\
-                    }
-                }
             }
 
-            //if (character == null) return World;
-            return new Tuple<IGameWorld, ICharacter>(world, character);
+            return world;
         }
 
         //TODO: Add serialize method and change CanWrite 

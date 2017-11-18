@@ -31,12 +31,12 @@ namespace MelloMario.LevelGen
             model = newModel;
         }
 
-        public Tuple<IGameWorld, IPlayer> Load(string index, IGameSession session)
+        public IGameWorld Load(string index, IGameSession session)
         {
             levelString = File.ReadAllText(path);
             gameConverter = new GameConverter(model, session, listener, index);
-            return JsonConvert.DeserializeObject<Tuple<IGameWorld, IPlayer>>(levelString, gameConverter);
 
+            return JsonConvert.DeserializeObject<IGameWorld>(levelString, gameConverter);
         }
     }
 }
