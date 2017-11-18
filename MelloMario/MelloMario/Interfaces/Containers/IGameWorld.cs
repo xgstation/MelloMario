@@ -7,6 +7,7 @@ namespace MelloMario
     {
         string Id { get; }
         Rectangle Boundary { get; }
+        void Extend(int x, int y);
 
         IEnumerable<IGameObject> ScanNearby(Rectangle range);
         Point GetInitialPoint();

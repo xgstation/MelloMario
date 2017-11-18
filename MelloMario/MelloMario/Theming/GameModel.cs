@@ -21,7 +21,7 @@ namespace MelloMario.Theming
         private readonly GameSession session;
         private ICamera activeCamera;
         private IEnumerable<IController> controllers;
-
+        private InfiniteGenerator infiniteGenerator;
         private bool isPaused;
 
         //TODO: temporary public
@@ -115,6 +115,7 @@ namespace MelloMario.Theming
             UpdateContainers();
 
             GameDatabase.Update(time);
+            infiniteGenerator.Update();
         }
 
         public void Draw(int time, SpriteBatch spriteBatch)
@@ -142,8 +143,10 @@ namespace MelloMario.Theming
 
             var reader = new LevelIOJson("Content/Level1.json", listener);
             reader.SetModel(this);
-
-            return reader.Load(id, session);
+            
+            var newWorld = reader.Load(id, session);
+            infiniteGenerator = new InfiniteGenerator(newWorld,listener,activeCamera);
+            return newWorld;
         }
 
         public void Transist()
