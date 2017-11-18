@@ -18,6 +18,8 @@ namespace MelloMario.MarioObjects
             dead
         }
 
+        private IPlayer player;
+
         private Animation animation;
         private int toBeTraveled;
 
@@ -90,6 +92,14 @@ namespace MelloMario.MarioObjects
             }
         }
 
+        public IPlayer Player
+        {
+            get
+            {
+                return player;
+            }
+        }
+
         public Rectangle Sensing
         {
             get
@@ -132,8 +142,9 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        public MarioCharacter(IGameWorld world, Point location, Listener listener) : base(world, location, listener)
+        public MarioCharacter(IGameWorld world, IPlayer player, Point location, Listener listener) : base(world, location, listener)
         {
+            this.player = player;
             jumpSound = SoundController.Bounce.CreateInstance();
             powerJumpSound = SoundController.PowerBounce.CreateInstance();
         }

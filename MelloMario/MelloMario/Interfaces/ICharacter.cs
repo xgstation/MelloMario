@@ -6,6 +6,7 @@ namespace MelloMario
     {
         bool Active { get; }
         IGameWorld CurrentWorld { get; }
+        IPlayer Player { get; }
         Rectangle Sensing { get; }
         Rectangle Viewport { get; }
 
