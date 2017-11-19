@@ -1,4 +1,7 @@
-﻿using MelloMario.BlockObjects;
+﻿using System;
+using System.Security.Cryptography;
+using MelloMario.BlockObjects;
+using MelloMario.EnemyObjects;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.LevelGen
@@ -9,7 +12,10 @@ namespace MelloMario.LevelGen
         private readonly IListener listener;
         private readonly IGameWorld world;
         private float rightMostReachedX;
+        private int elapsed;
+        private double difficultyIndex;
 
+        private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
         internal InfiniteGenerator(IGameWorld world, IListener listener, ICamera camera)
         {
             this.world = world;
@@ -18,16 +24,44 @@ namespace MelloMario.LevelGen
             rightMostReachedX = world.Boundary.Width;
         }
 
-        internal void Update()
+        internal void Update(int time)
         {
             float temp = camera.Location.X + 800 + 32;
-            if ((int) temp / 32 >= (int) rightMostReachedX / 32)
+            if ((int)temp / 32 >= (int)rightMostReachedX / 32)
             {
+                difficultyIndex += double.Epsilon;
                 new Floor(world, new Point(world.Boundary.Right, 13 * 32), listener);
                 new Floor(world, new Point(world.Boundary.Right, 14 * 32), listener);
                 world.Extend(1, 0);
                 camera.Limit = world.Boundary;
                 rightMostReachedX += 32;
+
+                elapsed += time;
+
+                if (elapsed > 100)
+                {
+                    byte[] a = new byte[4];
+                    RngCrypto.GetBytes(a);
+                    int p = BitConverter.ToInt32(a, 0);
+
+                    RngCrypto.GetBytes(a);
+                    int q = BitConverter.ToInt32(a, 0);
+                    elapsed = 0;
+                    int d = (int)(difficultyIndex / double.Epsilon);
+                    for (int i = 0; i < q % 3; i++)
+                    {
+                        new Goomba(world, new Point(world.Boundary.Right - (40 + q % 4) * (i % 3) - 600 + q % 256, 0 * 32 + (p % 128)), listener);
+                        if (difficultyIndex / double.Epsilon > 20)
+                        {
+                            new Koopa(world, new Point(world.Boundary.Right + (40 + q % 4) * (i % 5), 32 + (p % 324)), listener, (p % 2 == 0 ? "Green" : "Red"));
+                        }
+                        if (difficultyIndex / double.Epsilon > 00)
+                        {
+                            new Piranha(world, new Point(world.Boundary.Right + (p % 3) * 32, 32 * 13), listener,
+                                new Point(32, 48), 250 - p % 249, 1250 - q % 1249, 1f, p % 4 == 0 ? "Green" : (p % 3 == 0 ? "Red" : (p % 2 == 0 ? "Cyan" : "Gray")));
+                        }
+                    }
+                }
             }
         }
     }

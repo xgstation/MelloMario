@@ -1,0 +1,57 @@
+﻿{
+  "Maps": [
+    {
+      "Type": "Main",
+      "Index": "Main",
+      "Grid": 32,
+      "Size": {
+        "X": 40,
+        "Y": 15
+      },
+      "RespawnPoints": [
+        {
+          "X": 3,
+          "Y": 5
+        },
+        {
+          "X": 53,
+          "Y": 5
+        }
+      ],
+      "Characters": [
+        {
+          "Type": "Mario",
+          "SpawnPoint": {
+            "X": 2,
+            "Y": 10
+          },
+          "State": "Star"
+        }
+      ],
+      "Entity": [
+        {
+          "Point": {
+            "X": 0,
+            "Y": 13
+          },
+          "Quantity": {
+            "X": 40,
+            "Y": 2
+          },
+          "Type": "Floor"
+        },
+        {
+          "Point": {
+            "X": 10,
+            "Y": 12
+          },
+          "Quantity": {
+            "X": 5,
+            "Y": 4
+          },
+          "Type": "Star"
+        }
+      ]
+    }
+  ]
+}

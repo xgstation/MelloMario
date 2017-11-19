@@ -119,7 +119,7 @@ namespace MelloMario.Theming
             UpdateContainers();
 
             GameDatabase.Update(time);
-            infiniteGenerator.Update();
+            infiniteGenerator.Update(time);
         }
 
         public void Draw(int time, SpriteBatch spriteBatch)
@@ -154,7 +154,7 @@ namespace MelloMario.Theming
 
             // IGameWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
 
-            LevelIOJson reader = new LevelIOJson("Content/Level1.json", listener);
+            LevelIOJson reader = new LevelIOJson("Content/Infinite.json", listener);
             reader.SetModel(this);
 
             IGameWorld newWorld = reader.Load(id, session);
