@@ -8,14 +8,12 @@ namespace MelloMario.Containers
     {
         private readonly Point initialPoint;
         private readonly ISet<Point> respawnPoints;
-        private Point extended;
         private Point originalSize;
 
         public GameWorld(string id, Point originalSize, Point initial, IEnumerable<Point> respawn)
         {
             Id = id;
             this.originalSize = originalSize;
-            extended = Point.Zero;
 
             initialPoint = new Point(initial.X * GameConst.GRID, initial.Y * GameConst.GRID);
             respawnPoints = new HashSet<Point>();
@@ -31,15 +29,15 @@ namespace MelloMario.Containers
         {
             get
             {
-                return new Rectangle(0, 0, (originalSize.X + extended.X) * GameConst.GRID,
-                    (originalSize.Y + extended.Y) * GameConst.GRID);
+                return new Rectangle(0, 0, (originalSize.X) * GameConst.GRID,
+                    (originalSize.Y) * GameConst.GRID);
             }
         }
 
         public void Extend(int x, int y)
         {
-            extended.X += x;
-            extended.Y += y;
+            originalSize.X += x;
+            originalSize.Y += y;
         }
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
