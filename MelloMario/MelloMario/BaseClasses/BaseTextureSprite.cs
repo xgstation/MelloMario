@@ -5,9 +5,9 @@ namespace MelloMario.Sprites
 {
     internal abstract class BaseTextureSprite : BaseSprite
     {
+        private readonly Texture2D texture;
         private Color color;
         private Rectangle source;
-        private readonly Texture2D texture;
 
         public BaseTextureSprite(Texture2D texture, Rectangle source, ZIndex zIndex) : base(source.Size, zIndex)
         {

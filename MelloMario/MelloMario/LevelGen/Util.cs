@@ -46,22 +46,34 @@ namespace MelloMario.LevelGen
         {
             obj = default(T);
             if (token.Type is JTokenType.Array)
+            {
                 return false;
+            }
             var tempToken = token;
             for (int i = 0; i < p.Length - 1; i++)
+            {
                 if (tempToken[p[i]] != null)
                 {
                     if (tempToken.Type is JTokenType.Array)
+                    {
                         return false;
+                    }
                     tempToken = tempToken[p[i]];
                 }
                 else
+                {
                     return false;
+                }
+            }
             string str = p[p.Length - 1];
             if (tempToken.Type is JTokenType.Array)
+            {
                 return false;
+            }
             if (tempToken[str] == null)
+            {
                 return false;
+            }
             obj = tempToken[p[p.Length - 1]].ToObject<T>(serializers);
             return true;
         }
@@ -75,11 +87,19 @@ namespace MelloMario.LevelGen
                 var createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
                 var createIndex = new Point(x + 1, y + 1);
                 if (ignoredSet == null || !ignoredSet.Contains(createIndex))
+                {
                     if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
+                    {
                         foreach (var obj in (IEnumerable<IGameObject>) func(createLocation))
+                        {
                             stack.Push(obj);
+                        }
+                    }
                     else
+                    {
                         stack.Push((IGameObject) func(createLocation));
+                    }
+                }
             }
         }
 
@@ -99,14 +119,20 @@ namespace MelloMario.LevelGen
                     startPoint.Y + (directionToDown ? y : -y) * objSize.Y);
                 var createIndex = new Point(x + 1, y + 1);
                 if (ignoredSet == null || !ignoredSet.Contains(createIndex))
+                {
                     if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
+                    {
                         foreach (var obj in (IEnumerable<IGameObject>) createFunc(createLocation))
+                        {
                             stack.Push(obj);
+                        }
+                    }
                     else
                     {
                         var newObject = (IGameObject) createFunc(createLocation);
                         stack.Push(newObject);
                     }
+                }
             }
         }
 
@@ -121,22 +147,30 @@ namespace MelloMario.LevelGen
                 var createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
                 var createIndex = new Point(x + 1, y + 1);
                 if (ignoredSet == null || !ignoredSet.Contains(createIndex))
+                {
                     if (typeof(T1).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
+                    {
                         foreach (var obj in (IEnumerable<IGameObject>) createFunc(createLocation))
                         {
                             var index = new Point(x, y);
                             if (properties != null && properties.ContainsKey(index))
+                            {
                                 applyProperties(obj, properties[index]);
+                            }
                             stack.Push(obj);
                         }
+                    }
                     else
                     {
                         var newObject = (IGameObject) createFunc(createLocation);
                         var index = new Point(x, y);
                         if (properties != null && properties.ContainsKey(index))
+                        {
                             applyProperties(newObject, properties[index]);
+                        }
                         stack.Push(newObject);
                     }
+                }
             }
         }
 
@@ -205,10 +239,14 @@ namespace MelloMario.LevelGen
         {
             toBeIgnored = new HashSet<Point>();
             if (token["Ignored"] == null)
+            {
                 return false;
+            }
             var ignoredToken = token["Ignored"].ToList();
             foreach (var t in ignoredToken)
+            {
                 toBeIgnored.Add(t.ToObject<Point>());
+            }
             return true;
         }
     }

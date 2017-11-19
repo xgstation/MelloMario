@@ -14,10 +14,14 @@ namespace MelloMario.EnemyObjects.PiranhaStates
         public override void Update(int time)
         {
             if (Owner.HasMarioAbove)
+            {
                 return;
+            }
             elapsed += time;
             if (elapsed > Owner.HiddenTime)
+            {
                 Owner.State = new MovingUp(Owner);
+            }
         }
 
         public void Defeat()

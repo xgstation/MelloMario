@@ -36,9 +36,13 @@ namespace MelloMario.BlockObjects
         {
             isHidden = hidden;
             if (isHidden)
+            {
                 state = new Hidden(this);
+            }
             else
+            {
                 state = new Normal(this);
+            }
             HasInitialItem = GameDatabase.HasItemEnclosed(this);
             UpdateSprite();
         }
@@ -99,7 +103,9 @@ namespace MelloMario.BlockObjects
         public void ReleaseNextItem()
         {
             if (!GameDatabase.HasItemEnclosed(this))
+            {
                 return;
+            }
             var item = GameDatabase.GetNextItem(this);
             World.Update();
             World.Add(item);

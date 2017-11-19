@@ -5,11 +5,11 @@ namespace MelloMario
 {
     internal abstract class BasePhysicalObject : BaseCollidableObject
     {
+        private readonly float pixelScale;
         protected FacingMode Facing;
         private Vector2 force;
         private Vector2 frictionalForce;
         private Vector2 movement;
-        private readonly float pixelScale;
         private Vector2 velocity;
 
         public BasePhysicalObject(IGameWorld world, Point location, IListener listener, Point size, float pixelScale) :
@@ -36,13 +36,17 @@ namespace MelloMario
         protected void ApplyHorizontalFriction(float friction)
         {
             if (frictionalForce.X < friction)
+            {
                 frictionalForce.X = friction;
+            }
         }
 
         protected void ApplyVerticalFriction(float friction)
         {
             if (frictionalForce.Y < friction)
+            {
                 frictionalForce.Y = friction;
+            }
         }
 
         protected void SetHorizontalVelocity(float constVelocity)
@@ -129,18 +133,30 @@ namespace MelloMario
             var deltaV = frictionalForce * deltaTime;
 
             if (velocity.X > deltaV.X)
+            {
                 velocity.X -= deltaV.X;
+            }
             else if (velocity.X < -deltaV.X)
+            {
                 velocity.X += deltaV.X;
+            }
             else
+            {
                 velocity.X = 0;
+            }
 
             if (velocity.Y > deltaV.Y)
+            {
                 velocity.Y -= deltaV.Y;
+            }
             else if (velocity.Y < -deltaV.Y)
+            {
                 velocity.Y += deltaV.Y;
+            }
             else
+            {
                 velocity.Y = 0;
+            }
 
             frictionalForce.X = 0;
             frictionalForce.X = 0;
@@ -149,13 +165,21 @@ namespace MelloMario
 
             movement += velocity * deltaTime;
             if (velocity.X > GameConst.VELOCITY_MAX_LR)
+            {
                 velocity.X = GameConst.VELOCITY_MAX_LR;
+            }
             else if (velocity.X < -GameConst.VELOCITY_MAX_LR)
+            {
                 velocity.X = -GameConst.VELOCITY_MAX_LR;
+            }
             if (velocity.Y > GameConst.VELOCITY_MAX_D)
+            {
                 velocity.Y = GameConst.VELOCITY_MAX_D;
+            }
             else if (velocity.Y < -GameConst.VELOCITY_MAX_U)
+            {
                 velocity.Y = -GameConst.VELOCITY_MAX_U;
+            }
 
             // Apply movement
 

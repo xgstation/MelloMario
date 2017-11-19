@@ -10,9 +10,13 @@ namespace MelloMario.BlockObjects
             location, listener, new Point(32, 32))
         {
             if (isHidden)
+            {
                 HideSprite();
+            }
             else
+            {
                 UpdateSprite();
+            }
         }
 
         private void UpdateSprite()

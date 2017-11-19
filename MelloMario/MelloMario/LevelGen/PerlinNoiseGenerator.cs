@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MelloMario.LevelGen
 {
     //Work In Progress
-    class PerlinNoiseGenerator
+    internal class PerlinNoiseGenerator
     {
         private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
         private static int[] table;
@@ -26,10 +22,7 @@ namespace MelloMario.LevelGen
 
         public float Perlin(params float[] p)
         {
-            
             return 0;
         }
-
-
     }
 }

@@ -69,13 +69,19 @@ namespace MelloMario.MarioObjects
         private void UpdateSprite()
         {
             if (movementState is Crouching && powerUpState is Standard)
+            {
                 return; // status is still updating
+            }
 
             string facingString;
             if (Facing == FacingMode.left)
+            {
                 facingString = "Left";
+            }
             else
+            {
                 facingString = "Right";
+            }
 
             ShowSprite(SpriteFactory.Instance.CreateMarioSprite(powerUpState.GetType().Name,
                 movementState.GetType().Name, protectionState.GetType().Name, facingString));
@@ -110,7 +116,9 @@ namespace MelloMario.MarioObjects
             CornerMode corner, CornerMode cornerPassive)
         {
             if (ProtectionState is Dead)
+            {
                 return;
+            }
             switch (target.GetType().Name)
             {
                 //TODO: add cases when collision mode is OutLeftTop/OutRightTop that Mario will be squeezed to side of the brick
@@ -126,7 +134,9 @@ namespace MelloMario.MarioObjects
                     if (brick != null)
                     {
                         if (brick.State is Destroyed)
+                        {
                             break;
+                        }
                         isHidden = brick.State is Hidden;
                         isBumping = brick.State is Bumped;
                     }
@@ -150,13 +160,21 @@ namespace MelloMario.MarioObjects
                             //Move(new Point(0, 1));
                         }
                         else if (bumped)
+                        {
                             if (brick != null)
+                            {
                                 brick.Bump(this);
+                            }
                             else if (question != null)
+                            {
                                 question.Bump(this);
+                            }
+                        }
                     }
                     else if (!isHidden)
+                    {
                         goto case "Stair";
+                    }
 
                     break;
                 case "Pipeline":
@@ -164,24 +182,34 @@ namespace MelloMario.MarioObjects
                     {
                         string type = (target as Pipeline).Type;
                         if (type == "LeftIn")
+                        {
                             if (Boundary.Center.X > target.Boundary.Center.X)
                             {
                                 Bounce(CollisionMode.Left, new Vector2());
                                 Bounce(CollisionMode.Right, new Vector2());
                             }
                             else
+                            {
                                 goto case "Floor";
+                            }
+                        }
                         else if (type == "RightIn")
+                        {
                             if (Boundary.Center.X < target.Boundary.Center.X)
                             {
                                 Bounce(CollisionMode.Left, new Vector2());
                                 Bounce(CollisionMode.Right, new Vector2());
                             }
                             else
+                            {
                                 goto case "Floor";
+                            }
+                        }
                     }
                     else
+                    {
                         goto case "Floor";
+                    }
                     break;
                 case "CompressedBlock":
                 case "Floor":
@@ -198,10 +226,14 @@ namespace MelloMario.MarioObjects
                     if (target is Goomba goomba && mode != CollisionMode.Bottom)
                     {
                         if (goomba.State is EnemyObjects.GoombaStates.Normal && !(ProtectionState is Starred))
+                        {
                             Downgrade();
+                        }
                     }
                     else if (!(protectionState is Starred))
+                    {
                         Bounce(mode, new Vector2(), 0.5f);
+                    }
 
                     break;
                 case "Koopa":
@@ -220,16 +252,30 @@ namespace MelloMario.MarioObjects
                     //    }
                     //}
                     if (target is Koopa)
+                    {
                         if (!(ProtectionState is Starred))
+                        {
                             if (mode is CollisionMode.Bottom)
+                            {
                                 if (corner is CornerMode.Right)
+                                {
                                     Bounce(mode, new Vector2(1f, -5f), 1f);
+                                }
                                 else if (corner is CornerMode.Left)
+                                {
                                     Bounce(mode, new Vector2(-1f, -5f), 1f);
+                                }
                                 else
+                                {
                                     Bounce(mode, new Vector2(0, -5f), 1f);
+                                }
+                            }
                             else if (mode is CollisionMode.Left || mode is CollisionMode.Right)
+                            {
                                 Bounce(mode, new Vector2(), -0.5f);
+                            }
+                        }
+                    }
 
                     //else if (!(protectionState is Starred))
                     //{
@@ -239,21 +285,31 @@ namespace MelloMario.MarioObjects
                     break;
                 case "FireFlower":
                     if (((FireFlower) target).State is ItemObjects.FireFlowerStates.Normal)
+                    {
                         UpgradeToFire();
+                    }
                     break;
                 case "Star":
                     if (((Star) target).State is ItemObjects.StarStates.Normal)
+                    {
                         ProtectionState.Star();
+                    }
                     break;
                 case "SuperMushroom":
                     if (((SuperMushroom) target).State is ItemObjects.SuperMushroomStates.Normal &&
                         PowerUpState is Standard)
+                    {
                         UpgradeToSuper();
+                    }
                     break;
                 case "Piranha":
                     if (!(ProtectionState is Starred))
+                    {
                         if (!(((Piranha) target).State is EnemyObjects.PiranhaStates.Hidden))
+                        {
                             Downgrade();
+                        }
+                    }
                     break;
             }
         }
@@ -266,7 +322,9 @@ namespace MelloMario.MarioObjects
             {
                 Bounce(mode, new Vector2());
                 if (mode == CollisionMode.InnerBottom)
+                {
                     ProtectionState = new Dead(this);
+                }
             }
         }
 
@@ -296,9 +354,13 @@ namespace MelloMario.MarioObjects
         public void Downgrade()
         {
             if (protectionState is Normal)
+            {
                 PowerUpState.Downgrade();
+            }
             if (protectionState is Normal)
+            {
                 protectionState.Protect();
+            }
         }
     }
 }

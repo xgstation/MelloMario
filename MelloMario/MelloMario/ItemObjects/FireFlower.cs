@@ -57,7 +57,9 @@ namespace MelloMario.ItemObjects
             CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario && state is Normal)
+            {
                 Collect();
+            }
         }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }

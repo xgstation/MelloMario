@@ -113,8 +113,10 @@ namespace MelloMario.Factories
             {
                 case "FlagPole":
                     for (int i = 0; i < count; ++i)
+                    {
                         yield return new Flag(world, new Point(location.X, location.Y + 32 * i), listener, count - i,
                             count);
+                    }
                     yield break;
 
                 default:

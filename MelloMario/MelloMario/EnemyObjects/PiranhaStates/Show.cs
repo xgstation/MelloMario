@@ -20,7 +20,9 @@ namespace MelloMario.EnemyObjects.PiranhaStates
         {
             elapsed += time;
             if (elapsed > Owner.ShowTime)
+            {
                 Owner.State = new MovingDown(Owner);
+            }
         }
     }
 }

@@ -7,12 +7,12 @@ namespace MelloMario.Sprites
     internal class AnimatedSprite : BaseTextureSprite
     {
         private readonly int columns;
+        private readonly int interval;
+        private readonly int rows;
         private int elapsed;
 
         private int frames;
-        private readonly int interval;
         private Rectangle refSource;
-        private readonly int rows;
 
         public AnimatedSprite(Texture2D texture, int columns, int rows, int x = 0, int y = 0, int width = 2,
             int height = 2, int interval = GameConst.ANIMATION_INTERVAL, ZIndex zIndex = ZIndex.Item) : base(texture,
@@ -50,7 +50,9 @@ namespace MelloMario.Sprites
 
                 frames += 1;
                 if (frames == rows * columns)
+                {
                     frames = 0;
+                }
 
                 elapsed -= interval;
             }

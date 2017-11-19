@@ -26,7 +26,9 @@ namespace MelloMario.MiscObjects
                 location = value;
 
                 if (Limit == null || !(Math.Abs(Zoom - 1.0f) < Epsilon) || !(Math.Abs(Rotation) < Epsilon))
+                {
                     return;
+                }
                 location.X = MathHelper.Clamp(location.X, Limit.Value.X,
                     Limit.Value.X + Limit.Value.Width - viewport.Width);
                 location.Y = MathHelper.Clamp(location.Y, Limit.Value.Y,
@@ -61,7 +63,9 @@ namespace MelloMario.MiscObjects
                     Location = Location;
                 }
                 else
+                {
                     limit = null;
+                }
             }
         }
 
@@ -80,7 +84,9 @@ namespace MelloMario.MiscObjects
         public void Move(Vector2 displacement, bool respectRotation = false)
         {
             if (respectRotation)
+            {
                 displacement = Vector2.Transform(displacement, Matrix.CreateRotationZ(-Rotation));
+            }
 
             Location += displacement;
         }

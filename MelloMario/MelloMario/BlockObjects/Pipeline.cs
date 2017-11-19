@@ -51,9 +51,13 @@ namespace MelloMario.BlockObjects
                     var world = model.LoadLevel(GameDatabase.GetEntranceIndex(this));
 
                     if (GameDatabase.IsPortal(this))
+                    {
                         switchingPlayer.Spawn(world, GameDatabase.GetPortal(this).Boundary.Location);
+                    }
                     else
+                    {
                         switchingPlayer.Spawn(world, world.GetInitialPoint());
+                    }
 
                     elapsed = 0;
                     switchingPlayer = null;
@@ -65,6 +69,7 @@ namespace MelloMario.BlockObjects
             CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario mario && mode is CollisionMode.Top)
+            {
                 if (mario.MovementState is Crouching && GameDatabase.IsEntrance(this))
                 {
                     SoundController.Pipe.Play();
@@ -88,6 +93,7 @@ namespace MelloMario.BlockObjects
 
                     // TODO: mario.freeze
                 }
+            }
         }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }

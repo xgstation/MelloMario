@@ -57,13 +57,21 @@ namespace MelloMario.MarioObjects
 
                 // NOTE: this is a temporary solution, this should be moved to the collision detection system
                 if (location.X < worldBoundary.Left)
+                {
                     location.X = worldBoundary.Left;
+                }
                 if (location.Y < worldBoundary.Top)
+                {
                     location.Y = worldBoundary.Top;
+                }
                 if (location.X > worldBoundary.Right - size.X)
+                {
                     location.X = worldBoundary.Right - size.X;
+                }
                 if (location.Y > worldBoundary.Bottom - size.Y)
+                {
                     location.Y = worldBoundary.Bottom - size.Y;
+                }
 
                 return new Rectangle(location, size);
             }
@@ -76,23 +84,31 @@ namespace MelloMario.MarioObjects
                 MovementState.Walk();
 
                 if (Facing == FacingMode.right)
+                {
                     ChangeFacing(FacingMode.left);
+                }
 
                 if (!(MovementState is Crouching))
+                {
                     userInput.X -= GameConst.FORCE_INPUT_X;
+                }
             }
         }
 
         public void LeftPress()
         {
             if (animation == Animation.none)
+            {
                 Left();
+            }
         }
 
         public void LeftRelease()
         {
             if (animation == Animation.none)
+            {
                 MovementState.Idle();
+            }
         }
 
         public void Right()
@@ -102,23 +118,31 @@ namespace MelloMario.MarioObjects
                 MovementState.Walk();
 
                 if (Facing == FacingMode.left)
+                {
                     ChangeFacing(FacingMode.right);
+                }
 
                 if (!(MovementState is Crouching))
+                {
                     userInput.X += GameConst.FORCE_INPUT_X;
+                }
             }
         }
 
         public void RightPress()
         {
             if (animation == Animation.none)
+            {
                 Right();
+            }
         }
 
         public void RightRelease()
         {
             if (animation == Animation.none)
+            {
                 MovementState.Idle();
+            }
         }
 
         public void Jump()
@@ -132,9 +156,13 @@ namespace MelloMario.MarioObjects
                     userInput.Y -= GameConst.FORCE_INPUT_Y;
                     userInput.Y -= GameConst.FORCE_G;
                     if (PowerUpState is Super || PowerUpState is Fire)
+                    {
                         SoundController.PowerBounce.Play();
+                    }
                     else
+                    {
                         SoundController.Bounce.Play();
+                    }
                 }
             }
         }
@@ -142,32 +170,44 @@ namespace MelloMario.MarioObjects
         public void JumpPress()
         {
             if (animation == Animation.none)
+            {
                 Jump();
+            }
         }
 
         public void JumpRelease()
         {
             if (animation == Animation.none)
+            {
                 if (MovementState is Jumping jumping)
+                {
                     jumping.Finished = true;
+                }
+            }
         }
 
         public void Crouch()
         {
             if (animation == Animation.none)
+            {
                 MovementState.Crouch();
+            }
         }
 
         public void CrouchPress()
         {
             if (animation == Animation.none)
+            {
                 Crouch();
+            }
         }
 
         public void CrouchRelease()
         {
             if (animation == Animation.none)
+            {
                 MovementState.Idle();
+            }
         }
 
         public void FireCreate()
@@ -188,14 +228,20 @@ namespace MelloMario.MarioObjects
                 PowerUpState.Downgrade();
             }
             else if (PowerUpState is Super)
+            {
                 PowerUpState.Downgrade();
+            }
         }
 
         public void Action()
         {
             if (animation == Animation.none)
+            {
                 if (PowerUpState is Fire)
+                {
                     new FireBall(World, Boundary.Location, null);
+                }
+            }
         }
 
         public void Move(IGameWorld newWorld, Point newLocation)
@@ -236,7 +282,9 @@ namespace MelloMario.MarioObjects
 
                 toBeTraveled -= 2;
                 if (toBeTraveled <= 0)
+                {
                     animation = Animation.none;
+                }
             }
             base.OnSimulation(time);
         }
@@ -244,7 +292,9 @@ namespace MelloMario.MarioObjects
         protected override void OnUpdate(int time)
         {
             if (ProtectionState is Dead)
+            {
                 animation = Animation.dead;
+            }
 
             if (animation == Animation.none)
             {

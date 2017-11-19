@@ -44,17 +44,25 @@ namespace MelloMario
                         : CornerMode.Center;
 
                 if (rectA.Left == rectB.Right)
+                {
                     yield return new Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>(CollisionMode.Left,
                         CollisionMode.Right, cornerY, cornerYPassive);
+                }
                 if (rectA.Right == rectB.Left)
+                {
                     yield return new Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>(CollisionMode.Right,
                         CollisionMode.Left, cornerY, cornerYPassive);
+                }
                 if (rectA.Left == rectB.Left)
+                {
                     yield return new Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>(
                         CollisionMode.InnerLeft, CollisionMode.InnerLeft, cornerY, cornerYPassive);
+                }
                 if (rectA.Right == rectB.Right)
+                {
                     yield return new Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>(
                         CollisionMode.InnerRight, CollisionMode.InnerRight, cornerY, cornerYPassive);
+                }
             }
 
             if (rectA.Left < rectB.Right && rectB.Left < rectA.Right)
@@ -71,29 +79,41 @@ namespace MelloMario
                         : CornerMode.Center;
 
                 if (rectA.Top == rectB.Bottom)
+                {
                     yield return new Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>(CollisionMode.Top,
                         CollisionMode.Bottom, cornerX, cornerXPassive);
+                }
                 if (rectA.Bottom == rectB.Top)
+                {
                     yield return new Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>(CollisionMode.Bottom,
                         CollisionMode.Top, cornerX, cornerXPassive);
+                }
                 if (rectA.Top == rectB.Top)
+                {
                     yield return new Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>(CollisionMode.InnerTop,
                         CollisionMode.InnerTop, cornerX, cornerXPassive);
+                }
                 if (rectA.Bottom == rectB.Bottom)
+                {
                     yield return new Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>(
                         CollisionMode.InnerBottom, CollisionMode.InnerBottom, cornerX, cornerXPassive);
+                }
             }
         }
 
         private void CollideAll()
         {
             foreach (var target in World.ScanNearby(Boundary))
+            {
                 if (target != this && target is BaseCollidableObject obj)
+                {
                     foreach (var pair in ScanCollideModes(target.Boundary))
                     {
                         OnCollision(target, pair.Item1, pair.Item2, pair.Item3, pair.Item4);
                         obj.OnCollision(this, pair.Item2, pair.Item1, pair.Item4, pair.Item3);
                     }
+                }
+            }
 
             // TODO: build a list of players that observed this objects
             //foreach (IPlayer player in session.???)
@@ -105,7 +125,9 @@ namespace MelloMario
             //}
 
             foreach (var pair in ScanCollideModes(World.Boundary))
+            {
                 OnCollideWorld(pair.Item1, pair.Item2);
+            }
         }
 
         protected abstract void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
@@ -146,12 +168,16 @@ namespace MelloMario
             while (true)
             {
                 if (movement.X == 0 && movement.Y == 0)
+                {
                     break;
+                }
 
                 CollideAll();
 
                 if (movement.X == 0 && movement.Y == 0)
+                {
                     break;
+                }
 
                 float sqrX = movement.X * movement.X;
                 float sqrY = movement.Y * movement.Y;
@@ -160,6 +186,7 @@ namespace MelloMario
 
                 var location = Boundary.Location;
                 if (Math.Abs(offset + offsetX) < Math.Abs(offset - offsetY))
+                {
                     if (movement.X < 0)
                     {
                         location.X -= 1;
@@ -170,6 +197,7 @@ namespace MelloMario
                         location.X += 1;
                         movement.X -= 1;
                     }
+                }
                 else
                 {
                     if (movement.Y < 0)

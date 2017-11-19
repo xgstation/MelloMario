@@ -24,7 +24,8 @@ namespace MelloMario.UIObjects
         {
             splashSprite.Draw(time, spriteBatch, new Rectangle(0, 0, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT));
             textSprite.Draw(time, spriteBatch, new Rectangle(10, 10, 80, 80));
-            var textSprite2 = SpriteFactory.Instance.CreateTextSprite("You won!\n\nPress R to restart\n\nPress Q to quit");
+            var textSprite2 =
+                SpriteFactory.Instance.CreateTextSprite("You won!\n\nPress R to restart\n\nPress Q to quit");
             textSprite2.Draw(time, spriteBatch, new Rectangle(200, 200, 200, 80));
         }
     }

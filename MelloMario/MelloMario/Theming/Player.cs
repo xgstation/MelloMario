@@ -49,7 +49,9 @@ namespace MelloMario.Theming
             Lifes += 1;
 
             if (Lifes > GameConst.LIFES_MAX)
+            {
                 Lifes = GameConst.LIFES_MAX;
+            }
         }
 
         public void AddScore(int delta)
@@ -94,7 +96,9 @@ namespace MelloMario.Theming
         {
             TimeRemain -= time;
             if (Character != null)
+            {
                 PlayerCamera?.LookAt(new Vector2(((IGameObject) Character).Boundary.Location.X, 180f));
+            }
         }
 
         public void Draw(int time, SpriteBatch spriteBatch) { }

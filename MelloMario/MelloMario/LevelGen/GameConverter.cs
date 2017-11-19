@@ -13,9 +13,9 @@ namespace MelloMario.LevelGen
     internal class GameConverter : JsonConverter
     {
         private static JsonSerializer Serializers;
-        private readonly GameModel model;
-        private readonly IListener listener;
         private readonly string index;
+        private readonly IListener listener;
+        private readonly GameModel model;
         private GameEntityConverter gameEntityConverter;
         private JToken jsonToken;
         private JToken mapListToken;
@@ -48,22 +48,32 @@ namespace MelloMario.LevelGen
             jsonToken = JToken.Load(reader);
             mapListToken = Util.TryGet(out JToken t, jsonToken, "Maps") ? t : null;
             if (mapListToken == null)
+            {
                 return null;
+            }
             mapToBeLoaded = null;
             foreach (var obj in mapListToken)
+            {
                 if (Util.TryGet(out string s, obj, "Index") && s == index)
                 {
                     mapToBeLoaded = obj;
                     break;
                 }
+            }
             Util.TryGet(out string mapType, mapToBeLoaded, "Type");
             if (Util.TryGet(out Point mapSize, mapToBeLoaded, "Size"))
+            {
                 Debug.WriteLine("Map size:" + mapSize);
+            }
             else
+            {
                 Debug.WriteLine("Deserialize fail: No map size provided!");
+            }
 
             if (Util.TryGet(out IList<JToken> entities, mapToBeLoaded, "Entity"))
+            {
                 Debug.WriteLine("Entities token loaded successfully!");
+            }
 
             Util.TryGet(out Point initialPoint, mapToBeLoaded, "InitialSpawnPoint");
             Util.TryGet(out IList<Point> respawnPoints, mapToBeLoaded, "RespawnPoints");
@@ -73,9 +83,13 @@ namespace MelloMario.LevelGen
 
             Serializers.Converters.Add(gameEntityConverter);
             if (entities == null)
+            {
                 return world;
+            }
             foreach (var jToken in entities)
+            {
                 jToken.ToObject<EncapsulatedObject<IGameObject>>(Serializers);
+            }
 
             return world;
         }

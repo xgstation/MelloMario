@@ -23,9 +23,13 @@ namespace MelloMario.ItemObjects
             collected = false;
 
             if (marioLocation.X < location.X)
+            {
                 goingRight = true;
+            }
             else
+            {
                 goingRight = false;
+            }
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -69,9 +73,13 @@ namespace MelloMario.ItemObjects
                 ApplyGravity();
 
                 if (Facing == FacingMode.left)
+                {
                     SetHorizontalVelocity(-GameConst.VELOCITY_STAR_H);
+                }
                 else
+                {
                     SetHorizontalVelocity(GameConst.VELOCITY_STAR_H);
+                }
             }
 
             base.OnSimulation(time);
@@ -81,25 +89,34 @@ namespace MelloMario.ItemObjects
             CornerMode corner, CornerMode cornerPassive)
         {
             if (state is Normal)
+            {
                 switch (target.GetType().Name)
                 {
                     case "MarioCharacter":
                         if (state is Normal)
+                        {
                             Collect();
+                        }
                         break;
                     case "Brick":
                         if (((Brick) target).State is Hidden)
+                        {
                             break;
+                        }
                         goto case "Stair";
                     case "Question":
                         if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                        {
                             break;
+                        }
                         goto case "Stair";
                     case "Floor":
                     case "Pipeline":
                     case "Stair":
                         if (mode == CollisionMode.Top)
+                        {
                             Bounce(mode, new Vector2());
+                        }
                         if (mode == CollisionMode.Left ||
                             mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                         {
@@ -120,6 +137,7 @@ namespace MelloMario.ItemObjects
                         }
                         break;
                 }
+            }
         }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }

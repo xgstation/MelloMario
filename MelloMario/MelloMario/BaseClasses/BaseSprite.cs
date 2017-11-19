@@ -5,8 +5,8 @@ namespace MelloMario.Sprites
 {
     internal abstract class BaseSprite : ISprite
     {
-        private bool visible;
         private readonly ZIndex zIndex;
+        private bool visible;
 
         public BaseSprite(Point size, ZIndex zIndex)
         {
@@ -50,7 +50,9 @@ namespace MelloMario.Sprites
         public void Draw(int time, SpriteBatch spriteBatch, Rectangle destination)
         {
             if (visible)
+            {
                 OnDraw(time, spriteBatch, destination);
+            }
         }
 
         protected abstract void OnDraw(int time, SpriteBatch spriteBatch, Rectangle destination);

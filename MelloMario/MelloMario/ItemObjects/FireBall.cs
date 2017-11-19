@@ -31,8 +31,7 @@ namespace MelloMario.ItemObjects
         protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
             CornerMode corner, CornerMode cornerPassive)
         {
-            if (target is Mario)
-                return;
+            if (target is Mario) { }
         }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)

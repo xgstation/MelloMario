@@ -31,9 +31,13 @@ namespace MelloMario.ItemObjects
         {
             collected = false;
             if (marioLocation.X < location.X)
+            {
                 Facing = FacingMode.left;
+            }
             else
+            {
                 Facing = FacingMode.right;
+            }
 
             if (isUnveil)
             {
@@ -82,9 +86,13 @@ namespace MelloMario.ItemObjects
                 ApplyGravity();
 
                 if (Facing == FacingMode.left)
+                {
                     SetHorizontalVelocity(-GameConst.VELOCITY_SUPER_MUSHROOM);
+                }
                 else
+                {
                     SetHorizontalVelocity(GameConst.VELOCITY_SUPER_MUSHROOM);
+                }
             }
 
             base.OnSimulation(time);
@@ -97,21 +105,29 @@ namespace MelloMario.ItemObjects
             {
                 case "MarioCharacter":
                     if (state is Normal)
+                    {
                         Collect();
+                    }
                     break;
                 case "Brick":
                     if (((Brick) target).State is Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Question":
                     if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Floor":
                 case "Pipeline":
                 case "Stair":
                     if (mode == CollisionMode.Top || mode == CollisionMode.Bottom)
+                    {
                         Bounce(mode, new Vector2());
+                    }
                     if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);

@@ -34,13 +34,17 @@ namespace MelloMario.Theming
         public static void AddPipelineIndex(string index, Tuple<Pipeline, Pipeline> pipeline)
         {
             if (!PipelineIndex.ContainsKey(index))
+            {
                 PipelineIndex.Add(index, pipeline);
+            }
         }
 
         public static void AddPortal(Pipeline pipeline, string portalTo)
         {
             if (!PipelinePortalDb.ContainsKey(pipeline))
+            {
                 PipelinePortalDb.Add(pipeline, portalTo);
+            }
         }
 
         public static bool IsPortal(Pipeline pipeline)
@@ -69,7 +73,9 @@ namespace MelloMario.Theming
         public static IGameObject GetEnclosedItem(IGameObject obj)
         {
             if (!HasItemEnclosed(obj))
+            {
                 return null;
+            }
             var item = ItemEnclosedDb[obj][0];
             ItemEnclosedDb[obj].RemoveAt(0);
             return item;
@@ -78,13 +84,17 @@ namespace MelloMario.Theming
         public static IGameObject GetNextItem(IGameObject obj)
         {
             if (!HasItemEnclosed(obj))
+            {
                 return null;
+            }
             if (ItemEnclosedDb[obj][0] is SuperMushroom mushroom)
+            {
                 if (Session.ScanPlayers().Any(c => (c.Character as MarioCharacter)?.PowerUpState is Super))
                 {
                     ItemEnclosedDb[obj].RemoveAt(0);
                     return mushroom.GetFireFlower();
                 }
+            }
             var toBeRemoved = ItemEnclosedDb[obj][0];
             ItemEnclosedDb[obj].RemoveAt(0);
             return toBeRemoved;
@@ -93,9 +103,13 @@ namespace MelloMario.Theming
         public static void SetEnclosedItem(IGameObject obj, IList<IGameObject> objs)
         {
             if (ItemEnclosedDb.ContainsKey(obj))
+            {
                 ItemEnclosedDb[obj] = objs;
+            }
             else
+            {
                 ItemEnclosedDb.Add(obj, objs);
+            }
         }
 
         public static bool IsEntrance(Pipeline pipeline)
@@ -111,16 +125,22 @@ namespace MelloMario.Theming
         public static void SetEntranceIndex(Pipeline pipeline, string index)
         {
             if (IsEntrance(pipeline))
+            {
                 PipelineEntranceDb[pipeline] = index;
+            }
             else
+            {
                 PipelineEntranceDb.Add(pipeline, index);
+            }
         }
 
         public static void Update(int time)
         {
             foreach (var player in Session.ScanPlayers())
+            {
                 CharacterLocations.AddOrUpdate(player.Character, ((IGameObject) player.Character).Boundary.Location,
                     (p, loc) => ((IGameObject) p).Boundary.Location);
+            }
         }
     }
 }

@@ -7,8 +7,8 @@ namespace MelloMario.Sprites.BlockSprites
 {
     internal class BrickPieceSprite : BaseSprite
     {
-        private int elapsed;
         private readonly Texture2D texture;
+        private int elapsed;
 
         public BrickPieceSprite(Texture2D texture) : base(new Point(texture.Width, texture.Height), ZIndex.Foreground)
         {

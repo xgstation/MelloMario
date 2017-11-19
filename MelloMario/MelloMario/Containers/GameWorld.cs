@@ -8,8 +8,8 @@ namespace MelloMario.Containers
     {
         private readonly Point initialPoint;
         private readonly ISet<Point> respawnPoints;
-        private Point originalSize;
         private Point extended;
+        private Point originalSize;
 
         public GameWorld(string id, Point originalSize, Point initial, IEnumerable<Point> respawn)
         {
@@ -20,14 +20,20 @@ namespace MelloMario.Containers
             initialPoint = new Point(initial.X * GameConst.GRID, initial.Y * GameConst.GRID);
             respawnPoints = new HashSet<Point>();
             foreach (var p in respawn)
+            {
                 respawnPoints.Add(new Point(p.X * GameConst.GRID, p.Y * GameConst.GRID));
+            }
         }
 
         public string Id { get; }
 
         public Rectangle Boundary
         {
-            get { return new Rectangle(0, 0, (originalSize.X + extended.X) * GameConst.GRID, (originalSize.Y + extended.Y) * GameConst.GRID); }
+            get
+            {
+                return new Rectangle(0, 0, (originalSize.X + extended.X) * GameConst.GRID,
+                    (originalSize.Y + extended.Y) * GameConst.GRID);
+            }
         }
 
         public void Extend(int x, int y)
@@ -44,9 +50,13 @@ namespace MelloMario.Containers
             int bottom = (range.Bottom + GameConst.SCANRANGE) / GameConst.GRID;
 
             for (int i = left; i <= right; ++i)
-                for (int j = top; j <= bottom; ++j)
-                    foreach (var obj in Scan(new Point(i, j)))
-                        yield return obj;
+            for (int j = top; j <= bottom; ++j)
+            {
+                foreach (var obj in Scan(new Point(i, j)))
+                {
+                    yield return obj;
+                }
+            }
         }
 
         public Point GetInitialPoint()
@@ -59,8 +69,12 @@ namespace MelloMario.Containers
             var target = location;
 
             foreach (var p in respawnPoints)
+            {
                 if (p.X <= location.X && p.X > target.X)
+                {
                     target = p;
+                }
+            }
 
             return target;
         }

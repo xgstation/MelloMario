@@ -28,9 +28,13 @@ namespace MelloMario.EnemyObjects
             listener, new Point(32, 32), 32)
         {
             if (marioLoc.X < location.X)
+            {
                 Facing = FacingMode.left;
+            }
             else
+            {
                 Facing = FacingMode.right;
+            }
 
             state = new Normal(this);
             UpdateSprite();
@@ -61,9 +65,13 @@ namespace MelloMario.EnemyObjects
             ApplyGravity();
 
             if (Facing == FacingMode.left)
+            {
                 SetHorizontalVelocity(-GameConst.VELOCITY_GOOMBA);
+            }
             else
+            {
                 SetHorizontalVelocity(GameConst.VELOCITY_GOOMBA);
+            }
 
             base.OnSimulation(time);
         }
@@ -73,22 +81,30 @@ namespace MelloMario.EnemyObjects
             CornerMode corner, CornerMode cornerPassive)
         {
             if (state is Defeated)
+            {
                 return;
+            }
             switch (target.GetType().Name)
             {
                 case "MarioCharacter":
                     //TODO: Fire to be added
                     var mario = (Mario) target;
                     if (mode == CollisionMode.Top || mario.ProtectionState is Starred)
+                    {
                         Defeat();
+                    }
                     break;
                 case "Brick":
                     if (((Brick) target).State is Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Question":
                     if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Floor":
                 case "Pipeline":
@@ -104,12 +120,18 @@ namespace MelloMario.EnemyObjects
                         ChangeFacing(FacingMode.left);
                     }
                     else if (mode == CollisionMode.Bottom)
+                    {
                         Bounce(mode, new Vector2());
+                    }
                     break;
                 case "Koopa":
                     if (target is Koopa koopa)
+                    {
                         if (koopa.State is MovingShell)
+                        {
                             Defeat();
+                        }
+                    }
                     break;
                 case "Fire":
                     Defeat();

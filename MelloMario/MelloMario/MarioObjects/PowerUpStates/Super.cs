@@ -14,7 +14,9 @@ namespace MelloMario.MarioObjects.PowerUpStates
         {
             Owner.PowerUpState = new Fire(Owner);
             if (Owner.ProtectionState is Dead)
+            {
                 Owner.ProtectionState = new Normal(Owner);
+            }
         }
 
         public void Downgrade()

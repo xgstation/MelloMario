@@ -12,10 +12,11 @@ namespace MelloMario.BlockObjects
     {
         public delegate void TimeScoreHandler(Flag m, EventArgs e);
 
-        private EventArgs eventInfo;
         private readonly int height;
         private readonly int maxHeight;
         private readonly bool top;
+
+        private EventArgs eventInfo;
 
         public Flag(IGameWorld world, Point location, IListener listener, int height, int maxHeight) : base(world,
             location, listener, new Point(32, 32))
@@ -40,16 +41,20 @@ namespace MelloMario.BlockObjects
             CornerMode corner, CornerMode cornerPassive)
         {
             if (target is MarioCharacter mario)
+            {
                 if (mario.Active)
                 {
                     if (top)
+                    {
                         ChangeLives();
+                    }
                     eventInfo = null;
                     HandlerTimeScore?.Invoke(this, eventInfo);
                     ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
                     new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_FLAG_MAX * height / maxHeight);
                     mario.FlagPole();
                 }
+            }
         }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }

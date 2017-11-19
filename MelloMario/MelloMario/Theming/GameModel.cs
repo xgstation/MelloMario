@@ -102,10 +102,14 @@ namespace MelloMario.Theming
             if (isPaused)
             {
                 if (splashElapsed < 0)
+                {
                     return;
+                }
                 splashElapsed += time;
                 if (splashElapsed >= 1000 * 3)
+                {
                     Resume();
+                }
                 return;
             }
 
@@ -123,7 +127,9 @@ namespace MelloMario.Theming
             var player = activePlayer;
 
             foreach (var obj in player.World.ScanNearby(player.Character.Viewport))
+            {
                 obj.Draw(isPaused ? 0 : time, spriteBatch);
+            }
 
             Splash.Draw(time, spriteBatch);
         }
@@ -136,16 +142,20 @@ namespace MelloMario.Theming
         public IGameWorld LoadLevel(string id)
         {
             foreach (var world in session.ScanWorlds())
+            {
                 if (world.Id == id)
+                {
                     return world;
+                }
+            }
 
             // IGameWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
 
             var reader = new LevelIOJson("Content/Level1.json", listener);
             reader.SetModel(this);
-            
+
             var newWorld = reader.Load(id, session);
-            infiniteGenerator = new InfiniteGenerator(newWorld,listener,activeCamera);
+            infiniteGenerator = new InfiniteGenerator(newWorld, listener, activeCamera);
             return newWorld;
         }
 
@@ -175,23 +185,37 @@ namespace MelloMario.Theming
         private void UpdateMusicScene(int time)
         {
             if (activePlayer.Character is MarioCharacter marioD && marioD.ProtectionState is Dead)
+            {
                 MediaPlayer.Play(SoundController.Normal);
+            }
             if (activePlayer.Character is MarioCharacter mario && mario.ProtectionState is Starred)
+            {
                 MediaPlayer.Play(SoundController.Star);
+            }
             else if (activePlayer.Lifes <= 1)
+            {
                 SoundController.PlayMusic(SoundController.Songs.GameOver);
+            }
             else if (activePlayer.TimeRemain <= 90000)
+            {
                 SoundController.PlayMusic(SoundController.Songs.Hurry);
+            }
             else if (activePlayer.Character.CurrentWorld.Id == "Main")
+            {
                 SoundController.PlayMusic(SoundController.Songs.Normal);
+            }
             else
+            {
                 SoundController.PlayMusic(SoundController.Songs.BelowGround);
+            }
         }
 
         private void UpdateController()
         {
             foreach (var controller in controllers)
+            {
                 controller.Update();
+            }
         }
 
         private void UpdateGameObjects(int time)
@@ -203,20 +227,26 @@ namespace MelloMario.Theming
             {
                 player.Update(time);
                 foreach (var obj in player.World.ScanNearby(player.Character.Sensing))
+                {
                     updating.Add(obj);
+                }
             }
 
             updating.Add(Splash);
 
             foreach (var obj in updating)
+            {
                 obj.Update(time);
+            }
         }
 
         private void UpdateContainers()
         {
             session.Update();
             foreach (var world in session.ScanWorlds())
+            {
                 world.Update();
+            }
         }
     }
 }

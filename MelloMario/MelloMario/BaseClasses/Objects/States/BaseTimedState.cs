@@ -2,8 +2,8 @@
 {
     internal abstract class BaseTimedState<T> : BaseState<T>
     {
-        private int elapsed;
         private readonly int interval;
+        private int elapsed;
 
         public BaseTimedState(T owner, int interval) : base(owner)
         {

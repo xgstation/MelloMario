@@ -10,7 +10,9 @@ namespace MelloMario.MarioObjects.PowerUpStates
         {
             Owner.PowerUpState = new Fire(Owner);
             if (Owner.ProtectionState is Dead)
+            {
                 Owner.ProtectionState = new Normal(Owner);
+            }
         }
 
         public void Downgrade()
@@ -22,7 +24,9 @@ namespace MelloMario.MarioObjects.PowerUpStates
         {
             Owner.PowerUpState = new Super(Owner);
             if (Owner.ProtectionState is Dead)
+            {
                 Owner.ProtectionState = new Normal(Owner);
+            }
         }
 
         public override void Update(int time) { }

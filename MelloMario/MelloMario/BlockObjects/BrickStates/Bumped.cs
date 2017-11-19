@@ -18,9 +18,13 @@ namespace MelloMario.BlockObjects.BrickStates
         public void Show()
         {
             if (Owner.HasInitialItem && !GameDatabase.HasItemEnclosed(Owner))
+            {
                 Owner.State = new Used(Owner);
+            }
             else
+            {
                 Owner.State = new Normal(Owner);
+            }
         }
 
         public void Hide()
@@ -38,7 +42,9 @@ namespace MelloMario.BlockObjects.BrickStates
             SoundController.BumpBlock.Play();
             // TODO: use BaseTimedState
             if (elapsed >= 100)
+            {
                 move = 0;
+            }
             elapsed += time;
             move += 1;
             if (elapsed >= 350)
@@ -48,9 +54,13 @@ namespace MelloMario.BlockObjects.BrickStates
                 Show();
             }
             else if (elapsed >= 100)
+            {
                 Owner.BumpMove(move);
+            }
             else
+            {
                 Owner.BumpMove(-move);
+            }
         }
     }
 }

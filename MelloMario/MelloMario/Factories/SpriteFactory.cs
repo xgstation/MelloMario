@@ -9,9 +9,8 @@ namespace MelloMario.Factories
 {
     internal class SpriteFactory : ISpriteFactory
     {
-        private ContentManager content;
-
         private readonly IDictionary<string, Texture2D> textures;
+        private ContentManager content;
 
         private SpriteFactory()
         {
@@ -131,7 +130,9 @@ namespace MelloMario.Factories
         public ISprite CreateCoinSprite(bool isHud = false)
         {
             if (isHud)
+            {
                 return new AnimatedSprite(GetTexture("Coin"), 4, 1, 0, 0, 1, 2, 100, ZIndex.Hud);
+            }
             return new AnimatedSprite(GetTexture("Coin"), 4, 1, 0, 0, 1, 2);
         }
 
@@ -225,7 +226,9 @@ namespace MelloMario.Factories
         public ISprite CreateFlagSprite(bool isTop)
         {
             if (isTop)
+            {
                 return new StaticSprite(GetTexture("BlockSheet"), 32, 16, zIndex: ZIndex.Level);
+            }
             return new StaticSprite(GetTexture("BlockSheet"), 32, 18, zIndex: ZIndex.Level);
         }
 
@@ -268,7 +271,9 @@ namespace MelloMario.Factories
         private Texture2D GetTexture(string name)
         {
             if (!textures.ContainsKey(name))
+            {
                 textures.Add(name, content.Load<Texture2D>(name));
+            }
 
             return textures[name];
         }

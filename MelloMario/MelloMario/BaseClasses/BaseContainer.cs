@@ -26,7 +26,9 @@ namespace MelloMario.Containers
             var key = GetKey(value);
 
             if (!values.ContainsKey(key))
+            {
                 values.Add(key, new HashSet<Value>());
+            }
 
             keys.Add(value, key);
             values[key].Add(value);
@@ -45,7 +47,9 @@ namespace MelloMario.Containers
         protected IEnumerable<Value> Scan(Key key)
         {
             if (values.ContainsKey(key))
+            {
                 return values[key];
+            }
             return Enumerable.Empty<Value>();
         }
 
@@ -58,7 +62,9 @@ namespace MelloMario.Containers
         {
             foreach (var value in values.Values)
             foreach (var item in value)
+            {
                 yield return item;
+            }
         }
 
         public void Add(Value value)
@@ -79,21 +85,31 @@ namespace MelloMario.Containers
         public void Update()
         {
             foreach (var value in toAdd)
+            {
                 if (!keys.ContainsKey(value))
+                {
                     DoAdd(value);
+                }
+            }
             toAdd.Clear();
 
             foreach (var value in toMove)
+            {
                 if (keys.ContainsKey(value))
                 {
                     DoRemove(value);
                     DoAdd(value);
                 }
+            }
             toMove.Clear();
 
             foreach (var value in toRemove)
+            {
                 if (keys.ContainsKey(value))
+                {
                     DoRemove(value);
+                }
+            }
             toRemove.Clear();
         }
     }

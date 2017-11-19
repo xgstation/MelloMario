@@ -14,7 +14,9 @@ namespace MelloMario.EnemyObjects.PiranhaStates
         public override void Update(int time)
         {
             if (Owner.Boundary.Y <= initialY - 48)
+            {
                 Owner.State = new Show(Owner);
+            }
         }
 
         public void Defeat()

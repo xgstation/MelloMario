@@ -19,7 +19,9 @@ namespace MelloMario.Controllers
         public void AddCommand(object key, ICommand value, KeyBehavior behavior)
         {
             if (key is T castedKey)
+            {
                 commands[behavior].Add(castedKey, value);
+            }
         }
 
         public void Update()
@@ -30,7 +32,9 @@ namespace MelloMario.Controllers
         public void Reset()
         {
             foreach (var dict in commands.Values)
+            {
                 dict.Clear();
+            }
         }
 
         protected abstract void OnUpdate();
@@ -38,7 +42,9 @@ namespace MelloMario.Controllers
         protected void RunCommand(T key, KeyBehavior behavior)
         {
             if (commands[behavior].ContainsKey(key))
+            {
                 commands[behavior][key].Execute();
+            }
         }
     }
 }

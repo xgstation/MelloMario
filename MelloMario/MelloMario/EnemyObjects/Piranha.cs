@@ -70,7 +70,9 @@ namespace MelloMario.EnemyObjects
             CornerMode corner, CornerMode cornerPassive)
         {
             if (target is FireBall)
+            {
                 Defeat();
+            }
         }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)

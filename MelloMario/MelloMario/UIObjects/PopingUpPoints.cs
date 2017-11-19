@@ -17,9 +17,13 @@ namespace MelloMario.UIObjects
         {
             elapsed += time;
             if (elapsed < 1000)
+            {
                 Relocate(Boundary.Location + new Point(0, -2));
+            }
             else
+            {
                 World.Remove(this);
+            }
         }
 
         protected override void OnSimulation(int time) { }

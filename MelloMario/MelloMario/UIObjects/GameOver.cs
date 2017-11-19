@@ -44,7 +44,9 @@ namespace MelloMario.UIObjects
                 lifeSprite.Draw(time, spriteBatch, new Rectangle(350, 250, 80, 80));
             }
             else
+            {
                 gameOverSprite.Draw(time, spriteBatch, new Rectangle(400, 250, 80, 80));
+            }
         }
     }
 }

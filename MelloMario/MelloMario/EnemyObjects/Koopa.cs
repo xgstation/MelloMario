@@ -28,9 +28,13 @@ namespace MelloMario.EnemyObjects
             location, listener, new Point(32, 32), 32)
         {
             if (marioLoc.X < location.X)
+            {
                 Facing = FacingMode.left;
+            }
             else
+            {
                 Facing = FacingMode.right;
+            }
             this.color = color;
             state = new Normal(this);
             UpdateSprite();
@@ -50,9 +54,13 @@ namespace MelloMario.EnemyObjects
         {
             string facingString;
             if (Facing == FacingMode.left)
+            {
                 facingString = "Left";
+            }
             else
+            {
                 facingString = "Right";
+            }
             ShowSprite(SpriteFactory.Instance.CreateKoopaSprite(color, state.GetType().Name + facingString));
         }
 
@@ -74,16 +82,26 @@ namespace MelloMario.EnemyObjects
             ApplyGravity();
 
             if (state is MovingShell)
+            {
                 if (Facing == FacingMode.left)
+                {
                     SetHorizontalVelocity(-GameConst.VELOCITY_KOOPA_SHELL);
+                }
                 else
+                {
                     SetHorizontalVelocity(GameConst.VELOCITY_KOOPA_SHELL);
+                }
+            }
             else
             {
                 if (Facing == FacingMode.left)
+                {
                     SetHorizontalVelocity(-GameConst.VELOCITY_KOOPA);
+                }
                 else
+                {
                     SetHorizontalVelocity(GameConst.VELOCITY_KOOPA);
+                }
             }
 
 
@@ -99,15 +117,24 @@ namespace MelloMario.EnemyObjects
                     //TODO: Fire to be added
                     var mario = (Mario) target; //TODO: fire as target to be added
                     if (mario.ProtectionState is Starred)
+                    {
                         Defeat();
+                    }
                     else
                     {
                         if (state is Normal || state is MovingShell)
+                        {
                             if (mode == CollisionMode.Top)
+                            {
                                 JumpOn();
+                            }
                             else
+                            {
                                 mario.Downgrade();
+                            }
+                        }
                         else if (state is Defeated)
+                        {
                             if (mode == CollisionMode.Left)
                             {
                                 ChangeFacing(FacingMode.right);
@@ -128,16 +155,21 @@ namespace MelloMario.EnemyObjects
                                 ChangeFacing(FacingMode.left);
                                 Pushed();
                             }
+                        }
                     }
 
                     break;
                 case "Brick":
                     if (((Brick) target).State is Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Question":
                     if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    {
                         break;
+                    }
                     goto case "Stair";
                 case "Floor":
                 case "Pipeline":
@@ -153,15 +185,21 @@ namespace MelloMario.EnemyObjects
                         ChangeFacing(FacingMode.left);
                     }
                     else if (mode == CollisionMode.Bottom)
+                    {
                         Bounce(mode, new Vector2());
+                    }
                     break;
                 case "Fire":
                     Defeat();
                     break;
             }
             if (target is Koopa koopa)
+            {
                 if (koopa.State is MovingShell)
+                {
                     Defeat();
+                }
+            }
         }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
@@ -180,9 +218,13 @@ namespace MelloMario.EnemyObjects
         {
             // TODO: temporary fix
             if (Facing == FacingMode.right)
+            {
                 Move(new Point(1, 0));
+            }
             else
+            {
                 Move(new Point(-1, 0));
+            }
 
             State.Pushed();
         }

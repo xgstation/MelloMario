@@ -6,15 +6,15 @@ namespace MelloMario.LevelGen
 {
     internal class LevelIOJson
     {
-        private GameConverter gameConverter;
-        private string levelString;
         private readonly IListener listener;
-
-        private GameModel model;
         // Note: As File.ReadAllText will take care of dispose itself,
         // there is no need to implement IDisposable
 
         private readonly string path;
+        private GameConverter gameConverter;
+        private string levelString;
+
+        private GameModel model;
 
         public LevelIOJson(string jsonPath, IListener listener)
         {

@@ -35,7 +35,7 @@ namespace MelloMario
         {
             model = new GameModel(this);
             IEnumerable<IController> controllers =
-                new List<IController> { new GamepadController(), new KeyboardController() };
+                new List<IController> {new GamepadController(), new KeyboardController()};
             model.LoadControllers(controllers);
             model.Init();
         }
