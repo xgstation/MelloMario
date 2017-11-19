@@ -27,17 +27,17 @@ namespace MelloMario
         private IEnumerable<Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>> ScanCollideModes(
             Rectangle targetBoundary)
         {
-            var rectA = Boundary;
-            var rectB = targetBoundary;
+            Rectangle rectA = Boundary;
+            Rectangle rectB = targetBoundary;
 
             if (rectA.Top < rectB.Bottom && rectB.Top < rectA.Bottom)
             {
-                var cornerY = rectA.Center.Y <= rectB.Top
+                CornerMode cornerY = rectA.Center.Y <= rectB.Top
                     ? CornerMode.Top
                     : rectA.Center.Y >= rectB.Bottom
                         ? CornerMode.Bottom
                         : CornerMode.Center;
-                var cornerYPassive = rectB.Center.Y <= rectA.Top
+                CornerMode cornerYPassive = rectB.Center.Y <= rectA.Top
                     ? CornerMode.Top
                     : rectB.Center.Y >= rectA.Bottom
                         ? CornerMode.Bottom
@@ -67,12 +67,12 @@ namespace MelloMario
 
             if (rectA.Left < rectB.Right && rectB.Left < rectA.Right)
             {
-                var cornerX = rectA.Center.X <= rectB.Left
+                CornerMode cornerX = rectA.Center.X <= rectB.Left
                     ? CornerMode.Left
                     : rectA.Center.X >= rectB.Right
                         ? CornerMode.Right
                         : CornerMode.Center;
-                var cornerXPassive = rectB.Center.X <= rectA.Left
+                CornerMode cornerXPassive = rectB.Center.X <= rectA.Left
                     ? CornerMode.Left
                     : rectB.Center.X >= rectA.Right
                         ? CornerMode.Right
@@ -103,11 +103,12 @@ namespace MelloMario
 
         private void CollideAll()
         {
-            foreach (var target in World.ScanNearby(Boundary))
+            foreach (IGameObject target in World.ScanNearby(Boundary))
             {
                 if (target != this && target is BaseCollidableObject obj)
                 {
-                    foreach (var pair in ScanCollideModes(target.Boundary))
+                    foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(
+                        target.Boundary))
                     {
                         OnCollision(target, pair.Item1, pair.Item2, pair.Item3, pair.Item4);
                         obj.OnCollision(this, pair.Item2, pair.Item1, pair.Item4, pair.Item3);
@@ -124,7 +125,8 @@ namespace MelloMario
             //    }
             //}
 
-            foreach (var pair in ScanCollideModes(World.Boundary))
+            foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(
+                World.Boundary))
             {
                 OnCollideWorld(pair.Item1, pair.Item2);
             }
@@ -184,7 +186,7 @@ namespace MelloMario
                 float offsetX = (float) Math.Sqrt(sqrY / (sqrX + sqrY));
                 float offsetY = (float) Math.Sqrt(sqrX / (sqrX + sqrY));
 
-                var location = Boundary.Location;
+                Point location = Boundary.Location;
                 if (Math.Abs(offset + offsetX) < Math.Abs(offset - offsetY))
                 {
                     if (movement.X < 0)

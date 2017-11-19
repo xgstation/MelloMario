@@ -21,7 +21,7 @@ namespace MelloMario.LevelGen
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
         {
-            var token = JToken.Load(reader);
+            JToken token = JToken.Load(reader);
             float X = token["X"].ToObject<float>();
             float Y = token["Y"].ToObject<float>();
             return new Vector2(X, Y);
@@ -49,7 +49,7 @@ namespace MelloMario.LevelGen
             {
                 return false;
             }
-            var tempToken = token;
+            JToken tempToken = token;
             for (int i = 0; i < p.Length - 1; i++)
             {
                 if (tempToken[p[i]] != null)
@@ -84,13 +84,13 @@ namespace MelloMario.LevelGen
             for (int x = 0; x < quantity.X; x++)
             for (int y = 0; y < quantity.Y; y++)
             {
-                var createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
-                var createIndex = new Point(x + 1, y + 1);
+                Point createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
+                Point createIndex = new Point(x + 1, y + 1);
                 if (ignoredSet == null || !ignoredSet.Contains(createIndex))
                 {
                     if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                     {
-                        foreach (var obj in (IEnumerable<IGameObject>) func(createLocation))
+                        foreach (IGameObject obj in (IEnumerable<IGameObject>) func(createLocation))
                         {
                             stack.Push(obj);
                         }
@@ -115,21 +115,21 @@ namespace MelloMario.LevelGen
             for (int y = 0; y < Y; y++)
             for (int x = 0; x <= y; x++)
             {
-                var createLocation = new Point(startPoint.X + (directionToRight ? x : -x) * objSize.X,
+                Point createLocation = new Point(startPoint.X + (directionToRight ? x : -x) * objSize.X,
                     startPoint.Y + (directionToDown ? y : -y) * objSize.Y);
-                var createIndex = new Point(x + 1, y + 1);
+                Point createIndex = new Point(x + 1, y + 1);
                 if (ignoredSet == null || !ignoredSet.Contains(createIndex))
                 {
                     if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                     {
-                        foreach (var obj in (IEnumerable<IGameObject>) createFunc(createLocation))
+                        foreach (IGameObject obj in (IEnumerable<IGameObject>) createFunc(createLocation))
                         {
                             stack.Push(obj);
                         }
                     }
                     else
                     {
-                        var newObject = (IGameObject) createFunc(createLocation);
+                        IGameObject newObject = (IGameObject) createFunc(createLocation);
                         stack.Push(newObject);
                     }
                 }
@@ -144,15 +144,15 @@ namespace MelloMario.LevelGen
             for (int x = 0; x < quantity.X; x++)
             for (int y = 0; y < quantity.Y; y++)
             {
-                var createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
-                var createIndex = new Point(x + 1, y + 1);
+                Point createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
+                Point createIndex = new Point(x + 1, y + 1);
                 if (ignoredSet == null || !ignoredSet.Contains(createIndex))
                 {
                     if (typeof(T1).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                     {
-                        foreach (var obj in (IEnumerable<IGameObject>) createFunc(createLocation))
+                        foreach (IGameObject obj in (IEnumerable<IGameObject>) createFunc(createLocation))
                         {
-                            var index = new Point(x, y);
+                            Point index = new Point(x, y);
                             if (properties != null && properties.ContainsKey(index))
                             {
                                 applyProperties(obj, properties[index]);
@@ -162,8 +162,8 @@ namespace MelloMario.LevelGen
                     }
                     else
                     {
-                        var newObject = (IGameObject) createFunc(createLocation);
-                        var index = new Point(x, y);
+                        IGameObject newObject = (IGameObject) createFunc(createLocation);
+                        Point index = new Point(x, y);
                         if (properties != null && properties.ContainsKey(index))
                         {
                             applyProperties(newObject, properties[index]);
@@ -178,7 +178,7 @@ namespace MelloMario.LevelGen
             string pipelineType, int pipelineLength, Point pipelineLoc)
         {
             int grid = GameConst.GRID;
-            var listOfPipelineComponents = new List<IGameObject>();
+            List<IGameObject> listOfPipelineComponents = new List<IGameObject>();
             Pipeline in1 = null;
             Pipeline in2 = null;
             switch (pipelineType)
@@ -204,8 +204,8 @@ namespace MelloMario.LevelGen
                 case "NV":
                     for (int y = 0; y < pipelineLength; y++)
                     {
-                        var loc1 = new Point(pipelineLoc.X, pipelineLoc.Y + grid * y);
-                        var loc2 = new Point(pipelineLoc.X + grid, pipelineLoc.Y + grid * y);
+                        Point loc1 = new Point(pipelineLoc.X, pipelineLoc.Y + grid * y);
+                        Point loc2 = new Point(pipelineLoc.X + grid, pipelineLoc.Y + grid * y);
                         listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, "Left"));
                         listOfPipelineComponents.Add(new Pipeline(world, loc2, listener, "Right"));
                     }
@@ -213,8 +213,8 @@ namespace MelloMario.LevelGen
                 case "NH":
                     for (int x = 0; x < pipelineLength; x++)
                     {
-                        var loc1 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y);
-                        var loc2 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y + grid);
+                        Point loc1 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y);
+                        Point loc2 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y + grid);
                         listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, "Top"));
                         listOfPipelineComponents.Add(new Pipeline(world, loc2, listener, "Bottom"));
                     }
@@ -242,8 +242,8 @@ namespace MelloMario.LevelGen
             {
                 return false;
             }
-            var ignoredToken = token["Ignored"].ToList();
-            foreach (var t in ignoredToken)
+            List<JToken> ignoredToken = token["Ignored"].ToList();
+            foreach (JToken t in ignoredToken)
             {
                 toBeIgnored.Add(t.ToObject<Point>());
             }

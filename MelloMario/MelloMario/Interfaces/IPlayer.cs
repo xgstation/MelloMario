@@ -7,7 +7,7 @@ namespace MelloMario
     {
         IGameWorld World { get; }
         ICharacter Character { get; }
-        ICamera PlayerCamera { get; }
+        ICamera Camera { get; }
 
         int Coins { get; }
         int Score { get; }

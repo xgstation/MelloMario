@@ -52,7 +52,7 @@ namespace MelloMario.LevelGen
                 return null;
             }
             mapToBeLoaded = null;
-            foreach (var obj in mapListToken)
+            foreach (JToken obj in mapListToken)
             {
                 if (Util.TryGet(out string s, obj, "Index") && s == index)
                 {
@@ -86,7 +86,7 @@ namespace MelloMario.LevelGen
             {
                 return world;
             }
-            foreach (var jToken in entities)
+            foreach (JToken jToken in entities)
             {
                 jToken.ToObject<EncapsulatedObject<IGameObject>>(Serializers);
             }

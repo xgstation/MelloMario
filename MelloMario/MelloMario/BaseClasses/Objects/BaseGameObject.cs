@@ -54,7 +54,7 @@ namespace MelloMario
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
         {
-            var delta = new Point();
+            Point delta = new Point();
 
             switch (modeX)
             {

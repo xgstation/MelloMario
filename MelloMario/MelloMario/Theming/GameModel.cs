@@ -124,9 +124,12 @@ namespace MelloMario.Theming
 
         public void Draw(int time, SpriteBatch spriteBatch)
         {
-            var player = activePlayer;
+            IPlayer player = activePlayer;
 
-            foreach (var obj in player.World.ScanNearby(player.Character.Viewport))
+            Rectangle drawRange = player.Character.Viewport;
+            drawRange.Offset(-32, -32);
+            drawRange.Inflate(64, 64);
+            foreach (IGameObject obj in player.World.ScanNearby(drawRange))
             {
                 obj.Draw(isPaused ? 0 : time, spriteBatch);
             }
@@ -141,7 +144,7 @@ namespace MelloMario.Theming
 
         public IGameWorld LoadLevel(string id)
         {
-            foreach (var world in session.ScanWorlds())
+            foreach (IGameWorld world in session.ScanWorlds())
             {
                 if (world.Id == id)
                 {
@@ -151,10 +154,11 @@ namespace MelloMario.Theming
 
             // IGameWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
 
-            var reader = new LevelIOJson("Content/Level1.json", listener);
+            LevelIOJson reader = new LevelIOJson("Content/Level1.json", listener);
             reader.SetModel(this);
 
-            var newWorld = reader.Load(id, session);
+            IGameWorld newWorld = reader.Load(id, session);
+            activeCamera.Limit = newWorld.Boundary;
             infiniteGenerator = new InfiniteGenerator(newWorld, listener, activeCamera);
             return newWorld;
         }
@@ -212,7 +216,7 @@ namespace MelloMario.Theming
 
         private void UpdateController()
         {
-            foreach (var controller in controllers)
+            foreach (IController controller in controllers)
             {
                 controller.Update();
             }
@@ -223,10 +227,10 @@ namespace MelloMario.Theming
             // reserved for multiplayer
             ISet<IObject> updating = new HashSet<IObject>();
 
-            foreach (var player in session.ScanPlayers())
+            foreach (IPlayer player in session.ScanPlayers())
             {
                 player.Update(time);
-                foreach (var obj in player.World.ScanNearby(player.Character.Sensing))
+                foreach (IGameObject obj in player.World.ScanNearby(player.Character.Sensing))
                 {
                     updating.Add(obj);
                 }
@@ -234,7 +238,7 @@ namespace MelloMario.Theming
 
             updating.Add(Splash);
 
-            foreach (var obj in updating)
+            foreach (IObject obj in updating)
             {
                 obj.Update(time);
             }
@@ -243,7 +247,7 @@ namespace MelloMario.Theming
         private void UpdateContainers()
         {
             session.Update();
-            foreach (var world in session.ScanWorlds())
+            foreach (IGameWorld world in session.ScanWorlds())
             {
                 world.Update();
             }

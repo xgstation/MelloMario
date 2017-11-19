@@ -95,7 +95,7 @@ namespace MelloMario.LevelGen
             }
 
             selftype = null;
-            foreach (var t in AssemblyTypes)
+            foreach (Type t in AssemblyTypes)
             {
                 selftype = t.Name == typeStr ? t : null;
                 if (selftype != null)
@@ -234,13 +234,14 @@ namespace MelloMario.LevelGen
             {
                 if (!(produceMode is ProduceMode.One))
                 {
-                    var dictProperties = new Dictionary<Point, Tuple<bool, string[]>>(new PointCompare());
+                    Dictionary<Point, Tuple<bool, string[]>> dictProperties =
+                        new Dictionary<Point, Tuple<bool, string[]>>(new PointCompare());
                     if (Util.TryGet(out JToken propertiesToken, token, "Properties"))
                     {
-                        foreach (var propertyToken in propertiesToken)
+                        foreach (JToken propertyToken in propertiesToken)
                         {
                             Util.TryGet(out Point index, propertyToken, "Index");
-                            var newPair = GetPropertyPair(propertyToken);
+                            Tuple<bool, string[]> newPair = GetPropertyPair(propertyToken);
                             dictProperties.Add(index, newPair);
                         }
                         Util.BatchCreateWithProperties(point =>
@@ -257,7 +258,8 @@ namespace MelloMario.LevelGen
                             return objToBePushed;
                         }, objPoint, quantity, new Point(32, 32), ignoredSet, ref stack, dictProperties, (obj, pair) =>
                         {
-                            var newList = Util.CreateItemList(world, obj.Boundary.Location, listener, pair.Item2);
+                            IList<IGameObject> newList =
+                                Util.CreateItemList(world, obj.Boundary.Location, listener, pair.Item2);
                             if (newList != null && newList.Count != 0)
                             {
                                 GameDatabase.SetEnclosedItem(obj, newList);
@@ -327,8 +329,8 @@ namespace MelloMario.LevelGen
             else if (type.Name == "Flag")
             {
                 bool hasHeight = Util.TryGet(out int Height, token, "Property", "Height");
-                foreach (var obj in GameObjectFactory.Instance.CreateGameObjectGroup("FlagPole", world, objPoint,
-                    hasHeight ? Height : 7, listener))
+                foreach (IGameObject obj in GameObjectFactory.Instance.CreateGameObjectGroup("FlagPole", world,
+                    objPoint, hasHeight ? Height : 7, listener))
                 {
                     stack.Push(obj);
                 }
@@ -426,7 +428,7 @@ namespace MelloMario.LevelGen
             {
                 Debug.WriteLine("Deserialize fail: Type of background is not given!");
             }
-            var zIndex = Util.TryGet(out string s, token, "Property", "ZIndex")
+            ZIndex zIndex = Util.TryGet(out string s, token, "Property", "ZIndex")
                 ? (ZIndex) Enum.Parse(typeof(ZIndex), s)
                 : ZIndex.Background0;
             createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, backgroundType, zIndex);

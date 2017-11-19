@@ -8,19 +8,28 @@ namespace MelloMario.UIObjects
     {
         private readonly ISprite startSprite;
         private readonly ISprite textSprite;
+        private Rectangle startDestinationRect;
+        private Rectangle textDestinationRect;
 
         public GameStart(IPlayer player) : base(player)
         {
             startSprite = SpriteFactory.Instance.CreateTitle(ZIndex.Hud);
             textSprite = SpriteFactory.Instance.CreateTextSprite("Mellop");
+            startDestinationRect = new Rectangle(100, 100, 352, 176);
+            textDestinationRect = new Rectangle(0, 400, 200, 200);
         }
 
-        protected override void OnUpdate(int time) { }
+        protected override void OnUpdate(int time)
+        {
+            Offset(ref startDestinationRect);
+            Offset(ref textDestinationRect);
+            UpdateOrigin();
+        }
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
-            startSprite.Draw(time, spriteBatch, new Rectangle(100, 100, 352, 176));
-            textSprite.Draw(time, spriteBatch, new Rectangle(0, 400, 200, 200));
+            startSprite.Draw(time, spriteBatch, startDestinationRect);
+            textSprite.Draw(time, spriteBatch, textDestinationRect);
         }
     }
 }

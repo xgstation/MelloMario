@@ -128,8 +128,8 @@ namespace MelloMario.MarioObjects
                     bool isHidden;
                     bool isBumping;
 
-                    var brick = target as Brick;
-                    var question = target as Question;
+                    Brick brick = target as Brick;
+                    Question question = target as Question;
 
                     if (brick != null)
                     {

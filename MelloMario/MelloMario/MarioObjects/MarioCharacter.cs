@@ -38,8 +38,8 @@ namespace MelloMario.MarioObjects
         {
             get
             {
-                var location = Boundary.Location - new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
-                var size = new Point(GameConst.SCREEN_WIDTH * 2,
+                Point location = Boundary.Location - new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
+                Point size = new Point(GameConst.SCREEN_WIDTH * 2,
                     GameConst.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
 
                 return new Rectangle(location, size);
@@ -50,10 +50,10 @@ namespace MelloMario.MarioObjects
         {
             get
             {
-                var location = Boundary.Location - new Point(GameConst.FOCUS_X, GameConst.FOCUS_Y);
-                var size = new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
+                Point location = Boundary.Location - new Point(GameConst.FOCUS_X, GameConst.FOCUS_Y);
+                Point size = new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
 
-                var worldBoundary = World.Boundary;
+                Rectangle worldBoundary = World.Boundary;
 
                 // NOTE: this is a temporary solution, this should be moved to the collision detection system
                 if (location.X < worldBoundary.Left)

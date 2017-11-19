@@ -19,7 +19,7 @@ namespace MelloMario.Containers
 
             initialPoint = new Point(initial.X * GameConst.GRID, initial.Y * GameConst.GRID);
             respawnPoints = new HashSet<Point>();
-            foreach (var p in respawn)
+            foreach (Point p in respawn)
             {
                 respawnPoints.Add(new Point(p.X * GameConst.GRID, p.Y * GameConst.GRID));
             }
@@ -52,7 +52,7 @@ namespace MelloMario.Containers
             for (int i = left; i <= right; ++i)
             for (int j = top; j <= bottom; ++j)
             {
-                foreach (var obj in Scan(new Point(i, j)))
+                foreach (IGameObject obj in Scan(new Point(i, j)))
                 {
                     yield return obj;
                 }
@@ -66,9 +66,9 @@ namespace MelloMario.Containers
 
         public Point GetRespawnPoint(Point location)
         {
-            var target = location;
+            Point target = location;
 
-            foreach (var p in respawnPoints)
+            foreach (Point p in respawnPoints)
             {
                 if (p.X <= location.X && p.X > target.X)
                 {
@@ -81,7 +81,7 @@ namespace MelloMario.Containers
 
         protected override Point GetKey(IGameObject value)
         {
-            var center = value.Boundary.Center;
+            Point center = value.Boundary.Center;
             return new Point(center.X / GameConst.GRID, center.Y / GameConst.GRID);
         }
     }

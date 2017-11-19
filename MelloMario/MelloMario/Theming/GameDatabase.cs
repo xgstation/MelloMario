@@ -76,7 +76,7 @@ namespace MelloMario.Theming
             {
                 return null;
             }
-            var item = ItemEnclosedDb[obj][0];
+            IGameObject item = ItemEnclosedDb[obj][0];
             ItemEnclosedDb[obj].RemoveAt(0);
             return item;
         }
@@ -95,7 +95,7 @@ namespace MelloMario.Theming
                     return mushroom.GetFireFlower();
                 }
             }
-            var toBeRemoved = ItemEnclosedDb[obj][0];
+            IGameObject toBeRemoved = ItemEnclosedDb[obj][0];
             ItemEnclosedDb[obj].RemoveAt(0);
             return toBeRemoved;
         }
@@ -136,7 +136,7 @@ namespace MelloMario.Theming
 
         public static void Update(int time)
         {
-            foreach (var player in Session.ScanPlayers())
+            foreach (IPlayer player in Session.ScanPlayers())
             {
                 CharacterLocations.AddOrUpdate(player.Character, ((IGameObject) player.Character).Boundary.Location,
                     (p, loc) => ((IGameObject) p).Boundary.Location);

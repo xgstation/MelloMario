@@ -27,7 +27,7 @@ namespace MelloMario.Factories
             switch (type)
             {
                 case "Mario":
-                    var mario = new MarioCharacter(world, player, location, listener);
+                    MarioCharacter mario = new MarioCharacter(world, player, location, listener);
                     return mario;
                 default:
                     return null;

@@ -48,7 +48,7 @@ namespace MelloMario.BlockObjects
 
                 if (elapsed > 500)
                 {
-                    var world = model.LoadLevel(GameDatabase.GetEntranceIndex(this));
+                    IGameWorld world = model.LoadLevel(GameDatabase.GetEntranceIndex(this));
 
                     if (GameDatabase.IsPortal(this))
                     {

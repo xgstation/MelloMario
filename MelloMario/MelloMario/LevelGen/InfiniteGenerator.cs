@@ -7,8 +7,8 @@ namespace MelloMario.LevelGen
     {
         private readonly ICamera camera;
         private readonly IListener listener;
-        private float rightMostReachedX;
         private readonly IGameWorld world;
+        private float rightMostReachedX;
 
         internal InfiniteGenerator(IGameWorld world, IListener listener, ICamera camera)
         {
@@ -26,6 +26,7 @@ namespace MelloMario.LevelGen
                 new Floor(world, new Point(world.Boundary.Right, 13 * 32), listener);
                 new Floor(world, new Point(world.Boundary.Right, 14 * 32), listener);
                 world.Extend(1, 0);
+                camera.Limit = world.Boundary;
                 rightMostReachedX += 32;
             }
         }

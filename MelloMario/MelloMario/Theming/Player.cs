@@ -21,7 +21,7 @@ namespace MelloMario.Theming
 
         public ICharacter Character { get; private set; }
 
-        public ICamera PlayerCamera { get; private set; }
+        public ICamera Camera { get; private set; }
 
         public int Coins { get; private set; }
 
@@ -64,7 +64,7 @@ namespace MelloMario.Theming
             Character = GameObjectFactory.Instance.CreateGameCharacter(type, world, this, world.GetInitialPoint(),
                 listener);
             Session.Add(this);
-            PlayerCamera = newCamera;
+            Camera = newCamera;
 
             Lifes = GameConst.LIFES_INIT;
             TimeRemain = GameConst.LEVEL_TIME * 1000;
@@ -97,7 +97,7 @@ namespace MelloMario.Theming
             TimeRemain -= time;
             if (Character != null)
             {
-                PlayerCamera?.LookAt(new Vector2(((IGameObject) Character).Boundary.Location.X, 180f));
+                Camera?.LookAt(new Vector2(((IGameObject) Character).Boundary.Location.X, 180f));
             }
         }
 

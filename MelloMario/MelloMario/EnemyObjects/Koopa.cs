@@ -115,7 +115,7 @@ namespace MelloMario.EnemyObjects
             {
                 case "MarioCharacter":
                     //TODO: Fire to be added
-                    var mario = (Mario) target; //TODO: fire as target to be added
+                    Mario mario = (Mario) target; //TODO: fire as target to be added
                     if (mario.ProtectionState is Starred)
                     {
                         Defeat();

@@ -16,7 +16,7 @@ namespace MelloMario.Controllers
         protected override void OnUpdate()
         {
             // Get the current gamepad state.
-            var currentState = GamePad.GetState(PlayerIndex.One);
+            GamePadState currentState = GamePad.GetState(PlayerIndex.One);
 
             // Process input only if connected.
             // Note: KeyBehavior.release should not be responsible for any "states", use KeyBehavior.hold instead

@@ -14,7 +14,7 @@ namespace MelloMario.LevelGen
             table = new int[256];
             for (int i = 0; i < 256; i++)
             {
-                var bytes = new byte[4];
+                byte[] bytes = new byte[4];
                 RngCrypto.GetBytes(bytes);
                 table[i] = BitConverter.ToInt32(bytes, 0) % 256;
             }

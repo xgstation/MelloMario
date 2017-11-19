@@ -14,9 +14,9 @@ namespace MelloMario.Controllers
         protected override void OnUpdate()
         {
             // Get the current Keyboard state.
-            var currentState = Keyboard.GetState();
+            KeyboardState currentState = Keyboard.GetState();
 
-            foreach (var key in currentState.GetPressedKeys())
+            foreach (Keys key in currentState.GetPressedKeys())
             {
                 if (!previousState.IsKeyDown(key))
                 {
@@ -27,7 +27,7 @@ namespace MelloMario.Controllers
                     RunCommand(key, KeyBehavior.hold);
                 }
             }
-            foreach (var key in previousState.GetPressedKeys())
+            foreach (Keys key in previousState.GetPressedKeys())
             {
                 if (!currentState.IsKeyDown(key))
                 {

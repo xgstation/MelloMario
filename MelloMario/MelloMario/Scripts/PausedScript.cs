@@ -8,9 +8,9 @@ namespace MelloMario.Scripts
     {
         public void Bind(IEnumerable<IController> controllers, IGameModel model, ICharacter character)
         {
-            var factory = CommandFactory.Instance;
+            ICommandFactory factory = CommandFactory.Instance;
 
-            foreach (var controller in controllers)
+            foreach (IController controller in controllers)
             {
                 controller.Reset();
 

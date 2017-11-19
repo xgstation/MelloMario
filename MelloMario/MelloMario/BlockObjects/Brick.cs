@@ -106,7 +106,7 @@ namespace MelloMario.BlockObjects
             {
                 return;
             }
-            var item = GameDatabase.GetNextItem(this);
+            IGameObject item = GameDatabase.GetNextItem(this);
             World.Update();
             World.Add(item);
         }

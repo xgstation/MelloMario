@@ -21,11 +21,11 @@ namespace MelloMario.Sprites.BlockSprites
         {
             elapsed += time;
 
-            var origin = destination.Location.ToVector2();
-            var destinations = new Vector2[4];
-            var offsetX = new float[4];
-            var offsetY = new float[4];
-            var source = new Rectangle[4];
+            Vector2 origin = destination.Location.ToVector2();
+            Vector2[] destinations = new Vector2[4];
+            float[] offsetX = new float[4];
+            float[] offsetY = new float[4];
+            Rectangle[] source = new Rectangle[4];
 
             float k = 5f / Math.Abs(2f - GameConst.FORCE_F_AIR / 20f);
             //LB
@@ -52,8 +52,8 @@ namespace MelloMario.Sprites.BlockSprites
             destinations[3] = new Vector2(offsetX[3], offsetY[3]) + origin;
             source[3] = new Rectangle(texture.Width / 2, texture.Height / 2, texture.Width / 2, texture.Height / 2);
 
-            var spriteOrigin = new Vector2(8f, 8f);
-            var scale = new Vector2(1.25f, 1.25f);
+            Vector2 spriteOrigin = new Vector2(8f, 8f);
+            Vector2 scale = new Vector2(1.25f, 1.25f);
             float rotation = elapsed * 30f / GameConst.FORCE_F_AIR;
             spriteBatch.Draw(texture, destinations[0], source[0], Color.White, rotation, spriteOrigin, scale,
                 SpriteEffects.None, LayerDepth);

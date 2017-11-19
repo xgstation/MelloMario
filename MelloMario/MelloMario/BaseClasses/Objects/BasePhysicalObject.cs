@@ -130,7 +130,7 @@ namespace MelloMario
 
             // Apply frictional force
 
-            var deltaV = frictionalForce * deltaTime;
+            Vector2 deltaV = frictionalForce * deltaTime;
 
             if (velocity.X > deltaV.X)
             {
@@ -183,7 +183,7 @@ namespace MelloMario
 
             // Apply movement
 
-            var pixelMovement = (movement * pixelScale).ToPoint();
+            Point pixelMovement = (movement * pixelScale).ToPoint();
             movement -= pixelMovement.ToVector2() / pixelScale;
             Move(pixelMovement);
 

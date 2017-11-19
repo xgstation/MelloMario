@@ -29,10 +29,8 @@ namespace MelloMario.MiscObjects
                 {
                     return;
                 }
-                location.X = MathHelper.Clamp(location.X, Limit.Value.X,
-                    Limit.Value.X + Limit.Value.Width - viewport.Width);
-                location.Y = MathHelper.Clamp(location.Y, Limit.Value.Y,
-                    Limit.Value.Y + Limit.Value.Height - viewport.Height);
+                location.X = MathHelper.Clamp(location.X, Limit.Value.Left, Limit.Value.Right - viewport.Width);
+                location.Y = MathHelper.Clamp(location.Y, Limit.Value.Top - viewport.Height, Limit.Value.Bottom);
             }
         }
 
@@ -50,7 +48,7 @@ namespace MelloMario.MiscObjects
             {
                 if (value != null)
                 {
-                    // Assign limit but make sure it's always bigger than the viewport
+                    // make sure it's always bigger than the viewport
                     limit = new Rectangle
                     {
                         X = value.Value.X,
@@ -58,9 +56,6 @@ namespace MelloMario.MiscObjects
                         Width = Math.Max(viewport.Width, value.Value.Width),
                         Height = Math.Max(viewport.Height, value.Value.Height)
                     };
-
-                    // Validate gameCamera newLocation with new limit
-                    Location = Location;
                 }
                 else
                 {
