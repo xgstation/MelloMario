@@ -134,6 +134,8 @@
     <Compile Include="EnemyObjects\PiranhaStates\Show.cs" />
     <Compile Include="Factories\GameObjectFactory.cs" />
     <Compile Include="Factories\CommandFactory.cs" />
+    <Compile Include="Commands\InfiniteMode.cs" />
+    <Compile Include="Commands\NormalMode.cs" />
     <Compile Include="Factories\SoundFactory.cs" />
     <Compile Include="Factories\SpriteFactory.cs" />
     <Compile Include="EnemyObjects\Goomba.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="LevelGen\InfiniteGenerator.cs" />
     <Compile Include="LevelGen\PerlinNoiseGenerator.cs" />
     <Compile Include="MiscObjects\Camera.cs" />
+    <Compile Include="Scripts\StartScript.cs" />
     <Compile Include="Theming\Player.cs" />
     <Compile Include="UIObjects\GameWon.cs" />
     <Compile Include="UIObjects\GameStart.cs" />

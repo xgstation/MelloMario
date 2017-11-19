@@ -25,6 +25,10 @@ namespace MelloMario.Factories
                     return new Quit(model);
                 case "ToggleMute":
                     return new Mute(model);
+                case "Normal":
+                    return new NormalMode(model);
+                case "Infinite":
+                    return new InfiniteMode(model);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code

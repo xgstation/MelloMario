@@ -23,6 +23,7 @@ namespace MelloMario.Theming
         private IEnumerable<IController> controllers;
         private InfiniteGenerator infiniteGenerator;
         private bool isPaused;
+        private string mapPath = "Content/Level1.json";
 
         //TODO: temporary public
         //note: we will have an extra class called Player which contains these information
@@ -61,13 +62,14 @@ namespace MelloMario.Theming
         public void Init()
         {
             activeCamera = new Camera(game.GraphicsDevice.Viewport);
-            activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
 
+            activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
             isPaused = true;
             new PlayingScript().Bind(controllers, this, activePlayer.Character);
 
             Splash = new GameStart(activePlayer); // TODO: move these constructors to the factory
-            splashElapsed = 0;
+            new StartScript().Bind(controllers, this, activePlayer.Character);
+            splashElapsed = -1;
         }
 
         public void Resume()
@@ -96,6 +98,24 @@ namespace MelloMario.Theming
             SoundController.ToggleMute();
         }
 
+        public void Infinite()
+        {
+            mapPath = "Content/Infinite.json";
+            splashElapsed = 0;
+            activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
+            isPaused = false;
+            Resume();
+        }
+
+        public void Normal()
+        {
+            mapPath = "Content/Level1.json";
+            activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
+            splashElapsed = 0;
+            isPaused = false;
+            Resume();
+        }
+
         public void Update(int time)
         {
             UpdateController();
@@ -106,7 +126,7 @@ namespace MelloMario.Theming
                     return;
                 }
                 splashElapsed += time;
-                if (splashElapsed >= 1000 * 3)
+                if (splashElapsed >= 1000 * 2)
                 {
                     Resume();
                 }
@@ -154,7 +174,7 @@ namespace MelloMario.Theming
 
             // IGameWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
 
-            LevelIOJson reader = new LevelIOJson("Content/Infinite.json", listener);
+            LevelIOJson reader = new LevelIOJson(mapPath, listener);
             reader.SetModel(this);
 
             IGameWorld newWorld = reader.Load(id, session);
