@@ -84,7 +84,9 @@
     <Compile Include="BaseClasses\Objects\BaseUIObject.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
+    <Compile Include="Sounds\SoundTrack.cs" />
     <Compile Include="Sounds\SoundEffect.cs" />
+    <Compile Include="Interfaces\Sounds\ISoundTrack.cs" />
     <Compile Include="Interfaces\Sounds\ISoundEffect.cs" />
     <Compile Include="Objects\Blocks\Brick.cs" />
     <Compile Include="Objects\Blocks\BrickStates\Bumped.cs" />
