@@ -13,12 +13,12 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MelloMario.Theming
 {
-    internal class GameModel : IGameModel
+    internal class Model : IGameModel
     {
         private readonly IPlayer activePlayer; // TODO: for singleplayer only
         private readonly Game1 game;
         private readonly IListener listener;
-        private readonly GameSession session;
+        private readonly Session session;
         private ICamera activeCamera;
         private IEnumerable<IController> controllers;
         private InfiniteGenerator infiniteGenerator;
@@ -31,18 +31,21 @@ namespace MelloMario.Theming
 
         private int splashElapsed; // TODO: for sprint 4, refactor later
 
-        public GameModel(Game1 game)
+        public Model(Game1 game)
         {
             this.game = game;
-            session = new GameSession();
+            session = new Session();
             activePlayer = new Player(session);
             listener = new Listener(this, activePlayer);
-            GameDatabase.Initialize(session);
+            Database.Initialize(session);
         }
 
         public Matrix GetActiveViewMatrix
         {
-            get { return activeCamera.GetViewMatrix(new Vector2(1f)); }
+            get
+            {
+                return activeCamera.GetViewMatrix(new Vector2(1f));
+            }
         }
 
         public void ToggleFullScreen()
@@ -61,7 +64,7 @@ namespace MelloMario.Theming
 
         public void Init()
         {
-            activeCamera = new Camera(game.GraphicsDevice.Viewport);
+            activeCamera = new Camera();
 
             activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
             isPaused = true;
@@ -133,12 +136,12 @@ namespace MelloMario.Theming
                 return;
             }
 
-            UpdateMusicScene(time);
+            UpdateMusicScene();
 
             UpdateGameObjects(time);
             UpdateContainers();
 
-            GameDatabase.Update(time);
+            Database.Update();
             infiniteGenerator.Update(time);
         }
 
@@ -146,10 +149,7 @@ namespace MelloMario.Theming
         {
             IPlayer player = activePlayer;
 
-            Rectangle drawRange = player.Character.Viewport;
-            drawRange.Offset(-32, -32);
-            drawRange.Inflate(64, 64);
-            foreach (IGameObject obj in player.World.ScanNearby(drawRange))
+            foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
             {
                 obj.Draw(isPaused ? 0 : time, spriteBatch);
             }
@@ -177,8 +177,7 @@ namespace MelloMario.Theming
             LevelIOJson reader = new LevelIOJson(mapPath, listener);
             reader.SetModel(this);
 
-            IGameWorld newWorld = reader.Load(id, session);
-            activeCamera.Limit = newWorld.Boundary;
+            IGameWorld newWorld = reader.Load(id);
             infiniteGenerator = new InfiniteGenerator(newWorld, listener, activeCamera);
             return newWorld;
         }
@@ -205,8 +204,8 @@ namespace MelloMario.Theming
             Splash = new GameWon(activePlayer);
             splashElapsed = -1;
         }
-        
-        private void UpdateMusicScene(int time)
+
+        private void UpdateMusicScene()
         {
             if (activePlayer.Character is MarioCharacter marioD && marioD.ProtectionState is Dead)
             {
@@ -246,7 +245,7 @@ namespace MelloMario.Theming
             foreach (IPlayer player in session.ScanPlayers())
             {
                 player.Update(time);
-                foreach (IGameObject obj in player.World.ScanNearby(player.Character.Sensing))
+                foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Character.Sensing))
                 {
                     updating.Add(obj);
                 }

@@ -86,11 +86,11 @@ namespace MelloMario.BlockObjects
 
         public void ReleaseNextItem()
         {
-            if (!GameDatabase.HasItemEnclosed(this))
+            if (!Database.HasItemEnclosed(this))
             {
                 return;
             }
-            IGameObject item = GameDatabase.GetNextItem(this);
+            IGameObject item = Database.GetNextItem(this);
             World.Update();
             World.Add(item);
         }

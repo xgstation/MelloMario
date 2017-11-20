@@ -13,15 +13,15 @@ namespace MelloMario
     internal class Game1 : Game
     {
         private readonly GraphicsDeviceManager graphics;
-        private GameModel model;
+        private Theming.Model model;
         private SpriteBatch spriteBatch;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this)
             {
-                PreferredBackBufferWidth = GameConst.SCREEN_WIDTH,
-                PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT
+                PreferredBackBufferWidth = Const.SCREEN_WIDTH,
+                PreferredBackBufferHeight = Const.SCREEN_HEIGHT
             };
         }
 
@@ -33,9 +33,12 @@ namespace MelloMario
 
         public void Reset()
         {
-            model = new GameModel(this);
-            IEnumerable<IController> controllers =
-                new List<IController> {new GamepadController(), new KeyboardController()};
+            model = new Theming.Model(this);
+            IEnumerable<IController> controllers = new List<IController>
+            {
+                new GamepadController(),
+                new KeyboardController()
+            };
             model.LoadControllers(controllers);
             model.Init();
         }

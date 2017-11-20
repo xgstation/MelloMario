@@ -16,20 +16,25 @@ namespace MelloMario.MarioObjects
 
         private Vector2 userInput;
 
-        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener listener) : base(world,
-            location, listener)
+        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener listener) : base(world, location, listener)
         {
             Player = player;
         }
 
         public bool Active
         {
-            get { return animation == Animation.none; }
+            get
+            {
+                return animation == Animation.none;
+            }
         }
 
         public IGameWorld CurrentWorld
         {
-            get { return World; }
+            get
+            {
+                return World;
+            }
         }
 
         public IPlayer Player { get; }
@@ -38,40 +43,8 @@ namespace MelloMario.MarioObjects
         {
             get
             {
-                Point location = Boundary.Location - new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
-                Point size = new Point(GameConst.SCREEN_WIDTH * 2,
-                    GameConst.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
-
-                return new Rectangle(location, size);
-            }
-        }
-
-        public Rectangle Viewport
-        {
-            get
-            {
-                Point location = Boundary.Location - new Point(GameConst.FOCUS_X, GameConst.FOCUS_Y);
-                Point size = new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
-
-                Rectangle worldBoundary = World.Boundary;
-
-                // NOTE: this is a temporary solution, this should be moved to the collision detection system
-                if (location.X < worldBoundary.Left)
-                {
-                    location.X = worldBoundary.Left;
-                }
-                if (location.Y < worldBoundary.Top)
-                {
-                    location.Y = worldBoundary.Top;
-                }
-                if (location.X > worldBoundary.Right - size.X)
-                {
-                    location.X = worldBoundary.Right - size.X;
-                }
-                if (location.Y > worldBoundary.Bottom - size.Y)
-                {
-                    location.Y = worldBoundary.Bottom - size.Y;
-                }
+                Point location = Boundary.Location - new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
+                Point size = new Point(Const.SCREEN_WIDTH * 2, Const.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
 
                 return new Rectangle(location, size);
             }
@@ -90,7 +63,7 @@ namespace MelloMario.MarioObjects
 
                 if (!(MovementState is Crouching))
                 {
-                    userInput.X -= GameConst.FORCE_INPUT_X;
+                    userInput.X -= Const.ACCEL_INPUT_X;
                 }
             }
         }
@@ -124,7 +97,7 @@ namespace MelloMario.MarioObjects
 
                 if (!(MovementState is Crouching))
                 {
-                    userInput.X += GameConst.FORCE_INPUT_X;
+                    userInput.X += Const.ACCEL_INPUT_X;
                 }
             }
         }
@@ -153,8 +126,8 @@ namespace MelloMario.MarioObjects
 
                 if (MovementState is Jumping jumping && !jumping.Finished)
                 {
-                    userInput.Y -= GameConst.FORCE_INPUT_Y;
-                    userInput.Y -= GameConst.FORCE_G;
+                    userInput.Y -= Const.ACCEL_INPUT_Y + Const.ACCEL_G;
+
                     if (PowerUpState is Super || PowerUpState is Fire)
                     {
                         SoundController.PowerBounce.Play();
@@ -269,7 +242,7 @@ namespace MelloMario.MarioObjects
             animation = Animation.flagpole;
         }
 
-        protected void ResetA()
+        protected void Reset()
         {
             animation = Animation.none;
         }
@@ -298,7 +271,7 @@ namespace MelloMario.MarioObjects
 
             if (animation == Animation.none)
             {
-                ApplyForce(userInput);
+                ApplyAccel(userInput);
                 userInput.X = 0;
                 userInput.Y = 0;
             }

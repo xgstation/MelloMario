@@ -21,8 +21,7 @@ namespace MelloMario.Factories
 
         public static IGameObjectFactory Instance { get; } = new GameObjectFactory();
 
-        public ICharacter CreateGameCharacter(string type, IGameWorld world, IPlayer player, Point location,
-            IListener listener)
+        public ICharacter CreateGameCharacter(string type, IGameWorld world, IPlayer player, Point location, IListener listener)
         {
             switch (type)
             {
@@ -106,16 +105,14 @@ namespace MelloMario.Factories
             }
         }
 
-        public IEnumerable<IGameObject> CreateGameObjectGroup(string type, IGameWorld world, Point location, int count,
-            IListener listener)
+        public IEnumerable<IGameObject> CreateGameObjectGroup(string type, IGameWorld world, Point location, int count, IListener listener)
         {
             switch (type)
             {
                 case "FlagPole":
                     for (int i = 0; i < count; ++i)
                     {
-                        yield return new Flag(world, new Point(location.X, location.Y + 32 * i), listener, count - i,
-                            count);
+                        yield return new Flag(world, new Point(location.X, location.Y + 32 * i), listener, count - i, count);
                     }
                     yield break;
 

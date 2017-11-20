@@ -10,8 +10,7 @@ namespace MelloMario.Sprites
         private readonly float fontSize;
         private readonly string text;
 
-        public TextSprite(string text, SpriteFont font, Point size, ZIndex zIndex, float fontSize = 18f) : base(size,
-            zIndex)
+        public TextSprite(string text, SpriteFont font, Point size, ZIndex zIndex, float fontSize = 18f) : base(size, zIndex)
         {
             this.text = text;
             this.font = font;

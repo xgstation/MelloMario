@@ -6,8 +6,7 @@ namespace MelloMario.BlockObjects
 {
     internal class Floor : BaseCollidableObject
     {
-        public Floor(IGameWorld world, Point location, IListener listener, bool isHidden = false) : base(world,
-            location, listener, new Point(32, 32))
+        public Floor(IGameWorld world, Point location, IListener listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
         {
             if (isHidden)
             {
@@ -26,8 +25,7 @@ namespace MelloMario.BlockObjects
 
         protected override void OnUpdate(int time) { }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
-            CornerMode corner, CornerMode cornerPassive) { }
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive) { }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 

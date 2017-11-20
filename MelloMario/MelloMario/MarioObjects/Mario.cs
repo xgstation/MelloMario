@@ -105,8 +105,8 @@ namespace MelloMario.MarioObjects
         protected override void OnSimulation(int time)
         {
             ApplyGravity();
-            ApplyHorizontalFriction(GameConst.FORCE_F_AIR);
-            ApplyVerticalFriction(GameConst.FORCE_F_AIR);
+            ApplyHorizontalFriction(Const.ACCEL_F_AIR);
+            ApplyVerticalFriction(Const.ACCEL_F_AIR);
 
             base.OnSimulation(time);
         }
@@ -178,7 +178,7 @@ namespace MelloMario.MarioObjects
 
                     break;
                 case "Pipeline":
-                    if (MovementState is Crouching && GameDatabase.IsEntrance((Pipeline) target))
+                    if (MovementState is Crouching && Database.IsEntrance((Pipeline) target))
                     {
                         string type = (target as Pipeline).Type;
                         if (type == "LeftIn")
@@ -218,7 +218,7 @@ namespace MelloMario.MarioObjects
                     Bounce(mode, new Vector2());
                     if (mode == CollisionMode.Bottom)
                     {
-                        ApplyHorizontalFriction(GameConst.FORCE_F_GROUND);
+                        ApplyHorizontalFriction(Const.ACCEL_F_GROUND);
                         MovementState.Land();
                     }
                     break;

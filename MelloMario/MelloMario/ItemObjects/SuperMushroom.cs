@@ -24,7 +24,7 @@ namespace MelloMario.ItemObjects
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public SuperMushroom(IGameWorld world, Point location, IListener listener) : this(world, location,
-            GameDatabase.GetCharacterLocation(), listener) { }
+            Database.GetCharacterLocation(), listener) { }
 
         public SuperMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener,
             bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
@@ -87,11 +87,11 @@ namespace MelloMario.ItemObjects
 
                 if (Facing == FacingMode.left)
                 {
-                    SetHorizontalVelocity(-GameConst.VELOCITY_SUPER_MUSHROOM);
+                    SetHorizontalVelocity(-Const.VELOCITY_SUPER_MUSHROOM);
                 }
                 else
                 {
-                    SetHorizontalVelocity(GameConst.VELOCITY_SUPER_MUSHROOM);
+                    SetHorizontalVelocity(Const.VELOCITY_SUPER_MUSHROOM);
                 }
             }
 
@@ -153,8 +153,8 @@ namespace MelloMario.ItemObjects
         {
             if (!collected)
             {
-                ScorePoints(GameConst.SCORE_POWER_UP);
-                new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_POWER_UP);
+                ScorePoints(Const.SCORE_POWER_UP);
+                new PopingUpPoints(World, Boundary.Location, Const.SCORE_POWER_UP);
             }
             collected = true;
             RemoveSelf();

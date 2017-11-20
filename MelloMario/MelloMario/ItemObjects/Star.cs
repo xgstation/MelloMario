@@ -1,5 +1,4 @@
 ﻿using MelloMario.BlockObjects;
-using MelloMario.BlockObjects.BrickStates;
 using MelloMario.Factories;
 using MelloMario.ItemObjects.StarStates;
 using MelloMario.Sounds;
@@ -7,28 +6,27 @@ using MelloMario.Theming;
 using MelloMario.UIObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Normal = MelloMario.ItemObjects.StarStates.Normal;
 
 namespace MelloMario.ItemObjects
 {
+    using BlockObjects.QuestionStates;
+
     internal class Star : BasePhysicalObject
     {
         private bool collected;
-        private bool goingRight;
         private IItemState state;
 
-        public Star(IGameWorld world, Point location, Point marioLocation, IListener listener, bool isUnveil = true) :
-            base(world, location, listener, new Point(32, 32), 32)
+        public Star(IGameWorld world, Point location, Point marioLocation, IListener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
 
             if (marioLocation.X < location.X)
             {
-                goingRight = true;
+                Facing = FacingMode.right;
             }
             else
             {
-                goingRight = false;
+                Facing = FacingMode.left;
             }
             if (isUnveil)
             {
@@ -38,17 +36,19 @@ namespace MelloMario.ItemObjects
             }
             else
             {
-                state = new Normal(this);
+                state = new StarStates.Normal(this);
                 UpdateSprite();
             }
         }
 
-        public Star(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(world, location,
-            marioLocation, listener, false) { }
+        public Star(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(world, location, marioLocation, listener, false) { }
 
         public IItemState State
         {
-            get { return state; }
+            get
+            {
+                return state;
+            }
             set
             {
                 state = value;
@@ -68,44 +68,43 @@ namespace MelloMario.ItemObjects
 
         protected override void OnSimulation(int time)
         {
-            if (state is Normal)
+            if (state is StarStates.Normal)
             {
                 ApplyGravity();
 
                 if (Facing == FacingMode.left)
                 {
-                    SetHorizontalVelocity(-GameConst.VELOCITY_STAR_H);
+                    SetHorizontalVelocity(-Const.VELOCITY_STAR_H);
                 }
                 else
                 {
-                    SetHorizontalVelocity(GameConst.VELOCITY_STAR_H);
+                    SetHorizontalVelocity(Const.VELOCITY_STAR_H);
                 }
             }
 
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
-            CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
-            if (state is Normal)
+            if (state is StarStates.Normal)
             {
                 switch (target.GetType().Name)
                 {
                     case "MarioCharacter":
-                        if (state is Normal)
+                        if (state is StarStates.Normal)
                         {
                             Collect();
                         }
                         break;
                     case "Brick":
-                        if (((Brick) target).State is Hidden)
+                        if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
                         {
                             break;
                         }
                         goto case "Stair";
                     case "Question":
-                        if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                        if (((Question) target).State is Hidden)
                         {
                             break;
                         }
@@ -117,23 +116,20 @@ namespace MelloMario.ItemObjects
                         {
                             Bounce(mode, new Vector2());
                         }
-                        if (mode == CollisionMode.Left ||
-                            mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
+                        if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2(), 1);
-                            goingRight = true;
+                            Facing = FacingMode.right;
                         }
-                        else if (mode == CollisionMode.Right ||
-                                 mode == CollisionMode.InnerRight && corner == CornerMode.Center)
+                        else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2(), 1);
-                            goingRight = false;
+                            Facing = FacingMode.left;
                         }
-                        if (mode == CollisionMode.Bottom ||
-                            mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
+                        if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2());
-                            ApplyVerticalFriction(GameConst.VELOCITY_STAR_V);
+                            ApplyVerticalFriction(Const.VELOCITY_STAR_V);
                         }
                         break;
                 }
@@ -151,8 +147,8 @@ namespace MelloMario.ItemObjects
             if (!collected)
             {
                 SoundController.SizeUp.Play();
-                ScorePoints(GameConst.SCORE_POWER_UP);
-                new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_POWER_UP);
+                ScorePoints(Const.SCORE_POWER_UP);
+                new PopingUpPoints(World, Boundary.Location, Const.SCORE_POWER_UP);
             }
             collected = true;
             RemoveSelf();

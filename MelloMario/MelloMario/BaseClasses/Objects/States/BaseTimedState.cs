@@ -12,7 +12,10 @@
 
         protected float Progress
         {
-            get { return (float) elapsed / interval; }
+            get
+            {
+                return (float) elapsed / interval;
+            }
         }
 
         protected abstract void OnTimer(int time);

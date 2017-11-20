@@ -50,8 +50,8 @@ namespace MelloMario.BlockObjects
                     }
                     eventInfo = null;
                     HandlerTimeScore?.Invoke(this, eventInfo);
-                    ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
-                    new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_FLAG_MAX * height / maxHeight);
+                    ScorePoints(Const.SCORE_FLAG_MAX * height / maxHeight);
+                    new PopingUpPoints(World, Boundary.Location, Const.SCORE_FLAG_MAX * height / maxHeight);
                     mario.FlagPole();
                 }
             }

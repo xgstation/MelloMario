@@ -2,7 +2,7 @@
 
 namespace MelloMario.Containers
 {
-    internal class GameSession : BaseContainer<IGameWorld, IPlayer>, IGameSession
+    internal class Session : BaseContainer<IGameWorld, IPlayer>, IGameSession
     {
         public IEnumerable<IGameWorld> ScanWorlds()
         {
@@ -16,7 +16,7 @@ namespace MelloMario.Containers
 
         protected override IGameWorld GetKey(IPlayer value)
         {
-            return value.World;
+            return value.Character.CurrentWorld;
         }
     }
 }

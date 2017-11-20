@@ -14,8 +14,7 @@ namespace MelloMario.UIObjects
         public GameStart(IPlayer player) : base(player)
         {
             startSprite = SpriteFactory.Instance.CreateTitle(ZIndex.Hud);
-            textSprite = SpriteFactory.Instance.CreateTextSprite("Mellop\n" +
-                "Press A to play normal mode.\n" + "Press B to play infinite mode.");
+            textSprite = SpriteFactory.Instance.CreateTextSprite("Mellop\n" + "Press A to play normal mode.\n" + "Press B to play infinite mode.");
             startDestinationRect = new Rectangle(100, 100, 352, 176);
             textDestinationRect = new Rectangle(0, 400, 200, 200);
         }

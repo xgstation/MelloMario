@@ -78,9 +78,9 @@ namespace MelloMario.ItemObjects
             if (!collected)
             {
                 HandlerCoins?.Invoke(this, coinEventInfo);
-                ScorePoints(GameConst.SCORE_COIN);
+                ScorePoints(Const.SCORE_COIN);
                 collected = true;
-                new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_COIN);
+                new PopingUpPoints(World, Boundary.Location, Const.SCORE_COIN);
             }
             RemoveSelf();
             //State.Collect();

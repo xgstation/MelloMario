@@ -10,9 +10,15 @@ namespace MelloMario.Controllers
         {
             commands = new Dictionary<KeyBehavior, IDictionary<T, ICommand>>
             {
-                {KeyBehavior.press, new Dictionary<T, ICommand>()},
-                {KeyBehavior.release, new Dictionary<T, ICommand>()},
-                {KeyBehavior.hold, new Dictionary<T, ICommand>()}
+                {
+                    KeyBehavior.press, new Dictionary<T, ICommand>()
+                },
+                {
+                    KeyBehavior.release, new Dictionary<T, ICommand>()
+                },
+                {
+                    KeyBehavior.hold, new Dictionary<T, ICommand>()
+                }
             };
         }
 

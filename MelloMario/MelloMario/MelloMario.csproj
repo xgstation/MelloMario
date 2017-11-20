@@ -95,7 +95,6 @@
     <Compile Include="BlockObjects\Pipeline.cs" />
     <Compile Include="BlockObjects\Question.cs" />
     <Compile Include="BlockObjects\QuestionStates\Bumped.cs" />
-    <Compile Include="BlockObjects\QuestionStates\Castle.cs" />
     <Compile Include="BlockObjects\QuestionStates\Hidden.cs" />
     <Compile Include="BlockObjects\QuestionStates\Normal.cs" />
     <Compile Include="BlockObjects\QuestionStates\Used.cs" />
@@ -124,7 +123,7 @@
     <Compile Include="BaseClasses\BaseController.cs" />
     <Compile Include="Commands\SuperCreate.cs" />
     <Compile Include="Commands\ToggleFullScreen.cs" />
-    <Compile Include="Containers\GameSession.cs" />
+    <Compile Include="Containers\Session.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="EnemyObjects\KoopaStates\MovingShell.cs" />
     <Compile Include="EnemyObjects\Piranha.cs" />
@@ -144,6 +143,7 @@
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
     <Compile Include="Interfaces\ICamera.cs" />
     <Compile Include="Interfaces\IListener.cs" />
+    <Compile Include="Interfaces\ILevelGenerator.cs" />
     <Compile Include="Interfaces\Objects\IObject.cs" />
     <Compile Include="LevelGen\InfiniteGenerator.cs" />
     <Compile Include="LevelGen\PerlinNoiseGenerator.cs" />
@@ -230,10 +230,10 @@
     <Compile Include="MarioObjects\PowerUpStates\Super.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\StaticSprite.cs" />
-    <Compile Include="Theming\GameConst.cs" />
-    <Compile Include="Theming\GameDatabase.cs" />
-    <Compile Include="Theming\GameModel.cs" />
-    <Compile Include="Containers\GameWorld.cs" />
+    <Compile Include="Theming\Const.cs" />
+    <Compile Include="Theming\Database.cs" />
+    <Compile Include="Theming\Model.cs" />
+    <Compile Include="Containers\World.cs" />
     <Compile Include="Scripts\PlayingScript.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Controllers\GamePadController.cs" />

@@ -43,7 +43,7 @@ namespace MelloMario.BlockObjects
             {
                 state = new Normal(this);
             }
-            HasInitialItem = GameDatabase.HasItemEnclosed(this);
+            HasInitialItem = Database.HasItemEnclosed(this);
             UpdateSprite();
         }
 
@@ -82,7 +82,7 @@ namespace MelloMario.BlockObjects
 
         public void OnDestoy()
         {
-            ScorePoints(GameConst.SCORE_BRICK);
+            ScorePoints(Const.SCORE_BRICK);
         }
 
         public void Remove()
@@ -102,11 +102,11 @@ namespace MelloMario.BlockObjects
 
         public void ReleaseNextItem()
         {
-            if (!GameDatabase.HasItemEnclosed(this))
+            if (!Database.HasItemEnclosed(this))
             {
                 return;
             }
-            IGameObject item = GameDatabase.GetNextItem(this);
+            IGameObject item = Database.GetNextItem(this);
             World.Update();
             World.Add(item);
         }

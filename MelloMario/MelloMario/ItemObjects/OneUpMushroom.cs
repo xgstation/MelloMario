@@ -44,7 +44,7 @@ namespace MelloMario.ItemObjects
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public OneUpMushroom(IGameWorld world, Point location, IListener listener) : this(world, location,
-            GameDatabase.GetCharacterLocation(), listener, false) { }
+            Database.GetCharacterLocation(), listener, false) { }
 
         public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(world,
             location, marioLocation, listener, false) { }
@@ -76,11 +76,11 @@ namespace MelloMario.ItemObjects
 
                 if (Facing == FacingMode.left)
                 {
-                    SetHorizontalVelocity(-GameConst.VELOCITY_ONE_UP_MUSHROOM);
+                    SetHorizontalVelocity(-Const.VELOCITY_ONE_UP_MUSHROOM);
                 }
                 else
                 {
-                    SetHorizontalVelocity(GameConst.VELOCITY_ONE_UP_MUSHROOM);
+                    SetHorizontalVelocity(Const.VELOCITY_ONE_UP_MUSHROOM);
                 }
             }
 

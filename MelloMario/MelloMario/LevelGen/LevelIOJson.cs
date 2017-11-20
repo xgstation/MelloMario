@@ -14,7 +14,7 @@ namespace MelloMario.LevelGen
         private GameConverter gameConverter;
         private string levelString;
 
-        private GameModel model;
+        private Model model;
 
         public LevelIOJson(string jsonPath, IListener listener)
         {
@@ -23,12 +23,12 @@ namespace MelloMario.LevelGen
             Util.Initilalize();
         }
 
-        public void SetModel(GameModel newModel)
+        public void SetModel(Model newModel)
         {
             model = newModel;
         }
 
-        public IGameWorld Load(string index, IGameSession session)
+        public IGameWorld Load(string index)
         {
             levelString = File.ReadAllText(path);
             gameConverter = new GameConverter(model, listener, index);

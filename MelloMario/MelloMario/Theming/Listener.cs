@@ -12,10 +12,10 @@ namespace MelloMario.Theming
 
     internal class Listener : IListener
     {
-        private readonly GameModel model;
+        private readonly Model model;
         private readonly IPlayer player;
 
-        public Listener(GameModel model, IPlayer player)
+        public Listener(Model model, IPlayer player)
         {
             this.model = model;
             this.player = player;

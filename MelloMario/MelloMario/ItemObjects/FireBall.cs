@@ -7,8 +7,7 @@ namespace MelloMario.ItemObjects
 {
     internal class FireBall : BasePhysicalObject
     {
-        public FireBall(IGameWorld world, Point location, IListener listener) : base(world, location, listener,
-            new Point(16, 16), 32)
+        public FireBall(IGameWorld world, Point location, IListener listener) : base(world, location, listener, new Point(16, 16), 32)
         {
             ShowSprite(SpriteFactory.Instance.CreateFireSprite());
         }
@@ -28,8 +27,7 @@ namespace MelloMario.ItemObjects
             //throw new NotImplementedException();
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
-            CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario) { }
         }

@@ -17,7 +17,7 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Show()
         {
-            if (Owner.HasInitialItem && !GameDatabase.HasItemEnclosed(Owner))
+            if (Owner.HasInitialItem && !Database.HasItemEnclosed(Owner))
             {
                 Owner.State = new Used(Owner);
             }

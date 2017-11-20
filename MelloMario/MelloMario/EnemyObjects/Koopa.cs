@@ -22,7 +22,7 @@ namespace MelloMario.EnemyObjects
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public Koopa(IGameWorld world, Point location, IListener listener, string color) : this(world, location,
-            GameDatabase.GetCharacterLocation(), listener, color) { }
+            Database.GetCharacterLocation(), listener, color) { }
 
         public Koopa(IGameWorld world, Point location, Point marioLoc, IListener listener, string color) : base(world,
             location, listener, new Point(32, 32), 32)
@@ -85,22 +85,22 @@ namespace MelloMario.EnemyObjects
             {
                 if (Facing == FacingMode.left)
                 {
-                    SetHorizontalVelocity(-GameConst.VELOCITY_KOOPA_SHELL);
+                    SetHorizontalVelocity(-Const.VELOCITY_KOOPA_SHELL);
                 }
                 else
                 {
-                    SetHorizontalVelocity(GameConst.VELOCITY_KOOPA_SHELL);
+                    SetHorizontalVelocity(Const.VELOCITY_KOOPA_SHELL);
                 }
             }
             else
             {
                 if (Facing == FacingMode.left)
                 {
-                    SetHorizontalVelocity(-GameConst.VELOCITY_KOOPA);
+                    SetHorizontalVelocity(-Const.VELOCITY_KOOPA);
                 }
                 else
                 {
-                    SetHorizontalVelocity(GameConst.VELOCITY_KOOPA);
+                    SetHorizontalVelocity(Const.VELOCITY_KOOPA);
                 }
             }
 
@@ -210,7 +210,7 @@ namespace MelloMario.EnemyObjects
 
         public void JumpOn()
         {
-            ScorePoints(GameConst.SCORE_KOOPA);
+            ScorePoints(Const.SCORE_KOOPA);
             State.JumpOn();
         }
 
@@ -231,8 +231,8 @@ namespace MelloMario.EnemyObjects
 
         public void Defeat()
         {
-            ScorePoints(GameConst.SCORE_KOOPA);
-            new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_KOOPA);
+            ScorePoints(Const.SCORE_KOOPA);
+            new PopingUpPoints(World, Boundary.Location, Const.SCORE_KOOPA);
             RemoveSelf();
         }
     }

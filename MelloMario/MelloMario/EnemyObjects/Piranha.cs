@@ -87,8 +87,8 @@ namespace MelloMario.EnemyObjects
 
         public void Defeat()
         {
-            ScorePoints(GameConst.SCORE_PIRANHA);
-            new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_PIRANHA);
+            ScorePoints(Const.SCORE_PIRANHA);
+            new PopingUpPoints(World, Boundary.Location, Const.SCORE_PIRANHA);
             State.Defeat();
             RemoveSelf();
         }

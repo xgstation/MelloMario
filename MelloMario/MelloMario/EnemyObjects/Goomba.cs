@@ -22,7 +22,7 @@ namespace MelloMario.EnemyObjects
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public Goomba(IGameWorld world, Point location, IListener listener) : this(world, location,
-            GameDatabase.GetCharacterLocation(), listener) { }
+            Database.GetCharacterLocation(), listener) { }
 
         public Goomba(IGameWorld world, Point location, Point marioLoc, IListener listener) : base(world, location,
             listener, new Point(32, 32), 32)
@@ -66,11 +66,11 @@ namespace MelloMario.EnemyObjects
 
             if (Facing == FacingMode.left)
             {
-                SetHorizontalVelocity(-GameConst.VELOCITY_GOOMBA);
+                SetHorizontalVelocity(-Const.VELOCITY_GOOMBA);
             }
             else
             {
-                SetHorizontalVelocity(GameConst.VELOCITY_GOOMBA);
+                SetHorizontalVelocity(Const.VELOCITY_GOOMBA);
             }
 
             base.OnSimulation(time);
@@ -155,8 +155,8 @@ namespace MelloMario.EnemyObjects
 
         public void Defeat()
         {
-            ScorePoints(GameConst.SCORE_GOOMBA);
-            new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_GOOMBA);
+            ScorePoints(Const.SCORE_GOOMBA);
+            new PopingUpPoints(World, Boundary.Location, Const.SCORE_GOOMBA);
             State.Defeat();
         }
     }

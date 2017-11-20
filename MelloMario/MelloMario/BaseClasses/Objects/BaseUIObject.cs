@@ -6,12 +6,13 @@ namespace MelloMario
     internal abstract class BaseUIObject : IObject
     {
         protected IPlayer Player;
-        protected Vector2 RelativeOrigin;
+        protected Point RelativeOrigin;
 
         protected BaseUIObject(IPlayer player)
         {
+            // TODO: use another spritebatch
             Player = player;
-            RelativeOrigin = player.Camera.Location;
+            RelativeOrigin = player.Camera.Viewport.Location;
         }
 
         public void Update(int time)
@@ -26,12 +27,12 @@ namespace MelloMario
 
         protected void Offset(ref Rectangle rect)
         {
-            rect.Offset(Player.Camera.Location - RelativeOrigin);
+            rect.Offset(Player.Camera.Viewport.Location - RelativeOrigin);
         }
 
         protected void UpdateOrigin()
         {
-            RelativeOrigin = Player.Camera.Location;
+            RelativeOrigin = Player.Camera.Viewport.Location;
         }
 
         protected abstract void OnUpdate(int time);

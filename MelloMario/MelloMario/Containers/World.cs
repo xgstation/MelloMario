@@ -4,22 +4,22 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario.Containers
 {
-    internal class GameWorld : BaseContainer<Point, IGameObject>, IGameWorld
+    internal class World : BaseContainer<Point, IGameObject>, IGameWorld
     {
         private readonly Point initialPoint;
         private readonly ISet<Point> respawnPoints;
-        private Point originalSize;
+        private Point size;
 
-        public GameWorld(string id, Point originalSize, Point initial, IEnumerable<Point> respawn)
+        public World(string id, Point size, Point initial, IEnumerable<Point> respawn)
         {
             Id = id;
-            this.originalSize = originalSize;
+            this.size = size;
 
-            initialPoint = new Point(initial.X * GameConst.GRID, initial.Y * GameConst.GRID);
+            initialPoint = new Point(initial.X * Const.GRID, initial.Y * Const.GRID);
             respawnPoints = new HashSet<Point>();
             foreach (Point p in respawn)
             {
-                respawnPoints.Add(new Point(p.X * GameConst.GRID, p.Y * GameConst.GRID));
+                respawnPoints.Add(new Point(p.X * Const.GRID, p.Y * Const.GRID));
             }
         }
 
@@ -29,30 +29,31 @@ namespace MelloMario.Containers
         {
             get
             {
-                return new Rectangle(0, 0, (originalSize.X) * GameConst.GRID,
-                    (originalSize.Y) * GameConst.GRID);
+                return new Rectangle(0, 0, size.X * Const.GRID, size.Y * Const.GRID);
             }
         }
 
         public void Extend(int x, int y)
         {
-            originalSize.X += x;
-            originalSize.Y += y;
+            size.X += x;
+            size.Y += y;
         }
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
         {
-            int left = (range.Left - GameConst.SCANRANGE) / GameConst.GRID;
-            int right = (range.Right + GameConst.SCANRANGE) / GameConst.GRID;
-            int top = (range.Top - GameConst.SCANRANGE) / GameConst.GRID;
-            int bottom = (range.Bottom + GameConst.SCANRANGE) / GameConst.GRID;
+            int left = (range.Left - Const.SCANRANGE) / Const.GRID;
+            int right = (range.Right + Const.SCANRANGE) / Const.GRID;
+            int top = (range.Top - Const.SCANRANGE) / Const.GRID;
+            int bottom = (range.Bottom + Const.SCANRANGE) / Const.GRID;
 
             for (int i = left; i <= right; ++i)
-            for (int j = top; j <= bottom; ++j)
             {
-                foreach (IGameObject obj in Scan(new Point(i, j)))
+                for (int j = top; j <= bottom; ++j)
                 {
-                    yield return obj;
+                    foreach (IGameObject obj in Scan(new Point(i, j)))
+                    {
+                        yield return obj;
+                    }
                 }
             }
         }
@@ -80,7 +81,8 @@ namespace MelloMario.Containers
         protected override Point GetKey(IGameObject value)
         {
             Point center = value.Boundary.Center;
-            return new Point(center.X / GameConst.GRID, center.Y / GameConst.GRID);
+
+            return new Point(center.X / Const.GRID, center.Y / Const.GRID);
         }
     }
 }

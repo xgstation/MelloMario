@@ -15,7 +15,7 @@ namespace MelloMario.LevelGen
         private static JsonSerializer Serializers;
         private readonly string index;
         private readonly IListener listener;
-        private readonly GameModel model;
+        private readonly Model model;
         private GameEntityConverter gameEntityConverter;
         private JToken jsonToken;
         private JToken mapListToken;
@@ -23,7 +23,7 @@ namespace MelloMario.LevelGen
 
         private IGameWorld world;
 
-        public GameConverter(GameModel model, IListener listener, string index = "Main")
+        public GameConverter(Model model, IListener listener, string index = "Main")
         {
             this.model = model;
             this.index = index;
@@ -34,7 +34,10 @@ namespace MelloMario.LevelGen
         //TODO: Add serialize method and change CanWrite 
         public override bool CanWrite
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         public override bool CanConvert(Type objectType)
@@ -42,8 +45,7 @@ namespace MelloMario.LevelGen
             return true;
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
-            JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             jsonToken = JToken.Load(reader);
             mapListToken = Util.TryGet(out JToken t, jsonToken, "Maps") ? t : null;
@@ -77,7 +79,7 @@ namespace MelloMario.LevelGen
 
             Util.TryGet(out Point initialPoint, mapToBeLoaded, "InitialSpawnPoint");
             Util.TryGet(out IList<Point> respawnPoints, mapToBeLoaded, "RespawnPoints");
-            world = new GameWorld(index, mapSize, new Point(2, 2), respawnPoints);
+            world = new World(index, mapSize, new Point(2, 2), respawnPoints);
 
             gameEntityConverter = new GameEntityConverter(model, world, listener);
 
