@@ -10,9 +10,10 @@ namespace MelloMario.Containers
         private readonly ISet<Point> respawnPoints;
         private Point size;
 
-        public World(string id, Point size, Point initial, IEnumerable<Point> respawn)
+        public World(string id, string type, Point size, Point initial, IEnumerable<Point> respawn)
         {
-            Id = id;
+            ID = id;
+            Type = type;
             this.size = size;
 
             initialPoint = new Point(initial.X * Const.GRID, initial.Y * Const.GRID);
@@ -23,7 +24,8 @@ namespace MelloMario.Containers
             }
         }
 
-        public string Id { get; }
+        public string ID { get; }
+        public string Type { get; }
 
         public Rectangle Boundary
         {
