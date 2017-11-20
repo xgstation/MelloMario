@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 
-namespace MelloMario
+namespace MelloMario.Objects
 {
     internal abstract class BaseCollidableObject : BaseGameObject
     {

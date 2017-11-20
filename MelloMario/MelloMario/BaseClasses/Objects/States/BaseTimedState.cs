@@ -1,4 +1,4 @@
-﻿namespace MelloMario
+﻿namespace MelloMario.Objects
 {
     internal abstract class BaseTimedState<T> : BaseState<T>
     {

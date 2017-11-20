@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario
+namespace MelloMario.Objects
 {
     internal abstract class BaseUIObject : IObject
     {
