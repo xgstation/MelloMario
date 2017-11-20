@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MelloMario.Factories
 {
+    using Sounds;
+
     internal class SoundFactory : ISoundFactory
     {
         private readonly IDictionary<string, Song> songs;
@@ -17,6 +19,26 @@ namespace MelloMario.Factories
             soundEffects = new Dictionary<string, SoundEffectInstance>();
         }
 
+        private Song GetSong(string name)
+        {
+            if (!songs.ContainsKey(name))
+            {
+                songs.Add(name, content.Load<Song>(name));
+            }
+
+            return songs[name];
+        }
+
+        private SoundEffectInstance GetSoundEffect(string name)
+        {
+            if (!soundEffects.ContainsKey(name))
+            {
+                soundEffects.Add(name, content.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(name).CreateInstance());
+            }
+
+            return soundEffects[name];
+        }
+
         public static ISoundFactory Instance { get; } = new SoundFactory();
 
         public void BindContentManager(ContentManager newContentManager)
@@ -24,24 +46,58 @@ namespace MelloMario.Factories
             content = newContentManager;
         }
 
-        public Song CreateSong(string name)
+        public ISoundTrack CreateSoundTrack(string name)
         {
-            if (!songs.ContainsKey(name))
+            switch (name)
             {
-                songs.Add(name, content.Load<Song>("Music/" + name));
+                case "Normal":
+                    return new SoundEffect(GetSoundEffect("Music/01-main-theme-overworld"));
+                case "BelowGround":
+                    return new SoundEffect(GetSoundEffect("Music/02-underworld"));
+                case "Star":
+                    return new SoundEffect(GetSoundEffect("Music/05-starman"));
+                case "Hurry":
+                    return new SoundEffect(GetSoundEffect("Music/18-hurry-overworld-"));
+                default:
+                    // never reach
+                    return null;
             }
-
-            return songs[name];
         }
 
-        public SoundEffectInstance CreateSoundEffect(string name)
+        public ISoundEffect CreateSoundEffect(string name)
         {
-            if (!soundEffects.ContainsKey(name))
+            switch (name)
             {
-                soundEffects.Add(name, content.Load<SoundEffect>("SFX/" + name).CreateInstance());
+                case "Bounce":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_jumpsmall"));
+                case "PowerBounce":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_jump"));
+                case "BumpBlock":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_bump"));
+                case "BreakBlock":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_breakblock"));
+                case "Coin":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_coin"));
+                case "Death":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_mariodie"));
+                case "SizeUp":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_powerup"));
+                case "EnemyKill":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_stomp"));
+                case "Pipe":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_pipe"));
+                case "GameOver":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_gameover"));
+                case "GameWon":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_stage_clear"));
+                case "SizeUpAppear":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_powerup_appears"));
+                case "OneUpCollect":
+                    return new SoundEffect(GetSoundEffect("SFX/smb_1"));
+                default:
+                    // never reach
+                    return null;
             }
-
-            return soundEffects[name];
         }
     }
 }
