@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using Microsoft.Xna.Framework;
 
@@ -45,35 +46,23 @@ namespace MelloMario.LevelGen
 
             return Lerp(Lerp(ga, gc, uf.X), Lerp(gb, gd, uf.X), uf.Y);
         }
-
-        private static void Swap(ref int[] array, int i, int j)
-        {
-            int temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
-
-        private static void Shuffle()
-        {
-            byte[] bytes = new byte[4];
-            for (int i = 0; i < Size * 2; i++)
-            {
-                RngCrypto.GetBytes(bytes);
-                int k = Math.Abs(BitConverter.ToInt32(bytes, 0)) % Size;
-                RngCrypto.GetBytes(bytes);
-                int l = Math.Abs(BitConverter.ToInt32(bytes, 0)) % Size;
-                Swap(ref PermuteTable, k, l);
-            }
-        }
-
         private static void InitializePermuteTable()
         {
             PermuteTable = new int[Size * 2];
+            IList<int> permuteList = new List<int>();
             for (int i = 0; i < Size; i++)
             {
-                PermuteTable[i] = i;
+                permuteList.Insert(i,i);
             }
-            Shuffle();
+            for (int i = 0; i < Size; i++)
+            {
+                byte[] bytes = new byte[4];
+                RngCrypto.GetBytes(bytes);
+                int pick = BitConverter.ToInt32(bytes, 0) % (Size - i);
+                pick = pick < 0 ? -pick : pick;
+                PermuteTable[i] = permuteList[pick];
+                permuteList.RemoveAt(pick);
+            }
             Array.Copy(PermuteTable, 0, PermuteTable, 256, 256);
         }
 
