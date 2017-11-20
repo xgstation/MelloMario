@@ -9,7 +9,6 @@ using MelloMario.Sounds;
 using MelloMario.UIObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
 
 namespace MelloMario.Theming
 {
@@ -58,7 +57,7 @@ namespace MelloMario.Theming
             isPaused = true;
 
             new PausedScript().Bind(controllers, this, activePlayer.Character);
-            MediaPlayer.Pause();
+            SoundController.Pause();
             splashElapsed = -1;
         }
 
@@ -78,10 +77,10 @@ namespace MelloMario.Theming
         public void Resume()
         {
             isPaused = false;
-            MediaPlayer.Resume();
             new PlayingScript().Bind(controllers, this, activePlayer.Character);
 
             Splash = new HUD(activePlayer);
+            SoundController.Resume();
         }
 
         public void Reset()
@@ -113,8 +112,8 @@ namespace MelloMario.Theming
         public void Normal()
         {
             mapPath = "Content/Level1.json";
-            activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
             splashElapsed = 0;
+            activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
             isPaused = false;
             Resume();
         }
@@ -166,7 +165,7 @@ namespace MelloMario.Theming
         {
             foreach (IGameWorld world in session.ScanWorlds())
             {
-                if (world.Id == id)
+                if (world.ID == id)
                 {
                     return world;
                 }
@@ -198,7 +197,7 @@ namespace MelloMario.Theming
             activePlayer.Win();
 
             isPaused = true;
-            MediaPlayer.Pause();
+            SoundController.Pause();
             new TransistScript().Bind(controllers, this, activePlayer.Character);
 
             Splash = new GameWon(activePlayer);
@@ -207,25 +206,26 @@ namespace MelloMario.Theming
 
         private void UpdateMusicScene()
         {
-            if (activePlayer.Character is MarioCharacter marioD && marioD.ProtectionState is Dead)
+            switch (activePlayer.Character)
             {
-                MediaPlayer.Play(SoundController.Normal);
-            }
-            if (activePlayer.Character is MarioCharacter mario && mario.ProtectionState is Starred)
-            {
-                MediaPlayer.Play(SoundController.Star);
-            }
-            else if (activePlayer.TimeRemain <= 90000)
-            {
-                SoundController.PlayMusic(SoundController.Songs.Hurry);
-            }
-            else if (activePlayer.Character.CurrentWorld.Id == "Main")
-            {
-                SoundController.PlayMusic(SoundController.Songs.Normal);
-            }
-            else
-            {
-                SoundController.PlayMusic(SoundController.Songs.BelowGround);
+                case MarioCharacter mario when mario.ProtectionState is Dead:
+                    SoundController.PlayMusic(SoundController.Songs.Normal);
+                    break;
+                case MarioCharacter mario when mario.ProtectionState is Starred:
+                    SoundController.PlayMusic(SoundController.Songs.Star);
+                    break;
+                case MarioCharacter mario when mario.Player.TimeRemain <= 90000:
+                    SoundController.PlayMusic(SoundController.Songs.Hurry);
+                    break;
+                case MarioCharacter mario when mario.CurrentWorld.Type == "Normal":
+                    SoundController.PlayMusic(SoundController.Songs.Normal);
+                    break;
+                case MarioCharacter mario when mario.CurrentWorld.Type == "Sub":
+                    SoundController.PlayMusic(SoundController.Songs.BelowGround);
+                    break;
+                default:
+                    SoundController.PlayMusic(SoundController.Songs.Normal);
+                    break;
             }
         }
 
