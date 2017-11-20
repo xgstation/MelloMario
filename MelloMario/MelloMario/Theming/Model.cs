@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using MelloMario.Containers;
 using MelloMario.LevelGen;
-using MelloMario.MarioObjects;
-using MelloMario.MarioObjects.ProtectionStates;
 using MelloMario.MiscObjects;
 using MelloMario.Scripts;
 using MelloMario.Sounds;
@@ -14,15 +12,14 @@ namespace MelloMario.Theming
 {
     internal class Model : IGameModel
     {
-        private readonly IPlayer activePlayer; // TODO: for singleplayer only
         private readonly Game1 game;
         private readonly IListener listener;
         private readonly Session session;
         private ICamera activeCamera;
         private IEnumerable<IController> controllers;
         private InfiniteGenerator infiniteGenerator;
-        private bool isPaused;
         private string mapPath = "Content/Level1.json";
+        public bool IsPaused { get; private set; }
 
         //TODO: temporary public
         //note: we will have an extra class called Player which contains these information
@@ -34,9 +31,10 @@ namespace MelloMario.Theming
         {
             this.game = game;
             session = new Session();
-            activePlayer = new Player(session);
-            listener = new Listener(this, activePlayer);
+            ActivePlayer = new Player(session);
+            listener = new Listener(this, ActivePlayer);
             Database.Initialize(session);
+            SoundController.Initialize(this);
         }
 
         public Matrix GetActiveViewMatrix
@@ -47,6 +45,9 @@ namespace MelloMario.Theming
             }
         }
 
+        //TODO: Change with multiplayer
+        public IPlayer ActivePlayer { get; }
+
         public void ToggleFullScreen()
         {
             game.ToggleFullScreen();
@@ -54,10 +55,8 @@ namespace MelloMario.Theming
 
         public void Pause()
         {
-            isPaused = true;
-
-            new PausedScript().Bind(controllers, this, activePlayer.Character);
-            SoundController.Pause();
+            IsPaused = true;
+            new PausedScript().Bind(controllers, this, ActivePlayer.Character);
             splashElapsed = -1;
         }
 
@@ -65,22 +64,21 @@ namespace MelloMario.Theming
         {
             activeCamera = new Camera();
 
-            activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
-            isPaused = true;
-            new PlayingScript().Bind(controllers, this, activePlayer.Character);
+            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
+            IsPaused = true;
+            new PlayingScript().Bind(controllers, this, ActivePlayer.Character);
 
-            Splash = new GameStart(activePlayer); // TODO: move these constructors to the factory
-            new StartScript().Bind(controllers, this, activePlayer.Character);
+            Splash = new GameStart(ActivePlayer); // TODO: move these constructors to the factory
+            new StartScript().Bind(controllers, this, ActivePlayer.Character);
             splashElapsed = -1;
         }
 
         public void Resume()
         {
-            isPaused = false;
-            new PlayingScript().Bind(controllers, this, activePlayer.Character);
+            IsPaused = false;
+            new PlayingScript().Bind(controllers, this, ActivePlayer.Character);
 
-            Splash = new HUD(activePlayer);
-            SoundController.Resume();
+            Splash = new HUD(ActivePlayer);
         }
 
         public void Reset()
@@ -95,17 +93,12 @@ namespace MelloMario.Theming
             game.Exit();
         }
 
-        public void ToggleMute()
-        {
-            SoundController.ToggleMute();
-        }
-
         public void Infinite()
         {
             mapPath = "Content/Infinite.json";
             splashElapsed = 0;
-            activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
-            isPaused = false;
+            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
+            IsPaused = false;
             Resume();
         }
 
@@ -113,15 +106,17 @@ namespace MelloMario.Theming
         {
             mapPath = "Content/Level1.json";
             splashElapsed = 0;
-            activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
-            isPaused = false;
+            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
+            IsPaused = false;
             Resume();
         }
 
         public void Update(int time)
         {
             UpdateController();
-            if (isPaused)
+            Database.Update();
+            SoundController.Update();
+            if (IsPaused)
             {
                 if (splashElapsed < 0)
                 {
@@ -134,23 +129,19 @@ namespace MelloMario.Theming
                 }
                 return;
             }
-
-            UpdateMusicScene();
-
+            //TODO: Pause state should not stop updating camera
             UpdateGameObjects(time);
             UpdateContainers();
-
-            Database.Update();
             infiniteGenerator.Update(time);
         }
 
         public void Draw(int time, SpriteBatch spriteBatch)
         {
-            IPlayer player = activePlayer;
+            IPlayer player = ActivePlayer;
 
             foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
             {
-                obj.Draw(isPaused ? 0 : time, spriteBatch);
+                obj.Draw(IsPaused ? 0 : time, spriteBatch);
             }
 
             Splash.Draw(time, spriteBatch);
@@ -183,50 +174,24 @@ namespace MelloMario.Theming
 
         public void Transist()
         {
-            activePlayer.Reset("Mario", listener);
+            ActivePlayer.Reset("Mario", listener);
 
-            isPaused = true;
-            new TransistScript().Bind(controllers, this, activePlayer.Character);
+            IsPaused = true;
+            new TransistScript().Bind(controllers, this, ActivePlayer.Character);
 
-            Splash = new GameOver(activePlayer);
+            Splash = new GameOver(ActivePlayer);
             splashElapsed = 0;
         }
 
         public void TransistGameWon()
         {
-            activePlayer.Win();
+            ActivePlayer.Win();
 
-            isPaused = true;
-            SoundController.Pause();
-            new TransistScript().Bind(controllers, this, activePlayer.Character);
+            IsPaused = true;
+            new TransistScript().Bind(controllers, this, ActivePlayer.Character);
 
-            Splash = new GameWon(activePlayer);
+            Splash = new GameWon(ActivePlayer);
             splashElapsed = -1;
-        }
-
-        private void UpdateMusicScene()
-        {
-            switch (activePlayer.Character)
-            {
-                case MarioCharacter mario when mario.ProtectionState is Dead:
-                    SoundController.PlayMusic(SoundController.Songs.Normal);
-                    break;
-                case MarioCharacter mario when mario.ProtectionState is Starred:
-                    SoundController.PlayMusic(SoundController.Songs.Star);
-                    break;
-                case MarioCharacter mario when mario.Player.TimeRemain <= 90000:
-                    SoundController.PlayMusic(SoundController.Songs.Hurry);
-                    break;
-                case MarioCharacter mario when mario.CurrentWorld.Type == "Normal":
-                    SoundController.PlayMusic(SoundController.Songs.Normal);
-                    break;
-                case MarioCharacter mario when mario.CurrentWorld.Type == "Sub":
-                    SoundController.PlayMusic(SoundController.Songs.BelowGround);
-                    break;
-                default:
-                    SoundController.PlayMusic(SoundController.Songs.Normal);
-                    break;
-            }
         }
 
         private void UpdateController()
