@@ -127,15 +127,6 @@ namespace MelloMario.MarioObjects
                 if (MovementState is Jumping jumping && !jumping.Finished)
                 {
                     userInput.Y -= Const.ACCEL_INPUT_Y + Const.ACCEL_G;
-
-                    if (PowerUpState is Super || PowerUpState is Fire)
-                    {
-                        SoundController.PowerBounce.Play();
-                    }
-                    else
-                    {
-                        SoundController.Bounce.Play();
-                    }
                 }
             }
         }
