@@ -4,7 +4,7 @@
     {
         protected T Receiver;
 
-        public BaseCommand(T receiver)
+        protected BaseCommand(T receiver)
         {
             Receiver = receiver;
         }
