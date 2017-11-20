@@ -89,7 +89,7 @@ namespace MelloMario.EnemyObjects
                 case "MarioCharacter":
                     //TODO: Fire to be added
                     Mario mario = (Mario) target;
-                    if (mode == CollisionMode.Top || mario.ProtectionState is Starred)
+                    if ((mode == CollisionMode.Top && corner == CornerMode.Top) || mario.ProtectionState is Starred)
                     {
                         Defeat();
                     }
