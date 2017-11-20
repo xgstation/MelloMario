@@ -2,9 +2,9 @@
 
 namespace MelloMario
 {
-    internal interface ISpriteFactory
+    internal interface ISpriteFactory<T>
     {
-        void BindContentManager(ContentManager newContentManager);
+        void BindLoader(T loader);
 
         ISprite CreateTextSprite(string text, float fontSize = 18f);
         ISprite CreateSplashSprite();

@@ -7,7 +7,7 @@ namespace MelloMario.Factories
 {
     using Sounds;
 
-    internal class SoundFactory : ISoundFactory
+    internal class SoundFactory : ISoundFactory<ContentManager>
     {
         private readonly IDictionary<string, Song> songs;
         private readonly IDictionary<string, SoundEffectInstance> soundEffects;
@@ -39,11 +39,11 @@ namespace MelloMario.Factories
             return soundEffects[name];
         }
 
-        public static ISoundFactory Instance { get; } = new SoundFactory();
+        public static ISoundFactory<ContentManager> Instance { get; } = new SoundFactory();
 
-        public void BindContentManager(ContentManager newContentManager)
+        public void BindLoader(ContentManager loader)
         {
-            content = newContentManager;
+            content = loader;
         }
 
         public ISoundTrack CreateSoundTrack(string name)

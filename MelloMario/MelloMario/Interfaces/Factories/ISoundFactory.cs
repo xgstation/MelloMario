@@ -2,9 +2,9 @@
 
 namespace MelloMario
 {
-    internal interface ISoundFactory
+    internal interface ISoundFactory<T>
     {
-        void BindContentManager(ContentManager content);
+        void BindLoader(T loader);
 
         ISoundTrack CreateSoundTrack(string name);
 

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Factories
 {
-    internal class SpriteFactory : ISpriteFactory
+    internal class SpriteFactory : ISpriteFactory<ContentManager>
     {
         private readonly IDictionary<string, Texture2D> textures;
         private ContentManager content;
@@ -16,11 +16,11 @@ namespace MelloMario.Factories
             textures = new Dictionary<string, Texture2D>();
         }
 
-        public static ISpriteFactory Instance { get; } = new SpriteFactory();
+        public static ISpriteFactory<ContentManager> Instance { get; } = new SpriteFactory();
 
-        public void BindContentManager(ContentManager newContentManager)
+        public void BindLoader(ContentManager loader)
         {
-            content = newContentManager;
+            content = loader;
         }
 
         public ISprite CreateTextSprite(string text, float fontSize = 18f)
