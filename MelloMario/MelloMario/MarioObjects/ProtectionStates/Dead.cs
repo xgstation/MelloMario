@@ -7,8 +7,10 @@ namespace MelloMario.MarioObjects.ProtectionStates
     {
         public Dead(Mario owner) : base(owner, 1500)
         {
-            MediaPlayer.Stop();
-            SoundController.Death.Play();
+            //MediaPlayer.Stop();
+
+            //TODO:Move this into soundcontroller
+            //SoundController.Death.Play();
             owner.OnDeath();
         }
 

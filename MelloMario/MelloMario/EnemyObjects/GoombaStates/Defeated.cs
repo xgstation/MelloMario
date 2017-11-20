@@ -22,7 +22,8 @@ namespace MelloMario.EnemyObjects.GoombaStates
         {
             if (played <= 2)
             {
-                SoundController.EnemyKill.Play();
+                //TODO:Move this into soundcontroller
+                //SoundController.EnemyKill.Play();
                 played += 1;
             }
         }

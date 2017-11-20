@@ -23,7 +23,8 @@ namespace MelloMario.ItemObjects.StarStates
         {
             base.Update(time);
 
-            SoundController.SizeUpAppear.Play();
+            //TODO:Move this into soundcontroller
+            //SoundController.SizeUpAppear.Play();
 
             elapsed += time;
             realOffset += 32 * time / 1000f;

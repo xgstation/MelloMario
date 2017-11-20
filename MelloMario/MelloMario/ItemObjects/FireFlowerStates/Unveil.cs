@@ -21,7 +21,8 @@ namespace MelloMario.ItemObjects.FireFlowerStates
 
         public override void Update(int time)
         {
-            SoundController.SizeUpAppear.Play();
+            //TODO:Move this into soundcontroller
+            //SoundController.SizeUpAppear.Play();
             base.Update(time);
 
             elapsed += time;

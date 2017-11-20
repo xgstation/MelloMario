@@ -7,7 +7,8 @@ namespace MelloMario.MarioObjects.PowerUpStates
     {
         public Super(Mario owner) : base(owner)
         {
-            SoundController.SizeUp.Play();
+            //TODO:Move this into soundcontroller
+            //SoundController.SizeUp.Play();
         }
 
         public void UpgradeToFire()

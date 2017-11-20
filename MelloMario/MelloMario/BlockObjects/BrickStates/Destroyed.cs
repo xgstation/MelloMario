@@ -7,7 +7,8 @@ namespace MelloMario.BlockObjects.BrickStates
     {
         public Destroyed(Brick owner) : base(owner, 1000)
         {
-            SoundController.BreakBlock.Play();
+            //TODO: Move this into soundcontroller
+            //SoundController.BreakBlock.Play();
             Owner.OnDestoy();
         }
 

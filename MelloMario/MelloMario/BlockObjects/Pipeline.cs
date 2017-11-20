@@ -72,7 +72,8 @@ namespace MelloMario.BlockObjects
             {
                 if (mario.MovementState is Crouching && Database.IsEntrance(this))
                 {
-                    SoundController.Pipe.Play();
+                    //TODO:Add warping state to model to allow sound controller play warping sound
+                    //SoundController.Pipe.Play();
                     switch (Type)
                     {
                         case "LeftIn":

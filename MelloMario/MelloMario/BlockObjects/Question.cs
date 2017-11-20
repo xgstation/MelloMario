@@ -75,7 +75,8 @@ namespace MelloMario.BlockObjects
 
         public void Bump(Mario mario)
         {
-            SoundController.BumpBlock.Play();
+            //TODO:Move this into soundcontroller
+            //SoundController.BumpBlock.Play();
             State.Bump(mario);
         }
 

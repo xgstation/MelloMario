@@ -28,11 +28,12 @@ namespace MelloMario.EnemyObjects.KoopaStates
         {
             if (played <= 2)
             {
-                if (SoundController.EnemyKill.State == SoundState.Stopped)
-                {
-                    played += 1;
-                }
-                SoundController.EnemyKill.Play();
+                //TODO:Move this into soundcontroller
+                //if (SoundController.EnemyKill.State == SoundState.Stopped)
+                //{
+                //    played += 1;
+                //}
+                //SoundController.EnemyKill.Play();
             }
         }
 

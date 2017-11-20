@@ -39,7 +39,8 @@ namespace MelloMario.BlockObjects.QuestionStates
 
         public override void Update(int time)
         {
-            SoundController.BumpBlock.Play();
+            //TODO:Move this into soundcontroller
+            //SoundController.BumpBlock.Play();
             // TODO: use BaseTimedState
             if (elapsed >= 70)
             {

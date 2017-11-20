@@ -131,7 +131,8 @@ namespace MelloMario.ItemObjects
 
         public void Collect()
         {
-            SoundController.OneUpCollect.Play();
+            //TODO:Move this into soundcontroller
+            //SoundController.OneUpCollect.Play();
             if (!collected)
             {
                 ChangeLives();

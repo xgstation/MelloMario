@@ -21,7 +21,8 @@ namespace MelloMario.ItemObjects.CoinStates
 
         public override void Update(int time)
         {
-            SoundController.Coin.Play();
+            //TODO:Move this into soundcontroller
+            //SoundController.Coin.Play();
             elapsed += time;
             realOffset += 128 * time / 500f;
 

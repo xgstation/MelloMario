@@ -146,7 +146,8 @@ namespace MelloMario.ItemObjects
         {
             if (!collected)
             {
-                SoundController.SizeUp.Play();
+                //TODO:Move this into soundcontroller
+                //SoundController.SizeUp.Play();
                 ScorePoints(Const.SCORE_POWER_UP);
                 new PopingUpPoints(World, Boundary.Location, Const.SCORE_POWER_UP);
             }
