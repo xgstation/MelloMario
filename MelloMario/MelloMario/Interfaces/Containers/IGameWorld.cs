@@ -5,7 +5,8 @@ namespace MelloMario
 {
     internal interface IGameWorld : IContainer<IGameObject>
     {
-        string Id { get; }
+        string ID { get; }
+        string Type { get; }
         Rectangle Boundary { get; }
         void Extend(int x, int y);
 
