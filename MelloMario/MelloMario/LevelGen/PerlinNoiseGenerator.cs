@@ -7,7 +7,7 @@ namespace MelloMario.LevelGen
 {
     internal class PerlinNoiseGenerator
     {
-        private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider(); 
+        private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
         private static readonly byte[] GradSeed = new byte[4];
 
         private static int Size;
@@ -46,22 +46,22 @@ namespace MelloMario.LevelGen
 
             return Lerp(Lerp(ga, gc, uf.X), Lerp(gb, gd, uf.X), uf.Y);
         }
+
+        private static void Swap(int i, int j)
+        {
+            int temp = PermuteTable[i];
+            PermuteTable[i] = PermuteTable[j];
+            PermuteTable[j] = temp;
+        }
         private static void InitializePermuteTable()
         {
             PermuteTable = new int[Size * 2];
-            IList<int> permuteList = new List<int>();
-            for (int i = 0; i < Size; i++)
-            {
-                permuteList.Insert(i,i);
-            }
-            for (int i = 0; i < Size; i++)
+            for (int i = Size - 1; i >= 0; i--)
             {
                 byte[] bytes = new byte[4];
                 RngCrypto.GetBytes(bytes);
-                int pick = BitConverter.ToInt32(bytes, 0) % (Size - i);
-                pick = pick < 0 ? -pick : pick;
-                PermuteTable[i] = permuteList[pick];
-                permuteList.RemoveAt(pick);
+                int n = BitConverter.ToInt32(bytes, 0) % i;
+                Swap(i, n);
             }
             Array.Copy(PermuteTable, 0, PermuteTable, 256, 256);
         }
