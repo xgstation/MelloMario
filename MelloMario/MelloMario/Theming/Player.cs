@@ -14,14 +14,6 @@ namespace MelloMario.Theming
 
         public IGameSession Session { get; }
 
-        public IGameWorld World
-        {
-            get
-            {
-                return Character.CurrentWorld;
-            }
-        }
-
         public ICharacter Character { get; private set; }
 
         public ICamera Camera { get; private set; }

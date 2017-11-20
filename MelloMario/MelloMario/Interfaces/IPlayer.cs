@@ -5,7 +5,6 @@ namespace MelloMario
 {
     internal interface IPlayer
     {
-        IGameWorld World { get; }
         ICharacter Character { get; }
         ICamera Camera { get; }
 

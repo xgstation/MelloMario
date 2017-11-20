@@ -152,7 +152,7 @@ namespace MelloMario.Theming
             Rectangle drawRange = player.Character.Viewport;
             drawRange.Offset(-32, -32);
             drawRange.Inflate(64, 64);
-            foreach (IGameObject obj in player.World.ScanNearby(drawRange))
+            foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(drawRange))
             {
                 obj.Draw(isPaused ? 0 : time, spriteBatch);
             }
@@ -249,7 +249,7 @@ namespace MelloMario.Theming
             foreach (IPlayer player in session.ScanPlayers())
             {
                 player.Update(time);
-                foreach (IGameObject obj in player.World.ScanNearby(player.Character.Sensing))
+                foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Character.Sensing))
                 {
                     updating.Add(obj);
                 }

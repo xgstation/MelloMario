@@ -16,7 +16,7 @@ namespace MelloMario.Containers
 
         protected override IGameWorld GetKey(IPlayer value)
         {
-            return value.World;
+            return value.Character.CurrentWorld;
         }
     }
 }
