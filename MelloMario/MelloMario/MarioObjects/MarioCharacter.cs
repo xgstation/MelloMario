@@ -94,7 +94,7 @@ namespace MelloMario.MarioObjects
 
                 if (!(MovementState is Crouching))
                 {
-                    userInput.X -= Const.FORCE_INPUT_X;
+                    userInput.X -= Const.ACCEL_INPUT_X;
                 }
             }
         }
@@ -128,7 +128,7 @@ namespace MelloMario.MarioObjects
 
                 if (!(MovementState is Crouching))
                 {
-                    userInput.X += Const.FORCE_INPUT_X;
+                    userInput.X += Const.ACCEL_INPUT_X;
                 }
             }
         }
@@ -157,8 +157,8 @@ namespace MelloMario.MarioObjects
 
                 if (MovementState is Jumping jumping && !jumping.Finished)
                 {
-                    userInput.Y -= Const.FORCE_INPUT_Y;
-                    userInput.Y -= Const.FORCE_G;
+                    userInput.Y -= Const.ACCEL_INPUT_Y + Const.ACCEL_G;
+
                     if (PowerUpState is Super || PowerUpState is Fire)
                     {
                         SoundController.PowerBounce.Play();
@@ -302,7 +302,7 @@ namespace MelloMario.MarioObjects
 
             if (animation == Animation.none)
             {
-                ApplyForce(userInput);
+                ApplyAccel(userInput);
                 userInput.X = 0;
                 userInput.Y = 0;
             }

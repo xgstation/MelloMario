@@ -105,8 +105,8 @@ namespace MelloMario.MarioObjects
         protected override void OnSimulation(int time)
         {
             ApplyGravity();
-            ApplyHorizontalFriction(Const.FORCE_F_AIR);
-            ApplyVerticalFriction(Const.FORCE_F_AIR);
+            ApplyHorizontalFriction(Const.ACCEL_F_AIR);
+            ApplyVerticalFriction(Const.ACCEL_F_AIR);
 
             base.OnSimulation(time);
         }
@@ -218,7 +218,7 @@ namespace MelloMario.MarioObjects
                     Bounce(mode, new Vector2());
                     if (mode == CollisionMode.Bottom)
                     {
-                        ApplyHorizontalFriction(Const.FORCE_F_GROUND);
+                        ApplyHorizontalFriction(Const.ACCEL_F_GROUND);
                         MovementState.Land();
                     }
                     break;

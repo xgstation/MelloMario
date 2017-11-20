@@ -7,45 +7,42 @@ namespace MelloMario
     {
         private readonly float pixelScale;
         protected FacingMode Facing;
-        private Vector2 force;
-        private Vector2 frictionalForce;
-        private Vector2 movement;
+        private Vector2 accel;
+        private Vector2 frictionalAccel;
         private Vector2 velocity;
+        private Vector2 movement;
 
         public BasePhysicalObject(IGameWorld world, Point location, IListener listener, Point size, float pixelScale) :
             base(world, location, listener, size)
         {
             this.pixelScale = pixelScale;
 
-            movement = new Vector2();
-            velocity = new Vector2();
-            force = new Vector2();
             Facing = FacingMode.right;
         }
 
-        protected void ApplyForce(Vector2 delta)
+        protected void ApplyAccel(Vector2 delta)
         {
-            force += delta;
+            accel += delta;
         }
 
-        protected void ApplyGravity(float gravity = Const.FORCE_G)
+        protected void ApplyGravity(float gravity = Const.ACCEL_G)
         {
-            ApplyForce(new Vector2(0, gravity));
+            ApplyAccel(new Vector2(0, gravity));
         }
 
         protected void ApplyHorizontalFriction(float friction)
         {
-            if (frictionalForce.X < friction)
+            if (frictionalAccel.X < friction)
             {
-                frictionalForce.X = friction;
+                frictionalAccel.X = friction;
             }
         }
 
         protected void ApplyVerticalFriction(float friction)
         {
-            if (frictionalForce.Y < friction)
+            if (frictionalAccel.Y < friction)
             {
-                frictionalForce.Y = friction;
+                frictionalAccel.Y = friction;
             }
         }
 
@@ -122,15 +119,15 @@ namespace MelloMario
             // Note: if we will support recording/replaying, use a constant number here
             float deltaTime = time / 1000f;
 
-            // Apply conservative force
+            // Apply conservative accel
 
-            velocity += force * deltaTime;
-            force.X = 0;
-            force.Y = 0;
+            velocity += accel * deltaTime;
+            accel.X = 0;
+            accel.Y = 0;
 
-            // Apply frictional force
+            // Apply frictional accel
 
-            Vector2 deltaV = frictionalForce * deltaTime;
+            Vector2 deltaV = frictionalAccel * deltaTime;
 
             if (velocity.X > deltaV.X)
             {
@@ -158,8 +155,8 @@ namespace MelloMario
                 velocity.Y = 0;
             }
 
-            frictionalForce.X = 0;
-            frictionalForce.X = 0;
+            frictionalAccel.X = 0;
+            frictionalAccel.X = 0;
 
             // Apply velocity
 
