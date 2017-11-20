@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using MelloMario.Controllers;
+using MelloMario.Controls.Controllers;
 using MelloMario.Factories;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;

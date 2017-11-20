@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using MelloMario.Controls.Scripts;
 using MelloMario.Containers;
 using MelloMario.LevelGen;
 using MelloMario.MiscObjects;
-using MelloMario.Scripts;
 using MelloMario.Sounds;
 using MelloMario.UIObjects;
 using Microsoft.Xna.Framework;

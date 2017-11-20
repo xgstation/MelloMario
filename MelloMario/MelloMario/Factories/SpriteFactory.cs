@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using MelloMario.Sprites;
-using MelloMario.Sprites.BlockSprites;
+using MelloMario.Graphics.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
