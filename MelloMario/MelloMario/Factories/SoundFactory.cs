@@ -51,13 +51,13 @@ namespace MelloMario.Factories
             switch (name)
             {
                 case "Normal":
-                    return new SoundEffect(GetSoundEffect("Music/01-main-theme-overworld"));
+                    return new SoundTrack(GetSong("Music/01-main-theme-overworld"));
                 case "BelowGround":
-                    return new SoundEffect(GetSoundEffect("Music/02-underworld"));
+                    return new SoundTrack(GetSong("Music/02-underworld"));
                 case "Star":
-                    return new SoundEffect(GetSoundEffect("Music/05-starman"));
+                    return new SoundTrack(GetSong("Music/05-starman"));
                 case "Hurry":
-                    return new SoundEffect(GetSoundEffect("Music/18-hurry-overworld-"));
+                    return new SoundTrack(GetSong("Music/18-hurry-overworld-"));
                 default:
                     // never reach
                     return null;

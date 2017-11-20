@@ -31,11 +31,6 @@ namespace MelloMario.Sounds
 
         private static bool PlayFinished = false;
 
-        private static readonly Song Normal = SoundFactory.Instance.CreateSong("01-main-theme-overworld");
-        private static readonly Song BelowGround = SoundFactory.Instance.CreateSong("02-underworld");
-        private static readonly Song Star = SoundFactory.Instance.CreateSong("05-starman");
-        private static readonly Song Hurry = SoundFactory.Instance.CreateSong("18-hurry-overworld-");
-
         //public static Song GameOver = SoundFactory.Instance.CreateSong("09-game-over");
 
         private static void PlayMusic(Songs song, bool reset = false)
@@ -109,16 +104,16 @@ namespace MelloMario.Sounds
             {
                 if (mario.PowerUpState is Super || mario.PowerUpState is Fire)
                 {
-                    PowerBounce.Play();
+                    SoundFactory.Instance.CreateSoundEffect("PowerBounce");
                 }
                 else
                 {
-                    Bounce.Play();
+                    SoundFactory.Instance.CreateSoundEffect("Bounce");
                 }
             }
             if (mario?.ProtectionState is Dead)
             {
-                Death.Play();
+                SoundFactory.Instance.CreateSoundEffect("Death");
             }
         }
 
