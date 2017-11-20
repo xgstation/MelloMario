@@ -8,7 +8,6 @@ namespace MelloMario
         IGameWorld CurrentWorld { get; }
         IPlayer Player { get; }
         Rectangle Sensing { get; }
-        Rectangle Viewport { get; }
 
         void Left();
         void LeftPress();

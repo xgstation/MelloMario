@@ -64,7 +64,7 @@ namespace MelloMario.Theming
 
         public void Init()
         {
-            activeCamera = new Camera(game.GraphicsDevice.Viewport);
+            activeCamera = new Camera();
 
             activePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
             isPaused = true;
@@ -149,10 +149,7 @@ namespace MelloMario.Theming
         {
             IPlayer player = activePlayer;
 
-            Rectangle drawRange = player.Character.Viewport;
-            drawRange.Offset(-32, -32);
-            drawRange.Inflate(64, 64);
-            foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(drawRange))
+            foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
             {
                 obj.Draw(isPaused ? 0 : time, spriteBatch);
             }
@@ -181,7 +178,6 @@ namespace MelloMario.Theming
             reader.SetModel(this);
 
             IGameWorld newWorld = reader.Load(id, session);
-            activeCamera.Limit = newWorld.Boundary;
             infiniteGenerator = new InfiniteGenerator(newWorld, listener, activeCamera);
             return newWorld;
         }

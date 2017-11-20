@@ -8,12 +8,12 @@ namespace MelloMario.Containers
     {
         private readonly Point initialPoint;
         private readonly ISet<Point> respawnPoints;
-        private Point originalSize;
+        private Point size;
 
-        public GameWorld(string id, Point originalSize, Point initial, IEnumerable<Point> respawn)
+        public GameWorld(string id, Point size, Point initial, IEnumerable<Point> respawn)
         {
             Id = id;
-            this.originalSize = originalSize;
+            this.size = size;
 
             initialPoint = new Point(initial.X * GameConst.GRID, initial.Y * GameConst.GRID);
             respawnPoints = new HashSet<Point>();
@@ -29,14 +29,14 @@ namespace MelloMario.Containers
         {
             get
             {
-                return new Rectangle(0, 0, originalSize.X * GameConst.GRID, originalSize.Y * GameConst.GRID);
+                return new Rectangle(0, 0, size.X * GameConst.GRID, size.Y * GameConst.GRID);
             }
         }
 
         public void Extend(int x, int y)
         {
-            originalSize.X += x;
-            originalSize.Y += y;
+            size.X += x;
+            size.Y += y;
         }
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
@@ -47,13 +47,13 @@ namespace MelloMario.Containers
             int bottom = (range.Bottom + GameConst.SCANRANGE) / GameConst.GRID;
 
             for (int i = left; i <= right; ++i)
-            for (int j = top; j <= bottom; ++j)
-            {
-                foreach (IGameObject obj in Scan(new Point(i, j)))
+                for (int j = top; j <= bottom; ++j)
                 {
-                    yield return obj;
+                    foreach (IGameObject obj in Scan(new Point(i, j)))
+                    {
+                        yield return obj;
+                    }
                 }
-            }
         }
 
         public Point GetInitialPoint()

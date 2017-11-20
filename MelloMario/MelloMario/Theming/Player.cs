@@ -94,7 +94,7 @@ namespace MelloMario.Theming
             TimeRemain -= time;
             if (Character != null)
             {
-                Camera?.LookAt(new Vector2(((IGameObject) Character).Boundary.Location.X, 180f));
+                Camera?.LookAt(((IGameObject) Character).Boundary.Location, Character.CurrentWorld.Boundary); // TODO: remove type casting
             }
         }
 

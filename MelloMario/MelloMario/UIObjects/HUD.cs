@@ -16,7 +16,6 @@ namespace MelloMario.UIObjects
 
         public HUD(IPlayer player) : base(player)
         {
-            RelativeOrigin = Vector2.Zero;
             textSprite = SpriteFactory.Instance.CreateTextSprite("");
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             oneUpSprite = SpriteFactory.Instance.CreateOneUpMushroomSprite();

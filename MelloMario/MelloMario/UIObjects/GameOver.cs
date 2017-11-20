@@ -33,7 +33,6 @@ namespace MelloMario.UIObjects
             textSprite = SpriteFactory.Instance.CreateTextSprite(text);
             textSprite2 = SpriteFactory.Instance.CreateTextSprite("WORLD");
 
-            RelativeOrigin = Vector2.Zero;
             coinDestinationRect = new Rectangle(255, 74, 26, 30);
             gameOverDestinationRect = new Rectangle(250, 250, 80, 80);
             marioDestinationRect = new Rectangle(250, 250, 40, 40);
