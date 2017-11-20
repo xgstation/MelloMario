@@ -2,6 +2,6 @@
 {
     internal interface ISoundEffect
     {
-        void Play();
+        // nothing because the instances should be disposed at once
     }
 }
