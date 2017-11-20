@@ -35,7 +35,8 @@ namespace MelloMario.Theming
                 Coins = 0;
                 Lifes += 1;
 
-                SoundController.OneUpCollect.Play();
+                //TODO:Move this into soundcontroller
+                //SoundController.OneUpCollect.Play();
             }
         }
 
