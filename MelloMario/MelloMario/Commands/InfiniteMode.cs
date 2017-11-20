@@ -2,7 +2,7 @@
 {
     internal class InfiniteMode : ICommand
     {
-        private IGameModel model;
+        private readonly IGameModel model;
 
         public InfiniteMode(IGameModel model)
         {

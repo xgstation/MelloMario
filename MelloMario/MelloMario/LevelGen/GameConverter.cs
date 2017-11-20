@@ -34,7 +34,10 @@ namespace MelloMario.LevelGen
         //TODO: Add serialize method and change CanWrite 
         public override bool CanWrite
         {
-            get { return false; }
+            get
+            {
+                return false;
+            }
         }
 
         public override bool CanConvert(Type objectType)
@@ -42,8 +45,7 @@ namespace MelloMario.LevelGen
             return true;
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
-            JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             jsonToken = JToken.Load(reader);
             mapListToken = Util.TryGet(out JToken t, jsonToken, "Maps") ? t : null;

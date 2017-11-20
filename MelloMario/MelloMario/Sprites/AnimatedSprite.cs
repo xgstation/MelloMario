@@ -14,18 +14,14 @@ namespace MelloMario.Sprites
         private int frames;
         private Rectangle refSource;
 
-        public AnimatedSprite(Texture2D texture, int columns, int rows, int x = 0, int y = 0, int width = 2,
-            int height = 2, int interval = GameConst.ANIMATION_INTERVAL, ZIndex zIndex = ZIndex.Item) : base(texture,
-            new Rectangle(x * GameConst.TEXTURE_GRID, y * GameConst.TEXTURE_GRID, width * GameConst.TEXTURE_GRID,
-                height * GameConst.TEXTURE_GRID), zIndex)
+        public AnimatedSprite(Texture2D texture, int columns, int rows, int x = 0, int y = 0, int width = 2, int height = 2, int interval = GameConst.ANIMATION_INTERVAL, ZIndex zIndex = ZIndex.Item) : base(texture, new Rectangle(x * GameConst.TEXTURE_GRID, y * GameConst.TEXTURE_GRID, width * GameConst.TEXTURE_GRID, height * GameConst.TEXTURE_GRID), zIndex)
         {
             this.columns = columns;
             this.rows = rows;
             this.interval = interval;
 
             // note: copied from base constructor
-            refSource = new Rectangle(x * GameConst.TEXTURE_GRID, y * GameConst.TEXTURE_GRID,
-                width * GameConst.TEXTURE_GRID, height * GameConst.TEXTURE_GRID);
+            refSource = new Rectangle(x * GameConst.TEXTURE_GRID, y * GameConst.TEXTURE_GRID, width * GameConst.TEXTURE_GRID, height * GameConst.TEXTURE_GRID);
 
             frames = 0;
             elapsed = 0;

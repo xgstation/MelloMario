@@ -61,9 +61,11 @@ namespace MelloMario.Containers
         protected IEnumerable<Value> ScanValues()
         {
             foreach (ISet<Value> value in values.Values)
-            foreach (Value item in value)
             {
-                yield return item;
+                foreach (Value item in value)
+                {
+                    yield return item;
+                }
             }
         }
 

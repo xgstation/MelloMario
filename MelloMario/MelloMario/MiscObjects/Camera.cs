@@ -20,7 +20,10 @@ namespace MelloMario.MiscObjects
 
         public Vector2 Location
         {
-            get { return location; }
+            get
+            {
+                return location;
+            }
             set
             {
                 location = value;
@@ -40,10 +43,12 @@ namespace MelloMario.MiscObjects
 
         public float Rotation { get; set; }
 
-
         public Rectangle? Limit
         {
-            get { return limit; }
+            get
+            {
+                return limit;
+            }
             set
             {
                 if (value != null)
@@ -66,9 +71,7 @@ namespace MelloMario.MiscObjects
 
         public Matrix GetViewMatrix(Vector2 parallax)
         {
-            return Matrix.CreateTranslation(new Vector3(-Location * parallax, 0.0f)) *
-                   Matrix.CreateTranslation(new Vector3(-Origin, 0.0f)) * Matrix.CreateRotationZ(Rotation) *
-                   Matrix.CreateScale(Zoom, Zoom, 1.0f) * Matrix.CreateTranslation(new Vector3(Origin, 0.0f));
+            return Matrix.CreateTranslation(new Vector3(-Location * parallax, 0.0f)) * Matrix.CreateTranslation(new Vector3(-Origin, 0.0f)) * Matrix.CreateRotationZ(Rotation) * Matrix.CreateScale(Zoom, Zoom, 1.0f) * Matrix.CreateTranslation(new Vector3(Origin, 0.0f));
         }
 
         public void LookAt(Vector2 newLocation)

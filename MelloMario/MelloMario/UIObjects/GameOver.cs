@@ -22,14 +22,14 @@ namespace MelloMario.UIObjects
         private Rectangle textDestinationRect;
         private Rectangle text2DestinationRect;
         private Rectangle lifeDestinationRect;
+
         public GameOver(IPlayer player) : base(player)
         {
             splashSprite = SpriteFactory.Instance.CreateSplashSprite();
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
             gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
-            string text = "MARIO        " + "   WORLD    TIME\n" + Player.Score.ToString().PadLeft(6, '0') + "    *" +
-                          Player.Coins.ToString().PadLeft(2, '0') + "    " + "1-1" + "      ";
+            string text = "MARIO        " + "   WORLD    TIME\n" + Player.Score.ToString().PadLeft(6, '0') + "    *" + Player.Coins.ToString().PadLeft(2, '0') + "    " + "1-1" + "      ";
             textSprite = SpriteFactory.Instance.CreateTextSprite(text);
             textSprite2 = SpriteFactory.Instance.CreateTextSprite("WORLD");
 
@@ -42,7 +42,6 @@ namespace MelloMario.UIObjects
             text2DestinationRect = new Rectangle(300, 200, 80, 80);
             lifeDestinationRect = new Rectangle(350, 250, 80, 80);
             OnUpdate(0);
-            
         }
 
         protected override void OnUpdate(int time)

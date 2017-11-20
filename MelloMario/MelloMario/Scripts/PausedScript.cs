@@ -14,8 +14,7 @@ namespace MelloMario.Scripts
             {
                 controller.Reset();
 
-                controller.AddCommand(Keys.F12, factory.CreateModelCommand("ToggleFullScreen", model),
-                    KeyBehavior.press);
+                controller.AddCommand(Keys.F12, factory.CreateModelCommand("ToggleFullScreen", model), KeyBehavior.press);
                 controller.AddCommand(Keys.P, factory.CreateModelCommand("Resume", model), KeyBehavior.press);
                 controller.AddCommand(Keys.R, factory.CreateModelCommand("Reset", model), KeyBehavior.press);
                 controller.AddCommand(Keys.Q, factory.CreateModelCommand("Quit", model), KeyBehavior.press);

@@ -12,17 +12,14 @@ namespace MelloMario.Theming
 {
     internal static class GameDatabase
     {
-        private static readonly IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb =
-            new Dictionary<IGameObject, IList<IGameObject>>();
+        private static readonly IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
 
         private static readonly IDictionary<Pipeline, string> PipelineEntranceDb = new Dictionary<Pipeline, string>();
         private static readonly IDictionary<Pipeline, string> PipelinePortalDb = new Dictionary<Pipeline, string>();
 
-        private static readonly IDictionary<string, Tuple<Pipeline, Pipeline>> PipelineIndex =
-            new Dictionary<string, Tuple<Pipeline, Pipeline>>();
+        private static readonly IDictionary<string, Tuple<Pipeline, Pipeline>> PipelineIndex = new Dictionary<string, Tuple<Pipeline, Pipeline>>();
 
-        private static readonly ConcurrentDictionary<ICharacter, Point> CharacterLocations =
-            new ConcurrentDictionary<ICharacter, Point>();
+        private static readonly ConcurrentDictionary<ICharacter, Point> CharacterLocations = new ConcurrentDictionary<ICharacter, Point>();
 
         private static IGameSession Session;
 
@@ -54,9 +51,7 @@ namespace MelloMario.Theming
 
         public static Pipeline GetPortal(Pipeline pipeline)
         {
-            return PipelinePortalDb.ContainsKey(pipeline) && PipelineIndex.ContainsKey(PipelinePortalDb[pipeline])
-                ? PipelineIndex[PipelinePortalDb[pipeline]].Item1
-                : null;
+            return PipelinePortalDb.ContainsKey(pipeline) && PipelineIndex.ContainsKey(PipelinePortalDb[pipeline]) ? PipelineIndex[PipelinePortalDb[pipeline]].Item1 : null;
         }
 
         public static Point GetCharacterLocation()
@@ -138,8 +133,7 @@ namespace MelloMario.Theming
         {
             foreach (IPlayer player in Session.ScanPlayers())
             {
-                CharacterLocations.AddOrUpdate(player.Character, ((IGameObject) player.Character).Boundary.Location,
-                    (p, loc) => ((IGameObject) p).Boundary.Location);
+                CharacterLocations.AddOrUpdate(player.Character, ((IGameObject) player.Character).Boundary.Location, (p, loc) => ((IGameObject) p).Boundary.Location);
             }
         }
     }

@@ -19,6 +19,7 @@ namespace MelloMario.LevelGen
             RngCrypto.GetBytes(GradSeed);
             InitializePermuteTable();
         }
+
         public float Noise(Vector2 p)
         {
             float a = Perlin(p) + 0.5f * Perlin(p) + 0.25f * Perlin(4f * p) + 0.125f * Perlin(8f * p);
@@ -28,8 +29,8 @@ namespace MelloMario.LevelGen
         public float Perlin(Vector2 p)
         {
             Point pi = p.ToPoint();
-            pi.X %= (Size - 1);
-            pi.Y %= (Size - 1);
+            pi.X %= Size - 1;
+            pi.Y %= Size - 1;
 
             Vector2 vf = p - p.ToPoint().ToVector2();
             Vector2 uf = new Vector2(Fade(vf.X), Fade(vf.Y));
@@ -53,6 +54,7 @@ namespace MelloMario.LevelGen
             PermuteTable[i] = PermuteTable[j];
             PermuteTable[j] = temp;
         }
+
         private static void InitializePermuteTable()
         {
             PermuteTable = new int[Size * 2];
@@ -68,9 +70,8 @@ namespace MelloMario.LevelGen
 
         private static float GradContribute(int hash, Vector2 v)
         {
-
-            float x = BitConverter.ToInt32(GradSeed, 0) / (float)int.MaxValue * 0 + v.X;
-            float y = BitConverter.ToInt32(GradSeed, 0) / (float)int.MaxValue * 0 + v.Y;
+            float x = BitConverter.ToInt32(GradSeed, 0) / (float) int.MaxValue * 0 + v.X;
+            float y = BitConverter.ToInt32(GradSeed, 0) / (float) int.MaxValue * 0 + v.Y;
             switch (hash & 0x7)
             {
                 case 0x0:

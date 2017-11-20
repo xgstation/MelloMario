@@ -22,7 +22,10 @@ namespace MelloMario
 
         public Rectangle Boundary
         {
-            get { return new Rectangle(location.X, location.Y, size.X, size.Y); }
+            get
+            {
+                return new Rectangle(location.X, location.Y, size.X, size.Y);
+            }
         }
 
         public void Update(int time)
@@ -87,8 +90,7 @@ namespace MelloMario
             World.Move(this);
         }
 
-        protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center,
-            ResizeModeY modeY = ResizeModeY.Bottom)
+        protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
         {
             sprite = newSprite;
             Resize(sprite.PixelSize, modeX, modeY);

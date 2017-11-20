@@ -29,8 +29,7 @@ namespace MelloMario.Containers
         {
             get
             {
-                return new Rectangle(0, 0, (originalSize.X) * GameConst.GRID,
-                    (originalSize.Y) * GameConst.GRID);
+                return new Rectangle(0, 0, originalSize.X * GameConst.GRID, originalSize.Y * GameConst.GRID);
             }
         }
 

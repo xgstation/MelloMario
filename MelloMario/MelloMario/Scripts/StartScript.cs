@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MelloMario.Scripts
 {
-    class StartScript :IScript
+    internal class StartScript : IScript
     {
         public void Bind(IEnumerable<IController> controllers, IGameModel model, ICharacter character)
         {

@@ -16,7 +16,10 @@ namespace MelloMario.Theming
 
         public IGameWorld World
         {
-            get { return Character.CurrentWorld; }
+            get
+            {
+                return Character.CurrentWorld;
+            }
         }
 
         public ICharacter Character { get; private set; }
@@ -61,8 +64,7 @@ namespace MelloMario.Theming
 
         public void Init(string type, IGameWorld world, IListener listener, ICamera newCamera)
         {
-            Character = GameObjectFactory.Instance.CreateGameCharacter(type, world, this, world.GetInitialPoint(),
-                listener);
+            Character = GameObjectFactory.Instance.CreateGameCharacter(type, world, this, world.GetInitialPoint(), listener);
             Session.Add(this);
             Camera = newCamera;
 
@@ -79,8 +81,7 @@ namespace MelloMario.Theming
         public void Reset(string type, IListener listener)
         {
             Character.Remove();
-            Character = GameObjectFactory.Instance.CreateGameCharacter(type, Character.CurrentWorld, this,
-                Character.CurrentWorld.GetInitialPoint(), listener);
+            Character = GameObjectFactory.Instance.CreateGameCharacter(type, Character.CurrentWorld, this, Character.CurrentWorld.GetInitialPoint(), listener);
 
             if (Lifes > 0)
             {

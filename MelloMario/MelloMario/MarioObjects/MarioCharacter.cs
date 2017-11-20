@@ -16,20 +16,25 @@ namespace MelloMario.MarioObjects
 
         private Vector2 userInput;
 
-        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener listener) : base(world,
-            location, listener)
+        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener listener) : base(world, location, listener)
         {
             Player = player;
         }
 
         public bool Active
         {
-            get { return animation == Animation.none; }
+            get
+            {
+                return animation == Animation.none;
+            }
         }
 
         public IGameWorld CurrentWorld
         {
-            get { return World; }
+            get
+            {
+                return World;
+            }
         }
 
         public IPlayer Player { get; }
@@ -39,8 +44,7 @@ namespace MelloMario.MarioObjects
             get
             {
                 Point location = Boundary.Location - new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
-                Point size = new Point(GameConst.SCREEN_WIDTH * 2,
-                    GameConst.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
+                Point size = new Point(GameConst.SCREEN_WIDTH * 2, GameConst.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
 
                 return new Rectangle(location, size);
             }

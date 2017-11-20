@@ -42,7 +42,10 @@ namespace MelloMario.Theming
 
         public Matrix GetActiveViewMatrix
         {
-            get { return activeCamera.GetViewMatrix(new Vector2(1f)); }
+            get
+            {
+                return activeCamera.GetViewMatrix(new Vector2(1f));
+            }
         }
 
         public void ToggleFullScreen()
@@ -205,7 +208,7 @@ namespace MelloMario.Theming
             Splash = new GameWon(activePlayer);
             splashElapsed = -1;
         }
-        
+
         private void UpdateMusicScene(int time)
         {
             if (activePlayer.Character is MarioCharacter marioD && marioD.ProtectionState is Dead)
