@@ -1,25 +1,49 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Security.Cryptography;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.LevelGen
 {
-    //Work In Progress
     internal class PerlinNoiseGenerator
     {
-        private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
-        private static int Size;
-
-        private static int[] PermuteTable;
-
+        private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider(); 
         private static readonly byte[] GradSeed = new byte[4];
+
+        private static int Size;
+        private static int[] PermuteTable;
 
         public PerlinNoiseGenerator(int newSize = 256)
         {
             Size = newSize;
             RngCrypto.GetBytes(GradSeed);
             InitializePermuteTable();
+        }
+        public float Noise(Vector2 p)
+        {
+            float a = Perlin(p) + 0.5f * Perlin(p) + 0.25f * Perlin(4f * p) + 0.125f * Perlin(8f * p);
+            return a;
+        }
+
+        public float Perlin(Vector2 p)
+        {
+            Point pi = p.ToPoint();
+            pi.X %= (Size - 1);
+            pi.Y %= (Size - 1);
+
+            Vector2 vf = p - p.ToPoint().ToVector2();
+            Vector2 uf = new Vector2(Fade(vf.X), Fade(vf.Y));
+
+            int hash1 = PermuteTable[PermuteTable[pi.X] + pi.Y];
+            int hash2 = PermuteTable[PermuteTable[pi.X] + pi.Y + 1];
+            int hash3 = PermuteTable[PermuteTable[pi.X + 1] + pi.Y];
+            int hash4 = PermuteTable[PermuteTable[pi.X + 1] + pi.Y + 1];
+
+            float ga = GradContribute(hash1, vf);
+            float gb = GradContribute(hash2, vf - new Vector2(0, 1));
+            float gc = GradContribute(hash3, vf - new Vector2(1, 0));
+            float gd = GradContribute(hash4, vf - new Vector2(1, 1));
+
+            return Lerp(Lerp(ga, gc, uf.X), Lerp(gb, gd, uf.X), uf.Y);
         }
 
         private static void Swap(ref int[] array, int i, int j)
@@ -53,33 +77,6 @@ namespace MelloMario.LevelGen
             Array.Copy(PermuteTable, 0, PermuteTable, 256, 256);
         }
 
-        public float Noise(Vector2 p)
-        {
-            float a = Perlin(p) + 0.5f * Perlin(p) + 0.25f * Perlin(4f * p) + 0.125f * Perlin(8f * p);
-            return a;
-        }
-
-        public float Perlin(Vector2 p)
-        {
-            Point pi = p.ToPoint();
-            pi.X %= (Size - 1);
-            pi.Y %= (Size - 1);
-
-            Vector2 vf = p - p.ToPoint().ToVector2();
-            Vector2 uf = new Vector2(Fade(vf.X), Fade(vf.Y));
-
-            int hash1 = PermuteTable[PermuteTable[pi.X] + pi.Y];
-            int hash2 = PermuteTable[PermuteTable[pi.X] + pi.Y + 1];
-            int hash3 = PermuteTable[PermuteTable[pi.X + 1] + pi.Y];
-            int hash4 = PermuteTable[PermuteTable[pi.X + 1] + pi.Y + 1];
-
-            float ga = GradContribute(hash1, vf);
-            float gb = GradContribute(hash2, vf - new Vector2(0, 1));
-            float gc = GradContribute(hash3, vf - new Vector2(1, 0));
-            float gd = GradContribute(hash4, vf - new Vector2(1, 1));
-
-            return Lerp(Lerp(ga, gc, uf.X), Lerp(gb, gd, uf.X), uf.Y);
-        }
         private static float GradContribute(int hash, Vector2 v)
         {
 
@@ -110,16 +107,12 @@ namespace MelloMario.LevelGen
 
         private static float Fade(float f)
         {
-            //return (float)(6 * Math.Pow(f, 5) - 15 * Math.Pow(f, 4) + 10 * Math.Pow(f, 3));
-            //replaced with optimized and equivalent version below
             return f * f * f * (f * (f * 6 - 15) + 10);
         }
 
         private static float Lerp(float a, float b, float k)
         {
             return a + (b - a) * k;
-            //TODO: Determine which is faster
-            //return MathHelper.Lerp(a, b, k);
         }
     }
 }
