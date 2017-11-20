@@ -76,7 +76,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BaseClasses\BaseContainer.cs" />
+    <Compile Include="BaseClasses\Containers\BaseContainer.cs" />
     <Compile Include="BaseClasses\Graphics\BaseSprite.cs" />
     <Compile Include="BaseClasses\Objects\BaseCollidableObject.cs" />
     <Compile Include="BaseClasses\Objects\BasePhysicalObject.cs" />
@@ -84,6 +84,7 @@
     <Compile Include="BaseClasses\Objects\BaseUIObject.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
+    <Compile Include="Interfaces\Sounds\ISoundEffect.cs" />
     <Compile Include="Objects\Blocks\Brick.cs" />
     <Compile Include="Objects\Blocks\BrickStates\Bumped.cs" />
     <Compile Include="Objects\Blocks\BrickStates\Destroyed.cs" />
@@ -141,7 +142,7 @@
     <Compile Include="Objects\Enemies\Goomba.cs" />
     <Compile Include="Objects\Enemies\GoombaStates\Defeated.cs" />
     <Compile Include="Objects\Enemies\GoombaStates\Normal.cs" />
-    <Compile Include="Interfaces\ICamera.cs" />
+    <Compile Include="Interfaces\Objects\ICamera.cs" />
     <Compile Include="Interfaces\IListener.cs" />
     <Compile Include="Interfaces\ILevelGenerator.cs" />
     <Compile Include="Interfaces\Objects\IObject.cs" />
@@ -159,9 +160,9 @@
     <Compile Include="Interfaces\Factories\IGameObjectFactory.cs" />
     <Compile Include="Interfaces\Factories\ISoundFactory.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
-    <Compile Include="Interfaces\IScript.cs" />
+    <Compile Include="Interfaces\Controls\IScript.cs" />
     <Compile Include="Interfaces\IModel.cs" />
-    <Compile Include="Interfaces\ICharacter.cs" />
+    <Compile Include="Interfaces\Objects\ICharacter.cs" />
     <Compile Include="Interfaces\Containers\IGameWorld.cs" />
     <Compile Include="Interfaces\Objects\States\IPiranhaState.cs" />
     <Compile Include="Interfaces\Objects\States\IState.cs" />
@@ -170,7 +171,7 @@
     <Compile Include="Interfaces\Objects\States\IBlockState.cs" />
     <Compile Include="Interfaces\Objects\States\IItemState.cs" />
     <Compile Include="Interfaces\Objects\States\IKoopaState.cs" />
-    <Compile Include="Interfaces\ISprite.cs" />
+    <Compile Include="Interfaces\Graphics\ISprite.cs" />
     <Compile Include="Interfaces\Factories\ISpriteFactory.cs" />
     <Compile Include="Objects\Items\Coin.cs" />
     <Compile Include="Objects\Items\CoinStates\Normal.cs" />
@@ -235,9 +236,9 @@
     <Compile Include="Theming\Model.cs" />
     <Compile Include="Containers\World.cs" />
     <Compile Include="Controls\Scripts\PlayingScript.cs" />
-    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Interfaces\Controls\ICommand.cs" />
     <Compile Include="Controls\Controllers\GamePadController.cs" />
-    <Compile Include="Interfaces\IController.cs" />
+    <Compile Include="Interfaces\Controls\IController.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
