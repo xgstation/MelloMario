@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using MelloMario.Objects.Blocks;
-using MelloMario.Objects.Blocks.BrickStates;
 using MelloMario.Objects.Enemies.KoopaStates;
 using MelloMario.Factories;
 using MelloMario.Objects.Characters;
@@ -9,10 +8,11 @@ using MelloMario.Theming;
 using MelloMario.Objects.UserInterfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Normal = MelloMario.Objects.Enemies.KoopaStates.Normal;
 
 namespace MelloMario.Objects.Enemies
 {
+    using Blocks.QuestionStates;
+
     internal class Koopa : BasePhysicalObject
     {
         private readonly string color;
@@ -21,11 +21,9 @@ namespace MelloMario.Objects.Enemies
         //This suppression exists because this constructor is inderectly used by the json parser.
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public Koopa(IGameWorld world, Point location, IListener listener, string color) : this(world, location,
-            Database.GetCharacterLocation(), listener, color) { }
+        public Koopa(IGameWorld world, Point location, IListener listener, string color) : this(world, location, Database.GetCharacterLocation(), listener, color) { }
 
-        public Koopa(IGameWorld world, Point location, Point marioLoc, IListener listener, string color) : base(world,
-            location, listener, new Point(32, 32), 32)
+        public Koopa(IGameWorld world, Point location, Point marioLoc, IListener listener, string color) : base(world, location, listener, new Point(32, 32), 32)
         {
             if (marioLoc.X < location.X)
             {
@@ -36,13 +34,16 @@ namespace MelloMario.Objects.Enemies
                 Facing = FacingMode.right;
             }
             this.color = color;
-            state = new Normal(this);
+            state = new KoopaStates.Normal(this);
             UpdateSprite();
         }
 
         public IKoopaState State
         {
-            get { return state; }
+            get
+            {
+                return state;
+            }
             set
             {
                 state = value;
@@ -104,12 +105,10 @@ namespace MelloMario.Objects.Enemies
                 }
             }
 
-
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
-            CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             switch (target.GetType().Name)
             {
@@ -122,7 +121,7 @@ namespace MelloMario.Objects.Enemies
                     }
                     else
                     {
-                        if (state is Normal || state is MovingShell)
+                        if (state is KoopaStates.Normal || state is MovingShell)
                         {
                             if (mode == CollisionMode.Top)
                             {
@@ -160,13 +159,13 @@ namespace MelloMario.Objects.Enemies
 
                     break;
                 case "Brick":
-                    if (((Brick) target).State is Hidden)
+                    if (((Brick) target).State is Blocks.BrickStates.Hidden)
                     {
                         break;
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
+                    if (((Question) target).State is Hidden)
                     {
                         break;
                     }

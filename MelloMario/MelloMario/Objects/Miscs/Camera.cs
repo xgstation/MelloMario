@@ -30,12 +30,7 @@ namespace MelloMario.Objects.Miscs
 
         public void LookAt(Point target, Rectangle boundary)
         {
-            Viewport = new Rectangle(
-                MathHelper.Clamp(target.X - Offset.X, boundary.Left, boundary.Right - Const.SCREEN_WIDTH),
-                MathHelper.Clamp(target.Y - Offset.Y, boundary.Top, boundary.Bottom - Const.SCREEN_HEIGHT),
-                Const.SCREEN_WIDTH,
-                Const.SCREEN_HEIGHT
-            );
+            Viewport = new Rectangle(MathHelper.Clamp(target.X - Offset.X, boundary.Left, boundary.Right - Const.SCREEN_WIDTH), MathHelper.Clamp(target.Y - Offset.Y, boundary.Top, boundary.Bottom - Const.SCREEN_HEIGHT), Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
         }
     }
 }

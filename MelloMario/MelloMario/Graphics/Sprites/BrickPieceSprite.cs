@@ -55,14 +55,10 @@
             Vector2 spriteOrigin = new Vector2(8f, 8f);
             Vector2 scale = new Vector2(1.25f, 1.25f);
             float rotation = elapsed * 30f / Const.ACCEL_F_AIR;
-            spriteBatch.Draw(texture, destinations[0], source[0], Color.White, rotation, spriteOrigin, scale,
-                SpriteEffects.None, LayerDepth);
-            spriteBatch.Draw(texture, destinations[1], source[1], Color.White, rotation, spriteOrigin, scale,
-                SpriteEffects.None, LayerDepth);
-            spriteBatch.Draw(texture, destinations[2], source[2], Color.White, -rotation, spriteOrigin, scale,
-                SpriteEffects.None, LayerDepth);
-            spriteBatch.Draw(texture, destinations[3], source[3], Color.White, -rotation, spriteOrigin, scale,
-                SpriteEffects.None, LayerDepth);
+            spriteBatch.Draw(texture, destinations[0], source[0], Color.White, rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
+            spriteBatch.Draw(texture, destinations[1], source[1], Color.White, rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
+            spriteBatch.Draw(texture, destinations[2], source[2], Color.White, -rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
+            spriteBatch.Draw(texture, destinations[3], source[3], Color.White, -rotation, spriteOrigin, scale, SpriteEffects.None, LayerDepth);
         }
     }
 }

@@ -14,14 +14,12 @@ namespace MelloMario.Objects.Blocks
         private Theming.Model model;
         private IPlayer switchingPlayer;
 
-        public Pipeline(IGameWorld world, Point location, IListener listener, string type, Theming.Model model) : this(
-            world, location, listener, type)
+        public Pipeline(IGameWorld world, Point location, IListener listener, string type, Theming.Model model) : this(world, location, listener, type)
         {
             SetModel(model);
         }
 
-        public Pipeline(IGameWorld world, Point location, IListener listener, string type) : base(world, location,
-            listener, new Point(32, 32))
+        public Pipeline(IGameWorld world, Point location, IListener listener, string type) : base(world, location, listener, new Point(32, 32))
         {
             Type = type;
 
@@ -65,8 +63,7 @@ namespace MelloMario.Objects.Blocks
             }
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
-            CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario mario && mode is CollisionMode.Top)
             {

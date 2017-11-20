@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using MelloMario.Objects.Blocks;
-using MelloMario.Objects.Blocks.BrickStates;
 using MelloMario.Objects.Enemies.KoopaStates;
 using MelloMario.Factories;
 using MelloMario.Objects.Characters;
@@ -10,10 +9,12 @@ using MelloMario.Objects.UserInterfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Defeated = MelloMario.Objects.Enemies.GoombaStates.Defeated;
-using Normal = MelloMario.Objects.Enemies.GoombaStates.Normal;
 
 namespace MelloMario.Objects.Enemies
 {
+    using Blocks.QuestionStates;
+    using Characters.MovementStates;
+
     internal class Goomba : BasePhysicalObject
     {
         private IGoombaState state;
@@ -21,11 +22,9 @@ namespace MelloMario.Objects.Enemies
         //This suppression exists because this constructor is inderectly used by the json parser.
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public Goomba(IGameWorld world, Point location, IListener listener) : this(world, location,
-            Database.GetCharacterLocation(), listener) { }
+        public Goomba(IGameWorld world, Point location, IListener listener) : this(world, location, Database.GetCharacterLocation(), listener) { }
 
-        public Goomba(IGameWorld world, Point location, Point marioLoc, IListener listener) : base(world, location,
-            listener, new Point(32, 32), 32)
+        public Goomba(IGameWorld world, Point location, Point marioLoc, IListener listener) : base(world, location, listener, new Point(32, 32), 32)
         {
             if (marioLoc.X < location.X)
             {
@@ -36,13 +35,16 @@ namespace MelloMario.Objects.Enemies
                 Facing = FacingMode.right;
             }
 
-            state = new Normal(this);
+            state = new GoombaStates.Normal(this);
             UpdateSprite();
         }
 
         public IGoombaState State
         {
-            get { return state; }
+            get
+            {
+                return state;
+            }
             set
             {
                 state = value;
@@ -77,8 +79,7 @@ namespace MelloMario.Objects.Enemies
         }
 
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
-            CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             if (state is Defeated)
             {
@@ -89,19 +90,19 @@ namespace MelloMario.Objects.Enemies
                 case "MarioCharacter":
                     //TODO: Fire to be added
                     Mario mario = (Mario) target;
-                    if (mode == CollisionMode.Top && mario.MovementState is Characters.MovementStates.Jumping || mario.ProtectionState is Starred)
+                    if (mode == CollisionMode.Top && mario.MovementState is Jumping || mario.ProtectionState is Starred)
                     {
                         Defeat();
                     }
                     break;
                 case "Brick":
-                    if (((Brick) target).State is Hidden)
+                    if (((Brick) target).State is Blocks.BrickStates.Hidden)
                     {
                         break;
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
+                    if (((Question) target).State is Hidden)
                     {
                         break;
                     }

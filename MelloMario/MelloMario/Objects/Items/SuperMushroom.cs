@@ -1,33 +1,29 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using MelloMario.Objects.Blocks;
-using MelloMario.Objects.Blocks.BrickStates;
 using MelloMario.Factories;
 using MelloMario.Objects.Items.SuperMushroomStates;
 using MelloMario.Theming;
 using MelloMario.Objects.UserInterfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Normal = MelloMario.Objects.Items.SuperMushroomStates.Normal;
 
 namespace MelloMario.Objects.Items
 {
+    using Blocks.QuestionStates;
+
     internal class SuperMushroom : BasePhysicalObject
     {
         private bool collected;
         private IItemState state;
 
-
-        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(world,
-            location, marioLocation, listener, false) { }
+        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(world, location, marioLocation, listener, false) { }
 
         //This suppression exists because this constructor is inderectly used by the json parser.
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public SuperMushroom(IGameWorld world, Point location, IListener listener) : this(world, location,
-            Database.GetCharacterLocation(), listener) { }
+        public SuperMushroom(IGameWorld world, Point location, IListener listener) : this(world, location, Database.GetCharacterLocation(), listener) { }
 
-        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener,
-            bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
+        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
             if (marioLocation.X < location.X)
@@ -47,21 +43,23 @@ namespace MelloMario.Objects.Items
             }
             else
             {
-                state = new Normal(this);
+                state = new SuperMushroomStates.Normal(this);
                 UpdateSprite();
             }
         }
 
         public IItemState State
         {
-            get { return state; }
+            get
+            {
+                return state;
+            }
             set
             {
                 state = value;
                 UpdateSprite();
             }
         }
-
 
         public IGameObject GetFireFlower()
         {
@@ -81,7 +79,7 @@ namespace MelloMario.Objects.Items
 
         protected override void OnSimulation(int time)
         {
-            if (state is Normal)
+            if (state is SuperMushroomStates.Normal)
             {
                 ApplyGravity();
 
@@ -98,25 +96,24 @@ namespace MelloMario.Objects.Items
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
-            CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             switch (target.GetType().Name) // not safe!
             {
                 case "MarioCharacter":
-                    if (state is Normal)
+                    if (state is SuperMushroomStates.Normal)
                     {
                         Collect();
                     }
                     break;
                 case "Brick":
-                    if (((Brick) target).State is Hidden)
+                    if (((Brick) target).State is Blocks.BrickStates.Hidden)
                     {
                         break;
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
+                    if (((Question) target).State is Hidden)
                     {
                         break;
                     }
@@ -133,8 +130,7 @@ namespace MelloMario.Objects.Items
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.right;
                     }
-                    else if (mode == CollisionMode.Right ||
-                             mode == CollisionMode.InnerRight && corner == CornerMode.Center)
+                    else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.left;

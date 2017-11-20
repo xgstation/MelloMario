@@ -11,10 +11,11 @@ using MelloMario.Objects.Characters.ProtectionStates;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Normal = MelloMario.Objects.Characters.ProtectionStates.Normal;
 
 namespace MelloMario.Objects.Characters
 {
+    using Blocks.QuestionStates;
+
     internal class Mario : BasePhysicalObject
     {
         public delegate void GameOverHandler(Mario m, EventArgs e);
@@ -24,19 +25,21 @@ namespace MelloMario.Objects.Characters
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
 
-        public Mario(IGameWorld world, Point location, IListener listener) : base(world, location, listener,
-            new Point(), 32)
+        public Mario(IGameWorld world, Point location, IListener listener) : base(world, location, listener, new Point(), 32)
         {
             listener.Subscribe(this);
             powerUpState = new Standard(this);
             movementState = new Standing(this);
-            protectionState = new Normal(this);
+            protectionState = new ProtectionStates.Normal(this);
             UpdateSprite();
         }
 
         public IMarioMovementState MovementState
         {
-            get { return movementState; }
+            get
+            {
+                return movementState;
+            }
             set
             {
                 movementState = value;
@@ -46,7 +49,10 @@ namespace MelloMario.Objects.Characters
 
         public IMarioPowerUpState PowerUpState
         {
-            get { return powerUpState; }
+            get
+            {
+                return powerUpState;
+            }
             set
             {
                 powerUpState = value;
@@ -56,7 +62,10 @@ namespace MelloMario.Objects.Characters
 
         public IMarioProtectionState ProtectionState
         {
-            get { return protectionState; }
+            get
+            {
+                return protectionState;
+            }
             set
             {
                 protectionState = value;
@@ -83,8 +92,7 @@ namespace MelloMario.Objects.Characters
                 facingString = "Right";
             }
 
-            ShowSprite(SpriteFactory.Instance.CreateMarioSprite(powerUpState.GetType().Name,
-                movementState.GetType().Name, protectionState.GetType().Name, facingString));
+            ShowSprite(SpriteFactory.Instance.CreateMarioSprite(powerUpState.GetType().Name, movementState.GetType().Name, protectionState.GetType().Name, facingString));
         }
 
         protected void ChangeFacing(FacingMode facing)
@@ -112,8 +120,7 @@ namespace MelloMario.Objects.Characters
         }
 
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
-            CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             if (ProtectionState is Dead)
             {
@@ -137,13 +144,13 @@ namespace MelloMario.Objects.Characters
                         {
                             break;
                         }
-                        isHidden = brick.State is Hidden;
-                        isBumping = brick.State is Bumped;
+                        isHidden = brick.State is Blocks.BrickStates.Hidden;
+                        isBumping = brick.State is Blocks.BrickStates.Bumped;
                     }
                     else if (question != null)
                     {
-                        isHidden = question.State is Blocks.QuestionStates.Hidden;
-                        isBumping = question.State is Blocks.QuestionStates.Bumped;
+                        isHidden = question.State is Hidden;
+                        isBumping = question.State is Bumped;
                     }
                     else
                     {
@@ -296,8 +303,7 @@ namespace MelloMario.Objects.Characters
                     }
                     break;
                 case "SuperMushroom":
-                    if (((SuperMushroom) target).State is Items.SuperMushroomStates.Normal &&
-                        PowerUpState is Standard)
+                    if (((SuperMushroom) target).State is Items.SuperMushroomStates.Normal && PowerUpState is Standard)
                     {
                         UpgradeToSuper();
                     }
@@ -353,11 +359,11 @@ namespace MelloMario.Objects.Characters
 
         public void Downgrade()
         {
-            if (protectionState is Normal)
+            if (protectionState is ProtectionStates.Normal)
             {
                 PowerUpState.Downgrade();
             }
-            if (protectionState is Normal)
+            if (protectionState is ProtectionStates.Normal)
             {
                 protectionState.Protect();
             }

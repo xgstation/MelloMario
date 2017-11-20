@@ -9,9 +9,7 @@
     {
         private readonly Random random;
 
-        public FlickingAnimatedSprite(Texture2D texture, int columns, int rows, int x = 0, int y = 0, int width = 2,
-            int height = 2, int interval = Const.ANIMATION_INTERVAL, ZIndex zIndex = ZIndex.Item) : base(texture,
-            columns, rows, x, y, width, height, interval, zIndex)
+        public FlickingAnimatedSprite(Texture2D texture, int columns, int rows, int x = 0, int y = 0, int width = 2, int height = 2, int interval = Const.ANIMATION_INTERVAL, ZIndex zIndex = ZIndex.Item) : base(texture, columns, rows, x, y, width, height, interval, zIndex)
         {
             random = new Random();
         }

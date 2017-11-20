@@ -18,8 +18,7 @@ namespace MelloMario.Objects.Blocks
 
         private EventArgs eventInfo;
 
-        public Flag(IGameWorld world, Point location, IListener listener, int height, int maxHeight) : base(world,
-            location, listener, new Point(32, 32))
+        public Flag(IGameWorld world, Point location, IListener listener, int height, int maxHeight) : base(world, location, listener, new Point(32, 32))
         {
             listener.Subscribe(this);
             this.height = height;
@@ -37,8 +36,7 @@ namespace MelloMario.Objects.Blocks
 
         protected override void OnUpdate(int time) { }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
-            CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
         {
             if (target is MarioCharacter mario)
             {

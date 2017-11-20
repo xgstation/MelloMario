@@ -5,7 +5,7 @@ namespace MelloMario.Objects.Enemies.KoopaStates
 {
     internal class Defeated : BaseState<Koopa>, IKoopaState
     {
-        private int played;
+        private readonly int played;
 
         public Defeated(Koopa owner) : base(owner)
         {

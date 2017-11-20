@@ -334,16 +334,16 @@ namespace MelloMario.LevelGen
                         stack.Push(Activator.CreateInstance(type, world, objPoint, listener, false) as BaseGameObject);
                         break;
                     case ProduceMode.Rectangle:
-                        {
-                            Util.BatchCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false), objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet, ref stack);
-                            break;
-                        }
+                    {
+                        Util.BatchCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false), objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet, ref stack);
+                        break;
+                    }
 
                     case ProduceMode.Triangle:
-                        {
-                            Util.TriganleCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false), objPoint, triangleSize, new Point(Const.GRID, Const.GRID), ignoredSet, ref stack);
-                            break;
-                        }
+                    {
+                        Util.TriganleCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false), objPoint, triangleSize, new Point(Const.GRID, Const.GRID), ignoredSet, ref stack);
+                        break;
+                    }
                 }
             }
             else if (type.Name == "Pipeline")
