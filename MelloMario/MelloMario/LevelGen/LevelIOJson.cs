@@ -28,7 +28,7 @@ namespace MelloMario.LevelGen
             model = newModel;
         }
 
-        public IGameWorld Load(string index, IGameSession session)
+        public IGameWorld Load(string index)
         {
             levelString = File.ReadAllText(path);
             gameConverter = new GameConverter(model, listener, index);

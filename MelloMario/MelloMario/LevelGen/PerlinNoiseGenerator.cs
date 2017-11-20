@@ -20,13 +20,13 @@ namespace MelloMario.LevelGen
             InitializePermuteTable();
         }
 
-        public float Noise(Vector2 p)
+        public static float Noise(Vector2 p)
         {
             float a = Perlin(p) + 0.5f * Perlin(p) + 0.25f * Perlin(4f * p) + 0.125f * Perlin(8f * p);
             return a;
         }
 
-        public float Perlin(Vector2 p)
+        public static float Perlin(Vector2 p)
         {
             Point pi = p.ToPoint();
             pi.X %= Size - 1;

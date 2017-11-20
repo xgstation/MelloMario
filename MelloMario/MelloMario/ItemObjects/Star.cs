@@ -14,7 +14,6 @@ namespace MelloMario.ItemObjects
     internal class Star : BasePhysicalObject
     {
         private bool collected;
-        private bool goingRight;
         private IItemState state;
 
         public Star(IGameWorld world, Point location, Point marioLocation, IListener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
@@ -23,11 +22,11 @@ namespace MelloMario.ItemObjects
 
             if (marioLocation.X < location.X)
             {
-                goingRight = true;
+                Facing = FacingMode.right;
             }
             else
             {
-                goingRight = false;
+                Facing = FacingMode.left;
             }
             if (isUnveil)
             {
@@ -120,12 +119,12 @@ namespace MelloMario.ItemObjects
                         if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2(), 1);
-                            goingRight = true;
+                            Facing = FacingMode.right;
                         }
                         else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2(), 1);
-                            goingRight = false;
+                            Facing = FacingMode.left;
                         }
                         if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
                         {

@@ -136,12 +136,12 @@ namespace MelloMario.Theming
                 return;
             }
 
-            UpdateMusicScene(time);
+            UpdateMusicScene();
 
             UpdateGameObjects(time);
             UpdateContainers();
 
-            Database.Update(time);
+            Database.Update();
             infiniteGenerator.Update(time);
         }
 
@@ -177,7 +177,7 @@ namespace MelloMario.Theming
             LevelIOJson reader = new LevelIOJson(mapPath, listener);
             reader.SetModel(this);
 
-            IGameWorld newWorld = reader.Load(id, session);
+            IGameWorld newWorld = reader.Load(id);
             infiniteGenerator = new InfiniteGenerator(newWorld, listener, activeCamera);
             return newWorld;
         }
@@ -205,11 +205,15 @@ namespace MelloMario.Theming
             splashElapsed = -1;
         }
 
-        private void UpdateMusicScene(int time)
+        private void UpdateMusicScene()
         {
             if (activePlayer.Character is MarioCharacter marioD && marioD.ProtectionState is Dead)
             {
                 MediaPlayer.Play(SoundController.Normal);
+            }
+            if (activePlayer.Character is MarioCharacter mario && mario.ProtectionState is Starred)
+            {
+                MediaPlayer.Play(SoundController.Star);
             }
             else if (activePlayer.TimeRemain <= 90000)
             {

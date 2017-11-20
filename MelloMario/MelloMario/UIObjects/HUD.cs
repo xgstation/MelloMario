@@ -22,7 +22,7 @@ namespace MelloMario.UIObjects
             textDestinationRect = new Rectangle(42, 42, 800, 200);
             coinDestinationRect = new Rectangle(255, 74, 26, 30);
             oneUpDestinationRect = new Rectangle(255, 42, 26, 30);
-            OnUpdate(0);
+            // OnUpdate(0);
         }
 
         protected override void OnUpdate(int time)

@@ -80,6 +80,7 @@ namespace MelloMario.LevelGen
         public static void BatchCreate<T>(Func<Point, T> func, Point startPoint, Point quantity, Point objSize, ICollection<Point> ignoredSet, ref Stack<IGameObject> stack)
         {
             for (int x = 0; x < quantity.X; x++)
+            {
                 for (int y = 0; y < quantity.Y; y++)
                 {
                     Point createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
@@ -99,6 +100,7 @@ namespace MelloMario.LevelGen
                         }
                     }
                 }
+            }
         }
 
         public static void TriganleCreate<T>(Func<Point, T> createFunc, Point startPoint, Point triangleSize, Point objSize, ICollection<Point> ignoredSet, ref Stack<IGameObject> stack)
@@ -110,6 +112,7 @@ namespace MelloMario.LevelGen
             X = Math.Abs(X);
             Y = Math.Abs(Y);
             for (int y = 0; y < Y; y++)
+            {
                 for (int x = 0; x <= y; x++)
                 {
                     Point createLocation = new Point(startPoint.X + (directionToRight ? x : -x) * objSize.X, startPoint.Y + (directionToDown ? y : -y) * objSize.Y);
@@ -130,12 +133,14 @@ namespace MelloMario.LevelGen
                         }
                     }
                 }
+            }
         }
 
         public static void BatchCreateWithProperties<T1, T2>(Func<Point, T1> createFunc, Point startPoint, Point quantity, Point objSize, ICollection<Point> ignoredSet, ref Stack<IGameObject> stack, IDictionary<Point, T2> properties, Action<IGameObject, T2> applyProperties)
         {
             Contract.Assume(!((properties == null) ^ (applyProperties == null)));
             for (int x = 0; x < quantity.X; x++)
+            {
                 for (int y = 0; y < quantity.Y; y++)
                 {
                     Point createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
@@ -166,6 +171,7 @@ namespace MelloMario.LevelGen
                         }
                     }
                 }
+            }
         }
 
         public static List<IGameObject> CreateSinglePipeline(Model model, IGameWorld world, IListener listener, string pipelineType, int pipelineLength, Point pipelineLoc)

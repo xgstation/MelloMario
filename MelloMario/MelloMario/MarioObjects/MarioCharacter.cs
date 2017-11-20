@@ -50,37 +50,6 @@ namespace MelloMario.MarioObjects
             }
         }
 
-        public Rectangle Viewport
-        {
-            get
-            {
-                Point location = Boundary.Location - new Point(Const.FOCUS_X, Const.FOCUS_Y);
-                Point size = new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
-
-                Rectangle worldBoundary = World.Boundary;
-
-                // NOTE: this is a temporary solution, this should be moved to the collision detection system
-                if (location.X < worldBoundary.Left)
-                {
-                    location.X = worldBoundary.Left;
-                }
-                if (location.Y < worldBoundary.Top)
-                {
-                    location.Y = worldBoundary.Top;
-                }
-                if (location.X > worldBoundary.Right - size.X)
-                {
-                    location.X = worldBoundary.Right - size.X;
-                }
-                if (location.Y > worldBoundary.Bottom - size.Y)
-                {
-                    location.Y = worldBoundary.Bottom - size.Y;
-                }
-
-                return new Rectangle(location, size);
-            }
-        }
-
         public void Left()
         {
             if (animation == Animation.none)
@@ -273,7 +242,7 @@ namespace MelloMario.MarioObjects
             animation = Animation.flagpole;
         }
 
-        protected void ResetA()
+        protected void Reset()
         {
             animation = Animation.none;
         }

@@ -40,7 +40,7 @@ namespace MelloMario.UIObjects
             textDestinationRect = new Rectangle(42, 42, 800, 200);
             text2DestinationRect = new Rectangle(300, 200, 80, 80);
             lifeDestinationRect = new Rectangle(350, 250, 80, 80);
-            OnUpdate(0);
+            // OnUpdate(0);
         }
 
         protected override void OnUpdate(int time)

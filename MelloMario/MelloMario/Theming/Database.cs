@@ -65,17 +65,6 @@ namespace MelloMario.Theming
             return ItemEnclosedDb.ContainsKey(obj) && ItemEnclosedDb[obj].Count != 0;
         }
 
-        public static IGameObject GetEnclosedItem(IGameObject obj)
-        {
-            if (!HasItemEnclosed(obj))
-            {
-                return null;
-            }
-            IGameObject item = ItemEnclosedDb[obj][0];
-            ItemEnclosedDb[obj].RemoveAt(0);
-            return item;
-        }
-
         public static IGameObject GetNextItem(IGameObject obj)
         {
             if (!HasItemEnclosed(obj))
@@ -129,7 +118,7 @@ namespace MelloMario.Theming
             }
         }
 
-        public static void Update(int time)
+        public static void Update()
         {
             foreach (IPlayer player in Session.ScanPlayers())
             {

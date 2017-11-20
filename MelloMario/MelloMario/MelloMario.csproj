@@ -94,7 +94,6 @@
     <Compile Include="BlockObjects\Pipeline.cs" />
     <Compile Include="BlockObjects\Question.cs" />
     <Compile Include="BlockObjects\QuestionStates\Bumped.cs" />
-    <Compile Include="BlockObjects\QuestionStates\Castle.cs" />
     <Compile Include="BlockObjects\QuestionStates\Hidden.cs" />
     <Compile Include="BlockObjects\QuestionStates\Normal.cs" />
     <Compile Include="BlockObjects\QuestionStates\Used.cs" />

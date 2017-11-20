@@ -47,7 +47,6 @@ namespace MelloMario.LevelGen
                     RngCrypto.GetBytes(a);
                     int q = BitConverter.ToInt32(a, 0);
                     elapsed = 0;
-                    int d = (int) (difficultyIndex / double.Epsilon);
                     new Goomba(world, new Point(world.Boundary.Right - (40 + q % 4) * (q % 3) - 300 + q % 256, 0 * 32 + p % 128), listener);
                     if (difficultyIndex / double.Epsilon > 20)
                     {
