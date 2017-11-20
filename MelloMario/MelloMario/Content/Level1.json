@@ -564,7 +564,7 @@
           }
         },
         {
-          "Type": "FlagIdle",
+          "Type": "Flag",
           "Point": {
             "X": 198,
             "Y": 3
