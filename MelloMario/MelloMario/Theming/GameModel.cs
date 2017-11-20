@@ -205,7 +205,7 @@ namespace MelloMario.Theming
             Splash = new GameWon(activePlayer);
             splashElapsed = -1;
         }
-
+        
         private void UpdateMusicScene(int time)
         {
             if (activePlayer.Character is MarioCharacter marioD && marioD.ProtectionState is Dead)
@@ -215,10 +215,6 @@ namespace MelloMario.Theming
             if (activePlayer.Character is MarioCharacter mario && mario.ProtectionState is Starred)
             {
                 MediaPlayer.Play(SoundController.Star);
-            }
-            else if (activePlayer.Lifes <= 1)
-            {
-                SoundController.PlayMusic(SoundController.Songs.GameOver);
             }
             else if (activePlayer.TimeRemain <= 90000)
             {

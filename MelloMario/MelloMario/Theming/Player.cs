@@ -82,7 +82,10 @@ namespace MelloMario.Theming
             Character = GameObjectFactory.Instance.CreateGameCharacter(type, Character.CurrentWorld, this,
                 Character.CurrentWorld.GetInitialPoint(), listener);
 
-            Lifes -= 1;
+            if (Lifes > 0)
+            {
+                Lifes -= 1;
+            }
             TimeRemain = GameConst.LEVEL_TIME * 1000;
         }
 
@@ -90,6 +93,7 @@ namespace MelloMario.Theming
         {
             Score += GameConst.SCORE_TIME_MULT * TimeRemain / 1000;
             TimeRemain = GameConst.LEVEL_TIME * 1000;
+            SoundController.GameWon.Play();
         }
 
         public void Update(int time)

@@ -2,6 +2,7 @@ using MelloMario.Factories;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Sounds;
 
 namespace MelloMario.UIObjects
 {
@@ -41,6 +42,7 @@ namespace MelloMario.UIObjects
             text2DestinationRect = new Rectangle(300, 200, 80, 80);
             lifeDestinationRect = new Rectangle(350, 250, 80, 80);
             OnUpdate(0);
+            
         }
 
         protected override void OnUpdate(int time)
@@ -71,6 +73,7 @@ namespace MelloMario.UIObjects
             else
             {
                 gameOverSprite.Draw(time, spriteBatch, gameOverDestinationRect);
+                SoundController.GameOver.Play();
             }
         }
     }

@@ -24,7 +24,7 @@ namespace MelloMario.Sounds
         public static Song Normal = SoundFactory.Instance.CreateSong("01-main-theme-overworld");
         public static Song BelowGround = SoundFactory.Instance.CreateSong("02-underworld");
         public static Song Hurry = SoundFactory.Instance.CreateSong("18-hurry-overworld-");
-        public static Song GameOver = SoundFactory.Instance.CreateSong("09-game-over");
+        //public static Song GameOver = SoundFactory.Instance.CreateSong("09-game-over");
         public static Song Star = SoundFactory.Instance.CreateSong("05-starman");
 
         public static SoundEffectInstance Bounce = SoundFactory.Instance.CreateSoundEffect("smb_jumpsmall");
@@ -36,6 +36,9 @@ namespace MelloMario.Sounds
         public static SoundEffectInstance SizeUp = SoundFactory.Instance.CreateSoundEffect("smb_powerup");
         public static SoundEffectInstance EnemyKill = SoundFactory.Instance.CreateSoundEffect("smb_stomp");
         public static SoundEffectInstance Pipe = SoundFactory.Instance.CreateSoundEffect("smb_pipe");
+
+        public static SoundEffectInstance GameOver = SoundFactory.Instance.CreateSoundEffect("smb_gameover");
+        public static SoundEffectInstance GameWon = SoundFactory.Instance.CreateSoundEffect("smb_stage_clear");
 
         public static SoundEffectInstance SizeUpAppear = SoundFactory.Instance.CreateSoundEffect("smb_powerup_appears");
         public static SoundEffectInstance OneUpCollect = SoundFactory.Instance.CreateSoundEffect("smb_1");
@@ -58,9 +61,6 @@ namespace MelloMario.Sounds
                         break;
                     case Songs.Star:
                         MediaPlayer.Play(Star);
-                        break;
-                    case Songs.GameOver:
-                        MediaPlayer.Play(GameOver);
                         break;
                     default:
                         MediaPlayer.Stop();
