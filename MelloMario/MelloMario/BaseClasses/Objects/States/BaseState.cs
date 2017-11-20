@@ -4,7 +4,7 @@
     {
         protected T Owner;
 
-        public BaseState(T owner)
+        protected BaseState(T owner)
         {
             Owner = owner;
         }

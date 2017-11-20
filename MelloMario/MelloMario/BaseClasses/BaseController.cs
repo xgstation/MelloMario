@@ -6,7 +6,7 @@ namespace MelloMario.Controllers
     {
         private readonly IDictionary<KeyBehavior, IDictionary<T, ICommand>> commands;
 
-        public BaseController()
+        protected BaseController()
         {
             commands = new Dictionary<KeyBehavior, IDictionary<T, ICommand>>
             {

@@ -12,7 +12,7 @@ namespace MelloMario
         // TODO: World should only be used in base classes and MarioCharacter
         protected IGameWorld World;
 
-        public BaseGameObject(IGameWorld world, Point location, Point size)
+        protected BaseGameObject(IGameWorld world, Point location, Point size)
         {
             this.location = location;
             this.size = size;

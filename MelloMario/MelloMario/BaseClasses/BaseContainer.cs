@@ -12,7 +12,7 @@ namespace MelloMario.Containers
         private readonly ISet<Value> toRemove;
         private readonly IDictionary<Key, ISet<Value>> values;
 
-        public BaseContainer()
+        protected BaseContainer()
         {
             keys = new Dictionary<Value, Key>();
             values = new Dictionary<Key, ISet<Value>>();

@@ -9,7 +9,7 @@ namespace MelloMario.Sprites
         private Color color;
         private Rectangle source;
 
-        public BaseTextureSprite(Texture2D texture, Rectangle source, ZIndex zIndex) : base(source.Size, zIndex)
+        protected BaseTextureSprite(Texture2D texture, Rectangle source, ZIndex zIndex) : base(source.Size, zIndex)
         {
             this.texture = texture;
             this.source = source;

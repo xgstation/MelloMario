@@ -14,7 +14,7 @@ namespace MelloMario
         private GameEventArgs gameEventInfo;
         private Point movement;
 
-        public BaseCollidableObject(IGameWorld world, Point location, IListener listener, Point size) : base(world, location, size)
+        protected BaseCollidableObject(IGameWorld world, Point location, IListener listener, Point size) : base(world, location, size)
         {
             listener?.Subscribe(this);
             movement = new Point();

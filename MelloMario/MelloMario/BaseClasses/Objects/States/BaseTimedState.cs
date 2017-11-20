@@ -5,7 +5,7 @@
         private readonly int interval;
         private int elapsed;
 
-        public BaseTimedState(T owner, int interval) : base(owner)
+        protected BaseTimedState(T owner, int interval) : base(owner)
         {
             this.interval = interval;
         }

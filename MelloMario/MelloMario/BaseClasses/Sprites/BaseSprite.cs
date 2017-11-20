@@ -8,7 +8,7 @@ namespace MelloMario.Sprites
         private readonly ZIndex zIndex;
         private bool visible;
 
-        public BaseSprite(Point size, ZIndex zIndex)
+        protected BaseSprite(Point size, ZIndex zIndex)
         {
             PixelSize = size;
             this.zIndex = zIndex;
