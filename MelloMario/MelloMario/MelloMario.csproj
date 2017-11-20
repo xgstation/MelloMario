@@ -143,6 +143,7 @@
     <Compile Include="EnemyObjects\GoombaStates\Normal.cs" />
     <Compile Include="Interfaces\ICamera.cs" />
     <Compile Include="Interfaces\IListener.cs" />
+    <Compile Include="Interfaces\ILevelGenerator.cs" />
     <Compile Include="Interfaces\Objects\IObject.cs" />
     <Compile Include="LevelGen\InfiniteGenerator.cs" />
     <Compile Include="LevelGen\PerlinNoiseGenerator.cs" />
