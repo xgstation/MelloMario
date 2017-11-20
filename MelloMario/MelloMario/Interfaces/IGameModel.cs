@@ -4,6 +4,8 @@ namespace MelloMario
 {
     internal interface IGameModel
     {
+        IPlayer ActivePlayer { get; }
+        bool IsPaused { get; }
         void ToggleFullScreen();
         void Pause();
         void Resume();
@@ -14,6 +16,5 @@ namespace MelloMario
         void Infinite();
         void Normal();
         void Draw(int time, SpriteBatch spriteBatch);
-        void ToggleMute();
     }
 }
