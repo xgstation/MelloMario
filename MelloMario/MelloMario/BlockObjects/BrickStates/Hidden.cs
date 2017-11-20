@@ -20,7 +20,7 @@ namespace MelloMario.BlockObjects.BrickStates
 
         public void Bump(Mario mario)
         {
-            if (GameDatabase.HasItemEnclosed(Owner))
+            if (Database.HasItemEnclosed(Owner))
             {
                 Owner.State = new Bumped(Owner);
             }

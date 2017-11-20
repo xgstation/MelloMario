@@ -14,13 +14,13 @@ namespace MelloMario.MiscObjects
         {
             get
             {
-                return new Point(GameConst.FOCUS_Y, GameConst.FOCUS_Y);
+                return new Point(Const.FOCUS_Y, Const.FOCUS_Y);
             }
         }
 
         public Camera()
         {
-            Viewport = new Rectangle(0, 0, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
+            Viewport = new Rectangle(0, 0, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
         }
 
         public Matrix GetViewMatrix(Vector2 parallax)
@@ -31,10 +31,10 @@ namespace MelloMario.MiscObjects
         public void LookAt(Point target, Rectangle boundary)
         {
             Viewport = new Rectangle(
-                MathHelper.Clamp(target.X - Offset.X, boundary.Left, boundary.Right - GameConst.SCREEN_WIDTH),
-                MathHelper.Clamp(target.Y - Offset.Y, boundary.Top, boundary.Bottom - GameConst.SCREEN_HEIGHT),
-                GameConst.SCREEN_WIDTH,
-                GameConst.SCREEN_HEIGHT
+                MathHelper.Clamp(target.X - Offset.X, boundary.Left, boundary.Right - Const.SCREEN_WIDTH),
+                MathHelper.Clamp(target.Y - Offset.Y, boundary.Top, boundary.Bottom - Const.SCREEN_HEIGHT),
+                Const.SCREEN_WIDTH,
+                Const.SCREEN_HEIGHT
             );
         }
     }

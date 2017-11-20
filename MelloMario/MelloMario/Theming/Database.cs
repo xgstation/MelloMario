@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming
 {
-    internal static class GameDatabase
+    internal static class Database
     {
         private static readonly IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
 

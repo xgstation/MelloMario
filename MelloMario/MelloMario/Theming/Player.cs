@@ -30,7 +30,7 @@ namespace MelloMario.Theming
         {
             Coins += 1;
 
-            if (Coins == GameConst.COINS_FOR_LIFE)
+            if (Coins == Const.COINS_FOR_LIFE)
             {
                 Coins = 0;
                 Lifes += 1;
@@ -43,9 +43,9 @@ namespace MelloMario.Theming
         {
             Lifes += 1;
 
-            if (Lifes > GameConst.LIFES_MAX)
+            if (Lifes > Const.LIFES_MAX)
             {
-                Lifes = GameConst.LIFES_MAX;
+                Lifes = Const.LIFES_MAX;
             }
         }
 
@@ -60,8 +60,8 @@ namespace MelloMario.Theming
             Session.Add(this);
             Camera = newCamera;
 
-            Lifes = GameConst.LIFES_INIT;
-            TimeRemain = GameConst.LEVEL_TIME * 1000;
+            Lifes = Const.LIFES_INIT;
+            TimeRemain = Const.LEVEL_TIME * 1000;
         }
 
         public void Spawn(IGameWorld newWorld, Point newLocation)
@@ -79,13 +79,13 @@ namespace MelloMario.Theming
             {
                 Lifes -= 1;
             }
-            TimeRemain = GameConst.LEVEL_TIME * 1000;
+            TimeRemain = Const.LEVEL_TIME * 1000;
         }
 
         public void Win()
         {
-            Score += GameConst.SCORE_TIME_MULT * TimeRemain / 1000;
-            TimeRemain = GameConst.LEVEL_TIME * 1000;
+            Score += Const.SCORE_TIME_MULT * TimeRemain / 1000;
+            TimeRemain = Const.LEVEL_TIME * 1000;
             SoundController.GameWon.Play();
         }
 

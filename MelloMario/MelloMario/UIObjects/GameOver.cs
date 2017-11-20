@@ -36,7 +36,7 @@ namespace MelloMario.UIObjects
             coinDestinationRect = new Rectangle(255, 74, 26, 30);
             gameOverDestinationRect = new Rectangle(250, 250, 80, 80);
             marioDestinationRect = new Rectangle(250, 250, 40, 40);
-            splashDestinationRect = new Rectangle(0, 0, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
+            splashDestinationRect = new Rectangle(0, 0, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
             textDestinationRect = new Rectangle(42, 42, 800, 200);
             text2DestinationRect = new Rectangle(300, 200, 80, 80);
             lifeDestinationRect = new Rectangle(350, 250, 80, 80);

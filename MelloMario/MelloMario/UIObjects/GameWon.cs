@@ -21,7 +21,7 @@ namespace MelloMario.UIObjects
             textSprite = SpriteFactory.Instance.CreateTextSprite(text);
             textSprite2 = SpriteFactory.Instance.CreateTextSprite("You won!\n\nPress R to restart\n\nPress Q to quit");
 
-            splashDestinationRect = new Rectangle(0, 0, GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
+            splashDestinationRect = new Rectangle(0, 0, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
             textDestinationRect = new Rectangle(10, 10, 80, 80);
             text2DestinationRect = new Rectangle(200, 200, 200, 80);
         }

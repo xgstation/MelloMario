@@ -11,15 +11,17 @@ namespace MelloMario.BlockObjects
     internal class Pipeline : BaseCollidableObject
     {
         private int elapsed;
-        private GameModel model;
+        private Theming.Model model;
         private IPlayer switchingPlayer;
 
-        public Pipeline(IGameWorld world, Point location, IListener listener, string type, GameModel model) : this(world, location, listener, type)
+        public Pipeline(IGameWorld world, Point location, IListener listener, string type, Theming.Model model) : this(
+            world, location, listener, type)
         {
             SetModel(model);
         }
 
-        public Pipeline(IGameWorld world, Point location, IListener listener, string type) : base(world, location, listener, new Point(32, 32))
+        public Pipeline(IGameWorld world, Point location, IListener listener, string type) : base(world, location,
+            listener, new Point(32, 32))
         {
             Type = type;
 
@@ -28,7 +30,7 @@ namespace MelloMario.BlockObjects
 
         public string Type { get; }
 
-        private void SetModel(GameModel newModel)
+        private void SetModel(Theming.Model newModel)
         {
             model = newModel;
         }
@@ -46,11 +48,11 @@ namespace MelloMario.BlockObjects
 
                 if (elapsed > 500)
                 {
-                    IGameWorld world = model.LoadLevel(GameDatabase.GetEntranceIndex(this));
+                    IGameWorld world = model.LoadLevel(Database.GetEntranceIndex(this));
 
-                    if (GameDatabase.IsPortal(this))
+                    if (Database.IsPortal(this))
                     {
-                        switchingPlayer.Spawn(world, GameDatabase.GetPortal(this).Boundary.Location);
+                        switchingPlayer.Spawn(world, Database.GetPortal(this).Boundary.Location);
                     }
                     else
                     {
@@ -63,11 +65,12 @@ namespace MelloMario.BlockObjects
             }
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
+            CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario mario && mode is CollisionMode.Top)
             {
-                if (mario.MovementState is Crouching && GameDatabase.IsEntrance(this))
+                if (mario.MovementState is Crouching && Database.IsEntrance(this))
                 {
                     SoundController.Pipe.Play();
                     switch (Type)

@@ -31,7 +31,7 @@ namespace MelloMario.LevelGen
     {
         private static readonly IEnumerable<Type> AssemblyTypes = from type in Assembly.GetExecutingAssembly().GetTypes() where typeof(IGameObject).IsAssignableFrom(type) select type;
 
-        private readonly GameModel model;
+        private readonly Model model;
         private readonly IListener selflistener;
         private readonly IGameWorld world;
         private string backgroundType;
@@ -55,7 +55,7 @@ namespace MelloMario.LevelGen
         private Type selftype;
         private Point triangleSize;
 
-        public GameEntityConverter(GameModel model, IGameWorld parentGameWorld, IListener selflistener)
+        public GameEntityConverter(Model model, IGameWorld parentGameWorld, IListener selflistener)
         {
             this.model = model;
             this.selflistener = selflistener;
@@ -85,7 +85,7 @@ namespace MelloMario.LevelGen
                 Debug.WriteLine("Deserialize fail: No start point provided!");
                 return null;
             }
-            objPoint = new Point((int) (objVector.X * GameConst.GRID), (int) (objVector.Y * GameConst.GRID));
+            objPoint = new Point((int) (objVector.X * Const.GRID), (int) (objVector.Y * Const.GRID));
             objectStackToBeEncapsulated = new Stack<IGameObject>();
 
             if (!Util.TryGet(out string typeStr, objToken, "Type"))
@@ -185,7 +185,7 @@ namespace MelloMario.LevelGen
             }
             else if (produceMode is ProduceMode.Rectangle)
             {
-                Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
+                Util.BatchCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet, ref stack);
             }
             return true;
         }
@@ -210,7 +210,7 @@ namespace MelloMario.LevelGen
                 }
                 else if (produceMode is ProduceMode.Rectangle)
                 {
-                    Util.BatchCreate(createFunc, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
+                    Util.BatchCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet, ref stack);
                 }
             }
             return true;
@@ -254,7 +254,7 @@ namespace MelloMario.LevelGen
                             IList<IGameObject> newList = Util.CreateItemList(world, obj.Boundary.Location, listener, pair.Item2);
                             if (newList != null && newList.Count != 0)
                             {
-                                GameDatabase.SetEnclosedItem(obj, newList);
+                                Database.SetEnclosedItem(obj, newList);
                             }
                             if (type.Name == "Question")
                             {
@@ -280,7 +280,7 @@ namespace MelloMario.LevelGen
                                 (objToBePushed as Brick).Initialize();
                             }
                             return objToBePushed;
-                        }, objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
+                        }, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet, ref stack);
                     }
                     else if (produceMode is ProduceMode.Triangle)
                     {
@@ -296,7 +296,7 @@ namespace MelloMario.LevelGen
                                 (objToBePushed as Brick).Initialize();
                             }
                             return objToBePushed;
-                        }, objPoint, triangleSize, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
+                        }, objPoint, triangleSize, new Point(Const.GRID, Const.GRID), ignoredSet, ref stack);
                     }
                     return true;
                 }
@@ -305,7 +305,7 @@ namespace MelloMario.LevelGen
                 objToBePushed = Activator.CreateInstance(type, world, objPoint, listener, propertyPair.Item1) as IGameObject;
                 if (list != null && list.Count != 0)
                 {
-                    GameDatabase.SetEnclosedItem(objToBePushed, list);
+                    Database.SetEnclosedItem(objToBePushed, list);
                 }
                 if (type.Name == "Question")
                 {
@@ -333,16 +333,16 @@ namespace MelloMario.LevelGen
                         stack.Push(Activator.CreateInstance(type, world, objPoint, listener, false) as BaseGameObject);
                         break;
                     case ProduceMode.Rectangle:
-                    {
-                        Util.BatchCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false), objPoint, quantity, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
-                        break;
-                    }
+                        {
+                            Util.BatchCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false), objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet, ref stack);
+                            break;
+                        }
 
                     case ProduceMode.Triangle:
-                    {
-                        Util.TriganleCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false), objPoint, triangleSize, new Point(GameConst.GRID, GameConst.GRID), ignoredSet, ref stack);
-                        break;
-                    }
+                        {
+                            Util.TriganleCreate(point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false), objPoint, triangleSize, new Point(Const.GRID, Const.GRID), ignoredSet, ref stack);
+                            break;
+                        }
                 }
             }
             else if (type.Name == "Pipeline")
@@ -377,23 +377,23 @@ namespace MelloMario.LevelGen
                     {
                         if (Util.TryGet(out entrance, token, "Property", "Entrance"))
                         {
-                            GameDatabase.SetEntranceIndex(list[0] as Pipeline, entrance);
-                            GameDatabase.SetEntranceIndex(list[1] as Pipeline, entrance);
+                            Database.SetEntranceIndex(list[0] as Pipeline, entrance);
+                            Database.SetEntranceIndex(list[1] as Pipeline, entrance);
                         }
                         if (hasIndex)
                         {
-                            GameDatabase.AddPipelineIndex(pipelineIndex, new Tuple<Pipeline, Pipeline>(list[0] as Pipeline, list[1] as Pipeline));
+                            Database.AddPipelineIndex(pipelineIndex, new Tuple<Pipeline, Pipeline>(list[0] as Pipeline, list[1] as Pipeline));
                         }
                         if (isPortalTo)
                         {
-                            GameDatabase.AddPortal(list[0] as Pipeline, portalTo);
-                            GameDatabase.AddPortal(list[1] as Pipeline, portalTo);
+                            Database.AddPortal(list[0] as Pipeline, portalTo);
+                            Database.AddPortal(list[1] as Pipeline, portalTo);
                         }
                     }
                 }
                 else
                 {
-                    objFullSize = direction.Contains("V") ? new Point(GameConst.GRID * 2, GameConst.GRID + GameConst.GRID * length) : new Point(GameConst.GRID + GameConst.GRID * length, GameConst.GRID * 2);
+                    objFullSize = direction.Contains("V") ? new Point(Const.GRID * 2, Const.GRID + Const.GRID * length) : new Point(Const.GRID + Const.GRID * length, Const.GRID * 2);
                     Util.BatchCreate(point => Util.CreateSinglePipeline(model, world, listener, direction, length, point), objPoint, quantity, objFullSize, ignoredSet, ref stack);
                 }
             }

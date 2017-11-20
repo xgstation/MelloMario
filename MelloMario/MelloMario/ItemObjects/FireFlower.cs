@@ -13,7 +13,8 @@ namespace MelloMario.ItemObjects
         private bool collected;
         private IItemState state;
 
-        public FireFlower(IGameWorld world, Point location, IListener listener, bool isUnveil) : base(world, location, listener, new Point(32, 32))
+        public FireFlower(IGameWorld world, Point location, IListener listener, bool isUnveil) : base(world, location,
+            listener, new Point(32, 32))
         {
             collected = false;
             if (isUnveil)
@@ -29,14 +30,12 @@ namespace MelloMario.ItemObjects
             }
         }
 
-        public FireFlower(IGameWorld world, Point location, IListener listener) : this(world, location, listener, false) { }
+        public FireFlower(IGameWorld world, Point location, IListener listener) :
+            this(world, location, listener, false) { }
 
         public IItemState State
         {
-            get
-            {
-                return state;
-            }
+            get { return state; }
             set
             {
                 state = value;
@@ -54,7 +53,8 @@ namespace MelloMario.ItemObjects
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
+            CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario && state is Normal)
             {
@@ -72,8 +72,8 @@ namespace MelloMario.ItemObjects
         {
             if (!collected)
             {
-                ScorePoints(GameConst.SCORE_POWER_UP);
-                new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_POWER_UP);
+                ScorePoints(Const.SCORE_POWER_UP);
+                new PopingUpPoints(World, Boundary.Location, Const.SCORE_POWER_UP);
             }
             collected = true;
             RemoveSelf();

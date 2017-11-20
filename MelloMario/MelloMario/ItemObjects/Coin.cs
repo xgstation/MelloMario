@@ -17,7 +17,8 @@ namespace MelloMario.ItemObjects
         private bool collected;
         private IItemState state;
 
-        public Coin(IGameWorld world, Point location, IListener listener, bool isUnveil = false) : base(world, location, listener, new Point(32, 32))
+        public Coin(IGameWorld world, Point location, IListener listener, bool isUnveil = false) : base(world, location,
+            listener, new Point(32, 32))
         {
             listener.Subscribe(this);
             collected = false;
@@ -57,7 +58,8 @@ namespace MelloMario.ItemObjects
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
+            CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario && state is Normal)
             {
@@ -76,9 +78,9 @@ namespace MelloMario.ItemObjects
             if (!collected)
             {
                 HandlerCoins?.Invoke(this, coinEventInfo);
-                ScorePoints(GameConst.SCORE_COIN);
+                ScorePoints(Const.SCORE_COIN);
                 collected = true;
-                new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_COIN);
+                new PopingUpPoints(World, Boundary.Location, Const.SCORE_COIN);
             }
             RemoveSelf();
             //State.Collect();

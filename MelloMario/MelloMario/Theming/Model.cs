@@ -13,12 +13,12 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MelloMario.Theming
 {
-    internal class GameModel : IGameModel
+    internal class Model : IGameModel
     {
         private readonly IPlayer activePlayer; // TODO: for singleplayer only
         private readonly Game1 game;
         private readonly IListener listener;
-        private readonly GameSession session;
+        private readonly Session session;
         private ICamera activeCamera;
         private IEnumerable<IController> controllers;
         private InfiniteGenerator infiniteGenerator;
@@ -31,13 +31,13 @@ namespace MelloMario.Theming
 
         private int splashElapsed; // TODO: for sprint 4, refactor later
 
-        public GameModel(Game1 game)
+        public Model(Game1 game)
         {
             this.game = game;
-            session = new GameSession();
+            session = new Session();
             activePlayer = new Player(session);
             listener = new Listener(this, activePlayer);
-            GameDatabase.Initialize(session);
+            Database.Initialize(session);
         }
 
         public Matrix GetActiveViewMatrix
@@ -141,7 +141,7 @@ namespace MelloMario.Theming
             UpdateGameObjects(time);
             UpdateContainers();
 
-            GameDatabase.Update(time);
+            Database.Update(time);
             infiniteGenerator.Update(time);
         }
 

@@ -18,7 +18,8 @@ namespace MelloMario.BlockObjects
 
         private EventArgs eventInfo;
 
-        public Flag(IGameWorld world, Point location, IListener listener, int height, int maxHeight) : base(world, location, listener, new Point(32, 32))
+        public Flag(IGameWorld world, Point location, IListener listener, int height, int maxHeight) : base(world,
+            location, listener, new Point(32, 32))
         {
             listener.Subscribe(this);
             this.height = height;
@@ -36,7 +37,8 @@ namespace MelloMario.BlockObjects
 
         protected override void OnUpdate(int time) { }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
+            CornerMode corner, CornerMode cornerPassive)
         {
             if (target is MarioCharacter mario)
             {
@@ -48,8 +50,8 @@ namespace MelloMario.BlockObjects
                     }
                     eventInfo = null;
                     HandlerTimeScore?.Invoke(this, eventInfo);
-                    ScorePoints(GameConst.SCORE_FLAG_MAX * height / maxHeight);
-                    new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_FLAG_MAX * height / maxHeight);
+                    ScorePoints(Const.SCORE_FLAG_MAX * height / maxHeight);
+                    new PopingUpPoints(World, Boundary.Location, Const.SCORE_FLAG_MAX * height / maxHeight);
                     mario.FlagPole();
                 }
             }

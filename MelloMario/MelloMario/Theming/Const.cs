@@ -1,6 +1,6 @@
 ﻿namespace MelloMario.Theming
 {
-    internal static class GameConst
+    internal static class Const
     {
         // general
 

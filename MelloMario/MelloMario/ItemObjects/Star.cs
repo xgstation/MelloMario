@@ -75,11 +75,11 @@ namespace MelloMario.ItemObjects
 
                 if (Facing == FacingMode.left)
                 {
-                    SetHorizontalVelocity(-GameConst.VELOCITY_STAR_H);
+                    SetHorizontalVelocity(-Const.VELOCITY_STAR_H);
                 }
                 else
                 {
-                    SetHorizontalVelocity(GameConst.VELOCITY_STAR_H);
+                    SetHorizontalVelocity(Const.VELOCITY_STAR_H);
                 }
             }
 
@@ -130,7 +130,7 @@ namespace MelloMario.ItemObjects
                         if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2());
-                            ApplyVerticalFriction(GameConst.VELOCITY_STAR_V);
+                            ApplyVerticalFriction(Const.VELOCITY_STAR_V);
                         }
                         break;
                 }
@@ -148,8 +148,8 @@ namespace MelloMario.ItemObjects
             if (!collected)
             {
                 SoundController.SizeUp.Play();
-                ScorePoints(GameConst.SCORE_POWER_UP);
-                new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_POWER_UP);
+                ScorePoints(Const.SCORE_POWER_UP);
+                new PopingUpPoints(World, Boundary.Location, Const.SCORE_POWER_UP);
             }
             collected = true;
             RemoveSelf();

@@ -43,8 +43,8 @@ namespace MelloMario.MarioObjects
         {
             get
             {
-                Point location = Boundary.Location - new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
-                Point size = new Point(GameConst.SCREEN_WIDTH * 2, GameConst.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
+                Point location = Boundary.Location - new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
+                Point size = new Point(Const.SCREEN_WIDTH * 2, Const.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
 
                 return new Rectangle(location, size);
             }
@@ -54,8 +54,8 @@ namespace MelloMario.MarioObjects
         {
             get
             {
-                Point location = Boundary.Location - new Point(GameConst.FOCUS_X, GameConst.FOCUS_Y);
-                Point size = new Point(GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT);
+                Point location = Boundary.Location - new Point(Const.FOCUS_X, Const.FOCUS_Y);
+                Point size = new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
 
                 Rectangle worldBoundary = World.Boundary;
 
@@ -94,7 +94,7 @@ namespace MelloMario.MarioObjects
 
                 if (!(MovementState is Crouching))
                 {
-                    userInput.X -= GameConst.FORCE_INPUT_X;
+                    userInput.X -= Const.FORCE_INPUT_X;
                 }
             }
         }
@@ -128,7 +128,7 @@ namespace MelloMario.MarioObjects
 
                 if (!(MovementState is Crouching))
                 {
-                    userInput.X += GameConst.FORCE_INPUT_X;
+                    userInput.X += Const.FORCE_INPUT_X;
                 }
             }
         }
@@ -157,8 +157,8 @@ namespace MelloMario.MarioObjects
 
                 if (MovementState is Jumping jumping && !jumping.Finished)
                 {
-                    userInput.Y -= GameConst.FORCE_INPUT_Y;
-                    userInput.Y -= GameConst.FORCE_G;
+                    userInput.Y -= Const.FORCE_INPUT_Y;
+                    userInput.Y -= Const.FORCE_G;
                     if (PowerUpState is Super || PowerUpState is Fire)
                     {
                         SoundController.PowerBounce.Play();

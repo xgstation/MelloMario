@@ -14,7 +14,8 @@ namespace MelloMario.BlockObjects
 
         public Brick(IGameWorld world, Point location, IListener listener) : this(world, location, listener, false) { }
 
-        public Brick(IGameWorld world, Point location, IListener listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
+        public Brick(IGameWorld world, Point location, IListener listener, bool isHidden = false) : base(world,
+            location, listener, new Point(32, 32))
         {
             this.isHidden = isHidden;
         }
@@ -23,10 +24,7 @@ namespace MelloMario.BlockObjects
 
         public IBlockState State
         {
-            get
-            {
-                return state;
-            }
+            get { return state; }
             set
             {
                 state = value;
@@ -45,7 +43,7 @@ namespace MelloMario.BlockObjects
             {
                 state = new Normal(this);
             }
-            HasInitialItem = GameDatabase.HasItemEnclosed(this);
+            HasInitialItem = Database.HasItemEnclosed(this);
             UpdateSprite();
         }
 
@@ -73,7 +71,8 @@ namespace MelloMario.BlockObjects
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive) { }
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
+            CornerMode corner, CornerMode cornerPassive) { }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 
@@ -83,7 +82,7 @@ namespace MelloMario.BlockObjects
 
         public void OnDestoy()
         {
-            ScorePoints(GameConst.SCORE_BRICK);
+            ScorePoints(Const.SCORE_BRICK);
         }
 
         public void Remove()
@@ -103,11 +102,11 @@ namespace MelloMario.BlockObjects
 
         public void ReleaseNextItem()
         {
-            if (!GameDatabase.HasItemEnclosed(this))
+            if (!Database.HasItemEnclosed(this))
             {
                 return;
             }
-            IGameObject item = GameDatabase.GetNextItem(this);
+            IGameObject item = Database.GetNextItem(this);
             World.Update();
             World.Add(item);
         }

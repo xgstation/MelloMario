@@ -12,7 +12,8 @@ namespace MelloMario
         private Vector2 movement;
         private Vector2 velocity;
 
-        public BasePhysicalObject(IGameWorld world, Point location, IListener listener, Point size, float pixelScale) : base(world, location, listener, size)
+        public BasePhysicalObject(IGameWorld world, Point location, IListener listener, Point size, float pixelScale) :
+            base(world, location, listener, size)
         {
             this.pixelScale = pixelScale;
 
@@ -27,7 +28,7 @@ namespace MelloMario
             force += delta;
         }
 
-        protected void ApplyGravity(float gravity = GameConst.FORCE_G)
+        protected void ApplyGravity(float gravity = Const.FORCE_G)
         {
             ApplyForce(new Vector2(0, gravity));
         }
@@ -163,21 +164,21 @@ namespace MelloMario
             // Apply velocity
 
             movement += velocity * deltaTime;
-            if (velocity.X > GameConst.VELOCITY_MAX_LR)
+            if (velocity.X > Const.VELOCITY_MAX_LR)
             {
-                velocity.X = GameConst.VELOCITY_MAX_LR;
+                velocity.X = Const.VELOCITY_MAX_LR;
             }
-            else if (velocity.X < -GameConst.VELOCITY_MAX_LR)
+            else if (velocity.X < -Const.VELOCITY_MAX_LR)
             {
-                velocity.X = -GameConst.VELOCITY_MAX_LR;
+                velocity.X = -Const.VELOCITY_MAX_LR;
             }
-            if (velocity.Y > GameConst.VELOCITY_MAX_D)
+            if (velocity.Y > Const.VELOCITY_MAX_D)
             {
-                velocity.Y = GameConst.VELOCITY_MAX_D;
+                velocity.Y = Const.VELOCITY_MAX_D;
             }
-            else if (velocity.Y < -GameConst.VELOCITY_MAX_U)
+            else if (velocity.Y < -Const.VELOCITY_MAX_U)
             {
-                velocity.Y = -GameConst.VELOCITY_MAX_U;
+                velocity.Y = -Const.VELOCITY_MAX_U;
             }
 
             // Apply movement

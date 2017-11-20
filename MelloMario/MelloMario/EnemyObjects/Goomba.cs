@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using MelloMario.BlockObjects;
+using MelloMario.BlockObjects.BrickStates;
 using MelloMario.EnemyObjects.KoopaStates;
 using MelloMario.Factories;
 using MelloMario.MarioObjects;
@@ -9,11 +10,10 @@ using MelloMario.UIObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Defeated = MelloMario.EnemyObjects.GoombaStates.Defeated;
+using Normal = MelloMario.EnemyObjects.GoombaStates.Normal;
 
 namespace MelloMario.EnemyObjects
 {
-    using BlockObjects.QuestionStates;
-
     internal class Goomba : BasePhysicalObject
     {
         private IGoombaState state;
@@ -21,9 +21,11 @@ namespace MelloMario.EnemyObjects
         //This suppression exists because this constructor is inderectly used by the json parser.
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public Goomba(IGameWorld world, Point location, IListener listener) : this(world, location, GameDatabase.GetCharacterLocation(), listener) { }
+        public Goomba(IGameWorld world, Point location, IListener listener) : this(world, location,
+            Database.GetCharacterLocation(), listener) { }
 
-        public Goomba(IGameWorld world, Point location, Point marioLoc, IListener listener) : base(world, location, listener, new Point(32, 32), 32)
+        public Goomba(IGameWorld world, Point location, Point marioLoc, IListener listener) : base(world, location,
+            listener, new Point(32, 32), 32)
         {
             if (marioLoc.X < location.X)
             {
@@ -34,16 +36,13 @@ namespace MelloMario.EnemyObjects
                 Facing = FacingMode.right;
             }
 
-            state = new GoombaStates.Normal(this);
+            state = new Normal(this);
             UpdateSprite();
         }
 
         public IGoombaState State
         {
-            get
-            {
-                return state;
-            }
+            get { return state; }
             set
             {
                 state = value;
@@ -67,18 +66,19 @@ namespace MelloMario.EnemyObjects
 
             if (Facing == FacingMode.left)
             {
-                SetHorizontalVelocity(-GameConst.VELOCITY_GOOMBA);
+                SetHorizontalVelocity(-Const.VELOCITY_GOOMBA);
             }
             else
             {
-                SetHorizontalVelocity(GameConst.VELOCITY_GOOMBA);
+                SetHorizontalVelocity(Const.VELOCITY_GOOMBA);
             }
 
             base.OnSimulation(time);
         }
 
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
+            CornerMode corner, CornerMode cornerPassive)
         {
             if (state is Defeated)
             {
@@ -95,13 +95,13 @@ namespace MelloMario.EnemyObjects
                     }
                     break;
                 case "Brick":
-                    if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                    if (((Brick) target).State is Hidden)
                     {
                         break;
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is Hidden)
+                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
                     {
                         break;
                     }
@@ -155,8 +155,8 @@ namespace MelloMario.EnemyObjects
 
         public void Defeat()
         {
-            ScorePoints(GameConst.SCORE_GOOMBA);
-            new PopingUpPoints(World, Boundary.Location, GameConst.SCORE_GOOMBA);
+            ScorePoints(Const.SCORE_GOOMBA);
+            new PopingUpPoints(World, Boundary.Location, Const.SCORE_GOOMBA);
             State.Defeat();
         }
     }
