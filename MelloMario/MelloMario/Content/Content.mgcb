@@ -550,7 +550,7 @@
 
 #begin Music/05-starman.mp3
 /importer:Mp3Importer
-/processor:SoundEffectProcessor
+/processor:SongProcessor
 /processorParam:Quality=Best
 /build:Music/05-starman.mp3
 
@@ -757,10 +757,4 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Medium
 /build:SFX/smb_1.wav
-
-#begin SFX/05-starman.mp3
-/importer:Mp3Importer
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:SFX/05-starman.mp3
 

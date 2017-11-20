@@ -1,7 +1,7 @@
 ﻿{
   "Maps": [
     {
-      "Type": "Main",
+      "Type": "Normal",
       "Index": "Main",
       "Grid": 32,
       "Size": {
