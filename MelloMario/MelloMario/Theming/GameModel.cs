@@ -215,10 +215,6 @@ namespace MelloMario.Theming
             {
                 MediaPlayer.Play(SoundController.Normal);
             }
-            if (activePlayer.Character is MarioCharacter mario && mario.ProtectionState is Starred)
-            {
-                MediaPlayer.Play(SoundController.Star);
-            }
             else if (activePlayer.TimeRemain <= 90000)
             {
                 SoundController.PlayMusic(SoundController.Songs.Hurry);

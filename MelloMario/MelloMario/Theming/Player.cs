@@ -86,7 +86,7 @@ namespace MelloMario.Theming
         {
             Score += GameConst.SCORE_TIME_MULT * TimeRemain / 1000;
             TimeRemain = GameConst.LEVEL_TIME * 1000;
-            SoundController.GameWon.Play();
+            
         }
 
         public void Update(int time)
