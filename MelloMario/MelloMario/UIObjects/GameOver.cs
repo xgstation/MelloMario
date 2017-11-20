@@ -71,7 +71,9 @@ namespace MelloMario.UIObjects
             else
             {
                 gameOverSprite.Draw(time, spriteBatch, gameOverDestinationRect);
-                SoundController.GameOver.Play();
+
+                //TODO:Move this into soundcontroller
+                //SoundController.GameOver.Play();
             }
         }
     }
