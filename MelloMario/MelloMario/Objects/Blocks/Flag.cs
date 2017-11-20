@@ -3,12 +3,12 @@
     #region
 
     using System;
-    using Characters;
-    using Factories;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using Theming;
-    using UserInterfaces;
 
     #endregion
 
@@ -22,7 +22,11 @@
 
         private EventArgs eventInfo;
 
-        public Flag(IGameWorld world, Point location, IListener listener, int height, int maxHeight) : base(world, location, listener, new Point(32, 32))
+        public Flag(IGameWorld world, Point location, IListener listener, int height, int maxHeight) : base(
+            world,
+            location,
+            listener,
+            new Point(32, 32))
         {
             listener.Subscribe(this);
             this.height = height;
@@ -40,7 +44,12 @@
 
         protected override void OnUpdate(int time) { }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (target is MarioCharacter mario)
             {

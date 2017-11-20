@@ -3,11 +3,11 @@
     #region
 
     using System.Diagnostics.CodeAnalysis;
-    using Factories;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Items.OneUpMushroomStates;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using OneUpMushroomStates;
-    using Theming;
 
     #endregion
 
@@ -16,7 +16,8 @@
         private bool collected;
         private IItemState state;
 
-        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener, bool isUnveil) : base(world, location, listener, new Point(32, 32), 32)
+        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener, bool isUnveil) :
+            base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
 
@@ -45,9 +46,19 @@
         //This suppression exists because this constructor is inderectly used by the json parser.
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public OneUpMushroom(IGameWorld world, Point location, IListener listener) : this(world, location, Database.GetCharacterLocation(), listener, false) { }
+        public OneUpMushroom(IGameWorld world, Point location, IListener listener) : this(
+            world,
+            location,
+            Database.GetCharacterLocation(),
+            listener,
+            false) { }
 
-        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(world, location, marioLocation, listener, false) { }
+        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(
+            world,
+            location,
+            marioLocation,
+            listener,
+            false) { }
 
         public IItemState State
         {
@@ -87,7 +98,12 @@
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             switch (target.GetType().Name)
             {
@@ -112,7 +128,8 @@
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.right;
                     }
-                    else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
+                    else if (mode == CollisionMode.Right
+                        || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.left;

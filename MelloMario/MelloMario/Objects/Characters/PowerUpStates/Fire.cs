@@ -2,7 +2,7 @@
 {
     #region
 
-    using ProtectionStates;
+    using MelloMario.Objects.Characters.ProtectionStates;
 
     #endregion
 

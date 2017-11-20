@@ -3,8 +3,8 @@
     #region
 
     using System.Collections.Generic;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using Theming;
 
     #endregion
 

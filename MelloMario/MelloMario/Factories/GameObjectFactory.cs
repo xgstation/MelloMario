@@ -4,12 +4,12 @@
 
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Enemies;
+    using MelloMario.Objects.Items;
+    using MelloMario.Objects.Miscs;
     using Microsoft.Xna.Framework;
-    using Objects.Blocks;
-    using Objects.Characters;
-    using Objects.Enemies;
-    using Objects.Items;
-    using Objects.Miscs;
 
     #endregion
 
@@ -25,7 +25,12 @@
 
         public static IGameObjectFactory Instance { get; } = new GameObjectFactory();
 
-        public ICharacter CreateGameCharacter(string type, IGameWorld world, IPlayer player, Point location, IListener listener)
+        public ICharacter CreateGameCharacter(
+            string type,
+            IGameWorld world,
+            IPlayer player,
+            Point location,
+            IListener listener)
         {
             switch (type)
             {
@@ -109,14 +114,24 @@
             }
         }
 
-        public IEnumerable<IGameObject> CreateGameObjectGroup(string type, IGameWorld world, Point location, int count, IListener listener)
+        public IEnumerable<IGameObject> CreateGameObjectGroup(
+            string type,
+            IGameWorld world,
+            Point location,
+            int count,
+            IListener listener)
         {
             switch (type)
             {
                 case "FlagPole":
                     for (int i = 0; i < count; ++i)
                     {
-                        yield return new Flag(world, new Point(location.X, location.Y + 32 * i), listener, count - i, count);
+                        yield return new Flag(
+                            world,
+                            new Point(location.X, location.Y + 32 * i),
+                            listener,
+                            count - i,
+                            count);
                     }
                     yield break;
 

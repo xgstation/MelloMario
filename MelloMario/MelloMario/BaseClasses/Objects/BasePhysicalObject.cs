@@ -2,8 +2,8 @@
 {
     #region
 
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using Theming;
 
     #endregion
 
@@ -16,7 +16,12 @@
         private Vector2 velocity;
         private Vector2 movement;
 
-        protected BasePhysicalObject(IGameWorld world, Point location, IListener listener, Point size, float pixelScale) : base(world, location, listener, size)
+        protected BasePhysicalObject(
+            IGameWorld world,
+            Point location,
+            IListener listener,
+            Point size,
+            float pixelScale) : base(world, location, listener, size)
         {
             this.pixelScale = pixelScale;
 

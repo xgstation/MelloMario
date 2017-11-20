@@ -94,7 +94,10 @@
             World.Move(this);
         }
 
-        protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
+        protected void ShowSprite(
+            ISprite newSprite,
+            ResizeModeX modeX = ResizeModeX.Center,
+            ResizeModeY modeY = ResizeModeY.Bottom)
         {
             sprite = newSprite;
             Resize(sprite.PixelSize, modeX, modeY);

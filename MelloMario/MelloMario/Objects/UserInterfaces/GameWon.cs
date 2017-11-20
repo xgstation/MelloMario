@@ -2,10 +2,10 @@
 {
     #region
 
-    using Factories;
+    using MelloMario.Factories;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using Theming;
 
     #endregion
 
@@ -21,7 +21,14 @@
         public GameWon(IPlayer player) : base(player)
         {
             splashSprite = SpriteFactory.Instance.CreateSplashSprite();
-            string text = "MARIO        " + "   WORLD    TIME\n" + Player.Score.ToString().PadLeft(6, '0') + "    *" + Player.Coins.ToString().PadLeft(2, '0') + "    " + "1-1" + "      ";
+            string text = "MARIO        "
+                + "   WORLD    TIME\n"
+                + Player.Score.ToString().PadLeft(6, '0')
+                + "    *"
+                + Player.Coins.ToString().PadLeft(2, '0')
+                + "    "
+                + "1-1"
+                + "      ";
             textSprite = SpriteFactory.Instance.CreateTextSprite(text);
             textSprite2 = SpriteFactory.Instance.CreateTextSprite("You won!\n\nPress R to restart\n\nPress Q to quit");
 

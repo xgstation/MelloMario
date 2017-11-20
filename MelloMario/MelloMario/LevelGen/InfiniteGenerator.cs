@@ -4,9 +4,9 @@
 
     using System;
     using System.Security.Cryptography;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Enemies;
     using Microsoft.Xna.Framework;
-    using Objects.Blocks;
-    using Objects.Enemies;
 
     #endregion
 
@@ -51,14 +51,29 @@
                     RngCrypto.GetBytes(a);
                     int q = BitConverter.ToInt32(a, 0);
                     elapsed = 0;
-                    new Goomba(world, new Point(world.Boundary.Right - (40 + q % 4) * (q % 3) - 300 + q % 256, 0 * 32 + p % 128), listener);
+                    new Goomba(
+                        world,
+                        new Point(world.Boundary.Right - (40 + q % 4) * (q % 3) - 300 + q % 256, 0 * 32 + p % 128),
+                        listener);
                     if (difficultyIndex / double.Epsilon > 20)
                     {
-                        new Koopa(world, new Point(world.Boundary.Right + (40 + q % 4) * (q % 5), 32 + p % 324), listener, p % 2 == 0 ? "Green" : "Red");
+                        new Koopa(
+                            world,
+                            new Point(world.Boundary.Right + (40 + q % 4) * (q % 5), 32 + p % 324),
+                            listener,
+                            p % 2 == 0 ? "Green" : "Red");
                     }
                     if (difficultyIndex / double.Epsilon > 200)
                     {
-                        new Piranha(world, new Point(world.Boundary.Right + p % 3 * 32, 32 * 13), listener, new Point(32, 48), 250 - p % 249, 1250 - q % 1249, 1f, p % 4 == 0 ? "Green" : (p % 3 == 0 ? "Red" : (p % 2 == 0 ? "Cyan" : "Gray")));
+                        new Piranha(
+                            world,
+                            new Point(world.Boundary.Right + p % 3 * 32, 32 * 13),
+                            listener,
+                            new Point(32, 48),
+                            250 - p % 249,
+                            1250 - q % 1249,
+                            1f,
+                            p % 4 == 0 ? "Green" : (p % 3 == 0 ? "Red" : (p % 2 == 0 ? "Cyan" : "Gray")));
                     }
                 }
             }

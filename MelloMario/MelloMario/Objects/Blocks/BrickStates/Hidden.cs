@@ -2,9 +2,9 @@
 {
     #region
 
-    using Characters;
-    using Characters.PowerUpStates;
-    using Theming;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.PowerUpStates;
+    using MelloMario.Theming;
 
     #endregion
 

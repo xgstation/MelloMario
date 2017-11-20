@@ -2,7 +2,7 @@
 {
     #region
 
-    using Objects.Characters;
+    using MelloMario.Objects.Characters;
 
     #endregion
 

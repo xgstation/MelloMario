@@ -2,7 +2,7 @@
 {
     #region
 
-    using Interfaces.Objects.States;
+    using MelloMario.Interfaces.Objects.States;
 
     #endregion
 

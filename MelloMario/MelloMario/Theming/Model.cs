@@ -3,14 +3,14 @@
     #region
 
     using System.Collections.Generic;
-    using Containers;
-    using Controls.Scripts;
-    using LevelGen;
+    using MelloMario.Containers;
+    using MelloMario.Controls.Scripts;
+    using MelloMario.LevelGen;
+    using MelloMario.Objects.Miscs;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Sounds;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using Objects.Miscs;
-    using Objects.UserInterfaces;
-    using Sounds;
 
     #endregion
 

@@ -3,17 +3,17 @@
     #region
 
     using System.Diagnostics.CodeAnalysis;
-    using Blocks;
-    using Blocks.BrickStates;
-    using Characters;
-    using Characters.MovementStates;
-    using Characters.ProtectionStates;
-    using Factories;
-    using KoopaStates;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.MovementStates;
+    using MelloMario.Objects.Characters.ProtectionStates;
+    using MelloMario.Objects.Enemies.KoopaStates;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using Theming;
-    using UserInterfaces;
 
     #endregion
 
@@ -24,9 +24,18 @@
         //This suppression exists because this constructor is inderectly used by the json parser.
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public Goomba(IGameWorld world, Point location, IListener listener) : this(world, location, Database.GetCharacterLocation(), listener) { }
+        public Goomba(IGameWorld world, Point location, IListener listener) : this(
+            world,
+            location,
+            Database.GetCharacterLocation(),
+            listener) { }
 
-        public Goomba(IGameWorld world, Point location, Point marioLoc, IListener listener) : base(world, location, listener, new Point(32, 32), 32)
+        public Goomba(IGameWorld world, Point location, Point marioLoc, IListener listener) : base(
+            world,
+            location,
+            listener,
+            new Point(32, 32),
+            32)
         {
             if (marioLoc.X < location.X)
             {
@@ -81,7 +90,12 @@
         }
 
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (state is GoombaStates.Defeated)
             {

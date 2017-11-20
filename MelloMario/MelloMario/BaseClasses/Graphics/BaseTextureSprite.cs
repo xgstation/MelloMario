@@ -35,9 +35,15 @@
         protected override void OnDraw(int time, SpriteBatch spriteBatch, Rectangle destination)
         {
             OnAnimate(time);
-            spriteBatch.Draw(texture, destination, source, color, 0f, //rotation
+            spriteBatch.Draw(
+                texture,
+                destination,
+                source,
+                color,
+                0f, //rotation
                 new Vector2(), //origin
-                SpriteEffects.None, LayerDepth);
+                SpriteEffects.None,
+                LayerDepth);
         }
     }
 }

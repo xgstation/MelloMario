@@ -2,12 +2,12 @@
 {
     #region
 
-    using Factories;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.MovementStates;
+    using MelloMario.Objects.Characters.PowerUpStates;
+    using MelloMario.Objects.Characters.ProtectionStates;
     using Microsoft.Xna.Framework.Media;
-    using Objects.Characters;
-    using Objects.Characters.MovementStates;
-    using Objects.Characters.PowerUpStates;
-    using Objects.Characters.ProtectionStates;
 
     #endregion
 
@@ -58,7 +58,9 @@
         {
             MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
             Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume = MediaPlayer.IsMuted ? 0 : SoundEffectVolume;
-            SoundEffectVolume = MediaPlayer.IsMuted ? SoundEffectVolume : Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
+            SoundEffectVolume = MediaPlayer.IsMuted
+                ? SoundEffectVolume
+                : Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
         }
 
         private static void Pause()

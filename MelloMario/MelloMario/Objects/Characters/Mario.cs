@@ -4,17 +4,17 @@
 
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using Blocks;
-    using Blocks.BrickStates;
-    using Enemies;
-    using Factories;
-    using Items;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Characters.MovementStates;
+    using MelloMario.Objects.Characters.PowerUpStates;
+    using MelloMario.Objects.Characters.ProtectionStates;
+    using MelloMario.Objects.Enemies;
+    using MelloMario.Objects.Items;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using MovementStates;
-    using PowerUpStates;
-    using ProtectionStates;
-    using Theming;
 
     #endregion
 
@@ -27,7 +27,12 @@
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
 
-        public Mario(IGameWorld world, Point location, IListener listener) : base(world, location, listener, new Point(), 32)
+        public Mario(IGameWorld world, Point location, IListener listener) : base(
+            world,
+            location,
+            listener,
+            new Point(),
+            32)
         {
             listener.Subscribe(this);
             powerUpState = new Standard(this);
@@ -94,7 +99,12 @@
                 facingString = "Right";
             }
 
-            ShowSprite(SpriteFactory.Instance.CreateMarioSprite(powerUpState.GetType().Name, movementState.GetType().Name, protectionState.GetType().Name, facingString));
+            ShowSprite(
+                SpriteFactory.Instance.CreateMarioSprite(
+                    powerUpState.GetType().Name,
+                    movementState.GetType().Name,
+                    protectionState.GetType().Name,
+                    facingString));
         }
 
         protected void ChangeFacing(FacingMode facing)
@@ -122,7 +132,12 @@
         }
 
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (ProtectionState is Dead)
             {

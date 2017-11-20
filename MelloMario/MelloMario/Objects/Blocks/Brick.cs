@@ -2,12 +2,12 @@
 {
     #region
 
-    using BrickStates;
-    using Characters;
-    using Factories;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using Theming;
 
     #endregion
 
@@ -18,7 +18,11 @@
 
         public Brick(IGameWorld world, Point location, IListener listener) : this(world, location, listener, false) { }
 
-        public Brick(IGameWorld world, Point location, IListener listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
+        public Brick(IGameWorld world, Point location, IListener listener, bool isHidden = false) : base(
+            world,
+            location,
+            listener,
+            new Point(32, 32))
         {
             this.isHidden = isHidden;
         }
@@ -77,7 +81,12 @@
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive) { }
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive) { }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 

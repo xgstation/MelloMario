@@ -2,7 +2,7 @@
 {
     #region
 
-    using Factories;
+    using MelloMario.Factories;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -60,7 +60,12 @@
 
         public void Init(string type, IGameWorld world, IListener listener, ICamera newCamera)
         {
-            Character = GameObjectFactory.Instance.CreateGameCharacter(type, world, this, world.GetInitialPoint(), listener);
+            Character = GameObjectFactory.Instance.CreateGameCharacter(
+                type,
+                world,
+                this,
+                world.GetInitialPoint(),
+                listener);
             Session.Add(this);
             Camera = newCamera;
 
@@ -77,7 +82,12 @@
         public void Reset(string type, IListener listener)
         {
             Character.Remove();
-            Character = GameObjectFactory.Instance.CreateGameCharacter(type, Character.CurrentWorld, this, Character.CurrentWorld.GetInitialPoint(), listener);
+            Character = GameObjectFactory.Instance.CreateGameCharacter(
+                type,
+                Character.CurrentWorld,
+                this,
+                Character.CurrentWorld.GetInitialPoint(),
+                listener);
 
             if (Lifes > 0)
             {
@@ -97,7 +107,9 @@
             TimeRemain -= time;
             if (Character != null)
             {
-                Camera?.LookAt(((IGameObject) Character).Boundary.Location, Character.CurrentWorld.Boundary); // TODO: remove type casting
+                Camera?.LookAt(
+                    ((IGameObject) Character).Boundary.Location,
+                    Character.CurrentWorld.Boundary); // TODO: remove type casting
             }
         }
 

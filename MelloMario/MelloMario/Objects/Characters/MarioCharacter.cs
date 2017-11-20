@@ -2,12 +2,12 @@
 {
     #region
 
-    using Items;
+    using MelloMario.Objects.Characters.MovementStates;
+    using MelloMario.Objects.Characters.PowerUpStates;
+    using MelloMario.Objects.Characters.ProtectionStates;
+    using MelloMario.Objects.Items;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using MovementStates;
-    using PowerUpStates;
-    using ProtectionStates;
-    using Theming;
 
     #endregion
 
@@ -19,7 +19,10 @@
 
         private Vector2 userInput;
 
-        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener listener) : base(world, location, listener)
+        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener listener) : base(
+            world,
+            location,
+            listener)
         {
             Player = player;
         }
@@ -47,7 +50,9 @@
             get
             {
                 Point location = Boundary.Location - new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
-                Point size = new Point(Const.SCREEN_WIDTH * 2, Const.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
+                Point size = new Point(
+                    Const.SCREEN_WIDTH * 2,
+                    Const.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
 
                 return new Rectangle(location, size);
             }

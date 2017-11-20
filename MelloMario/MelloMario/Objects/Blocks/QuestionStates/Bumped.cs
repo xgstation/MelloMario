@@ -2,8 +2,8 @@
 {
     #region
 
-    using Characters;
-    using Theming;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Theming;
 
     #endregion
 

@@ -2,7 +2,7 @@
 {
     #region
 
-    using Factories;
+    using MelloMario.Factories;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -36,7 +36,16 @@
             Offset(ref oneUpDestinationRect);
             UpdateOrigin();
 
-            string newText = "MARIO     *" + Player.Lifes.ToString().PadLeft(2, '0') + "   WORLD    TIME\n" + Player.Score.ToString().PadLeft(6, '0') + "    *" + Player.Coins.ToString().PadLeft(2, '0') + "    " + "1-1" + "      " + Player.TimeRemain / 1000; // TODO: get World name from player.CurrentWorld
+            string newText = "MARIO     *"
+                + Player.Lifes.ToString().PadLeft(2, '0')
+                + "   WORLD    TIME\n"
+                + Player.Score.ToString().PadLeft(6, '0')
+                + "    *"
+                + Player.Coins.ToString().PadLeft(2, '0')
+                + "    "
+                + "1-1"
+                + "      "
+                + Player.TimeRemain / 1000; // TODO: get World name from player.CurrentWorld
 
             if (newText != text)
             {

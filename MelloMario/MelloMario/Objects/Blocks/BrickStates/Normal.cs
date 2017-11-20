@@ -2,8 +2,8 @@
 {
     #region
 
-    using Characters;
-    using Characters.PowerUpStates;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.PowerUpStates;
 
     #endregion
 

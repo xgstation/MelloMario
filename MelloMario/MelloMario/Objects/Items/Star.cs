@@ -2,14 +2,14 @@
 {
     #region
 
-    using Blocks;
-    using Blocks.BrickStates;
-    using Factories;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Items.StarStates;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using StarStates;
-    using Theming;
-    using UserInterfaces;
 
     #endregion
 
@@ -18,7 +18,8 @@
         private bool collected;
         private IItemState state;
 
-        public Star(IGameWorld world, Point location, Point marioLocation, IListener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
+        public Star(IGameWorld world, Point location, Point marioLocation, IListener listener, bool isUnveil = true) :
+            base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
 
@@ -43,7 +44,12 @@
             }
         }
 
-        public Star(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(world, location, marioLocation, listener, false) { }
+        public Star(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(
+            world,
+            location,
+            marioLocation,
+            listener,
+            false) { }
 
         public IItemState State
         {
@@ -87,7 +93,12 @@
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (state is StarStates.Normal)
             {
@@ -118,17 +129,20 @@
                         {
                             Bounce(mode, new Vector2());
                         }
-                        if (mode == CollisionMode.Left || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
+                        if (mode == CollisionMode.Left
+                            || mode == CollisionMode.InnerLeft && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2(), 1);
                             Facing = FacingMode.right;
                         }
-                        else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
+                        else if (mode == CollisionMode.Right
+                            || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2(), 1);
                             Facing = FacingMode.left;
                         }
-                        if (mode == CollisionMode.Bottom || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
+                        if (mode == CollisionMode.Bottom
+                            || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2());
                             ApplyVerticalFriction(Const.VELOCITY_STAR_V);

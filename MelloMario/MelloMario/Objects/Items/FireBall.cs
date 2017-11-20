@@ -2,8 +2,8 @@
 {
     #region
 
-    using Characters;
-    using Factories;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Characters;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -11,7 +11,12 @@
 
     internal class FireBall : BasePhysicalObject
     {
-        public FireBall(IGameWorld world, Point location, IListener listener) : base(world, location, listener, new Point(16, 16), 32)
+        public FireBall(IGameWorld world, Point location, IListener listener) : base(
+            world,
+            location,
+            listener,
+            new Point(16, 16),
+            32)
         {
             ShowSprite(SpriteFactory.Instance.CreateFireSprite());
         }
@@ -31,7 +36,12 @@
             //throw new NotImplementedException();
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (target is Mario) { }
         }

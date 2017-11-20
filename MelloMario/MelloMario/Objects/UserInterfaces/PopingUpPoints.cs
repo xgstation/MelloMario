@@ -2,7 +2,7 @@
 {
     #region
 
-    using Factories;
+    using MelloMario.Factories;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 

@@ -2,13 +2,13 @@
 {
     #region
 
-    using Characters;
-    using Factories;
-    using FireFlowerStates;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Items.FireFlowerStates;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using Theming;
-    using UserInterfaces;
 
     #endregion
 
@@ -17,7 +17,11 @@
         private bool collected;
         private IItemState state;
 
-        public FireFlower(IGameWorld world, Point location, IListener listener, bool isUnveil) : base(world, location, listener, new Point(32, 32))
+        public FireFlower(IGameWorld world, Point location, IListener listener, bool isUnveil) : base(
+            world,
+            location,
+            listener,
+            new Point(32, 32))
         {
             collected = false;
             if (isUnveil)
@@ -33,7 +37,8 @@
             }
         }
 
-        public FireFlower(IGameWorld world, Point location, IListener listener) : this(world, location, listener, false) { }
+        public FireFlower(IGameWorld world, Point location, IListener listener) :
+            this(world, location, listener, false) { }
 
         public IItemState State
         {
@@ -58,7 +63,12 @@
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (target is Mario && state is Normal)
             {

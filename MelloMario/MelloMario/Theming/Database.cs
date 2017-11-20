@@ -6,24 +6,27 @@
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.PowerUpStates;
+    using MelloMario.Objects.Items;
     using Microsoft.Xna.Framework;
-    using Objects.Blocks;
-    using Objects.Characters;
-    using Objects.Characters.PowerUpStates;
-    using Objects.Items;
 
     #endregion
 
     internal static class Database
     {
-        private static readonly IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();
+        private static readonly IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb =
+            new Dictionary<IGameObject, IList<IGameObject>>();
 
         private static readonly IDictionary<Pipeline, string> PipelineEntranceDb = new Dictionary<Pipeline, string>();
         private static readonly IDictionary<Pipeline, string> PipelinePortalDb = new Dictionary<Pipeline, string>();
 
-        private static readonly IDictionary<string, Tuple<Pipeline, Pipeline>> PipelineIndex = new Dictionary<string, Tuple<Pipeline, Pipeline>>();
+        private static readonly IDictionary<string, Tuple<Pipeline, Pipeline>> PipelineIndex =
+            new Dictionary<string, Tuple<Pipeline, Pipeline>>();
 
-        private static readonly ConcurrentDictionary<ICharacter, Point> CharacterLocations = new ConcurrentDictionary<ICharacter, Point>();
+        private static readonly ConcurrentDictionary<ICharacter, Point> CharacterLocations =
+            new ConcurrentDictionary<ICharacter, Point>();
 
         private static IGameSession Session;
 
@@ -55,7 +58,9 @@
 
         public static Pipeline GetPortal(Pipeline pipeline)
         {
-            return PipelinePortalDb.ContainsKey(pipeline) && PipelineIndex.ContainsKey(PipelinePortalDb[pipeline]) ? PipelineIndex[PipelinePortalDb[pipeline]].Item1 : null;
+            return PipelinePortalDb.ContainsKey(pipeline) && PipelineIndex.ContainsKey(PipelinePortalDb[pipeline])
+                ? PipelineIndex[PipelinePortalDb[pipeline]].Item1
+                : null;
         }
 
         public static Point GetCharacterLocation()
@@ -77,7 +82,10 @@
             }
             if (ItemEnclosedDb[obj][0] is SuperMushroom mushroom)
             {
-                if (Session.ScanPlayers().Any(c => c.Character is MarioCharacter mario && (mario.PowerUpState is Super || mario.PowerUpState is Fire)))
+                if (Session.ScanPlayers()
+                    .Any(
+                        c => c.Character is MarioCharacter mario
+                            && (mario.PowerUpState is Super || mario.PowerUpState is Fire)))
                 {
                     ItemEnclosedDb[obj].RemoveAt(0);
                     return mushroom.GetFireFlower();
@@ -126,7 +134,10 @@
         {
             foreach (IPlayer player in Session.ScanPlayers())
             {
-                CharacterLocations.AddOrUpdate(player.Character, ((IGameObject) player.Character).Boundary.Location, (p, loc) => ((IGameObject) p).Boundary.Location);
+                CharacterLocations.AddOrUpdate(
+                    player.Character,
+                    ((IGameObject) player.Character).Boundary.Location,
+                    (p, loc) => ((IGameObject) p).Boundary.Location);
             }
         }
     }

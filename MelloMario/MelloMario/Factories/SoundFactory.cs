@@ -3,10 +3,10 @@
     #region
 
     using System.Collections.Generic;
+    using MelloMario.Sounds;
     using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Media;
-    using Sounds;
 
     #endregion
 

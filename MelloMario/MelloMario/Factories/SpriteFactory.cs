@@ -3,7 +3,7 @@
     #region
 
     using System.Collections.Generic;
-    using Graphics.Sprites;
+    using MelloMario.Graphics.Sprites;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
@@ -37,16 +37,41 @@
             return new SplashSprite();
         }
 
-        public ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing)
+        public ISprite CreateMarioSprite(
+            string powerUpStatus,
+            string movementStatus,
+            string protectionStatus,
+            string facing)
         {
             switch (protectionStatus)
             {
                 case "Protected":
-                    return new FlashingAnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
+                    return new FlashingAnimatedSprite(
+                        GetTexture(powerUpStatus + movementStatus + facing),
+                        movementStatus == "Walking" ? 3 : 1,
+                        1,
+                        0,
+                        0,
+                        2,
+                        powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Starred":
-                    return new FlickingAnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
+                    return new FlickingAnimatedSprite(
+                        GetTexture(powerUpStatus + movementStatus + facing),
+                        movementStatus == "Walking" ? 3 : 1,
+                        1,
+                        0,
+                        0,
+                        2,
+                        powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Normal":
-                    return new AnimatedSprite(GetTexture(powerUpStatus + movementStatus + facing), movementStatus == "Walking" ? 3 : 1, 1, 0, 0, 2, powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
+                    return new AnimatedSprite(
+                        GetTexture(powerUpStatus + movementStatus + facing),
+                        movementStatus == "Walking" ? 3 : 1,
+                        1,
+                        0,
+                        0,
+                        2,
+                        powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Dead":
                     return new StaticSprite(GetTexture(protectionStatus), zIndex: ZIndex.Foreground);
                 case "GameOver":

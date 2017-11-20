@@ -5,11 +5,11 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
-    using Containers;
+    using MelloMario.Containers;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using Theming;
 
     #endregion
 
@@ -49,7 +49,11 @@
             return true;
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(
+            JsonReader reader,
+            Type objectType,
+            object existingValue,
+            JsonSerializer serializer)
         {
             jsonToken = JToken.Load(reader);
             mapListToken = Util.TryGet(out JToken t, jsonToken, "Maps") ? t : null;

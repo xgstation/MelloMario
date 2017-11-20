@@ -3,11 +3,11 @@
     #region
 
     using System.Collections.Generic;
-    using Controls.Controllers;
-    using Factories;
+    using MelloMario.Controls.Controllers;
+    using MelloMario.Factories;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using Theming;
 
     #endregion
 

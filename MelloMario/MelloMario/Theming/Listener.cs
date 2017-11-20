@@ -3,10 +3,10 @@
     #region
 
     using System;
-    using Objects;
-    using Objects.Blocks;
-    using Objects.Characters;
-    using Objects.Items;
+    using MelloMario.Objects;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Items;
 
     #endregion
 

@@ -6,12 +6,12 @@
     using System.Collections.Generic;
     using System.Diagnostics.Contracts;
     using System.Linq;
-    using Factories;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using Objects.Blocks;
-    using Theming;
 
     #endregion
 
@@ -22,7 +22,11 @@
             //DO NOTHING
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(
+            JsonReader reader,
+            Type objectType,
+            object existingValue,
+            JsonSerializer serializer)
         {
             JToken token = JToken.Load(reader);
             float X = token["X"].ToObject<float>();
@@ -81,7 +85,13 @@
             return true;
         }
 
-        public static void BatchCreate<T>(Func<Point, T> func, Point startPoint, Point quantity, Point objSize, ICollection<Point> ignoredSet, ref Stack<IGameObject> stack)
+        public static void BatchCreate<T>(
+            Func<Point, T> func,
+            Point startPoint,
+            Point quantity,
+            Point objSize,
+            ICollection<Point> ignoredSet,
+            ref Stack<IGameObject> stack)
         {
             for (int x = 0; x < quantity.X; x++)
             {
@@ -107,7 +117,13 @@
             }
         }
 
-        public static void TriganleCreate<T>(Func<Point, T> createFunc, Point startPoint, Point triangleSize, Point objSize, ICollection<Point> ignoredSet, ref Stack<IGameObject> stack)
+        public static void TriganleCreate<T>(
+            Func<Point, T> createFunc,
+            Point startPoint,
+            Point triangleSize,
+            Point objSize,
+            ICollection<Point> ignoredSet,
+            ref Stack<IGameObject> stack)
         {
             int X = triangleSize.X;
             int Y = triangleSize.Y;
@@ -119,7 +135,9 @@
             {
                 for (int x = 0; x <= y; x++)
                 {
-                    Point createLocation = new Point(startPoint.X + (directionToRight ? x : -x) * objSize.X, startPoint.Y + (directionToDown ? y : -y) * objSize.Y);
+                    Point createLocation = new Point(
+                        startPoint.X + (directionToRight ? x : -x) * objSize.X,
+                        startPoint.Y + (directionToDown ? y : -y) * objSize.Y);
                     Point createIndex = new Point(x + 1, y + 1);
                     if (ignoredSet == null || !ignoredSet.Contains(createIndex))
                     {
@@ -140,7 +158,15 @@
             }
         }
 
-        public static void BatchCreateWithProperties<T1, T2>(Func<Point, T1> createFunc, Point startPoint, Point quantity, Point objSize, ICollection<Point> ignoredSet, ref Stack<IGameObject> stack, IDictionary<Point, T2> properties, Action<IGameObject, T2> applyProperties)
+        public static void BatchCreateWithProperties<T1, T2>(
+            Func<Point, T1> createFunc,
+            Point startPoint,
+            Point quantity,
+            Point objSize,
+            ICollection<Point> ignoredSet,
+            ref Stack<IGameObject> stack,
+            IDictionary<Point, T2> properties,
+            Action<IGameObject, T2> applyProperties)
         {
             Contract.Assume(!((properties == null) ^ (applyProperties == null)));
             for (int x = 0; x < quantity.X; x++)
@@ -178,7 +204,13 @@
             }
         }
 
-        public static List<IGameObject> CreateSinglePipeline(Model model, IGameWorld world, IListener listener, string pipelineType, int pipelineLength, Point pipelineLoc)
+        public static List<IGameObject> CreateSinglePipeline(
+            Model model,
+            IGameWorld world,
+            IListener listener,
+            string pipelineType,
+            int pipelineLength,
+            Point pipelineLoc)
         {
             int grid = Const.GRID;
             List<IGameObject> listOfPipelineComponents = new List<IGameObject>();
@@ -189,7 +221,12 @@
                 //TODO: this is sloppy, this should use the game object factory.
                 case "V":
                     in1 = new Pipeline(world, pipelineLoc, listener, "LeftIn", model);
-                    in2 = new Pipeline(world, new Point(pipelineLoc.X + grid, pipelineLoc.Y), listener, "RightIn", model);
+                    in2 = new Pipeline(
+                        world,
+                        new Point(pipelineLoc.X + grid, pipelineLoc.Y),
+                        listener,
+                        "RightIn",
+                        model);
                     pipelineLoc = new Point(pipelineLoc.X, pipelineLoc.Y + grid);
                     goto case "NV";
                 case "HL":
@@ -199,7 +236,11 @@
                     goto case "NH";
                 case "HR":
                     in1 = new Pipeline(world, pipelineLoc, listener, "TopRightIn");
-                    in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), listener, "BottomRightIn");
+                    in2 = new Pipeline(
+                        world,
+                        new Point(pipelineLoc.X, pipelineLoc.Y + grid),
+                        listener,
+                        "BottomRightIn");
                     pipelineLoc = new Point(pipelineLoc.X - pipelineLength * grid, pipelineLoc.Y);
                     goto case "NH";
                 case "NV":
@@ -230,7 +271,11 @@
             return listOfPipelineComponents;
         }
 
-        public static IList<IGameObject> CreateItemList(IGameWorld world, Point point, IListener listener, params string[] s)
+        public static IList<IGameObject> CreateItemList(
+            IGameWorld world,
+            Point point,
+            IListener listener,
+            params string[] s)
         {
             return s?.Select(t => GameObjectFactory.Instance.CreateGameObject(t, world, point, listener)).ToList();
         }

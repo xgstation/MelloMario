@@ -3,14 +3,14 @@
     #region
 
     using System.Diagnostics.CodeAnalysis;
-    using Blocks;
-    using Blocks.BrickStates;
-    using Factories;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Items.SuperMushroomStates;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using SuperMushroomStates;
-    using Theming;
-    using UserInterfaces;
 
     #endregion
 
@@ -19,14 +19,28 @@
         private bool collected;
         private IItemState state;
 
-        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(world, location, marioLocation, listener, false) { }
+        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(
+            world,
+            location,
+            marioLocation,
+            listener,
+            false) { }
 
         //This suppression exists because this constructor is inderectly used by the json parser.
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public SuperMushroom(IGameWorld world, Point location, IListener listener) : this(world, location, Database.GetCharacterLocation(), listener) { }
+        public SuperMushroom(IGameWorld world, Point location, IListener listener) : this(
+            world,
+            location,
+            Database.GetCharacterLocation(),
+            listener) { }
 
-        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
+        public SuperMushroom(
+            IGameWorld world,
+            Point location,
+            Point marioLocation,
+            IListener listener,
+            bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
             if (marioLocation.X < location.X)
@@ -99,7 +113,12 @@
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             switch (target.GetType().Name) // not safe!
             {
@@ -133,7 +152,8 @@
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.right;
                     }
-                    else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
+                    else if (mode == CollisionMode.Right
+                        || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.left;
