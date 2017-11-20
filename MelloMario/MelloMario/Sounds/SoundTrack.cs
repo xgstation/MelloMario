@@ -13,7 +13,7 @@ namespace MelloMario.Sounds
 
         public void Play()
         {
-            // instance.();
+            MediaPlayer.Play(instance);
         }
     }
 }

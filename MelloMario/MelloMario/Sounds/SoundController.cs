@@ -17,7 +17,6 @@ namespace MelloMario.Sounds
         }
         private enum Songs
         {
-            Idle,
             Normal,
             BelowGround,
             Hurry,
@@ -26,38 +25,27 @@ namespace MelloMario.Sounds
             Star
         }
 
-        private static Songs CurrentBGM = Songs.Idle;
+        private static ISoundTrack Normal = SoundFactory.Instance.CreateSoundTrack("Normal");
+        private static ISoundTrack Hurry = SoundFactory.Instance.CreateSoundTrack("Hurry");
+        private static ISoundTrack BelowGround = SoundFactory.Instance.CreateSoundTrack("BelowGround");
+        private static ISoundTrack Star = SoundFactory.Instance.CreateSoundTrack("Star");
+
+        private static ISoundTrack CurrentTrack = null;
         private static float SoundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
 
         private static bool PlayFinished = false;
 
         //public static Song GameOver = SoundFactory.Instance.CreateSong("09-game-over");
 
-        private static void PlayMusic(Songs song, bool reset = false)
+        private static void PlayMusic(ISoundTrack track, bool reset = false)
         {
-            if (CurrentBGM != song || reset)
+            if (track != CurrentTrack || reset)
             {
                 MediaPlayer.Stop();
-                switch (song)
-                {
-                    case Songs.Normal:
-                        MediaPlayer.Play(Normal);
-                        break;
-                    case Songs.Hurry:
-                        MediaPlayer.Play(Hurry);
-                        break;
-                    case Songs.BelowGround:
-                        MediaPlayer.Play(BelowGround);
-                        break;
-                    case Songs.Star:
-                        MediaPlayer.Play(Star);
-                        break;
-                    default:
-                        MediaPlayer.Stop();
-                        break;
-                }
+                track?.Play();
                 MediaPlayer.IsRepeating = true;
-                CurrentBGM = song;
+
+                CurrentTrack = track;
             }
         }
 
@@ -123,22 +111,22 @@ namespace MelloMario.Sounds
             switch (Model.ActivePlayer.Character)
             {
                 case MarioCharacter mario when mario.ProtectionState is Dead:
-                    PlayMusic(Songs.Normal);
+                    PlayMusic(Normal);
                     break;
                 case MarioCharacter mario when mario.ProtectionState is Starred:
-                    PlayMusic(Songs.Star);
+                    PlayMusic(Star);
                     break;
                 case MarioCharacter mario when mario.Player.TimeRemain <= 90000:
-                    PlayMusic(Songs.Hurry);
+                    PlayMusic(Hurry);
                     break;
                 case MarioCharacter mario when mario.CurrentWorld.Type == "Normal":
-                    PlayMusic(Songs.Normal);
+                    PlayMusic(Normal);
                     break;
                 case MarioCharacter mario when mario.CurrentWorld.Type == "Sub":
-                    PlayMusic(Songs.BelowGround);
+                    PlayMusic(BelowGround);
                     break;
                 default:
-                    PlayMusic(Songs.Normal);
+                    PlayMusic(Normal);
                     break;
             }
         }
