@@ -24,7 +24,7 @@ namespace MelloMario.Factories
                 case "Quit":
                     return new Quit(model);
                 case "ToggleMute":
-                    return new Mute(model);
+                    return new Mute();
                 case "Normal":
                     return new NormalMode(model);
                 case "Infinite":
