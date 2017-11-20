@@ -27,7 +27,7 @@ namespace MelloMario.Sounds
         }
 
         private static Songs CurrentBGM = Songs.Idle;
-        private static float SoundEffectVolume = SoundEffect.MasterVolume;
+        private static float SoundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
 
         private static bool PlayFinished = false;
 
@@ -37,22 +37,6 @@ namespace MelloMario.Sounds
         private static readonly Song Hurry = SoundFactory.Instance.CreateSong("18-hurry-overworld-");
 
         //public static Song GameOver = SoundFactory.Instance.CreateSong("09-game-over");
-
-        private static readonly SoundEffectInstance Bounce = SoundFactory.Instance.CreateSoundEffect("smb_jumpsmall");
-        private static readonly SoundEffectInstance PowerBounce = SoundFactory.Instance.CreateSoundEffect("smb_jump");
-        private static readonly SoundEffectInstance BumpBlock = SoundFactory.Instance.CreateSoundEffect("smb_bump");
-        private static readonly SoundEffectInstance BreakBlock = SoundFactory.Instance.CreateSoundEffect("smb_breakblock");
-        private static readonly SoundEffectInstance Coin = SoundFactory.Instance.CreateSoundEffect("smb_coin");
-        private static readonly SoundEffectInstance Death = SoundFactory.Instance.CreateSoundEffect("smb_mariodie");
-        private static readonly SoundEffectInstance SizeUp = SoundFactory.Instance.CreateSoundEffect("smb_powerup");
-        private static readonly SoundEffectInstance EnemyKill = SoundFactory.Instance.CreateSoundEffect("smb_stomp");
-        private static readonly SoundEffectInstance Pipe = SoundFactory.Instance.CreateSoundEffect("smb_pipe");
-
-        private static readonly SoundEffectInstance GameOver = SoundFactory.Instance.CreateSoundEffect("smb_gameover");
-        private static readonly SoundEffectInstance GameWon = SoundFactory.Instance.CreateSoundEffect("smb_stage_clear");
-
-        private static readonly SoundEffectInstance SizeUpAppear = SoundFactory.Instance.CreateSoundEffect("smb_powerup_appears");
-        private static readonly SoundEffectInstance OneUpCollect = SoundFactory.Instance.CreateSoundEffect("smb_1");
 
         private static void PlayMusic(Songs song, bool reset = false)
         {
@@ -85,8 +69,8 @@ namespace MelloMario.Sounds
         public static void ToggleMute()
         {
             MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
-            SoundEffect.MasterVolume = MediaPlayer.IsMuted ? 0 : SoundEffectVolume;
-            SoundEffectVolume = MediaPlayer.IsMuted ? SoundEffectVolume : SoundEffect.MasterVolume;
+            Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume = MediaPlayer.IsMuted ? 0 : SoundEffectVolume;
+            SoundEffectVolume = MediaPlayer.IsMuted ? SoundEffectVolume : Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
         }
 
         private static void Pause()
