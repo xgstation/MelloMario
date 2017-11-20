@@ -1,9 +1,13 @@
-﻿using MelloMario.Factories;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Miscs
+﻿namespace MelloMario.Objects.Miscs
 {
+    #region
+
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Background : BaseGameObject
     {
         private readonly ZIndex targetZIndex;

@@ -1,9 +1,13 @@
-﻿using MelloMario.Factories;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Blocks
+﻿namespace MelloMario.Objects.Blocks
 {
+    #region
+
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Floor : BaseCollidableObject
     {
         public Floor(IGameWorld world, Point location, IListener listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))

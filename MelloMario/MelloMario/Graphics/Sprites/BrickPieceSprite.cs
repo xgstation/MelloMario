@@ -1,9 +1,13 @@
 ﻿namespace MelloMario.Graphics.Sprites
 {
+    #region
+
     using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Theming;
+
+    #endregion
 
     internal class BrickPieceSprite : BaseSprite
     {

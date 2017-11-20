@@ -1,9 +1,13 @@
-﻿using MelloMario.Factories;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.UserInterfaces
+﻿namespace MelloMario.Objects.UserInterfaces
 {
+    #region
+
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class GameStart : BaseUIObject
     {
         private readonly ISprite startSprite;

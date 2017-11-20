@@ -1,7 +1,11 @@
-﻿using MelloMario.Objects.Characters;
-
-namespace MelloMario.Objects.Blocks.BrickStates
+﻿namespace MelloMario.Objects.Blocks.BrickStates
 {
+    #region
+
+    using Characters;
+
+    #endregion
+
     internal class Used : BaseState<Brick>, IBlockState
     {
         public Used(Brick owner) : base(owner) { }

@@ -1,7 +1,11 @@
-﻿using MelloMario.Objects.Characters;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
+    #region
+
+    using Objects.Characters;
+
+    #endregion
+
     internal interface IBlockState : IState
     {
         void Show();

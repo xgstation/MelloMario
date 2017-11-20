@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework.Content;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
     internal interface ISpriteFactory<T>
     {

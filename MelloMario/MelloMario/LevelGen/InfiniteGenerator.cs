@@ -1,11 +1,15 @@
-﻿using System;
-using System.Security.Cryptography;
-using MelloMario.Objects.Blocks;
-using MelloMario.Objects.Enemies;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen
 {
+    #region
+
+    using System;
+    using System.Security.Cryptography;
+    using Microsoft.Xna.Framework;
+    using Objects.Blocks;
+    using Objects.Enemies;
+
+    #endregion
+
     internal class InfiniteGenerator
     {
         private readonly ICamera camera;

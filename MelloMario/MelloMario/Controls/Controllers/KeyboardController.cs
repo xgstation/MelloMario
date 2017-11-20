@@ -1,6 +1,10 @@
 namespace MelloMario.Controls.Controllers
 {
+    #region
+
     using Microsoft.Xna.Framework.Input;
+
+    #endregion
 
     internal class KeyboardController : BaseController<Keys>
     {

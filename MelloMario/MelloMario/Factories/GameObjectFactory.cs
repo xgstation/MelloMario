@@ -1,14 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using MelloMario.Objects.Blocks;
-using MelloMario.Objects.Enemies;
-using MelloMario.Objects.Items;
-using MelloMario.Objects.Characters;
-using MelloMario.Objects.Miscs;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario.Factories
+﻿namespace MelloMario.Factories
 {
+    #region
+
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using Microsoft.Xna.Framework;
+    using Objects.Blocks;
+    using Objects.Characters;
+    using Objects.Enemies;
+    using Objects.Items;
+    using Objects.Miscs;
+
+    #endregion
+
     internal class GameObjectFactory : IGameObjectFactory
     {
         // TODO: remove this later and use the collision between the camera and objects to "activate" objects' movement

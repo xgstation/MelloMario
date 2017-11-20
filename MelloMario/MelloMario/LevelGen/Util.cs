@@ -1,16 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using MelloMario.Objects.Blocks;
-using MelloMario.Factories;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen
 {
+    #region
+
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.Contracts;
+    using System.Linq;
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Objects.Blocks;
+    using Theming;
+
+    #endregion
+
     internal class VectorConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

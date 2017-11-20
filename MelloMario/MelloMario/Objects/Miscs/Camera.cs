@@ -1,11 +1,12 @@
-﻿using System;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using static System.Single;
-
-namespace MelloMario.Objects.Miscs
+﻿namespace MelloMario.Objects.Miscs
 {
+    #region
+
+    using Microsoft.Xna.Framework;
+    using Theming;
+
+    #endregion
+
     internal class Camera : ICamera
     {
         public Rectangle Viewport { get; private set; }

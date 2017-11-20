@@ -1,15 +1,19 @@
-﻿using System.Linq;
-using MelloMario.Objects.Enemies.PiranhaStates;
-using MelloMario.Factories;
-using MelloMario.Interfaces.Objects.States;
-using MelloMario.Objects.Items;
-using MelloMario.Theming;
-using MelloMario.Objects.UserInterfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Enemies
+﻿namespace MelloMario.Objects.Enemies
 {
+    #region
+
+    using System.Linq;
+    using Factories;
+    using Interfaces.Objects.States;
+    using Items;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using PiranhaStates;
+    using Theming;
+    using UserInterfaces;
+
+    #endregion
+
     internal class Piranha : BasePhysicalObject
     {
         public Piranha(IGameWorld world, Point location, IListener listener, Point size, int hiddenTime, int showTime, float pixelScale, string color = "Green") : base(world, location, listener, size, pixelScale)

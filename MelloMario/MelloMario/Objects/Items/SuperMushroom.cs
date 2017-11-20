@@ -1,15 +1,18 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using MelloMario.Objects.Blocks;
-using MelloMario.Factories;
-using MelloMario.Objects.Items.SuperMushroomStates;
-using MelloMario.Theming;
-using MelloMario.Objects.UserInterfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Items
+﻿namespace MelloMario.Objects.Items
 {
-    using Blocks.QuestionStates;
+    #region
+
+    using System.Diagnostics.CodeAnalysis;
+    using Blocks;
+    using Blocks.BrickStates;
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using SuperMushroomStates;
+    using Theming;
+    using UserInterfaces;
+
+    #endregion
 
     internal class SuperMushroom : BasePhysicalObject
     {
@@ -107,13 +110,13 @@ namespace MelloMario.Objects.Items
                     }
                     break;
                 case "Brick":
-                    if (((Brick) target).State is Blocks.BrickStates.Hidden)
+                    if (((Brick) target).State is Hidden)
                     {
                         break;
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is Hidden)
+                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
                     {
                         break;
                     }

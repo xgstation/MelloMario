@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen
 {
+    #region
+
+    using System.Collections.Generic;
+
+    #endregion
+
     internal class EncapsulatedObject<T>
     {
         public EncapsulatedObject(Stack<T> stack)

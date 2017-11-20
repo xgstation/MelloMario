@@ -1,10 +1,14 @@
-﻿using Microsoft.Xna.Framework.Media;
-
-namespace MelloMario.Sounds
+﻿namespace MelloMario.Sounds
 {
+    #region
+
+    using Microsoft.Xna.Framework.Media;
+
+    #endregion
+
     internal class SoundTrack : ISoundTrack
     {
-        private Song instance;
+        private readonly Song instance;
 
         public SoundTrack(Song instance)
         {

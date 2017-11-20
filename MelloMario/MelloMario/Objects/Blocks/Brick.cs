@@ -1,12 +1,16 @@
-﻿using MelloMario.Objects.Blocks.BrickStates;
-using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Blocks
+﻿namespace MelloMario.Objects.Blocks
 {
+    #region
+
+    using BrickStates;
+    using Characters;
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Theming;
+
+    #endregion
+
     internal class Brick : BaseCollidableObject
     {
         private bool isHidden;

@@ -1,8 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Graphics.Sprites
+﻿namespace MelloMario.Graphics.Sprites
 {
+    #region
+
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal abstract class BaseSprite : ISprite
     {
         private readonly ZIndex zIndex;

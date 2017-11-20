@@ -1,8 +1,11 @@
-﻿using MelloMario.Objects.Characters;
-using MelloMario.Sounds;
-
-namespace MelloMario.Objects.Blocks.BrickStates
+﻿namespace MelloMario.Objects.Blocks.BrickStates
 {
+    #region
+
+    using Characters;
+
+    #endregion
+
     internal class Destroyed : BaseTimedState<Brick>, IBlockState
     {
         public Destroyed(Brick owner) : base(owner, 1000)

@@ -1,8 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects
+﻿namespace MelloMario.Objects
 {
+    #region
+
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal abstract class BaseGameObject : IGameObject
     {
         private Point location;

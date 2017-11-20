@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
-using MelloMario.Graphics.Sprites;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Factories
+﻿namespace MelloMario.Factories
 {
+    #region
+
+    using System.Collections.Generic;
+    using Graphics.Sprites;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class SpriteFactory : ISpriteFactory<ContentManager>
     {
         private readonly IDictionary<string, Texture2D> textures;

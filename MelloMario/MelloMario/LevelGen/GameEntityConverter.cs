@@ -1,20 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using MelloMario.Objects;
-using MelloMario.Objects.Blocks;
-using MelloMario.Objects.Enemies;
-using MelloMario.Factories;
-using MelloMario.Objects.Items;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen
 {
+    #region
+
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Reflection;
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Objects;
+    using Objects.Blocks;
+    using Objects.Enemies;
+    using Theming;
+
+    #endregion
+
     internal class PointCompare : IEqualityComparer<Point>
     {
         public bool Equals(Point x, Point y)

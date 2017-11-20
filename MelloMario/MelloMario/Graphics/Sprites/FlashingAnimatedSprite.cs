@@ -1,7 +1,11 @@
 ﻿namespace MelloMario.Graphics.Sprites
 {
+    #region
+
     using Microsoft.Xna.Framework.Graphics;
     using Theming;
+
+    #endregion
 
     internal class FlashingAnimatedSprite : AnimatedSprite
     {

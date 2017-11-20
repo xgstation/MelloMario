@@ -1,9 +1,12 @@
-﻿using MelloMario.Objects.Characters;
-using MelloMario.Sounds;
-using MelloMario.Theming;
-
-namespace MelloMario.Objects.Blocks.BrickStates
+﻿namespace MelloMario.Objects.Blocks.BrickStates
 {
+    #region
+
+    using Characters;
+    using Theming;
+
+    #endregion
+
     internal class Bumped : BaseState<Brick>, IBlockState
     {
         private int elapsed;

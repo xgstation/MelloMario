@@ -1,13 +1,16 @@
-﻿using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using MelloMario.Objects.Characters.MovementStates;
-using MelloMario.Sounds;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Blocks
+﻿namespace MelloMario.Objects.Blocks
 {
+    #region
+
+    using Characters;
+    using Characters.MovementStates;
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Theming;
+
+    #endregion
+
     internal class Pipeline : BaseCollidableObject
     {
         private int elapsed;

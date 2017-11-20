@@ -1,13 +1,17 @@
-﻿using System;
-using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using MelloMario.Theming;
-using MelloMario.Objects.UserInterfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Blocks
+﻿namespace MelloMario.Objects.Blocks
 {
+    #region
+
+    using System;
+    using Characters;
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Theming;
+    using UserInterfaces;
+
+    #endregion
+
     internal class Flag : BaseCollidableObject
     {
         public delegate void TimeScoreHandler(Flag m, EventArgs e);

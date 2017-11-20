@@ -1,13 +1,16 @@
-﻿using MelloMario.Objects.Items;
-using MelloMario.Objects.Characters.MovementStates;
-using MelloMario.Objects.Characters.PowerUpStates;
-using MelloMario.Objects.Characters.ProtectionStates;
-using MelloMario.Sounds;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario.Objects.Characters
+﻿namespace MelloMario.Objects.Characters
 {
+    #region
+
+    using Items;
+    using Microsoft.Xna.Framework;
+    using MovementStates;
+    using PowerUpStates;
+    using ProtectionStates;
+    using Theming;
+
+    #endregion
+
     internal class MarioCharacter : Mario, ICharacter
     {
         private Animation animation;

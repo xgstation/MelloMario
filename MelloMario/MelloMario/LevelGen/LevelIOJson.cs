@@ -1,9 +1,13 @@
-﻿using System.IO;
-using MelloMario.Theming;
-using Newtonsoft.Json;
-
-namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen
 {
+    #region
+
+    using System.IO;
+    using Newtonsoft.Json;
+    using Theming;
+
+    #endregion
+
     internal class LevelIOJson
     {
         private readonly IListener listener;

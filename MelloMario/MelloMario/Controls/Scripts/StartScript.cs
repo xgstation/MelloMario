@@ -1,8 +1,12 @@
 ﻿namespace MelloMario.Controls.Scripts
 {
+    #region
+
     using System.Collections.Generic;
     using Factories;
     using Microsoft.Xna.Framework.Input;
+
+    #endregion
 
     internal class StartScript : IScript
     {

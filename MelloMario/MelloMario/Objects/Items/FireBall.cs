@@ -1,10 +1,14 @@
-﻿using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Items
+﻿namespace MelloMario.Objects.Items
 {
+    #region
+
+    using Characters;
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class FireBall : BasePhysicalObject
     {
         public FireBall(IGameWorld world, Point location, IListener listener) : base(world, location, listener, new Point(16, 16), 32)

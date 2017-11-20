@@ -1,10 +1,13 @@
-﻿using MelloMario.Factories;
-using MelloMario.Sounds;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Theming
+﻿namespace MelloMario.Theming
 {
+    #region
+
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Player : IPlayer
     {
         public Player(IGameSession session)

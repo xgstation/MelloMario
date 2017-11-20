@@ -1,14 +1,18 @@
-﻿using System;
-using MelloMario.Factories;
-using MelloMario.Objects.Items.CoinStates;
-using MelloMario.Objects.Characters;
-using MelloMario.Theming;
-using MelloMario.Objects.UserInterfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Items
+﻿namespace MelloMario.Objects.Items
 {
+    #region
+
+    using System;
+    using Characters;
+    using CoinStates;
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Theming;
+    using UserInterfaces;
+
+    #endregion
+
     internal class Coin : BaseCollidableObject
     {
         public delegate void CoinHandler(Coin m, EventArgs e);

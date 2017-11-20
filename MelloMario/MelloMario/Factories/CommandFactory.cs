@@ -1,8 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using MelloMario.Controls.Commands;
-
-namespace MelloMario.Factories
+﻿namespace MelloMario.Factories
 {
+    #region
+
+    using System.Diagnostics.CodeAnalysis;
+    using Controls.Commands;
+
+    #endregion
+
     internal class CommandFactory : ICommandFactory
     {
         private CommandFactory() { }

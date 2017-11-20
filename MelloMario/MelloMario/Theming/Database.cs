@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using MelloMario.Objects.Blocks;
-using MelloMario.Objects.Items;
-using MelloMario.Objects.Characters;
-using MelloMario.Objects.Characters.PowerUpStates;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario.Theming
+﻿namespace MelloMario.Theming
 {
+    #region
+
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.Xna.Framework;
+    using Objects.Blocks;
+    using Objects.Characters;
+    using Objects.Characters.PowerUpStates;
+    using Objects.Items;
+
+    #endregion
+
     internal static class Database
     {
         private static readonly IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb = new Dictionary<IGameObject, IList<IGameObject>>();

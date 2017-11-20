@@ -1,13 +1,17 @@
-﻿using MelloMario.Factories;
-using MelloMario.Objects.Items.FireFlowerStates;
-using MelloMario.Objects.Characters;
-using MelloMario.Theming;
-using MelloMario.Objects.UserInterfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Items
+﻿namespace MelloMario.Objects.Items
 {
+    #region
+
+    using Characters;
+    using Factories;
+    using FireFlowerStates;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Theming;
+    using UserInterfaces;
+
+    #endregion
+
     internal class FireFlower : BaseCollidableObject
     {
         private bool collected;

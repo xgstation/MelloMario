@@ -1,11 +1,15 @@
-﻿using System;
-using MelloMario.Objects.Blocks;
-using MelloMario.Objects.Items;
-using MelloMario.Objects.Characters;
-using MelloMario.Objects;
-
-namespace MelloMario.Theming
+﻿namespace MelloMario.Theming
 {
+    #region
+
+    using System;
+    using Objects;
+    using Objects.Blocks;
+    using Objects.Characters;
+    using Objects.Items;
+
+    #endregion
+
     internal class GameEventArgs : EventArgs
     {
         public int Points { get; set; }

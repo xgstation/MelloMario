@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace MelloMario.Containers
+﻿namespace MelloMario.Containers
 {
+    #region
+
+    using System.Collections.Generic;
+
+    #endregion
+
     internal class Session : BaseContainer<IGameWorld, IPlayer>, IGameSession
     {
         public IEnumerable<IGameWorld> ScanWorlds()

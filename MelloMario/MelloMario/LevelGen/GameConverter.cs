@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using MelloMario.Containers;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen
 {
+    #region
+
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using Containers;
+    using Microsoft.Xna.Framework;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Theming;
+
+    #endregion
+
     //Using for deserialize json to a single GameWorld(Map)
     internal class GameConverter : JsonConverter
     {

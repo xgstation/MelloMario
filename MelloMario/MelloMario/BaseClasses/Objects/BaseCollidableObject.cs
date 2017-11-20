@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario.Objects
+﻿namespace MelloMario.Objects
 {
+    #region
+
+    using System;
+    using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
+    using Theming;
+
+    #endregion
+
     internal abstract class BaseCollidableObject : BaseGameObject
     {
         public delegate void LivesHandler(BaseCollidableObject m, GameEventArgs e);

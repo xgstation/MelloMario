@@ -1,11 +1,14 @@
-﻿using MelloMario.Factories;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using MelloMario.Sounds;
-
-namespace MelloMario.Objects.UserInterfaces
+﻿namespace MelloMario.Objects.UserInterfaces
 {
+    #region
+
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Theming;
+
+    #endregion
+
     internal class GameWon : BaseUIObject
     {
         private readonly ISprite splashSprite;

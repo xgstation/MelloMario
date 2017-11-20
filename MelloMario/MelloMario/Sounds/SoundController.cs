@@ -1,12 +1,16 @@
-﻿using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using MelloMario.Objects.Characters.PowerUpStates;
-using MelloMario.Objects.Characters.ProtectionStates;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Media;
-
-namespace MelloMario.Sounds
+﻿namespace MelloMario.Sounds
 {
+    #region
+
+    using Factories;
+    using Microsoft.Xna.Framework.Media;
+    using Objects.Characters;
+    using Objects.Characters.MovementStates;
+    using Objects.Characters.PowerUpStates;
+    using Objects.Characters.ProtectionStates;
+
+    #endregion
+
     internal static class SoundController
     {
         private static IModel Model;
@@ -15,6 +19,7 @@ namespace MelloMario.Sounds
         {
             Model = model;
         }
+
         private enum Songs
         {
             Normal,
@@ -25,12 +30,12 @@ namespace MelloMario.Sounds
             Star
         }
 
-        private static ISoundTrack Normal = SoundFactory.Instance.CreateSoundTrack("Normal");
-        private static ISoundTrack Hurry = SoundFactory.Instance.CreateSoundTrack("Hurry");
-        private static ISoundTrack BelowGround = SoundFactory.Instance.CreateSoundTrack("BelowGround");
-        private static ISoundTrack Star = SoundFactory.Instance.CreateSoundTrack("Star");
+        private static readonly ISoundTrack Normal = SoundFactory.Instance.CreateSoundTrack("Normal");
+        private static readonly ISoundTrack Hurry = SoundFactory.Instance.CreateSoundTrack("Hurry");
+        private static readonly ISoundTrack BelowGround = SoundFactory.Instance.CreateSoundTrack("BelowGround");
+        private static readonly ISoundTrack Star = SoundFactory.Instance.CreateSoundTrack("Star");
 
-        private static ISoundTrack CurrentTrack = null;
+        private static ISoundTrack CurrentTrack;
         private static float SoundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
 
         private static bool PlayFinished = false;
@@ -88,7 +93,7 @@ namespace MelloMario.Sounds
         {
             //TODO: Finish Mario Sound Effeect
             MarioCharacter mario = Model.ActivePlayer.Character as MarioCharacter;
-            if (mario?.MovementState is Objects.Characters.MovementStates.Jumping jumping && !jumping.Finished)
+            if (mario?.MovementState is Jumping jumping && !jumping.Finished)
             {
                 if (mario.PowerUpState is Super || mario.PowerUpState is Fire)
                 {
@@ -130,6 +135,7 @@ namespace MelloMario.Sounds
                     break;
             }
         }
+
         public static void Update()
         {
             UpdatePausing();

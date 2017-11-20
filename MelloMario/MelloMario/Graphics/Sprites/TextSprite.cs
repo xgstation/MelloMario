@@ -1,7 +1,11 @@
 ﻿namespace MelloMario.Graphics.Sprites
 {
+    #region
+
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
 
     internal class TextSprite : BaseSprite
     {

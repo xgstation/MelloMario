@@ -1,13 +1,16 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using MelloMario.Factories;
-using MelloMario.Objects.Items.OneUpMushroomStates;
-using MelloMario.Sounds;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Items
+﻿namespace MelloMario.Objects.Items
 {
+    #region
+
+    using System.Diagnostics.CodeAnalysis;
+    using Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using OneUpMushroomStates;
+    using Theming;
+
+    #endregion
+
     internal class OneUpMushroom : BasePhysicalObject
     {
         private bool collected;
