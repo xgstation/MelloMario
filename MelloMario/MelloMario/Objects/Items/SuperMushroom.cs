@@ -116,7 +116,7 @@ namespace MelloMario.Objects.Items
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is Objects.Blocks.QuestionStates.Hidden)
+                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
                     {
                         break;
                     }

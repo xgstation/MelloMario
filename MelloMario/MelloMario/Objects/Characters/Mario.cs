@@ -142,8 +142,8 @@ namespace MelloMario.Objects.Characters
                     }
                     else if (question != null)
                     {
-                        isHidden = question.State is Objects.Blocks.QuestionStates.Hidden;
-                        isBumping = question.State is Objects.Blocks.QuestionStates.Bumped;
+                        isHidden = question.State is Blocks.QuestionStates.Hidden;
+                        isBumping = question.State is Blocks.QuestionStates.Bumped;
                     }
                     else
                     {
@@ -225,7 +225,7 @@ namespace MelloMario.Objects.Characters
                 case "Goomba":
                     if (target is Goomba goomba && mode != CollisionMode.Bottom)
                     {
-                        if (goomba.State is Objects.Enemies.GoombaStates.Normal && !(ProtectionState is Starred))
+                        if (goomba.State is Enemies.GoombaStates.Normal && !(ProtectionState is Starred))
                         {
                             Downgrade();
                         }
@@ -284,19 +284,19 @@ namespace MelloMario.Objects.Characters
 
                     break;
                 case "FireFlower":
-                    if (((FireFlower) target).State is Objects.Items.FireFlowerStates.Normal)
+                    if (((FireFlower) target).State is Items.FireFlowerStates.Normal)
                     {
                         UpgradeToFire();
                     }
                     break;
                 case "Star":
-                    if (((Star) target).State is Objects.Items.StarStates.Normal)
+                    if (((Star) target).State is Items.StarStates.Normal)
                     {
                         ProtectionState.Star();
                     }
                     break;
                 case "SuperMushroom":
-                    if (((SuperMushroom) target).State is Objects.Items.SuperMushroomStates.Normal &&
+                    if (((SuperMushroom) target).State is Items.SuperMushroomStates.Normal &&
                         PowerUpState is Standard)
                     {
                         UpgradeToSuper();
@@ -305,7 +305,7 @@ namespace MelloMario.Objects.Characters
                 case "Piranha":
                     if (!(ProtectionState is Starred))
                     {
-                        if (!(((Piranha) target).State is Objects.Enemies.PiranhaStates.Hidden))
+                        if (!(((Piranha) target).State is Enemies.PiranhaStates.Hidden))
                         {
                             Downgrade();
                         }

@@ -116,7 +116,7 @@ namespace MelloMario.Objects.Enemies
                 case "MarioCharacter":
                     //TODO: Fire to be added
                     Mario mario = (Mario) target; //TODO: fire as target to be added
-                    if ((mode == CollisionMode.Top && corner == CornerMode.Top) || mario.ProtectionState is Starred)
+                    if (mode == CollisionMode.Top && corner == CornerMode.Top || mario.ProtectionState is Starred)
                     {
                         Defeat();
                     }
@@ -166,7 +166,7 @@ namespace MelloMario.Objects.Enemies
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is Objects.Blocks.QuestionStates.Hidden)
+                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
                     {
                         break;
                     }

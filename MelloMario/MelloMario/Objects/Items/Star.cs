@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Objects.Items
 {
-    using Objects.Blocks.QuestionStates;
+    using Blocks.QuestionStates;
 
     internal class Star : BasePhysicalObject
     {
@@ -98,7 +98,7 @@ namespace MelloMario.Objects.Items
                         }
                         break;
                     case "Brick":
-                        if (((Brick) target).State is Objects.Blocks.BrickStates.Hidden)
+                        if (((Brick) target).State is Blocks.BrickStates.Hidden)
                         {
                             break;
                         }
