@@ -1,12 +1,12 @@
-﻿namespace MelloMario.Commands
-{
-    internal class Mute : BaseCommand<IGameModel>
-    {
-        public Mute(IGameModel model) : base(model) { }
+﻿using MelloMario.Sounds;
 
-        public override void Execute()
+namespace MelloMario.Commands
+{
+    internal class Mute : ICommand
+    {
+        public void Execute()
         {
-            Receiver.ToggleMute();
+            SoundController.ToggleMute();
         }
     }
 }
