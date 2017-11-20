@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Controls.Commands
 {
-    internal class Resume : BaseCommand<IGameModel>
+    internal class Resume : BaseCommand<IModel>
     {
-        public Resume(IGameModel model) : base(model) { }
+        public Resume(IModel model) : base(model) { }
 
         public override void Execute()
         {

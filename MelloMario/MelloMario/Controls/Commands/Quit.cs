@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Controls.Commands
 {
-    internal class Quit : BaseCommand<IGameModel>
+    internal class Quit : BaseCommand<IModel>
     {
-        public Quit(IGameModel model) : base(model) { }
+        public Quit(IModel model) : base(model) { }
 
         public override void Execute()
         {

@@ -9,7 +9,7 @@ namespace MelloMario.Factories
 
         public static ICommandFactory Instance { get; } = new CommandFactory();
 
-        public ICommand CreateModelCommand(string action, IGameModel model)
+        public ICommand CreateModelCommand(string action, IModel model)
         {
             switch (action)
             {

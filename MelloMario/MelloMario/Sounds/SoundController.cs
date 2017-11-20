@@ -9,9 +9,9 @@ namespace MelloMario.Sounds
 {
     internal static class SoundController
     {
-        private static IGameModel Model;
+        private static IModel Model;
 
-        public static void Initialize(IGameModel model)
+        public static void Initialize(IModel model)
         {
             Model = model;
         }
@@ -29,7 +29,7 @@ namespace MelloMario.Sounds
         private static Songs CurrentBGM = Songs.Idle;
         private static float SoundEffectVolume = SoundEffect.MasterVolume;
 
-        private static bool PlayFinished= false;
+        private static bool PlayFinished = false;
 
         private static readonly Song Normal = SoundFactory.Instance.CreateSong("01-main-theme-overworld");
         private static readonly Song BelowGround = SoundFactory.Instance.CreateSong("02-underworld");

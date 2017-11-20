@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using MelloMario.Objects;
 using MelloMario.Objects.Blocks;
 using MelloMario.Objects.Enemies;
 using MelloMario.Factories;

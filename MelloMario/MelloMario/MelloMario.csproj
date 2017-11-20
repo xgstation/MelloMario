@@ -160,7 +160,7 @@
     <Compile Include="Interfaces\Factories\ISoundFactory.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IScript.cs" />
-    <Compile Include="Interfaces\IGameModel.cs" />
+    <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Interfaces\Containers\IGameWorld.cs" />
     <Compile Include="Interfaces\Objects\States\IPiranhaState.cs" />

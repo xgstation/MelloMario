@@ -1,8 +1,8 @@
 ﻿namespace MelloMario.Controls.Commands
 {
-    internal class ToggleFullScreen : BaseCommand<IGameModel>
+    internal class ToggleFullScreen : BaseCommand<IModel>
     {
-        public ToggleFullScreen(IGameModel receiver) : base(receiver) { }
+        public ToggleFullScreen(IModel receiver) : base(receiver) { }
 
         public override void Execute()
         {

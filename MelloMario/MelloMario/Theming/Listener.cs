@@ -2,6 +2,7 @@
 using MelloMario.Objects.Blocks;
 using MelloMario.Objects.Items;
 using MelloMario.Objects.Characters;
+using MelloMario.Objects;
 
 namespace MelloMario.Theming
 {

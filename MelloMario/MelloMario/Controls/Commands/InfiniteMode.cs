@@ -2,9 +2,9 @@
 {
     internal class InfiniteMode : ICommand
     {
-        private readonly IGameModel model;
+        private readonly IModel model;
 
-        public InfiniteMode(IGameModel model)
+        public InfiniteMode(IModel model)
         {
             this.model = model;
         }

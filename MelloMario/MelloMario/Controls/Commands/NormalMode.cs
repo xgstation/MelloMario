@@ -2,9 +2,9 @@
 {
     internal class NormalMode : ICommand
     {
-        private readonly IGameModel model;
+        private readonly IModel model;
 
-        public NormalMode(IGameModel model)
+        public NormalMode(IModel model)
         {
             this.model = model;
         }

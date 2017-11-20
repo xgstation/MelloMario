@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Theming
 {
-    internal class Model : IGameModel
+    internal class Model : IModel
     {
         private readonly Game1 game;
         private readonly IListener listener;

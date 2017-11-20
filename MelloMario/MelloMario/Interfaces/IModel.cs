@@ -2,7 +2,7 @@
 
 namespace MelloMario
 {
-    internal interface IGameModel
+    internal interface IModel
     {
         IPlayer ActivePlayer { get; }
         bool IsPaused { get; }

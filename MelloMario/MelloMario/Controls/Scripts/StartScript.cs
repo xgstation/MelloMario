@@ -6,7 +6,7 @@
 
     internal class StartScript : IScript
     {
-        public void Bind(IEnumerable<IController> controllers, IGameModel model, ICharacter character)
+        public void Bind(IEnumerable<IController> controllers, IModel model, ICharacter character)
         {
             ICommandFactory factory = CommandFactory.Instance;
 
