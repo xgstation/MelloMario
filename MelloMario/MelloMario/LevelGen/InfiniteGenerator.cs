@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
-using MelloMario.BlockObjects;
-using MelloMario.EnemyObjects;
+using MelloMario.Objects.Blocks;
+using MelloMario.Objects.Enemies;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.LevelGen

@@ -2,9 +2,9 @@
 using MelloMario.Controls.Scripts;
 using MelloMario.Containers;
 using MelloMario.LevelGen;
-using MelloMario.MiscObjects;
+using MelloMario.Objects.Miscs;
 using MelloMario.Sounds;
-using MelloMario.UIObjects;
+using MelloMario.Objects.UserInterfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

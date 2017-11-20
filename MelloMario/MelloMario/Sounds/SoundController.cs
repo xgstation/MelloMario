@@ -1,7 +1,7 @@
 ﻿using MelloMario.Factories;
-using MelloMario.MarioObjects;
-using MelloMario.MarioObjects.PowerUpStates;
-using MelloMario.MarioObjects.ProtectionStates;
+using MelloMario.Objects.Characters;
+using MelloMario.Objects.Characters.PowerUpStates;
+using MelloMario.Objects.Characters.ProtectionStates;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 
@@ -121,7 +121,7 @@ namespace MelloMario.Sounds
         {
             //TODO: Finish Mario Sound Effeect
             MarioCharacter mario = Model.ActivePlayer.Character as MarioCharacter;
-            if (mario?.MovementState is MarioObjects.MovementStates.Jumping jumping && !jumping.Finished)
+            if (mario?.MovementState is Objects.Characters.MovementStates.Jumping jumping && !jumping.Finished)
             {
                 if (mario.PowerUpState is Super || mario.PowerUpState is Fire)
                 {

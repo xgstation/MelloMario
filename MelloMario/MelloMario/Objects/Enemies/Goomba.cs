@@ -1,18 +1,18 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using MelloMario.BlockObjects;
-using MelloMario.BlockObjects.BrickStates;
-using MelloMario.EnemyObjects.KoopaStates;
+using MelloMario.Objects.Blocks;
+using MelloMario.Objects.Blocks.BrickStates;
+using MelloMario.Objects.Enemies.KoopaStates;
 using MelloMario.Factories;
-using MelloMario.MarioObjects;
-using MelloMario.MarioObjects.ProtectionStates;
+using MelloMario.Objects.Characters;
+using MelloMario.Objects.Characters.ProtectionStates;
 using MelloMario.Theming;
-using MelloMario.UIObjects;
+using MelloMario.Objects.UserInterfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Defeated = MelloMario.EnemyObjects.GoombaStates.Defeated;
-using Normal = MelloMario.EnemyObjects.GoombaStates.Normal;
+using Defeated = MelloMario.Objects.Enemies.GoombaStates.Defeated;
+using Normal = MelloMario.Objects.Enemies.GoombaStates.Normal;
 
-namespace MelloMario.EnemyObjects
+namespace MelloMario.Objects.Enemies
 {
     internal class Goomba : BasePhysicalObject
     {
@@ -101,7 +101,7 @@ namespace MelloMario.EnemyObjects
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    if (((Question) target).State is Objects.Blocks.QuestionStates.Hidden)
                     {
                         break;
                     }

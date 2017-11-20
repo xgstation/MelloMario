@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
-using MelloMario.BlockObjects;
+using MelloMario.Objects.Blocks;
 using MelloMario.Factories;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;

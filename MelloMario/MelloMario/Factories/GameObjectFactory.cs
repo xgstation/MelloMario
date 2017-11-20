@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using MelloMario.BlockObjects;
-using MelloMario.EnemyObjects;
-using MelloMario.ItemObjects;
-using MelloMario.MarioObjects;
-using MelloMario.MiscObjects;
+using MelloMario.Objects.Blocks;
+using MelloMario.Objects.Enemies;
+using MelloMario.Objects.Items;
+using MelloMario.Objects.Characters;
+using MelloMario.Objects.Miscs;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.Factories

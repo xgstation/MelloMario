@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using static System.Single;
 
-namespace MelloMario.MiscObjects
+namespace MelloMario.Objects.Miscs
 {
     internal class Camera : ICamera
     {

@@ -1,15 +1,15 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using MelloMario.BlockObjects;
-using MelloMario.BlockObjects.BrickStates;
+using MelloMario.Objects.Blocks;
+using MelloMario.Objects.Blocks.BrickStates;
 using MelloMario.Factories;
-using MelloMario.ItemObjects.SuperMushroomStates;
+using MelloMario.Objects.Items.SuperMushroomStates;
 using MelloMario.Theming;
-using MelloMario.UIObjects;
+using MelloMario.Objects.UserInterfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Normal = MelloMario.ItemObjects.SuperMushroomStates.Normal;
+using Normal = MelloMario.Objects.Items.SuperMushroomStates.Normal;
 
-namespace MelloMario.ItemObjects
+namespace MelloMario.Objects.Items
 {
     internal class SuperMushroom : BasePhysicalObject
     {
@@ -116,7 +116,7 @@ namespace MelloMario.ItemObjects
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    if (((Question) target).State is Objects.Blocks.QuestionStates.Hidden)
                     {
                         break;
                     }

@@ -1,9 +1,9 @@
 ﻿using MelloMario.Factories;
-using MelloMario.MarioObjects;
+using MelloMario.Objects.Characters;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.ItemObjects
+namespace MelloMario.Objects.Items
 {
     internal class FireBall : BasePhysicalObject
     {

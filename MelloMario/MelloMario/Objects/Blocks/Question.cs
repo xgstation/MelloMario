@@ -1,12 +1,12 @@
-﻿using MelloMario.BlockObjects.QuestionStates;
+﻿using MelloMario.Objects.Blocks.QuestionStates;
 using MelloMario.Factories;
-using MelloMario.MarioObjects;
+using MelloMario.Objects.Characters;
 using MelloMario.Sounds;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.BlockObjects
+namespace MelloMario.Objects.Blocks
 {
     internal class Question : BaseCollidableObject
     {

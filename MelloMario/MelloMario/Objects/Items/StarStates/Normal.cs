@@ -1,4 +1,4 @@
-﻿namespace MelloMario.ItemObjects.StarStates
+﻿namespace MelloMario.Objects.Items.StarStates
 {
     internal class Normal : BaseState<Star>, IItemState
     {

@@ -1,15 +1,15 @@
-﻿using MelloMario.BlockObjects;
+﻿using MelloMario.Objects.Blocks;
 using MelloMario.Factories;
-using MelloMario.ItemObjects.StarStates;
+using MelloMario.Objects.Items.StarStates;
 using MelloMario.Sounds;
 using MelloMario.Theming;
-using MelloMario.UIObjects;
+using MelloMario.Objects.UserInterfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.ItemObjects
+namespace MelloMario.Objects.Items
 {
-    using BlockObjects.QuestionStates;
+    using Objects.Blocks.QuestionStates;
 
     internal class Star : BasePhysicalObject
     {
@@ -98,7 +98,7 @@ namespace MelloMario.ItemObjects
                         }
                         break;
                     case "Brick":
-                        if (((Brick) target).State is BlockObjects.BrickStates.Hidden)
+                        if (((Brick) target).State is Objects.Blocks.BrickStates.Hidden)
                         {
                             break;
                         }

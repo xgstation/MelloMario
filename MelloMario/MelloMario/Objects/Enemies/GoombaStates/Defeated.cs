@@ -1,6 +1,6 @@
 ﻿using MelloMario.Sounds;
 
-namespace MelloMario.EnemyObjects.GoombaStates
+namespace MelloMario.Objects.Enemies.GoombaStates
 {
     internal class Defeated : BaseState<Goomba>, IGoombaState
     {

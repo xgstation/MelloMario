@@ -1,4 +1,4 @@
-﻿namespace MelloMario.ItemObjects.FireFlowerStates
+﻿namespace MelloMario.Objects.Items.FireFlowerStates
 {
     internal class Normal : BaseState<FireFlower>, IItemState
     {

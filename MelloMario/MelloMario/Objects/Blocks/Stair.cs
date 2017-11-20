@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.BlockObjects
+namespace MelloMario.Objects.Blocks
 {
     internal class Stair : BaseCollidableObject
     {

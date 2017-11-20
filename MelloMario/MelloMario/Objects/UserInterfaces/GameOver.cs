@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MelloMario.Sounds;
 
-namespace MelloMario.UIObjects
+namespace MelloMario.Objects.UserInterfaces
 {
     internal class GameOver : BaseUIObject
     {

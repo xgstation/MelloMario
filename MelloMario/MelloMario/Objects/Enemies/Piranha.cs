@@ -1,14 +1,14 @@
 ﻿using System.Linq;
-using MelloMario.EnemyObjects.PiranhaStates;
+using MelloMario.Objects.Enemies.PiranhaStates;
 using MelloMario.Factories;
 using MelloMario.Interfaces.Objects.States;
-using MelloMario.ItemObjects;
+using MelloMario.Objects.Items;
 using MelloMario.Theming;
-using MelloMario.UIObjects;
+using MelloMario.Objects.UserInterfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.EnemyObjects
+namespace MelloMario.Objects.Enemies
 {
     internal class Piranha : BasePhysicalObject
     {

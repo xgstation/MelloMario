@@ -1,13 +1,13 @@
 ﻿using System;
 using MelloMario.Factories;
-using MelloMario.ItemObjects.CoinStates;
-using MelloMario.MarioObjects;
+using MelloMario.Objects.Items.CoinStates;
+using MelloMario.Objects.Characters;
 using MelloMario.Theming;
-using MelloMario.UIObjects;
+using MelloMario.Objects.UserInterfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.ItemObjects
+namespace MelloMario.Objects.Items
 {
     internal class Coin : BaseCollidableObject
     {

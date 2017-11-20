@@ -1,6 +1,6 @@
 ﻿using MelloMario.Interfaces.Objects.States;
 
-namespace MelloMario.EnemyObjects.PiranhaStates
+namespace MelloMario.Objects.Enemies.PiranhaStates
 {
     internal class Show : BaseState<Piranha>, IPiranhaState
     {

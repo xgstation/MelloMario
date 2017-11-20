@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using MelloMario.Factories;
-using MelloMario.ItemObjects.OneUpMushroomStates;
+using MelloMario.Objects.Items.OneUpMushroomStates;
 using MelloMario.Sounds;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.ItemObjects
+namespace MelloMario.Objects.Items
 {
     internal class OneUpMushroom : BasePhysicalObject
     {

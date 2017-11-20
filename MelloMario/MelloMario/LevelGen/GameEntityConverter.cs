@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using MelloMario.BlockObjects;
-using MelloMario.EnemyObjects;
+using MelloMario.Objects.Blocks;
+using MelloMario.Objects.Enemies;
 using MelloMario.Factories;
-using MelloMario.ItemObjects;
+using MelloMario.Objects.Items;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
@@ -130,25 +130,25 @@ namespace MelloMario.LevelGen
 
             switch (selftype.Namespace)
             {
-                case "MelloMario.BlockObjects":
+                case "MelloMario.Objects.Blocks":
                     if (BlockConverter(selftype, objToken, selflistener, ref objectStackToBeEncapsulated))
                     {
                         Debug.WriteLine("Deserialize " + selftype.Name + " success!");
                     }
                     break;
-                case "MelloMario.EnemyObjects":
+                case "MelloMario.Objects.Enemies":
                     if (EnemyConverter(selftype, objToken, ref objectStackToBeEncapsulated))
                     {
                         Debug.WriteLine("Deserialize " + selftype.Name + " success!");
                     }
                     break;
-                case "MelloMario.ItemObjects":
+                case "MelloMario.Objects.Items":
                     if (ItemConverter(selftype, ref objectStackToBeEncapsulated))
                     {
                         Debug.WriteLine("Deserialize " + selftype.Name + " success!");
                     }
                     break;
-                case "MelloMario.MiscObjects":
+                case "MelloMario.Objects.Miscs":
                     if (BackgroundConverter(selftype, objToken, ref objectStackToBeEncapsulated))
                     {
                         Debug.WriteLine("Deserialize " + selftype.Name + " success!");

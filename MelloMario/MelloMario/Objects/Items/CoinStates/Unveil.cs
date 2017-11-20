@@ -1,6 +1,6 @@
 ﻿using MelloMario.Sounds;
 
-namespace MelloMario.ItemObjects.CoinStates
+namespace MelloMario.Objects.Items.CoinStates
 {
     internal class Unveil : BaseTimedState<Coin>, IItemState
     {

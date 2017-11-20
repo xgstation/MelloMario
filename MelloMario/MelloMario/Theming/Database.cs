@@ -2,10 +2,10 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using MelloMario.BlockObjects;
-using MelloMario.ItemObjects;
-using MelloMario.MarioObjects;
-using MelloMario.MarioObjects.PowerUpStates;
+using MelloMario.Objects.Blocks;
+using MelloMario.Objects.Items;
+using MelloMario.Objects.Characters;
+using MelloMario.Objects.Characters.PowerUpStates;
 using Microsoft.Xna.Framework;
 
 namespace MelloMario.Theming

@@ -1,7 +1,7 @@
 ﻿using System;
-using MelloMario.BlockObjects;
-using MelloMario.ItemObjects;
-using MelloMario.MarioObjects;
+using MelloMario.Objects.Blocks;
+using MelloMario.Objects.Items;
+using MelloMario.Objects.Characters;
 
 namespace MelloMario.Theming
 {

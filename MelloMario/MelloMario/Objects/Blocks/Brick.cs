@@ -1,11 +1,11 @@
-﻿using MelloMario.BlockObjects.BrickStates;
+﻿using MelloMario.Objects.Blocks.BrickStates;
 using MelloMario.Factories;
-using MelloMario.MarioObjects;
+using MelloMario.Objects.Characters;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.BlockObjects
+namespace MelloMario.Objects.Blocks
 {
     internal class Brick : BaseCollidableObject
     {

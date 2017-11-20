@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.UIObjects
+namespace MelloMario.Objects.UserInterfaces
 {
     internal class GameStart : BaseUIObject
     {

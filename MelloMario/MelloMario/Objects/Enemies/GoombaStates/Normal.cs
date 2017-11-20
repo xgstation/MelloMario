@@ -1,4 +1,4 @@
-﻿namespace MelloMario.EnemyObjects.GoombaStates
+﻿namespace MelloMario.Objects.Enemies.GoombaStates
 {
     internal class Normal : BaseState<Goomba>, IGoombaState
     {

@@ -1,17 +1,17 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using MelloMario.BlockObjects;
-using MelloMario.BlockObjects.BrickStates;
-using MelloMario.EnemyObjects.KoopaStates;
+using MelloMario.Objects.Blocks;
+using MelloMario.Objects.Blocks.BrickStates;
+using MelloMario.Objects.Enemies.KoopaStates;
 using MelloMario.Factories;
-using MelloMario.MarioObjects;
-using MelloMario.MarioObjects.ProtectionStates;
+using MelloMario.Objects.Characters;
+using MelloMario.Objects.Characters.ProtectionStates;
 using MelloMario.Theming;
-using MelloMario.UIObjects;
+using MelloMario.Objects.UserInterfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Normal = MelloMario.EnemyObjects.KoopaStates.Normal;
+using Normal = MelloMario.Objects.Enemies.KoopaStates.Normal;
 
-namespace MelloMario.EnemyObjects
+namespace MelloMario.Objects.Enemies
 {
     internal class Koopa : BasePhysicalObject
     {
@@ -166,7 +166,7 @@ namespace MelloMario.EnemyObjects
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is BlockObjects.QuestionStates.Hidden)
+                    if (((Question) target).State is Objects.Blocks.QuestionStates.Hidden)
                     {
                         break;
                     }

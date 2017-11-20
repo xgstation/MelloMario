@@ -1,6 +1,6 @@
-﻿using MelloMario.MarioObjects;
+﻿using MelloMario.Objects.Characters;
 
-namespace MelloMario.BlockObjects.QuestionStates
+namespace MelloMario.Objects.Blocks.QuestionStates
 {
     internal class Used : BaseState<Question>, IBlockState
     {

@@ -1,12 +1,12 @@
 ﻿using MelloMario.Factories;
-using MelloMario.MarioObjects;
-using MelloMario.MarioObjects.MovementStates;
+using MelloMario.Objects.Characters;
+using MelloMario.Objects.Characters.MovementStates;
 using MelloMario.Sounds;
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.BlockObjects
+namespace MelloMario.Objects.Blocks
 {
     internal class Pipeline : BaseCollidableObject
     {

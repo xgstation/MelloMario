@@ -1,8 +1,8 @@
-﻿using MelloMario.MarioObjects;
-using MelloMario.MarioObjects.PowerUpStates;
+﻿using MelloMario.Objects.Characters;
+using MelloMario.Objects.Characters.PowerUpStates;
 using MelloMario.Theming;
 
-namespace MelloMario.BlockObjects.BrickStates
+namespace MelloMario.Objects.Blocks.BrickStates
 {
     internal class Hidden : BaseState<Brick>, IBlockState
     {

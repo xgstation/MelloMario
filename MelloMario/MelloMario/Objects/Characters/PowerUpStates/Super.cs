@@ -1,7 +1,7 @@
-﻿using MelloMario.MarioObjects.ProtectionStates;
+﻿using MelloMario.Objects.Characters.ProtectionStates;
 using MelloMario.Sounds;
 
-namespace MelloMario.MarioObjects.PowerUpStates
+namespace MelloMario.Objects.Characters.PowerUpStates
 {
     internal class Super : BaseState<Mario>, IMarioPowerUpState
     {

@@ -1,4 +1,4 @@
-﻿namespace MelloMario.EnemyObjects.KoopaStates
+﻿namespace MelloMario.Objects.Enemies.KoopaStates
 {
     internal class Normal : BaseState<Koopa>, IKoopaState
     {

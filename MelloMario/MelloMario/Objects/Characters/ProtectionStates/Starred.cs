@@ -1,4 +1,4 @@
-﻿namespace MelloMario.MarioObjects.ProtectionStates
+﻿namespace MelloMario.Objects.Characters.ProtectionStates
 {
     internal class Starred : BaseTimedState<Mario>, IMarioProtectionState
     {

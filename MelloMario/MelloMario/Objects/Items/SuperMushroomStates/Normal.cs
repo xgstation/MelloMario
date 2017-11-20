@@ -1,4 +1,4 @@
-﻿namespace MelloMario.ItemObjects.SuperMushroomStates
+﻿namespace MelloMario.Objects.Items.SuperMushroomStates
 {
     internal class Normal : BaseState<SuperMushroom>, IItemState
     {

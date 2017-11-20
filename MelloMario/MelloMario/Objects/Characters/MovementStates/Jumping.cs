@@ -1,4 +1,4 @@
-﻿namespace MelloMario.MarioObjects.MovementStates
+﻿namespace MelloMario.Objects.Characters.MovementStates
 {
     internal class Jumping : BaseTimedState<Mario>, IMarioMovementState
     {

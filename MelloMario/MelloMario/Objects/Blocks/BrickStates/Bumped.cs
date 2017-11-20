@@ -1,8 +1,8 @@
-﻿using MelloMario.MarioObjects;
+﻿using MelloMario.Objects.Characters;
 using MelloMario.Sounds;
 using MelloMario.Theming;
 
-namespace MelloMario.BlockObjects.BrickStates
+namespace MelloMario.Objects.Blocks.BrickStates
 {
     internal class Bumped : BaseState<Brick>, IBlockState
     {

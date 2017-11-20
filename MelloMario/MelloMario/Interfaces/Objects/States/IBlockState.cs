@@ -1,4 +1,4 @@
-﻿using MelloMario.MarioObjects;
+﻿using MelloMario.Objects.Characters;
 
 namespace MelloMario
 {

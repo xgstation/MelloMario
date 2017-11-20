@@ -1,6 +1,6 @@
-﻿using MelloMario.MarioObjects.ProtectionStates;
+﻿using MelloMario.Objects.Characters.ProtectionStates;
 
-namespace MelloMario.MarioObjects.PowerUpStates
+namespace MelloMario.Objects.Characters.PowerUpStates
 {
     internal class Standard : BaseState<Mario>, IMarioPowerUpState
     {

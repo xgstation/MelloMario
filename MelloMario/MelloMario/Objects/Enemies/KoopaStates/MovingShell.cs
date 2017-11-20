@@ -1,4 +1,4 @@
-﻿namespace MelloMario.EnemyObjects.KoopaStates
+﻿namespace MelloMario.Objects.Enemies.KoopaStates
 {
     internal class MovingShell : BaseState<Koopa>, IKoopaState
     {

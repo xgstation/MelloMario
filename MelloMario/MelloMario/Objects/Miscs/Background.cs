@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MelloMario.MiscObjects
+namespace MelloMario.Objects.Miscs
 {
     internal class Background : BaseGameObject
     {

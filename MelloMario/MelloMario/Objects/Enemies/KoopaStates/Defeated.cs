@@ -1,7 +1,7 @@
 ﻿using MelloMario.Sounds;
 using Microsoft.Xna.Framework.Audio;
 
-namespace MelloMario.EnemyObjects.KoopaStates
+namespace MelloMario.Objects.Enemies.KoopaStates
 {
     internal class Defeated : BaseState<Koopa>, IKoopaState
     {

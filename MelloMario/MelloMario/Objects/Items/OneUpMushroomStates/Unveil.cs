@@ -1,6 +1,6 @@
 ﻿using MelloMario.Sounds;
 
-namespace MelloMario.ItemObjects.OneUpMushroomStates
+namespace MelloMario.Objects.Items.OneUpMushroomStates
 {
     internal class Unveil : BaseTimedState<OneUpMushroom>, IItemState
     {
