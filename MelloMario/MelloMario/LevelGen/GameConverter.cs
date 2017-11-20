@@ -79,7 +79,7 @@ namespace MelloMario.LevelGen
 
             Util.TryGet(out Point initialPoint, mapToBeLoaded, "InitialSpawnPoint");
             Util.TryGet(out IList<Point> respawnPoints, mapToBeLoaded, "RespawnPoints");
-            world = new World(index, mapSize, new Point(2, 2), respawnPoints);
+            world = new World(index, mapType, mapSize, new Point(2, 2), respawnPoints);
 
             gameEntityConverter = new GameEntityConverter(model, world, listener);
 
