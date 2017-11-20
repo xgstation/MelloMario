@@ -27,7 +27,7 @@ namespace MelloMario.Sounds
         public static Song Hurry = SoundFactory.Instance.CreateSong("18-hurry-overworld-");
 
         //public static Song GameOver = SoundFactory.Instance.CreateSong("09-game-over");
-        public static Song Star = SoundFactory.Instance.CreateSong("05-starman");
+        public static SoundEffectInstance Star = SoundFactory.Instance.CreateSoundEffect("05-starman");
 
         public static SoundEffectInstance Bounce = SoundFactory.Instance.CreateSoundEffect("smb_jumpsmall");
         public static SoundEffectInstance PowerBounce = SoundFactory.Instance.CreateSoundEffect("smb_jump");
@@ -62,7 +62,7 @@ namespace MelloMario.Sounds
                         MediaPlayer.Play(BelowGround);
                         break;
                     case Songs.Star:
-                        MediaPlayer.Play(Star);
+                        //MediaPlayer.Play(Star);
                         break;
                     default:
                         MediaPlayer.Stop();

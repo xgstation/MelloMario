@@ -2,6 +2,7 @@
 using MelloMario.Theming;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MelloMario.Sounds;
 
 namespace MelloMario.UIObjects
 {
@@ -24,6 +25,7 @@ namespace MelloMario.UIObjects
             splashDestinationRect = new Rectangle(0, 0, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
             textDestinationRect = new Rectangle(10, 10, 80, 80);
             text2DestinationRect = new Rectangle(200, 200, 200, 80);
+            SoundController.GameWon.Play();
         }
 
         protected override void OnUpdate(int time)
