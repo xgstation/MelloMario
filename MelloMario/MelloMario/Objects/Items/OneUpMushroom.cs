@@ -7,13 +7,14 @@
     using MelloMario.Objects.Blocks.BrickStates;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.OneUpMushroomStates;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
-    internal class OneUpMushroom : BasePhysicalObject
+    internal class OneUpMushroom : BasePhysicalObject, ISoundable
     {
         private bool collected;
         private IItemState state;
@@ -22,10 +23,13 @@
             IWorld world,
             Point location,
             IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener,
             bool isUnveil = false) : base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
-
+            soundListener.Subscribe(this);
+            SoundEventArgs = new SoundArgs();
+            SoundEventArgs.SetMethodCalled();
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -55,6 +59,7 @@
 
         protected override void OnUpdate(int time)
         {
+            SoundEvent?.Invoke(this, SoundEventArgs);
             state.Update(time);
         }
 
@@ -145,5 +150,8 @@
         {
             Move(new Point(0, delta));
         }
+
+        public event SoundHandler SoundEvent;
+        public ISoundArgs SoundEventArgs { get; }
     }
 }

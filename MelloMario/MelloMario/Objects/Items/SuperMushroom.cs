@@ -8,25 +8,33 @@
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.SuperMushroomStates;
     using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
-    internal class SuperMushroom : BasePhysicalObject
+    internal class SuperMushroom : BasePhysicalObject, ISoundable
     {
         private bool collected;
         private IItemState state;
+        private IListener<IGameObject> listener;
+        private IListener<ISoundable> soundListener;
 
         public SuperMushroom(
             IWorld world,
             Point location,
             IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener,
             bool isUnveil = false) : base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
-
+            this.listener = listener;
+            this.soundListener = soundListener;
+            soundListener.Subscribe(this);
+            SoundEventArgs = new SoundArgs();
+            SoundEventArgs.SetMethodCalled();
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -55,13 +63,12 @@
 
         public IGameObject GetFireFlower()
         {
-            // TODO: listener?
             return GameObjectFactory.Instance.CreateGameObject(
                 "FireFlowerUnveil",
                 World,
                 Boundary.Location,
-                null,
-                null);
+                listener,
+                soundListener);
         }
 
         private void UpdateSprite()
@@ -71,6 +78,7 @@
 
         protected override void OnUpdate(int time)
         {
+            SoundEvent?.Invoke(this, SoundEventArgs);
             state.Update(time);
         }
 
@@ -160,5 +168,8 @@
         {
             Move(new Point(0, delta));
         }
+
+        public event SoundHandler SoundEvent;
+        public ISoundArgs SoundEventArgs { get; }
     }
 }

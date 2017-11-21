@@ -8,13 +8,14 @@
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.StarStates;
     using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
-    internal class Star : BasePhysicalObject
+    internal class Star : BasePhysicalObject,ISoundable
     {
         private bool collected;
         private IItemState state;
@@ -23,10 +24,13 @@
             IWorld world,
             Point location,
             IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener,
             bool isUnveil = false) : base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
-
+            soundListener.Subscribe(this);
+            SoundEventArgs = new SoundArgs();
+            SoundEventArgs.SetMethodCalled();
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -60,6 +64,7 @@
 
         protected override void OnUpdate(int time)
         {
+            SoundEvent?.Invoke(this, SoundEventArgs);
             state.Update(time);
         }
 
@@ -161,5 +166,8 @@
         {
             Move(new Point(0, delta));
         }
+
+        public event SoundHandler SoundEvent;
+        public ISoundArgs SoundEventArgs { get; }
     }
 }

@@ -6,6 +6,7 @@
     using System.Diagnostics;
     using System.Reflection;
     using MelloMario.Factories;
+    using MelloMario.Objects;
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items;
@@ -24,7 +25,6 @@
             {
                 string result = method.Name;
                 method = null;
-
                 return result;
             }
         }
@@ -61,6 +61,10 @@
         {
             switch (c)
             {
+                case FireFlower _:
+                case SuperMushroom _:
+                case Star _:
+                case OneUpMushroom _:
                 case Coin _:
                     ItemSoundEffect(c,e);
                     break;
@@ -139,6 +143,15 @@
                     if (coin.State is Objects.Items.CoinStates.Unveil || e.MethodCalled == "Collect")
                     {
                         PlayEffect("Coin");
+                    }
+                    break;;
+                case FireFlower _:
+                case SuperMushroom _:
+                case Star _:
+                case OneUpMushroom _:
+                    if (s.GetType().GetProperty("State")?.GetValue(s, null).GetType().Name == "Unveil")
+                    {
+                        PlayEffect("Unveil");
                     }
                     break;
             }   

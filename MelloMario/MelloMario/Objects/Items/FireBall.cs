@@ -9,9 +9,9 @@
 
     #endregion
 
-    internal class FireBall : BasePhysicalObject
+    internal class FireBall : BasePhysicalObject, ISoundable
     {
-        public FireBall(IWorld world, Point location, IListener<IGameObject> listener) : base(
+        public FireBall(IWorld world, Point location, IListener<IGameObject> listener,IListener<ISoundable> soundListener) : base(
             world,
             location,
             listener,
@@ -52,5 +52,8 @@
         {
             //throw new NotImplementedException();
         }
+
+        public event SoundHandler SoundEvent;
+        public ISoundArgs SoundEventArgs { get; }
     }
 }

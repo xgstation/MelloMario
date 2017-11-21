@@ -6,13 +6,14 @@
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.FireFlowerStates;
     using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
-    internal class FireFlower : BaseCollidableObject
+    internal class FireFlower : BaseCollidableObject, ISoundable
     {
         private bool collected;
         private IItemState state;
@@ -21,12 +22,16 @@
             IWorld world,
             Point location,
             IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener,
             bool isUnveil = false) : base(
             world,
             location,
             listener,
             new Point(32, 32))
         {
+            soundListener.Subscribe(this);
+            SoundEventArgs = new SoundArgs();
+            SoundEventArgs.SetMethodCalled();
             collected = false;
             if (isUnveil)
             {
@@ -61,6 +66,7 @@
 
         protected override void OnUpdate(int time)
         {
+            SoundEvent?.Invoke(this, SoundEventArgs);
             state.Update(time);
         }
 
@@ -101,5 +107,8 @@
         {
             Move(new Point(0, delta));
         }
+
+        public event SoundHandler SoundEvent;
+        public ISoundArgs SoundEventArgs { get; }
     }
 }
