@@ -13,33 +13,27 @@
 
     #endregion
 
-    internal class SoundArgs : SoundArgsBase
+    internal class SoundArgs : EventArgs, ISoundArgs
     {
-        public override bool HasArgs { get { return Method != null; } }
+        private MethodBase method;
 
-        public override MethodBase MethodCalled
+        public bool HasArgs { get { return method != null; } }
+
+        public string MethodCalled
         {
             get
             {
-                try
-                {
-                    return Method;
-                }
-                finally
-                {
-                    Method = null;
-                }
-            }
-            protected set
-            {
-                Method = value;
+                string result = method.Name;
+                method = null;
+
+                return result;
             }
         }
 
-        public override void SetMethodCalled()
+        public void SetMethodCalled()
         {
             StackTrace stackTrace = new StackTrace();
-            MethodCalled = stackTrace.GetFrame(1).GetMethod();
+            method = stackTrace.GetFrame(1).GetMethod();
         }
     }
     internal class SoundEffectListener : IListener<ISoundable>
@@ -64,7 +58,7 @@
             soundObject.SoundEvent += Sound;
         }
 
-        private static void Sound(ISoundable c, SoundArgsBase e)
+        private static void Sound(ISoundable c, ISoundArgs e)
         {
             switch (c)
             {
@@ -81,13 +75,13 @@
             e?.SetMethodCalled();
         }
 
-        private static void MarioSoundEffect(Mario mario, SoundArgsBase e)
+        private static void MarioSoundEffect(Mario mario, ISoundArgs e)
         {
             if (!e.HasArgs)
             {
                 return;
             }
-            switch (e.MethodCalled.Name)
+            switch (e.MethodCalled)
             {
                 case "OnDeath":
                     PlayEffect("Death");
@@ -118,13 +112,13 @@
             }
         }
 
-        private static void BlockSoundEffect(ISoundable s, SoundArgsBase e)
+        private static void BlockSoundEffect(ISoundable s, ISoundArgs e)
         {
             if (!e.HasArgs)
             {
                 return;
             }
-            string methodName = e.MethodCalled.Name;
+            string methodName = e.MethodCalled;
             switch (s)
             {
                 case Brick _:
