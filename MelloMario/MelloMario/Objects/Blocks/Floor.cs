@@ -31,7 +31,9 @@
             ShowSprite(SpriteFactory.Instance.CreateFloorSprite());
         }
 
-        protected override void OnUpdate(int time) { }
+        protected override void OnUpdate(int time)
+        {
+        }
 
         protected override void OnCollision(
             IGameObject target,
@@ -39,10 +41,15 @@
             CollisionMode modePassive,
             CornerMode corner,
             CornerMode cornerPassive)
-        { }
+        {
+        }
 
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
+        {
+        }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
+        {
+        }
     }
 }

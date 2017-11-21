@@ -10,7 +10,8 @@
     internal enum WorldType
     {
         normal,
-        underground,
+
+        underground
         // underwater, bowsercastle, ...
     }
 

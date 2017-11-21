@@ -244,18 +244,22 @@
 
         protected void ScorePoints(int points)
         {
-            HandlerPoints?.Invoke(this, new GameEventArgs
-            {
-                Points = points
-            });
+            HandlerPoints?.Invoke(
+                this,
+                new GameEventArgs
+                {
+                    Points = points
+                });
         }
 
         protected void ChangeLives()
         {
-            HandlerLives?.Invoke(this, new GameEventArgs
-            {
-                Points = 1
-            });
+            HandlerLives?.Invoke(
+                this,
+                new GameEventArgs
+                {
+                    Points = 1
+                });
         }
 
         protected enum CollisionMode

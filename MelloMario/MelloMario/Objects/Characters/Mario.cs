@@ -1,6 +1,4 @@
-﻿using MelloMario.Sounds;
-
-namespace MelloMario.Objects.Characters
+﻿namespace MelloMario.Objects.Characters
 {
     #region
 
@@ -14,6 +12,7 @@ namespace MelloMario.Objects.Characters
     using MelloMario.Objects.Characters.ProtectionStates;
     using MelloMario.Objects.Enemies;
     using MelloMario.Objects.Items;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
@@ -36,7 +35,11 @@ namespace MelloMario.Objects.Characters
             SoundEvent?.Invoke(this, ref SoundEventArgs);
         }
 
-        public Mario(IGameWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener) : base(
+        public Mario(
+            IGameWorld world,
+            Point location,
+            IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener) : base(
             world,
             location,
             listener,
@@ -373,7 +376,9 @@ namespace MelloMario.Objects.Characters
             HandlerGameOver?.Invoke(this, eventInfo);
         }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
+        {
+        }
 
         public void UpgradeToSuper()
         {

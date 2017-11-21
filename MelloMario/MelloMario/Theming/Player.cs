@@ -58,7 +58,12 @@
             Score += delta;
         }
 
-        public void Init(string type, IGameWorld world, IListener<IGameObject> listener, IListener<ISoundable> soundListener, ICamera newCamera)
+        public void Init(
+            string type,
+            IGameWorld world,
+            IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener,
+            ICamera newCamera)
         {
             Character = GameObjectFactory.Instance.CreateGameCharacter(
                 type,
@@ -115,6 +120,8 @@
             }
         }
 
-        public void Draw(int time, SpriteBatch spriteBatch) { }
+        public void Draw(int time, SpriteBatch spriteBatch)
+        {
+        }
     }
 }

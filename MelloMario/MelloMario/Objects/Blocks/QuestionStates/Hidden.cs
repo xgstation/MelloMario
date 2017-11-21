@@ -8,7 +8,9 @@
 
     internal class Hidden : BaseState<Question>, IBlockState
     {
-        public Hidden(Question owner) : base(owner) { }
+        public Hidden(Question owner) : base(owner)
+        {
+        }
 
         public void Show()
         {

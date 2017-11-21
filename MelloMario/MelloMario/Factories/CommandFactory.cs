@@ -9,7 +9,9 @@
 
     internal class CommandFactory : ICommandFactory
     {
-        private CommandFactory() { }
+        private CommandFactory()
+        {
+        }
 
         public static ICommandFactory Instance { get; } = new CommandFactory();
 

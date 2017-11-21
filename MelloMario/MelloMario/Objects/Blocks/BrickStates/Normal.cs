@@ -9,7 +9,9 @@
 
     internal class Normal : BaseState<Brick>, IBlockState
     {
-        public Normal(Brick owner) : base(owner) { }
+        public Normal(Brick owner) : base(owner)
+        {
+        }
 
         public void Show()
         {
@@ -33,6 +35,8 @@
             }
         }
 
-        public override void Update(int time) { }
+        public override void Update(int time)
+        {
+        }
     }
 }

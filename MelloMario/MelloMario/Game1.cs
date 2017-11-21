@@ -41,6 +41,7 @@
         {
             sounds.ToggleMute();
         }
+
         public void Reset()
         {
             model = new Theming.Model(this);

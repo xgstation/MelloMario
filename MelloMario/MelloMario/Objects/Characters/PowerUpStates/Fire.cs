@@ -14,7 +14,9 @@
             //SoundManager.SizeUp.Play();
         }
 
-        public void UpgradeToFire() { }
+        public void UpgradeToFire()
+        {
+        }
 
         public void Downgrade()
         {
@@ -30,6 +32,8 @@
             }
         }
 
-        public override void Update(int time) { }
+        public override void Update(int time)
+        {
+        }
     }
 }

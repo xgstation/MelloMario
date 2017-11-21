@@ -7,7 +7,6 @@
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Blocks.BrickStates;
     using MelloMario.Objects.Characters;
-    using MelloMario.Objects.Characters.MovementStates;
     using MelloMario.Objects.Characters.ProtectionStates;
     using MelloMario.Objects.Enemies.KoopaStates;
     using MelloMario.Objects.UserInterfaces;
@@ -62,10 +61,6 @@
             if (Facing == FacingMode.left) // Make condition if he is colliding with floor tile or not
             {
                 SetVerticalVelocity(-Const.VELOCITY_RISING_THWOMP);
-            }
-            else
-            {
-                //SetVerticalVelocity(Const.VELOCITY_THWOMP);
             }
 
             base.OnSimulation(time);
@@ -138,9 +133,13 @@
             }
         }
 
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
+        {
+        }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
+        {
+        }
 
         private void ChangeFacing(FacingMode facing)
         {

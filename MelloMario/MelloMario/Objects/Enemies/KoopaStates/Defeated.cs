@@ -19,7 +19,9 @@
             Owner.State = new MovingShell(Owner);
         }
 
-        public void Defeat() { }
+        public void Defeat()
+        {
+        }
 
         public override void Update(int time)
         {

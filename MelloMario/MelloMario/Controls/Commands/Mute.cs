@@ -2,7 +2,9 @@
 {
     internal class Mute : BaseCommand<IModel>
     {
-        public Mute(IModel model) : base(model) { }
+        public Mute(IModel model) : base(model)
+        {
+        }
 
         public override void Execute()
         {

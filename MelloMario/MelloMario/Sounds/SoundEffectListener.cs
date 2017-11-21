@@ -1,11 +1,11 @@
-﻿using MelloMario.Objects.Characters;
-
-namespace MelloMario.Sounds
+﻿namespace MelloMario.Sounds
 {
     #region
 
     using System;
     using MelloMario.Factories;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Objects.Items;
 
     #endregion
@@ -14,6 +14,7 @@ namespace MelloMario.Sounds
     {
         public Action ActionCalled { get; set; }
     }
+
     internal class SoundEffectListener : IListener<ISoundable>
     {
         private float soundEffectVolume;
@@ -22,12 +23,15 @@ namespace MelloMario.Sounds
         {
             soundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
         }
+
         public void ToggleMute()
         {
             float currentVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
-            Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume = Math.Abs(currentVolume) < float.Epsilon ? soundEffectVolume : 0;
+            Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume =
+                Math.Abs(currentVolume) < float.Epsilon ? soundEffectVolume : 0;
             soundEffectVolume = Math.Abs(currentVolume) < float.Epsilon ? soundEffectVolume : currentVolume;
         }
+
         public void Subscribe(ISoundable soundObject)
         {
             soundObject.SoundEvent += Sound;
@@ -76,7 +80,7 @@ namespace MelloMario.Sounds
                     PlayEffect("Pipe");
                     break;
                 case "Jump":
-                    if (mario.PowerUpState is Objects.Characters.PowerUpStates.Standard)
+                    if (mario.PowerUpState is Standard)
                     {
                         PlayEffect("Bounce");
                     }

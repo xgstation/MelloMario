@@ -96,7 +96,11 @@
                     break;
                 case Question question when question.State is Blocks.QuestionStates.Hidden:
                     break;
-                case IGameObject obj when target is Brick || target is Question || target is Floor || target is Pipeline || target is Stair:
+                case IGameObject obj when target is Brick
+                || target is Question
+                || target is Floor
+                || target is Pipeline
+                || target is Stair:
                     if (mode == CollisionMode.Left)
                     {
                         Bounce(mode, new Vector2(), 1);
@@ -124,9 +128,13 @@
             }
         }
 
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
+        {
+        }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
+        {
+        }
 
         private void ChangeFacing(FacingMode facing)
         {

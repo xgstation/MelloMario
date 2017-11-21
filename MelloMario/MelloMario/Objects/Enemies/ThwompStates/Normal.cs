@@ -2,15 +2,21 @@
 {
     internal class Normal : BaseState<Thwomp>, IThwompState
     {
-        public Normal(Thwomp owner) : base(owner) { }
+        public Normal(Thwomp owner) : base(owner)
+        {
+        }
 
-        public void Show() { }
+        public void Show()
+        {
+        }
 
         public void Defeat()
         {
             Owner.State = new Defeated(Owner);
         }
 
-        public override void Update(int time) { }
+        public override void Update(int time)
+        {
+        }
     }
 }

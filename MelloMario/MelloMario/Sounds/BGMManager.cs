@@ -4,8 +4,6 @@
 
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
-    using MelloMario.Objects.Characters.MovementStates;
-    using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Objects.Characters.ProtectionStates;
     using Microsoft.Xna.Framework.Media;
 

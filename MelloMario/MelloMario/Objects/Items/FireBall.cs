@@ -43,7 +43,9 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
-            if (target is Mario) { }
+            if (target is Mario)
+            {
+            }
         }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)

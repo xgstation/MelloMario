@@ -1,7 +1,4 @@
-﻿using System;
-using MelloMario.Sounds;
-
-namespace MelloMario.Objects.Characters
+﻿namespace MelloMario.Objects.Characters
 {
     #region
 
@@ -9,6 +6,7 @@ namespace MelloMario.Objects.Characters
     using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Objects.Characters.ProtectionStates;
     using MelloMario.Objects.Items;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
@@ -22,8 +20,12 @@ namespace MelloMario.Objects.Characters
 
         private Vector2 userInput;
 
-
-        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener) : base(
+        public MarioCharacter(
+            IGameWorld world,
+            IPlayer player,
+            Point location,
+            IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener) : base(
             world,
             location,
             listener,
@@ -139,7 +141,7 @@ namespace MelloMario.Objects.Characters
 
                 if (MovementState is Jumping jumping && !jumping.Finished)
                 {
-                    ((MarioSoundArgs)SoundEventArgs).ActionCalled = Jump;
+                    ((MarioSoundArgs) SoundEventArgs).ActionCalled = Jump;
                     userInput.Y -= Const.ACCEL_INPUT_Y + Const.ACCEL_G;
                 }
             }
@@ -190,13 +192,13 @@ namespace MelloMario.Objects.Characters
 
         public void FireCreate()
         {
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = FireCreate;
+            ((MarioSoundArgs) SoundEventArgs).ActionCalled = FireCreate;
             PowerUpState.UpgradeToFire();
         }
 
         public void SuperCreate()
         {
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = SuperCreate;
+            ((MarioSoundArgs) SoundEventArgs).ActionCalled = SuperCreate;
             PowerUpState.UpgradeToSuper();
         }
 
@@ -206,7 +208,7 @@ namespace MelloMario.Objects.Characters
             {
                 return;
             }
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = NormalCreate;
+            ((MarioSoundArgs) SoundEventArgs).ActionCalled = NormalCreate;
             PowerUpState.Downgrade();
             if (PowerUpState is Fire)
             {
@@ -222,7 +224,7 @@ namespace MelloMario.Objects.Characters
             }
             if (PowerUpState is Fire)
             {
-                ((MarioSoundArgs)SoundEventArgs).ActionCalled = Action;
+                ((MarioSoundArgs) SoundEventArgs).ActionCalled = Action;
                 new FireBall(World, Boundary.Location, null);
             }
         }

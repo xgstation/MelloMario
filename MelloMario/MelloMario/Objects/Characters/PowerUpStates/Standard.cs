@@ -8,7 +8,9 @@
 
     internal class Standard : BaseState<Mario>, IMarioPowerUpState
     {
-        public Standard(Mario owner) : base(owner) { }
+        public Standard(Mario owner) : base(owner)
+        {
+        }
 
         public void UpgradeToFire()
         {
@@ -33,6 +35,8 @@
             }
         }
 
-        public override void Update(int time) { }
+        public override void Update(int time)
+        {
+        }
     }
 }

@@ -27,7 +27,9 @@
             Owner.MovementState = previous;
         }
 
-        public void Jump() { }
+        public void Jump()
+        {
+        }
 
         public void Walk()
         {
