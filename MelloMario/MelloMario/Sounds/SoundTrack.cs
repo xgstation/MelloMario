@@ -4,7 +4,7 @@ namespace MelloMario.Sounds
 {
     internal class SoundTrack : ISoundTrack
     {
-        private Song instance;
+        private readonly Song instance;
 
         public SoundTrack(Song instance)
         {
