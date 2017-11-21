@@ -85,21 +85,21 @@
                 case "CoinUnveil":
                     return new Coin(world, location, listener, soundListener, true);
                 case "OneUpMushroom":
-                    return new OneUpMushroom(world, location, listener);
+                    return new OneUpMushroom(world, location, listener, soundListener);
                 case "OneUpMushroomUnveil":
-                    return new OneUpMushroom(world, location, listener, true);
+                    return new OneUpMushroom(world, location, listener, soundListener, true);
                 case "FireFlower":
-                    return new FireFlower(world, location, listener);
+                    return new FireFlower(world, location, listener, soundListener);
                 case "FireFlowerUnveil":
-                    return new FireFlower(world, location, listener, true);
+                    return new FireFlower(world, location, listener, soundListener, true);
                 case "SuperMushroom":
-                    return new SuperMushroom(world, location, listener);
+                    return new SuperMushroom(world, location, listener, soundListener);
                 case "SuperMushroomUnveil":
-                    return new SuperMushroom(world, location, listener, true);
+                    return new SuperMushroom(world, location, listener, soundListener, true);
                 case "Star":
-                    return new Star(world, location, listener);
+                    return new Star(world, location, listener, soundListener);
                 case "StarUnveil":
-                    return new Star(world, location, listener, true);
+                    return new Star(world, location, listener, soundListener, true);
 
                 //others
                 case "ShortCloud":
