@@ -61,8 +61,14 @@ namespace MelloMario.Sounds
                     //TODO: Add Fireball Shotting Sound
                     break;
                 case "UpgradeToSuper":
+                    PlayEffect("PowerUp");
+                    break;
                 case "UpgradeToFire":
+                    PlayEffect("PowerUp");
+                    break;
                 case "SuperCreate":
+                    PlayEffect("PowerUp");
+                    break;
                 case "FireCreate":
                     PlayEffect("PowerUp");
                     break;

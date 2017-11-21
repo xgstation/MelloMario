@@ -86,6 +86,11 @@
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="Sounds\SoundEffectListener.cs" />
+    <Compile Include="Interfaces\Objects\States\IThwompStatecs.cs" />
+    <Compile Include="Objects\Enemies\Thwomp.cs" />
+    <Compile Include="Objects\Enemies\ThwompStates\Defeated.cs" />
+    <Compile Include="Objects\Enemies\ThwompStates\Normal.cs" />
+    <Compile Include="Sounds\SoundListener.cs" />
     <Compile Include="Sounds\SoundTrack.cs" />
     <Compile Include="Sounds\SoundEffect.cs" />
     <Compile Include="Interfaces\Sounds\ISoundTrack.cs" />
@@ -221,6 +226,7 @@
     <Compile Include="Objects\Characters\ProtectionStates\Normal.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Protected.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Starred.cs" />
+	<Compile Include="Sounds\SoundManager.cs" />
     <Compile Include="Sounds\BGMManager.cs" />
     <Compile Include="Objects\UserInterfaces\PopingUpPoints.cs" />
     <Compile Include="Graphics\Sprites\SplashSprite.cs" />

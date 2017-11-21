@@ -27,6 +27,7 @@
 
         public const float VELOCITY_GOOMBA = 2f;
         public const float VELOCITY_KOOPA = 2f;
+        public const float VELOCITY_RISING_THWOMP = 3f;
         public const float VELOCITY_KOOPA_SHELL = 20f;
         public const float VELOCITY_PIRANHA = 2f;
 
@@ -47,6 +48,7 @@
         public const int SCORE_COIN = 200;
         public const int SCORE_GOOMBA = 100;
         public const int SCORE_KOOPA = 200;
+        public const int SCORE_THWOMP = 300;
         public const int SCORE_BRICK = 50;
         public const int SCORE_POWER_UP = 1000;
         public const int SCORE_PIRANHA = 200;
