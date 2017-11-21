@@ -20,7 +20,7 @@
         private GameConverter gameConverter;
         private string levelString;
 
-        private Model model;
+        private IModel model;
 
         public LevelIOJson(string jsonPath, IListener<IGameObject> listener, IListener<ISoundable> soundListener)
         {
@@ -30,7 +30,7 @@
             Util.Initilalize();
         }
 
-        public void SetModel(Model newModel)
+        public void SetModel(IModel newModel)
         {
             model = newModel;
         }

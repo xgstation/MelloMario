@@ -20,7 +20,7 @@
         private readonly string index;
         private readonly IListener<IGameObject> listener;
         private readonly IListener<ISoundable> soundListener;
-        private readonly Model model;
+        private readonly IModel model;
         private GameEntityConverter gameEntityConverter;
         private JToken jsonToken;
         private JToken mapListToken;
@@ -29,7 +29,7 @@
         private IWorld world;
 
         public GameConverter(
-            Model model,
+            IModel model,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,
             string index = "Main")
