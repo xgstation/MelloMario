@@ -15,28 +15,29 @@
     //       DO NOT implement actual functionality in it until the design is clear
     internal class GroundGenerator : ILevelGenerator
     {
-        private readonly ISession session;
         private readonly IListener<IGameObject> listener;
 
-        private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
-
-        internal GroundGenerator(ISession session, IListener<IGameObject> listener)
+        public GroundGenerator(IListener<IGameObject> listener)
         {
-            this.session = session;
             this.listener = listener;
         }
 
         public void Request(Rectangle range, IWorld world)
         {
-            //float temp = camera.Viewport.Location.X + 800 + 32;
-            //if ((int) temp / 32 >= (int) rightMostReachedX / 32)
-            //{
-            //    difficultyIndex += double.Epsilon;
-            //    new Floor(world, new Point(world.Boundary.Right, 13 * 32), listener);
-            //    new Floor(world, new Point(world.Boundary.Right, 14 * 32), listener);
-            //    world.Extend(0, 32, 0, 0);
-            //    rightMostReachedX += 32;
-            //}
+            // note: top / buttom are locked
+
+            while (world.Boundary.Right < range.Right)
+            {
+                new Floor(world, new Point(world.Boundary.Right, 13 * 32), listener);
+                new Floor(world, new Point(world.Boundary.Right, 14 * 32), listener);
+                world.Extend(0, 32, 0, 0);
+            }
+            while (world.Boundary.Left > range.Left)
+            {
+                new Floor(world, new Point(world.Boundary.Left - 32, 13 * 32), listener);
+                new Floor(world, new Point(world.Boundary.Left - 32, 14 * 32), listener);
+                world.Extend(32, 0, 0, 0);
+            }
         }
     }
 }

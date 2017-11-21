@@ -21,7 +21,7 @@
 
         private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
 
-        internal InfiniteGenerator(IWorld world, IListener<IGameObject> listener, ICamera camera)
+        public InfiniteGenerator(IWorld world, IListener<IGameObject> listener, ICamera camera)
         {
             this.world = world;
             this.camera = camera;
@@ -29,7 +29,7 @@
             rightMostReachedX = world.Boundary.Width;
         }
 
-        internal void Update(int time)
+        public void Update(int time)
         {
             float temp = camera.Viewport.Location.X + 800 + 32;
             if ((int) temp / 32 >= (int) rightMostReachedX / 32)

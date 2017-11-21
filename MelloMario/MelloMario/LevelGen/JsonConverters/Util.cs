@@ -1,4 +1,4 @@
-﻿namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen.JsonConverters
 {
     #region
 
@@ -164,7 +164,7 @@
                     {
                         if (typeof(T1).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                         {
-                            foreach (IGameObject obj in (IEnumerable<IGameObject>)createFunc(createLocation))
+                            foreach (IGameObject obj in (IEnumerable<IGameObject>) createFunc(createLocation))
                             {
                                 Point index = new Point(x, y);
                                 if (properties != null && properties.ContainsKey(index))
@@ -175,7 +175,7 @@
                         }
                         else
                         {
-                            IGameObject newObject = (IGameObject)createFunc(createLocation);
+                            IGameObject newObject = (IGameObject) createFunc(createLocation);
                             Point index = new Point(x, y);
                             if (properties != null && properties.ContainsKey(index))
                             {
