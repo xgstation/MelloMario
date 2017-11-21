@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Controls.Commands
 {
+    using System;
+
+    [Serializable]
     internal abstract class BaseCommand<T> : ICommand
     {
         protected T Receiver;

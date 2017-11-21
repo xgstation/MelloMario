@@ -2,12 +2,14 @@
 {
     #region
 
+    using System;
     using System.Collections.Generic;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
     #endregion
 
+    [Serializable]
     internal class World : BaseContainer<Point, IGameObject>, IWorld
     {
         private readonly Point initialPoint;

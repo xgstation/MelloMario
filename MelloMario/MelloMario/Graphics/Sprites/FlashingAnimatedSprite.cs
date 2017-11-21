@@ -2,11 +2,13 @@
 {
     #region
 
+    using System;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
+    [Serializable]
     internal class FlashingAnimatedSprite : AnimatedSprite
     {
         public FlashingAnimatedSprite(

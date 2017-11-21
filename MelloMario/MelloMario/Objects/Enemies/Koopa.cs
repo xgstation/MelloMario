@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.Factories;
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Blocks.BrickStates;
@@ -16,6 +17,8 @@
 
     #endregion
 
+
+    [Serializable]
     internal class Koopa : BasePhysicalObject
     {
         private readonly string color;

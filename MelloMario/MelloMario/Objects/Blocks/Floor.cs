@@ -2,12 +2,14 @@
 {
     #region
 
+    using System;
     using MelloMario.Factories;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
+    [Serializable]
     internal class Floor : BaseCollidableObject
     {
         public Floor(IWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(

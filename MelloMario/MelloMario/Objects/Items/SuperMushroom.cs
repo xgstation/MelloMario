@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.Factories;
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Blocks.BrickStates;
@@ -15,6 +16,7 @@
 
     #endregion
 
+    [Serializable]
     internal class SuperMushroom : BasePhysicalObject, ISoundable
     {
         private bool collected;

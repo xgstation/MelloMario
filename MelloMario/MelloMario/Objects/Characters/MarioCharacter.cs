@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.Objects.Characters.MovementStates;
     using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Objects.Characters.ProtectionStates;
@@ -12,6 +13,7 @@
 
     #endregion
 
+    [Serializable]
     internal class MarioCharacter : Mario, ICharacter
     {
         private Animation animation;

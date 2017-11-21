@@ -9,6 +9,7 @@
 
     #endregion
 
+    [Serializable]
     internal abstract class BaseCollidableObject : BaseGameObject
     {
         public delegate void LivesHandler(BaseCollidableObject m, GameEventArgs e);

@@ -2,10 +2,12 @@
 {
     #region
 
+    using System;
     using MelloMario.Objects.Characters;
 
     #endregion
 
+    [Serializable]
     internal class Destroyed : BaseTimedState<Brick>, IBlockState
     {
         public Destroyed(Brick owner) : base(owner, 1000)

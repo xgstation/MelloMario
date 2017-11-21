@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Enemies.KoopaStates
 {
+    using System;
+
+    [Serializable]
     internal class Normal : BaseState<Koopa>, IKoopaState
     {
         public Normal(Koopa owner) : base(owner)

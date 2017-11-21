@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Items.CoinStates
 {
+    using System;
+
+    [Serializable]
     internal class Unveil : BaseTimedState<Coin>, IItemState
     {
         private float elapsed;

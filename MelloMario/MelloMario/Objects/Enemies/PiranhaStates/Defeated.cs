@@ -2,10 +2,12 @@
 {
     #region
 
+    using System;
     using MelloMario.Interfaces.Objects.States;
 
     #endregion
 
+    [Serializable]
     internal class Defeated : BaseState<Piranha>, IPiranhaState
     {
         public Defeated(Piranha owner) : base(owner)

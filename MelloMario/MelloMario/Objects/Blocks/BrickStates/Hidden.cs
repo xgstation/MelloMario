@@ -2,12 +2,14 @@
 {
     #region
 
+    using System;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Theming;
 
     #endregion
 
+    [Serializable]
     internal class Hidden : BaseState<Brick>, IBlockState
     {
         public Hidden(Brick owner) : base(owner)

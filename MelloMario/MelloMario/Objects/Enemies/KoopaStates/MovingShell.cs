@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Enemies.KoopaStates
 {
+    using System;
+
+    [Serializable]
     internal class MovingShell : BaseState<Koopa>, IKoopaState
     {
         public MovingShell(Koopa owner) : base(owner)

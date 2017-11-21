@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Enemies.GoombaStates
 {
+    using System;
+
+    [Serializable]
     internal class Defeated : BaseState<Goomba>, IGoombaState
     {
         private int played;

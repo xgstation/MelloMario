@@ -2,11 +2,13 @@
 {
     #region
 
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
+    [Serializable]
     internal abstract class BaseSprite : ISprite
     {
         private readonly ZIndex zIndex;

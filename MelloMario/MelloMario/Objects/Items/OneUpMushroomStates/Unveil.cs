@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Items.OneUpMushroomStates
 {
+    using System;
+
+    [Serializable]
     internal class Unveil : BaseTimedState<OneUpMushroom>, IItemState
     {
         private float elapsed;

@@ -2,11 +2,13 @@
 {
     #region
 
+    using System;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
     #endregion
 
+    [Serializable]
     internal abstract class BasePhysicalObject : BaseCollidableObject
     {
         private readonly float pixelScale;

@@ -14,6 +14,7 @@
 
     #endregion
 
+    [Serializable]
     internal class Coin : BaseCollidableObject, ISoundable
     {
         public delegate void CoinHandler(Coin m, EventArgs e);

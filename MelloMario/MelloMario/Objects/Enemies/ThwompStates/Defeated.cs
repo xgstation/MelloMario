@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Enemies.ThwompStates
 {
+    using System;
+
+    [Serializable]
     internal class Defeated : BaseState<Thwomp>, IThwompState
     {
         public Defeated(Thwomp owner) : base(owner)

@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
     using Microsoft.Xna.Framework;
@@ -9,6 +10,7 @@
 
     #endregion
 
+    [Serializable]
     internal class FireBall : BasePhysicalObject, ISoundable
     {
         public FireBall(IWorld world, Point location, IListener<IGameObject> listener,IListener<ISoundable> soundListener) : base(

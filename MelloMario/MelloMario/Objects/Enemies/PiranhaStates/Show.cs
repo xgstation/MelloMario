@@ -2,10 +2,12 @@
 {
     #region
 
+    using System;
     using MelloMario.Interfaces.Objects.States;
 
     #endregion
 
+    [Serializable]
     internal class Show : BaseTimedState<Piranha>, IPiranhaState
     {
         public Show(Piranha owner) : base(owner, owner.ShowTime)

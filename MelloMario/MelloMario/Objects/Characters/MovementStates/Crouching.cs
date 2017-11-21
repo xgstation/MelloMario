@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Characters.MovementStates
 {
+    using System;
+
+    [Serializable]
     internal class Crouching : BaseState<Mario>, IMarioMovementState
     {
         public Crouching(Mario owner) : base(owner)

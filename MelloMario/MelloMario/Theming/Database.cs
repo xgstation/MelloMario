@@ -14,6 +14,7 @@
 
     #endregion
 
+    [Serializable]
     internal static class Database
     {
         private static readonly IDictionary<IGameObject, IList<IGameObject>> ItemEnclosedDb =

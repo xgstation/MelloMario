@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.Factories;
     using MelloMario.Objects.Miscs;
     using Microsoft.Xna.Framework;
@@ -9,6 +10,7 @@
 
     #endregion
 
+    [Serializable]
     internal class Player : IPlayer
     {
         public Player(ISession session)

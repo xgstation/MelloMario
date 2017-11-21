@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using System.Linq;
     using MelloMario.Factories;
     using MelloMario.Interfaces.Objects.States;
@@ -14,6 +15,7 @@
 
     #endregion
 
+    [Serializable]
     internal class Piranha : BasePhysicalObject
     {
         public Piranha(
