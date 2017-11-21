@@ -20,7 +20,8 @@
             world,
             location,
             listener,
-            false) { }
+            false)
+        { }
 
         public Brick(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(
             world,
@@ -90,7 +91,8 @@
             CollisionMode mode,
             CollisionMode modePassive,
             CornerMode corner,
-            CornerMode cornerPassive) { }
+            CornerMode cornerPassive)
+        { }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 
