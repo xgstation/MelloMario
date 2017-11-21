@@ -32,7 +32,6 @@
         {
             if (mario.PowerUpState is Standard || Owner.HasInitialItem)
             {
-                Owner.SoundEventArgs.SetMethodCalled();
                 Owner.State = new Bumped(Owner);
             }
             else
