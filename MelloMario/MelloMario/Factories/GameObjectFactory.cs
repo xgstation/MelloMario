@@ -46,7 +46,7 @@
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener)
         {
-            marioLoc = new Point(); // TODO: it is wrong
+            Point marioLoc = new Point(); // TODO: it is wrong
 
             switch (type)
             {
