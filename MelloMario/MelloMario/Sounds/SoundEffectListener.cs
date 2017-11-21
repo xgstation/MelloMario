@@ -68,6 +68,7 @@
                 case Coin _:
                     ItemSoundEffect(c, e);
                     break;
+                case Question _:
                 case Brick _:
                     BlockSoundEffect(c, e);
                     break;
