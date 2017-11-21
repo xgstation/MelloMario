@@ -176,7 +176,6 @@
             // IWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
 
             LevelIOJson reader = new LevelIOJson(mapPath, listener, soundListener);
-            reader.SetModel(this);
 
             IWorld newWorld = reader.Load(id);
             infiniteGenerator = new InfiniteGenerator(newWorld, listener, activeCamera);
