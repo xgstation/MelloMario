@@ -28,8 +28,12 @@
             Owner.PowerUpState = new Standard(Owner);
         }
 
-        public void UpgradeToSuper() { }
+        public void UpgradeToSuper()
+        {
+        }
 
-        public override void Update(int time) { }
+        public override void Update(int time)
+        {
+        }
     }
 }

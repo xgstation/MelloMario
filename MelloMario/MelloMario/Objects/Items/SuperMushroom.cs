@@ -2,10 +2,10 @@
 {
     #region
 
-    using System.Diagnostics.CodeAnalysis;
     using MelloMario.Factories;
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.SuperMushroomStates;
     using MelloMario.Objects.UserInterfaces;
     using MelloMario.Theming;
@@ -100,29 +100,23 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
-            switch (target.GetType().Name) // not safe!
+            switch (target)
             {
-                case "MarioCharacter":
-                    if (state is SuperMushroomStates.Normal)
+                case Mario mario:
+                    if (state is OneUpMushroomStates.Normal)
                     {
                         Collect();
                     }
                     break;
-                case "Brick":
-                    if (((Brick) target).State is Hidden)
-                    {
-                        break;
-                    }
-                    goto case "Stair";
-                case "Question":
-                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
-                    {
-                        break;
-                    }
-                    goto case "Stair";
-                case "Floor":
-                case "Pipeline":
-                case "Stair":
+                case Brick brick when brick.State is Hidden:
+                    break;
+                case Question question when question.State is Blocks.QuestionStates.Hidden:
+                    break;
+                case IGameObject obj when target is Brick
+                || target is Question
+                || target is Floor
+                || target is Pipeline
+                || target is Stair:
                     if (mode == CollisionMode.Top || mode == CollisionMode.Bottom)
                     {
                         Bounce(mode, new Vector2());
@@ -142,11 +136,13 @@
             }
         }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
+        {
+        }
 
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
-
-        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
+        {
+        }
 
         public void Collect()
         {

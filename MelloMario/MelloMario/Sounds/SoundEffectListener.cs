@@ -1,6 +1,4 @@
-﻿using MelloMario.Objects.Characters;
-
-namespace MelloMario.Sounds
+﻿namespace MelloMario.Sounds
 {
     #region
 
@@ -31,12 +29,15 @@ namespace MelloMario.Sounds
         {
             soundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
         }
+
         public void ToggleMute()
         {
             float currentVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
-            Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume = Math.Abs(currentVolume) < float.Epsilon ? soundEffectVolume : 0;
+            Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume =
+                Math.Abs(currentVolume) < float.Epsilon ? soundEffectVolume : 0;
             soundEffectVolume = Math.Abs(currentVolume) < float.Epsilon ? soundEffectVolume : currentVolume;
         }
+
         public void Subscribe(ISoundable soundObject)
         {
             soundObject.SoundEvent += Sound;
@@ -74,8 +75,14 @@ namespace MelloMario.Sounds
                     //TODO: Add Fireball Shotting Sound
                     break;
                 case "UpgradeToSuper":
+                    PlayEffect("PowerUp");
+                    break;
                 case "UpgradeToFire":
+                    PlayEffect("PowerUp");
+                    break;
                 case "SuperCreate":
+                    PlayEffect("PowerUp");
+                    break;
                 case "FireCreate":
                     PlayEffect("PowerUp");
                     break;
@@ -83,7 +90,7 @@ namespace MelloMario.Sounds
                     PlayEffect("Pipe");
                     break;
                 case "Jump":
-                    if (mario.PowerUpState is Objects.Characters.PowerUpStates.Standard)
+                    if (mario.PowerUpState is Standard)
                     {
                         PlayEffect("Bounce");
                     }

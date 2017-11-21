@@ -24,5 +24,6 @@
         ISprite CreateFlagSprite(bool isTop);
         ISprite CreateSceneSprite(string type, ZIndex zIndex);
         ISprite CreateTitle(ZIndex zIndex);
+        ISprite CreateThwompSprite(string name);
     }
 }

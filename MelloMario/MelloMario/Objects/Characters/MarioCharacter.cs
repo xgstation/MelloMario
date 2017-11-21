@@ -1,7 +1,4 @@
-﻿using System;
-using MelloMario.Sounds;
-
-namespace MelloMario.Objects.Characters
+﻿namespace MelloMario.Objects.Characters
 {
     #region
 
@@ -9,6 +6,7 @@ namespace MelloMario.Objects.Characters
     using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Objects.Characters.ProtectionStates;
     using MelloMario.Objects.Items;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
@@ -22,8 +20,12 @@ namespace MelloMario.Objects.Characters
 
         private Vector2 userInput;
 
-
-        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener) : base(
+        public MarioCharacter(
+            IGameWorld world,
+            IPlayer player,
+            Point location,
+            IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener) : base(
             world,
             location,
             listener,

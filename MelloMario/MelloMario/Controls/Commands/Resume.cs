@@ -2,7 +2,9 @@
 {
     internal class Resume : BaseCommand<IModel>
     {
-        public Resume(IModel model) : base(model) { }
+        public Resume(IModel model) : base(model)
+        {
+        }
 
         public override void Execute()
         {

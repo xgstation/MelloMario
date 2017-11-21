@@ -2,7 +2,9 @@
 {
     internal class Pause : BaseCommand<IModel>
     {
-        public Pause(IModel model) : base(model) { }
+        public Pause(IModel model) : base(model)
+        {
+        }
 
         public override void Execute()
         {

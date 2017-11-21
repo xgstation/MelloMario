@@ -7,10 +7,8 @@
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Blocks.BrickStates;
     using MelloMario.Objects.Characters;
-    using MelloMario.Objects.Characters.MovementStates;
     using MelloMario.Objects.Characters.ProtectionStates;
     using MelloMario.Objects.Enemies.KoopaStates;
-    using MelloMario.Objects.Items;
     using MelloMario.Objects.UserInterfaces;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -18,22 +16,22 @@
 
     #endregion
 
-    internal class Goomba : BasePhysicalObject
+    internal class Thwomp : BasePhysicalObject
     {
-        private IGoombaState state;
+        private IThwompState state;
 
-        public Goomba(IGameWorld world, Point location, IListener<IGameObject> listener) : base(
+        public Thwomp(IGameWorld world, Point location, IListener<IGameObject> listener) : base(
             world,
             location,
             listener,
             new Point(32, 32),
             32)
         {
-            state = new GoombaStates.Normal(this);
+            state = new ThwompStates.Normal(this);
             UpdateSprite();
         }
 
-        public IGoombaState State
+        public IThwompState State
         {
             get
             {
@@ -48,7 +46,7 @@
 
         private void UpdateSprite()
         {
-            ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name));
+            ShowSprite(SpriteFactory.Instance.CreateThwompSprite(state.GetType().Name));
         }
 
         protected override void OnUpdate(int time)
@@ -60,13 +58,9 @@
         {
             ApplyGravity();
 
-            if (Facing == FacingMode.left)
+            if (Facing == FacingMode.left) // Make condition if he is colliding with floor tile or not
             {
-                SetHorizontalVelocity(-Const.VELOCITY_GOOMBA);
-            }
-            else
-            {
-                SetHorizontalVelocity(Const.VELOCITY_GOOMBA);
+                SetVerticalVelocity(-Const.VELOCITY_RISING_THWOMP);
             }
 
             base.OnSimulation(time);
@@ -84,23 +78,32 @@
             {
                 return;
             }
-            switch (target)
+            switch (target.GetType().Name)
             {
-                case Mario mario:
-                    if (mode == CollisionMode.Top && mario.MovementState is Jumping || mario.ProtectionState is Starred)
+                case "MarioCharacter":
+                    //TODO: Fire to be added
+                    Mario mario = (Mario) target;
+                    if (mario.ProtectionState is Starred)
                     {
                         Defeat();
                     }
                     break;
-                case Brick brick when brick.State is Hidden:
-                    break;
-                case Question question when question.State is Blocks.QuestionStates.Hidden:
-                    break;
-                case IGameObject obj when target is Brick
-                || target is Question
-                || target is Floor
-                || target is Pipeline
-                || target is Stair:
+                case "Brick":
+                    if (((Brick) target).State is Hidden)
+                    {
+                        break;
+                    }
+                    goto case "Stair";
+                case "Question":
+                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
+                    {
+                        break;
+                    }
+                    goto case "Stair";
+                case "Floor":
+                // perhaps register that it is on the floor, wait a second, then rise back up?
+                case "Pipeline":
+                case "Stair":
                     if (mode == CollisionMode.Left)
                     {
                         Bounce(mode, new Vector2(), 1);
@@ -116,14 +119,16 @@
                         Bounce(mode, new Vector2());
                     }
                     break;
-                case Koopa koopa:
-                    if (koopa.State is MovingShell)
+                case "Koopa":
+                    if (target is Koopa koopa)
                     {
-                        Defeat();
+                        if (koopa.State is MovingShell)
+                        {
+                            // Do nothing
+                        }
                     }
                     break;
-                case FireBall fire:
-                    Defeat();
+                case "Fire":
                     break;
             }
         }
@@ -146,8 +151,8 @@
 
         public void Defeat()
         {
-            ScorePoints(Const.SCORE_GOOMBA);
-            new PopingUpPoints(World, Boundary.Location, Const.SCORE_GOOMBA);
+            ScorePoints(Const.SCORE_THWOMP);
+            new PopingUpPoints(World, Boundary.Location, Const.SCORE_THWOMP);
             State.Defeat();
         }
     }

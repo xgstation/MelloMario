@@ -15,7 +15,9 @@
             Owner.State = new Normal(Owner);
         }
 
-        public void Collect() { }
+        public void Collect()
+        {
+        }
 
         public override void Update(int time)
         {

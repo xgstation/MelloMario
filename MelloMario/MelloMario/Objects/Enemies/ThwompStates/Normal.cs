@@ -1,8 +1,8 @@
-﻿namespace MelloMario.Objects.Enemies.GoombaStates
+﻿namespace MelloMario.Objects.Enemies.ThwompStates
 {
-    internal class Normal : BaseState<Goomba>, IGoombaState
+    internal class Normal : BaseState<Thwomp>, IThwompState
     {
-        public Normal(Goomba owner) : base(owner)
+        public Normal(Thwomp owner) : base(owner)
         {
         }
 

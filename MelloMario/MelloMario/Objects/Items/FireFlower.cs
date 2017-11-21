@@ -17,7 +17,11 @@
         private bool collected;
         private IItemState state;
 
-        public FireFlower(IGameWorld world, Point location, IListener<IGameObject> listener, bool isUnveil = false) : base(
+        public FireFlower(
+            IGameWorld world,
+            Point location,
+            IListener<IGameObject> listener,
+            bool isUnveil = false) : base(
             world,
             location,
             listener,
@@ -73,11 +77,13 @@
             }
         }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
+        {
+        }
 
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
-
-        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
+        {
+        }
 
         public void Collect()
         {

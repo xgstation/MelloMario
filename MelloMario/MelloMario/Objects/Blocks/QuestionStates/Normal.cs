@@ -8,7 +8,9 @@
 
     internal class Normal : BaseState<Question>, IBlockState
     {
-        public Normal(Question owner) : base(owner) { }
+        public Normal(Question owner) : base(owner)
+        {
+        }
 
         public void Show()
         {
@@ -25,6 +27,8 @@
             Owner.State = new Bumped(Owner);
         }
 
-        public override void Update(int time) { }
+        public override void Update(int time)
+        {
+        }
     }
 }

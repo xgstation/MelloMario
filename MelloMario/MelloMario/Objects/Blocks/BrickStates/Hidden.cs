@@ -10,7 +10,9 @@
 
     internal class Hidden : BaseState<Brick>, IBlockState
     {
-        public Hidden(Brick owner) : base(owner) { }
+        public Hidden(Brick owner) : base(owner)
+        {
+        }
 
         public void Show()
         {

@@ -6,31 +6,23 @@
 
     #endregion
 
-    internal class Hidden : BaseState<Piranha>, IPiranhaState
+    internal class Hidden : BaseTimedState<Piranha>, IPiranhaState
     {
-        private int elapsed;
-
-        public Hidden(Piranha owner) : base(owner)
+        public Hidden(Piranha owner) : base(owner, owner.HiddenTime)
         {
-            elapsed = 0;
-        }
-
-        public override void Update(int time)
-        {
-            if (Owner.HasMarioAbove)
-            {
-                return;
-            }
-            elapsed += time;
-            if (elapsed > Owner.HiddenTime)
-            {
-                Owner.State = new MovingUp(Owner);
-            }
         }
 
         public void Defeat()
         {
             //cannot be defeated at this state
+        }
+
+        protected override void OnTimer(int time)
+        {
+            if (!Owner.HasMarioAbove)
+            {
+                Owner.State = new MovingUp(Owner);
+            }
         }
     }
 }

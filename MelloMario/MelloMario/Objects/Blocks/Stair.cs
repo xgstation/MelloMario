@@ -31,19 +31,25 @@
             ShowSprite(SpriteFactory.Instance.CreateStairSprite());
         }
 
-        protected override void OnUpdate(int time) { }
+        protected override void OnUpdate(int time)
+        {
+        }
 
         protected override void OnCollision(
             IGameObject target,
             CollisionMode mode,
             CollisionMode modePassive,
             CornerMode corner,
-            CornerMode cornerPassive) { }
+            CornerMode cornerPassive)
+        {
+        }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
+        {
+        }
 
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
-
-        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
+        {
+        }
     }
 }

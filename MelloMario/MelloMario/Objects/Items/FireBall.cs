@@ -43,12 +43,9 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
-            if (target is Mario) { }
-        }
-
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)
-        {
-            //throw new NotImplementedException();
+            if (target is Mario)
+            {
+            }
         }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)

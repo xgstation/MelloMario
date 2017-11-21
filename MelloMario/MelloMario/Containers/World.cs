@@ -13,7 +13,7 @@
         private readonly Point initialPoint;
         private readonly ISet<Point> respawnPoints;
 
-        public World(string id, string type, Point size, Point initial, IEnumerable<Point> respawn)
+        public World(string id, WorldType type, Point size, Point initial, IEnumerable<Point> respawn)
         {
             ID = id;
             Type = type;
@@ -28,7 +28,7 @@
         }
 
         public string ID { get; }
-        public string Type { get; }
+        public WorldType Type { get; }
         public Rectangle Boundary { get; private set; }
 
         public void Extend(int x, int y)

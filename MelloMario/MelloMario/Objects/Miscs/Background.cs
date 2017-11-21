@@ -28,10 +28,16 @@
             ShowSprite(SpriteFactory.Instance.CreateSceneSprite(type, targetZIndex));
         }
 
-        protected override void OnUpdate(int time) { }
+        protected override void OnUpdate(int time)
+        {
+        }
 
-        protected override void OnSimulation(int time) { }
+        protected override void OnSimulation(int time)
+        {
+        }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
+        {
+        }
     }
 }

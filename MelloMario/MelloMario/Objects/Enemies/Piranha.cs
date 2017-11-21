@@ -49,23 +49,15 @@
 
         protected override void OnSimulation(int time)
         {
-            switch (State.GetType().Name)
+            if (State is MovingUp)
             {
-                case "MovingUp":
-                    Move(new Point(0, -1));
-                    break;
-                case "MovingDown":
-                    Move(new Point(0, 1));
-                    break;
-                case "Hidden":
-                    break;
-                case "Show":
-                    break;
-                case "Defeated":
-                    break;
-                default:
-                    break;
+                SetVerticalVelocity(-Const.VELOCITY_PIRANHA);
             }
+            else if (State is MovingDown)
+            {
+                SetVerticalVelocity(Const.VELOCITY_PIRANHA);
+            }
+
             base.OnSimulation(time);
         }
 
@@ -75,7 +67,9 @@
             HasMarioAbove = DetectMario();
         }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
+        {
+        }
 
         protected override void OnCollision(
             IGameObject target,
@@ -88,11 +82,6 @@
             {
                 Defeat();
             }
-        }
-
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive)
-        {
-            //throw new NotImplementedException();
         }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)

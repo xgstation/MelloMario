@@ -7,10 +7,18 @@
 
     #endregion
 
+    internal enum WorldType
+    {
+        normal,
+
+        underground
+        // underwater, bowsercastle, ...
+    }
+
     internal interface IGameWorld : IContainer<IGameObject>
     {
         string ID { get; }
-        string Type { get; }
+        WorldType Type { get; }
         Rectangle Boundary { get; }
         void Extend(int x, int y);
 

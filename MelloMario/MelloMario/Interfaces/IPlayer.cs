@@ -20,7 +20,14 @@
         void AddCoin();
         void AddLife();
         void AddScore(int delta);
-        void Init(string type, IGameWorld newWorld, IListener<IGameObject> listener, IListener<ISoundable> soundListener, ICamera camera);
+
+        void Init(
+            string type,
+            IGameWorld newWorld,
+            IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener,
+            ICamera camera);
+
         void Spawn(IGameWorld newWorld, Point newLocation);
         void Reset(string type, IListener<IGameObject> listener, IListener<ISoundable> soundListener);
         void Win();

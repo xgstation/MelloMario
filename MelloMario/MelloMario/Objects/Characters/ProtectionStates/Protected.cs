@@ -2,7 +2,9 @@
 {
     internal class Protected : BaseTimedState<Mario>, IMarioProtectionState
     {
-        public Protected(Mario owner) : base(owner, 1000) { }
+        public Protected(Mario owner) : base(owner, 1000)
+        {
+        }
 
         public void Protect()
         {

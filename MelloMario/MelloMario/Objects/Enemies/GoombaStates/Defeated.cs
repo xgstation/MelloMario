@@ -14,7 +14,9 @@
             Owner.State = new Normal(Owner);
         }
 
-        public void Defeat() { }
+        public void Defeat()
+        {
+        }
 
         public override void Update(int time)
         {

@@ -18,7 +18,9 @@
             int width = 2,
             int height = 2,
             int interval = Const.ANIMATION_INTERVAL,
-            ZIndex zIndex = ZIndex.Item) : base(texture, columns, rows, x, y, width, height, interval, zIndex) { }
+            ZIndex zIndex = ZIndex.Item) : base(texture, columns, rows, x, y, width, height, interval, zIndex)
+        {
+        }
 
         protected override void OnFrame()
         {

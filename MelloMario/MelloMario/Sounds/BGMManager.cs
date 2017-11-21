@@ -4,8 +4,6 @@
 
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
-    using MelloMario.Objects.Characters.MovementStates;
-    using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Objects.Characters.ProtectionStates;
     using Microsoft.Xna.Framework.Media;
 
@@ -85,10 +83,10 @@
                 case MarioCharacter mario when mario.Player.TimeRemain <= 90000:
                     PlayMusic(Hurry);
                     break;
-                case MarioCharacter mario when mario.CurrentWorld.Type == "Normal":
+                case MarioCharacter mario when mario.CurrentWorld.Type == WorldType.normal:
                     PlayMusic(Normal);
                     break;
-                case MarioCharacter mario when mario.CurrentWorld.Type == "Sub":
+                case MarioCharacter mario when mario.CurrentWorld.Type == WorldType.underground:
                     PlayMusic(BelowGround);
                     break;
                 default:

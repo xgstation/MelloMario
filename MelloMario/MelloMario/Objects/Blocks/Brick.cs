@@ -25,7 +25,8 @@
             listener,
             soundListener,
             false)
-        { }
+        {
+        }
 
         public Brick(IGameWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool isHidden = false) : base(
             world,
@@ -107,13 +108,16 @@
             CollisionMode modePassive,
             CornerMode corner,
             CornerMode cornerPassive)
-        { }
+        {
+        }
 
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
+        {
+        }
 
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
-
-        protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
+        protected override void OnDraw(int time, SpriteBatch spriteBatch)
+        {
+        }
 
         public void OnDestroy()
         {

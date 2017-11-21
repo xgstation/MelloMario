@@ -23,7 +23,9 @@
                 y * Const.TEXTURE_GRID,
                 width * Const.TEXTURE_GRID,
                 height * Const.TEXTURE_GRID),
-            zIndex) { }
+            zIndex)
+        {
+        }
 
         protected override void OnAnimate(int time)
         {

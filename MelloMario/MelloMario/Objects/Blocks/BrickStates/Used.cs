@@ -8,7 +8,9 @@
 
     internal class Used : BaseState<Brick>, IBlockState
     {
-        public Used(Brick owner) : base(owner) { }
+        public Used(Brick owner) : base(owner)
+        {
+        }
 
         public void Show()
         {
@@ -25,6 +27,8 @@
             // nothing
         }
 
-        public override void Update(int time) { }
+        public override void Update(int time)
+        {
+        }
     }
 }

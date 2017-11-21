@@ -2,9 +2,13 @@
 {
     internal class Normal : BaseState<Koopa>, IKoopaState
     {
-        public Normal(Koopa owner) : base(owner) { }
+        public Normal(Koopa owner) : base(owner)
+        {
+        }
 
-        public void Show() { }
+        public void Show()
+        {
+        }
 
         public void JumpOn()
         {
@@ -16,7 +20,9 @@
             Owner.State = new Defeated(Owner);
         }
 
-        public override void Update(int time) { }
+        public override void Update(int time)
+        {
+        }
 
         public void Pushed()
         {
