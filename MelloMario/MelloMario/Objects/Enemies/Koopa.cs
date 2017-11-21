@@ -9,6 +9,7 @@
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.ProtectionStates;
     using MelloMario.Objects.Enemies.KoopaStates;
+    using MelloMario.Objects.Items;
     using MelloMario.Objects.UserInterfaces;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -147,7 +148,6 @@
                             Pushed();
                         }
                     }
-
                     break;
                 case Brick brick when brick.State is Hidden:
                     break;
