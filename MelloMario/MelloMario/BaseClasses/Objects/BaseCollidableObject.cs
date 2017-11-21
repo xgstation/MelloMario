@@ -146,15 +146,6 @@
                 }
             }
 
-            // TODO: build a list of players that observed this objects
-            //foreach (IPlayer player in session.???)
-            //{
-            //    foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(World.Boundary))
-            //    {
-            //        OnCollideViewport(player, pair.Item1, pair.Item2);
-            //    }
-            //}
-
             foreach (Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode> pair in ScanCollideModes(
                 World.Boundary))
             {
@@ -169,7 +160,6 @@
             CornerMode corner,
             CornerMode cornerPassive);
 
-        protected abstract void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive);
         protected abstract void OnCollideWorld(CollisionMode mode, CollisionMode modePassive);
 
         protected void Move(Point delta)
