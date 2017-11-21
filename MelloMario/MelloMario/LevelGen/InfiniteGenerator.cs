@@ -37,7 +37,7 @@
                 difficultyIndex += double.Epsilon;
                 new Floor(world, new Point(world.Boundary.Right, 13 * 32), listener);
                 new Floor(world, new Point(world.Boundary.Right, 14 * 32), listener);
-                world.Extend(1, 0);
+                world.Extend(0, 32, 0, 0);
                 rightMostReachedX += 32;
 
                 elapsed += time;

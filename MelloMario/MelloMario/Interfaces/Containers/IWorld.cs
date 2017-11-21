@@ -20,7 +20,7 @@
         string ID { get; }
         WorldType Type { get; }
         Rectangle Boundary { get; }
-        void Extend(int x, int y);
+        void Extend(int left, int right, int top, int bottom);
 
         IEnumerable<IGameObject> ScanNearby(Rectangle range);
         Point GetInitialPoint();

@@ -31,9 +31,9 @@
         public WorldType Type { get; }
         public Rectangle Boundary { get; private set; }
 
-        public void Extend(int x, int y)
+        public void Extend(int left, int right, int top, int bottom)
         {
-            Boundary = new Rectangle(Boundary.Location, Boundary.Size + new Point(x, y));
+            Boundary = new Rectangle(Boundary.Left - left, Boundary.Top - top, Boundary.Width + left + right, Boundary.Height + top + bottom);
         }
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
