@@ -2,10 +2,12 @@
 {
     #region
 
+    using System;
     using MelloMario.Interfaces.Objects.States;
 
     #endregion
 
+    [Serializable]
     internal class Hidden : BaseTimedState<Piranha>, IPiranhaState
     {
         public Hidden(Piranha owner) : base(owner, owner.HiddenTime)

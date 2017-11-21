@@ -2,11 +2,13 @@
 {
     #region
 
+    using System;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
     #endregion
 
+    [Serializable]
     internal class Camera : ICamera
     {
         public Rectangle Viewport { get; private set; }

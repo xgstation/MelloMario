@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.Factories;
     using MelloMario.Objects.Blocks.QuestionStates;
     using MelloMario.Objects.Characters;
@@ -12,6 +13,7 @@
 
     #endregion
 
+    [Serializable]
     internal class Question : BaseCollidableObject, ISoundable
     {
         private bool isHidden;

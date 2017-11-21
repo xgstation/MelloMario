@@ -2,12 +2,14 @@
 {
     #region
 
+    using System;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
+    [Serializable]
     internal class AnimatedSprite : BaseTextureSprite
     {
         private readonly int columns;

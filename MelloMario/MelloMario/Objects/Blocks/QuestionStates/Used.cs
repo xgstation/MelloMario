@@ -2,10 +2,12 @@
 {
     #region
 
+    using System;
     using MelloMario.Objects.Characters;
 
     #endregion
 
+    [Serializable]
     internal class Used : BaseState<Question>, IBlockState
     {
         public Used(Question owner) : base(owner)

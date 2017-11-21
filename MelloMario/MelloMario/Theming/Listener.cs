@@ -10,6 +10,7 @@
 
     #endregion
 
+    [Serializable]
     internal class GameEventArgs : EventArgs
     {
         public int Points { get; set; }

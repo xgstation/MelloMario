@@ -2,10 +2,12 @@
 {
     #region
 
+    using System;
     using MelloMario.Objects.Characters.ProtectionStates;
 
     #endregion
 
+    [Serializable]
     internal class Fire : BaseState<Mario>, IMarioPowerUpState
     {
         public Fire(Mario owner) : base(owner)

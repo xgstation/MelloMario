@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Items.StarStates
 {
+    using System;
+
+    [Serializable]
     internal class Unveil : BaseTimedState<Star>, IItemState
     {
         private float elapsed;

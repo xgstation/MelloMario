@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using System.Collections.Generic;
     using MelloMario.Containers;
     using MelloMario.Controls.Scripts;
@@ -15,6 +16,7 @@
 
     #endregion
 
+    [Serializable]
     internal class GameModel : IModel
     {
         private readonly Game1 game;

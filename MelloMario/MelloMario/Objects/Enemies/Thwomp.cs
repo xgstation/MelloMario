@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using System.Diagnostics.CodeAnalysis;
     using MelloMario.Factories;
     using MelloMario.Objects.Blocks;
@@ -16,6 +17,7 @@
 
     #endregion
 
+    [Serializable]
     internal class Thwomp : BasePhysicalObject
     {
         private IThwompState state;

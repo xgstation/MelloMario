@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Characters.MovementStates
 {
+    using System;
+
+    [Serializable]
     internal class Jumping : BaseTimedState<Mario>, IMarioMovementState
     {
         private IMarioMovementState previous;

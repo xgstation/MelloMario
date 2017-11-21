@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Items.SuperMushroomStates
 {
+    using System;
+
+    [Serializable]
     internal class Normal : BaseState<SuperMushroom>, IItemState
     {
         public Normal(SuperMushroom owner) : base(owner)

@@ -2,11 +2,13 @@
 {
     #region
 
+    using System;
     using MelloMario.Objects.Characters;
     using MelloMario.Theming;
 
     #endregion
 
+    [Serializable]
     internal class Bumped : BaseState<Question>, IBlockState
     {
         private int elapsed;

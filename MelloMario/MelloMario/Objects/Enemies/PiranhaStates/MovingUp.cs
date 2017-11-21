@@ -2,10 +2,12 @@
 {
     #region
 
+    using System;
     using MelloMario.Interfaces.Objects.States;
 
     #endregion
 
+    [Serializable]
     internal class MovingUp : BaseState<Piranha>, IPiranhaState
     {
         private readonly int initialY;

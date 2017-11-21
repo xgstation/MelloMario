@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Characters.ProtectionStates
 {
+    using System;
+
+    [Serializable]
     internal class Dead : BaseTimedState<Mario>, IMarioProtectionState
     {
         public Dead(Mario owner) : base(owner, 1500)

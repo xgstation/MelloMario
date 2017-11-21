@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Characters.MovementStates
 {
+    using System;
+
+    [Serializable]
     internal class Standing : BaseState<Mario>, IMarioMovementState
     {
         public Standing(Mario owner) : base(owner)

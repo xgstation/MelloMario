@@ -2,11 +2,13 @@
 {
     #region
 
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
     #endregion
 
+    [Serializable]
     internal abstract class BaseContainer<Key, Value>
     {
         private readonly IDictionary<Value, Key> keys;

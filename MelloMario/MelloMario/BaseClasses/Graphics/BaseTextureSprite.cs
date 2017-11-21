@@ -2,11 +2,13 @@
 {
     #region
 
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
+    [Serializable]
     internal abstract class BaseTextureSprite : BaseSprite
     {
         private readonly Texture2D texture;

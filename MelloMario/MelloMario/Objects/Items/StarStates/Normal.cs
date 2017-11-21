@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Items.StarStates
 {
+    using System;
+
+    [Serializable]
     internal class Normal : BaseState<Star>, IItemState
     {
         public Normal(Star owner) : base(owner)

@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Items.CoinStates
 {
+    using System;
+
+    [Serializable]
     internal class Normal : BaseState<Coin>, IItemState
     {
         public Normal(Coin owner) : base(owner)

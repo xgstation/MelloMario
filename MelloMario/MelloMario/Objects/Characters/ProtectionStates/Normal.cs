@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Characters.ProtectionStates
 {
+    using System;
+
+    [Serializable]
     internal class Normal : BaseState<Mario>, IMarioProtectionState
     {
         public Normal(Mario owner) : base(owner)

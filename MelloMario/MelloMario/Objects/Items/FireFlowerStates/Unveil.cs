@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Items.FireFlowerStates
 {
+    using System;
+
+    [Serializable]
     internal class Unveil : BaseTimedState<FireFlower>, IItemState
     {
         private float elapsed;

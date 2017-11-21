@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.MovementStates;
@@ -12,6 +13,7 @@
 
     #endregion
 
+    [Serializable]
     internal class Pipeline : BaseCollidableObject, ISoundable
     {
         private int elapsed;

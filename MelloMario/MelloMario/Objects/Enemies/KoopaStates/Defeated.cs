@@ -1,5 +1,8 @@
 ﻿namespace MelloMario.Objects.Enemies.KoopaStates
 {
+    using System;
+
+    [Serializable]
     internal class Defeated : BaseState<Koopa>, IKoopaState
     {
         private readonly int played;

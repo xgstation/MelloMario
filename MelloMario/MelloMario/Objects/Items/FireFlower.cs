@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.FireFlowerStates;
@@ -13,6 +14,7 @@
 
     #endregion
 
+    [Serializable]
     internal class FireFlower : BaseCollidableObject, ISoundable
     {
         private bool collected;

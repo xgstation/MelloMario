@@ -2,10 +2,12 @@
 {
     #region
 
+    using System;
     using System.Collections.Generic;
 
     #endregion
 
+    [Serializable]
     internal class Session : BaseContainer<IWorld, IPlayer>, ISession
     {
         public IEnumerable<IWorld> ScanWorlds()

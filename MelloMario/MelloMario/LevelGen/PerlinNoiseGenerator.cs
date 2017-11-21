@@ -13,12 +13,12 @@
         private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
         private static readonly byte[] GradSeed = new byte[4];
 
-        private static int Size;
-        private static int[] PermuteTable;
+        private static int size;
+        private static int[] permuteTable;
 
         public PerlinNoiseGenerator(int newSize = 256)
         {
-            Size = newSize;
+            size = newSize;
             RngCrypto.GetBytes(GradSeed);
             InitializePermuteTable();
         }
@@ -32,16 +32,16 @@
         public static float Perlin(Vector2 p)
         {
             Point pi = p.ToPoint();
-            pi.X %= Size - 1;
-            pi.Y %= Size - 1;
+            pi.X %= size - 1;
+            pi.Y %= size - 1;
 
             Vector2 vf = p - p.ToPoint().ToVector2();
             Vector2 uf = new Vector2(Fade(vf.X), Fade(vf.Y));
 
-            int hash1 = PermuteTable[PermuteTable[pi.X] + pi.Y];
-            int hash2 = PermuteTable[PermuteTable[pi.X] + pi.Y + 1];
-            int hash3 = PermuteTable[PermuteTable[pi.X + 1] + pi.Y];
-            int hash4 = PermuteTable[PermuteTable[pi.X + 1] + pi.Y + 1];
+            int hash1 = permuteTable[permuteTable[pi.X] + pi.Y];
+            int hash2 = permuteTable[permuteTable[pi.X] + pi.Y + 1];
+            int hash3 = permuteTable[permuteTable[pi.X + 1] + pi.Y];
+            int hash4 = permuteTable[permuteTable[pi.X + 1] + pi.Y + 1];
 
             float ga = GradContribute(hash1, vf);
             float gb = GradContribute(hash2, vf - new Vector2(0, 1));
@@ -53,23 +53,23 @@
 
         private static void SwapInitial(int i, int j)
         {
-            int temp = PermuteTable[i] == 0 ? i : PermuteTable[i];
-            PermuteTable[i] = PermuteTable[j] == 0 ? j : PermuteTable[j];
-            PermuteTable[j] = temp;
+            int temp = permuteTable[i] == 0 ? i : permuteTable[i];
+            permuteTable[i] = permuteTable[j] == 0 ? j : permuteTable[j];
+            permuteTable[j] = temp;
         }
 
         private static void InitializePermuteTable()
         {
-            PermuteTable = new int[Size * 2];
+            permuteTable = new int[size * 2];
             byte[] bytes = new byte[4];
-            for (int i = Size - 1; i >= 0; i--)
+            for (int i = size - 1; i >= 0; i--)
             {
                 RngCrypto.GetBytes(bytes);
                 bytes[3] &= 0x7F;
                 int n = BitConverter.ToInt32(bytes, 0);
                 SwapInitial(i, n % (i + 1));
             }
-            Array.Copy(PermuteTable, 0, PermuteTable, 256, 256);
+            Array.Copy(permuteTable, 0, permuteTable, 256, 256);
         }
 
         private static float GradContribute(int hash, Vector2 v)

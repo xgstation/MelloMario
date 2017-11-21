@@ -19,6 +19,7 @@
 
     #endregion
 
+    [Serializable]
     internal class Mario : BasePhysicalObject, ISoundable
     {
         public delegate void GameOverHandler(Mario m, EventArgs e);
