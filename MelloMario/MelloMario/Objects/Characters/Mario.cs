@@ -28,12 +28,12 @@ namespace MelloMario.Objects.Characters
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-        protected readonly MarioSoundArgs soundEventArgs;
+        protected EventArgs SoundEventArgs;
         public event SoundHandler SoundEvent;
 
         protected void RaiseSoundEvent()
         {
-            SoundEvent?.Invoke(this,soundEventArgs);
+            SoundEvent?.Invoke(this, ref SoundEventArgs);
         }
 
         public Mario(IGameWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener) : base(
@@ -45,7 +45,7 @@ namespace MelloMario.Objects.Characters
         {
             listener.Subscribe(this);
             soundListener.Subscribe(this);
-            soundEventArgs = new MarioSoundArgs();
+            SoundEventArgs = new MarioSoundArgs();
             powerUpState = new Standard(this);
             movementState = new Standing(this);
             protectionState = new ProtectionStates.Normal(this);
@@ -128,11 +128,6 @@ namespace MelloMario.Objects.Characters
 
         protected override void OnUpdate(int time)
         {
-            if (soundEventArgs.ActionCalled != null)
-            {
-                SoundEvent?.Invoke(this, soundEventArgs);
-                soundEventArgs.ActionCalled = null;
-            }
             powerUpState.Update(time);
             movementState.Update(time);
             protectionState.Update(time);
@@ -140,6 +135,7 @@ namespace MelloMario.Objects.Characters
 
         protected override void OnSimulation(int time)
         {
+            SoundEvent?.Invoke(this, ref SoundEventArgs);
             ApplyGravity();
             ApplyHorizontalFriction(Const.ACCEL_F_AIR);
             ApplyVerticalFriction(Const.ACCEL_F_AIR);
@@ -218,7 +214,7 @@ namespace MelloMario.Objects.Characters
 
                     break;
                 case "Pipeline":
-                    if (MovementState is Crouching && Database.IsEntrance((Pipeline) target))
+                    if (MovementState is Crouching && Database.IsEntrance((Pipeline)target))
                     {
                         string type = (target as Pipeline).Type;
                         if (type == "LeftIn")
@@ -324,19 +320,19 @@ namespace MelloMario.Objects.Characters
 
                     break;
                 case "FireFlower":
-                    if (((FireFlower) target).State is Items.FireFlowerStates.Normal)
+                    if (((FireFlower)target).State is Items.FireFlowerStates.Normal)
                     {
                         UpgradeToFire();
                     }
                     break;
                 case "Star":
-                    if (((Star) target).State is Items.StarStates.Normal)
+                    if (((Star)target).State is Items.StarStates.Normal)
                     {
                         ProtectionState.Star();
                     }
                     break;
                 case "SuperMushroom":
-                    if (((SuperMushroom) target).State is Items.SuperMushroomStates.Normal && PowerUpState is Standard)
+                    if (((SuperMushroom)target).State is Items.SuperMushroomStates.Normal && PowerUpState is Standard)
                     {
                         UpgradeToSuper();
                     }
@@ -344,7 +340,7 @@ namespace MelloMario.Objects.Characters
                 case "Piranha":
                     if (!(ProtectionState is Starred))
                     {
-                        if (!(((Piranha) target).State is Enemies.PiranhaStates.Hidden))
+                        if (!(((Piranha)target).State is Enemies.PiranhaStates.Hidden))
                         {
                             Downgrade();
                         }
@@ -369,7 +365,7 @@ namespace MelloMario.Objects.Characters
 
         public void OnDeath()
         {
-            soundEventArgs.ActionCalled = OnDeath;
+            ((MarioSoundArgs)SoundEventArgs).ActionCalled = OnDeath;
             SetVerticalVelocity(-20);
         }
 
@@ -383,13 +379,13 @@ namespace MelloMario.Objects.Characters
 
         public void UpgradeToSuper()
         {
-            soundEventArgs.ActionCalled = UpgradeToSuper;
+            ((MarioSoundArgs)SoundEventArgs).ActionCalled = UpgradeToSuper;
             PowerUpState.UpgradeToSuper();
         }
 
         public void UpgradeToFire()
         {
-            soundEventArgs.ActionCalled = UpgradeToFire;
+            ((MarioSoundArgs)SoundEventArgs).ActionCalled = UpgradeToFire;
             PowerUpState.UpgradeToFire();
         }
 

@@ -14,29 +14,41 @@ namespace MelloMario.Sounds
     {
         public Action ActionCalled { get; set; }
     }
-    internal class SoundListener : IListener<ISoundable>
+    internal class SoundEffectListener : IListener<ISoundable>
     {
+        private float soundEffectVolume;
+
+        public SoundEffectListener()
+        {
+            soundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
+        }
+        public void ToggleMute()
+        {
+            float currentVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
+            Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume = Math.Abs(currentVolume) < float.Epsilon ? soundEffectVolume : 0;
+            soundEffectVolume = Math.Abs(currentVolume) < float.Epsilon ? soundEffectVolume : currentVolume;
+        }
         public void Subscribe(ISoundable soundObject)
         {
             soundObject.SoundEvent += Sound;
         }
 
-        private void Sound(ISoundable c, EventArgs e)
+        private static void Sound(ISoundable c, ref EventArgs e)
         {
             switch (c)
             {
                 case Coin _:
                     SoundFactory.Instance.CreateSoundEffect("Coin");
                     break;
-                case MarioCharacter mario:
+                case Mario mario:
                     MarioSoundEffect(mario, e as MarioSoundArgs);
                     break;
             }
         }
 
-        private void MarioSoundEffect(MarioCharacter mario, MarioSoundArgs e)
+        private static void MarioSoundEffect(Mario mario, MarioSoundArgs e)
         {
-            if (e.ActionCalled == null)
+            if (e?.ActionCalled == null)
             {
                 return;
             }
@@ -76,9 +88,10 @@ namespace MelloMario.Sounds
                 default:
                     break;
             }
+            e.ActionCalled = null;
         }
 
-        private void PlayEffect(string s)
+        private static void PlayEffect(string s)
         {
             SoundFactory.Instance.CreateSoundEffect(s);
         }

@@ -10,6 +10,7 @@
     using MelloMario.Objects.Characters.MovementStates;
     using MelloMario.Objects.Characters.ProtectionStates;
     using MelloMario.Objects.Enemies.KoopaStates;
+    using MelloMario.Objects.Items;
     using MelloMario.Objects.UserInterfaces;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -83,31 +84,19 @@
             {
                 return;
             }
-            switch (target.GetType().Name)
+            switch (target)
             {
-                case "MarioCharacter":
-                    //TODO: Fire to be added
-                    Mario mario = (Mario) target;
+                case Mario mario:
                     if (mode == CollisionMode.Top && mario.MovementState is Jumping || mario.ProtectionState is Starred)
                     {
                         Defeat();
                     }
                     break;
-                case "Brick":
-                    if (((Brick) target).State is Hidden)
-                    {
-                        break;
-                    }
-                    goto case "Stair";
-                case "Question":
-                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
-                    {
-                        break;
-                    }
-                    goto case "Stair";
-                case "Floor":
-                case "Pipeline":
-                case "Stair":
+                case Brick brick when brick.State is Hidden:
+                    break;
+                case Question question when question.State is Blocks.QuestionStates.Hidden:
+                    break;
+                case IGameObject obj when target is Brick || target is Question || target is Floor || target is Pipeline || target is Stair:
                     if (mode == CollisionMode.Left)
                     {
                         Bounce(mode, new Vector2(), 1);
@@ -123,16 +112,13 @@
                         Bounce(mode, new Vector2());
                     }
                     break;
-                case "Koopa":
-                    if (target is Koopa koopa)
+                case Koopa koopa:
+                    if (koopa.State is MovingShell)
                     {
-                        if (koopa.State is MovingShell)
-                        {
-                            Defeat();
-                        }
+                        Defeat();
                     }
                     break;
-                case "Fire":
+                case FireBall fire:
                     Defeat();
                     break;
             }

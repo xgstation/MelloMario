@@ -20,5 +20,6 @@
         void Infinite();
         void Normal();
         void Draw(int time, SpriteBatch spriteBatch);
+        void ToggleMute();
     }
 }

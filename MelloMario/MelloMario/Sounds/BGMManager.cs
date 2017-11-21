@@ -11,49 +11,44 @@
 
     #endregion
 
-    internal class SoundManager
+    internal class BGMManager
     {
-        private IModel Model;
+        private readonly IModel model;
 
         private static readonly ISoundTrack Normal = SoundFactory.Instance.CreateSoundTrack("Normal");
         private static readonly ISoundTrack Hurry = SoundFactory.Instance.CreateSoundTrack("Hurry");
         private static readonly ISoundTrack BelowGround = SoundFactory.Instance.CreateSoundTrack("BelowGround");
         private static readonly ISoundTrack Star = SoundFactory.Instance.CreateSoundTrack("Star");
 
-        private ISoundTrack CurrentTrack;
-        private float SoundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
+        private ISoundTrack currentTrack;
 
-        public SoundManager(IModel model)
+        public BGMManager(IModel model)
         {
-            Model = model;
+            this.model = model;
         }
 
         private void PlayMusic(ISoundTrack track, bool reset = false)
         {
-            if (track != CurrentTrack || reset)
+            if (track != currentTrack || reset || MediaPlayer.State == MediaState.Stopped)
             {
                 MediaPlayer.Stop();
                 track?.Play();
                 MediaPlayer.IsRepeating = true;
-                CurrentTrack = track;
+                currentTrack = track;
             }
         }
 
         public void ToggleMute()
         {
             MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
-            Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume = MediaPlayer.IsMuted ? 0 : SoundEffectVolume;
-            SoundEffectVolume = MediaPlayer.IsMuted
-                ? SoundEffectVolume
-                : Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
         }
 
-        private void Pause()
+        private static void Pause()
         {
             MediaPlayer.Pause();
         }
 
-        private void Resume()
+        private static void Resume()
         {
             MediaPlayer.Resume();
         }
@@ -61,7 +56,7 @@
         private void UpdatePausing()
         {
             //Pausing state detector
-            if (Model.IsPaused)
+            if (model.IsPaused)
             {
                 //Avoid repeat pausing
                 if (MediaPlayer.State != MediaState.Paused)
@@ -78,10 +73,10 @@
         private void UpdateBGM()
         {
             //BGM Updater
-            switch (Model.ActivePlayer.Character)
+            switch (model.ActivePlayer.Character)
             {
                 case MarioCharacter mario when mario.ProtectionState is Dead:
-                    PlayMusic(Normal);
+                    MediaPlayer.Stop();
                     break;
                 case MarioCharacter mario when mario.ProtectionState is Starred:
                     PlayMusic(Star);
@@ -89,10 +84,10 @@
                 case MarioCharacter mario when mario.Player.TimeRemain <= 90000:
                     PlayMusic(Hurry);
                     break;
-                case MarioCharacter mario when mario.CurrentWorld.Type == "Normal":
+                case MarioCharacter mario when mario.CurrentWorld.Type == WorldType.normal:
                     PlayMusic(Normal);
                     break;
-                case MarioCharacter mario when mario.CurrentWorld.Type == "Sub":
+                case MarioCharacter mario when mario.CurrentWorld.Type == WorldType.underground:
                     PlayMusic(BelowGround);
                     break;
                 default:

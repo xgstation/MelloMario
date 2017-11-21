@@ -6,7 +6,7 @@
 
     #endregion
 
-    internal delegate void SoundHandler(ISoundable s, EventArgs e);
+    internal delegate void SoundHandler(ISoundable s, ref EventArgs e);
 
     internal interface ISoundable
     {

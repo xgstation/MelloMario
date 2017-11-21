@@ -6,13 +6,10 @@
 
     #endregion
 
-    internal class Show : BaseState<Piranha>, IPiranhaState
+    internal class Show : BaseTimedState<Piranha>, IPiranhaState
     {
-        private int elapsed;
-
-        public Show(Piranha owner) : base(owner)
+        public Show(Piranha owner) : base(owner, owner.ShowTime)
         {
-            elapsed = 0;
         }
 
         public void Defeat()
@@ -20,13 +17,9 @@
             Owner.State = new Defeated(Owner);
         }
 
-        public override void Update(int time)
+        protected override void OnTimer(int time)
         {
-            elapsed += time;
-            if (elapsed > Owner.ShowTime)
-            {
-                Owner.State = new MovingDown(Owner);
-            }
+            Owner.State = new MovingDown(Owner);
         }
     }
 }

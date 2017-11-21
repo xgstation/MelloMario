@@ -17,7 +17,7 @@
     {
         public delegate void CoinHandler(Coin m, EventArgs e);
 
-        private readonly EventArgs coinEventInfo;
+        private EventArgs coinEventInfo;
         private bool collected;
         private IItemState state;
 
@@ -92,7 +92,7 @@
         {
             if (!collected)
             {
-                SoundEvent?.Invoke(this, EventArgs.Empty);
+                SoundEvent?.Invoke(this, ref coinEventInfo);
                 HandlerCoins?.Invoke(this, coinEventInfo);
                 ScorePoints(Const.SCORE_COIN);
                 collected = true;

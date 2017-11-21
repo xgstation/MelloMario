@@ -43,29 +43,21 @@
         private bool DetectMario()
         {
             return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
-                where obj is ICharacter
-                select obj).Any();
+                    where obj is ICharacter
+                    select obj).Any();
         }
 
         protected override void OnSimulation(int time)
         {
-            switch (State.GetType().Name)
+            if (State is MovingUp)
             {
-                case "MovingUp":
-                    Move(new Point(0, -1));
-                    break;
-                case "MovingDown":
-                    Move(new Point(0, 1));
-                    break;
-                case "Hidden":
-                    break;
-                case "Show":
-                    break;
-                case "Defeated":
-                    break;
-                default:
-                    break;
+                SetVerticalVelocity(-Const.VELOCITY_PIRANHA);
             }
+            else if (State is MovingDown)
+            {
+                SetVerticalVelocity(Const.VELOCITY_PIRANHA);
+            }
+
             base.OnSimulation(time);
         }
 

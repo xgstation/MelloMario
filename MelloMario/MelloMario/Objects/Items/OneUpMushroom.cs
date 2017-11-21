@@ -4,6 +4,9 @@
 
     using System.Diagnostics.CodeAnalysis;
     using MelloMario.Factories;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.OneUpMushroomStates;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -32,7 +35,7 @@
             }
             else
             {
-                state = new Normal(this);
+                state = new OneUpMushroomStates.Normal(this);
                 UpdateSprite();
             }
         }
@@ -58,7 +61,7 @@
 
         protected override void OnSimulation(int time)
         {
-            if (state is Normal)
+            if (state is OneUpMushroomStates.Normal)
             {
                 ApplyGravity();
 
@@ -82,20 +85,19 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
-            switch (target.GetType().Name)
+            switch (target)
             {
-                case "MarioCharacter":
-                    if (state is Normal)
+                case Mario mario:
+                    if (state is OneUpMushroomStates.Normal)
                     {
                         Collect();
                     }
                     break;
-                case "Brick":
-                case "Question":
-                case "Floor":
-                case "Pipeline":
-                case "Stair":
-                    // TODO: check against hidden
+                case Brick brick when brick.State is Hidden:
+                    break;
+                case Question question when question.State is Blocks.QuestionStates.Hidden:
+                    break;
+                case IGameObject obj when target is Brick || target is Question || target is Floor || target is Pipeline || target is Stair:
                     if (mode == CollisionMode.Top || mode == CollisionMode.Bottom)
                     {
                         Bounce(mode, new Vector2());
