@@ -13,7 +13,8 @@ namespace MelloMario.Theming
     internal class Model : IModel
     {
         private readonly Game1 game;
-        private readonly IListener listener;
+        private readonly IListener<IGameObject> listener;
+        private readonly IListener<ISoundable> soundListener;
         private readonly Session session;
         private ICamera activeCamera;
         private IEnumerable<IController> controllers;
@@ -33,6 +34,7 @@ namespace MelloMario.Theming
             session = new Session();
             ActivePlayer = new Player(session);
             listener = new Listener(this, ActivePlayer);
+            soundListener = new SoundListener();
             Database.Initialize(session);
             SoundController.Initialize(this);
         }
@@ -164,7 +166,7 @@ namespace MelloMario.Theming
 
             // IGameWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
 
-            LevelIOJson reader = new LevelIOJson(mapPath, listener);
+            LevelIOJson reader = new LevelIOJson(mapPath, listener, soundListener);
             reader.SetModel(this);
 
             IGameWorld newWorld = reader.Load(id);
