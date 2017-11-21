@@ -126,7 +126,10 @@
 
                 return null;
             }
-            createFunc = point => (IGameObject) Activator.CreateInstance(selftype, world, point, selflistener);
+            createFunc = point => (selftype.Name == "Brick" || selftype.Name == "Question" ?
+            Activator.CreateInstance(selftype, world, point, selflistener, soundListener):
+            Activator.CreateInstance(selftype, world, point, selflistener))
+            as IGameObject;
 
             produceMode = ProduceMode.One;
             if (Util.TryGet(out quantity, objToken, "Quantity"))
@@ -286,14 +289,16 @@
                             Tuple<bool, string[]> newPair = GetPropertyPair(propertyToken);
                             dictProperties.Add(index, newPair);
                         }
-                        Util.BatchCreateWithProperties(
-                            point =>
+                        if (type.Name == "Question" || type.Name == "Brick")
+                        {
+                            createFunc = point =>
                             {
-                                objToBePushed = (IGameObject) Activator.CreateInstance(
+                                objToBePushed = (IGameObject)Activator.CreateInstance(
                                     type,
                                     world,
                                     point,
                                     listener,
+                                    soundListener,
                                     false);
                                 if (type.Name == "Question")
                                 {
@@ -304,7 +309,21 @@
                                     (objToBePushed as Brick).Initialize();
                                 }
                                 return objToBePushed;
-                            },
+                            };
+                        }
+                        else
+                        {
+                            createFunc =
+                                point =>
+                                (IGameObject)Activator.CreateInstance(
+                                        type,
+                                        world,
+                                        point,
+                                        listener,
+                                        false);
+                        }
+                        Util.BatchCreateWithProperties(
+                            createFunc,
                             objPoint,
                             quantity,
                             new Point(32, 32),
@@ -336,24 +355,7 @@
                     else if (produceMode is ProduceMode.Rectangle)
                     {
                         Util.BatchCreate(
-                            point =>
-                            {
-                                objToBePushed = (IGameObject) Activator.CreateInstance(
-                                    type,
-                                    world,
-                                    point,
-                                    listener,
-                                    false);
-                                if (type.Name == "Question")
-                                {
-                                    (objToBePushed as Question).Initialize();
-                                }
-                                if (type.Name == "Brick")
-                                {
-                                    (objToBePushed as Brick).Initialize();
-                                }
-                                return objToBePushed;
-                            },
+                            createFunc,
                             objPoint,
                             quantity,
                             new Point(Const.GRID, Const.GRID),
@@ -391,21 +393,24 @@
                 }
                 propertyPair = GetPropertyPair(token);
                 list = Util.CreateItemList(world, objPoint, listener, soundListener, propertyPair.Item2);
-                objToBePushed =
-                    Activator.CreateInstance(type, world, objPoint, listener, propertyPair.Item1) as IGameObject;
+
+                objToBePushed = (type.Name == "Question" || type.Name == "Brick" ?
+                    Activator.CreateInstance(type, world, objPoint, listener, soundListener, propertyPair.Item1) :
+                    Activator.CreateInstance(type, world, objPoint, listener, propertyPair.Item1))
+                    as IGameObject;
                 if (list != null && list.Count != 0)
                 {
                     Database.SetEnclosedItem(objToBePushed, list);
                 }
-                if (type.Name == "Question")
+                if (objToBePushed is Question q)
                 {
-                    (objToBePushed as Question).Initialize(propertyPair.Item1);
+                    q.Initialize(propertyPair.Item1);
                 }
-                if (type.Name == "Brick")
+                if (objToBePushed is Brick b)
                 {
-                    (objToBePushed as Brick).Initialize(propertyPair.Item1);
+                    b.Initialize(propertyPair.Item1);
                 }
-                stack.Push(objToBePushed);
+               stack.Push(objToBePushed);
             }
             else if (type.Name == "Flag")
             {

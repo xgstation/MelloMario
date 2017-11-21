@@ -3,18 +3,26 @@
     #region
 
     using System;
+    using System.Diagnostics;
+    using System.Reflection;
     using MelloMario.Factories;
+    using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Objects.Items;
 
     #endregion
 
-    internal class MarioSoundArgs : EventArgs
+    internal class SoundArgs : EventArgs
     {
-        public Action ActionCalled { get; set; }
-    }
+        public MethodBase MethodCalled { get; set; }
 
+        public void SetMethodCalled()
+        {
+            StackTrace stackTrace = new StackTrace();
+            MethodCalled = stackTrace.GetFrame(1).GetMethod();
+        }
+    }
     internal class SoundEffectListener : IListener<ISoundable>
     {
         private float soundEffectVolume;
@@ -37,26 +45,30 @@
             soundObject.SoundEvent += Sound;
         }
 
-        private static void Sound(ISoundable c, ref EventArgs e)
+        private static void Sound(ISoundable c, ref SoundArgs e)
         {
             switch (c)
             {
                 case Coin _:
-                    SoundFactory.Instance.CreateSoundEffect("Coin");
+                    PlayEffect("Coin");
+                    break;
+                case Brick _:
+                    BlockSoundEffect(c,e);
                     break;
                 case Mario mario:
-                    MarioSoundEffect(mario, e as MarioSoundArgs);
+                    MarioSoundEffect(mario, e);
                     break;
             }
+            e?.SetMethodCalled();
         }
 
-        private static void MarioSoundEffect(Mario mario, MarioSoundArgs e)
+        private static void MarioSoundEffect(Mario mario, SoundArgs e)
         {
-            if (e?.ActionCalled == null)
+            if (e?.MethodCalled == null)
             {
                 return;
             }
-            switch (e.ActionCalled.Method.Name)
+            switch (e.MethodCalled.Name)
             {
                 case "OnDeath":
                     PlayEffect("Death");
@@ -92,9 +104,28 @@
                 default:
                     break;
             }
-            e.ActionCalled = null;
         }
 
+        private static void BlockSoundEffect(ISoundable s, SoundArgs e)
+        {
+            switch (s)
+            {
+                case Brick b:
+                    if (e?.MethodCalled.Name == "Bump")
+                    {
+                        PlayEffect("BumpBlock");
+                    }
+                    else if (e.MethodCalled.Name == "OnDestroy")
+                    {
+                        PlayEffect("BreakBlock");
+                    }
+                    break;
+                case Question q:
+                    break;
+                case Pipeline p:
+                    break;
+            }
+        }
         private static void PlayEffect(string s)
         {
             SoundFactory.Instance.CreateSoundEffect(s);

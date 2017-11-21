@@ -53,15 +53,15 @@
                 case "Floor":
                     return new Floor(world, location, listener);
                 case "Brick":
-                    return new Brick(world, location, listener);
+                    return new Brick(world, location, listener, soundListener);
                 case "HiddenBrick":
-                    return new Brick(world, location, listener, true);
+                    return new Brick(world, location, listener, soundListener, true);
                 case "Stair":
                     return new Stair(world, location, listener);
                 case "Question":
-                    return new Question(world, location, listener, false);
+                    return new Question(world, location, listener, soundListener, false);
                 case "HiddenQuestion":
-                    return new Question(world, location, listener, true);
+                    return new Question(world, location, listener, soundListener, true);
                 case "PipelineLeftIn":
                     return new Pipeline(world, location, listener, "LeftIn");
                 case "PipelineRightIn":

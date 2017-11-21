@@ -27,7 +27,7 @@
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-        protected EventArgs SoundEventArgs;
+        protected SoundArgs SoundEventArgs;
         public event SoundHandler SoundEvent;
 
         protected void RaiseSoundEvent()
@@ -48,7 +48,7 @@
         {
             listener.Subscribe(this);
             soundListener.Subscribe(this);
-            SoundEventArgs = new MarioSoundArgs();
+            SoundEventArgs = new SoundArgs();
             powerUpState = new Standard(this);
             movementState = new Standing(this);
             protectionState = new ProtectionStates.Normal(this);
@@ -366,7 +366,7 @@
 
         public void OnDeath()
         {
-            ((MarioSoundArgs) SoundEventArgs).ActionCalled = OnDeath;
+            SoundEventArgs.SetMethodCalled();
             SetVerticalVelocity(-20);
         }
 
@@ -382,13 +382,13 @@
 
         public void UpgradeToSuper()
         {
-            ((MarioSoundArgs) SoundEventArgs).ActionCalled = UpgradeToSuper;
+            SoundEventArgs.SetMethodCalled();
             PowerUpState.UpgradeToSuper();
         }
 
         public void UpgradeToFire()
         {
-            ((MarioSoundArgs) SoundEventArgs).ActionCalled = UpgradeToFire;
+            SoundEventArgs.SetMethodCalled();
             PowerUpState.UpgradeToFire();
         }
 
