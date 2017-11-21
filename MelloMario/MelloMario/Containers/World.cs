@@ -12,13 +12,12 @@
     {
         private readonly Point initialPoint;
         private readonly ISet<Point> respawnPoints;
-        private Point size;
 
         public World(string id, string type, Point size, Point initial, IEnumerable<Point> respawn)
         {
             ID = id;
             Type = type;
-            this.size = size;
+            Boundary = new Rectangle(new Point(), size);
 
             initialPoint = new Point(initial.X * Const.GRID, initial.Y * Const.GRID);
             respawnPoints = new HashSet<Point>();
@@ -30,19 +29,11 @@
 
         public string ID { get; }
         public string Type { get; }
-
-        public Rectangle Boundary
-        {
-            get
-            {
-                return new Rectangle(0, 0, size.X * Const.GRID, size.Y * Const.GRID);
-            }
-        }
+        public Rectangle Boundary { get; private set; }
 
         public void Extend(int x, int y)
         {
-            size.X += x;
-            size.Y += y;
+            Boundary = new Rectangle(Boundary.Location, Boundary.Size + new Point(x, y));
         }
 
         public IEnumerable<IGameObject> ScanNearby(Rectangle range)
