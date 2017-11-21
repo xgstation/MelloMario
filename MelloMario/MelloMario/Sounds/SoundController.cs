@@ -15,27 +15,15 @@ namespace MelloMario.Sounds
         {
             Model = model;
         }
-        private enum Songs
-        {
-            Normal,
-            BelowGround,
-            Hurry,
-            Title,
-            GameOver,
-            Star
-        }
 
-        private static ISoundTrack Normal = SoundFactory.Instance.CreateSoundTrack("Normal");
-        private static ISoundTrack Hurry = SoundFactory.Instance.CreateSoundTrack("Hurry");
-        private static ISoundTrack BelowGround = SoundFactory.Instance.CreateSoundTrack("BelowGround");
-        private static ISoundTrack Star = SoundFactory.Instance.CreateSoundTrack("Star");
+        private static readonly ISoundTrack Normal = SoundFactory.Instance.CreateSoundTrack("Normal");
+        private static readonly ISoundTrack Hurry = SoundFactory.Instance.CreateSoundTrack("Hurry");
+        private static readonly ISoundTrack BelowGround = SoundFactory.Instance.CreateSoundTrack("BelowGround");
+        private static readonly ISoundTrack Star = SoundFactory.Instance.CreateSoundTrack("Star");
 
-        private static ISoundTrack CurrentTrack = null;
+        private static ISoundTrack CurrentTrack;
         private static float SoundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
-
-        private static bool PlayFinished = false;
-
-        //public static Song GameOver = SoundFactory.Instance.CreateSong("09-game-over");
+        
 
         private static void PlayMusic(ISoundTrack track, bool reset = false)
         {
@@ -44,7 +32,6 @@ namespace MelloMario.Sounds
                 MediaPlayer.Stop();
                 track?.Play();
                 MediaPlayer.IsRepeating = true;
-
                 CurrentTrack = track;
             }
         }
