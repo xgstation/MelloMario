@@ -9,6 +9,6 @@
 
     internal interface ILevelGenerator
     {
-        IEnumerable<IGameObject> Request(Rectangle range);
+        void Request(Rectangle range, IWorld world);
     }
 }
