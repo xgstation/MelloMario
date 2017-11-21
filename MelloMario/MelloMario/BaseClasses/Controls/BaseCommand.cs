@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Controls.Commands
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal abstract class BaseCommand<T> : ICommand

@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Objects
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal abstract class BaseTimedState<T> : BaseState<T>

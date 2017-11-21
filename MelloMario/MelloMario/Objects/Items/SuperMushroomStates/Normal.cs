@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Objects.Items.SuperMushroomStates
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal class Normal : BaseState<SuperMushroom>, IItemState

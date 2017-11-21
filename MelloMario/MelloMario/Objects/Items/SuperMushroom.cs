@@ -21,8 +21,8 @@
     {
         private bool collected;
         private IItemState state;
-        private IListener<IGameObject> listener;
-        private IListener<ISoundable> soundListener;
+        private readonly IListener<IGameObject> listener;
+        private readonly IListener<ISoundable> soundListener;
 
         public SuperMushroom(
             IWorld world,

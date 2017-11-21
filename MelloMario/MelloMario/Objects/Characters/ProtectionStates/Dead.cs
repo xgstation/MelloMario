@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Objects.Characters.ProtectionStates
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal class Dead : BaseTimedState<Mario>, IMarioProtectionState

@@ -52,7 +52,10 @@
 
         public IItemState State
         {
-            get { return state; }
+            get
+            {
+                return state;
+            }
             set
             {
                 state = value;
@@ -71,9 +74,10 @@
 
         protected override void OnUpdate(int time)
         {
-            SoundEvent?.Invoke(this, SoundEventArgs);  
+            SoundEvent?.Invoke(this, SoundEventArgs);
             state.Update(time);
         }
+
         protected override void OnCollision(
             IGameObject target,
             CollisionMode mode,

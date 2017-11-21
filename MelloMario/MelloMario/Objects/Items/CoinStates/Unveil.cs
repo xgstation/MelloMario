@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Objects.Items.CoinStates
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal class Unveil : BaseTimedState<Coin>, IItemState

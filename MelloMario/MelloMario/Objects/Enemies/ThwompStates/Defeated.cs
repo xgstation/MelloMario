@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Objects.Enemies.ThwompStates
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal class Defeated : BaseState<Thwomp>, IThwompState

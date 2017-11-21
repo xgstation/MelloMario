@@ -2,10 +2,7 @@
 {
     #region
 
-    using System;
-    using System.Security.Cryptography;
     using MelloMario.Objects.Blocks;
-    using MelloMario.Objects.Enemies;
     using Microsoft.Xna.Framework;
 
     #endregion

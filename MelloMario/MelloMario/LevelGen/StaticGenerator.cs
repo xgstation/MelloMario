@@ -4,9 +4,6 @@
 
     using System;
     using System.Collections.Generic;
-    using System.Security.Cryptography;
-    using MelloMario.Objects.Blocks;
-    using MelloMario.Objects.Enemies;
     using Microsoft.Xna.Framework;
 
     #endregion
@@ -34,10 +31,6 @@
                     world.Add(obj);
                 }
                 objects = null;
-            }
-            else
-            {
-                // only add objects once, always refuse to extend the world
             }
         }
     }

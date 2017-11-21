@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Objects.Enemies.KoopaStates
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal class MovingShell : BaseState<Koopa>, IKoopaState

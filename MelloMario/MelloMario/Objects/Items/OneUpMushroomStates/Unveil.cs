@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Objects.Items.OneUpMushroomStates
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal class Unveil : BaseTimedState<OneUpMushroom>, IItemState

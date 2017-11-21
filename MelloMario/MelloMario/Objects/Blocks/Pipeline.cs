@@ -113,6 +113,5 @@
         protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
         }
-
     }
 }

@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Objects.Items.FireFlowerStates
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal class Normal : BaseState<FireFlower>, IItemState

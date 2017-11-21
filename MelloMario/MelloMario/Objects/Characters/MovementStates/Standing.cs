@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Objects.Characters.MovementStates
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal class Standing : BaseState<Mario>, IMarioMovementState

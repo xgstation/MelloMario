@@ -4,9 +4,7 @@
 
     using System;
     using MelloMario.Factories;
-    using MelloMario.Objects.Miscs;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 

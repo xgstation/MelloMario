@@ -20,7 +20,12 @@
         private IBlockState state;
         public ISoundArgs SoundEventArgs { get; }
 
-        public Brick(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool isHidden = false) : base(
+        public Brick(
+            IWorld world,
+            Point location,
+            IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener,
+            bool isHidden = false) : base(
             world,
             location,
             listener,

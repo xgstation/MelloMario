@@ -7,7 +7,6 @@
     using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Objects.Characters.ProtectionStates;
     using MelloMario.Objects.Items;
-    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
@@ -22,7 +21,7 @@
 
         private Vector2 userInput;
 
-        private IListener<ISoundable> soundListener;
+        private readonly IListener<ISoundable> soundListener;
 
         public MarioCharacter(
             IWorld world,

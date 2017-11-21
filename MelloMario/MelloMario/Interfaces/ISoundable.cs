@@ -2,8 +2,6 @@
 {
     #region
 
-    using System;
-
     #endregion
 
     internal delegate void SoundHandler(ISoundable s, ISoundArgs e);
@@ -20,5 +18,4 @@
         string MethodCalled { get; }
         void SetMethodCalled();
     }
-
 }

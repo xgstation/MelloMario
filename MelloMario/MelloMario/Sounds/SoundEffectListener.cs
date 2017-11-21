@@ -6,9 +6,9 @@
     using System.Diagnostics;
     using System.Reflection;
     using MelloMario.Factories;
-    using MelloMario.Objects;
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Objects.Items;
 
     #endregion
@@ -17,7 +17,13 @@
     {
         private MethodBase method;
 
-        public bool HasArgs { get { return method != null; } }
+        public bool HasArgs
+        {
+            get
+            {
+                return method != null;
+            }
+        }
 
         public string MethodCalled
         {
@@ -35,6 +41,7 @@
             method = stackTrace.GetFrame(1).GetMethod();
         }
     }
+
     internal class SoundEffectListener : IListener<ISoundable>
     {
         private float soundEffectVolume;
@@ -103,7 +110,7 @@
                     PlayEffect("Pipe");
                     break;
                 case "Jump":
-                    PlayEffect(mario.PowerUpState is Objects.Characters.PowerUpStates.Standard ? "Bounce" : "PowerBounce");
+                    PlayEffect(mario.PowerUpState is Standard ? "Bounce" : "PowerBounce");
                     break;
                 default:
                     break;
@@ -141,6 +148,7 @@
                 PlayEffect("Coin");
             }
         }
+
         private static void PlayEffect(string s)
         {
             if (s == null)

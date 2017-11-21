@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Objects.Items.StarStates
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal class Normal : BaseState<Star>, IItemState

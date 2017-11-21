@@ -8,10 +8,8 @@
     using System.Linq;
     using System.Reflection;
     using MelloMario.Factories;
-    using MelloMario.Objects;
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Enemies;
-    using MelloMario.Objects.Items;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Newtonsoft.Json;
@@ -122,10 +120,10 @@
 
                 return null;
             }
-            createFunc = point => (type.Name == "Brick" || type.Name == "Question" ?
-            Activator.CreateInstance(type, world, point, listener, soundListener, false) :
-            Activator.CreateInstance(type, world, point, listener))
-            as IGameObject;
+            createFunc = point => (type.Name == "Brick" || type.Name == "Question"
+                    ? Activator.CreateInstance(type, world, point, listener, soundListener, false)
+                    : Activator.CreateInstance(type, world, point, listener))
+                as IGameObject;
 
             produceMode = ProduceMode.One;
             if (Util.TryGet(out quantity, token, "Quantity"))
@@ -255,6 +253,7 @@
             }
             return true;
         }
+
         #endregion
 
         #region Block Deserializer
@@ -282,7 +281,9 @@
                     (gameObj as Brick)?.Initialize(propertyPair.Item1);
                     break;
                 default:
+
                     #region GetProperties
+
                     //TOOD:Finish it
                     Dictionary<Point, Tuple<bool, string[]>> propertiesDict = new Dictionary<Point, Tuple<bool, string[]>>(new PointCompare());
                     if (Util.TryGet(out JToken propertiesToken, token, "Properties"))
@@ -294,7 +295,9 @@
                             propertiesDict.Add(index, newPair);
                         }
                     }
+
                     #endregion
+
                     break;
                 case ProduceMode.Rectangle:
                     Util.BatchRecCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet);
@@ -313,26 +316,26 @@
                     Activator.CreateInstance(type, world, objPoint, listener, false);
                     break;
                 case ProduceMode.Rectangle:
-                    {
-                        Util.BatchRecCreate(
-                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                            objPoint,
-                            quantity,
-                            new Point(Const.GRID, Const.GRID),
-                            ignoredSet);
-                        break;
-                    }
+                {
+                    Util.BatchRecCreate(
+                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                        objPoint,
+                        quantity,
+                        new Point(Const.GRID, Const.GRID),
+                        ignoredSet);
+                    break;
+                }
 
                 case ProduceMode.Triangle:
-                    {
-                        Util.BatchTriCreate(
-                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                            objPoint,
-                            triangleSize,
-                            new Point(Const.GRID, Const.GRID),
-                            ignoredSet);
-                        break;
-                    }
+                {
+                    Util.BatchTriCreate(
+                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                        objPoint,
+                        triangleSize,
+                        new Point(Const.GRID, Const.GRID),
+                        ignoredSet);
+                    break;
+                }
             }
         }
 

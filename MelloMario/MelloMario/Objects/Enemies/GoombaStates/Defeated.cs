@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Objects.Enemies.GoombaStates
 {
+    #region
+
     using System;
+
+    #endregion
 
     [Serializable]
     internal class Defeated : BaseState<Goomba>, IGoombaState

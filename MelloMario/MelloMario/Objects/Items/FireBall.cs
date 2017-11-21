@@ -13,7 +13,7 @@
     [Serializable]
     internal class FireBall : BasePhysicalObject, ISoundable
     {
-        public FireBall(IWorld world, Point location, IListener<IGameObject> listener,IListener<ISoundable> soundListener) : base(
+        public FireBall(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener) : base(
             world,
             location,
             listener,

@@ -151,7 +151,14 @@
             }
         }
 
-        public static void BatchCreateWithProperties<T1, T2>(Func<Point, T1> createFunc, Point startPoint, Point quantity, Point objSize, ICollection<Point> ignoredSet, IDictionary<Point, T2> properties, Action<IGameObject, T2> applyProperties)
+        public static void BatchCreateWithProperties<T1, T2>(
+            Func<Point, T1> createFunc,
+            Point startPoint,
+            Point quantity,
+            Point objSize,
+            ICollection<Point> ignoredSet,
+            IDictionary<Point, T2> properties,
+            Action<IGameObject, T2> applyProperties)
         {
             Contract.Assume(!((properties == null) ^ (applyProperties == null)));
             for (int x = 0; x < quantity.X; x++)
@@ -207,7 +214,8 @@
                     in2 = new Pipeline(
                         world,
                         new Point(pipelineLoc.X + grid, pipelineLoc.Y),
-                        listener, soundListener,
+                        listener,
+                        soundListener,
                         "RightIn");
                     pipelineLoc = new Point(pipelineLoc.X, pipelineLoc.Y + grid);
                     goto case "NV";
@@ -221,7 +229,8 @@
                     in2 = new Pipeline(
                         world,
                         new Point(pipelineLoc.X, pipelineLoc.Y + grid),
-                        listener, soundListener,
+                        listener,
+                        soundListener,
                         "BottomRightIn");
                     pipelineLoc = new Point(pipelineLoc.X - pipelineLength * grid, pipelineLoc.Y);
                     goto case "NH";

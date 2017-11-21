@@ -17,7 +17,7 @@
     #endregion
 
     [Serializable]
-    internal class Star : BasePhysicalObject,ISoundable
+    internal class Star : BasePhysicalObject, ISoundable
     {
         private bool collected;
         private IItemState state;
