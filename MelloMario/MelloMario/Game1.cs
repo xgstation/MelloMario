@@ -20,7 +20,7 @@
         private readonly GraphicsDeviceManager graphics;
         private Theming.Model model;
         private SpriteBatch spriteBatch;
-        private SoundManager sounds;
+        private BGMManager sounds;
 
         public Game1()
         {
@@ -48,7 +48,7 @@
             model.LoadControllers(controllers);
             model.Init();
 
-            sounds = new SoundManager(model);
+            sounds = new BGMManager(model);
         }
 
         /// <summary>
