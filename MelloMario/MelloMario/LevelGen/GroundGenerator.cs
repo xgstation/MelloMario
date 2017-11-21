@@ -15,14 +15,10 @@
     //       DO NOT implement actual functionality in it until the design is clear
     internal class GroundGenerator : ILevelGenerator
     {
-        private readonly ISession session;
         private readonly IListener<IGameObject> listener;
 
-        private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
-
-        internal GroundGenerator(ISession session, IListener<IGameObject> listener)
+        internal GroundGenerator(IListener<IGameObject> listener)
         {
-            this.session = session;
             this.listener = listener;
         }
 
