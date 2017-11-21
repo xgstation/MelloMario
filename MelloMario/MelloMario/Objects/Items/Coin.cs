@@ -32,7 +32,7 @@
             soundListener.Subscribe(this);
             collected = false;
             //eventually if coin needs to pass info put it in eventinfo
-            coinEventInfo = null;
+            coinEventInfo = EventArgs.Empty;
             if (isUnveil)
             {
                 state = new Unveil(this);
