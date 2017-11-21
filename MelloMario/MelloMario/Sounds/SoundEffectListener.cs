@@ -13,11 +13,28 @@
 
     #endregion
 
-    internal class SoundArgs : EventArgs
+    internal class SoundArgs : SoundArgsBase
     {
-        public MethodBase MethodCalled { get; set; }
+        public override MethodBase MethodCalled
+        {
+            get
+            {
+                try
+                {
+                    return Method;
+                }
+                finally
+                {
+                    Method = null;
+                }
+            }
+            protected set
+            {
+                Method = value;
+            }
+        }
 
-        public void SetMethodCalled()
+        public override void SetMethodCalled()
         {
             StackTrace stackTrace = new StackTrace();
             MethodCalled = stackTrace.GetFrame(1).GetMethod();
@@ -45,7 +62,7 @@
             soundObject.SoundEvent += Sound;
         }
 
-        private static void Sound(ISoundable c, ref SoundArgs e)
+        private static void Sound(ISoundable c, SoundArgsBase e)
         {
             switch (c)
             {
@@ -53,7 +70,7 @@
                     PlayEffect("Coin");
                     break;
                 case Brick _:
-                    BlockSoundEffect(c,e);
+                    BlockSoundEffect(c, e);
                     break;
                 case Mario mario:
                     MarioSoundEffect(mario, e);
@@ -62,9 +79,9 @@
             e?.SetMethodCalled();
         }
 
-        private static void MarioSoundEffect(Mario mario, SoundArgs e)
+        private static void MarioSoundEffect(Mario mario, SoundArgsBase e)
         {
-            if (e?.MethodCalled == null)
+            if (!e.HasArgs)
             {
                 return;
             }
@@ -92,42 +109,38 @@
                     PlayEffect("Pipe");
                     break;
                 case "Jump":
-                    if (mario.PowerUpState is Standard)
-                    {
-                        PlayEffect("Bounce");
-                    }
-                    else
-                    {
-                        PlayEffect("PowerBounce");
-                    }
+                    PlayEffect(mario.PowerUpState is Standard ? "Bounce" : "PowerBounce");
                     break;
                 default:
                     break;
             }
         }
 
-        private static void BlockSoundEffect(ISoundable s, SoundArgs e)
+        private static void BlockSoundEffect(ISoundable s, SoundArgsBase e)
         {
+            if (!e.HasArgs)
+            {
+                return;
+            }
+            string methodName = e.MethodCalled.Name;
             switch (s)
             {
-                case Brick b:
-                    if (e?.MethodCalled.Name == "Bump")
-                    {
-                        PlayEffect("BumpBlock");
-                    }
-                    else if (e.MethodCalled.Name == "OnDestroy")
-                    {
-                        PlayEffect("BreakBlock");
-                    }
+                case Brick _:
+                    PlayEffect(methodName == "Bump" ? "BumpBlock" : (methodName == "OnDestroy" ? "BreakBlock" : null));
                     break;
-                case Question q:
+                case Question _:
+                    PlayEffect(methodName == "Bump" ? "BumpBlock" : null);
                     break;
-                case Pipeline p:
+                case Pipeline _:
                     break;
             }
         }
         private static void PlayEffect(string s)
         {
+            if (s == null)
+            {
+                return;
+            }
             SoundFactory.Instance.CreateSoundEffect(s);
         }
     }
