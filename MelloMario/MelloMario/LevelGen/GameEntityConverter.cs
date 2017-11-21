@@ -127,7 +127,7 @@
                 return null;
             }
             createFunc = point => (selftype.Name == "Brick" || selftype.Name == "Question" ?
-            Activator.CreateInstance(selftype, world, point, selflistener, soundListener):
+            Activator.CreateInstance(selftype, world, point, selflistener, soundListener, false) :
             Activator.CreateInstance(selftype, world, point, selflistener))
             as IGameObject;
 
@@ -293,7 +293,7 @@
                         {
                             createFunc = point =>
                             {
-                                objToBePushed = (IGameObject)Activator.CreateInstance(
+                                objToBePushed = (IGameObject) Activator.CreateInstance(
                                     type,
                                     world,
                                     point,
@@ -315,7 +315,7 @@
                         {
                             createFunc =
                                 point =>
-                                (IGameObject)Activator.CreateInstance(
+                                (IGameObject) Activator.CreateInstance(
                                         type,
                                         world,
                                         point,
@@ -410,7 +410,7 @@
                 {
                     b.Initialize(propertyPair.Item1);
                 }
-               stack.Push(objToBePushed);
+                stack.Push(objToBePushed);
             }
             else if (type.Name == "Flag")
             {
@@ -433,28 +433,28 @@
                         stack.Push(Activator.CreateInstance(type, world, objPoint, listener, false) as BaseGameObject);
                         break;
                     case ProduceMode.Rectangle:
-                    {
-                        Util.BatchCreate(
-                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                            objPoint,
-                            quantity,
-                            new Point(Const.GRID, Const.GRID),
-                            ignoredSet,
-                            ref stack);
-                        break;
-                    }
+                        {
+                            Util.BatchCreate(
+                                point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                                objPoint,
+                                quantity,
+                                new Point(Const.GRID, Const.GRID),
+                                ignoredSet,
+                                ref stack);
+                            break;
+                        }
 
                     case ProduceMode.Triangle:
-                    {
-                        Util.TriganleCreate(
-                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                            objPoint,
-                            triangleSize,
-                            new Point(Const.GRID, Const.GRID),
-                            ignoredSet,
-                            ref stack);
-                        break;
-                    }
+                        {
+                            Util.TriganleCreate(
+                                point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                                objPoint,
+                                triangleSize,
+                                new Point(Const.GRID, Const.GRID),
+                                ignoredSet,
+                                ref stack);
+                            break;
+                        }
                 }
             }
             else if (type.Name == "Pipeline")
