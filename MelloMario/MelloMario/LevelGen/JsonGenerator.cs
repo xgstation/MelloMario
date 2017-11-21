@@ -16,15 +16,15 @@
     //       and to verify the correctness of interfaces
     internal class JsonGenerator : StaticGenerator
     {
-        private static IEnumerable<IGameObject> GetObjs(string jsonPath, string level, IListener<IGameObject> listener, IListener<ISoundable> soundListener)
+        private static IEnumerable<IGameObject> GetObjs(string jsonPath, string id, IListener<IGameObject> listener, IListener<ISoundable> soundListener)
         {
             LevelIOJson reader = new LevelIOJson(jsonPath, listener, soundListener);
-            IWorld world = reader.Load(level);
+            IWorld world = reader.Load(id);
             return world.ScanNearby(world.Boundary);
         }
 
-        public JsonGenerator(string jsonPath, string level, IListener<IGameObject> listener, IListener<ISoundable> soundListener) :
-            base(GetObjs(jsonPath, level, listener, soundListener))
+        public JsonGenerator(string jsonPath, string id, IListener<IGameObject> listener, IListener<ISoundable> soundListener) :
+            base(GetObjs(jsonPath, id, listener, soundListener))
         {
         }
     }

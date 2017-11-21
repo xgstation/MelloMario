@@ -27,10 +27,10 @@
             Util.Initilalize();
         }
 
-        public IWorld Load(string index)
+        public IWorld Load(string id)
         {
             levelString = File.ReadAllText(path);
-            gameConverter = new GameConverter(listener, soundListener, index);
+            gameConverter = new GameConverter(listener, soundListener, id);
 
             return JsonConvert.DeserializeObject<IWorld>(levelString, gameConverter);
         }

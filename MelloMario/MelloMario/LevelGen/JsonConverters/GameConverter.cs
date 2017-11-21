@@ -17,7 +17,7 @@
     internal class GameConverter : JsonConverter
     {
         private static JsonSerializer Serializers;
-        private readonly string index;
+        private readonly string id;
         private readonly IListener<IGameObject> listener;
         private readonly IListener<ISoundable> soundListener;
         private GameEntityConverter gameEntityConverter;
@@ -30,9 +30,9 @@
         public GameConverter(
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,
-            string index = "Main")
+            string id = "Main")
         {
-            this.index = index;
+            this.id = id;
             this.listener = listener;
             this.soundListener = soundListener;
             Serializers = new JsonSerializer();
@@ -67,7 +67,7 @@
             mapToBeLoaded = null;
             foreach (JToken obj in mapListToken)
             {
-                if (Util.TryGet(out string s, obj, "Index") && s == index)
+                if (Util.TryGet(out string s, obj, "Index") && s == id)
                 {
                     mapToBeLoaded = obj;
                     break;
@@ -91,7 +91,7 @@
             Util.TryGet(out Point initialPoint, mapToBeLoaded, "InitialSpawnPoint");
             Util.TryGet(out IList<Point> respawnPoints, mapToBeLoaded, "RespawnPoints");
             world = new World(
-                index,
+                id,
                 mapType == "Normal" ? WorldType.normal : WorldType.underground,
                 mapSize,
                 new Point(2, 2),
