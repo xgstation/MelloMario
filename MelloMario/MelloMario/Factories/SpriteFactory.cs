@@ -98,6 +98,21 @@
             }
         }
 
+        public ISprite CreateThwompSprite(string status)
+        {
+            switch (status)
+            {
+                case "Defeated":
+                    return new StaticSprite(GetTexture("GoombaDead"));
+                case "Normal":
+                    return new AnimatedSprite(GetTexture("Thwomp"), 2, 1);
+                default:
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
+            }
+        }
+
         public ISprite CreateKoopaSprite(string color, string status)
         {
             switch (status)

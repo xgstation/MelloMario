@@ -85,6 +85,10 @@
     <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
+    <Compile Include="Interfaces\Objects\States\IThwompStatecs.cs" />
+    <Compile Include="Objects\Enemies\Thwomp.cs" />
+    <Compile Include="Objects\Enemies\ThwompStates\Defeated.cs" />
+    <Compile Include="Objects\Enemies\ThwompStates\Normal.cs" />
     <Compile Include="Sounds\SoundListener.cs" />
     <Compile Include="Sounds\SoundTrack.cs" />
     <Compile Include="Sounds\SoundEffect.cs" />
