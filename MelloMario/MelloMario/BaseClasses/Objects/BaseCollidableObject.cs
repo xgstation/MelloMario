@@ -15,7 +15,6 @@
 
         public delegate void PointHandler(BaseCollidableObject m, GameEventArgs e);
 
-        private GameEventArgs gameEventInfo;
         private Point movement;
 
         protected BaseCollidableObject(
@@ -255,22 +254,18 @@
 
         protected void ScorePoints(int points)
         {
-            gameEventInfo = new GameEventArgs
+            HandlerPoints?.Invoke(this, new GameEventArgs
             {
                 Points = points
-            };
-
-            HandlerPoints?.Invoke(this, gameEventInfo);
+            });
         }
 
         protected void ChangeLives()
         {
-            gameEventInfo = new GameEventArgs
+            HandlerLives?.Invoke(this, new GameEventArgs
             {
                 Points = 1
-            };
-
-            HandlerLives?.Invoke(this, gameEventInfo);
+            });
         }
 
         protected enum CollisionMode
