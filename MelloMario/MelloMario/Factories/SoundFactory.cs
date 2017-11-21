@@ -93,7 +93,7 @@
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_gameover"));
                 case "GameWon":
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_stage_clear"));
-                case "PowerUpAppear":
+                case "Unveil":
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_powerup_appears"));
                 case "OneUpCollect":
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_1"));
