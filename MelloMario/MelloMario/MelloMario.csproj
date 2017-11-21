@@ -226,6 +226,7 @@
     <Compile Include="Objects\Characters\ProtectionStates\Normal.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Protected.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Starred.cs" />
+	<Compile Include="Sounds\SoundManager.cs" />
     <Compile Include="Sounds\BGMManager.cs" />
     <Compile Include="Objects\UserInterfaces\PopingUpPoints.cs" />
     <Compile Include="Graphics\Sprites\SplashSprite.cs" />
