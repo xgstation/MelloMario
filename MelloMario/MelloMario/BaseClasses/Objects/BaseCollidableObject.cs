@@ -18,7 +18,11 @@
         private GameEventArgs gameEventInfo;
         private Point movement;
 
-        protected BaseCollidableObject(IGameWorld world, Point location, IListener<IGameObject> listener, Point size) : base(world, location, size)
+        protected BaseCollidableObject(
+            IGameWorld world,
+            Point location,
+            IListener<IGameObject> listener,
+            Point size) : base(world, location, size)
         {
             listener?.Subscribe(this);
             movement = new Point();
