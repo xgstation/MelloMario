@@ -90,29 +90,19 @@
         {
             if (state is StarStates.Normal)
             {
-                switch (target.GetType().Name)
+                switch (target)
                 {
-                    case "MarioCharacter":
-                        if (state is StarStates.Normal)
+                    case Mario mario:
+                        if (state is OneUpMushroomStates.Normal)
                         {
                             Collect();
                         }
                         break;
-                    case "Brick":
-                        if (((Brick) target).State is Hidden)
-                        {
-                            break;
-                        }
-                        goto case "Stair";
-                    case "Question":
-                        if (((Question) target).State is Blocks.QuestionStates.Hidden)
-                        {
-                            break;
-                        }
-                        goto case "Stair";
-                    case "Floor":
-                    case "Pipeline":
-                    case "Stair":
+                    case Brick brick when brick.State is Hidden:
+                        break;
+                    case Question question when question.State is Blocks.QuestionStates.Hidden:
+                        break;
+                    case IGameObject obj when target is Brick || target is Question || target is Floor || target is Pipeline || target is Stair:
                         if (mode == CollisionMode.Top)
                         {
                             Bounce(mode, new Vector2());
