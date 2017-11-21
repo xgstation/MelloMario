@@ -85,6 +85,7 @@
     <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
+    <Compile Include="LevelGen\JsonGenerator.cs" />
     <Compile Include="LevelGen\StaticGenerator.cs" />
     <Compile Include="LevelGen\GroundGenerator.cs" />
     <Compile Include="Sounds\SoundEffectListener.cs" />

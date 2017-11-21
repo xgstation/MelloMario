@@ -19,8 +19,6 @@
         private GameConverter gameConverter;
         private string levelString;
 
-        private IModel model;
-
         public LevelIOJson(string jsonPath, IListener<IGameObject> listener, IListener<ISoundable> soundListener)
         {
             this.listener = listener;
@@ -29,15 +27,10 @@
             Util.Initilalize();
         }
 
-        public void SetModel(IModel newModel)
-        {
-            model = newModel;
-        }
-
         public IWorld Load(string index)
         {
             levelString = File.ReadAllText(path);
-            gameConverter = new GameConverter(model, listener, soundListener, index);
+            gameConverter = new GameConverter(listener, soundListener, index);
 
             return JsonConvert.DeserializeObject<IWorld>(levelString, gameConverter);
         }

@@ -39,7 +39,6 @@
             where typeof(IGameObject).IsAssignableFrom(type)
             select type;
 
-        private readonly IModel model;
         private readonly IListener<IGameObject> listener;
         private readonly IListener<ISoundable> soundListener;
         private readonly IWorld world;
@@ -63,12 +62,10 @@
         private Point triangleSize;
 
         public GameEntityConverter(
-            IModel model,
             IWorld parentWorld,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener)
         {
-            this.model = model;
             this.listener = listener;
             this.soundListener = soundListener;
             world = parentWorld;
@@ -201,7 +198,7 @@
 
         private bool ItemConverter()
         {
-            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, listener, soundListener, false);
+            createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, listener, soundListener, false);
             switch (produceMode)
             {
                 case ProduceMode.One:
@@ -355,7 +352,7 @@
             bool isPortalTo = Util.TryGet(out string portalTo, token, "Property", "PortalTo");
             if (produceMode is ProduceMode.One)
             {
-                list = Util.CreateSinglePipeline(model, world, listener, soundListener, direction, length, objPoint);
+                list = Util.CreateSinglePipeline(world, listener, soundListener, direction, length, objPoint);
                 if (Util.TryGet(out JToken piranhaToken, token, "Property", "Piranha"))
                 {
                     if (Util.TryGet(out string color, piranhaToken, "Color")
@@ -399,7 +396,7 @@
                     ? new Point(Const.GRID * 2, Const.GRID + Const.GRID * length)
                     : new Point(Const.GRID + Const.GRID * length, Const.GRID * 2);
                 Util.BatchRecCreate(
-                    point => Util.CreateSinglePipeline(model, world, listener, soundListener, direction, length, point),
+                    point => Util.CreateSinglePipeline(world, listener, soundListener, direction, length, point),
                     objPoint,
                     quantity,
                     objFullSize,

@@ -16,22 +16,12 @@
     [Serializable]
     internal class Pipeline : BaseCollidableObject, ISoundable
     {
-        private int elapsed;
         private IModel model;
+        private int elapsed;
         private IPlayer switchingPlayer;
 
         public event SoundHandler SoundEvent;
         public ISoundArgs SoundEventArgs { get; }
-        public Pipeline(
-            IWorld world,
-            Point location,
-            IListener<IGameObject> listener,
-            IListener<ISoundable> soundListener,
-            string type,
-            IModel model) : this(world, location, listener, soundListener, type)
-        {
-            SetModel(model);
-        }
 
         public Pipeline(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, string type) : base(
             world,
@@ -48,6 +38,7 @@
 
         public string Type { get; }
 
+        // TODO: use events instead of operating game model directly
         private void SetModel(IModel newModel)
         {
             model = newModel;

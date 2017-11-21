@@ -188,7 +188,6 @@
         }
 
         public static List<IGameObject> CreateSinglePipeline(
-            IModel model,
             IWorld world,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,
@@ -204,13 +203,12 @@
             {
                 //TODO: this is sloppy, this should use the game object factory.
                 case "V":
-                    in1 = new Pipeline(world, pipelineLoc, listener, soundListener, "LeftIn", model);
+                    in1 = new Pipeline(world, pipelineLoc, listener, soundListener, "LeftIn");
                     in2 = new Pipeline(
                         world,
                         new Point(pipelineLoc.X + grid, pipelineLoc.Y),
                         listener, soundListener,
-                        "RightIn",
-                        model);
+                        "RightIn");
                     pipelineLoc = new Point(pipelineLoc.X, pipelineLoc.Y + grid);
                     goto case "NV";
                 case "HL":

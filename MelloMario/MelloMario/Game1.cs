@@ -18,7 +18,7 @@
     internal class Game1 : Game
     {
         private readonly GraphicsDeviceManager graphics;
-        private Theming.GameModel model;
+        private GameModel model;
         private SpriteBatch spriteBatch;
         private BGMManager sounds;
 
@@ -44,7 +44,7 @@
 
         public void Reset()
         {
-            model = new Theming.GameModel(this);
+            model = new GameModel(this);
             IEnumerable<IController> controllers = new List<IController>
             {
                 new GamepadController(),
