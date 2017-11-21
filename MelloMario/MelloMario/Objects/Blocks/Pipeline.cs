@@ -15,7 +15,7 @@
     internal class Pipeline : BaseCollidableObject, ISoundable
     {
         private int elapsed;
-        private Theming.Model model;
+        private IModel model;
         private IPlayer switchingPlayer;
 
         public event SoundHandler SoundEvent;
@@ -26,7 +26,7 @@
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,
             string type,
-            Theming.Model model) : this(world, location, listener, soundListener, type)
+            IModel model) : this(world, location, listener, soundListener, type)
         {
             SetModel(model);
         }
@@ -46,7 +46,7 @@
 
         public string Type { get; }
 
-        private void SetModel(Theming.Model newModel)
+        private void SetModel(IModel newModel)
         {
             model = newModel;
         }
