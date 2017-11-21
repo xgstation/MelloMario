@@ -7,7 +7,7 @@
 
     #endregion
 
-    enum WorldType
+    internal enum WorldType
     {
         normal,
         underground,

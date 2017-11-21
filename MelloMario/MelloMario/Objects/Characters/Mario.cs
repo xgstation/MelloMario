@@ -214,7 +214,7 @@ namespace MelloMario.Objects.Characters
 
                     break;
                 case "Pipeline":
-                    if (MovementState is Crouching && Database.IsEntrance((Pipeline)target))
+                    if (MovementState is Crouching && Database.IsEntrance((Pipeline) target))
                     {
                         string type = (target as Pipeline).Type;
                         if (type == "LeftIn")
@@ -320,19 +320,19 @@ namespace MelloMario.Objects.Characters
 
                     break;
                 case "FireFlower":
-                    if (((FireFlower)target).State is Items.FireFlowerStates.Normal)
+                    if (((FireFlower) target).State is Items.FireFlowerStates.Normal)
                     {
                         UpgradeToFire();
                     }
                     break;
                 case "Star":
-                    if (((Star)target).State is Items.StarStates.Normal)
+                    if (((Star) target).State is Items.StarStates.Normal)
                     {
                         ProtectionState.Star();
                     }
                     break;
                 case "SuperMushroom":
-                    if (((SuperMushroom)target).State is Items.SuperMushroomStates.Normal && PowerUpState is Standard)
+                    if (((SuperMushroom) target).State is Items.SuperMushroomStates.Normal && PowerUpState is Standard)
                     {
                         UpgradeToSuper();
                     }
@@ -340,7 +340,7 @@ namespace MelloMario.Objects.Characters
                 case "Piranha":
                     if (!(ProtectionState is Starred))
                     {
-                        if (!(((Piranha)target).State is Enemies.PiranhaStates.Hidden))
+                        if (!(((Piranha) target).State is Enemies.PiranhaStates.Hidden))
                         {
                             Downgrade();
                         }
@@ -348,8 +348,6 @@ namespace MelloMario.Objects.Characters
                     break;
             }
         }
-
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
@@ -365,7 +363,7 @@ namespace MelloMario.Objects.Characters
 
         public void OnDeath()
         {
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = OnDeath;
+            ((MarioSoundArgs) SoundEventArgs).ActionCalled = OnDeath;
             SetVerticalVelocity(-20);
         }
 
@@ -379,13 +377,13 @@ namespace MelloMario.Objects.Characters
 
         public void UpgradeToSuper()
         {
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = UpgradeToSuper;
+            ((MarioSoundArgs) SoundEventArgs).ActionCalled = UpgradeToSuper;
             PowerUpState.UpgradeToSuper();
         }
 
         public void UpgradeToFire()
         {
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = UpgradeToFire;
+            ((MarioSoundArgs) SoundEventArgs).ActionCalled = UpgradeToFire;
             PowerUpState.UpgradeToFire();
         }
 

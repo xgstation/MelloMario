@@ -75,9 +75,8 @@
             CollisionMode mode,
             CollisionMode modePassive,
             CornerMode corner,
-            CornerMode cornerPassive) { }
-
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
+            CornerMode cornerPassive)
+        { }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
 
