@@ -22,5 +22,7 @@
         void Draw(int time, SpriteBatch spriteBatch);
         void ToggleMute();
         IWorld LoadLevel(string index);
+        void TransistGameWon();
+        void Transist();
     }
 }

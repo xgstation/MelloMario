@@ -243,7 +243,7 @@
     <Compile Include="Graphics\Sprites\StaticSprite.cs" />
     <Compile Include="Theming\Const.cs" />
     <Compile Include="Theming\Database.cs" />
-    <Compile Include="Theming\Model.cs" />
+    <Compile Include="Theming\GameModel.cs" />
     <Compile Include="Containers\World.cs" />
     <Compile Include="Controls\Scripts\PlayingScript.cs" />
     <Compile Include="Interfaces\Controls\ICommand.cs" />

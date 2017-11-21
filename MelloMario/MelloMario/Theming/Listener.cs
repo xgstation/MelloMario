@@ -17,10 +17,10 @@
 
     internal class Listener : IListener<IGameObject>
     {
-        private readonly Model model;
+        private readonly IModel model;
         private readonly IPlayer player;
 
-        public Listener(Model model, IPlayer player)
+        public Listener(IModel model, IPlayer player)
         {
             this.model = model;
             this.player = player;

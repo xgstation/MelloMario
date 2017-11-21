@@ -14,7 +14,7 @@
 
     #endregion
 
-    internal class Model : IModel
+    internal class GameModel : IModel
     {
         private readonly Game1 game;
         private readonly IListener<IGameObject> listener;
@@ -32,7 +32,7 @@
 
         private int splashElapsed; // TODO: for sprint 4, refactor later
 
-        public Model(Game1 game)
+        public GameModel(Game1 game)
         {
             this.game = game;
             session = new Session();
