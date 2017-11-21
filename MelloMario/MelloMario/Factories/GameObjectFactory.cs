@@ -63,13 +63,13 @@
                 case "HiddenQuestion":
                     return new Question(world, location, listener, soundListener, true);
                 case "PipelineLeftIn":
-                    return new Pipeline(world, location, listener, "LeftIn");
+                    return new Pipeline(world, location, listener, soundListener, "LeftIn");
                 case "PipelineRightIn":
-                    return new Pipeline(world, location, listener, "RightIn");
+                    return new Pipeline(world, location, listener, soundListener, "RightIn");
                 case "PipelineLeft":
-                    return new Pipeline(world, location, listener, "Left");
+                    return new Pipeline(world, location, listener, soundListener, "Left");
                 case "PipelineRight":
-                    return new Pipeline(world, location, listener, "Right");
+                    return new Pipeline(world, location, listener, soundListener, "Right");
 
                 //enemy
                 case "Goomba":
