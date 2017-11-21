@@ -75,28 +75,6 @@
             }
         }
 
-        //TODO: Finish Other Sound Effeect
-        private static void UpdateMarioSoundEffect()
-        {
-            //TODO: Finish Mario Sound Effeect
-            MarioCharacter mario = Model.ActivePlayer.Character as MarioCharacter;
-            if (mario?.MovementState is Jumping jumping && !jumping.Finished)
-            {
-                if (mario.PowerUpState is Super || mario.PowerUpState is Fire)
-                {
-                    SoundFactory.Instance.CreateSoundEffect("PowerBounce");
-                }
-                else
-                {
-                    SoundFactory.Instance.CreateSoundEffect("Bounce");
-                }
-            }
-            if (mario?.ProtectionState is Dead)
-            {
-                SoundFactory.Instance.CreateSoundEffect("Death");
-            }
-        }
-
         private static void UpdateBGM()
         {
             //BGM Updater
@@ -126,7 +104,6 @@
         public static void Update()
         {
             UpdatePausing();
-            UpdateMarioSoundEffect();
             UpdateBGM();
         }
     }

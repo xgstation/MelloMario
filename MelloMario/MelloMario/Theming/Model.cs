@@ -70,7 +70,7 @@
         {
             activeCamera = new Camera();
 
-            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
+            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener, activeCamera);
             IsPaused = true;
             new PlayingScript().Bind(controllers, this, ActivePlayer.Character);
 
@@ -103,7 +103,7 @@
         {
             mapPath = "Content/Infinite.json";
             splashElapsed = 0;
-            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
+            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener, activeCamera);
             IsPaused = false;
             Resume();
         }
@@ -112,7 +112,7 @@
         {
             mapPath = "Content/Level1.json";
             splashElapsed = 0;
-            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, activeCamera);
+            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener, activeCamera);
             IsPaused = false;
             Resume();
         }
@@ -180,7 +180,7 @@
 
         public void Transist()
         {
-            ActivePlayer.Reset("Mario", listener);
+            ActivePlayer.Reset("Mario", listener, soundListener);
 
             IsPaused = true;
             new TransistScript().Bind(controllers, this, ActivePlayer.Character);

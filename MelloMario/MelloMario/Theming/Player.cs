@@ -58,14 +58,15 @@
             Score += delta;
         }
 
-        public void Init(string type, IGameWorld world, IListener<IGameObject> listener, ICamera newCamera)
+        public void Init(string type, IGameWorld world, IListener<IGameObject> listener, IListener<ISoundable> soundListener, ICamera newCamera)
         {
             Character = GameObjectFactory.Instance.CreateGameCharacter(
                 type,
                 world,
                 this,
                 world.GetInitialPoint(),
-                listener);
+                listener,
+                soundListener);
             Session.Add(this);
             Camera = newCamera;
 
@@ -79,7 +80,7 @@
             Session.Move(this);
         }
 
-        public void Reset(string type, IListener<IGameObject> listener)
+        public void Reset(string type, IListener<IGameObject> listener, IListener<ISoundable> soundListener)
         {
             Character.Remove();
             Character = GameObjectFactory.Instance.CreateGameCharacter(
@@ -87,7 +88,8 @@
                 Character.CurrentWorld,
                 this,
                 Character.CurrentWorld.GetInitialPoint(),
-                listener);
+                listener,
+                soundListener);
 
             if (Lifes > 0)
             {
