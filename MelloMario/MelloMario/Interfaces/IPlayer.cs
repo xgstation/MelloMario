@@ -32,6 +32,5 @@
         void Reset(string type, IListener<IGameObject> listener, IListener<ISoundable> soundListener);
         void Win();
         void Update(int time);
-        void Draw(int time, SpriteBatch spriteBatch);
     }
 }

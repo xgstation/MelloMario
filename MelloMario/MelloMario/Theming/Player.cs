@@ -119,9 +119,5 @@
                     Character.CurrentWorld.Boundary); // TODO: remove type casting
             }
         }
-
-        public void Draw(int time, SpriteBatch spriteBatch)
-        {
-        }
     }
 }
