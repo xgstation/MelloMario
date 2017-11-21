@@ -28,6 +28,7 @@
         public const float VELOCITY_GOOMBA = 2f;
         public const float VELOCITY_KOOPA = 2f;
         public const float VELOCITY_KOOPA_SHELL = 20f;
+        public const float VELOCITY_PIRANHA = 2f;
 
         public const float ACCEL_G = 40f;
         public const float ACCEL_INPUT_X = 150f;
