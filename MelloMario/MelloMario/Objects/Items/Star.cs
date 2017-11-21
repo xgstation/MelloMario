@@ -5,6 +5,7 @@
     using MelloMario.Factories;
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.StarStates;
     using MelloMario.Objects.UserInterfaces;
     using MelloMario.Theming;
