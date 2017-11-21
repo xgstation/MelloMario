@@ -11,6 +11,7 @@
     using MelloMario.Objects;
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Enemies;
+    using MelloMario.Objects.Items;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Newtonsoft.Json;
@@ -209,16 +210,21 @@
                 false);
             if (produceMode is ProduceMode.One)
             {
-                createFunc(objPoint);
+                createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, listener, soundListener, false);
             }
-            else if (produceMode is ProduceMode.Rectangle)
+            switch (produceMode)
             {
-                Util.BatchRecCreate(
-                    createFunc,
-                    objPoint,
-                    quantity,
-                    new Point(Const.GRID, Const.GRID),
-                    ignoredSet);
+                case ProduceMode.One:
+                    createFunc(objPoint);
+                    break;
+                case ProduceMode.Rectangle:
+                    Util.BatchRecCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet);
+                    break;
+                case ProduceMode.Triangle:
+                    Util.BatchTriCreate(createFunc, objPoint, triangleSize, new Point(Const.GRID, Const.GRID), ignoredSet);
+                    break;
+                default:
+                    goto case ProduceMode.One;
             }
             return true;
         }

@@ -8,7 +8,6 @@
     using MelloMario.Factories;
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Characters;
-    using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Objects.Items;
 
     #endregion
@@ -63,7 +62,7 @@
             switch (c)
             {
                 case Coin _:
-                    PlayEffect("Coin");
+                    ItemSoundEffect(c,e);
                     break;
                 case Brick _:
                     BlockSoundEffect(c, e);
@@ -105,7 +104,7 @@
                     PlayEffect("Pipe");
                     break;
                 case "Jump":
-                    PlayEffect(mario.PowerUpState is Standard ? "Bounce" : "PowerBounce");
+                    PlayEffect(mario.PowerUpState is Objects.Characters.PowerUpStates.Standard ? "Bounce" : "PowerBounce");
                     break;
                 default:
                     break;
@@ -130,6 +129,19 @@
                 case Pipeline _:
                     break;
             }
+        }
+
+        private static void ItemSoundEffect(ISoundable s, ISoundArgs e)
+        {
+            switch (s)
+            {
+                case Coin coin:
+                    if (coin.State is Objects.Items.CoinStates.Unveil || e.MethodCalled == "Collect")
+                    {
+                        PlayEffect("Coin");
+                    }
+                    break;
+            }   
         }
         private static void PlayEffect(string s)
         {

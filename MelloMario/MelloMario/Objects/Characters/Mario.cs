@@ -27,7 +27,7 @@
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-        public SoundArgsBase SoundEventArgs { get; }
+        public ISoundArgs SoundEventArgs { get; }
         public event SoundHandler SoundEvent;
 
         protected void RaiseSoundEvent()

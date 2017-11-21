@@ -17,7 +17,7 @@
         private bool isHidden;
         private IBlockState state;
         public event SoundHandler SoundEvent;
-        public SoundArgsBase SoundEventArgs { get; }
+        public ISoundArgs SoundEventArgs { get; }
 
         public Question(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool isHidden = false) :
             base(world, location, listener, new Point(32, 32))
