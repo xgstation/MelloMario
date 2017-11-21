@@ -85,6 +85,7 @@
     <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
+    <Compile Include="LevelGen\StaticGenerator.cs" />
     <Compile Include="LevelGen\GroundGenerator.cs" />
     <Compile Include="Sounds\SoundEffectListener.cs" />
     <Compile Include="Interfaces\Objects\States\IThwompState.cs" />
@@ -215,7 +216,7 @@
     <Compile Include="Controls\Scripts\PausedScript.cs" />
     <Compile Include="LevelGen\JsonConverters\EncapsulatedObject.cs" />
     <Compile Include="LevelGen\JsonConverters\GameConverter.cs" />
-    <Compile Include="LevelGen\LevelIOJson.cs" />
+    <Compile Include="LevelGen\JsonConverters\LevelIOJson.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioProtectionState.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioMovementState.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioPowerUpState.cs" />

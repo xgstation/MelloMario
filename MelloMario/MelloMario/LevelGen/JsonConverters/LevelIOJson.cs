@@ -1,10 +1,9 @@
-﻿namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen.JsonConverters
 {
     #region
 
     using System.IO;
     using Newtonsoft.Json;
-    using JsonConverters;
 
     #endregion
 
