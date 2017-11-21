@@ -87,7 +87,7 @@
                 if (mario.MovementState is Crouching && Database.IsEntrance(this))
                 {
                     //TODO:Add warping state to model to allow sound controller play warping sound
-                    //SoundController.Pipe.Play();
+                    //SoundManager.Pipe.Play();
                     switch (Type)
                     {
                         case "LeftIn":

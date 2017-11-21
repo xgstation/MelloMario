@@ -167,7 +167,7 @@
             if (!collected)
             {
                 //TODO:Move this into soundcontroller
-                //SoundController.SizeUp.Play();
+                //SoundManager.SizeUp.Play();
                 ScorePoints(Const.SCORE_POWER_UP);
                 new PopingUpPoints(World, Boundary.Location, Const.SCORE_POWER_UP);
             }

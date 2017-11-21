@@ -22,7 +22,7 @@
             base.Update(time);
 
             //TODO:Move this into soundcontroller
-            //SoundController.SizeUpAppear.Play();
+            //SoundManager.SizeUpAppear.Play();
 
             elapsed += time;
             realOffset += 32 * time / 1000f;

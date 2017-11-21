@@ -11,7 +11,7 @@
         public Destroyed(Brick owner) : base(owner, 1000)
         {
             //TODO: Move this into soundcontroller
-            //SoundController.BreakBlock.Play();
+            //SoundManager.BreakBlock.Play();
             Owner.OnDestoy();
         }
 

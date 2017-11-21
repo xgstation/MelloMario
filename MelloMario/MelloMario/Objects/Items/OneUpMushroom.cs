@@ -147,7 +147,7 @@
         public void Collect()
         {
             //TODO:Move this into soundcontroller
-            //SoundController.OneUpCollect.Play();
+            //SoundManager.OneUpCollect.Play();
             if (!collected)
             {
                 ChangeLives();

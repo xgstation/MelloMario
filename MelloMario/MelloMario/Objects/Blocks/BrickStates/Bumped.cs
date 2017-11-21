@@ -43,7 +43,7 @@
         public override void Update(int time)
         {
             //TODO:Move this into soundcontroller
-            //SoundController.BumpBlock.Play();
+            //SoundManager.BumpBlock.Play();
             // TODO: use BaseTimedState
             if (elapsed >= 100)
             {

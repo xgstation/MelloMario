@@ -11,7 +11,7 @@
 
     #endregion
 
-    internal class SoundController
+    internal class SoundManager
     {
         private IModel Model;
 
@@ -23,7 +23,7 @@
         private ISoundTrack CurrentTrack;
         private float SoundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
 
-        public SoundController(IModel model)
+        public SoundManager(IModel model)
         {
             Model = model;
         }

@@ -10,7 +10,7 @@
     {
         public void Execute()
         {
-            SoundController.ToggleMute();
+            SoundManager.ToggleMute();
         }
     }
 }
