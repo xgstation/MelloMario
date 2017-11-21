@@ -39,6 +39,11 @@
             }
         }
 
+        public ICamera CreateCamera()
+        {
+            return new Camera();
+        }
+
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public IGameObject CreateGameObject(
             string type,

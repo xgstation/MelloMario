@@ -17,6 +17,8 @@
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener);
 
+        ICamera CreateCamera();
+
         IGameObject CreateGameObject(
             string type,
             IWorld world,
