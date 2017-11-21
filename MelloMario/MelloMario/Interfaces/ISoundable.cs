@@ -1,26 +1,24 @@
 ﻿namespace MelloMario
 {
     #region
-    
+
     using System;
-    using System.Reflection;
 
     #endregion
 
-    internal delegate void SoundHandler(ISoundable s, SoundArgsBase e);
+    internal delegate void SoundHandler(ISoundable s, ISoundArgs e);
 
     internal interface ISoundable
     {
         event SoundHandler SoundEvent;
-        SoundArgsBase SoundEventArgs { get; }
+        ISoundArgs SoundEventArgs { get; }
     }
 
-    internal abstract class SoundArgsBase : EventArgs
+    internal interface ISoundArgs
     {
-        protected MethodBase Method;
-        public abstract bool HasArgs { get; }
-        public abstract MethodBase MethodCalled { get; protected set; }
-        public abstract void SetMethodCalled();
+        bool HasArgs { get; }
+        string MethodCalled { get; }
+        void SetMethodCalled();
     }
 
 }
