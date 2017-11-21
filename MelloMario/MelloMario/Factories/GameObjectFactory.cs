@@ -15,12 +15,8 @@
 
     internal class GameObjectFactory : IGameObjectFactory
     {
-        // TODO: remove this later and use the collision between the camera and objects to "activate" objects' movement
-        private readonly Point marioLoc;
-
         private GameObjectFactory()
         {
-            marioLoc = new Point(0, 0);
         }
 
         public static IGameObjectFactory Instance { get; } = new GameObjectFactory();
@@ -50,6 +46,8 @@
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener)
         {
+            marioLoc = new Point(); // TODO: it is wrong
+
             switch (type)
             {
                 //blocks
