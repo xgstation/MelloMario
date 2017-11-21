@@ -201,8 +201,8 @@
     <Compile Include="Objects\Enemies\KoopaStates\Defeated.cs" />
     <Compile Include="Objects\Enemies\KoopaStates\Normal.cs" />
     <Compile Include="Objects\Items\SuperMushroomStates\Unveil.cs" />
-    <Compile Include="LevelGen\GameEntityConverter.cs" />
-    <Compile Include="LevelGen\Util.cs" />
+    <Compile Include="LevelGen\JsonConverters\GameEntityConverter.cs" />
+    <Compile Include="LevelGen\JsonConverters\Util.cs" />
     <Compile Include="Objects\Items\FireBall.cs" />
     <Compile Include="Objects\Characters\MarioCharacter.cs" />
     <Compile Include="Objects\Miscs\Background.cs" />
@@ -213,8 +213,8 @@
     </Compile>
     <Compile Include="Controls\Scripts\TransistScript.cs" />
     <Compile Include="Controls\Scripts\PausedScript.cs" />
-    <Compile Include="LevelGen\EncapsulatedObject.cs" />
-    <Compile Include="LevelGen\GameConverter.cs" />
+    <Compile Include="LevelGen\JsonConverters\EncapsulatedObject.cs" />
+    <Compile Include="LevelGen\JsonConverters\GameConverter.cs" />
     <Compile Include="LevelGen\LevelIOJson.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioProtectionState.cs" />
     <Compile Include="Interfaces\Objects\States\IMarioMovementState.cs" />
