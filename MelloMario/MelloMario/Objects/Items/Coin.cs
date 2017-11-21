@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Objects.Items
 {
-    internal class Coin : BaseCollidableObject
+    internal class Coin : BaseCollidableObject, ISoundable
     {
         public delegate void CoinHandler(Coin m, EventArgs e);
 
@@ -17,9 +17,10 @@ namespace MelloMario.Objects.Items
         private bool collected;
         private IItemState state;
 
-        public Coin(IGameWorld world, Point location, IListener listener, bool isUnveil = false) : base(world, location, listener, new Point(32, 32))
+        public Coin(IGameWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool isUnveil = false) : base(world, location, listener, new Point(32, 32))
         {
             listener.Subscribe(this);
+            soundListener.Subscribe(this);
             collected = false;
             //eventually if coin needs to pass info put it in eventinfo
             coinEventInfo = null;
@@ -46,6 +47,8 @@ namespace MelloMario.Objects.Items
         }
 
         public event CoinHandler HandlerCoins;
+
+        public event SoundHandler SoundEvent;
 
         private void UpdateSprite()
         {
@@ -75,6 +78,7 @@ namespace MelloMario.Objects.Items
         {
             if (!collected)
             {
+                SoundEvent?.Invoke(this, EventArgs.Empty);
                 HandlerCoins?.Invoke(this, coinEventInfo);
                 ScorePoints(Const.SCORE_COIN);
                 collected = true;
