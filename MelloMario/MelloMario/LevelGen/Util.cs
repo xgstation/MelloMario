@@ -85,13 +85,14 @@
             return true;
         }
 
-        public static void BatchCreate<T>(
+        public static void BatchRecCreate<T>(
             Func<Point, T> func,
             Point startPoint,
             Point quantity,
             Point objSize,
             ICollection<Point> ignoredSet,
-            ref Stack<IGameObject> stack)
+            IDictionary<Point,T> propertiesDict = null,
+            Action<Point,T> applyProperty = null)
         {
             for (int x = 0; x < quantity.X; x++)
             {
@@ -101,29 +102,18 @@
                     Point createIndex = new Point(x + 1, y + 1);
                     if (ignoredSet == null || !ignoredSet.Contains(createIndex))
                     {
-                        if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
-                        {
-                            foreach (IGameObject obj in (IEnumerable<IGameObject>) func(createLocation))
-                            {
-                                stack.Push(obj);
-                            }
-                        }
-                        else
-                        {
-                            stack.Push((IGameObject) func(createLocation));
-                        }
+                        func(createLocation);
                     }
                 }
             }
         }
 
-        public static void TriganleCreate<T>(
+        public static void BatchTriCreate<T>(
             Func<Point, T> createFunc,
             Point startPoint,
             Point triangleSize,
             Point objSize,
-            ICollection<Point> ignoredSet,
-            ref Stack<IGameObject> stack)
+            ICollection<Point> ignoredSet)
         {
             int X = triangleSize.X;
             int Y = triangleSize.Y;
@@ -143,30 +133,18 @@
                     {
                         if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                         {
-                            foreach (IGameObject obj in (IEnumerable<IGameObject>) createFunc(createLocation))
-                            {
-                                stack.Push(obj);
-                            }
+                            createFunc(createLocation);
                         }
                         else
                         {
-                            IGameObject newObject = (IGameObject) createFunc(createLocation);
-                            stack.Push(newObject);
+                            createFunc(createLocation);
                         }
                     }
                 }
             }
         }
 
-        public static void BatchCreateWithProperties<T1, T2>(
-            Func<Point, T1> createFunc,
-            Point startPoint,
-            Point quantity,
-            Point objSize,
-            ICollection<Point> ignoredSet,
-            ref Stack<IGameObject> stack,
-            IDictionary<Point, T2> properties,
-            Action<IGameObject, T2> applyProperties)
+        public static void BatchCreateWithProperties<T1, T2>(Func<Point, T1> createFunc, Point startPoint, Point quantity, Point objSize, ICollection<Point> ignoredSet, IDictionary<Point, T2> properties, Action<IGameObject, T2> applyProperties)
         {
             Contract.Assume(!((properties == null) ^ (applyProperties == null)));
             for (int x = 0; x < quantity.X; x++)
@@ -179,25 +157,23 @@
                     {
                         if (typeof(T1).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                         {
-                            foreach (IGameObject obj in (IEnumerable<IGameObject>) createFunc(createLocation))
+                            foreach (IGameObject obj in (IEnumerable<IGameObject>)createFunc(createLocation))
                             {
                                 Point index = new Point(x, y);
                                 if (properties != null && properties.ContainsKey(index))
                                 {
                                     applyProperties(obj, properties[index]);
                                 }
-                                stack.Push(obj);
                             }
                         }
                         else
                         {
-                            IGameObject newObject = (IGameObject) createFunc(createLocation);
+                            IGameObject newObject = (IGameObject)createFunc(createLocation);
                             Point index = new Point(x, y);
                             if (properties != null && properties.ContainsKey(index))
                             {
                                 applyProperties(newObject, properties[index]);
                             }
-                            stack.Push(newObject);
                         }
                     }
                 }
@@ -208,6 +184,7 @@
             Model model,
             IWorld world,
             IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener,
             string pipelineType,
             int pipelineLength,
             Point pipelineLoc)
@@ -220,26 +197,26 @@
             {
                 //TODO: this is sloppy, this should use the game object factory.
                 case "V":
-                    in1 = new Pipeline(world, pipelineLoc, listener, "LeftIn", model);
+                    in1 = new Pipeline(world, pipelineLoc, listener, soundListener, "LeftIn", model);
                     in2 = new Pipeline(
                         world,
                         new Point(pipelineLoc.X + grid, pipelineLoc.Y),
-                        listener,
+                        listener, soundListener,
                         "RightIn",
                         model);
                     pipelineLoc = new Point(pipelineLoc.X, pipelineLoc.Y + grid);
                     goto case "NV";
                 case "HL":
-                    in1 = new Pipeline(world, pipelineLoc, listener, "TopLeftIn");
-                    in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), listener, "BottomLeftIn");
+                    in1 = new Pipeline(world, pipelineLoc, listener, soundListener, "TopLeftIn");
+                    in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), listener, soundListener, "BottomLeftIn");
                     pipelineLoc = new Point(pipelineLoc.X + Const.GRID, pipelineLoc.Y);
                     goto case "NH";
                 case "HR":
-                    in1 = new Pipeline(world, pipelineLoc, listener, "TopRightIn");
+                    in1 = new Pipeline(world, pipelineLoc, listener, soundListener, "TopRightIn");
                     in2 = new Pipeline(
                         world,
                         new Point(pipelineLoc.X, pipelineLoc.Y + grid),
-                        listener,
+                        listener, soundListener,
                         "BottomRightIn");
                     pipelineLoc = new Point(pipelineLoc.X - pipelineLength * grid, pipelineLoc.Y);
                     goto case "NH";
@@ -248,8 +225,8 @@
                     {
                         Point loc1 = new Point(pipelineLoc.X, pipelineLoc.Y + grid * y);
                         Point loc2 = new Point(pipelineLoc.X + grid, pipelineLoc.Y + grid * y);
-                        listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, "Left"));
-                        listOfPipelineComponents.Add(new Pipeline(world, loc2, listener, "Right"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, soundListener, "Left"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc2, listener, soundListener, "Right"));
                     }
                     break;
                 case "NH":
@@ -257,8 +234,8 @@
                     {
                         Point loc1 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y);
                         Point loc2 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y + grid);
-                        listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, "Top"));
-                        listOfPipelineComponents.Add(new Pipeline(world, loc2, listener, "Bottom"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, soundListener, "Top"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc2, listener, soundListener, "Bottom"));
                     }
                     break;
                 default:

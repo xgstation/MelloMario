@@ -71,7 +71,7 @@
 
         public static bool HasItemEnclosed(IGameObject obj)
         {
-            return ItemEnclosedDb.ContainsKey(obj) && ItemEnclosedDb[obj].Count != 0;
+            return ItemEnclosedDb.ContainsKey(obj) && ItemEnclosedDb[obj]?.Count != 0;
         }
 
         public static IGameObject GetNextItem(IGameObject obj)
@@ -96,15 +96,15 @@
             return toBeRemoved;
         }
 
-        public static void SetEnclosedItem(IGameObject obj, IList<IGameObject> objs)
+        public static void SetEnclosedItem(IGameObject obj, IList<IGameObject> itemList)
         {
             if (ItemEnclosedDb.ContainsKey(obj))
             {
-                ItemEnclosedDb[obj] = objs;
+                ItemEnclosedDb[obj] = itemList;
             }
             else
             {
-                ItemEnclosedDb.Add(obj, objs);
+                ItemEnclosedDb.Add(obj, itemList);
             }
         }
 
