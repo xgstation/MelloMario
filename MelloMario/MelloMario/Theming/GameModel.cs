@@ -22,7 +22,6 @@
         private readonly IListener<ISoundable> soundListener;
         private readonly Session session;
         private IEnumerable<IController> controllers;
-        private InfiniteGenerator infiniteGenerator;
         private string mapPath = "Content/Level1.json";
         public bool IsPaused { get; private set; }
 
@@ -130,10 +129,10 @@
                 }
                 return;
             }
+
             //TODO: Pause state should not stop updating camera
             UpdateGameObjects(time);
             UpdateContainers();
-            infiniteGenerator.Update(time);
         }
 
         public void Draw(int time, SpriteBatch spriteBatch)
@@ -174,6 +173,7 @@
             LevelIOJson reader = new LevelIOJson(mapPath, listener, soundListener);
 
             IWorld newWorld = reader.Load(id);
+            // generator = new JsonGenerator(mapPath, id, listener, soundListener);
             //infiniteGenerator = new InfiniteGenerator(newWorld, listener);
             return newWorld;
         }
