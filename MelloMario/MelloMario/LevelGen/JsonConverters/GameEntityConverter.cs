@@ -1,4 +1,4 @@
-﻿namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen.JsonConverters
 {
     #region
 
@@ -100,7 +100,7 @@
                 Debug.WriteLine("Deserialize fail: No start point provided!");
                 return null;
             }
-            objPoint = new Point((int)(objVector.X * Const.GRID), (int)(objVector.Y * Const.GRID));
+            objPoint = new Point((int) (objVector.X * Const.GRID), (int) (objVector.Y * Const.GRID));
             objectStackToBeEncapsulated = new Stack<IGameObject>();
 
             if (!Util.TryGet(out string typeStr, token, "Type"))
@@ -200,7 +200,7 @@
 
         private bool ItemConverter()
         {
-            createFunc = point => (IGameObject)Activator.CreateInstance(
+            createFunc = point => (IGameObject) Activator.CreateInstance(
                 type,
                 world,
                 point,
@@ -239,7 +239,7 @@
                 if (type.Name == "Koopa")
                 {
                     Util.TryGet(out string color, token, "Property", "Color");
-                    createFunc = point => (IGameObject)Activator.CreateInstance(
+                    createFunc = point => (IGameObject) Activator.CreateInstance(
                         type,
                         world,
                         point,
@@ -322,7 +322,7 @@
                 case ProduceMode.Rectangle:
                     {
                         Util.BatchRecCreate(
-                            point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false),
+                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
                             objPoint,
                             quantity,
                             new Point(Const.GRID, Const.GRID),
@@ -333,7 +333,7 @@
                 case ProduceMode.Triangle:
                     {
                         Util.BatchTriCreate(
-                            point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false),
+                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
                             objPoint,
                             triangleSize,
                             new Point(Const.GRID, Const.GRID),
@@ -371,8 +371,8 @@
                             new Point(objPoint.X + 16, objPoint.Y),
                             listener,
                             new Point(32, 48),
-                            (int)(hiddenTime * 1000),
-                            (int)(showTime * 1000),
+                            (int) (hiddenTime * 1000),
+                            (int) (showTime * 1000),
                             32,
                             color);
                     }
@@ -446,7 +446,7 @@
 
         #region Background Deserializer
 
-        
+
 
         private bool BackgroundConverter()
         {
@@ -455,9 +455,9 @@
                 Debug.WriteLine("Deserialize fail: Type of background is not given!");
             }
             ZIndex zIndex = Util.TryGet(out string s, token, "Property", "ZIndex")
-                ? (ZIndex)Enum.Parse(typeof(ZIndex), s)
+                ? (ZIndex) Enum.Parse(typeof(ZIndex), s)
                 : ZIndex.Background0;
-            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, backgroundType, zIndex);
+            createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, backgroundType, zIndex);
             objFullSize = createFunc(new Point()).Boundary.Size;
             if (produceMode is ProduceMode.One)
             {
