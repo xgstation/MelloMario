@@ -46,8 +46,6 @@
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener)
         {
-            Point marioLoc = new Point(); // TODO: it is wrong
-
             switch (type)
             {
                 //blocks
@@ -74,11 +72,11 @@
 
                 //enemy
                 case "Goomba":
-                    return new Goomba(world, location, marioLoc, listener);
+                    return new Goomba(world, location, listener);
                 case "GreenKoopa":
-                    return new Koopa(world, location, marioLoc, listener, "Green");
+                    return new Koopa(world, location, listener, "Green");
                 case "RedKoopa":
-                    return new Koopa(world, location, marioLoc, listener, "Red");
+                    return new Koopa(world, location, listener, "Red");
 
                 //entities
                 case "Coin":
@@ -86,21 +84,21 @@
                 case "CoinUnveil":
                     return new Coin(world, location, listener, soundListener, true);
                 case "OneUpMushroom":
-                    return new OneUpMushroom(world, location, marioLoc, listener);
+                    return new OneUpMushroom(world, location, listener);
                 case "OneUpMushroomUnveil":
-                    return new OneUpMushroom(world, location, marioLoc, listener, true);
+                    return new OneUpMushroom(world, location, listener, true);
                 case "FireFlower":
                     return new FireFlower(world, location, listener);
                 case "FireFlowerUnveil":
                     return new FireFlower(world, location, listener, true);
                 case "SuperMushroom":
-                    return new SuperMushroom(world, location, marioLoc, listener);
+                    return new SuperMushroom(world, location, listener);
                 case "SuperMushroomUnveil":
-                    return new SuperMushroom(world, location, marioLoc, listener, true);
+                    return new SuperMushroom(world, location, listener, true);
                 case "Star":
-                    return new Star(world, location, marioLoc, listener);
+                    return new Star(world, location, listener);
                 case "StarUnveil":
-                    return new Star(world, location, marioLoc, listener, true);
+                    return new Star(world, location, listener, true);
 
                 //others
                 case "ShortCloud":

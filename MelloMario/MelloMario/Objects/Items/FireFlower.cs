@@ -17,7 +17,7 @@
         private bool collected;
         private IItemState state;
 
-        public FireFlower(IGameWorld world, Point location, IListener<IGameObject> listener, bool isUnveil) : base(
+        public FireFlower(IGameWorld world, Point location, IListener<IGameObject> listener, bool isUnveil = false) : base(
             world,
             location,
             listener,
@@ -36,12 +36,6 @@
                 UpdateSprite();
             }
         }
-
-        public FireFlower(IGameWorld world, Point location, IListener<IGameObject> listener) : this(
-            world,
-            location,
-            listener,
-            false) { }
 
         public IItemState State
         {
