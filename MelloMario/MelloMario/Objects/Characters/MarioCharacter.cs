@@ -1,4 +1,7 @@
-﻿namespace MelloMario.Objects.Characters
+﻿using System;
+using MelloMario.Sounds;
+
+namespace MelloMario.Objects.Characters
 {
     #region
 
@@ -19,10 +22,12 @@
 
         private Vector2 userInput;
 
-        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener<IGameObject> listener) : base(
+
+        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener) : base(
             world,
             location,
-            listener)
+            listener,
+            soundListener)
         {
             Player = player;
         }
@@ -134,6 +139,7 @@
 
                 if (MovementState is Jumping jumping && !jumping.Finished)
                 {
+                    soundEventArgs.ActionCalled = Jump;
                     userInput.Y -= Const.ACCEL_INPUT_Y + Const.ACCEL_G;
                 }
             }
@@ -184,22 +190,25 @@
 
         public void FireCreate()
         {
+            soundEventArgs.ActionCalled = FireCreate;
             PowerUpState.UpgradeToFire();
         }
 
         public void SuperCreate()
         {
+            soundEventArgs.ActionCalled = SuperCreate;
             PowerUpState.UpgradeToSuper();
         }
 
         public void NormalCreate()
         {
-            if (PowerUpState is Fire)
+            if (PowerUpState != null || PowerUpState is Standard)
             {
-                PowerUpState.Downgrade();
-                PowerUpState.Downgrade();
+                return;
             }
-            else if (PowerUpState is Super)
+            soundEventArgs.ActionCalled = NormalCreate;
+            PowerUpState.Downgrade();
+            if (PowerUpState is Fire)
             {
                 PowerUpState.Downgrade();
             }
@@ -207,12 +216,14 @@
 
         public void Action()
         {
-            if (animation == Animation.none)
+            if (animation != Animation.none)
             {
-                if (PowerUpState is Fire)
-                {
-                    new FireBall(World, Boundary.Location, null);
-                }
+                return;
+            }
+            if (PowerUpState is Fire)
+            {
+                soundEventArgs.ActionCalled = Action;
+                new FireBall(World, Boundary.Location, null);
             }
         }
 

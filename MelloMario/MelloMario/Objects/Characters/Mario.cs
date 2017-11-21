@@ -1,4 +1,6 @@
-﻿namespace MelloMario.Objects.Characters
+﻿using MelloMario.Sounds;
+
+namespace MelloMario.Objects.Characters
 {
     #region
 
@@ -18,7 +20,7 @@
 
     #endregion
 
-    internal class Mario : BasePhysicalObject
+    internal class Mario : BasePhysicalObject, ISoundable
     {
         public delegate void GameOverHandler(Mario m, EventArgs e);
 
@@ -26,8 +28,15 @@
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
+        protected readonly MarioSoundArgs soundEventArgs;
+        public event SoundHandler SoundEvent;
 
-        public Mario(IGameWorld world, Point location, IListener<IGameObject> listener) : base(
+        protected void RaiseSoundEvent()
+        {
+            SoundEvent?.Invoke(this,soundEventArgs);
+        }
+
+        public Mario(IGameWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener) : base(
             world,
             location,
             listener,
@@ -35,6 +44,8 @@
             32)
         {
             listener.Subscribe(this);
+            soundListener.Subscribe(this);
+            soundEventArgs = new MarioSoundArgs();
             powerUpState = new Standard(this);
             movementState = new Standing(this);
             protectionState = new ProtectionStates.Normal(this);
@@ -117,6 +128,11 @@
 
         protected override void OnUpdate(int time)
         {
+            if (soundEventArgs.ActionCalled != null)
+            {
+                SoundEvent?.Invoke(this, soundEventArgs);
+                soundEventArgs.ActionCalled = null;
+            }
             powerUpState.Update(time);
             movementState.Update(time);
             protectionState.Update(time);
@@ -353,6 +369,7 @@
 
         public void OnDeath()
         {
+            soundEventArgs.ActionCalled = OnDeath;
             SetVerticalVelocity(-20);
         }
 
@@ -366,11 +383,13 @@
 
         public void UpgradeToSuper()
         {
+            soundEventArgs.ActionCalled = UpgradeToSuper;
             PowerUpState.UpgradeToSuper();
         }
 
         public void UpgradeToFire()
         {
+            soundEventArgs.ActionCalled = UpgradeToFire;
             PowerUpState.UpgradeToFire();
         }
 

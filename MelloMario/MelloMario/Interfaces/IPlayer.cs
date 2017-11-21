@@ -20,9 +20,9 @@
         void AddCoin();
         void AddLife();
         void AddScore(int delta);
-        void Init(string type, IGameWorld newWorld, IListener<IGameObject> listener, ICamera camera);
+        void Init(string type, IGameWorld newWorld, IListener<IGameObject> listener, IListener<ISoundable> soundListener, ICamera camera);
         void Spawn(IGameWorld newWorld, Point newLocation);
-        void Reset(string type, IListener<IGameObject> listener);
+        void Reset(string type, IListener<IGameObject> listener, IListener<ISoundable> soundListener);
         void Win();
         void Update(int time);
         void Draw(int time, SpriteBatch spriteBatch);
