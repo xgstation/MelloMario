@@ -71,7 +71,7 @@
                 type,
                 world,
                 this,
-                world.GetInitialPoint(),
+                world.GetRespawnPoint(new Point()),
                 listener,
                 soundListener);
             Session.Add(this);
@@ -94,7 +94,7 @@
                 type,
                 Character.CurrentWorld,
                 this,
-                Character.CurrentWorld.GetInitialPoint(),
+                Character.CurrentWorld.GetRespawnPoint(((IGameObject) Character).Boundary.Location), // TODO: remove type casting
                 listener,
                 soundListener);
 
