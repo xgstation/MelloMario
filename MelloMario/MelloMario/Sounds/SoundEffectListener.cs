@@ -131,12 +131,12 @@
             }
         }
 
-        private static void ItemSoundEffect(ISoundable s, SoundArgsBase e)
+        private static void ItemSoundEffect(ISoundable s, ISoundArgs e)
         {
             switch (s)
             {
                 case Coin coin:
-                    if (coin.State is Objects.Items.CoinStates.Unveil || e.MethodCalled.Name == "Collect")
+                    if (coin.State is Objects.Items.CoinStates.Unveil || e.MethodCalled == "Collect")
                     {
                         PlayEffect("Coin");
                     }

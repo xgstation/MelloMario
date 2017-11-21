@@ -19,7 +19,7 @@
         private IPlayer switchingPlayer;
 
         public event SoundHandler SoundEvent;
-        public SoundArgsBase SoundEventArgs { get; }
+        public ISoundArgs SoundEventArgs { get; }
         public Pipeline(
             IWorld world,
             Point location,
