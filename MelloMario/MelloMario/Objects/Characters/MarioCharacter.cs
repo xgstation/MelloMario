@@ -20,6 +20,8 @@
 
         private Vector2 userInput;
 
+        private IListener<ISoundable> soundListener;
+
         public MarioCharacter(
             IWorld world,
             IPlayer player,
@@ -31,6 +33,7 @@
             listener,
             soundListener)
         {
+            this.soundListener = soundListener;
             Player = player;
         }
 
@@ -225,7 +228,7 @@
             if (PowerUpState is Fire)
             {
                 SoundEventArgs.SetMethodCalled();
-                new FireBall(World, Boundary.Location, null);
+                new FireBall(World, Boundary.Location, null, soundListener);
             }
         }
 
