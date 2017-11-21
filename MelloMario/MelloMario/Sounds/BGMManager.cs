@@ -23,7 +23,6 @@
         public BGMManager(IModel model)
         {
             this.model = model;
-            MediaPlayer.IsMuted = true;
         }
 
         private void PlayMusic(ISoundTrack track, bool reset = false)
