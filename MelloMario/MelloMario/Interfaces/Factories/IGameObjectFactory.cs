@@ -14,7 +14,8 @@
             IGameWorld world,
             IPlayer player,
             Point location,
-            IListener<IGameObject> listener);
+            IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener);
 
         IGameObject CreateGameObject(
             string type,

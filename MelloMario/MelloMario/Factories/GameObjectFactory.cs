@@ -30,12 +30,13 @@
             IGameWorld world,
             IPlayer player,
             Point location,
-            IListener<IGameObject> listener)
+            IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener)
         {
             switch (type)
             {
                 case "Mario":
-                    MarioCharacter mario = new MarioCharacter(world, player, location, listener);
+                    MarioCharacter mario = new MarioCharacter(world, player, location, listener, soundListener);
                     return mario;
                 default:
                     return null;
