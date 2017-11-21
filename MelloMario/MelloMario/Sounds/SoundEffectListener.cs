@@ -7,6 +7,8 @@
     using System.Reflection;
     using MelloMario.Factories;
     using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Objects.Items;
 
     #endregion
