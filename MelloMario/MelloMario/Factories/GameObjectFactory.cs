@@ -21,7 +21,7 @@
 
         public static IGameObjectFactory Instance { get; } = new GameObjectFactory();
 
-        public ICharacter CreateGameCharacter(
+        public ICharacter CreateCharacter(
             string type,
             IWorld world,
             IPlayer player,

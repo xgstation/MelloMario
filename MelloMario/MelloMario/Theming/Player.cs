@@ -65,7 +65,7 @@
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener)
         {
-            Character = GameObjectFactory.Instance.CreateGameCharacter(
+            Character = GameObjectFactory.Instance.CreateCharacter(
                 type,
                 world,
                 this,
@@ -88,7 +88,7 @@
         public void Reset(string type, IListener<IGameObject> listener, IListener<ISoundable> soundListener)
         {
             Character.Remove();
-            Character = GameObjectFactory.Instance.CreateGameCharacter(
+            Character = GameObjectFactory.Instance.CreateCharacter(
                 type,
                 Character.CurrentWorld,
                 this,

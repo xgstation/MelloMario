@@ -9,7 +9,7 @@
 
     internal interface IGameObjectFactory
     {
-        ICharacter CreateGameCharacter(
+        ICharacter CreateCharacter(
             string type,
             IWorld world,
             IPlayer player,
