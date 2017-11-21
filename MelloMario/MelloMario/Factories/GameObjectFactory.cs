@@ -25,7 +25,12 @@
 
         public static IGameObjectFactory Instance { get; } = new GameObjectFactory();
 
-        public ICharacter CreateGameCharacter(string type, IGameWorld world, IPlayer player, Point location, IListener<IGameObject> listener)
+        public ICharacter CreateGameCharacter(
+            string type,
+            IGameWorld world,
+            IPlayer player,
+            Point location,
+            IListener<IGameObject> listener)
         {
             switch (type)
             {
@@ -38,7 +43,12 @@
         }
 
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        public IGameObject CreateGameObject(string type, IGameWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener)
+        public IGameObject CreateGameObject(
+            string type,
+            IGameWorld world,
+            Point location,
+            IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener)
         {
             switch (type)
             {
@@ -109,7 +119,12 @@
             }
         }
 
-        public IEnumerable<IGameObject> CreateGameObjectGroup(string type, IGameWorld world, Point location, int count, IListener<IGameObject> listener)
+        public IEnumerable<IGameObject> CreateGameObjectGroup(
+            string type,
+            IGameWorld world,
+            Point location,
+            int count,
+            IListener<IGameObject> listener)
         {
             switch (type)
             {

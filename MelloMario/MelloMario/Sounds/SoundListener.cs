@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MelloMario.Factories;
-using MelloMario.Objects.Items;
-
-namespace MelloMario.Sounds
+﻿namespace MelloMario.Sounds
 {
+    #region
+
+    using System;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Items;
+
+    #endregion
+
     internal class SoundListener : IListener<ISoundable>
     {
         public void Subscribe(ISoundable soundObject)

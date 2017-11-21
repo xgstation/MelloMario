@@ -63,7 +63,11 @@
         private Type selftype;
         private Point triangleSize;
 
-        public GameEntityConverter(Model model, IGameWorld parentGameWorld, IListener<IGameObject> selflistener, IListener<ISoundable> soundListener)
+        public GameEntityConverter(
+            Model model,
+            IGameWorld parentGameWorld,
+            IListener<IGameObject> selflistener,
+            IListener<ISoundable> soundListener)
         {
             this.model = model;
             this.selflistener = selflistener;
@@ -261,7 +265,11 @@
                 Util.TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
         }
 
-        private bool BlockConverter(Type type, JToken token, IListener<IGameObject> listener, ref Stack<IGameObject> stack)
+        private bool BlockConverter(
+            Type type,
+            JToken token,
+            IListener<IGameObject> listener,
+            ref Stack<IGameObject> stack)
         {
             isQuestionOrBrick = type.Name == "Brick" || type.Name == "Question";
             if (isQuestionOrBrick)
@@ -278,34 +286,52 @@
                             Tuple<bool, string[]> newPair = GetPropertyPair(propertyToken);
                             dictProperties.Add(index, newPair);
                         }
-                        Util.BatchCreateWithProperties(point =>
-                        {
-                            objToBePushed = (IGameObject) Activator.CreateInstance(type, world, point, listener, false);
-                            if (type.Name == "Question")
+                        Util.BatchCreateWithProperties(
+                            point =>
                             {
-                                (objToBePushed as Question).Initialize();
-                            }
-                            if (type.Name == "Brick")
+                                objToBePushed = (IGameObject) Activator.CreateInstance(
+                                    type,
+                                    world,
+                                    point,
+                                    listener,
+                                    false);
+                                if (type.Name == "Question")
+                                {
+                                    (objToBePushed as Question).Initialize();
+                                }
+                                if (type.Name == "Brick")
+                                {
+                                    (objToBePushed as Brick).Initialize();
+                                }
+                                return objToBePushed;
+                            },
+                            objPoint,
+                            quantity,
+                            new Point(32, 32),
+                            ignoredSet,
+                            ref stack,
+                            dictProperties,
+                            (obj, pair) =>
                             {
-                                (objToBePushed as Brick).Initialize();
-                            }
-                            return objToBePushed;
-                        }, objPoint, quantity, new Point(32, 32), ignoredSet, ref stack, dictProperties, (obj, pair) =>
-                        {
-                            IList<IGameObject> newList = Util.CreateItemList(world, obj.Boundary.Location, listener, soundListener, pair.Item2);
-                            if (newList != null && newList.Count != 0)
-                            {
-                                Database.SetEnclosedItem(obj, newList);
-                            }
-                            if (type.Name == "Question")
-                            {
-                                (obj as Question).Initialize();
-                            }
-                            if (type.Name == "Brick")
-                            {
-                                (obj as Brick).Initialize();
-                            }
-                        });
+                                IList<IGameObject> newList = Util.CreateItemList(
+                                    world,
+                                    obj.Boundary.Location,
+                                    listener,
+                                    soundListener,
+                                    pair.Item2);
+                                if (newList != null && newList.Count != 0)
+                                {
+                                    Database.SetEnclosedItem(obj, newList);
+                                }
+                                if (type.Name == "Question")
+                                {
+                                    (obj as Question).Initialize();
+                                }
+                                if (type.Name == "Brick")
+                                {
+                                    (obj as Brick).Initialize();
+                                }
+                            });
                     }
                     else if (produceMode is ProduceMode.Rectangle)
                     {
@@ -365,7 +391,8 @@
                 }
                 propertyPair = GetPropertyPair(token);
                 list = Util.CreateItemList(world, objPoint, listener, soundListener, propertyPair.Item2);
-                objToBePushed = Activator.CreateInstance(type, world, objPoint, listener, propertyPair.Item1) as IGameObject;
+                objToBePushed =
+                    Activator.CreateInstance(type, world, objPoint, listener, propertyPair.Item1) as IGameObject;
                 if (list != null && list.Count != 0)
                 {
                     Database.SetEnclosedItem(objToBePushed, list);

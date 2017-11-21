@@ -1,23 +1,32 @@
-﻿using MelloMario.Factories;
-using MelloMario.Objects.Blocks.BrickStates;
-using MelloMario.Objects.Characters;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Blocks
+﻿namespace MelloMario.Objects.Blocks
 {
+    #region
+
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Brick : BaseCollidableObject, ISoundable
     {
         private bool isHidden;
         private IBlockState state;
 
-        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener) : this(world, location,
-            listener, false)
-        { }
+        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener) : this(
+            world,
+            location,
+            listener,
+            false) { }
 
-        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) :
-            base(world, location, listener, new Point(32, 32))
+        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(
+            world,
+            location,
+            listener,
+            new Point(32, 32))
         {
             this.isHidden = isHidden;
         }
@@ -26,7 +35,10 @@ namespace MelloMario.Objects.Blocks
 
         public IBlockState State
         {
-            get { return state; }
+            get
+            {
+                return state;
+            }
             set
             {
                 state = value;
@@ -73,9 +85,12 @@ namespace MelloMario.Objects.Blocks
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
-            CornerMode corner, CornerMode cornerPassive)
-        { }
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive) { }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 
@@ -117,4 +132,3 @@ namespace MelloMario.Objects.Blocks
         public event SoundHandler SoundEvent;
     }
 }
-

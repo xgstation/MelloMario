@@ -17,12 +17,21 @@
         private Theming.Model model;
         private IPlayer switchingPlayer;
 
-        public Pipeline(IGameWorld world, Point location, IListener<IGameObject> listener, string type, Theming.Model model) : this(world, location, listener, type)
+        public Pipeline(
+            IGameWorld world,
+            Point location,
+            IListener<IGameObject> listener,
+            string type,
+            Theming.Model model) : this(world, location, listener, type)
         {
             SetModel(model);
         }
 
-        public Pipeline(IGameWorld world, Point location, IListener<IGameObject> listener, string type) : base(world, location, listener, new Point(32, 32))
+        public Pipeline(IGameWorld world, Point location, IListener<IGameObject> listener, string type) : base(
+            world,
+            location,
+            listener,
+            new Point(32, 32))
         {
             Type = type;
 

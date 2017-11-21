@@ -1,6 +1,4 @@
-﻿using MelloMario.Objects.Items;
-
-namespace MelloMario.Objects.Items.CoinStates
+﻿namespace MelloMario.Objects.Items.CoinStates
 {
     internal class Normal : BaseState<Coin>, IItemState
     {

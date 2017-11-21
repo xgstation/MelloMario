@@ -28,7 +28,11 @@
 
         private IGameWorld world;
 
-        public GameConverter(Model model, IListener<IGameObject> listener, IListener<ISoundable> soundListener, string index = "Main")
+        public GameConverter(
+            Model model,
+            IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener,
+            string index = "Main")
         {
             this.model = model;
             this.index = index;

@@ -27,7 +27,6 @@
 
         private static ISoundTrack CurrentTrack;
         private static float SoundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
-        
 
         private static void PlayMusic(ISoundTrack track, bool reset = false)
         {

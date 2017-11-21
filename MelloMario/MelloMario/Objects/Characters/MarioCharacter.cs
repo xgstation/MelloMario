@@ -19,7 +19,10 @@
 
         private Vector2 userInput;
 
-        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener<IGameObject> listener) : base(world, location, listener)
+        public MarioCharacter(IGameWorld world, IPlayer player, Point location, IListener<IGameObject> listener) : base(
+            world,
+            location,
+            listener)
         {
             Player = player;
         }

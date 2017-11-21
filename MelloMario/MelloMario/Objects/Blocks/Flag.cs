@@ -22,7 +22,8 @@
 
         private EventArgs eventInfo;
 
-        public Flag(IGameWorld world, Point location, IListener<IGameObject> listener, int height, int maxHeight) : base(world, location, listener, new Point(32, 32))
+        public Flag(IGameWorld world, Point location, IListener<IGameObject> listener, int height, int maxHeight) :
+            base(world, location, listener, new Point(32, 32))
         {
             listener.Subscribe(this);
             this.height = height;
