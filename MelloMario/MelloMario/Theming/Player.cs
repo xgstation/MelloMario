@@ -20,7 +20,7 @@
 
         public ICharacter Character { get; private set; }
 
-        public ICamera Camera { get; }
+        public ICamera Camera { get; private set; }
 
         public int Coins { get; private set; }
 
