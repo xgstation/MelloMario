@@ -33,7 +33,8 @@ namespace MelloMario.LevelGen
         private static readonly IEnumerable<Type> AssemblyTypes = from type in Assembly.GetExecutingAssembly().GetTypes() where typeof(IGameObject).IsAssignableFrom(type) select type;
 
         private readonly Model model;
-        private readonly IListener selflistener;
+        private readonly IListener<IGameObject> selflistener;
+        private readonly IListener<ISoundable> soundListener;
         private readonly IGameWorld world;
         private string backgroundType;
         private Func<Point, IGameObject> createFunc;
@@ -56,10 +57,11 @@ namespace MelloMario.LevelGen
         private Type selftype;
         private Point triangleSize;
 
-        public GameEntityConverter(Model model, IGameWorld parentGameWorld, IListener selflistener)
+        public GameEntityConverter(Model model, IGameWorld parentGameWorld, IListener<IGameObject> selflistener, IListener<ISoundable> soundListener)
         {
             this.model = model;
             this.selflistener = selflistener;
+            this.soundListener = soundListener;
             world = parentGameWorld;
         }
 
@@ -222,7 +224,7 @@ namespace MelloMario.LevelGen
             return new Tuple<bool, string[]>(Util.TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden, Util.TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
         }
 
-        private bool BlockConverter(Type type, JToken token, IListener listener, ref Stack<IGameObject> stack)
+        private bool BlockConverter(Type type, JToken token, IListener<IGameObject> listener, ref Stack<IGameObject> stack)
         {
             isQuestionOrBrick = type.Name == "Brick" || type.Name == "Question";
             if (isQuestionOrBrick)
@@ -252,7 +254,7 @@ namespace MelloMario.LevelGen
                             return objToBePushed;
                         }, objPoint, quantity, new Point(32, 32), ignoredSet, ref stack, dictProperties, (obj, pair) =>
                         {
-                            IList<IGameObject> newList = Util.CreateItemList(world, obj.Boundary.Location, listener, pair.Item2);
+                            IList<IGameObject> newList = Util.CreateItemList(world, obj.Boundary.Location, listener, soundListener, pair.Item2);
                             if (newList != null && newList.Count != 0)
                             {
                                 Database.SetEnclosedItem(obj, newList);
@@ -302,7 +304,7 @@ namespace MelloMario.LevelGen
                     return true;
                 }
                 propertyPair = GetPropertyPair(token);
-                list = Util.CreateItemList(world, objPoint, listener, propertyPair.Item2);
+                list = Util.CreateItemList(world, objPoint, listener, soundListener, propertyPair.Item2);
                 objToBePushed = Activator.CreateInstance(type, world, objPoint, listener, propertyPair.Item1) as IGameObject;
                 if (list != null && list.Count != 0)
                 {

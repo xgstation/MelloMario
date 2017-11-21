@@ -9,7 +9,7 @@ namespace MelloMario.LevelGen
     internal class InfiniteGenerator
     {
         private readonly ICamera camera;
-        private readonly IListener listener;
+        private readonly IListener<IGameObject> listener;
         private readonly IGameWorld world;
         private float rightMostReachedX;
         private int elapsed;
@@ -17,7 +17,7 @@ namespace MelloMario.LevelGen
 
         private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
 
-        internal InfiniteGenerator(IGameWorld world, IListener listener, ICamera camera)
+        internal InfiniteGenerator(IGameWorld world, IListener<IGameObject> listener, ICamera camera)
         {
             this.world = world;
             this.camera = camera;

@@ -14,7 +14,8 @@ namespace MelloMario.LevelGen
     {
         private static JsonSerializer Serializers;
         private readonly string index;
-        private readonly IListener listener;
+        private readonly IListener<IGameObject> listener;
+        private readonly IListener<ISoundable> soundListener;
         private readonly Model model;
         private GameEntityConverter gameEntityConverter;
         private JToken jsonToken;
@@ -23,11 +24,12 @@ namespace MelloMario.LevelGen
 
         private IGameWorld world;
 
-        public GameConverter(Model model, IListener listener, string index = "Main")
+        public GameConverter(Model model, IListener<IGameObject> listener, IListener<ISoundable> soundListener, string index = "Main")
         {
             this.model = model;
             this.index = index;
             this.listener = listener;
+            this.soundListener = soundListener;
             Serializers = new JsonSerializer();
         }
 
@@ -81,7 +83,7 @@ namespace MelloMario.LevelGen
             Util.TryGet(out IList<Point> respawnPoints, mapToBeLoaded, "RespawnPoints");
             world = new World(index, mapType, mapSize, new Point(2, 2), respawnPoints);
 
-            gameEntityConverter = new GameEntityConverter(model, world, listener);
+            gameEntityConverter = new GameEntityConverter(model, world, listener, soundListener);
 
             Serializers.Converters.Add(gameEntityConverter);
             if (entities == null)

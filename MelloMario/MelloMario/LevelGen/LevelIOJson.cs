@@ -6,7 +6,9 @@ namespace MelloMario.LevelGen
 {
     internal class LevelIOJson
     {
-        private readonly IListener listener;
+        private readonly IListener<IGameObject> listener;
+
+        private readonly IListener<ISoundable> soundListener;
         // Note: As File.ReadAllText will take care of dispose itself,
         // there is no need to implement IDisposable
 
@@ -16,9 +18,10 @@ namespace MelloMario.LevelGen
 
         private Model model;
 
-        public LevelIOJson(string jsonPath, IListener listener)
+        public LevelIOJson(string jsonPath, IListener<IGameObject> listener, IListener<ISoundable> soundListener)
         {
             this.listener = listener;
+            this.soundListener = soundListener;
             path = jsonPath;
             Util.Initilalize();
         }
@@ -31,7 +34,7 @@ namespace MelloMario.LevelGen
         public IGameWorld Load(string index)
         {
             levelString = File.ReadAllText(path);
-            gameConverter = new GameConverter(model, listener, index);
+            gameConverter = new GameConverter(model, listener, soundListener, index);
 
             return JsonConvert.DeserializeObject<IGameWorld>(levelString, gameConverter);
         }

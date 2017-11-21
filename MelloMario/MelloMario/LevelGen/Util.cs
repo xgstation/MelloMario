@@ -174,7 +174,7 @@ namespace MelloMario.LevelGen
             }
         }
 
-        public static List<IGameObject> CreateSinglePipeline(Model model, IGameWorld world, IListener listener, string pipelineType, int pipelineLength, Point pipelineLoc)
+        public static List<IGameObject> CreateSinglePipeline(Model model, IGameWorld world, IListener<IGameObject> listener, string pipelineType, int pipelineLength, Point pipelineLoc)
         {
             int grid = Const.GRID;
             List<IGameObject> listOfPipelineComponents = new List<IGameObject>();
@@ -226,9 +226,9 @@ namespace MelloMario.LevelGen
             return listOfPipelineComponents;
         }
 
-        public static IList<IGameObject> CreateItemList(IGameWorld world, Point point, IListener listener, params string[] s)
+        public static IList<IGameObject> CreateItemList(IGameWorld world, Point point, IListener<IGameObject> listener, IListener<ISoundable> soundListener, params string[] s)
         {
-            return s?.Select(t => GameObjectFactory.Instance.CreateGameObject(t, world, point, listener)).ToList();
+            return s?.Select(t => GameObjectFactory.Instance.CreateGameObject(t, world, point, listener, soundListener)).ToList();
         }
 
         public static bool TryReadIgnoreSet(JToken token, out ISet<Point> toBeIgnored)
