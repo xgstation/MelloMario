@@ -17,7 +17,7 @@
         private Vector2 movement;
 
         protected BasePhysicalObject(
-            IGameWorld world,
+            IWorld world,
             Point location,
             IListener<IGameObject> listener,
             Point size,

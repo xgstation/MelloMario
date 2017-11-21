@@ -6,9 +6,9 @@
 
     #endregion
 
-    internal interface IGameSession : IContainer<IPlayer>
+    internal interface ISession : IContainer<IPlayer>
     {
-        IEnumerable<IGameWorld> ScanWorlds();
+        IEnumerable<IWorld> ScanWorlds();
         IEnumerable<IPlayer> ScanPlayers();
     }
 }

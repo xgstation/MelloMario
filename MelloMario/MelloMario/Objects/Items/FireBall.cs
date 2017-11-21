@@ -11,7 +11,7 @@
 
     internal class FireBall : BasePhysicalObject
     {
-        public FireBall(IGameWorld world, Point location, IListener<IGameObject> listener) : base(
+        public FireBall(IWorld world, Point location, IListener<IGameObject> listener) : base(
             world,
             location,
             listener,

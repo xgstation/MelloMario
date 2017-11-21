@@ -23,12 +23,12 @@
 
         void Init(
             string type,
-            IGameWorld newWorld,
+            IWorld newWorld,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,
             ICamera camera);
 
-        void Spawn(IGameWorld newWorld, Point newLocation);
+        void Spawn(IWorld newWorld, Point newLocation);
         void Reset(string type, IListener<IGameObject> listener, IListener<ISoundable> soundListener);
         void Win();
         void Update(int time);

@@ -164,7 +164,7 @@
     <Compile Include="Objects\UserInterfaces\GameStart.cs" />
     <Compile Include="Objects\UserInterfaces\GameOver.cs" />
     <Compile Include="Interfaces\Containers\IContainer.cs" />
-    <Compile Include="Interfaces\Containers\IGameSession.cs" />
+    <Compile Include="Interfaces\Containers\ISession.cs" />
     <Compile Include="Interfaces\Factories\ICommandFactory.cs" />
     <Compile Include="Interfaces\Factories\IGameObjectFactory.cs" />
     <Compile Include="Interfaces\Factories\ISoundFactory.cs" />
@@ -172,7 +172,7 @@
     <Compile Include="Interfaces\Controls\IScript.cs" />
     <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Interfaces\Objects\ICharacter.cs" />
-    <Compile Include="Interfaces\Containers\IGameWorld.cs" />
+    <Compile Include="Interfaces\Containers\IWorld.cs" />
     <Compile Include="Interfaces\Objects\States\IPiranhaState.cs" />
     <Compile Include="Interfaces\Objects\States\IState.cs" />
     <Compile Include="Interfaces\Objects\States\IGoombaState.cs" />

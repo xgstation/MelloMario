@@ -13,7 +13,7 @@
         private readonly ZIndex targetZIndex;
         private readonly string type;
 
-        public Background(IGameWorld world, Point location, string type, ZIndex zIndex) : base(
+        public Background(IWorld world, Point location, string type, ZIndex zIndex) : base(
             world,
             location,
             new Point(32, 32))

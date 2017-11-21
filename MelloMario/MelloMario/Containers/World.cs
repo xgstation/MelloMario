@@ -8,7 +8,7 @@
 
     #endregion
 
-    internal class World : BaseContainer<Point, IGameObject>, IGameWorld
+    internal class World : BaseContainer<Point, IGameObject>, IWorld
     {
         private readonly Point initialPoint;
         private readonly ISet<Point> respawnPoints;

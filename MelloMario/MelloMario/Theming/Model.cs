@@ -162,9 +162,9 @@
             controllers = newControllers;
         }
 
-        public IGameWorld LoadLevel(string id)
+        public IWorld LoadLevel(string id)
         {
-            foreach (IGameWorld world in session.ScanWorlds())
+            foreach (IWorld world in session.ScanWorlds())
             {
                 if (world.ID == id)
                 {
@@ -172,12 +172,12 @@
                 }
             }
 
-            // IGameWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
+            // IWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
 
             LevelIOJson reader = new LevelIOJson(mapPath, listener, soundListener);
             reader.SetModel(this);
 
-            IGameWorld newWorld = reader.Load(id);
+            IWorld newWorld = reader.Load(id);
             infiniteGenerator = new InfiniteGenerator(newWorld, listener, activeCamera);
             return newWorld;
         }
@@ -237,7 +237,7 @@
         private void UpdateContainers()
         {
             session.Update();
-            foreach (IGameWorld world in session.ScanWorlds())
+            foreach (IWorld world in session.ScanWorlds())
             {
                 world.Update();
             }

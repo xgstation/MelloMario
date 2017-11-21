@@ -11,7 +11,7 @@
     {
         ICharacter CreateGameCharacter(
             string type,
-            IGameWorld world,
+            IWorld world,
             IPlayer player,
             Point location,
             IListener<IGameObject> listener,
@@ -19,14 +19,14 @@
 
         IGameObject CreateGameObject(
             string type,
-            IGameWorld world,
+            IWorld world,
             Point location,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener);
 
         IEnumerable<IGameObject> CreateGameObjectGroup(
             string type,
-            IGameWorld world,
+            IWorld world,
             Point location,
             int count,
             IListener<IGameObject> listener);

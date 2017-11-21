@@ -26,7 +26,7 @@
         private JToken mapListToken;
         private JToken mapToBeLoaded;
 
-        private IGameWorld world;
+        private IWorld world;
 
         public GameConverter(
             Model model,

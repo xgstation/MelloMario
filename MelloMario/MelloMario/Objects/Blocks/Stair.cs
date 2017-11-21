@@ -10,7 +10,7 @@
 
     internal class Stair : BaseCollidableObject
     {
-        public Stair(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(
+        public Stair(IWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(
             world,
             location,
             listener,

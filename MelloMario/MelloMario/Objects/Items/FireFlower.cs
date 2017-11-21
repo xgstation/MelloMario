@@ -18,7 +18,7 @@
         private IItemState state;
 
         public FireFlower(
-            IGameWorld world,
+            IWorld world,
             Point location,
             IListener<IGameObject> listener,
             bool isUnveil = false) : base(

@@ -22,7 +22,7 @@
     {
         private IGoombaState state;
 
-        public Goomba(IGameWorld world, Point location, IListener<IGameObject> listener) : base(
+        public Goomba(IWorld world, Point location, IListener<IGameObject> listener) : base(
             world,
             location,
             listener,

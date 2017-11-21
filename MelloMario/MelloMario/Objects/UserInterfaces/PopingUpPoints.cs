@@ -12,7 +12,7 @@
     {
         private int elapsed;
 
-        public PopingUpPoints(IGameWorld world, Point location, int points) : base(world, location, new Point())
+        public PopingUpPoints(IWorld world, Point location, int points) : base(world, location, new Point())
         {
             ShowSprite(SpriteFactory.Instance.CreateTextSprite(points.ToString(), 10f));
         }

@@ -15,7 +15,7 @@
         // underwater, bowsercastle, ...
     }
 
-    internal interface IGameWorld : IContainer<IGameObject>
+    internal interface IWorld : IContainer<IGameObject>
     {
         string ID { get; }
         WorldType Type { get; }

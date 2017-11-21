@@ -14,14 +14,14 @@
     {
         private readonly ICamera camera;
         private readonly IListener<IGameObject> listener;
-        private readonly IGameWorld world;
+        private readonly IWorld world;
         private float rightMostReachedX;
         private int elapsed;
         private double difficultyIndex;
 
         private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
 
-        internal InfiniteGenerator(IGameWorld world, IListener<IGameObject> listener, ICamera camera)
+        internal InfiniteGenerator(IWorld world, IListener<IGameObject> listener, ICamera camera)
         {
             this.world = world;
             this.camera = camera;

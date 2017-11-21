@@ -18,7 +18,7 @@
         private IPlayer switchingPlayer;
 
         public Pipeline(
-            IGameWorld world,
+            IWorld world,
             Point location,
             IListener<IGameObject> listener,
             string type,
@@ -27,7 +27,7 @@
             SetModel(model);
         }
 
-        public Pipeline(IGameWorld world, Point location, IListener<IGameObject> listener, string type) : base(
+        public Pipeline(IWorld world, Point location, IListener<IGameObject> listener, string type) : base(
             world,
             location,
             listener,
@@ -58,7 +58,7 @@
 
                 if (elapsed > 500)
                 {
-                    IGameWorld world = model.LoadLevel(Database.GetEntranceIndex(this));
+                    IWorld world = model.LoadLevel(Database.GetEntranceIndex(this));
 
                     if (Database.IsPortal(this))
                     {

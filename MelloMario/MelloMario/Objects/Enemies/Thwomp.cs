@@ -20,7 +20,7 @@
     {
         private IThwompState state;
 
-        public Thwomp(IGameWorld world, Point location, IListener<IGameObject> listener) : base(
+        public Thwomp(IWorld world, Point location, IListener<IGameObject> listener) : base(
             world,
             location,
             listener,

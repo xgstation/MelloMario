@@ -21,7 +21,7 @@
         private Vector2 userInput;
 
         public MarioCharacter(
-            IGameWorld world,
+            IWorld world,
             IPlayer player,
             Point location,
             IListener<IGameObject> listener,
@@ -42,7 +42,7 @@
             }
         }
 
-        public IGameWorld CurrentWorld
+        public IWorld CurrentWorld
         {
             get
             {
@@ -229,7 +229,7 @@
             }
         }
 
-        public void Move(IGameWorld newWorld, Point newLocation)
+        public void Move(IWorld newWorld, Point newLocation)
         {
             World.Remove(this);
             World = newWorld;

@@ -10,12 +10,12 @@
 
     internal class Player : IPlayer
     {
-        public Player(IGameSession session)
+        public Player(ISession session)
         {
             Session = session;
         }
 
-        public IGameSession Session { get; }
+        public ISession Session { get; }
 
         public ICharacter Character { get; private set; }
 
@@ -60,7 +60,7 @@
 
         public void Init(
             string type,
-            IGameWorld world,
+            IWorld world,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,
             ICamera newCamera)
@@ -79,7 +79,7 @@
             TimeRemain = Const.LEVEL_TIME * 1000;
         }
 
-        public void Spawn(IGameWorld newWorld, Point newLocation)
+        public void Spawn(IWorld newWorld, Point newLocation)
         {
             Character.Move(newWorld, newLocation);
             Session.Move(this);

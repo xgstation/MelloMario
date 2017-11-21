@@ -19,7 +19,7 @@
         private IItemState state;
 
         public OneUpMushroom(
-            IGameWorld world,
+            IWorld world,
             Point location,
             IListener<IGameObject> listener,
             bool isUnveil = false) : base(world, location, listener, new Point(32, 32), 32)

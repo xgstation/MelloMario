@@ -10,7 +10,7 @@
 
     internal class Floor : BaseCollidableObject
     {
-        public Floor(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(
+        public Floor(IWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(
             world,
             location,
             listener,

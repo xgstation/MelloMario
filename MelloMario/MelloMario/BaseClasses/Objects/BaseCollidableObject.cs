@@ -18,7 +18,7 @@
         private Point movement;
 
         protected BaseCollidableObject(
-            IGameWorld world,
+            IWorld world,
             Point location,
             IListener<IGameObject> listener,
             Point size) : base(world, location, size)

@@ -206,7 +206,7 @@
 
         public static List<IGameObject> CreateSinglePipeline(
             Model model,
-            IGameWorld world,
+            IWorld world,
             IListener<IGameObject> listener,
             string pipelineType,
             int pipelineLength,
@@ -272,7 +272,7 @@
         }
 
         public static IList<IGameObject> CreateItemList(
-            IGameWorld world,
+            IWorld world,
             Point point,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,

@@ -28,9 +28,9 @@
         private static readonly ConcurrentDictionary<ICharacter, Point> CharacterLocations =
             new ConcurrentDictionary<ICharacter, Point>();
 
-        private static IGameSession Session;
+        private static ISession Session;
 
-        public static void Initialize(IGameSession newSession)
+        public static void Initialize(ISession newSession)
         {
             Session = newSession;
         }

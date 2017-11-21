@@ -35,12 +35,12 @@
             model = newModel;
         }
 
-        public IGameWorld Load(string index)
+        public IWorld Load(string index)
         {
             levelString = File.ReadAllText(path);
             gameConverter = new GameConverter(model, listener, soundListener, index);
 
-            return JsonConvert.DeserializeObject<IGameWorld>(levelString, gameConverter);
+            return JsonConvert.DeserializeObject<IWorld>(levelString, gameConverter);
         }
     }
 }

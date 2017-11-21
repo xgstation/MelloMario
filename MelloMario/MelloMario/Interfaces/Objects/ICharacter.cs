@@ -9,7 +9,7 @@
     internal interface ICharacter
     {
         bool Active { get; }
-        IGameWorld CurrentWorld { get; }
+        IWorld CurrentWorld { get; }
         IPlayer Player { get; }
         Rectangle Sensing { get; }
 
@@ -30,7 +30,7 @@
         void NormalCreate();
         void Action();
 
-        void Move(IGameWorld newWorld, Point newLocation);
+        void Move(IWorld newWorld, Point newLocation);
         void Remove();
     }
 }

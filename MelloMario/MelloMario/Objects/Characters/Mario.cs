@@ -36,7 +36,7 @@
         }
 
         public Mario(
-            IGameWorld world,
+            IWorld world,
             Point location,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener) : base(

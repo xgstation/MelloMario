@@ -20,7 +20,7 @@
         private IItemState state;
 
         public SuperMushroom(
-            IGameWorld world,
+            IWorld world,
             Point location,
             IListener<IGameObject> listener,
             bool isUnveil = false) : base(world, location, listener, new Point(32, 32), 32)

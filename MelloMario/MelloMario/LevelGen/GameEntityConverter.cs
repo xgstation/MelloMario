@@ -41,7 +41,7 @@
         private readonly Model model;
         private readonly IListener<IGameObject> selflistener;
         private readonly IListener<ISoundable> soundListener;
-        private readonly IGameWorld world;
+        private readonly IWorld world;
         private string backgroundType;
         private Func<Point, IGameObject> createFunc;
         private string direction;
@@ -65,14 +65,14 @@
 
         public GameEntityConverter(
             Model model,
-            IGameWorld parentGameWorld,
+            IWorld parentWorld,
             IListener<IGameObject> selflistener,
             IListener<ISoundable> soundListener)
         {
             this.model = model;
             this.selflistener = selflistener;
             this.soundListener = soundListener;
-            world = parentGameWorld;
+            world = parentWorld;
         }
 
         //TODO: Add serialize method and change CanWrite 

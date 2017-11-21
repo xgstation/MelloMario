@@ -17,7 +17,7 @@
     internal class Piranha : BasePhysicalObject
     {
         public Piranha(
-            IGameWorld world,
+            IWorld world,
             Point location,
             IListener<IGameObject> listener,
             Point size,

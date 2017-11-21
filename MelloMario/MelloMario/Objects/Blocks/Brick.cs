@@ -16,7 +16,7 @@
         private bool isHidden;
         private IBlockState state;
 
-        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener) : this(
+        public Brick(IWorld world, Point location, IListener<IGameObject> listener) : this(
             world,
             location,
             listener,
@@ -24,7 +24,7 @@
         {
         }
 
-        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(
+        public Brick(IWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(
             world,
             location,
             listener,

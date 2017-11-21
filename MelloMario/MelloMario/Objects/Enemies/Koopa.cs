@@ -21,7 +21,7 @@
         private readonly string color;
         private IKoopaState state;
 
-        public Koopa(IGameWorld world, Point location, IListener<IGameObject> listener, string color) :
+        public Koopa(IWorld world, Point location, IListener<IGameObject> listener, string color) :
             base(world, location, listener, new Point(32, 32), 32)
         {
             this.color = color;

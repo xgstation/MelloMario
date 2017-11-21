@@ -6,9 +6,9 @@
 
     #endregion
 
-    internal class Session : BaseContainer<IGameWorld, IPlayer>, IGameSession
+    internal class Session : BaseContainer<IWorld, IPlayer>, ISession
     {
-        public IEnumerable<IGameWorld> ScanWorlds()
+        public IEnumerable<IWorld> ScanWorlds()
         {
             return ScanKeys();
         }
@@ -18,7 +18,7 @@
             return ScanValues();
         }
 
-        protected override IGameWorld GetKey(IPlayer value)
+        protected override IWorld GetKey(IPlayer value)
         {
             return value.Character.CurrentWorld;
         }

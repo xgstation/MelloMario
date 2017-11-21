@@ -14,9 +14,9 @@
         private ISprite sprite;
 
         // note: World should only be used in base classes and MarioCharacter
-        protected IGameWorld World;
+        protected IWorld World;
 
-        protected BaseGameObject(IGameWorld world, Point location, Point size)
+        protected BaseGameObject(IWorld world, Point location, Point size)
         {
             this.location = location;
             this.size = size;
