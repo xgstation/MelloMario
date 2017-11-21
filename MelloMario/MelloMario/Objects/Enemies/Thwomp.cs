@@ -87,26 +87,26 @@
             {
                 case "MarioCharacter":
                     //TODO: Fire to be added
-                    Mario mario = (Mario)target;
+                    Mario mario = (Mario) target;
                     if (mario.ProtectionState is Starred)
                     {
                         Defeat();
                     }
                     break;
                 case "Brick":
-                    if (((Brick)target).State is Hidden)
+                    if (((Brick) target).State is Hidden)
                     {
                         break;
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question)target).State is Blocks.QuestionStates.Hidden)
+                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
                     {
                         break;
                     }
                     goto case "Stair";
                 case "Floor":
-                    // perhaps register that it is on the floor, wait a second, then rise back up?
+                // perhaps register that it is on the floor, wait a second, then rise back up?
                 case "Pipeline":
                 case "Stair":
                     if (mode == CollisionMode.Left)
@@ -137,8 +137,6 @@
                     break;
             }
         }
-
-        protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive) { }
 
