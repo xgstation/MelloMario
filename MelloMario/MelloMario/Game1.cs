@@ -66,8 +66,8 @@ namespace MelloMario
             Content.RootDirectory = "Content";
             base.LoadContent();
 
-            SpriteFactory.Instance.BindContentManager(Content);
-            SoundFactory.Instance.BindContentManager(Content);
+            SpriteFactory.Instance.BindLoader(Content);
+            SoundFactory.Instance.BindLoader(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
