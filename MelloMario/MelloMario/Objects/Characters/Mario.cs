@@ -366,7 +366,7 @@
 
         public void OnDeath()
         {
-            ((SoundArgs)SoundEventArgs).SetMethodCalled();
+            SoundEventArgs.SetMethodCalled();
             SetVerticalVelocity(-20);
         }
 
@@ -382,13 +382,13 @@
 
         public void UpgradeToSuper()
         {
-            ((SoundArgs)SoundEventArgs).SetMethodCalled();
+            SoundEventArgs.SetMethodCalled();
             PowerUpState.UpgradeToSuper();
         }
 
         public void UpgradeToFire()
         {
-            ((SoundArgs)SoundEventArgs).SetMethodCalled();
+            SoundEventArgs.SetMethodCalled();
             PowerUpState.UpgradeToFire();
         }
 
