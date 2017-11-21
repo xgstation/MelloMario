@@ -1,7 +1,7 @@
 ﻿namespace MelloMario
 {
-    internal interface IListener
+    internal interface IListener<in T>
     {
-        void Subscribe(IGameObject gameObject);
+        void Subscribe(T objectListened);
     }
 }
