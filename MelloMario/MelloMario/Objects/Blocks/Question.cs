@@ -5,6 +5,7 @@
     using MelloMario.Factories;
     using MelloMario.Objects.Blocks.QuestionStates;
     using MelloMario.Objects.Characters;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
@@ -15,11 +16,15 @@
     {
         private bool isHidden;
         private IBlockState state;
+        public event SoundHandler SoundEvent;
+        public SoundArgsBase SoundEventArgs { get; }
 
         public Question(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool isHidden = false) :
             base(world, location, listener, new Point(32, 32))
         {
             this.isHidden = isHidden;
+            soundListener.Subscribe(this);
+            SoundEventArgs = new SoundArgs();
         }
 
         public IBlockState State
@@ -70,6 +75,12 @@
             state.Update(time);
         }
 
+        protected override void OnSimulation(int time)
+        {
+            base.OnSimulation(time);
+            SoundEvent?.Invoke(this, SoundEventArgs);
+        }
+
         protected override void OnCollision(
             IGameObject target,
             CollisionMode mode,
@@ -89,9 +100,8 @@
 
         public void Bump(Mario mario)
         {
-            //TODO:Move this into soundcontroller
-            //SoundManager.BumpBlock.Play();
             State.Bump(mario);
+            SoundEventArgs.SetMethodCalled();
         }
 
         public void BumpMove(int delta)
@@ -110,6 +120,5 @@
             World.Add(item);
         }
 
-        public event SoundHandler SoundEvent;
     }
 }

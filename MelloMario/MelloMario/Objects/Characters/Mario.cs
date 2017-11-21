@@ -27,12 +27,12 @@
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-        protected SoundArgs SoundEventArgs;
+        public SoundArgsBase SoundEventArgs { get; }
         public event SoundHandler SoundEvent;
 
         protected void RaiseSoundEvent()
         {
-            SoundEvent?.Invoke(this, ref SoundEventArgs);
+            SoundEvent?.Invoke(this, SoundEventArgs);
         }
 
         public Mario(
@@ -138,7 +138,7 @@
 
         protected override void OnSimulation(int time)
         {
-            SoundEvent?.Invoke(this, ref SoundEventArgs);
+            SoundEvent?.Invoke(this, SoundEventArgs);
             ApplyGravity();
             ApplyHorizontalFriction(Const.ACCEL_F_AIR);
             ApplyVerticalFriction(Const.ACCEL_F_AIR);

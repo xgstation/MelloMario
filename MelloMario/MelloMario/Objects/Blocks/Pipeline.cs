@@ -5,29 +5,33 @@
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.MovementStates;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
-    internal class Pipeline : BaseCollidableObject
+    internal class Pipeline : BaseCollidableObject, ISoundable
     {
         private int elapsed;
         private Theming.Model model;
         private IPlayer switchingPlayer;
 
+        public event SoundHandler SoundEvent;
+        public SoundArgsBase SoundEventArgs { get; }
         public Pipeline(
             IWorld world,
             Point location,
             IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener,
             string type,
-            Theming.Model model) : this(world, location, listener, type)
+            Theming.Model model) : this(world, location, listener, soundListener, type)
         {
             SetModel(model);
         }
 
-        public Pipeline(IWorld world, Point location, IListener<IGameObject> listener, string type) : base(
+        public Pipeline(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, string type) : base(
             world,
             location,
             listener,
@@ -35,6 +39,8 @@
         {
             Type = type;
 
+            soundListener.Subscribe(this);
+            SoundEventArgs = new SoundArgs();
             UpdateSprite();
         }
 
@@ -118,5 +124,6 @@
         protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
         }
+
     }
 }

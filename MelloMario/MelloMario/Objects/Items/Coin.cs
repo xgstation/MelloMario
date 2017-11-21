@@ -19,7 +19,7 @@
         public delegate void CoinHandler(Coin m, EventArgs e);
 
         private EventArgs coinEventInfo;
-        private SoundArgs soundArgs;
+        public SoundArgsBase SoundEventArgs { get;}
         private bool collected;
         private IItemState state;
 
@@ -35,6 +35,7 @@
             collected = false;
             //eventually if coin needs to pass info put it in eventinfo
             coinEventInfo = EventArgs.Empty;
+            SoundEventArgs = new SoundArgs();
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -71,6 +72,15 @@
             state.Update(time);
         }
 
+        protected override void OnSimulation(int time)
+        {
+            if (SoundEventArgs.HasArgs)
+            {
+                SoundEvent?.Invoke(this, SoundEventArgs);
+            }
+            base.OnSimulation(time);
+        }
+
         protected override void OnCollision(
             IGameObject target,
             CollisionMode mode,
@@ -96,7 +106,7 @@
         {
             if (!collected)
             {
-                SoundEvent?.Invoke(this, ref soundArgs);
+                SoundEventArgs.SetMethodCalled();
                 HandlerCoins?.Invoke(this, coinEventInfo);
                 ScorePoints(Const.SCORE_COIN);
                 collected = true;

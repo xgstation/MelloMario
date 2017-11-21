@@ -17,7 +17,7 @@
     {
         private bool isHidden;
         private IBlockState state;
-        public SoundArgs SoundEventArgs;
+        public SoundArgsBase SoundEventArgs { get; }
 
         public Brick(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool isHidden = false) : base(
             world,
@@ -86,10 +86,7 @@
 
         protected override void OnSimulation(int time)
         {
-            if (SoundEventArgs?.MethodCalled != null)
-            {
-                SoundEvent?.Invoke(this, ref SoundEventArgs);
-            }
+            SoundEvent?.Invoke(this, SoundEventArgs);
             base.OnSimulation(time);
         }
 
@@ -123,6 +120,7 @@
 
         public void Bump(Mario mario)
         {
+            SoundEventArgs.SetMethodCalled();
             State.Bump(mario);
         }
 
