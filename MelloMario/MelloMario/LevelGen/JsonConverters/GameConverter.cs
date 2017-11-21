@@ -20,7 +20,6 @@
         private readonly string index;
         private readonly IListener<IGameObject> listener;
         private readonly IListener<ISoundable> soundListener;
-        private readonly IModel model;
         private GameEntityConverter gameEntityConverter;
         private JToken jsonToken;
         private JToken mapListToken;
@@ -29,12 +28,10 @@
         private IWorld world;
 
         public GameConverter(
-            IModel model,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,
             string index = "Main")
         {
-            this.model = model;
             this.index = index;
             this.listener = listener;
             this.soundListener = soundListener;
@@ -100,7 +97,7 @@
                 new Point(2, 2),
                 respawnPoints);
 
-            gameEntityConverter = new GameEntityConverter(model, world, listener, soundListener);
+            gameEntityConverter = new GameEntityConverter(world, listener, soundListener);
 
             Serializers.Converters.Add(gameEntityConverter);
             if (entities == null)

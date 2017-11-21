@@ -13,9 +13,8 @@
 
     internal class JsonGenerator : StaticGenerator
     {
-        public JsonGenerator(IEnumerable<IGameObject> objects)
+        public JsonGenerator(IEnumerable<IGameObject> objects) : base(objects)
         {
-            this.objects = objects;
         }
     }
 }
