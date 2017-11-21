@@ -25,15 +25,16 @@
             this.model = model;
         }
 
-        private void PlayMusic(ISoundTrack track, bool reset = false)
+        private void PlayMusic(ISoundTrack track)
         {
-            if (track != currentTrack || reset || MediaPlayer.State == MediaState.Stopped)
+            if (track == currentTrack && MediaPlayer.State != MediaState.Stopped)
             {
-                MediaPlayer.Stop();
-                track?.Play();
-                MediaPlayer.IsRepeating = true;
-                currentTrack = track;
+                return;
             }
+            MediaPlayer.Stop();
+            track?.Play();
+            MediaPlayer.IsRepeating = true;
+            currentTrack = track;
         }
 
         public void ToggleMute()
