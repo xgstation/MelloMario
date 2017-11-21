@@ -452,8 +452,6 @@
 
         #region Background Deserializer
 
-
-
         private bool BackgroundConverter()
         {
             if (Util.TryGet(out backgroundType, token, "Property", "Type"))
