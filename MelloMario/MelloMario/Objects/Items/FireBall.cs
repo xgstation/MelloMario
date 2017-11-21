@@ -7,7 +7,7 @@ namespace MelloMario.Objects.Items
 {
     internal class FireBall : BasePhysicalObject
     {
-        public FireBall(IGameWorld world, Point location, IListener listener) : base(world, location, listener, new Point(16, 16), 32)
+        public FireBall(IGameWorld world, Point location, IListener<IGameObject> listener) : base(world, location, listener, new Point(16, 16), 32)
         {
             ShowSprite(SpriteFactory.Instance.CreateFireSprite());
         }

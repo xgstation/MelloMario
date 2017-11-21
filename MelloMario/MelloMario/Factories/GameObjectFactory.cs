@@ -21,7 +21,7 @@ namespace MelloMario.Factories
 
         public static IGameObjectFactory Instance { get; } = new GameObjectFactory();
 
-        public ICharacter CreateGameCharacter(string type, IGameWorld world, IPlayer player, Point location, IListener listener)
+        public ICharacter CreateGameCharacter(string type, IGameWorld world, IPlayer player, Point location, IListener<IGameObject> listener)
         {
             switch (type)
             {
@@ -34,7 +34,7 @@ namespace MelloMario.Factories
         }
 
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        public IGameObject CreateGameObject(string type, IGameWorld world, Point location, IListener listener)
+        public IGameObject CreateGameObject(string type, IGameWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener)
         {
             switch (type)
             {
@@ -70,9 +70,9 @@ namespace MelloMario.Factories
 
                 //entities
                 case "Coin":
-                    return new Coin(world, location, listener);
+                    return new Coin(world, location, listener, soundListener);
                 case "CoinUnveil":
-                    return new Coin(world, location, listener, true);
+                    return new Coin(world, location, listener, soundListener, true);
                 case "OneUpMushroom":
                     return new OneUpMushroom(world, location, marioLoc, listener);
                 case "OneUpMushroomUnveil":
@@ -105,7 +105,7 @@ namespace MelloMario.Factories
             }
         }
 
-        public IEnumerable<IGameObject> CreateGameObjectGroup(string type, IGameWorld world, Point location, int count, IListener listener)
+        public IEnumerable<IGameObject> CreateGameObjectGroup(string type, IGameWorld world, Point location, int count, IListener<IGameObject> listener)
         {
             switch (type)
             {

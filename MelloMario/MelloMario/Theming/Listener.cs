@@ -11,7 +11,7 @@ namespace MelloMario.Theming
         public int Points { get; set; }
     }
 
-    internal class Listener : IListener
+    internal class Listener : IListener<IGameObject>
     {
         private readonly Model model;
         private readonly IPlayer player;

@@ -7,14 +7,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MelloMario.Objects.Blocks
 {
-    internal class Brick : BaseCollidableObject
+    internal class Brick : BaseCollidableObject, ISoundable
     {
         private bool isHidden;
         private IBlockState state;
 
-        public Brick(IGameWorld world, Point location, IListener listener) : this(world, location, listener, false) { }
+        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener) : this(world, location, listener, false) { }
 
-        public Brick(IGameWorld world, Point location, IListener listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
+        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
         {
             this.isHidden = isHidden;
         }
@@ -111,5 +111,7 @@ namespace MelloMario.Objects.Blocks
             World.Update();
             World.Add(item);
         }
+
+        public event SoundHandler SoundEvent;
     }
 }

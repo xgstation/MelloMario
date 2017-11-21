@@ -16,9 +16,9 @@ namespace MelloMario
         void AddCoin();
         void AddLife();
         void AddScore(int delta);
-        void Init(string type, IGameWorld newWorld, IListener listener, ICamera camera);
+        void Init(string type, IGameWorld newWorld, IListener<IGameObject> listener, ICamera camera);
         void Spawn(IGameWorld newWorld, Point newLocation);
-        void Reset(string type, IListener listener);
+        void Reset(string type, IListener<IGameObject> listener);
         void Win();
         void Update(int time);
         void Draw(int time, SpriteBatch spriteBatch);

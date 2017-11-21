@@ -25,7 +25,7 @@ namespace MelloMario.Objects.Characters
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
 
-        public Mario(IGameWorld world, Point location, IListener listener) : base(world, location, listener, new Point(), 32)
+        public Mario(IGameWorld world, Point location, IListener<IGameObject> listener) : base(world, location, listener, new Point(), 32)
         {
             listener.Subscribe(this);
             powerUpState = new Standard(this);

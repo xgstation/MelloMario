@@ -12,7 +12,7 @@ namespace MelloMario.Objects
         private Vector2 velocity;
         private Vector2 movement;
 
-        protected BasePhysicalObject(IGameWorld world, Point location, IListener listener, Point size, float pixelScale) : base(world, location, listener, size)
+        protected BasePhysicalObject(IGameWorld world, Point location, IListener<IGameObject> listener, Point size, float pixelScale) : base(world, location, listener, size)
         {
             this.pixelScale = pixelScale;
 

@@ -55,7 +55,7 @@ namespace MelloMario.Theming
             Score += delta;
         }
 
-        public void Init(string type, IGameWorld world, IListener listener, ICamera newCamera)
+        public void Init(string type, IGameWorld world, IListener<IGameObject> listener, ICamera newCamera)
         {
             Character = GameObjectFactory.Instance.CreateGameCharacter(type, world, this, world.GetInitialPoint(), listener);
             Session.Add(this);
@@ -71,7 +71,7 @@ namespace MelloMario.Theming
             Session.Move(this);
         }
 
-        public void Reset(string type, IListener listener)
+        public void Reset(string type, IListener<IGameObject> listener)
         {
             Character.Remove();
             Character = GameObjectFactory.Instance.CreateGameCharacter(type, Character.CurrentWorld, this, Character.CurrentWorld.GetInitialPoint(), listener);

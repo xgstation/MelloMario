@@ -12,7 +12,7 @@ namespace MelloMario.Objects.Enemies
 {
     internal class Piranha : BasePhysicalObject
     {
-        public Piranha(IGameWorld world, Point location, IListener listener, Point size, int hiddenTime, int showTime, float pixelScale, string color = "Green") : base(world, location, listener, size, pixelScale)
+        public Piranha(IGameWorld world, Point location, IListener<IGameObject> listener, Point size, int hiddenTime, int showTime, float pixelScale, string color = "Green") : base(world, location, listener, size, pixelScale)
         {
             HiddenTime = hiddenTime;
             ShowTime = showTime;

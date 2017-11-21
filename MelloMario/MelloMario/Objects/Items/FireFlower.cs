@@ -13,7 +13,7 @@ namespace MelloMario.Objects.Items
         private bool collected;
         private IItemState state;
 
-        public FireFlower(IGameWorld world, Point location, IListener listener, bool isUnveil) : base(world, location, listener, new Point(32, 32))
+        public FireFlower(IGameWorld world, Point location, IListener<IGameObject> listener, bool isUnveil) : base(world, location, listener, new Point(32, 32))
         {
             collected = false;
             if (isUnveil)
@@ -29,7 +29,7 @@ namespace MelloMario.Objects.Items
             }
         }
 
-        public FireFlower(IGameWorld world, Point location, IListener listener) : this(world, location, listener, false) { }
+        public FireFlower(IGameWorld world, Point location, IListener<IGameObject> listener) : this(world, location, listener, false) { }
 
         public IItemState State
         {

@@ -13,7 +13,7 @@ namespace MelloMario.Objects.Items
         private bool collected;
         private IItemState state;
 
-        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener, bool isUnveil) : base(world, location, listener, new Point(32, 32), 32)
+        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, IListener<IGameObject> listener, bool isUnveil) : base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
 
@@ -42,9 +42,9 @@ namespace MelloMario.Objects.Items
         //This suppression exists because this constructor is inderectly used by the json parser.
         //removing this constructor will cause a runtime error when trying to read in the level.
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public OneUpMushroom(IGameWorld world, Point location, IListener listener) : this(world, location, Database.GetCharacterLocation(), listener, false) { }
+        public OneUpMushroom(IGameWorld world, Point location, IListener<IGameObject> listener) : this(world, location, Database.GetCharacterLocation(), listener, false) { }
 
-        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(world, location, marioLocation, listener, false) { }
+        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, IListener<IGameObject> listener) : this(world, location, marioLocation, listener, false) { }
 
         public IItemState State
         {

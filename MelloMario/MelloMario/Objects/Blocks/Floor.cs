@@ -6,7 +6,7 @@ namespace MelloMario.Objects.Blocks
 {
     internal class Floor : BaseCollidableObject
     {
-        public Floor(IGameWorld world, Point location, IListener listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
+        public Floor(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
         {
             if (isHidden)
             {

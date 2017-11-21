@@ -13,7 +13,7 @@ namespace MelloMario.Objects.Blocks
         private bool isHidden;
         private IBlockState state;
 
-        public Question(IGameWorld world, Point location, IListener listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
+        public Question(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
         {
             this.isHidden = isHidden;
         }

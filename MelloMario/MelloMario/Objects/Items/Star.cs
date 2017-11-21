@@ -16,7 +16,7 @@ namespace MelloMario.Objects.Items
         private bool collected;
         private IItemState state;
 
-        public Star(IGameWorld world, Point location, Point marioLocation, IListener listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
+        public Star(IGameWorld world, Point location, Point marioLocation, IListener<IGameObject> listener, bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
 
@@ -41,7 +41,7 @@ namespace MelloMario.Objects.Items
             }
         }
 
-        public Star(IGameWorld world, Point location, Point marioLocation, IListener listener) : this(world, location, marioLocation, listener, false) { }
+        public Star(IGameWorld world, Point location, Point marioLocation, IListener<IGameObject> listener) : this(world, location, marioLocation, listener, false) { }
 
         public IItemState State
         {
