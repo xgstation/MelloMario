@@ -201,11 +201,7 @@
 
         private bool ItemConverter()
         {
-            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false);
-            if (type.IsAssignableFrom(typeof(Coin)))
-            {
-                createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, listener, soundListener, false);
-            }
+            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, listener, soundListener, false);
             switch (produceMode)
             {
                 case ProduceMode.One:
