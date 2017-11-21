@@ -83,17 +83,17 @@
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_coin"));
                 case "Death":
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_mariodie"));
-                case "SizeUp":
+                case "PowerUp":
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_powerup"));
                 case "EnemyKill":
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_stomp"));
-                case "Pipe":
+                case "Pipe": //Same sound for downgrade to standard mario
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_pipe"));
                 case "GameOver":
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_gameover"));
                 case "GameWon":
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_stage_clear"));
-                case "SizeUpAppear":
+                case "PowerUpAppear":
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_powerup_appears"));
                 case "OneUpCollect":
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_1"));
