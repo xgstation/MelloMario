@@ -36,7 +36,7 @@
             this.game = game;
             session = new Session();
             ActivePlayer = new Player(session);
-            listener = new Listener(this, ActivePlayer);
+            listener = new ScoreListener(this, ActivePlayer);
             soundListener = new SoundEffectListener();
             Database.Initialize(session);
         }

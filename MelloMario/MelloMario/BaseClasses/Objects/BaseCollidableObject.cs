@@ -12,9 +12,9 @@
     [Serializable]
     internal abstract class BaseCollidableObject : BaseGameObject
     {
-        public delegate void LivesHandler(BaseCollidableObject m, GameEventArgs e);
+        public delegate void LivesHandler(BaseCollidableObject m, ScoreEventArgs e);
 
-        public delegate void PointHandler(BaseCollidableObject m, GameEventArgs e);
+        public delegate void PointHandler(BaseCollidableObject m, ScoreEventArgs e);
 
         private Point movement;
 
@@ -247,7 +247,7 @@
         {
             HandlerPoints?.Invoke(
                 this,
-                new GameEventArgs
+                new ScoreEventArgs
                 {
                     Points = points
                 });
@@ -257,7 +257,7 @@
         {
             HandlerLives?.Invoke(
                 this,
-                new GameEventArgs
+                new ScoreEventArgs
                 {
                     Points = 1
                 });

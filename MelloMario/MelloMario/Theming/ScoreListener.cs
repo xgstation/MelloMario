@@ -11,17 +11,17 @@
     #endregion
 
     [Serializable]
-    internal class GameEventArgs : EventArgs
+    internal class ScoreEventArgs : EventArgs
     {
         public int Points { get; set; }
     }
 
-    internal class Listener : IListener<IGameObject>
+    internal class ScoreListener : IListener<IGameObject>
     {
         private readonly IModel model;
         private readonly IPlayer player;
 
-        public Listener(IModel model, IPlayer player)
+        public ScoreListener(IModel model, IPlayer player)
         {
             this.model = model;
             this.player = player;
@@ -47,12 +47,12 @@
             }
         }
 
-        private void OnLivesChange(BaseCollidableObject m, GameEventArgs e)
+        private void OnLivesChange(BaseCollidableObject m, ScoreEventArgs e)
         {
             player.AddLife();
         }
 
-        private void OnPointGain(BaseCollidableObject m, GameEventArgs e)
+        private void OnPointGain(BaseCollidableObject m, ScoreEventArgs e)
         {
             player.AddScore(e.Points);
         }
