@@ -84,6 +84,8 @@
     <Compile Include="BaseClasses\Objects\BaseUIObject.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
+    <Compile Include="Interfaces\Objects\ISoundable.cs" />
+    <Compile Include="Sounds\SoundListener.cs" />
     <Compile Include="Sounds\SoundTrack.cs" />
     <Compile Include="Sounds\SoundEffect.cs" />
     <Compile Include="Interfaces\Sounds\ISoundTrack.cs" />
