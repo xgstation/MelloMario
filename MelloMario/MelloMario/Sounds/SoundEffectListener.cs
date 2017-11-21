@@ -16,6 +16,18 @@ namespace MelloMario.Sounds
     }
     internal class SoundEffectListener : IListener<ISoundable>
     {
+        private float soundEffectVolume;
+
+        public SoundEffectListener()
+        {
+            soundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
+        }
+        public void ToggleMute()
+        {
+            float currentVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
+            Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume = Math.Abs(currentVolume) < float.Epsilon ? soundEffectVolume : 0;
+            soundEffectVolume = Math.Abs(currentVolume) < float.Epsilon ? soundEffectVolume : currentVolume;
+        }
         public void Subscribe(ISoundable soundObject)
         {
             soundObject.SoundEvent += Sound;

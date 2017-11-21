@@ -37,6 +37,10 @@
             graphics.ToggleFullScreen();
         }
 
+        public void ToggleMute()
+        {
+            sounds.ToggleMute();
+        }
         public void Reset()
         {
             model = new Theming.Model(this);

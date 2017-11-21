@@ -151,6 +151,12 @@
             Splash.Draw(time, spriteBatch);
         }
 
+        public void ToggleMute()
+        {
+            (soundListener as SoundEffectListener)?.ToggleMute();
+            game.ToggleMute();
+        }
+
         public void LoadControllers(IEnumerable<IController> newControllers)
         {
             controllers = newControllers;

@@ -21,7 +21,6 @@
         private static readonly ISoundTrack Star = SoundFactory.Instance.CreateSoundTrack("Star");
 
         private ISoundTrack currentTrack;
-        private float soundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
 
         public BGMManager(IModel model)
         {
@@ -42,10 +41,6 @@
         public void ToggleMute()
         {
             MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
-            Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume = MediaPlayer.IsMuted ? 0 : soundEffectVolume;
-            soundEffectVolume = MediaPlayer.IsMuted
-                ? soundEffectVolume
-                : Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
         }
 
         private static void Pause()
