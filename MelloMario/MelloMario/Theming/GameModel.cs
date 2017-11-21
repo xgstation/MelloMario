@@ -62,17 +62,16 @@
         {
             IsPaused = true;
             new PausedScript().Bind(controllers, this, ActivePlayer.Character);
+
             splashElapsed = -1;
         }
 
         public void Init()
         {
-            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
             IsPaused = true;
-            new PlayingScript().Bind(controllers, this, ActivePlayer.Character);
+            new StartScript().Bind(controllers, this, ActivePlayer.Character);
 
             Splash = new GameStart(ActivePlayer); // TODO: move these constructors to the factory
-            new StartScript().Bind(controllers, this, ActivePlayer.Character);
             splashElapsed = -1;
         }
 
