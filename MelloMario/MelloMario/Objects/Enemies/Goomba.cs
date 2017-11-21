@@ -1,19 +1,21 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using MelloMario.Objects.Blocks;
-using MelloMario.Objects.Enemies.KoopaStates;
-using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using MelloMario.Objects.Characters.ProtectionStates;
-using MelloMario.Theming;
-using MelloMario.Objects.UserInterfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Defeated = MelloMario.Objects.Enemies.GoombaStates.Defeated;
-
-namespace MelloMario.Objects.Enemies
+﻿namespace MelloMario.Objects.Enemies
 {
-    using Blocks.QuestionStates;
-    using Characters.MovementStates;
+    #region
+
+    using System.Diagnostics.CodeAnalysis;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.MovementStates;
+    using MelloMario.Objects.Characters.ProtectionStates;
+    using MelloMario.Objects.Enemies.KoopaStates;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
 
     internal class Goomba : BasePhysicalObject
     {
@@ -79,9 +81,14 @@ namespace MelloMario.Objects.Enemies
         }
 
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
-            if (state is Defeated)
+            if (state is GoombaStates.Defeated)
             {
                 return;
             }
@@ -96,13 +103,13 @@ namespace MelloMario.Objects.Enemies
                     }
                     break;
                 case "Brick":
-                    if (((Brick) target).State is Blocks.BrickStates.Hidden)
+                    if (((Brick) target).State is Hidden)
                     {
                         break;
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is Hidden)
+                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
                     {
                         break;
                     }

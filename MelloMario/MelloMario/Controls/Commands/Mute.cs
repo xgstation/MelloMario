@@ -1,6 +1,10 @@
 ﻿namespace MelloMario.Controls.Commands
 {
-    using Sounds;
+    #region
+
+    using MelloMario.Sounds;
+
+    #endregion
 
     internal class Mute : ICommand
     {

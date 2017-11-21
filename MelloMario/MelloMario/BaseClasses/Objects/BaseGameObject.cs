@@ -1,8 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects
+﻿namespace MelloMario.Objects
 {
+    #region
+
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal abstract class BaseGameObject : IGameObject
     {
         private Point location;
@@ -90,7 +94,10 @@ namespace MelloMario.Objects
             World.Move(this);
         }
 
-        protected void ShowSprite(ISprite newSprite, ResizeModeX modeX = ResizeModeX.Center, ResizeModeY modeY = ResizeModeY.Bottom)
+        protected void ShowSprite(
+            ISprite newSprite,
+            ResizeModeX modeX = ResizeModeX.Center,
+            ResizeModeY modeY = ResizeModeY.Bottom)
         {
             sprite = newSprite;
             Resize(sprite.PixelSize, modeX, modeY);

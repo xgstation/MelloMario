@@ -1,7 +1,11 @@
-using System.Collections.Generic;
-
 namespace MelloMario.Controls.Controllers
 {
+    #region
+
+    using System.Collections.Generic;
+
+    #endregion
+
     internal abstract class BaseController<T> : IController
     {
         private readonly IDictionary<KeyBehavior, IDictionary<T, ICommand>> commands;

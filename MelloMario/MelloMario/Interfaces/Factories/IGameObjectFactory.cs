@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
+    #region
+
+    using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
+
+    #endregion
+
     internal interface IGameObjectFactory
     {
         ICharacter CreateGameCharacter(string type, IGameWorld world, IPlayer player, Point location, IListener<IGameObject> listener);

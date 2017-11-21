@@ -1,8 +1,12 @@
-﻿using MelloMario.Objects.Characters;
-using MelloMario.Objects.Characters.PowerUpStates;
-
-namespace MelloMario.Objects.Blocks.BrickStates
+﻿namespace MelloMario.Objects.Blocks.BrickStates
 {
+    #region
+
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.PowerUpStates;
+
+    #endregion
+
     internal class Normal : BaseState<Brick>, IBlockState
     {
         public Normal(Brick owner) : base(owner) { }

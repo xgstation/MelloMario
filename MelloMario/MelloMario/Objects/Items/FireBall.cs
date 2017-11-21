@@ -1,10 +1,14 @@
-﻿using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Items
+﻿namespace MelloMario.Objects.Items
 {
+    #region
+
+    using MelloMario.Factories;
+    using MelloMario.Objects.Characters;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class FireBall : BasePhysicalObject
     {
         public FireBall(IGameWorld world, Point location, IListener<IGameObject> listener) : base(world, location, listener, new Point(16, 16), 32)
@@ -27,7 +31,12 @@ namespace MelloMario.Objects.Items
             //throw new NotImplementedException();
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (target is Mario) { }
         }

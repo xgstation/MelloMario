@@ -1,7 +1,11 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
+    #region
+
+    using Microsoft.Xna.Framework;
+
+    #endregion
+
     internal interface ICharacter
     {
         bool Active { get; }

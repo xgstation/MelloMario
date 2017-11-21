@@ -1,15 +1,19 @@
-﻿using System.Collections.Generic;
-using MelloMario.Controls.Scripts;
-using MelloMario.Containers;
-using MelloMario.LevelGen;
-using MelloMario.Objects.Miscs;
-using MelloMario.Sounds;
-using MelloMario.Objects.UserInterfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Theming
+﻿namespace MelloMario.Theming
 {
+    #region
+
+    using System.Collections.Generic;
+    using MelloMario.Containers;
+    using MelloMario.Controls.Scripts;
+    using MelloMario.LevelGen;
+    using MelloMario.Objects.Miscs;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Sounds;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Model : IModel
     {
         private readonly Game1 game;

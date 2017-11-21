@@ -1,15 +1,19 @@
-﻿using System.Linq;
-using MelloMario.Objects.Enemies.PiranhaStates;
-using MelloMario.Factories;
-using MelloMario.Interfaces.Objects.States;
-using MelloMario.Objects.Items;
-using MelloMario.Theming;
-using MelloMario.Objects.UserInterfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Enemies
+﻿namespace MelloMario.Objects.Enemies
 {
+    #region
+
+    using System.Linq;
+    using MelloMario.Factories;
+    using MelloMario.Interfaces.Objects.States;
+    using MelloMario.Objects.Enemies.PiranhaStates;
+    using MelloMario.Objects.Items;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Piranha : BasePhysicalObject
     {
         public Piranha(IGameWorld world, Point location, IListener<IGameObject> listener, Point size, int hiddenTime, int showTime, float pixelScale, string color = "Green") : base(world, location, listener, size, pixelScale)
@@ -30,7 +34,9 @@ namespace MelloMario.Objects.Enemies
 
         private bool DetectMario()
         {
-            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0)) where obj is ICharacter select obj).Any();
+            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
+                where obj is ICharacter
+                select obj).Any();
         }
 
         protected override void OnSimulation(int time)
@@ -63,7 +69,12 @@ namespace MelloMario.Objects.Enemies
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (target is FireBall)
             {

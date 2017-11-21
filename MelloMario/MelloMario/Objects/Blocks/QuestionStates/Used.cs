@@ -1,7 +1,11 @@
-﻿using MelloMario.Objects.Characters;
-
-namespace MelloMario.Objects.Blocks.QuestionStates
+﻿namespace MelloMario.Objects.Blocks.QuestionStates
 {
+    #region
+
+    using MelloMario.Objects.Characters;
+
+    #endregion
+
     internal class Used : BaseState<Question>, IBlockState
     {
         public Used(Question owner) : base(owner) { }

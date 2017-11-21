@@ -1,12 +1,16 @@
-﻿using System.Collections.Generic;
-using MelloMario.Controls.Controllers;
-using MelloMario.Factories;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
+    #region
+
+    using System.Collections.Generic;
+    using MelloMario.Controls.Controllers;
+    using MelloMario.Factories;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     /// <summary>
     ///     This is the main type for Mello Mario game.
     /// </summary>

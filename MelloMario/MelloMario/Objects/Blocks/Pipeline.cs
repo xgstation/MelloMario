@@ -1,13 +1,16 @@
-﻿using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using MelloMario.Objects.Characters.MovementStates;
-using MelloMario.Sounds;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Blocks
+﻿namespace MelloMario.Objects.Blocks
 {
+    #region
+
+    using MelloMario.Factories;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.MovementStates;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Pipeline : BaseCollidableObject
     {
         private int elapsed;
@@ -63,7 +66,12 @@ namespace MelloMario.Objects.Blocks
             }
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (target is Mario mario && mode is CollisionMode.Top)
             {

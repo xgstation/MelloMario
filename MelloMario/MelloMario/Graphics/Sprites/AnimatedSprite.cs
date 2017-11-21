@@ -1,8 +1,12 @@
 ﻿namespace MelloMario.Graphics.Sprites
 {
+    #region
+
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using Theming;
+
+    #endregion
 
     internal class AnimatedSprite : BaseTextureSprite
     {
@@ -14,14 +18,34 @@
         private int frames;
         private Rectangle refSource;
 
-        public AnimatedSprite(Texture2D texture, int columns, int rows, int x = 0, int y = 0, int width = 2, int height = 2, int interval = Const.ANIMATION_INTERVAL, ZIndex zIndex = ZIndex.Item) : base(texture, new Rectangle(x * Const.TEXTURE_GRID, y * Const.TEXTURE_GRID, width * Const.TEXTURE_GRID, height * Const.TEXTURE_GRID), zIndex)
+        public AnimatedSprite(
+            Texture2D texture,
+            int columns,
+            int rows,
+            int x = 0,
+            int y = 0,
+            int width = 2,
+            int height = 2,
+            int interval = Const.ANIMATION_INTERVAL,
+            ZIndex zIndex = ZIndex.Item) : base(
+            texture,
+            new Rectangle(
+                x * Const.TEXTURE_GRID,
+                y * Const.TEXTURE_GRID,
+                width * Const.TEXTURE_GRID,
+                height * Const.TEXTURE_GRID),
+            zIndex)
         {
             this.columns = columns;
             this.rows = rows;
             this.interval = interval;
 
             // note: copied from base constructor
-            refSource = new Rectangle(x * Const.TEXTURE_GRID, y * Const.TEXTURE_GRID, width * Const.TEXTURE_GRID, height * Const.TEXTURE_GRID);
+            refSource = new Rectangle(
+                x * Const.TEXTURE_GRID,
+                y * Const.TEXTURE_GRID,
+                width * Const.TEXTURE_GRID,
+                height * Const.TEXTURE_GRID);
 
             frames = 0;
             elapsed = 0;

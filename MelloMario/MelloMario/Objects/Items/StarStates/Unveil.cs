@@ -1,6 +1,4 @@
-﻿using MelloMario.Sounds;
-
-namespace MelloMario.Objects.Items.StarStates
+﻿namespace MelloMario.Objects.Items.StarStates
 {
     internal class Unveil : BaseTimedState<Star>, IItemState
     {

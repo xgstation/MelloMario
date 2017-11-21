@@ -1,9 +1,13 @@
-﻿using MelloMario.Factories;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Blocks
+﻿namespace MelloMario.Objects.Blocks
 {
+    #region
+
+    using MelloMario.Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Stair : BaseCollidableObject
     {
         public Stair(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(world, location, listener, new Point(32, 32))
@@ -25,7 +29,12 @@ namespace MelloMario.Objects.Blocks
 
         protected override void OnUpdate(int time) { }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive) { }
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive) { }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 

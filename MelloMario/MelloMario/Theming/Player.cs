@@ -1,10 +1,13 @@
-﻿using MelloMario.Factories;
-using MelloMario.Sounds;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Theming
+﻿namespace MelloMario.Theming
 {
+    #region
+
+    using MelloMario.Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Player : IPlayer
     {
         public Player(IGameSession session)
@@ -57,7 +60,12 @@ namespace MelloMario.Theming
 
         public void Init(string type, IGameWorld world, IListener<IGameObject> listener, ICamera newCamera)
         {
-            Character = GameObjectFactory.Instance.CreateGameCharacter(type, world, this, world.GetInitialPoint(), listener);
+            Character = GameObjectFactory.Instance.CreateGameCharacter(
+                type,
+                world,
+                this,
+                world.GetInitialPoint(),
+                listener);
             Session.Add(this);
             Camera = newCamera;
 
@@ -74,7 +82,12 @@ namespace MelloMario.Theming
         public void Reset(string type, IListener<IGameObject> listener)
         {
             Character.Remove();
-            Character = GameObjectFactory.Instance.CreateGameCharacter(type, Character.CurrentWorld, this, Character.CurrentWorld.GetInitialPoint(), listener);
+            Character = GameObjectFactory.Instance.CreateGameCharacter(
+                type,
+                Character.CurrentWorld,
+                this,
+                Character.CurrentWorld.GetInitialPoint(),
+                listener);
 
             if (Lifes > 0)
             {
@@ -94,7 +107,9 @@ namespace MelloMario.Theming
             TimeRemain -= time;
             if (Character != null)
             {
-                Camera?.LookAt(((IGameObject) Character).Boundary.Location, Character.CurrentWorld.Boundary); // TODO: remove type casting
+                Camera?.LookAt(
+                    ((IGameObject) Character).Boundary.Location,
+                    Character.CurrentWorld.Boundary); // TODO: remove type casting
             }
         }
 

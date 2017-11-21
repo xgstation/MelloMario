@@ -1,8 +1,12 @@
-﻿using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario.Objects
+﻿namespace MelloMario.Objects
 {
+    #region
+
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+
+    #endregion
+
     internal abstract class BasePhysicalObject : BaseCollidableObject
     {
         private readonly float pixelScale;

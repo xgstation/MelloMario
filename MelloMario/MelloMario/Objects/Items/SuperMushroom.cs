@@ -1,15 +1,18 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using MelloMario.Objects.Blocks;
-using MelloMario.Factories;
-using MelloMario.Objects.Items.SuperMushroomStates;
-using MelloMario.Theming;
-using MelloMario.Objects.UserInterfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Items
+﻿namespace MelloMario.Objects.Items
 {
-    using Blocks.QuestionStates;
+    #region
+
+    using System.Diagnostics.CodeAnalysis;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Items.SuperMushroomStates;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
 
     internal class SuperMushroom : BasePhysicalObject
     {
@@ -96,7 +99,12 @@ namespace MelloMario.Objects.Items
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             switch (target.GetType().Name) // not safe!
             {
@@ -107,13 +115,13 @@ namespace MelloMario.Objects.Items
                     }
                     break;
                 case "Brick":
-                    if (((Brick) target).State is Blocks.BrickStates.Hidden)
+                    if (((Brick) target).State is Hidden)
                     {
                         break;
                     }
                     goto case "Stair";
                 case "Question":
-                    if (((Question) target).State is Hidden)
+                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
                     {
                         break;
                     }
@@ -130,7 +138,8 @@ namespace MelloMario.Objects.Items
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.right;
                     }
-                    else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
+                    else if (mode == CollisionMode.Right
+                        || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.left;

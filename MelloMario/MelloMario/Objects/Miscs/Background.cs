@@ -1,15 +1,22 @@
-﻿using MelloMario.Factories;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Miscs
+﻿namespace MelloMario.Objects.Miscs
 {
+    #region
+
+    using MelloMario.Factories;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Background : BaseGameObject
     {
         private readonly ZIndex targetZIndex;
         private readonly string type;
 
-        public Background(IGameWorld world, Point location, string type, ZIndex zIndex) : base(world, location, new Point(32, 32))
+        public Background(IGameWorld world, Point location, string type, ZIndex zIndex) : base(
+            world,
+            location,
+            new Point(32, 32))
         {
             this.type = type;
             targetZIndex = zIndex;

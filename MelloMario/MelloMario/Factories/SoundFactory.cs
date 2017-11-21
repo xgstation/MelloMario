@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Media;
-
-namespace MelloMario.Factories
+﻿namespace MelloMario.Factories
 {
-    using Sounds;
+    #region
+
+    using System.Collections.Generic;
+    using MelloMario.Sounds;
+    using Microsoft.Xna.Framework.Audio;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Media;
+
+    #endregion
 
     internal class SoundFactory : ISoundFactory<ContentManager>
     {
@@ -69,31 +72,31 @@ namespace MelloMario.Factories
             switch (name)
             {
                 case "Bounce":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_jumpsmall"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_jumpsmall"));
                 case "PowerBounce":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_jump"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_jump"));
                 case "BumpBlock":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_bump"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_bump"));
                 case "BreakBlock":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_breakblock"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_breakblock"));
                 case "Coin":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_coin"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_coin"));
                 case "Death":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_mariodie"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_mariodie"));
                 case "SizeUp":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_powerup"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_powerup"));
                 case "EnemyKill":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_stomp"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_stomp"));
                 case "Pipe":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_pipe"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_pipe"));
                 case "GameOver":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_gameover"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_gameover"));
                 case "GameWon":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_stage_clear"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_stage_clear"));
                 case "SizeUpAppear":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_powerup_appears"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_powerup_appears"));
                 case "OneUpCollect":
-                    return new SoundEffect(GetSoundEffect("SFX/smb_1"));
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_1"));
                 default:
                     // never reach
                     return null;

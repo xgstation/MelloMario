@@ -1,8 +1,12 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
+    #region
+
+    using System;
+    using Microsoft.Xna.Framework;
+
+    #endregion
+
 #if WINDOWS || LINUX
     /// <summary>
     ///     The main class.

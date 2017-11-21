@@ -1,8 +1,12 @@
 namespace MelloMario.Controls.Controllers
 {
+    #region
+
     using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Input;
+
+    #endregion
 
     internal class GamepadController : BaseController<Buttons>
     {

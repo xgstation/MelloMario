@@ -1,6 +1,4 @@
-﻿using MelloMario.Sounds;
-
-namespace MelloMario.Objects.Items.FireFlowerStates
+﻿namespace MelloMario.Objects.Items.FireFlowerStates
 {
     internal class Unveil : BaseTimedState<FireFlower>, IItemState
     {

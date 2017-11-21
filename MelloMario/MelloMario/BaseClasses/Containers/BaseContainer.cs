@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace MelloMario.Containers
+﻿namespace MelloMario.Containers
 {
+    #region
+
+    using System.Collections.Generic;
+    using System.Linq;
+
+    #endregion
+
     internal abstract class BaseContainer<Key, Value>
     {
         private readonly IDictionary<Value, Key> keys;

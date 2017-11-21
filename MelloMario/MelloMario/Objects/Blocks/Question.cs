@@ -1,13 +1,16 @@
-﻿using MelloMario.Objects.Blocks.QuestionStates;
-using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using MelloMario.Sounds;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Blocks
+﻿namespace MelloMario.Objects.Blocks
 {
+    #region
+
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks.QuestionStates;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Question : BaseCollidableObject
     {
         private bool isHidden;
@@ -66,7 +69,12 @@ namespace MelloMario.Objects.Blocks
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive) { }
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive) { }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 

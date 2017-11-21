@@ -1,7 +1,11 @@
-﻿using MelloMario.Interfaces.Objects.States;
-
-namespace MelloMario.Objects.Enemies.PiranhaStates
+﻿namespace MelloMario.Objects.Enemies.PiranhaStates
 {
+    #region
+
+    using MelloMario.Interfaces.Objects.States;
+
+    #endregion
+
     internal class Hidden : BaseState<Piranha>, IPiranhaState
     {
         private int elapsed;

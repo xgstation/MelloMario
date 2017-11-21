@@ -1,14 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using MelloMario.Objects.Blocks;
-using MelloMario.Objects.Enemies;
-using MelloMario.Objects.Items;
-using MelloMario.Objects.Characters;
-using MelloMario.Objects.Miscs;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario.Factories
+﻿namespace MelloMario.Factories
 {
+    #region
+
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Enemies;
+    using MelloMario.Objects.Items;
+    using MelloMario.Objects.Miscs;
+    using Microsoft.Xna.Framework;
+
+    #endregion
+
     internal class GameObjectFactory : IGameObjectFactory
     {
         // TODO: remove this later and use the collision between the camera and objects to "activate" objects' movement
@@ -112,7 +116,12 @@ namespace MelloMario.Factories
                 case "FlagPole":
                     for (int i = 0; i < count; ++i)
                     {
-                        yield return new Flag(world, new Point(location.X, location.Y + 32 * i), listener, count - i, count);
+                        yield return new Flag(
+                            world,
+                            new Point(location.X, location.Y + 32 * i),
+                            listener,
+                            count - i,
+                            count);
                     }
                     yield break;
 

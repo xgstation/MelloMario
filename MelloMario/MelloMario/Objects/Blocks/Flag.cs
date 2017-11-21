@@ -1,13 +1,17 @@
-﻿using System;
-using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using MelloMario.Theming;
-using MelloMario.Objects.UserInterfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Blocks
+﻿namespace MelloMario.Objects.Blocks
 {
+    #region
+
+    using System;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class Flag : BaseCollidableObject
     {
         public delegate void TimeScoreHandler(Flag m, EventArgs e);
@@ -36,7 +40,12 @@ namespace MelloMario.Objects.Blocks
 
         protected override void OnUpdate(int time) { }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (target is MarioCharacter mario)
             {

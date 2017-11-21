@@ -1,13 +1,16 @@
-﻿using MelloMario.Objects.Items;
-using MelloMario.Objects.Characters.MovementStates;
-using MelloMario.Objects.Characters.PowerUpStates;
-using MelloMario.Objects.Characters.ProtectionStates;
-using MelloMario.Sounds;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario.Objects.Characters
+﻿namespace MelloMario.Objects.Characters
 {
+    #region
+
+    using MelloMario.Objects.Characters.MovementStates;
+    using MelloMario.Objects.Characters.PowerUpStates;
+    using MelloMario.Objects.Characters.ProtectionStates;
+    using MelloMario.Objects.Items;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+
+    #endregion
+
     internal class MarioCharacter : Mario, ICharacter
     {
         private Animation animation;
@@ -44,7 +47,9 @@ namespace MelloMario.Objects.Characters
             get
             {
                 Point location = Boundary.Location - new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
-                Point size = new Point(Const.SCREEN_WIDTH * 2, Const.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
+                Point size = new Point(
+                    Const.SCREEN_WIDTH * 2,
+                    Const.SCREEN_HEIGHT * 2); // notice: should be greater than viewport
 
                 return new Rectangle(location, size);
             }

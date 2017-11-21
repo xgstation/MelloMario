@@ -1,7 +1,11 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario
+﻿namespace MelloMario
 {
+    #region
+
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal interface IObject
     {
         void Update(int time);

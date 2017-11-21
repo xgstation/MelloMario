@@ -1,11 +1,14 @@
-using MelloMario.Factories;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using MelloMario.Sounds;
-
 namespace MelloMario.Objects.UserInterfaces
 {
+    #region
+
+    using MelloMario.Factories;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class GameOver : BaseUIObject
     {
         private readonly ISprite coinSprite;
@@ -29,7 +32,14 @@ namespace MelloMario.Objects.UserInterfaces
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
             gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
-            string text = "MARIO        " + "   WORLD    TIME\n" + Player.Score.ToString().PadLeft(6, '0') + "    *" + Player.Coins.ToString().PadLeft(2, '0') + "    " + "1-1" + "      ";
+            string text = "MARIO        "
+                + "   WORLD    TIME\n"
+                + Player.Score.ToString().PadLeft(6, '0')
+                + "    *"
+                + Player.Coins.ToString().PadLeft(2, '0')
+                + "    "
+                + "1-1"
+                + "      ";
             textSprite = SpriteFactory.Instance.CreateTextSprite(text);
             textSprite2 = SpriteFactory.Instance.CreateTextSprite("WORLD");
 

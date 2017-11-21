@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using MelloMario.Containers;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen
 {
+    #region
+
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using MelloMario.Containers;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    #endregion
+
     //Using for deserialize json to a single GameWorld(Map)
     internal class GameConverter : JsonConverter
     {
@@ -47,7 +51,11 @@ namespace MelloMario.LevelGen
             return true;
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(
+            JsonReader reader,
+            Type objectType,
+            object existingValue,
+            JsonSerializer serializer)
         {
             jsonToken = JToken.Load(reader);
             mapListToken = Util.TryGet(out JToken t, jsonToken, "Maps") ? t : null;

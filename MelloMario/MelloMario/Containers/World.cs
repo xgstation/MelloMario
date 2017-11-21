@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-
-namespace MelloMario.Containers
+﻿namespace MelloMario.Containers
 {
+    #region
+
+    using System.Collections.Generic;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+
+    #endregion
+
     internal class World : BaseContainer<Point, IGameObject>, IGameWorld
     {
         private readonly Point initialPoint;

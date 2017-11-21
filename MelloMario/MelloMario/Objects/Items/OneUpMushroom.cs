@@ -1,13 +1,16 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using MelloMario.Factories;
-using MelloMario.Objects.Items.OneUpMushroomStates;
-using MelloMario.Sounds;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Items
+﻿namespace MelloMario.Objects.Items
 {
+    #region
+
+    using System.Diagnostics.CodeAnalysis;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Items.OneUpMushroomStates;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class OneUpMushroom : BasePhysicalObject
     {
         private bool collected;
@@ -84,7 +87,12 @@ namespace MelloMario.Objects.Items
             base.OnSimulation(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             switch (target.GetType().Name)
             {
@@ -109,7 +117,8 @@ namespace MelloMario.Objects.Items
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.right;
                     }
-                    else if (mode == CollisionMode.Right || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
+                    else if (mode == CollisionMode.Right
+                        || mode == CollisionMode.InnerRight && corner == CornerMode.Center)
                     {
                         Bounce(mode, new Vector2(), 1);
                         Facing = FacingMode.left;

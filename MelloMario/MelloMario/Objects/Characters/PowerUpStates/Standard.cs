@@ -1,7 +1,11 @@
-﻿using MelloMario.Objects.Characters.ProtectionStates;
-
-namespace MelloMario.Objects.Characters.PowerUpStates
+﻿namespace MelloMario.Objects.Characters.PowerUpStates
 {
+    #region
+
+    using MelloMario.Objects.Characters.ProtectionStates;
+
+    #endregion
+
     internal class Standard : BaseState<Mario>, IMarioPowerUpState
     {
         public Standard(Mario owner) : base(owner) { }

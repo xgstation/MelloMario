@@ -1,11 +1,15 @@
-﻿using MelloMario.Objects.Blocks.BrickStates;
-using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿namespace MelloMario.Objects.Blocks
+{
+    #region
 
-namespace MelloMario.Objects.Blocks
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    #endregion
+    namespace MelloMario.Objects.Blocks
 {
     internal class Brick : BaseCollidableObject, ISoundable
     {
@@ -73,7 +77,12 @@ namespace MelloMario.Objects.Blocks
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive) { }
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive) { }
 
         protected override void OnCollideViewport(IPlayer player, CollisionMode mode, CollisionMode modePassive) { }
 

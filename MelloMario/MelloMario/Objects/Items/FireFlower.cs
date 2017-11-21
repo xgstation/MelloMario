@@ -1,13 +1,17 @@
-﻿using MelloMario.Factories;
-using MelloMario.Objects.Items.FireFlowerStates;
-using MelloMario.Objects.Characters;
-using MelloMario.Theming;
-using MelloMario.Objects.UserInterfaces;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Items
+﻿namespace MelloMario.Objects.Items
 {
+    #region
+
+    using MelloMario.Factories;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Items.FireFlowerStates;
+    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
+
     internal class FireFlower : BaseCollidableObject
     {
         private bool collected;
@@ -54,7 +58,12 @@ namespace MelloMario.Objects.Items
             state.Update(time);
         }
 
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (target is Mario && state is Normal)
             {

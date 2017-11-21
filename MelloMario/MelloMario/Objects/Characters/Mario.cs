@@ -1,20 +1,22 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using MelloMario.Objects.Blocks;
-using MelloMario.Objects.Blocks.BrickStates;
-using MelloMario.Objects.Enemies;
-using MelloMario.Factories;
-using MelloMario.Objects.Items;
-using MelloMario.Objects.Characters.MovementStates;
-using MelloMario.Objects.Characters.PowerUpStates;
-using MelloMario.Objects.Characters.ProtectionStates;
-using MelloMario.Theming;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace MelloMario.Objects.Characters
+﻿namespace MelloMario.Objects.Characters
 {
-    using Blocks.QuestionStates;
+    #region
+
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using MelloMario.Factories;
+    using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Objects.Characters.MovementStates;
+    using MelloMario.Objects.Characters.PowerUpStates;
+    using MelloMario.Objects.Characters.ProtectionStates;
+    using MelloMario.Objects.Enemies;
+    using MelloMario.Objects.Items;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
 
     internal class Mario : BasePhysicalObject
     {
@@ -92,7 +94,12 @@ namespace MelloMario.Objects.Characters
                 facingString = "Right";
             }
 
-            ShowSprite(SpriteFactory.Instance.CreateMarioSprite(powerUpState.GetType().Name, movementState.GetType().Name, protectionState.GetType().Name, facingString));
+            ShowSprite(
+                SpriteFactory.Instance.CreateMarioSprite(
+                    powerUpState.GetType().Name,
+                    movementState.GetType().Name,
+                    protectionState.GetType().Name,
+                    facingString));
         }
 
         protected void ChangeFacing(FacingMode facing)
@@ -120,7 +127,12 @@ namespace MelloMario.Objects.Characters
         }
 
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive, CornerMode corner, CornerMode cornerPassive)
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
         {
             if (ProtectionState is Dead)
             {
@@ -144,13 +156,13 @@ namespace MelloMario.Objects.Characters
                         {
                             break;
                         }
-                        isHidden = brick.State is Blocks.BrickStates.Hidden;
-                        isBumping = brick.State is Blocks.BrickStates.Bumped;
+                        isHidden = brick.State is Hidden;
+                        isBumping = brick.State is Bumped;
                     }
                     else if (question != null)
                     {
-                        isHidden = question.State is Hidden;
-                        isBumping = question.State is Bumped;
+                        isHidden = question.State is Blocks.QuestionStates.Hidden;
+                        isBumping = question.State is Blocks.QuestionStates.Bumped;
                     }
                     else
                     {

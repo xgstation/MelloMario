@@ -1,12 +1,16 @@
-﻿using MelloMario.Factories;
-using MelloMario.Objects.Characters;
-using MelloMario.Objects.Characters.PowerUpStates;
-using MelloMario.Objects.Characters.ProtectionStates;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Media;
-
-namespace MelloMario.Sounds
+﻿namespace MelloMario.Sounds
 {
+    #region
+
+    using MelloMario.Factories;
+    using MelloMario.Objects.Characters;
+    using MelloMario.Objects.Characters.MovementStates;
+    using MelloMario.Objects.Characters.PowerUpStates;
+    using MelloMario.Objects.Characters.ProtectionStates;
+    using Microsoft.Xna.Framework.Media;
+
+    #endregion
+
     internal static class SoundController
     {
         private static IModel Model;
@@ -40,7 +44,9 @@ namespace MelloMario.Sounds
         {
             MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
             Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume = MediaPlayer.IsMuted ? 0 : SoundEffectVolume;
-            SoundEffectVolume = MediaPlayer.IsMuted ? SoundEffectVolume : Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
+            SoundEffectVolume = MediaPlayer.IsMuted
+                ? SoundEffectVolume
+                : Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
         }
 
         private static void Pause()
@@ -75,7 +81,7 @@ namespace MelloMario.Sounds
         {
             //TODO: Finish Mario Sound Effeect
             MarioCharacter mario = Model.ActivePlayer.Character as MarioCharacter;
-            if (mario?.MovementState is Objects.Characters.MovementStates.Jumping jumping && !jumping.Finished)
+            if (mario?.MovementState is Jumping jumping && !jumping.Finished)
             {
                 if (mario.PowerUpState is Super || mario.PowerUpState is Fire)
                 {
@@ -117,6 +123,7 @@ namespace MelloMario.Sounds
                     break;
             }
         }
+
         public static void Update()
         {
             UpdatePausing();
