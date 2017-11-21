@@ -66,7 +66,7 @@
                 case Star _:
                 case OneUpMushroom _:
                 case Coin _:
-                    ItemSoundEffect(c,e);
+                    ItemSoundEffect(c, e);
                     break;
                 case Brick _:
                     BlockSoundEffect(c, e);
@@ -137,24 +137,14 @@
 
         private static void ItemSoundEffect(ISoundable s, ISoundArgs e)
         {
-            switch (s)
+            if (s.GetType().GetProperty("State")?.GetValue(s, null).GetType().Name == "Unveil")
             {
-                case Coin coin:
-                    if (coin.State is Objects.Items.CoinStates.Unveil || e.MethodCalled == "Collect")
-                    {
-                        PlayEffect("Coin");
-                    }
-                    break;;
-                case FireFlower _:
-                case SuperMushroom _:
-                case Star _:
-                case OneUpMushroom _:
-                    if (s.GetType().GetProperty("State")?.GetValue(s, null).GetType().Name == "Unveil")
-                    {
-                        PlayEffect("Unveil");
-                    }
-                    break;
-            }   
+                PlayEffect(s is Coin ? "Coin" : "Unveil");
+            }
+            else if (e.MethodCalled == "Collect")
+            {
+                PlayEffect("Coin");
+            }
         }
         private static void PlayEffect(string s)
         {
