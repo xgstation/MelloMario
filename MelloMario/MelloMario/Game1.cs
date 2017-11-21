@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using MelloMario.Controls.Controllers;
     using MelloMario.Factories;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
@@ -19,6 +20,7 @@
         private readonly GraphicsDeviceManager graphics;
         private Theming.Model model;
         private SpriteBatch spriteBatch;
+        private SoundManager sounds;
 
         public Game1()
         {
@@ -45,6 +47,8 @@
             };
             model.LoadControllers(controllers);
             model.Init();
+
+            sounds = new SoundManager(model);
         }
 
         /// <summary>
@@ -57,7 +61,7 @@
         {
             base.Initialize();
 
-            //soundControl = new SoundController(this);
+            //soundControl = new SoundManager(this);
             Reset();
         }
 
@@ -93,6 +97,7 @@
         {
             base.Update(time);
             model.Update(time.ElapsedGameTime.Milliseconds);
+            sounds.Update();
         }
 
         /// <summary>

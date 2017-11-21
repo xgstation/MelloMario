@@ -20,7 +20,7 @@
         public override void Update(int time)
         {
             //TODO:Move this into soundcontroller
-            //SoundController.Coin.Play();
+            //SoundManager.Coin.Play();
             elapsed += time;
             realOffset += 128 * time / 500f;
 

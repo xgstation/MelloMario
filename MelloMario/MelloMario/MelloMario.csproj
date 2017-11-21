@@ -84,7 +84,7 @@
     <Compile Include="BaseClasses\Objects\BaseUIObject.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
-    <Compile Include="Interfaces\Objects\ISoundable.cs" />
+    <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="Sounds\SoundListener.cs" />
     <Compile Include="Sounds\SoundTrack.cs" />
     <Compile Include="Sounds\SoundEffect.cs" />
@@ -221,7 +221,7 @@
     <Compile Include="Objects\Characters\ProtectionStates\Normal.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Protected.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Starred.cs" />
-    <Compile Include="Sounds\SoundController.cs" />
+    <Compile Include="Sounds\SoundManager.cs" />
     <Compile Include="Objects\UserInterfaces\PopingUpPoints.cs" />
     <Compile Include="Graphics\Sprites\SplashSprite.cs" />
     <Compile Include="Graphics\Sprites\TextSprite.cs" />

@@ -37,7 +37,7 @@
             text2DestinationRect = new Rectangle(200, 200, 200, 80);
 
             //TODO:Move this into soundcontroller
-            //SoundController.GameWon.Play();
+            //SoundManager.GameWon.Play();
         }
 
         protected override void OnUpdate(int time)

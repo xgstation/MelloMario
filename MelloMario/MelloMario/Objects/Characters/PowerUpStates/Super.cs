@@ -11,7 +11,7 @@
         public Super(Mario owner) : base(owner)
         {
             //TODO:Move this into soundcontroller
-            //SoundController.SizeUp.Play();
+            //SoundManager.SizeUp.Play();
         }
 
         public void UpgradeToFire()

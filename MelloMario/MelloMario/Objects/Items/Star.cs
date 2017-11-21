@@ -21,20 +21,11 @@
         public Star(
             IGameWorld world,
             Point location,
-            Point marioLocation,
             IListener<IGameObject> listener,
-            bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
+            bool isUnveil = false) : base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
 
-            if (marioLocation.X < location.X)
-            {
-                Facing = FacingMode.right;
-            }
-            else
-            {
-                Facing = FacingMode.left;
-            }
             if (isUnveil)
             {
                 state = new Unveil(this);
@@ -47,13 +38,6 @@
                 UpdateSprite();
             }
         }
-
-        public Star(IGameWorld world, Point location, Point marioLocation, IListener<IGameObject> listener) : this(
-            world,
-            location,
-            marioLocation,
-            listener,
-            false) { }
 
         public IItemState State
         {
@@ -167,7 +151,7 @@
             if (!collected)
             {
                 //TODO:Move this into soundcontroller
-                //SoundController.SizeUp.Play();
+                //SoundManager.SizeUp.Play();
                 ScorePoints(Const.SCORE_POWER_UP);
                 new PopingUpPoints(World, Boundary.Location, Const.SCORE_POWER_UP);
             }

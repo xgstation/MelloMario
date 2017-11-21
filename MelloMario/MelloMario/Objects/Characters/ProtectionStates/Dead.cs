@@ -7,7 +7,7 @@
             //MediaPlayer.Stop();
 
             //TODO:Move this into soundcontroller
-            //SoundController.Death.Play();
+            //SoundManager.Death.Play();
             owner.OnDeath();
         }
 

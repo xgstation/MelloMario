@@ -19,20 +19,10 @@
         public OneUpMushroom(
             IGameWorld world,
             Point location,
-            Point marioLocation,
             IListener<IGameObject> listener,
-            bool isUnveil) : base(world, location, listener, new Point(32, 32), 32)
+            bool isUnveil = false) : base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
-
-            if (marioLocation.X < location.X)
-            {
-                Facing = FacingMode.left;
-            }
-            else
-            {
-                Facing = FacingMode.right;
-            }
 
             if (isUnveil)
             {
@@ -46,19 +36,6 @@
                 UpdateSprite();
             }
         }
-
-        //This suppression exists because this constructor is inderectly used by the json parser.
-        //removing this constructor will cause a runtime error when trying to read in the level.
-        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public OneUpMushroom(IGameWorld world, Point location, IListener<IGameObject> listener) : this(
-            world,
-            location,
-            Database.GetCharacterLocation(),
-            listener,
-            false) { }
-
-        public OneUpMushroom(IGameWorld world, Point location, Point marioLocation, IListener<IGameObject> listener) :
-            this(world, location, marioLocation, listener, false) { }
 
         public IItemState State
         {
@@ -147,7 +124,7 @@
         public void Collect()
         {
             //TODO:Move this into soundcontroller
-            //SoundController.OneUpCollect.Play();
+            //SoundManager.OneUpCollect.Play();
             if (!collected)
             {
                 ChangeLives();

@@ -13,7 +13,7 @@
         private Point size;
         private ISprite sprite;
 
-        // TODO: World should only be used in base classes and MarioCharacter
+        // note: World should only be used in base classes and MarioCharacter
         protected IGameWorld World;
 
         protected BaseGameObject(IGameWorld world, Point location, Point size)

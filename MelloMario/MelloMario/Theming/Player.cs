@@ -39,7 +39,7 @@
                 Lifes += 1;
 
                 //TODO:Move this into soundcontroller
-                //SoundController.OneUpCollect.Play();
+                //SoundManager.OneUpCollect.Play();
             }
         }
 

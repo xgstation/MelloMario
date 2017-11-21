@@ -21,31 +21,13 @@
     {
         private IGoombaState state;
 
-        //This suppression exists because this constructor is inderectly used by the json parser.
-        //removing this constructor will cause a runtime error when trying to read in the level.
-        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public Goomba(IGameWorld world, Point location, IListener<IGameObject> listener) : this(
-            world,
-            location,
-            Database.GetCharacterLocation(),
-            listener) { }
-
-        public Goomba(IGameWorld world, Point location, Point marioLoc, IListener<IGameObject> listener) : base(
+        public Goomba(IGameWorld world, Point location, IListener<IGameObject> listener) : base(
             world,
             location,
             listener,
             new Point(32, 32),
             32)
         {
-            if (marioLoc.X < location.X)
-            {
-                Facing = FacingMode.left;
-            }
-            else
-            {
-                Facing = FacingMode.right;
-            }
-
             state = new GoombaStates.Normal(this);
             UpdateSprite();
         }

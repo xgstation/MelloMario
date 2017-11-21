@@ -10,11 +10,11 @@
     internal abstract class BaseContainer<Key, Value>
     {
         private readonly IDictionary<Value, Key> keys;
+        private readonly IDictionary<Key, ISet<Value>> values;
 
         private readonly ISet<Value> toAdd;
         private readonly ISet<Value> toMove;
         private readonly ISet<Value> toRemove;
-        private readonly IDictionary<Key, ISet<Value>> values;
 
         protected BaseContainer()
         {

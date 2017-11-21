@@ -21,7 +21,7 @@
             if (played <= 2)
             {
                 //TODO:Move this into soundcontroller
-                //SoundController.EnemyKill.Play();
+                //SoundManager.EnemyKill.Play();
                 played += 1;
             }
         }

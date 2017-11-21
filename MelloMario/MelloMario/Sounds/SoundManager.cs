@@ -11,24 +11,24 @@
 
     #endregion
 
-    internal static class SoundController
+    internal class SoundManager
     {
-        private static IModel Model;
-
-        public static void Initialize(IModel model)
-        {
-            Model = model;
-        }
+        private IModel Model;
 
         private static readonly ISoundTrack Normal = SoundFactory.Instance.CreateSoundTrack("Normal");
         private static readonly ISoundTrack Hurry = SoundFactory.Instance.CreateSoundTrack("Hurry");
         private static readonly ISoundTrack BelowGround = SoundFactory.Instance.CreateSoundTrack("BelowGround");
         private static readonly ISoundTrack Star = SoundFactory.Instance.CreateSoundTrack("Star");
 
-        private static ISoundTrack CurrentTrack;
-        private static float SoundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
+        private ISoundTrack CurrentTrack;
+        private float SoundEffectVolume = Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
 
-        private static void PlayMusic(ISoundTrack track, bool reset = false)
+        public SoundManager(IModel model)
+        {
+            Model = model;
+        }
+
+        private void PlayMusic(ISoundTrack track, bool reset = false)
         {
             if (track != CurrentTrack || reset)
             {
@@ -39,7 +39,7 @@
             }
         }
 
-        public static void ToggleMute()
+        public void ToggleMute()
         {
             MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
             Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume = MediaPlayer.IsMuted ? 0 : SoundEffectVolume;
@@ -48,17 +48,17 @@
                 : Microsoft.Xna.Framework.Audio.SoundEffect.MasterVolume;
         }
 
-        private static void Pause()
+        private void Pause()
         {
             MediaPlayer.Pause();
         }
 
-        private static void Resume()
+        private void Resume()
         {
             MediaPlayer.Resume();
         }
 
-        private static void UpdatePausing()
+        private void UpdatePausing()
         {
             //Pausing state detector
             if (Model.IsPaused)
@@ -101,7 +101,7 @@
             }
         }
 
-        public static void Update()
+        public void Update()
         {
             UpdatePausing();
             UpdateBGM();

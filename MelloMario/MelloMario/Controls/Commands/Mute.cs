@@ -1,16 +1,12 @@
 ﻿namespace MelloMario.Controls.Commands
 {
-    #region
-
-    using MelloMario.Sounds;
-
-    #endregion
-
-    internal class Mute : ICommand
+    internal class Mute : BaseCommand<IModel>
     {
-        public void Execute()
+        public Mute(IModel model) : base(model) { }
+
+        public override void Execute()
         {
-            SoundController.ToggleMute();
+            // Receiver.Mute();
         }
     }
 }

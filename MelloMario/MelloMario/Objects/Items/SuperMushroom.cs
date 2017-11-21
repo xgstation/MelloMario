@@ -19,34 +19,13 @@
         private bool collected;
         private IItemState state;
 
-        public SuperMushroom(IGameWorld world, Point location, Point marioLocation, IListener<IGameObject> listener) :
-            this(world, location, marioLocation, listener, false) { }
-
-        //This suppression exists because this constructor is inderectly used by the json parser.
-        //removing this constructor will cause a runtime error when trying to read in the level.
-        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public SuperMushroom(IGameWorld world, Point location, IListener<IGameObject> listener) : this(
-            world,
-            location,
-            Database.GetCharacterLocation(),
-            listener) { }
-
         public SuperMushroom(
             IGameWorld world,
             Point location,
-            Point marioLocation,
             IListener<IGameObject> listener,
-            bool isUnveil = true) : base(world, location, listener, new Point(32, 32), 32)
+            bool isUnveil = false) : base(world, location, listener, new Point(32, 32), 32)
         {
             collected = false;
-            if (marioLocation.X < location.X)
-            {
-                Facing = FacingMode.left;
-            }
-            else
-            {
-                Facing = FacingMode.right;
-            }
 
             if (isUnveil)
             {

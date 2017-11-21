@@ -26,11 +26,11 @@
             if (played <= 2)
             {
                 //TODO:Move this into soundcontroller
-                //if (SoundController.EnemyKill.State == SoundState.Stopped)
+                //if (SoundManager.EnemyKill.State == SoundState.Stopped)
                 //{
                 //    played += 1;
                 //}
-                //SoundController.EnemyKill.Play();
+                //SoundManager.EnemyKill.Play();
             }
         }
 

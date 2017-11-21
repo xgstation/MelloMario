@@ -20,7 +20,7 @@
         public override void Update(int time)
         {
             //TODO:Move this into soundcontroller
-            //SoundController.SizeUpAppear.Play();
+            //SoundManager.SizeUpAppear.Play();
             base.Update(time);
 
             elapsed += time;

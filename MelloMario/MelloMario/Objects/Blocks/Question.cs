@@ -86,7 +86,7 @@
         public void Bump(Mario mario)
         {
             //TODO:Move this into soundcontroller
-            //SoundController.BumpBlock.Play();
+            //SoundManager.BumpBlock.Play();
             State.Bump(mario);
         }
 
