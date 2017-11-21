@@ -106,69 +106,54 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
-            switch (target.GetType().Name)
+            switch (target)
             {
-                case "MarioCharacter":
-                    //TODO: Fire to be added
-                    Mario mario = (Mario) target; //TODO: fire as target to be added
+                case Mario mario:
                     if (mode == CollisionMode.Top && corner == CornerMode.Top || mario.ProtectionState is Starred)
                     {
                         Defeat();
                     }
-                    else
+                    else if (state is KoopaStates.Normal || state is MovingShell)
                     {
-                        if (state is KoopaStates.Normal || state is MovingShell)
+                        if (mode == CollisionMode.Top)
                         {
-                            if (mode == CollisionMode.Top)
-                            {
-                                JumpOn();
-                            }
-                            else
-                            {
-                                mario.Downgrade();
-                            }
+                            JumpOn();
                         }
-                        else if (state is Defeated)
+                        else
                         {
-                            if (mode == CollisionMode.Left)
-                            {
-                                ChangeFacing(FacingMode.right);
-                                Pushed();
-                            }
-                            else if (mode == CollisionMode.Right)
-                            {
-                                ChangeFacing(FacingMode.left);
-                                Pushed();
-                            }
-                            else if (mode == CollisionMode.Top && corner == CornerMode.Left)
-                            {
-                                ChangeFacing(FacingMode.right);
-                                Pushed();
-                            }
-                            else if (mode == CollisionMode.Top && corner == CornerMode.Right)
-                            {
-                                ChangeFacing(FacingMode.left);
-                                Pushed();
-                            }
+                            mario.Downgrade();
+                        }
+                    }
+                    else if (state is Defeated)
+                    {
+                        if (mode == CollisionMode.Left)
+                        {
+                            ChangeFacing(FacingMode.right);
+                            Pushed();
+                        }
+                        else if (mode == CollisionMode.Right)
+                        {
+                            ChangeFacing(FacingMode.left);
+                            Pushed();
+                        }
+                        else if (mode == CollisionMode.Top && corner == CornerMode.Left)
+                        {
+                            ChangeFacing(FacingMode.right);
+                            Pushed();
+                        }
+                        else if (mode == CollisionMode.Top && corner == CornerMode.Right)
+                        {
+                            ChangeFacing(FacingMode.left);
+                            Pushed();
                         }
                     }
 
                     break;
-                case "Brick":
-                    if (((Brick) target).State is Hidden)
-                    {
-                        break;
-                    }
-                    goto case "Stair";
-                case "Question":
-                    if (((Question) target).State is Blocks.QuestionStates.Hidden)
-                    {
-                        break;
-                    }
-                    goto case "Stair";
-                case "Floor":
-                case "Pipeline":
-                case "Stair":
+                case Brick brick when brick.State is Hidden:
+                    break;
+                case Question question when question.State is Blocks.QuestionStates.Hidden:
+                    break;
+                case IGameObject obj when target is Brick || target is Question || target is Floor || target is Pipeline || target is Stair:
                     if (mode == CollisionMode.Left)
                     {
                         Bounce(mode, new Vector2(), 1);
@@ -184,7 +169,7 @@
                         Bounce(mode, new Vector2());
                     }
                     break;
-                case "Fire":
+                case FireBall fire:
                     Defeat();
                     break;
             }
