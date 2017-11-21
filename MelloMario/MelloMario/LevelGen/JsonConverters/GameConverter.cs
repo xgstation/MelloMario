@@ -94,7 +94,6 @@
                 id,
                 mapType == "Normal" ? WorldType.normal : WorldType.underground,
                 mapSize,
-                new Point(2, 2),
                 respawnPoints);
 
             gameEntityConverter = new GameEntityConverter(world, listener, soundListener);

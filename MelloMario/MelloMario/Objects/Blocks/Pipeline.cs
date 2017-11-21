@@ -63,10 +63,6 @@
                     {
                         switchingPlayer.Spawn(world, Database.GetPortal(this).Boundary.Location);
                     }
-                    else
-                    {
-                        switchingPlayer.Spawn(world, world.GetInitialPoint());
-                    }
 
                     elapsed = 0;
                     switchingPlayer = null;
