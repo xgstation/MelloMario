@@ -17,7 +17,7 @@
         {
             ID = id;
             Type = type;
-            Boundary = new Rectangle(new Point(), size);
+            Boundary = new Rectangle(0, 0, size.X * Const.GRID, size.Y * Const.GRID);
 
             initialPoint = new Point(initial.X * Const.GRID, initial.Y * Const.GRID);
             respawnPoints = new HashSet<Point>();

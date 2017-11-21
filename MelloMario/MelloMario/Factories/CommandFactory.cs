@@ -28,7 +28,7 @@
                 case "Quit":
                     return new Quit(model);
                 case "ToggleMute":
-                    return new Mute();
+                    return new Mute(model);
                 case "Normal":
                     return new NormalMode(model);
                 case "Infinite":
