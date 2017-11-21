@@ -21,7 +21,6 @@
         private readonly IListener<IGameObject> listener;
         private readonly IListener<ISoundable> soundListener;
         private readonly Session session;
-        private ICamera activeCamera;
         private IEnumerable<IController> controllers;
         private InfiniteGenerator infiniteGenerator;
         private string mapPath = "Content/Level1.json";
@@ -47,7 +46,7 @@
         {
             get
             {
-                return activeCamera.GetViewMatrix(new Vector2(1f));
+                return ActivePlayer.Camera.GetViewMatrix(new Vector2(1f));
             }
         }
 
@@ -68,9 +67,7 @@
 
         public void Init()
         {
-            activeCamera = new Camera();
-
-            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener, activeCamera);
+            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
             IsPaused = true;
             new PlayingScript().Bind(controllers, this, ActivePlayer.Character);
 
@@ -103,7 +100,7 @@
         {
             mapPath = "Content/Infinite.json";
             splashElapsed = 0;
-            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener, activeCamera);
+            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
             IsPaused = false;
             Resume();
         }
@@ -112,7 +109,7 @@
         {
             mapPath = "Content/Level1.json";
             splashElapsed = 0;
-            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener, activeCamera);
+            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
             IsPaused = false;
             Resume();
         }
@@ -178,7 +175,7 @@
             LevelIOJson reader = new LevelIOJson(mapPath, listener, soundListener);
 
             IWorld newWorld = reader.Load(id);
-            infiniteGenerator = new InfiniteGenerator(newWorld, listener, activeCamera);
+            //infiniteGenerator = new InfiniteGenerator(newWorld, listener);
             return newWorld;
         }
 
