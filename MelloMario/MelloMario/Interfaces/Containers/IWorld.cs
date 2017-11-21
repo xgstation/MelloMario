@@ -23,7 +23,6 @@
         void Extend(int left, int right, int top, int bottom);
 
         IEnumerable<IGameObject> ScanNearby(Rectangle range);
-        Point GetInitialPoint();
         Point GetRespawnPoint(Point location);
     }
 }

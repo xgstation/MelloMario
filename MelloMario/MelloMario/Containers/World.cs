@@ -12,16 +12,14 @@
     [Serializable]
     internal class World : BaseContainer<Point, IGameObject>, IWorld
     {
-        private readonly Point initialPoint;
         private readonly ISet<Point> respawnPoints;
 
-        public World(string id, WorldType type, Point size, Point initial, IEnumerable<Point> respawn)
+        public World(string id, WorldType type, Point size, IEnumerable<Point> respawn)
         {
             ID = id;
             Type = type;
             Boundary = new Rectangle(0, 0, size.X * Const.GRID, size.Y * Const.GRID);
 
-            initialPoint = new Point(initial.X * Const.GRID, initial.Y * Const.GRID);
             respawnPoints = new HashSet<Point>();
             foreach (Point p in respawn)
             {
@@ -55,11 +53,6 @@
                     }
                 }
             }
-        }
-
-        public Point GetInitialPoint()
-        {
-            return initialPoint;
         }
 
         public Point GetRespawnPoint(Point location)
