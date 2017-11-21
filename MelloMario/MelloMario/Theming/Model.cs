@@ -40,7 +40,6 @@
             listener = new Listener(this, ActivePlayer);
             soundListener = new SoundListener();
             Database.Initialize(session);
-            SoundController.Initialize(this);
         }
 
         public Matrix GetActiveViewMatrix
@@ -121,7 +120,6 @@
         {
             UpdateController();
             Database.Update();
-            SoundController.Update();
             if (IsPaused)
             {
                 if (splashElapsed < 0)
