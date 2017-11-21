@@ -85,14 +85,21 @@
             return true;
         }
 
+        public static Tuple<bool, string[]> GetPropertyPair(JToken token)
+        {
+            return new Tuple<bool, string[]>(
+                TryGet(out bool isHidden, token, "Property", "IsHidden") && isHidden,
+                TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
+        }
+
         public static void BatchRecCreate<T>(
             Func<Point, T> func,
             Point startPoint,
             Point quantity,
             Point objSize,
             ICollection<Point> ignoredSet,
-            IDictionary<Point,T> propertiesDict = null,
-            Action<Point,T> applyProperty = null)
+            IDictionary<Point, T> propertiesDict = null,
+            Action<Point, T> applyProperty = null)
         {
             for (int x = 0; x < quantity.X; x++)
             {
@@ -181,7 +188,7 @@
         }
 
         public static List<IGameObject> CreateSinglePipeline(
-            Model model,
+            IModel model,
             IWorld world,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,
