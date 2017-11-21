@@ -75,7 +75,7 @@
             }
         }
 
-        private static void UpdateBGM()
+        private void UpdateBGM()
         {
             //BGM Updater
             switch (Model.ActivePlayer.Character)
