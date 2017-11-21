@@ -28,7 +28,7 @@ namespace MelloMario.Objects.Characters
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-        protected EventArgs SoundEventArgs;
+        protected SoundArgs SoundEventArgs;
         public event SoundHandler SoundEvent;
 
         protected void RaiseSoundEvent()
@@ -45,7 +45,7 @@ namespace MelloMario.Objects.Characters
         {
             listener.Subscribe(this);
             soundListener.Subscribe(this);
-            SoundEventArgs = new MarioSoundArgs();
+            SoundEventArgs = new SoundArgs();
             powerUpState = new Standard(this);
             movementState = new Standing(this);
             protectionState = new ProtectionStates.Normal(this);
@@ -365,7 +365,7 @@ namespace MelloMario.Objects.Characters
 
         public void OnDeath()
         {
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = OnDeath;
+            ((SoundArgs)SoundEventArgs).SetMethodCalled();
             SetVerticalVelocity(-20);
         }
 
@@ -379,13 +379,13 @@ namespace MelloMario.Objects.Characters
 
         public void UpgradeToSuper()
         {
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = UpgradeToSuper;
+            ((SoundArgs)SoundEventArgs).SetMethodCalled();
             PowerUpState.UpgradeToSuper();
         }
 
         public void UpgradeToFire()
         {
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = UpgradeToFire;
+            ((SoundArgs)SoundEventArgs).SetMethodCalled();
             PowerUpState.UpgradeToFire();
         }
 

@@ -12,7 +12,7 @@
         {
             //TODO: Move this into soundcontroller
             //SoundManager.BreakBlock.Play();
-            Owner.OnDestoy();
+            Owner.OnDestroy();
         }
 
         public void Show()

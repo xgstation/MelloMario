@@ -7,6 +7,7 @@
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.CoinStates;
     using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
@@ -18,6 +19,7 @@
         public delegate void CoinHandler(Coin m, EventArgs e);
 
         private EventArgs coinEventInfo;
+        private SoundArgs soundArgs;
         private bool collected;
         private IItemState state;
 
@@ -92,7 +94,7 @@
         {
             if (!collected)
             {
-                SoundEvent?.Invoke(this, ref coinEventInfo);
+                SoundEvent?.Invoke(this, ref soundArgs);
                 HandlerCoins?.Invoke(this, coinEventInfo);
                 ScorePoints(Const.SCORE_COIN);
                 collected = true;

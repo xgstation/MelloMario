@@ -2,9 +2,11 @@
 {
     #region
 
+    using System;
     using MelloMario.Factories;
     using MelloMario.Objects.Blocks.BrickStates;
     using MelloMario.Objects.Characters;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
@@ -15,21 +17,25 @@
     {
         private bool isHidden;
         private IBlockState state;
+        public SoundArgs SoundEventArgs;
 
-        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener) : this(
+        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener) : this(
             world,
             location,
             listener,
+            soundListener,
             false)
         { }
 
-        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(
+        public Brick(IGameWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool isHidden = false) : base(
             world,
             location,
             listener,
             new Point(32, 32))
         {
             this.isHidden = isHidden;
+            soundListener.Subscribe(this);
+            SoundEventArgs = new SoundArgs();
         }
 
         public bool HasInitialItem { get; private set; }
@@ -86,6 +92,15 @@
             state.Update(time);
         }
 
+        protected override void OnSimulation(int time)
+        {
+            if (SoundEventArgs?.MethodCalled != null)
+            {
+                SoundEvent?.Invoke(this, ref SoundEventArgs);
+            }
+            base.OnSimulation(time);
+        }
+
         protected override void OnCollision(
             IGameObject target,
             CollisionMode mode,
@@ -100,8 +115,9 @@
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch) { }
 
-        public void OnDestoy()
+        public void OnDestroy()
         {
+            SoundEventArgs.SetMethodCalled();
             ScorePoints(Const.SCORE_BRICK);
         }
 

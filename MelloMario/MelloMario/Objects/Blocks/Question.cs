@@ -11,12 +11,12 @@
 
     #endregion
 
-    internal class Question : BaseCollidableObject
+    internal class Question : BaseCollidableObject, ISoundable
     {
         private bool isHidden;
         private IBlockState state;
 
-        public Question(IGameWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) :
+        public Question(IGameWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool isHidden = false) :
             base(world, location, listener, new Point(32, 32))
         {
             this.isHidden = isHidden;
@@ -105,5 +105,7 @@
             World.Update();
             World.Add(item);
         }
+
+        public event SoundHandler SoundEvent;
     }
 }

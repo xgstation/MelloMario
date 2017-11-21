@@ -139,7 +139,7 @@ namespace MelloMario.Objects.Characters
 
                 if (MovementState is Jumping jumping && !jumping.Finished)
                 {
-                    ((MarioSoundArgs)SoundEventArgs).ActionCalled = Jump;
+                    SoundEventArgs.SetMethodCalled();
                     userInput.Y -= Const.ACCEL_INPUT_Y + Const.ACCEL_G;
                 }
             }
@@ -190,13 +190,13 @@ namespace MelloMario.Objects.Characters
 
         public void FireCreate()
         {
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = FireCreate;
+            SoundEventArgs.SetMethodCalled();
             PowerUpState.UpgradeToFire();
         }
 
         public void SuperCreate()
         {
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = SuperCreate;
+            SoundEventArgs.SetMethodCalled();
             PowerUpState.UpgradeToSuper();
         }
 
@@ -206,7 +206,7 @@ namespace MelloMario.Objects.Characters
             {
                 return;
             }
-            ((MarioSoundArgs)SoundEventArgs).ActionCalled = NormalCreate;
+            SoundEventArgs.SetMethodCalled();
             PowerUpState.Downgrade();
             if (PowerUpState is Fire)
             {
@@ -222,7 +222,7 @@ namespace MelloMario.Objects.Characters
             }
             if (PowerUpState is Fire)
             {
-                ((MarioSoundArgs)SoundEventArgs).ActionCalled = Action;
+                SoundEventArgs.SetMethodCalled();
                 new FireBall(World, Boundary.Location, null);
             }
         }
