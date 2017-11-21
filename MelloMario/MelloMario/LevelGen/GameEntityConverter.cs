@@ -7,11 +7,11 @@
     using System.Diagnostics;
     using System.Linq;
     using System.Reflection;
-    using MelloMario.Factories;
-    using MelloMario.Objects;
-    using MelloMario.Objects.Blocks;
-    using MelloMario.Objects.Enemies;
-    using MelloMario.Theming;
+    using Factories;
+    using Objects;
+    using Objects.Blocks;
+    using Objects.Enemies;
+    using Theming;
     using Microsoft.Xna.Framework;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
