@@ -15,6 +15,8 @@
 
     internal class SoundArgs : SoundArgsBase
     {
+        public override bool HasArgs { get { return Method != null; } }
+
         public override MethodBase MethodCalled
         {
             get

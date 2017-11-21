@@ -18,7 +18,7 @@
     {
         public delegate void CoinHandler(Coin m, EventArgs e);
 
-        private EventArgs coinEventInfo;
+        private readonly EventArgs coinEventInfo;
         public SoundArgsBase SoundEventArgs { get;}
         private bool collected;
         private IItemState state;

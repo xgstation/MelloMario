@@ -14,16 +14,11 @@
         event SoundHandler SoundEvent;
         SoundArgsBase SoundEventArgs { get; }
     }
+
     internal abstract class SoundArgsBase : EventArgs
     {
         protected MethodBase Method;
-        public bool HasArgs
-        {
-            get
-            {
-                return Method != null;
-            }
-        }
+        public abstract bool HasArgs { get; }
         public abstract MethodBase MethodCalled { get; protected set; }
         public abstract void SetMethodCalled();
     }
