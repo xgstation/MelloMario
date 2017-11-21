@@ -1,4 +1,6 @@
-﻿namespace MelloMario.Objects.Items.CoinStates
+﻿using MelloMario.Objects.Items;
+
+namespace MelloMario.Objects.Items.CoinStates
 {
     internal class Unveil : BaseTimedState<Coin>, IItemState
     {

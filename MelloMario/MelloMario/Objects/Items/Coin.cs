@@ -1,17 +1,13 @@
-﻿namespace MelloMario.Objects.Items
-{
-    #region
+﻿using System;
+using MelloMario.Factories;
+using MelloMario.Objects.Characters;
+using MelloMario.Objects.Items.CoinStates;
+using MelloMario.Objects.UserInterfaces;
+using MelloMario.Theming;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-    using System;
-    using MelloMario.Factories;
-    using MelloMario.Objects.Characters;
-    using MelloMario.Objects.Items.CoinStates;
-    using MelloMario.Objects.UserInterfaces;
-    using MelloMario.Theming;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-    #endregion
-    namespace MelloMario.Objects.Items
+namespace MelloMario.Objects.Items
 {
     internal class Coin : BaseCollidableObject, ISoundable
     {
@@ -21,7 +17,9 @@
         private bool collected;
         private IItemState state;
 
-        public Coin(IGameWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool isUnveil = false) : base(world, location, listener, new Point(32, 32))
+        public Coin(IGameWorld world, Point location, IListener<IGameObject> listener,
+            IListener<ISoundable> soundListener, bool isUnveil = false) : base(world, location, listener,
+            new Point(32, 32))
         {
             listener.Subscribe(this);
             soundListener.Subscribe(this);
@@ -64,12 +62,8 @@
             state.Update(time);
         }
 
-        protected override void OnCollision(
-            IGameObject target,
-            CollisionMode mode,
-            CollisionMode modePassive,
-            CornerMode corner,
-            CornerMode cornerPassive)
+        protected override void OnCollision(IGameObject target, CollisionMode mode, CollisionMode modePassive,
+            CornerMode corner, CornerMode cornerPassive)
         {
             if (target is Mario && state is Normal)
             {
