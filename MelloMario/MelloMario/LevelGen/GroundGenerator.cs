@@ -17,7 +17,7 @@
     {
         private readonly IListener<IGameObject> listener;
 
-        internal GroundGenerator(IListener<IGameObject> listener)
+        public GroundGenerator(IListener<IGameObject> listener)
         {
             this.listener = listener;
         }

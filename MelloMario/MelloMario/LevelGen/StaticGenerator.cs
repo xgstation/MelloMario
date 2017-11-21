@@ -15,7 +15,7 @@
     {
         private IEnumerable<IGameObject> objects;
 
-        internal StaticGenerator(IEnumerable<IGameObject> objects)
+        public StaticGenerator(IEnumerable<IGameObject> objects)
         {
             this.objects = objects;
         }
