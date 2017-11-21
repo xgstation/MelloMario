@@ -3,6 +3,7 @@
     #region
 
     using MelloMario.Factories;
+    using MelloMario.Objects.Miscs;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -19,7 +20,7 @@
 
         public ICharacter Character { get; private set; }
 
-        public ICamera Camera { get; private set; }
+        public ICamera Camera { get; }
 
         public int Coins { get; private set; }
 
@@ -62,8 +63,7 @@
             string type,
             IWorld world,
             IListener<IGameObject> listener,
-            IListener<ISoundable> soundListener,
-            ICamera newCamera)
+            IListener<ISoundable> soundListener)
         {
             Character = GameObjectFactory.Instance.CreateGameCharacter(
                 type,
@@ -73,7 +73,7 @@
                 listener,
                 soundListener);
             Session.Add(this);
-            Camera = newCamera;
+            Camera = new Camera(); // TODO: move to factory
 
             Lifes = Const.LIFES_INIT;
             TimeRemain = Const.LEVEL_TIME * 1000;

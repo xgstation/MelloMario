@@ -25,8 +25,7 @@
             string type,
             IWorld newWorld,
             IListener<IGameObject> listener,
-            IListener<ISoundable> soundListener,
-            ICamera camera);
+            IListener<ISoundable> soundListener);
 
         void Spawn(IWorld newWorld, Point newLocation);
         void Reset(string type, IListener<IGameObject> listener, IListener<ISoundable> soundListener);
