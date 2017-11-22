@@ -29,9 +29,14 @@
         {
             get
             {
-                string result = method.Name;
-                method = null;
-                return result;
+                try
+                {
+                    return method.Name;
+                }
+                finally
+                {
+                    method = null;
+                }
             }
         }
 
