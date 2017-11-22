@@ -2,12 +2,7 @@
 {
     #region
 
-    using System.Collections.Generic;
-    using MelloMario.Controls.Controllers;
-    using MelloMario.Factories;
     using MelloMario.LevelGen;
-    using MelloMario.Sounds;
-    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -23,15 +18,15 @@
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private NoiseInterpreter noiseInterpreter;
+
         public NoiseGame()
         {
             graphics = new GraphicsDeviceManager(this)
             {
                 PreferredBackBufferWidth = 2560,
-                PreferredBackBufferHeight =1500
+                PreferredBackBufferHeight = 1500
             };
         }
-
 
         /// <summary>
         ///     LoadContent will be called once per game and is the place to load

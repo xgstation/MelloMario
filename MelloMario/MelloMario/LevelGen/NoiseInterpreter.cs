@@ -1,19 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 //Work in progress
 namespace MelloMario.LevelGen
 {
+    #region
+
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
 
     internal class NoiseInterpreter
     {
         private readonly GraphicsDevice graphicsDevice;
         private readonly SpriteBatch spriteBatch;
+
         public NoiseInterpreter(SpriteBatch spriteBatch)
         {
             this.spriteBatch = spriteBatch;
@@ -22,6 +24,7 @@ namespace MelloMario.LevelGen
             Produce(perlinColor, ref cellTexture2D2, 1);
             Produce(perlinColor, ref cellTexture2D3, 2);
         }
+
         private readonly Texture2D cellTexture2D;
         private readonly Texture2D cellTexture2D2;
         private readonly Texture2D cellTexture2D3;
@@ -29,6 +32,7 @@ namespace MelloMario.LevelGen
 
         private readonly PerlinNoiseGenerator perlinTerrian = new PerlinNoiseGenerator(5120);
         private readonly PerlinNoiseGenerator perlinColor = new PerlinNoiseGenerator(2560);
+
         private void Produce(PerlinNoiseGenerator perlinColor, ref Texture2D texture2D, int parameter = 0)
         {
             texture2D = new Texture2D(graphicsDevice, 2560, 500);
@@ -37,21 +41,20 @@ namespace MelloMario.LevelGen
             Color c = new Color(80, 80, 80);
             for (int r = 0; r < 50; r++)
             {
-                perlinTerrian.NewSeed((int)(5120 * (r + 1) / 50f));
+                perlinTerrian.NewSeed((int) (5120 * (r + 1) / 50f));
                 for (int x = 1; x < 2560; x++)
                 {
                     float p = perlinTerrian.Noise(new Vector2(x + r * 10, 0) * 0.0025f, parameter);
-                    int i = (int)(p * 550f + r);
+                    int i = (int) (p * 550f + r);
                     i = i > 0 ? i : -i;
                     for (int j = i; j > 0; j--)
                     {
-                        var index = x + (500 - j) * 2560;
+                        int index = x + (500 - j) * 2560;
                         if (index > 0 && index < 2560 * 500)
                         {
                             originData[index] = c;
                         }
                     }
-
                 }
             }
             for (int x = 0; x < 2560; x += GRID_I)
@@ -64,7 +67,6 @@ namespace MelloMario.LevelGen
                     {
                         //x += GRID_I;
                     }
-
                 }
                 for (int y = 0; y < 500; y += GRID_I)
                 {
@@ -93,16 +95,15 @@ namespace MelloMario.LevelGen
                         }
                     }
                 }
-
             }
             texture2D.SetData(cellData);
         }
-        
+
         private static void RenderCell(ref Color[] data, int x, int y, Color color)
         {
-            for (int i = 0; i < GRID_I -1; i++)
+            for (int i = 0; i < GRID_I - 1; i++)
             {
-                for (int j = 0; j < GRID_I -1; j++)
+                for (int j = 0; j < GRID_I - 1; j++)
                 {
                     data[x + i + (y + j) * 2560] = color;
                 }

@@ -23,6 +23,7 @@
         private SpriteBatch spriteBatch;
         private BGMManager sounds;
         private NoiseInterpreter noiseInterpreter;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this)

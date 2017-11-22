@@ -29,6 +29,7 @@
             RngCrypto.GetBytes(gradAngleSeedX);
             InitializePermuteTable();
         }
+
         public float Noise(Vector2 p, int smooth = 0)
         {
             float a = Perlin(p, smooth) + 0.5f * Perlin(p, smooth) + 0.25f * Perlin(4f * p, smooth) + 0.125f * Perlin(8f * p, smooth);
@@ -127,10 +128,12 @@
         {
             return MathHelper.SmoothStep(a, b, k);
         }
+
         private static float Lerp(float a, float b, float k)
         {
-            return MathHelper.Lerp(a,b,k);
+            return MathHelper.Lerp(a, b, k);
         }
+
         private static float LerpPrecise(float a, float b, float k)
         {
             return MathHelper.LerpPrecise(a, b, k);
@@ -140,7 +143,7 @@
         {
             byte[] bytes = new byte[4];
             RngCrypto.GetBytes(bytes);
-            return BitConverter.ToInt32(bytes, 0) / (float)int.MaxValue * f;
+            return BitConverter.ToInt32(bytes, 0) / (float) int.MaxValue * f;
         }
     }
 }
