@@ -1,0 +1,7 @@
+<map id="MelloMario.Objects.Items.OneUpMushroom.UpdateSprite" name="MelloMario.Objects.Items.OneUpMushroom.UpdateSprite">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1ISpriteFactory.html#af0610c0c0204b652f13464f4ffac6cbf" title="MelloMario.ISpriteFactory.\lCreateOneUpMushroomSprite" alt="" coords="260,5,455,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#aa3116237ab408071c073373daca92ad0" title="MelloMario.Objects.BaseGame\lObject.ShowSprite" alt="" coords="256,71,459,112"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a968dd48f33c69acc16fb2acfae36c3a8" title="MelloMario.Objects.BaseGame\lObject.Resize" alt="" coords="507,71,709,112"/>
+<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IContainer.html#a515faf6ba73cf569cb85fa5f690e2941" title="MelloMario.IContainer.Move" alt="" coords="769,49,949,75"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a739d7c5d6a671aa79c6e9a6b642e444c" title="MelloMario.Objects.BaseGame\lObject.Relocate" alt="" coords="757,100,960,141"/>
+</map>

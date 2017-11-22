@@ -1,0 +1,203 @@
+\section{Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json Class Reference}
+\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson}\index{Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json@{Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json}}
+
+
+Collaboration diagram for Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Level\+I\+O\+Json} (string json\+Path, \textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$ \textbf{ listener}, \textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$ \textbf{ sound\+Listener})
+\item 
+\textbf{ I\+World} \textbf{ Load} (string id)
+\item 
+void \textbf{ Save} (string \textbf{ path})
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$ \textbf{ listener}
+\item 
+readonly \textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$ \textbf{ sound\+Listener}
+\item 
+readonly string \textbf{ path}
+\item 
+\textbf{ Game\+Converter} \textbf{ game\+Converter}
+\item 
+string \textbf{ level\+String}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Level\+I\+O\+Json.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson_a2e2efa1628d6af80e59d104e59a71eb6}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}!Level\+I\+O\+Json@{Level\+I\+O\+Json}}
+\index{Level\+I\+O\+Json@{Level\+I\+O\+Json}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}}
+\subsubsection{Level\+I\+O\+Json()}
+{\footnotesize\ttfamily Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+Level\+I\+O\+Json (\begin{DoxyParamCaption}\item[{string}]{json\+Path,  }\item[{\textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$}]{listener,  }\item[{\textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$}]{sound\+Listener }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file Level\+I\+O\+Json.\+cs.
+
+
+
+References Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Util.\+Initilalize(), Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+listener, and Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+sound\+Listener.
+
+
+\begin{DoxyCode}
+23         \{
+24             this.listener = listener;
+25             this.soundListener = soundListener;
+26             path = jsonPath;
+27             Util.Initilalize();
+28         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson_a2e2efa1628d6af80e59d104e59a71eb6_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson_aa3fd52213102bf6ca317746b70eb5819}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}!Load@{Load}}
+\index{Load@{Load}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}}
+\subsubsection{Load()}
+{\footnotesize\ttfamily \textbf{ I\+World} Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+Load (\begin{DoxyParamCaption}\item[{string}]{id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 30 of file Level\+I\+O\+Json.\+cs.
+
+
+
+References Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+game\+Converter, and Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+level\+String.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Generator.\+Get\+Objs(), and Mello\+Mario.\+Theming.\+Game\+Model.\+Load\+Level().
+
+
+\begin{DoxyCode}
+31         \{
+32             levelString = File.ReadAllText(path);
+33             gameConverter = \textcolor{keyword}{new} GameConverter(listener, soundListener, \textcolor{keywordtype}{id});
+34 
+35             \textcolor{keywordflow}{return} JsonConvert.DeserializeObject<IWorld>(levelString, 
+      gameConverter);
+36         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson_aa3fd52213102bf6ca317746b70eb5819_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson_a177805f77c73ca6effb407c07a495df0}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}!Save@{Save}}
+\index{Save@{Save}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}}
+\subsubsection{Save()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+Save (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 38 of file Level\+I\+O\+Json.\+cs.
+
+
+\begin{DoxyCode}
+39         \{
+40         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson_a800b3e44bd834ed379194e3439de4784}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}!game\+Converter@{game\+Converter}}
+\index{game\+Converter@{game\+Converter}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}}
+\subsubsection{game\+Converter}
+{\footnotesize\ttfamily \textbf{ Game\+Converter} Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+game\+Converter\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file Level\+I\+O\+Json.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+Load().
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson_ad4facf2bcac45e2a69503321fee6474b}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}!level\+String@{level\+String}}
+\index{level\+String@{level\+String}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}}
+\subsubsection{level\+String}
+{\footnotesize\ttfamily string Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+level\+String\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file Level\+I\+O\+Json.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+Load().
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson_a9f26f8e9b3107198c4a8e172c0b090ab}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}!listener@{listener}}
+\index{listener@{listener}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}}
+\subsubsection{listener}
+{\footnotesize\ttfamily readonly \textbf{ I\+Listener}$<$\textbf{ I\+Game\+Object}$>$ Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+listener\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 12 of file Level\+I\+O\+Json.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+Level\+I\+O\+Json().
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson_ac72e47af95b59877eb053e9737913e73}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}!path@{path}}
+\index{path@{path}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}}
+\subsubsection{path}
+{\footnotesize\ttfamily readonly string Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+path\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 18 of file Level\+I\+O\+Json.\+cs.
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson_adfd4808eb49eb5b4ae2a26ccaca547a3}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}!sound\+Listener@{sound\+Listener}}
+\index{sound\+Listener@{sound\+Listener}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Level\+I\+O\+Json}}
+\subsubsection{sound\+Listener}
+{\footnotesize\ttfamily readonly \textbf{ I\+Listener}$<$\textbf{ I\+Soundable}$>$ Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+sound\+Listener\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 14 of file Level\+I\+O\+Json.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+Level\+I\+O\+Json().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Level\+Gen/\+Json\+Converters/\textbf{ Level\+I\+O\+Json.\+cs}\end{DoxyCompactItemize}

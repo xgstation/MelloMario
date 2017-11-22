@@ -1,0 +1,9 @@
+<map id="MelloMario.Objects.BaseCollidableObject.OnSimulation" name="MelloMario.Objects.BaseCollidableObject.OnSimulation">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a4206babe2bd6b68ec7fd6f481846918f" title="MelloMario.Objects.BaseCollidable\lObject.CollideAll" alt="" coords="277,104,501,145"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a739d7c5d6a671aa79c6e9a6b642e444c" title="MelloMario.Objects.BaseGame\lObject.Relocate" alt="" coords="288,169,491,211"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a69866abdb7a2505da443ee03b5eab5f1" title="MelloMario.Objects.BaseCollidable\lObject.OnCollideWorld" alt="" coords="549,5,773,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#ab219c67abded7be9e9af6d333cfd782c" title="MelloMario.Objects.BaseCollidable\lObject.OnCollision" alt="" coords="549,71,773,112"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a3c86569f120436ccfc4883e14c5a3bb4" title="MelloMario.Objects.BaseCollidable\lObject.ScanCollideModes" alt="" coords="549,136,773,177"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Containers_1_1World.html#aea586175f8222efd98a95899e510cd6b" title="MelloMario.Containers.World.\lScanNearby" alt="" coords="565,201,758,243"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#ab2746816cefc64fdadac94ac31eaea47" title="MelloMario.Containers.Base\lContainer\&lt; Point, IGameObject\l \&gt;::Scan" alt="" coords="821,194,1024,250"/>
+</map>

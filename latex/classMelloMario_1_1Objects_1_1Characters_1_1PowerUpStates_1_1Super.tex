@@ -1,0 +1,183 @@
+\section{Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super Class Reference}
+\label{classMelloMario_1_1Objects_1_1Characters_1_1PowerUpStates_1_1Super}\index{Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super@{Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Characters_1_1PowerUpStates_1_1Super__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Characters_1_1PowerUpStates_1_1Super__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Super} (\textbf{ Mario} owner)
+\item 
+void \textbf{ Upgrade\+To\+Fire} ()
+\item 
+void \textbf{ Downgrade} ()
+\item 
+void \textbf{ Upgrade\+To\+Super} ()
+\item 
+override void \textbf{ Update} (int time)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \textbf{ Owner}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file Super.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1PowerUpStates_1_1Super_ac27cac342c9b044cce2eeb66fe785530}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}!Super@{Super}}
+\index{Super@{Super}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}}
+\subsubsection{Super()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super.\+Super (\begin{DoxyParamCaption}\item[{\textbf{ Mario}}]{owner }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file Super.\+cs.
+
+
+\begin{DoxyCode}
+13                                   : base(owner)
+14         \{
+15             \textcolor{comment}{//TODO:Move this into soundcontroller}
+16             \textcolor{comment}{//SoundManager.SizeUp.Play();}
+17         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1PowerUpStates_1_1Super_ae71d26372ec1fe0563f312dbf1db5f01}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}!Downgrade@{Downgrade}}
+\index{Downgrade@{Downgrade}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}}
+\subsubsection{Downgrade()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super.\+Downgrade (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Mario\+Power\+Up\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IMarioPowerUpState_a38b1ade7fe3265cdd1503f9169ab25ca}.
+
+
+
+Definition at line 28 of file Super.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Mario $>$.\+Owner.
+
+
+\begin{DoxyCode}
+29         \{
+30             Owner.PowerUpState = \textcolor{keyword}{new} Standard(Owner);
+31         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1PowerUpStates_1_1Super_a2ca3328c7fcb6cdbfc386cc54e42c144}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+State$<$ Mario $>$} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseState_a151e08ba646c7b0faff385b8248812c2}.
+
+
+
+Definition at line 37 of file Super.\+cs.
+
+
+\begin{DoxyCode}
+38         \{
+39         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1PowerUpStates_1_1Super_abcdf140a66306f86ddf64bcaf513f30e}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}!Upgrade\+To\+Fire@{Upgrade\+To\+Fire}}
+\index{Upgrade\+To\+Fire@{Upgrade\+To\+Fire}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}}
+\subsubsection{Upgrade\+To\+Fire()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super.\+Upgrade\+To\+Fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Mario\+Power\+Up\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IMarioPowerUpState_a6179bed0a7f9b45dba33a69971f3a18e}.
+
+
+
+Definition at line 19 of file Super.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Mario $>$.\+Owner.
+
+
+\begin{DoxyCode}
+20         \{
+21             Owner.PowerUpState = \textcolor{keyword}{new} Fire(Owner);
+22             \textcolor{keywordflow}{if} (Owner.ProtectionState is Dead)
+23             \{
+24                 Owner.ProtectionState = \textcolor{keyword}{new} Normal(Owner);
+25             \}
+26         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1PowerUpStates_1_1Super_aeeb9589ef58126fbec42c0cb073876b2}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}!Upgrade\+To\+Super@{Upgrade\+To\+Super}}
+\index{Upgrade\+To\+Super@{Upgrade\+To\+Super}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}}
+\subsubsection{Upgrade\+To\+Super()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super.\+Upgrade\+To\+Super (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Mario\+Power\+Up\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IMarioPowerUpState_a0ee5a993841714c330f3a4b5670f90c6}.
+
+
+
+Definition at line 33 of file Super.\+cs.
+
+
+\begin{DoxyCode}
+34         \{
+35         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseState_a0367f1a6d509d6b819df603402bc6bb0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}!Owner@{Owner}}
+\index{Owner@{Owner}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Power\+Up\+States\+::\+Super}}
+\subsubsection{Owner}
+{\footnotesize\ttfamily T \textbf{ Mello\+Mario.\+Objects.\+Base\+State}$<$ T $>$.Owner\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 12 of file Base\+State.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Standing\+::\+Crouch(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Walking\+::\+Crouch(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Standard\+::\+Downgrade(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super\+::\+Downgrade(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching\+::\+Idle(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Walking\+::\+Idle(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Standing\+::\+Jump(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Walking\+::\+Jump(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Standard\+::\+Upgrade\+To\+Fire(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super\+::\+Upgrade\+To\+Fire(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Fire\+::\+Upgrade\+To\+Super(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Standard\+::\+Upgrade\+To\+Super(), and Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Standing\+::\+Walk().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+Characters/\+Power\+Up\+States/\textbf{ Super.\+cs}\end{DoxyCompactItemize}

@@ -1,0 +1,8 @@
+<map id="MelloMario.Objects.BaseGameObject" name="MelloMario.Objects.BaseGameObject">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IGameObject.html" title="{IGameObject\n|+ Boundary\l|}" alt="" coords="5,389,104,467"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IObject.html" title="{IObject\n||+ Update()\l+ Draw()\l}" alt="" coords="13,204,96,296"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1ISprite.html" title="{MelloMario.ISprite\n|+ PixelSize\l|+ Draw()\l}" alt="" coords="129,389,255,467"/>
+<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IWorld.html" title="{MelloMario.IWorld\n|+ ID\l+ Type\l+ Boundary\l|+ Extend()\l+ ScanNearby()\l+ GetRespawnPoint()\l}" alt="" coords="280,360,427,496"/>
+<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IContainer.html" title="{IContainer\&lt; IGameObject \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="263,189,443,311"/>
+<area shape="rect" id="node7" href="$interfaceMelloMario_1_1IContainer.html" title="{MelloMario.IContainer\&lt; T \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="264,5,443,127"/>
+</map>

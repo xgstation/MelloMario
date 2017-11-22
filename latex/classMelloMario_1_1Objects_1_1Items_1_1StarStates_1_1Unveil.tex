@@ -1,0 +1,216 @@
+\section{Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil Class Reference}
+\label{classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Unveil}\index{Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil@{Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Unveil__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Unveil__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Unveil} (\textbf{ Star} owner)
+\item 
+void \textbf{ Show} ()
+\item 
+void \textbf{ Collect} ()
+\item 
+override void \textbf{ Update} (int time)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ On\+Timer} (int time)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+float \textbf{ Progress}\hspace{0.3cm}{\ttfamily  [get]}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \textbf{ elapsed}
+\item 
+float \textbf{ real\+Offset}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Unveil.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Unveil_a613d47b93a08521b29c13dbb5ff2904d}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}!Unveil@{Unveil}}
+\index{Unveil@{Unveil}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}}
+\subsubsection{Unveil()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil.\+Unveil (\begin{DoxyParamCaption}\item[{\textbf{ Star}}]{owner }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file Unveil.\+cs.
+
+
+\begin{DoxyCode}
+15                                   : base(owner, 1000)
+16         \{
+17             elapsed = 0f;
+18         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Unveil_a98892b9ecdf10dc44996af5934f6c876}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}!Collect@{Collect}}
+\index{Collect@{Collect}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}}
+\subsubsection{Collect()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil.\+Collect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Item\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IItemState_a13a59996a8e8bfb471a51f0a0c8aa144}.
+
+
+
+Definition at line 25 of file Unveil.\+cs.
+
+
+\begin{DoxyCode}
+26         \{
+27         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Unveil_a66cac16c96d4f882aa82b2aa01c60d63}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}!On\+Timer@{On\+Timer}}
+\index{On\+Timer@{On\+Timer}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}}
+\subsubsection{On\+Timer()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil.\+On\+Timer (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+Timed\+State$<$ Star $>$} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseTimedState_af7c0be0a1dc5a05ba0bcda9cddc854f8}.
+
+
+
+Definition at line 46 of file Unveil.\+cs.
+
+
+\begin{DoxyCode}
+47         \{
+48             Owner.State = \textcolor{keyword}{new} Normal(Owner);
+49         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Unveil_afded6a6408b39f092de91de6d110d4c2}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}!Show@{Show}}
+\index{Show@{Show}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}}
+\subsubsection{Show()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil.\+Show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Item\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IItemState_aa4e06d80e563b0eeecc0ca1f4b76a827}.
+
+
+
+Definition at line 20 of file Unveil.\+cs.
+
+
+\begin{DoxyCode}
+21         \{
+22             Owner.State = \textcolor{keyword}{new} Normal(Owner);
+23         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Unveil_afb82ad683183f23d498658554764e459}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IState_ae7c9397fccacd69066825f983b94c8fb}.
+
+
+
+Definition at line 29 of file Unveil.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Items.\+Coin\+States.\+Unveil.\+real\+Offset.
+
+
+\begin{DoxyCode}
+30         \{
+31             base.Update(time);
+32 
+33             \textcolor{comment}{//TODO:Move this into soundcontroller}
+34             \textcolor{comment}{//SoundManager.SizeUpAppear.Play();}
+35 
+36             elapsed += time;
+37             realOffset += 32 * time / 1000f;
+38 
+39             \textcolor{keywordflow}{while} (realOffset > 1)
+40             \{
+41                 Owner.UnveilMove(-1);
+42                 --realOffset;
+43             \}
+44         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Unveil_ab0fd306043311c8fb474a5d016760707}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}!elapsed@{elapsed}}
+\index{elapsed@{elapsed}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}}
+\subsubsection{elapsed}
+{\footnotesize\ttfamily float Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil.\+elapsed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 12 of file Unveil.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Unveil_a146de0abce3d67271450143c867b9fda}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}!real\+Offset@{real\+Offset}}
+\index{real\+Offset@{real\+Offset}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}}
+\subsubsection{real\+Offset}
+{\footnotesize\ttfamily float Mello\+Mario.\+Objects.\+Items.\+Star\+States.\+Unveil.\+real\+Offset\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 13 of file Unveil.\+cs.
+
+
+
+\subsection{Property Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseTimedState_a61c6c33853dc7d7774f1764544dc0d86}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}!Progress@{Progress}}
+\index{Progress@{Progress}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Star\+States\+::\+Unveil}}
+\subsubsection{Progress}
+{\footnotesize\ttfamily float \textbf{ Mello\+Mario.\+Objects.\+Base\+Timed\+State}$<$ T $>$.Progress\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 21 of file Base\+Timed\+State.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+Items/\+Star\+States/\textbf{ Unveil.\+cs}\end{DoxyCompactItemize}

@@ -1,0 +1,158 @@
+\section{Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down Class Reference}
+\label{classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1MovingDown}\index{Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down@{Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1MovingDown__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1MovingDown__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Moving\+Down} (\textbf{ Piranha} owner)
+\item 
+override void \textbf{ Update} (int time)
+\item 
+void \textbf{ Defeat} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \textbf{ Owner}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly int \textbf{ initialY}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file Moving\+Down.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1MovingDown_a33007b856f2c7582e25960a781a82131}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down}!Moving\+Down@{Moving\+Down}}
+\index{Moving\+Down@{Moving\+Down}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down}}
+\subsubsection{Moving\+Down()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down.\+Moving\+Down (\begin{DoxyParamCaption}\item[{\textbf{ Piranha}}]{owner }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file Moving\+Down.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Boundary.
+
+
+\begin{DoxyCode}
+15                                          : base(owner)
+16         \{
+17             initialY = owner.Boundary.Y;
+18         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1MovingDown_a343210f6b7979986a9371449f0a5445e}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down}!Defeat@{Defeat}}
+\index{Defeat@{Defeat}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down}}
+\subsubsection{Defeat()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down.\+Defeat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Interfaces.\+Objects.\+States.\+I\+Piranha\+State} \doxyref{}{p.}{interfaceMelloMario_1_1Interfaces_1_1Objects_1_1States_1_1IPiranhaState_a482b433f05860877cece0cfc13adcc00}.
+
+
+
+Definition at line 28 of file Moving\+Down.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Piranha $>$.\+Owner.
+
+
+\begin{DoxyCode}
+29         \{
+30             Owner.State = \textcolor{keyword}{new} Defeated(Owner);
+31         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1MovingDown_af46b5061166a714b7f6f6be0cf0963f0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+State$<$ Piranha $>$} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseState_a151e08ba646c7b0faff385b8248812c2}.
+
+
+
+Definition at line 20 of file Moving\+Down.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Piranha $>$.\+Owner.
+
+
+\begin{DoxyCode}
+21         \{
+22             \textcolor{keywordflow}{if} (Owner.Boundary.Y >= initialY + 48)
+23             \{
+24                 Owner.State = \textcolor{keyword}{new} Hidden(Owner);
+25             \}
+26         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1MovingDown_af43b415ef89710dd4d9adf2a75c89a93}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down}!initialY@{initialY}}
+\index{initialY@{initialY}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down}}
+\subsubsection{initialY}
+{\footnotesize\ttfamily readonly int Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down.\+initialY\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 13 of file Moving\+Down.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseState_a0367f1a6d509d6b819df603402bc6bb0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down}!Owner@{Owner}}
+\index{Owner@{Owner}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Piranha\+States\+::\+Moving\+Down}}
+\subsubsection{Owner}
+{\footnotesize\ttfamily T \textbf{ Mello\+Mario.\+Objects.\+Base\+State}$<$ T $>$.Owner\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 12 of file Base\+State.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down\+::\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Up\+::\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Up\+::\+Update(), and Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down\+::\+Update().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+Enemies/\+Piranha\+States/\textbf{ Moving\+Down.\+cs}\end{DoxyCompactItemize}

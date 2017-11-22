@@ -1,0 +1,15 @@
+<map id="MelloMario.Objects.Enemies.Goomba.OnCollision" name="MelloMario.Objects.Enemies.Goomba.OnCollision">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#a9f83fd24e2351d29708d33a18c16ebb7" title="MelloMario.Objects.BasePhysical\lObject.Bounce" alt="" coords="247,71,465,112"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Goomba.html#adc857e0e74326d12567f7bd5df01f7d4" title="MelloMario.Objects.Enemies.\lGoomba.ChangeFacing" alt="" coords="259,136,453,177"/>
+<area shape="rect" id="node12" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Goomba.html#afbd0c963b3530c68d8a73b57b66e54f9" title="MelloMario.Objects.Enemies.\lGoomba.Defeat" alt="" coords="259,201,453,243"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#afb437ff84f73186d883167df00854fb0" title="MelloMario.Objects.BaseCollidable\lObject.StopHorizontalMovement" alt="" coords="513,5,737,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a93e7a1fd2da3f05e1549054a58faad95" title="MelloMario.Objects.BaseCollidable\lObject.StopVerticalMovement" alt="" coords="513,71,737,112"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Goomba.html#a9a9818aac3ef99146bbac402b0470ba3" title="MelloMario.Objects.Enemies.\lGoomba.UpdateSprite" alt="" coords="529,136,722,177"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#aa3116237ab408071c073373daca92ad0" title="MelloMario.Objects.BaseGame\lObject.ShowSprite" alt="" coords="785,104,988,145"/>
+<area shape="rect" id="node11" href="$interfaceMelloMario_1_1ISpriteFactory.html#acbcfc2b85fb60239b6a77360ec4e5293" title="MelloMario.ISpriteFactory.\lCreateGoombaSprite" alt="" coords="800,169,973,211"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a968dd48f33c69acc16fb2acfae36c3a8" title="MelloMario.Objects.BaseGame\lObject.Resize" alt="" coords="1036,104,1239,145"/>
+<area shape="rect" id="node9" href="$interfaceMelloMario_1_1IContainer.html#a515faf6ba73cf569cb85fa5f690e2941" title="MelloMario.IContainer.Move" alt="" coords="1298,82,1478,109"/>
+<area shape="rect" id="node10" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a739d7c5d6a671aa79c6e9a6b642e444c" title="MelloMario.Objects.BaseGame\lObject.Relocate" alt="" coords="1287,133,1489,175"/>
+<area shape="rect" id="node13" href="$interfaceMelloMario_1_1IGoombaState.html#a7f94ffa4251ca347f1e27085b66662b4" title="MelloMario.IGoombaState.\lDefeat" alt="" coords="537,201,713,243"/>
+<area shape="rect" id="node14" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a51b9dcd51c329bef4f04919f67234378" title="MelloMario.Objects.BaseCollidable\lObject.ScorePoints" alt="" coords="513,267,737,308"/>
+</map>

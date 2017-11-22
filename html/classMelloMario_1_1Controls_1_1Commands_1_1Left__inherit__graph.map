@@ -1,0 +1,5 @@
+<map id="MelloMario.Controls.Commands.Left" name="MelloMario.Controls.Commands.Left">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Controls_1_1Commands_1_1BaseCommand.html" title="{BaseCommand\&lt; ICharacter \&gt;\n|# Receiver\l|+ Execute()\l# BaseCommand()\l}" alt="" coords="24,301,219,393"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Controls_1_1Commands_1_1BaseCommand.html" title="{MelloMario.Controls.Commands.\lBaseCommand\&lt; T \&gt;\n|# Receiver\l|+ Execute()\l# BaseCommand()\l}" alt="" coords="16,132,227,239"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1ICommand.html" title="{ICommand\n||+ Execute()\l}" alt="" coords="76,5,167,83"/>
+</map>

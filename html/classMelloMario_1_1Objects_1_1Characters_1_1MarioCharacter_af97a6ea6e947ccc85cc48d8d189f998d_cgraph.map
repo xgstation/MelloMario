@@ -1,0 +1,6 @@
+<map id="MelloMario.Objects.Characters.MarioCharacter.OnSimulation" name="MelloMario.Objects.Characters.MarioCharacter.OnSimulation">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#a33284423adbab1439aa0d9994374a1d7" title="MelloMario.Objects.Characters.\lMarioCharacter.Move" alt="" coords="259,71,464,112"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#a09791801b12923f7b6b7e83decfbe997" title="MelloMario.Containers.Base\lContainer.Add" alt="" coords="521,5,706,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a739d7c5d6a671aa79c6e9a6b642e444c" title="MelloMario.Objects.BaseGame\lObject.Relocate" alt="" coords="512,71,715,112"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#a22d1d351d72889669184260796158208" title="MelloMario.Containers.Base\lContainer.Remove" alt="" coords="521,136,706,177"/>
+</map>

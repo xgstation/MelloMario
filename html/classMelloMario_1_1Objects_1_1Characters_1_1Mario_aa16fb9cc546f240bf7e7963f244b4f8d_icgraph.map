@@ -1,0 +1,8 @@
+<map id="MelloMario.Objects.Characters.Mario.UpdateSprite" name="MelloMario.Objects.Characters.Mario.UpdateSprite">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#ae126a5492ac0b07e1587d2a50cf9f366" title="MelloMario.Objects.Characters.\lMario.ChangeFacing" alt="" coords="259,37,464,79"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#adb5efa2062b7b11dc343fd6ffbe4400b" title="MelloMario.Objects.Characters.\lMario.Mario" alt="" coords="259,103,464,144"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#a08d547cd145ade7c394c2041eacd7abc" title="MelloMario.Objects.Characters.\lMarioCharacter.Left" alt="" coords="512,5,717,47"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#aada6421b0d209cf576426fd4ddb43c02" title="MelloMario.Objects.Characters.\lMarioCharacter.Right" alt="" coords="512,71,717,112"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#a6e1715196968544d83a207b2e11108ab" title="MelloMario.Objects.Characters.\lMarioCharacter.LeftPress" alt="" coords="765,5,971,47"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#af7a00a8ceed9580f6642a1f919e59d7f" title="MelloMario.Objects.Characters.\lMarioCharacter.RightPress" alt="" coords="765,71,971,112"/>
+</map>

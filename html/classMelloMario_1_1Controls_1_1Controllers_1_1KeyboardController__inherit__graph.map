@@ -1,0 +1,5 @@
+<map id="MelloMario.Controls.Controllers.KeyboardController" name="MelloMario.Controls.Controllers.KeyboardController">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Controls_1_1Controllers_1_1BaseController.html" title="{BaseController\&lt; Keys \&gt;\n|&#45; commands\l|+ AddCommand()\l+ Update()\l+ Reset()\l# BaseController()\l# OnUpdate()\l# RunCommand()\l}" alt="" coords="28,389,189,540"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Controls_1_1Controllers_1_1BaseController.html" title="{MelloMario.Controls.Controllers.\lBaseController\&lt; T \&gt;\n|&#45; commands\l|+ AddCommand()\l+ Update()\l+ Reset()\l# BaseController()\l# OnUpdate()\l# RunCommand()\l}" alt="" coords="5,161,212,327"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IController.html" title="{IController\n||+ AddCommand()\l+ Update()\l+ Reset()\l}" alt="" coords="47,5,170,112"/>
+</map>

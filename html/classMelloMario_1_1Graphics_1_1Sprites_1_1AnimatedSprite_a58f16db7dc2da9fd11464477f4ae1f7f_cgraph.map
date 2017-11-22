@@ -1,0 +1,5 @@
+<map id="MelloMario.Graphics.Sprites.AnimatedSprite.OnAnimate" name="MelloMario.Graphics.Sprites.AnimatedSprite.OnAnimate">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Graphics_1_1Sprites_1_1AnimatedSprite.html#a0f4a3a45ebfb781f14bb54deb1c03140" title="MelloMario.Graphics.Sprites.\lAnimatedSprite.OnFrame" alt="" coords="276,5,467,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Graphics_1_1Sprites_1_1AnimatedSprite.html#af00fedbd8313e14312c327ee4f9939b5" title="MelloMario.Graphics.Sprites.\lAnimatedSprite.UpdateSourceRectangle" alt="" coords="244,71,499,112"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Graphics_1_1Sprites_1_1BaseTextureSprite.html#a2e61431e17b3108f3a5ed2da7bc87304" title="MelloMario.Graphics.Sprites.\lBaseTextureSprite.ChangeSource" alt="" coords="547,71,764,112"/>
+</map>

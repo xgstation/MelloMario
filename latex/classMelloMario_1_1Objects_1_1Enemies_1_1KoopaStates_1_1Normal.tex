@@ -1,0 +1,199 @@
+\section{Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal Class Reference}
+\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Normal}\index{Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal@{Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Normal__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Normal__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Normal} (\textbf{ Koopa} owner)
+\item 
+void \textbf{ Show} ()
+\item 
+void \textbf{ Jump\+On} ()
+\item 
+void \textbf{ Defeat} ()
+\item 
+override void \textbf{ Update} (int time)
+\item 
+void \textbf{ Pushed} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \textbf{ Owner}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Normal.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Normal_a2c2bcc0ad7171b83746d0997587586ee}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}!Normal@{Normal}}
+\index{Normal@{Normal}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}}
+\subsubsection{Normal()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal.\+Normal (\begin{DoxyParamCaption}\item[{\textbf{ Koopa}}]{owner }\end{DoxyParamCaption})}
+
+
+
+Definition at line 12 of file Normal.\+cs.
+
+
+\begin{DoxyCode}
+12                                    : base(owner)
+13         \{
+14         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Normal_af99a8f5c4d5b982d31f108739848ad42}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}!Defeat@{Defeat}}
+\index{Defeat@{Defeat}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}}
+\subsubsection{Defeat()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal.\+Defeat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Koopa\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IKoopaState_a45a176e564368a92bd3879f27d3270d0}.
+
+
+
+Definition at line 25 of file Normal.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Brick $>$.\+Owner.
+
+
+\begin{DoxyCode}
+26         \{
+27             Owner.State = \textcolor{keyword}{new} Defeated(Owner);
+28         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Normal_a1e4abef52b79d445875db3c9b0bf3fb2}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}!Jump\+On@{Jump\+On}}
+\index{Jump\+On@{Jump\+On}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}}
+\subsubsection{Jump\+On()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal.\+Jump\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Koopa\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IKoopaState_ad459b66ef3a50aea50ed5cdfee85e422}.
+
+
+
+Definition at line 20 of file Normal.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Brick $>$.\+Owner.
+
+
+\begin{DoxyCode}
+21         \{
+22             Owner.State = \textcolor{keyword}{new} Defeated(Owner);
+23         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Normal_a4da38b629d87b3f151ebbdc82b2bf5ef}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}!Pushed@{Pushed}}
+\index{Pushed@{Pushed}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}}
+\subsubsection{Pushed()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal.\+Pushed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Koopa\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IKoopaState_ae859d7815b6be1370a781dda5f37153f}.
+
+
+
+Definition at line 34 of file Normal.\+cs.
+
+
+\begin{DoxyCode}
+35         \{
+36             \textcolor{comment}{//can't push normal koopa}
+37         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Normal_a85022f325235a5e103126aa2b34061c8}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}!Show@{Show}}
+\index{Show@{Show}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}}
+\subsubsection{Show()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal.\+Show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Koopa\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IKoopaState_a8d49eefbd2037d6c22b90552d56c963b}.
+
+
+
+Definition at line 16 of file Normal.\+cs.
+
+
+\begin{DoxyCode}
+17         \{
+18         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Normal_a56c5dacd60031fed3653d54a348e0352}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+State$<$ Koopa $>$} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseState_a151e08ba646c7b0faff385b8248812c2}.
+
+
+
+Definition at line 30 of file Normal.\+cs.
+
+
+\begin{DoxyCode}
+31         \{
+32         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseState_a0367f1a6d509d6b819df603402bc6bb0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}!Owner@{Owner}}
+\index{Owner@{Owner}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Normal}}
+\subsubsection{Owner}
+{\footnotesize\ttfamily T \textbf{ Mello\+Mario.\+Objects.\+Base\+State}$<$ T $>$.Owner\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 12 of file Base\+State.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Moving\+Shell\+::\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Moving\+Shell\+::\+Jump\+On(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated\+::\+Jump\+On(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated\+::\+Pushed(), Mello\+Mario.\+Objects.\+Enemies.\+Thwomp\+States.\+Defeated\+::\+Show(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Moving\+Shell\+::\+Show(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated\+::\+Show(), and Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Defeated\+::\+Show().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+Enemies/\+Koopa\+States/\textbf{ Normal.\+cs}\end{DoxyCompactItemize}

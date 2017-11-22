@@ -1,0 +1,9 @@
+<map id="MelloMario.ISpriteFactory.CreateTextSprite" name="MelloMario.ISpriteFactory.CreateTextSprite">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#ad2c84984a1b68fce93da9782bf5abf6d" title="MelloMario.Objects.UserInterfaces.\lGameOver.GameOver" alt="" coords="227,5,452,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameStart.html#a15ae5ba849cc324f698275b2c7e79864" title="MelloMario.Objects.UserInterfaces.\lGameStart.GameStart" alt="" coords="227,71,452,112"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameWon.html#ad8d0bde3858924de6b3b468fcc5fac7f" title="MelloMario.Objects.UserInterfaces.\lGameWon.GameWon" alt="" coords="227,136,452,177"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1HUD.html#aa058c69f206a30ff9d0cfd6574358be8" title="MelloMario.Objects.UserInterfaces.\lHUD.HUD" alt="" coords="227,201,452,243"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a6dc1cf6c7907e8e99bbb4ff4f5639520" title="MelloMario.Objects.UserInterfaces.\lGameOver.OnDraw" alt="" coords="227,267,452,308"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1HUD.html#a4d0f18016827e7a05e405951bf88e93b" title="MelloMario.Objects.UserInterfaces.\lHUD.OnUpdate" alt="" coords="227,332,452,373"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1PopingUpPoints.html#a8ea8f181d6a73fdab6851dc33a967a6e" title="MelloMario.Objects.UserInterfaces.\lPopingUpPoints.PopingUpPoints" alt="" coords="227,397,452,439"/>
+</map>

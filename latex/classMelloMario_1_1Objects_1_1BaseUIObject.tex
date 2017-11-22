@@ -1,0 +1,292 @@
+\section{Mello\+Mario.\+Objects.\+Base\+U\+I\+Object Class Reference}
+\label{classMelloMario_1_1Objects_1_1BaseUIObject}\index{Mello\+Mario.\+Objects.\+Base\+U\+I\+Object@{Mello\+Mario.\+Objects.\+Base\+U\+I\+Object}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Base\+U\+I\+Object\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Base\+U\+I\+Object\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classMelloMario_1_1Objects_1_1BaseUIObject__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Update} (int time)
+\item 
+void \textbf{ Draw} (int time, Sprite\+Batch sprite\+Batch)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Base\+U\+I\+Object} (\textbf{ I\+Player} player)
+\item 
+void \textbf{ Offset} (ref Rectangle rect)
+\item 
+void \textbf{ Update\+Origin} ()
+\item 
+abstract void \textbf{ On\+Update} (int time)
+\item 
+abstract void \textbf{ On\+Draw} (int time, Sprite\+Batch sprite\+Batch)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ I\+Player} \textbf{ Player}
+\item 
+Point \textbf{ Relative\+Origin}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Base\+U\+I\+Object.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_a66e93309636992ae852e0c7a7e529cc6}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}!Base\+U\+I\+Object@{Base\+U\+I\+Object}}
+\index{Base\+U\+I\+Object@{Base\+U\+I\+Object}!Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}}
+\subsubsection{Base\+U\+I\+Object()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Base\+U\+I\+Object (\begin{DoxyParamCaption}\item[{\textbf{ I\+Player}}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 15 of file Base\+U\+I\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Player.\+Camera, and Mello\+Mario.\+I\+Camera.\+Viewport.
+
+
+\begin{DoxyCode}
+16         \{
+17             \textcolor{comment}{// TODO: use another spritebatch}
+18             Player = player;
+19             RelativeOrigin = player.Camera.Viewport.Location;
+20         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_aaefb20cc2ee49fb1ea78343e8b6608fe}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}!Draw@{Draw}}
+\index{Draw@{Draw}!Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}}
+\subsubsection{Draw()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Object} \doxyref{}{p.}{interfaceMelloMario_1_1IObject_aa01c3e3cca30817cf0bc9110dbbcc3de}.
+
+
+
+Definition at line 27 of file Base\+U\+I\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+On\+Draw().
+
+
+\begin{DoxyCode}
+28         \{
+29             OnDraw(time, spriteBatch);
+30         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_aaefb20cc2ee49fb1ea78343e8b6608fe_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_a087b01c9a987350dd428de3a3177e375}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}!Offset@{Offset}}
+\index{Offset@{Offset}!Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}}
+\subsubsection{Offset()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Offset (\begin{DoxyParamCaption}\item[{ref Rectangle}]{rect }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 32 of file Base\+U\+I\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Player.\+Camera, and Mello\+Mario.\+I\+Camera.\+Viewport.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Start.\+On\+Update(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+H\+U\+D.\+On\+Update(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Won.\+On\+Update(), and Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+On\+Update().
+
+
+\begin{DoxyCode}
+33         \{
+34             rect.Offset(Player.Camera.Viewport.Location - RelativeOrigin);
+35         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_a087b01c9a987350dd428de3a3177e375_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_a8a7aaf9b5463579e75bbab6bc995310e}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}!On\+Draw@{On\+Draw}}
+\index{On\+Draw@{On\+Draw}!Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}}
+\subsubsection{On\+Draw()}
+{\footnotesize\ttfamily abstract void Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+On\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \textbf{ Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a6dc1cf6c7907e8e99bbb4ff4f5639520}, \textbf{ Mello\+Mario.\+Objects.\+User\+Interfaces.\+H\+UD} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1UserInterfaces_1_1HUD_a9a8037c30e45b71a05179171f4d8a973}, \textbf{ Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Won} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameWon_a6452b1ccc31adffe0480d541c36c5d33}, and \textbf{ Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Start} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameStart_aa53a9910f56faabb7edb527cf04e18ee}.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Draw(), and Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Update\+Origin().
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_a8a7aaf9b5463579e75bbab6bc995310e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_aa9f25013cf1bd3196ba5eb472e14cdf9}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}!On\+Update@{On\+Update}}
+\index{On\+Update@{On\+Update}!Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}}
+\subsubsection{On\+Update()}
+{\footnotesize\ttfamily abstract void Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+On\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \textbf{ Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a572b91cd806714b0ab07ef951fe723bc}, \textbf{ Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Won} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameWon_acdbc3d6f82ff7814f251ddd57c07f857}, \textbf{ Mello\+Mario.\+Objects.\+User\+Interfaces.\+H\+UD} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1UserInterfaces_1_1HUD_a4d0f18016827e7a05e405951bf88e93b}, and \textbf{ Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Start} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameStart_ad5e2531a90a5e816aed32822637975e2}.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Update(), and Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Update\+Origin().
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_aa9f25013cf1bd3196ba5eb472e14cdf9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_a2aff42e88c55e43b7e950ebae48a6522}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Object} \doxyref{}{p.}{interfaceMelloMario_1_1IObject_aae8242b2fc9319733d1d09dc0271d971}.
+
+
+
+Definition at line 22 of file Base\+U\+I\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+On\+Update().
+
+
+\begin{DoxyCode}
+23         \{
+24             OnUpdate(time);
+25         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_a2aff42e88c55e43b7e950ebae48a6522_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_a3998dccafea17a86f03b682239d4bcf8}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}!Update\+Origin@{Update\+Origin}}
+\index{Update\+Origin@{Update\+Origin}!Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}}
+\subsubsection{Update\+Origin()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Update\+Origin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 37 of file Base\+U\+I\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Player.\+Camera, Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+On\+Draw(), Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+On\+Update(), and Mello\+Mario.\+I\+Camera.\+Viewport.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Start.\+On\+Update(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+H\+U\+D.\+On\+Update(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Won.\+On\+Update(), and Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+On\+Update().
+
+
+\begin{DoxyCode}
+38         \{
+39             RelativeOrigin = Player.Camera.Viewport.Location;
+40         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_a3998dccafea17a86f03b682239d4bcf8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_a3998dccafea17a86f03b682239d4bcf8_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_acd50bdcae2fd608c6a4ac5f3e53f0205}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}!Player@{Player}}
+\index{Player@{Player}!Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}}
+\subsubsection{Player}
+{\footnotesize\ttfamily \textbf{ I\+Player} Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Player\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 12 of file Base\+U\+I\+Object.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_ae4b2bf4405e1539da2965770122fae09}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}!Relative\+Origin@{Relative\+Origin}}
+\index{Relative\+Origin@{Relative\+Origin}!Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object@{Mello\+Mario\+::\+Objects\+::\+Base\+U\+I\+Object}}
+\subsubsection{Relative\+Origin}
+{\footnotesize\ttfamily Point Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Relative\+Origin\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 13 of file Base\+U\+I\+Object.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Base\+Classes/\+Objects/\textbf{ Base\+U\+I\+Object.\+cs}\end{DoxyCompactItemize}

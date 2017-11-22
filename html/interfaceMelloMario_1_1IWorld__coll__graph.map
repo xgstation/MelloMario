@@ -1,0 +1,4 @@
+<map id="MelloMario.IWorld" name="MelloMario.IWorld">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IContainer.html" title="{IContainer\&lt; IGameObject \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="5,189,185,311"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IContainer.html" title="{MelloMario.IContainer\&lt; T \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="6,5,185,127"/>
+</map>

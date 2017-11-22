@@ -1,0 +1,4 @@
+<map id="MelloMario.Game1.LoadContent" name="MelloMario.Game1.LoadContent">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1ISpriteFactory.html#afbb364623bed7f0cb974a7d73b8ac39f" title="MelloMario.ISpriteFactory.\lBindLoader" alt="" coords="263,5,436,47"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1ISoundFactory.html#a673c9bdc71cf0b9ff2edc382616c7496" title="MelloMario.ISoundFactory.\lBindLoader" alt="" coords="261,71,437,112"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.Characters.MarioCharacter.Jump" name="MelloMario.Objects.Characters.MarioCharacter.Jump">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IMarioMovementState.html#a6922e71a0b79b7034d6be2721f465bc8" title="MelloMario.IMarioMovement\lState.Jump" alt="" coords="259,5,441,47"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1ISoundArgs.html#a59ed0ce0559c17ccb69be1cdda2b9b36" title="MelloMario.ISoundArgs.Set\lMethodCalled" alt="" coords="260,71,440,112"/>
+</map>

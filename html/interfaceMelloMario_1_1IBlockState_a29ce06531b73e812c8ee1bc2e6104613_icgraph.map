@@ -1,0 +1,5 @@
+<map id="MelloMario.IBlockState.Bump" name="MelloMario.IBlockState.Bump">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Question.html#a0c0e3577a7dec375c7b8ced755da30c4" title="MelloMario.Objects.Blocks.\lQuestion.Bump" alt="" coords="248,5,431,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Brick.html#ae991525ba6969ae8be31535d6b7efd06" title="MelloMario.Objects.Blocks.\lBrick.Bump" alt="" coords="248,71,431,112"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#a1734a84d18aa7e354803cfe92b137144" title="MelloMario.Objects.Characters.\lMario.OnCollision" alt="" coords="479,39,684,80"/>
+</map>

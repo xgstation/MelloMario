@@ -1,0 +1,11 @@
+<map id="MelloMario.Objects.Blocks.Brick.Initialize" name="MelloMario.Objects.Blocks.Brick.Initialize">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Theming_1_1Database.html#a847b37218838dfb96413ba40edcebca3" title="MelloMario.Theming.Database.\lHasItemEnclosed" alt="" coords="236,39,437,80"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Brick.html#aa0839526b11ae93504941341bb416714" title="MelloMario.Objects.Blocks.\lBrick.UpdateSprite" alt="" coords="245,104,428,145"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#aa201a4e1e87f58399d6dba7cb55f3cb8" title="MelloMario.Objects.BaseGame\lObject.HideSprite" alt="" coords="485,5,688,47"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#aa3116237ab408071c073373daca92ad0" title="MelloMario.Objects.BaseGame\lObject.ShowSprite" alt="" coords="485,71,688,112"/>
+<area shape="rect" id="node9" href="$interfaceMelloMario_1_1ISpriteFactory.html#a3cd1380121d3af6469feda2a452d4a5f" title="MelloMario.ISpriteFactory.\lCreateBrickSprite" alt="" coords="500,136,673,177"/>
+<area shape="rect" id="node10" href="$interfaceMelloMario_1_1ISpriteFactory.html#a8710fe9f56ca91875dd9886232c3b05d" title="MelloMario.ISpriteFactory.\lCreateQuestionSprite" alt="" coords="500,201,673,243"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a968dd48f33c69acc16fb2acfae36c3a8" title="MelloMario.Objects.BaseGame\lObject.Resize" alt="" coords="736,71,939,112"/>
+<area shape="rect" id="node7" href="$interfaceMelloMario_1_1IContainer.html#a515faf6ba73cf569cb85fa5f690e2941" title="MelloMario.IContainer.Move" alt="" coords="998,49,1178,75"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a739d7c5d6a671aa79c6e9a6b642e444c" title="MelloMario.Objects.BaseGame\lObject.Relocate" alt="" coords="987,100,1189,141"/>
+</map>

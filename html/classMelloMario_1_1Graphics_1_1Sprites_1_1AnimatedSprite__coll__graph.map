@@ -1,0 +1,5 @@
+<map id="MelloMario.Graphics.Sprites.AnimatedSprite" name="MelloMario.Graphics.Sprites.AnimatedSprite">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Graphics_1_1Sprites_1_1BaseTextureSprite.html" title="{BaseTextureSprite\n|&#45; texture\l&#45; color\l&#45; source\l|# BaseTextureSprite()\l# OnAnimate()\l# ChangeSource()\l# ChangeColor()\l# OnDraw()\l}" alt="" coords="27,344,174,509"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite.html" title="{BaseSprite\n|+ LayerDepth\l+ PixelSize\l&#45; zIndex\l&#45; visible\l|+ Draw()\l# BaseSprite()\l# OnDraw()\l# Toggle()\l}" alt="" coords="48,131,153,296"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1ISprite.html" title="{ISprite\n|+ PixelSize\l|+ Draw()\l}" alt="" coords="56,5,145,83"/>
+</map>

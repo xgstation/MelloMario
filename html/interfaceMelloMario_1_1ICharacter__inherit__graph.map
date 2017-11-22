@@ -1,0 +1,3 @@
+<map id="MelloMario.ICharacter" name="MelloMario.ICharacter">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html" title="{MelloMario.Objects.Characters.\lMarioCharacter\n|+ Active\l+ CurrentWorld\l+ Player\l+ Sensing\l&#45; animation\l&#45; toBeTraveled\l&#45; userInput\l&#45; soundListener\l|+ MarioCharacter()\l+ Left()\l+ LeftPress()\l+ LeftRelease()\l+ Right()\l+ RightPress()\l+ RightRelease()\l+ Jump()\l+ JumpPress()\l+ JumpRelease()\l+ Crouch()\l+ CrouchPress()\l+ CrouchRelease()\l+ FireCreate()\l+ SuperCreate()\l+ NormalCreate()\l+ Action()\l+ Move()\l+ Remove()\l+ FlagPole()\l# Teleport()\l# Reset()\l# OnSimulation()\l# OnUpdate()\l}" alt="" coords="5,424,211,956"/>
+</map>

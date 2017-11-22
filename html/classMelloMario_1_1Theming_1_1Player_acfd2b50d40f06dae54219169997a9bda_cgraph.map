@@ -1,0 +1,5 @@
+<map id="MelloMario.Theming.Player.Reset" name="MelloMario.Theming.Player.Reset">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IGameObjectFactory.html#a9441572f5f76a1d32273f011a129b860" title="MelloMario.IGameObjectFactory.\lCreateCharacter" alt="" coords="236,5,448,47"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IWorld.html#af8cfdecb9f66f9a785e31b68dcb20286" title="MelloMario.IWorld.GetRespawn\lPoint" alt="" coords="240,71,444,112"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1ICharacter.html#a9d9748c3b5bac9287f298fb82c02c74a" title="MelloMario.ICharacter.Remove" alt="" coords="243,137,441,163"/>
+</map>

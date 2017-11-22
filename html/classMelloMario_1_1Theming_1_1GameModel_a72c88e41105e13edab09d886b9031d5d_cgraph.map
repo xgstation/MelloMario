@@ -1,0 +1,16 @@
+<map id="MelloMario.Theming.GameModel.Update" name="MelloMario.Theming.GameModel.Update">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Theming_1_1GameModel.html#a47a50dce16e211b57e3c2cae307f5e42" title="MelloMario.Theming.GameModel.\lResume" alt="" coords="269,35,485,76"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Theming_1_1Database.html#ab58c2296077881a98bc304b821cd0018" title="MelloMario.Theming.Database.\lUpdate" alt="" coords="277,100,478,141"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Theming_1_1GameModel.html#a79ae5b14381fdcc4e023f191b7f773bb" title="MelloMario.Theming.GameModel.\lUpdateContainers" alt="" coords="269,165,485,207"/>
+<area shape="rect" id="node10" href="$classMelloMario_1_1Theming_1_1GameModel.html#a72c78198e2143498910c671a16f9a422" title="MelloMario.Theming.GameModel.\lUpdateController" alt="" coords="269,231,485,272"/>
+<area shape="rect" id="node12" href="$classMelloMario_1_1Theming_1_1GameModel.html#a47f57b802e3748d9c179fb89e4e9c9a4" title="MelloMario.Theming.GameModel.\lUpdateGameObjects" alt="" coords="269,307,485,348"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Controls_1_1Scripts_1_1PlayingScript.html#a2c0d77c52774e806f4c1bc01db3f9f4b" title="MelloMario.Controls.Scripts.\lPlayingScript.Bind" alt="" coords="541,35,727,76"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IController.html#a11f1fbf12b60c68413e5a2a720805b3b" title="MelloMario.IController.Add\lCommand" alt="" coords="788,5,961,47"/>
+<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IController.html#aee9b89a6c5fc218ec1e2afd65e7d91e7" title="MelloMario.IController.Reset" alt="" coords="783,71,967,98"/>
+<area shape="rect" id="node7" href="$interfaceMelloMario_1_1ISession.html#a5b4557289e0ea68454c83dde2cbdc71f" title="MelloMario.ISession.Scan\lPlayers" alt="" coords="547,100,721,141"/>
+<area shape="rect" id="node9" href="$interfaceMelloMario_1_1IContainer.html#a4d27256b126b8a3b596b06cf2def34c7" title="MelloMario.IContainer.Update" alt="" coords="539,173,729,199"/>
+<area shape="rect" id="node11" href="$interfaceMelloMario_1_1IController.html#aa8803ac53659be254318ce404edc10ed" title="MelloMario.IController.Update" alt="" coords="539,230,729,257"/>
+<area shape="rect" id="node13" href="$interfaceMelloMario_1_1IPlayer.html#a641b95b402ca88df5b40252f38573350" title="MelloMario.IPlayer.Update" alt="" coords="547,281,721,307"/>
+<area shape="rect" id="node14" href="$interfaceMelloMario_1_1IWorld.html#a2b7d10f85b41db12b1a274c9cf1aa2e9" title="MelloMario.IWorld.ScanNearby" alt="" coords="533,331,735,358"/>
+<area shape="rect" id="node15" href="$interfaceMelloMario_1_1IObject.html#aae8242b2fc9319733d1d09dc0271d971" title="MelloMario.IObject.Update" alt="" coords="547,382,721,409"/>
+</map>

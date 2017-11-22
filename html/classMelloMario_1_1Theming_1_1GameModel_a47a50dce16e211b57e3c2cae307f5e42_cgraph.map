@@ -1,0 +1,5 @@
+<map id="MelloMario.Theming.GameModel.Resume" name="MelloMario.Theming.GameModel.Resume">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Controls_1_1Scripts_1_1PlayingScript.html#a2c0d77c52774e806f4c1bc01db3f9f4b" title="MelloMario.Controls.Scripts.\lPlayingScript.Bind" alt="" coords="269,35,456,76"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IController.html#a11f1fbf12b60c68413e5a2a720805b3b" title="MelloMario.IController.Add\lCommand" alt="" coords="509,5,683,47"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IController.html#aee9b89a6c5fc218ec1e2afd65e7d91e7" title="MelloMario.IController.Reset" alt="" coords="504,71,688,98"/>
+</map>

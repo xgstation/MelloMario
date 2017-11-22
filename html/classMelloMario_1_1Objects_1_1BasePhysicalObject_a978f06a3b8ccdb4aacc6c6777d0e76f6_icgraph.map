@@ -1,0 +1,6 @@
+<map id="MelloMario.Objects.BasePhysicalObject.SetVerticalVelocity" name="MelloMario.Objects.BasePhysicalObject.SetVerticalVelocity">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#a7e44abf70ba84029f4e2e58e83a8558c" title="MelloMario.Objects.Characters.\lMario.OnDeath" alt="" coords="272,5,477,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Piranha.html#ae2ad553e4a12a807b0113699c1d3fdf5" title="MelloMario.Objects.Enemies.\lPiranha.OnSimulation" alt="" coords="278,71,471,112"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Thwomp.html#a0840fe4eaa687039abf318577c0ba61a" title="MelloMario.Objects.Enemies.\lThwomp.OnSimulation" alt="" coords="278,136,471,177"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Dead.html#a9842a7d91d2629d74c3706c1aeff0f21" title="MelloMario.Objects.Characters.\lProtectionStates.Dead.Dead" alt="" coords="525,5,731,47"/>
+</map>

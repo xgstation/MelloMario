@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.Items.SuperMushroom.UnveilMove" name="MelloMario.Objects.Items.SuperMushroom.UnveilMove">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a9b9203102864cc5b68bc97e23d6139e6" title="MelloMario.Objects.BaseCollidable\lObject.Move" alt="" coords="239,5,463,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#a2530ad4f8d59f78dccd177bc8007075f" title="MelloMario.Containers.Base\lContainer.Move" alt="" coords="511,5,696,47"/>
+</map>

@@ -1,0 +1,336 @@
+\section{Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter Class Reference}
+\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter}\index{Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter@{Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter}}
+
+
+Inheritance diagram for Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Game\+Converter} (\textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$ \textbf{ listener}, \textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$ \textbf{ sound\+Listener}, string \textbf{ id}=\char`\"{}Main\char`\"{})
+\item 
+override bool \textbf{ Can\+Convert} (Type object\+Type)
+\item 
+override object \textbf{ Read\+Json} (Json\+Reader reader, Type object\+Type, object existing\+Value, Json\+Serializer serializer)
+\item 
+override void \textbf{ Write\+Json} (Json\+Writer writer, object value, Json\+Serializer serializer)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+override bool \textbf{ Can\+Write}\hspace{0.3cm}{\ttfamily  [get]}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly string \textbf{ id}
+\item 
+readonly \textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$ \textbf{ listener}
+\item 
+readonly \textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$ \textbf{ sound\+Listener}
+\item 
+\textbf{ Game\+Entity\+Converter} \textbf{ game\+Entity\+Converter}
+\item 
+J\+Token \textbf{ json\+Token}
+\item 
+J\+Token \textbf{ map\+List\+Token}
+\item 
+J\+Token \textbf{ map\+To\+Be\+Loaded}
+\item 
+\textbf{ I\+World} \textbf{ world}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Json\+Serializer \textbf{ Serializers}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 16 of file Game\+Converter.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_aa985f3e4a95545a308e10c9777a25380}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!Game\+Converter@{Game\+Converter}}
+\index{Game\+Converter@{Game\+Converter}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{Game\+Converter()}
+{\footnotesize\ttfamily Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Game\+Converter (\begin{DoxyParamCaption}\item[{\textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$}]{listener,  }\item[{\textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$}]{sound\+Listener,  }\item[{string}]{id = {\ttfamily \char`\"{}Main\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file Game\+Converter.\+cs.
+
+
+
+References Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Can\+Write, Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+id, Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+listener, and Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+sound\+Listener.
+
+
+\begin{DoxyCode}
+33         \{
+34             this.\textcolor{keywordtype}{id} = id;
+35             this.listener = listener;
+36             this.soundListener = soundListener;
+37             Serializers = \textcolor{keyword}{new} JsonSerializer();
+38         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_adb2083cf21479bea251ce8d2aed0c466}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!Can\+Convert@{Can\+Convert}}
+\index{Can\+Convert@{Can\+Convert}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{Can\+Convert()}
+{\footnotesize\ttfamily override bool Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Can\+Convert (\begin{DoxyParamCaption}\item[{Type}]{object\+Type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 49 of file Game\+Converter.\+cs.
+
+
+\begin{DoxyCode}
+50         \{
+51             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+52         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_a1ab5cd39e850c96e0ca41ac6be8d97fe}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!Read\+Json@{Read\+Json}}
+\index{Read\+Json@{Read\+Json}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{Read\+Json()}
+{\footnotesize\ttfamily override object Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Read\+Json (\begin{DoxyParamCaption}\item[{Json\+Reader}]{reader,  }\item[{Type}]{object\+Type,  }\item[{object}]{existing\+Value,  }\item[{Json\+Serializer}]{serializer }\end{DoxyParamCaption})}
+
+
+
+Definition at line 54 of file Game\+Converter.\+cs.
+
+
+
+References Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+id, Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Serializers, and Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+world.
+
+
+\begin{DoxyCode}
+59         \{
+60             jsonToken = JToken.Load(reader);
+61             mapListToken = Util.TryGet(out JToken t, jsonToken, \textcolor{stringliteral}{"Maps"}) ? t : null;
+62             \textcolor{keywordflow}{if} (mapListToken == null)
+63             \{
+64                 \textcolor{keywordflow}{return} null;
+65             \}
+66             mapToBeLoaded = null;
+67             \textcolor{keywordflow}{foreach} (JToken obj \textcolor{keywordflow}{in} mapListToken)
+68             \{
+69                 \textcolor{keywordflow}{if} (Util.TryGet(out \textcolor{keywordtype}{string} s, obj, \textcolor{stringliteral}{"Index"}) && s == id)
+70                 \{
+71                     mapToBeLoaded = obj;
+72                     \textcolor{keywordflow}{break};
+73                 \}
+74             \}
+75             Util.TryGet(out \textcolor{keywordtype}{string} mapType, mapToBeLoaded, \textcolor{stringliteral}{"Type"});
+76             \textcolor{keywordflow}{if} (Util.TryGet(out Point mapSize, mapToBeLoaded, \textcolor{stringliteral}{"Size"}))
+77             \{
+78                 Debug.WriteLine(\textcolor{stringliteral}{"Map size:"} + mapSize);
+79             \}
+80             \textcolor{keywordflow}{else}
+81             \{
+82                 Debug.WriteLine(\textcolor{stringliteral}{"Deserialize fail: No map size provided!"});
+83             \}
+84 
+85             \textcolor{keywordflow}{if} (Util.TryGet(out IList<JToken> entities, mapToBeLoaded, \textcolor{stringliteral}{"Entity"}))
+86             \{
+87                 Debug.WriteLine(\textcolor{stringliteral}{"Entities token loaded successfully!"});
+88             \}
+89 
+90             Util.TryGet(out Point initialPoint, mapToBeLoaded, \textcolor{stringliteral}{"InitialSpawnPoint"});
+91             Util.TryGet(out IList<Point> respawnPoints, mapToBeLoaded, \textcolor{stringliteral}{"RespawnPoints"});
+92             world = \textcolor{keyword}{new} World(
+93                 \textcolor{keywordtype}{id},
+94                 mapType == \textcolor{stringliteral}{"Normal"} ? WorldType.normal : WorldType.underground,
+95                 mapSize,
+96                 respawnPoints);
+97 
+98             gameEntityConverter = \textcolor{keyword}{new} GameEntityConverter(world, listener, 
+      soundListener);
+99 
+100             Serializers.Converters.Add(gameEntityConverter);
+101             \textcolor{keywordflow}{if} (entities == null)
+102             \{
+103                 \textcolor{keywordflow}{return} world;
+104             \}
+105             \textcolor{keywordflow}{foreach} (JToken jToken \textcolor{keywordflow}{in} entities)
+106             \{
+107                 jToken.ToObject<EncapsulatedObject<IGameObject>>(Serializers);
+108             \}
+109 
+110             \textcolor{keywordflow}{return} world;
+111         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_ad34993dc8fc13389152270cb1366efc8}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!Write\+Json@{Write\+Json}}
+\index{Write\+Json@{Write\+Json}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{Write\+Json()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Write\+Json (\begin{DoxyParamCaption}\item[{Json\+Writer}]{writer,  }\item[{object}]{value,  }\item[{Json\+Serializer}]{serializer }\end{DoxyParamCaption})}
+
+
+
+Definition at line 113 of file Game\+Converter.\+cs.
+
+
+\begin{DoxyCode}
+114         \{
+115             \textcolor{comment}{//TODO: Implement serializer}
+116         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_a4e271b2ae925d3f7f51f74a1dab0e6ba}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!game\+Entity\+Converter@{game\+Entity\+Converter}}
+\index{game\+Entity\+Converter@{game\+Entity\+Converter}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{game\+Entity\+Converter}
+{\footnotesize\ttfamily \textbf{ Game\+Entity\+Converter} Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+game\+Entity\+Converter\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 22 of file Game\+Converter.\+cs.
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_a31f37dd012c836a7a01eca0542f0de3d}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!id@{id}}
+\index{id@{id}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{id}
+{\footnotesize\ttfamily readonly string Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file Game\+Converter.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Game\+Converter(), and Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Read\+Json().
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_a0ad89d72188a8752ba498441aa2de9ce}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!json\+Token@{json\+Token}}
+\index{json\+Token@{json\+Token}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{json\+Token}
+{\footnotesize\ttfamily J\+Token Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+json\+Token\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 23 of file Game\+Converter.\+cs.
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_a4efe2a8e352ca6995d0ad3966c2a0d15}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!listener@{listener}}
+\index{listener@{listener}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{listener}
+{\footnotesize\ttfamily readonly \textbf{ I\+Listener}$<$\textbf{ I\+Game\+Object}$>$ Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+listener\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file Game\+Converter.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Game\+Converter().
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_a28c67722bdd186a8451f6402d949a831}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!map\+List\+Token@{map\+List\+Token}}
+\index{map\+List\+Token@{map\+List\+Token}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{map\+List\+Token}
+{\footnotesize\ttfamily J\+Token Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+map\+List\+Token\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 24 of file Game\+Converter.\+cs.
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_a90e263ba00e2e17df982045ce496e1e0}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!map\+To\+Be\+Loaded@{map\+To\+Be\+Loaded}}
+\index{map\+To\+Be\+Loaded@{map\+To\+Be\+Loaded}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{map\+To\+Be\+Loaded}
+{\footnotesize\ttfamily J\+Token Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+map\+To\+Be\+Loaded\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 25 of file Game\+Converter.\+cs.
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_a29c81d9ff43ffac77bbf6edfbd562e38}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!Serializers@{Serializers}}
+\index{Serializers@{Serializers}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{Serializers}
+{\footnotesize\ttfamily Json\+Serializer Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Serializers\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 18 of file Game\+Converter.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Read\+Json().
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_ab1ddcc17ca7f552be57a94b08ec4b404}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!sound\+Listener@{sound\+Listener}}
+\index{sound\+Listener@{sound\+Listener}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{sound\+Listener}
+{\footnotesize\ttfamily readonly \textbf{ I\+Listener}$<$\textbf{ I\+Soundable}$>$ Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+sound\+Listener\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 21 of file Game\+Converter.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Game\+Converter().
+
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_ae62b4a52fc35302fc24660f69721720b}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!world@{world}}
+\index{world@{world}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{world}
+{\footnotesize\ttfamily \textbf{ I\+World} Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+world\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 27 of file Game\+Converter.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Read\+Json().
+
+
+
+\subsection{Property Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameConverter_a216146afe21ee8664533490544301a6b}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}!Can\+Write@{Can\+Write}}
+\index{Can\+Write@{Can\+Write}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Game\+Converter}}
+\subsubsection{Can\+Write}
+{\footnotesize\ttfamily override bool Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Can\+Write\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Definition at line 42 of file Game\+Converter.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Converter.\+Game\+Converter().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Level\+Gen/\+Json\+Converters/\textbf{ Game\+Converter.\+cs}\end{DoxyCompactItemize}

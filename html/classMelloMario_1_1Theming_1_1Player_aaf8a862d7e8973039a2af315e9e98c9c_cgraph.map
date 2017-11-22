@@ -1,0 +1,6 @@
+<map id="MelloMario.Theming.Player.Init" name="MelloMario.Theming.Player.Init">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#a09791801b12923f7b6b7e83decfbe997" title="MelloMario.Containers.Base\lContainer.Add" alt="" coords="265,5,451,47"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IGameObjectFactory.html#aa22968b426d905039021a761eaedeead" title="MelloMario.IGameObjectFactory.\lCreateCamera" alt="" coords="252,71,464,112"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IGameObjectFactory.html#a9441572f5f76a1d32273f011a129b860" title="MelloMario.IGameObjectFactory.\lCreateCharacter" alt="" coords="252,136,464,177"/>
+<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IWorld.html#af8cfdecb9f66f9a785e31b68dcb20286" title="MelloMario.IWorld.GetRespawn\lPoint" alt="" coords="256,201,460,243"/>
+</map>

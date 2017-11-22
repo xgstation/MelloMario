@@ -1,0 +1,5 @@
+<map id="MelloMario.Objects.Characters.MarioCharacter.JumpPress" name="MelloMario.Objects.Characters.MarioCharacter.JumpPress">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#a8b4589bdb8be8cecc27d49d8482cba4a" title="MelloMario.Objects.Characters.\lMarioCharacter.Jump" alt="" coords="259,39,464,80"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IMarioMovementState.html#a6922e71a0b79b7034d6be2721f465bc8" title="MelloMario.IMarioMovement\lState.Jump" alt="" coords="512,5,695,47"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1ISoundArgs.html#a59ed0ce0559c17ccb69be1cdda2b9b36" title="MelloMario.ISoundArgs.Set\lMethodCalled" alt="" coords="513,71,693,112"/>
+</map>

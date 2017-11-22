@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.Enemies.Koopa.JumpOn" name="MelloMario.Objects.Enemies.Koopa.JumpOn">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IKoopaState.html#ad459b66ef3a50aea50ed5cdfee85e422" title="MelloMario.IKoopaState.JumpOn" alt="" coords="253,5,465,32"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a51b9dcd51c329bef4f04919f67234378" title="MelloMario.Objects.BaseCollidable\lObject.ScorePoints" alt="" coords="247,57,471,98"/>
+</map>

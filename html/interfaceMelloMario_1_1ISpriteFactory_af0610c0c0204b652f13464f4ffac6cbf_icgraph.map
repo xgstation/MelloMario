@@ -1,0 +1,5 @@
+<map id="MelloMario.ISpriteFactory.CreateOneUpMushroomSprite" name="MelloMario.ISpriteFactory.CreateOneUpMushroomSprite">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1HUD.html#aa058c69f206a30ff9d0cfd6574358be8" title="MelloMario.Objects.UserInterfaces.\lHUD.HUD" alt="" coords="248,5,473,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Items_1_1OneUpMushroom.html#ac661685c2bd15193178cb5851cc584aa" title="MelloMario.Objects.Items.\lOneUpMushroom.UpdateSprite" alt="" coords="259,71,462,112"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Items_1_1OneUpMushroom.html#a4b6b9b5eeedb6baf22c2e0b734773d2a" title="MelloMario.Objects.Items.\lOneUpMushroom.OneUpMushroom" alt="" coords="521,71,749,112"/>
+</map>

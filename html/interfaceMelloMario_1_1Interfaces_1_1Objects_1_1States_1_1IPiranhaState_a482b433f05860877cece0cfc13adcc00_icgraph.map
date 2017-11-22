@@ -1,0 +1,4 @@
+<map id="MelloMario.Interfaces.Objects.States.IPiranhaState.Defeat" name="MelloMario.Interfaces.Objects.States.IPiranhaState.Defeat">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Piranha.html#ad7d47ec50a2ab223221a77e48317d480" title="MelloMario.Objects.Enemies.\lPiranha.Defeat" alt="" coords="252,5,445,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Piranha.html#ad4d48004cdf806fccaac8234bcb812f8" title="MelloMario.Objects.Enemies.\lPiranha.OnCollision" alt="" coords="493,5,687,47"/>
+</map>

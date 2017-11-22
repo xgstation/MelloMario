@@ -1,0 +1,97 @@
+\section{Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Vector\+Converter Class Reference}
+\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1VectorConverter}\index{Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Vector\+Converter@{Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Vector\+Converter}}
+
+
+Inheritance diagram for Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Vector\+Converter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1VectorConverter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Vector\+Converter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1VectorConverter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ Write\+Json} (Json\+Writer writer, object value, Json\+Serializer serializer)
+\item 
+override object \textbf{ Read\+Json} (Json\+Reader reader, Type object\+Type, object existing\+Value, Json\+Serializer serializer)
+\item 
+override bool \textbf{ Can\+Convert} (Type object\+Type)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file Util.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1VectorConverter_ad06a635fad020e661cc27e695d93bafe}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter}!Can\+Convert@{Can\+Convert}}
+\index{Can\+Convert@{Can\+Convert}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter}}
+\subsubsection{Can\+Convert()}
+{\footnotesize\ttfamily override bool Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Vector\+Converter.\+Can\+Convert (\begin{DoxyParamCaption}\item[{Type}]{object\+Type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 37 of file Util.\+cs.
+
+
+\begin{DoxyCode}
+38         \{
+39             \textcolor{keywordflow}{return} objectType.IsAssignableFrom(typeof(Vector2));
+40         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1VectorConverter_a3220b594d2f7a6d32fd34cf1ddc1b300}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter}!Read\+Json@{Read\+Json}}
+\index{Read\+Json@{Read\+Json}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter}}
+\subsubsection{Read\+Json()}
+{\footnotesize\ttfamily override object Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Vector\+Converter.\+Read\+Json (\begin{DoxyParamCaption}\item[{Json\+Reader}]{reader,  }\item[{Type}]{object\+Type,  }\item[{object}]{existing\+Value,  }\item[{Json\+Serializer}]{serializer }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Util.\+cs.
+
+
+\begin{DoxyCode}
+30         \{
+31             JToken token = JToken.Load(reader);
+32             \textcolor{keywordtype}{float} X = token[\textcolor{stringliteral}{"X"}].ToObject<\textcolor{keywordtype}{float}>();
+33             \textcolor{keywordtype}{float} Y = token[\textcolor{stringliteral}{"Y"}].ToObject<\textcolor{keywordtype}{float}>();
+34             \textcolor{keywordflow}{return} \textcolor{keyword}{new} Vector2(X, Y);
+35         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonConverters_1_1VectorConverter_a54676bbb9ed233d0ab304f39c3201cfb}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter}!Write\+Json@{Write\+Json}}
+\index{Write\+Json@{Write\+Json}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Converters\+::\+Vector\+Converter}}
+\subsubsection{Write\+Json()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Vector\+Converter.\+Write\+Json (\begin{DoxyParamCaption}\item[{Json\+Writer}]{writer,  }\item[{object}]{value,  }\item[{Json\+Serializer}]{serializer }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file Util.\+cs.
+
+
+\begin{DoxyCode}
+21         \{
+22             \textcolor{comment}{//DO NOTHING}
+23         \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Level\+Gen/\+Json\+Converters/\textbf{ Util.\+cs}\end{DoxyCompactItemize}

@@ -1,0 +1,8 @@
+<map id="MelloMario.Sounds.BGMManager.Update" name="MelloMario.Sounds.BGMManager.Update">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Sounds_1_1BGMManager.html#ac40d481758a6e2812b3db145c68f46df" title="MelloMario.Sounds.BGMManager.\lUpdateBGM" alt="" coords="273,5,493,47"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Sounds_1_1BGMManager.html#aa88afc7fae97d54e5fabfbdeb3b7d894" title="MelloMario.Sounds.BGMManager.\lUpdatePausing" alt="" coords="273,71,493,112"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Sounds_1_1BGMManager.html#ae9869dc2745c334f5a7d0ab0d34e92e3" title="MelloMario.Sounds.BGMManager.\lPlayMusic" alt="" coords="541,5,761,47"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1ISoundTrack.html#a16b130b50c40c794034507bac4264a0b" title="MelloMario.ISoundTrack.Play" alt="" coords="809,13,1000,39"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Sounds_1_1BGMManager.html#a7cb559fc36af65d0276c72dd9387568f" title="MelloMario.Sounds.BGMManager.\lPause" alt="" coords="541,71,761,112"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Sounds_1_1BGMManager.html#a8c1ad558e3c5de4cdc6b8615c9f73a7e" title="MelloMario.Sounds.BGMManager.\lResume" alt="" coords="541,136,761,177"/>
+</map>

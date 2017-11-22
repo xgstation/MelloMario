@@ -1,0 +1,969 @@
+\section{Mello\+Mario.\+Factories.\+Sprite\+Factory Class Reference}
+\label{classMelloMario_1_1Factories_1_1SpriteFactory}\index{Mello\+Mario.\+Factories.\+Sprite\+Factory@{Mello\+Mario.\+Factories.\+Sprite\+Factory}}
+
+
+Inheritance diagram for Mello\+Mario.\+Factories.\+Sprite\+Factory\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Factories_1_1SpriteFactory__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Factories.\+Sprite\+Factory\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Factories_1_1SpriteFactory__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Bind\+Loader} (Content\+Manager loader)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Text\+Sprite} (string text, float font\+Size=18f)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Splash\+Sprite} ()
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Mario\+Sprite} (string power\+Up\+Status, string movement\+Status, string protection\+Status, string facing)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Goomba\+Sprite} (string status)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Thwomp\+Sprite} (string status)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Koopa\+Sprite} (string color, string status)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Piranha\+Sprite} (string color)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Fire\+Sprite} ()
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Star\+Sprite} ()
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Coin\+Sprite} (bool is\+Hud=false)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Super\+Mushroom\+Sprite} ()
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Fire\+Flower\+Sprite} ()
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+One\+Up\+Mushroom\+Sprite} ()
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Question\+Sprite} (string status)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Brick\+Sprite} (string status)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Floor\+Sprite} ()
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Stair\+Sprite} ()
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Pipeline\+Sprite} (string type)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Flag\+Sprite} (bool is\+Top)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Scene\+Sprite} (string type, \textbf{ Z\+Index} z\+Index)
+\item 
+\textbf{ I\+Sprite} \textbf{ Create\+Title} (\textbf{ Z\+Index} z\+Index)
+\item 
+void \textbf{ Bind\+Loader} (T loader)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static \textbf{ I\+Sprite\+Factory}$<$ Content\+Manager $>$ \textbf{ Instance}\hspace{0.3cm}{\ttfamily  [get]}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Sprite\+Factory} ()
+\item 
+Texture2D \textbf{ Get\+Texture} (string name)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly I\+Dictionary$<$ string, Texture2D $>$ \textbf{ textures}
+\item 
+Content\+Manager \textbf{ content}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file Sprite\+Factory.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a0a54e2f3fe99d2426ee7903c9cd3d84d}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Sprite\+Factory@{Sprite\+Factory}}
+\index{Sprite\+Factory@{Sprite\+Factory}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Sprite\+Factory()}
+{\footnotesize\ttfamily Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Sprite\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 18 of file Sprite\+Factory.\+cs.
+
+
+\begin{DoxyCode}
+19         \{
+20             textures = \textcolor{keyword}{new} Dictionary<string, Texture2D>();
+21         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{interfaceMelloMario_1_1ISpriteFactory_afbb364623bed7f0cb974a7d73b8ac39f}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Bind\+Loader@{Bind\+Loader}}
+\index{Bind\+Loader@{Bind\+Loader}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Bind\+Loader()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+I\+Sprite\+Factory}$<$ T $>$.Bind\+Loader (\begin{DoxyParamCaption}\item[{T}]{loader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a2f683f3af0e86a7c3de382a9d26c5cba}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Bind\+Loader@{Bind\+Loader}}
+\index{Bind\+Loader@{Bind\+Loader}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Bind\+Loader()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Bind\+Loader (\begin{DoxyParamCaption}\item[{Content\+Manager}]{loader }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Sprite\+Factory.\+cs.
+
+
+\begin{DoxyCode}
+26         \{
+27             content = loader;
+28         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a713b8a98b7272c7d9f6f97cedefb8a22}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Brick\+Sprite@{Create\+Brick\+Sprite}}
+\index{Create\+Brick\+Sprite@{Create\+Brick\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Brick\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Brick\+Sprite (\begin{DoxyParamCaption}\item[{string}]{status }\end{DoxyParamCaption})}
+
+
+
+Definition at line 207 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+208         \{
+209             \textcolor{keywordflow}{switch} (status)
+210             \{
+211                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Bumped"}:
+212                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 2, 0, zIndex : 
+      ZIndex.Level);
+213                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Destroyed"}:
+214                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} BrickPieceSprite(GetTexture(\textcolor{stringliteral}{"BrickPieces"}));
+215                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Normal"}:
+216                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 2, 0, zIndex : 
+      ZIndex.Level);
+217                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Used"}:
+218                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 54, 0, zIndex : 
+      ZIndex.Level);
+219                 \textcolor{keywordflow}{default}:
+220                     \textcolor{comment}{//it should never hit this case, if it does there is an error somewhere}
+221                     \textcolor{comment}{//else in the code}
+222                     \textcolor{keywordflow}{return} null;
+223             \}
+224         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a713b8a98b7272c7d9f6f97cedefb8a22_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_af7d4d69077fbfe7c1181eb5289bf2ddf}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Coin\+Sprite@{Create\+Coin\+Sprite}}
+\index{Create\+Coin\+Sprite@{Create\+Coin\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Coin\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Coin\+Sprite (\begin{DoxyParamCaption}\item[{bool}]{is\+Hud = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 166 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+167         \{
+168             \textcolor{keywordflow}{if} (isHud)
+169             \{
+170                 \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Coin"}), 4, 1, 0, 0, 1, 2, 100, 
+      ZIndex.Hud);
+171             \}
+172             \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Coin"}), 4, 1, 0, 0, 1, 2);
+173         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_af7d4d69077fbfe7c1181eb5289bf2ddf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_abee128ffc6f83e1c4c9f3500f54113e9}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Fire\+Flower\+Sprite@{Create\+Fire\+Flower\+Sprite}}
+\index{Create\+Fire\+Flower\+Sprite@{Create\+Fire\+Flower\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Fire\+Flower\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Fire\+Flower\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 180 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+181         \{
+182             \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"FireFlower"}), 8, 1);
+183         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_abee128ffc6f83e1c4c9f3500f54113e9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a70f7b0e681f40656b64a0109b90f7921}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Fire\+Sprite@{Create\+Fire\+Sprite}}
+\index{Create\+Fire\+Sprite@{Create\+Fire\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Fire\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Fire\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 156 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+157         \{
+158             \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Fire"}), 2, 2, 0, 0, 1, 1);
+159         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a70f7b0e681f40656b64a0109b90f7921_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a2324945ad4d8e3cd9d8d58abd2455148}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Flag\+Sprite@{Create\+Flag\+Sprite}}
+\index{Create\+Flag\+Sprite@{Create\+Flag\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Flag\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Flag\+Sprite (\begin{DoxyParamCaption}\item[{bool}]{is\+Top }\end{DoxyParamCaption})}
+
+
+
+Definition at line 262 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+263         \{
+264             \textcolor{keywordflow}{if} (isTop)
+265             \{
+266                 \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 32, 16, zIndex : 
+      ZIndex.Level);
+267             \}
+268             \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 32, 18, zIndex : 
+      ZIndex.Level);
+269         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a2324945ad4d8e3cd9d8d58abd2455148_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a6797aa2f76dd8986f7b8bc49f6e8e96f}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Floor\+Sprite@{Create\+Floor\+Sprite}}
+\index{Create\+Floor\+Sprite@{Create\+Floor\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Floor\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Floor\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 226 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+227         \{
+228             \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 0, 0, zIndex : 
+      ZIndex.Level);
+229         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a6797aa2f76dd8986f7b8bc49f6e8e96f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_ae439b845459af63cdb3cee8f2aaba55b}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Goomba\+Sprite@{Create\+Goomba\+Sprite}}
+\index{Create\+Goomba\+Sprite@{Create\+Goomba\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Goomba\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Goomba\+Sprite (\begin{DoxyParamCaption}\item[{string}]{status }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+87         \{
+88             \textcolor{keywordflow}{switch} (status)
+89             \{
+90                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Defeated"}:
+91                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"GoombaDead"}));
+92                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Normal"}:
+93                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Goomba"}), 2, 1);
+94                 \textcolor{keywordflow}{default}:
+95                     \textcolor{comment}{//it should never hit this case, if it does there is an error somewhere}
+96                     \textcolor{comment}{//else in the code}
+97                     \textcolor{keywordflow}{return} null;
+98             \}
+99         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_ae439b845459af63cdb3cee8f2aaba55b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_ae82ad2af40dfed81f46240657130d686}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Koopa\+Sprite@{Create\+Koopa\+Sprite}}
+\index{Create\+Koopa\+Sprite@{Create\+Koopa\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Koopa\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Koopa\+Sprite (\begin{DoxyParamCaption}\item[{string}]{color,  }\item[{string}]{status }\end{DoxyParamCaption})}
+
+
+
+Definition at line 116 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+117         \{
+118             \textcolor{keywordflow}{switch} (status)
+119             \{
+120                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"DefeatedLeft"}:
+121                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"DefeatedRight"}:
+122                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"MovingShellLeft"}:
+123                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"MovingShellRight"}:
+124                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(color + \textcolor{stringliteral}{"KoopaDead"}), 0, 0, 2, 3);
+125                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"ShellLeft"}:
+126                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"ShellRight"}:
+127                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(color + \textcolor{stringliteral}{"KoopaStepped"}), 0, 0, 2, 3);
+128                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"NormalLeft"}:
+129                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(color + \textcolor{stringliteral}{"KoopaLeft"}), 2, 1, 0, 0, 2, 3);
+130                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"NormalRight"}:
+131                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(color + \textcolor{stringliteral}{"KoopaRight"}), 2, 1, 0, 0, 2, 3);
+132                 \textcolor{keywordflow}{default}:
+133                     \textcolor{comment}{//it should never hit this case, if it does there is an error somewhere}
+134                     \textcolor{comment}{//else in the code}
+135                     \textcolor{keywordflow}{return} null;
+136             \}
+137         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_ae82ad2af40dfed81f46240657130d686_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a18d8829d06e8232ca574ab3c6adb5c3f}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Mario\+Sprite@{Create\+Mario\+Sprite}}
+\index{Create\+Mario\+Sprite@{Create\+Mario\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Mario\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Mario\+Sprite (\begin{DoxyParamCaption}\item[{string}]{power\+Up\+Status,  }\item[{string}]{movement\+Status,  }\item[{string}]{protection\+Status,  }\item[{string}]{facing }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+45         \{
+46             \textcolor{keywordflow}{switch} (protectionStatus)
+47             \{
+48                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Protected"}:
+49                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} FlashingAnimatedSprite(
+50                         GetTexture(powerUpStatus + movementStatus + facing),
+51                         movementStatus == \textcolor{stringliteral}{"Walking"} ? 3 : 1,
+52                         1,
+53                         0,
+54                         0,
+55                         2,
+56                         powerUpStatus == \textcolor{stringliteral}{"Standard"} ? 2 : movementStatus == \textcolor{stringliteral}{"Crouching"} ? 3 : 4);
+57                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Starred"}:
+58                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} FlickingAnimatedSprite(
+59                         GetTexture(powerUpStatus + movementStatus + facing),
+60                         movementStatus == \textcolor{stringliteral}{"Walking"} ? 3 : 1,
+61                         1,
+62                         0,
+63                         0,
+64                         2,
+65                         powerUpStatus == \textcolor{stringliteral}{"Standard"} ? 2 : movementStatus == \textcolor{stringliteral}{"Crouching"} ? 3 : 4);
+66                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Normal"}:
+67                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(
+68                         GetTexture(powerUpStatus + movementStatus + facing),
+69                         movementStatus == \textcolor{stringliteral}{"Walking"} ? 3 : 1,
+70                         1,
+71                         0,
+72                         0,
+73                         2,
+74                         powerUpStatus == \textcolor{stringliteral}{"Standard"} ? 2 : movementStatus == \textcolor{stringliteral}{"Crouching"} ? 3 : 4);
+75                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Dead"}:
+76                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(protectionStatus), zIndex : 
+      ZIndex.Foreground);
+77                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"GameOver"}:
+78                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(powerUpStatus + movementStatus + facing), zIndex : 
+      ZIndex.Hud);
+79                 \textcolor{keywordflow}{default}:
+80                     \textcolor{comment}{//it should never hit this case, if it does there is an error somewhere}
+81                     \textcolor{comment}{//else in the code}
+82                     \textcolor{keywordflow}{return} null;
+83             \}
+84         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a18d8829d06e8232ca574ab3c6adb5c3f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a360acc8a347b0c7a3b18e7a52f4ec5de}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+One\+Up\+Mushroom\+Sprite@{Create\+One\+Up\+Mushroom\+Sprite}}
+\index{Create\+One\+Up\+Mushroom\+Sprite@{Create\+One\+Up\+Mushroom\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+One\+Up\+Mushroom\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+One\+Up\+Mushroom\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 185 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+186         \{
+187             \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"OneUpMushroom"}));
+188         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a360acc8a347b0c7a3b18e7a52f4ec5de_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a2ab8a84818855db99ff640d85c5c0388}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Pipeline\+Sprite@{Create\+Pipeline\+Sprite}}
+\index{Create\+Pipeline\+Sprite@{Create\+Pipeline\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Pipeline\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Pipeline\+Sprite (\begin{DoxyParamCaption}\item[{string}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 236 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+237         \{
+238             \textcolor{keywordflow}{switch} (type)
+239             \{
+240                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"LeftIn"}:
+241                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 0, 16, zIndex : 
+      ZIndex.Foreground);
+242                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"RightIn"}:
+243                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 2, 16, zIndex : 
+      ZIndex.Foreground);
+244                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Left"}:
+245                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 0, 18, zIndex : 
+      ZIndex.Foreground);
+246                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Right"}:
+247                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 2, 18, zIndex : 
+      ZIndex.Foreground);
+248                 \textcolor{comment}{//TODO: Implement cases below}
+249                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"TopLeftIn"}:
+250                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"BottomLeftIn"}:
+251                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"TopRightIn"}:
+252                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"BottomRightIn"}:
+253                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Top"}:
+254                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Bottom"}:
+255                 \textcolor{keywordflow}{default}:
+256                     \textcolor{comment}{//it should never hit this case, if it does there is an error somewhere}
+257                     \textcolor{comment}{//else in the code}
+258                     \textcolor{keywordflow}{return} null;
+259             \}
+260         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a2ab8a84818855db99ff640d85c5c0388_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_af8c46fbd5dbdb044a36f591e48ea96bb}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Piranha\+Sprite@{Create\+Piranha\+Sprite}}
+\index{Create\+Piranha\+Sprite@{Create\+Piranha\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Piranha\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Piranha\+Sprite (\begin{DoxyParamCaption}\item[{string}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line 139 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+140         \{
+141             \textcolor{keywordflow}{switch} (color)
+142             \{
+143                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Green"}:
+144                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Piranha"}), 2, 1, 0, 0, 2, 3);
+145                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Cyan"}:
+146                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Piranha"}), 2, 1, 0, 3, 2, 3);
+147                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Red"}:
+148                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Piranha"}), 2, 1, 0, 6, 2, 3);
+149                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Gray"}:
+150                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Piranha"}), 2, 1, 0, 9, 2, 3);
+151                 \textcolor{keywordflow}{default}:
+152                     \textcolor{keywordflow}{return} null;
+153             \}
+154         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_af8c46fbd5dbdb044a36f591e48ea96bb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a02466d3194ffe50ff66dba1069db447a}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Question\+Sprite@{Create\+Question\+Sprite}}
+\index{Create\+Question\+Sprite@{Create\+Question\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Question\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Question\+Sprite (\begin{DoxyParamCaption}\item[{string}]{status }\end{DoxyParamCaption})}
+
+
+
+Definition at line 190 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+191         \{
+192             \textcolor{keywordflow}{switch} (status)
+193             \{
+194                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Bumped"}:
+195                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Question"}), 3, 1, zIndex : 
+      ZIndex.Level);
+196                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Normal"}:
+197                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Question"}), 3, 1, zIndex : 
+      ZIndex.Level);
+198                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Used"}:
+199                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 54, 0, zIndex : 
+      ZIndex.Level);
+200                 \textcolor{keywordflow}{default}:
+201                     \textcolor{comment}{//it should never hit this case, if it does there is an error somewhere}
+202                     \textcolor{comment}{//else in the code}
+203                     \textcolor{keywordflow}{return} null;
+204             \}
+205         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a02466d3194ffe50ff66dba1069db447a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a778377c0e6784f9279f14bdbd08c115c}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Scene\+Sprite@{Create\+Scene\+Sprite}}
+\index{Create\+Scene\+Sprite@{Create\+Scene\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Scene\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Scene\+Sprite (\begin{DoxyParamCaption}\item[{string}]{type,  }\item[{\textbf{ Z\+Index}}]{z\+Index }\end{DoxyParamCaption})}
+
+
+
+Definition at line 271 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+272         \{
+273             \textcolor{keywordflow}{switch} (type)
+274             \{
+275                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"ShortCloud"}:
+276                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 0, 40, 6, 4, zIndex);
+277                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"ShortSmileCloud"}:
+278                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 8, 42, 2, 2, zIndex);
+279                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"LongCloud"}:
+280                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 16, 44, 8, 2, zIndex);
+281                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"LongSmileCloud"}:
+282                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 10, 40, 6, 4, zIndex);
+283                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"CastleTop"}:
+284                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 22, 0, 2, 2, zIndex);
+285                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"CastleTopSolid"}:
+286                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 22, 2, 2, 2, zIndex);
+287                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"CastleBody"}:
+288                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 26, 0, 2, 2, zIndex);
+289                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"CastleDoorLeft"}:
+290                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 24, 0, 2, 2, zIndex);
+291                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"CastleDoorRight"}:
+292                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 28, 0, 2, 2, zIndex);
+293                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"CastleDoorTop"}:
+294                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 24, 2, 2, 2, zIndex);
+295                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"CastleDoor"}:
+296                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 26, 2, 2, 2, zIndex);
+297                 \textcolor{keywordflow}{default}:
+298                     \textcolor{keywordflow}{return} null;
+299             \}
+300         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a778377c0e6784f9279f14bdbd08c115c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a4592c8c43a9f3c4a5258de04c5e05421}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Splash\+Sprite@{Create\+Splash\+Sprite}}
+\index{Create\+Splash\+Sprite@{Create\+Splash\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Splash\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Splash\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file Sprite\+Factory.\+cs.
+
+
+\begin{DoxyCode}
+36         \{
+37             \textcolor{keywordflow}{return} \textcolor{keyword}{new} SplashSprite();
+38         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a24b3d1609a17a13a3122f6dae1a67fcd}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Stair\+Sprite@{Create\+Stair\+Sprite}}
+\index{Create\+Stair\+Sprite@{Create\+Stair\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Stair\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Stair\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 231 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+232         \{
+233             \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"BlockSheet"}), 0, 2, zIndex : 
+      ZIndex.Level);
+234         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a24b3d1609a17a13a3122f6dae1a67fcd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a697dac7e84cbd36a29ab5f10a935deef}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Star\+Sprite@{Create\+Star\+Sprite}}
+\index{Create\+Star\+Sprite@{Create\+Star\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Star\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Star\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 161 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+162         \{
+163             \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Star"}), 4, 1);
+164         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a697dac7e84cbd36a29ab5f10a935deef_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a99d20b598b1ddf39d02a7354721a4bcf}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Super\+Mushroom\+Sprite@{Create\+Super\+Mushroom\+Sprite}}
+\index{Create\+Super\+Mushroom\+Sprite@{Create\+Super\+Mushroom\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Super\+Mushroom\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Super\+Mushroom\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 175 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+176         \{
+177             \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"SuperMushroom"}));
+178         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a99d20b598b1ddf39d02a7354721a4bcf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a8b16d8c39377823f1f011c074ab6b270}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Text\+Sprite@{Create\+Text\+Sprite}}
+\index{Create\+Text\+Sprite@{Create\+Text\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Text\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Text\+Sprite (\begin{DoxyParamCaption}\item[{string}]{text,  }\item[{float}]{font\+Size = {\ttfamily 18f} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 30 of file Sprite\+Factory.\+cs.
+
+
+\begin{DoxyCode}
+31         \{
+32             \textcolor{keywordflow}{return} \textcolor{keyword}{new} TextSprite(text, content.Load<SpriteFont>(\textcolor{stringliteral}{"Font\(\backslash\)\(\backslash\)text"}), \textcolor{keyword}{new} Point(), 
+      ZIndex.Hud, fontSize);
+33         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_ab0a7ed9dbba09c7ecbc036ac65a4a109}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Thwomp\+Sprite@{Create\+Thwomp\+Sprite}}
+\index{Create\+Thwomp\+Sprite@{Create\+Thwomp\+Sprite}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Thwomp\+Sprite()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Thwomp\+Sprite (\begin{DoxyParamCaption}\item[{string}]{status }\end{DoxyParamCaption})}
+
+
+
+Definition at line 101 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+102         \{
+103             \textcolor{keywordflow}{switch} (status)
+104             \{
+105                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Defeated"}:
+106                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"GoombaDead"}));
+107                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{"Normal"}:
+108                     \textcolor{keywordflow}{return} \textcolor{keyword}{new} AnimatedSprite(GetTexture(\textcolor{stringliteral}{"Thwomp"}), 2, 1);
+109                 \textcolor{keywordflow}{default}:
+110                     \textcolor{comment}{//it should never hit this case, if it does there is an error somewhere}
+111                     \textcolor{comment}{//else in the code}
+112                     \textcolor{keywordflow}{return} null;
+113             \}
+114         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_ab0a7ed9dbba09c7ecbc036ac65a4a109_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a4310b74d9b5975a309ee1c12ee33f96e}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Create\+Title@{Create\+Title}}
+\index{Create\+Title@{Create\+Title}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Create\+Title()}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Title (\begin{DoxyParamCaption}\item[{\textbf{ Z\+Index}}]{z\+Index }\end{DoxyParamCaption})}
+
+
+
+Definition at line 302 of file Sprite\+Factory.\+cs.
+
+
+
+References Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture().
+
+
+\begin{DoxyCode}
+303         \{
+304             \textcolor{keywordflow}{return} \textcolor{keyword}{new} StaticSprite(GetTexture(\textcolor{stringliteral}{"Title"}), 0, 0, 22, 11, zIndex);
+305         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a4310b74d9b5975a309ee1c12ee33f96e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a1030a47545499fbe9d96173df465b349}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Get\+Texture@{Get\+Texture}}
+\index{Get\+Texture@{Get\+Texture}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Get\+Texture()}
+{\footnotesize\ttfamily Texture2D Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Get\+Texture (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 307 of file Sprite\+Factory.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Brick\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Coin\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Fire\+Flower\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Fire\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Flag\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Floor\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Goomba\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Koopa\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Mario\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+One\+Up\+Mushroom\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Pipeline\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Piranha\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Question\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Scene\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Stair\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Star\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Super\+Mushroom\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Thwomp\+Sprite(), and Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Create\+Title().
+
+
+\begin{DoxyCode}
+308         \{
+309             \textcolor{keywordflow}{if} (!textures.ContainsKey(name))
+310             \{
+311                 textures.Add(name, content.Load<Texture2D>(name));
+312             \}
+313 
+314             \textcolor{keywordflow}{return} textures[name];
+315         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Factories_1_1SpriteFactory_a1030a47545499fbe9d96173df465b349_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_a9d600eff314a4a24d4372322aaeecf5d}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!content@{content}}
+\index{content@{content}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{content}
+{\footnotesize\ttfamily Content\+Manager Mello\+Mario.\+Factories.\+Sprite\+Factory.\+content\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 16 of file Sprite\+Factory.\+cs.
+
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_aeaecb17b7daf7a8af287c5ebebe2c826}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!textures@{textures}}
+\index{textures@{textures}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{textures}
+{\footnotesize\ttfamily readonly I\+Dictionary$<$string, Texture2D$>$ Mello\+Mario.\+Factories.\+Sprite\+Factory.\+textures\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file Sprite\+Factory.\+cs.
+
+
+
+\subsection{Property Documentation}
+\mbox{\label{classMelloMario_1_1Factories_1_1SpriteFactory_aa0052a5d908078ac2ef4b93dfb488c50}} 
+\index{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}!Instance@{Instance}}
+\index{Instance@{Instance}!Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory@{Mello\+Mario\+::\+Factories\+::\+Sprite\+Factory}}
+\subsubsection{Instance}
+{\footnotesize\ttfamily \textbf{ I\+Sprite\+Factory}$<$Content\+Manager$>$ Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+Definition at line 23 of file Sprite\+Factory.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Items.\+Fire\+Ball.\+Fire\+Ball(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+Game\+Over(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Start.\+Game\+Start(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Won.\+Game\+Won(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+H\+U\+D.\+H\+U\+D(), Mello\+Mario.\+Game1.\+Load\+Content(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+On\+Draw(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+H\+U\+D.\+On\+Update(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha.\+Piranha(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+Poping\+Up\+Points(), Mello\+Mario.\+Objects.\+Miscs.\+Background.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Floor.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Stair.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Flag.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Pipeline.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Enemies.\+Thwomp.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Enemies.\+Goomba.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+One\+Up\+Mushroom.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Question.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Star.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Fire\+Flower.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Coin.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom.\+Update\+Sprite(), and Mello\+Mario.\+Objects.\+Characters.\+Mario.\+Update\+Sprite().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Factories/\textbf{ Sprite\+Factory.\+cs}\end{DoxyCompactItemize}

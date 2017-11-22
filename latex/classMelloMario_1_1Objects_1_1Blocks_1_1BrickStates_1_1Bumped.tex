@@ -1,0 +1,269 @@
+\section{Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped Class Reference}
+\label{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped}\index{Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped@{Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Bumped} (\textbf{ Brick} owner)
+\item 
+void \textbf{ Show} ()
+\item 
+void \textbf{ Hide} ()
+\item 
+void \textbf{ Bump} (\textbf{ Mario} mario)
+\item 
+override void \textbf{ Update} (int time)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \textbf{ Owner}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ elapsed}
+\item 
+int \textbf{ move}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file Bumped.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped_ae9ec9a0dfc1bd898e8fd8ff6cf0a4be6}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}!Bumped@{Bumped}}
+\index{Bumped@{Bumped}!Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}}
+\subsubsection{Bumped()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped.\+Bumped (\begin{DoxyParamCaption}\item[{\textbf{ Brick}}]{owner }\end{DoxyParamCaption})}
+
+
+
+Definition at line 17 of file Bumped.\+cs.
+
+
+\begin{DoxyCode}
+17                                    : base(owner)
+18         \{
+19             elapsed = 0;
+20             move = 0;
+21         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped_ab049f084d70e74db630dcd9c7d9b45ad}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}!Bump@{Bump}}
+\index{Bump@{Bump}!Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}}
+\subsubsection{Bump()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped.\+Bump (\begin{DoxyParamCaption}\item[{\textbf{ Mario}}]{mario }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Block\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IBlockState_a29ce06531b73e812c8ee1bc2e6104613}.
+
+
+
+Definition at line 40 of file Bumped.\+cs.
+
+
+\begin{DoxyCode}
+41         \{
+42             \textcolor{comment}{// do nothing}
+43         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped_a952eb6de948df4e7475feee90660ab2f}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}!Hide@{Hide}}
+\index{Hide@{Hide}!Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}}
+\subsubsection{Hide()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped.\+Hide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Block\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IBlockState_afd75a424a65ffd9919350e553a83d0e9}.
+
+
+
+Definition at line 35 of file Bumped.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Brick $>$.\+Owner.
+
+
+\begin{DoxyCode}
+36         \{
+37             Owner.State = \textcolor{keyword}{new} Hidden(Owner);
+38         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped_ae0529ed64e6ff81f9119254d1e6acd15}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}!Show@{Show}}
+\index{Show@{Show}!Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}}
+\subsubsection{Show()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped.\+Show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Block\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IBlockState_a06d2e0af155873db7a6eedaa86a1b90b}.
+
+
+
+Definition at line 23 of file Bumped.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Database.\+Has\+Item\+Enclosed(), and Mello\+Mario.\+Objects.\+Base\+State$<$ Brick $>$.\+Owner.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped.\+Update(), and Mello\+Mario.\+Objects.\+Blocks.\+Question\+States.\+Bumped.\+Update().
+
+
+\begin{DoxyCode}
+24         \{
+25             \textcolor{keywordflow}{if} (Owner.HasInitialItem && !Database.HasItemEnclosed(Owner))
+26             \{
+27                 Owner.State = \textcolor{keyword}{new} Used(Owner);
+28             \}
+29             \textcolor{keywordflow}{else}
+30             \{
+31                 Owner.State = \textcolor{keyword}{new} Normal(Owner);
+32             \}
+33         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped_ae0529ed64e6ff81f9119254d1e6acd15_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped_ae0529ed64e6ff81f9119254d1e6acd15_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped_ad23b681f2922690b9eeb970707df361e}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+State$<$ Brick $>$} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseState_a151e08ba646c7b0faff385b8248812c2}.
+
+
+
+Definition at line 45 of file Bumped.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Brick $>$.\+Owner, and Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped.\+Show().
+
+
+\begin{DoxyCode}
+46         \{
+47             \textcolor{comment}{//TODO:Move this into soundcontroller}
+48             \textcolor{comment}{//SoundManager.BumpBlock.Play();}
+49             \textcolor{comment}{// TODO: use BaseTimedState}
+50             \textcolor{keywordflow}{if} (elapsed >= 100)
+51             \{
+52                 move = 0;
+53             \}
+54             elapsed += time;
+55             move += 1;
+56             \textcolor{keywordflow}{if} (elapsed >= 350)
+57             \{
+58                 Owner.BumpMove(0);
+59                 Owner.ReleaseNextItem();
+60                 Show();
+61             \}
+62             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (elapsed >= 100)
+63             \{
+64                 Owner.BumpMove(move);
+65             \}
+66             \textcolor{keywordflow}{else}
+67             \{
+68                 Owner.BumpMove(-move);
+69             \}
+70         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped_ad23b681f2922690b9eeb970707df361e_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped_a5e99e618c7a374fdde3dfb66db9e78e4}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}!elapsed@{elapsed}}
+\index{elapsed@{elapsed}!Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}}
+\subsubsection{elapsed}
+{\footnotesize\ttfamily int Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped.\+elapsed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 14 of file Bumped.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped_a872bb54c1ba3dbdb247cca328ab1013a}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}!move@{move}}
+\index{move@{move}!Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}}
+\subsubsection{move}
+{\footnotesize\ttfamily int Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped.\+move\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file Bumped.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseState_a0367f1a6d509d6b819df603402bc6bb0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}!Owner@{Owner}}
+\index{Owner@{Owner}!Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped@{Mello\+Mario\+::\+Objects\+::\+Blocks\+::\+Brick\+States\+::\+Bumped}}
+\subsubsection{Owner}
+{\footnotesize\ttfamily T \textbf{ Mello\+Mario.\+Objects.\+Base\+State}$<$ T $>$.Owner\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 12 of file Base\+State.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Blocks.\+Question\+States.\+Hidden\+::\+Bump(), Mello\+Mario.\+Objects.\+Blocks.\+Question\+States.\+Normal\+::\+Bump(), Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Normal\+::\+Bump(), Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Hidden\+::\+Bump(), Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Normal\+::\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Thwomp\+States.\+Normal\+::\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal\+::\+Defeat(), Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Used\+::\+Hide(), Mello\+Mario.\+Objects.\+Blocks.\+Question\+States.\+Used\+::\+Hide(), Mello\+Mario.\+Objects.\+Blocks.\+Question\+States.\+Normal\+::\+Hide(), Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Normal\+::\+Hide(), Mello\+Mario.\+Objects.\+Blocks.\+Question\+States.\+Bumped\+::\+Hide(), Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped\+::\+Hide(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Normal\+::\+Jump\+On(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Hidden\+::\+On\+Timer(), Mello\+Mario.\+Objects.\+Characters.\+Protection\+States.\+Normal\+::\+Protect(), Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Used\+::\+Show(), Mello\+Mario.\+Objects.\+Blocks.\+Question\+States.\+Hidden\+::\+Show(), Mello\+Mario.\+Objects.\+Blocks.\+Question\+States.\+Used\+::\+Show(), Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Hidden\+::\+Show(), Mello\+Mario.\+Objects.\+Blocks.\+Question\+States.\+Bumped\+::\+Show(), Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped\+::\+Show(), Mello\+Mario.\+Objects.\+Characters.\+Protection\+States.\+Normal\+::\+Star(), Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped\+::\+Update(), and Mello\+Mario.\+Objects.\+Blocks.\+Question\+States.\+Bumped\+::\+Update().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+Blocks/\+Brick\+States/\textbf{ Bumped.\+cs}\end{DoxyCompactItemize}

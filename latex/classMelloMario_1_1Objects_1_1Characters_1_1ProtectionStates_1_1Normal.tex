@@ -1,0 +1,156 @@
+\section{Mello\+Mario.\+Objects.\+Characters.\+Protection\+States.\+Normal Class Reference}
+\label{classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Normal}\index{Mello\+Mario.\+Objects.\+Characters.\+Protection\+States.\+Normal@{Mello\+Mario.\+Objects.\+Characters.\+Protection\+States.\+Normal}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Characters.\+Protection\+States.\+Normal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Normal__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Characters.\+Protection\+States.\+Normal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Normal__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Normal} (\textbf{ Mario} owner)
+\item 
+void \textbf{ Star} ()
+\item 
+void \textbf{ Protect} ()
+\item 
+override void \textbf{ Update} (int time)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \textbf{ Owner}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Normal.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Normal_a8428b70509d95f31614e1a5a67546b2a}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal}!Normal@{Normal}}
+\index{Normal@{Normal}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal}}
+\subsubsection{Normal()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Characters.\+Protection\+States.\+Normal.\+Normal (\begin{DoxyParamCaption}\item[{\textbf{ Mario}}]{owner }\end{DoxyParamCaption})}
+
+
+
+Definition at line 12 of file Normal.\+cs.
+
+
+\begin{DoxyCode}
+12                                    : base(owner)
+13         \{
+14         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Normal_a820f7c37e678939ff56196f2113d8312}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal}!Protect@{Protect}}
+\index{Protect@{Protect}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal}}
+\subsubsection{Protect()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Characters.\+Protection\+States.\+Normal.\+Protect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Mario\+Protection\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IMarioProtectionState_a1f455a135ab3a6e49781c2ecc5746bcc}.
+
+
+
+Definition at line 21 of file Normal.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Brick $>$.\+Owner.
+
+
+\begin{DoxyCode}
+22         \{
+23             Owner.ProtectionState = \textcolor{keyword}{new} Protected(Owner);
+24         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Normal_a0c90a86a120414249e45a46586df0a66}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal}!Star@{Star}}
+\index{Star@{Star}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal}}
+\subsubsection{Star()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Characters.\+Protection\+States.\+Normal.\+Star (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Mario\+Protection\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IMarioProtectionState_ac4ee2bf90b68a3a12e0138ee75c489e6}.
+
+
+
+Definition at line 16 of file Normal.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Brick $>$.\+Owner.
+
+
+\begin{DoxyCode}
+17         \{
+18             Owner.ProtectionState = \textcolor{keyword}{new} Starred(Owner);
+19         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Normal_a0b62766382a44e8d166ddea2812f5962}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Characters.\+Protection\+States.\+Normal.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+State$<$ Mario $>$} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseState_a151e08ba646c7b0faff385b8248812c2}.
+
+
+
+Definition at line 26 of file Normal.\+cs.
+
+
+\begin{DoxyCode}
+27         \{
+28         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseState_a0367f1a6d509d6b819df603402bc6bb0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal}!Owner@{Owner}}
+\index{Owner@{Owner}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Protection\+States\+::\+Normal}}
+\subsubsection{Owner}
+{\footnotesize\ttfamily T \textbf{ Mello\+Mario.\+Objects.\+Base\+State}$<$ T $>$.Owner\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 12 of file Base\+State.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Standing\+::\+Crouch(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Walking\+::\+Crouch(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Standard\+::\+Downgrade(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super\+::\+Downgrade(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching\+::\+Idle(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Walking\+::\+Idle(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Standing\+::\+Jump(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Walking\+::\+Jump(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Standard\+::\+Upgrade\+To\+Fire(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super\+::\+Upgrade\+To\+Fire(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Fire\+::\+Upgrade\+To\+Super(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Standard\+::\+Upgrade\+To\+Super(), and Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Standing\+::\+Walk().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+Characters/\+Protection\+States/\textbf{ Normal.\+cs}\end{DoxyCompactItemize}

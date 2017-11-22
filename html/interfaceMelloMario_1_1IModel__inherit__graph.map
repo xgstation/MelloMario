@@ -1,0 +1,3 @@
+<map id="MelloMario.IModel" name="MelloMario.IModel">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Theming_1_1GameModel.html" title="{MelloMario.Theming.GameModel\n|+ Splash\l+ IsPaused\l+ GetActiveViewMatrix\l+ ActivePlayer\l&#45; game\l&#45; listener\l&#45; soundListener\l&#45; session\l&#45; controllers\l&#45; mapPath\l&#45; splashElapsed\l|+ GameModel()\l+ ToggleFullScreen()\l+ Pause()\l+ Init()\l+ Resume()\l+ Reset()\l+ Quit()\l+ Infinite()\l+ Normal()\l+ Update()\l+ Draw()\l+ ToggleMute()\l+ LoadControllers()\l+ LoadLevel()\l+ Transist()\l+ TransistGameWon()\l&#45; UpdateController()\l&#45; UpdateGameObjects()\l&#45; UpdateContainers()\l}" alt="" coords="5,336,217,824"/>
+</map>

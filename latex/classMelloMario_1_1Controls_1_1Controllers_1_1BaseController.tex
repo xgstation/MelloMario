@@ -1,0 +1,210 @@
+\section{Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller$<$ T $>$ Class Template Reference}
+\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController}\index{Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller$<$ T $>$@{Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller$<$ T $>$}}
+
+
+Inheritance diagram for Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Add\+Command} (object key, \textbf{ I\+Command} value, \textbf{ Key\+Behavior} behavior)
+\item 
+void \textbf{ Update} ()
+\item 
+void \textbf{ Reset} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Base\+Controller} ()
+\item 
+abstract void \textbf{ On\+Update} ()
+\item 
+void \textbf{ Run\+Command} (T key, \textbf{ Key\+Behavior} behavior)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly I\+Dictionary$<$ \textbf{ Key\+Behavior}, I\+Dictionary$<$ T, \textbf{ I\+Command} $>$ $>$ \textbf{ commands}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 9 of file Base\+Controller.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_aa926783681489e4035d6635d3f94d947}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}!Base\+Controller@{Base\+Controller}}
+\index{Base\+Controller@{Base\+Controller}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}}
+\subsubsection{Base\+Controller()}
+{\footnotesize\ttfamily \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller}$<$ T $>$.\textbf{ Base\+Controller} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 13 of file Base\+Controller.\+cs.
+
+
+\begin{DoxyCode}
+14         \{
+15             commands = \textcolor{keyword}{new} Dictionary<KeyBehavior, IDictionary<T, ICommand>>
+16             \{
+17                 \{
+18                     KeyBehavior.press, \textcolor{keyword}{new} Dictionary<T, ICommand>()
+19                 \},
+20                 \{
+21                     KeyBehavior.release, \textcolor{keyword}{new} Dictionary<T, ICommand>()
+22                 \},
+23                 \{
+24                     KeyBehavior.hold, \textcolor{keyword}{new} Dictionary<T, ICommand>()
+25                 \}
+26             \};
+27         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_abc2c5cd6fc0969d1131cbb832f8b27b7}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}!Add\+Command@{Add\+Command}}
+\index{Add\+Command@{Add\+Command}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}}
+\subsubsection{Add\+Command()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller}$<$ T $>$.Add\+Command (\begin{DoxyParamCaption}\item[{object}]{key,  }\item[{\textbf{ I\+Command}}]{value,  }\item[{\textbf{ Key\+Behavior}}]{behavior }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Controller} \doxyref{}{p.}{interfaceMelloMario_1_1IController_a11f1fbf12b60c68413e5a2a720805b3b}.
+
+
+
+Definition at line 29 of file Base\+Controller.\+cs.
+
+
+\begin{DoxyCode}
+30         \{
+31             \textcolor{keywordflow}{if} (key is T castedKey)
+32             \{
+33                 commands[behavior].Add(castedKey, value);
+34             \}
+35         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_a714d9e8e16ab15d264defa5671acd3fb}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}!On\+Update@{On\+Update}}
+\index{On\+Update@{On\+Update}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}}
+\subsubsection{On\+Update()}
+{\footnotesize\ttfamily abstract void \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller}$<$ T $>$.On\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Gamepad\+Controller} \doxyref{}{p.}{classMelloMario_1_1Controls_1_1Controllers_1_1GamepadController_a9fd7afd73796c37ad288127c4bbc0593}, and \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Keyboard\+Controller} \doxyref{}{p.}{classMelloMario_1_1Controls_1_1Controllers_1_1KeyboardController_a01b7e1b7a707e1c4c6924abe03716e2a}.
+
+
+
+Referenced by Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller$<$ Keys $>$.\+Reset(), and Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller$<$ Keys $>$.\+Update().
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_a714d9e8e16ab15d264defa5671acd3fb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_abb457ac47da8a4cb253abbec1dd8adfa}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}!Reset@{Reset}}
+\index{Reset@{Reset}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}}
+\subsubsection{Reset()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller}$<$ T $>$.\textbf{ Reset} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Controller} \doxyref{}{p.}{interfaceMelloMario_1_1IController_aee9b89a6c5fc218ec1e2afd65e7d91e7}.
+
+
+
+Definition at line 42 of file Base\+Controller.\+cs.
+
+
+\begin{DoxyCode}
+43         \{
+44             \textcolor{keywordflow}{foreach} (IDictionary<T, ICommand> dict \textcolor{keywordflow}{in} commands.Values)
+45             \{
+46                 dict.Clear();
+47             \}
+48         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_a9a3f406141d69ba5b788c3eda0a8d30b}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}!Run\+Command@{Run\+Command}}
+\index{Run\+Command@{Run\+Command}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}}
+\subsubsection{Run\+Command()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller}$<$ T $>$.Run\+Command (\begin{DoxyParamCaption}\item[{T}]{key,  }\item[{\textbf{ Key\+Behavior}}]{behavior }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 52 of file Base\+Controller.\+cs.
+
+
+\begin{DoxyCode}
+53         \{
+54             \textcolor{keywordflow}{if} (commands[behavior].ContainsKey(key))
+55             \{
+56                 commands[behavior][key].Execute();
+57             \}
+58         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_a808573459bc32bd98508b36f223eee0d}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller}$<$ T $>$.Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Controller} \doxyref{}{p.}{interfaceMelloMario_1_1IController_aa8803ac53659be254318ce404edc10ed}.
+
+
+
+Definition at line 37 of file Base\+Controller.\+cs.
+
+
+\begin{DoxyCode}
+38         \{
+39             OnUpdate();
+40         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_ae02f222a9ee636a4a33e7b5f60c19e12}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}!commands@{commands}}
+\index{commands@{commands}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Base\+Controller}}
+\subsubsection{commands}
+{\footnotesize\ttfamily readonly I\+Dictionary$<$\textbf{ Key\+Behavior}, I\+Dictionary$<$T, \textbf{ I\+Command}$>$ $>$ \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller}$<$ T $>$.commands\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 11 of file Base\+Controller.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Base\+Classes/\+Controls/\textbf{ Base\+Controller.\+cs}\end{DoxyCompactItemize}

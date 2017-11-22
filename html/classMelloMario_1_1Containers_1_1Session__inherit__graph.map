@@ -1,0 +1,7 @@
+<map id="MelloMario.Containers.Session" name="MelloMario.Containers.Session">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Containers_1_1BaseContainer.html" title="{BaseContainer\&lt; IWorld,\l IPlayer \&gt;\n|&#45; keys\l&#45; values\l&#45; toAdd\l&#45; toMove\l&#45; toRemove\l|+ Add()\l+ Move()\l+ Remove()\l+ Update()\l# BaseContainer()\l# GetKey()\l# Scan()\l# ScanKeys()\l# ScanValues()\l&#45; DoAdd()\l&#45; DoRemove()\l}" alt="" coords="31,549,191,847"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Containers_1_1BaseContainer.html" title="{MelloMario.Containers.Base\lContainer\&lt; Key, Value \&gt;\n|&#45; keys\l&#45; values\l&#45; toAdd\l&#45; toMove\l&#45; toRemove\l|+ Add()\l+ Move()\l+ Remove()\l+ Update()\l# BaseContainer()\l# GetKey()\l# Scan()\l# ScanKeys()\l# ScanValues()\l&#45; DoAdd()\l&#45; DoRemove()\l}" alt="" coords="5,189,191,487"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1ISession.html" title="{ISession\n||+ ScanWorlds()\l+ ScanPlayers()\l}" alt="" coords="223,652,339,744"/>
+<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IContainer.html" title="{IContainer\&lt; IPlayer \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="215,277,359,399"/>
+<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IContainer.html" title="{MelloMario.IContainer\&lt; T \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="198,5,377,127"/>
+</map>

@@ -1,0 +1,249 @@
+\section{Mello\+Mario.\+Controls.\+Scripts.\+Playing\+Script Class Reference}
+\label{classMelloMario_1_1Controls_1_1Scripts_1_1PlayingScript}\index{Mello\+Mario.\+Controls.\+Scripts.\+Playing\+Script@{Mello\+Mario.\+Controls.\+Scripts.\+Playing\+Script}}
+
+
+Inheritance diagram for Mello\+Mario.\+Controls.\+Scripts.\+Playing\+Script\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classMelloMario_1_1Controls_1_1Scripts_1_1PlayingScript__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Controls.\+Scripts.\+Playing\+Script\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classMelloMario_1_1Controls_1_1Scripts_1_1PlayingScript__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Bind} (I\+Enumerable$<$ \textbf{ I\+Controller} $>$ controllers, \textbf{ I\+Model} model, \textbf{ I\+Character} character)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file Playing\+Script.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Controls_1_1Scripts_1_1PlayingScript_a2c0d77c52774e806f4c1bc01db3f9f4b}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Scripts\+::\+Playing\+Script@{Mello\+Mario\+::\+Controls\+::\+Scripts\+::\+Playing\+Script}!Bind@{Bind}}
+\index{Bind@{Bind}!Mello\+Mario\+::\+Controls\+::\+Scripts\+::\+Playing\+Script@{Mello\+Mario\+::\+Controls\+::\+Scripts\+::\+Playing\+Script}}
+\subsubsection{Bind()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Controls.\+Scripts.\+Playing\+Script.\+Bind (\begin{DoxyParamCaption}\item[{I\+Enumerable$<$ \textbf{ I\+Controller} $>$}]{controllers,  }\item[{\textbf{ I\+Model}}]{model,  }\item[{\textbf{ I\+Character}}]{character }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Script} \doxyref{}{p.}{interfaceMelloMario_1_1IScript_aaad41fb669e3bcb938f5847ffaabfb0e}.
+
+
+
+Definition at line 13 of file Playing\+Script.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Controller.\+Add\+Command(), Mello\+Mario.\+Factories.\+Command\+Factory.\+Instance, and Mello\+Mario.\+I\+Controller.\+Reset().
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Game\+Model.\+Resume().
+
+
+\begin{DoxyCode}
+14         \{
+15             ICommandFactory factory = CommandFactory.Instance;
+16 
+17             \textcolor{keywordflow}{foreach} (IController controller \textcolor{keywordflow}{in} controllers)
+18             \{
+19                 controller.Reset();
+20 
+21                 controller.AddCommand(Keys.Space, factory.CreateCharacterCommand(\textcolor{stringliteral}{"Action"}, character));
+22                 controller.AddCommand(Keys.Down, factory.CreateCharacterCommand(\textcolor{stringliteral}{"Crouch"}, character), 
+      KeyBehavior.hold);
+23                 controller.AddCommand(
+24                     Keys.Down,
+25                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"CrouchPress"}, character),
+26                     KeyBehavior.press);
+27                 controller.AddCommand(
+28                     Keys.Down,
+29                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"CrouchRelease"}, character),
+30                     KeyBehavior.release);
+31                 controller.AddCommand(Keys.Up, factory.CreateCharacterCommand(\textcolor{stringliteral}{"Jump"}, character), 
+      KeyBehavior.hold);
+32                 controller.AddCommand(
+33                     Keys.Up,
+34                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"JumpPress"}, character),
+35                     KeyBehavior.press);
+36                 controller.AddCommand(
+37                     Keys.Up,
+38                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"JumpRelease"}, character),
+39                     KeyBehavior.release);
+40                 controller.AddCommand(Keys.Left, factory.CreateCharacterCommand(\textcolor{stringliteral}{"Left"}, character), 
+      KeyBehavior.hold);
+41                 controller.AddCommand(
+42                     Keys.Left,
+43                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"LeftPress"}, character),
+44                     KeyBehavior.press);
+45                 controller.AddCommand(
+46                     Keys.Left,
+47                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"LeftRelease"}, character),
+48                     KeyBehavior.release);
+49                 controller.AddCommand(Keys.Right, factory.CreateCharacterCommand(\textcolor{stringliteral}{"Right"}, character), 
+      KeyBehavior.hold);
+50                 controller.AddCommand(
+51                     Keys.Right,
+52                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"RightPress"}, character),
+53                     KeyBehavior.press);
+54                 controller.AddCommand(
+55                     Keys.Right,
+56                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"RightRelease"}, character),
+57                     KeyBehavior.release);
+58 
+59                 controller.AddCommand(Keys.S, factory.CreateCharacterCommand(\textcolor{stringliteral}{"Crouch"}, character), 
+      KeyBehavior.hold);
+60                 controller.AddCommand(
+61                     Keys.S,
+62                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"CrouchPress"}, character),
+63                     KeyBehavior.press);
+64                 controller.AddCommand(
+65                     Keys.S,
+66                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"CrouchRelease"}, character),
+67                     KeyBehavior.release);
+68                 controller.AddCommand(Keys.Z, factory.CreateCharacterCommand(\textcolor{stringliteral}{"Jump"}, character), 
+      KeyBehavior.hold);
+69                 controller.AddCommand(
+70                     Keys.Z,
+71                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"JumpPress"}, character),
+72                     KeyBehavior.press);
+73                 controller.AddCommand(
+74                     Keys.Z,
+75                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"JumpRelease"}, character),
+76                     KeyBehavior.release);
+77                 controller.AddCommand(Keys.A, factory.CreateCharacterCommand(\textcolor{stringliteral}{"Left"}, character), 
+      KeyBehavior.hold);
+78                 controller.AddCommand(
+79                     Keys.A,
+80                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"LeftPress"}, character),
+81                     KeyBehavior.press);
+82                 controller.AddCommand(
+83                     Keys.A,
+84                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"LeftRelease"}, character),
+85                     KeyBehavior.release);
+86                 controller.AddCommand(Keys.D, factory.CreateCharacterCommand(\textcolor{stringliteral}{"Right"}, character), 
+      KeyBehavior.hold);
+87                 controller.AddCommand(
+88                     Keys.D,
+89                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"RightPress"}, character),
+90                     KeyBehavior.press);
+91                 controller.AddCommand(
+92                     Keys.D,
+93                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"RightRelease"}, character),
+94                     KeyBehavior.release);
+95 
+96                 controller.AddCommand(
+97                     Keys.I,
+98                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"BecomeFire"}, character),
+99                     KeyBehavior.press); \textcolor{comment}{// Turn to fire}
+100                 controller.AddCommand(
+101                     Keys.U,
+102                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"BecomeSuper"}, character),
+103                     KeyBehavior.press); \textcolor{comment}{// Turn to super}
+104                 controller.AddCommand(
+105                     Keys.Y,
+106                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"BecomeNormal"}, character),
+107                     KeyBehavior.press); \textcolor{comment}{// Turn to normal}
+108 
+109                 controller.AddCommand(
+110                     Keys.F12,
+111                     factory.CreateModelCommand(\textcolor{stringliteral}{"ToggleFullScreen"}, model),
+112                     KeyBehavior.press);
+113                 controller.AddCommand(Keys.P, factory.CreateModelCommand(\textcolor{stringliteral}{"Pause"}, model), 
+      KeyBehavior.press);
+114                 controller.AddCommand(Keys.R, factory.CreateModelCommand(\textcolor{stringliteral}{"Reset"}, model), 
+      KeyBehavior.press);
+115                 controller.AddCommand(Keys.Q, factory.CreateModelCommand(\textcolor{stringliteral}{"Quit"}, model), 
+      KeyBehavior.press);
+116 
+117                 controller.AddCommand(Keys.M, factory.CreateModelCommand(\textcolor{stringliteral}{"ToggleMute"}, model), 
+      KeyBehavior.press);
+118 
+119                 controller.AddCommand(Buttons.B, factory.CreateCharacterCommand(\textcolor{stringliteral}{"Action"}, character));
+120                 controller.AddCommand(
+121                     Buttons.DPadDown,
+122                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"Crouch"}, character),
+123                     KeyBehavior.hold);
+124                 controller.AddCommand(
+125                     Buttons.DPadDown,
+126                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"CrouchPress"}, character),
+127                     KeyBehavior.press);
+128                 controller.AddCommand(
+129                     Buttons.DPadDown,
+130                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"CrouchRelease"}, character),
+131                     KeyBehavior.release);
+132                 controller.AddCommand(Buttons.A, factory.CreateCharacterCommand(\textcolor{stringliteral}{"Jump"}, character), 
+      KeyBehavior.hold);
+133                 controller.AddCommand(
+134                     Buttons.A,
+135                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"JumpPress"}, character),
+136                     KeyBehavior.press);
+137                 controller.AddCommand(
+138                     Buttons.A,
+139                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"JumpRelease"}, character),
+140                     KeyBehavior.release);
+141                 controller.AddCommand(
+142                     Buttons.DPadLeft,
+143                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"Left"}, character),
+144                     KeyBehavior.hold);
+145                 controller.AddCommand(
+146                     Buttons.DPadLeft,
+147                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"LeftPress"}, character),
+148                     KeyBehavior.press);
+149                 controller.AddCommand(
+150                     Buttons.DPadLeft,
+151                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"LeftRelease"}, character),
+152                     KeyBehavior.release);
+153                 controller.AddCommand(
+154                     Buttons.DPadRight,
+155                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"Right"}, character),
+156                     KeyBehavior.hold);
+157                 controller.AddCommand(
+158                     Buttons.DPadRight,
+159                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"RightPress"}, character),
+160                     KeyBehavior.press);
+161                 controller.AddCommand(
+162                     Buttons.DPadRight,
+163                     factory.CreateCharacterCommand(\textcolor{stringliteral}{"RightRelease"}, character),
+164                     KeyBehavior.release);
+165             \}
+166         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Controls_1_1Scripts_1_1PlayingScript_a2c0d77c52774e806f4c1bc01db3f9f4b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Controls_1_1Scripts_1_1PlayingScript_a2c0d77c52774e806f4c1bc01db3f9f4b_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Controls/\+Scripts/\textbf{ Playing\+Script.\+cs}\end{DoxyCompactItemize}

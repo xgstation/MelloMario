@@ -1,0 +1,28 @@
+var namespaceMelloMario_1_1Controls_1_1Commands =
+[
+    [ "Action", "classMelloMario_1_1Controls_1_1Commands_1_1Action.html", "classMelloMario_1_1Controls_1_1Commands_1_1Action" ],
+    [ "BaseCommand", "classMelloMario_1_1Controls_1_1Commands_1_1BaseCommand.html", "classMelloMario_1_1Controls_1_1Commands_1_1BaseCommand" ],
+    [ "Crouch", "classMelloMario_1_1Controls_1_1Commands_1_1Crouch.html", "classMelloMario_1_1Controls_1_1Commands_1_1Crouch" ],
+    [ "CrouchPress", "classMelloMario_1_1Controls_1_1Commands_1_1CrouchPress.html", "classMelloMario_1_1Controls_1_1Commands_1_1CrouchPress" ],
+    [ "CrouchRelease", "classMelloMario_1_1Controls_1_1Commands_1_1CrouchRelease.html", "classMelloMario_1_1Controls_1_1Commands_1_1CrouchRelease" ],
+    [ "FireCreate", "classMelloMario_1_1Controls_1_1Commands_1_1FireCreate.html", "classMelloMario_1_1Controls_1_1Commands_1_1FireCreate" ],
+    [ "InfiniteMode", "classMelloMario_1_1Controls_1_1Commands_1_1InfiniteMode.html", "classMelloMario_1_1Controls_1_1Commands_1_1InfiniteMode" ],
+    [ "Jump", "classMelloMario_1_1Controls_1_1Commands_1_1Jump.html", "classMelloMario_1_1Controls_1_1Commands_1_1Jump" ],
+    [ "JumpPress", "classMelloMario_1_1Controls_1_1Commands_1_1JumpPress.html", "classMelloMario_1_1Controls_1_1Commands_1_1JumpPress" ],
+    [ "JumpRelease", "classMelloMario_1_1Controls_1_1Commands_1_1JumpRelease.html", "classMelloMario_1_1Controls_1_1Commands_1_1JumpRelease" ],
+    [ "Left", "classMelloMario_1_1Controls_1_1Commands_1_1Left.html", "classMelloMario_1_1Controls_1_1Commands_1_1Left" ],
+    [ "LeftPress", "classMelloMario_1_1Controls_1_1Commands_1_1LeftPress.html", "classMelloMario_1_1Controls_1_1Commands_1_1LeftPress" ],
+    [ "LeftRelease", "classMelloMario_1_1Controls_1_1Commands_1_1LeftRelease.html", "classMelloMario_1_1Controls_1_1Commands_1_1LeftRelease" ],
+    [ "Mute", "classMelloMario_1_1Controls_1_1Commands_1_1Mute.html", "classMelloMario_1_1Controls_1_1Commands_1_1Mute" ],
+    [ "NormalCreate", "classMelloMario_1_1Controls_1_1Commands_1_1NormalCreate.html", "classMelloMario_1_1Controls_1_1Commands_1_1NormalCreate" ],
+    [ "NormalMode", "classMelloMario_1_1Controls_1_1Commands_1_1NormalMode.html", "classMelloMario_1_1Controls_1_1Commands_1_1NormalMode" ],
+    [ "Pause", "classMelloMario_1_1Controls_1_1Commands_1_1Pause.html", "classMelloMario_1_1Controls_1_1Commands_1_1Pause" ],
+    [ "Quit", "classMelloMario_1_1Controls_1_1Commands_1_1Quit.html", "classMelloMario_1_1Controls_1_1Commands_1_1Quit" ],
+    [ "Reset", "classMelloMario_1_1Controls_1_1Commands_1_1Reset.html", "classMelloMario_1_1Controls_1_1Commands_1_1Reset" ],
+    [ "Resume", "classMelloMario_1_1Controls_1_1Commands_1_1Resume.html", "classMelloMario_1_1Controls_1_1Commands_1_1Resume" ],
+    [ "Right", "classMelloMario_1_1Controls_1_1Commands_1_1Right.html", "classMelloMario_1_1Controls_1_1Commands_1_1Right" ],
+    [ "RightPress", "classMelloMario_1_1Controls_1_1Commands_1_1RightPress.html", "classMelloMario_1_1Controls_1_1Commands_1_1RightPress" ],
+    [ "RightRelease", "classMelloMario_1_1Controls_1_1Commands_1_1RightRelease.html", "classMelloMario_1_1Controls_1_1Commands_1_1RightRelease" ],
+    [ "SuperCreate", "classMelloMario_1_1Controls_1_1Commands_1_1SuperCreate.html", "classMelloMario_1_1Controls_1_1Commands_1_1SuperCreate" ],
+    [ "ToggleFullScreen", "classMelloMario_1_1Controls_1_1Commands_1_1ToggleFullScreen.html", "classMelloMario_1_1Controls_1_1Commands_1_1ToggleFullScreen" ]
+];

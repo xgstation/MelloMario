@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.Blocks.Question.BumpMove" name="MelloMario.Objects.Blocks.Question.BumpMove">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a9b9203102864cc5b68bc97e23d6139e6" title="MelloMario.Objects.BaseCollidable\lObject.Move" alt="" coords="236,5,460,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#a2530ad4f8d59f78dccd177bc8007075f" title="MelloMario.Containers.Base\lContainer.Move" alt="" coords="508,5,693,47"/>
+</map>

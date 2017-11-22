@@ -1,0 +1,25 @@
+var interfaceMelloMario_1_1ICharacter =
+[
+    [ "Action", "interfaceMelloMario_1_1ICharacter.html#a31f4f15d9fbc45e05c9a0b3c48f462cb", null ],
+    [ "Crouch", "interfaceMelloMario_1_1ICharacter.html#a55b49068f90bcba717c5f981fc337387", null ],
+    [ "CrouchPress", "interfaceMelloMario_1_1ICharacter.html#a7d834139f6a33f40c0b686669fc37e86", null ],
+    [ "CrouchRelease", "interfaceMelloMario_1_1ICharacter.html#a45b50d61ad1cf8460b08ca821526cb58", null ],
+    [ "FireCreate", "interfaceMelloMario_1_1ICharacter.html#a54b47b3e7e0f1f36289d7afebfc9eae5", null ],
+    [ "Jump", "interfaceMelloMario_1_1ICharacter.html#a3a6328c2bc266ffed02cc81b35ab4638", null ],
+    [ "JumpPress", "interfaceMelloMario_1_1ICharacter.html#a574aa6d9beb431fdd91265366d7aaa74", null ],
+    [ "JumpRelease", "interfaceMelloMario_1_1ICharacter.html#af77b9fbdc3426e4259763727777d7430", null ],
+    [ "Left", "interfaceMelloMario_1_1ICharacter.html#a9defd5c65e752c66808a02df24ee177c", null ],
+    [ "LeftPress", "interfaceMelloMario_1_1ICharacter.html#a8f2fc9ccde05c9be03787befac422eef", null ],
+    [ "LeftRelease", "interfaceMelloMario_1_1ICharacter.html#a47cc4ee3aea73ad4b9089045f51cc645", null ],
+    [ "Move", "interfaceMelloMario_1_1ICharacter.html#a24185fb9a2fdb9ab5b874937ae756575", null ],
+    [ "NormalCreate", "interfaceMelloMario_1_1ICharacter.html#a216322ac317571e914882af96c0bb5ce", null ],
+    [ "Remove", "interfaceMelloMario_1_1ICharacter.html#a9d9748c3b5bac9287f298fb82c02c74a", null ],
+    [ "Right", "interfaceMelloMario_1_1ICharacter.html#a76ae2d3a416234cad3130a0087f15403", null ],
+    [ "RightPress", "interfaceMelloMario_1_1ICharacter.html#aa138811ccddaf5982c5c718477d08598", null ],
+    [ "RightRelease", "interfaceMelloMario_1_1ICharacter.html#a46a7958423ac27917de7c67fdc2072c6", null ],
+    [ "SuperCreate", "interfaceMelloMario_1_1ICharacter.html#a27f13c808b9421ffb59a8370adc57aac", null ],
+    [ "Active", "interfaceMelloMario_1_1ICharacter.html#a12a5430ef85be9b3baf901ef2afb12b1", null ],
+    [ "CurrentWorld", "interfaceMelloMario_1_1ICharacter.html#a97ead98c3b105623ff0c3b954e478cce", null ],
+    [ "Player", "interfaceMelloMario_1_1ICharacter.html#a49f7885692ffc10e38d9a6226314ed57", null ],
+    [ "Sensing", "interfaceMelloMario_1_1ICharacter.html#ad339ab9010df5ee5268394f0214bd47f", null ]
+];

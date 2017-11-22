@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.Enemies.Piranha.DetectMario" name="MelloMario.Objects.Enemies.Piranha.DetectMario">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Containers_1_1World.html#aea586175f8222efd98a95899e510cd6b" title="MelloMario.Containers.World.\lScanNearby" alt="" coords="247,13,440,54"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#ab2746816cefc64fdadac94ac31eaea47" title="MelloMario.Containers.Base\lContainer\&lt; Point, IGameObject\l \&gt;::Scan" alt="" coords="488,5,691,61"/>
+</map>

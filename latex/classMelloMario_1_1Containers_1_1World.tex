@@ -1,0 +1,497 @@
+\section{Mello\+Mario.\+Containers.\+World Class Reference}
+\label{classMelloMario_1_1Containers_1_1World}\index{Mello\+Mario.\+Containers.\+World@{Mello\+Mario.\+Containers.\+World}}
+
+
+Inheritance diagram for Mello\+Mario.\+Containers.\+World\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Containers_1_1World__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Containers.\+World\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Containers_1_1World__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ World} (string id, \textbf{ World\+Type} type, Point size, I\+Enumerable$<$ Point $>$ respawn)
+\item 
+void \textbf{ Extend} (int left, int right, int top, int bottom)
+\item 
+I\+Enumerable$<$ \textbf{ I\+Game\+Object} $>$ \textbf{ Scan\+Nearby} (Rectangle range)
+\item 
+Point \textbf{ Get\+Respawn\+Point} (Point location)
+\item 
+void \textbf{ Add} (Value value)
+\item 
+void \textbf{ Move} (Value value)
+\item 
+void \textbf{ Remove} (Value value)
+\item 
+void \textbf{ Update} ()
+\item 
+void \textbf{ Add} (T value)
+\item 
+void \textbf{ Move} (T value)
+\item 
+void \textbf{ Remove} (T value)
+\item 
+void \textbf{ Update} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override Point \textbf{ Get\+Key} (\textbf{ I\+Game\+Object} value)
+\item 
+abstract Key \textbf{ Get\+Key} (Value value)
+\item 
+I\+Enumerable$<$ Value $>$ \textbf{ Scan} (Key key)
+\item 
+I\+Enumerable$<$ Key $>$ \textbf{ Scan\+Keys} ()
+\item 
+I\+Enumerable$<$ Value $>$ \textbf{ Scan\+Values} ()
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+string \textbf{ ID}\hspace{0.3cm}{\ttfamily  [get]}
+\item 
+\textbf{ World\+Type} \textbf{ Type}\hspace{0.3cm}{\ttfamily  [get]}
+\item 
+Rectangle \textbf{ Boundary}\hspace{0.3cm}{\ttfamily  [get, private set]}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly I\+Set$<$ Point $>$ \textbf{ respawn\+Points}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file World.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Containers_1_1World_af9ca150774d4d288a2ca6f3de467d395}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!World@{World}}
+\index{World@{World}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{World()}
+{\footnotesize\ttfamily Mello\+Mario.\+Containers.\+World.\+World (\begin{DoxyParamCaption}\item[{string}]{id,  }\item[{\textbf{ World\+Type}}]{type,  }\item[{Point}]{size,  }\item[{I\+Enumerable$<$ Point $>$}]{respawn }\end{DoxyParamCaption})}
+
+
+
+Definition at line 17 of file World.\+cs.
+
+
+
+References Mello\+Mario.\+Containers.\+World.\+Boundary, Mello\+Mario.\+Theming.\+Const.\+G\+R\+ID, Mello\+Mario.\+Containers.\+World.\+ID, and Mello\+Mario.\+Containers.\+World.\+Type.
+
+
+\begin{DoxyCode}
+18         \{
+19             ID = id;
+20             Type = type;
+21             Boundary = \textcolor{keyword}{new} Rectangle(0, 0, size.X * Const.GRID, size.Y * Const.GRID);
+22 
+23             respawnPoints = \textcolor{keyword}{new} HashSet<Point>();
+24             \textcolor{keywordflow}{foreach} (Point p \textcolor{keywordflow}{in} respawn)
+25             \{
+26                 respawnPoints.Add(\textcolor{keyword}{new} Point(p.X * Const.GRID, p.Y * Const.GRID));
+27             \}
+28         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{interfaceMelloMario_1_1IContainer_a1203b769628ce8a1c1907c423095aa70}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Add@{Add}}
+\index{Add@{Add}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Add()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+I\+Container}$<$ T $>$.Add (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a09791801b12923f7b6b7e83decfbe997}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Add@{Add}}
+\index{Add@{Add}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Add()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Add (\begin{DoxyParamCaption}\item[{Value}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 78 of file Base\+Container.\+cs.
+
+
+\begin{DoxyCode}
+79         \{
+80             toAdd.Add(value);
+81         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Containers_1_1World_a708669eef7af583fdbe28d81a2f85749}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Extend@{Extend}}
+\index{Extend@{Extend}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Extend()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Containers.\+World.\+Extend (\begin{DoxyParamCaption}\item[{int}]{left,  }\item[{int}]{right,  }\item[{int}]{top,  }\item[{int}]{bottom }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+World} \doxyref{}{p.}{interfaceMelloMario_1_1IWorld_a4212b574efc0fdd1ef71c2368e59e2cd}.
+
+
+
+Definition at line 34 of file World.\+cs.
+
+
+
+References Mello\+Mario.\+Containers.\+World.\+Boundary.
+
+
+\begin{DoxyCode}
+35         \{
+36             Boundary = \textcolor{keyword}{new} Rectangle(Boundary.Left - left, Boundary.Top - top, 
+      Boundary.Width + left + right, Boundary.Height + top + bottom);
+37         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a73f9df110a2f12619e088e96991537fc}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Get\+Key@{Get\+Key}}
+\index{Get\+Key@{Get\+Key}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Get\+Key()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily abstract Key \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Get\+Key (\begin{DoxyParamCaption}\item[{Value}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}, {\ttfamily [inherited]}}
+
+\mbox{\label{classMelloMario_1_1Containers_1_1World_a55d4729298b59872dd214b2102bf4e57}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Get\+Key@{Get\+Key}}
+\index{Get\+Key@{Get\+Key}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Get\+Key()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily override Point Mello\+Mario.\+Containers.\+World.\+Get\+Key (\begin{DoxyParamCaption}\item[{\textbf{ I\+Game\+Object}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 73 of file World.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Game\+Object.\+Boundary, and Mello\+Mario.\+Theming.\+Const.\+G\+R\+ID.
+
+
+\begin{DoxyCode}
+74         \{
+75             Point center = value.Boundary.Center;
+76 
+77             \textcolor{keywordflow}{return} \textcolor{keyword}{new} Point(center.X / Const.GRID, center.Y / Const.GRID);
+78         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Containers_1_1World_abfdeb1f306e8c6d0ad75e4fadf4444b3}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Get\+Respawn\+Point@{Get\+Respawn\+Point}}
+\index{Get\+Respawn\+Point@{Get\+Respawn\+Point}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Get\+Respawn\+Point()}
+{\footnotesize\ttfamily Point Mello\+Mario.\+Containers.\+World.\+Get\+Respawn\+Point (\begin{DoxyParamCaption}\item[{Point}]{location }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+World} \doxyref{}{p.}{interfaceMelloMario_1_1IWorld_af8cfdecb9f66f9a785e31b68dcb20286}.
+
+
+
+Definition at line 58 of file World.\+cs.
+
+
+\begin{DoxyCode}
+59         \{
+60             Point target = location;
+61 
+62             \textcolor{keywordflow}{foreach} (Point p \textcolor{keywordflow}{in} respawnPoints)
+63             \{
+64                 \textcolor{keywordflow}{if} (p.X <= location.X && p.X > target.X)
+65                 \{
+66                     target = p;
+67                 \}
+68             \}
+69 
+70             \textcolor{keywordflow}{return} target;
+71         \}
+\end{DoxyCode}
+\mbox{\label{interfaceMelloMario_1_1IContainer_a515faf6ba73cf569cb85fa5f690e2941}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Move@{Move}}
+\index{Move@{Move}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Move()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+I\+Container}$<$ T $>$.Move (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a2530ad4f8d59f78dccd177bc8007075f}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Move@{Move}}
+\index{Move@{Move}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Move()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Move (\begin{DoxyParamCaption}\item[{Value}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 83 of file Base\+Container.\+cs.
+
+
+\begin{DoxyCode}
+84         \{
+85             toMove.Add(value);
+86         \}
+\end{DoxyCode}
+\mbox{\label{interfaceMelloMario_1_1IContainer_a44bdfbd6bdc5cb295df9837b5dc1c991}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Remove@{Remove}}
+\index{Remove@{Remove}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Remove()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+I\+Container}$<$ T $>$.Remove (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a22d1d351d72889669184260796158208}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Remove@{Remove}}
+\index{Remove@{Remove}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Remove()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Remove (\begin{DoxyParamCaption}\item[{Value}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 88 of file Base\+Container.\+cs.
+
+
+\begin{DoxyCode}
+89         \{
+90             toRemove.Add(value);
+91         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_ab2746816cefc64fdadac94ac31eaea47}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Scan@{Scan}}
+\index{Scan@{Scan}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Scan()}
+{\footnotesize\ttfamily I\+Enumerable$<$Value$>$ \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Scan (\begin{DoxyParamCaption}\item[{Key}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 53 of file Base\+Container.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Containers.\+World\+::\+Scan\+Nearby().
+
+
+\begin{DoxyCode}
+54         \{
+55             \textcolor{keywordflow}{if} (values.ContainsKey(key))
+56             \{
+57                 \textcolor{keywordflow}{return} values[key];
+58             \}
+59             \textcolor{keywordflow}{return} Enumerable.Empty<Value>();
+60         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a7ab92dafe7bd52a060afe6bd022016ba}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Scan\+Keys@{Scan\+Keys}}
+\index{Scan\+Keys@{Scan\+Keys}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Scan\+Keys()}
+{\footnotesize\ttfamily I\+Enumerable$<$Key$>$ \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Scan\+Keys (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 62 of file Base\+Container.\+cs.
+
+
+\begin{DoxyCode}
+63         \{
+64             \textcolor{keywordflow}{return} values.Keys;
+65         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Containers_1_1World_aea586175f8222efd98a95899e510cd6b}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Scan\+Nearby@{Scan\+Nearby}}
+\index{Scan\+Nearby@{Scan\+Nearby}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Scan\+Nearby()}
+{\footnotesize\ttfamily I\+Enumerable$<$\textbf{ I\+Game\+Object}$>$ Mello\+Mario.\+Containers.\+World.\+Scan\+Nearby (\begin{DoxyParamCaption}\item[{Rectangle}]{range }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+World} \doxyref{}{p.}{interfaceMelloMario_1_1IWorld_a2b7d10f85b41db12b1a274c9cf1aa2e9}.
+
+
+
+Definition at line 39 of file World.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Const.\+G\+R\+ID, Mello\+Mario.\+Containers.\+Base\+Container$<$ Point, I\+Game\+Object $>$.\+Scan(), and Mello\+Mario.\+Theming.\+Const.\+S\+C\+A\+N\+R\+A\+N\+GE.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Collide\+All(), and Mello\+Mario.\+Objects.\+Enemies.\+Piranha.\+Detect\+Mario().
+
+
+\begin{DoxyCode}
+40         \{
+41             \textcolor{keywordtype}{int} left = (range.Left - Const.SCANRANGE) / Const.GRID;
+42             \textcolor{keywordtype}{int} right = (range.Right + Const.SCANRANGE) / Const.GRID;
+43             \textcolor{keywordtype}{int} top = (range.Top - Const.SCANRANGE) / Const.GRID;
+44             \textcolor{keywordtype}{int} bottom = (range.Bottom + Const.SCANRANGE) / Const.GRID;
+45 
+46             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = left; i <= right; ++i)
+47             \{
+48                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = top; j <= bottom; ++j)
+49                 \{
+50                     \textcolor{keywordflow}{foreach} (IGameObject obj \textcolor{keywordflow}{in} Scan(\textcolor{keyword}{new} Point(i, j)))
+51                     \{
+52                         yield \textcolor{keywordflow}{return} obj;
+53                     \}
+54                 \}
+55             \}
+56         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Containers_1_1World_aea586175f8222efd98a95899e510cd6b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Containers_1_1World_aea586175f8222efd98a95899e510cd6b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_aff522bd35121081b0e224ab1444416e5}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Scan\+Values@{Scan\+Values}}
+\index{Scan\+Values@{Scan\+Values}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Scan\+Values()}
+{\footnotesize\ttfamily I\+Enumerable$<$Value$>$ \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Scan\+Values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 67 of file Base\+Container.\+cs.
+
+
+\begin{DoxyCode}
+68         \{
+69             \textcolor{keywordflow}{foreach} (ISet<Value> value \textcolor{keywordflow}{in} values.Values)
+70             \{
+71                 \textcolor{keywordflow}{foreach} (Value item \textcolor{keywordflow}{in} value)
+72                 \{
+73                     yield \textcolor{keywordflow}{return} item;
+74                 \}
+75             \}
+76         \}
+\end{DoxyCode}
+\mbox{\label{interfaceMelloMario_1_1IContainer_a4d27256b126b8a3b596b06cf2def34c7}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Update()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+I\+Container}$<$ T $>$.Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_af04d91bc235e61367a9226814b8966e3}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Update()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 93 of file Base\+Container.\+cs.
+
+
+\begin{DoxyCode}
+94         \{
+95             \textcolor{keywordflow}{foreach} (Value value \textcolor{keywordflow}{in} toAdd)
+96             \{
+97                 \textcolor{keywordflow}{if} (!keys.ContainsKey(value))
+98                 \{
+99                     DoAdd(value);
+100                 \}
+101             \}
+102             toAdd.Clear();
+103 
+104             \textcolor{keywordflow}{foreach} (Value value \textcolor{keywordflow}{in} toMove)
+105             \{
+106                 \textcolor{keywordflow}{if} (keys.ContainsKey(value))
+107                 \{
+108                     DoRemove(value);
+109                     DoAdd(value);
+110                 \}
+111             \}
+112             toMove.Clear();
+113 
+114             \textcolor{keywordflow}{foreach} (Value value \textcolor{keywordflow}{in} toRemove)
+115             \{
+116                 \textcolor{keywordflow}{if} (keys.ContainsKey(value))
+117                 \{
+118                     DoRemove(value);
+119                 \}
+120             \}
+121             toRemove.Clear();
+122         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Containers_1_1World_afc718e28aa60fb651d737e08f29c9768}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!respawn\+Points@{respawn\+Points}}
+\index{respawn\+Points@{respawn\+Points}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{respawn\+Points}
+{\footnotesize\ttfamily readonly I\+Set$<$Point$>$ Mello\+Mario.\+Containers.\+World.\+respawn\+Points\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file World.\+cs.
+
+
+
+\subsection{Property Documentation}
+\mbox{\label{classMelloMario_1_1Containers_1_1World_af5181e3b4b994ed6ac42fe447130dcfa}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Boundary@{Boundary}}
+\index{Boundary@{Boundary}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Boundary}
+{\footnotesize\ttfamily Rectangle Mello\+Mario.\+Containers.\+World.\+Boundary\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Definition at line 32 of file World.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Collide\+All(), Mello\+Mario.\+Containers.\+World.\+Extend(), and Mello\+Mario.\+Containers.\+World.\+World().
+
+\mbox{\label{classMelloMario_1_1Containers_1_1World_ae1c629ef89b1cf550f8dedce449a5fe4}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!ID@{ID}}
+\index{ID@{ID}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{ID}
+{\footnotesize\ttfamily string Mello\+Mario.\+Containers.\+World.\+ID\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Definition at line 30 of file World.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Containers.\+World.\+World().
+
+\mbox{\label{classMelloMario_1_1Containers_1_1World_a37f5ca18d06ad6b14bd139cd83941dac}} 
+\index{Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}!Type@{Type}}
+\index{Type@{Type}!Mello\+Mario\+::\+Containers\+::\+World@{Mello\+Mario\+::\+Containers\+::\+World}}
+\subsubsection{Type}
+{\footnotesize\ttfamily \textbf{ World\+Type} Mello\+Mario.\+Containers.\+World.\+Type\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Definition at line 31 of file World.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Containers.\+World.\+World().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Containers/\textbf{ World.\+cs}\end{DoxyCompactItemize}

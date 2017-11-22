@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classMelloMario_1_1Controls_1_1Commands_1_1BaseCommand.html" title="MelloMario.Controls.Commands.\lBaseCommand\&lt; ICharacter \&gt;" alt="" coords="5,479,216,520"/>
+<area shape="rect" id="node2" href="$classMelloMario_1_1Controls_1_1Commands_1_1Action.html" title="MelloMario.Controls.Commands.\lAction" alt="" coords="280,5,491,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Controls_1_1Commands_1_1Crouch.html" title="MelloMario.Controls.Commands.\lCrouch" alt="" coords="280,71,491,112"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Controls_1_1Commands_1_1CrouchPress.html" title="MelloMario.Controls.Commands.\lCrouchPress" alt="" coords="280,136,491,177"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Controls_1_1Commands_1_1CrouchRelease.html" title="MelloMario.Controls.Commands.\lCrouchRelease" alt="" coords="280,201,491,243"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Controls_1_1Commands_1_1FireCreate.html" title="MelloMario.Controls.Commands.\lFireCreate" alt="" coords="280,267,491,308"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Controls_1_1Commands_1_1Jump.html" title="MelloMario.Controls.Commands.Jump" alt="" coords="264,333,507,359"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Controls_1_1Commands_1_1JumpPress.html" title="MelloMario.Controls.Commands.\lJumpPress" alt="" coords="280,384,491,425"/>
+<area shape="rect" id="node9" href="$classMelloMario_1_1Controls_1_1Commands_1_1JumpRelease.html" title="MelloMario.Controls.Commands.\lJumpRelease" alt="" coords="280,449,491,491"/>
+<area shape="rect" id="node10" href="$classMelloMario_1_1Controls_1_1Commands_1_1Left.html" title="MelloMario.Controls.Commands.Left" alt="" coords="269,515,501,542"/>
+<area shape="rect" id="node11" href="$classMelloMario_1_1Controls_1_1Commands_1_1LeftPress.html" title="MelloMario.Controls.Commands.\lLeftPress" alt="" coords="280,567,491,608"/>
+<area shape="rect" id="node12" href="$classMelloMario_1_1Controls_1_1Commands_1_1LeftRelease.html" title="MelloMario.Controls.Commands.\lLeftRelease" alt="" coords="280,632,491,673"/>
+<area shape="rect" id="node13" href="$classMelloMario_1_1Controls_1_1Commands_1_1NormalCreate.html" title="MelloMario.Controls.Commands.\lNormalCreate" alt="" coords="280,697,491,739"/>
+<area shape="rect" id="node14" href="$classMelloMario_1_1Controls_1_1Commands_1_1Right.html" title="MelloMario.Controls.Commands.\lRight" alt="" coords="280,763,491,804"/>
+<area shape="rect" id="node15" href="$classMelloMario_1_1Controls_1_1Commands_1_1RightPress.html" title="MelloMario.Controls.Commands.\lRightPress" alt="" coords="280,828,491,869"/>
+<area shape="rect" id="node16" href="$classMelloMario_1_1Controls_1_1Commands_1_1RightRelease.html" title="MelloMario.Controls.Commands.\lRightRelease" alt="" coords="280,893,491,935"/>
+<area shape="rect" id="node17" href="$classMelloMario_1_1Controls_1_1Commands_1_1SuperCreate.html" title="MelloMario.Controls.Commands.\lSuperCreate" alt="" coords="280,959,491,1000"/>
+</map>

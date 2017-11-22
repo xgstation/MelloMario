@@ -1,0 +1,319 @@
+\section{Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite Class Reference}
+\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BrickPieceSprite}\index{Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite@{Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite}}
+
+
+Inheritance diagram for Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1BrickPieceSprite__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1BrickPieceSprite__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Brick\+Piece\+Sprite} (Texture2D \textbf{ texture})
+\item 
+void \textbf{ Draw} (int time, Sprite\+Batch sprite\+Batch, Rectangle destination)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ On\+Draw} (int time, Sprite\+Batch sprite\+Batch, Rectangle destination)
+\item 
+void \textbf{ Toggle} ()
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+float \textbf{ Layer\+Depth}\hspace{0.3cm}{\ttfamily  [get]}
+\item 
+Point \textbf{ Pixel\+Size}\hspace{0.3cm}{\ttfamily  [get]}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly Texture2D \textbf{ texture}
+\item 
+int \textbf{ elapsed}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file Brick\+Piece\+Sprite.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BrickPieceSprite_a26baaa7666461abdc2598e7520c1b1da}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}!Brick\+Piece\+Sprite@{Brick\+Piece\+Sprite}}
+\index{Brick\+Piece\+Sprite@{Brick\+Piece\+Sprite}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}}
+\subsubsection{Brick\+Piece\+Sprite()}
+{\footnotesize\ttfamily Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite.\+Brick\+Piece\+Sprite (\begin{DoxyParamCaption}\item[{Texture2D}]{texture }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file Brick\+Piece\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite.\+texture.
+
+
+\begin{DoxyCode}
+18                                                    : base(\textcolor{keyword}{new} Point(texture.Width, 
+      texture.Height), ZIndex.Foreground)
+19         \{
+20             this.texture = texture;
+21 
+22             elapsed = 0;
+23         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7366343d1f1c53dac1706699cbd01053}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}!Draw@{Draw}}
+\index{Draw@{Draw}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}}
+\subsubsection{Draw()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch,  }\item[{Rectangle}]{destination }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Sprite} \doxyref{}{p.}{interfaceMelloMario_1_1ISprite_a146e9a600de8710d6ac51dd6f8fa920b}.
+
+
+
+Definition at line 56 of file Base\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+On\+Draw().
+
+
+\begin{DoxyCode}
+57         \{
+58             \textcolor{keywordflow}{if} (visible)
+59             \{
+60                 OnDraw(time, spriteBatch, destination);
+61             \}
+62         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7366343d1f1c53dac1706699cbd01053_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BrickPieceSprite_ada9054459d8f67974332496f11162550}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}!On\+Draw@{On\+Draw}}
+\index{On\+Draw@{On\+Draw}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}}
+\subsubsection{On\+Draw()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite.\+On\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch,  }\item[{Rectangle}]{destination }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite} \doxyref{}{p.}{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a4b51a4ec0448b7ec8a53baf0e8816cac}.
+
+
+
+Definition at line 25 of file Brick\+Piece\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Const.\+A\+C\+C\+E\+L\+\_\+\+F\+\_\+\+A\+IR, Mello\+Mario.\+Theming.\+Const.\+A\+C\+C\+E\+L\+\_\+G, and Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Layer\+Depth.
+
+
+\begin{DoxyCode}
+26         \{
+27             elapsed += time;
+28 
+29             Vector2 origin = destination.Location.ToVector2();
+30             Vector2[] destinations = \textcolor{keyword}{new} Vector2[4];
+31             \textcolor{keywordtype}{float}[] offsetX = \textcolor{keyword}{new} \textcolor{keywordtype}{float}[4];
+32             \textcolor{keywordtype}{float}[] offsetY = \textcolor{keyword}{new} \textcolor{keywordtype}{float}[4];
+33             Rectangle[] source = \textcolor{keyword}{new} Rectangle[4];
+34 
+35             \textcolor{keywordtype}{float} k = 5f / Math.Abs(2f - Const.ACCEL\_F\_AIR / 20f);
+36             \textcolor{comment}{//LB}
+37             offsetX[0] = -elapsed / k + 4f;
+38             offsetY[0] = Const.ACCEL\_G * elapsed * elapsed / 16000f - elapsed + 16f;
+39             destinations[0] = \textcolor{keyword}{new} Vector2(offsetX[0], offsetY[0]) + origin;
+40             source[0] = \textcolor{keyword}{new} Rectangle(0, 0, texture.Width / 2, texture.Height / 2);
+41 
+42             \textcolor{comment}{//LT}
+43             offsetX[1] = -elapsed / k + 4f;
+44             offsetY[1] = Const.ACCEL\_G * elapsed * elapsed / 14400f - elapsed + 32f;
+45             destinations[1] = \textcolor{keyword}{new} Vector2(offsetX[1], offsetY[1]) + origin;
+46             source[1] = \textcolor{keyword}{new} Rectangle(0, texture.Height / 2, texture.Width / 2, 
+      texture.Height / 2);
+47 
+48             \textcolor{comment}{//RB}
+49             offsetX[2] = elapsed / k + 12f;
+50             offsetY[2] = Const.ACCEL\_G * elapsed * elapsed / 16000f - elapsed + 16f;
+51             destinations[2] = \textcolor{keyword}{new} Vector2(offsetX[2], offsetY[2]) + origin;
+52             source[2] = \textcolor{keyword}{new} Rectangle(texture.Width / 2, 0, texture.Width / 2, 
+      texture.Height / 2);
+53 
+54             \textcolor{comment}{//RT}
+55             offsetX[3] = elapsed / k + 12f;
+56             offsetY[3] = Const.ACCEL\_G * elapsed * elapsed / 14400f - elapsed + 32f;
+57             destinations[3] = \textcolor{keyword}{new} Vector2(offsetX[3], offsetY[3]) + origin;
+58             source[3] = \textcolor{keyword}{new} Rectangle(texture.Width / 2, texture.Height / 2, 
+      texture.Width / 2, texture.Height / 2);
+59 
+60             Vector2 spriteOrigin = \textcolor{keyword}{new} Vector2(8f, 8f);
+61             Vector2 scale = \textcolor{keyword}{new} Vector2(1.25f, 1.25f);
+62             \textcolor{keywordtype}{float} rotation = elapsed * 30f / Const.ACCEL\_F\_AIR;
+63             spriteBatch.Draw(
+64                 texture,
+65                 destinations[0],
+66                 source[0],
+67                 Color.White,
+68                 rotation,
+69                 spriteOrigin,
+70                 scale,
+71                 SpriteEffects.None,
+72                 LayerDepth);
+73             spriteBatch.Draw(
+74                 texture,
+75                 destinations[1],
+76                 source[1],
+77                 Color.White,
+78                 rotation,
+79                 spriteOrigin,
+80                 scale,
+81                 SpriteEffects.None,
+82                 LayerDepth);
+83             spriteBatch.Draw(
+84                 texture,
+85                 destinations[2],
+86                 source[2],
+87                 Color.White,
+88                 -rotation,
+89                 spriteOrigin,
+90                 scale,
+91                 SpriteEffects.None,
+92                 LayerDepth);
+93             spriteBatch.Draw(
+94                 texture,
+95                 destinations[3],
+96                 source[3],
+97                 Color.White,
+98                 -rotation,
+99                 spriteOrigin,
+100                 scale,
+101                 SpriteEffects.None,
+102                 LayerDepth);
+103         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7eb9ed2630496a11da8efde9ada69c07}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}!Toggle@{Toggle}}
+\index{Toggle@{Toggle}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}}
+\subsubsection{Toggle()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Toggle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 66 of file Base\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+visible.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Flashing\+Animated\+Sprite.\+On\+Frame().
+
+
+\begin{DoxyCode}
+67         \{
+68             visible = !visible;
+69         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7eb9ed2630496a11da8efde9ada69c07_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BrickPieceSprite_a98eb470d8b46b80b57ae423b5721a57a}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}!elapsed@{elapsed}}
+\index{elapsed@{elapsed}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}}
+\subsubsection{elapsed}
+{\footnotesize\ttfamily int Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite.\+elapsed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 16 of file Brick\+Piece\+Sprite.\+cs.
+
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BrickPieceSprite_af7d1a60bca9735bed30cd3ab9c8545be}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}!texture@{texture}}
+\index{texture@{texture}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}}
+\subsubsection{texture}
+{\footnotesize\ttfamily readonly Texture2D Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite.\+texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file Brick\+Piece\+Sprite.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite.\+Brick\+Piece\+Sprite().
+
+
+
+\subsection{Property Documentation}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_ac66432d649fdb8a831fff5b0ca66e7b5}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}!Layer\+Depth@{Layer\+Depth}}
+\index{Layer\+Depth@{Layer\+Depth}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}}
+\subsubsection{Layer\+Depth}
+{\footnotesize\ttfamily float Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Layer\+Depth\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 25 of file Base\+Sprite.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Base\+Sprite(), Mello\+Mario.\+Graphics.\+Sprites.\+Splash\+Sprite.\+On\+Draw(), Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite.\+On\+Draw(), Mello\+Mario.\+Graphics.\+Sprites.\+Text\+Sprite.\+On\+Draw(), and Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Texture\+Sprite.\+On\+Draw().
+
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_adee82e211783ea9b99c51bae8dcda86e}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}!Pixel\+Size@{Pixel\+Size}}
+\index{Pixel\+Size@{Pixel\+Size}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Brick\+Piece\+Sprite}}
+\subsubsection{Pixel\+Size}
+{\footnotesize\ttfamily Point Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Pixel\+Size\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 54 of file Base\+Sprite.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Base\+Sprite().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Graphics/\+Sprites/\textbf{ Brick\+Piece\+Sprite.\+cs}\end{DoxyCompactItemize}

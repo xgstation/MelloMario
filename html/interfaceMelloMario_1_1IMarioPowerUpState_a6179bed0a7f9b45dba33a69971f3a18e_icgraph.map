@@ -1,0 +1,5 @@
+<map id="MelloMario.IMarioPowerUpState.UpgradeToFire" name="MelloMario.IMarioPowerUpState.UpgradeToFire">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#ada9882ccede449705684d83b659b28e7" title="MelloMario.Objects.Characters.\lMarioCharacter.FireCreate" alt="" coords="229,5,435,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#adfa7fd7eabf150a9c89c8846824c36c8" title="MelloMario.Objects.Characters.\lMario.UpgradeToFire" alt="" coords="229,71,435,112"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#a1734a84d18aa7e354803cfe92b137144" title="MelloMario.Objects.Characters.\lMario.OnCollision" alt="" coords="483,71,688,112"/>
+</map>

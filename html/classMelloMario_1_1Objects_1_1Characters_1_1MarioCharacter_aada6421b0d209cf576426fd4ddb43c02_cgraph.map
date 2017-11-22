@@ -1,0 +1,10 @@
+<map id="MelloMario.Objects.Characters.MarioCharacter.Right" name="MelloMario.Objects.Characters.MarioCharacter.Right">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#ae126a5492ac0b07e1587d2a50cf9f366" title="MelloMario.Objects.Characters.\lMario.ChangeFacing" alt="" coords="259,39,464,80"/>
+<area shape="rect" id="node9" href="$interfaceMelloMario_1_1IMarioMovementState.html#a4114fd3deb0ce48b636c72894677e8ca" title="MelloMario.IMarioMovement\lState.Walk" alt="" coords="270,104,453,145"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#aa16fb9cc546f240bf7e7963f244b4f8d" title="MelloMario.Objects.Characters.\lMario.UpdateSprite" alt="" coords="512,39,717,80"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1ISpriteFactory.html#a204f922bd360ad83cdaf563e60e969bc" title="MelloMario.ISpriteFactory.\lCreateMarioSprite" alt="" coords="780,5,953,47"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#aa3116237ab408071c073373daca92ad0" title="MelloMario.Objects.BaseGame\lObject.ShowSprite" alt="" coords="765,71,968,112"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a968dd48f33c69acc16fb2acfae36c3a8" title="MelloMario.Objects.BaseGame\lObject.Resize" alt="" coords="1016,71,1219,112"/>
+<area shape="rect" id="node7" href="$interfaceMelloMario_1_1IContainer.html#a515faf6ba73cf569cb85fa5f690e2941" title="MelloMario.IContainer.Move" alt="" coords="1278,49,1458,75"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a739d7c5d6a671aa79c6e9a6b642e444c" title="MelloMario.Objects.BaseGame\lObject.Relocate" alt="" coords="1267,100,1469,141"/>
+</map>

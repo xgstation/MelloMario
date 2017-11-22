@@ -1,0 +1,8 @@
+<map id="MelloMario.IListener&lt; in in T &gt;" name="MelloMario.IListener&lt; in in T &gt;">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IListener.html" title="{MelloMario.IListener\l\&lt; MelloMario.ISoundable \&gt;\n||+ Subscribe()\l}" alt="" coords="5,160,183,252"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IListener.html" title="{MelloMario.IListener\l\&lt; ISoundable \&gt;\n||+ Subscribe()\l}" alt="" coords="207,160,346,252"/>
+<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IListener.html" title="{MelloMario.IListener\l\&lt; MelloMario.IGameObject \&gt;\n||+ Subscribe()\l}" alt="" coords="370,160,559,252"/>
+<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IListener.html" title="{MelloMario.IListener\l\&lt; IGameObject \&gt;\n||+ Subscribe()\l}" alt="" coords="593,160,731,252"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Sounds_1_1SoundEffectListener.html" title="{MelloMario.Sounds.SoundEffect\lListener\n|&#45; soundEffectVolume\l|+ SoundEffectListener()\l+ ToggleMute()\l+ Subscribe()\l&#45; Sound()\l&#45; MarioSoundEffect()\l&#45; BlockSoundEffect()\l&#45; ItemSoundEffect()\l&#45; PlayEffect()\l}" alt="" coords="173,301,380,496"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Theming_1_1ScoreListener.html" title="{MelloMario.Theming.Score\lListener\n|&#45; model\l&#45; player\l|+ ScoreListener()\l+ Subscribe()\l&#45; OnLivesChange()\l&#45; OnPointGain()\l&#45; OnLevelWon()\l&#45; OnGameOver()\l&#45; OnCoinCollect()\l}" alt="" coords="574,301,750,496"/>
+</map>

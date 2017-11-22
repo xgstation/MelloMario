@@ -1,0 +1,11 @@
+<map id="MelloMario.Theming.Database.HasItemEnclosed" name="MelloMario.Theming.Database.HasItemEnclosed">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Hidden.html#a222dc180388dc8e0a46acf30b88f6e6d" title="MelloMario.Objects.Blocks.\lBrickStates.Hidden.Bump" alt="" coords="264,5,447,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Theming_1_1Database.html#a7b74453e6228a9619d340dfc7572a93a" title="MelloMario.Theming.Database.\lGetNextItem" alt="" coords="255,123,456,164"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Question.html#aaf98ee3ade582551e8be89fa2692461e" title="MelloMario.Objects.Blocks.\lQuestion.ReleaseNextItem" alt="" coords="517,91,700,132"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Brick.html#a3e047edc855f343816b6b047858e3a02" title="MelloMario.Objects.Blocks.\lBrick.ReleaseNextItem" alt="" coords="517,167,700,208"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Brick.html#a3ef1507a3a054b64c3ef85c6f70bd300" title="MelloMario.Objects.Blocks.\lBrick.Initialize" alt="" coords="264,240,447,281"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped.html#ae0529ed64e6ff81f9119254d1e6acd15" title="MelloMario.Objects.Blocks.\lBrickStates.Bumped.Show" alt="" coords="264,305,447,347"/>
+<area shape="rect" id="node10" href="$classMelloMario_1_1Objects_1_1Blocks_1_1QuestionStates_1_1Bumped.html#a727f528fa01832915367b33e8de9eace" title="MelloMario.Objects.Blocks.\lQuestionStates.Bumped.Show" alt="" coords="255,371,455,412"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped.html#ad23b681f2922690b9eeb970707df361e" title="MelloMario.Objects.Blocks.\lBrickStates.Bumped.Update" alt="" coords="515,255,702,296"/>
+<area shape="rect" id="node9" href="$classMelloMario_1_1Objects_1_1Blocks_1_1QuestionStates_1_1Bumped.html#afa79bbc9edd16661ac9b2b5c1393cf09" title="MelloMario.Objects.Blocks.\lQuestionStates.Bumped.Update" alt="" coords="504,320,713,361"/>
+</map>

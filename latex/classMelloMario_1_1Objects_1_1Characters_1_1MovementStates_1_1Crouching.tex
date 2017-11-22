@@ -1,0 +1,215 @@
+\section{Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching Class Reference}
+\label{classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching}\index{Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching@{Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Crouching} (\textbf{ Mario} owner)
+\item 
+void \textbf{ Crouch} ()
+\item 
+void \textbf{ Idle} ()
+\item 
+void \textbf{ Land} ()
+\item 
+void \textbf{ Jump} ()
+\item 
+void \textbf{ Walk} ()
+\item 
+override void \textbf{ Update} (int time)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \textbf{ Owner}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Crouching.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching_ac2b5f76528bc476d8b58c8658817eb8b}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}!Crouching@{Crouching}}
+\index{Crouching@{Crouching}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}}
+\subsubsection{Crouching()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching.\+Crouching (\begin{DoxyParamCaption}\item[{\textbf{ Mario}}]{owner }\end{DoxyParamCaption})}
+
+
+
+Definition at line 12 of file Crouching.\+cs.
+
+
+\begin{DoxyCode}
+12                                       : base(owner)
+13         \{
+14         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching_a15e88dcc424e1017f61e6eb00751128e}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}!Crouch@{Crouch}}
+\index{Crouch@{Crouch}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}}
+\subsubsection{Crouch()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching.\+Crouch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Mario\+Movement\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IMarioMovementState_aa88d92d51231fa474d01bd6903b25cf7}.
+
+
+
+Definition at line 16 of file Crouching.\+cs.
+
+
+\begin{DoxyCode}
+17         \{
+18         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching_a0ab97ab6d82706465215d46233aef5d2}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}!Idle@{Idle}}
+\index{Idle@{Idle}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}}
+\subsubsection{Idle()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching.\+Idle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Mario\+Movement\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IMarioMovementState_a82b595fa8925c3b4f6282c91b3ed3701}.
+
+
+
+Definition at line 20 of file Crouching.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Mario $>$.\+Owner.
+
+
+\begin{DoxyCode}
+21         \{
+22             Owner.MovementState = \textcolor{keyword}{new} Standing(Owner);
+23         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching_a3e98d775377d5977b355d72a2f84853c}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}!Jump@{Jump}}
+\index{Jump@{Jump}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}}
+\subsubsection{Jump()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching.\+Jump (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Mario\+Movement\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IMarioMovementState_a6922e71a0b79b7034d6be2721f465bc8}.
+
+
+
+Definition at line 29 of file Crouching.\+cs.
+
+
+\begin{DoxyCode}
+30         \{
+31         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching_a6e9e06088d2ec118033966f5f7375647}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}!Land@{Land}}
+\index{Land@{Land}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}}
+\subsubsection{Land()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching.\+Land (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Mario\+Movement\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IMarioMovementState_a3192518bf2be6f6047c070e2bbb06fc8}.
+
+
+
+Definition at line 25 of file Crouching.\+cs.
+
+
+\begin{DoxyCode}
+26         \{
+27         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching_a79529d85a8933ff13f295a83b877a504}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+State$<$ Mario $>$} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseState_a151e08ba646c7b0faff385b8248812c2}.
+
+
+
+Definition at line 37 of file Crouching.\+cs.
+
+
+\begin{DoxyCode}
+38         \{
+39             \textcolor{comment}{//sprite.Update(game);}
+40         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching_a71f4675d0b71f070744d204d365f9c3e}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}!Walk@{Walk}}
+\index{Walk@{Walk}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}}
+\subsubsection{Walk()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching.\+Walk (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Mario\+Movement\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IMarioMovementState_a4114fd3deb0ce48b636c72894677e8ca}.
+
+
+
+Definition at line 33 of file Crouching.\+cs.
+
+
+\begin{DoxyCode}
+34         \{
+35         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseState_a0367f1a6d509d6b819df603402bc6bb0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}!Owner@{Owner}}
+\index{Owner@{Owner}!Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching@{Mello\+Mario\+::\+Objects\+::\+Characters\+::\+Movement\+States\+::\+Crouching}}
+\subsubsection{Owner}
+{\footnotesize\ttfamily T \textbf{ Mello\+Mario.\+Objects.\+Base\+State}$<$ T $>$.Owner\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 12 of file Base\+State.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Standing\+::\+Crouch(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Walking\+::\+Crouch(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Standard\+::\+Downgrade(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super\+::\+Downgrade(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Crouching\+::\+Idle(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Walking\+::\+Idle(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Standing\+::\+Jump(), Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Walking\+::\+Jump(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Standard\+::\+Upgrade\+To\+Fire(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Super\+::\+Upgrade\+To\+Fire(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Fire\+::\+Upgrade\+To\+Super(), Mello\+Mario.\+Objects.\+Characters.\+Power\+Up\+States.\+Standard\+::\+Upgrade\+To\+Super(), and Mello\+Mario.\+Objects.\+Characters.\+Movement\+States.\+Standing\+::\+Walk().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+Characters/\+Movement\+States/\textbf{ Crouching.\+cs}\end{DoxyCompactItemize}

@@ -1,0 +1,7 @@
+<map id="MelloMario.Theming.GameModel.Resume" name="MelloMario.Theming.GameModel.Resume">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Theming_1_1GameModel.html#aa99d3524a0689120b4c1915ab212b0ae" title="MelloMario.Theming.GameModel.\lInfinite" alt="" coords="269,5,485,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Theming_1_1GameModel.html#a2d58c8618777941b871792b8c1a29fa5" title="MelloMario.Theming.GameModel.\lNormal" alt="" coords="269,71,485,112"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Theming_1_1GameModel.html#a398fab5ee4f986acac7ba10841ae0765" title="MelloMario.Theming.GameModel.\lReset" alt="" coords="269,136,485,177"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Theming_1_1GameModel.html#a72c88e41105e13edab09d886b9031d5d" title="MelloMario.Theming.GameModel.\lUpdate" alt="" coords="269,201,485,243"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Game1.html#abe3eff66b402af3861215080c44a8b02" title="Allows the game to run logic such as updating the World, checking for collisions, gathering input..." alt="" coords="533,209,709,235"/>
+</map>

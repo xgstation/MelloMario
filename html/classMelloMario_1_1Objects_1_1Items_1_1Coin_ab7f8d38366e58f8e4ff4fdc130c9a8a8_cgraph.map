@@ -1,0 +1,13 @@
+<map id="MelloMario.Objects.Items.Coin.Coin" name="MelloMario.Objects.Items.Coin.Coin">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#ab856d6c80f08fd49fac68e0fefbed65b" title="MelloMario.Objects.BaseCollidable\lObject.RemoveSelf" alt="" coords="228,75,452,116"/>
+<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IListener.html#a7cc6b69de82ebae5ec8a4d6b4008a2bc" title="MelloMario.IListener.Subscribe" alt="" coords="241,143,439,170"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1Items_1_1Coin.html#ad63f2819fb77cfd23f9ddf0cb055f835" title="MelloMario.Objects.Items.\lCoin.UpdateSprite" alt="" coords="253,201,427,243"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#a22d1d351d72889669184260796158208" title="MelloMario.Containers.Base\lContainer.Remove" alt="" coords="519,5,705,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#afb437ff84f73186d883167df00854fb0" title="MelloMario.Objects.BaseCollidable\lObject.StopHorizontalMovement" alt="" coords="500,71,724,112"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a93e7a1fd2da3f05e1549054a58faad95" title="MelloMario.Objects.BaseCollidable\lObject.StopVerticalMovement" alt="" coords="500,136,724,177"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#aa3116237ab408071c073373daca92ad0" title="MelloMario.Objects.BaseGame\lObject.ShowSprite" alt="" coords="511,201,713,243"/>
+<area shape="rect" id="node12" href="$interfaceMelloMario_1_1ISpriteFactory.html#aa409bcc08b42988337574c533bcc4c8b" title="MelloMario.ISpriteFactory.\lCreateCoinSprite" alt="" coords="525,267,699,308"/>
+<area shape="rect" id="node9" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a968dd48f33c69acc16fb2acfae36c3a8" title="MelloMario.Objects.BaseGame\lObject.Resize" alt="" coords="772,201,975,243"/>
+<area shape="rect" id="node10" href="$interfaceMelloMario_1_1IContainer.html#a515faf6ba73cf569cb85fa5f690e2941" title="MelloMario.IContainer.Move" alt="" coords="1034,179,1214,206"/>
+<area shape="rect" id="node11" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a739d7c5d6a671aa79c6e9a6b642e444c" title="MelloMario.Objects.BaseGame\lObject.Relocate" alt="" coords="1023,231,1225,272"/>
+</map>

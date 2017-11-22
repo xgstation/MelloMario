@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.BaseGameObject.OnSimulation" name="MelloMario.Objects.BaseGameObject.OnSimulation">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a0ca5164820fd5343cb3b6850a3193da2" title="MelloMario.Objects.BaseGame\lObject.Draw" alt="" coords="256,5,459,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#ae4b01d33719fa07f57de7d7c7ebeaa96" title="MelloMario.Objects.BaseGame\lObject.Update" alt="" coords="256,71,459,112"/>
+</map>

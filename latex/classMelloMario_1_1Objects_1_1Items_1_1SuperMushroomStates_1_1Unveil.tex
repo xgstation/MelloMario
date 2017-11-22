@@ -1,0 +1,215 @@
+\section{Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil Class Reference}
+\label{classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Unveil}\index{Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil@{Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Unveil__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Unveil__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Unveil} (\textbf{ Super\+Mushroom} owner)
+\item 
+void \textbf{ Show} ()
+\item 
+void \textbf{ Collect} ()
+\item 
+override void \textbf{ Update} (int time)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ On\+Timer} (int time)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+float \textbf{ Progress}\hspace{0.3cm}{\ttfamily  [get]}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \textbf{ elapsed}
+\item 
+float \textbf{ real\+Offset}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Unveil.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Unveil_a36c72a2959f05468bf0aecaeb8076ae5}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}!Unveil@{Unveil}}
+\index{Unveil@{Unveil}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}}
+\subsubsection{Unveil()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil.\+Unveil (\begin{DoxyParamCaption}\item[{\textbf{ Super\+Mushroom}}]{owner }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file Unveil.\+cs.
+
+
+\begin{DoxyCode}
+15                                            : base(owner, 1000)
+16         \{
+17             elapsed = 0f;
+18         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Unveil_a174dd27cb06c6da12f153f691d9ca2ca}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}!Collect@{Collect}}
+\index{Collect@{Collect}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}}
+\subsubsection{Collect()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil.\+Collect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Item\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IItemState_a13a59996a8e8bfb471a51f0a0c8aa144}.
+
+
+
+Definition at line 25 of file Unveil.\+cs.
+
+
+\begin{DoxyCode}
+26         \{
+27         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Unveil_af5897af8c2ecc5bc579b454d21cd7920}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}!On\+Timer@{On\+Timer}}
+\index{On\+Timer@{On\+Timer}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}}
+\subsubsection{On\+Timer()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil.\+On\+Timer (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+Timed\+State$<$ Super\+Mushroom $>$} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseTimedState_af7c0be0a1dc5a05ba0bcda9cddc854f8}.
+
+
+
+Definition at line 45 of file Unveil.\+cs.
+
+
+\begin{DoxyCode}
+46         \{
+47             Owner.State = \textcolor{keyword}{new} Normal(Owner);
+48         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Unveil_af7019f4766dc02c6640d3e6e46bb13c1}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}!Show@{Show}}
+\index{Show@{Show}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}}
+\subsubsection{Show()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil.\+Show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Item\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IItemState_aa4e06d80e563b0eeecc0ca1f4b76a827}.
+
+
+
+Definition at line 20 of file Unveil.\+cs.
+
+
+\begin{DoxyCode}
+21         \{
+22             Owner.State = \textcolor{keyword}{new} Normal(Owner);
+23         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Unveil_a39ef5b89bf808d4e602cc9b005bdb7a8}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IState_ae7c9397fccacd69066825f983b94c8fb}.
+
+
+
+Definition at line 29 of file Unveil.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Items.\+Coin\+States.\+Unveil.\+real\+Offset.
+
+
+\begin{DoxyCode}
+30         \{
+31             \textcolor{comment}{//TODO:Move this into soundcontroller}
+32             \textcolor{comment}{//SoundManager.SizeUpAppear.Play();}
+33             base.Update(time);
+34 
+35             elapsed += time;
+36             realOffset += 32 * time / 1000f;
+37 
+38             \textcolor{keywordflow}{while} (realOffset > 1)
+39             \{
+40                 Owner.UnveilMove(-1);
+41                 --realOffset;
+42             \}
+43         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Unveil_a122b591c6cf72050ba1c23c74bf5bdef}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}!elapsed@{elapsed}}
+\index{elapsed@{elapsed}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}}
+\subsubsection{elapsed}
+{\footnotesize\ttfamily float Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil.\+elapsed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 12 of file Unveil.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Unveil_a263957dfb49fc1dcd36be7247fed0751}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}!real\+Offset@{real\+Offset}}
+\index{real\+Offset@{real\+Offset}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}}
+\subsubsection{real\+Offset}
+{\footnotesize\ttfamily float Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom\+States.\+Unveil.\+real\+Offset\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 13 of file Unveil.\+cs.
+
+
+
+\subsection{Property Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseTimedState_a61c6c33853dc7d7774f1764544dc0d86}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}!Progress@{Progress}}
+\index{Progress@{Progress}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Super\+Mushroom\+States\+::\+Unveil}}
+\subsubsection{Progress}
+{\footnotesize\ttfamily float \textbf{ Mello\+Mario.\+Objects.\+Base\+Timed\+State}$<$ T $>$.Progress\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 21 of file Base\+Timed\+State.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+Items/\+Super\+Mushroom\+States/\textbf{ Unveil.\+cs}\end{DoxyCompactItemize}

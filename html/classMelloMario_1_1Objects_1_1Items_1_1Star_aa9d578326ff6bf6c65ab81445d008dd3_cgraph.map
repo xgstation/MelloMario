@@ -1,0 +1,7 @@
+<map id="MelloMario.Objects.Items.Star.UpdateSprite" name="MelloMario.Objects.Items.Star.UpdateSprite">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1ISpriteFactory.html#ae94806cb98922cd925588620558de467" title="MelloMario.ISpriteFactory.\lCreateStarSprite" alt="" coords="243,5,416,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#aa3116237ab408071c073373daca92ad0" title="MelloMario.Objects.BaseGame\lObject.ShowSprite" alt="" coords="228,71,431,112"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a968dd48f33c69acc16fb2acfae36c3a8" title="MelloMario.Objects.BaseGame\lObject.Resize" alt="" coords="479,71,681,112"/>
+<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IContainer.html#a515faf6ba73cf569cb85fa5f690e2941" title="MelloMario.IContainer.Move" alt="" coords="741,49,921,75"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a739d7c5d6a671aa79c6e9a6b642e444c" title="MelloMario.Objects.BaseGame\lObject.Relocate" alt="" coords="729,100,932,141"/>
+</map>

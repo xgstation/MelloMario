@@ -1,0 +1,4 @@
+<map id="MelloMario.ISpriteFactory.CreateSplashSprite" name="MelloMario.ISpriteFactory.CreateSplashSprite">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#ad2c84984a1b68fce93da9782bf5abf6d" title="MelloMario.Objects.UserInterfaces.\lGameOver.GameOver" alt="" coords="227,5,452,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameWon.html#ad8d0bde3858924de6b3b468fcc5fac7f" title="MelloMario.Objects.UserInterfaces.\lGameWon.GameWon" alt="" coords="227,71,452,112"/>
+</map>

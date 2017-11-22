@@ -1,0 +1,215 @@
+\section{Mello\+Mario.\+Graphics.\+Sprites.\+Splash\+Sprite Class Reference}
+\label{classMelloMario_1_1Graphics_1_1Sprites_1_1SplashSprite}\index{Mello\+Mario.\+Graphics.\+Sprites.\+Splash\+Sprite@{Mello\+Mario.\+Graphics.\+Sprites.\+Splash\+Sprite}}
+
+
+Inheritance diagram for Mello\+Mario.\+Graphics.\+Sprites.\+Splash\+Sprite\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1SplashSprite__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Graphics.\+Sprites.\+Splash\+Sprite\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1SplashSprite__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Splash\+Sprite} ()
+\item 
+void \textbf{ Draw} (int time, Sprite\+Batch sprite\+Batch, Rectangle destination)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ On\+Draw} (int time, Sprite\+Batch sprite\+Batch, Rectangle destination)
+\item 
+void \textbf{ Toggle} ()
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+float \textbf{ Layer\+Depth}\hspace{0.3cm}{\ttfamily  [get]}
+\item 
+Point \textbf{ Pixel\+Size}\hspace{0.3cm}{\ttfamily  [get]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file Splash\+Sprite.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1SplashSprite_a95d8a10a98cf54e4e3ab1e8f1cf5fa4b}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}!Splash\+Sprite@{Splash\+Sprite}}
+\index{Splash\+Sprite@{Splash\+Sprite}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}}
+\subsubsection{Splash\+Sprite()}
+{\footnotesize\ttfamily Mello\+Mario.\+Graphics.\+Sprites.\+Splash\+Sprite.\+Splash\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file Splash\+Sprite.\+cs.
+
+
+\begin{DoxyCode}
+13                               : base(\textcolor{keyword}{new} Point(Const.SCREEN\_WIDTH, Const.SCREEN\_HEIGHT), 
+      ZIndex.Splash)
+14         \{
+15         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7366343d1f1c53dac1706699cbd01053}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}!Draw@{Draw}}
+\index{Draw@{Draw}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}}
+\subsubsection{Draw()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch,  }\item[{Rectangle}]{destination }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Sprite} \doxyref{}{p.}{interfaceMelloMario_1_1ISprite_a146e9a600de8710d6ac51dd6f8fa920b}.
+
+
+
+Definition at line 56 of file Base\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+On\+Draw().
+
+
+\begin{DoxyCode}
+57         \{
+58             \textcolor{keywordflow}{if} (visible)
+59             \{
+60                 OnDraw(time, spriteBatch, destination);
+61             \}
+62         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7366343d1f1c53dac1706699cbd01053_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1SplashSprite_a17437c3f43018fd9fec8c81c04eca7b0}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}!On\+Draw@{On\+Draw}}
+\index{On\+Draw@{On\+Draw}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}}
+\subsubsection{On\+Draw()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Graphics.\+Sprites.\+Splash\+Sprite.\+On\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch,  }\item[{Rectangle}]{destination }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite} \doxyref{}{p.}{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a4b51a4ec0448b7ec8a53baf0e8816cac}.
+
+
+
+Definition at line 17 of file Splash\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Layer\+Depth.
+
+
+\begin{DoxyCode}
+18         \{
+19             Texture2D texture = \textcolor{keyword}{new} Texture2D(spriteBatch.GraphicsDevice, 1, 1);
+20             texture.SetData(
+21                 \textcolor{keyword}{new}[]
+22                 \{
+23                     Color.Black
+24                 \});
+25 
+26             spriteBatch.Draw(
+27                 texture,
+28                 destination,
+29                 \textcolor{keyword}{new} Rectangle(0, 0, 1, 1),
+30                 Color.Black,
+31                 0f, \textcolor{comment}{//rotation}
+32                 \textcolor{keyword}{new} Vector2(), \textcolor{comment}{//origin}
+33                 SpriteEffects.None,
+34                 LayerDepth);
+35         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7eb9ed2630496a11da8efde9ada69c07}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}!Toggle@{Toggle}}
+\index{Toggle@{Toggle}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}}
+\subsubsection{Toggle()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Toggle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 66 of file Base\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+visible.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Flashing\+Animated\+Sprite.\+On\+Frame().
+
+
+\begin{DoxyCode}
+67         \{
+68             visible = !visible;
+69         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7eb9ed2630496a11da8efde9ada69c07_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Property Documentation}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_ac66432d649fdb8a831fff5b0ca66e7b5}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}!Layer\+Depth@{Layer\+Depth}}
+\index{Layer\+Depth@{Layer\+Depth}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}}
+\subsubsection{Layer\+Depth}
+{\footnotesize\ttfamily float Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Layer\+Depth\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 25 of file Base\+Sprite.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Base\+Sprite(), Mello\+Mario.\+Graphics.\+Sprites.\+Splash\+Sprite.\+On\+Draw(), Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite.\+On\+Draw(), Mello\+Mario.\+Graphics.\+Sprites.\+Text\+Sprite.\+On\+Draw(), and Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Texture\+Sprite.\+On\+Draw().
+
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_adee82e211783ea9b99c51bae8dcda86e}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}!Pixel\+Size@{Pixel\+Size}}
+\index{Pixel\+Size@{Pixel\+Size}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Splash\+Sprite}}
+\subsubsection{Pixel\+Size}
+{\footnotesize\ttfamily Point Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Pixel\+Size\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 54 of file Base\+Sprite.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Base\+Sprite().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Graphics/\+Sprites/\textbf{ Splash\+Sprite.\+cs}\end{DoxyCompactItemize}

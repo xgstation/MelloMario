@@ -1,0 +1,147 @@
+\section{Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Normal Class Reference}
+\label{classMelloMario_1_1Objects_1_1Enemies_1_1GoombaStates_1_1Normal}\index{Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Normal@{Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Normal}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Normal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Enemies_1_1GoombaStates_1_1Normal__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Normal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Enemies_1_1GoombaStates_1_1Normal__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Normal} (\textbf{ Goomba} owner)
+\item 
+void \textbf{ Show} ()
+\item 
+void \textbf{ Defeat} ()
+\item 
+override void \textbf{ Update} (int time)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \textbf{ Owner}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Normal.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1GoombaStates_1_1Normal_a74ae5b3da40a8ec1d6966a1cf6836ddd}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal}!Normal@{Normal}}
+\index{Normal@{Normal}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal}}
+\subsubsection{Normal()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Normal.\+Normal (\begin{DoxyParamCaption}\item[{\textbf{ Goomba}}]{owner }\end{DoxyParamCaption})}
+
+
+
+Definition at line 12 of file Normal.\+cs.
+
+
+\begin{DoxyCode}
+12                                     : base(owner)
+13         \{
+14         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1GoombaStates_1_1Normal_af9471a3684263d2419740f8d959f30ca}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal}!Defeat@{Defeat}}
+\index{Defeat@{Defeat}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal}}
+\subsubsection{Defeat()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Normal.\+Defeat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Goomba\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IGoombaState_a7f94ffa4251ca347f1e27085b66662b4}.
+
+
+
+Definition at line 20 of file Normal.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Brick $>$.\+Owner.
+
+
+\begin{DoxyCode}
+21         \{
+22             Owner.State = \textcolor{keyword}{new} Defeated(Owner);
+23         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1GoombaStates_1_1Normal_a95b082505b979f99cd9518e0f5c950c1}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal}!Show@{Show}}
+\index{Show@{Show}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal}}
+\subsubsection{Show()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Normal.\+Show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Goomba\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IGoombaState_a0e85f72a5f8e39c3f1c421da6420c04e}.
+
+
+
+Definition at line 16 of file Normal.\+cs.
+
+
+\begin{DoxyCode}
+17         \{
+18         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1GoombaStates_1_1Normal_a50c8634bff296be17ebdf86da2d33ec2}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Normal.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+State$<$ Goomba $>$} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseState_a151e08ba646c7b0faff385b8248812c2}.
+
+
+
+Definition at line 25 of file Normal.\+cs.
+
+
+\begin{DoxyCode}
+26         \{
+27         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseState_a0367f1a6d509d6b819df603402bc6bb0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal}!Owner@{Owner}}
+\index{Owner@{Owner}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Goomba\+States\+::\+Normal}}
+\subsubsection{Owner}
+{\footnotesize\ttfamily T \textbf{ Mello\+Mario.\+Objects.\+Base\+State}$<$ T $>$.Owner\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 12 of file Base\+State.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+Enemies/\+Goomba\+States/\textbf{ Normal.\+cs}\end{DoxyCompactItemize}

@@ -1,0 +1,7 @@
+<map id="MelloMario.Objects.Blocks.Brick.ReleaseNextItem" name="MelloMario.Objects.Blocks.Brick.ReleaseNextItem">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#a09791801b12923f7b6b7e83decfbe997" title="MelloMario.Containers.Base\lContainer.Add" alt="" coords="244,5,429,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Theming_1_1Database.html#a7b74453e6228a9619d340dfc7572a93a" title="MelloMario.Theming.Database.\lGetNextItem" alt="" coords="236,123,437,164"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Theming_1_1Database.html#a847b37218838dfb96413ba40edcebca3" title="MelloMario.Theming.Database.\lHasItemEnclosed" alt="" coords="485,64,687,105"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#af04d91bc235e61367a9226814b8966e3" title="MelloMario.Containers.Base\lContainer.Update" alt="" coords="244,188,429,229"/>
+<area shape="rect" id="node5" href="$interfaceMelloMario_1_1ISession.html#a5b4557289e0ea68454c83dde2cbdc71f" title="MelloMario.ISession.Scan\lPlayers" alt="" coords="499,129,673,171"/>
+</map>

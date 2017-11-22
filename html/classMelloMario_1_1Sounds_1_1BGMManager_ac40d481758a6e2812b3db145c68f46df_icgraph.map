@@ -1,0 +1,4 @@
+<map id="MelloMario.Sounds.BGMManager.UpdateBGM" name="MelloMario.Sounds.BGMManager.UpdateBGM">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Sounds_1_1BGMManager.html#a0f3110164cefbd709684211ae151020e" title="MelloMario.Sounds.BGMManager.\lUpdate" alt="" coords="273,5,493,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Game1.html#abe3eff66b402af3861215080c44a8b02" title="Allows the game to run logic such as updating the World, checking for collisions, gathering input..." alt="" coords="541,13,717,39"/>
+</map>

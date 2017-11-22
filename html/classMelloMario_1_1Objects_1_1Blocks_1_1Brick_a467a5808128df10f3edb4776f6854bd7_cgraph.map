@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.Blocks.Brick.OnDestroy" name="MelloMario.Objects.Blocks.Brick.OnDestroy">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a51b9dcd51c329bef4f04919f67234378" title="MelloMario.Objects.BaseCollidable\lObject.ScorePoints" alt="" coords="236,5,460,47"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1ISoundArgs.html#a59ed0ce0559c17ccb69be1cdda2b9b36" title="MelloMario.ISoundArgs.Set\lMethodCalled" alt="" coords="258,71,438,112"/>
+</map>

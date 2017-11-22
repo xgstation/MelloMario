@@ -1,0 +1,6 @@
+<map id="MelloMario.Objects.Blocks.BrickStates.Hidden" name="MelloMario.Objects.Blocks.BrickStates.Hidden">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{BaseState\&lt; Brick \&gt;\n|# Owner\l|+ Update()\l# BaseState()\l}" alt="" coords="116,392,253,484"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{MelloMario.Objects.BaseState\&lt; T \&gt;\n||+ Update()\l# BaseState()\l}" alt="" coords="76,145,307,237"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="31,5,114,83"/>
+<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IBlockState.html" title="{IBlockState\n||+ Show()\l+ Hide()\l+ Bump()\l}" alt="" coords="5,261,95,368"/>
+</map>

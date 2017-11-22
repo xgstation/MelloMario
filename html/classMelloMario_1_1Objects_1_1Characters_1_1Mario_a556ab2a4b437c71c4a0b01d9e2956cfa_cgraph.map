@@ -1,0 +1,6 @@
+<map id="MelloMario.Objects.Characters.Mario.OnSimulation" name="MelloMario.Objects.Characters.Mario.OnSimulation">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#a0afbb621a892d8108995ef3d773d4281" title="MelloMario.Objects.BasePhysical\lObject.ApplyGravity" alt="" coords="259,5,477,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#a4f5a2dbf9eb2cfe812d7e40c0d880e74" title="MelloMario.Objects.BasePhysical\lObject.ApplyHorizontalFriction" alt="" coords="259,71,477,112"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#a28b6f2be5a87d3d400a241d085588fce" title="MelloMario.Objects.BasePhysical\lObject.ApplyVerticalFriction" alt="" coords="259,136,477,177"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#ae7280ca5238156966b9d7e39154bc5f5" title="MelloMario.Objects.BasePhysical\lObject.ApplyAccel" alt="" coords="525,5,744,47"/>
+</map>

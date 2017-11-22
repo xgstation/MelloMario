@@ -1,0 +1,229 @@
+\section{Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated Class Reference}
+\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated}\index{Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated@{Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Defeated} (\textbf{ Koopa} owner)
+\item 
+void \textbf{ Show} ()
+\item 
+void \textbf{ Jump\+On} ()
+\item 
+void \textbf{ Defeat} ()
+\item 
+override void \textbf{ Update} (int time)
+\item 
+void \textbf{ Pushed} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \textbf{ Owner}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly int \textbf{ played}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Defeated.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated_ac2a9b36a800747d26515835bf940927b}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}!Defeated@{Defeated}}
+\index{Defeated@{Defeated}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}}
+\subsubsection{Defeated()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated.\+Defeated (\begin{DoxyParamCaption}\item[{\textbf{ Koopa}}]{owner }\end{DoxyParamCaption})}
+
+
+
+Definition at line 14 of file Defeated.\+cs.
+
+
+\begin{DoxyCode}
+14                                      : base(owner)
+15         \{
+16             played = 0;
+17         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated_a6d32b4ea406133120841ec072167aa71}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}!Defeat@{Defeat}}
+\index{Defeat@{Defeat}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}}
+\subsubsection{Defeat()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated.\+Defeat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Koopa\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IKoopaState_a45a176e564368a92bd3879f27d3270d0}.
+
+
+
+Definition at line 29 of file Defeated.\+cs.
+
+
+\begin{DoxyCode}
+30         \{
+31         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated_a7402c4bd90cb245bb6d5b143a030e02f}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}!Jump\+On@{Jump\+On}}
+\index{Jump\+On@{Jump\+On}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}}
+\subsubsection{Jump\+On()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated.\+Jump\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Koopa\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IKoopaState_ad459b66ef3a50aea50ed5cdfee85e422}.
+
+
+
+Definition at line 24 of file Defeated.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Koopa $>$.\+Owner.
+
+
+\begin{DoxyCode}
+25         \{
+26             Owner.State = \textcolor{keyword}{new} MovingShell(Owner);
+27         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated_adb1f8a2071da73178c7196746ffb4beb}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}!Pushed@{Pushed}}
+\index{Pushed@{Pushed}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}}
+\subsubsection{Pushed()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated.\+Pushed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Koopa\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IKoopaState_ae859d7815b6be1370a781dda5f37153f}.
+
+
+
+Definition at line 46 of file Defeated.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Koopa $>$.\+Owner.
+
+
+\begin{DoxyCode}
+47         \{
+48             Owner.State = \textcolor{keyword}{new} MovingShell(Owner);
+49             \textcolor{comment}{//do nothing for this sprint}
+50         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated_ad52ae56f810417d75a521cef0f22f2b6}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}!Show@{Show}}
+\index{Show@{Show}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}}
+\subsubsection{Show()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated.\+Show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Koopa\+State} \doxyref{}{p.}{interfaceMelloMario_1_1IKoopaState_a8d49eefbd2037d6c22b90552d56c963b}.
+
+
+
+Definition at line 19 of file Defeated.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+State$<$ Koopa $>$.\+Owner.
+
+
+\begin{DoxyCode}
+20         \{
+21             Owner.State = \textcolor{keyword}{new} Normal(Owner);
+22         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated_aad0e969927dc26da8e173c8bafdef561}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+State$<$ Koopa $>$} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseState_a151e08ba646c7b0faff385b8248812c2}.
+
+
+
+Definition at line 33 of file Defeated.\+cs.
+
+
+\begin{DoxyCode}
+34         \{
+35             \textcolor{keywordflow}{if} (played <= 2)
+36             \{
+37                 \textcolor{comment}{//TODO:Move this into soundcontroller}
+38                 \textcolor{comment}{//if (SoundManager.EnemyKill.State == SoundState.Stopped)}
+39                 \textcolor{comment}{//\{}
+40                 \textcolor{comment}{//    played += 1;}
+41                 \textcolor{comment}{//\}}
+42                 \textcolor{comment}{//SoundManager.EnemyKill.Play();}
+43             \}
+44         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseState_a0367f1a6d509d6b819df603402bc6bb0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}!Owner@{Owner}}
+\index{Owner@{Owner}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}}
+\subsubsection{Owner}
+{\footnotesize\ttfamily T \textbf{ Mello\+Mario.\+Objects.\+Base\+State}$<$ T $>$.Owner\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 12 of file Base\+State.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Moving\+Shell\+::\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Moving\+Shell\+::\+Jump\+On(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated\+::\+Jump\+On(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated\+::\+Pushed(), Mello\+Mario.\+Objects.\+Enemies.\+Thwomp\+States.\+Defeated\+::\+Show(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Moving\+Shell\+::\+Show(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated\+::\+Show(), and Mello\+Mario.\+Objects.\+Enemies.\+Goomba\+States.\+Defeated\+::\+Show().
+
+\mbox{\label{classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated_a0ec0eb0e525cca923371670a7506e43c}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}!played@{played}}
+\index{played@{played}!Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated@{Mello\+Mario\+::\+Objects\+::\+Enemies\+::\+Koopa\+States\+::\+Defeated}}
+\subsubsection{played}
+{\footnotesize\ttfamily readonly int Mello\+Mario.\+Objects.\+Enemies.\+Koopa\+States.\+Defeated.\+played\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 12 of file Defeated.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+Enemies/\+Koopa\+States/\textbf{ Defeated.\+cs}\end{DoxyCompactItemize}

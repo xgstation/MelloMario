@@ -1,0 +1,8 @@
+<map id="MelloMario.Objects.Enemies.Piranha.Defeat" name="MelloMario.Objects.Enemies.Piranha.Defeat">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1Interfaces_1_1Objects_1_1States_1_1IPiranhaState.html#a482b433f05860877cece0cfc13adcc00" title="MelloMario.Interfaces.Objects.\lStates.IPiranhaState.Defeat" alt="" coords="259,5,458,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#ab856d6c80f08fd49fac68e0fefbed65b" title="MelloMario.Objects.BaseCollidable\lObject.RemoveSelf" alt="" coords="247,71,471,112"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a51b9dcd51c329bef4f04919f67234378" title="MelloMario.Objects.BaseCollidable\lObject.ScorePoints" alt="" coords="247,136,471,177"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#a22d1d351d72889669184260796158208" title="MelloMario.Containers.Base\lContainer.Remove" alt="" coords="538,5,723,47"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#afb437ff84f73186d883167df00854fb0" title="MelloMario.Objects.BaseCollidable\lObject.StopHorizontalMovement" alt="" coords="519,71,743,112"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a93e7a1fd2da3f05e1549054a58faad95" title="MelloMario.Objects.BaseCollidable\lObject.StopVerticalMovement" alt="" coords="519,136,743,177"/>
+</map>

@@ -1,0 +1,232 @@
+\section{Mello\+Mario.\+Controls.\+Controllers.\+Keyboard\+Controller Class Reference}
+\label{classMelloMario_1_1Controls_1_1Controllers_1_1KeyboardController}\index{Mello\+Mario.\+Controls.\+Controllers.\+Keyboard\+Controller@{Mello\+Mario.\+Controls.\+Controllers.\+Keyboard\+Controller}}
+
+
+Inheritance diagram for Mello\+Mario.\+Controls.\+Controllers.\+Keyboard\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Controls_1_1Controllers_1_1KeyboardController__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Controls.\+Controllers.\+Keyboard\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Controls_1_1Controllers_1_1KeyboardController__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Keyboard\+Controller} ()
+\item 
+void \textbf{ Add\+Command} (object key, \textbf{ I\+Command} value, \textbf{ Key\+Behavior} behavior)
+\item 
+void \textbf{ Update} ()
+\item 
+void \textbf{ Reset} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ On\+Update} ()
+\item 
+void \textbf{ Run\+Command} (T key, \textbf{ Key\+Behavior} behavior)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Keyboard\+State \textbf{ previous\+State}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 9 of file Keyboard\+Controller.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1KeyboardController_a99e15a6a8d42eda2d6259b889270b491}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}!Keyboard\+Controller@{Keyboard\+Controller}}
+\index{Keyboard\+Controller@{Keyboard\+Controller}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}}
+\subsubsection{Keyboard\+Controller()}
+{\footnotesize\ttfamily Mello\+Mario.\+Controls.\+Controllers.\+Keyboard\+Controller.\+Keyboard\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file Keyboard\+Controller.\+cs.
+
+
+\begin{DoxyCode}
+14         \{
+15             previousState = Keyboard.GetState();
+16         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_abc2c5cd6fc0969d1131cbb832f8b27b7}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}!Add\+Command@{Add\+Command}}
+\index{Add\+Command@{Add\+Command}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}}
+\subsubsection{Add\+Command()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller}$<$ T $>$.Add\+Command (\begin{DoxyParamCaption}\item[{object}]{key,  }\item[{\textbf{ I\+Command}}]{value,  }\item[{\textbf{ Key\+Behavior}}]{behavior }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 29 of file Base\+Controller.\+cs.
+
+
+\begin{DoxyCode}
+30         \{
+31             \textcolor{keywordflow}{if} (key is T castedKey)
+32             \{
+33                 commands[behavior].Add(castedKey, value);
+34             \}
+35         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1KeyboardController_a01b7e1b7a707e1c4c6924abe03716e2a}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}!On\+Update@{On\+Update}}
+\index{On\+Update@{On\+Update}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}}
+\subsubsection{On\+Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Controls.\+Controllers.\+Keyboard\+Controller.\+On\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller$<$ Keys $>$} \doxyref{}{p.}{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_a714d9e8e16ab15d264defa5671acd3fb}.
+
+
+
+Definition at line 18 of file Keyboard\+Controller.\+cs.
+
+
+
+References Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller$<$ Keys $>$.\+Run\+Command().
+
+
+\begin{DoxyCode}
+19         \{
+20             \textcolor{comment}{// Get the current Keyboard state.}
+21             KeyboardState currentState = Keyboard.GetState();
+22 
+23             \textcolor{keywordflow}{foreach} (Keys key \textcolor{keywordflow}{in} currentState.GetPressedKeys())
+24             \{
+25                 \textcolor{keywordflow}{if} (!previousState.IsKeyDown(key))
+26                 \{
+27                     RunCommand(key, KeyBehavior.press);
+28                 \}
+29                 \textcolor{keywordflow}{else}
+30                 \{
+31                     RunCommand(key, KeyBehavior.hold);
+32                 \}
+33             \}
+34             \textcolor{keywordflow}{foreach} (Keys key \textcolor{keywordflow}{in} previousState.GetPressedKeys())
+35             \{
+36                 \textcolor{keywordflow}{if} (!currentState.IsKeyDown(key))
+37                 \{
+38                     RunCommand(key, KeyBehavior.release);
+39                 \}
+40             \}
+41 
+42             \textcolor{comment}{// Update previous Keyboard state.}
+43             previousState = currentState;
+44         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Controls_1_1Controllers_1_1KeyboardController_a01b7e1b7a707e1c4c6924abe03716e2a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_abb457ac47da8a4cb253abbec1dd8adfa}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}!Reset@{Reset}}
+\index{Reset@{Reset}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}}
+\subsubsection{Reset()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller}$<$ T $>$.\textbf{ Reset} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 42 of file Base\+Controller.\+cs.
+
+
+
+References Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller$<$ T $>$\+::\+On\+Update().
+
+
+\begin{DoxyCode}
+43         \{
+44             \textcolor{keywordflow}{foreach} (IDictionary<T, ICommand> dict \textcolor{keywordflow}{in} commands.Values)
+45             \{
+46                 dict.Clear();
+47             \}
+48         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_a9a3f406141d69ba5b788c3eda0a8d30b}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}!Run\+Command@{Run\+Command}}
+\index{Run\+Command@{Run\+Command}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}}
+\subsubsection{Run\+Command()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller}$<$ T $>$.Run\+Command (\begin{DoxyParamCaption}\item[{T}]{key,  }\item[{\textbf{ Key\+Behavior}}]{behavior }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 52 of file Base\+Controller.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Controls.\+Controllers.\+Keyboard\+Controller\+::\+On\+Update().
+
+
+\begin{DoxyCode}
+53         \{
+54             \textcolor{keywordflow}{if} (commands[behavior].ContainsKey(key))
+55             \{
+56                 commands[behavior][key].Execute();
+57             \}
+58         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1BaseController_a808573459bc32bd98508b36f223eee0d}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller}$<$ T $>$.Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 37 of file Base\+Controller.\+cs.
+
+
+
+References Mello\+Mario.\+Controls.\+Controllers.\+Base\+Controller$<$ T $>$\+::\+On\+Update().
+
+
+\begin{DoxyCode}
+38         \{
+39             OnUpdate();
+40         \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Controls_1_1Controllers_1_1KeyboardController_ab48c8078cc8fa77e124bf4e16081c437}} 
+\index{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}!previous\+State@{previous\+State}}
+\index{previous\+State@{previous\+State}!Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller@{Mello\+Mario\+::\+Controls\+::\+Controllers\+::\+Keyboard\+Controller}}
+\subsubsection{previous\+State}
+{\footnotesize\ttfamily Keyboard\+State Mello\+Mario.\+Controls.\+Controllers.\+Keyboard\+Controller.\+previous\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 11 of file Keyboard\+Controller.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Controls/\+Controllers/\textbf{ Keyboard\+Controller.\+cs}\end{DoxyCompactItemize}

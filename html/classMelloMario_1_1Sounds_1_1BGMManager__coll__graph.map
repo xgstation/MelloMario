@@ -1,0 +1,4 @@
+<map id="MelloMario.Sounds.BGMManager" name="MelloMario.Sounds.BGMManager">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IModel.html" title="{MelloMario.IModel\n|+ ActivePlayer\l+ IsPaused\l|+ ToggleFullScreen()\l+ Pause()\l+ Resume()\l+ Init()\l+ Reset()\l+ Quit()\l+ Update()\l+ Infinite()\l+ Normal()\l+ Draw()\l+ ToggleMute()\l+ LoadLevel()\l+ TransistGameWon()\l+ Transist()\l}" alt="" coords="5,5,156,288"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1ISoundTrack.html" title="{MelloMario.ISoundTrack\n||+ Play()\l}" alt="" coords="180,108,341,185"/>
+</map>

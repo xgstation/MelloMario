@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.BaseCollidableObject.OnCollision" name="MelloMario.Objects.BaseCollidableObject.OnCollision">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a4206babe2bd6b68ec7fd6f481846918f" title="MelloMario.Objects.BaseCollidable\lObject.CollideAll" alt="" coords="277,5,501,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a9a601d5ff90ca4c040fbe7cc4c4a2810" title="MelloMario.Objects.BaseCollidable\lObject.OnSimulation" alt="" coords="549,5,773,47"/>
+</map>

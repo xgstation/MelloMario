@@ -1,0 +1,21 @@
+<map id="MelloMario.Factories.SpriteFactory.GetTexture" name="MelloMario.Factories.SpriteFactory.GetTexture">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a713b8a98b7272c7d9f6f97cedefb8a22" title="MelloMario.Factories.Sprite\lFactory.CreateBrickSprite" alt="" coords="265,5,447,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#af7d4d69077fbfe7c1181eb5289bf2ddf" title="MelloMario.Factories.Sprite\lFactory.CreateCoinSprite" alt="" coords="265,71,447,112"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#abee128ffc6f83e1c4c9f3500f54113e9" title="MelloMario.Factories.Sprite\lFactory.CreateFireFlowerSprite" alt="" coords="255,136,457,177"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a70f7b0e681f40656b64a0109b90f7921" title="MelloMario.Factories.Sprite\lFactory.CreateFireSprite" alt="" coords="265,201,447,243"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a2324945ad4d8e3cd9d8d58abd2455148" title="MelloMario.Factories.Sprite\lFactory.CreateFlagSprite" alt="" coords="265,267,447,308"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a6797aa2f76dd8986f7b8bc49f6e8e96f" title="MelloMario.Factories.Sprite\lFactory.CreateFloorSprite" alt="" coords="265,332,447,373"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#ae439b845459af63cdb3cee8f2aaba55b" title="MelloMario.Factories.Sprite\lFactory.CreateGoombaSprite" alt="" coords="261,397,451,439"/>
+<area shape="rect" id="node9" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#ae82ad2af40dfed81f46240657130d686" title="MelloMario.Factories.Sprite\lFactory.CreateKoopaSprite" alt="" coords="265,463,447,504"/>
+<area shape="rect" id="node10" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a18d8829d06e8232ca574ab3c6adb5c3f" title="MelloMario.Factories.Sprite\lFactory.CreateMarioSprite" alt="" coords="265,528,447,569"/>
+<area shape="rect" id="node11" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a360acc8a347b0c7a3b18e7a52f4ec5de" title="MelloMario.Factories.Sprite\lFactory.CreateOneUpMushroomSprite" alt="" coords="235,593,477,635"/>
+<area shape="rect" id="node12" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a2ab8a84818855db99ff640d85c5c0388" title="MelloMario.Factories.Sprite\lFactory.CreatePipelineSprite" alt="" coords="263,659,449,700"/>
+<area shape="rect" id="node13" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#af8c46fbd5dbdb044a36f591e48ea96bb" title="MelloMario.Factories.Sprite\lFactory.CreatePiranhaSprite" alt="" coords="263,724,449,765"/>
+<area shape="rect" id="node14" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a02466d3194ffe50ff66dba1069db447a" title="MelloMario.Factories.Sprite\lFactory.CreateQuestionSprite" alt="" coords="259,789,453,831"/>
+<area shape="rect" id="node15" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a778377c0e6784f9279f14bdbd08c115c" title="MelloMario.Factories.Sprite\lFactory.CreateSceneSprite" alt="" coords="265,855,447,896"/>
+<area shape="rect" id="node16" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a24b3d1609a17a13a3122f6dae1a67fcd" title="MelloMario.Factories.Sprite\lFactory.CreateStairSprite" alt="" coords="265,920,447,961"/>
+<area shape="rect" id="node17" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a697dac7e84cbd36a29ab5f10a935deef" title="MelloMario.Factories.Sprite\lFactory.CreateStarSprite" alt="" coords="265,985,447,1027"/>
+<area shape="rect" id="node18" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a99d20b598b1ddf39d02a7354721a4bcf" title="MelloMario.Factories.Sprite\lFactory.CreateSuperMushroomSprite" alt="" coords="238,1051,474,1092"/>
+<area shape="rect" id="node19" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#ab0a7ed9dbba09c7ecbc036ac65a4a109" title="MelloMario.Factories.Sprite\lFactory.CreateThwompSprite" alt="" coords="261,1116,451,1157"/>
+<area shape="rect" id="node20" href="$classMelloMario_1_1Factories_1_1SpriteFactory.html#a4310b74d9b5975a309ee1c12ee33f96e" title="MelloMario.Factories.Sprite\lFactory.CreateTitle" alt="" coords="265,1181,447,1223"/>
+</map>

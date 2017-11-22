@@ -1,0 +1,8 @@
+<map id="MelloMario.Objects.BaseUIObject.OnDraw" name="MelloMario.Objects.BaseUIObject.OnDraw">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseUIObject.html#aaefb20cc2ee49fb1ea78343e8b6608fe" title="MelloMario.Objects.BaseUIObject.Draw" alt="" coords="276,53,527,79"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseUIObject.html#a3998dccafea17a86f03b682239d4bcf8" title="MelloMario.Objects.BaseUIObject.\lUpdateOrigin" alt="" coords="290,104,513,145"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a572b91cd806714b0ab07ef951fe723bc" title="MelloMario.Objects.UserInterfaces.\lGameOver.OnUpdate" alt="" coords="575,5,800,47"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameStart.html#ad5e2531a90a5e816aed32822637975e2" title="MelloMario.Objects.UserInterfaces.\lGameStart.OnUpdate" alt="" coords="575,71,800,112"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameWon.html#acdbc3d6f82ff7814f251ddd57c07f857" title="MelloMario.Objects.UserInterfaces.\lGameWon.OnUpdate" alt="" coords="575,136,800,177"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1HUD.html#a4d0f18016827e7a05e405951bf88e93b" title="MelloMario.Objects.UserInterfaces.\lHUD.OnUpdate" alt="" coords="575,201,800,243"/>
+</map>

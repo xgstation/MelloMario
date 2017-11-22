@@ -1,0 +1,549 @@
+\section{Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points Class Reference}
+\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1PopingUpPoints}\index{Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points@{Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1UserInterfaces_1_1PopingUpPoints__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1UserInterfaces_1_1PopingUpPoints__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Poping\+Up\+Points} (\textbf{ I\+World} world, Point \textbf{ location}, int points)
+\item 
+void \textbf{ Update} (int time)
+\item 
+void \textbf{ Draw} (int time, Sprite\+Batch sprite\+Batch)
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \textbf{ Resize\+ModeX} \{ \textbf{ Resize\+Mode\+X.\+Left}, 
+\textbf{ Resize\+Mode\+X.\+Center}, 
+\textbf{ Resize\+Mode\+X.\+Right}
+ \}
+\item 
+enum \textbf{ Resize\+ModeY} \{ \textbf{ Resize\+Mode\+Y.\+Top}, 
+\textbf{ Resize\+Mode\+Y.\+Center}, 
+\textbf{ Resize\+Mode\+Y.\+Bottom}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ On\+Update} (int time)
+\item 
+override void \textbf{ On\+Simulation} (int time)
+\item 
+override void \textbf{ On\+Draw} (int time, Sprite\+Batch sprite\+Batch)
+\item 
+void \textbf{ Relocate} (Point new\+Location)
+\item 
+void \textbf{ Resize} (Point new\+Size, \textbf{ Resize\+ModeX} modeX, \textbf{ Resize\+ModeY} modeY)
+\item 
+void \textbf{ Show\+Sprite} (\textbf{ I\+Sprite} new\+Sprite, \textbf{ Resize\+ModeX} modeX=\textbf{ Resize\+Mode\+X.\+Center}, \textbf{ Resize\+ModeY} modeY=\textbf{ Resize\+Mode\+Y.\+Bottom})
+\item 
+void \textbf{ Hide\+Sprite} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ I\+World} \textbf{ World}
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Rectangle \textbf{ Boundary}\hspace{0.3cm}{\ttfamily  [get]}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ elapsed}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file Poping\+Up\+Points.\+cs.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a06941a7cff20b69e5d6ba6c285637606}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Resize\+ModeX@{Resize\+ModeX}}
+\index{Resize\+ModeX@{Resize\+ModeX}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{Resize\+ModeX}
+{\footnotesize\ttfamily enum \textbf{ Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Resize\+ModeX}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Left@{Left}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Left@{Left}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a06941a7cff20b69e5d6ba6c285637606a945d5e233cf7d6240f6b783b36a374ff}} 
+Left&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Center@{Center}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Center@{Center}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a06941a7cff20b69e5d6ba6c285637606a4f1f6016fc9f3f2353c0cc7c67b292bd}} 
+Center&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Right@{Right}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Right@{Right}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a06941a7cff20b69e5d6ba6c285637606a92b09c7c48c520c3c55e497875da437c}} 
+Right&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 113 of file Base\+Game\+Object.\+cs.
+
+
+\begin{DoxyCode}
+114         \{
+115             Left,
+116             Center,
+117             Right
+118         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a9d3ed1c0992a25e17a639fc6a2194415}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Resize\+ModeY@{Resize\+ModeY}}
+\index{Resize\+ModeY@{Resize\+ModeY}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{Resize\+ModeY}
+{\footnotesize\ttfamily enum \textbf{ Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Resize\+ModeY}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Top@{Top}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Top@{Top}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a9d3ed1c0992a25e17a639fc6a2194415aa4ffdcf0dc1f31b9acaf295d75b51d00}} 
+Top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Center@{Center}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Center@{Center}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a9d3ed1c0992a25e17a639fc6a2194415a4f1f6016fc9f3f2353c0cc7c67b292bd}} 
+Center&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Bottom@{Bottom}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Bottom@{Bottom}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a9d3ed1c0992a25e17a639fc6a2194415a2ad9d63b69c4a10a5cc9cad923133bc4}} 
+Bottom&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 120 of file Base\+Game\+Object.\+cs.
+
+
+\begin{DoxyCode}
+121         \{
+122             Top,
+123             Center,
+124             Bottom
+125         \}
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1PopingUpPoints_a8ea8f181d6a73fdab6851dc33a967a6e}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Poping\+Up\+Points@{Poping\+Up\+Points}}
+\index{Poping\+Up\+Points@{Poping\+Up\+Points}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{Poping\+Up\+Points()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+Poping\+Up\+Points (\begin{DoxyParamCaption}\item[{\textbf{ I\+World}}]{world,  }\item[{Point}]{location,  }\item[{int}]{points }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file Poping\+Up\+Points.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Sprite\+Factory$<$ T $>$.\+Create\+Text\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Instance, and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Show\+Sprite().
+
+
+\begin{DoxyCode}
+15                                                                         : base(world, 
+      location, \textcolor{keyword}{new} Point())
+16         \{
+17             ShowSprite(SpriteFactory.Instance.CreateTextSprite(points.ToString(), 10f));
+18         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1UserInterfaces_1_1PopingUpPoints_a8ea8f181d6a73fdab6851dc33a967a6e_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a0ca5164820fd5343cb3b6850a3193da2}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Draw@{Draw}}
+\index{Draw@{Draw}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{Draw()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Object} \doxyref{}{p.}{interfaceMelloMario_1_1IObject_aa01c3e3cca30817cf0bc9110dbbcc3de}.
+
+
+
+Definition at line 45 of file Base\+Game\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Boundary, Mello\+Mario.\+I\+Sprite.\+Draw(), Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+On\+Draw(), Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+On\+Simulation(), and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+On\+Update().
+
+
+\begin{DoxyCode}
+46         \{
+47             \textcolor{keywordflow}{if} (sprite != null)
+48             \{
+49                 OnDraw(time, spriteBatch);
+50 
+51                 sprite.Draw(time, spriteBatch, \textcolor{keyword}{new} Rectangle(Boundary.Location, 
+      Boundary.Size));
+52             \}
+53         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_a0ca5164820fd5343cb3b6850a3193da2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_aa201a4e1e87f58399d6dba7cb55f3cb8}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Hide\+Sprite@{Hide\+Sprite}}
+\index{Hide\+Sprite@{Hide\+Sprite}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{Hide\+Sprite()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Hide\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 108 of file Base\+Game\+Object.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Blocks.\+Floor.\+Floor(), Mello\+Mario.\+Objects.\+Blocks.\+Stair.\+Stair(), Mello\+Mario.\+Objects.\+Blocks.\+Question.\+Update\+Sprite(), and Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Update\+Sprite().
+
+
+\begin{DoxyCode}
+109         \{
+110             sprite = null;
+111         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_aa201a4e1e87f58399d6dba7cb55f3cb8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1PopingUpPoints_abd871f68dc95baf162947a403c596e31}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!On\+Draw@{On\+Draw}}
+\index{On\+Draw@{On\+Draw}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{On\+Draw()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+On\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+Game\+Object} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseGameObject_a0ef49bef700acd9c2327a635cd449b4e}.
+
+
+
+Definition at line 37 of file Poping\+Up\+Points.\+cs.
+
+
+\begin{DoxyCode}
+38         \{
+39         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1PopingUpPoints_a3bb35f6273b9f26338ddc378d887ca91}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!On\+Simulation@{On\+Simulation}}
+\index{On\+Simulation@{On\+Simulation}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{On\+Simulation()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+On\+Simulation (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+Game\+Object} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseGameObject_aead34775da7bbf3904154cd0b457011d}.
+
+
+
+Definition at line 33 of file Poping\+Up\+Points.\+cs.
+
+
+\begin{DoxyCode}
+34         \{
+35         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1PopingUpPoints_a8e7b59aa87272f50862909801cc735e9}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!On\+Update@{On\+Update}}
+\index{On\+Update@{On\+Update}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{On\+Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+On\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+Game\+Object} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseGameObject_a163927be40bce605ce978fea27938ac5}.
+
+
+
+Definition at line 20 of file Poping\+Up\+Points.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Boundary, Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Relocate(), and Mello\+Mario.\+Containers.\+Base\+Container$<$ Key, Value $>$.\+Remove().
+
+
+\begin{DoxyCode}
+21         \{
+22             elapsed += time;
+23             \textcolor{keywordflow}{if} (elapsed < 1000)
+24             \{
+25                 Relocate(Boundary.Location + \textcolor{keyword}{new} Point(0, -2));
+26             \}
+27             \textcolor{keywordflow}{else}
+28             \{
+29                 World.Remove(\textcolor{keyword}{this});
+30             \}
+31         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1UserInterfaces_1_1PopingUpPoints_a8e7b59aa87272f50862909801cc735e9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a739d7c5d6a671aa79c6e9a6b642e444c}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Relocate@{Relocate}}
+\index{Relocate@{Relocate}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{Relocate()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Relocate (\begin{DoxyParamCaption}\item[{Point}]{new\+Location }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 59 of file Base\+Game\+Object.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Characters.\+Mario\+Character.\+Move(), Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+On\+Simulation(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+On\+Update(), and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Resize().
+
+
+\begin{DoxyCode}
+60         \{
+61             location = newLocation;
+62         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_a739d7c5d6a671aa79c6e9a6b642e444c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a968dd48f33c69acc16fb2acfae36c3a8}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Resize@{Resize}}
+\index{Resize@{Resize}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{Resize()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Resize (\begin{DoxyParamCaption}\item[{Point}]{new\+Size,  }\item[{\textbf{ Resize\+ModeX}}]{modeX,  }\item[{\textbf{ Resize\+ModeY}}]{modeY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 64 of file Base\+Game\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Container$<$ T $>$.\+Move(), and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Relocate().
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Show\+Sprite().
+
+
+\begin{DoxyCode}
+65         \{
+66             Point delta = \textcolor{keyword}{new} Point();
+67 
+68             \textcolor{keywordflow}{switch} (modeX)
+69             \{
+70                 \textcolor{keywordflow}{case} ResizeModeX.Left:
+71                     delta.X = 0;
+72                     \textcolor{keywordflow}{break};
+73                 \textcolor{keywordflow}{case} ResizeModeX.Center:
+74                     delta.X = (size.X - newSize.X) / 2;
+75                     \textcolor{keywordflow}{break};
+76                 \textcolor{keywordflow}{case} ResizeModeX.Right:
+77                     delta.X = size.X - newSize.X;
+78                     \textcolor{keywordflow}{break};
+79             \}
+80             \textcolor{keywordflow}{switch} (modeY)
+81             \{
+82                 \textcolor{keywordflow}{case} ResizeModeY.Top:
+83                     delta.Y = 0;
+84                     \textcolor{keywordflow}{break};
+85                 \textcolor{keywordflow}{case} ResizeModeY.Center:
+86                     delta.Y = (size.Y - newSize.Y) / 2;
+87                     \textcolor{keywordflow}{break};
+88                 \textcolor{keywordflow}{case} ResizeModeY.Bottom:
+89                     delta.Y = size.Y - newSize.Y;
+90                     \textcolor{keywordflow}{break};
+91             \}
+92 
+93             Relocate(location + delta);
+94             size = newSize;
+95 
+96             World.Move(\textcolor{keyword}{this});
+97         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_a968dd48f33c69acc16fb2acfae36c3a8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_a968dd48f33c69acc16fb2acfae36c3a8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_aa3116237ab408071c073373daca92ad0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Show\+Sprite@{Show\+Sprite}}
+\index{Show\+Sprite@{Show\+Sprite}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{Show\+Sprite()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Show\+Sprite (\begin{DoxyParamCaption}\item[{\textbf{ I\+Sprite}}]{new\+Sprite,  }\item[{\textbf{ Resize\+ModeX}}]{modeX = {\ttfamily \textbf{ Resize\+Mode\+X.\+Center}},  }\item[{\textbf{ Resize\+ModeY}}]{modeY = {\ttfamily \textbf{ Resize\+Mode\+Y.\+Bottom}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 99 of file Base\+Game\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Sprite.\+Pixel\+Size, and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Resize().
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Items.\+Fire\+Ball.\+Fire\+Ball(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha.\+Piranha(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+Poping\+Up\+Points(), Mello\+Mario.\+Objects.\+Miscs.\+Background.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Floor.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Stair.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Flag.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Pipeline.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Enemies.\+Thwomp.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Enemies.\+Goomba.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+One\+Up\+Mushroom.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Question.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Star.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Fire\+Flower.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Coin.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom.\+Update\+Sprite(), and Mello\+Mario.\+Objects.\+Characters.\+Mario.\+Update\+Sprite().
+
+
+\begin{DoxyCode}
+103         \{
+104             sprite = newSprite;
+105             Resize(sprite.PixelSize, modeX, modeY);
+106         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_aa3116237ab408071c073373daca92ad0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_aa3116237ab408071c073373daca92ad0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_ae4b01d33719fa07f57de7d7c7ebeaa96}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Object} \doxyref{}{p.}{interfaceMelloMario_1_1IObject_aae8242b2fc9319733d1d09dc0271d971}.
+
+
+
+Definition at line 37 of file Base\+Game\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+On\+Simulation(), and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+On\+Update().
+
+
+\begin{DoxyCode}
+38         \{
+39             \textcolor{comment}{// override OnUpdate for states etc.}
+40             OnUpdate(time);
+41             \textcolor{comment}{// override OnSimulation for movement and collision}
+42             OnSimulation(time);
+43         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_ae4b01d33719fa07f57de7d7c7ebeaa96_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1PopingUpPoints_a20f0fc811fab14b06c7445bf4698f405}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!elapsed@{elapsed}}
+\index{elapsed@{elapsed}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{elapsed}
+{\footnotesize\ttfamily int Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+elapsed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 13 of file Poping\+Up\+Points.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a5d3c6a8ecaab7462a127135b097cb871}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!World@{World}}
+\index{World@{World}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{World}
+{\footnotesize\ttfamily \textbf{ I\+World} Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+World\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 19 of file Base\+Game\+Object.\+cs.
+
+
+
+\subsection{Property Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a73d457980c031a5e06d1451883074b5f}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}!Boundary@{Boundary}}
+\index{Boundary@{Boundary}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Poping\+Up\+Points}}
+\subsubsection{Boundary}
+{\footnotesize\ttfamily Rectangle Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Boundary\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 30 of file Base\+Game\+Object.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Characters.\+Mario\+Character.\+Action(), Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Base\+Game\+Object(), Mello\+Mario.\+Objects.\+Items.\+Fire\+Flower.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Coin.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Star.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom.\+Collect(), Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Collide\+All(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Goomba.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Thwomp.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha.\+Detect\+Mario(), Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Draw(), Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom.\+Get\+Fire\+Flower(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down.\+Moving\+Down(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Up.\+Moving\+Up(), Mello\+Mario.\+Objects.\+Blocks.\+Flag.\+On\+Collision(), Mello\+Mario.\+Objects.\+Blocks.\+Pipeline.\+On\+Collision(), Mello\+Mario.\+Objects.\+Characters.\+Mario.\+On\+Collision(), Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+On\+Simulation(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+On\+Update(), Mello\+Mario.\+Objects.\+Blocks.\+Pipeline.\+On\+Update(), Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Scan\+Collide\+Modes(), and Mello\+Mario.\+Objects.\+Characters.\+Mario\+Character.\+Teleport().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+User\+Interfaces/\textbf{ Poping\+Up\+Points.\+cs}\end{DoxyCompactItemize}

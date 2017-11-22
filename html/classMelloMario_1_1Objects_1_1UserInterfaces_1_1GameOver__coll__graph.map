@@ -1,0 +1,6 @@
+<map id="MelloMario.Objects.UserInterfaces.GameOver" name="MelloMario.Objects.UserInterfaces.GameOver">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseUIObject.html" title="{BaseUIObject\n|# RelativeOrigin\l|+ Update()\l+ Draw()\l# BaseUIObject()\l# Offset()\l# UpdateOrigin()\l# OnUpdate()\l# OnDraw()\l}" alt="" coords="51,321,173,487"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IObject.html" title="{IObject\n||+ Update()\l+ Draw()\l}" alt="" coords="5,86,88,178"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IPlayer.html" title="{MelloMario.IPlayer\n|+ Character\l+ Camera\l+ Coins\l+ Score\l+ Lifes\l+ TimeRemain\l|+ AddCoin()\l+ AddLife()\l+ AddScore()\l+ Init()\l+ Spawn()\l+ Reset()\l+ Win()\l+ Update()\l}" alt="" coords="113,5,242,259"/>
+<area shape="rect" id="node5" href="$interfaceMelloMario_1_1ISprite.html" title="{MelloMario.ISprite\n|+ PixelSize\l|+ Draw()\l}" alt="" coords="197,365,323,443"/>
+</map>

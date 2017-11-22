@@ -1,0 +1,14 @@
+<map id="MelloMario.Containers.BaseContainer.Move" name="MelloMario.Containers.BaseContainer.Move">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a9b9203102864cc5b68bc97e23d6139e6" title="MelloMario.Objects.BaseCollidable\lObject.Move" alt="" coords="239,267,463,308"/>
+<area shape="rect" id="node13" href="$classMelloMario_1_1Theming_1_1Player.html#a9b257f067b41da4b3b4f112a659b99b5" title="MelloMario.Theming.Player.\lSpawn" alt="" coords="259,332,442,373"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#a9e32baae1e1063af12d09d09061dcacd" title="MelloMario.Objects.BasePhysical\lObject.OnSimulation" alt="" coords="511,5,729,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Brick.html#a06dac300dd0bd3fa5d4852c5efa828a3" title="MelloMario.Objects.Blocks.\lBrick.BumpMove" alt="" coords="529,71,711,112"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Question.html#a9d43d1d207f2b8dcff1efad7a8731864" title="MelloMario.Objects.Blocks.\lQuestion.BumpMove" alt="" coords="529,136,711,177"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Koopa.html#a7898e4aae53ce4260a343eda0ff43689" title="MelloMario.Objects.Enemies.\lKoopa.Pushed" alt="" coords="523,201,717,243"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Objects_1_1Items_1_1Coin.html#a6ec9c19559f9b9ddb1b1da92c01a9c47" title="MelloMario.Objects.Items.\lCoin.UnveilMove" alt="" coords="533,267,707,308"/>
+<area shape="rect" id="node9" href="$classMelloMario_1_1Objects_1_1Items_1_1FireFlower.html#a366b1a6b60772cdf7388fdd161e95c31" title="MelloMario.Objects.Items.\lFireFlower.UnveilMove" alt="" coords="533,332,707,373"/>
+<area shape="rect" id="node10" href="$classMelloMario_1_1Objects_1_1Items_1_1OneUpMushroom.html#a2ced445e7d322f900d714d8e18586f8e" title="MelloMario.Objects.Items.\lOneUpMushroom.UnveilMove" alt="" coords="525,397,715,439"/>
+<area shape="rect" id="node11" href="$classMelloMario_1_1Objects_1_1Items_1_1Star.html#aedf8401388f9c37c84a57b3cbede5d45" title="MelloMario.Objects.Items.\lStar.UnveilMove" alt="" coords="533,463,707,504"/>
+<area shape="rect" id="node12" href="$classMelloMario_1_1Objects_1_1Items_1_1SuperMushroom.html#a9a54ae68accfff28223331c8dced5a28" title="MelloMario.Objects.Items.\lSuperMushroom.UnveilMove" alt="" coords="527,528,713,569"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Koopa.html#af25ae1fadcaa75f7bb01d6b30708c522" title="MelloMario.Objects.Enemies.\lKoopa.OnCollision" alt="" coords="777,201,971,243"/>
+</map>

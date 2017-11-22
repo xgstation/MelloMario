@@ -1,0 +1,9 @@
+<map id="MelloMario.Theming.GameModel.Normal" name="MelloMario.Theming.GameModel.Normal">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IPlayer.html#aa138cd83d346b856396f61270783f519" title="MelloMario.IPlayer.Init" alt="" coords="303,5,452,32"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Theming_1_1GameModel.html#a9629ae834dcf5ed4bf27a0ef2bb8c60a" title="MelloMario.Theming.GameModel.\lLoadLevel" alt="" coords="269,57,485,98"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Theming_1_1GameModel.html#a47a50dce16e211b57e3c2cae307f5e42" title="MelloMario.Theming.GameModel.\lResume" alt="" coords="269,122,485,163"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson.html#aa3fd52213102bf6ca317746b70eb5819" title="MelloMario.LevelGen.Json\lConverters.LevelIOJson.Load" alt="" coords="533,57,721,98"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Controls_1_1Scripts_1_1PlayingScript.html#a2c0d77c52774e806f4c1bc01db3f9f4b" title="MelloMario.Controls.Scripts.\lPlayingScript.Bind" alt="" coords="534,122,721,163"/>
+<area shape="rect" id="node7" href="$interfaceMelloMario_1_1IController.html#a11f1fbf12b60c68413e5a2a720805b3b" title="MelloMario.IController.Add\lCommand" alt="" coords="775,93,948,134"/>
+<area shape="rect" id="node8" href="$interfaceMelloMario_1_1IController.html#aee9b89a6c5fc218ec1e2afd65e7d91e7" title="MelloMario.IController.Reset" alt="" coords="769,159,953,185"/>
+</map>

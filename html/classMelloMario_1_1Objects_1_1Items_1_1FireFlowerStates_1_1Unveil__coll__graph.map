@@ -1,0 +1,7 @@
+<map id="MelloMario.Objects.Items.FireFlowerStates.Unveil" name="MelloMario.Objects.Items.FireFlowerStates.Unveil">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="{BaseTimedState\&lt; FireFlower \&gt;\n|+ Progress\l&#45; interval\l&#45; elapsed\l|+ Update()\l# BaseTimedState()\l# OnTimer()\l}" alt="" coords="87,591,290,727"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="{MelloMario.Objects.BaseTimed\lState\&lt; T \&gt;\n|+ Progress\l&#45; interval\l&#45; elapsed\l|+ Update()\l# BaseTimedState()\l# OnTimer()\l}" alt="" coords="87,377,290,528"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{BaseState\&lt; T \&gt;\n||+ Update()\l# BaseState()\l}" alt="" coords="125,145,239,237"/>
+<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="51,5,134,83"/>
+<area shape="rect" id="node7" href="$interfaceMelloMario_1_1IItemState.html" title="{IItemState\n||+ Show()\l+ Collect()\l}" alt="" coords="30,261,113,353"/>
+</map>

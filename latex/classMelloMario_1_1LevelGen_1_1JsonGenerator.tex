@@ -1,0 +1,144 @@
+\section{Mello\+Mario.\+Level\+Gen.\+Json\+Generator Class Reference}
+\label{classMelloMario_1_1LevelGen_1_1JsonGenerator}\index{Mello\+Mario.\+Level\+Gen.\+Json\+Generator@{Mello\+Mario.\+Level\+Gen.\+Json\+Generator}}
+
+
+Inheritance diagram for Mello\+Mario.\+Level\+Gen.\+Json\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{classMelloMario_1_1LevelGen_1_1JsonGenerator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Level\+Gen.\+Json\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{classMelloMario_1_1LevelGen_1_1JsonGenerator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Json\+Generator} (string json\+Path, string id, \textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$ listener, \textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$ sound\+Listener)
+\item 
+void \textbf{ Request} (Rectangle range, \textbf{ I\+World} world)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static I\+Enumerable$<$ \textbf{ I\+Game\+Object} $>$ \textbf{ Get\+Objs} (string json\+Path, string id, \textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$ listener, \textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$ sound\+Listener)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file Json\+Generator.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonGenerator_a448bdbe903d4014e273269b3c00fc790}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator}!Json\+Generator@{Json\+Generator}}
+\index{Json\+Generator@{Json\+Generator}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator}}
+\subsubsection{Json\+Generator()}
+{\footnotesize\ttfamily Mello\+Mario.\+Level\+Gen.\+Json\+Generator.\+Json\+Generator (\begin{DoxyParamCaption}\item[{string}]{json\+Path,  }\item[{string}]{id,  }\item[{\textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$}]{listener,  }\item[{\textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$}]{sound\+Listener }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Json\+Generator.\+cs.
+
+
+\begin{DoxyCode}
+25                                                                                                            
+                          :
+26             base(GetObjs(jsonPath, \textcolor{keywordtype}{id}, listener, soundListener))
+27         \{
+28         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1JsonGenerator_afe12471515beec68fac17c6a673134d4}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator}!Get\+Objs@{Get\+Objs}}
+\index{Get\+Objs@{Get\+Objs}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator}}
+\subsubsection{Get\+Objs()}
+{\footnotesize\ttfamily static I\+Enumerable$<$\textbf{ I\+Game\+Object}$>$ Mello\+Mario.\+Level\+Gen.\+Json\+Generator.\+Get\+Objs (\begin{DoxyParamCaption}\item[{string}]{json\+Path,  }\item[{string}]{id,  }\item[{\textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$}]{listener,  }\item[{\textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$}]{sound\+Listener }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 14 of file Json\+Generator.\+cs.
+
+
+
+References Mello\+Mario.\+I\+World.\+Boundary, Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+Load(), and Mello\+Mario.\+I\+World.\+Scan\+Nearby().
+
+
+\begin{DoxyCode}
+19         \{
+20             LevelIOJson reader = \textcolor{keyword}{new} LevelIOJson(jsonPath, listener, soundListener);
+21             IWorld world = reader.Load(\textcolor{keywordtype}{id});
+22             \textcolor{keywordflow}{return} world.ScanNearby(world.Boundary);
+23         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1LevelGen_1_1JsonGenerator_afe12471515beec68fac17c6a673134d4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1StaticGenerator_a81730046a9cf4aead90365c7839b0c2a}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator}!Request@{Request}}
+\index{Request@{Request}!Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Json\+Generator}}
+\subsubsection{Request()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Level\+Gen.\+Static\+Generator.\+Request (\begin{DoxyParamCaption}\item[{Rectangle}]{range,  }\item[{\textbf{ I\+World}}]{world }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Level\+Generator} \doxyref{}{p.}{interfaceMelloMario_1_1ILevelGenerator_a94f7791f8df5c3da2e21a7af8e118eab}.
+
+
+
+Definition at line 20 of file Static\+Generator.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Container$<$ T $>$.\+Add(), Mello\+Mario.\+I\+Game\+Object.\+Boundary, Mello\+Mario.\+I\+World.\+Boundary, and Mello\+Mario.\+I\+World.\+Extend().
+
+
+\begin{DoxyCode}
+21         \{
+22             \textcolor{keywordflow}{if} (objects != null)
+23             \{
+24                 \textcolor{keywordflow}{foreach} (IGameObject obj \textcolor{keywordflow}{in} objects)
+25                 \{
+26                     world.Extend(
+27                         Math.Max(world.Boundary.Left - obj.Boundary.Left, 0),
+28                         Math.Max(obj.Boundary.Right - world.Boundary.Right, 0),
+29                         Math.Max(world.Boundary.Top - obj.Boundary.Top, 0),
+30                         Math.Max(obj.Boundary.Bottom - world.Boundary.Bottom, 0));
+31                     world.Add(obj);
+32                 \}
+33                 objects = null;
+34             \}
+35         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1LevelGen_1_1StaticGenerator_a81730046a9cf4aead90365c7839b0c2a_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Level\+Gen/\textbf{ Json\+Generator.\+cs}\end{DoxyCompactItemize}

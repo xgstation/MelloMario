@@ -1,0 +1,5 @@
+<map id="MelloMario.Controls.Scripts.StartScript.Bind" name="MelloMario.Controls.Scripts.StartScript.Bind">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Theming_1_1GameModel.html#af042af9084a4d24ccc8e32f96233b521" title="MelloMario.Theming.GameModel.Init" alt="" coords="240,13,473,39"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Game1.html#a3ae863c0c57d5b278bfc755bb5d59b03" title="MelloMario.Game1.Reset" alt="" coords="521,13,691,39"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Game1.html#a6fe8c72f1e2e61499a069f0440c6d75a" title="Allows the game to perform any initialization it needs to before starting to run. This is where it ca..." alt="" coords="739,13,921,39"/>
+</map>

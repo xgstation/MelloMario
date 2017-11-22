@@ -1,0 +1,596 @@
+\section{Mello\+Mario.\+Theming.\+Database Class Reference}
+\label{classMelloMario_1_1Theming_1_1Database}\index{Mello\+Mario.\+Theming.\+Database@{Mello\+Mario.\+Theming.\+Database}}
+
+
+Collaboration diagram for Mello\+Mario.\+Theming.\+Database\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Theming_1_1Database__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \textbf{ Initialize} (\textbf{ I\+Session} new\+Session)
+\item 
+static void \textbf{ Add\+Pipeline\+Index} (string index, Tuple$<$ \textbf{ Pipeline}, \textbf{ Pipeline} $>$ pipeline)
+\item 
+static void \textbf{ Add\+Portal} (\textbf{ Pipeline} pipeline, string portal\+To)
+\item 
+static bool \textbf{ Is\+Portal} (\textbf{ Pipeline} pipeline)
+\item 
+static \textbf{ Pipeline} \textbf{ Get\+Portal} (\textbf{ Pipeline} pipeline)
+\item 
+static Point \textbf{ Get\+Character\+Location} ()
+\item 
+static bool \textbf{ Has\+Item\+Enclosed} (\textbf{ I\+Game\+Object} obj)
+\item 
+static \textbf{ I\+Game\+Object} \textbf{ Get\+Next\+Item} (\textbf{ I\+Game\+Object} obj)
+\item 
+static void \textbf{ Set\+Enclosed\+Item} (\textbf{ I\+Game\+Object} obj, I\+List$<$ \textbf{ I\+Game\+Object} $>$ item\+List)
+\item 
+static bool \textbf{ Is\+Entrance} (\textbf{ Pipeline} pipeline)
+\item 
+static string \textbf{ Get\+Entrance\+Index} (\textbf{ Pipeline} pipeline)
+\item 
+static void \textbf{ Set\+Entrance\+Index} (\textbf{ Pipeline} pipeline, string index)
+\item 
+static void \textbf{ Update} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static readonly I\+Dictionary$<$ \textbf{ I\+Game\+Object}, I\+List$<$ \textbf{ I\+Game\+Object} $>$ $>$ \textbf{ Item\+Enclosed\+Db}
+\item 
+static readonly I\+Dictionary$<$ \textbf{ Pipeline}, string $>$ \textbf{ Pipeline\+Entrance\+Db} = new Dictionary$<$\textbf{ Pipeline}, string$>$()
+\item 
+static readonly I\+Dictionary$<$ \textbf{ Pipeline}, string $>$ \textbf{ Pipeline\+Portal\+Db} = new Dictionary$<$\textbf{ Pipeline}, string$>$()
+\item 
+static readonly I\+Dictionary$<$ string, Tuple$<$ \textbf{ Pipeline}, \textbf{ Pipeline} $>$ $>$ \textbf{ Pipeline\+Index}
+\item 
+static readonly Concurrent\+Dictionary$<$ \textbf{ I\+Character}, Point $>$ \textbf{ Character\+Locations}
+\item 
+static \textbf{ I\+Session} \textbf{ Session}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file Database.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_aba40c92601ea18066a992fa8a73b4369}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Add\+Pipeline\+Index@{Add\+Pipeline\+Index}}
+\index{Add\+Pipeline\+Index@{Add\+Pipeline\+Index}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Add\+Pipeline\+Index()}
+{\footnotesize\ttfamily static void Mello\+Mario.\+Theming.\+Database.\+Add\+Pipeline\+Index (\begin{DoxyParamCaption}\item[{string}]{index,  }\item[{Tuple$<$ \textbf{ Pipeline}, \textbf{ Pipeline} $>$}]{pipeline }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 39 of file Database.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Entity\+Converter.\+Create\+Pipeline().
+
+
+\begin{DoxyCode}
+40         \{
+41             \textcolor{keywordflow}{if} (!PipelineIndex.ContainsKey(index))
+42             \{
+43                 PipelineIndex.Add(index, pipeline);
+44             \}
+45         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_aba40c92601ea18066a992fa8a73b4369_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_a6f8e0f7198be465c49296ed08ed82cc5}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Add\+Portal@{Add\+Portal}}
+\index{Add\+Portal@{Add\+Portal}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Add\+Portal()}
+{\footnotesize\ttfamily static void Mello\+Mario.\+Theming.\+Database.\+Add\+Portal (\begin{DoxyParamCaption}\item[{\textbf{ Pipeline}}]{pipeline,  }\item[{string}]{portal\+To }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 47 of file Database.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Entity\+Converter.\+Create\+Pipeline().
+
+
+\begin{DoxyCode}
+48         \{
+49             \textcolor{keywordflow}{if} (!PipelinePortalDb.ContainsKey(pipeline))
+50             \{
+51                 PipelinePortalDb.Add(pipeline, portalTo);
+52             \}
+53         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_a6f8e0f7198be465c49296ed08ed82cc5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_ad672d5eb646dd0f4333d2da6868f734b}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Get\+Character\+Location@{Get\+Character\+Location}}
+\index{Get\+Character\+Location@{Get\+Character\+Location}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Get\+Character\+Location()}
+{\footnotesize\ttfamily static Point Mello\+Mario.\+Theming.\+Database.\+Get\+Character\+Location (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 67 of file Database.\+cs.
+
+
+\begin{DoxyCode}
+68         \{
+69             \textcolor{comment}{// TODO: use viewport collision}
+70             \textcolor{keywordflow}{return} CharacterLocations.Count != 0 ? CharacterLocations.Values.ToList()[0] : \textcolor{keyword}{new} Point();
+71         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_ae250a55a50ed920475af0873c7494f76}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Get\+Entrance\+Index@{Get\+Entrance\+Index}}
+\index{Get\+Entrance\+Index@{Get\+Entrance\+Index}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Get\+Entrance\+Index()}
+{\footnotesize\ttfamily static string Mello\+Mario.\+Theming.\+Database.\+Get\+Entrance\+Index (\begin{DoxyParamCaption}\item[{\textbf{ Pipeline}}]{pipeline }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 117 of file Database.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Database.\+Is\+Entrance().
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Blocks.\+Pipeline.\+On\+Update().
+
+
+\begin{DoxyCode}
+118         \{
+119             \textcolor{keywordflow}{return} IsEntrance(pipeline) ? PipelineEntranceDb[pipeline] : null;
+120         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_ae250a55a50ed920475af0873c7494f76_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_ae250a55a50ed920475af0873c7494f76_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_a7b74453e6228a9619d340dfc7572a93a}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Get\+Next\+Item@{Get\+Next\+Item}}
+\index{Get\+Next\+Item@{Get\+Next\+Item}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Get\+Next\+Item()}
+{\footnotesize\ttfamily static \textbf{ I\+Game\+Object} Mello\+Mario.\+Theming.\+Database.\+Get\+Next\+Item (\begin{DoxyParamCaption}\item[{\textbf{ I\+Game\+Object}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 78 of file Database.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Database.\+Has\+Item\+Enclosed(), and Mello\+Mario.\+I\+Session.\+Scan\+Players().
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Blocks.\+Question.\+Release\+Next\+Item(), and Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Release\+Next\+Item().
+
+
+\begin{DoxyCode}
+79         \{
+80             \textcolor{keywordflow}{if} (!HasItemEnclosed(obj))
+81             \{
+82                 \textcolor{keywordflow}{return} null;
+83             \}
+84             \textcolor{keywordflow}{if} (ItemEnclosedDb[obj][0] is SuperMushroom mushroom)
+85             \{
+86                 \textcolor{keywordflow}{if} (Session.ScanPlayers()
+87                     .Any(
+88                         c => c.Character is MarioCharacter mario
+89                             && (mario.PowerUpState is Super || mario.PowerUpState is Fire)))
+90                 \{
+91                     ItemEnclosedDb[obj].RemoveAt(0);
+92                     \textcolor{keywordflow}{return} mushroom.GetFireFlower();
+93                 \}
+94             \}
+95             IGameObject toBeRemoved = ItemEnclosedDb[obj][0];
+96             ItemEnclosedDb[obj].RemoveAt(0);
+97             \textcolor{keywordflow}{return} toBeRemoved;
+98         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_a7b74453e6228a9619d340dfc7572a93a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_a7b74453e6228a9619d340dfc7572a93a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_aa993391b45238e267030c9103d64fa89}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Get\+Portal@{Get\+Portal}}
+\index{Get\+Portal@{Get\+Portal}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Get\+Portal()}
+{\footnotesize\ttfamily static \textbf{ Pipeline} Mello\+Mario.\+Theming.\+Database.\+Get\+Portal (\begin{DoxyParamCaption}\item[{\textbf{ Pipeline}}]{pipeline }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 60 of file Database.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Blocks.\+Pipeline.\+On\+Update().
+
+
+\begin{DoxyCode}
+61         \{
+62             \textcolor{keywordflow}{return} PipelinePortalDb.ContainsKey(pipeline) && PipelineIndex.ContainsKey(
+      PipelinePortalDb[pipeline])
+63                 ? PipelineIndex[PipelinePortalDb[pipeline]].Item1
+64                 : null;
+65         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_aa993391b45238e267030c9103d64fa89_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_a847b37218838dfb96413ba40edcebca3}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Has\+Item\+Enclosed@{Has\+Item\+Enclosed}}
+\index{Has\+Item\+Enclosed@{Has\+Item\+Enclosed}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Has\+Item\+Enclosed()}
+{\footnotesize\ttfamily static bool Mello\+Mario.\+Theming.\+Database.\+Has\+Item\+Enclosed (\begin{DoxyParamCaption}\item[{\textbf{ I\+Game\+Object}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 73 of file Database.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Hidden.\+Bump(), Mello\+Mario.\+Theming.\+Database.\+Get\+Next\+Item(), Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Initialize(), Mello\+Mario.\+Objects.\+Blocks.\+Question.\+Release\+Next\+Item(), Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Release\+Next\+Item(), Mello\+Mario.\+Objects.\+Blocks.\+Brick\+States.\+Bumped.\+Show(), and Mello\+Mario.\+Objects.\+Blocks.\+Question\+States.\+Bumped.\+Show().
+
+
+\begin{DoxyCode}
+74         \{
+75             \textcolor{keywordflow}{return} ItemEnclosedDb.ContainsKey(obj) && ItemEnclosedDb[obj]?.Count != 0;
+76         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_a847b37218838dfb96413ba40edcebca3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_a1a15a0f194ce2c9e9cc701656794f092}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Initialize()}
+{\footnotesize\ttfamily static void Mello\+Mario.\+Theming.\+Database.\+Initialize (\begin{DoxyParamCaption}\item[{\textbf{ I\+Session}}]{new\+Session }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 34 of file Database.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Game\+Model.\+Game\+Model().
+
+
+\begin{DoxyCode}
+35         \{
+36             Session = newSession;
+37         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_a1a15a0f194ce2c9e9cc701656794f092_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_a1c6942339fed6d28302debda9c4e6756}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Is\+Entrance@{Is\+Entrance}}
+\index{Is\+Entrance@{Is\+Entrance}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Is\+Entrance()}
+{\footnotesize\ttfamily static bool Mello\+Mario.\+Theming.\+Database.\+Is\+Entrance (\begin{DoxyParamCaption}\item[{\textbf{ Pipeline}}]{pipeline }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 112 of file Database.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Database.\+Get\+Entrance\+Index(), Mello\+Mario.\+Objects.\+Blocks.\+Pipeline.\+On\+Collision(), Mello\+Mario.\+Objects.\+Characters.\+Mario.\+On\+Collision(), and Mello\+Mario.\+Theming.\+Database.\+Set\+Entrance\+Index().
+
+
+\begin{DoxyCode}
+113         \{
+114             \textcolor{keywordflow}{return} PipelineEntranceDb.ContainsKey(pipeline);
+115         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_a1c6942339fed6d28302debda9c4e6756_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_abb6dce685c8a34a586fa4c8fc41fff87}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Is\+Portal@{Is\+Portal}}
+\index{Is\+Portal@{Is\+Portal}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Is\+Portal()}
+{\footnotesize\ttfamily static bool Mello\+Mario.\+Theming.\+Database.\+Is\+Portal (\begin{DoxyParamCaption}\item[{\textbf{ Pipeline}}]{pipeline }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 55 of file Database.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Blocks.\+Pipeline.\+On\+Update().
+
+
+\begin{DoxyCode}
+56         \{
+57             \textcolor{keywordflow}{return} PipelinePortalDb.ContainsKey(pipeline);
+58         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_abb6dce685c8a34a586fa4c8fc41fff87_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_abc8cd8416d5c045bd7bb18fc66363465}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Set\+Enclosed\+Item@{Set\+Enclosed\+Item}}
+\index{Set\+Enclosed\+Item@{Set\+Enclosed\+Item}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Set\+Enclosed\+Item()}
+{\footnotesize\ttfamily static void Mello\+Mario.\+Theming.\+Database.\+Set\+Enclosed\+Item (\begin{DoxyParamCaption}\item[{\textbf{ I\+Game\+Object}}]{obj,  }\item[{I\+List$<$ \textbf{ I\+Game\+Object} $>$}]{item\+List }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 100 of file Database.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Entity\+Converter.\+Create\+Brick\+Or\+Question().
+
+
+\begin{DoxyCode}
+101         \{
+102             \textcolor{keywordflow}{if} (ItemEnclosedDb.ContainsKey(obj))
+103             \{
+104                 ItemEnclosedDb[obj] = itemList;
+105             \}
+106             \textcolor{keywordflow}{else}
+107             \{
+108                 ItemEnclosedDb.Add(obj, itemList);
+109             \}
+110         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_abc8cd8416d5c045bd7bb18fc66363465_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_a05ce5701743a3414d738b840298694ed}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Set\+Entrance\+Index@{Set\+Entrance\+Index}}
+\index{Set\+Entrance\+Index@{Set\+Entrance\+Index}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Set\+Entrance\+Index()}
+{\footnotesize\ttfamily static void Mello\+Mario.\+Theming.\+Database.\+Set\+Entrance\+Index (\begin{DoxyParamCaption}\item[{\textbf{ Pipeline}}]{pipeline,  }\item[{string}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 122 of file Database.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Database.\+Is\+Entrance().
+
+
+
+Referenced by Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Game\+Entity\+Converter.\+Create\+Pipeline().
+
+
+\begin{DoxyCode}
+123         \{
+124             \textcolor{keywordflow}{if} (IsEntrance(pipeline))
+125             \{
+126                 PipelineEntranceDb[pipeline] = index;
+127             \}
+128             \textcolor{keywordflow}{else}
+129             \{
+130                 PipelineEntranceDb.Add(pipeline, index);
+131             \}
+132         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_a05ce5701743a3414d738b840298694ed_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_a05ce5701743a3414d738b840298694ed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_ab58c2296077881a98bc304b821cd0018}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily static void Mello\+Mario.\+Theming.\+Database.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 134 of file Database.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Player.\+Character, and Mello\+Mario.\+I\+Session.\+Scan\+Players().
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Game\+Model.\+Update().
+
+
+\begin{DoxyCode}
+135         \{
+136             \textcolor{keywordflow}{foreach} (IPlayer player \textcolor{keywordflow}{in} Session.ScanPlayers())
+137             \{
+138                 CharacterLocations.AddOrUpdate(
+139                     player.Character,
+140                     ((IGameObject) player.Character).Boundary.Location,
+141                     (p, loc) => ((IGameObject) p).Boundary.Location);
+142             \}
+143         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_ab58c2296077881a98bc304b821cd0018_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1Database_ab58c2296077881a98bc304b821cd0018_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_a957885d0ec39aa9ba2adf4257eaf8754}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Character\+Locations@{Character\+Locations}}
+\index{Character\+Locations@{Character\+Locations}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Character\+Locations}
+{\footnotesize\ttfamily readonly Concurrent\+Dictionary$<$\textbf{ I\+Character}, Point$>$ Mello\+Mario.\+Theming.\+Database.\+Character\+Locations\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \textcolor{keyword}{new} ConcurrentDictionary<ICharacter, Point>()
+\end{DoxyCode}
+
+
+Definition at line 29 of file Database.\+cs.
+
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_a9687d873ea52f2c536a3f33e0b4a8cf0}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Item\+Enclosed\+Db@{Item\+Enclosed\+Db}}
+\index{Item\+Enclosed\+Db@{Item\+Enclosed\+Db}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Item\+Enclosed\+Db}
+{\footnotesize\ttfamily readonly I\+Dictionary$<$\textbf{ I\+Game\+Object}, I\+List$<$\textbf{ I\+Game\+Object}$>$ $>$ Mello\+Mario.\+Theming.\+Database.\+Item\+Enclosed\+Db\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \textcolor{keyword}{new} Dictionary<IGameObject, IList<IGameObject>>()
+\end{DoxyCode}
+
+
+Definition at line 20 of file Database.\+cs.
+
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_aecaa6acce9c837aa01b8e2714182c7ee}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Pipeline\+Entrance\+Db@{Pipeline\+Entrance\+Db}}
+\index{Pipeline\+Entrance\+Db@{Pipeline\+Entrance\+Db}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Pipeline\+Entrance\+Db}
+{\footnotesize\ttfamily readonly I\+Dictionary$<$\textbf{ Pipeline}, string$>$ Mello\+Mario.\+Theming.\+Database.\+Pipeline\+Entrance\+Db = new Dictionary$<$\textbf{ Pipeline}, string$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 23 of file Database.\+cs.
+
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_a433571d303671dce87c88b030f95f384}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Pipeline\+Index@{Pipeline\+Index}}
+\index{Pipeline\+Index@{Pipeline\+Index}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Pipeline\+Index}
+{\footnotesize\ttfamily readonly I\+Dictionary$<$string, Tuple$<$\textbf{ Pipeline}, \textbf{ Pipeline}$>$ $>$ Mello\+Mario.\+Theming.\+Database.\+Pipeline\+Index\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \textcolor{keyword}{new} Dictionary<string, Tuple<Pipeline, Pipeline>>()
+\end{DoxyCode}
+
+
+Definition at line 26 of file Database.\+cs.
+
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_a5a983ad82670d0db3ea47120b3692a86}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Pipeline\+Portal\+Db@{Pipeline\+Portal\+Db}}
+\index{Pipeline\+Portal\+Db@{Pipeline\+Portal\+Db}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Pipeline\+Portal\+Db}
+{\footnotesize\ttfamily readonly I\+Dictionary$<$\textbf{ Pipeline}, string$>$ Mello\+Mario.\+Theming.\+Database.\+Pipeline\+Portal\+Db = new Dictionary$<$\textbf{ Pipeline}, string$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 24 of file Database.\+cs.
+
+\mbox{\label{classMelloMario_1_1Theming_1_1Database_a040ffd9199ffb6348176c14b324b2497}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}!Session@{Session}}
+\index{Session@{Session}!Mello\+Mario\+::\+Theming\+::\+Database@{Mello\+Mario\+::\+Theming\+::\+Database}}
+\subsubsection{Session}
+{\footnotesize\ttfamily \textbf{ I\+Session} Mello\+Mario.\+Theming.\+Database.\+Session\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 32 of file Database.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Theming/\textbf{ Database.\+cs}\end{DoxyCompactItemize}

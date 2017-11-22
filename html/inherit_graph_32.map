@@ -1,0 +1,76 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; Brick \&gt;" alt="" coords="192,104,391,145"/>
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Bumped.html" title="MelloMario.Objects.Blocks.\lBrickStates.Bumped" alt="" coords="467,136,649,177"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Hidden.html" title="MelloMario.Objects.Blocks.\lBrickStates.Hidden" alt="" coords="467,201,649,243"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Normal.html" title="MelloMario.Objects.Blocks.\lBrickStates.Normal" alt="" coords="467,5,649,47"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Used.html" title="MelloMario.Objects.Blocks.\lBrickStates.Used" alt="" coords="467,71,649,112"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; Coin \&gt;" alt="" coords="192,724,391,765"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1Items_1_1CoinStates_1_1Normal.html" title="MelloMario.Objects.Items.\lCoinStates.Normal" alt="" coords="471,724,645,765"/>
+<area shape="rect" id="node8" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; FireFlower \&gt;" alt="" coords="192,789,391,831"/>
+<area shape="rect" id="node9" href="$classMelloMario_1_1Objects_1_1Items_1_1FireFlowerStates_1_1Normal.html" title="MelloMario.Objects.Items.\lFireFlowerStates.Normal" alt="" coords="471,789,645,831"/>
+<area shape="rect" id="node10" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; Goomba \&gt;" alt="" coords="192,659,391,700"/>
+<area shape="rect" id="node11" href="$classMelloMario_1_1Objects_1_1Enemies_1_1GoombaStates_1_1Defeated.html" title="MelloMario.Objects.Enemies.\lGoombaStates.Defeated" alt="" coords="461,593,655,635"/>
+<area shape="rect" id="node12" href="$classMelloMario_1_1Objects_1_1Enemies_1_1GoombaStates_1_1Normal.html" title="MelloMario.Objects.Enemies.\lGoombaStates.Normal" alt="" coords="461,659,655,700"/>
+<area shape="rect" id="node13" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; Koopa \&gt;" alt="" coords="192,1501,391,1543"/>
+<area shape="rect" id="node14" href="$classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated.html" title="MelloMario.Objects.Enemies.\lKoopaStates.Defeated" alt="" coords="461,1377,655,1419"/>
+<area shape="rect" id="node15" href="$classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1MovingShell.html" title="MelloMario.Objects.Enemies.\lKoopaStates.MovingShell" alt="" coords="461,1443,655,1484"/>
+<area shape="rect" id="node16" href="$classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Normal.html" title="MelloMario.Objects.Enemies.\lKoopaStates.Normal" alt="" coords="461,1508,655,1549"/>
+<area shape="rect" id="node17" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; Mario \&gt;" alt="" coords="192,1769,391,1811"/>
+<area shape="rect" id="node18" href="$classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching.html" title="MelloMario.Objects.Characters.\lMovementStates.Crouching" alt="" coords="455,1573,661,1615"/>
+<area shape="rect" id="node19" href="$classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Standing.html" title="MelloMario.Objects.Characters.\lMovementStates.Standing" alt="" coords="455,1639,661,1680"/>
+<area shape="rect" id="node20" href="$classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Walking.html" title="MelloMario.Objects.Characters.\lMovementStates.Walking" alt="" coords="455,1704,661,1745"/>
+<area shape="rect" id="node21" href="$classMelloMario_1_1Objects_1_1Characters_1_1PowerUpStates_1_1Fire.html" title="MelloMario.Objects.Characters.\lPowerUpStates.Fire" alt="" coords="455,1769,661,1811"/>
+<area shape="rect" id="node22" href="$classMelloMario_1_1Objects_1_1Characters_1_1PowerUpStates_1_1Standard.html" title="MelloMario.Objects.Characters.\lPowerUpStates.Standard" alt="" coords="455,1835,661,1876"/>
+<area shape="rect" id="node23" href="$classMelloMario_1_1Objects_1_1Characters_1_1PowerUpStates_1_1Super.html" title="MelloMario.Objects.Characters.\lPowerUpStates.Super" alt="" coords="455,1965,661,2007"/>
+<area shape="rect" id="node24" href="$classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Normal.html" title="MelloMario.Objects.Characters.\lProtectionStates.Normal" alt="" coords="455,2031,661,2072"/>
+<area shape="rect" id="node25" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; OneUpMushroom \&gt;" alt="" coords="192,855,391,896"/>
+<area shape="rect" id="node26" href="$classMelloMario_1_1Objects_1_1Items_1_1OneUpMushroomStates_1_1Normal.html" title="MelloMario.Objects.Items.\lOneUpMushroomStates.Normal" alt="" coords="455,855,661,896"/>
+<area shape="rect" id="node27" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; Piranha \&gt;" alt="" coords="192,2357,391,2399"/>
+<area shape="rect" id="node28" href="$classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1Defeated.html" title="MelloMario.Objects.Enemies.\lPiranhaStates.Defeated" alt="" coords="461,2292,655,2333"/>
+<area shape="rect" id="node29" href="$classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1MovingDown.html" title="MelloMario.Objects.Enemies.\lPiranhaStates.MovingDown" alt="" coords="461,2357,655,2399"/>
+<area shape="rect" id="node30" href="$classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1MovingUp.html" title="MelloMario.Objects.Enemies.\lPiranhaStates.MovingUp" alt="" coords="461,2423,655,2464"/>
+<area shape="rect" id="node31" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; Question \&gt;" alt="" coords="192,379,391,420"/>
+<area shape="rect" id="node32" href="$classMelloMario_1_1Objects_1_1Blocks_1_1QuestionStates_1_1Bumped.html" title="MelloMario.Objects.Blocks.\lQuestionStates.Bumped" alt="" coords="467,397,649,439"/>
+<area shape="rect" id="node33" href="$classMelloMario_1_1Objects_1_1Blocks_1_1QuestionStates_1_1Hidden.html" title="MelloMario.Objects.Blocks.\lQuestionStates.Hidden" alt="" coords="467,463,649,504"/>
+<area shape="rect" id="node34" href="$classMelloMario_1_1Objects_1_1Blocks_1_1QuestionStates_1_1Normal.html" title="MelloMario.Objects.Blocks.\lQuestionStates.Normal" alt="" coords="467,267,649,308"/>
+<area shape="rect" id="node35" href="$classMelloMario_1_1Objects_1_1Blocks_1_1QuestionStates_1_1Used.html" title="MelloMario.Objects.Blocks.\lQuestionStates.Used" alt="" coords="467,332,649,373"/>
+<area shape="rect" id="node36" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; Star \&gt;" alt="" coords="192,920,391,961"/>
+<area shape="rect" id="node37" href="$classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Normal.html" title="MelloMario.Objects.Items.\lStarStates.Normal" alt="" coords="471,920,645,961"/>
+<area shape="rect" id="node38" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; SuperMushroom \&gt;" alt="" coords="192,985,391,1027"/>
+<area shape="rect" id="node39" href="$classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Normal.html" title="MelloMario.Objects.Items.\lSuperMushroomStates.Normal" alt="" coords="458,985,658,1027"/>
+<area shape="rect" id="node40" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\l\&lt; Thwomp \&gt;" alt="" coords="192,2680,391,2721"/>
+<area shape="rect" id="node41" href="$classMelloMario_1_1Objects_1_1Enemies_1_1ThwompStates_1_1Defeated.html" title="MelloMario.Objects.Enemies.\lThwompStates.Defeated" alt="" coords="461,2619,655,2660"/>
+<area shape="rect" id="node42" href="$classMelloMario_1_1Objects_1_1Enemies_1_1ThwompStates_1_1Normal.html" title="MelloMario.Objects.Enemies.\lThwompStates.Normal" alt="" coords="461,2684,655,2725"/>
+<area shape="rect" id="node43" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="MelloMario.Objects.BaseTimed\lState\&lt; Brick \&gt;" alt="" coords="190,528,393,569"/>
+<area shape="rect" id="node44" href="$classMelloMario_1_1Objects_1_1Blocks_1_1BrickStates_1_1Destroyed.html" title="MelloMario.Objects.Blocks.\lBrickStates.Destroyed" alt="" coords="467,528,649,569"/>
+<area shape="rect" id="node45" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="MelloMario.Objects.BaseTimed\lState\&lt; Coin \&gt;" alt="" coords="190,1103,393,1144"/>
+<area shape="rect" id="node46" href="$classMelloMario_1_1Objects_1_1Items_1_1CoinStates_1_1Unveil.html" title="MelloMario.Objects.Items.\lCoinStates.Unveil" alt="" coords="471,1051,645,1092"/>
+<area shape="rect" id="node47" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="MelloMario.Objects.BaseTimed\lState\&lt; FireFlower \&gt;" alt="" coords="190,1168,393,1209"/>
+<area shape="rect" id="node48" href="$classMelloMario_1_1Objects_1_1Items_1_1FireFlowerStates_1_1Unveil.html" title="MelloMario.Objects.Items.\lFireFlowerStates.Unveil" alt="" coords="471,1116,645,1157"/>
+<area shape="rect" id="node49" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="MelloMario.Objects.BaseTimed\lState\&lt; Mario \&gt;" alt="" coords="190,2096,393,2137"/>
+<area shape="rect" id="node50" href="$classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Jumping.html" title="MelloMario.Objects.Characters.\lMovementStates.Jumping" alt="" coords="455,1900,661,1941"/>
+<area shape="rect" id="node51" href="$classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Dead.html" title="MelloMario.Objects.Characters.\lProtectionStates.Dead" alt="" coords="455,2096,661,2137"/>
+<area shape="rect" id="node52" href="$classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Protected.html" title="MelloMario.Objects.Characters.\lProtectionStates.Protected" alt="" coords="455,2161,661,2203"/>
+<area shape="rect" id="node53" href="$classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Starred.html" title="MelloMario.Objects.Characters.\lProtectionStates.Starred" alt="" coords="455,2227,661,2268"/>
+<area shape="rect" id="node54" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="MelloMario.Objects.BaseTimed\lState\&lt; OneUpMushroom \&gt;" alt="" coords="190,1233,393,1275"/>
+<area shape="rect" id="node55" href="$classMelloMario_1_1Objects_1_1Items_1_1OneUpMushroomStates_1_1Unveil.html" title="MelloMario.Objects.Items.\lOneUpMushroomStates.Unveil" alt="" coords="459,1181,657,1223"/>
+<area shape="rect" id="node56" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="MelloMario.Objects.BaseTimed\lState\&lt; Piranha \&gt;" alt="" coords="190,2521,393,2563"/>
+<area shape="rect" id="node57" href="$classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1Hidden.html" title="MelloMario.Objects.Enemies.\lPiranhaStates.Hidden" alt="" coords="461,2488,655,2529"/>
+<area shape="rect" id="node58" href="$classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1Show.html" title="MelloMario.Objects.Enemies.\lPiranhaStates.Show" alt="" coords="461,2553,655,2595"/>
+<area shape="rect" id="node59" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="MelloMario.Objects.BaseTimed\lState\&lt; Star \&gt;" alt="" coords="190,1299,393,1340"/>
+<area shape="rect" id="node60" href="$classMelloMario_1_1Objects_1_1Items_1_1StarStates_1_1Unveil.html" title="MelloMario.Objects.Items.\lStarStates.Unveil" alt="" coords="471,1247,645,1288"/>
+<area shape="rect" id="node61" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="MelloMario.Objects.BaseTimed\lState\&lt; SuperMushroom \&gt;" alt="" coords="190,1364,393,1405"/>
+<area shape="rect" id="node62" href="$classMelloMario_1_1Objects_1_1Items_1_1SuperMushroomStates_1_1Unveil.html" title="MelloMario.Objects.Items.\lSuperMushroomStates.Unveil" alt="" coords="461,1312,655,1353"/>
+<area shape="rect" id="node63" href="$interfaceMelloMario_1_1IState.html" title="MelloMario.IState" alt="" coords="5,1777,128,1803"/>
+<area shape="rect" id="node64" href="$interfaceMelloMario_1_1IBlockState.html" title="MelloMario.IBlockState" alt="" coords="213,307,369,334"/>
+<area shape="rect" id="node65" href="$interfaceMelloMario_1_1IGoombaState.html" title="MelloMario.IGoombaState" alt="" coords="205,607,377,634"/>
+<area shape="rect" id="node66" href="$interfaceMelloMario_1_1IItemState.html" title="MelloMario.IItemState" alt="" coords="217,1051,365,1078"/>
+<area shape="rect" id="node67" href="$interfaceMelloMario_1_1IKoopaState.html" title="MelloMario.IKoopaState" alt="" coords="211,1450,371,1477"/>
+<area shape="rect" id="node68" href="$interfaceMelloMario_1_1IMarioMovementState.html" title="MelloMario.IMarioMovement\lState" alt="" coords="200,1704,383,1745"/>
+<area shape="rect" id="node69" href="$interfaceMelloMario_1_1IMarioPowerUpState.html" title="MelloMario.IMarioPowerUp\lState" alt="" coords="203,1835,379,1876"/>
+<area shape="rect" id="node70" href="$interfaceMelloMario_1_1IMarioProtectionState.html" title="MelloMario.IMarioProtection\lState" alt="" coords="200,2161,383,2203"/>
+<area shape="rect" id="node71" href="$interfaceMelloMario_1_1Interfaces_1_1Objects_1_1States_1_1IPiranhaState.html" title="MelloMario.Interfaces.Objects.\lStates.IPiranhaState" alt="" coords="192,2423,391,2464"/>
+<area shape="rect" id="node72" href="$interfaceMelloMario_1_1IThwompState.html" title="MelloMario.IThwompState" alt="" coords="206,2626,377,2653"/>
+<area shape="rect" id="node73" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="MelloMario.Objects.BaseState\&lt; T \&gt;" alt="" coords="176,2753,407,2779"/>
+<area shape="rect" id="node74" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="MelloMario.Objects.BaseTimed\lState\&lt; T \&gt;" alt="" coords="457,2749,659,2791"/>
+</map>

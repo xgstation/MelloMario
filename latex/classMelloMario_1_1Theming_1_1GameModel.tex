@@ -1,0 +1,1001 @@
+\section{Mello\+Mario.\+Theming.\+Game\+Model Class Reference}
+\label{classMelloMario_1_1Theming_1_1GameModel}\index{Mello\+Mario.\+Theming.\+Game\+Model@{Mello\+Mario.\+Theming.\+Game\+Model}}
+
+
+Inheritance diagram for Mello\+Mario.\+Theming.\+Game\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Theming_1_1GameModel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Theming.\+Game\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Game\+Model} (\textbf{ Game1} \textbf{ game})
+\item 
+void \textbf{ Toggle\+Full\+Screen} ()
+\item 
+void \textbf{ Pause} ()
+\item 
+void \textbf{ Init} ()
+\item 
+void \textbf{ Resume} ()
+\item 
+void \textbf{ Reset} ()
+\item 
+void \textbf{ Quit} ()
+\item 
+void \textbf{ Infinite} ()
+\item 
+void \textbf{ Normal} ()
+\item 
+void \textbf{ Update} (int time)
+\item 
+void \textbf{ Draw} (int time, Sprite\+Batch sprite\+Batch)
+\item 
+void \textbf{ Toggle\+Mute} ()
+\item 
+void \textbf{ Load\+Controllers} (I\+Enumerable$<$ \textbf{ I\+Controller} $>$ new\+Controllers)
+\item 
+\textbf{ I\+World} \textbf{ Load\+Level} (string id)
+\item 
+void \textbf{ Transist} ()
+\item 
+void \textbf{ Transist\+Game\+Won} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ I\+Object} \textbf{ Splash}
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ Is\+Paused}\hspace{0.3cm}{\ttfamily  [get, private set]}
+\item 
+Matrix \textbf{ Get\+Active\+View\+Matrix}\hspace{0.3cm}{\ttfamily  [get]}
+\item 
+\textbf{ I\+Player} \textbf{ Active\+Player}\hspace{0.3cm}{\ttfamily  [get]}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Update\+Controller} ()
+\item 
+void \textbf{ Update\+Game\+Objects} (int time)
+\item 
+void \textbf{ Update\+Containers} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \textbf{ Game1} \textbf{ game}
+\item 
+readonly \textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$ \textbf{ listener}
+\item 
+readonly \textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$ \textbf{ sound\+Listener}
+\item 
+readonly \textbf{ Session} \textbf{ session}
+\item 
+I\+Enumerable$<$ \textbf{ I\+Controller} $>$ \textbf{ controllers}
+\item 
+string \textbf{ map\+Path} = \char`\"{}Content/Level1.\+json\char`\"{}
+\item 
+int \textbf{ splash\+Elapsed}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file Game\+Model.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a8db693f5689386a56a0984795d2a8da8}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Game\+Model@{Game\+Model}}
+\index{Game\+Model@{Game\+Model}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Game\+Model()}
+{\footnotesize\ttfamily Mello\+Mario.\+Theming.\+Game\+Model.\+Game\+Model (\begin{DoxyParamCaption}\item[{\textbf{ Game1}}]{game }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Game\+Model.\+Active\+Player, Mello\+Mario.\+Theming.\+Game\+Model.\+game, Mello\+Mario.\+Theming.\+Game\+Model.\+Get\+Active\+View\+Matrix, and Mello\+Mario.\+Theming.\+Database.\+Initialize().
+
+
+\begin{DoxyCode}
+35         \{
+36             this.game = game;
+37             session = \textcolor{keyword}{new} Session();
+38             ActivePlayer = \textcolor{keyword}{new} Player(session);
+39             listener = \textcolor{keyword}{new} ScoreListener(\textcolor{keyword}{this}, ActivePlayer);
+40             soundListener = \textcolor{keyword}{new} SoundEffectListener();
+41             Database.Initialize(session);
+42         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a8db693f5689386a56a0984795d2a8da8_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a6f0e3f02c5751f99e1609d383f141dd1}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Draw@{Draw}}
+\index{Draw@{Draw}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Draw()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_a6b0bf0489524cd831d42116704a3bdda}.
+
+
+
+Definition at line 138 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Game\+Model.\+Active\+Player, Mello\+Mario.\+I\+Object.\+Draw(), and Mello\+Mario.\+Theming.\+Game\+Model.\+Is\+Paused.
+
+
+
+Referenced by Mello\+Mario.\+Game1.\+Draw().
+
+
+\begin{DoxyCode}
+139         \{
+140             IPlayer player = ActivePlayer;
+141 
+142             \textcolor{keywordflow}{foreach} (IGameObject obj \textcolor{keywordflow}{in} player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
+143             \{
+144                 obj.Draw(IsPaused ? 0 : time, spriteBatch);
+145             \}
+146 
+147             Splash.Draw(time, spriteBatch);
+148         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a6f0e3f02c5751f99e1609d383f141dd1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a6f0e3f02c5751f99e1609d383f141dd1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_aa99d3524a0689120b4c1915ab212b0ae}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Infinite@{Infinite}}
+\index{Infinite@{Infinite}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Infinite()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Infinite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_a51cc28f0991afb7c5ebd0c3d0ad2444a}.
+
+
+
+Definition at line 97 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Game\+Model.\+Active\+Player, Mello\+Mario.\+I\+Player.\+Init(), Mello\+Mario.\+Theming.\+Game\+Model.\+Is\+Paused, Mello\+Mario.\+Theming.\+Game\+Model.\+Load\+Level(), and Mello\+Mario.\+Theming.\+Game\+Model.\+Resume().
+
+
+\begin{DoxyCode}
+98         \{
+99             mapPath = \textcolor{stringliteral}{"Content/Infinite.json"};
+100             splashElapsed = 0;
+101             ActivePlayer.Init(\textcolor{stringliteral}{"Mario"}, LoadLevel(\textcolor{stringliteral}{"Main"}), listener, 
+      soundListener);
+102             IsPaused = \textcolor{keyword}{false};
+103             Resume();
+104         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_aa99d3524a0689120b4c1915ab212b0ae_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_af042af9084a4d24ccc8e32f96233b521}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Init@{Init}}
+\index{Init@{Init}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Init()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_abbfdd96fb9a2436b2c666d42c57d4f2c}.
+
+
+
+Definition at line 68 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Game\+Model.\+Active\+Player, Mello\+Mario.\+Controls.\+Scripts.\+Start\+Script.\+Bind(), Mello\+Mario.\+I\+Player.\+Character, and Mello\+Mario.\+Theming.\+Game\+Model.\+Is\+Paused.
+
+
+
+Referenced by Mello\+Mario.\+Game1.\+Reset().
+
+
+\begin{DoxyCode}
+69         \{
+70             IsPaused = \textcolor{keyword}{true};
+71             \textcolor{keyword}{new} StartScript().Bind(controllers, \textcolor{keyword}{this}, ActivePlayer.Character);
+72 
+73             Splash = \textcolor{keyword}{new} GameStart(ActivePlayer); \textcolor{comment}{// TODO: move these constructors to the factory}
+74             splashElapsed = -1;
+75         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_af042af9084a4d24ccc8e32f96233b521_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_af042af9084a4d24ccc8e32f96233b521_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a19da2d1bc754010340936e99573752a4}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Load\+Controllers@{Load\+Controllers}}
+\index{Load\+Controllers@{Load\+Controllers}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Load\+Controllers()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Load\+Controllers (\begin{DoxyParamCaption}\item[{I\+Enumerable$<$ \textbf{ I\+Controller} $>$}]{new\+Controllers }\end{DoxyParamCaption})}
+
+
+
+Definition at line 156 of file Game\+Model.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Game1.\+Reset().
+
+
+\begin{DoxyCode}
+157         \{
+158             controllers = newControllers;
+159         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a19da2d1bc754010340936e99573752a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a9629ae834dcf5ed4bf27a0ef2bb8c60a}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Load\+Level@{Load\+Level}}
+\index{Load\+Level@{Load\+Level}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Load\+Level()}
+{\footnotesize\ttfamily \textbf{ I\+World} Mello\+Mario.\+Theming.\+Game\+Model.\+Load\+Level (\begin{DoxyParamCaption}\item[{string}]{id }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_ac3de5797c48482bd254ca44f4c2a3a50}.
+
+
+
+Definition at line 161 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+I\+World.\+ID, and Mello\+Mario.\+Level\+Gen.\+Json\+Converters.\+Level\+I\+O\+Json.\+Load().
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Game\+Model.\+Infinite(), and Mello\+Mario.\+Theming.\+Game\+Model.\+Normal().
+
+
+\begin{DoxyCode}
+162         \{
+163             \textcolor{keywordflow}{foreach} (IWorld world \textcolor{keywordflow}{in} session.ScanWorlds())
+164             \{
+165                 \textcolor{keywordflow}{if} (world.ID == \textcolor{keywordtype}{id})
+166                 \{
+167                     \textcolor{keywordflow}{return} world;
+168                 \}
+169             \}
+170 
+171             \textcolor{comment}{// IWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());}
+172 
+173             LevelIOJson reader = \textcolor{keyword}{new} LevelIOJson(mapPath, listener, 
+      soundListener);
+174 
+175             IWorld newWorld = reader.Load(\textcolor{keywordtype}{id});
+176             \textcolor{comment}{// generator = new JsonGenerator(mapPath, id, listener, soundListener);}
+177             \textcolor{comment}{//infiniteGenerator = new InfiniteGenerator(newWorld, listener);}
+178             \textcolor{keywordflow}{return} newWorld;
+179         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a9629ae834dcf5ed4bf27a0ef2bb8c60a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a9629ae834dcf5ed4bf27a0ef2bb8c60a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a2d58c8618777941b871792b8c1a29fa5}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Normal@{Normal}}
+\index{Normal@{Normal}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Normal()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Normal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_a573a1f0c4fc50e5455ff8eeb95e01e7f}.
+
+
+
+Definition at line 106 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Game\+Model.\+Active\+Player, Mello\+Mario.\+I\+Player.\+Init(), Mello\+Mario.\+Theming.\+Game\+Model.\+Is\+Paused, Mello\+Mario.\+Theming.\+Game\+Model.\+Load\+Level(), and Mello\+Mario.\+Theming.\+Game\+Model.\+Resume().
+
+
+\begin{DoxyCode}
+107         \{
+108             mapPath = \textcolor{stringliteral}{"Content/Level1.json"};
+109             splashElapsed = 0;
+110             ActivePlayer.Init(\textcolor{stringliteral}{"Mario"}, LoadLevel(\textcolor{stringliteral}{"Main"}), listener, 
+      soundListener);
+111             IsPaused = \textcolor{keyword}{false};
+112             Resume();
+113         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a2d58c8618777941b871792b8c1a29fa5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a2d2f017ccdc1d74268b637a00d7c6b4c}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Pause@{Pause}}
+\index{Pause@{Pause}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Pause()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_a78f90898f9a031ae1a76ecdf08c2dd83}.
+
+
+
+Definition at line 60 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Game\+Model.\+Active\+Player, Mello\+Mario.\+Controls.\+Scripts.\+Paused\+Script.\+Bind(), Mello\+Mario.\+I\+Player.\+Character, and Mello\+Mario.\+Theming.\+Game\+Model.\+Is\+Paused.
+
+
+\begin{DoxyCode}
+61         \{
+62             IsPaused = \textcolor{keyword}{true};
+63             \textcolor{keyword}{new} PausedScript().Bind(controllers, \textcolor{keyword}{this}, ActivePlayer.Character);
+64 
+65             splashElapsed = -1;
+66         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a2d2f017ccdc1d74268b637a00d7c6b4c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_ab5f2e38bfdf4600ad8a24d07c1c20bfb}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Quit@{Quit}}
+\index{Quit@{Quit}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Quit()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Quit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_a0827c7c2994544287b676e0b97eb9609}.
+
+
+
+Definition at line 92 of file Game\+Model.\+cs.
+
+
+\begin{DoxyCode}
+93         \{
+94             game.Exit();
+95         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a398fab5ee4f986acac7ba10841ae0765}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Reset@{Reset}}
+\index{Reset@{Reset}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Reset()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_aa00f3d73d46a9ac0b37198daa39ef8ec}.
+
+
+
+Definition at line 85 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Game\+Model.\+Resume().
+
+
+\begin{DoxyCode}
+86         \{
+87             \textcolor{comment}{// TODO: "forced" version of LoadLevel()}
+88             game.Reset();
+89             Resume();
+90         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a398fab5ee4f986acac7ba10841ae0765_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a47a50dce16e211b57e3c2cae307f5e42}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Resume@{Resume}}
+\index{Resume@{Resume}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Resume()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Resume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_a853f764267a2d2a3440b8693d4381979}.
+
+
+
+Definition at line 77 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Game\+Model.\+Active\+Player, Mello\+Mario.\+Controls.\+Scripts.\+Playing\+Script.\+Bind(), Mello\+Mario.\+I\+Player.\+Character, and Mello\+Mario.\+Theming.\+Game\+Model.\+Is\+Paused.
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Game\+Model.\+Infinite(), Mello\+Mario.\+Theming.\+Game\+Model.\+Normal(), Mello\+Mario.\+Theming.\+Game\+Model.\+Reset(), and Mello\+Mario.\+Theming.\+Game\+Model.\+Update().
+
+
+\begin{DoxyCode}
+78         \{
+79             IsPaused = \textcolor{keyword}{false};
+80             \textcolor{keyword}{new} PlayingScript().Bind(controllers, \textcolor{keyword}{this}, ActivePlayer.Character);
+81 
+82             Splash = \textcolor{keyword}{new} HUD(ActivePlayer);
+83         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a47a50dce16e211b57e3c2cae307f5e42_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a47a50dce16e211b57e3c2cae307f5e42_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_aeb3a24f2549d122f1269149ab27e75b4}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Toggle\+Full\+Screen@{Toggle\+Full\+Screen}}
+\index{Toggle\+Full\+Screen@{Toggle\+Full\+Screen}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Toggle\+Full\+Screen()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Toggle\+Full\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_a99fed816eb700f70dcd8f8ef3ce8ed91}.
+
+
+
+Definition at line 55 of file Game\+Model.\+cs.
+
+
+\begin{DoxyCode}
+56         \{
+57             game.ToggleFullScreen();
+58         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a9ff554d216f2715cb38973160ccc7564}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Toggle\+Mute@{Toggle\+Mute}}
+\index{Toggle\+Mute@{Toggle\+Mute}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Toggle\+Mute()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Toggle\+Mute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_a46a094c3f4b122e446642bac7b8195fa}.
+
+
+
+Definition at line 150 of file Game\+Model.\+cs.
+
+
+\begin{DoxyCode}
+151         \{
+152             (soundListener as SoundEffectListener)?.ToggleMute();
+153             game.ToggleMute();
+154         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a6bf087dff68498474ca50faa1d8faf1d}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Transist@{Transist}}
+\index{Transist@{Transist}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Transist()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Transist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_ab6c710322c150794f3a4912341e43acb}.
+
+
+
+Definition at line 181 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Game\+Model.\+Active\+Player, Mello\+Mario.\+Controls.\+Scripts.\+Transist\+Script.\+Bind(), Mello\+Mario.\+I\+Player.\+Character, Mello\+Mario.\+Theming.\+Game\+Model.\+Is\+Paused, and Mello\+Mario.\+I\+Player.\+Reset().
+
+
+\begin{DoxyCode}
+182         \{
+183             ActivePlayer.Reset(\textcolor{stringliteral}{"Mario"}, listener, soundListener);
+184 
+185             IsPaused = \textcolor{keyword}{true};
+186             \textcolor{keyword}{new} TransistScript().Bind(controllers, \textcolor{keyword}{this}, ActivePlayer.Character);
+187 
+188             Splash = \textcolor{keyword}{new} GameOver(ActivePlayer);
+189             splashElapsed = 0;
+190         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a6bf087dff68498474ca50faa1d8faf1d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a03137d993b0f82225c6c08a38ac744fb}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Transist\+Game\+Won@{Transist\+Game\+Won}}
+\index{Transist\+Game\+Won@{Transist\+Game\+Won}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Transist\+Game\+Won()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Transist\+Game\+Won (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_aa47c3639fd38b31127f2cde30c88b16e}.
+
+
+
+Definition at line 192 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Game\+Model.\+Active\+Player, Mello\+Mario.\+Controls.\+Scripts.\+Transist\+Script.\+Bind(), Mello\+Mario.\+I\+Player.\+Character, Mello\+Mario.\+Theming.\+Game\+Model.\+Is\+Paused, and Mello\+Mario.\+I\+Player.\+Win().
+
+
+\begin{DoxyCode}
+193         \{
+194             ActivePlayer.Win();
+195 
+196             IsPaused = \textcolor{keyword}{true};
+197             \textcolor{keyword}{new} TransistScript().Bind(controllers, \textcolor{keyword}{this}, ActivePlayer.Character);
+198 
+199             Splash = \textcolor{keyword}{new} GameWon(ActivePlayer);
+200             splashElapsed = -1;
+201         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a03137d993b0f82225c6c08a38ac744fb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a72c88e41105e13edab09d886b9031d5d}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Model} \doxyref{}{p.}{interfaceMelloMario_1_1IModel_ab57f00d01c4d4ad9dd3148a6cfecb708}.
+
+
+
+Definition at line 115 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Game\+Model.\+Is\+Paused, Mello\+Mario.\+Theming.\+Game\+Model.\+Resume(), Mello\+Mario.\+Theming.\+Database.\+Update(), Mello\+Mario.\+Theming.\+Game\+Model.\+Update\+Containers(), Mello\+Mario.\+Theming.\+Game\+Model.\+Update\+Controller(), and Mello\+Mario.\+Theming.\+Game\+Model.\+Update\+Game\+Objects().
+
+
+
+Referenced by Mello\+Mario.\+Game1.\+Update().
+
+
+\begin{DoxyCode}
+116         \{
+117             UpdateController();
+118             Database.Update();
+119             \textcolor{keywordflow}{if} (IsPaused)
+120             \{
+121                 \textcolor{keywordflow}{if} (splashElapsed < 0)
+122                 \{
+123                     \textcolor{keywordflow}{return};
+124                 \}
+125                 splashElapsed += time;
+126                 \textcolor{keywordflow}{if} (splashElapsed >= 1000 * 2)
+127                 \{
+128                     Resume();
+129                 \}
+130                 \textcolor{keywordflow}{return};
+131             \}
+132 
+133             \textcolor{comment}{//TODO: Pause state should not stop updating camera}
+134             UpdateGameObjects(time);
+135             UpdateContainers();
+136         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a72c88e41105e13edab09d886b9031d5d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a72c88e41105e13edab09d886b9031d5d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a79ae5b14381fdcc4e023f191b7f773bb}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Update\+Containers@{Update\+Containers}}
+\index{Update\+Containers@{Update\+Containers}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Update\+Containers()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Update\+Containers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 233 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Container$<$ T $>$.\+Update().
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Game\+Model.\+Update().
+
+
+\begin{DoxyCode}
+234         \{
+235             session.Update();
+236             \textcolor{keywordflow}{foreach} (IWorld world \textcolor{keywordflow}{in} session.ScanWorlds())
+237             \{
+238                 world.Update();
+239             \}
+240         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a79ae5b14381fdcc4e023f191b7f773bb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a79ae5b14381fdcc4e023f191b7f773bb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a72c78198e2143498910c671a16f9a422}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Update\+Controller@{Update\+Controller}}
+\index{Update\+Controller@{Update\+Controller}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Update\+Controller()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Update\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 203 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Controller.\+Update().
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Game\+Model.\+Update().
+
+
+\begin{DoxyCode}
+204         \{
+205             \textcolor{keywordflow}{foreach} (IController controller \textcolor{keywordflow}{in} controllers)
+206             \{
+207                 controller.Update();
+208             \}
+209         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a72c78198e2143498910c671a16f9a422_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a72c78198e2143498910c671a16f9a422_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a47f57b802e3748d9c179fb89e4e9c9a4}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Update\+Game\+Objects@{Update\+Game\+Objects}}
+\index{Update\+Game\+Objects@{Update\+Game\+Objects}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Update\+Game\+Objects()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Theming.\+Game\+Model.\+Update\+Game\+Objects (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 211 of file Game\+Model.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Player.\+Character, Mello\+Mario.\+I\+Character.\+Current\+World, Mello\+Mario.\+I\+World.\+Scan\+Nearby(), Mello\+Mario.\+I\+Character.\+Sensing, Mello\+Mario.\+I\+Object.\+Update(), and Mello\+Mario.\+I\+Player.\+Update().
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Game\+Model.\+Update().
+
+
+\begin{DoxyCode}
+212         \{
+213             \textcolor{comment}{// reserved for multiplayer}
+214             ISet<IObject> updating = \textcolor{keyword}{new} HashSet<IObject>();
+215 
+216             \textcolor{keywordflow}{foreach} (IPlayer player \textcolor{keywordflow}{in} session.ScanPlayers())
+217             \{
+218                 player.Update(time);
+219                 \textcolor{keywordflow}{foreach} (IGameObject obj \textcolor{keywordflow}{in} player.Character.CurrentWorld.ScanNearby(player.Character.
+      Sensing))
+220                 \{
+221                     updating.Add(obj);
+222                 \}
+223             \}
+224 
+225             updating.Add(Splash);
+226 
+227             \textcolor{keywordflow}{foreach} (IObject obj \textcolor{keywordflow}{in} updating)
+228             \{
+229                 obj.Update(time);
+230             \}
+231         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a47f57b802e3748d9c179fb89e4e9c9a4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Theming_1_1GameModel_a47f57b802e3748d9c179fb89e4e9c9a4_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_ab8357b26f1fa606f952c9c445d20d093}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!controllers@{controllers}}
+\index{controllers@{controllers}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{controllers}
+{\footnotesize\ttfamily I\+Enumerable$<$\textbf{ I\+Controller}$>$ Mello\+Mario.\+Theming.\+Game\+Model.\+controllers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 24 of file Game\+Model.\+cs.
+
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a95919706afd6c6300fbeb0a829c1da90}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!game@{game}}
+\index{game@{game}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{game}
+{\footnotesize\ttfamily readonly \textbf{ Game1} Mello\+Mario.\+Theming.\+Game\+Model.\+game\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file Game\+Model.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Game\+Model.\+Game\+Model().
+
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a0ff23b99a62f97dda6a9b8d57eec62d3}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!listener@{listener}}
+\index{listener@{listener}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{listener}
+{\footnotesize\ttfamily readonly \textbf{ I\+Listener}$<$\textbf{ I\+Game\+Object}$>$ Mello\+Mario.\+Theming.\+Game\+Model.\+listener\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 21 of file Game\+Model.\+cs.
+
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_ab62a7494cc9141a253c8f7f85ca0316a}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!map\+Path@{map\+Path}}
+\index{map\+Path@{map\+Path}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{map\+Path}
+{\footnotesize\ttfamily string Mello\+Mario.\+Theming.\+Game\+Model.\+map\+Path = \char`\"{}Content/Level1.\+json\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 25 of file Game\+Model.\+cs.
+
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_aeffb36e92f9ed89ec6f7766d429e0a12}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!session@{session}}
+\index{session@{session}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{session}
+{\footnotesize\ttfamily readonly \textbf{ Session} Mello\+Mario.\+Theming.\+Game\+Model.\+session\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 23 of file Game\+Model.\+cs.
+
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a0bff3eddafdc502f66e9965421705538}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!sound\+Listener@{sound\+Listener}}
+\index{sound\+Listener@{sound\+Listener}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{sound\+Listener}
+{\footnotesize\ttfamily readonly \textbf{ I\+Listener}$<$\textbf{ I\+Soundable}$>$ Mello\+Mario.\+Theming.\+Game\+Model.\+sound\+Listener\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 22 of file Game\+Model.\+cs.
+
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a0221c76288ecf0fa2be22225aff507cc}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Splash@{Splash}}
+\index{Splash@{Splash}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Splash}
+{\footnotesize\ttfamily \textbf{ I\+Object} Mello\+Mario.\+Theming.\+Game\+Model.\+Splash}
+
+
+
+Definition at line 30 of file Game\+Model.\+cs.
+
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a95099ec5b6328051f670195d3f8e611f}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!splash\+Elapsed@{splash\+Elapsed}}
+\index{splash\+Elapsed@{splash\+Elapsed}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{splash\+Elapsed}
+{\footnotesize\ttfamily int Mello\+Mario.\+Theming.\+Game\+Model.\+splash\+Elapsed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 32 of file Game\+Model.\+cs.
+
+
+
+\subsection{Property Documentation}
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_a371f5af4bdac285a8f8300d5fa501587}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Active\+Player@{Active\+Player}}
+\index{Active\+Player@{Active\+Player}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Active\+Player}
+{\footnotesize\ttfamily \textbf{ I\+Player} Mello\+Mario.\+Theming.\+Game\+Model.\+Active\+Player\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Definition at line 53 of file Game\+Model.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Game\+Model.\+Draw(), Mello\+Mario.\+Theming.\+Game\+Model.\+Game\+Model(), Mello\+Mario.\+Theming.\+Game\+Model.\+Infinite(), Mello\+Mario.\+Theming.\+Game\+Model.\+Init(), Mello\+Mario.\+Theming.\+Game\+Model.\+Normal(), Mello\+Mario.\+Theming.\+Game\+Model.\+Pause(), Mello\+Mario.\+Theming.\+Game\+Model.\+Resume(), Mello\+Mario.\+Theming.\+Game\+Model.\+Transist(), and Mello\+Mario.\+Theming.\+Game\+Model.\+Transist\+Game\+Won().
+
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_ad18eb85289a3ef2ff3836be22d052d08}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Get\+Active\+View\+Matrix@{Get\+Active\+View\+Matrix}}
+\index{Get\+Active\+View\+Matrix@{Get\+Active\+View\+Matrix}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Get\+Active\+View\+Matrix}
+{\footnotesize\ttfamily Matrix Mello\+Mario.\+Theming.\+Game\+Model.\+Get\+Active\+View\+Matrix\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Definition at line 45 of file Game\+Model.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Game1.\+Draw(), and Mello\+Mario.\+Theming.\+Game\+Model.\+Game\+Model().
+
+\mbox{\label{classMelloMario_1_1Theming_1_1GameModel_aa20206cc99d95c669e8a9e408ae750d3}} 
+\index{Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}!Is\+Paused@{Is\+Paused}}
+\index{Is\+Paused@{Is\+Paused}!Mello\+Mario\+::\+Theming\+::\+Game\+Model@{Mello\+Mario\+::\+Theming\+::\+Game\+Model}}
+\subsubsection{Is\+Paused}
+{\footnotesize\ttfamily bool Mello\+Mario.\+Theming.\+Game\+Model.\+Is\+Paused\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Definition at line 26 of file Game\+Model.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Game\+Model.\+Draw(), Mello\+Mario.\+Theming.\+Game\+Model.\+Infinite(), Mello\+Mario.\+Theming.\+Game\+Model.\+Init(), Mello\+Mario.\+Theming.\+Game\+Model.\+Normal(), Mello\+Mario.\+Theming.\+Game\+Model.\+Pause(), Mello\+Mario.\+Theming.\+Game\+Model.\+Resume(), Mello\+Mario.\+Theming.\+Game\+Model.\+Transist(), Mello\+Mario.\+Theming.\+Game\+Model.\+Transist\+Game\+Won(), and Mello\+Mario.\+Theming.\+Game\+Model.\+Update().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Theming/\textbf{ Game\+Model.\+cs}\end{DoxyCompactItemize}

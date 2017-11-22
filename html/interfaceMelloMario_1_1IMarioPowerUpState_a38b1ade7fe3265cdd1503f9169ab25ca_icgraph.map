@@ -1,0 +1,5 @@
+<map id="MelloMario.IMarioPowerUpState.Downgrade" name="MelloMario.IMarioPowerUpState.Downgrade">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#a22a96dadc42c79da32663dfc1c779c04" title="MelloMario.Objects.Characters.\lMario.Downgrade" alt="" coords="229,5,435,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#ae77d722f46bd495c0ae05954a4032a01" title="MelloMario.Objects.Characters.\lMarioCharacter.NormalCreate" alt="" coords="229,71,435,112"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#a1734a84d18aa7e354803cfe92b137144" title="MelloMario.Objects.Characters.\lMario.OnCollision" alt="" coords="483,5,688,47"/>
+</map>

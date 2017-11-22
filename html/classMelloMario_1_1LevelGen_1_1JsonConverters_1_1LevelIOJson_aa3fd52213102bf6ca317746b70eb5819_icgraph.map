@@ -1,0 +1,6 @@
+<map id="MelloMario.LevelGen.JsonConverters.LevelIOJson.Load" name="MelloMario.LevelGen.JsonConverters.LevelIOJson.Load">
+<area shape="rect" id="node2" href="$classMelloMario_1_1LevelGen_1_1JsonGenerator.html#afe12471515beec68fac17c6a673134d4" title="MelloMario.LevelGen.Json\lGenerator.GetObjs" alt="" coords="263,5,436,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Theming_1_1GameModel.html#a9629ae834dcf5ed4bf27a0ef2bb8c60a" title="MelloMario.Theming.GameModel.\lLoadLevel" alt="" coords="241,71,457,112"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Theming_1_1GameModel.html#aa99d3524a0689120b4c1915ab212b0ae" title="MelloMario.Theming.GameModel.\lInfinite" alt="" coords="505,37,721,79"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Theming_1_1GameModel.html#a2d58c8618777941b871792b8c1a29fa5" title="MelloMario.Theming.GameModel.\lNormal" alt="" coords="505,103,721,144"/>
+</map>

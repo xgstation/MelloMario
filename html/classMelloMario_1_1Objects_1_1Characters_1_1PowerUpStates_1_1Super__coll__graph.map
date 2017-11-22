@@ -1,0 +1,6 @@
+<map id="MelloMario.Objects.Characters.PowerUpStates.Super" name="MelloMario.Objects.Characters.PowerUpStates.Super">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{BaseState\&lt; Mario \&gt;\n|# Owner\l|+ Update()\l# BaseState()\l}" alt="" coords="141,392,279,484"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{MelloMario.Objects.BaseState\&lt; T \&gt;\n||+ Update()\l# BaseState()\l}" alt="" coords="101,145,332,237"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="57,5,139,83"/>
+<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IMarioPowerUpState.html" title="{IMarioPowerUpState\n||+ UpgradeToSuper()\l+ UpgradeToFire()\l+ Downgrade()\l}" alt="" coords="5,261,145,368"/>
+</map>

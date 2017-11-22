@@ -1,0 +1,7 @@
+<map id="MelloMario.IMarioProtectionState" name="MelloMario.IMarioProtectionState">
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Dead.html" title="{MelloMario.Objects.Characters.\lProtectionStates.Dead\n||+ Dead()\l+ Star()\l+ Protect()\l# OnTimer()\l}" alt="" coords="5,285,211,421"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Normal.html" title="{MelloMario.Objects.Characters.\lProtectionStates.Normal\n||+ Normal()\l+ Star()\l+ Protect()\l+ Update()\l}" alt="" coords="235,285,440,421"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Protected.html" title="{MelloMario.Objects.Characters.\lProtectionStates.Protected\n||+ Protected()\l+ Protect()\l+ Star()\l# OnTimer()\l}" alt="" coords="464,285,669,421"/>
+<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1Characters_1_1ProtectionStates_1_1Starred.html" title="{MelloMario.Objects.Characters.\lProtectionStates.Starred\n||+ Starred()\l+ Star()\l+ Protect()\l# OnTimer()\l}" alt="" coords="693,285,899,421"/>
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="411,5,493,83"/>
+</map>

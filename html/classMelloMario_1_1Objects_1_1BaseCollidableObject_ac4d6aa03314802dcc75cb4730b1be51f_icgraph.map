@@ -1,0 +1,5 @@
+<map id="MelloMario.Objects.BaseCollidableObject.ChangeLives" name="MelloMario.Objects.BaseCollidableObject.ChangeLives">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Items_1_1OneUpMushroom.html#a8a50fc4a8eb54cb5cda938dff58c33ca" title="MelloMario.Objects.Items.\lOneUpMushroom.Collect" alt="" coords="281,5,456,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Flag.html#abcd21ffe6ed56296a4c39f8248e0e5a5" title="MelloMario.Objects.Blocks.\lFlag.OnCollision" alt="" coords="277,71,460,112"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Items_1_1OneUpMushroom.html#a45535a5ca2ae2ef35cf26d31d632518d" title="MelloMario.Objects.Items.\lOneUpMushroom.OnCollision" alt="" coords="508,5,701,47"/>
+</map>

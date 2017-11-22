@@ -1,0 +1,5 @@
+<map id="MelloMario.Objects.Items.OneUpMushroom.OnSimulation" name="MelloMario.Objects.Items.OneUpMushroom.OnSimulation">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#a0afbb621a892d8108995ef3d773d4281" title="MelloMario.Objects.BasePhysical\lObject.ApplyGravity" alt="" coords="259,5,477,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#a0caba56ebb165c87cd16d65cb788cf5e" title="MelloMario.Objects.BasePhysical\lObject.SetHorizontalVelocity" alt="" coords="259,71,477,112"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#ae7280ca5238156966b9d7e39154bc5f5" title="MelloMario.Objects.BasePhysical\lObject.ApplyAccel" alt="" coords="525,5,744,47"/>
+</map>

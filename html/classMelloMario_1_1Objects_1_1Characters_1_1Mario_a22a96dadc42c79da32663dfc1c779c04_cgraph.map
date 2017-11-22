@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.Characters.Mario.Downgrade" name="MelloMario.Objects.Characters.Mario.Downgrade">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IMarioPowerUpState.html#a38b1ade7fe3265cdd1503f9169ab25ca" title="MelloMario.IMarioPowerUp\lState.Downgrade" alt="" coords="262,5,438,47"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IMarioProtectionState.html#a1f455a135ab3a6e49781c2ecc5746bcc" title="MelloMario.IMarioProtection\lState.Protect" alt="" coords="259,71,441,112"/>
+</map>

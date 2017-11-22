@@ -1,0 +1,1289 @@
+\section{Mello\+Mario.\+Objects.\+Items.\+Coin Class Reference}
+\label{classMelloMario_1_1Objects_1_1Items_1_1Coin}\index{Mello\+Mario.\+Objects.\+Items.\+Coin@{Mello\+Mario.\+Objects.\+Items.\+Coin}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+Items.\+Coin\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Items_1_1Coin__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+Items.\+Coin\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1Items_1_1Coin__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+delegate void \textbf{ Coin\+Handler} (\textbf{ Coin} m, Event\+Args e)
+\item 
+\textbf{ Coin} (\textbf{ I\+World} world, Point \textbf{ location}, \textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$ listener, \textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$ sound\+Listener, bool is\+Unveil=false)
+\item 
+void \textbf{ Collect} ()
+\item 
+void \textbf{ Unveil\+Move} (int delta)
+\item 
+delegate void \textbf{ Lives\+Handler} (\textbf{ Base\+Collidable\+Object} m, \textbf{ Score\+Event\+Args} e)
+\item 
+delegate void \textbf{ Point\+Handler} (\textbf{ Base\+Collidable\+Object} m, \textbf{ Score\+Event\+Args} e)
+\item 
+void \textbf{ Update} (int time)
+\item 
+void \textbf{ Draw} (int time, Sprite\+Batch sprite\+Batch)
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \textbf{ Collision\+Mode} \{ \newline
+\textbf{ Collision\+Mode.\+Left}, 
+\textbf{ Collision\+Mode.\+Right}, 
+\textbf{ Collision\+Mode.\+Top}, 
+\textbf{ Collision\+Mode.\+Bottom}, 
+\newline
+\textbf{ Collision\+Mode.\+Inner\+Left}, 
+\textbf{ Collision\+Mode.\+Inner\+Right}, 
+\textbf{ Collision\+Mode.\+Inner\+Top}, 
+\textbf{ Collision\+Mode.\+Inner\+Bottom}
+ \}
+\item 
+enum \textbf{ Corner\+Mode} \{ \newline
+\textbf{ Corner\+Mode.\+Left}, 
+\textbf{ Corner\+Mode.\+Right}, 
+\textbf{ Corner\+Mode.\+Top}, 
+\textbf{ Corner\+Mode.\+Bottom}, 
+\newline
+\textbf{ Corner\+Mode.\+Center}
+ \}
+\item 
+enum \textbf{ Resize\+ModeX} \{ \textbf{ Resize\+Mode\+X.\+Left}, 
+\textbf{ Resize\+Mode\+X.\+Center}, 
+\textbf{ Resize\+Mode\+X.\+Right}
+ \}
+\item 
+enum \textbf{ Resize\+ModeY} \{ \textbf{ Resize\+Mode\+Y.\+Top}, 
+\textbf{ Resize\+Mode\+Y.\+Center}, 
+\textbf{ Resize\+Mode\+Y.\+Bottom}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ On\+Update} (int time)
+\item 
+override void \textbf{ On\+Collision} (\textbf{ I\+Game\+Object} target, \textbf{ Collision\+Mode} mode, \textbf{ Collision\+Mode} mode\+Passive, \textbf{ Corner\+Mode} corner, \textbf{ Corner\+Mode} corner\+Passive)
+\item 
+override void \textbf{ On\+Collide\+World} (\textbf{ Collision\+Mode} mode, \textbf{ Collision\+Mode} mode\+Passive)
+\item 
+override void \textbf{ On\+Draw} (int time, Sprite\+Batch sprite\+Batch)
+\item 
+void \textbf{ Move} (Point delta)
+\item 
+void \textbf{ Stop\+Horizontal\+Movement} ()
+\item 
+void \textbf{ Stop\+Vertical\+Movement} ()
+\item 
+void \textbf{ Remove\+Self} ()
+\item 
+override void \textbf{ On\+Simulation} (int time)
+\item 
+void \textbf{ Score\+Points} (int points)
+\item 
+void \textbf{ Change\+Lives} ()
+\item 
+void \textbf{ Relocate} (Point new\+Location)
+\item 
+void \textbf{ Resize} (Point new\+Size, \textbf{ Resize\+ModeX} modeX, \textbf{ Resize\+ModeY} modeY)
+\item 
+void \textbf{ Show\+Sprite} (\textbf{ I\+Sprite} new\+Sprite, \textbf{ Resize\+ModeX} modeX=\textbf{ Resize\+Mode\+X.\+Center}, \textbf{ Resize\+ModeY} modeY=\textbf{ Resize\+Mode\+Y.\+Bottom})
+\item 
+void \textbf{ Hide\+Sprite} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ I\+World} \textbf{ World}
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ I\+Sound\+Args} \textbf{ Sound\+Event\+Args}\hspace{0.3cm}{\ttfamily  [get]}
+\item 
+\textbf{ I\+Item\+State} \textbf{ State}\hspace{0.3cm}{\ttfamily  [get, set]}
+\item 
+Rectangle \textbf{ Boundary}\hspace{0.3cm}{\ttfamily  [get]}
+\end{DoxyCompactItemize}
+\subsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Coin\+Handler} \textbf{ Handler\+Coins}
+\item 
+\textbf{ Sound\+Handler} \textbf{ Sound\+Event}
+\item 
+\textbf{ Point\+Handler} \textbf{ Handler\+Points}
+\item 
+\textbf{ Lives\+Handler} \textbf{ Handler\+Lives}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Update\+Sprite} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly Event\+Args \textbf{ coin\+Event\+Info}
+\item 
+bool \textbf{ collected}
+\item 
+\textbf{ I\+Item\+State} \textbf{ state}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file Coin.\+cs.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a06516aef50947eb9c7f0525fa495f3cf}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Collision\+Mode@{Collision\+Mode}}
+\index{Collision\+Mode@{Collision\+Mode}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Collision\+Mode}
+{\footnotesize\ttfamily enum \textbf{ Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Collision\+Mode}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Left@{Left}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Left@{Left}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a06516aef50947eb9c7f0525fa495f3cfa945d5e233cf7d6240f6b783b36a374ff}} 
+Left&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Right@{Right}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Right@{Right}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a06516aef50947eb9c7f0525fa495f3cfa92b09c7c48c520c3c55e497875da437c}} 
+Right&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Top@{Top}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Top@{Top}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a06516aef50947eb9c7f0525fa495f3cfaa4ffdcf0dc1f31b9acaf295d75b51d00}} 
+Top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Bottom@{Bottom}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Bottom@{Bottom}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a06516aef50947eb9c7f0525fa495f3cfa2ad9d63b69c4a10a5cc9cad923133bc4}} 
+Bottom&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Inner\+Left@{Inner\+Left}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Inner\+Left@{Inner\+Left}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a06516aef50947eb9c7f0525fa495f3cfa8b0395ad2dd501f5ee621658d4ed53e6}} 
+Inner\+Left&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Inner\+Right@{Inner\+Right}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Inner\+Right@{Inner\+Right}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a06516aef50947eb9c7f0525fa495f3cfa7ab3cc1c88599a55164fa278b22b77a4}} 
+Inner\+Right&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Inner\+Top@{Inner\+Top}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Inner\+Top@{Inner\+Top}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a06516aef50947eb9c7f0525fa495f3cfae09e2556b2e5a3f7511dcc8a52192e02}} 
+Inner\+Top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Inner\+Bottom@{Inner\+Bottom}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Inner\+Bottom@{Inner\+Bottom}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a06516aef50947eb9c7f0525fa495f3cfa0c640b55dd02eaf6f861e9c01f45dab2}} 
+Inner\+Bottom&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 266 of file Base\+Collidable\+Object.\+cs.
+
+
+\begin{DoxyCode}
+267         \{
+268             Left,
+269             Right,
+270             Top,
+271             Bottom,
+272             InnerLeft,
+273             InnerRight,
+274             InnerTop,
+275             InnerBottom
+276         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a03a1914eec97abb683bdfe4833afadae}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Corner\+Mode@{Corner\+Mode}}
+\index{Corner\+Mode@{Corner\+Mode}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Corner\+Mode}
+{\footnotesize\ttfamily enum \textbf{ Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Corner\+Mode}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Left@{Left}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Left@{Left}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a03a1914eec97abb683bdfe4833afadaea945d5e233cf7d6240f6b783b36a374ff}} 
+Left&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Right@{Right}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Right@{Right}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a03a1914eec97abb683bdfe4833afadaea92b09c7c48c520c3c55e497875da437c}} 
+Right&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Top@{Top}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Top@{Top}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a03a1914eec97abb683bdfe4833afadaeaa4ffdcf0dc1f31b9acaf295d75b51d00}} 
+Top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Bottom@{Bottom}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Bottom@{Bottom}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a03a1914eec97abb683bdfe4833afadaea2ad9d63b69c4a10a5cc9cad923133bc4}} 
+Bottom&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Center@{Center}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Center@{Center}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a03a1914eec97abb683bdfe4833afadaea4f1f6016fc9f3f2353c0cc7c67b292bd}} 
+Center&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 278 of file Base\+Collidable\+Object.\+cs.
+
+
+\begin{DoxyCode}
+279         \{
+280             Left,
+281             Right,
+282             Top,
+283             Bottom,
+284             Center
+285         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a06941a7cff20b69e5d6ba6c285637606}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Resize\+ModeX@{Resize\+ModeX}}
+\index{Resize\+ModeX@{Resize\+ModeX}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Resize\+ModeX}
+{\footnotesize\ttfamily enum \textbf{ Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Resize\+ModeX}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Left@{Left}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Left@{Left}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a06941a7cff20b69e5d6ba6c285637606a945d5e233cf7d6240f6b783b36a374ff}} 
+Left&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Center@{Center}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Center@{Center}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a06941a7cff20b69e5d6ba6c285637606a4f1f6016fc9f3f2353c0cc7c67b292bd}} 
+Center&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Right@{Right}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Right@{Right}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a06941a7cff20b69e5d6ba6c285637606a92b09c7c48c520c3c55e497875da437c}} 
+Right&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 113 of file Base\+Game\+Object.\+cs.
+
+
+\begin{DoxyCode}
+114         \{
+115             Left,
+116             Center,
+117             Right
+118         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a9d3ed1c0992a25e17a639fc6a2194415}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Resize\+ModeY@{Resize\+ModeY}}
+\index{Resize\+ModeY@{Resize\+ModeY}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Resize\+ModeY}
+{\footnotesize\ttfamily enum \textbf{ Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Resize\+ModeY}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Top@{Top}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Top@{Top}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a9d3ed1c0992a25e17a639fc6a2194415aa4ffdcf0dc1f31b9acaf295d75b51d00}} 
+Top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Center@{Center}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Center@{Center}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a9d3ed1c0992a25e17a639fc6a2194415a4f1f6016fc9f3f2353c0cc7c67b292bd}} 
+Center&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Bottom@{Bottom}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Bottom@{Bottom}}}\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a9d3ed1c0992a25e17a639fc6a2194415a2ad9d63b69c4a10a5cc9cad923133bc4}} 
+Bottom&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 120 of file Base\+Game\+Object.\+cs.
+
+
+\begin{DoxyCode}
+121         \{
+122             Top,
+123             Center,
+124             Bottom
+125         \}
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_ab7f8d38366e58f8e4ff4fdc130c9a8a8}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Coin@{Coin}}
+\index{Coin@{Coin}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Coin()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+Items.\+Coin.\+Coin (\begin{DoxyParamCaption}\item[{\textbf{ I\+World}}]{world,  }\item[{Point}]{location,  }\item[{\textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$}]{listener,  }\item[{\textbf{ I\+Listener}$<$ \textbf{ I\+Soundable} $>$}]{sound\+Listener,  }\item[{bool}]{is\+Unveil = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file Coin.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Remove\+Self(), Mello\+Mario.\+Objects.\+Items.\+Coin.\+Sound\+Event\+Args, Mello\+Mario.\+Objects.\+Items.\+Coin.\+State, Mello\+Mario.\+I\+Listener$<$ in in T $>$.\+Subscribe(), and Mello\+Mario.\+Objects.\+Items.\+Coin.\+Update\+Sprite().
+
+
+\begin{DoxyCode}
+32                                    : base(world, location, listener, \textcolor{keyword}{new} Point(32, 32))
+33         \{
+34             listener.Subscribe(\textcolor{keyword}{this});
+35             soundListener.Subscribe(\textcolor{keyword}{this});
+36             collected = \textcolor{keyword}{false};
+37             \textcolor{comment}{//eventually if coin needs to pass info put it in eventinfo}
+38             coinEventInfo = EventArgs.Empty;
+39             SoundEventArgs = \textcolor{keyword}{new} SoundArgs();
+40             \textcolor{keywordflow}{if} (isUnveil)
+41             \{
+42                 state = \textcolor{keyword}{new} Unveil(\textcolor{keyword}{this});
+43                 UpdateSprite();
+44                 RemoveSelf();
+45             \}
+46             \textcolor{keywordflow}{else}
+47             \{
+48                 state = \textcolor{keyword}{new} Normal(\textcolor{keyword}{this});
+49                 UpdateSprite();
+50             \}
+51         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1Items_1_1Coin_ab7f8d38366e58f8e4ff4fdc130c9a8a8_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_ac4d6aa03314802dcc75cb4730b1be51f}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Change\+Lives@{Change\+Lives}}
+\index{Change\+Lives@{Change\+Lives}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Change\+Lives()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Change\+Lives (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 256 of file Base\+Collidable\+Object.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Items.\+One\+Up\+Mushroom.\+Collect(), and Mello\+Mario.\+Objects.\+Blocks.\+Flag.\+On\+Collision().
+
+
+\begin{DoxyCode}
+257         \{
+258             HandlerLives?.Invoke(
+259                 \textcolor{keyword}{this},
+260                 \textcolor{keyword}{new} ScoreEventArgs
+261                 \{
+262                     Points = 1
+263                 \});
+264         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseCollidableObject_ac4d6aa03314802dcc75cb4730b1be51f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_a6d72e6b93aee74bbe15017adf62f9183}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Coin\+Handler@{Coin\+Handler}}
+\index{Coin\+Handler@{Coin\+Handler}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Coin\+Handler()}
+{\footnotesize\ttfamily delegate void Mello\+Mario.\+Objects.\+Items.\+Coin.\+Coin\+Handler (\begin{DoxyParamCaption}\item[{\textbf{ Coin}}]{m,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})}
+
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_afcddbd31aa11d0c904e1796ffdad2444}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Collect@{Collect}}
+\index{Collect@{Collect}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Collect()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Items.\+Coin.\+Collect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 102 of file Coin.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Boundary, Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Remove\+Self(), Mello\+Mario.\+Theming.\+Const.\+S\+C\+O\+R\+E\+\_\+\+C\+O\+IN, Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Score\+Points(), Mello\+Mario.\+I\+Sound\+Args.\+Set\+Method\+Called(), and Mello\+Mario.\+Objects.\+Items.\+Coin.\+Sound\+Event\+Args.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Items.\+Coin.\+On\+Collision().
+
+
+\begin{DoxyCode}
+103         \{
+104             \textcolor{keywordflow}{if} (!collected)
+105             \{
+106                 SoundEventArgs.SetMethodCalled();
+107                 HandlerCoins?.Invoke(\textcolor{keyword}{this}, coinEventInfo);
+108                 ScorePoints(Const.SCORE\_COIN);
+109                 collected = \textcolor{keyword}{true};
+110                 \textcolor{keyword}{new} PopingUpPoints(World, Boundary.Location, Const.SCORE\_COIN);
+111             \}
+112             RemoveSelf();
+113             \textcolor{comment}{//State.Collect();}
+114         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1Items_1_1Coin_afcddbd31aa11d0c904e1796ffdad2444_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1Items_1_1Coin_afcddbd31aa11d0c904e1796ffdad2444_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a0ca5164820fd5343cb3b6850a3193da2}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Draw@{Draw}}
+\index{Draw@{Draw}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Draw()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Object} \doxyref{}{p.}{interfaceMelloMario_1_1IObject_aa01c3e3cca30817cf0bc9110dbbcc3de}.
+
+
+
+Definition at line 45 of file Base\+Game\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Boundary, Mello\+Mario.\+I\+Sprite.\+Draw(), Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+On\+Draw(), Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+On\+Simulation(), and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+On\+Update().
+
+
+\begin{DoxyCode}
+46         \{
+47             \textcolor{keywordflow}{if} (sprite != null)
+48             \{
+49                 OnDraw(time, spriteBatch);
+50 
+51                 sprite.Draw(time, spriteBatch, \textcolor{keyword}{new} Rectangle(Boundary.Location, 
+      Boundary.Size));
+52             \}
+53         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_a0ca5164820fd5343cb3b6850a3193da2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_aa201a4e1e87f58399d6dba7cb55f3cb8}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Hide\+Sprite@{Hide\+Sprite}}
+\index{Hide\+Sprite@{Hide\+Sprite}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Hide\+Sprite()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Hide\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 108 of file Base\+Game\+Object.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Blocks.\+Floor.\+Floor(), Mello\+Mario.\+Objects.\+Blocks.\+Stair.\+Stair(), Mello\+Mario.\+Objects.\+Blocks.\+Question.\+Update\+Sprite(), and Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Update\+Sprite().
+
+
+\begin{DoxyCode}
+109         \{
+110             sprite = null;
+111         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_aa201a4e1e87f58399d6dba7cb55f3cb8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a8fc933ccb1c7cd818d23ba2fd1f5f963}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Lives\+Handler@{Lives\+Handler}}
+\index{Lives\+Handler@{Lives\+Handler}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Lives\+Handler()}
+{\footnotesize\ttfamily delegate void Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Lives\+Handler (\begin{DoxyParamCaption}\item[{\textbf{ Base\+Collidable\+Object}}]{m,  }\item[{\textbf{ Score\+Event\+Args}}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a9b9203102864cc5b68bc97e23d6139e6}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Move@{Move}}
+\index{Move@{Move}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Move()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Move (\begin{DoxyParamCaption}\item[{Point}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 166 of file Base\+Collidable\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+Containers.\+Base\+Container$<$ Key, Value $>$.\+Move().
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Blocks.\+Question.\+Bump\+Move(), Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Bump\+Move(), Mello\+Mario.\+Objects.\+Base\+Physical\+Object.\+On\+Simulation(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa.\+Pushed(), Mello\+Mario.\+Objects.\+Items.\+Fire\+Flower.\+Unveil\+Move(), Mello\+Mario.\+Objects.\+Items.\+Coin.\+Unveil\+Move(), Mello\+Mario.\+Objects.\+Items.\+One\+Up\+Mushroom.\+Unveil\+Move(), Mello\+Mario.\+Objects.\+Items.\+Star.\+Unveil\+Move(), and Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom.\+Unveil\+Move().
+
+
+\begin{DoxyCode}
+167         \{
+168             movement += delta;
+169 
+170             World.Move(\textcolor{keyword}{this});
+171         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseCollidableObject_a9b9203102864cc5b68bc97e23d6139e6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseCollidableObject_a9b9203102864cc5b68bc97e23d6139e6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_a890504f828801407318e5515b881caf7}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!On\+Collide\+World@{On\+Collide\+World}}
+\index{On\+Collide\+World@{On\+Collide\+World}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{On\+Collide\+World()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Items.\+Coin.\+On\+Collide\+World (\begin{DoxyParamCaption}\item[{\textbf{ Collision\+Mode}}]{mode,  }\item[{\textbf{ Collision\+Mode}}]{mode\+Passive }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+Collidable\+Object} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseCollidableObject_a69866abdb7a2505da443ee03b5eab5f1}.
+
+
+
+Definition at line 94 of file Coin.\+cs.
+
+
+\begin{DoxyCode}
+95         \{
+96         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_a466969d3e05db1772feff96db2b1efc0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!On\+Collision@{On\+Collision}}
+\index{On\+Collision@{On\+Collision}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{On\+Collision()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Items.\+Coin.\+On\+Collision (\begin{DoxyParamCaption}\item[{\textbf{ I\+Game\+Object}}]{target,  }\item[{\textbf{ Collision\+Mode}}]{mode,  }\item[{\textbf{ Collision\+Mode}}]{mode\+Passive,  }\item[{\textbf{ Corner\+Mode}}]{corner,  }\item[{\textbf{ Corner\+Mode}}]{corner\+Passive }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+Collidable\+Object} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseCollidableObject_ab219c67abded7be9e9af6d333cfd782c}.
+
+
+
+Definition at line 81 of file Coin.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Items.\+Coin.\+Collect().
+
+
+\begin{DoxyCode}
+87         \{
+88             \textcolor{keywordflow}{if} (target is Mario && state is Normal)
+89             \{
+90                 Collect();
+91             \}
+92         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1Items_1_1Coin_a466969d3e05db1772feff96db2b1efc0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_a0722c65d5e5420f7fc4ede3f39fbc717}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!On\+Draw@{On\+Draw}}
+\index{On\+Draw@{On\+Draw}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{On\+Draw()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Items.\+Coin.\+On\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+Game\+Object} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseGameObject_a0ef49bef700acd9c2327a635cd449b4e}.
+
+
+
+Definition at line 98 of file Coin.\+cs.
+
+
+\begin{DoxyCode}
+99         \{
+100         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a9a601d5ff90ca4c040fbe7cc4c4a2810}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!On\+Simulation@{On\+Simulation}}
+\index{On\+Simulation@{On\+Simulation}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{On\+Simulation()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+On\+Simulation (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}, {\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+Game\+Object} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseGameObject_aead34775da7bbf3904154cd0b457011d}.
+
+
+
+Reimplemented in \textbf{ Mello\+Mario.\+Objects.\+Characters.\+Mario\+Character} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter_af97a6ea6e947ccc85cc48d8d189f998d}, \textbf{ Mello\+Mario.\+Objects.\+Characters.\+Mario} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Characters_1_1Mario_a556ab2a4b437c71c4a0b01d9e2956cfa}, \textbf{ Mello\+Mario.\+Objects.\+Base\+Physical\+Object} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BasePhysicalObject_a9e32baae1e1063af12d09d09061dcacd}, \textbf{ Mello\+Mario.\+Objects.\+Blocks.\+Brick} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Blocks_1_1Brick_a5599f26bbcf48986d5125e7ff1ffabe2}, \textbf{ Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Items_1_1SuperMushroom_aee4e548c44ebdf1e0d4ae155fd80bf1a}, \textbf{ Mello\+Mario.\+Objects.\+Blocks.\+Question} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Blocks_1_1Question_ad7037d79c3ceaff377136a945df7307c}, \textbf{ Mello\+Mario.\+Objects.\+Enemies.\+Koopa} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Enemies_1_1Koopa_ac0153b8b26863b2a1c9a862ea37fd3b8}, \textbf{ Mello\+Mario.\+Objects.\+Items.\+Star} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Items_1_1Star_a2cde05ab41c12c8ff6fae1162b414c07}, \textbf{ Mello\+Mario.\+Objects.\+Items.\+One\+Up\+Mushroom} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Items_1_1OneUpMushroom_a0deeb4203389594181a4eaadbdf47dbf}, \textbf{ Mello\+Mario.\+Objects.\+Enemies.\+Goomba} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Enemies_1_1Goomba_a6081d633acb95e487b64b634c0501272}, \textbf{ Mello\+Mario.\+Objects.\+Enemies.\+Thwomp} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Enemies_1_1Thwomp_a0840fe4eaa687039abf318577c0ba61a}, \textbf{ Mello\+Mario.\+Objects.\+Enemies.\+Piranha} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Enemies_1_1Piranha_ae2ad553e4a12a807b0113699c1d3fdf5}, and \textbf{ Mello\+Mario.\+Objects.\+Items.\+Fire\+Ball} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1Items_1_1FireBall_ac8ee17b4c3d42232e302122a0e579866}.
+
+
+
+Definition at line 191 of file Base\+Collidable\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Boundary, Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Collide\+All(), Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+location, and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Relocate().
+
+
+\begin{DoxyCode}
+192         \{
+193             \textcolor{keywordtype}{float} offset = 0;
+194 
+195             \textcolor{keywordflow}{while} (\textcolor{keyword}{true})
+196             \{
+197                 \textcolor{keywordflow}{if} (movement.X == 0 && movement.Y == 0)
+198                 \{
+199                     \textcolor{keywordflow}{break};
+200                 \}
+201 
+202                 CollideAll();
+203 
+204                 \textcolor{keywordflow}{if} (movement.X == 0 && movement.Y == 0)
+205                 \{
+206                     \textcolor{keywordflow}{break};
+207                 \}
+208 
+209                 \textcolor{keywordtype}{float} sqrX = movement.X * movement.X;
+210                 \textcolor{keywordtype}{float} sqrY = movement.Y * movement.Y;
+211                 \textcolor{keywordtype}{float} offsetX = (float) Math.Sqrt(sqrY / (sqrX + sqrY));
+212                 \textcolor{keywordtype}{float} offsetY = (float) Math.Sqrt(sqrX / (sqrX + sqrY));
+213 
+214                 Point location = Boundary.Location;
+215                 \textcolor{keywordflow}{if} (Math.Abs(offset + offsetX) < Math.Abs(offset - offsetY))
+216                 \{
+217                     \textcolor{keywordflow}{if} (movement.X < 0)
+218                     \{
+219                         location.X -= 1;
+220                         movement.X += 1;
+221                     \}
+222                     \textcolor{keywordflow}{else}
+223                     \{
+224                         location.X += 1;
+225                         movement.X -= 1;
+226                     \}
+227                 \}
+228                 \textcolor{keywordflow}{else}
+229                 \{
+230                     \textcolor{keywordflow}{if} (movement.Y < 0)
+231                     \{
+232                         location.Y -= 1;
+233                         movement.Y += 1;
+234                     \}
+235                     \textcolor{keywordflow}{else}
+236                     \{
+237                         location.Y += 1;
+238                         movement.Y -= 1;
+239                     \}
+240                 \}
+241 
+242                 Relocate(location);
+243             \}
+244         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseCollidableObject_a9a601d5ff90ca4c040fbe7cc4c4a2810_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_a4bd9ff6752cc6084d27824e1ada38115}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!On\+Update@{On\+Update}}
+\index{On\+Update@{On\+Update}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{On\+Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+Items.\+Coin.\+On\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+Game\+Object} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseGameObject_a163927be40bce605ce978fea27938ac5}.
+
+
+
+Definition at line 75 of file Coin.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Items.\+Coin.\+Sound\+Event\+Args, and Mello\+Mario.\+I\+State.\+Update().
+
+
+\begin{DoxyCode}
+76         \{
+77             SoundEvent?.Invoke(\textcolor{keyword}{this}, SoundEventArgs);
+78             state.Update(time);
+79         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1Items_1_1Coin_a4bd9ff6752cc6084d27824e1ada38115_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a7f5e87d352a4c561d3d452839624ac14}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Point\+Handler@{Point\+Handler}}
+\index{Point\+Handler@{Point\+Handler}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Point\+Handler()}
+{\footnotesize\ttfamily delegate void Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Point\+Handler (\begin{DoxyParamCaption}\item[{\textbf{ Base\+Collidable\+Object}}]{m,  }\item[{\textbf{ Score\+Event\+Args}}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a739d7c5d6a671aa79c6e9a6b642e444c}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Relocate@{Relocate}}
+\index{Relocate@{Relocate}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Relocate()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Relocate (\begin{DoxyParamCaption}\item[{Point}]{new\+Location }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 59 of file Base\+Game\+Object.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Characters.\+Mario\+Character.\+Move(), Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+On\+Simulation(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+On\+Update(), and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Resize().
+
+
+\begin{DoxyCode}
+60         \{
+61             location = newLocation;
+62         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_a739d7c5d6a671aa79c6e9a6b642e444c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_ab856d6c80f08fd49fac68e0fefbed65b}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Remove\+Self@{Remove\+Self}}
+\index{Remove\+Self@{Remove\+Self}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Remove\+Self()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Remove\+Self (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 183 of file Base\+Collidable\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+Containers.\+Base\+Container$<$ Key, Value $>$.\+Remove(), Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Stop\+Horizontal\+Movement(), and Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Stop\+Vertical\+Movement().
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Items.\+Coin.\+Coin(), Mello\+Mario.\+Objects.\+Items.\+Fire\+Flower.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Coin.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+One\+Up\+Mushroom.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Star.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom.\+Collect(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa.\+Defeat(), Mello\+Mario.\+Objects.\+Items.\+Fire\+Flower.\+Fire\+Flower(), Mello\+Mario.\+Objects.\+Items.\+One\+Up\+Mushroom.\+One\+Up\+Mushroom(), Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Remove(), Mello\+Mario.\+Objects.\+Characters.\+Mario\+Character.\+Remove(), Mello\+Mario.\+Objects.\+Items.\+Star.\+Star(), and Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom.\+Super\+Mushroom().
+
+
+\begin{DoxyCode}
+184         \{
+185             StopHorizontalMovement();
+186             StopVerticalMovement();
+187 
+188             World.Remove(\textcolor{keyword}{this});
+189         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseCollidableObject_ab856d6c80f08fd49fac68e0fefbed65b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseCollidableObject_ab856d6c80f08fd49fac68e0fefbed65b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a968dd48f33c69acc16fb2acfae36c3a8}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Resize@{Resize}}
+\index{Resize@{Resize}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Resize()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Resize (\begin{DoxyParamCaption}\item[{Point}]{new\+Size,  }\item[{\textbf{ Resize\+ModeX}}]{modeX,  }\item[{\textbf{ Resize\+ModeY}}]{modeY }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 64 of file Base\+Game\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Container$<$ T $>$.\+Move(), and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Relocate().
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Show\+Sprite().
+
+
+\begin{DoxyCode}
+65         \{
+66             Point delta = \textcolor{keyword}{new} Point();
+67 
+68             \textcolor{keywordflow}{switch} (modeX)
+69             \{
+70                 \textcolor{keywordflow}{case} ResizeModeX.Left:
+71                     delta.X = 0;
+72                     \textcolor{keywordflow}{break};
+73                 \textcolor{keywordflow}{case} ResizeModeX.Center:
+74                     delta.X = (size.X - newSize.X) / 2;
+75                     \textcolor{keywordflow}{break};
+76                 \textcolor{keywordflow}{case} ResizeModeX.Right:
+77                     delta.X = size.X - newSize.X;
+78                     \textcolor{keywordflow}{break};
+79             \}
+80             \textcolor{keywordflow}{switch} (modeY)
+81             \{
+82                 \textcolor{keywordflow}{case} ResizeModeY.Top:
+83                     delta.Y = 0;
+84                     \textcolor{keywordflow}{break};
+85                 \textcolor{keywordflow}{case} ResizeModeY.Center:
+86                     delta.Y = (size.Y - newSize.Y) / 2;
+87                     \textcolor{keywordflow}{break};
+88                 \textcolor{keywordflow}{case} ResizeModeY.Bottom:
+89                     delta.Y = size.Y - newSize.Y;
+90                     \textcolor{keywordflow}{break};
+91             \}
+92 
+93             Relocate(location + delta);
+94             size = newSize;
+95 
+96             World.Move(\textcolor{keyword}{this});
+97         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_a968dd48f33c69acc16fb2acfae36c3a8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_a968dd48f33c69acc16fb2acfae36c3a8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a51b9dcd51c329bef4f04919f67234378}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Score\+Points@{Score\+Points}}
+\index{Score\+Points@{Score\+Points}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Score\+Points()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Score\+Points (\begin{DoxyParamCaption}\item[{int}]{points }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 246 of file Base\+Collidable\+Object.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Items.\+Fire\+Flower.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Coin.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Star.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom.\+Collect(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Goomba.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Thwomp.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa.\+Jump\+On(), Mello\+Mario.\+Objects.\+Blocks.\+Flag.\+On\+Collision(), and Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+On\+Destroy().
+
+
+\begin{DoxyCode}
+247         \{
+248             HandlerPoints?.Invoke(
+249                 \textcolor{keyword}{this},
+250                 \textcolor{keyword}{new} ScoreEventArgs
+251                 \{
+252                     Points = points
+253                 \});
+254         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseCollidableObject_a51b9dcd51c329bef4f04919f67234378_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_aa3116237ab408071c073373daca92ad0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Show\+Sprite@{Show\+Sprite}}
+\index{Show\+Sprite@{Show\+Sprite}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Show\+Sprite()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Show\+Sprite (\begin{DoxyParamCaption}\item[{\textbf{ I\+Sprite}}]{new\+Sprite,  }\item[{\textbf{ Resize\+ModeX}}]{modeX = {\ttfamily \textbf{ Resize\+Mode\+X.\+Center}},  }\item[{\textbf{ Resize\+ModeY}}]{modeY = {\ttfamily \textbf{ Resize\+Mode\+Y.\+Bottom}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 99 of file Base\+Game\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Sprite.\+Pixel\+Size, and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Resize().
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Items.\+Fire\+Ball.\+Fire\+Ball(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha.\+Piranha(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+Poping\+Up\+Points(), Mello\+Mario.\+Objects.\+Miscs.\+Background.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Floor.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Stair.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Flag.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Pipeline.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Enemies.\+Thwomp.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Enemies.\+Goomba.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+One\+Up\+Mushroom.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Question.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Star.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Fire\+Flower.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Coin.\+Update\+Sprite(), Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom.\+Update\+Sprite(), and Mello\+Mario.\+Objects.\+Characters.\+Mario.\+Update\+Sprite().
+
+
+\begin{DoxyCode}
+103         \{
+104             sprite = newSprite;
+105             Resize(sprite.PixelSize, modeX, modeY);
+106         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_aa3116237ab408071c073373daca92ad0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_aa3116237ab408071c073373daca92ad0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_afb437ff84f73186d883167df00854fb0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Stop\+Horizontal\+Movement@{Stop\+Horizontal\+Movement}}
+\index{Stop\+Horizontal\+Movement@{Stop\+Horizontal\+Movement}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Stop\+Horizontal\+Movement()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Stop\+Horizontal\+Movement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 173 of file Base\+Collidable\+Object.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Base\+Physical\+Object.\+Bounce(), and Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Remove\+Self().
+
+
+\begin{DoxyCode}
+174         \{
+175             movement.X = 0;
+176         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseCollidableObject_afb437ff84f73186d883167df00854fb0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a93e7a1fd2da3f05e1549054a58faad95}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Stop\+Vertical\+Movement@{Stop\+Vertical\+Movement}}
+\index{Stop\+Vertical\+Movement@{Stop\+Vertical\+Movement}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Stop\+Vertical\+Movement()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Stop\+Vertical\+Movement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 178 of file Base\+Collidable\+Object.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Base\+Physical\+Object.\+Bounce(), and Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Remove\+Self().
+
+
+\begin{DoxyCode}
+179         \{
+180             movement.Y = 0;
+181         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseCollidableObject_a93e7a1fd2da3f05e1549054a58faad95_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_a6ec9c19559f9b9ddb1b1da92c01a9c47}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Unveil\+Move@{Unveil\+Move}}
+\index{Unveil\+Move@{Unveil\+Move}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Unveil\+Move()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Items.\+Coin.\+Unveil\+Move (\begin{DoxyParamCaption}\item[{int}]{delta }\end{DoxyParamCaption})}
+
+
+
+Definition at line 116 of file Coin.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Move().
+
+
+\begin{DoxyCode}
+117         \{
+118             Move(\textcolor{keyword}{new} Point(0, delta));
+119         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1Items_1_1Coin_a6ec9c19559f9b9ddb1b1da92c01a9c47_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_ae4b01d33719fa07f57de7d7c7ebeaa96}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Object} \doxyref{}{p.}{interfaceMelloMario_1_1IObject_aae8242b2fc9319733d1d09dc0271d971}.
+
+
+
+Definition at line 37 of file Base\+Game\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+On\+Simulation(), and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+On\+Update().
+
+
+\begin{DoxyCode}
+38         \{
+39             \textcolor{comment}{// override OnUpdate for states etc.}
+40             OnUpdate(time);
+41             \textcolor{comment}{// override OnSimulation for movement and collision}
+42             OnSimulation(time);
+43         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseGameObject_ae4b01d33719fa07f57de7d7c7ebeaa96_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_ad63f2819fb77cfd23f9ddf0cb055f835}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Update\+Sprite@{Update\+Sprite}}
+\index{Update\+Sprite@{Update\+Sprite}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Update\+Sprite()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Items.\+Coin.\+Update\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 70 of file Coin.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Sprite\+Factory$<$ T $>$.\+Create\+Coin\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Instance, and Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Show\+Sprite().
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Items.\+Coin.\+Coin().
+
+
+\begin{DoxyCode}
+71         \{
+72             ShowSprite(SpriteFactory.Instance.CreateCoinSprite());
+73         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1Items_1_1Coin_ad63f2819fb77cfd23f9ddf0cb055f835_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1Items_1_1Coin_ad63f2819fb77cfd23f9ddf0cb055f835_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_a5ba16d88b70319012ffa8eba513182e4}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!coin\+Event\+Info@{coin\+Event\+Info}}
+\index{coin\+Event\+Info@{coin\+Event\+Info}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{coin\+Event\+Info}
+{\footnotesize\ttfamily readonly Event\+Args Mello\+Mario.\+Objects.\+Items.\+Coin.\+coin\+Event\+Info\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 22 of file Coin.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_a8f311e0c6797ef585982af430ecf7177}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!collected@{collected}}
+\index{collected@{collected}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{collected}
+{\footnotesize\ttfamily bool Mello\+Mario.\+Objects.\+Items.\+Coin.\+collected\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 24 of file Coin.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_a9ebf25622fcea27acc940f4c020d246d}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!state@{state}}
+\index{state@{state}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{state}
+{\footnotesize\ttfamily \textbf{ I\+Item\+State} Mello\+Mario.\+Objects.\+Items.\+Coin.\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 25 of file Coin.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a5d3c6a8ecaab7462a127135b097cb871}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!World@{World}}
+\index{World@{World}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{World}
+{\footnotesize\ttfamily \textbf{ I\+World} Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+World\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 19 of file Base\+Game\+Object.\+cs.
+
+
+
+\subsection{Property Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseGameObject_a73d457980c031a5e06d1451883074b5f}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Boundary@{Boundary}}
+\index{Boundary@{Boundary}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Boundary}
+{\footnotesize\ttfamily Rectangle Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Boundary\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 30 of file Base\+Game\+Object.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Characters.\+Mario\+Character.\+Action(), Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Base\+Game\+Object(), Mello\+Mario.\+Objects.\+Items.\+Fire\+Flower.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Coin.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Star.\+Collect(), Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom.\+Collect(), Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Collide\+All(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Goomba.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Thwomp.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Koopa.\+Defeat(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha.\+Detect\+Mario(), Mello\+Mario.\+Objects.\+Base\+Game\+Object.\+Draw(), Mello\+Mario.\+Objects.\+Items.\+Super\+Mushroom.\+Get\+Fire\+Flower(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Down.\+Moving\+Down(), Mello\+Mario.\+Objects.\+Enemies.\+Piranha\+States.\+Moving\+Up.\+Moving\+Up(), Mello\+Mario.\+Objects.\+Blocks.\+Flag.\+On\+Collision(), Mello\+Mario.\+Objects.\+Blocks.\+Pipeline.\+On\+Collision(), Mello\+Mario.\+Objects.\+Characters.\+Mario.\+On\+Collision(), Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+On\+Simulation(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+On\+Update(), Mello\+Mario.\+Objects.\+Blocks.\+Pipeline.\+On\+Update(), Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Scan\+Collide\+Modes(), and Mello\+Mario.\+Objects.\+Characters.\+Mario\+Character.\+Teleport().
+
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_a59c1e1d5bbcfd0284991bf22b586f1ec}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Sound\+Event\+Args@{Sound\+Event\+Args}}
+\index{Sound\+Event\+Args@{Sound\+Event\+Args}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Sound\+Event\+Args}
+{\footnotesize\ttfamily \textbf{ I\+Sound\+Args} Mello\+Mario.\+Objects.\+Items.\+Coin.\+Sound\+Event\+Args\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Definition at line 23 of file Coin.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Items.\+Coin.\+Coin(), Mello\+Mario.\+Objects.\+Items.\+Coin.\+Collect(), and Mello\+Mario.\+Objects.\+Items.\+Coin.\+On\+Update().
+
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_ae36e629e1eb633e7f927a94194c7f419}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!State@{State}}
+\index{State@{State}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{State}
+{\footnotesize\ttfamily \textbf{ I\+Item\+State} Mello\+Mario.\+Objects.\+Items.\+Coin.\+State\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line 54 of file Coin.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Items.\+Coin.\+Coin().
+
+
+
+\subsection{Event Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_a66a5f9742d0f632331f2d4b5bc65affe}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Handler\+Coins@{Handler\+Coins}}
+\index{Handler\+Coins@{Handler\+Coins}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Handler\+Coins}
+{\footnotesize\ttfamily \textbf{ Coin\+Handler} Mello\+Mario.\+Objects.\+Items.\+Coin.\+Handler\+Coins}
+
+
+
+Definition at line 66 of file Coin.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Score\+Listener.\+Subscribe().
+
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a8ae1993e1f1bb4b17c255ffe90bb5c27}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Handler\+Lives@{Handler\+Lives}}
+\index{Handler\+Lives@{Handler\+Lives}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Handler\+Lives}
+{\footnotesize\ttfamily \textbf{ Lives\+Handler} Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Handler\+Lives\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 32 of file Base\+Collidable\+Object.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseCollidableObject_a62d6c09a92807b5805fa82f563ea183f}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Handler\+Points@{Handler\+Points}}
+\index{Handler\+Points@{Handler\+Points}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Handler\+Points}
+{\footnotesize\ttfamily \textbf{ Point\+Handler} Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Handler\+Points\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Definition at line 31 of file Base\+Collidable\+Object.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Score\+Listener.\+Subscribe().
+
+\mbox{\label{classMelloMario_1_1Objects_1_1Items_1_1Coin_af02828f0810618c793e1cc99c6c37f8c}} 
+\index{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}!Sound\+Event@{Sound\+Event}}
+\index{Sound\+Event@{Sound\+Event}!Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin@{Mello\+Mario\+::\+Objects\+::\+Items\+::\+Coin}}
+\subsubsection{Sound\+Event}
+{\footnotesize\ttfamily \textbf{ Sound\+Handler} Mello\+Mario.\+Objects.\+Items.\+Coin.\+Sound\+Event}
+
+
+
+Definition at line 68 of file Coin.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+Items/\textbf{ Coin.\+cs}\end{DoxyCompactItemize}

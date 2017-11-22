@@ -1,0 +1,538 @@
+\section{Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over Class Reference}
+\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver}\index{Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over@{Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over}}
+
+
+Inheritance diagram for Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Game\+Over} (\textbf{ I\+Player} player)
+\item 
+void \textbf{ Update} (int time)
+\item 
+void \textbf{ Draw} (int time, Sprite\+Batch sprite\+Batch)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ On\+Update} (int time)
+\item 
+override void \textbf{ On\+Draw} (int time, Sprite\+Batch sprite\+Batch)
+\item 
+void \textbf{ Offset} (ref Rectangle rect)
+\item 
+void \textbf{ Update\+Origin} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ I\+Player} \textbf{ Player}
+\item 
+Point \textbf{ Relative\+Origin}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \textbf{ I\+Sprite} \textbf{ coin\+Sprite}
+\item 
+readonly \textbf{ I\+Sprite} \textbf{ game\+Over\+Sprite}
+\item 
+readonly \textbf{ I\+Sprite} \textbf{ mario\+Sprite}
+\item 
+readonly \textbf{ I\+Sprite} \textbf{ splash\+Sprite}
+\item 
+readonly \textbf{ I\+Sprite} \textbf{ text\+Sprite}
+\item 
+readonly \textbf{ I\+Sprite} \textbf{ text\+Sprite2}
+\item 
+\textbf{ I\+Sprite} \textbf{ life\+Sprite}
+\item 
+Rectangle \textbf{ coin\+Destination\+Rect}
+\item 
+Rectangle \textbf{ game\+Over\+Destination\+Rect}
+\item 
+Rectangle \textbf{ mario\+Destination\+Rect}
+\item 
+Rectangle \textbf{ splash\+Destination\+Rect}
+\item 
+Rectangle \textbf{ text\+Destination\+Rect}
+\item 
+Rectangle \textbf{ text2\+Destination\+Rect}
+\item 
+Rectangle \textbf{ life\+Destination\+Rect}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file Game\+Over.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_ad2c84984a1b68fce93da9782bf5abf6d}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!Game\+Over@{Game\+Over}}
+\index{Game\+Over@{Game\+Over}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{Game\+Over()}
+{\footnotesize\ttfamily Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+Game\+Over (\begin{DoxyParamCaption}\item[{\textbf{ I\+Player}}]{player }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file Game\+Over.\+cs.
+
+
+
+References Mello\+Mario.\+Theming.\+Player.\+Coins, Mello\+Mario.\+I\+Sprite\+Factory$<$ T $>$.\+Create\+Coin\+Sprite(), Mello\+Mario.\+I\+Sprite\+Factory$<$ T $>$.\+Create\+Mario\+Sprite(), Mello\+Mario.\+I\+Sprite\+Factory$<$ T $>$.\+Create\+Splash\+Sprite(), Mello\+Mario.\+I\+Sprite\+Factory$<$ T $>$.\+Create\+Text\+Sprite(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Instance, Mello\+Mario.\+Theming.\+Player.\+Score, Mello\+Mario.\+Theming.\+Const.\+S\+C\+R\+E\+E\+N\+\_\+\+H\+E\+I\+G\+HT, and Mello\+Mario.\+Theming.\+Const.\+S\+C\+R\+E\+E\+N\+\_\+\+W\+I\+D\+TH.
+
+
+\begin{DoxyCode}
+29                                         : base(player)
+30         \{
+31             splashSprite = SpriteFactory.Instance.CreateSplashSprite();
+32             coinSprite = SpriteFactory.Instance.CreateCoinSprite(\textcolor{keyword}{true});
+33             marioSprite = SpriteFactory.Instance.CreateMarioSprite(\textcolor{stringliteral}{"Standard"}, \textcolor{stringliteral}{"Standing"}, \textcolor{stringliteral}{"GameOver"}, \textcolor{stringliteral}{"
+      Right"});
+34             gameOverSprite = SpriteFactory.Instance.CreateTextSprite(\textcolor{stringliteral}{"GAME    OVER"});
+35             \textcolor{keywordtype}{string} text = \textcolor{stringliteral}{"MARIO        "}
+36                 + \textcolor{stringliteral}{"   WORLD    TIME\(\backslash\)n"}
+37                 + Player.Score.ToString().PadLeft(6, \textcolor{charliteral}{'0'})
+38                 + \textcolor{stringliteral}{"    *"}
+39                 + Player.Coins.ToString().PadLeft(2, \textcolor{charliteral}{'0'})
+40                 + \textcolor{stringliteral}{"    "}
+41                 + \textcolor{stringliteral}{"1-1"}
+42                 + \textcolor{stringliteral}{"      "};
+43             textSprite = SpriteFactory.Instance.CreateTextSprite(text);
+44             textSprite2 = SpriteFactory.Instance.CreateTextSprite(\textcolor{stringliteral}{"WORLD"});
+45 
+46             coinDestinationRect = \textcolor{keyword}{new} Rectangle(255, 74, 26, 30);
+47             gameOverDestinationRect = \textcolor{keyword}{new} Rectangle(250, 250, 80, 80);
+48             marioDestinationRect = \textcolor{keyword}{new} Rectangle(250, 250, 40, 40);
+49             splashDestinationRect = \textcolor{keyword}{new} Rectangle(0, 0, Const.SCREEN\_WIDTH, Const.SCREEN\_HEIGHT);
+50             textDestinationRect = \textcolor{keyword}{new} Rectangle(42, 42, 800, 200);
+51             text2DestinationRect = \textcolor{keyword}{new} Rectangle(300, 200, 80, 80);
+52             lifeDestinationRect = \textcolor{keyword}{new} Rectangle(350, 250, 80, 80);
+53             \textcolor{comment}{// OnUpdate(0);}
+54         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_ad2c84984a1b68fce93da9782bf5abf6d_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_aaefb20cc2ee49fb1ea78343e8b6608fe}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!Draw@{Draw}}
+\index{Draw@{Draw}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{Draw()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Object} \doxyref{}{p.}{interfaceMelloMario_1_1IObject_aa01c3e3cca30817cf0bc9110dbbcc3de}.
+
+
+
+Definition at line 27 of file Base\+U\+I\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+On\+Draw().
+
+
+\begin{DoxyCode}
+28         \{
+29             OnDraw(time, spriteBatch);
+30         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_aaefb20cc2ee49fb1ea78343e8b6608fe_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_a087b01c9a987350dd428de3a3177e375}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!Offset@{Offset}}
+\index{Offset@{Offset}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{Offset()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Offset (\begin{DoxyParamCaption}\item[{ref Rectangle}]{rect }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 32 of file Base\+U\+I\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Player.\+Camera, and Mello\+Mario.\+I\+Camera.\+Viewport.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Start.\+On\+Update(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+H\+U\+D.\+On\+Update(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Won.\+On\+Update(), and Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+On\+Update().
+
+
+\begin{DoxyCode}
+33         \{
+34             rect.Offset(Player.Camera.Viewport.Location - RelativeOrigin);
+35         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_a087b01c9a987350dd428de3a3177e375_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a6dc1cf6c7907e8e99bbb4ff4f5639520}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!On\+Draw@{On\+Draw}}
+\index{On\+Draw@{On\+Draw}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{On\+Draw()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+On\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+U\+I\+Object} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseUIObject_a8a7aaf9b5463579e75bbab6bc995310e}.
+
+
+
+Definition at line 68 of file Game\+Over.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Sprite\+Factory$<$ T $>$.\+Create\+Text\+Sprite(), Mello\+Mario.\+I\+Sprite.\+Draw(), Mello\+Mario.\+Factories.\+Sprite\+Factory.\+Instance, and Mello\+Mario.\+Theming.\+Player.\+Lifes.
+
+
+\begin{DoxyCode}
+69         \{
+70             splashSprite.Draw(time, spriteBatch, splashDestinationRect);
+71             textSprite.Draw(time, spriteBatch, textDestinationRect);
+72             coinSprite.Draw(time, spriteBatch, coinDestinationRect);
+73 
+74             \textcolor{keywordflow}{if} (Player.Lifes > 0)
+75             \{
+76                 textSprite2.Draw(time, spriteBatch, text2DestinationRect);
+77                 marioSprite.Draw(time, spriteBatch, marioDestinationRect);
+78                 lifeSprite = SpriteFactory.Instance.CreateTextSprite(\textcolor{stringliteral}{"*  "} + 
+      Player.Lifes);
+79                 lifeSprite.Draw(time, spriteBatch, lifeDestinationRect);
+80             \}
+81             \textcolor{keywordflow}{else}
+82             \{
+83                 gameOverSprite.Draw(time, spriteBatch, gameOverDestinationRect);
+84 
+85                 \textcolor{comment}{//TODO:Move this into soundcontroller}
+86                 \textcolor{comment}{//SoundManager.GameOver.Play();}
+87             \}
+88         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a6dc1cf6c7907e8e99bbb4ff4f5639520_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a572b91cd806714b0ab07ef951fe723bc}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!On\+Update@{On\+Update}}
+\index{On\+Update@{On\+Update}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{On\+Update()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+On\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Objects.\+Base\+U\+I\+Object} \doxyref{}{p.}{classMelloMario_1_1Objects_1_1BaseUIObject_aa9f25013cf1bd3196ba5eb472e14cdf9}.
+
+
+
+Definition at line 56 of file Game\+Over.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Offset(), and Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Update\+Origin().
+
+
+\begin{DoxyCode}
+57         \{
+58             Offset(ref textDestinationRect);
+59             Offset(ref text2DestinationRect);
+60             Offset(ref gameOverDestinationRect);
+61             Offset(ref splashDestinationRect);
+62             Offset(ref coinDestinationRect);
+63             Offset(ref lifeDestinationRect);
+64             Offset(ref marioDestinationRect);
+65             UpdateOrigin();
+66         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a572b91cd806714b0ab07ef951fe723bc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_a2aff42e88c55e43b7e950ebae48a6522}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Update (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Object} \doxyref{}{p.}{interfaceMelloMario_1_1IObject_aae8242b2fc9319733d1d09dc0271d971}.
+
+
+
+Definition at line 22 of file Base\+U\+I\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+On\+Update().
+
+
+\begin{DoxyCode}
+23         \{
+24             OnUpdate(time);
+25         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_a2aff42e88c55e43b7e950ebae48a6522_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_a3998dccafea17a86f03b682239d4bcf8}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!Update\+Origin@{Update\+Origin}}
+\index{Update\+Origin@{Update\+Origin}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{Update\+Origin()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Update\+Origin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 37 of file Base\+U\+I\+Object.\+cs.
+
+
+
+References Mello\+Mario.\+I\+Player.\+Camera, Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+On\+Draw(), Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+On\+Update(), and Mello\+Mario.\+I\+Camera.\+Viewport.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Start.\+On\+Update(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+H\+U\+D.\+On\+Update(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Won.\+On\+Update(), and Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+On\+Update().
+
+
+\begin{DoxyCode}
+38         \{
+39             RelativeOrigin = Player.Camera.Viewport.Location;
+40         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_a3998dccafea17a86f03b682239d4bcf8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Objects_1_1BaseUIObject_a3998dccafea17a86f03b682239d4bcf8_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a6fc422e9de84b86ff57bff3559ccdae7}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!coin\+Destination\+Rect@{coin\+Destination\+Rect}}
+\index{coin\+Destination\+Rect@{coin\+Destination\+Rect}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{coin\+Destination\+Rect}
+{\footnotesize\ttfamily Rectangle Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+coin\+Destination\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 21 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a79601e10d7641467680340541b306647}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!coin\+Sprite@{coin\+Sprite}}
+\index{coin\+Sprite@{coin\+Sprite}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{coin\+Sprite}
+{\footnotesize\ttfamily readonly \textbf{ I\+Sprite} Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+coin\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 14 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_acc82c08eb95bb4b52280435c11d31e61}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!game\+Over\+Destination\+Rect@{game\+Over\+Destination\+Rect}}
+\index{game\+Over\+Destination\+Rect@{game\+Over\+Destination\+Rect}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{game\+Over\+Destination\+Rect}
+{\footnotesize\ttfamily Rectangle Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+game\+Over\+Destination\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 22 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a676a903cfce6f98c5e2504d91ce83fc0}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!game\+Over\+Sprite@{game\+Over\+Sprite}}
+\index{game\+Over\+Sprite@{game\+Over\+Sprite}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{game\+Over\+Sprite}
+{\footnotesize\ttfamily readonly \textbf{ I\+Sprite} Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+game\+Over\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a2cbf8ea22b20445784e20e7b191d3cad}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!life\+Destination\+Rect@{life\+Destination\+Rect}}
+\index{life\+Destination\+Rect@{life\+Destination\+Rect}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{life\+Destination\+Rect}
+{\footnotesize\ttfamily Rectangle Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+life\+Destination\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 27 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_abf6d6a3bbc2b7e690d8a1ee85dd8d710}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!life\+Sprite@{life\+Sprite}}
+\index{life\+Sprite@{life\+Sprite}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{life\+Sprite}
+{\footnotesize\ttfamily \textbf{ I\+Sprite} Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+life\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a7118cf0c198b66a7b6cf87b660e09359}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!mario\+Destination\+Rect@{mario\+Destination\+Rect}}
+\index{mario\+Destination\+Rect@{mario\+Destination\+Rect}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{mario\+Destination\+Rect}
+{\footnotesize\ttfamily Rectangle Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+mario\+Destination\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 23 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a8791ba6f8d3a243466ef12707da83cea}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!mario\+Sprite@{mario\+Sprite}}
+\index{mario\+Sprite@{mario\+Sprite}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{mario\+Sprite}
+{\footnotesize\ttfamily readonly \textbf{ I\+Sprite} Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+mario\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 16 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_acd50bdcae2fd608c6a4ac5f3e53f0205}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!Player@{Player}}
+\index{Player@{Player}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{Player}
+{\footnotesize\ttfamily \textbf{ I\+Player} Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Player\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 12 of file Base\+U\+I\+Object.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1BaseUIObject_ae4b2bf4405e1539da2965770122fae09}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!Relative\+Origin@{Relative\+Origin}}
+\index{Relative\+Origin@{Relative\+Origin}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{Relative\+Origin}
+{\footnotesize\ttfamily Point Mello\+Mario.\+Objects.\+Base\+U\+I\+Object.\+Relative\+Origin\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 13 of file Base\+U\+I\+Object.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a656b38135804e2835a495635726e474a}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!splash\+Destination\+Rect@{splash\+Destination\+Rect}}
+\index{splash\+Destination\+Rect@{splash\+Destination\+Rect}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{splash\+Destination\+Rect}
+{\footnotesize\ttfamily Rectangle Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+splash\+Destination\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 24 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_acc042206c7cc91600bf81e590d8678c6}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!splash\+Sprite@{splash\+Sprite}}
+\index{splash\+Sprite@{splash\+Sprite}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{splash\+Sprite}
+{\footnotesize\ttfamily readonly \textbf{ I\+Sprite} Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+splash\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 17 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a4db1127c6699ede7fa3aa72cfa6a2772}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!text2\+Destination\+Rect@{text2\+Destination\+Rect}}
+\index{text2\+Destination\+Rect@{text2\+Destination\+Rect}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{text2\+Destination\+Rect}
+{\footnotesize\ttfamily Rectangle Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+text2\+Destination\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 26 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_acf289603e0c5d8a84940dbe02bfe4d11}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!text\+Destination\+Rect@{text\+Destination\+Rect}}
+\index{text\+Destination\+Rect@{text\+Destination\+Rect}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{text\+Destination\+Rect}
+{\footnotesize\ttfamily Rectangle Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+text\+Destination\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 25 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_a206348d051f80b37ecfa01fb9abc32d2}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!text\+Sprite@{text\+Sprite}}
+\index{text\+Sprite@{text\+Sprite}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{text\+Sprite}
+{\footnotesize\ttfamily readonly \textbf{ I\+Sprite} Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+text\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 18 of file Game\+Over.\+cs.
+
+\mbox{\label{classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver_aa5d21a609340318a8e1350c0e9bb814d}} 
+\index{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}!text\+Sprite2@{text\+Sprite2}}
+\index{text\+Sprite2@{text\+Sprite2}!Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over@{Mello\+Mario\+::\+Objects\+::\+User\+Interfaces\+::\+Game\+Over}}
+\subsubsection{text\+Sprite2}
+{\footnotesize\ttfamily readonly \textbf{ I\+Sprite} Mello\+Mario.\+Objects.\+User\+Interfaces.\+Game\+Over.\+text\+Sprite2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file Game\+Over.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Objects/\+User\+Interfaces/\textbf{ Game\+Over.\+cs}\end{DoxyCompactItemize}

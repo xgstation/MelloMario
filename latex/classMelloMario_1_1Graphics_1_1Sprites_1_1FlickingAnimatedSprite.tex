@@ -1,0 +1,378 @@
+\section{Mello\+Mario.\+Graphics.\+Sprites.\+Flicking\+Animated\+Sprite Class Reference}
+\label{classMelloMario_1_1Graphics_1_1Sprites_1_1FlickingAnimatedSprite}\index{Mello\+Mario.\+Graphics.\+Sprites.\+Flicking\+Animated\+Sprite@{Mello\+Mario.\+Graphics.\+Sprites.\+Flicking\+Animated\+Sprite}}
+
+
+Inheritance diagram for Mello\+Mario.\+Graphics.\+Sprites.\+Flicking\+Animated\+Sprite\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1FlickingAnimatedSprite__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Graphics.\+Sprites.\+Flicking\+Animated\+Sprite\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1FlickingAnimatedSprite__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Flicking\+Animated\+Sprite} (Texture2D \textbf{ texture}, int \textbf{ columns}, int \textbf{ rows}, int x=0, int y=0, int width=2, int height=2, int \textbf{ interval}=\textbf{ Const.\+A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+R\+V\+AL}, \textbf{ Z\+Index} \textbf{ z\+Index}=\textbf{ Z\+Index.\+Item})
+\item 
+void \textbf{ Draw} (int time, Sprite\+Batch sprite\+Batch, Rectangle destination)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ On\+Frame} ()
+\item 
+override void \textbf{ On\+Animate} (int time)
+\item 
+void \textbf{ Change\+Source} (Point location)
+\item 
+void \textbf{ Change\+Color} (Color new\+Color)
+\item 
+override void \textbf{ On\+Draw} (int time, Sprite\+Batch sprite\+Batch, Rectangle destination)
+\item 
+void \textbf{ Toggle} ()
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+float \textbf{ Layer\+Depth}\hspace{0.3cm}{\ttfamily  [get]}
+\item 
+Point \textbf{ Pixel\+Size}\hspace{0.3cm}{\ttfamily  [get]}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly Random \textbf{ random}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file Flicking\+Animated\+Sprite.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1FlickingAnimatedSprite_a33d49c89f82a01f19fec7786abce6284}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}!Flicking\+Animated\+Sprite@{Flicking\+Animated\+Sprite}}
+\index{Flicking\+Animated\+Sprite@{Flicking\+Animated\+Sprite}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}}
+\subsubsection{Flicking\+Animated\+Sprite()}
+{\footnotesize\ttfamily Mello\+Mario.\+Graphics.\+Sprites.\+Flicking\+Animated\+Sprite.\+Flicking\+Animated\+Sprite (\begin{DoxyParamCaption}\item[{Texture2D}]{texture,  }\item[{int}]{columns,  }\item[{int}]{rows,  }\item[{int}]{x = {\ttfamily 0},  }\item[{int}]{y = {\ttfamily 0},  }\item[{int}]{width = {\ttfamily 2},  }\item[{int}]{height = {\ttfamily 2},  }\item[{int}]{interval = {\ttfamily \textbf{ Const.\+A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+I\+N\+T\+E\+R\+V\+AL}},  }\item[{\textbf{ Z\+Index}}]{z\+Index = {\ttfamily \textbf{ Z\+Index.\+Item}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 17 of file Flicking\+Animated\+Sprite.\+cs.
+
+
+\begin{DoxyCode}
+26                                          : base(texture, columns, rows, x, y, width, height, 
+      interval, zIndex)
+27         \{
+28             random = \textcolor{keyword}{new} Random();
+29         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseTextureSprite_a1e9d964bce8831606ac62ecd08eda166}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}!Change\+Color@{Change\+Color}}
+\index{Change\+Color@{Change\+Color}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}}
+\subsubsection{Change\+Color()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Texture\+Sprite.\+Change\+Color (\begin{DoxyParamCaption}\item[{Color}]{new\+Color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 32 of file Base\+Texture\+Sprite.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Flicking\+Animated\+Sprite.\+On\+Frame().
+
+
+\begin{DoxyCode}
+33         \{
+34             color = newColor;
+35         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseTextureSprite_a1e9d964bce8831606ac62ecd08eda166_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseTextureSprite_a2e61431e17b3108f3a5ed2da7bc87304}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}!Change\+Source@{Change\+Source}}
+\index{Change\+Source@{Change\+Source}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}}
+\subsubsection{Change\+Source()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Texture\+Sprite.\+Change\+Source (\begin{DoxyParamCaption}\item[{Point}]{location }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 27 of file Base\+Texture\+Sprite.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Animated\+Sprite.\+Update\+Source\+Rectangle().
+
+
+\begin{DoxyCode}
+28         \{
+29             source.Location = location;
+30         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseTextureSprite_a2e61431e17b3108f3a5ed2da7bc87304_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7366343d1f1c53dac1706699cbd01053}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}!Draw@{Draw}}
+\index{Draw@{Draw}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}}
+\subsubsection{Draw()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch,  }\item[{Rectangle}]{destination }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Sprite} \doxyref{}{p.}{interfaceMelloMario_1_1ISprite_a146e9a600de8710d6ac51dd6f8fa920b}.
+
+
+
+Definition at line 56 of file Base\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+On\+Draw().
+
+
+\begin{DoxyCode}
+57         \{
+58             \textcolor{keywordflow}{if} (visible)
+59             \{
+60                 OnDraw(time, spriteBatch, destination);
+61             \}
+62         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7366343d1f1c53dac1706699cbd01053_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1AnimatedSprite_a58f16db7dc2da9fd11464477f4ae1f7f}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}!On\+Animate@{On\+Animate}}
+\index{On\+Animate@{On\+Animate}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}}
+\subsubsection{On\+Animate()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Graphics.\+Sprites.\+Animated\+Sprite.\+On\+Animate (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}, {\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Texture\+Sprite} \doxyref{}{p.}{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseTextureSprite_a71501742bbabee10453c619d19e7b461}.
+
+
+
+Definition at line 64 of file Animated\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Graphics.\+Sprites.\+Animated\+Sprite.\+interval, Mello\+Mario.\+Graphics.\+Sprites.\+Animated\+Sprite.\+On\+Frame(), and Mello\+Mario.\+Graphics.\+Sprites.\+Animated\+Sprite.\+Update\+Source\+Rectangle().
+
+
+\begin{DoxyCode}
+65         \{
+66             elapsed += time;
+67 
+68             \textcolor{keywordflow}{if} (elapsed >= interval)
+69             \{
+70                 UpdateSourceRectangle();
+71                 OnFrame();
+72 
+73                 frames += 1;
+74                 \textcolor{keywordflow}{if} (frames == rows * columns)
+75                 \{
+76                     frames = 0;
+77                 \}
+78 
+79                 elapsed -= interval;
+80             \}
+81         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1AnimatedSprite_a58f16db7dc2da9fd11464477f4ae1f7f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseTextureSprite_a6fe929209579f1fddeff00ae960d93fb}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}!On\+Draw@{On\+Draw}}
+\index{On\+Draw@{On\+Draw}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}}
+\subsubsection{On\+Draw()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Texture\+Sprite.\+On\+Draw (\begin{DoxyParamCaption}\item[{int}]{time,  }\item[{Sprite\+Batch}]{sprite\+Batch,  }\item[{Rectangle}]{destination }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}, {\ttfamily [inherited]}}
+
+
+
+Implements \textbf{ Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite} \doxyref{}{p.}{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a4b51a4ec0448b7ec8a53baf0e8816cac}.
+
+
+
+Definition at line 37 of file Base\+Texture\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Layer\+Depth, and Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Texture\+Sprite.\+On\+Animate().
+
+
+\begin{DoxyCode}
+38         \{
+39             OnAnimate(time);
+40             spriteBatch.Draw(
+41                 texture,
+42                 destination,
+43                 source,
+44                 color,
+45                 0f, \textcolor{comment}{//rotation}
+46                 \textcolor{keyword}{new} Vector2(), \textcolor{comment}{//origin}
+47                 SpriteEffects.None,
+48                 LayerDepth);
+49         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseTextureSprite_a6fe929209579f1fddeff00ae960d93fb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1FlickingAnimatedSprite_a37a96bdcfb7df8d87c21fdbb95e33d79}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}!On\+Frame@{On\+Frame}}
+\index{On\+Frame@{On\+Frame}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}}
+\subsubsection{On\+Frame()}
+{\footnotesize\ttfamily override void Mello\+Mario.\+Graphics.\+Sprites.\+Flicking\+Animated\+Sprite.\+On\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \textbf{ Mello\+Mario.\+Graphics.\+Sprites.\+Animated\+Sprite} \doxyref{}{p.}{classMelloMario_1_1Graphics_1_1Sprites_1_1AnimatedSprite_a0f4a3a45ebfb781f14bb54deb1c03140}.
+
+
+
+Definition at line 31 of file Flicking\+Animated\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Texture\+Sprite.\+Change\+Color().
+
+
+\begin{DoxyCode}
+32         \{
+33             ChangeColor(\textcolor{keyword}{new} Color(random.Next(255), random.Next(255), random.Next(255)));
+34         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1FlickingAnimatedSprite_a37a96bdcfb7df8d87c21fdbb95e33d79_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7eb9ed2630496a11da8efde9ada69c07}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}!Toggle@{Toggle}}
+\index{Toggle@{Toggle}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}}
+\subsubsection{Toggle()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Toggle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 66 of file Base\+Sprite.\+cs.
+
+
+
+References Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+visible.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Flashing\+Animated\+Sprite.\+On\+Frame().
+
+
+\begin{DoxyCode}
+67         \{
+68             visible = !visible;
+69         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_a7eb9ed2630496a11da8efde9ada69c07_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1FlickingAnimatedSprite_ad684c9bb4ea847d7e4b3cc7757772733}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}!random@{random}}
+\index{random@{random}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}}
+\subsubsection{random}
+{\footnotesize\ttfamily readonly Random Mello\+Mario.\+Graphics.\+Sprites.\+Flicking\+Animated\+Sprite.\+random\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file Flicking\+Animated\+Sprite.\+cs.
+
+
+
+\subsection{Property Documentation}
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_ac66432d649fdb8a831fff5b0ca66e7b5}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}!Layer\+Depth@{Layer\+Depth}}
+\index{Layer\+Depth@{Layer\+Depth}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}}
+\subsubsection{Layer\+Depth}
+{\footnotesize\ttfamily float Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Layer\+Depth\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 25 of file Base\+Sprite.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Base\+Sprite(), Mello\+Mario.\+Graphics.\+Sprites.\+Splash\+Sprite.\+On\+Draw(), Mello\+Mario.\+Graphics.\+Sprites.\+Brick\+Piece\+Sprite.\+On\+Draw(), Mello\+Mario.\+Graphics.\+Sprites.\+Text\+Sprite.\+On\+Draw(), and Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Texture\+Sprite.\+On\+Draw().
+
+\mbox{\label{classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite_adee82e211783ea9b99c51bae8dcda86e}} 
+\index{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}!Pixel\+Size@{Pixel\+Size}}
+\index{Pixel\+Size@{Pixel\+Size}!Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite@{Mello\+Mario\+::\+Graphics\+::\+Sprites\+::\+Flicking\+Animated\+Sprite}}
+\subsubsection{Pixel\+Size}
+{\footnotesize\ttfamily Point Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Pixel\+Size\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [inherited]}}
+
+
+
+Definition at line 54 of file Base\+Sprite.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Graphics.\+Sprites.\+Base\+Sprite.\+Base\+Sprite().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Graphics/\+Sprites/\textbf{ Flicking\+Animated\+Sprite.\+cs}\end{DoxyCompactItemize}

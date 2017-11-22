@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.UserInterfaces.GameWon.GameWon" name="MelloMario.Objects.UserInterfaces.GameWon.GameWon">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1ISpriteFactory.html#aa82f784fa764b8312ebb65d264eb35cf" title="MelloMario.ISpriteFactory.\lCreateSplashSprite" alt="" coords="279,5,452,47"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1ISpriteFactory.html#a240c908f42b48cd00a57ab07b52d8488" title="MelloMario.ISpriteFactory.\lCreateTextSprite" alt="" coords="279,71,452,112"/>
+</map>

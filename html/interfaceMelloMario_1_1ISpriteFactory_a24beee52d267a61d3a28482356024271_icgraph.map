@@ -1,0 +1,4 @@
+<map id="MelloMario.ISpriteFactory.CreateFireFlowerSprite" name="MelloMario.ISpriteFactory.CreateFireFlowerSprite">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Items_1_1FireFlower.html#a96336ef9dacbd47f9f519a43eeb1ac11" title="MelloMario.Objects.Items.\lFireFlower.UpdateSprite" alt="" coords="227,5,401,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Items_1_1FireFlower.html#a453948b543a6e4b7f5904ff192b7e6a6" title="MelloMario.Objects.Items.\lFireFlower.FireFlower" alt="" coords="449,5,624,47"/>
+</map>

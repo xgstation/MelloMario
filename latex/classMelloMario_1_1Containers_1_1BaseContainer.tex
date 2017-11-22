@@ -1,0 +1,438 @@
+\section{Mello\+Mario.\+Containers.\+Base\+Container$<$ Key, Value $>$ Class Template Reference}
+\label{classMelloMario_1_1Containers_1_1BaseContainer}\index{Mello\+Mario.\+Containers.\+Base\+Container$<$ Key, Value $>$@{Mello\+Mario.\+Containers.\+Base\+Container$<$ Key, Value $>$}}
+
+
+Inheritance diagram for Mello\+Mario.\+Containers.\+Base\+Container$<$ Key, Value $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classMelloMario_1_1Containers_1_1BaseContainer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Containers.\+Base\+Container$<$ Key, Value $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{classMelloMario_1_1Containers_1_1BaseContainer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Add} (Value value)
+\item 
+void \textbf{ Move} (Value value)
+\item 
+void \textbf{ Remove} (Value value)
+\item 
+void \textbf{ Update} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Base\+Container} ()
+\item 
+abstract Key \textbf{ Get\+Key} (Value value)
+\item 
+I\+Enumerable$<$ Value $>$ \textbf{ Scan} (Key key)
+\item 
+I\+Enumerable$<$ Key $>$ \textbf{ Scan\+Keys} ()
+\item 
+I\+Enumerable$<$ Value $>$ \textbf{ Scan\+Values} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Do\+Add} (Value value)
+\item 
+void \textbf{ Do\+Remove} (Value value)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly I\+Dictionary$<$ Value, Key $>$ \textbf{ keys}
+\item 
+readonly I\+Dictionary$<$ Key, I\+Set$<$ Value $>$ $>$ \textbf{ values}
+\item 
+readonly I\+Set$<$ Value $>$ \textbf{ to\+Add}
+\item 
+readonly I\+Set$<$ Value $>$ \textbf{ to\+Move}
+\item 
+readonly I\+Set$<$ Value $>$ \textbf{ to\+Remove}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file Base\+Container.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a3d356d93d9ad13722011b101d6648ad1}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!Base\+Container@{Base\+Container}}
+\index{Base\+Container@{Base\+Container}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{Base\+Container()}
+{\footnotesize\ttfamily \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.\textbf{ Base\+Container} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 21 of file Base\+Container.\+cs.
+
+
+\begin{DoxyCode}
+22         \{
+23             keys = \textcolor{keyword}{new} Dictionary<Value, Key>();
+24             values = \textcolor{keyword}{new} Dictionary<Key, ISet<Value>>();
+25             toAdd = \textcolor{keyword}{new} HashSet<Value>();
+26             toMove = \textcolor{keyword}{new} HashSet<Value>();
+27             toRemove = \textcolor{keyword}{new} HashSet<Value>();
+28         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a09791801b12923f7b6b7e83decfbe997}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!Add@{Add}}
+\index{Add@{Add}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{Add()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Add (\begin{DoxyParamCaption}\item[{Value}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line 78 of file Base\+Container.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Theming.\+Player.\+Init(), Mello\+Mario.\+Objects.\+Characters.\+Mario\+Character.\+Move(), Mello\+Mario.\+Objects.\+Blocks.\+Question.\+Release\+Next\+Item(), and Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Release\+Next\+Item().
+
+
+\begin{DoxyCode}
+79         \{
+80             toAdd.Add(value);
+81         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Containers_1_1BaseContainer_a09791801b12923f7b6b7e83decfbe997_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_abc43a2536f5d915137b83e3181cabce7}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!Do\+Add@{Do\+Add}}
+\index{Do\+Add@{Do\+Add}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{Do\+Add()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Do\+Add (\begin{DoxyParamCaption}\item[{Value}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 30 of file Base\+Container.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Containers.\+Base\+Container$<$ I\+World, I\+Player $>$.\+Update().
+
+
+\begin{DoxyCode}
+31         \{
+32             Key key = GetKey(value);
+33 
+34             \textcolor{keywordflow}{if} (!values.ContainsKey(key))
+35             \{
+36                 values.Add(key, \textcolor{keyword}{new} HashSet<Value>());
+37             \}
+38 
+39             keys.Add(value, key);
+40             values[key].Add(value);
+41         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Containers_1_1BaseContainer_abc43a2536f5d915137b83e3181cabce7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a8febada125f487cf10c14b1f65fa6437}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!Do\+Remove@{Do\+Remove}}
+\index{Do\+Remove@{Do\+Remove}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{Do\+Remove()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Do\+Remove (\begin{DoxyParamCaption}\item[{Value}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 43 of file Base\+Container.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Containers.\+Base\+Container$<$ I\+World, I\+Player $>$.\+Update().
+
+
+\begin{DoxyCode}
+44         \{
+45             Key key = keys[value];
+46 
+47             keys.Remove(value);
+48             values[key].Remove(value);
+49         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Containers_1_1BaseContainer_a8febada125f487cf10c14b1f65fa6437_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a73f9df110a2f12619e088e96991537fc}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!Get\+Key@{Get\+Key}}
+\index{Get\+Key@{Get\+Key}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{Get\+Key()}
+{\footnotesize\ttfamily abstract Key \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Get\+Key (\begin{DoxyParamCaption}\item[{Value}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Referenced by Mello\+Mario.\+Containers.\+Base\+Container$<$ I\+World, I\+Player $>$.\+Do\+Add(), and Mello\+Mario.\+Containers.\+Base\+Container$<$ I\+World, I\+Player $>$.\+Do\+Remove().
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Containers_1_1BaseContainer_a73f9df110a2f12619e088e96991537fc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a2530ad4f8d59f78dccd177bc8007075f}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!Move@{Move}}
+\index{Move@{Move}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{Move()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Move (\begin{DoxyParamCaption}\item[{Value}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line 83 of file Base\+Container.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Move(), and Mello\+Mario.\+Theming.\+Player.\+Spawn().
+
+
+\begin{DoxyCode}
+84         \{
+85             toMove.Add(value);
+86         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Containers_1_1BaseContainer_a2530ad4f8d59f78dccd177bc8007075f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a22d1d351d72889669184260796158208}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!Remove@{Remove}}
+\index{Remove@{Remove}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{Remove()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Remove (\begin{DoxyParamCaption}\item[{Value}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line 88 of file Base\+Container.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Characters.\+Mario\+Character.\+Move(), Mello\+Mario.\+Objects.\+User\+Interfaces.\+Poping\+Up\+Points.\+On\+Update(), and Mello\+Mario.\+Objects.\+Base\+Collidable\+Object.\+Remove\+Self().
+
+
+\begin{DoxyCode}
+89         \{
+90             toRemove.Add(value);
+91         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Containers_1_1BaseContainer_a22d1d351d72889669184260796158208_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_ab2746816cefc64fdadac94ac31eaea47}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!Scan@{Scan}}
+\index{Scan@{Scan}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{Scan()}
+{\footnotesize\ttfamily I\+Enumerable$<$Value$>$ \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Scan (\begin{DoxyParamCaption}\item[{Key}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 53 of file Base\+Container.\+cs.
+
+
+\begin{DoxyCode}
+54         \{
+55             \textcolor{keywordflow}{if} (values.ContainsKey(key))
+56             \{
+57                 \textcolor{keywordflow}{return} values[key];
+58             \}
+59             \textcolor{keywordflow}{return} Enumerable.Empty<Value>();
+60         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a7ab92dafe7bd52a060afe6bd022016ba}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!Scan\+Keys@{Scan\+Keys}}
+\index{Scan\+Keys@{Scan\+Keys}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{Scan\+Keys()}
+{\footnotesize\ttfamily I\+Enumerable$<$Key$>$ \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Scan\+Keys (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 62 of file Base\+Container.\+cs.
+
+
+\begin{DoxyCode}
+63         \{
+64             \textcolor{keywordflow}{return} values.Keys;
+65         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_aff522bd35121081b0e224ab1444416e5}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!Scan\+Values@{Scan\+Values}}
+\index{Scan\+Values@{Scan\+Values}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{Scan\+Values()}
+{\footnotesize\ttfamily I\+Enumerable$<$Value$>$ \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Scan\+Values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 67 of file Base\+Container.\+cs.
+
+
+\begin{DoxyCode}
+68         \{
+69             \textcolor{keywordflow}{foreach} (ISet<Value> value \textcolor{keywordflow}{in} values.Values)
+70             \{
+71                 \textcolor{keywordflow}{foreach} (Value item \textcolor{keywordflow}{in} value)
+72                 \{
+73                     yield \textcolor{keywordflow}{return} item;
+74                 \}
+75             \}
+76         \}
+\end{DoxyCode}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_af04d91bc235e61367a9226814b8966e3}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!Update@{Update}}
+\index{Update@{Update}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{Update()}
+{\footnotesize\ttfamily void \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 93 of file Base\+Container.\+cs.
+
+
+
+Referenced by Mello\+Mario.\+Objects.\+Blocks.\+Question.\+Release\+Next\+Item(), and Mello\+Mario.\+Objects.\+Blocks.\+Brick.\+Release\+Next\+Item().
+
+
+\begin{DoxyCode}
+94         \{
+95             \textcolor{keywordflow}{foreach} (Value value \textcolor{keywordflow}{in} toAdd)
+96             \{
+97                 \textcolor{keywordflow}{if} (!keys.ContainsKey(value))
+98                 \{
+99                     DoAdd(value);
+100                 \}
+101             \}
+102             toAdd.Clear();
+103 
+104             \textcolor{keywordflow}{foreach} (Value value \textcolor{keywordflow}{in} toMove)
+105             \{
+106                 \textcolor{keywordflow}{if} (keys.ContainsKey(value))
+107                 \{
+108                     DoRemove(value);
+109                     DoAdd(value);
+110                 \}
+111             \}
+112             toMove.Clear();
+113 
+114             \textcolor{keywordflow}{foreach} (Value value \textcolor{keywordflow}{in} toRemove)
+115             \{
+116                 \textcolor{keywordflow}{if} (keys.ContainsKey(value))
+117                 \{
+118                     DoRemove(value);
+119                 \}
+120             \}
+121             toRemove.Clear();
+122         \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1Containers_1_1BaseContainer_af04d91bc235e61367a9226814b8966e3_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a0c7e4bb23d6b054dacc7c54e963d7d96}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!keys@{keys}}
+\index{keys@{keys}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{keys}
+{\footnotesize\ttfamily readonly I\+Dictionary$<$Value, Key$>$ \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.keys\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 14 of file Base\+Container.\+cs.
+
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a5073a939cd9d519ec08790cb50778797}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!to\+Add@{to\+Add}}
+\index{to\+Add@{to\+Add}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{to\+Add}
+{\footnotesize\ttfamily readonly I\+Set$<$Value$>$ \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.to\+Add\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 17 of file Base\+Container.\+cs.
+
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a0ec9880a3e45c3486af6e9b857e801a7}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!to\+Move@{to\+Move}}
+\index{to\+Move@{to\+Move}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{to\+Move}
+{\footnotesize\ttfamily readonly I\+Set$<$Value$>$ \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.to\+Move\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 18 of file Base\+Container.\+cs.
+
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a1f416697436ecd413f63ba55882b408b}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!to\+Remove@{to\+Remove}}
+\index{to\+Remove@{to\+Remove}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{to\+Remove}
+{\footnotesize\ttfamily readonly I\+Set$<$Value$>$ \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.to\+Remove\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file Base\+Container.\+cs.
+
+\mbox{\label{classMelloMario_1_1Containers_1_1BaseContainer_a57db9a9f87112a0fff37dbe867d4e7c4}} 
+\index{Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}!values@{values}}
+\index{values@{values}!Mello\+Mario\+::\+Containers\+::\+Base\+Container@{Mello\+Mario\+::\+Containers\+::\+Base\+Container}}
+\subsubsection{values}
+{\footnotesize\ttfamily readonly I\+Dictionary$<$Key, I\+Set$<$Value$>$ $>$ \textbf{ Mello\+Mario.\+Containers.\+Base\+Container}$<$ Key, Value $>$.values\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file Base\+Container.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Base\+Classes/\+Containers/\textbf{ Base\+Container.\+cs}\end{DoxyCompactItemize}

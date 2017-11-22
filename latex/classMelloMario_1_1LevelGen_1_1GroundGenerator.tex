@@ -1,0 +1,130 @@
+\section{Mello\+Mario.\+Level\+Gen.\+Ground\+Generator Class Reference}
+\label{classMelloMario_1_1LevelGen_1_1GroundGenerator}\index{Mello\+Mario.\+Level\+Gen.\+Ground\+Generator@{Mello\+Mario.\+Level\+Gen.\+Ground\+Generator}}
+
+
+Inheritance diagram for Mello\+Mario.\+Level\+Gen.\+Ground\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classMelloMario_1_1LevelGen_1_1GroundGenerator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mello\+Mario.\+Level\+Gen.\+Ground\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1LevelGen_1_1GroundGenerator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Ground\+Generator} (\textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$ \textbf{ listener})
+\item 
+void \textbf{ Request} (Rectangle range, \textbf{ I\+World} world)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$ \textbf{ listener}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file Ground\+Generator.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1GroundGenerator_a52695f5190f7541e21af83a42047ab6f}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator}!Ground\+Generator@{Ground\+Generator}}
+\index{Ground\+Generator@{Ground\+Generator}!Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator}}
+\subsubsection{Ground\+Generator()}
+{\footnotesize\ttfamily Mello\+Mario.\+Level\+Gen.\+Ground\+Generator.\+Ground\+Generator (\begin{DoxyParamCaption}\item[{\textbf{ I\+Listener}$<$ \textbf{ I\+Game\+Object} $>$}]{listener }\end{DoxyParamCaption})}
+
+
+
+Definition at line 17 of file Ground\+Generator.\+cs.
+
+
+\begin{DoxyCode}
+18         \{
+19             this.listener = listener;
+20         \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1GroundGenerator_a0bc2ae80d0690b5ddb81ef1698115d81}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator}!Request@{Request}}
+\index{Request@{Request}!Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator}}
+\subsubsection{Request()}
+{\footnotesize\ttfamily void Mello\+Mario.\+Level\+Gen.\+Ground\+Generator.\+Request (\begin{DoxyParamCaption}\item[{Rectangle}]{range,  }\item[{\textbf{ I\+World}}]{world }\end{DoxyParamCaption})}
+
+
+
+Implements \textbf{ Mello\+Mario.\+I\+Level\+Generator} \doxyref{}{p.}{interfaceMelloMario_1_1ILevelGenerator_a94f7791f8df5c3da2e21a7af8e118eab}.
+
+
+
+Definition at line 22 of file Ground\+Generator.\+cs.
+
+
+
+References Mello\+Mario.\+I\+World.\+Boundary, and Mello\+Mario.\+I\+World.\+Extend().
+
+
+\begin{DoxyCode}
+23         \{
+24             \textcolor{comment}{// note: top / buttom are locked}
+25 
+26             \textcolor{keywordflow}{while} (world.Boundary.Right < range.Right)
+27             \{
+28                 \textcolor{keyword}{new} Floor(world, \textcolor{keyword}{new} Point(world.Boundary.Right, 13 * 32), 
+      listener);
+29                 \textcolor{keyword}{new} Floor(world, \textcolor{keyword}{new} Point(world.Boundary.Right, 14 * 32), 
+      listener);
+30                 world.Extend(0, 32, 0, 0);
+31             \}
+32             \textcolor{keywordflow}{while} (world.Boundary.Left > range.Left)
+33             \{
+34                 \textcolor{keyword}{new} Floor(world, \textcolor{keyword}{new} Point(world.Boundary.Left - 32, 13 * 32), 
+      listener);
+35                 \textcolor{keyword}{new} Floor(world, \textcolor{keyword}{new} Point(world.Boundary.Left - 32, 14 * 32), 
+      listener);
+36                 world.Extend(32, 0, 0, 0);
+37             \}
+38         \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMelloMario_1_1LevelGen_1_1GroundGenerator_a0bc2ae80d0690b5ddb81ef1698115d81_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\label{classMelloMario_1_1LevelGen_1_1GroundGenerator_ac7f230ba60b073bd97fc507085633771}} 
+\index{Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator}!listener@{listener}}
+\index{listener@{listener}!Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator@{Mello\+Mario\+::\+Level\+Gen\+::\+Ground\+Generator}}
+\subsubsection{listener}
+{\footnotesize\ttfamily readonly \textbf{ I\+Listener}$<$\textbf{ I\+Game\+Object}$>$ Mello\+Mario.\+Level\+Gen.\+Ground\+Generator.\+listener\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file Ground\+Generator.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mello\+Mario/\+Mello\+Mario/\+Level\+Gen/\textbf{ Ground\+Generator.\+cs}\end{DoxyCompactItemize}

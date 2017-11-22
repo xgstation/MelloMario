@@ -1,0 +1,9 @@
+<map id="MelloMario.Objects.Blocks.Flag.Flag" name="MelloMario.Objects.Blocks.Flag.Flag">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IListener.html#a7cc6b69de82ebae5ec8a4d6b4008a2bc" title="MelloMario.IListener.Subscribe" alt="" coords="236,9,435,36"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Flag.html#a4897f423a643ce80f599cb61414678a9" title="MelloMario.Objects.Blocks.\lFlag.UpdateSprite" alt="" coords="244,61,427,102"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#aa3116237ab408071c073373daca92ad0" title="MelloMario.Objects.BaseGame\lObject.ShowSprite" alt="" coords="483,27,685,69"/>
+<area shape="rect" id="node8" href="$interfaceMelloMario_1_1ISpriteFactory.html#a65b0d7c27925a037beb2d5f28225d2b7" title="MelloMario.ISpriteFactory.\lCreateFlagSprite" alt="" coords="497,93,671,134"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a968dd48f33c69acc16fb2acfae36c3a8" title="MelloMario.Objects.BaseGame\lObject.Resize" alt="" coords="733,27,936,69"/>
+<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IContainer.html#a515faf6ba73cf569cb85fa5f690e2941" title="MelloMario.IContainer.Move" alt="" coords="995,5,1175,32"/>
+<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a739d7c5d6a671aa79c6e9a6b642e444c" title="MelloMario.Objects.BaseGame\lObject.Relocate" alt="" coords="984,57,1187,98"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.BaseUIObject" name="MelloMario.Objects.BaseUIObject">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IObject.html" title="{IObject\n||+ Update()\l+ Draw()\l}" alt="" coords="8,86,91,178"/>
+<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IPlayer.html" title="{MelloMario.IPlayer\n|+ Character\l+ Camera\l+ Coins\l+ Score\l+ Lifes\l+ TimeRemain\l|+ AddCoin()\l+ AddLife()\l+ AddScore()\l+ Init()\l+ Spawn()\l+ Reset()\l+ Win()\l+ Update()\l}" alt="" coords="115,5,245,259"/>
+</map>

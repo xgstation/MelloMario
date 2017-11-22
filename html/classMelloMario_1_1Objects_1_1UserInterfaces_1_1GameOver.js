@@ -1,0 +1,26 @@
+var classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver =
+[
+    [ "GameOver", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#ad2c84984a1b68fce93da9782bf5abf6d", null ],
+    [ "Draw", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#aaefb20cc2ee49fb1ea78343e8b6608fe", null ],
+    [ "Offset", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a087b01c9a987350dd428de3a3177e375", null ],
+    [ "OnDraw", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a6dc1cf6c7907e8e99bbb4ff4f5639520", null ],
+    [ "OnUpdate", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a572b91cd806714b0ab07ef951fe723bc", null ],
+    [ "Update", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a2aff42e88c55e43b7e950ebae48a6522", null ],
+    [ "UpdateOrigin", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a3998dccafea17a86f03b682239d4bcf8", null ],
+    [ "coinDestinationRect", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a6fc422e9de84b86ff57bff3559ccdae7", null ],
+    [ "coinSprite", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a79601e10d7641467680340541b306647", null ],
+    [ "gameOverDestinationRect", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#acc82c08eb95bb4b52280435c11d31e61", null ],
+    [ "gameOverSprite", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a676a903cfce6f98c5e2504d91ce83fc0", null ],
+    [ "lifeDestinationRect", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a2cbf8ea22b20445784e20e7b191d3cad", null ],
+    [ "lifeSprite", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#abf6d6a3bbc2b7e690d8a1ee85dd8d710", null ],
+    [ "marioDestinationRect", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a7118cf0c198b66a7b6cf87b660e09359", null ],
+    [ "marioSprite", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a8791ba6f8d3a243466ef12707da83cea", null ],
+    [ "Player", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#acd50bdcae2fd608c6a4ac5f3e53f0205", null ],
+    [ "RelativeOrigin", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#ae4b2bf4405e1539da2965770122fae09", null ],
+    [ "splashDestinationRect", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a656b38135804e2835a495635726e474a", null ],
+    [ "splashSprite", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#acc042206c7cc91600bf81e590d8678c6", null ],
+    [ "text2DestinationRect", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a4db1127c6699ede7fa3aa72cfa6a2772", null ],
+    [ "textDestinationRect", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#acf289603e0c5d8a84940dbe02bfe4d11", null ],
+    [ "textSprite", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a206348d051f80b37ecfa01fb9abc32d2", null ],
+    [ "textSprite2", "classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#aa5d21a609340318a8e1350c0e9bb814d", null ]
+];

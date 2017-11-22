@@ -1,0 +1,6 @@
+<map id="MelloMario.Objects.Blocks.Flag" name="MelloMario.Objects.Blocks.Flag">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html" title="{BaseCollidableObject\n|&#45; movement\l|+ LivesHandler()\l+ PointHandler()\l# BaseCollidableObject()\l# OnCollision()\l# OnCollideWorld()\l# Move()\l# StopHorizontalMovement()\l# StopVerticalMovement()\l# RemoveSelf()\l# OnSimulation()\l# ScorePoints()\l# ChangeLives()\l&#45; ScanCollideModes()\l&#45; CollideAll()\l}" alt="" coords="16,587,201,855"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html" title="{BaseGameObject\n|+ Boundary\l# World\l&#45; location\l&#45; size\l&#45; sprite\l|+ Update()\l+ Draw()\l# BaseGameObject()\l# OnUpdate()\l# OnSimulation()\l# OnDraw()\l# Relocate()\l# Resize()\l# ShowSprite()\l# HideSprite()\l}" alt="" coords="37,271,181,539"/>
+<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IGameObject.html" title="{IGameObject\n|+ Boundary\l|}" alt="" coords="59,145,158,223"/>
+<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IObject.html" title="{IObject\n||+ Update()\l+ Draw()\l}" alt="" coords="67,5,150,97"/>
+</map>

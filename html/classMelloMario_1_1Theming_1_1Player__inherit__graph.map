@@ -1,0 +1,3 @@
+<map id="MelloMario.Theming.Player" name="MelloMario.Theming.Player">
+<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IPlayer.html" title="{IPlayer\n|+ Character\l+ Camera\l+ Coins\l+ Score\l+ Lifes\l+ TimeRemain\l|+ AddCoin()\l+ AddLife()\l+ AddScore()\l+ Init()\l+ Spawn()\l+ Reset()\l+ Win()\l+ Update()\l}" alt="" coords="41,5,148,259"/>
+</map>

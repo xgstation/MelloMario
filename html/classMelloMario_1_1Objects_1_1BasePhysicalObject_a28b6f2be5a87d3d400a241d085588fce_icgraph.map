@@ -1,0 +1,4 @@
+<map id="MelloMario.Objects.BasePhysicalObject.ApplyVerticalFriction" name="MelloMario.Objects.BasePhysicalObject.ApplyVerticalFriction">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Items_1_1Star.html#a59f1de817d99da66bea728ff16d0c36a" title="MelloMario.Objects.Items.\lStar.OnCollision" alt="" coords="287,5,462,47"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#a556ab2a4b437c71c4a0b01d9e2956cfa" title="MelloMario.Objects.Characters.\lMario.OnSimulation" alt="" coords="272,71,477,112"/>
+</map>

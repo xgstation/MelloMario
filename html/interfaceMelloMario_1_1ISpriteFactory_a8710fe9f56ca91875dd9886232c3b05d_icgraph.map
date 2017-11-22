@@ -1,0 +1,6 @@
+<map id="MelloMario.ISpriteFactory.CreateQuestionSprite" name="MelloMario.ISpriteFactory.CreateQuestionSprite">
+<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Question.html#a3c2c7d4c223f3cdebeea8a2bbc058db1" title="MelloMario.Objects.Blocks.\lQuestion.UpdateSprite" alt="" coords="227,5,409,47"/>
+<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Brick.html#aa0839526b11ae93504941341bb416714" title="MelloMario.Objects.Blocks.\lBrick.UpdateSprite" alt="" coords="227,71,409,112"/>
+<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Question.html#ab458d1597b3a71a007c508c61db920e9" title="MelloMario.Objects.Blocks.\lQuestion.Initialize" alt="" coords="457,5,640,47"/>
+<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Brick.html#a3ef1507a3a054b64c3ef85c6f70bd300" title="MelloMario.Objects.Blocks.\lBrick.Initialize" alt="" coords="457,71,640,112"/>
+</map>
