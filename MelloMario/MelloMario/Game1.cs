@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using MelloMario.Controls.Controllers;
     using MelloMario.Factories;
+    using MelloMario.LevelGen;
     using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -21,7 +22,7 @@
         private GameModel model;
         private SpriteBatch spriteBatch;
         private BGMManager sounds;
-
+        private NoiseInterpreter noiseInterpreter;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this)
@@ -65,8 +66,6 @@
         protected override void Initialize()
         {
             base.Initialize();
-
-            //soundControl = new SoundManager(this);
             Reset();
         }
 
@@ -82,6 +81,7 @@
             SpriteFactory.Instance.BindLoader(Content);
             SoundFactory.Instance.BindLoader(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            //noiseInterpreter = new NoiseInterpreter(spriteBatch);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@
             base.Draw(time);
 
 #if DEBUGSPRITE //Debug Code
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, null, null, null, null, model.GetActiveViewMatrix);
             RasterizerState state = new RasterizerState();
             state.FillMode = FillMode.WireFrame;
             spriteBatch.GraphicsDevice.RasterizerState = state;
@@ -123,7 +123,7 @@
             spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, model.GetActiveViewMatrix);
             //spriteBatch.Begin(SpriteSortMode.BackToFront);
 #endif
-
+            //noiseInterpreter.Draw();
             model.Draw(time.ElapsedGameTime.Milliseconds, spriteBatch);
             spriteBatch.End();
         }
