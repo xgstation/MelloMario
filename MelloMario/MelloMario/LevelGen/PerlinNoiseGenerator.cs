@@ -23,13 +23,19 @@
             InitializePermuteTable();
         }
 
-        public static float Noise(Vector2 p)
+        public void NewSeed(int newSize = 256)
+        {
+            size = newSize;
+            RngCrypto.GetBytes(GradSeed);
+            InitializePermuteTable();
+        }
+        public float Noise(Vector2 p)
         {
             float a = Perlin(p) + 0.5f * Perlin(p) + 0.25f * Perlin(4f * p) + 0.125f * Perlin(8f * p);
             return a;
         }
 
-        public static float Perlin(Vector2 p)
+        public float Perlin(Vector2 p)
         {
             Point pi = p.ToPoint();
             pi.X %= size - 1;
@@ -69,7 +75,7 @@
                 int n = BitConverter.ToInt32(bytes, 0);
                 SwapInitial(i, n % (i + 1));
             }
-            Array.Copy(permuteTable, 0, permuteTable, 256, 256);
+            Array.Copy(permuteTable, 0, permuteTable, size, size);
         }
 
         private static float GradContribute(int hash, Vector2 v)
@@ -107,6 +113,13 @@
         private static float Lerp(float a, float b, float k)
         {
             return a + (b - a) * k;
+        }
+
+        public float RandomNormal(float f = 1.0f)
+        {
+            byte[] bytes = new byte[4];
+            RngCrypto.GetBytes(bytes);
+            return BitConverter.ToInt32(bytes, 0) / (float)int.MaxValue * f;
         }
     }
 }
