@@ -10,32 +10,32 @@
 
     internal class PerlinNoiseGenerator
     {
-        private static readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
-        private static readonly byte[] GradSeed = new byte[4];
+        private readonly RNGCryptoServiceProvider RngCrypto = new RNGCryptoServiceProvider();
+        private readonly byte[] gradSeed = new byte[4];
+        private readonly byte[] gradAngleSeedX = new byte[4];
 
-        private static int size;
-        private static int[] permuteTable;
+        private int size;
+        private int[] permuteTable;
 
         public PerlinNoiseGenerator(int newSize = 256)
         {
-            size = newSize;
-            RngCrypto.GetBytes(GradSeed);
-            InitializePermuteTable();
+            NewSeed(newSize);
         }
 
         public void NewSeed(int newSize = 256)
         {
             size = newSize;
-            RngCrypto.GetBytes(GradSeed);
+            RngCrypto.GetBytes(gradSeed);
+            RngCrypto.GetBytes(gradAngleSeedX);
             InitializePermuteTable();
         }
-        public float Noise(Vector2 p)
+        public float Noise(Vector2 p, int smooth = 0)
         {
-            float a = Perlin(p) + 0.5f * Perlin(p) + 0.25f * Perlin(4f * p) + 0.125f * Perlin(8f * p);
+            float a = Perlin(p, smooth) + 0.5f * Perlin(p, smooth) + 0.25f * Perlin(4f * p, smooth) + 0.125f * Perlin(8f * p, smooth);
             return a;
         }
 
-        public float Perlin(Vector2 p)
+        public float Perlin(Vector2 p, int smooth = 0)
         {
             Point pi = p.ToPoint();
             pi.X %= size - 1;
@@ -53,18 +53,28 @@
             float gb = GradContribute(hash2, vf - new Vector2(0, 1));
             float gc = GradContribute(hash3, vf - new Vector2(1, 0));
             float gd = GradContribute(hash4, vf - new Vector2(1, 1));
-
-            return Lerp(Lerp(ga, gc, uf.X), Lerp(gb, gd, uf.X), uf.Y);
+            Matrix m = new Matrix();
+            switch (smooth)
+            {
+                //y = y0 + (x  - x0) * (y1-y0)/(x1-x0)
+                //y = ga + (gc - ga) * uf.x
+                case 1:
+                    return LerpPrecise(LerpPrecise(ga, gc, uf.X), LerpPrecise(gb, gd, uf.X), uf.Y);
+                case 2:
+                    return Lerp(Lerp(ga, gc, uf.X), Lerp(gb, gd, uf.X), uf.Y);
+                default:
+                    return Smooth(Smooth(ga, gc, uf.X), Smooth(gb, gd, uf.X), uf.Y);
+            }
         }
 
-        private static void SwapInitial(int i, int j)
+        private void SwapInitial(int i, int j)
         {
             int temp = permuteTable[i] == 0 ? i : permuteTable[i];
             permuteTable[i] = permuteTable[j] == 0 ? j : permuteTable[j];
             permuteTable[j] = temp;
         }
 
-        private static void InitializePermuteTable()
+        public void InitializePermuteTable()
         {
             permuteTable = new int[size * 2];
             byte[] bytes = new byte[4];
@@ -78,10 +88,13 @@
             Array.Copy(permuteTable, 0, permuteTable, size, size);
         }
 
-        private static float GradContribute(int hash, Vector2 v)
+        private float GradContribute(int hash, Vector2 v)
         {
-            float x = BitConverter.ToInt32(GradSeed, 0) / (float) int.MaxValue * 0 + v.X;
-            float y = BitConverter.ToInt32(GradSeed, 0) / (float) int.MaxValue * 0 + v.Y;
+            float x = BitConverter.ToInt32(gradSeed, 0) / (float) int.MaxValue * 0 + v.X;
+            float y = BitConverter.ToInt32(gradSeed, 0) / (float) int.MaxValue * 0 + v.Y;
+            double angleSeed = Math.Cos(BitConverter.ToInt32(gradAngleSeedX, 0) / (double) int.MaxValue);
+            //y *= (float)angleSeed;
+            //y *= (float)Math.Sqrt(1 - angleSeed * angleSeed);
             switch (hash & 0x7)
             {
                 case 0x0:
@@ -105,14 +118,22 @@
             }
         }
 
-        private static float Fade(float f)
+        public float Fade(float f)
         {
             return f * f * f * (f * (f * 6 - 15) + 10);
         }
 
+        private static float Smooth(float a, float b, float k)
+        {
+            return MathHelper.SmoothStep(a, b, k);
+        }
         private static float Lerp(float a, float b, float k)
         {
-            return a + (b - a) * k;
+            return MathHelper.Lerp(a,b,k);
+        }
+        private static float LerpPrecise(float a, float b, float k)
+        {
+            return MathHelper.LerpPrecise(a, b, k);
         }
 
         public float RandomNormal(float f = 1.0f)

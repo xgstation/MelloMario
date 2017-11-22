@@ -18,76 +18,91 @@ namespace MelloMario.LevelGen
         {
             this.spriteBatch = spriteBatch;
             graphicsDevice = spriteBatch.GraphicsDevice;
-            Produce();
+            Produce(perlinColor, ref cellTexture2D);
+            Produce(perlinColor, ref cellTexture2D2, 1);
+            Produce(perlinColor, ref cellTexture2D3, 2);
         }
-        private Texture2D cellTexture2D;
+        private readonly Texture2D cellTexture2D;
+        private readonly Texture2D cellTexture2D2;
+        private readonly Texture2D cellTexture2D3;
+        private const int GRID_I = 4;
 
-        private readonly PerlinNoiseGenerator perlin = new PerlinNoiseGenerator(5120);
-        private void Produce()
+        private readonly PerlinNoiseGenerator perlinTerrian = new PerlinNoiseGenerator(5120);
+        private readonly PerlinNoiseGenerator perlinColor = new PerlinNoiseGenerator(2560);
+        private void Produce(PerlinNoiseGenerator perlinColor, ref Texture2D texture2D, int parameter = 0)
         {
-            cellTexture2D = new Texture2D(graphicsDevice, 2560, 600);
-            Color[] originData = new Color[2560 * 600];
-            Color[] cellData = new Color[2560 * 600];
+            texture2D = new Texture2D(graphicsDevice, 2560, 500);
+            Color[] originData = new Color[2560 * 500];
+            Color[] cellData = new Color[2560 * 500];
             Color c = new Color(80, 80, 80);
             for (int r = 0; r < 50; r++)
             {
-                perlin.NewSeed((int)(5120 * (r + 1) / 50f));
+                perlinTerrian.NewSeed((int)(5120 * (r + 1) / 50f));
                 for (int x = 1; x < 2560; x++)
                 {
-                    float p = perlin.Noise(new Vector2(x + r * 10, 0) * 0.0025f);
-                    int i = (int)(p * 200f + r);
+                    float p = perlinTerrian.Noise(new Vector2(x + r * 10, 0) * 0.0025f, parameter);
+                    int i = (int)(p * 550f + r);
                     i = i > 0 ? i : -i;
                     for (int j = i; j > 0; j--)
                     {
-                        originData[x + (600 - j) * 2560] = c;
+                        var index = x + (500 - j) * 2560;
+                        if (index > 0 && index < 2560 * 500)
+                        {
+                            originData[index] = c;
+                        }
                     }
 
                 }
             }
-            for (int x = 0; x < 2560; x += 16)
+            for (int x = 0; x < 2560; x += GRID_I)
             {
-                float seed = Math.Abs(perlin.RandomNormal());
+                float seed = Math.Abs(perlinTerrian.RandomNormal());
                 if (seed < 0.1f)
                 {
-                    //x += 16;
+                    //x += GRID_I;
                     if (seed < 0.09f)
                     {
-                        //x += 16;
+                        //x += GRID_I;
                     }
 
                 }
-                for (int y = 0; y < 600; y += 16)
+                for (int y = 0; y < 500; y += GRID_I)
                 {
                     if (originData[x + y * 2560].Equals(c))
                     {
-                        for (int n = y; n < 600; n += 16)
+                        for (int n = y; n < 500; n += GRID_I)
                         {
-                            if (n + 15 >= 600)
+                            if (n + GRID_I - 1 >= 500)
                             {
                                 break;
                             }
 
-                            float R = perlin.Perlin(new Vector2(x, n) * 0.009f);
-                            float G = perlin.Perlin(new Vector2(x, n) * 0.01f);
-                            float B = perlin.Perlin(new Vector2(x, n) * 0.012f);
+                            float R = perlinColor.Perlin(new Vector2(x, n) * 0.009f, parameter) * 2f;
+                            float G = perlinColor.Perlin(new Vector2(x, n) * 0.01f, parameter) * 2f;
+                            float B = perlinColor.Perlin(new Vector2(x, n) * 0.012f, parameter) * 2f * 0;
+
                             Vector3 colorVector3 = new Vector3(R, G, B);
-                            colorVector3 = colorVector3 * 2f;
                             colorVector3.Normalize();
+
                             Color color = new Color(colorVector3);
-                            RenderCell(ref cellData, x, n, color);
+
+                            if (true)
+                            {
+                                RenderCell(ref cellData, x, n, color);
+                            }
                         }
                     }
                 }
 
             }
-            cellTexture2D.SetData(cellData);
+            texture2D.SetData(cellData);
         }
-
+        
         private static void RenderCell(ref Color[] data, int x, int y, Color color)
         {
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < GRID_I -1; i++)
             {
-                for (int j = 0; j < 15; j++)
+                for (int j = 0; j < GRID_I -1; j++)
                 {
                     data[x + i + (y + j) * 2560] = color;
                 }
@@ -97,6 +112,8 @@ namespace MelloMario.LevelGen
         public void Draw()
         {
             spriteBatch.Draw(cellTexture2D, Vector2.Zero, Color.White);
+            spriteBatch.Draw(cellTexture2D2, new Vector2(0f, 500f), Color.White);
+            spriteBatch.Draw(cellTexture2D3, new Vector2(0f, 1000f), Color.White);
         }
     }
 }
