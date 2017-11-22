@@ -32,6 +32,10 @@
                 }
                 objects = null;
             }
+            else
+            {
+                // only add objects once, always refuse to extend the world
+            }
         }
     }
 }

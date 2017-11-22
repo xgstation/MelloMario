@@ -13,6 +13,8 @@
 
     #endregion
 
+    // TODO: Merge this file with normal game and use a setting to switch between modes.
+
     /// <summary>
     ///     This is the main type for Mello Mario game.
     /// </summary>
@@ -29,7 +31,7 @@
                 PreferredBackBufferHeight =1500
             };
         }
-        
+
 
         /// <summary>
         ///     LoadContent will be called once per game and is the place to load
