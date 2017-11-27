@@ -71,9 +71,5 @@
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
         }
-
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
-        {
-        }
     }
 }

@@ -46,15 +46,12 @@
         {
             if (sprite != null)
             {
-                OnDraw(time, spriteBatch);
-
                 sprite.Draw(time, spriteBatch, new Rectangle(Boundary.Location, Boundary.Size));
             }
         }
 
         protected abstract void OnUpdate(int time);
         protected abstract void OnSimulation(int time);
-        protected abstract void OnDraw(int time, SpriteBatch spriteBatch);
 
         protected void Relocate(Point newLocation)
         {

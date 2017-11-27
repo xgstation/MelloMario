@@ -17,7 +17,7 @@
     using System.Linq;
 
     #endregion
-    
+
     using MelloMario.Interfaces.Objects.States;
     using MelloMario.Objects.Enemies.ThwompStates;
 
@@ -144,10 +144,6 @@
         }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
-        {
-        }
-
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
         }
 
