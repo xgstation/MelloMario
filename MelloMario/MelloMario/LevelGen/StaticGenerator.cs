@@ -17,7 +17,7 @@
             this.objects = objects;
         }
 
-        public void Request(Rectangle range, IWorld world)
+        public void Request(IWorld world, Rectangle range)
         {
             if (objects != null)
             {
