@@ -54,7 +54,7 @@
             float gb = GradContribute(hash2, vf - new Vector2(0, 1));
             float gc = GradContribute(hash3, vf - new Vector2(1, 0));
             float gd = GradContribute(hash4, vf - new Vector2(1, 1));
-            Matrix m = new Matrix();
+
             switch (smooth)
             {
                 //y = y0 + (x  - x0) * (y1-y0)/(x1-x0)
