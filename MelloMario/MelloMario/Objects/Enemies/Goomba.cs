@@ -134,10 +134,6 @@
         {
         }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
-        {
-        }
-
         private void ChangeFacing(FacingMode facing)
         {
             Facing = facing;

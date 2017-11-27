@@ -1,4 +1,4 @@
-﻿namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen.NoiseGenerators
 {
     #region
 

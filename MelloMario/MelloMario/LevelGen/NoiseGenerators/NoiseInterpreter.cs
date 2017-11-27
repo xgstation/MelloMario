@@ -1,7 +1,4 @@
-﻿
-
-//Work in progress
-namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen.NoiseGenerators
 {
     #region
 
@@ -13,6 +10,8 @@ namespace MelloMario.LevelGen
 
     internal class NoiseInterpreter
     {
+        //Work in progress
+
         private readonly GraphicsDevice graphicsDevice;
         private readonly SpriteBatch spriteBatch;
 

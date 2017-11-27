@@ -377,10 +377,6 @@
             HandlerGameOver?.Invoke(this, eventInfo);
         }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
-        {
-        }
-
         public void UpgradeToSuper()
         {
             SoundEventArgs.SetMethodCalled();
