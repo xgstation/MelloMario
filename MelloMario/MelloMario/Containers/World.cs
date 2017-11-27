@@ -14,11 +14,10 @@
     {
         private readonly ISet<Point> respawnPoints;
 
-        public World(string id, WorldType type, Point size, IEnumerable<Point> respawn)
+        public World(string id, WorldType type, IEnumerable<Point> respawn)
         {
             ID = id;
             Type = type;
-            Boundary = new Rectangle(0, 0, size.X * Const.GRID, size.Y * Const.GRID);
 
             respawnPoints = new HashSet<Point>();
             foreach (Point p in respawn)
