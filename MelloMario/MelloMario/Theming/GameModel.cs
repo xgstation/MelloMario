@@ -101,6 +101,7 @@
             mapPath = "Content/Infinite.json";
             splashElapsed = 0;
             ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
+            session.Add(ActivePlayer);
             IsPaused = false;
             Resume();
         }
@@ -110,6 +111,7 @@
             mapPath = "Content/Level1.json";
             splashElapsed = 0;
             ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
+            session.Add(ActivePlayer);
             IsPaused = false;
             Resume();
         }
