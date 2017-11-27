@@ -89,10 +89,11 @@
 
             Util.TryGet(out Point initialPoint, mapToBeLoaded, "InitialSpawnPoint");
             Util.TryGet(out IList<Point> respawnPoints, mapToBeLoaded, "RespawnPoints");
+            respawnPoints.Add(initialPoint);
             world = new World(
                 id,
                 mapType == "Normal" ? WorldType.normal : WorldType.underground,
-                mapSize,
+                new StaticGenerator(null), // TODO: inverse the dependency
                 respawnPoints);
 
             gameEntityConverter = new GameEntityConverter(world, listener, soundListener);

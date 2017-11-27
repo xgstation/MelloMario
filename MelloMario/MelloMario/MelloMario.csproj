@@ -162,7 +162,6 @@
     <Compile Include="Interfaces\IListener.cs" />
     <Compile Include="Interfaces\ILevelGenerator.cs" />
     <Compile Include="Interfaces\Objects\IObject.cs" />
-    <Compile Include="LevelGen\InfiniteGenerator.cs" />
     <Compile Include="LevelGen\NoiseGenerators\PerlinNoiseGenerator.cs" />
     <Compile Include="Objects\Miscs\Camera.cs" />
     <Compile Include="Controls\Scripts\StartScript.cs" />

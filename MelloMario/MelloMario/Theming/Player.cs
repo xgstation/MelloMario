@@ -72,7 +72,6 @@
                 world.GetRespawnPoint(new Point()),
                 listener,
                 soundListener);
-            Session.Add(this);
             Camera = GameObjectFactory.Instance.CreateCamera();
 
             Lifes = Const.LIFES_INIT;

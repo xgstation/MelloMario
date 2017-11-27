@@ -101,6 +101,7 @@
             mapPath = "Content/Infinite.json";
             splashElapsed = 0;
             ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
+            session.Add(ActivePlayer);
             IsPaused = false;
             Resume();
         }
@@ -110,6 +111,7 @@
             mapPath = "Content/Level1.json";
             splashElapsed = 0;
             ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
+            session.Add(ActivePlayer);
             IsPaused = false;
             Resume();
         }
@@ -218,7 +220,7 @@
             foreach (IPlayer player in session.ScanPlayers())
             {
                 player.Update(time);
-                foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Character.Sensing))
+                foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Character.Sensing, true))
                 {
                     updating.Add(obj);
                 }
