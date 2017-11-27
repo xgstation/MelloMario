@@ -87,7 +87,7 @@
     <Compile Include="NoiseGame.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="LevelGen\JsonGenerator.cs" />
-    <Compile Include="LevelGen\NoiseInterpreter.cs" />
+    <Compile Include="LevelGen\NoiseGenerators\NoiseInterpreter.cs" />
     <Compile Include="LevelGen\StaticGenerator.cs" />
     <Compile Include="LevelGen\GroundGenerator.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingDown.cs" />
@@ -163,7 +163,7 @@
     <Compile Include="Interfaces\ILevelGenerator.cs" />
     <Compile Include="Interfaces\Objects\IObject.cs" />
     <Compile Include="LevelGen\InfiniteGenerator.cs" />
-    <Compile Include="LevelGen\PerlinNoiseGenerator.cs" />
+    <Compile Include="LevelGen\NoiseGenerators\PerlinNoiseGenerator.cs" />
     <Compile Include="Objects\Miscs\Camera.cs" />
     <Compile Include="Controls\Scripts\StartScript.cs" />
     <Compile Include="Theming\Player.cs" />

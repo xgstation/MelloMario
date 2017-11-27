@@ -6,6 +6,7 @@
     using MelloMario.Controls.Controllers;
     using MelloMario.Factories;
     using MelloMario.LevelGen;
+    using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
