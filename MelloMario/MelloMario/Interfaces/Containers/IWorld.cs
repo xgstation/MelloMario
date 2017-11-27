@@ -22,7 +22,7 @@
         Rectangle Boundary { get; }
         void Extend(int left, int right, int top, int bottom);
 
-        IEnumerable<IGameObject> ScanNearby(Rectangle range);
+        IEnumerable<IGameObject> ScanNearby(Rectangle range, bool allowExtension = false);
         Point GetRespawnPoint(Point location);
     }
 }

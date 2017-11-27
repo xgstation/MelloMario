@@ -218,7 +218,7 @@
             foreach (IPlayer player in session.ScanPlayers())
             {
                 player.Update(time);
-                foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Character.Sensing))
+                foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Character.Sensing, true))
                 {
                     updating.Add(obj);
                 }
