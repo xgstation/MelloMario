@@ -6,6 +6,7 @@
     using System.Collections.Generic;
     using MelloMario.Containers;
     using MelloMario.Controls.Scripts;
+    using MelloMario.LevelGen.JsonConverters;
     using MelloMario.Objects.UserInterfaces;
     using MelloMario.Sounds;
     using Microsoft.Xna.Framework;
