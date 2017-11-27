@@ -22,7 +22,7 @@
         {
           "Type": "Mario",
           "SpawnPoint": {
-            "X": 2,
+            "X": 4,
             "Y": 10
           },
           "State": "Normal"
@@ -36,7 +36,7 @@
           },
           "Property": {
             "IsHidden": true,
-            "ItemValues": ["OneUpMushroomUnveil"]
+            "ItemValues": [ "OneUpMushroomUnveil" ]
           },
           "Type": "Question"
         },
@@ -585,6 +585,13 @@
           "Point": {
             "X": 22,
             "Y": 12
+          }
+        },
+        {
+          "Type": "Thwomp",
+          "Point": {
+            "X": 20,
+            "Y": 15
           }
         },
         {

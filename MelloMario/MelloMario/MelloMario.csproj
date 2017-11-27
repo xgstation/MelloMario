@@ -90,6 +90,8 @@
     <Compile Include="LevelGen\NoiseInterpreter.cs" />
     <Compile Include="LevelGen\StaticGenerator.cs" />
     <Compile Include="LevelGen\GroundGenerator.cs" />
+    <Compile Include="Objects\Enemies\ThwompStates\MovingDown.cs" />
+    <Compile Include="Objects\Enemies\ThwompStates\MovingUp.cs" />
     <Compile Include="Sounds\SoundEffectListener.cs" />
     <Compile Include="Interfaces\Objects\States\IThwompState.cs" />
     <Compile Include="Objects\Enemies\Thwomp.cs" />

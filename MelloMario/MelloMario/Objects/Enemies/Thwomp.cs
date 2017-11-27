@@ -14,8 +14,12 @@
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System.Linq;
 
     #endregion
+    
+    using MelloMario.Interfaces.Objects.States;
+    using MelloMario.Objects.Enemies.ThwompStates;
 
     [Serializable]
     internal class Thwomp : BasePhysicalObject
@@ -30,20 +34,21 @@
             32)
         {
             state = new ThwompStates.Normal(this);
+            NormalTime = 100;
             UpdateSprite();
         }
 
-        public IThwompState State
+        public IThwompState State { get; set; }
+
+        public bool HasMarioBelow { get; private set; }
+
+        public int NormalTime { get; }
+
+        private bool DetectMario()
         {
-            get
-            {
-                return state;
-            }
-            set
-            {
-                state = value;
-                UpdateSprite();
-            }
+            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
+                    where obj is ICharacter
+                    select obj).Any();
         }
 
         private void UpdateSprite()
@@ -54,15 +59,18 @@
         protected override void OnUpdate(int time)
         {
             state.Update(time);
+            HasMarioBelow = DetectMario();
         }
 
         protected override void OnSimulation(int time)
         {
-            ApplyGravity();
-
-            if (Facing == FacingMode.left) // Make condition if he is colliding with floor tile or not
+            if (State is MovingUp)
             {
                 SetVerticalVelocity(-Const.VELOCITY_RISING_THWOMP);
+            }
+            else if (State is MovingDown)
+            {
+                SetVerticalVelocity(Const.VELOCITY_RISING_THWOMP);
             }
 
             base.OnSimulation(time);

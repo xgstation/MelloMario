@@ -5,11 +5,13 @@
     using System;
 
     #endregion
+    
+    using MelloMario.Interfaces.Objects.States;
 
     [Serializable]
-    internal class Normal : BaseState<Thwomp>, IThwompState
+    internal class Normal : BaseTimedState<Thwomp>, IThwompState
     {
-        public Normal(Thwomp owner) : base(owner)
+        public Normal(Thwomp owner) : base(owner, owner.NormalTime)
         {
         }
 
@@ -24,6 +26,14 @@
 
         public override void Update(int time)
         {
+        }
+
+        protected override void OnTimer(int time)
+        {
+            if (!Owner.HasMarioBelow)
+            {
+                Owner.State = new MovingUp(Owner);
+            }
         }
     }
 }

@@ -103,7 +103,7 @@
             switch (status)
             {
                 case "Defeated":
-                    return new StaticSprite(GetTexture("GoombaDead"));
+                    return new StaticSprite(GetTexture("ThwompDead"));
                 case "Normal":
                     return new AnimatedSprite(GetTexture("Thwomp"), 2, 1);
                 default:

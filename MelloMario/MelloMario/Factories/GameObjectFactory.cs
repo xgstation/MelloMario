@@ -83,6 +83,8 @@
                     return new Koopa(world, location, listener, "Green");
                 case "RedKoopa":
                     return new Koopa(world, location, listener, "Red");
+                case "Thwomp":
+                    return new Thwomp(world, location, listener);
 
                 //entities
                 case "Coin":
