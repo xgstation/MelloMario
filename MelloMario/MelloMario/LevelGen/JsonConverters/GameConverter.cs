@@ -90,22 +90,26 @@
             Util.TryGet(out Point initialPoint, mapToBeLoaded, "InitialSpawnPoint");
             Util.TryGet(out IList<Point> respawnPoints, mapToBeLoaded, "RespawnPoints");
             respawnPoints.Add(initialPoint);
+
+            StaticGenerator generator = new StaticGenerator();
+
             world = new World(
                 id,
                 mapType == "Normal" ? WorldType.normal : WorldType.underground,
-                new StaticGenerator(null), // TODO: inverse the dependency
+                generator, // TODO: inverse the dependency
                 respawnPoints);
 
             gameEntityConverter = new GameEntityConverter(world, listener, soundListener);
 
             Serializers.Converters.Add(gameEntityConverter);
-            if (entities == null)
-            {
-                return world;
-            }
+
             foreach (JToken jToken in entities)
             {
-                jToken.ToObject<EncapsulatedObject<IGameObject>>(Serializers);
+                EncapsulatedObject<IGameObject> objs = jToken.ToObject<EncapsulatedObject<IGameObject>>(Serializers);
+                if (objs != null)
+                {
+                    generator.FeedObjects(objs.RealObj);
+                }
             }
 
             return world;
