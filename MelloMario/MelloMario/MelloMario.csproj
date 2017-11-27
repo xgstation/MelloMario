@@ -84,6 +84,7 @@
     <Compile Include="BaseClasses\Objects\BaseUIObject.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
+    <Compile Include="Graphics\Sprites\StaticLargeSprite.cs" />
     <Compile Include="NoiseGame.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="LevelGen\JsonGenerator.cs" />
@@ -348,6 +349,7 @@
     <Content Include="Content\SuperStandingRight.png" />
     <Content Include="Content\SuperWalkingLeft.png" />
     <Content Include="Content\SuperWalkingRight.png" />
+    <Content Include="Content\Thwomp2.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -105,7 +105,7 @@
                 case "Defeated":
                     return new StaticSprite(GetTexture("ThwompDead"));
                 case "Normal":
-                    return new AnimatedSprite(GetTexture("Thwomp"), 2, 1);
+                    return new StaticLargeSprite(GetTexture("Thwomp2"), 0, 0);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
