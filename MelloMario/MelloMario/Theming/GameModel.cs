@@ -67,6 +67,8 @@
 
         public void Init()
         {
+            Normal(); // note: this is a hack
+
             IsPaused = true;
             new StartScript().Bind(controllers, this, ActivePlayer.Character);
 

@@ -15,6 +15,7 @@
         protected BaseUIObject(IPlayer player)
         {
             // TODO: use another spritebatch
+            // it is wrong to "move" a ui object
             Player = player;
             RelativeOrigin = player.Camera.Viewport.Location;
         }

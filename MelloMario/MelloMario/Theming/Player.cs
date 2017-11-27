@@ -114,7 +114,7 @@
             TimeRemain -= time;
             if (Character != null)
             {
-                Camera?.LookAt(
+                Camera.LookAt(
                     ((IGameObject) Character).Boundary.Location,
                     Character.CurrentWorld.Boundary); // TODO: remove type casting
             }
