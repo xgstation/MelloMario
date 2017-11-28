@@ -97,6 +97,8 @@
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_powerup_appears"));
                 case "OneUpCollect":
                     return new Sounds.SoundEffect(GetSoundEffect("SFX/smb_1"));
+                case "Thwomp":
+                    return new Sounds.SoundEffect(GetSoundEffect("SFX/thwomp"));
                 default:
                     // never reach
                     return null;

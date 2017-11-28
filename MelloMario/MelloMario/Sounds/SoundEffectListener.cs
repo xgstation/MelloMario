@@ -68,6 +68,9 @@
         {
             switch (c)
             {
+                case Objects.Enemies.Thwomp _:
+                    BlockSoundEffect(c, e);
+                    break;
                 case FireFlower _:
                 case SuperMushroom _:
                 case Star _:
@@ -133,6 +136,9 @@
                     PlayEffect(methodName == "Bump" ? "BumpBlock" : null);
                     break;
                 case Pipeline _:
+                    break;
+                case Objects.Enemies.Thwomp _:
+                    PlayEffect("Thwomp");
                     break;
             }
         }
