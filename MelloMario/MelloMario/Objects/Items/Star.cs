@@ -10,6 +10,7 @@
     using MelloMario.Objects.Items.StarStates;
     using MelloMario.Objects.UserInterfaces;
     using MelloMario.Sounds;
+    using MelloMario.Sounds.Effects;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
