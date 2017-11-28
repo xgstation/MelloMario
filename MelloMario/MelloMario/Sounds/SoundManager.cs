@@ -1,32 +1,28 @@
-﻿namespace MelloMario.Theming
+﻿namespace MelloMario.Sounds
 {
     #region
 
-    using MelloMario.Sounds;
+    using MelloMario.Sounds.Effects;
+    using MelloMario.Sounds.Tracks;
 
     #endregion
 
     internal class SoundManager
     {
         public readonly IListener<ISoundable> SoundEffectListener;
-        private readonly BGMManager sounds;
-        private IModel model;
+        private readonly SoundTrackManager sounds;
 
         public SoundManager()
         {
             SoundEffectListener = new SoundEffectListener();
-            //sounds = new BGMManager();
-        }
-
-        public void BindModel(IModel newGameModel)
-        {
-            model = newGameModel;
+            //TODO: Fix it
+            //sounds = new SoundTrackManager();
         }
 
         public void ToggleMute()
         {
-            sounds?.ToggleMute();
-            (SoundEffectListener as SoundEffectListener)?.ToggleMute();
+            sounds.ToggleMute();
+            (SoundEffectListener as SoundEffectListener).ToggleMute();
         }
 
         public void Update(int time)

@@ -9,6 +9,7 @@
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.OneUpMushroomStates;
     using MelloMario.Sounds;
+    using MelloMario.Sounds.Effects;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
