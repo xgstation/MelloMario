@@ -782,3 +782,9 @@
 /processorParam:TextureFormat=Color
 /build:Thwomp2.png
 
+#begin SFX/thwomp.WAV
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SFX/thwomp.WAV
+
