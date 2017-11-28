@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MelloMario.Theming
+﻿namespace MelloMario.Theming
 {
+    #region
+
     using MelloMario.Objects.UserInterfaces;
     using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
 
     internal class GraphicsManager
     {

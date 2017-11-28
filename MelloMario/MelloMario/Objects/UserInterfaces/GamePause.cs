@@ -1,9 +1,11 @@
-﻿using System;
-
-namespace MelloMario.Objects.UserInterfaces
+﻿namespace MelloMario.Objects.UserInterfaces
 {
-    using Microsoft.Xna.Framework;
+    #region
+
+    using System;
     using Microsoft.Xna.Framework.Graphics;
+
+    #endregion
 
     internal class GamePause : BaseUIObject
     {

@@ -7,13 +7,9 @@
     using MelloMario.Controls.Controllers;
     using MelloMario.Controls.Scripts;
     using MelloMario.Factories;
-    using MelloMario.LevelGen;
     using MelloMario.LevelGen.JsonConverters;
-    using MelloMario.LevelGen.NoiseGenerators;
-    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 

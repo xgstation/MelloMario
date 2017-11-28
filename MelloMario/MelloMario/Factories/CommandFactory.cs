@@ -2,9 +2,9 @@
 {
     #region
 
-    using MelloMario.Controls.Commands;
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using MelloMario.Controls.Commands;
 
     #endregion
 

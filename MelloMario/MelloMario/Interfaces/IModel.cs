@@ -2,9 +2,8 @@
 {
     #region
 
-    using Microsoft.Xna.Framework.Graphics;
-
     #endregion
+
     internal enum GameState
     {
         gameOver,

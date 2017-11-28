@@ -4,6 +4,7 @@
 
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using MelloMario.Factories;
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Blocks.BrickStates;
@@ -12,7 +13,6 @@
     using MelloMario.Objects.UserInterfaces;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using System.Linq;
 
     #endregion
 

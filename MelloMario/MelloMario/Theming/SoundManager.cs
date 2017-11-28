@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MelloMario.Theming
+﻿namespace MelloMario.Theming
 {
+    #region
+
     using MelloMario.Sounds;
+
+    #endregion
 
     internal class SoundManager
     {

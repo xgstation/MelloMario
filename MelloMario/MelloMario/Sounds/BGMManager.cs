@@ -5,7 +5,6 @@
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.ProtectionStates;
-    using MelloMario.Theming;
     using Microsoft.Xna.Framework.Media;
 
     #endregion
