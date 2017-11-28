@@ -22,15 +22,20 @@
     /// </summary>
     internal class Game1 : Game
     {
+        //XNA Member
         private readonly GraphicsDeviceManager graphics;
+        //MelloMario Members
+        public enum Menu { Normal, Infinite, Quit }
+
         private readonly GraphicsManager graphicsManager;
         private readonly SoundManager soundManager;
         private readonly IEnumerable<IController> controllers;
         private readonly LevelIOJson levelIOJson;
         private GameModel gameModel;
-        public enum Menu { Normal, Infinite, Quit}
 
         public Menu CurrentSelected { get; private set; }
+        public IPlayer ActivePlayer { get; }
+
         public Game1()
         {
             //XNA Win Form Initialize
@@ -48,7 +53,10 @@
                 new GamepadController(),
                 new KeyboardController()
             };
-           new StartScript().Bind(controllers, this);
+
+            ActivePlayer = new Player(graphicsManager, soundManager, controllers);
+
+            new StartScript().Bind(controllers, this);
         }
 
 
@@ -126,14 +134,11 @@
         {
             switch (CurrentSelected)
             {
-                //TOOD: Use constructor to create initial state of mode
                 case Menu.Normal:
-                    gameModel = new GameModel(this);
-                    gameModel.Normal();
+                    gameModel = new GameModel(this, GameMode.normal);
                     break;
                 case Menu.Infinite:
-                    gameModel = new GameModel(this);
-                    gameModel.Infinite();
+                    gameModel = new GameModel(this, GameMode.infinite);
                     break;
                 case Menu.Quit:
                     Exit();

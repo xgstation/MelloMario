@@ -156,8 +156,6 @@
     <Compile Include="Objects\Enemies\PiranhaStates\Show.cs" />
     <Compile Include="Factories\GameObjectFactory.cs" />
     <Compile Include="Factories\CommandFactory.cs" />
-    <Compile Include="Controls\Commands\InfiniteMode.cs" />
-    <Compile Include="Controls\Commands\NormalMode.cs" />
     <Compile Include="Factories\SoundFactory.cs" />
     <Compile Include="Factories\SpriteFactory.cs" />
     <Compile Include="Objects\Enemies\Goomba.cs" />
@@ -383,6 +381,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
