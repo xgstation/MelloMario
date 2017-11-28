@@ -19,21 +19,30 @@
             inGame
         }
 
-        private State oldState;
-
         private readonly Game1 game;
-        private BaseUIObject hud;
-        private BaseUIObject splash;
+        private IObject hud;
+        private IObject splash;
 
         private string worldName;
         private IPlayer player;
+        private State state;
 
-        public State ScreenState { get; set; }
+        public State ScreenState
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+                UpdateInterface();
+            }
+        }
 
         public UIManager(Game1 game)
         {
             this.game = game;
-            oldState = State.idle;
             ScreenState = State.start;
         }
 
@@ -49,10 +58,6 @@
 
         public void Update(int time)
         {
-            if (oldState != ScreenState)
-            {
-                OnStateChange();
-            }
             if (player != null && hud != null)
             {
                 worldName = player.Character.CurrentWorld.ID;
@@ -77,7 +82,7 @@
             hud = hud == null ? new HUD() : null;
         }
 
-        private void OnStateChange()
+        private void UpdateInterface()
         {
             switch (ScreenState)
             {
@@ -105,7 +110,6 @@
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            oldState = ScreenState;
         }
     }
 }
