@@ -20,8 +20,8 @@
         }
 
         private readonly Game1 game;
-        private IObject hud;
-        private IObject splash;
+        private IUIObject hud;
+        private IUIObject splash;
 
         private string worldName;
         private IPlayer player;

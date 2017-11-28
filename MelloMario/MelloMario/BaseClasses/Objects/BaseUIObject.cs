@@ -6,7 +6,7 @@
 
     #endregion
 
-    internal abstract class BaseUIObject : IObject
+    internal abstract class BaseUIObject : IUIObject
     {
         public void Update(int time)
         {
