@@ -8,9 +8,9 @@
 
     #endregion
 
-    internal class StartScript : IScript
+    internal class StartScript : IScript<Game1>
     {
-        public void Bind(IEnumerable<IController> controllers, IModel model, ICharacter character)
+        public void Bind(IEnumerable<IController> controllers, Game1 game)
         {
             ICommandFactory factory = CommandFactory.Instance;
 
@@ -19,9 +19,12 @@
                 controller.Reset();
 
                 // game character commands
-                controller.AddCommand(Keys.A, factory.CreateModelCommand("Normal", model), KeyBehavior.press);
-                controller.AddCommand(Keys.B, factory.CreateModelCommand("Infinite", model), KeyBehavior.press);
-                controller.AddCommand(Keys.Q, factory.CreateModelCommand("Quit", model), KeyBehavior.press);
+                controller.AddCommand(Keys.Up, factory.CreateGameCommand("CursorUp", game), KeyBehavior.press);
+                controller.AddCommand(Keys.Down, factory.CreateGameCommand("CursorDown", game), KeyBehavior.press);
+                controller.AddCommand(Keys.Enter, factory.CreateGameCommand("Select", game), KeyBehavior.press);
+                controller.AddCommand(Keys.Q, factory.CreateGameCommand("Exit", game), KeyBehavior.press);
+                controller.AddCommand(Keys.F12, factory.CreateGameCommand("ToggleFullScreen", game), KeyBehavior.press);
+                controller.AddCommand(Keys.M, factory.CreateGameCommand("ToggleMute", game), KeyBehavior.press);
             }
         }
     }
