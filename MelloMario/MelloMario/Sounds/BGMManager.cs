@@ -11,7 +11,6 @@
 
     internal class BGMManager
     {
-        private readonly IModel model;
 
         private static readonly ISoundTrack Normal = SoundFactory.Instance.CreateSoundTrack("Normal");
         private static readonly ISoundTrack Hurry = SoundFactory.Instance.CreateSoundTrack("Hurry");
@@ -20,9 +19,15 @@
 
         private ISoundTrack currentTrack;
 
-        public BGMManager(IModel model)
+        private IModel model;
+        public BGMManager()
         {
-            this.model = model;
+            model = null;
+        }
+
+        public void BindModel(IModel newModel)
+        {
+            model = newModel;
         }
 
         private void PlayMusic(ISoundTrack track)

@@ -59,7 +59,7 @@
             Score += delta;
         }
 
-        public void Init(
+        public void Initialize(
             string type,
             IWorld world,
             IListener<IGameObject> listener,
