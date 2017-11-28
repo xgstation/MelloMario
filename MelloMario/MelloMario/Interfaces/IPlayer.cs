@@ -20,7 +20,7 @@
         void AddLife();
         void AddScore(int delta);
 
-        void Init(
+        void Initialize(
             string type,
             IWorld newWorld,
             IListener<IGameObject> listener,
