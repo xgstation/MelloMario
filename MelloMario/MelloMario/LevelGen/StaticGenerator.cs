@@ -10,14 +10,24 @@
 
     internal class StaticGenerator : ILevelGenerator
     {
-        private IEnumerable<IGameObject> objects;
+        private ISet<IGameObject> objects;
 
-        public StaticGenerator(IEnumerable<IGameObject> objects)
+        public StaticGenerator()
         {
-            this.objects = objects;
+            objects = new HashSet<IGameObject>();
         }
 
-        public void Request(Rectangle range, IWorld world)
+        public void FeedObjects(IEnumerable<IGameObject> newObjects)
+        {
+            foreach (IGameObject obj in newObjects)
+            {
+                // note: we can add them to the world here with no problem
+                // but the extra process is to ensure dynamic loading works
+                objects.Add(obj);
+            }
+        }
+
+        public void Request(IWorld world, Rectangle range)
         {
             if (objects != null)
             {
@@ -31,10 +41,6 @@
                     world.Add(obj);
                 }
                 objects = null;
-            }
-            else
-            {
-                // only add objects once, always refuse to extend the world
             }
         }
     }

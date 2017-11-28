@@ -19,7 +19,7 @@
 
         public override void Update(int time)
         {
-            if (Owner.Boundary.Y <= initialY - 48)
+            if (Owner.Boundary.Y <= initialY)
             {
                 //Owner.State = new Show(Owner);
             }

@@ -8,6 +8,6 @@
 
     internal interface ILevelGenerator
     {
-        void Request(Rectangle range, IWorld world);
+        void Request(IWorld world, Rectangle range);
     }
 }

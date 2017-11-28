@@ -12,13 +12,15 @@
     [Serializable]
     internal class World : BaseContainer<Point, IGameObject>, IWorld
     {
+        private readonly ILevelGenerator generator;
         private readonly ISet<Point> respawnPoints;
 
-        public World(string id, WorldType type, Point size, IEnumerable<Point> respawn)
+        public World(string id, WorldType type, ILevelGenerator generator, IEnumerable<Point> respawn)
         {
             ID = id;
             Type = type;
-            Boundary = new Rectangle(0, 0, size.X * Const.GRID, size.Y * Const.GRID);
+
+            this.generator = generator;
 
             respawnPoints = new HashSet<Point>();
             foreach (Point p in respawn)
@@ -36,8 +38,13 @@
             Boundary = new Rectangle(Boundary.Left - left, Boundary.Top - top, Boundary.Width + left + right, Boundary.Height + top + bottom);
         }
 
-        public IEnumerable<IGameObject> ScanNearby(Rectangle range)
+        public IEnumerable<IGameObject> ScanNearby(Rectangle range, bool allowExtension = false)
         {
+            if (allowExtension)
+            {
+                generator.Request(this, range);
+            }
+
             int left = (range.Left - Const.SCANRANGE) / Const.GRID;
             int right = (range.Right + Const.SCANRANGE) / Const.GRID;
             int top = (range.Top - Const.SCANRANGE) / Const.GRID;

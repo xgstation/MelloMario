@@ -44,6 +44,8 @@
 
         public int NormalTime { get; }
 
+        private bool onFloor = false;
+
         private bool DetectMario()
         {
             return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
@@ -64,11 +66,13 @@
 
         protected override void OnSimulation(int time)
         {
-            if (State is MovingUp)
+            //ApplyGravity();
+
+            if (onFloor)
             {
                 SetVerticalVelocity(-Const.VELOCITY_RISING_THWOMP);
             }
-            else if (State is MovingDown)
+            else
             {
                 SetVerticalVelocity(Const.VELOCITY_RISING_THWOMP);
             }
@@ -111,6 +115,8 @@
                     }
                     goto case "Stair";
                 case "Floor":
+                    onFloor = true;
+                    break;
                 // perhaps register that it is on the floor, wait a second, then rise back up?
                 case "Pipeline":
                 case "Stair":
@@ -129,22 +135,16 @@
                         Bounce(mode, new Vector2());
                     }
                     break;
-                case "Koopa":
-                    if (target is Koopa koopa)
-                    {
-                        if (koopa.State is MovingShell)
-                        {
-                            // Do nothing
-                        }
-                    }
-                    break;
-                case "Fire":
-                    break;
             }
         }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
+            Bounce(mode, new Vector2());
+            if (mode == CollisionMode.InnerTop)
+            {
+                onFloor = false;
+            }
         }
 
         private void ChangeFacing(FacingMode facing)

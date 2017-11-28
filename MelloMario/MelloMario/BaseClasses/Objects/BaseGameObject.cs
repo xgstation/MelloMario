@@ -23,7 +23,6 @@
             this.location = location;
             this.size = size;
             World = world;
-            World.Add(this);
         }
 
         public Rectangle Boundary

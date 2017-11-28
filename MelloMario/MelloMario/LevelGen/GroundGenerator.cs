@@ -19,7 +19,7 @@
             this.listener = listener;
         }
 
-        public void Request(Rectangle range, IWorld world)
+        public void Request(IWorld world, Rectangle range)
         {
             // note: top / buttom are locked
 
