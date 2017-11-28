@@ -9,28 +9,35 @@
 
     internal class LevelIOJson
     {
-        private readonly IListener<IGameObject> listener;
-
-        private readonly IListener<ISoundable> soundListener;
+        private IListener<IGameObject> scoreListener;
+        private IListener<ISoundable> soundListener;
         // Note: As File.ReadAllText will take care of dispose itself,
         // there is no need to implement IDisposable
 
-        private readonly string path;
+        private readonly string directoryPath;
         private GameConverter gameConverter;
         private string levelString;
 
-        public LevelIOJson(string jsonPath, IListener<IGameObject> listener, IListener<ISoundable> soundListener)
+        public LevelIOJson(string jsonDirectoryPath)
         {
-            this.listener = listener;
-            this.soundListener = soundListener;
-            path = jsonPath;
+            directoryPath = jsonDirectoryPath;
             Util.Initilalize();
         }
 
-        public IWorld Load(string id)
+        public void BindScoreListener(IListener<IGameObject> newScoreListener)
         {
-            levelString = File.ReadAllText(path);
-            gameConverter = new GameConverter(listener, soundListener, id);
+            scoreListener = newScoreListener;
+        }
+
+        public void BindSoundListener(IListener<ISoundable> newSoundListener)
+        {
+            soundListener = newSoundListener;
+        }
+
+        public IWorld Load(string map, string id)
+        {
+            levelString = File.ReadAllText(directoryPath + "/" + map);
+            gameConverter = new GameConverter(scoreListener, soundListener, id);
 
             return JsonConvert.DeserializeObject<IWorld>(levelString, gameConverter);
         }

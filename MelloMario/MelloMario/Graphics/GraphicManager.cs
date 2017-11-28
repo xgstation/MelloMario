@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.UserInterfaces;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -46,12 +47,39 @@
         public void Update(int time)
         {
             uiManager.Update(time);
+            if (model == null)
+            {
+                return;
+            }
+            switch (model.State)
+            {
+                case GameState.gameOver:
+                    uiManager.ScreenState = UIManager.State.over;
+                    break;
+                case GameState.gameWon:
+                    uiManager.ScreenState = UIManager.State.won;
+                    break;
+                case GameState.pause:
+                    uiManager.ScreenState = UIManager.State.pause;
+                    break;
+                case GameState.onProgress:
+                    uiManager.ScreenState = UIManager.State.inGame;
+                    break;
+                case GameState.transist:
+                    uiManager.ScreenState = UIManager.State.inGame;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         public void Draw(int time)
         {
             DrawUI(time);
-            // DrawGameObjects(time);
+            if (model != null)
+            {
+                DrawGameObjects(time);
+            }
         }
 
         private void DrawUI(int time)
@@ -64,10 +92,6 @@
         private void DrawGameObjects(int time)
         {
             spriteBatchGameObjects.Begin(SpriteSortMode.BackToFront);
-            if (player == null)
-            {
-                return;
-            }
             foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
             {
                 obj.Draw(model?.State == GameState.pause ? 0 : time, spriteBatchGameObjects);
