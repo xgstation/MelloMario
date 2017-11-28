@@ -168,7 +168,7 @@
     <Compile Include="LevelGen\NoiseGenerators\PerlinNoiseGenerator.cs" />
     <Compile Include="Objects\Miscs\Camera.cs" />
     <Compile Include="Controls\Scripts\StartScript.cs" />
-    <Compile Include="Graphics\GraphicsManager.cs" />
+    <Compile Include="Graphics\GraphicManager.cs" />
     <Compile Include="Theming\Player.cs" />
     <Compile Include="UserInterfaces\GameWon.cs" />
     <Compile Include="UserInterfaces\GameStart.cs" />
