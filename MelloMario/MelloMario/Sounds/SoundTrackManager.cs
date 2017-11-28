@@ -9,7 +9,7 @@
 
     #endregion
 
-    internal class BGMManager
+    internal class SoundTrackManager
     {
         private static readonly ISoundTrack Normal = SoundFactory.Instance.CreateSoundTrack("Normal");
         private static readonly ISoundTrack Hurry = SoundFactory.Instance.CreateSoundTrack("Hurry");
@@ -20,7 +20,7 @@
         private IModel model;
         private IPlayer player;
 
-        public BGMManager()
+        public SoundTrackManager()
         {
             model = null;
         }

@@ -7,24 +7,18 @@
     internal class SoundManager
     {
         public readonly IListener<ISoundable> SoundEffectListener;
-        private readonly BGMManager sounds;
-        private IModel model;
+        private readonly SoundTrackManager sounds;
 
         public SoundManager()
         {
             SoundEffectListener = new SoundEffectListener();
-            //sounds = new BGMManager();
-        }
-
-        public void BindModel(IModel newGameModel)
-        {
-            model = newGameModel;
+            sounds = new SoundTrackManager();
         }
 
         public void ToggleMute()
         {
-            sounds?.ToggleMute();
-            (SoundEffectListener as SoundEffectListener)?.ToggleMute();
+            sounds.ToggleMute();
+            (SoundEffectListener as SoundEffectListener).ToggleMute();
         }
 
         public void Update(int time)
