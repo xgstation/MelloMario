@@ -80,7 +80,7 @@
         {
             IsPaused = false;
             new PlayingScript().Bind(controllers, this, ActivePlayer.Character);
-
+            new PlayingScript().Unbind(controllers, this, ActivePlayer.Character);
             Splash = new HUD(ActivePlayer);
         }
 
