@@ -68,7 +68,9 @@ namespace MelloMario.Theming
         {
             spriteBatchGameObjects.Begin(SpriteSortMode.BackToFront);
             if (player == null)
+            {
                 return;
+            }
             foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
             {
                 obj.Draw(model?.State == GameState.pause ? 0 : time, spriteBatchGameObjects);
