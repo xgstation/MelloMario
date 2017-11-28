@@ -2,6 +2,8 @@ namespace MelloMario.Objects.UserInterfaces
 {
     #region
 
+    using System;
+    using System.Collections.Generic;
     using MelloMario.Factories;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -11,79 +13,48 @@ namespace MelloMario.Objects.UserInterfaces
 
     internal class GameOver : BaseUIObject
     {
-        private readonly ISprite coinSprite;
-        private readonly ISprite gameOverSprite;
-        private readonly ISprite marioSprite;
-        private readonly ISprite splashSprite;
-        private readonly ISprite textSprite;
-        private readonly ISprite textSprite2;
-        private ISprite lifeSprite;
-        private Rectangle coinDestinationRect;
-        private Rectangle gameOverDestinationRect;
-        private Rectangle marioDestinationRect;
-        private Rectangle splashDestinationRect;
-        private Rectangle textDestinationRect;
-        private Rectangle text2DestinationRect;
-        private Rectangle lifeDestinationRect;
 
-        public GameOver(IPlayer player) : base(player)
+
+        private readonly ISprite lifesText;
+        private readonly ISprite marioIcon;
+        private readonly ISprite gameOverText;
+        private readonly ISprite backGround;
+
+        private readonly Rectangle lifesTextDestination;
+        private readonly Rectangle marioIconDestination;
+        private readonly Rectangle gameOverTextDestination;
+        private readonly Rectangle backGroundDestination;
+
+        private readonly int lifes;
+        public GameOver(Point offset, int lifes) : base(offset)
         {
-            splashSprite = SpriteFactory.Instance.CreateSplashSprite();
-            coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
-            marioSprite = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
-            gameOverSprite = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
-            string text = "MARIO        "
-                + "   WORLD    TIME\n"
-                + Player.Score.ToString().PadLeft(6, '0')
-                + "    *"
-                + Player.Coins.ToString().PadLeft(2, '0')
-                + "    "
-                + "1-1"
-                + "      ";
-            textSprite = SpriteFactory.Instance.CreateTextSprite(text);
-            textSprite2 = SpriteFactory.Instance.CreateTextSprite("WORLD");
+            this.lifes = lifes;
 
-            coinDestinationRect = new Rectangle(255, 74, 26, 30);
-            gameOverDestinationRect = new Rectangle(250, 250, 80, 80);
-            marioDestinationRect = new Rectangle(250, 250, 40, 40);
-            splashDestinationRect = new Rectangle(0, 0, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
-            textDestinationRect = new Rectangle(42, 42, 800, 200);
-            text2DestinationRect = new Rectangle(300, 200, 80, 80);
-            lifeDestinationRect = new Rectangle(350, 250, 80, 80);
-            // OnUpdate(0);
+            lifesText = SpriteFactory.Instance.CreateTextSprite("*  " + lifes);
+            marioIcon = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
+            gameOverText = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
+            backGround = SpriteFactory.Instance.CreateSplashSprite();
+
+            lifesTextDestination = new Rectangle(new Point(350, 250) + offset, new Point(80, 80));
+            marioIconDestination = new Rectangle(new Point(250, 250) + offset, new Point(40, 40));
+            gameOverTextDestination = new Rectangle(new Point(250, 250) + offset, new Point(80, 80));
+            backGroundDestination = new Rectangle(offset, new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT));
         }
-
         protected override void OnUpdate(int time)
         {
-            Offset(ref textDestinationRect);
-            Offset(ref text2DestinationRect);
-            Offset(ref gameOverDestinationRect);
-            Offset(ref splashDestinationRect);
-            Offset(ref coinDestinationRect);
-            Offset(ref lifeDestinationRect);
-            Offset(ref marioDestinationRect);
-            UpdateOrigin();
         }
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
-            splashSprite.Draw(time, spriteBatch, splashDestinationRect);
-            textSprite.Draw(time, spriteBatch, textDestinationRect);
-            coinSprite.Draw(time, spriteBatch, coinDestinationRect);
-
-            if (Player.Lifes > 0)
+            backGround.Draw(time, spriteBatch, backGroundDestination);
+            if (lifes > 0)
             {
-                textSprite2.Draw(time, spriteBatch, text2DestinationRect);
-                marioSprite.Draw(time, spriteBatch, marioDestinationRect);
-                lifeSprite = SpriteFactory.Instance.CreateTextSprite("*  " + Player.Lifes);
-                lifeSprite.Draw(time, spriteBatch, lifeDestinationRect);
+                lifesText.Draw(time,spriteBatch,lifesTextDestination);
+                marioIcon.Draw(time,spriteBatch,marioIconDestination);
             }
             else
             {
-                gameOverSprite.Draw(time, spriteBatch, gameOverDestinationRect);
-
-                //TODO:Move this into soundcontroller
-                //SoundManager.GameOver.Play();
+                gameOverText.Draw(time, spriteBatch, gameOverTextDestination);
             }
         }
     }

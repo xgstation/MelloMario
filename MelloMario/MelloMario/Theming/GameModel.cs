@@ -21,15 +21,11 @@
         private readonly IListener<IGameObject> listener;
         private readonly IListener<ISoundable> soundListener;
         private readonly Session session;
+        private readonly ScreenManager screenManager;
         private IEnumerable<IController> controllers;
         private string mapPath = "Content/Level1.json";
+
         public bool IsPaused { get; private set; }
-
-        //TODO: temporary public
-        //note: we will have an extra class called Player which contains these information
-        public IObject Splash;
-
-        private int splashElapsed; // TODO: for sprint 4, refactor later
 
         public GameModel(Game1 game)
         {
@@ -38,6 +34,7 @@
             ActivePlayer = new Player(session);
             listener = new ScoreListener(this, ActivePlayer);
             soundListener = new SoundEffectListener();
+            screenManager = new ScreenManager(ActivePlayer);
             Database.Initialize(session);
         }
 
@@ -61,27 +58,24 @@
         {
             IsPaused = true;
             new PausedScript().Bind(controllers, this, ActivePlayer.Character);
-
-            splashElapsed = -1;
+            //TODO: uncomment it after implementing pause splash screen
+            //screenManager.ScreenState = ScreenManager.State.pause;
         }
 
         public void Init()
         {
             Normal(); // note: this is a hack
-
             IsPaused = true;
             new StartScript().Bind(controllers, this, ActivePlayer.Character);
-
-            Splash = new GameStart(ActivePlayer); // TODO: move these constructors to the factory
-            splashElapsed = -1;
+            screenManager.ScreenState = ScreenManager.State.start;
+            screenManager.Initialize();
         }
 
         public void Resume()
         {
             IsPaused = false;
             new PlayingScript().Bind(controllers, this, ActivePlayer.Character);
-            new PlayingScript().Unbind(controllers, this, ActivePlayer.Character);
-            Splash = new HUD(ActivePlayer);
+            screenManager.ScreenState = ScreenManager.State.inGame;
         }
 
         public void Reset()
@@ -99,18 +93,20 @@
         public void Infinite()
         {
             mapPath = "Content/Infinite.json";
-            splashElapsed = 0;
             ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
+            session.Add(ActivePlayer);
             IsPaused = false;
+            screenManager.ScreenState = ScreenManager.State.inGame;
             Resume();
         }
 
         public void Normal()
         {
             mapPath = "Content/Level1.json";
-            splashElapsed = 0;
             ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
+            session.Add(ActivePlayer);
             IsPaused = false;
+            screenManager.ScreenState = ScreenManager.State.inGame;
             Resume();
         }
 
@@ -120,19 +116,17 @@
             Database.Update();
             if (IsPaused)
             {
-                if (splashElapsed < 0)
-                {
-                    return;
-                }
-                splashElapsed += time;
-                if (splashElapsed >= 1000 * 2)
-                {
-                    Resume();
-                }
                 return;
             }
 
             //TODO: Pause state should not stop updating camera
+            //ICollection<IGameObject> tobedrawn = new List<IGameObject>();
+            //foreach (IGameObject gameObject in ActivePlayer.Character.CurrentWorld.ScanNearby(ActivePlayer.Camera.Viewport))
+            //{
+            //    tobedrawn.Add(gameObject);
+            //}
+            //screenManager.Feed(tobedrawn);
+            screenManager.Update(time);
             UpdateGameObjects(time);
             UpdateContainers();
         }
@@ -145,8 +139,8 @@
             {
                 obj.Draw(IsPaused ? 0 : time, spriteBatch);
             }
-
-            Splash.Draw(time, spriteBatch);
+            
+            screenManager.Draw(time,spriteBatch);
         }
 
         public void ToggleMute()
@@ -186,9 +180,7 @@
 
             IsPaused = true;
             new TransistScript().Bind(controllers, this, ActivePlayer.Character);
-
-            Splash = new GameOver(ActivePlayer);
-            splashElapsed = 0;
+            screenManager.ScreenState = ScreenManager.State.over;
         }
 
         public void TransistGameWon()
@@ -198,8 +190,7 @@
             IsPaused = true;
             new TransistScript().Bind(controllers, this, ActivePlayer.Character);
 
-            Splash = new GameWon(ActivePlayer);
-            splashElapsed = -1;
+            screenManager.ScreenState = ScreenManager.State.won;
         }
 
         private void UpdateController()
@@ -218,13 +209,11 @@
             foreach (IPlayer player in session.ScanPlayers())
             {
                 player.Update(time);
-                foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Character.Sensing))
+                foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Character.Sensing, true))
                 {
                     updating.Add(obj);
                 }
             }
-
-            updating.Add(Splash);
 
             foreach (IObject obj in updating)
             {

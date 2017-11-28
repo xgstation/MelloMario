@@ -150,10 +150,6 @@
         {
         }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
-        {
-        }
-
         public void Collect()
         {
             if (!collected)

@@ -14,8 +14,12 @@
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System.Linq;
 
     #endregion
+
+    using MelloMario.Interfaces.Objects.States;
+    using MelloMario.Objects.Enemies.ThwompStates;
 
     [Serializable]
     internal class Thwomp : BasePhysicalObject
@@ -30,20 +34,23 @@
             32)
         {
             state = new ThwompStates.Normal(this);
+            NormalTime = 100;
             UpdateSprite();
         }
 
-        public IThwompState State
+        public IThwompState State { get; set; }
+
+        public bool HasMarioBelow { get; private set; }
+
+        public int NormalTime { get; }
+
+        private bool onFloor = false;
+
+        private bool DetectMario()
         {
-            get
-            {
-                return state;
-            }
-            set
-            {
-                state = value;
-                UpdateSprite();
-            }
+            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
+                    where obj is ICharacter
+                    select obj).Any();
         }
 
         private void UpdateSprite()
@@ -54,15 +61,20 @@
         protected override void OnUpdate(int time)
         {
             state.Update(time);
+            HasMarioBelow = DetectMario();
         }
 
         protected override void OnSimulation(int time)
         {
-            ApplyGravity();
+            //ApplyGravity();
 
-            if (Facing == FacingMode.left) // Make condition if he is colliding with floor tile or not
+            if (onFloor)
             {
                 SetVerticalVelocity(-Const.VELOCITY_RISING_THWOMP);
+            }
+            else
+            {
+                SetVerticalVelocity(Const.VELOCITY_RISING_THWOMP);
             }
 
             base.OnSimulation(time);
@@ -103,6 +115,8 @@
                     }
                     goto case "Stair";
                 case "Floor":
+                    onFloor = true;
+                    break;
                 // perhaps register that it is on the floor, wait a second, then rise back up?
                 case "Pipeline":
                 case "Stair":
@@ -121,26 +135,16 @@
                         Bounce(mode, new Vector2());
                     }
                     break;
-                case "Koopa":
-                    if (target is Koopa koopa)
-                    {
-                        if (koopa.State is MovingShell)
-                        {
-                            // Do nothing
-                        }
-                    }
-                    break;
-                case "Fire":
-                    break;
             }
         }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
-        }
-
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
-        {
+            Bounce(mode, new Vector2());
+            if (mode == CollisionMode.InnerTop)
+            {
+                onFloor = false;
+            }
         }
 
         private void ChangeFacing(FacingMode facing)

@@ -191,10 +191,6 @@
         {
         }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
-        {
-        }
-
         public void JumpOn()
         {
             ScorePoints(Const.SCORE_KOOPA);

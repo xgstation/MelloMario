@@ -109,10 +109,6 @@
         {
         }
 
-        protected override void OnDraw(int time, SpriteBatch spriteBatch)
-        {
-        }
-
         public void OnDestroy()
         {
             SoundEventArgs.SetMethodCalled();

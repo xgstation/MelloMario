@@ -1,8 +1,7 @@
-﻿namespace MelloMario
+﻿namespace MelloMario.Interfaces.Objects.States
 {
     internal interface IThwompState : IState
     {
-        void Show();
         void Defeat();
     }
 }

@@ -120,6 +120,7 @@
 
                 return null;
             }
+
             createFunc = point => (type.Name == "Brick" || type.Name == "Question"
                     ? Activator.CreateInstance(type, world, point, listener, soundListener, false)
                     : Activator.CreateInstance(type, world, point, listener))
@@ -223,34 +224,34 @@
             if (type.Name == "Piranha")
             {
                 float hideTime = Util.TryGet(out hideTime, token, "Property", "HideTime") ? hideTime : 3;
-                Activator.CreateInstance(type, world, objPoint, hideTime);
+                createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, hideTime);
+                createFunc(objPoint);
             }
-            else
+            else if (type.Name == "Koopa")
             {
-                if (type.Name == "Koopa")
-                {
-                    Util.TryGet(out string color, token, "Property", "Color");
-                    createFunc = point => (IGameObject) Activator.CreateInstance(
-                        type,
-                        world,
-                        point,
-                        listener,
-                        color);
-                }
-                if (produceMode is ProduceMode.One)
-                {
-                    createFunc(objPoint);
-                }
-                else if (produceMode is ProduceMode.Rectangle)
-                {
-                    Util.BatchRecCreate(
-                        createFunc,
-                        objPoint,
-                        quantity,
-                        new Point(Const.GRID, Const.GRID),
-                        ignoredSet);
-                }
+                Util.TryGet(out string color, token, "Property", "Color");
+                createFunc = point => (IGameObject) Activator.CreateInstance(
+                    type,
+                    world,
+                    point,
+                    listener,
+                    color);
             }
+
+            if (produceMode is ProduceMode.One)
+            {
+                createFunc(objPoint);
+            }
+            else if (produceMode is ProduceMode.Rectangle)
+            {
+                Util.BatchRecCreate(
+                    createFunc,
+                    objPoint,
+                    quantity,
+                    new Point(Const.GRID, Const.GRID),
+                    ignoredSet);
+            }
+
             return true;
         }
 
@@ -316,26 +317,26 @@
                     Activator.CreateInstance(type, world, objPoint, listener, false);
                     break;
                 case ProduceMode.Rectangle:
-                {
-                    Util.BatchRecCreate(
-                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                        objPoint,
-                        quantity,
-                        new Point(Const.GRID, Const.GRID),
-                        ignoredSet);
-                    break;
-                }
+                    {
+                        Util.BatchRecCreate(
+                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                            objPoint,
+                            quantity,
+                            new Point(Const.GRID, Const.GRID),
+                            ignoredSet);
+                        break;
+                    }
 
                 case ProduceMode.Triangle:
-                {
-                    Util.BatchTriCreate(
-                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                        objPoint,
-                        triangleSize,
-                        new Point(Const.GRID, Const.GRID),
-                        ignoredSet);
-                    break;
-                }
+                    {
+                        Util.BatchTriCreate(
+                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                            objPoint,
+                            triangleSize,
+                            new Point(Const.GRID, Const.GRID),
+                            ignoredSet);
+                        break;
+                    }
             }
         }
 

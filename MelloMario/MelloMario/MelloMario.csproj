@@ -86,13 +86,13 @@
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
     <Compile Include="NoiseGame.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
-    <Compile Include="LevelGen\JsonGenerator.cs" />
-    <Compile Include="LevelGen\NoiseInterpreter.cs" />
+    <Compile Include="LevelGen\NoiseGenerators\NoiseInterpreter.cs" />
     <Compile Include="LevelGen\StaticGenerator.cs" />
     <Compile Include="LevelGen\GroundGenerator.cs" />
-    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Objects\Enemies\ThwompStates\MovingDown.cs" />
+    <Compile Include="Objects\Enemies\ThwompStates\MovingUp.cs" />
+    <Compile Include="Objects\UserInterfaces\GamePause.cs" />
+    <Compile Include="Objects\UserInterfaces\ScreenManager.cs" />
     <Compile Include="Sounds\SoundEffectListener.cs" />
     <Compile Include="Interfaces\Objects\States\IThwompState.cs" />
     <Compile Include="Objects\Enemies\Thwomp.cs" />
@@ -163,8 +163,7 @@
     <Compile Include="Interfaces\IListener.cs" />
     <Compile Include="Interfaces\ILevelGenerator.cs" />
     <Compile Include="Interfaces\Objects\IObject.cs" />
-    <Compile Include="LevelGen\InfiniteGenerator.cs" />
-    <Compile Include="LevelGen\PerlinNoiseGenerator.cs" />
+    <Compile Include="LevelGen\NoiseGenerators\PerlinNoiseGenerator.cs" />
     <Compile Include="Objects\Miscs\Camera.cs" />
     <Compile Include="Controls\Scripts\StartScript.cs" />
     <Compile Include="Theming\Player.cs" />
@@ -276,8 +275,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Windows\x86\Debug\MelloMario.exe" />
-    <Content Include="bin\Windows\x86\Debug\MelloMario.pdb" />
     <Content Include="Content\BrickPieces.png" />
     <Content Include="Content\Fire.png" />
     <Content Include="Content\FireStandingLeft.png" />
@@ -351,13 +348,11 @@
     <Content Include="Content\SuperStandingRight.png" />
     <Content Include="Content\SuperWalkingLeft.png" />
     <Content Include="Content\SuperWalkingRight.png" />
-    <Content Include="FakesAssemblies\SharpDX.Direct2D1.3.1.1.0.Fakes.dll" />
-    <Content Include="FakesAssemblies\SharpDX.Direct2D1.3.1.1.0.Fakes.xml" />
+    <Content Include="Content\Thwomp2.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
-    <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="Content\Font\text.spritefont" />
     <None Include="Content\Infinite.json">
@@ -369,9 +364,6 @@
     <None Include="Content\ExampleLevel.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="FakesAssemblies\SharpDX.Direct2D1.3.1.1.0.Fakes.fakesconfig" />
-    <None Include="FakesAssemblies\SharpDX.Direct2D1.3.1.1.0.Fakes.messages" />
-    <None Include="obj\x86\Release\MelloMario.csproj.CoreCompileInputs.cache" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -387,30 +379,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Windows\x86\Release\" />
-    <Folder Include="BlockObjects\BrickStates\" />
-    <Folder Include="BlockObjects\QuestionStates\" />
-    <Folder Include="Collision\" />
-    <Folder Include="Commands\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="EnemyObjects\GoombaStates\" />
-    <Folder Include="EnemyObjects\KoopaStates\" />
-    <Folder Include="EnemyObjects\PiranhaStates\" />
-    <Folder Include="GameOverScreen\" />
-    <Folder Include="ItemObjects\CoinStates\" />
-    <Folder Include="ItemObjects\FireFlowerStates\" />
-    <Folder Include="ItemObjects\OneUpMushroomStates\" />
-    <Folder Include="ItemObjects\StarStates\" />
-    <Folder Include="ItemObjects\SuperMushroomStates\" />
-    <Folder Include="MarioObjects\MovementStates\" />
-    <Folder Include="MarioObjects\PowerUpStates\" />
-    <Folder Include="MarioObjects\ProtectionStates\" />
-    <Folder Include="MiscObjects\" />
-    <Folder Include="Scripts\" />
-    <Folder Include="SplashObjects\" />
-    <Folder Include="Sprites\BlockSprites\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <PropertyGroup>
