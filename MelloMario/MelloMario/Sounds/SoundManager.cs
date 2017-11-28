@@ -1,8 +1,6 @@
-﻿namespace MelloMario.Theming
+﻿namespace MelloMario.Sounds
 {
     #region
-
-    using MelloMario.Sounds;
 
     #endregion
 

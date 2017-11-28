@@ -168,7 +168,7 @@
     <Compile Include="LevelGen\NoiseGenerators\PerlinNoiseGenerator.cs" />
     <Compile Include="Objects\Miscs\Camera.cs" />
     <Compile Include="Controls\Scripts\StartScript.cs" />
-    <Compile Include="Theming\GraphicsManager.cs" />
+    <Compile Include="Graphics\GraphicsManager.cs" />
     <Compile Include="Theming\Player.cs" />
     <Compile Include="Objects\UserInterfaces\GameWon.cs" />
     <Compile Include="Objects\UserInterfaces\GameStart.cs" />
@@ -263,7 +263,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Objects\UserInterfaces\HUD.cs" />
     <Compile Include="Theming\ScoreListener.cs" />
-    <Compile Include="Theming\SoundManager.cs" />
+    <Compile Include="Sounds\SoundManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

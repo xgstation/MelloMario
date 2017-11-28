@@ -1,4 +1,4 @@
-﻿namespace MelloMario.Theming
+﻿namespace MelloMario.Graphics
 {
     #region
 
