@@ -19,14 +19,12 @@
         public GraphicsManager(Game1 game)
         {
             this.game = game;
-            uiManager = new UIManager(game)
-            {
-                ScreenState = UIManager.State.start
-            };
+            uiManager = new UIManager(game);
         }
 
         public void Initialize()
         {
+            uiManager.ScreenState = UIManager.State.start;
         }
 
         public void BindGraphicsDevice(GraphicsDevice newGraphicsDevice)

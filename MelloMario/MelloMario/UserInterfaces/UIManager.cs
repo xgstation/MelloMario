@@ -43,7 +43,7 @@
         public UIManager(Game1 game)
         {
             this.game = game;
-            ScreenState = State.start;
+            ScreenState = State.idle;
         }
 
         public void BindPlayer(IPlayer newPlayer)
