@@ -201,7 +201,7 @@
             switch (produceMode)
             {
                 case ProduceMode.One:
-                    createFunc(objPoint);
+                    objectStackToBeEncapsulated.Push(createFunc(objPoint));
                     break;
                 case ProduceMode.Rectangle:
                     Util.BatchRecCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet);
@@ -225,7 +225,7 @@
             {
                 float hideTime = Util.TryGet(out hideTime, token, "Property", "HideTime") ? hideTime : 3;
                 createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, hideTime);
-                createFunc(objPoint);
+                objectStackToBeEncapsulated.Push(createFunc(objPoint));
             }
             else if (type.Name == "Koopa")
             {
@@ -240,7 +240,7 @@
 
             if (produceMode is ProduceMode.One)
             {
-                createFunc(objPoint);
+                objectStackToBeEncapsulated.Push(createFunc(objPoint));
             }
             else if (produceMode is ProduceMode.Rectangle)
             {
@@ -274,6 +274,7 @@
                     propertyPair = Util.GetPropertyPair(token);
                     list = Util.CreateItemList(world, objPoint, listener, soundListener, propertyPair.Item2);
                     IGameObject gameObj = createFunc(objPoint);
+                    objectStackToBeEncapsulated.Push(gameObj);
                     if (list != null && list.Count != 0)
                     {
                         Database.SetEnclosedItem(gameObj, list);
@@ -456,7 +457,7 @@
             objFullSize = createFunc(new Point()).Boundary.Size;
             if (produceMode is ProduceMode.One)
             {
-                createFunc(objPoint);
+                objectStackToBeEncapsulated.Push(createFunc(objPoint));
             }
             else
             {
