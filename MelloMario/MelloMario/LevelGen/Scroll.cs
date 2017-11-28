@@ -22,12 +22,12 @@
         {
             // note: top / buttom are locked
 
-            while (world.Boundary.Right < range.Right)
+            while (world.Boundary.Right < range.Right + Const.SCANRANGE)
             {
                 terrains[0].Request(world, new Rectangle(world.Boundary.Right, world.Boundary.Top, Const.GRID, world.Boundary.Height)); // TODO
                 world.Extend(0, 32, 0, 0);
             }
-            while (world.Boundary.Left > range.Left)
+            while (world.Boundary.Left > range.Left - Const.SCANRANGE)
             {
                 terrains[0].Request(world, new Rectangle(world.Boundary.Left - Const.GRID, world.Boundary.Top, Const.GRID, world.Boundary.Height)); // TODO
                 world.Extend(32, 0, 0, 0);
