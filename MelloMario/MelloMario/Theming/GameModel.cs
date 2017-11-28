@@ -58,6 +58,7 @@
         {
             IsPaused = true;
             new PausedScript().Bind(controllers, this, ActivePlayer.Character);
+            //TODO: uncomment it after implementing pause splash screen
             //screenManager.ScreenState = ScreenManager.State.pause;
         }
 
@@ -66,7 +67,6 @@
             Normal(); // note: this is a hack
             IsPaused = true;
             new StartScript().Bind(controllers, this, ActivePlayer.Character);
-            //Splash = new GameStart(ActivePlayer); // TODO: move these constructors to the factory
             screenManager.ScreenState = ScreenManager.State.start;
             screenManager.Initialize();
         }

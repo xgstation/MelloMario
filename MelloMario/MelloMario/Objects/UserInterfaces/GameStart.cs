@@ -16,7 +16,7 @@
         private readonly Rectangle textDestinationRect;
 
         //Start splash has no relation with offset, do not use it!
-        public GameStart(Point offset) : base(offset)
+        public GameStart() : base(Point.Zero)
         {
             startSprite = SpriteFactory.Instance.CreateTitle(ZIndex.Hud);
             textSprite = SpriteFactory.Instance.CreateTextSprite(
