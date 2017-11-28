@@ -331,27 +331,33 @@
             switch (produceMode)
             {
                 case ProduceMode.One:
-                    Activator.CreateInstance(type, world, objPoint, listener, false);
+                    objectStackToBeEncapsulated.Push((IGameObject) Activator.CreateInstance(type, world, objPoint, listener, false));
                     break;
                 case ProduceMode.Rectangle:
                     {
-                        Util.BatchRecCreate(
+                        foreach (IGameObject obj in Util.BatchRecCreate(
                             point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
                             objPoint,
                             quantity,
                             new Point(Const.GRID, Const.GRID),
-                            ignoredSet);
+                            ignoredSet))
+                        {
+                            objectStackToBeEncapsulated.Push(obj);
+                        }
                         break;
                     }
 
                 case ProduceMode.Triangle:
                     {
-                        Util.BatchTriCreate(
+                        foreach (IGameObject obj in Util.BatchTriCreate(
                             point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
                             objPoint,
                             triangleSize,
                             new Point(Const.GRID, Const.GRID),
-                            ignoredSet);
+                            ignoredSet))
+                        {
+                            objectStackToBeEncapsulated.Push(obj);
+                        }
                         break;
                     }
             }
@@ -416,12 +422,15 @@
                 objFullSize = direction.Contains("V")
                     ? new Point(Const.GRID * 2, Const.GRID + Const.GRID * length)
                     : new Point(Const.GRID + Const.GRID * length, Const.GRID * 2);
-                Util.BatchRecCreate(
+                foreach (IGameObject obj in Util.BatchRecCreate(
                     point => Util.CreateSinglePipeline(world, listener, soundListener, direction, length, point),
                     objPoint,
                     quantity,
                     objFullSize,
-                    ignoredSet);
+                    ignoredSet))
+                {
+                    objectStackToBeEncapsulated.Push(obj);
+                }
             }
         }
 
@@ -477,7 +486,10 @@
             }
             else
             {
-                Util.BatchRecCreate(createFunc, objPoint, quantity, objFullSize, ignoredSet);
+                foreach (IGameObject obj in Util.BatchRecCreate(createFunc, objPoint, quantity, objFullSize, ignoredSet))
+                {
+                    objectStackToBeEncapsulated.Push(obj);
+                }
             }
             return true;
         }
