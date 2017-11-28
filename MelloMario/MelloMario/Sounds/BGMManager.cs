@@ -5,6 +5,7 @@
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.ProtectionStates;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework.Media;
 
     #endregion
@@ -18,11 +19,17 @@
         private static readonly ISoundTrack Star = SoundFactory.Instance.CreateSoundTrack("Star");
 
         private ISoundTrack currentTrack;
-
         private IModel model;
+        private IPlayer player;
+
         public BGMManager()
         {
             model = null;
+        }
+
+        public void BindPlayer(IPlayer newPlayer)
+        {
+            player = newPlayer;
         }
 
         public void BindModel(IModel newModel)
@@ -60,7 +67,7 @@
         private void UpdatePausing()
         {
             //Pausing state detector
-            if (model.IsPaused)
+            if (model.State == GameState.pause)
             {
                 //Avoid repeat pausing
                 if (MediaPlayer.State != MediaState.Paused)
@@ -77,7 +84,7 @@
         private void UpdateBGM()
         {
             //BGM Updater
-            switch (model.ActivePlayer.Character)
+            switch (player?.Character)
             {
                 case MarioCharacter mario when mario.ProtectionState is Dead:
                     MediaPlayer.Stop();

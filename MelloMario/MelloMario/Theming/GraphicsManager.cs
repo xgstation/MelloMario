@@ -71,7 +71,7 @@ namespace MelloMario.Theming
                 return;
             foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
             {
-                obj.Draw(model?.State == GameState.Pause ? 0 : time, spriteBatchGameObjects);
+                obj.Draw(model?.State == GameState.pause ? 0 : time, spriteBatchGameObjects);
             }
             spriteBatchGameObjects.End();
         }
