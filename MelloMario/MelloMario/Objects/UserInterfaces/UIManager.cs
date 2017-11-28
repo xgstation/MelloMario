@@ -79,7 +79,7 @@ namespace MelloMario.Objects.UserInterfaces
                     splash = new GamePause();
                     break;
                 case State.over:
-                    splash = new GameOver(player.Lifes);
+                    splash = new GameOver(player.Lifes, worldName);
                     break;
                 case State.won:
                     splash = new GameWon();
