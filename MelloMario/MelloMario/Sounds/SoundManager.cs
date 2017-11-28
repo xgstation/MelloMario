@@ -2,6 +2,9 @@
 {
     #region
 
+    using MelloMario.Sounds.Effects;
+    using MelloMario.Sounds.Tracks;
+
     #endregion
 
     internal class SoundManager
