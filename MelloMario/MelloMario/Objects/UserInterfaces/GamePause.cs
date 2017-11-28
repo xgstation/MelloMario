@@ -12,7 +12,7 @@ namespace MelloMario.Objects.UserInterfaces
     internal class GamePause : BaseUIObject
     {
 
-        public GamePause(Point p) : base(p)
+        public GamePause()
         {
         }
 

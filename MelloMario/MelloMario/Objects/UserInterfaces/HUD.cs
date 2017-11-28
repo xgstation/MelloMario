@@ -15,9 +15,9 @@
         private readonly ISprite oneUpSprite;
         private ISprite textSprite;
 
-        private Rectangle coinDestination;
-        private Rectangle oneUpDestination;
-        private Rectangle textDestination;
+        private readonly Rectangle coinDestination;
+        private readonly Rectangle oneUpDestination;
+        private readonly Rectangle textDestination;
         private string text;
 
         private int lifes;
@@ -28,7 +28,7 @@
 
         public bool IsSplashing { get; set; }
 
-        public HUD(Point offset) : base(offset)
+        public HUD()
         {
             textSprite = SpriteFactory.Instance.CreateTextSprite("");
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
@@ -67,9 +67,6 @@
             }
             text = newText;
             textSprite = SpriteFactory.Instance.CreateTextSprite(text);
-            textDestination.Offset(Offset);
-            coinDestination.Offset(Offset);
-            oneUpDestination.Offset(Offset);
         }
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch)

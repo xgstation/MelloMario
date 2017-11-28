@@ -26,7 +26,7 @@ namespace MelloMario.Objects.UserInterfaces
         private readonly Rectangle backGroundDestination;
 
         private readonly int lifes;
-        public GameOver(Point offset, int lifes) : base(offset)
+        public GameOver(int lifes)
         {
             this.lifes = lifes;
 
@@ -35,10 +35,10 @@ namespace MelloMario.Objects.UserInterfaces
             gameOverText = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
             backGround = SpriteFactory.Instance.CreateSplashSprite();
 
-            lifesTextDestination = new Rectangle(new Point(350, 250) + offset, new Point(80, 80));
-            marioIconDestination = new Rectangle(new Point(250, 250) + offset, new Point(40, 40));
-            gameOverTextDestination = new Rectangle(new Point(250, 250) + offset, new Point(80, 80));
-            backGroundDestination = new Rectangle(offset, new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT));
+            lifesTextDestination = new Rectangle(new Point(350, 250), new Point(80, 80));
+            marioIconDestination = new Rectangle(new Point(250, 250), new Point(40, 40));
+            gameOverTextDestination = new Rectangle(new Point(250, 250), new Point(80, 80));
+            backGroundDestination = new Rectangle(Point.Zero, new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT));
         }
         protected override void OnUpdate(int time)
         {
