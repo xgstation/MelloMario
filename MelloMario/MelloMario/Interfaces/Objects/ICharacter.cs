@@ -28,6 +28,7 @@
         void FireCreate();
         void SuperCreate();
         void NormalCreate();
+        void KillMario();
         void Action();
 
         void Move(IWorld newWorld, Point newLocation);
