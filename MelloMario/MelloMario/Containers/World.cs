@@ -45,10 +45,10 @@
                 generator.Request(this, range);
             }
 
-            int left = (range.Left - Const.SCANRANGE) / Const.GRID;
-            int right = (range.Right + Const.SCANRANGE) / Const.GRID;
-            int top = (range.Top - Const.SCANRANGE) / Const.GRID;
-            int bottom = (range.Bottom + Const.SCANRANGE) / Const.GRID;
+            int left = (range.Left - Const.SCAN_RANGE) / Const.GRID;
+            int right = (range.Right + Const.SCAN_RANGE) / Const.GRID;
+            int top = (range.Top - Const.SCAN_RANGE) / Const.GRID;
+            int bottom = (range.Bottom + Const.SCAN_RANGE) / Const.GRID;
 
             for (int i = left; i <= right; ++i)
             {

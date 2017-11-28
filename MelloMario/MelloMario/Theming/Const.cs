@@ -12,7 +12,7 @@
         // boundary and collision
 
         public const int GRID = 32;
-        public const int SCANRANGE = 24;
+        public const int SCAN_RANGE = 24;
 
         // physics
 
