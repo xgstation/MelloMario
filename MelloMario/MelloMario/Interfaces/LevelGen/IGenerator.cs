@@ -6,7 +6,7 @@
 
     #endregion
 
-    internal interface ILevelGenerator
+    internal interface IGenerator
     {
         void Request(IWorld world, Rectangle range);
     }

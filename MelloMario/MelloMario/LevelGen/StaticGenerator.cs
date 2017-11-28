@@ -8,7 +8,7 @@
 
     #endregion
 
-    internal class StaticGenerator : ILevelGenerator
+    internal class StaticGenerator : IGenerator
     {
         private ISet<IGameObject> objects;
 

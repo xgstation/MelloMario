@@ -10,7 +10,7 @@
     // note: this class is created to help the architecture design of level generation
     //       and to verify the correctness of interfaces
     //       DO NOT implement actual functionality in it until the design is clear
-    internal class GroundGenerator : ILevelGenerator
+    internal class GroundGenerator : IGenerator
     {
         private readonly IListener<IGameObject> listener;
 

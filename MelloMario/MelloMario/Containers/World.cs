@@ -12,10 +12,10 @@
     [Serializable]
     internal class World : BaseContainer<Point, IGameObject>, IWorld
     {
-        private readonly ILevelGenerator generator;
+        private readonly IGenerator generator;
         private readonly ISet<Point> respawnPoints;
 
-        public World(string id, WorldType type, ILevelGenerator generator, IEnumerable<Point> respawn)
+        public World(string id, WorldType type, IGenerator generator, IEnumerable<Point> respawn)
         {
             ID = id;
             Type = type;
