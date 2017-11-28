@@ -13,25 +13,32 @@
     internal class GameModel : IModel
     {
         private readonly Game1 game;
-        private ISession session;
+        private readonly ISession session;
         private IEnumerable<IController> controllers;
-        private IListener<IGameObject> scoreListener;
-
+        private readonly IListener<IGameObject> scoreListener;
+        private readonly string map;
         public GameState State { get; private set; }
         public GameMode Mode { get; }
 
-        public GameModel(Game1 game, GameMode mode)
+        public GameModel(Game1 game, IEnumerable<IController> controllers, GameMode mode)
         {
             this.game = game;
+            this.controllers = controllers;
+            session = new Session();
+            scoreListener = new ScoreListener(this, game.ActivePlayer);
+            game.LevelIOJson.BindScoreListener(scoreListener);
+            Database.Initialize(session);
             State = GameState.onProgress;
             Mode = mode;
             switch (mode)
             {
                 case GameMode.normal:
-                    Normal();
+                    map = "Level1.json";
+                    Initialize();
                     break;
                 case GameMode.infinite:
-                    Infinite();
+                    map = "Infinite.json";
+                    Initialize();
                     break;
                 case GameMode.randomMap:
                     break;
@@ -39,13 +46,7 @@
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
         }
-
-        public void Initialize()
-        {
-            session = new Session();
-            scoreListener = new ScoreListener(this, game.ActivePlayer);
-            Database.Initialize(session);
-        }
+        
 
         public void Pause()
         {
@@ -64,19 +65,10 @@
             game.Reset();
             Resume();
         }
+        
 
-        private void Infinite()
+        private void Initialize()
         {
-            //mapPath = "Content/Infinite.json";
-            game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener);
-            session.Add(game.ActivePlayer);
-            State = GameState.onProgress;
-            Resume();
-        }
-
-        private void Normal()
-        {
-            //mapPath = "Content/Level1.json";
             game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener);
             session.Add(game.ActivePlayer);
             State = GameState.onProgress;
@@ -95,11 +87,6 @@
             UpdateContainers();
         }
 
-        public void LoadControllers(IEnumerable<IController> newControllers)
-        {
-            controllers = newControllers;
-        }
-
         public IWorld LoadLevel(string id)
         {
             foreach (IWorld world in session.ScanWorlds())
@@ -109,15 +96,8 @@
                     return world;
                 }
             }
-
-            // IWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
-
-            //LevelIOJson reader = new LevelIOJson(mapPath, scoreListener, soundListener);
-
-            //IWorld newWorld = reader.Load(id);
-            // generator = new JsonGenerator(mapPath, id, scoreListener, soundListener);
-            //infiniteGenerator = new InfiniteGenerator(newWorld, scoreListener);
-            return null;
+            IWorld newWorld = game.LevelIOJson.Load(map, id);
+            return newWorld;
         }
 
         public void Transist()

@@ -26,7 +26,6 @@
         GameMode Mode { get; }
         void Pause();
         void Resume();
-        void Initialize();
         void Reset();
         void Update(int time);
         IWorld LoadLevel(string index);

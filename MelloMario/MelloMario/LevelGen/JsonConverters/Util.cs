@@ -40,7 +40,7 @@
         }
     }
 
-    internal class Util
+    internal static class Util
     {
         private static readonly JsonSerializer serializers = new JsonSerializer();
 

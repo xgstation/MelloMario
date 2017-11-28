@@ -3,6 +3,7 @@
     internal static class Const
     {
         // general
+        public const string CONTENT_PATH_S = "Content";
 
         public const int SCREEN_WIDTH = 800;
         public const int SCREEN_HEIGHT = 600;

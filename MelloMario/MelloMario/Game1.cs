@@ -34,11 +34,11 @@
         private readonly GraphicManager graphicsManager;
         private readonly SoundManager soundManager;
         private readonly IEnumerable<IController> controllers;
-        private readonly LevelIOJson levelIOJson;
         private GameModel gameModel;
 
         public Menu CurrentSelected { get; private set; }
         public IPlayer ActivePlayer { get; }
+        public LevelIOJson LevelIOJson { get; }
 
         public Game1()
         {
@@ -59,8 +59,10 @@
             };
 
             ActivePlayer = new Player(graphicsManager, soundManager, controllers);
-
+            graphicsManager.BindPlyaer(ActivePlayer);
             new StartScript().Bind(controllers, this);
+            LevelIOJson = new LevelIOJson(Const.CONTENT_PATH_S);
+            LevelIOJson.BindSoundListener(soundManager.SoundEffectListener);
         }
 
         // game controlling
@@ -97,7 +99,7 @@
         /// </summary>
         protected override void LoadContent()
         {
-            Content.RootDirectory = "Content";
+            Content.RootDirectory = Const.CONTENT_PATH_S;
             base.LoadContent();
             SpriteFactory.Instance.BindLoader(Content);
             SoundFactory.Instance.BindLoader(Content);
@@ -137,10 +139,12 @@
             switch (CurrentSelected)
             {
                 case Menu.Normal:
-                    gameModel = new GameModel(this, GameMode.normal);
+                    gameModel = new GameModel(this, controllers, GameMode.normal);
+                    graphicsManager.BindModel(gameModel);
                     break;
                 case Menu.Infinite:
-                    gameModel = new GameModel(this, GameMode.infinite);
+                    gameModel = new GameModel(this, controllers,GameMode.infinite);
+                    graphicsManager.BindModel(gameModel);
                     break;
                 case Menu.Quit:
                     Exit();
@@ -152,12 +156,12 @@
 
         public void CursorUp()
         {
-            CurrentSelected = CurrentSelected == Menu.Normal ? Menu.Quit : (Menu) ((int) CurrentSelected - 1);
+            CurrentSelected = CurrentSelected == Menu.Normal ? Menu.Quit : (Menu)((int)CurrentSelected - 1);
         }
 
         public void CursorDown()
         {
-            CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu) ((int) CurrentSelected + 1);
+            CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu)((int)CurrentSelected + 1);
         }
     }
 }
