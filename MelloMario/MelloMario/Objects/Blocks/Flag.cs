@@ -5,7 +5,6 @@
     using System;
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
-    using MelloMario.Objects.UserInterfaces;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 

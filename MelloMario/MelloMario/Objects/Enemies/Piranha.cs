@@ -7,7 +7,6 @@
     using MelloMario.Factories;
     using MelloMario.Objects.Enemies.PiranhaStates;
     using MelloMario.Objects.Items;
-    using MelloMario.Objects.UserInterfaces;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 

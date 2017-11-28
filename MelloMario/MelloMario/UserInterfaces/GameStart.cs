@@ -1,4 +1,4 @@
-﻿namespace MelloMario.Objects.UserInterfaces
+﻿namespace MelloMario.UserInterfaces
 {
     #region
 

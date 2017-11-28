@@ -2,7 +2,6 @@
 {
     #region
 
-    using MelloMario.Objects.UserInterfaces;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion

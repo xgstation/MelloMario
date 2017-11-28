@@ -10,7 +10,6 @@
     using MelloMario.Objects.Blocks.BrickStates;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.ProtectionStates;
-    using MelloMario.Objects.UserInterfaces;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
