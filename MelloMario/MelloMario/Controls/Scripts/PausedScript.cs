@@ -8,9 +8,9 @@
 
     #endregion
 
-    internal class PausedScript : IScript
+    internal class PausedScript : IScript<IModel>
     {
-        public void Bind(IEnumerable<IController> controllers, IModel model, ICharacter character)
+        public void Bind(IEnumerable<IController> controllers, IModel model)
         {
             ICommandFactory factory = CommandFactory.Instance;
 
@@ -24,7 +24,7 @@
                     KeyBehavior.press);
                 controller.AddCommand(Keys.P, factory.CreateModelCommand("Resume", model), KeyBehavior.press);
                 controller.AddCommand(Keys.R, factory.CreateModelCommand("Reset", model), KeyBehavior.press);
-                controller.AddCommand(Keys.Q, factory.CreateModelCommand("Quit", model), KeyBehavior.press);
+                controller.AddCommand(Keys.Q, factory.CreateModelCommand("Exit", model), KeyBehavior.press);
             }
         }
     }

@@ -6,8 +6,8 @@
 
     #endregion
 
-    internal interface IScript
+    internal interface IScript<in T>
     {
-        void Bind(IEnumerable<IController> controllers, IModel model, ICharacter character);
+        void Bind(IEnumerable<IController> controllers, T objectToBeBind);
     }
 }
