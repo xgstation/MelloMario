@@ -9,11 +9,6 @@
 
     internal class GamePause : BaseUIObject
     {
-
-        public GamePause()
-        {
-        }
-
         protected override void OnUpdate(int time)
         {
             throw new NotImplementedException();

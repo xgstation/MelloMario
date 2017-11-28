@@ -27,6 +27,7 @@
         {
             Session = newSession;
         }
+
         public ISession Session { get; private set; }
 
         public ICharacter Character { get; private set; }

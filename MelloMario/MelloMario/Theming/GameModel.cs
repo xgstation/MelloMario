@@ -18,7 +18,7 @@
         private IListener<IGameObject> scoreListener;
 
         public GameState State { get; private set; }
-        public GameMode Mode { get; private set; }
+        public GameMode Mode { get; }
 
         public GameModel(Game1 game, GameMode mode)
         {
@@ -39,7 +39,7 @@
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
         }
-        
+
         public void Initialize()
         {
             session = new Session();
@@ -64,7 +64,7 @@
             game.Reset();
             Resume();
         }
-        
+
         private void Infinite()
         {
             //mapPath = "Content/Infinite.json";
@@ -82,7 +82,7 @@
             State = GameState.onProgress;
             Resume();
         }
-       
+
         public void Update(int time)
         {
             UpdateController();
@@ -122,7 +122,7 @@
 
         public void Transist()
         {
-           // ActivePlayer.Reset("Mario", scoreListener, soundListener);
+            // ActivePlayer.Reset("Mario", scoreListener, soundListener);
             State = GameState.transist;
             new TransistScript().Bind(controllers, this);
         }

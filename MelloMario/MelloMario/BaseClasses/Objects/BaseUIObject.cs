@@ -17,7 +17,7 @@
         {
             OnDraw(time, spriteBatch);
         }
-        
+
         protected abstract void OnUpdate(int time);
         protected abstract void OnDraw(int time, SpriteBatch spriteBatch);
     }

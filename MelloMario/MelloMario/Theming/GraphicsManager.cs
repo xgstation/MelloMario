@@ -15,6 +15,7 @@
         private readonly UIManager uiManager;
         private IPlayer player;
         private IModel model;
+
         public GraphicsManager(Game1 game)
         {
             this.game = game;
@@ -26,8 +27,8 @@
 
         public void Initialize()
         {
-            
         }
+
         public void BindGraphicsDevice(GraphicsDevice newGraphicsDevice)
         {
             spriteBatchUI = new SpriteBatch(newGraphicsDevice);
@@ -52,14 +53,14 @@
         public void Draw(int time)
         {
             DrawUI(time);
-           // DrawGameObjects(time);
+            // DrawGameObjects(time);
         }
 
         private void DrawUI(int time)
         {
             spriteBatchUI.Begin(SpriteSortMode.BackToFront);
             uiManager.Draw(time, spriteBatchUI);
-            spriteBatchUI.End();   
+            spriteBatchUI.End();
         }
 
         private void DrawGameObjects(int time)
@@ -75,6 +76,5 @@
             }
             spriteBatchGameObjects.End();
         }
-
     }
 }

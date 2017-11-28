@@ -22,6 +22,7 @@
         {
             model = newGameModel;
         }
+
         public void ToggleMute()
         {
             sounds?.ToggleMute();
@@ -30,12 +31,10 @@
 
         public void Update(int time)
         {
-
         }
 
         public void Initialize()
         {
-            
         }
     }
 }

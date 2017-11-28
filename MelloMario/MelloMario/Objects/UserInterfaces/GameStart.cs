@@ -20,7 +20,7 @@
         private readonly Rectangle titleDestinationRect;
         private readonly Rectangle menuDestinationRect;
         private readonly string[] menuStrings;
-        
+
         public GameStart(Game1 game)
         {
             this.game = game;
@@ -39,22 +39,22 @@
             menuSprite = SpriteFactory.Instance.CreateTextSprite(AddCursor(0));
             menuDestinationRect = new Rectangle(0, 450, 200, 200);
         }
-        
+
         protected override void OnUpdate(int time)
         {
-            menuSprite = SpriteFactory.Instance.CreateTextSprite(AddCursor((int)game.CurrentSelected));
+            menuSprite = SpriteFactory.Instance.CreateTextSprite(AddCursor((int) game.CurrentSelected));
         }
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
             startSprite.Draw(time, spriteBatch, startDestinationRect);
             titleSprite.Draw(time, spriteBatch, titleDestinationRect);
-            menuSprite.Draw(time,spriteBatch,menuDestinationRect);
+            menuSprite.Draw(time, spriteBatch, menuDestinationRect);
         }
 
         private string AddCursor(int index)
         {
-            Contract.Assert(index >=0 && index < menuStrings.Length);
+            Contract.Assert(index >= 0 && index < menuStrings.Length);
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < menuStrings.Length; i++)
             {

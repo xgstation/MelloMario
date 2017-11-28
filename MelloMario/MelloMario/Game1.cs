@@ -20,8 +20,14 @@
     {
         //XNA Member
         private readonly GraphicsDeviceManager graphics;
+
         //MelloMario Members
-        public enum Menu { Normal, Infinite, Quit }
+        public enum Menu
+        {
+            Normal,
+            Infinite,
+            Quit
+        }
 
         private readonly GraphicsManager graphicsManager;
         private readonly SoundManager soundManager;
@@ -55,7 +61,6 @@
             new StartScript().Bind(controllers, this);
         }
 
-
         // game controlling
         public void ToggleFullScreen()
         {
@@ -69,7 +74,6 @@
 
         public void Reset()
         {
-
         }
 
         /// <summary>
@@ -146,12 +150,12 @@
 
         public void CursorUp()
         {
-            CurrentSelected = CurrentSelected == Menu.Normal ? Menu.Quit : (Menu)((int)CurrentSelected - 1);
+            CurrentSelected = CurrentSelected == Menu.Normal ? Menu.Quit : (Menu) ((int) CurrentSelected - 1);
         }
 
         public void CursorDown()
         {
-            CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu)((int)CurrentSelected + 1);
+            CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu) ((int) CurrentSelected + 1);
         }
     }
 }

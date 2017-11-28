@@ -28,7 +28,8 @@
             }
             while (world.Boundary.Left > range.Left - Const.SCAN_RANGE)
             {
-                terrains[0].Request(world, new Rectangle(world.Boundary.Left - Const.GRID, world.Boundary.Top, Const.GRID, world.Boundary.Height)); // TODO
+                terrains[0]
+                    .Request(world, new Rectangle(world.Boundary.Left - Const.GRID, world.Boundary.Top, Const.GRID, world.Boundary.Height)); // TODO
                 world.Extend(32, 0, 0, 0);
             }
         }

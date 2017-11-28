@@ -19,7 +19,7 @@
     [Serializable]
     internal class Thwomp : BasePhysicalObject
     {
-        private IThwompState state;
+        private readonly IThwompState state;
 
         public Thwomp(IWorld world, Point location, IListener<IGameObject> listener) : base(
             world,
@@ -39,13 +39,13 @@
 
         public int NormalTime { get; }
 
-        private bool onFloor = false;
+        private bool onFloor;
 
         private bool DetectMario()
         {
             return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
-                    where obj is ICharacter
-                    select obj).Any();
+                where obj is ICharacter
+                select obj).Any();
         }
 
         private void UpdateSprite()

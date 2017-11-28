@@ -9,7 +9,15 @@
 
     internal class UIManager
     {
-        public enum State { idle, start, pause, over, won, inGame }
+        public enum State
+        {
+            idle,
+            start,
+            pause,
+            over,
+            won,
+            inGame
+        }
 
         private State oldState;
 
@@ -19,7 +27,7 @@
 
         private string worldName;
         private IPlayer player;
-    
+
         public State ScreenState { get; set; }
 
         public UIManager(Game1 game)
@@ -33,11 +41,12 @@
         {
             player = newPlayer;
         }
+
         public void Initialize()
         {
             worldName = player.Character.CurrentWorld.ID;
         }
-        
+
         public void Update(int time)
         {
             if (oldState != ScreenState)

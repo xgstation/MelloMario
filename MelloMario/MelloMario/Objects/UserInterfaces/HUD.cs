@@ -45,10 +45,9 @@
             timeRemain = newTimeRemain;
             worldName = newWorldName;
         }
-        
+
         protected override void OnUpdate(int time)
         {
-
             string newText = "MARIO     *"
                 + lifes.ToString().PadLeft(2, '0')
                 + "   WORLD    TIME\n"

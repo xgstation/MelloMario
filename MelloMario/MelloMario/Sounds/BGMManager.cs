@@ -11,7 +11,6 @@
 
     internal class BGMManager
     {
-
         private static readonly ISoundTrack Normal = SoundFactory.Instance.CreateSoundTrack("Normal");
         private static readonly ISoundTrack Hurry = SoundFactory.Instance.CreateSoundTrack("Hurry");
         private static readonly ISoundTrack BelowGround = SoundFactory.Instance.CreateSoundTrack("BelowGround");

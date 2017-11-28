@@ -11,8 +11,6 @@ namespace MelloMario.Objects.UserInterfaces
 
     internal class GameOver : BaseUIObject
     {
-
-
         private readonly ISprite worldText;
         private readonly ISprite lifesText;
         private readonly ISprite marioIcon;
@@ -26,6 +24,7 @@ namespace MelloMario.Objects.UserInterfaces
         private readonly Rectangle backGroundDestination;
 
         private readonly int lifes;
+
         public GameOver(int lifes, string worldName)
         {
             this.lifes = lifes;
@@ -42,6 +41,7 @@ namespace MelloMario.Objects.UserInterfaces
             gameOverTextDestination = new Rectangle(new Point(250, 250), new Point(80, 80));
             backGroundDestination = new Rectangle(Point.Zero, new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT));
         }
+
         protected override void OnUpdate(int time)
         {
         }

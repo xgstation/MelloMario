@@ -12,12 +12,14 @@
         onProgress,
         transist
     }
+
     public enum GameMode
     {
         normal,
         infinite,
         randomMap
     }
+
     internal interface IModel
     {
         GameState State { get; }

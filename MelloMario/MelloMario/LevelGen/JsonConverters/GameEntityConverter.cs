@@ -315,26 +315,26 @@
                     Activator.CreateInstance(type, world, objPoint, listener, false);
                     break;
                 case ProduceMode.Rectangle:
-                    {
-                        Util.BatchRecCreate(
-                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                            objPoint,
-                            quantity,
-                            new Point(Const.GRID, Const.GRID),
-                            ignoredSet);
-                        break;
-                    }
+                {
+                    Util.BatchRecCreate(
+                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                        objPoint,
+                        quantity,
+                        new Point(Const.GRID, Const.GRID),
+                        ignoredSet);
+                    break;
+                }
 
                 case ProduceMode.Triangle:
-                    {
-                        Util.BatchTriCreate(
-                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                            objPoint,
-                            triangleSize,
-                            new Point(Const.GRID, Const.GRID),
-                            ignoredSet);
-                        break;
-                    }
+                {
+                    Util.BatchTriCreate(
+                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                        objPoint,
+                        triangleSize,
+                        new Point(Const.GRID, Const.GRID),
+                        ignoredSet);
+                    break;
+                }
             }
         }
 
