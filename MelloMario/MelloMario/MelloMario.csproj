@@ -84,6 +84,7 @@
     <Compile Include="BaseClasses\Objects\BaseUIObject.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseTimedState.cs" />
     <Compile Include="BaseClasses\Objects\States\BaseState.cs" />
+    <Compile Include="LevelGen\Scroll.cs" />
     <Compile Include="NoiseGame.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="LevelGen\NoiseGenerators\NoiseInterpreter.cs" />
