@@ -87,7 +87,7 @@
     <Compile Include="NoiseGame.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="LevelGen\NoiseGenerators\NoiseInterpreter.cs" />
-    <Compile Include="LevelGen\StaticGenerator.cs" />
+    <Compile Include="LevelGen\Static.cs" />
     <Compile Include="LevelGen\GroundGenerator.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingDown.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingUp.cs" />

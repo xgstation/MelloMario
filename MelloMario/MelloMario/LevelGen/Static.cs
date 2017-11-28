@@ -8,11 +8,11 @@
 
     #endregion
 
-    internal class StaticGenerator : IGenerator
+    internal class Static : IGenerator
     {
         private ISet<IGameObject> objects;
 
-        public StaticGenerator()
+        public Static()
         {
             objects = new HashSet<IGameObject>();
         }
