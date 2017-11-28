@@ -5,13 +5,11 @@
     using System;
     using System.Linq;
     using MelloMario.Factories;
-    using MelloMario.Interfaces.Objects.States;
     using MelloMario.Objects.Enemies.PiranhaStates;
     using MelloMario.Objects.Items;
     using MelloMario.Objects.UserInterfaces;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 

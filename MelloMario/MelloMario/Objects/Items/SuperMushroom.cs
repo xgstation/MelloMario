@@ -12,7 +12,6 @@
     using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 

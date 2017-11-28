@@ -9,17 +9,12 @@
     using MelloMario.Objects.Blocks.BrickStates;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.ProtectionStates;
-    using MelloMario.Objects.Enemies.KoopaStates;
     using MelloMario.Objects.UserInterfaces;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
     using System.Linq;
 
     #endregion
-
-    using MelloMario.Interfaces.Objects.States;
-    using MelloMario.Objects.Enemies.ThwompStates;
 
     [Serializable]
     internal class Thwomp : BasePhysicalObject

@@ -5,7 +5,6 @@
     using System.Collections.Generic;
     using MelloMario.Controls.Controllers;
     using MelloMario.Factories;
-    using MelloMario.LevelGen;
     using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Sounds;
     using MelloMario.Theming;

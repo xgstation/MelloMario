@@ -1,6 +1,5 @@
 ﻿namespace MelloMario.Objects.Enemies.ThwompStates
 {
-    using MelloMario.Interfaces.Objects.States;
     #region
 
     using System;

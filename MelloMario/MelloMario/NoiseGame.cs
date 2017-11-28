@@ -2,7 +2,6 @@
 {
     #region
 
-    using MelloMario.LevelGen;
     using MelloMario.LevelGen.NoiseGenerators;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
