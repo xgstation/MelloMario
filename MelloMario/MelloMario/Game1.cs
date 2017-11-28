@@ -2,10 +2,13 @@
 {
     #region
 
+    using System;
     using System.Collections.Generic;
     using MelloMario.Controls.Controllers;
+    using MelloMario.Controls.Scripts;
     using MelloMario.Factories;
     using MelloMario.LevelGen;
+    using MelloMario.LevelGen.JsonConverters;
     using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Sounds;
     using MelloMario.Theming;
@@ -20,19 +23,34 @@
     internal class Game1 : Game
     {
         private readonly GraphicsDeviceManager graphics;
-        private GameModel model;
-        private SpriteBatch spriteBatch;
-        private BGMManager sounds;
-        private NoiseInterpreter noiseInterpreter;
+        private readonly GraphicsManager graphicsManager;
+        private readonly SoundManager soundManager;
+        private readonly IEnumerable<IController> controllers;
+        private readonly LevelIOJson levelIOJson;
+        private GameModel gameModel;
+        public enum Menu { Normal, Infinite, Quit}
 
+        public Menu CurrentSelected { get; private set; }
         public Game1()
         {
+            //XNA Win Form Initialize
             graphics = new GraphicsDeviceManager(this)
             {
                 PreferredBackBufferWidth = Const.SCREEN_WIDTH,
                 PreferredBackBufferHeight = Const.SCREEN_HEIGHT
             };
+            //MelloMario initialize
+            CurrentSelected = Menu.Normal;
+            graphicsManager = new GraphicsManager(this);
+            soundManager = new SoundManager();
+            controllers = new List<IController>
+            {
+                new GamepadController(),
+                new KeyboardController()
+            };
+           new StartScript().Bind(controllers, this);
         }
+
 
         // game controlling
         public void ToggleFullScreen()
@@ -42,21 +60,12 @@
 
         public void ToggleMute()
         {
-            sounds.ToggleMute();
+            soundManager.ToggleMute();
         }
 
         public void Reset()
         {
-            model = new GameModel(this);
-            IEnumerable<IController> controllers = new List<IController>
-            {
-                new GamepadController(),
-                new KeyboardController()
-            };
-            model.LoadControllers(controllers);
-            model.Init();
 
-            sounds = new BGMManager(model);
         }
 
         /// <summary>
@@ -68,7 +77,8 @@
         protected override void Initialize()
         {
             base.Initialize();
-            Reset();
+            graphicsManager.Initialize();
+            soundManager.Initialize();
         }
 
         /// <summary>
@@ -79,20 +89,9 @@
         {
             Content.RootDirectory = "Content";
             base.LoadContent();
-
             SpriteFactory.Instance.BindLoader(Content);
             SoundFactory.Instance.BindLoader(Content);
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            //noiseInterpreter = new NoiseInterpreter(spriteBatch);
-        }
-
-        /// <summary>
-        ///     UnloadContent will be called once per game and is the place to unload
-        ///     game-specific content.
-        /// </summary>
-        protected override void UnloadContent()
-        {
-            base.UnloadContent();
+            graphicsManager.BindGraphicsDevice(GraphicsDevice);
         }
 
         /// <summary>
@@ -103,8 +102,13 @@
         protected override void Update(GameTime time)
         {
             base.Update(time);
-            model.Update(time.ElapsedGameTime.Milliseconds);
-            sounds.Update();
+            foreach (IController controller in controllers)
+            {
+                controller.Update();
+            }
+            graphicsManager.Update(time.ElapsedGameTime.Milliseconds);
+            soundManager.Update(time.ElapsedGameTime.Milliseconds);
+            gameModel?.Update(time.ElapsedGameTime.Milliseconds);
         }
 
         /// <summary>
@@ -113,21 +117,40 @@
         /// <param name="time">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime time)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(time);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+            graphicsManager.Draw(time.ElapsedGameTime.Milliseconds);
+        }
 
-#if DEBUGSPRITE //Debug Code
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, null, null, null, null, model.GetActiveViewMatrix);
-            RasterizerState state = new RasterizerState();
-            state.FillMode = FillMode.WireFrame;
-            spriteBatch.GraphicsDevice.RasterizerState = state;
-#else
-            spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, model.GetActiveViewMatrix);
-            //spriteBatch.Begin(SpriteSortMode.BackToFront);
-#endif
-            //noiseInterpreter.Draw();
-            model.Draw(time.ElapsedGameTime.Milliseconds, spriteBatch);
-            spriteBatch.End();
+        public void Select()
+        {
+            switch (CurrentSelected)
+            {
+                //TOOD: Use constructor to create initial state of mode
+                case Menu.Normal:
+                    gameModel = new GameModel(this);
+                    gameModel.Normal();
+                    break;
+                case Menu.Infinite:
+                    gameModel = new GameModel(this);
+                    gameModel.Infinite();
+                    break;
+                case Menu.Quit:
+                    Exit();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void CursorUp()
+        {
+            CurrentSelected = CurrentSelected == Menu.Normal ? Menu.Quit : (Menu)((int)CurrentSelected - 1);
+        }
+
+        public void CursorDown()
+        {
+            CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu)((int)CurrentSelected + 1);
         }
     }
 }
