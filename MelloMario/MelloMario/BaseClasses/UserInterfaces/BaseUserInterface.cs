@@ -1,4 +1,4 @@
-﻿namespace MelloMario.Objects
+﻿namespace MelloMario.UserInterfaces
 {
     #region
 
@@ -6,7 +6,7 @@
 
     #endregion
 
-    internal abstract class BaseUIObject : IUIObject
+    internal abstract class BaseUserInterface : IUserInterface
     {
         public void Update(int time)
         {
