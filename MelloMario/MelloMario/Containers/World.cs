@@ -12,10 +12,10 @@
     [Serializable]
     internal class World : BaseContainer<Point, IGameObject>, IWorld
     {
-        private readonly ILevelGenerator generator;
+        private readonly IGenerator generator;
         private readonly ISet<Point> respawnPoints;
 
-        public World(string id, WorldType type, ILevelGenerator generator, IEnumerable<Point> respawn)
+        public World(string id, WorldType type, IGenerator generator, IEnumerable<Point> respawn)
         {
             ID = id;
             Type = type;
@@ -45,10 +45,10 @@
                 generator.Request(this, range);
             }
 
-            int left = (range.Left - Const.SCANRANGE) / Const.GRID;
-            int right = (range.Right + Const.SCANRANGE) / Const.GRID;
-            int top = (range.Top - Const.SCANRANGE) / Const.GRID;
-            int bottom = (range.Bottom + Const.SCANRANGE) / Const.GRID;
+            int left = (range.Left - Const.SCAN_RANGE) / Const.GRID;
+            int right = (range.Right + Const.SCAN_RANGE) / Const.GRID;
+            int top = (range.Top - Const.SCAN_RANGE) / Const.GRID;
+            int bottom = (range.Bottom + Const.SCAN_RANGE) / Const.GRID;
 
             for (int i = left; i <= right; ++i)
             {

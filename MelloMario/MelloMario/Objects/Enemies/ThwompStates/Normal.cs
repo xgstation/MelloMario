@@ -5,8 +5,6 @@
     using System;
 
     #endregion
-    
-    using MelloMario.Interfaces.Objects.States;
 
     [Serializable]
     internal class Normal : BaseTimedState<Thwomp>, IThwompState

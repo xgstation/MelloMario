@@ -2,8 +2,6 @@ namespace MelloMario.Objects.UserInterfaces
 {
     #region
 
-    using System;
-    using System.Collections.Generic;
     using MelloMario.Factories;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;

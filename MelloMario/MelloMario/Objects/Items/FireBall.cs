@@ -6,7 +6,6 @@
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
