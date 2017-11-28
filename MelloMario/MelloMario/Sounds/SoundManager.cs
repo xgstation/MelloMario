@@ -15,7 +15,8 @@
         public SoundManager()
         {
             SoundEffectListener = new SoundEffectListener();
-            sounds = new SoundTrackManager();
+            //TODO: Fix it
+            //sounds = new SoundTrackManager();
         }
 
         public void ToggleMute()
