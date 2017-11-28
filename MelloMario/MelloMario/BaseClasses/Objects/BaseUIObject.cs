@@ -9,13 +9,6 @@
 
     internal abstract class BaseUIObject : IObject
     {
-        public Point Offset { get; set; }
-        
-        protected BaseUIObject(Point offset)
-        {
-            Offset = offset;
-        }
-
         public void Update(int time)
         {
             OnUpdate(time);
