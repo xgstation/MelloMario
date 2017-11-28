@@ -90,8 +90,8 @@
     <Compile Include="NoiseGame.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="LevelGen\NoiseGenerators\NoiseInterpreter.cs" />
-    <Compile Include="LevelGen\StaticGenerator.cs" />
-    <Compile Include="LevelGen\GroundGenerator.cs" />
+    <Compile Include="LevelGen\Static.cs" />
+    <Compile Include="LevelGen\Terrains\Ground.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingDown.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingUp.cs" />
     <Compile Include="Objects\UserInterfaces\GamePause.cs" />
@@ -164,7 +164,7 @@
     <Compile Include="Objects\Enemies\GoombaStates\Normal.cs" />
     <Compile Include="Interfaces\Objects\ICamera.cs" />
     <Compile Include="Interfaces\IListener.cs" />
-    <Compile Include="Interfaces\ILevelGenerator.cs" />
+    <Compile Include="Interfaces\LevelGen\IGenerator.cs" />
     <Compile Include="Interfaces\Objects\IObject.cs" />
     <Compile Include="LevelGen\NoiseGenerators\PerlinNoiseGenerator.cs" />
     <Compile Include="Objects\Miscs\Camera.cs" />
