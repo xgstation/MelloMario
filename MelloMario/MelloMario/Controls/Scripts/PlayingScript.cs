@@ -105,6 +105,10 @@
                     Keys.Y,
                     factory.CreateCharacterCommand("BecomeNormal", character),
                     KeyBehavior.press); // Turn to normal
+                controller.AddCommand(
+                    Keys.O,
+                    factory.CreateCharacterCommand("BecomeDead", character),
+                    KeyBehavior.press); // Turn to dead
                 controller.AddCommand(Buttons.B, factory.CreateCharacterCommand("Action", character));
                 controller.AddCommand(
                     Buttons.DPadDown,

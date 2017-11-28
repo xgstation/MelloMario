@@ -220,6 +220,23 @@
             }
         }
 
+        public void KillMario()
+        {
+            
+            if (PowerUpState != null || PowerUpState is Standard)
+            {
+                PowerUpState.Downgrade();
+                return;
+            }
+            SoundEventArgs.SetMethodCalled();
+            PowerUpState.Downgrade();
+            if (PowerUpState is Fire)
+            {
+                PowerUpState.Downgrade();
+                PowerUpState.Downgrade();
+            }
+        }
+
         public void Action()
         {
             if (animation != Animation.none)

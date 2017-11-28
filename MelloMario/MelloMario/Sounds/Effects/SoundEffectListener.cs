@@ -112,6 +112,9 @@
                 case "NormalCreate":
                     PlayEffect("Pipe");
                     break;
+                case "KillMario":
+                    PlayEffect("Death");
+                    break;
                 case "Jump":
                     PlayEffect(mario.PowerUpState is Standard ? "Bounce" : "PowerBounce");
                     break;
