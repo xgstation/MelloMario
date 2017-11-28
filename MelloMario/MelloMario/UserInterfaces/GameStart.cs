@@ -10,7 +10,7 @@
 
     #endregion
 
-    internal class GameStart : BaseUIObject
+    internal class GameStart : BaseUserInterface
     {
         private readonly Game1 game;
         private readonly ISprite startSprite;
