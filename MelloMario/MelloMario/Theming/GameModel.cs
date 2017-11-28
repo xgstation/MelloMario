@@ -145,7 +145,7 @@
         private void UpdateGameObjects(int time)
         {
             // reserved for multiplayer
-            ISet<IObject> updating = new HashSet<IObject>();
+            ISet<IGameObject> updating = new HashSet<IGameObject>();
 
             foreach (IPlayer player in session.ScanPlayers())
             {
@@ -156,7 +156,7 @@
                 }
             }
 
-            foreach (IObject obj in updating)
+            foreach (IGameObject obj in updating)
             {
                 obj.Update(time);
             }
