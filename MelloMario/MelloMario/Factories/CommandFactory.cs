@@ -91,6 +91,8 @@
                     return new SuperCreate(character);
                 case "BecomeNormal":
                     return new NormalCreate(character);
+                case "BecomeDead":
+                    return new KillMario(character);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
