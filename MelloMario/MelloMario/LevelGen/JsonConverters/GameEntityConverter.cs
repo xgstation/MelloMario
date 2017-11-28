@@ -204,10 +204,16 @@
                     objectStackToBeEncapsulated.Push(createFunc(objPoint));
                     break;
                 case ProduceMode.Rectangle:
-                    Util.BatchRecCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet);
+                    foreach (IGameObject obj in Util.BatchRecCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet))
+                    {
+                        objectStackToBeEncapsulated.Push(obj);
+                    }
                     break;
                 case ProduceMode.Triangle:
-                    Util.BatchTriCreate(createFunc, objPoint, triangleSize, new Point(Const.GRID, Const.GRID), ignoredSet);
+                    foreach (IGameObject obj in Util.BatchTriCreate(createFunc, objPoint, triangleSize, new Point(Const.GRID, Const.GRID), ignoredSet))
+                    {
+                        objectStackToBeEncapsulated.Push(obj);
+                    }
                     break;
                 default:
                     goto case ProduceMode.One;
@@ -244,12 +250,15 @@
             }
             else if (produceMode is ProduceMode.Rectangle)
             {
-                Util.BatchRecCreate(
-                    createFunc,
-                    objPoint,
-                    quantity,
-                    new Point(Const.GRID, Const.GRID),
-                    ignoredSet);
+                foreach (IGameObject obj in Util.BatchRecCreate(
+                       createFunc,
+                       objPoint,
+                       quantity,
+                       new Point(Const.GRID, Const.GRID),
+                       ignoredSet))
+                {
+                    objectStackToBeEncapsulated.Push(obj);
+                }
             }
 
             return true;
@@ -302,10 +311,17 @@
 
                     break;
                 case ProduceMode.Rectangle:
-                    Util.BatchRecCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet);
+                    foreach (IGameObject obj in Util.BatchRecCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet))
+                    {
+                        objectStackToBeEncapsulated.Push(obj);
+                    }
+
                     break;
                 case ProduceMode.Triangle:
-                    Util.BatchTriCreate(createFunc, objPoint, triangleSize, new Point(Const.GRID, Const.GRID), ignoredSet);
+                    foreach (IGameObject obj in Util.BatchTriCreate(createFunc, objPoint, triangleSize, new Point(Const.GRID, Const.GRID), ignoredSet))
+                    {
+                        objectStackToBeEncapsulated.Push(obj);
+                    }
                     break;
             }
         }

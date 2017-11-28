@@ -92,7 +92,7 @@
                 TryGet(out string[] itemValues, token, "Property", "ItemValues") ? itemValues : null);
         }
 
-        public static void BatchRecCreate<T>(
+        public static IEnumerable<IGameObject> BatchRecCreate<T>(
             Func<Point, T> func,
             Point startPoint,
             Point quantity,
@@ -109,13 +109,13 @@
                     Point createIndex = new Point(x + 1, y + 1);
                     if (ignoredSet == null || !ignoredSet.Contains(createIndex))
                     {
-                        func(createLocation);
+                        yield return (IGameObject) func(createLocation);
                     }
                 }
             }
         }
 
-        public static void BatchTriCreate<T>(
+        public static IEnumerable<IGameObject> BatchTriCreate<T>(
             Func<Point, T> createFunc,
             Point startPoint,
             Point triangleSize,
@@ -140,61 +140,18 @@
                     {
                         if (typeof(T).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
                         {
-                            createFunc(createLocation);
+                            yield return (IGameObject) createFunc(createLocation);
                         }
                         else
                         {
-                            createFunc(createLocation);
+                            yield return (IGameObject) createFunc(createLocation);
                         }
                     }
                 }
             }
         }
 
-        public static void BatchCreateWithProperties<T1, T2>(
-            Func<Point, T1> createFunc,
-            Point startPoint,
-            Point quantity,
-            Point objSize,
-            ICollection<Point> ignoredSet,
-            IDictionary<Point, T2> properties,
-            Action<IGameObject, T2> applyProperties)
-        {
-            Contract.Assume(!((properties == null) ^ (applyProperties == null)));
-            for (int x = 0; x < quantity.X; x++)
-            {
-                for (int y = 0; y < quantity.Y; y++)
-                {
-                    Point createLocation = new Point(startPoint.X + x * objSize.X, startPoint.Y + y * objSize.Y);
-                    Point createIndex = new Point(x + 1, y + 1);
-                    if (ignoredSet == null || !ignoredSet.Contains(createIndex))
-                    {
-                        if (typeof(T1).IsAssignableFrom(typeof(IEnumerable<IGameObject>)))
-                        {
-                            foreach (IGameObject obj in (IEnumerable<IGameObject>) createFunc(createLocation))
-                            {
-                                Point index = new Point(x, y);
-                                if (properties != null && properties.ContainsKey(index))
-                                {
-                                    applyProperties(obj, properties[index]);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            IGameObject newObject = (IGameObject) createFunc(createLocation);
-                            Point index = new Point(x, y);
-                            if (properties != null && properties.ContainsKey(index))
-                            {
-                                applyProperties(newObject, properties[index]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        public static List<IGameObject> CreateSinglePipeline(
+        public static IEnumerable<IGameObject> CreateSinglePipeline(
             IWorld world,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,
@@ -259,6 +216,7 @@
             }
             listOfPipelineComponents.Insert(0, in1);
             listOfPipelineComponents.Insert(1, in2);
+
             return listOfPipelineComponents;
         }
 
