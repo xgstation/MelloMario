@@ -8,7 +8,7 @@ namespace MelloMario.Objects.UserInterfaces
 {
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class SplashScreen : BaseUIObject
+    internal class SplashScreen : BaseUserInterface
     {
         public IScreenState State { get; set; }
 

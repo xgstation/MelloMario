@@ -1,4 +1,4 @@
-﻿namespace MelloMario.Objects.UserInterfaces
+﻿namespace MelloMario.UserInterfaces
 {
     #region
 
@@ -7,7 +7,7 @@
 
     #endregion
 
-    internal class GamePause : BaseUIObject
+    internal class GamePause : BaseUserInterface
     {
         protected override void OnUpdate(int time)
         {

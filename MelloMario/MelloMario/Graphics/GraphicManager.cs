@@ -2,12 +2,12 @@
 {
     #region
 
-    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.UserInterfaces;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
-    internal class GraphicsManager
+    internal class GraphicManager
     {
         private readonly Game1 game;
         private SpriteBatch spriteBatchUI;
@@ -16,17 +16,15 @@
         private IPlayer player;
         private IModel model;
 
-        public GraphicsManager(Game1 game)
+        public GraphicManager(Game1 game)
         {
             this.game = game;
-            uiManager = new UIManager(game)
-            {
-                ScreenState = UIManager.State.start
-            };
+            uiManager = new UIManager(game);
         }
 
         public void Initialize()
         {
+            uiManager.ScreenState = UIManager.State.start;
         }
 
         public void BindGraphicsDevice(GraphicsDevice newGraphicsDevice)

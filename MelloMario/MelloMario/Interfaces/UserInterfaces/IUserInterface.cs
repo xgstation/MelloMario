@@ -6,7 +6,7 @@
 
     #endregion
 
-    internal interface IObject
+    internal interface IUserInterface
     {
         void Update(int time);
         void Draw(int time, SpriteBatch spriteBatch);

@@ -1,4 +1,4 @@
-﻿namespace MelloMario.Objects.UserInterfaces
+﻿namespace MelloMario.UserInterfaces
 {
     #region
 
@@ -8,7 +8,7 @@
 
     #endregion
 
-    internal class HUD : BaseUIObject
+    internal class HUD : BaseUserInterface
     {
         private readonly ISprite coinSprite;
         private readonly ISprite oneUpSprite;

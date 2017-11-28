@@ -6,7 +6,7 @@
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.CoinStates;
-    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Objects.Miscs;
     using MelloMario.Sounds;
     using MelloMario.Sounds.Effects;
     using MelloMario.Theming;

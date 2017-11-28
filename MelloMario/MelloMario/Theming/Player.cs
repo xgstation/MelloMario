@@ -14,11 +14,11 @@
     [Serializable]
     internal class Player : IPlayer
     {
-        private readonly GraphicsManager graphicsManager;
+        private readonly GraphicManager graphicsManager;
         private readonly SoundManager soundManager;
         private readonly IEnumerable<IController> controllers;
 
-        public Player(GraphicsManager graphicsManager, SoundManager soundManager, IEnumerable<IController> controllers)
+        public Player(GraphicManager graphicsManager, SoundManager soundManager, IEnumerable<IController> controllers)
         {
             this.graphicsManager = graphicsManager;
             this.soundManager = soundManager;

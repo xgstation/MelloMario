@@ -1,4 +1,4 @@
-﻿namespace MelloMario.Objects.UserInterfaces
+﻿namespace MelloMario.UserInterfaces
 {
     #region
 
@@ -9,7 +9,7 @@
 
     #endregion
 
-    internal class GameWon : BaseUIObject
+    internal class GameWon : BaseUserInterface
     {
         private readonly ISprite splashSprite;
         private readonly ISprite textSprite;

@@ -1,4 +1,4 @@
-namespace MelloMario.Objects.UserInterfaces
+namespace MelloMario.UserInterfaces
 {
     #region
 
@@ -9,7 +9,7 @@ namespace MelloMario.Objects.UserInterfaces
 
     #endregion
 
-    internal class GameOver : BaseUIObject
+    internal class GameOver : BaseUserInterface
     {
         private readonly ISprite worldText;
         private readonly ISprite lifesText;

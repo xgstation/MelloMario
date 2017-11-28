@@ -31,7 +31,7 @@
             Quit
         }
 
-        private readonly GraphicsManager graphicsManager;
+        private readonly GraphicManager graphicsManager;
         private readonly SoundManager soundManager;
         private readonly IEnumerable<IController> controllers;
         private readonly LevelIOJson levelIOJson;
@@ -50,7 +50,7 @@
             };
             //MelloMario initialize
             CurrentSelected = Menu.Normal;
-            graphicsManager = new GraphicsManager(this);
+            graphicsManager = new GraphicManager(this);
             soundManager = new SoundManager();
             controllers = new List<IController>
             {
