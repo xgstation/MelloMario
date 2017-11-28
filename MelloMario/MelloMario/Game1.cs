@@ -7,7 +7,9 @@
     using MelloMario.Controls.Controllers;
     using MelloMario.Controls.Scripts;
     using MelloMario.Factories;
+    using MelloMario.Graphics;
     using MelloMario.LevelGen.JsonConverters;
+    using MelloMario.Sounds;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
