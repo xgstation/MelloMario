@@ -81,7 +81,7 @@ namespace MelloMario.Objects.UserInterfaces
             switch (ScreenState)
             {
                 case State.start:
-                    splash = new GameStart(offset);
+                    splash = new GameStart();
                     hud = null;
                     break;
                 case State.pause:
