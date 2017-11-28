@@ -5,6 +5,7 @@
     using MelloMario.Factories;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
     #endregion
 
@@ -12,53 +13,70 @@
     {
         private readonly ISprite coinSprite;
         private readonly ISprite oneUpSprite;
-        private Rectangle coinDestinationRect;
-        private Rectangle oneUpDestinationRect;
-        private Rectangle textDestinationRect;
-        private string text;
         private ISprite textSprite;
 
-        public HUD(IPlayer player) : base(player)
+        private Rectangle coinDestination;
+        private Rectangle oneUpDestination;
+        private Rectangle textDestination;
+        private string text;
+
+        private int lifes;
+        private int score;
+        private int coins;
+        private int timeRemain;
+        private string worldName;
+
+        public bool IsSplashing { get; set; }
+
+        public HUD(Point offset) : base(offset)
         {
             textSprite = SpriteFactory.Instance.CreateTextSprite("");
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
             oneUpSprite = SpriteFactory.Instance.CreateOneUpMushroomSprite();
-            textDestinationRect = new Rectangle(42, 42, 800, 200);
-            coinDestinationRect = new Rectangle(255, 74, 26, 30);
-            oneUpDestinationRect = new Rectangle(255, 42, 26, 30);
-            // OnUpdate(0);
+            textDestination = new Rectangle(42, 42, 800, 200);
+            coinDestination = new Rectangle(255, 74, 26, 30);
+            oneUpDestination = new Rectangle(255, 42, 26, 30);
         }
 
+        public void OnHUDInfoChange(int newLifes, int newScore, int newCoins, int newTimeRemain, string newWorldName)
+        {
+            lifes = newLifes;
+            score = newScore;
+            coins = newCoins;
+            timeRemain = newTimeRemain;
+            worldName = newWorldName;
+        }
+        
         protected override void OnUpdate(int time)
         {
-            Offset(ref coinDestinationRect);
-            Offset(ref textDestinationRect);
-            Offset(ref oneUpDestinationRect);
-            UpdateOrigin();
 
             string newText = "MARIO     *"
-                + Player.Lifes.ToString().PadLeft(2, '0')
+                + lifes.ToString().PadLeft(2, '0')
                 + "   WORLD    TIME\n"
-                + Player.Score.ToString().PadLeft(6, '0')
+                + score.ToString().PadLeft(6, '0')
                 + "    *"
-                + Player.Coins.ToString().PadLeft(2, '0')
+                + coins.ToString().PadLeft(2, '0')
                 + "    "
-                + "1-1"
+                + worldName
                 + "      "
-                + Player.TimeRemain / 1000; // TODO: get World name from player.CurrentWorld
+                + (IsSplashing ? "" : (timeRemain / 1000).ToString());
 
-            if (newText != text)
+            if (newText == text)
             {
-                text = newText;
-                textSprite = SpriteFactory.Instance.CreateTextSprite(text);
+                return;
             }
+            text = newText;
+            textSprite = SpriteFactory.Instance.CreateTextSprite(text);
+            textDestination.Offset(Offset);
+            coinDestination.Offset(Offset);
+            oneUpDestination.Offset(Offset);
         }
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch)
         {
-            textSprite.Draw(time, spriteBatch, textDestinationRect);
-            coinSprite.Draw(time, spriteBatch, coinDestinationRect);
-            oneUpSprite.Draw(time, spriteBatch, oneUpDestinationRect);
+            textSprite.Draw(time, spriteBatch, textDestination);
+            coinSprite.Draw(time, spriteBatch, coinDestination);
+            oneUpSprite.Draw(time, spriteBatch, oneUpDestination);
         }
     }
 }
