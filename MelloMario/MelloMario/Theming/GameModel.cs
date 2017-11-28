@@ -17,65 +17,51 @@
     [Serializable]
     internal class GameModel : IModel
     {
-
-        public enum GameMode
-        {
-            Normal,
-            Infinite,
-            RandomMap
-        }
-
         private readonly Game1 game;
-        private Session session;
+        private ISession session;
         private IEnumerable<IController> controllers;
         private IListener<IGameObject> scoreListener;
 
         public GameState State { get; private set; }
+        public GameMode Mode { get; private set; }
 
-        public GameModel(Game1 game)
+        public GameModel(Game1 game, GameMode mode)
         {
             this.game = game;
-        }
-
-        public Matrix GetActiveViewMatrix
-        {
-            get
+            State = GameState.onProgress;
+            Mode = mode;
+            switch (mode)
             {
-                return ActivePlayer.Camera.GetViewMatrix(new Vector2(1f));
+                case GameMode.normal:
+                    Normal();
+                    break;
+                case GameMode.infinite:
+                    Infinite();
+                    break;
+                case GameMode.randomMap:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
         }
-
-        //TODO: Change with multiplayer
-        public IPlayer ActivePlayer { get; private set; }
-
-        public bool IsPaused { get; }
-
-        public void ToggleFullScreen()
-        {
-            game.ToggleFullScreen();
-        }
-
-
+        
         public void Initialize()
         {
-            State = GameState.Start;
             session = new Session();
-            //ActivePlayer = new Player(session);
-            scoreListener = new ScoreListener(this, ActivePlayer);
+            scoreListener = new ScoreListener(this, game.ActivePlayer);
             Database.Initialize(session);
-            //new StartScript().Bind(controllers, this, ActivePlayer.Character);
         }
 
         public void Pause()
         {
-            State = GameState.Pause;
+            State = GameState.pause;
             new PausedScript().Bind(controllers, this);
         }
 
         public void Resume()
         {
-            State = GameState.OnProgress;
-            new PlayingScript().Bind(controllers, ActivePlayer.Character);
+            State = GameState.onProgress;
+            new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
         }
 
         public void Reset()
@@ -83,27 +69,22 @@
             game.Reset();
             Resume();
         }
-
-        public void Quit()
-        {
-            game.Exit();
-        }
-
-        public void Infinite()
+        
+        private void Infinite()
         {
             //mapPath = "Content/Infinite.json";
-       //     ActivePlayer.Initialize("Mario", LoadLevel("Main"), scoreListener, soundListener);
-            session.Add(ActivePlayer);
-            State = GameState.OnProgress;
+            game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener);
+            session.Add(game.ActivePlayer);
+            State = GameState.onProgress;
             Resume();
         }
 
-        public void Normal()
+        private void Normal()
         {
             //mapPath = "Content/Level1.json";
-           // ActivePlayer.Initialize("Mario", LoadLevel("Main"), scoreListener, soundListener);
-            session.Add(ActivePlayer);
-            State = GameState.OnProgress;
+            game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener);
+            session.Add(game.ActivePlayer);
+            State = GameState.onProgress;
             Resume();
         }
        
@@ -111,7 +92,7 @@
         {
             UpdateController();
             Database.Update();
-            if (State == GameState.Pause)
+            if (State == GameState.pause)
             {
                 return;
             }
@@ -147,14 +128,14 @@
         public void Transist()
         {
            // ActivePlayer.Reset("Mario", scoreListener, soundListener);
-            State = GameState.Transist;
+            State = GameState.transist;
             new TransistScript().Bind(controllers, this);
         }
 
         public void TransistGameWon()
         {
-            ActivePlayer.Win();
-            State = GameState.Transist;
+            game.ActivePlayer.Win();
+            State = GameState.transist;
             new TransistScript().Bind(controllers, this);
         }
 

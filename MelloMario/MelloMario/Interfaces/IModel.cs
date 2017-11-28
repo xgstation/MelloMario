@@ -7,27 +7,27 @@
     #endregion
     internal enum GameState
     {
-        Start,
-        GameOver,
-        GameWon,
-        Pause,
-        OnProgress,
-        Transist
+        gameOver,
+        gameWon,
+        pause,
+        onProgress,
+        transist
+    }
+    public enum GameMode
+    {
+        normal,
+        infinite,
+        randomMap
     }
     internal interface IModel
     {
-         GameState State { get; }
-        IPlayer ActivePlayer { get; }
-        bool IsPaused { get; }
-        void ToggleFullScreen();
+        GameState State { get; }
+        GameMode Mode { get; }
         void Pause();
         void Resume();
         void Initialize();
         void Reset();
-        void Quit();
         void Update(int time);
-        void Infinite();
-        void Normal();
         IWorld LoadLevel(string index);
         void TransistGameWon();
         void Transist();
