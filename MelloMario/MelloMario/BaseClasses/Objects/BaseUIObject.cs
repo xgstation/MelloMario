@@ -9,15 +9,11 @@
 
     internal abstract class BaseUIObject : IObject
     {
-        protected IPlayer Player;
-        protected Point RelativeOrigin;
-
-        protected BaseUIObject(IPlayer player)
+        public Point Offset { get; set; }
+        
+        protected BaseUIObject(Point offset)
         {
-            // TODO: use another spritebatch
-            // it is wrong to "move" a ui object
-            Player = player;
-            RelativeOrigin = player.Camera.Viewport.Location;
+            Offset = offset;
         }
 
         public void Update(int time)
@@ -29,17 +25,7 @@
         {
             OnDraw(time, spriteBatch);
         }
-
-        protected void Offset(ref Rectangle rect)
-        {
-            rect.Offset(Player.Camera.Viewport.Location - RelativeOrigin);
-        }
-
-        protected void UpdateOrigin()
-        {
-            RelativeOrigin = Player.Camera.Viewport.Location;
-        }
-
+        
         protected abstract void OnUpdate(int time);
         protected abstract void OnDraw(int time, SpriteBatch spriteBatch);
     }

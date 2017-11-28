@@ -83,6 +83,7 @@
             SpriteFactory.Instance.BindLoader(Content);
             SoundFactory.Instance.BindLoader(Content);
             spriteBatch = new SpriteBatch(GraphicsDevice);
+           
             //noiseInterpreter = new NoiseInterpreter(spriteBatch);
         }
 

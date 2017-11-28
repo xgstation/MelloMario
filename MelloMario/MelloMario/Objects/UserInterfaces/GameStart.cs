@@ -12,10 +12,11 @@
     {
         private readonly ISprite startSprite;
         private readonly ISprite textSprite;
-        private Rectangle startDestinationRect;
-        private Rectangle textDestinationRect;
+        private readonly Rectangle startDestinationRect;
+        private readonly Rectangle textDestinationRect;
 
-        public GameStart(IPlayer player) : base(player)
+        //Start splash has no relation with offset, do not use it!
+        public GameStart() : base(Point.Zero)
         {
             startSprite = SpriteFactory.Instance.CreateTitle(ZIndex.Hud);
             textSprite = SpriteFactory.Instance.CreateTextSprite(
@@ -23,12 +24,9 @@
             startDestinationRect = new Rectangle(100, 100, 352, 176);
             textDestinationRect = new Rectangle(0, 400, 200, 200);
         }
-
+        
         protected override void OnUpdate(int time)
         {
-            Offset(ref startDestinationRect);
-            Offset(ref textDestinationRect);
-            UpdateOrigin();
         }
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch)
