@@ -219,7 +219,7 @@
 
         #region Enemy Deserializer
 
-        private object EnemyConverter()
+        private bool EnemyConverter()
         {
             if (type.Name == "Piranha")
             {
