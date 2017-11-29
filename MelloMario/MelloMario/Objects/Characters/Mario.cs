@@ -276,6 +276,15 @@
                     }
 
                     break;
+                case "Thwomp":
+                    if (target is Thwomp thwomp)
+                    {
+                        if (thwomp.State is Enemies.ThwompStates.Normal && !(ProtectionState is Starred))
+                        {
+                            Downgrade();
+                        }
+                    }
+                    break;
                 case "Koopa":
                     //if (target is Koopa koopa && mode != CollisionMode.Bottom)
                     //{

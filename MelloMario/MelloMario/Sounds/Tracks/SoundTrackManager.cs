@@ -107,7 +107,7 @@
 
         public void Update()
         {
-            UpdatePausing();
+            //UpdatePausing();
             UpdateBGM();
         }
     }

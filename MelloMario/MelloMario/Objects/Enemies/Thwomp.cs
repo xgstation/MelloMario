@@ -39,7 +39,7 @@
 
         public int NormalTime { get; }
 
-        private bool onFloor;
+        private bool onFloor = false;
 
         private bool DetectMario()
         {
@@ -69,7 +69,7 @@
             }
             else
             {
-                SetVerticalVelocity(Const.VELOCITY_RISING_THWOMP);
+                ApplyGravity();
             }
 
             base.OnSimulation(time);
@@ -83,7 +83,7 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
-            if (state is GoombaStates.Defeated)
+            if (state is ThwompStates.Defeated)
             {
                 return;
             }

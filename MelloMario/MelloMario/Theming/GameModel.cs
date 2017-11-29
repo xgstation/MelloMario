@@ -17,6 +17,7 @@
         private IEnumerable<IController> controllers;
         private readonly IListener<IGameObject> scoreListener;
         private readonly string map;
+        private Sounds.Tracks.SoundTrackManager sManage;
         public GameState State { get; private set; }
         public GameMode Mode { get; }
 
@@ -25,6 +26,7 @@
             this.game = game;
             this.controllers = controllers;
             session = new Session();
+            sManage = new Sounds.Tracks.SoundTrackManager();
             scoreListener = new ScoreListener(this, game.ActivePlayer);
             game.LevelIOJson.BindScoreListener(scoreListener);
             Database.Initialize(session);
@@ -85,6 +87,7 @@
             }
             UpdateGameObjects(time);
             UpdateContainers();
+            sManage.Update();
         }
 
         public IWorld LoadLevel(string id)
