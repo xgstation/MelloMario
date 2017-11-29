@@ -41,7 +41,6 @@
             {
                 state = new Unveil(this);
                 UpdateSprite();
-                RemoveSelf();
             }
             else
             {
@@ -110,14 +109,12 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
+            if (target is Mario && state is SuperMushroomStates.Normal)
+            {
+                Collect();
+            }
             switch (target)
             {
-                case Mario mario:
-                    if (state is OneUpMushroomStates.Normal)
-                    {
-                        Collect();
-                    }
-                    break;
                 case Brick brick when brick.State is Hidden:
                     break;
                 case Question question when question.State is Blocks.QuestionStates.Hidden:
