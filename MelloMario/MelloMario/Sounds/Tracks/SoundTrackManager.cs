@@ -33,7 +33,7 @@
 
         private void PlayMusic(ISoundTrack track)
         {
-            if (track == currentTrack && MediaPlayer.State != MediaState.Stopped)
+            if (track.Equals(currentTrack) && MediaPlayer.State != MediaState.Stopped)
             {
                 return;
             }
