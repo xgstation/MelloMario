@@ -6,6 +6,8 @@
     using System.Collections.Generic;
     using MelloMario.Containers;
     using MelloMario.Controls.Scripts;
+    using MelloMario.LevelGen;
+    using Microsoft.Xna.Framework;
 
     #endregion
 
@@ -87,7 +89,19 @@
                     return world;
                 }
             }
-            IWorld newWorld = game.LevelIOJson.Load(map, id);
+
+            Static generator = new Static();
+
+            IWorld newWorld = new World(
+                id,
+                WorldType.normal,
+                generator,
+                new List<Point>
+                {
+                    new Point()
+                });
+            game.LevelIOJson.Load(map, id, newWorld, generator);
+
             return newWorld;
         }
 

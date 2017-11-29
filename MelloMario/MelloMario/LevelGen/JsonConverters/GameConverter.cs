@@ -25,12 +25,17 @@
         private JToken mapToBeLoaded;
 
         private IWorld world;
+        private Static generator;
 
         public GameConverter(
+            IWorld world,
+            Static generator,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,
             string id = "Main")
         {
+            this.world = world;
+            this.generator = generator;
             this.id = id;
             this.listener = listener;
             this.soundListener = soundListener;
@@ -91,13 +96,12 @@
             Util.TryGet(out IList<Point> respawnPoints, mapToBeLoaded, "RespawnPoints");
             respawnPoints.Add(initialPoint);
 
-            Static generator = new Static();
-
-            world = new World(
-                id,
-                mapType == "Normal" ? WorldType.normal : WorldType.underground,
-                generator, // TODO: inverse the dependency
-                respawnPoints);
+            // TODO: separate world initialization and object loading
+            //IWorld world = new World(
+            //    id,
+            //    mapType == "Normal" ? WorldType.normal : WorldType.underground,
+            //    generator, // TODO: inverse the dependency
+            //    respawnPoints);
 
             gameEntityConverter = new GameEntityConverter(world, listener, soundListener);
 

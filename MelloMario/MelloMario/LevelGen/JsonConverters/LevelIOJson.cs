@@ -35,12 +35,12 @@
             soundListener = newSoundListener;
         }
 
-        public IWorld Load(string map, string id)
+        public void Load(string map, string id, IWorld world, Static generator)
         {
             levelString = File.ReadAllText(directoryPath + "/" + map);
-            gameConverter = new GameConverter(scoreListener, soundListener, id);
+            gameConverter = new GameConverter(world, generator, scoreListener, soundListener, id);
 
-            return JsonConvert.DeserializeObject<IWorld>(levelString, gameConverter);
+            JsonConvert.DeserializeObject<IWorld>(levelString, gameConverter);
         }
 
         public void Save(string path)
