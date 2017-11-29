@@ -76,7 +76,7 @@
                 characterType,
                 world,
                 this,
-                new Point(32, 32),  //world.GetRespawnPoint(new Point()),
+                new Point(32, 32), //world.GetRespawnPoint(new Point()),
                 scoreListener,
                 soundManager.SoundEffectListener);
             world.Add((IGameObject) Character);

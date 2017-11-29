@@ -141,7 +141,7 @@
                     break;
                 case Pipeline _:
                     break;
-                case Objects.Enemies.Thwomp _:
+                case Thwomp _:
                     PlayEffect("Thwomp");
                     break;
             }

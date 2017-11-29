@@ -10,6 +10,7 @@
     using MelloMario.Objects.Blocks.BrickStates;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.ProtectionStates;
+    using MelloMario.Objects.Enemies.ThwompStates;
     using MelloMario.Objects.Miscs;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -39,13 +40,13 @@
 
         public int NormalTime { get; }
 
-        private bool onFloor = false;
+        private bool onFloor;
 
         private bool DetectMario()
         {
             return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
-                    where obj is ICharacter
-                    select obj).Any();
+                where obj is ICharacter
+                select obj).Any();
         }
 
         private void UpdateSprite()
@@ -83,7 +84,7 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
-            if (state is ThwompStates.Defeated)
+            if (state is Defeated)
             {
                 return;
             }

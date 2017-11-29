@@ -16,10 +16,6 @@
         private ISoundTrack currentTrack;
         private IPlayer player;
 
-        public SoundTrackManager()
-        {
-        }
-
         public void BindPlayer(IPlayer newPlayer)
         {
             player = newPlayer;

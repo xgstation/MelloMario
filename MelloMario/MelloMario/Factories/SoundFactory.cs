@@ -36,7 +36,7 @@
         {
             if (!soundEffects.ContainsKey(name))
             {
-                soundEffects.Add(name, content.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(name).CreateInstance());
+                soundEffects.Add(name, content.Load<SoundEffect>(name).CreateInstance());
             }
 
             return soundEffects[name];

@@ -143,7 +143,7 @@
                     graphicsManager.BindModel(gameModel);
                     break;
                 case Menu.Infinite:
-                    gameModel = new GameModel(this, controllers,GameMode.infinite);
+                    gameModel = new GameModel(this, controllers, GameMode.infinite);
                     graphicsManager.BindModel(gameModel);
                     break;
                 case Menu.Quit:
@@ -156,12 +156,12 @@
 
         public void CursorUp()
         {
-            CurrentSelected = CurrentSelected == Menu.Normal ? Menu.Quit : (Menu)((int)CurrentSelected - 1);
+            CurrentSelected = CurrentSelected == Menu.Normal ? Menu.Quit : (Menu) ((int) CurrentSelected - 1);
         }
 
         public void CursorDown()
         {
-            CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu)((int)CurrentSelected + 1);
+            CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu) ((int) CurrentSelected + 1);
         }
     }
 }

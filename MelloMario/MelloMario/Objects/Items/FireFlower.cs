@@ -7,7 +7,6 @@
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.FireFlowerStates;
     using MelloMario.Objects.Miscs;
-    using MelloMario.Sounds;
     using MelloMario.Sounds.Effects;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;

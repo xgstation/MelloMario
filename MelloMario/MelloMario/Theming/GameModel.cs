@@ -14,7 +14,7 @@
     {
         private readonly Game1 game;
         private readonly ISession session;
-        private IEnumerable<IController> controllers;
+        private readonly IEnumerable<IController> controllers;
         private readonly IListener<IGameObject> scoreListener;
         private readonly string map;
         public GameState State { get; private set; }
@@ -47,7 +47,6 @@
             }
         }
 
-
         public void Pause()
         {
             State = GameState.pause;
@@ -65,7 +64,6 @@
             game.Reset();
             Resume();
         }
-
 
         private void Initialize()
         {
