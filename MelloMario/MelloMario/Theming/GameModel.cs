@@ -215,6 +215,7 @@
                     stateTimer = 0;
                     State = GameState.onProgress;
                     game.ActivePlayer.Reset("Mario", scoreListener, new SoundEffectListener());
+                    new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
                 }
             }
         }
