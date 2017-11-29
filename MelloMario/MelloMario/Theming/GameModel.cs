@@ -19,37 +19,39 @@
         private readonly ISession session;
         private readonly IEnumerable<IController> controllers;
         private readonly IListener<IGameObject> scoreListener;
-        private readonly string map;
+        private string map;
 
-        public GameModel(Game1 game, IEnumerable<IController> controllers, GameMode mode)
+        private GameState gameState;
+        
+        public event EventHandler<GameState> StateChanged;
+
+        public GameModel(Game1 game, IEnumerable<IController> controllers)
         {
             this.game = game;
             this.controllers = controllers;
+
             session = new Session();
             scoreListener = new ScoreListener(this, game.ActivePlayer);
             game.LevelIOJson.BindScoreListener(scoreListener);
             Database.Initialize(session);
-            State = GameState.onProgress;
-            Mode = mode;
-            switch (mode)
-            {
-                case GameMode.normal:
-                    map = "Level1.json";
-                    Initialize();
-                    break;
-                case GameMode.infinite:
-                    map = "Infinite.json";
-                    Initialize();
-                    break;
-                case GameMode.randomMap:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
-            }
         }
 
-        public GameState State { get; private set; }
-        public GameMode Mode { get; }
+        public GameState State
+        {
+            get
+            {
+                return gameState;
+            }
+            private set
+            {
+                if (gameState != value)
+                {
+                    gameState = value;
+                    StateChanged?.Invoke(this, State);
+                }
+            }
+        }
+        public GameMode Mode { get; private set; }
 
         public void Pause()
         {
@@ -142,11 +144,25 @@
             new TransistScript().Bind(controllers, this);
         }
 
-        private void Initialize()
+        public void Initialize(GameMode mode)
         {
+            State = GameState.onProgress;
+            Mode = mode;
+            switch (mode)
+            {
+                case GameMode.normal:
+                    map = "Level1.json";
+                    break;
+                case GameMode.infinite:
+                    map = "Infinite.json";
+                    break;
+                case GameMode.randomMap:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
+            }
             game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener);
             session.Add(game.ActivePlayer);
-            State = GameState.onProgress;
             Resume();
         }
 

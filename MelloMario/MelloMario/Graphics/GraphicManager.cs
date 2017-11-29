@@ -11,21 +11,20 @@
     internal class GraphicManager
     {
         private readonly Game1 game;
+        private UIManager uiManager;
         private SpriteBatch spriteBatchUI;
         private SpriteBatch spriteBatchGameObjects;
-        private readonly UIManager uiManager;
         private IPlayer player;
         private IModel model;
 
         public GraphicManager(Game1 game)
         {
             this.game = game;
-            uiManager = new UIManager(game);
         }
 
         public void Initialize()
         {
-            uiManager.ScreenState = UIManager.State.start;
+            uiManager = new UIManager(game);
         }
 
         public void BindGraphicsDevice(GraphicsDevice newGraphicsDevice)
@@ -42,35 +41,12 @@
         public void BindModel(IModel newModel)
         {
             model = newModel;
+            uiManager.BindModel(newModel);
         }
 
         public void Update(int time)
         {
             uiManager.Update(time);
-            if (model == null)
-            {
-                return;
-            }
-            switch (model.State)
-            {
-                case GameState.gameOver:
-                    uiManager.ScreenState = UIManager.State.over;
-                    break;
-                case GameState.gameWon:
-                    uiManager.ScreenState = UIManager.State.won;
-                    break;
-                case GameState.pause:
-                    uiManager.ScreenState = UIManager.State.pause;
-                    break;
-                case GameState.onProgress:
-                    uiManager.ScreenState = UIManager.State.inGame;
-                    break;
-                case GameState.transist:
-                    uiManager.ScreenState = UIManager.State.inGame;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
 
         public void Draw(int time)
@@ -98,5 +74,6 @@
             }
             spriteBatchGameObjects.End();
         }
+
     }
 }

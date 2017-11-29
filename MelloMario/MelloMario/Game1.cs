@@ -34,7 +34,7 @@
         private readonly GraphicManager graphicsManager;
         private readonly SoundManager soundManager;
         private readonly IEnumerable<IController> controllers;
-        private GameModel gameModel;
+        private IModel gameModel;
 
         public Game1()
         {
@@ -85,12 +85,14 @@
             switch (CurrentSelected)
             {
                 case Menu.Normal:
-                    gameModel = new GameModel(this, controllers, GameMode.normal);
+                    gameModel = new GameModel(this, controllers);
                     graphicsManager.BindModel(gameModel);
+                    gameModel.Initialize(GameMode.normal);
                     break;
                 case Menu.Infinite:
-                    gameModel = new GameModel(this, controllers, GameMode.infinite);
+                    gameModel = new GameModel(this, controllers);
                     graphicsManager.BindModel(gameModel);
+                    gameModel.Initialize(GameMode.infinite);
                     break;
                 case Menu.Quit:
                     Exit();
@@ -109,7 +111,7 @@
         {
             CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu) ((int) CurrentSelected + 1);
         }
-
+        
         /// <summary>
         ///     Allows the game to perform any initialization it needs to before starting to run.
         ///     This is where it can query for any required services and load any non-graphic

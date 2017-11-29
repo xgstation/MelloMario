@@ -9,41 +9,18 @@
 
     internal class UIManager
     {
-        public enum State
-        {
-            idle,
-            start,
-            pause,
-            over,
-            won,
-            inGame
-        }
-
         private readonly Game1 game;
         private IUserInterface hud;
         private IUserInterface splash;
 
         private string worldName;
         private IPlayer player;
-        private State state;
+        private IModel model;
 
         public UIManager(Game1 game)
         {
             this.game = game;
-            ScreenState = State.idle;
-        }
-
-        public State ScreenState
-        {
-            get
-            {
-                return state;
-            }
-            set
-            {
-                state = value;
-                UpdateInterface();
-            }
+            splash = new GameStart(game);
         }
 
         public void BindPlayer(IPlayer newPlayer)
@@ -72,7 +49,7 @@
             hud?.Draw(time, spriteBatch);
             if (hud != null)
             {
-                ((HUD) hud).IsSplashing = ScreenState == State.won || ScreenState == State.over;
+                ((HUD) hud).IsSplashing = false;
             }
             splash?.Draw(time, spriteBatch);
         }
@@ -82,30 +59,34 @@
             hud = hud == null ? new HUD() : null;
         }
 
-        private void UpdateInterface()
+        public void BindModel(IModel newModel)
         {
-            switch (ScreenState)
+            model = newModel;
+            model.StateChanged += GameModelStateChanged;
+        }
+
+        private void GameModelStateChanged(object sender, GameState state)
+        {
+            switch (model?.State)
             {
-                case State.start:
-                    splash = new GameStart(game);
-                    hud = null;
+                case GameState.gameOver:
+                    splash = new GameOver(player.Lifes, player.Character.CurrentWorld.ID);
                     break;
-                case State.pause:
-                    splash = new GamePause();
-                    break;
-                case State.over:
-                    splash = new GameOver(player.Lifes, worldName);
-                    break;
-                case State.won:
+                case GameState.gameWon:
                     splash = new GameWon();
                     break;
-                case State.inGame:
-                    hud = new HUD();
-                    splash = null;
+                case GameState.pause:
+                    splash = new GamePause();
                     break;
-                case State.idle:
-                    hud = null;
+                case GameState.onProgress:
                     splash = null;
+                    hud = new HUD();
+                    break;
+                case GameState.transist:
+                    break;
+                case null:
+                    splash = new GameStart(game);
+                    hud = null;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
