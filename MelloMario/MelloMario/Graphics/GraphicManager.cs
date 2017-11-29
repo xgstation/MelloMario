@@ -3,6 +3,7 @@
     #region
 
     using MelloMario.Graphics.UserInterfaces;
+    using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
@@ -66,7 +67,7 @@
 
         private void DrawGameObjects(int time)
         {
-            spriteBatchGameObjects.Begin(SpriteSortMode.BackToFront);
+            spriteBatchGameObjects.Begin(SpriteSortMode.BackToFront,null,null,null,null,null, player.Camera.GetViewMatrix(new Vector2(1f)));
             foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
             {
                 obj.Draw(model?.State == GameState.pause ? 0 : time, spriteBatchGameObjects);

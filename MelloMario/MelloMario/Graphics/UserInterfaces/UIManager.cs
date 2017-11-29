@@ -40,7 +40,7 @@
             hud?.Draw(time, spriteBatch);
             if (hud != null)
             {
-                ((HUD) hud).IsSplashing = false;
+                ((HUD) hud).IsSplashing = splash is GameWon || splash is GameOver;
             }
             splash?.Draw(time, spriteBatch);
         }

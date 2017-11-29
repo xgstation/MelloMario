@@ -54,7 +54,7 @@
                 new KeyboardController()
             };
 
-            ActivePlayer = new Player(graphicsManager, soundManager, controllers);
+            ActivePlayer = new Player(soundManager);
             new StartScript().Bind(controllers, this);
             LevelIOJson = new LevelIOJson(Const.CONTENT_PATH_S);
             LevelIOJson.BindSoundListener(soundManager.SoundEffectListener);
