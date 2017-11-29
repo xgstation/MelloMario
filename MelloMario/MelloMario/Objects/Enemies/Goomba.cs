@@ -12,10 +12,9 @@
     using MelloMario.Objects.Characters.ProtectionStates;
     using MelloMario.Objects.Enemies.KoopaStates;
     using MelloMario.Objects.Items;
-    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Objects.Miscs;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 

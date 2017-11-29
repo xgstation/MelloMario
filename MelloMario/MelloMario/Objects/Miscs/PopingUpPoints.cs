@@ -1,10 +1,9 @@
-﻿namespace MelloMario.Objects.UserInterfaces
+﻿namespace MelloMario.Objects.Miscs
 {
     #region
 
     using MelloMario.Factories;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 

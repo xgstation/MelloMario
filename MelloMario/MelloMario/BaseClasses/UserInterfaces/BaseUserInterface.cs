@@ -1,21 +1,13 @@
-﻿namespace MelloMario.Objects
+﻿namespace MelloMario.UserInterfaces
 {
     #region
 
-    using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
-    internal abstract class BaseUIObject : IObject
+    internal abstract class BaseUserInterface : IUserInterface
     {
-        public Point Offset { get; set; }
-        
-        protected BaseUIObject(Point offset)
-        {
-            Offset = offset;
-        }
-
         public void Update(int time)
         {
             OnUpdate(time);
@@ -25,7 +17,7 @@
         {
             OnDraw(time, spriteBatch);
         }
-        
+
         protected abstract void OnUpdate(int time);
         protected abstract void OnDraw(int time, SpriteBatch spriteBatch);
     }

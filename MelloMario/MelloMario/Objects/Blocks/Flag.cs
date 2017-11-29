@@ -5,10 +5,9 @@
     using System;
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
-    using MelloMario.Objects.UserInterfaces;
+    using MelloMario.Objects.Miscs;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 

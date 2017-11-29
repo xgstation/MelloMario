@@ -12,10 +12,9 @@
     using MelloMario.Objects.Characters.ProtectionStates;
     using MelloMario.Objects.Enemies;
     using MelloMario.Objects.Items;
-    using MelloMario.Sounds;
+    using MelloMario.Sounds.Effects;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
@@ -275,6 +274,15 @@
                         Bounce(mode, new Vector2(), 0.5f);
                     }
 
+                    break;
+                case "Thwomp":
+                    if (target is Thwomp thwomp)
+                    {
+                        if (!(ProtectionState is Starred))
+                        {
+                            Downgrade();
+                        }
+                    }
                     break;
                 case "Koopa":
                     //if (target is Koopa koopa && mode != CollisionMode.Bottom)

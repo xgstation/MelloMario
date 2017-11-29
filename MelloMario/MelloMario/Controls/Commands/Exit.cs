@@ -1,14 +1,14 @@
 ﻿namespace MelloMario.Controls.Commands
 {
-    internal class Mute : BaseCommand<IModel>
+    internal class Exit : BaseCommand<Game1>
     {
-        public Mute(IModel model) : base(model)
+        public Exit(Game1 game) : base(game)
         {
         }
 
         public override void Execute()
         {
-            Receiver.ToggleMute();
+            Receiver.Exit();
         }
     }
 }

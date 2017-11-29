@@ -1,23 +1,22 @@
-﻿namespace MelloMario.Objects.UserInterfaces
+﻿namespace MelloMario.UserInterfaces
 {
     #region
 
     using MelloMario.Factories;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System;
 
     #endregion
 
-    internal class HUD : BaseUIObject
+    internal class HUD : BaseUserInterface
     {
         private readonly ISprite coinSprite;
         private readonly ISprite oneUpSprite;
         private ISprite textSprite;
 
-        private Rectangle coinDestination;
-        private Rectangle oneUpDestination;
-        private Rectangle textDestination;
+        private readonly Rectangle coinDestination;
+        private readonly Rectangle oneUpDestination;
+        private readonly Rectangle textDestination;
         private string text;
 
         private int lifes;
@@ -28,7 +27,7 @@
 
         public bool IsSplashing { get; set; }
 
-        public HUD(Point offset) : base(offset)
+        public HUD()
         {
             textSprite = SpriteFactory.Instance.CreateTextSprite("");
             coinSprite = SpriteFactory.Instance.CreateCoinSprite(true);
@@ -46,10 +45,9 @@
             timeRemain = newTimeRemain;
             worldName = newWorldName;
         }
-        
+
         protected override void OnUpdate(int time)
         {
-
             string newText = "MARIO     *"
                 + lifes.ToString().PadLeft(2, '0')
                 + "   WORLD    TIME\n"
@@ -67,9 +65,6 @@
             }
             text = newText;
             textSprite = SpriteFactory.Instance.CreateTextSprite(text);
-            textDestination.Offset(Offset);
-            coinDestination.Offset(Offset);
-            oneUpDestination.Offset(Offset);
         }
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch)

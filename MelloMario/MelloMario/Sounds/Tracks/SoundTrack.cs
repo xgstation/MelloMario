@@ -1,4 +1,4 @@
-﻿namespace MelloMario.Sounds
+﻿namespace MelloMario.Sounds.Tracks
 {
     #region
 

@@ -20,14 +20,13 @@
         void AddLife();
         void AddScore(int delta);
 
-        void Init(
-            string type,
+        void InitCharacter(
+            string characterType,
             IWorld newWorld,
-            IListener<IGameObject> listener,
-            IListener<ISoundable> soundListener);
+            IListener<IGameObject> scoreListener);
 
         void Spawn(IWorld newWorld, Point newLocation);
-        void Reset(string type, IListener<IGameObject> listener, IListener<ISoundable> soundListener);
+        void Reset(string type, IListener<IGameObject> listener);
         void Win();
         void Update(int time);
     }

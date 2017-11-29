@@ -8,9 +8,9 @@
 
     #endregion
 
-    internal class PlayingScript : IScript
+    internal class PlayingScript : IScript<ICharacter>
     {
-        public void Bind(IEnumerable<IController> controllers, IModel model, ICharacter character)
+        public void Bind(IEnumerable<IController> controllers, ICharacter character)
         {
             ICommandFactory factory = CommandFactory.Instance;
 
@@ -105,17 +105,10 @@
                     Keys.Y,
                     factory.CreateCharacterCommand("BecomeNormal", character),
                     KeyBehavior.press); // Turn to normal
-
                 controller.AddCommand(
-                    Keys.F12,
-                    factory.CreateModelCommand("ToggleFullScreen", model),
-                    KeyBehavior.press);
-                controller.AddCommand(Keys.P, factory.CreateModelCommand("Pause", model), KeyBehavior.press);
-                controller.AddCommand(Keys.R, factory.CreateModelCommand("Reset", model), KeyBehavior.press);
-                controller.AddCommand(Keys.Q, factory.CreateModelCommand("Quit", model), KeyBehavior.press);
-
-                controller.AddCommand(Keys.M, factory.CreateModelCommand("ToggleMute", model), KeyBehavior.press);
-
+                    Keys.O,
+                    factory.CreateCharacterCommand("BecomeDead", character),
+                    KeyBehavior.press); // Turn to dead
                 controller.AddCommand(Buttons.B, factory.CreateCharacterCommand("Action", character));
                 controller.AddCommand(
                     Buttons.DPadDown,
@@ -164,25 +157,5 @@
                     KeyBehavior.release);
             }
         }
-        public void Unbind(IEnumerable<IController> controllers, IModel model, ICharacter character)
-        {
-            foreach (IController controller in controllers)
-            {
-                if (controller.ContainsKey(Keys.Q, KeyBehavior.press)){
-                    controller.DeleteCommand(Keys.Q, KeyBehavior.press);
-                }
-                else if(controller.ContainsKey(Keys.Q, KeyBehavior.hold))
-                {
-                    controller.DeleteCommand(Keys.Q, KeyBehavior.hold);
-                }
-                else if(controller.ContainsKey(Keys.Q, KeyBehavior.release))
-                {
-                    controller.DeleteCommand(Keys.Q, KeyBehavior.release);
-                }
-                }
-               
-            }
-        }
-
     }
-
+}

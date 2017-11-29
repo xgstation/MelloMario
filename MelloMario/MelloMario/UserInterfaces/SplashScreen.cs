@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MelloMario.Objects.UserInterfaces
 {
-    using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class GamePause : BaseUIObject
+    internal class SplashScreen : BaseUserInterface
     {
+        public IScreenState State { get; set; }
 
-        public GamePause(Point p) : base(p)
+        public SplashScreen(IPlayer player) : base(player)
         {
         }
 

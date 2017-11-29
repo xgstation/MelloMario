@@ -36,7 +36,7 @@
           },
           "Property": {
             "IsHidden": true,
-            "ItemValues": [ "OneUpMushroomUnveil" ]
+            "ItemValues": ["OneUpMushroomUnveil"]
           },
           "Type": "Question"
         },

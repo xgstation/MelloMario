@@ -6,11 +6,10 @@
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.CoinStates;
-    using MelloMario.Objects.UserInterfaces;
-    using MelloMario.Sounds;
+    using MelloMario.Objects.Miscs;
+    using MelloMario.Sounds.Effects;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 

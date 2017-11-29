@@ -1,4 +1,4 @@
-﻿namespace MelloMario.Interfaces.Objects.States
+﻿namespace MelloMario
 {
     internal interface IThwompState : IState
     {

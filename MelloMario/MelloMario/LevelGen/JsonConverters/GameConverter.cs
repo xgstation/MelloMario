@@ -91,7 +91,7 @@
             Util.TryGet(out IList<Point> respawnPoints, mapToBeLoaded, "RespawnPoints");
             respawnPoints.Add(initialPoint);
 
-            StaticGenerator generator = new StaticGenerator();
+            Static generator = new Static();
 
             world = new World(
                 id,

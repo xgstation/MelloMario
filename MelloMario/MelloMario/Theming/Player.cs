@@ -3,7 +3,10 @@
     #region
 
     using System;
+    using System.Collections.Generic;
     using MelloMario.Factories;
+    using MelloMario.Graphics;
+    using MelloMario.Sounds;
     using Microsoft.Xna.Framework;
 
     #endregion
@@ -11,12 +14,23 @@
     [Serializable]
     internal class Player : IPlayer
     {
-        public Player(ISession session)
+        private readonly GraphicManager graphicsManager;
+        private readonly SoundManager soundManager;
+        private readonly IEnumerable<IController> controllers;
+
+        public Player(GraphicManager graphicsManager, SoundManager soundManager, IEnumerable<IController> controllers)
         {
-            Session = session;
+            this.graphicsManager = graphicsManager;
+            this.soundManager = soundManager;
+            this.controllers = controllers;
         }
 
-        public ISession Session { get; }
+        public void BindSession(ISession newSession)
+        {
+            Session = newSession;
+        }
+
+        public ISession Session { get; private set; }
 
         public ICharacter Character { get; private set; }
 
@@ -33,24 +47,18 @@
         public void AddCoin()
         {
             Coins += 1;
-
             if (Coins == Const.COINS_FOR_LIFE)
             {
                 Coins = 0;
                 Lifes += 1;
-
-                //TODO:Move this into soundcontroller
-                //SoundManager.OneUpCollect.Play();
             }
         }
 
         public void AddLife()
         {
-            Lifes += 1;
-
-            if (Lifes > Const.LIFES_MAX)
+            if (Lifes < Const.LIFES_MAX)
             {
-                Lifes = Const.LIFES_MAX;
+                Lifes += 1;
             }
         }
 
@@ -59,19 +67,19 @@
             Score += delta;
         }
 
-        public void Init(
-            string type,
+        public void InitCharacter(
+            string characterType,
             IWorld world,
-            IListener<IGameObject> listener,
-            IListener<ISoundable> soundListener)
+            IListener<IGameObject> scoreListener)
         {
             Character = GameObjectFactory.Instance.CreateCharacter(
-                type,
+                characterType,
                 world,
                 this,
-                world.GetRespawnPoint(new Point()),
-                listener,
-                soundListener);
+                new Point(32, 32), //world.GetRespawnPoint(new Point()),
+                scoreListener,
+                soundManager.SoundEffectListener);
+            world.Add((IGameObject) Character);
             Camera = GameObjectFactory.Instance.CreateCamera();
 
             Lifes = Const.LIFES_INIT;
@@ -84,7 +92,7 @@
             Session.Move(this);
         }
 
-        public void Reset(string type, IListener<IGameObject> listener, IListener<ISoundable> soundListener)
+        public void Reset(string type, IListener<IGameObject> listener)
         {
             Character.Remove();
             Character = GameObjectFactory.Instance.CreateCharacter(
@@ -93,7 +101,7 @@
                 this,
                 Character.CurrentWorld.GetRespawnPoint(((IGameObject) Character).Boundary.Location), // TODO: remove type casting
                 listener,
-                soundListener);
+                soundManager.SoundEffectListener);
 
             if (Lifes > 0)
             {

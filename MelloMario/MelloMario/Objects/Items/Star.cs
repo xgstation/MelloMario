@@ -8,11 +8,10 @@
     using MelloMario.Objects.Blocks.BrickStates;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Items.StarStates;
-    using MelloMario.Objects.UserInterfaces;
-    using MelloMario.Sounds;
+    using MelloMario.Objects.Miscs;
+    using MelloMario.Sounds.Effects;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
@@ -37,7 +36,6 @@
             {
                 state = new Unveil(this);
                 UpdateSprite();
-                RemoveSelf();
             }
             else
             {
@@ -96,16 +94,14 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
+            if (target is Mario && state is StarStates.Normal)
+            {
+                Collect();
+            }
             if (state is StarStates.Normal)
             {
                 switch (target)
                 {
-                    case Mario mario:
-                        if (state is OneUpMushroomStates.Normal)
-                        {
-                            Collect();
-                        }
-                        break;
                     case Brick brick when brick.State is Hidden:
                         break;
                     case Question question when question.State is Blocks.QuestionStates.Hidden:

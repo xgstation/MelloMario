@@ -1,9 +1,7 @@
-namespace MelloMario.Objects.UserInterfaces
+namespace MelloMario.UserInterfaces
 {
     #region
 
-    using System;
-    using System.Collections.Generic;
     using MelloMario.Factories;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -11,35 +9,39 @@ namespace MelloMario.Objects.UserInterfaces
 
     #endregion
 
-    internal class GameOver : BaseUIObject
+    internal class GameOver : BaseUserInterface
     {
-
-
+        private readonly ISprite worldText;
         private readonly ISprite lifesText;
         private readonly ISprite marioIcon;
         private readonly ISprite gameOverText;
         private readonly ISprite backGround;
 
+        private readonly Rectangle worldTextDestination;
         private readonly Rectangle lifesTextDestination;
         private readonly Rectangle marioIconDestination;
         private readonly Rectangle gameOverTextDestination;
         private readonly Rectangle backGroundDestination;
 
         private readonly int lifes;
-        public GameOver(Point offset, int lifes) : base(offset)
+
+        public GameOver(int lifes, string worldName)
         {
             this.lifes = lifes;
 
+            worldText = SpriteFactory.Instance.CreateTextSprite("World" + worldName);
             lifesText = SpriteFactory.Instance.CreateTextSprite("*  " + lifes);
             marioIcon = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
             gameOverText = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
             backGround = SpriteFactory.Instance.CreateSplashSprite();
 
-            lifesTextDestination = new Rectangle(new Point(350, 250) + offset, new Point(80, 80));
-            marioIconDestination = new Rectangle(new Point(250, 250) + offset, new Point(40, 40));
-            gameOverTextDestination = new Rectangle(new Point(250, 250) + offset, new Point(80, 80));
-            backGroundDestination = new Rectangle(offset, new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT));
+            worldTextDestination = new Rectangle(new Point(350, 200), new Point(80, 80));
+            lifesTextDestination = new Rectangle(new Point(350, 250), new Point(80, 80));
+            marioIconDestination = new Rectangle(new Point(250, 250), new Point(40, 40));
+            gameOverTextDestination = new Rectangle(new Point(250, 250), new Point(80, 80));
+            backGroundDestination = new Rectangle(Point.Zero, new Point(Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT));
         }
+
         protected override void OnUpdate(int time)
         {
         }
@@ -49,8 +51,9 @@ namespace MelloMario.Objects.UserInterfaces
             backGround.Draw(time, spriteBatch, backGroundDestination);
             if (lifes > 0)
             {
-                lifesText.Draw(time,spriteBatch,lifesTextDestination);
-                marioIcon.Draw(time,spriteBatch,marioIconDestination);
+                worldText.Draw(time, spriteBatch, worldTextDestination);
+                lifesText.Draw(time, spriteBatch, lifesTextDestination);
+                marioIcon.Draw(time, spriteBatch, marioIconDestination);
             }
             else
             {

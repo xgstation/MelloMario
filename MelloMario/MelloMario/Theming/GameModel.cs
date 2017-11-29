@@ -6,11 +6,6 @@
     using System.Collections.Generic;
     using MelloMario.Containers;
     using MelloMario.Controls.Scripts;
-    using MelloMario.LevelGen.JsonConverters;
-    using MelloMario.Objects.UserInterfaces;
-    using MelloMario.Sounds;
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     #endregion
 
@@ -18,95 +13,63 @@
     internal class GameModel : IModel
     {
         private readonly Game1 game;
-        private readonly IListener<IGameObject> listener;
-        private readonly IListener<ISoundable> soundListener;
-        private readonly Session session;
-        private readonly ScreenManager screenManager;
-        private IEnumerable<IController> controllers;
-        private string mapPath = "Content/Level1.json";
+        private readonly ISession session;
+        private readonly IEnumerable<IController> controllers;
+        private readonly IListener<IGameObject> scoreListener;
+        private readonly string map;
+        public GameState State { get; private set; }
+        public GameMode Mode { get; }
 
-        public bool IsPaused { get; private set; }
-
-        public GameModel(Game1 game)
+        public GameModel(Game1 game, IEnumerable<IController> controllers, GameMode mode)
         {
             this.game = game;
+            this.controllers = controllers;
             session = new Session();
-            ActivePlayer = new Player(session);
-            listener = new ScoreListener(this, ActivePlayer);
-            soundListener = new SoundEffectListener();
-            screenManager = new ScreenManager(ActivePlayer);
+            scoreListener = new ScoreListener(this, game.ActivePlayer);
+            game.LevelIOJson.BindScoreListener(scoreListener);
             Database.Initialize(session);
-        }
-
-        public Matrix GetActiveViewMatrix
-        {
-            get
+            State = GameState.onProgress;
+            Mode = mode;
+            switch (mode)
             {
-                return ActivePlayer.Camera.GetViewMatrix(new Vector2(1f));
+                case GameMode.normal:
+                    map = "Level1.json";
+                    Initialize();
+                    break;
+                case GameMode.infinite:
+                    map = "Infinite.json";
+                    Initialize();
+                    break;
+                case GameMode.randomMap:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
-        }
-
-        //TODO: Change with multiplayer
-        public IPlayer ActivePlayer { get; }
-
-        public void ToggleFullScreen()
-        {
-            game.ToggleFullScreen();
         }
 
         public void Pause()
         {
-            IsPaused = true;
-            new PausedScript().Bind(controllers, this, ActivePlayer.Character);
-            //TODO: uncomment it after implementing pause splash screen
-            //screenManager.ScreenState = ScreenManager.State.pause;
-        }
-
-        public void Init()
-        {
-            Normal(); // note: this is a hack
-            IsPaused = true;
-            new StartScript().Bind(controllers, this, ActivePlayer.Character);
-            screenManager.ScreenState = ScreenManager.State.start;
-            screenManager.Initialize();
+            State = GameState.pause;
+            new PausedScript().Bind(controllers, this);
         }
 
         public void Resume()
         {
-            IsPaused = false;
-            new PlayingScript().Bind(controllers, this, ActivePlayer.Character);
-            screenManager.ScreenState = ScreenManager.State.inGame;
+            State = GameState.onProgress;
+            new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
         }
 
         public void Reset()
         {
-            // TODO: "forced" version of LoadLevel()
             game.Reset();
             Resume();
         }
 
-        public void Quit()
+        private void Initialize()
         {
-            game.Exit();
-        }
-
-        public void Infinite()
-        {
-            mapPath = "Content/Infinite.json";
-            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
-            session.Add(ActivePlayer);
-            IsPaused = false;
-            screenManager.ScreenState = ScreenManager.State.inGame;
-            Resume();
-        }
-
-        public void Normal()
-        {
-            mapPath = "Content/Level1.json";
-            ActivePlayer.Init("Mario", LoadLevel("Main"), listener, soundListener);
-            session.Add(ActivePlayer);
-            IsPaused = false;
-            screenManager.ScreenState = ScreenManager.State.inGame;
+            game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener);
+            session.Add(game.ActivePlayer);
+            State = GameState.onProgress;
             Resume();
         }
 
@@ -114,44 +77,12 @@
         {
             UpdateController();
             Database.Update();
-            if (IsPaused)
+            if (State == GameState.pause)
             {
                 return;
             }
-
-            //TODO: Pause state should not stop updating camera
-            //ICollection<IGameObject> tobedrawn = new List<IGameObject>();
-            //foreach (IGameObject gameObject in ActivePlayer.Character.CurrentWorld.ScanNearby(ActivePlayer.Camera.Viewport))
-            //{
-            //    tobedrawn.Add(gameObject);
-            //}
-            //screenManager.Feed(tobedrawn);
-            screenManager.Update(time);
             UpdateGameObjects(time);
             UpdateContainers();
-        }
-
-        public void Draw(int time, SpriteBatch spriteBatch)
-        {
-            IPlayer player = ActivePlayer;
-
-            foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
-            {
-                obj.Draw(IsPaused ? 0 : time, spriteBatch);
-            }
-
-            screenManager.Draw(time, spriteBatch);
-        }
-
-        public void ToggleMute()
-        {
-            (soundListener as SoundEffectListener)?.ToggleMute();
-            game.ToggleMute();
-        }
-
-        public void LoadControllers(IEnumerable<IController> newControllers)
-        {
-            controllers = newControllers;
         }
 
         public IWorld LoadLevel(string id)
@@ -163,34 +94,22 @@
                     return world;
                 }
             }
-
-            // IWorld newWorld = new GameWorld(id, new Point(50, 20), new Point(1, 1), new List<Point>());
-
-            LevelIOJson reader = new LevelIOJson(mapPath, listener, soundListener);
-
-            IWorld newWorld = reader.Load(id);
-            // generator = new JsonGenerator(mapPath, id, listener, soundListener);
-            //infiniteGenerator = new InfiniteGenerator(newWorld, listener);
+            IWorld newWorld = game.LevelIOJson.Load(map, id);
             return newWorld;
         }
 
         public void Transist()
         {
-            ActivePlayer.Reset("Mario", listener, soundListener);
-
-            IsPaused = true;
-            new TransistScript().Bind(controllers, this, ActivePlayer.Character);
-            screenManager.ScreenState = ScreenManager.State.over;
+            // ActivePlayer.Reset("Mario", scoreListener, soundListener);
+            State = GameState.transist;
+            new TransistScript().Bind(controllers, this);
         }
 
         public void TransistGameWon()
         {
-            ActivePlayer.Win();
-
-            IsPaused = true;
-            new TransistScript().Bind(controllers, this, ActivePlayer.Character);
-
-            screenManager.ScreenState = ScreenManager.State.won;
+            game.ActivePlayer.Win();
+            State = GameState.transist;
+            new TransistScript().Bind(controllers, this);
         }
 
         private void UpdateController()
@@ -204,7 +123,7 @@
         private void UpdateGameObjects(int time)
         {
             // reserved for multiplayer
-            ISet<IObject> updating = new HashSet<IObject>();
+            ISet<IGameObject> updating = new HashSet<IGameObject>();
 
             foreach (IPlayer player in session.ScanPlayers())
             {
@@ -215,7 +134,7 @@
                 }
             }
 
-            foreach (IObject obj in updating)
+            foreach (IGameObject obj in updating)
             {
                 obj.Update(time);
             }

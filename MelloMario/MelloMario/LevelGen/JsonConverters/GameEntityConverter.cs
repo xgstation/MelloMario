@@ -201,13 +201,24 @@
             switch (produceMode)
             {
                 case ProduceMode.One:
-                    createFunc(objPoint);
+                    objectStackToBeEncapsulated.Push(createFunc(objPoint));
                     break;
                 case ProduceMode.Rectangle:
-                    Util.BatchRecCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet);
+                    foreach (IGameObject obj in Util.BatchRecCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet))
+                    {
+                        objectStackToBeEncapsulated.Push(obj);
+                    }
                     break;
                 case ProduceMode.Triangle:
-                    Util.BatchTriCreate(createFunc, objPoint, triangleSize, new Point(Const.GRID, Const.GRID), ignoredSet);
+                    foreach (IGameObject obj in Util.BatchTriCreate(
+                        createFunc,
+                        objPoint,
+                        triangleSize,
+                        new Point(Const.GRID, Const.GRID),
+                        ignoredSet))
+                    {
+                        objectStackToBeEncapsulated.Push(obj);
+                    }
                     break;
                 default:
                     goto case ProduceMode.One;
@@ -225,7 +236,7 @@
             {
                 float hideTime = Util.TryGet(out hideTime, token, "Property", "HideTime") ? hideTime : 3;
                 createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, hideTime);
-                createFunc(objPoint);
+                objectStackToBeEncapsulated.Push(createFunc(objPoint));
             }
             else if (type.Name == "Koopa")
             {
@@ -240,16 +251,19 @@
 
             if (produceMode is ProduceMode.One)
             {
-                createFunc(objPoint);
+                objectStackToBeEncapsulated.Push(createFunc(objPoint));
             }
             else if (produceMode is ProduceMode.Rectangle)
             {
-                Util.BatchRecCreate(
+                foreach (IGameObject obj in Util.BatchRecCreate(
                     createFunc,
                     objPoint,
                     quantity,
                     new Point(Const.GRID, Const.GRID),
-                    ignoredSet);
+                    ignoredSet))
+                {
+                    objectStackToBeEncapsulated.Push(obj);
+                }
             }
 
             return true;
@@ -274,6 +288,7 @@
                     propertyPair = Util.GetPropertyPair(token);
                     list = Util.CreateItemList(world, objPoint, listener, soundListener, propertyPair.Item2);
                     IGameObject gameObj = createFunc(objPoint);
+                    objectStackToBeEncapsulated.Push(gameObj);
                     if (list != null && list.Count != 0)
                     {
                         Database.SetEnclosedItem(gameObj, list);
@@ -301,10 +316,22 @@
 
                     break;
                 case ProduceMode.Rectangle:
-                    Util.BatchRecCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet);
+                    foreach (IGameObject obj in Util.BatchRecCreate(createFunc, objPoint, quantity, new Point(Const.GRID, Const.GRID), ignoredSet))
+                    {
+                        objectStackToBeEncapsulated.Push(obj);
+                    }
+
                     break;
                 case ProduceMode.Triangle:
-                    Util.BatchTriCreate(createFunc, objPoint, triangleSize, new Point(Const.GRID, Const.GRID), ignoredSet);
+                    foreach (IGameObject obj in Util.BatchTriCreate(
+                        createFunc,
+                        objPoint,
+                        triangleSize,
+                        new Point(Const.GRID, Const.GRID),
+                        ignoredSet))
+                    {
+                        objectStackToBeEncapsulated.Push(obj);
+                    }
                     break;
             }
         }
@@ -314,29 +341,35 @@
             switch (produceMode)
             {
                 case ProduceMode.One:
-                    Activator.CreateInstance(type, world, objPoint, listener, false);
+                    objectStackToBeEncapsulated.Push((IGameObject) Activator.CreateInstance(type, world, objPoint, listener, false));
                     break;
                 case ProduceMode.Rectangle:
+                {
+                    foreach (IGameObject obj in Util.BatchRecCreate(
+                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                        objPoint,
+                        quantity,
+                        new Point(Const.GRID, Const.GRID),
+                        ignoredSet))
                     {
-                        Util.BatchRecCreate(
-                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                            objPoint,
-                            quantity,
-                            new Point(Const.GRID, Const.GRID),
-                            ignoredSet);
-                        break;
+                        objectStackToBeEncapsulated.Push(obj);
                     }
+                    break;
+                }
 
                 case ProduceMode.Triangle:
+                {
+                    foreach (IGameObject obj in Util.BatchTriCreate(
+                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                        objPoint,
+                        triangleSize,
+                        new Point(Const.GRID, Const.GRID),
+                        ignoredSet))
                     {
-                        Util.BatchTriCreate(
-                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                            objPoint,
-                            triangleSize,
-                            new Point(Const.GRID, Const.GRID),
-                            ignoredSet);
-                        break;
+                        objectStackToBeEncapsulated.Push(obj);
                     }
+                    break;
+                }
             }
         }
 
@@ -399,12 +432,15 @@
                 objFullSize = direction.Contains("V")
                     ? new Point(Const.GRID * 2, Const.GRID + Const.GRID * length)
                     : new Point(Const.GRID + Const.GRID * length, Const.GRID * 2);
-                Util.BatchRecCreate(
+                foreach (IGameObject obj in Util.BatchRecCreate(
                     point => Util.CreateSinglePipeline(world, listener, soundListener, direction, length, point),
                     objPoint,
                     quantity,
                     objFullSize,
-                    ignoredSet);
+                    ignoredSet))
+                {
+                    objectStackToBeEncapsulated.Push(obj);
+                }
             }
         }
 
@@ -456,11 +492,14 @@
             objFullSize = createFunc(new Point()).Boundary.Size;
             if (produceMode is ProduceMode.One)
             {
-                createFunc(objPoint);
+                objectStackToBeEncapsulated.Push(createFunc(objPoint));
             }
             else
             {
-                Util.BatchRecCreate(createFunc, objPoint, quantity, objFullSize, ignoredSet);
+                foreach (IGameObject obj in Util.BatchRecCreate(createFunc, objPoint, quantity, objFullSize, ignoredSet))
+                {
+                    objectStackToBeEncapsulated.Push(obj);
+                }
             }
             return true;
         }

@@ -3,6 +3,7 @@
     internal static class Const
     {
         // general
+        public const string CONTENT_PATH_S = "Content";
 
         public const int SCREEN_WIDTH = 800;
         public const int SCREEN_HEIGHT = 600;
@@ -12,7 +13,7 @@
         // boundary and collision
 
         public const int GRID = 32;
-        public const int SCANRANGE = 24;
+        public const int SCAN_RANGE = 24;
 
         // physics
 

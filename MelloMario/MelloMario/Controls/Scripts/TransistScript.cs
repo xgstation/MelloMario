@@ -8,9 +8,9 @@
 
     #endregion
 
-    internal class TransistScript : IScript
+    internal class TransistScript : IScript<IModel>
     {
-        public void Bind(IEnumerable<IController> controllers, IModel model, ICharacter character)
+        public void Bind(IEnumerable<IController> controllers, IModel model)
         {
             ICommandFactory factory = CommandFactory.Instance;
 
@@ -24,7 +24,7 @@
                     factory.CreateModelCommand("ToggleFullScreen", model),
                     KeyBehavior.press);
                 controller.AddCommand(Keys.R, factory.CreateModelCommand("Reset", model), KeyBehavior.press);
-                controller.AddCommand(Keys.Q, factory.CreateModelCommand("Quit", model), KeyBehavior.press);
+                controller.AddCommand(Keys.Q, factory.CreateModelCommand("Exit", model), KeyBehavior.press);
             }
         }
     }

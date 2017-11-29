@@ -2,25 +2,32 @@
 {
     #region
 
-    using Microsoft.Xna.Framework.Graphics;
-
     #endregion
+
+    internal enum GameState
+    {
+        gameOver,
+        gameWon,
+        pause,
+        onProgress,
+        transist
+    }
+
+    public enum GameMode
+    {
+        normal,
+        infinite,
+        randomMap
+    }
 
     internal interface IModel
     {
-        IPlayer ActivePlayer { get; }
-        bool IsPaused { get; }
-        void ToggleFullScreen();
+        GameState State { get; }
+        GameMode Mode { get; }
         void Pause();
         void Resume();
-        void Init();
         void Reset();
-        void Quit();
         void Update(int time);
-        void Infinite();
-        void Normal();
-        void Draw(int time, SpriteBatch spriteBatch);
-        void ToggleMute();
         IWorld LoadLevel(string index);
         void TransistGameWon();
         void Transist();
