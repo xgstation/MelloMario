@@ -9,7 +9,7 @@
 
     #endregion
 
-    internal class GraphicManager
+    internal class GraphicsManager
     {
         private readonly Game1 game;
         private UIManager uiManager;
@@ -20,7 +20,7 @@
         private IPlayer player;
         private IModel model;
 
-        public GraphicManager(Game1 game)
+        public GraphicsManager(Game1 game)
         {
             this.game = game;
         }
@@ -56,9 +56,26 @@
         public void Draw(int time)
         {
             DrawUI(time);
-            if (model != null)
+            if (model == null)
             {
-                DrawGameObjects(time);
+                return;
+            }
+            switch (model.State)
+            {
+                case GameState.onProgress:
+                    DrawGameObjects(time);
+                    break;
+                case GameState.pause:
+                    DrawGameObjects(0);
+                    break;
+                case GameState.gameOver:
+                    break;
+                case GameState.gameWon:
+                    break;
+                case GameState.transist:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -74,7 +91,7 @@
             spriteBatchGameObjects.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, player.Camera.GetViewMatrix(new Vector2(1f)));
             foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
             {
-                obj.Draw(model?.State == GameState.pause ? 0 : time, spriteBatchGameObjects);
+                obj.Draw(time, spriteBatchGameObjects);
             }
             spriteBatchGameObjects.End();
         }

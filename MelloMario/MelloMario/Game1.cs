@@ -31,7 +31,7 @@
         //XNA Member
         private readonly GraphicsDeviceManager graphics;
 
-        private readonly GraphicManager graphicsManager;
+        private readonly GraphicsManager graphicsManager;
         private readonly SoundManager soundManager;
         private readonly IEnumerable<IController> controllers;
         private IModel gameModel;
@@ -46,7 +46,7 @@
             };
             //MelloMario initialize
             CurrentSelected = Menu.Normal;
-            graphicsManager = new GraphicManager(this);
+            graphicsManager = new GraphicsManager(this);
             soundManager = new SoundManager();
             controllers = new List<IController>
             {

@@ -64,7 +64,7 @@
 
         private void OnGameOver(Mario m, EventArgs e)
         {
-            model.Transist();
+            model.TransistOver();
         }
 
         private void OnCoinCollect(Coin m, EventArgs e)

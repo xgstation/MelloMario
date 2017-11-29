@@ -90,7 +90,6 @@
         }
 
         public event SoundHandler SoundEvent;
-
         public event GameOverHandler HandlerGameOver;
 
         public void OnDeath()
@@ -101,8 +100,7 @@
 
         public void TransToGameOver()
         {
-            eventInfo = null;
-            HandlerGameOver?.Invoke(this, eventInfo);
+            HandlerGameOver?.Invoke(this, EventArgs.Empty);
         }
 
         public void UpgradeToSuper()

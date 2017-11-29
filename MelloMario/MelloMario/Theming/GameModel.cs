@@ -22,7 +22,8 @@
         private string map;
 
         private GameState gameState;
-        
+        private int stateTimer;
+
         public event EventHandler<GameState> StateChanged;
 
         public GameModel(Game1 game, IEnumerable<IController> controllers)
@@ -79,6 +80,7 @@
             {
                 return;
             }
+            UpdateState(time);
             UpdateGameObjects(time);
             UpdateContainers();
         }
@@ -130,10 +132,9 @@
             }
         }
 
-        public void Transist()
+        public void TransistOver()
         {
-            // ActivePlayer.Reset("Mario", scoreListener, soundListener);
-            State = GameState.transist;
+            State = GameState.gameOver;
             new TransistScript().Bind(controllers, this);
         }
 
@@ -200,6 +201,19 @@
             foreach (IWorld world in session.ScanWorlds())
             {
                 world.Update();
+            }
+        }
+
+        private void UpdateState(int time)
+        {
+            if (State == GameState.gameOver)
+            {
+                stateTimer += time;
+                if (stateTimer>= 2000)
+                {
+                    stateTimer = 0;
+                    State = GameState.onProgress;
+                }
             }
         }
     }

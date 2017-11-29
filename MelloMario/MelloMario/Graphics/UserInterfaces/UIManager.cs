@@ -32,16 +32,16 @@
                 (hud as HUD)?.OnHUDInfoChange(player.Lifes, player.Score, player.Coins, player.TimeRemain, worldName);
                 hud.Update(time);
             }
+            if (hud != null)
+            {
+                ((HUD)hud).IsSplashing = splash is GameWon || splash is GameOver;
+            }
             splash?.Update(time);
         }
 
         public void Draw(int time, SpriteBatch spriteBatch)
         {
             hud?.Draw(time, spriteBatch);
-            if (hud != null)
-            {
-                ((HUD) hud).IsSplashing = splash is GameWon || splash is GameOver;
-            }
             splash?.Draw(time, spriteBatch);
         }
 
@@ -69,7 +69,7 @@
                 case GameState.pause:
                     splash = new GamePause();
                     break;
-                case GameState.onProgress:
+                case GameState.onProgress: 
                     splash = null;
                     hud = new HUD();
                     break;

@@ -32,6 +32,6 @@
         void Update(int time);
         IWorld LoadLevel(string index);
         void TransistGameWon();
-        void Transist();
+        void TransistOver();
     }
 }
