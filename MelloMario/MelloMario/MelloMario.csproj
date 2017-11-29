@@ -77,7 +77,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseClasses\Containers\BaseContainer.cs" />
-    <Compile Include="BaseClasses\Graphics\BaseSprite.cs" />
+    <Compile Include="BaseClasses\Graphics\Sprites\BaseSprite.cs" />
     <Compile Include="BaseClasses\Objects\BaseCollidableObject.cs" />
     <Compile Include="BaseClasses\Objects\BasePhysicalObject.cs" />
     <Compile Include="BaseClasses\Objects\BaseGameObject.cs" />
@@ -121,7 +121,7 @@
     <Compile Include="Objects\Blocks\QuestionStates\Normal.cs" />
     <Compile Include="Objects\Blocks\QuestionStates\Used.cs" />
     <Compile Include="Objects\Blocks\Stair.cs" />
-    <Compile Include="BaseClasses\Controls\BaseCommand.cs" />
+    <Compile Include="BaseClasses\Controls\Commands\BaseCommand.cs" />
     <Compile Include="Controls\Commands\Action.cs" />
     <Compile Include="Controls\Commands\FireCreate.cs" />
     <Compile Include="Controls\Commands\ToggleMute.cs" />
@@ -142,7 +142,7 @@
     <Compile Include="Controls\Commands\Left.cs" />
     <Compile Include="Controls\Commands\Pause.cs" />
     <Compile Include="Controls\Commands\Right.cs" />
-    <Compile Include="BaseClasses\Controls\BaseController.cs" />
+    <Compile Include="BaseClasses\Controls\Controllers\BaseController.cs" />
     <Compile Include="Controls\Commands\SuperCreate.cs" />
     <Compile Include="Controls\Commands\ToggleFullScreen.cs" />
     <Compile Include="Containers\Session.cs" />
@@ -231,7 +231,7 @@
     <Compile Include="Objects\Characters\ProtectionStates\Dead.cs" />
     <Compile Include="Objects\Characters\PowerUpStates\Fire.cs" />
     <Compile Include="Objects\Characters\PowerUpStates\Standard.cs" />
-    <Compile Include="BaseClasses\Graphics\BaseTextureSprite.cs" />
+    <Compile Include="BaseClasses\Graphics\Sprites\BaseTextureSprite.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Normal.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Protected.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Starred.cs" />
