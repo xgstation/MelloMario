@@ -21,8 +21,8 @@
         {
             // note: top / buttom are locked
 
-            new Floor(world, new Point(range.Left, range.Bottom - 2 * Const.GRID), listener);
-            new Floor(world, new Point(range.Left, range.Bottom - 1 * Const.GRID), listener);
+            world.Add(new Floor(world, new Point(range.Left, range.Bottom - 2 * Const.GRID), listener));
+            world.Add(new Floor(world, new Point(range.Left, range.Bottom - 1 * Const.GRID), listener));
         }
     }
 }
