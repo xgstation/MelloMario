@@ -11,28 +11,18 @@
 
     internal class SoundTrackManager
     {
-        private static readonly ISoundTrack Normal = SoundFactory.Instance.CreateSoundTrack("Normal");
-        private static readonly ISoundTrack Hurry = SoundFactory.Instance.CreateSoundTrack("Hurry");
-        private static readonly ISoundTrack BelowGround = SoundFactory.Instance.CreateSoundTrack("BelowGround");
-        private static readonly ISoundTrack Star = SoundFactory.Instance.CreateSoundTrack("Star");
+        // note: please do not cache soundtracks since the factory have already done that
 
         private ISoundTrack currentTrack;
-        private IModel model;
         private IPlayer player;
 
         public SoundTrackManager()
         {
-            model = null;
         }
 
         public void BindPlayer(IPlayer newPlayer)
         {
             player = newPlayer;
-        }
-
-        public void BindModel(IModel newModel)
-        {
-            model = newModel;
         }
 
         private void PlayMusic(ISoundTrack track)
@@ -52,31 +42,14 @@
             MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
         }
 
-        private static void Pause()
+        private void Pause()
         {
             MediaPlayer.Pause();
         }
 
-        private static void Resume()
+        private void Resume()
         {
             MediaPlayer.Resume();
-        }
-
-        private void UpdatePausing()
-        {
-            //Pausing state detector
-            if (model.State == GameState.pause)
-            {
-                //Avoid repeat pausing
-                if (MediaPlayer.State != MediaState.Paused)
-                {
-                    Pause();
-                }
-            }
-            else if (MediaPlayer.State == MediaState.Paused)
-            {
-                Resume();
-            }
         }
 
         private void UpdateBGM()
@@ -88,26 +61,25 @@
                     MediaPlayer.Stop();
                     break;
                 case MarioCharacter mario when mario.ProtectionState is Starred:
-                    PlayMusic(Star);
+                    PlayMusic(SoundFactory.Instance.CreateSoundTrack("Star"));
                     break;
                 case MarioCharacter mario when mario.Player.TimeRemain <= 90000:
-                    PlayMusic(Hurry);
+                    PlayMusic(SoundFactory.Instance.CreateSoundTrack("Hurry"));
                     break;
                 case MarioCharacter mario when mario.CurrentWorld.Type == WorldType.normal:
-                    PlayMusic(Normal);
+                    PlayMusic(SoundFactory.Instance.CreateSoundTrack("Normal"));
                     break;
                 case MarioCharacter mario when mario.CurrentWorld.Type == WorldType.underground:
-                    PlayMusic(BelowGround);
+                    PlayMusic(SoundFactory.Instance.CreateSoundTrack("BelowGround"));
                     break;
                 default:
-                    PlayMusic(Normal);
+                    PlayMusic(SoundFactory.Instance.CreateSoundTrack("Normal"));
                     break;
             }
         }
 
         public void Update()
         {
-            //UpdatePausing();
             UpdateBGM();
         }
     }

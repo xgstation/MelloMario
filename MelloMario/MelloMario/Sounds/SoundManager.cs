@@ -16,7 +16,7 @@
         {
             SoundEffectListener = new SoundEffectListener();
             //TODO: Fix it
-            //sounds = new SoundTrackManager();
+            sounds = new SoundTrackManager();
         }
 
         public void ToggleMute()
@@ -27,6 +27,7 @@
 
         public void Update(int time)
         {
+            sounds.Update();
         }
 
         public void Initialize()

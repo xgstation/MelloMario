@@ -9,6 +9,7 @@
     using MelloMario.Objects.Blocks;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.PowerUpStates;
+    using MelloMario.Objects.Enemies;
     using MelloMario.Objects.Items;
 
     #endregion
@@ -64,11 +65,11 @@
             soundObject.SoundEvent += Sound;
         }
 
-        private static void Sound(ISoundable c, ISoundArgs e)
+        private void Sound(ISoundable c, ISoundArgs e)
         {
             switch (c)
             {
-                case Objects.Enemies.Thwomp _:
+                case Thwomp _:
                     BlockSoundEffect(c, e);
                     break;
                 case FireFlower _:
@@ -89,7 +90,7 @@
             e?.SetMethodCalled();
         }
 
-        private static void MarioSoundEffect(Mario mario, ISoundArgs e)
+        private void MarioSoundEffect(Mario mario, ISoundArgs e)
         {
             if (!e.HasArgs)
             {
@@ -123,7 +124,7 @@
             }
         }
 
-        private static void BlockSoundEffect(ISoundable s, ISoundArgs e)
+        private void BlockSoundEffect(ISoundable s, ISoundArgs e)
         {
             if (!e.HasArgs)
             {
@@ -146,7 +147,7 @@
             }
         }
 
-        private static void ItemSoundEffect(ISoundable s, ISoundArgs e)
+        private void ItemSoundEffect(ISoundable s, ISoundArgs e)
         {
             if (s.GetType().GetProperty("State")?.GetValue(s, null).GetType().Name == "Unveil")
             {
@@ -158,7 +159,7 @@
             }
         }
 
-        private static void PlayEffect(string s)
+        private void PlayEffect(string s)
         {
             if (s == null)
             {
