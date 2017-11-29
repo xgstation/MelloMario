@@ -118,6 +118,11 @@
                 case "LongSmileCloud":
                     return new Background(world, location, type, ZIndex.Background3);
 
+                case "Bush":
+                    return new Background(world, location, type, ZIndex.Background0);
+                case "BiggerBush":
+                    return new Background(world, location, type, ZIndex.Background1);
+
                 default:
                     return null;
             }
