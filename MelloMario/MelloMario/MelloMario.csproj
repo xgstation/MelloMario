@@ -89,7 +89,6 @@
     <Compile Include="Controls\Commands\KillMario.cs" />
     <Compile Include="Controls\Commands\Select.cs" />
     <Compile Include="LevelGen\Scroll.cs" />
-    <Compile Include="NoiseGame.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="LevelGen\NoiseGenerators\NoiseInterpreter.cs" />
     <Compile Include="LevelGen\Static.cs" />
