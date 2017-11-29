@@ -7,6 +7,7 @@
     using MelloMario.Containers;
     using MelloMario.Controls.Scripts;
     using MelloMario.LevelGen;
+    using MelloMario.LevelGen.Terrains;
     using Microsoft.Xna.Framework;
 
     #endregion
@@ -90,19 +91,41 @@
                 }
             }
 
-            Static generator = new Static();
+            // note: use static generator for normal game
+            if (Mode == GameMode.normal)
+            {
+                Static generator = new Static();
 
-            IWorld newWorld = new World(
-                id,
-                WorldType.normal,
-                generator,
-                new List<Point>
-                {
-                    new Point()
-                });
-            game.LevelIOJson.Load(map, id, newWorld, generator);
+                IWorld newWorld = new World(
+                    id,
+                    WorldType.normal,
+                    generator,
+                    new List<Point>
+                    {
+                        new Point()
+                    });
 
-            return newWorld;
+                game.LevelIOJson.Load(map, id, newWorld, generator);
+
+                return newWorld;
+            }
+            else
+            {
+                IGenerator generator = new Scroll(new List<IGenerator> { new Ground(scoreListener) });
+
+                IWorld newWorld = new World(
+                    id,
+                    WorldType.normal,
+                    generator,
+                    new List<Point>
+                    {
+                        new Point()
+                    });
+
+                newWorld.Extend(0, 0, 0, Const.GRID * 16);
+
+                return newWorld;
+            }
         }
 
         public void Transist()
