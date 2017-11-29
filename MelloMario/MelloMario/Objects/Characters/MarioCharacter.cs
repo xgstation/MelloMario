@@ -222,7 +222,6 @@
 
         public void KillMario()
         {
-            
             if (PowerUpState != null || PowerUpState is Standard)
             {
                 PowerUpState.Downgrade();

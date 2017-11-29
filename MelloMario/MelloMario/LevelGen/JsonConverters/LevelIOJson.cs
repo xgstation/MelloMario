@@ -10,6 +10,7 @@
     internal class LevelIOJson
     {
         private IListener<IGameObject> scoreListener;
+
         private IListener<ISoundable> soundListener;
         // Note: As File.ReadAllText will take care of dispose itself,
         // there is no need to implement IDisposable
