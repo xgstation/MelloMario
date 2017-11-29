@@ -344,32 +344,32 @@
                     objectStackToBeEncapsulated.Push((IGameObject) Activator.CreateInstance(type, world, objPoint, listener, false));
                     break;
                 case ProduceMode.Rectangle:
-                {
-                    foreach (IGameObject obj in Util.BatchRecCreate(
-                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                        objPoint,
-                        quantity,
-                        new Point(Const.GRID, Const.GRID),
-                        ignoredSet))
                     {
-                        objectStackToBeEncapsulated.Push(obj);
+                        foreach (IGameObject obj in Util.BatchRecCreate(
+                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                            objPoint,
+                            quantity,
+                            new Point(Const.GRID, Const.GRID),
+                            ignoredSet))
+                        {
+                            objectStackToBeEncapsulated.Push(obj);
+                        }
+                        break;
                     }
-                    break;
-                }
 
                 case ProduceMode.Triangle:
-                {
-                    foreach (IGameObject obj in Util.BatchTriCreate(
-                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                        objPoint,
-                        triangleSize,
-                        new Point(Const.GRID, Const.GRID),
-                        ignoredSet))
                     {
-                        objectStackToBeEncapsulated.Push(obj);
+                        foreach (IGameObject obj in Util.BatchTriCreate(
+                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                            objPoint,
+                            triangleSize,
+                            new Point(Const.GRID, Const.GRID),
+                            ignoredSet))
+                        {
+                            objectStackToBeEncapsulated.Push(obj);
+                        }
+                        break;
                     }
-                    break;
-                }
             }
         }
 
@@ -447,12 +447,15 @@
         private void CreateFlag()
         {
             bool hasHeight = Util.TryGet(out int Height, token, "Property", "Height");
-            GameObjectFactory.Instance.CreateGameObjectGroup(
+            foreach (IGameObject obj in GameObjectFactory.Instance.CreateGameObjectGroup(
                 "FlagPole",
                 world,
                 objPoint,
                 hasHeight ? Height : 7,
-                listener);
+                listener))
+            {
+                objectStackToBeEncapsulated.Push(obj);
+            }
         }
 
         private bool BlockConverter()
