@@ -66,14 +66,15 @@
             IListener<IGameObject> scoreListener,
             IListener<ISoundable> soundEffectListener)
         {
-            Character = GameObjectFactory.Instance.CreateCharacter(
+            Tuple<IGameObject, ICharacter> pair = GameObjectFactory.Instance.CreateCharacter(
                 characterType,
                 world,
                 this,
                 new Point(32, 32), //world.GetRespawnPoint(new Point()),
                 scoreListener,
                 soundEffectListener);
-            world.Add((IGameObject) Character);
+            world.Add(pair.Item1);
+            Character = pair.Item2;
             Camera = GameObjectFactory.Instance.CreateCamera();
 
             Lifes = Const.LIFES_INIT;
@@ -91,14 +92,18 @@
             IListener<IGameObject> scoreListener,
             IListener<ISoundable> soundEffectListener)
         {
+            IWorld world = Character.CurrentWorld;
             Character.Remove();
-            Character = GameObjectFactory.Instance.CreateCharacter(
+
+            Tuple<IGameObject, ICharacter> pair = GameObjectFactory.Instance.CreateCharacter(
                 type,
-                Character.CurrentWorld,
+                world,
                 this,
                 Character.CurrentWorld.GetRespawnPoint(((IGameObject) Character).Boundary.Location), // TODO: remove type casting
                 scoreListener,
                 soundEffectListener);
+            world.Add(pair.Item1);
+            Character = pair.Item2;
 
             if (Lifes > 0)
             {

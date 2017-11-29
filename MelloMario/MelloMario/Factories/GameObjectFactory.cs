@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using MelloMario.Objects.Blocks;
@@ -21,7 +22,7 @@
 
         public static IGameObjectFactory Instance { get; } = new GameObjectFactory();
 
-        public ICharacter CreateCharacter(
+        public Tuple<IGameObject, ICharacter> CreateCharacter(
             string type,
             IWorld world,
             IPlayer player,
@@ -33,7 +34,7 @@
             {
                 case "Mario":
                     MarioCharacter mario = new MarioCharacter(world, player, location, listener, soundListener);
-                    return mario;
+                    return new Tuple<IGameObject, ICharacter>(mario, mario);
                 default:
                     return null;
             }
