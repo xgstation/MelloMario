@@ -55,7 +55,6 @@
             };
 
             ActivePlayer = new Player(graphicsManager, soundManager, controllers);
-            graphicsManager.BindPlyaer(ActivePlayer);
             new StartScript().Bind(controllers, this);
             LevelIOJson = new LevelIOJson(Const.CONTENT_PATH_S);
             LevelIOJson.BindSoundListener(soundManager.SoundEffectListener);
@@ -122,6 +121,7 @@
         {
             base.Initialize();
             graphicsManager.Initialize();
+            graphicsManager.BindPlyaer(ActivePlayer);
             soundManager.Initialize();
         }
 

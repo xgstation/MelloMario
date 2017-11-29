@@ -40,7 +40,7 @@
         public void BindModel(IModel newModel)
         {
             model = newModel;
-            uiManager.BindModel(newModel);
+            uiManager.BindModel(model);
         }
 
         public void Update(int time)

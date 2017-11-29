@@ -10,29 +10,20 @@
     internal class UIManager
     {
         private readonly Game1 game;
+        private readonly IPlayer player;
         private IUserInterface hud;
         private IUserInterface splash;
 
         private string worldName;
-        private IPlayer player;
         private IModel model;
 
         public UIManager(Game1 game)
         {
             this.game = game;
+            player = game.ActivePlayer;
             splash = new GameStart(game);
         }
-
-        public void BindPlayer(IPlayer newPlayer)
-        {
-            player = newPlayer;
-        }
-
-        public void Initialize()
-        {
-            worldName = player.Character.CurrentWorld.ID;
-        }
-
+        
         public void Update(int time)
         {
             if (player != null && hud != null)
