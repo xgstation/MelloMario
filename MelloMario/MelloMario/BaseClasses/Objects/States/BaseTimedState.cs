@@ -25,8 +25,6 @@
             }
         }
 
-        protected abstract void OnTimer(int time);
-
         public override void Update(int time)
         {
             // Note: if we will support recording/replaying, use a constant number here
@@ -38,5 +36,7 @@
                 elapsed -= interval;
             }
         }
+
+        protected abstract void OnTimer(int time);
     }
 }

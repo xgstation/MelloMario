@@ -32,6 +32,13 @@
 
     internal class GameEntityConverter : JsonConverter
     {
+        public enum ProduceMode
+        {
+            One,
+            Rectangle,
+            Triangle
+        }
+
         private static readonly IEnumerable<Type> AssemblyTypes =
             from type in Assembly.GetExecutingAssembly().GetTypes()
             where typeof(IGameObject).IsAssignableFrom(type)
@@ -182,13 +189,6 @@
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             //TODO: Implement serializer
-        }
-
-        public enum ProduceMode
-        {
-            One,
-            Rectangle,
-            Triangle
         }
 
         #region IGameObject Converters

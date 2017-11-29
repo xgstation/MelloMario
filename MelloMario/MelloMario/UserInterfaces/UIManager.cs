@@ -27,6 +27,12 @@
         private IPlayer player;
         private State state;
 
+        public UIManager(Game1 game)
+        {
+            this.game = game;
+            ScreenState = State.idle;
+        }
+
         public State ScreenState
         {
             get
@@ -38,12 +44,6 @@
                 state = value;
                 UpdateInterface();
             }
-        }
-
-        public UIManager(Game1 game)
-        {
-            this.game = game;
-            ScreenState = State.idle;
         }
 
         public void BindPlayer(IPlayer newPlayer)

@@ -17,8 +17,6 @@
         private readonly IEnumerable<IController> controllers;
         private readonly IListener<IGameObject> scoreListener;
         private readonly string map;
-        public GameState State { get; private set; }
-        public GameMode Mode { get; }
 
         public GameModel(Game1 game, IEnumerable<IController> controllers, GameMode mode)
         {
@@ -47,6 +45,9 @@
             }
         }
 
+        public GameState State { get; private set; }
+        public GameMode Mode { get; }
+
         public void Pause()
         {
             State = GameState.pause;
@@ -62,14 +63,6 @@
         public void Reset()
         {
             game.Reset();
-            Resume();
-        }
-
-        private void Initialize()
-        {
-            game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener);
-            session.Add(game.ActivePlayer);
-            State = GameState.onProgress;
             Resume();
         }
 
@@ -110,6 +103,14 @@
             game.ActivePlayer.Win();
             State = GameState.transist;
             new TransistScript().Bind(controllers, this);
+        }
+
+        private void Initialize()
+        {
+            game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener);
+            session.Add(game.ActivePlayer);
+            State = GameState.onProgress;
+            Resume();
         }
 
         private void UpdateController()

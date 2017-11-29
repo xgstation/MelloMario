@@ -11,8 +11,17 @@
     [Serializable]
     internal abstract class BasePhysicalObject : BaseCollidableObject
     {
-        private readonly float pixelScale;
+        // TODO: make this private again once we have a better collision event dispatch mechanism
+        //       a goomba/koopa should "know" in which case it can hurt/bounce mario
+        //       instead of doing runtime type-checking on all enemys in mario's class
+        protected enum FacingMode
+        {
+            left,
+            right
+        }
+
         protected FacingMode Facing;
+        private readonly float pixelScale;
         private Vector2 accel;
         private Vector2 frictionalAccel;
         private Vector2 velocity;
@@ -195,15 +204,6 @@
             Move(pixelMovement);
 
             base.OnSimulation(time);
-        }
-
-        // TODO: make this private again once we have a better collision event dispatch mechanism
-        //       a goomba/koopa should "know" in which case it can hurt/bounce mario
-        //       instead of doing runtime type-checking on all enemys in mario's class
-        protected enum FacingMode
-        {
-            left,
-            right
         }
     }
 }

@@ -53,14 +53,6 @@
             elapsed = 0;
         }
 
-        private void UpdateSourceRectangle()
-        {
-            int x = frames % columns;
-            int y = frames / columns;
-
-            ChangeSource(new Point(refSource.X + x * refSource.Width, refSource.Y + y * refSource.Height));
-        }
-
         protected override void OnAnimate(int time)
         {
             elapsed += time;
@@ -83,6 +75,14 @@
         protected virtual void OnFrame()
         {
             // nothing by default
+        }
+
+        private void UpdateSourceRectangle()
+        {
+            int x = frames % columns;
+            int y = frames / columns;
+
+            ChangeSource(new Point(refSource.X + x * refSource.Width, refSource.Y + y * refSource.Height));
         }
     }
 }

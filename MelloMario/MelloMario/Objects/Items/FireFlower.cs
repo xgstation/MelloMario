@@ -59,10 +59,26 @@
             }
         }
 
-        private void UpdateSprite()
+        public ISoundArgs SoundEventArgs { get; }
+
+        public void Collect()
         {
-            ShowSprite(SpriteFactory.Instance.CreateFireFlowerSprite());
+            if (!collected)
+            {
+                ScorePoints(Const.SCORE_POWER_UP);
+                new PopingUpPoints(World, Boundary.Location, Const.SCORE_POWER_UP);
+            }
+            collected = true;
+            RemoveSelf();
+            //State.Collect();
         }
+
+        public void UnveilMove(int delta)
+        {
+            Move(new Point(0, delta));
+        }
+
+        public event SoundHandler SoundEvent;
 
         protected override void OnUpdate(int time)
         {
@@ -87,24 +103,9 @@
         {
         }
 
-        public void Collect()
+        private void UpdateSprite()
         {
-            if (!collected)
-            {
-                ScorePoints(Const.SCORE_POWER_UP);
-                new PopingUpPoints(World, Boundary.Location, Const.SCORE_POWER_UP);
-            }
-            collected = true;
-            RemoveSelf();
-            //State.Collect();
+            ShowSprite(SpriteFactory.Instance.CreateFireFlowerSprite());
         }
-
-        public void UnveilMove(int delta)
-        {
-            Move(new Point(0, delta));
-        }
-
-        public event SoundHandler SoundEvent;
-        public ISoundArgs SoundEventArgs { get; }
     }
 }

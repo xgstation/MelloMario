@@ -24,17 +24,17 @@
             UpdateSprite();
         }
 
-        private void UpdateSprite()
-        {
-            ShowSprite(SpriteFactory.Instance.CreateSceneSprite(type, targetZIndex));
-        }
-
         protected override void OnUpdate(int time)
         {
         }
 
         protected override void OnSimulation(int time)
         {
+        }
+
+        private void UpdateSprite()
+        {
+            ShowSprite(SpriteFactory.Instance.CreateSceneSprite(type, targetZIndex));
         }
     }
 }

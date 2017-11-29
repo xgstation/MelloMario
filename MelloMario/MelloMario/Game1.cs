@@ -20,9 +20,6 @@
     /// </summary>
     internal class Game1 : Game
     {
-        //XNA Member
-        private readonly GraphicsDeviceManager graphics;
-
         //MelloMario Members
         public enum Menu
         {
@@ -31,14 +28,13 @@
             Quit
         }
 
+        //XNA Member
+        private readonly GraphicsDeviceManager graphics;
+
         private readonly GraphicManager graphicsManager;
         private readonly SoundManager soundManager;
         private readonly IEnumerable<IController> controllers;
         private GameModel gameModel;
-
-        public Menu CurrentSelected { get; private set; }
-        public IPlayer ActivePlayer { get; }
-        public LevelIOJson LevelIOJson { get; }
 
         public Game1()
         {
@@ -65,6 +61,10 @@
             LevelIOJson.BindSoundListener(soundManager.SoundEffectListener);
         }
 
+        public Menu CurrentSelected { get; private set; }
+        public IPlayer ActivePlayer { get; }
+        public LevelIOJson LevelIOJson { get; }
+
         // game controlling
         public void ToggleFullScreen()
         {
@@ -78,6 +78,36 @@
 
         public void Reset()
         {
+        }
+
+        public void Select()
+        {
+            switch (CurrentSelected)
+            {
+                case Menu.Normal:
+                    gameModel = new GameModel(this, controllers, GameMode.normal);
+                    graphicsManager.BindModel(gameModel);
+                    break;
+                case Menu.Infinite:
+                    gameModel = new GameModel(this, controllers, GameMode.infinite);
+                    graphicsManager.BindModel(gameModel);
+                    break;
+                case Menu.Quit:
+                    Exit();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void CursorUp()
+        {
+            CurrentSelected = CurrentSelected == Menu.Normal ? Menu.Quit : (Menu) ((int) CurrentSelected - 1);
+        }
+
+        public void CursorDown()
+        {
+            CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu) ((int) CurrentSelected + 1);
         }
 
         /// <summary>
@@ -132,36 +162,6 @@
             base.Draw(time);
             GraphicsDevice.Clear(Color.CornflowerBlue);
             graphicsManager.Draw(time.ElapsedGameTime.Milliseconds);
-        }
-
-        public void Select()
-        {
-            switch (CurrentSelected)
-            {
-                case Menu.Normal:
-                    gameModel = new GameModel(this, controllers, GameMode.normal);
-                    graphicsManager.BindModel(gameModel);
-                    break;
-                case Menu.Infinite:
-                    gameModel = new GameModel(this, controllers, GameMode.infinite);
-                    graphicsManager.BindModel(gameModel);
-                    break;
-                case Menu.Quit:
-                    Exit();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        public void CursorUp()
-        {
-            CurrentSelected = CurrentSelected == Menu.Normal ? Menu.Quit : (Menu) ((int) CurrentSelected - 1);
-        }
-
-        public void CursorDown()
-        {
-            CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu) ((int) CurrentSelected + 1);
         }
     }
 }

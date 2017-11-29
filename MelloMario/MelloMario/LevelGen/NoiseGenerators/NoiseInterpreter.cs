@@ -10,10 +10,18 @@
 
     internal class NoiseInterpreter
     {
+        private const int GRID_I = 4;
         //Work in progress
 
         private readonly GraphicsDevice graphicsDevice;
         private readonly SpriteBatch spriteBatch;
+
+        private readonly Texture2D cellTexture2D;
+        private readonly Texture2D cellTexture2D2;
+        private readonly Texture2D cellTexture2D3;
+
+        private readonly PerlinNoiseGenerator perlinTerrian = new PerlinNoiseGenerator(5120);
+        private readonly PerlinNoiseGenerator perlinColor = new PerlinNoiseGenerator(2560);
 
         public NoiseInterpreter(SpriteBatch spriteBatch)
         {
@@ -24,13 +32,12 @@
             Produce(perlinColor, ref cellTexture2D3, 2);
         }
 
-        private readonly Texture2D cellTexture2D;
-        private readonly Texture2D cellTexture2D2;
-        private readonly Texture2D cellTexture2D3;
-        private const int GRID_I = 4;
-
-        private readonly PerlinNoiseGenerator perlinTerrian = new PerlinNoiseGenerator(5120);
-        private readonly PerlinNoiseGenerator perlinColor = new PerlinNoiseGenerator(2560);
+        public void Draw()
+        {
+            spriteBatch.Draw(cellTexture2D, Vector2.Zero, Color.White);
+            spriteBatch.Draw(cellTexture2D2, new Vector2(0f, 500f), Color.White);
+            spriteBatch.Draw(cellTexture2D3, new Vector2(0f, 1000f), Color.White);
+        }
 
         private void Produce(PerlinNoiseGenerator perlinColor, ref Texture2D texture2D, int parameter = 0)
         {
@@ -107,13 +114,6 @@
                     data[x + i + (y + j) * 2560] = color;
                 }
             }
-        }
-
-        public void Draw()
-        {
-            spriteBatch.Draw(cellTexture2D, Vector2.Zero, Color.White);
-            spriteBatch.Draw(cellTexture2D2, new Vector2(0f, 500f), Color.White);
-            spriteBatch.Draw(cellTexture2D3, new Vector2(0f, 1000f), Color.White);
         }
     }
 }

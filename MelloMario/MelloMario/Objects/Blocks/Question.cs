@@ -17,8 +17,6 @@
     {
         private bool isHidden;
         private IBlockState state;
-        public event SoundHandler SoundEvent;
-        public ISoundArgs SoundEventArgs { get; }
 
         public Question(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool isHidden = false) :
             base(world, location, listener, new Point(32, 32))
@@ -27,6 +25,8 @@
             soundListener.Subscribe(this);
             SoundEventArgs = new SoundArgs();
         }
+
+        public ISoundArgs SoundEventArgs { get; }
 
         public IBlockState State
         {
@@ -40,6 +40,8 @@
                 UpdateSprite();
             }
         }
+
+        public event SoundHandler SoundEvent;
 
         public void Initialize(bool hidden = false)
         {
@@ -55,20 +57,26 @@
             UpdateSprite();
         }
 
-        private void UpdateSprite()
+        public void Bump(Mario mario)
         {
-            switch (state)
+            State.Bump(mario);
+            SoundEventArgs.SetMethodCalled();
+        }
+
+        public void BumpMove(int delta)
+        {
+            Move(new Point(0, delta));
+        }
+
+        public void ReleaseNextItem()
+        {
+            if (!Database.HasItemEnclosed(this))
             {
-                case IState s when s is Hidden:
-                    HideSprite();
-                    break;
-                case IState s when s is Normal:
-                    ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
-                    break;
-                case IState s when s is Used:
-                    ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
-                    break;
+                return;
             }
+            IGameObject item = Database.GetNextItem(this);
+            World.Update();
+            World.Add(item);
         }
 
         protected override void OnUpdate(int time)
@@ -95,26 +103,20 @@
         {
         }
 
-        public void Bump(Mario mario)
+        private void UpdateSprite()
         {
-            State.Bump(mario);
-            SoundEventArgs.SetMethodCalled();
-        }
-
-        public void BumpMove(int delta)
-        {
-            Move(new Point(0, delta));
-        }
-
-        public void ReleaseNextItem()
-        {
-            if (!Database.HasItemEnclosed(this))
+            switch (state)
             {
-                return;
+                case IState s when s is Hidden:
+                    HideSprite();
+                    break;
+                case IState s when s is Normal:
+                    ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Normal"));
+                    break;
+                case IState s when s is Used:
+                    ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
+                    break;
             }
-            IGameObject item = Database.GetNextItem(this);
-            World.Update();
-            World.Add(item);
         }
     }
 }

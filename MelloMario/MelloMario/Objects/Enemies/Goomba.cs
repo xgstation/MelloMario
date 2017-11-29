@@ -47,9 +47,11 @@
             }
         }
 
-        private void UpdateSprite()
+        public void Defeat()
         {
-            ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name));
+            ScorePoints(Const.SCORE_GOOMBA);
+            new PopingUpPoints(World, Boundary.Location, Const.SCORE_GOOMBA);
+            State.Defeat();
         }
 
         protected override void OnUpdate(int time)
@@ -133,19 +135,17 @@
         {
         }
 
+        private void UpdateSprite()
+        {
+            ShowSprite(SpriteFactory.Instance.CreateGoombaSprite(state.GetType().Name));
+        }
+
         private void ChangeFacing(FacingMode facing)
         {
             Facing = facing;
 
             // Notice: The effect should be the same as changing state
             UpdateSprite();
-        }
-
-        public void Defeat()
-        {
-            ScorePoints(Const.SCORE_GOOMBA);
-            new PopingUpPoints(World, Boundary.Location, Const.SCORE_GOOMBA);
-            State.Defeat();
         }
     }
 }

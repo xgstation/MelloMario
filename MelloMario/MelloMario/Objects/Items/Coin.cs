@@ -19,7 +19,6 @@
         public delegate void CoinHandler(Coin m, EventArgs e);
 
         private readonly EventArgs coinEventInfo;
-        public ISoundArgs SoundEventArgs { get; }
         private bool collected;
         private IItemState state;
 
@@ -49,6 +48,8 @@
             }
         }
 
+        public ISoundArgs SoundEventArgs { get; }
+
         public IItemState State
         {
             get
@@ -66,9 +67,23 @@
 
         public event SoundHandler SoundEvent;
 
-        private void UpdateSprite()
+        public void Collect()
         {
-            ShowSprite(SpriteFactory.Instance.CreateCoinSprite());
+            if (!collected)
+            {
+                SoundEventArgs.SetMethodCalled();
+                HandlerCoins?.Invoke(this, coinEventInfo);
+                ScorePoints(Const.SCORE_COIN);
+                collected = true;
+                new PopingUpPoints(World, Boundary.Location, Const.SCORE_COIN);
+            }
+            RemoveSelf();
+            //State.Collect();
+        }
+
+        public void UnveilMove(int delta)
+        {
+            Move(new Point(0, delta));
         }
 
         protected override void OnUpdate(int time)
@@ -94,23 +109,9 @@
         {
         }
 
-        public void Collect()
+        private void UpdateSprite()
         {
-            if (!collected)
-            {
-                SoundEventArgs.SetMethodCalled();
-                HandlerCoins?.Invoke(this, coinEventInfo);
-                ScorePoints(Const.SCORE_COIN);
-                collected = true;
-                new PopingUpPoints(World, Boundary.Location, Const.SCORE_COIN);
-            }
-            RemoveSelf();
-            //State.Collect();
-        }
-
-        public void UnveilMove(int delta)
-        {
-            Move(new Point(0, delta));
+            ShowSprite(SpriteFactory.Instance.CreateCoinSprite());
         }
     }
 }

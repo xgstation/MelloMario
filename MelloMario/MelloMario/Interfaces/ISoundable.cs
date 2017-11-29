@@ -8,8 +8,8 @@
 
     internal interface ISoundable
     {
-        event SoundHandler SoundEvent;
         ISoundArgs SoundEventArgs { get; }
+        event SoundHandler SoundEvent;
     }
 
     internal interface ISoundArgs

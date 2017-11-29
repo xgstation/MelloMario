@@ -27,13 +27,6 @@
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
-        public ISoundArgs SoundEventArgs { get; }
-        public event SoundHandler SoundEvent;
-
-        protected void RaiseSoundEvent()
-        {
-            SoundEvent?.Invoke(this, SoundEventArgs);
-        }
 
         public Mario(
             IWorld world,
@@ -54,6 +47,8 @@
             protectionState = new ProtectionStates.Normal(this);
             UpdateSprite();
         }
+
+        public ISoundArgs SoundEventArgs { get; }
 
         public IMarioMovementState MovementState
         {
@@ -94,31 +89,49 @@
             }
         }
 
+        public event SoundHandler SoundEvent;
+
         public event GameOverHandler HandlerGameOver;
 
-        private void UpdateSprite()
+        public void OnDeath()
         {
-            if (movementState is Crouching && powerUpState is Standard)
-            {
-                return; // status is still updating
-            }
+            SoundEventArgs.SetMethodCalled();
+            SetVerticalVelocity(-20);
+        }
 
-            string facingString;
-            if (Facing == FacingMode.left)
-            {
-                facingString = "Left";
-            }
-            else
-            {
-                facingString = "Right";
-            }
+        public void TransToGameOver()
+        {
+            eventInfo = null;
+            HandlerGameOver?.Invoke(this, eventInfo);
+        }
 
-            ShowSprite(
-                SpriteFactory.Instance.CreateMarioSprite(
-                    powerUpState.GetType().Name,
-                    movementState.GetType().Name,
-                    protectionState.GetType().Name,
-                    facingString));
+        public void UpgradeToSuper()
+        {
+            SoundEventArgs.SetMethodCalled();
+            PowerUpState.UpgradeToSuper();
+        }
+
+        public void UpgradeToFire()
+        {
+            SoundEventArgs.SetMethodCalled();
+            PowerUpState.UpgradeToFire();
+        }
+
+        public void Downgrade()
+        {
+            if (protectionState is ProtectionStates.Normal)
+            {
+                PowerUpState.Downgrade();
+            }
+            if (protectionState is ProtectionStates.Normal)
+            {
+                protectionState.Protect();
+            }
+        }
+
+        protected void RaiseSoundEvent()
+        {
+            SoundEvent?.Invoke(this, SoundEventArgs);
         }
 
         protected void ChangeFacing(FacingMode facing)
@@ -373,40 +386,29 @@
             }
         }
 
-        public void OnDeath()
+        private void UpdateSprite()
         {
-            SoundEventArgs.SetMethodCalled();
-            SetVerticalVelocity(-20);
-        }
-
-        public void TransToGameOver()
-        {
-            eventInfo = null;
-            HandlerGameOver?.Invoke(this, eventInfo);
-        }
-
-        public void UpgradeToSuper()
-        {
-            SoundEventArgs.SetMethodCalled();
-            PowerUpState.UpgradeToSuper();
-        }
-
-        public void UpgradeToFire()
-        {
-            SoundEventArgs.SetMethodCalled();
-            PowerUpState.UpgradeToFire();
-        }
-
-        public void Downgrade()
-        {
-            if (protectionState is ProtectionStates.Normal)
+            if (movementState is Crouching && powerUpState is Standard)
             {
-                PowerUpState.Downgrade();
+                return; // status is still updating
             }
-            if (protectionState is ProtectionStates.Normal)
+
+            string facingString;
+            if (Facing == FacingMode.left)
             {
-                protectionState.Protect();
+                facingString = "Left";
             }
+            else
+            {
+                facingString = "Right";
+            }
+
+            ShowSprite(
+                SpriteFactory.Instance.CreateMarioSprite(
+                    powerUpState.GetType().Name,
+                    movementState.GetType().Name,
+                    protectionState.GetType().Name,
+                    facingString));
         }
     }
 }

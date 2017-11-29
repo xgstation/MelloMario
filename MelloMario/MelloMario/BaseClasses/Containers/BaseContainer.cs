@@ -27,54 +27,6 @@
             toRemove = new HashSet<Value>();
         }
 
-        private void DoAdd(Value value)
-        {
-            Key key = GetKey(value);
-
-            if (!values.ContainsKey(key))
-            {
-                values.Add(key, new HashSet<Value>());
-            }
-
-            keys.Add(value, key);
-            values[key].Add(value);
-        }
-
-        private void DoRemove(Value value)
-        {
-            Key key = keys[value];
-
-            keys.Remove(value);
-            values[key].Remove(value);
-        }
-
-        protected abstract Key GetKey(Value value);
-
-        protected IEnumerable<Value> Scan(Key key)
-        {
-            if (values.ContainsKey(key))
-            {
-                return values[key];
-            }
-            return Enumerable.Empty<Value>();
-        }
-
-        protected IEnumerable<Key> ScanKeys()
-        {
-            return values.Keys;
-        }
-
-        protected IEnumerable<Value> ScanValues()
-        {
-            foreach (ISet<Value> value in values.Values)
-            {
-                foreach (Value item in value)
-                {
-                    yield return item;
-                }
-            }
-        }
-
         public void Add(Value value)
         {
             toAdd.Add(value);
@@ -119,6 +71,54 @@
                 }
             }
             toRemove.Clear();
+        }
+
+        protected abstract Key GetKey(Value value);
+
+        protected IEnumerable<Value> Scan(Key key)
+        {
+            if (values.ContainsKey(key))
+            {
+                return values[key];
+            }
+            return Enumerable.Empty<Value>();
+        }
+
+        protected IEnumerable<Key> ScanKeys()
+        {
+            return values.Keys;
+        }
+
+        protected IEnumerable<Value> ScanValues()
+        {
+            foreach (ISet<Value> value in values.Values)
+            {
+                foreach (Value item in value)
+                {
+                    yield return item;
+                }
+            }
+        }
+
+        private void DoAdd(Value value)
+        {
+            Key key = GetKey(value);
+
+            if (!values.ContainsKey(key))
+            {
+                values.Add(key, new HashSet<Value>());
+            }
+
+            keys.Add(value, key);
+            values[key].Add(value);
+        }
+
+        private void DoRemove(Value value)
+        {
+            Key key = keys[value];
+
+            keys.Remove(value);
+            values[key].Remove(value);
         }
     }
 }

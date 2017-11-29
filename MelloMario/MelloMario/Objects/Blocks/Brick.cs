@@ -17,7 +17,6 @@
     {
         private bool isHidden;
         private IBlockState state;
-        public ISoundArgs SoundEventArgs { get; }
 
         public Brick(
             IWorld world,
@@ -34,6 +33,8 @@
             soundListener.Subscribe(this);
             SoundEventArgs = new SoundArgs();
         }
+
+        public ISoundArgs SoundEventArgs { get; }
 
         public bool HasInitialItem { get; private set; }
 
@@ -63,49 +64,6 @@
             }
             HasInitialItem = Database.HasItemEnclosed(this);
             UpdateSprite();
-        }
-
-        private void UpdateSprite()
-        {
-            switch (state)
-            {
-                case IState s when s is Hidden:
-                    HideSprite();
-                    break;
-                case IState s when s is Destroyed:
-                    ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Destroyed"));
-                    break;
-                case IState s when s is Normal:
-                    ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
-                    break;
-                case IState s when s is Used:
-                    ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
-                    break;
-            }
-        }
-
-        protected override void OnUpdate(int time)
-        {
-            state.Update(time);
-        }
-
-        protected override void OnSimulation(int time)
-        {
-            SoundEvent?.Invoke(this, SoundEventArgs);
-            base.OnSimulation(time);
-        }
-
-        protected override void OnCollision(
-            IGameObject target,
-            CollisionMode mode,
-            CollisionMode modePassive,
-            CornerMode corner,
-            CornerMode cornerPassive)
-        {
-        }
-
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
-        {
         }
 
         public void OnDestroy()
@@ -142,5 +100,48 @@
         }
 
         public event SoundHandler SoundEvent;
+
+        protected override void OnUpdate(int time)
+        {
+            state.Update(time);
+        }
+
+        protected override void OnSimulation(int time)
+        {
+            SoundEvent?.Invoke(this, SoundEventArgs);
+            base.OnSimulation(time);
+        }
+
+        protected override void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive)
+        {
+        }
+
+        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
+        {
+        }
+
+        private void UpdateSprite()
+        {
+            switch (state)
+            {
+                case IState s when s is Hidden:
+                    HideSprite();
+                    break;
+                case IState s when s is Destroyed:
+                    ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Destroyed"));
+                    break;
+                case IState s when s is Normal:
+                    ShowSprite(SpriteFactory.Instance.CreateBrickSprite("Normal"));
+                    break;
+                case IState s when s is Used:
+                    ShowSprite(SpriteFactory.Instance.CreateQuestionSprite("Used"));
+                    break;
+            }
+        }
     }
 }

@@ -43,26 +43,32 @@
             }
         }
 
-        private void UpdateSprite()
+        public void JumpOn()
         {
-            string facingString;
-            if (Facing == FacingMode.left)
+            ScorePoints(Const.SCORE_KOOPA);
+            State.JumpOn();
+        }
+
+        public void Pushed()
+        {
+            // TODO: temporary fix
+            if (Facing == FacingMode.right)
             {
-                facingString = "Left";
+                Move(new Point(1, 0));
             }
             else
             {
-                facingString = "Right";
+                Move(new Point(-1, 0));
             }
-            ShowSprite(SpriteFactory.Instance.CreateKoopaSprite(color, state.GetType().Name + facingString));
+
+            State.Pushed();
         }
 
-        private void ChangeFacing(FacingMode facing)
+        public void Defeat()
         {
-            Facing = facing;
-
-            // Notice: The effect should be the same as changing state
-            UpdateSprite();
+            ScorePoints(Const.SCORE_KOOPA);
+            new PopingUpPoints(World, Boundary.Location, Const.SCORE_KOOPA);
+            RemoveSelf();
         }
 
         protected override void OnUpdate(int time)
@@ -190,32 +196,26 @@
         {
         }
 
-        public void JumpOn()
+        private void UpdateSprite()
         {
-            ScorePoints(Const.SCORE_KOOPA);
-            State.JumpOn();
-        }
-
-        public void Pushed()
-        {
-            // TODO: temporary fix
-            if (Facing == FacingMode.right)
+            string facingString;
+            if (Facing == FacingMode.left)
             {
-                Move(new Point(1, 0));
+                facingString = "Left";
             }
             else
             {
-                Move(new Point(-1, 0));
+                facingString = "Right";
             }
-
-            State.Pushed();
+            ShowSprite(SpriteFactory.Instance.CreateKoopaSprite(color, state.GetType().Name + facingString));
         }
 
-        public void Defeat()
+        private void ChangeFacing(FacingMode facing)
         {
-            ScorePoints(Const.SCORE_KOOPA);
-            new PopingUpPoints(World, Boundary.Location, Const.SCORE_KOOPA);
-            RemoveSelf();
+            Facing = facing;
+
+            // Notice: The effect should be the same as changing state
+            UpdateSprite();
         }
     }
 }

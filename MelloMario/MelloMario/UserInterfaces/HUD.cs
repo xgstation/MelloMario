@@ -25,8 +25,6 @@
         private int timeRemain;
         private string worldName;
 
-        public bool IsSplashing { get; set; }
-
         public HUD()
         {
             textSprite = SpriteFactory.Instance.CreateTextSprite("");
@@ -36,6 +34,8 @@
             coinDestination = new Rectangle(255, 74, 26, 30);
             oneUpDestination = new Rectangle(255, 42, 26, 30);
         }
+
+        public bool IsSplashing { get; set; }
 
         public void OnHUDInfoChange(int newLifes, int newScore, int newCoins, int newTimeRemain, string newWorldName)
         {

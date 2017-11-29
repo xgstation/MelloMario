@@ -16,6 +16,27 @@
 
         public delegate void PointHandler(BaseCollidableObject m, ScoreEventArgs e);
 
+        protected enum CollisionMode
+        {
+            Left,
+            Right,
+            Top,
+            Bottom,
+            InnerLeft,
+            InnerRight,
+            InnerTop,
+            InnerBottom
+        }
+
+        protected enum CornerMode
+        {
+            Left,
+            Right,
+            Top,
+            Bottom,
+            Center
+        }
+
         private Point movement;
 
         protected BaseCollidableObject(
@@ -30,6 +51,115 @@
 
         public event PointHandler HandlerPoints;
         public event LivesHandler HandlerLives;
+
+        protected abstract void OnCollision(
+            IGameObject target,
+            CollisionMode mode,
+            CollisionMode modePassive,
+            CornerMode corner,
+            CornerMode cornerPassive);
+
+        protected abstract void OnCollideWorld(CollisionMode mode, CollisionMode modePassive);
+
+        protected void Move(Point delta)
+        {
+            movement += delta;
+
+            World.Move(this);
+        }
+
+        protected void StopHorizontalMovement()
+        {
+            movement.X = 0;
+        }
+
+        protected void StopVerticalMovement()
+        {
+            movement.Y = 0;
+        }
+
+        protected void RemoveSelf()
+        {
+            StopHorizontalMovement();
+            StopVerticalMovement();
+
+            World.Remove(this);
+        }
+
+        protected override void OnSimulation(int time)
+        {
+            float offset = 0;
+
+            while (true)
+            {
+                if (movement.X == 0 && movement.Y == 0)
+                {
+                    break;
+                }
+
+                CollideAll();
+
+                if (movement.X == 0 && movement.Y == 0)
+                {
+                    break;
+                }
+
+                float sqrX = movement.X * movement.X;
+                float sqrY = movement.Y * movement.Y;
+                float offsetX = (float) Math.Sqrt(sqrY / (sqrX + sqrY));
+                float offsetY = (float) Math.Sqrt(sqrX / (sqrX + sqrY));
+
+                Point location = Boundary.Location;
+                if (Math.Abs(offset + offsetX) < Math.Abs(offset - offsetY))
+                {
+                    if (movement.X < 0)
+                    {
+                        location.X -= 1;
+                        movement.X += 1;
+                    }
+                    else
+                    {
+                        location.X += 1;
+                        movement.X -= 1;
+                    }
+                }
+                else
+                {
+                    if (movement.Y < 0)
+                    {
+                        location.Y -= 1;
+                        movement.Y += 1;
+                    }
+                    else
+                    {
+                        location.Y += 1;
+                        movement.Y -= 1;
+                    }
+                }
+
+                Relocate(location);
+            }
+        }
+
+        protected void ScorePoints(int points)
+        {
+            HandlerPoints?.Invoke(
+                this,
+                new ScoreEventArgs
+                {
+                    Points = points
+                });
+        }
+
+        protected void ChangeLives()
+        {
+            HandlerLives?.Invoke(
+                this,
+                new ScoreEventArgs
+                {
+                    Points = 1
+                });
+        }
 
         private IEnumerable<Tuple<CollisionMode, CollisionMode, CornerMode, CornerMode>> ScanCollideModes(
             Rectangle targetBoundary)
@@ -152,136 +282,6 @@
             {
                 OnCollideWorld(pair.Item1, pair.Item2);
             }
-        }
-
-        protected abstract void OnCollision(
-            IGameObject target,
-            CollisionMode mode,
-            CollisionMode modePassive,
-            CornerMode corner,
-            CornerMode cornerPassive);
-
-        protected abstract void OnCollideWorld(CollisionMode mode, CollisionMode modePassive);
-
-        protected void Move(Point delta)
-        {
-            movement += delta;
-
-            World.Move(this);
-        }
-
-        protected void StopHorizontalMovement()
-        {
-            movement.X = 0;
-        }
-
-        protected void StopVerticalMovement()
-        {
-            movement.Y = 0;
-        }
-
-        protected void RemoveSelf()
-        {
-            StopHorizontalMovement();
-            StopVerticalMovement();
-
-            World.Remove(this);
-        }
-
-        protected override void OnSimulation(int time)
-        {
-            float offset = 0;
-
-            while (true)
-            {
-                if (movement.X == 0 && movement.Y == 0)
-                {
-                    break;
-                }
-
-                CollideAll();
-
-                if (movement.X == 0 && movement.Y == 0)
-                {
-                    break;
-                }
-
-                float sqrX = movement.X * movement.X;
-                float sqrY = movement.Y * movement.Y;
-                float offsetX = (float) Math.Sqrt(sqrY / (sqrX + sqrY));
-                float offsetY = (float) Math.Sqrt(sqrX / (sqrX + sqrY));
-
-                Point location = Boundary.Location;
-                if (Math.Abs(offset + offsetX) < Math.Abs(offset - offsetY))
-                {
-                    if (movement.X < 0)
-                    {
-                        location.X -= 1;
-                        movement.X += 1;
-                    }
-                    else
-                    {
-                        location.X += 1;
-                        movement.X -= 1;
-                    }
-                }
-                else
-                {
-                    if (movement.Y < 0)
-                    {
-                        location.Y -= 1;
-                        movement.Y += 1;
-                    }
-                    else
-                    {
-                        location.Y += 1;
-                        movement.Y -= 1;
-                    }
-                }
-
-                Relocate(location);
-            }
-        }
-
-        protected void ScorePoints(int points)
-        {
-            HandlerPoints?.Invoke(
-                this,
-                new ScoreEventArgs
-                {
-                    Points = points
-                });
-        }
-
-        protected void ChangeLives()
-        {
-            HandlerLives?.Invoke(
-                this,
-                new ScoreEventArgs
-                {
-                    Points = 1
-                });
-        }
-
-        protected enum CollisionMode
-        {
-            Left,
-            Right,
-            Top,
-            Bottom,
-            InnerLeft,
-            InnerRight,
-            InnerTop,
-            InnerBottom
-        }
-
-        protected enum CornerMode
-        {
-            Left,
-            Right,
-            Top,
-            Bottom,
-            Center
         }
     }
 }

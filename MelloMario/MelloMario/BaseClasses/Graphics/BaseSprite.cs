@@ -21,6 +21,8 @@
             visible = true;
         }
 
+        public Point PixelSize { get; }
+
         protected float LayerDepth
         {
             get
@@ -50,8 +52,6 @@
                 }
             }
         }
-
-        public Point PixelSize { get; }
 
         public void Draw(int time, SpriteBatch spriteBatch, Rectangle destination)
         {

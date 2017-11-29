@@ -68,13 +68,6 @@
             }
         }
 
-        private void SwapInitial(int i, int j)
-        {
-            int temp = permuteTable[i] == 0 ? i : permuteTable[i];
-            permuteTable[i] = permuteTable[j] == 0 ? j : permuteTable[j];
-            permuteTable[j] = temp;
-        }
-
         public void InitializePermuteTable()
         {
             permuteTable = new int[size * 2];
@@ -87,6 +80,25 @@
                 SwapInitial(i, n % (i + 1));
             }
             Array.Copy(permuteTable, 0, permuteTable, size, size);
+        }
+
+        public float Fade(float f)
+        {
+            return f * f * f * (f * (f * 6 - 15) + 10);
+        }
+
+        public float RandomNormal(float f = 1.0f)
+        {
+            byte[] bytes = new byte[4];
+            RngCrypto.GetBytes(bytes);
+            return BitConverter.ToInt32(bytes, 0) / (float) int.MaxValue * f;
+        }
+
+        private void SwapInitial(int i, int j)
+        {
+            int temp = permuteTable[i] == 0 ? i : permuteTable[i];
+            permuteTable[i] = permuteTable[j] == 0 ? j : permuteTable[j];
+            permuteTable[j] = temp;
         }
 
         private float GradContribute(int hash, Vector2 v)
@@ -119,11 +131,6 @@
             }
         }
 
-        public float Fade(float f)
-        {
-            return f * f * f * (f * (f * 6 - 15) + 10);
-        }
-
         private static float Smooth(float a, float b, float k)
         {
             return MathHelper.SmoothStep(a, b, k);
@@ -137,13 +144,6 @@
         private static float LerpPrecise(float a, float b, float k)
         {
             return MathHelper.LerpPrecise(a, b, k);
-        }
-
-        public float RandomNormal(float f = 1.0f)
-        {
-            byte[] bytes = new byte[4];
-            RngCrypto.GetBytes(bytes);
-            return BitConverter.ToInt32(bytes, 0) / (float) int.MaxValue * f;
         }
     }
 }

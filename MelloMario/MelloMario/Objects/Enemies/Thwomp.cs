@@ -22,6 +22,8 @@
     {
         private readonly IThwompState state;
 
+        private bool onFloor;
+
         public Thwomp(IWorld world, Point location, IListener<IGameObject> listener) : base(
             world,
             location,
@@ -40,18 +42,11 @@
 
         public int NormalTime { get; }
 
-        private bool onFloor;
-
-        private bool DetectMario()
+        public void Defeat()
         {
-            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
-                where obj is ICharacter
-                select obj).Any();
-        }
-
-        private void UpdateSprite()
-        {
-            ShowSprite(SpriteFactory.Instance.CreateThwompSprite(state.GetType().Name));
+            ScorePoints(Const.SCORE_THWOMP);
+            new PopingUpPoints(World, Boundary.Location, Const.SCORE_THWOMP);
+            State.Defeat();
         }
 
         protected override void OnUpdate(int time)
@@ -143,19 +138,24 @@
             }
         }
 
+        private bool DetectMario()
+        {
+            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
+                where obj is ICharacter
+                select obj).Any();
+        }
+
+        private void UpdateSprite()
+        {
+            ShowSprite(SpriteFactory.Instance.CreateThwompSprite(state.GetType().Name));
+        }
+
         private void ChangeFacing(FacingMode facing)
         {
             Facing = facing;
 
             // Notice: The effect should be the same as changing state
             UpdateSprite();
-        }
-
-        public void Defeat()
-        {
-            ScorePoints(Const.SCORE_THWOMP);
-            new PopingUpPoints(World, Boundary.Location, Const.SCORE_THWOMP);
-            State.Defeat();
         }
     }
 }

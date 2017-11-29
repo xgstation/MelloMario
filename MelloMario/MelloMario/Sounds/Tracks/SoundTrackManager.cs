@@ -21,6 +21,16 @@
             player = newPlayer;
         }
 
+        public void ToggleMute()
+        {
+            MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
+        }
+
+        public void Update()
+        {
+            UpdateBGM();
+        }
+
         private void PlayMusic(ISoundTrack track)
         {
             if (track == currentTrack && MediaPlayer.State != MediaState.Stopped)
@@ -31,11 +41,6 @@
             track?.Play();
             MediaPlayer.IsRepeating = true;
             currentTrack = track;
-        }
-
-        public void ToggleMute()
-        {
-            MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
         }
 
         private void Pause()
@@ -72,11 +77,6 @@
                     PlayMusic(SoundFactory.Instance.CreateSoundTrack("Normal"));
                     break;
             }
-        }
-
-        public void Update()
-        {
-            UpdateBGM();
         }
     }
 }

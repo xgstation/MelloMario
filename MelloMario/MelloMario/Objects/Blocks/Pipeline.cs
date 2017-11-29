@@ -19,9 +19,6 @@
         private int elapsed;
         private IPlayer switchingPlayer;
 
-        public event SoundHandler SoundEvent;
-        public ISoundArgs SoundEventArgs { get; }
-
         public Pipeline(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, string type) : base(
             world,
             location,
@@ -35,18 +32,11 @@
             UpdateSprite();
         }
 
+        public ISoundArgs SoundEventArgs { get; }
+
         public string Type { get; }
 
-        // TODO: use events instead of operating game model directly
-        private void SetModel(IModel newModel)
-        {
-            model = newModel;
-        }
-
-        private void UpdateSprite()
-        {
-            ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(Type));
-        }
+        public event SoundHandler SoundEvent;
 
         protected override void OnUpdate(int time)
         {
@@ -107,6 +97,17 @@
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
+        }
+
+        // TODO: use events instead of operating game model directly
+        private void SetModel(IModel newModel)
+        {
+            model = newModel;
+        }
+
+        private void UpdateSprite()
+        {
+            ShowSprite(SpriteFactory.Instance.CreatePipelineSprite(Type));
         }
     }
 }

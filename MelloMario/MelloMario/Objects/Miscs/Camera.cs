@@ -11,6 +11,11 @@
     [Serializable]
     internal class Camera : ICamera
     {
+        public Camera()
+        {
+            Viewport = new Rectangle(0, 0, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
+        }
+
         public Rectangle Viewport { get; private set; }
 
         public Point Offset
@@ -19,11 +24,6 @@
             {
                 return new Point(Const.FOCUS_Y, Const.FOCUS_Y);
             }
-        }
-
-        public Camera()
-        {
-            Viewport = new Rectangle(0, 0, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
         }
 
         public Matrix GetViewMatrix(Vector2 parallax)

@@ -34,11 +34,6 @@
 
         public event TimeScoreHandler HandlerTimeScore;
 
-        private void UpdateSprite()
-        {
-            ShowSprite(SpriteFactory.Instance.CreateFlagSprite(top));
-        }
-
         protected override void OnUpdate(int time)
         {
         }
@@ -69,6 +64,11 @@
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
+        }
+
+        private void UpdateSprite()
+        {
+            ShowSprite(SpriteFactory.Instance.CreateFlagSprite(top));
         }
     }
 }

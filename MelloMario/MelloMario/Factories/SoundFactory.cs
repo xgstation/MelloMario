@@ -22,26 +22,6 @@
             soundEffects = new Dictionary<string, SoundEffectInstance>();
         }
 
-        private Song GetSong(string name)
-        {
-            if (!songs.ContainsKey(name))
-            {
-                songs.Add(name, content.Load<Song>(name));
-            }
-
-            return songs[name];
-        }
-
-        private SoundEffectInstance GetSoundEffect(string name)
-        {
-            if (!soundEffects.ContainsKey(name))
-            {
-                soundEffects.Add(name, content.Load<SoundEffect>(name).CreateInstance());
-            }
-
-            return soundEffects[name];
-        }
-
         public static ISoundFactory<ContentManager> Instance { get; } = new SoundFactory();
 
         public void BindLoader(ContentManager loader)
@@ -103,6 +83,26 @@
                     // never reach
                     return null;
             }
+        }
+
+        private Song GetSong(string name)
+        {
+            if (!songs.ContainsKey(name))
+            {
+                songs.Add(name, content.Load<Song>(name));
+            }
+
+            return songs[name];
+        }
+
+        private SoundEffectInstance GetSoundEffect(string name)
+        {
+            if (!soundEffects.ContainsKey(name))
+            {
+                soundEffects.Add(name, content.Load<SoundEffect>(name).CreateInstance());
+            }
+
+            return soundEffects[name];
         }
     }
 }

@@ -25,11 +25,6 @@
             this.controllers = controllers;
         }
 
-        public void BindSession(ISession newSession)
-        {
-            Session = newSession;
-        }
-
         public ISession Session { get; private set; }
 
         public ICharacter Character { get; private set; }
@@ -43,6 +38,11 @@
         public int Lifes { get; private set; }
 
         public int TimeRemain { get; private set; }
+
+        public void BindSession(ISession newSession)
+        {
+            Session = newSession;
+        }
 
         public void AddCoin()
         {

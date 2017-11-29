@@ -15,6 +15,15 @@
     [Serializable]
     internal class MarioCharacter : Mario, ICharacter
     {
+        // TODO: create AnimationStates
+        private enum Animation
+        {
+            none,
+            teleport,
+            flagpole,
+            dead
+        }
+
         private Animation animation;
 
         private int toBeTraveled;
@@ -262,16 +271,16 @@
             RemoveSelf();
         }
 
+        public void FlagPole()
+        {
+            animation = Animation.flagpole;
+        }
+
         protected void Teleport()
         {
             animation = Animation.teleport;
             toBeTraveled = Boundary.Height;
             // TODO: initialize
-        }
-
-        public void FlagPole()
-        {
-            animation = Animation.flagpole;
         }
 
         protected void Reset()
@@ -309,15 +318,6 @@
             }
 
             base.OnUpdate(time);
-        }
-
-        // TODO: create AnimationStates
-        private enum Animation
-        {
-            none,
-            teleport,
-            flagpole,
-            dead
         }
     }
 }

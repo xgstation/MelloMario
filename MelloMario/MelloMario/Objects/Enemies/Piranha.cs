@@ -40,11 +40,12 @@
 
         public int HiddenTime { get; }
 
-        private bool DetectMario()
+        public void Defeat()
         {
-            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
-                where obj is ICharacter
-                select obj).Any();
+            ScorePoints(Const.SCORE_PIRANHA);
+            new PopingUpPoints(World, Boundary.Location, Const.SCORE_PIRANHA);
+            State.Defeat();
+            RemoveSelf();
         }
 
         protected override void OnSimulation(int time)
@@ -85,12 +86,11 @@
             //throw new NotImplementedException();
         }
 
-        public void Defeat()
+        private bool DetectMario()
         {
-            ScorePoints(Const.SCORE_PIRANHA);
-            new PopingUpPoints(World, Boundary.Location, Const.SCORE_PIRANHA);
-            State.Defeat();
-            RemoveSelf();
+            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
+                where obj is ICharacter
+                select obj).Any();
         }
     }
 }

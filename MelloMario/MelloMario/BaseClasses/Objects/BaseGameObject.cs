@@ -11,12 +11,26 @@
     [Serializable]
     internal abstract class BaseGameObject : IGameObject
     {
-        private Point location;
-        private Point size;
-        private ISprite sprite;
+        protected enum ResizeModeX
+        {
+            Left,
+            Center,
+            Right
+        }
+
+        protected enum ResizeModeY
+        {
+            Top,
+            Center,
+            Bottom
+        }
 
         // note: World should only be used in base classes and MarioCharacter
         protected IWorld World;
+
+        private Point location;
+        private Point size;
+        private ISprite sprite;
 
         protected BaseGameObject(IWorld world, Point location, Point size)
         {
@@ -104,20 +118,6 @@
         protected void HideSprite()
         {
             sprite = null;
-        }
-
-        protected enum ResizeModeX
-        {
-            Left,
-            Center,
-            Right
-        }
-
-        protected enum ResizeModeY
-        {
-            Top,
-            Center,
-            Bottom
         }
     }
 }

@@ -27,11 +27,6 @@
             }
         }
 
-        private void UpdateSprite()
-        {
-            ShowSprite(SpriteFactory.Instance.CreateFloorSprite());
-        }
-
         protected override void OnUpdate(int time)
         {
         }
@@ -47,6 +42,11 @@
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
+        }
+
+        private void UpdateSprite()
+        {
+            ShowSprite(SpriteFactory.Instance.CreateFloorSprite());
         }
     }
 }
