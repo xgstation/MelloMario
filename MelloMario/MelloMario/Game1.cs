@@ -54,7 +54,7 @@
                 new KeyboardController()
             };
 
-            ActivePlayer = new Player(soundManager);
+            ActivePlayer = new Player();
             new StartScript().Bind(controllers, this);
             LevelIOJson = new LevelIOJson(Const.CONTENT_PATH_S);
             LevelIOJson.BindSoundListener(soundManager.SoundEffectListener);
@@ -86,12 +86,12 @@
                 case Menu.Normal:
                     gameModel = new GameModel(this, controllers);
                     graphicsManager.BindModel(gameModel);
-                    gameModel.Initialize(GameMode.normal);
+                    gameModel.Initialize(GameMode.normal, soundManager.SoundEffectListener);
                     break;
                 case Menu.Infinite:
                     gameModel = new GameModel(this, controllers);
                     graphicsManager.BindModel(gameModel);
-                    gameModel.Initialize(GameMode.infinite);
+                    gameModel.Initialize(GameMode.infinite, soundManager.SoundEffectListener);
                     break;
                 case Menu.Quit:
                     Exit();
@@ -110,7 +110,7 @@
         {
             CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu) ((int) CurrentSelected + 1);
         }
-        
+
         /// <summary>
         ///     Allows the game to perform any initialization it needs to before starting to run.
         ///     This is where it can query for any required services and load any non-graphic

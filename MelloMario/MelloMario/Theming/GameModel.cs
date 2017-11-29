@@ -145,7 +145,7 @@
             new TransistScript().Bind(controllers, this);
         }
 
-        public void Initialize(GameMode mode)
+        public void Initialize(GameMode mode, IListener<ISoundable> soundEffectListener)
         {
             State = GameState.onProgress;
             Mode = mode;
@@ -162,7 +162,7 @@
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
-            game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener);
+            game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener, soundEffectListener);
             session.Add(game.ActivePlayer);
             Resume();
         }

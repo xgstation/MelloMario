@@ -13,7 +13,7 @@
     #endregion
 
     [Serializable]
-    internal class Pipeline : BaseCollidableObject, ISoundable
+    internal class Pipeline : BaseCollidableObject
     {
         private IModel model;
         private int elapsed;
@@ -27,7 +27,6 @@
         {
             Type = type;
 
-            soundListener.Subscribe(this);
             SoundEventArgs = new SoundArgs();
             UpdateSprite();
         }
@@ -35,8 +34,6 @@
         public ISoundArgs SoundEventArgs { get; }
 
         public string Type { get; }
-
-        public event SoundHandler SoundEvent;
 
         protected override void OnUpdate(int time)
         {

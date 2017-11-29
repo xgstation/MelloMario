@@ -14,11 +14,8 @@
     [Serializable]
     internal class Player : IPlayer
     {
-        private readonly SoundManager soundManager;
-
-        public Player(SoundManager soundManager)
+        public Player()
         {
-            this.soundManager = soundManager;
         }
 
         public ISession Session { get; private set; }
@@ -66,7 +63,8 @@
         public void InitCharacter(
             string characterType,
             IWorld world,
-            IListener<IGameObject> scoreListener)
+            IListener<IGameObject> scoreListener,
+            IListener<ISoundable> soundEffectListener)
         {
             Character = GameObjectFactory.Instance.CreateCharacter(
                 characterType,
@@ -74,7 +72,7 @@
                 this,
                 new Point(32, 32), //world.GetRespawnPoint(new Point()),
                 scoreListener,
-                soundManager.SoundEffectListener);
+                soundEffectListener);
             world.Add((IGameObject) Character);
             Camera = GameObjectFactory.Instance.CreateCamera();
 
@@ -88,7 +86,10 @@
             Session.Move(this);
         }
 
-        public void Reset(string type, IListener<IGameObject> listener)
+        public void Reset(
+            string type,
+            IListener<IGameObject> scoreListener,
+            IListener<ISoundable> soundEffectListener)
         {
             Character.Remove();
             Character = GameObjectFactory.Instance.CreateCharacter(
@@ -96,8 +97,8 @@
                 Character.CurrentWorld,
                 this,
                 Character.CurrentWorld.GetRespawnPoint(((IGameObject) Character).Boundary.Location), // TODO: remove type casting
-                listener,
-                soundManager.SoundEffectListener);
+                scoreListener,
+                soundEffectListener);
 
             if (Lifes > 0)
             {
