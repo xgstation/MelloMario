@@ -7,6 +7,7 @@
     #endregion
     
     using MelloMario.Interfaces.Objects.States;
+    using MelloMario.Objects.Enemies.PiranhaStates;
 
     [Serializable]
     internal class Normal : BaseTimedState<Thwomp>, IThwompState

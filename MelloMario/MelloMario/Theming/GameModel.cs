@@ -139,8 +139,8 @@
             {
                 obj.Draw(IsPaused ? 0 : time, spriteBatch);
             }
-            
-            screenManager.Draw(time,spriteBatch);
+
+            screenManager.Draw(time, spriteBatch);
         }
 
         public void ToggleMute()
