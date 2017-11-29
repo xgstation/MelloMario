@@ -19,5 +19,20 @@
         {
             MediaPlayer.Play(instance);
         }
+
+        public override bool Equals(object obj)
+        {
+            return instance.Equals((obj as SoundTrack)?.instance);
+        }
+
+        protected bool Equals(SoundTrack other)
+        {
+            return Equals(instance, other.instance);
+        }
+
+        public override int GetHashCode()
+        {
+            return (instance != null ? instance.GetHashCode() : 0);
+        }
     }
 }
