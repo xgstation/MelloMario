@@ -279,7 +279,7 @@
                 case "Thwomp":
                     if (target is Thwomp thwomp)
                     {
-                        if (thwomp.State is Enemies.ThwompStates.Normal && !(ProtectionState is Starred))
+                        if (!(ProtectionState is Starred))
                         {
                             Downgrade();
                         }
