@@ -45,7 +45,7 @@
         public void Defeat()
         {
             ScorePoints(Const.SCORE_THWOMP);
-            new PopingUpPoints(World, Boundary.Location, Const.SCORE_THWOMP);
+            World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_THWOMP));
             State.Defeat();
         }
 
@@ -141,8 +141,8 @@
         private bool DetectMario()
         {
             return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
-                where obj is ICharacter
-                select obj).Any();
+                    where obj is ICharacter
+                    select obj).Any();
         }
 
         private void UpdateSprite()

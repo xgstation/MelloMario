@@ -75,7 +75,7 @@
                 HandlerCoins?.Invoke(this, coinEventInfo);
                 ScorePoints(Const.SCORE_COIN);
                 collected = true;
-                new PopingUpPoints(World, Boundary.Location, Const.SCORE_COIN);
+                World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_COIN));
             }
             RemoveSelf();
             //State.Collect();

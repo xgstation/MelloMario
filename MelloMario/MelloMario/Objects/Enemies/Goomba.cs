@@ -50,7 +50,7 @@
         public void Defeat()
         {
             ScorePoints(Const.SCORE_GOOMBA);
-            new PopingUpPoints(World, Boundary.Location, Const.SCORE_GOOMBA);
+            World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_GOOMBA));
             State.Defeat();
         }
 

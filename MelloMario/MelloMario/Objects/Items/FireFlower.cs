@@ -66,7 +66,7 @@
             if (!collected)
             {
                 ScorePoints(Const.SCORE_POWER_UP);
-                new PopingUpPoints(World, Boundary.Location, Const.SCORE_POWER_UP);
+                World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_POWER_UP));
             }
             collected = true;
             RemoveSelf();

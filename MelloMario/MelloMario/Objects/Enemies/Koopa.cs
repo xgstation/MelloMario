@@ -67,7 +67,7 @@
         public void Defeat()
         {
             ScorePoints(Const.SCORE_KOOPA);
-            new PopingUpPoints(World, Boundary.Location, Const.SCORE_KOOPA);
+            World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_KOOPA));
             RemoveSelf();
         }
 
