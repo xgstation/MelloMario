@@ -25,7 +25,7 @@
         event EventHandler<GameState> StateChanged;
         GameState State { get; }
         GameMode Mode { get; }
-        void Initialize(GameMode mode);
+        void Initialize(GameMode mode, IListener<ISoundable> soundEffectListener);
         void Pause();
         void Resume();
         void Reset();
