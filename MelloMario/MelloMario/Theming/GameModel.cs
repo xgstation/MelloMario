@@ -8,6 +8,7 @@
     using MelloMario.Controls.Scripts;
     using MelloMario.LevelGen;
     using MelloMario.LevelGen.Terrains;
+    using MelloMario.Sounds.Effects;
     using Microsoft.Xna.Framework;
 
     #endregion
@@ -209,10 +210,11 @@
             if (State == GameState.gameOver)
             {
                 stateTimer += time;
-                if (stateTimer>= 2000)
+                if (stateTimer >= 2000)
                 {
                     stateTimer = 0;
                     State = GameState.onProgress;
+                    game.ActivePlayer.Reset("Mario", scoreListener, new SoundEffectListener());
                 }
             }
         }

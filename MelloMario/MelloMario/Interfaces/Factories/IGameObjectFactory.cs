@@ -1,5 +1,6 @@
 ﻿namespace MelloMario
 {
+    using System;
     #region
 
     using System.Collections.Generic;
@@ -9,7 +10,7 @@
 
     internal interface IGameObjectFactory
     {
-        ICharacter CreateCharacter(
+        Tuple<IGameObject, ICharacter> CreateCharacter(
             string type,
             IWorld world,
             IPlayer player,
