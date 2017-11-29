@@ -8,11 +8,11 @@
 
     #endregion
 
-    internal class GroundGenerator : IGenerator
+    internal class Ground : IGenerator
     {
         private readonly IListener<IGameObject> listener;
 
-        public GroundGenerator(IListener<IGameObject> listener)
+        public Ground(IListener<IGameObject> listener)
         {
             this.listener = listener;
         }
