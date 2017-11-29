@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.Graphics.UserInterfaces;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
@@ -14,6 +15,8 @@
         private UIManager uiManager;
         private SpriteBatch spriteBatchUI;
         private SpriteBatch spriteBatchGameObjects;
+        private SpriteBatch spriteBatchBackgroundObjects;
+
         private IPlayer player;
         private IModel model;
 
@@ -31,6 +34,7 @@
         {
             spriteBatchUI = new SpriteBatch(newGraphicsDevice);
             spriteBatchGameObjects = new SpriteBatch(newGraphicsDevice);
+            spriteBatchBackgroundObjects = new SpriteBatch(newGraphicsDevice);
         }
 
         public void BindPlyaer(IPlayer newPlayer)
@@ -67,7 +71,7 @@
 
         private void DrawGameObjects(int time)
         {
-            spriteBatchGameObjects.Begin(SpriteSortMode.BackToFront,null,null,null,null,null, player.Camera.GetViewMatrix(new Vector2(1f)));
+            spriteBatchGameObjects.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, player.Camera.GetViewMatrix(new Vector2(1f)));
             foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
             {
                 obj.Draw(model?.State == GameState.pause ? 0 : time, spriteBatchGameObjects);
@@ -75,5 +79,12 @@
             spriteBatchGameObjects.End();
         }
 
+        private void DrawBackgroundObjects(int time)
+        {
+            spriteBatchBackgroundObjects.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, player.Camera.GetViewMatrix(new Vector2(0.5f)));
+            //TODO: Add background objects
+            spriteBatchBackgroundObjects.End();
+
+        }
     }
 }
