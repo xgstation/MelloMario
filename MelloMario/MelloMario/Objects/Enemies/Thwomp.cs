@@ -19,7 +19,7 @@
 
     internal class Thwomp : BasePhysicalObject
     {
-        private readonly IThwompState state;
+        private readonly IState state;
 
         private bool onFloor;
 
@@ -35,7 +35,7 @@
             UpdateSprite();
         }
 
-        public IThwompState State { get; set; }
+        public IState State { get; set; }
 
         public bool HasMarioBelow { get; private set; }
 
@@ -46,7 +46,7 @@
             
             ScorePoints(Const.SCORE_THWOMP);
             World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_THWOMP));
-            state.Defeat();
+            RemoveSelf();
         }
 
         protected override void OnUpdate(int time)
@@ -77,10 +77,6 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
-            if (state is Defeated)
-            {
-                return;
-            }
             switch (target.GetType().Name)
             {
                 case "MarioCharacter":

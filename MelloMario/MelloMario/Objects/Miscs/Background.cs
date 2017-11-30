@@ -11,14 +11,14 @@
     internal class Background : BaseGameObject
     {
         private readonly ZIndex targetZIndex;
-        private readonly string type;
+        public string BackGroundType { get; }
 
-        public Background(IWorld world, Point location, string type, ZIndex zIndex) : base(
+        public Background(IWorld world, Point location, string backGroundType, ZIndex zIndex) : base(
             world,
             location,
             new Point(32, 32))
         {
-            this.type = type;
+            BackGroundType = backGroundType;
             targetZIndex = zIndex;
             UpdateSprite();
         }
@@ -33,7 +33,7 @@
 
         private void UpdateSprite()
         {
-            ShowSprite(SpriteFactory.Instance.CreateSceneSprite(type, targetZIndex));
+            ShowSprite(SpriteFactory.Instance.CreateSceneSprite(BackGroundType, targetZIndex));
         }
     }
 }
