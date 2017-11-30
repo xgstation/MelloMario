@@ -116,7 +116,13 @@
             }
             else
             {
-                IGenerator generator = new Scroll(new List<IGenerator> { new Ground(scoreListener) });
+                IGenerator generator = new Scroll(new List<IGenerator>
+                {
+                    new Plain(scoreListener),
+                    new Sky(scoreListener),
+                    new Tunnel(scoreListener),
+                    new Village(scoreListener)
+                });
 
                 IWorld newWorld = new World(
                     id,
