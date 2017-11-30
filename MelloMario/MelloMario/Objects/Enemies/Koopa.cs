@@ -189,7 +189,7 @@
             }
             if (target is Koopa koopa)
             {
-                if (koopa.State is MovingShell)
+                if (koopa.State is MovingShell || koopa.State is NewlyMovingShell)
                 {
                     Defeat();
                 }

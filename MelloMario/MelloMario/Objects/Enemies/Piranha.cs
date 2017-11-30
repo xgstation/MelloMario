@@ -10,6 +10,7 @@
     using MelloMario.Objects.Miscs;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
+    using MelloMario.Objects.Enemies.KoopaStates;
 
     #endregion
 
@@ -78,6 +79,13 @@
             if (target is FireBall)
             {
                 Defeat();
+            }
+            if (target is Koopa koopa)
+            {
+                if (koopa.State is MovingShell || koopa.State is NewlyMovingShell)
+                {
+                    Defeat();
+                }
             }
         }
 
