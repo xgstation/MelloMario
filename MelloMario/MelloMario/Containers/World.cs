@@ -63,11 +63,19 @@
 
         public Point GetRespawnPoint(Point location)
         {
-            Point target = new Point();
+            Point target = new Point(int.MaxValue, 0);
 
             foreach (Point p in respawnPoints)
             {
-                if (p.X <= location.X && p.X >= target.X)
+                if (p.X < target.X)
+                {
+                    target = p;
+                }
+            }
+
+            foreach (Point p in respawnPoints)
+            {
+                if (p.X <= location.X && p.X > target.X)
                 {
                     target = p;
                 }
