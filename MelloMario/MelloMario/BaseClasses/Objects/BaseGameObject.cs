@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal abstract class BaseGameObject : IGameObject
     {
         protected enum ResizeModeX

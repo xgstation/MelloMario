@@ -9,7 +9,6 @@
 
     #endregion
 
-    [Serializable]
     internal class FlickingAnimatedSprite : AnimatedSprite
     {
         private readonly Random random;

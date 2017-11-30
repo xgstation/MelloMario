@@ -7,7 +7,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Standard : BaseState<Mario>, IMarioPowerUpState
     {
         public Standard(Mario owner) : base(owner)

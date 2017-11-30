@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Bumped : BaseState<Question>, IBlockState
     {
         private int elapsed;

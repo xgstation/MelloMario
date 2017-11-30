@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Unveil : BaseTimedState<Coin>, IItemState
     {
         private float elapsed;

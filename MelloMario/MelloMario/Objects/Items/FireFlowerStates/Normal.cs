@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Normal : BaseState<FireFlower>, IItemState
     {
         public Normal(FireFlower owner) : base(owner)

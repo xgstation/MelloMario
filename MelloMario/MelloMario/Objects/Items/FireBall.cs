@@ -11,7 +11,6 @@
 
     #endregion
 
-    [Serializable]
     internal class FireBall : BasePhysicalObject
     {
         private int elapsed;
@@ -66,7 +65,7 @@
                     break;
                 case Question question when question.State is Blocks.QuestionStates.Hidden:
                     break;
-                case IGameObject obj when target is Brick
+                case IGameObject _ when target is Brick
                 || target is Question
                 || target is Floor
                 || target is Pipeline

@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal abstract class BaseCommand<T> : ICommand
     {
         protected T Receiver;

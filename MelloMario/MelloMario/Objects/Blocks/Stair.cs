@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Stair : BaseCollidableObject
     {
         public Stair(IWorld world, Point location, IListener<IGameObject> listener, bool isHidden = false) : base(

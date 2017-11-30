@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class MovingUp : BaseState<Thwomp>, IThwompState
     {
         private readonly int initialY;

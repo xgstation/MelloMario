@@ -9,7 +9,6 @@
 
     #endregion
 
-    [Serializable]
     internal class StaticSprite : BaseTextureSprite
     {
         public StaticSprite(

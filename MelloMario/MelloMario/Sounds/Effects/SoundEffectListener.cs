@@ -159,7 +159,7 @@
             }
         }
 
-        private void PlayEffect(string s)
+        private static void PlayEffect(string s)
         {
             if (s == null)
             {

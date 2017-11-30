@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal abstract class BaseTextureSprite : BaseSprite
     {
         private readonly Texture2D texture;

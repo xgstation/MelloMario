@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Background : BaseGameObject
     {
         private readonly ZIndex targetZIndex;

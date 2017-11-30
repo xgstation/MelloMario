@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Bumped : BaseState<Brick>, IBlockState
     {
         private int elapsed;

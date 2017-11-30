@@ -61,7 +61,7 @@
             }
             switch (model.State)
             {
-               
+
                 case GameState.onProgress:
                     DrawGameObjects(time);
                     break;
@@ -74,8 +74,6 @@
                     break;
                 case GameState.transist:
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -90,13 +88,13 @@
         {
             spriteBatchGameObjects.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, player.Camera.GetViewMatrix(new Vector2(1f)));
 
-                foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
-                {
+            foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
+            {
 
-                    obj.Draw(time, spriteBatchGameObjects);
+                obj.Draw(time, spriteBatchGameObjects);
 
-                }
-       
+            }
+
             spriteBatchGameObjects.End();
         }
 

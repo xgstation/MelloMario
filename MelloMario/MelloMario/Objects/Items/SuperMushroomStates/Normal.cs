@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Normal : BaseState<SuperMushroom>, IItemState
     {
         public Normal(SuperMushroom owner) : base(owner)

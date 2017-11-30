@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Normal : BaseState<Star>, IItemState
     {
         public Normal(Star owner) : base(owner)
