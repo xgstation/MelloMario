@@ -288,6 +288,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\BeetleDead.png" />
+    <Content Include="Content\BeetleLeft.png" />
+    <Content Include="Content\BeetleRight.png" />
     <Content Include="Content\BrickPieces.png" />
     <Content Include="Content\Fire.png" />
     <Content Include="Content\FireStandingLeft.png" />
