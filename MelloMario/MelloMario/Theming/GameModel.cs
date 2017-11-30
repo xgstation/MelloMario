@@ -64,6 +64,7 @@
         {
             State = GameState.onProgress;
             new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
+            new PlayingScript().Bind(controllers, this);
         }
 
         public void Reset()
@@ -220,6 +221,7 @@
                     State = GameState.onProgress;
                     game.ActivePlayer.Reset("Mario", scoreListener, new SoundEffectListener());
                     new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
+                    new PlayingScript().Bind(controllers, this);
                 }
             }
         }

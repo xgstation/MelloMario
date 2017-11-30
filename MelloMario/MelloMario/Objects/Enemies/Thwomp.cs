@@ -57,8 +57,6 @@
 
         protected override void OnSimulation(int time)
         {
-            //ApplyGravity();
-
             if (onFloor)
             {
                 SetVerticalVelocity(-Const.VELOCITY_RISING_THWOMP);
