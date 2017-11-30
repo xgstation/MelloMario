@@ -23,8 +23,7 @@
                 new Plain(scoreListener),
                 new Plateau(scoreListener),
                 new Sky(scoreListener),
-                new Tunnel(scoreListener),
-                new Village(scoreListener)
+                new Tunnel(scoreListener)
             };
         }
 

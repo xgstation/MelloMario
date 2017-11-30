@@ -117,7 +117,9 @@
     <Compile Include="Graphics\UserInterfaces\GamePause.cs" />
     <Compile Include="Graphics\UserInterfaces\UIManager.cs" />
     <Compile Include="Sounds\Effects\SoundEffectListener.cs" />
+    <Compile Include="Interfaces\Objects\States\IThwompState.cs" />
     <Compile Include="Objects\Enemies\Thwomp.cs" />
+    <Compile Include="Objects\Enemies\ThwompStates\Defeated.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\Normal.cs" />
     <Compile Include="Sounds\Tracks\SoundTrack.cs" />
     <Compile Include="Sounds\Effects\SoundEffect.cs" />
