@@ -30,6 +30,11 @@
             sounds.Update();
         }
 
+        public void BindPlayer(IPlayer player)
+        {
+            sounds.BindPlayer(player);
+        }
+
         public void Initialize()
         {
         }

@@ -167,6 +167,7 @@
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
             game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener, soundEffectListener);
+            
             session.Add(game.ActivePlayer);
             Resume();
         }
