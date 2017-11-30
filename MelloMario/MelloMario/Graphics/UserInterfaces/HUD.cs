@@ -2,6 +2,7 @@
 {
     #region
 
+    using System.Text;
     using MelloMario.Factories;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
@@ -48,22 +49,23 @@
 
         protected override void OnUpdate(int time)
         {
-            string newText = "MARIO     *"
-                + lifes.ToString().PadLeft(2, '0')
-                + "   WORLD    TIME\n"
-                + score.ToString().PadLeft(6, '0')
-                + "    *"
-                + coins.ToString().PadLeft(2, '0')
-                + "    "
-                + worldName
-                + "      "
-                + (IsSplashing ? "" : (timeRemain / 1000).ToString());
-
-            if (newText == text)
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Mario".PadRight(10,' '));
+            sb.Append('*');
+            sb.Append(lifes.ToString().PadLeft(2, '0'));
+            sb.Append("WORLD".PadLeft(8, ' '));
+            sb.Append("TIME".PadLeft(8, ' '));
+            sb.Append("\n");
+            sb.Append(score.ToString().PadLeft(6, '0'));
+            sb.Append("*".PadLeft(5, ' '));
+            sb.Append(coins.ToString().PadLeft(2, '0').PadRight(6, ' '));
+            sb.Append(worldName.PadRight(9, ' '));
+            sb.Append(IsSplashing ? "" : (timeRemain / 1000).ToString());
+            if (sb.ToString() == text)
             {
                 return;
             }
-            text = newText;
+            text = sb.ToString();
             textSprite = SpriteFactory.Instance.CreateTextSprite(text);
         }
 
