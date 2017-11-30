@@ -123,6 +123,8 @@
                     return new Background(world, location, type, ZIndex.Background0);
                 case "BiggerBush":
                     return new Background(world, location, type, ZIndex.Background1);
+                case "SharpBush":
+                    return new Background(world, location, type, ZIndex.Background2);
 
                 default:
                     return null;

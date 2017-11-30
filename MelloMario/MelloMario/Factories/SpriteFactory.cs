@@ -298,6 +298,8 @@
                     return new StaticSprite(GetTexture("BlockSheet"), 23, 19, 6, 2, zIndex);
                 case "BiggerBush":
                     return new StaticSprite(GetTexture("BlockSheet"), 41, 17, 7, 4, zIndex);
+                case "SharpBush":
+                    return new StaticSprite(GetTexture("BlockSheet"), 16, 17, 7, 5, zIndex);
                 default:
                     return null;
             }

@@ -289,6 +289,7 @@
     <Content Include="Content\Fire.png" />
     <Content Include="Content\FireStandingLeft.png" />
     <Content Include="Content\FireStandingRight.png" />
+    <Content Include="Content\fire_thwomp_sprite.png" />
     <Content Include="Content\GoombaDead.png" />
     <Content Include="Content\GreenKoopaDead.png" />
     <Content Include="Content\GreenKoopaLeft.png" />
@@ -330,6 +331,7 @@
     <Content Include="Content\SFX\smb_fireball.wav" />
     <Content Include="Content\SFX\smb_fireworks.wav" />
     <Content Include="Content\SFX\smb_flagpole.wav" />
+    <Content Include="Content\SFX\smb_gameover.wav" />
     <Content Include="Content\SFX\smb_jump.wav" />
     <Content Include="Content\SFX\smb_jumpsmall.wav" />
     <Content Include="Content\SFX\smb_kick.wav" />
@@ -358,7 +360,9 @@
     <Content Include="Content\SuperStandingRight.png" />
     <Content Include="Content\SuperWalkingLeft.png" />
     <Content Include="Content\SuperWalkingRight.png" />
+    <Content Include="Content\Thwomp.png" />
     <Content Include="Content\Thwomp2.png" />
+    <Content Include="Content\Title.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
