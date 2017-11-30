@@ -218,15 +218,15 @@
         {
             if (State == GameState.gameOver)
             {
-               // stateTimer += time;
-               // if (stateTimer >= 2000)
-               // {
-                 //   stateTimer = 0;
-                  //  State = GameState.onProgress;
-                  //  game.ActivePlayer.Reset("Mario", scoreListener, new SoundEffectListener());
-                  //  new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
-                   // new PlayingScript().Bind(controllers, this);
-               // }
+                stateTimer += time;
+                if (stateTimer >= 2000)
+                {
+                    stateTimer = 0;
+                    State = GameState.onProgress;
+                    game.ActivePlayer.Reset("Mario", scoreListener, new SoundEffectListener());
+                    new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
+                    new PlayingScript().Bind(controllers, this);
+                }
             }
         }
         }
