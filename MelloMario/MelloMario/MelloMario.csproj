@@ -92,7 +92,10 @@
     <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="LevelGen\NoiseGenerators\NoiseInterpreter.cs" />
     <Compile Include="LevelGen\Static.cs" />
-    <Compile Include="LevelGen\Terrains\Ground.cs" />
+    <Compile Include="LevelGen\Terrains\Tunnel.cs" />
+    <Compile Include="LevelGen\Terrains\Plain.cs" />
+    <Compile Include="LevelGen\Terrains\Village.cs" />
+    <Compile Include="LevelGen\Terrains\Sky.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingDown.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingUp.cs" />
     <Compile Include="Graphics\UserInterfaces\GamePause.cs" />
