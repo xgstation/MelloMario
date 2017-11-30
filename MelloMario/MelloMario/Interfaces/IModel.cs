@@ -29,6 +29,7 @@
         void Pause();
         void Resume();
         void Reset();
+        void Exit();
         void Update(int time);
         IWorld LoadLevel(string index);
         void TransistGameWon();

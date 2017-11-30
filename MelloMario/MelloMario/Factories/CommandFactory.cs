@@ -47,6 +47,8 @@
                     return new Resume(model);
                 case "Reset":
                     return new Reset(model);
+                case "Exit":
+                    return new ExitModel(model);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code

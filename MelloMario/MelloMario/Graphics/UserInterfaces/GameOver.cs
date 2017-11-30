@@ -23,7 +23,7 @@ namespace MelloMario.Graphics.UserInterfaces
         private readonly Rectangle gameOverTextDestination;
         private readonly Rectangle backGroundDestination;
 
-        private readonly int lifes;
+        private  int lifes;
 
         public GameOver(int lifes, string worldName)
         {

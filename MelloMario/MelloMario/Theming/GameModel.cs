@@ -71,6 +71,10 @@
             game.Reset();
             Resume();
         }
+        public void Exit()
+        {
+            game.Exit();
+        }
 
         public void Update(int time)
         {
