@@ -10,8 +10,8 @@
 
     internal class Player : IPlayer
     {
-        public ISession Session { get; private set; }
-
+        // public ISession Session { get; private set; }
+        
         public ICharacter Character { get; private set; }
 
         public ICamera Camera { get; private set; }
@@ -23,12 +23,7 @@
         public int Lifes { get; private set; }
 
         public int TimeRemain { get; private set; }
-
-        public void BindSession(ISession newSession)
-        {
-            Session = newSession;
-        }
-
+        
         public void AddCoin()
         {
             Coins += 1;
@@ -76,7 +71,7 @@
         public void Spawn(IWorld newWorld, Point newLocation)
         {
             Character.Move(newWorld, newLocation);
-            Session.Move(this);
+            //Session.Move(this);
         }
 
         public void Reset(

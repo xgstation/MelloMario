@@ -169,7 +169,7 @@
             }
         }
 
-        public void Unbind(IEnumerable<IController> controllers, IModel model, ICharacter character)
+        public void Unbind(IEnumerable<IController> controllers)
 
         {
             foreach (IController controller in controllers)

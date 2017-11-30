@@ -43,8 +43,8 @@
             JsonConvert.DeserializeObject<IWorld>(levelString, gameConverter);
         }
 
-        public void Save(string path)
-        {
-        }
+       // public void Save(string path)
+       // {
+      //  }
     }
 }

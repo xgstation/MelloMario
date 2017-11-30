@@ -12,10 +12,10 @@
         {
         }
 
-        public void Show()
-        {
-            Owner.State = new Normal(Owner);
-        }
+        //public void Show()
+        //{
+        //    Owner.State = new Normal(Owner);
+        //}
 
         public void Defeat()
         {

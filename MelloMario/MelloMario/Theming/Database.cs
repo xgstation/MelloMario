@@ -63,11 +63,11 @@
                 : null;
         }
 
-        public static Point GetCharacterLocation()
-        {
-            // TODO: use viewport collision
-            return CharacterLocations.Count != 0 ? CharacterLocations.Values.ToList()[0] : new Point();
-        }
+        //public static Point GetCharacterLocation()
+        //{
+        //    // TODO: use viewport collision
+        //    return CharacterLocations.Count != 0 ? CharacterLocations.Values.ToList()[0] : new Point();
+        //}
 
         public static bool HasItemEnclosed(IGameObject obj)
         {
