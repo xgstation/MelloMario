@@ -9,7 +9,7 @@
     [Serializable]
     internal class NewlyMovingShell : BaseTimedState<Koopa>, IKoopaState
     {
-        public NewlyMovingShell(Koopa owner) : base(owner, 250)
+        public NewlyMovingShell(Koopa owner) : base(owner, 500)
         {
         }
 

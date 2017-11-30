@@ -120,11 +120,11 @@
             switch (target)
             {
                 case Mario mario:
-                    if (mode == CollisionMode.Top && corner == CornerMode.Top || mario.ProtectionState is Starred)
+                    if (mode == CollisionMode.Top && corner == CornerMode.Top && !(mario.ProtectionState is Dead) || mario.ProtectionState is Starred)
                     {
                         Defeat();
                     }
-                    else if (state is KoopaStates.Normal || state is MovingShell)
+                    else if ((state is KoopaStates.Normal || state is MovingShell) && !(mario.ProtectionState is Dead))
                     {
                         if (mode == CollisionMode.Top)
                         {
@@ -135,7 +135,7 @@
                             mario.Downgrade();
                         }
                     }
-                    else if (state is Defeated)
+                    else if (state is Defeated && !(mario.ProtectionState is Dead))
                     {
                         if (mode == CollisionMode.Left)
                         {

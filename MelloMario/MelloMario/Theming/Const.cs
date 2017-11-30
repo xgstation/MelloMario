@@ -29,7 +29,7 @@
         public const float VELOCITY_GOOMBA = 2f;
         public const float VELOCITY_KOOPA = 2f;
         public const float VELOCITY_RISING_THWOMP = 3f;
-        public const float VELOCITY_KOOPA_SHELL = 5f;
+        public const float VELOCITY_KOOPA_SHELL = 7f;
         public const float VELOCITY_PIRANHA = 2f;
 
         public const float ACCEL_G = 40f;

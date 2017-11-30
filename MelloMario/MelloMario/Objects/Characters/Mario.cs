@@ -329,10 +329,6 @@
                                     Bounce(mode, new Vector2(0, -5f), 1f);
                                 }
                             }
-                            else if (mode is CollisionMode.Left || mode is CollisionMode.Right)
-                            {
-                                Bounce(mode, new Vector2(), -0.5f);
-                            }
                         }
                     }
 
