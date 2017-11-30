@@ -88,10 +88,12 @@
     <Compile Include="Controls\Commands\CursorUp.cs" />
     <Compile Include="Controls\Commands\KillMario.cs" />
     <Compile Include="Controls\Commands\Select.cs" />
+    <Compile Include="LevelGen\Objects\Enemies.cs" />
     <Compile Include="LevelGen\Scroll.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="LevelGen\NoiseGenerators\NoiseInterpreter.cs" />
     <Compile Include="LevelGen\Static.cs" />
+    <Compile Include="LevelGen\Structures\Blocks.cs" />
     <Compile Include="LevelGen\Terrains\Tunnel.cs" />
     <Compile Include="LevelGen\Terrains\Plain.cs" />
     <Compile Include="LevelGen\Terrains\Forest.cs" />
