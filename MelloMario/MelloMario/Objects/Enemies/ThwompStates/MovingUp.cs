@@ -6,7 +6,7 @@
 
     #endregion
 
-    internal class MovingUp : BaseState<Thwomp>, IThwompState
+    internal class MovingUp : BaseState<Thwomp>, IState
     {
         private readonly int initialY;
 
@@ -21,11 +21,6 @@
             {
                 //Owner.State = new Show(Owner);
             }
-        }
-
-        public void Defeat()
-        {
-            Owner.State = new Defeated(Owner);
         }
     }
 }

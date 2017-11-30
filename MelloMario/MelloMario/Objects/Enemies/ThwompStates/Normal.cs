@@ -6,7 +6,7 @@
 
     #endregion
 
-    internal class Normal : BaseTimedState<Thwomp>, IThwompState
+    internal class Normal : BaseTimedState<Thwomp>, IState
     {
         public Normal(Thwomp owner) : base(owner, owner.NormalTime)
         {
@@ -15,11 +15,6 @@
         public void Show()
         {
             // nothing
-        }
-
-        public void Defeat()
-        {
-            Owner.State = new Defeated(Owner);
         }
 
         public override void Update(int time)
