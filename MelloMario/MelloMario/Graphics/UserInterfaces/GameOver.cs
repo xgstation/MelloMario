@@ -23,7 +23,7 @@ namespace MelloMario.Graphics.UserInterfaces
         private readonly Rectangle gameOverTextDestination;
         private readonly Rectangle backGroundDestination;
 
-        private  int lifes;
+        private readonly int lifes;
 
         public GameOver(int lifes, string worldName)
         {
@@ -44,7 +44,6 @@ namespace MelloMario.Graphics.UserInterfaces
 
         protected override void OnUpdate(int time)
         {
-            
         }
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch)

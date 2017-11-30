@@ -25,14 +25,14 @@
             return instance.Equals((obj as SoundTrack)?.instance);
         }
 
+        public override int GetHashCode()
+        {
+            return instance != null ? instance.GetHashCode() : 0;
+        }
+
         protected bool Equals(SoundTrack other)
         {
             return Equals(instance, other.instance);
-        }
-
-        public override int GetHashCode()
-        {
-            return (instance != null ? instance.GetHashCode() : 0);
         }
     }
 }

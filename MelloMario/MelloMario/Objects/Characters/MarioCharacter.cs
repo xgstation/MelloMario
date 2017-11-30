@@ -247,10 +247,10 @@
 
         public void Action()
         {
-        //    if (animation != Animation.none)
-        //    {
-        //        return;
-        //    }
+            //    if (animation != Animation.none)
+            //    {
+            //        return;
+            //    }
             if (PowerUpState is Fire)
             {
                 SoundEventArgs.SetMethodCalled();

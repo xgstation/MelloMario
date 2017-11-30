@@ -91,7 +91,7 @@
                     SetHorizontalVelocity(Const.VELOCITY_KOOPA_SHELL);
                 }
             }
-            else if(state is KoopaStates.Normal)
+            else if (state is KoopaStates.Normal)
             {
                 if (Facing == FacingMode.left)
                 {

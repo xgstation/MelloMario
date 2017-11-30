@@ -2,7 +2,7 @@
 {
     internal class ExitModel : BaseCommand<IModel>
     {
-        public ExitModel (IModel model) : base(model)
+        public ExitModel(IModel model) : base(model)
         {
         }
 
@@ -11,5 +11,4 @@
             Receiver.Exit();
         }
     }
-
 }

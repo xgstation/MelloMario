@@ -98,10 +98,16 @@
 
         private void DrawBackgroundObjects(int time)
         {
-            spriteBatchBackgroundObjects.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, player.Camera.GetViewMatrix(new Vector2(0.5f)));
+            spriteBatchBackgroundObjects.Begin(
+                SpriteSortMode.BackToFront,
+                null,
+                null,
+                null,
+                null,
+                null,
+                player.Camera.GetViewMatrix(new Vector2(0.5f)));
             //TODO: Add background objects
             spriteBatchBackgroundObjects.End();
-
         }
     }
 }

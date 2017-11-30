@@ -36,7 +36,7 @@
                 "Infinite Mode",
                 "Quit"
             };
-            menuSprite = SpriteFactory.Instance.CreateTextSprite(AddCursor((int)game.CurrentSelected));
+            menuSprite = SpriteFactory.Instance.CreateTextSprite(AddCursor((int) game.CurrentSelected));
             menuDestinationRect = new Rectangle(0, 450, 200, 200);
         }
 

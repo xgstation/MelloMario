@@ -97,8 +97,8 @@
         private bool DetectMario()
         {
             return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
-                    where obj is ICharacter
-                    select obj).Any();
+                where obj is ICharacter
+                select obj).Any();
         }
     }
 }

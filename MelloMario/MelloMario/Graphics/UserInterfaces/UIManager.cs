@@ -23,7 +23,7 @@
             player = game.ActivePlayer;
             splash = new GameStart(game);
         }
-        
+
         public void Update(int time)
         {
             if (player != null && hud != null)
@@ -34,7 +34,7 @@
             }
             if (hud != null)
             {
-                ((HUD)hud).IsSplashing = splash is GameWon || splash is GameOver;
+                ((HUD) hud).IsSplashing = splash is GameWon || splash is GameOver;
             }
             splash?.Update(time);
         }
@@ -69,7 +69,7 @@
                 case GameState.pause:
                     splash = new GamePause();
                     break;
-                case GameState.onProgress: 
+                case GameState.onProgress:
                     splash = null;
                     hud = new HUD();
                     break;

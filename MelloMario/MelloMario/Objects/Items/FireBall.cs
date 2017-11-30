@@ -26,16 +26,19 @@
             elapsed = 0;
 
             if (facingRight)
+            {
                 Facing = FacingMode.right;
+            }
             else
+            {
                 Facing = FacingMode.left;
+            }
 
             ShowSprite(SpriteFactory.Instance.CreateFireSprite());
         }
 
         protected override void OnSimulation(int time)
         {
-
             ApplyGravity();
 
             if (Facing == FacingMode.left)
@@ -59,15 +62,15 @@
         {
             switch (target)
             {
-                case Brick brick when brick.State is Blocks.BrickStates.Hidden:
+                case Brick brick when brick.State is Hidden:
                     break;
                 case Question question when question.State is Blocks.QuestionStates.Hidden:
                     break;
                 case IGameObject obj when target is Brick
-                       || target is Question
-                       || target is Floor
-                       || target is Pipeline
-                       || target is Stair:
+                || target is Question
+                || target is Floor
+                || target is Pipeline
+                || target is Stair:
                     if (mode == CollisionMode.Top)
                     {
                         Bounce(mode, new Vector2());
@@ -103,7 +106,9 @@
             elapsed += time;
 
             if (elapsed > 2500)
+            {
                 RemoveSelf();
+            }
         }
     }
 }

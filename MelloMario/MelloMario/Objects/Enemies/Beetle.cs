@@ -89,7 +89,7 @@
                     SetHorizontalVelocity(Const.VELOCITY_BEETLE_SHELL);
                 }
             }
-            else if(state is BeetleStates.Normal)
+            else if (state is BeetleStates.Normal)
             {
                 if (Facing == FacingMode.left)
                 {

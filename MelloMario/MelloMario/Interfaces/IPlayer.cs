@@ -27,10 +27,12 @@
             IListener<ISoundable> soundEffectListener);
 
         void Spawn(IWorld newWorld, Point newLocation);
+
         void Reset(
             string type,
             IListener<IGameObject> scoreListener,
             IListener<ISoundable> soundEffectListener);
+
         void Win();
         void Update(int time);
     }

@@ -24,8 +24,6 @@
         private GameState gameState;
         private int stateTimer;
 
-        public event EventHandler<GameState> StateChanged;
-
         public GameModel(Game1 game, IEnumerable<IController> controllers)
         {
             this.game = game;
@@ -52,7 +50,10 @@
                 }
             }
         }
+
         public GameMode Mode { get; private set; }
+
+        public event EventHandler<GameState> StateChanged;
 
         public void Pause()
         {
@@ -72,6 +73,7 @@
             game.Reset();
             Resume();
         }
+
         public void Exit()
         {
             game.Exit();
@@ -168,7 +170,7 @@
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
             game.ActivePlayer.InitCharacter("Mario", LoadLevel("Main"), scoreListener, soundEffectListener);
-            
+
             session.Add(game.ActivePlayer);
             Resume();
         }
