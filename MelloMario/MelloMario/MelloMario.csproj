@@ -89,6 +89,7 @@
     <Compile Include="Controls\Commands\CursorUp.cs" />
     <Compile Include="Controls\Commands\KillMario.cs" />
     <Compile Include="Controls\Commands\Select.cs" />
+    <Compile Include="Interfaces\Objects\States\IBeetleState.cs" />
     <Compile Include="LevelGen\Objects\Enemies.cs" />
     <Compile Include="LevelGen\Scroll.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
@@ -101,6 +102,11 @@
     <Compile Include="LevelGen\Terrains\Forest.cs" />
     <Compile Include="LevelGen\Terrains\Village.cs" />
     <Compile Include="LevelGen\Terrains\Sky.cs" />
+    <Compile Include="Objects\Enemies\Beetle.cs" />
+    <Compile Include="Objects\Enemies\BeetleStates\Defeated.cs" />
+    <Compile Include="Objects\Enemies\BeetleStates\MovingShell.cs" />
+    <Compile Include="Objects\Enemies\BeetleStates\NewlyMovingShell.cs" />
+    <Compile Include="Objects\Enemies\BeetleStates\Normal.cs" />
     <Compile Include="Objects\Enemies\KoopaStates\NewlyMovingShell.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingDown.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingUp.cs" />
@@ -288,6 +294,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\BeetleDead.png" />
+    <Content Include="Content\BeetleLeft.png" />
+    <Content Include="Content\BeetleRight.png" />
     <Content Include="Content\BrickPieces.png" />
     <Content Include="Content\Fire.png" />
     <Content Include="Content\FireStandingLeft.png" />

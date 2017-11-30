@@ -24,12 +24,16 @@
         public const float VELOCITY_SUPER_MUSHROOM = 4f;
         public const float VELOCITY_STAR_H = 6f;
         public const float VELOCITY_STAR_V = 10f;
+        public const float VELOCITY_FIRE_H = 10f;
+        public const float VELOCITY_FIRE_V = 13f;
         public const float VELOCITY_ONE_UP_MUSHROOM = 6f;
 
         public const float VELOCITY_GOOMBA = 2f;
         public const float VELOCITY_KOOPA = 2f;
+        public const float VELOCITY_BEETLE = 1.5f;
         public const float VELOCITY_RISING_THWOMP = 3f;
         public const float VELOCITY_KOOPA_SHELL = 7f;
+        public const float VELOCITY_BEETLE_SHELL = 6f;
         public const float VELOCITY_PIRANHA = 2f;
 
         public const float ACCEL_G = 40f;
@@ -49,6 +53,7 @@
         public const int SCORE_COIN = 200;
         public const int SCORE_GOOMBA = 100;
         public const int SCORE_KOOPA = 200;
+        public const int SCORE_BEETLE = 200;
         public const int SCORE_THWOMP = 300;
         public const int SCORE_BRICK = 50;
         public const int SCORE_POWER_UP = 1000;
