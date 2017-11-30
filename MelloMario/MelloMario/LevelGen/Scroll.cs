@@ -35,17 +35,18 @@
             {
                 Tuple<int, int> pair = PerlinNoiseGenerator.RandomSplit(23333, world.Boundary.Left / Const.GRID - 1, 16);
 
-                Rectangle subRange = new Rectangle(pair.Item1 * Const.GRID, world.Boundary.Top, (pair.Item2 - pair.Item1) * Const.GRID, world.Boundary.Height);
+                Rectangle subRange = new Rectangle(pair.Item1 * Const.GRID, world.Boundary.Top, world.Boundary.Left - pair.Item1 * Const.GRID, world.Boundary.Height);
                 terrains[Math.Abs(pair.Item1 * 23333) % terrains.Count].Request(world, subRange); // TODO
-                world.Extend((pair.Item2 - pair.Item1) * Const.GRID, 0, 0, 0);
+                world.Extend(subRange.Width, 0, 0, 0);
             }
+
             while (world.Boundary.Right < range.Right + Const.GRID)
             {
-                Tuple<int, int> pair = PerlinNoiseGenerator.RandomSplit(23333, world.Boundary.Right / Const.GRID - 1, 16);
+                Tuple<int, int> pair = PerlinNoiseGenerator.RandomSplit(23333, world.Boundary.Right / Const.GRID, 16);
 
-                Rectangle subRange = new Rectangle(pair.Item1 * Const.GRID, world.Boundary.Top, (pair.Item2 - pair.Item1) * Const.GRID, world.Boundary.Height);
+                Rectangle subRange = new Rectangle(world.Boundary.Right, world.Boundary.Top, pair.Item2 * Const.GRID - world.Boundary.Right, world.Boundary.Height);
                 terrains[Math.Abs(pair.Item1 * 23333) % terrains.Count].Request(world, subRange); // TODO
-                world.Extend(0, (pair.Item2 - pair.Item1) * Const.GRID, 0, 0);
+                world.Extend(0, subRange.Width, 0, 0);
             }
         }
     }
