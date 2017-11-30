@@ -94,6 +94,7 @@
     <Compile Include="LevelGen\NoiseGenerators\NoiseInterpreter.cs" />
     <Compile Include="LevelGen\Static.cs" />
     <Compile Include="LevelGen\Structures\Blocks.cs" />
+    <Compile Include="LevelGen\Terrains\Plateau.cs" />
     <Compile Include="LevelGen\Terrains\Tunnel.cs" />
     <Compile Include="LevelGen\Terrains\Plain.cs" />
     <Compile Include="LevelGen\Terrains\Forest.cs" />
