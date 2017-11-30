@@ -13,6 +13,7 @@
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
     using MelloMario.Objects.Enemies.BeetleStates;
+    using MelloMario.Objects.Characters.MovementStates;
 
     #endregion
 
@@ -20,6 +21,7 @@
     internal class Beetle : BasePhysicalObject
     {
         private IBeetleState state;
+        private Mario helmetParent;
 
         public Beetle(IWorld world, Point location, IListener<IGameObject> listener) :
             base(world, location, listener, new Point(32, 32), 32)
@@ -69,6 +71,14 @@
             RemoveSelf();
         }
 
+        public void Wear(Mario mario)
+        {
+            helmetParent = mario;
+            State.Wear();
+            mario.WearHelmet(this);
+            
+        }
+
         protected override void OnUpdate(int time)
         {
             state.Update(time);
@@ -76,7 +86,8 @@
 
         protected override void OnSimulation(int time)
         {
-            ApplyGravity();
+            if(!(state is Worn))
+                ApplyGravity();
 
             if (state is MovingShell || state is NewlyMovingShell)
             {
@@ -100,9 +111,15 @@
                     SetHorizontalVelocity(Const.VELOCITY_BEETLE);
                 }
             }
+            else if(state is Worn)
+            {
+                StopHorizontalMovement();
+                StopVerticalMovement();
+                Relocate(new Point(helmetParent.Location.X-5, helmetParent.Location.Y-5));
+            }
             else
             {
-                SetHorizontalVelocity(0);
+                StopHorizontalMovement();
             }
 
             base.OnSimulation(time);
@@ -115,88 +132,95 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
-            switch (target)
+            if (!(state is Worn))
             {
-                case Mario mario:
-                    if (mode == CollisionMode.Top && corner == CornerMode.Top && !(mario.ProtectionState is Dead) || mario.ProtectionState is Starred)
-                    {
-                        Defeat();
-                    }
-                    else if ((state is KoopaStates.Normal || state is MovingShell) && !(mario.ProtectionState is Dead))
-                    {
-                        if (mode == CollisionMode.Top)
+                switch (target)
+                {
+                    case Mario mario:
+                        if (mario.MovementState is Crouching && !(mario.ProtectionState is Starred) && (state is MovingShell || state is NewlyMovingShell))
                         {
-                            JumpOn();
+                            Wear(mario);
                         }
-                        else
+                        else if (mode == CollisionMode.Top && corner == CornerMode.Top && !(mario.ProtectionState is Dead) || mario.ProtectionState is Starred)
                         {
-                            mario.Downgrade();
+                            Defeat();
                         }
-                    }
-                    else if (state is Defeated && !(mario.ProtectionState is Dead))
-                    {
+                        else if ((state is BeetleStates.Normal || state is MovingShell) && !(mario.ProtectionState is Dead))
+                        {
+                            if (mode == CollisionMode.Top)
+                            {
+                                JumpOn();
+                            }
+                            else
+                            {
+                                mario.Downgrade();
+                            }
+                        }
+                        else if (state is Defeated && !(mario.ProtectionState is Dead))
+                        {
+                            if (mode == CollisionMode.Left)
+                            {
+                                ChangeFacing(FacingMode.right);
+                                Pushed();
+                            }
+                            else if (mode == CollisionMode.Right)
+                            {
+                                ChangeFacing(FacingMode.left);
+                                Pushed();
+                            }
+                            else if (mode == CollisionMode.Top && corner == CornerMode.Left)
+                            {
+                                ChangeFacing(FacingMode.right);
+                                Pushed();
+                            }
+                            else if (mode == CollisionMode.Top && corner == CornerMode.Right)
+                            {
+                                ChangeFacing(FacingMode.left);
+                                Pushed();
+                            }
+                        }
+                        break;
+                    case Brick brick when brick.State is Hidden:
+                        break;
+                    case Question question when question.State is Blocks.QuestionStates.Hidden:
+                        break;
+                    case IGameObject obj when target is Brick
+                    || target is Question
+                    || target is Floor
+                    || target is Pipeline
+                    || target is Stair:
                         if (mode == CollisionMode.Left)
                         {
+                            Bounce(mode, new Vector2(), 1);
                             ChangeFacing(FacingMode.right);
-                            Pushed();
                         }
                         else if (mode == CollisionMode.Right)
                         {
+                            Bounce(mode, new Vector2(), 1);
                             ChangeFacing(FacingMode.left);
-                            Pushed();
                         }
-                        else if (mode == CollisionMode.Top && corner == CornerMode.Left)
+                        else if (mode == CollisionMode.Bottom)
                         {
-                            ChangeFacing(FacingMode.right);
-                            Pushed();
+                            Bounce(mode, new Vector2());
                         }
-                        else if (mode == CollisionMode.Top && corner == CornerMode.Right)
-                        {
-                            ChangeFacing(FacingMode.left);
-                            Pushed();
-                        }
-                    }
-                    break;
-                case Brick brick when brick.State is Hidden:
-                    break;
-                case Question question when question.State is Blocks.QuestionStates.Hidden:
-                    break;
-                case IGameObject obj when target is Brick
-                || target is Question
-                || target is Floor
-                || target is Pipeline
-                || target is Stair:
-                    if (mode == CollisionMode.Left)
-                    {
-                        Bounce(mode, new Vector2(), 1);
-                        ChangeFacing(FacingMode.right);
-                    }
-                    else if (mode == CollisionMode.Right)
-                    {
-                        Bounce(mode, new Vector2(), 1);
-                        ChangeFacing(FacingMode.left);
-                    }
-                    else if (mode == CollisionMode.Bottom)
-                    {
-                        Bounce(mode, new Vector2());
-                    }
-                    break;
-                case FireBall fire:
-                    Defeat();
-                    break;
-            }
-            if (target is Koopa koopa)
-            {
-                if (koopa.State is KoopaStates.MovingShell || koopa.State is KoopaStates.NewlyMovingShell)
-                {
-                    Defeat();
+                        break;
+                    case FireBall fire:
+                        Defeat();
+                        break;
                 }
-            }
-            if (target is Beetle beetle)
-            {
-                if (beetle.State is MovingShell || beetle.State is NewlyMovingShell)
+                if (target is Koopa koopa)
                 {
-                    Defeat();
+                    if (koopa.State is KoopaStates.MovingShell || koopa.State is KoopaStates.NewlyMovingShell)
+                    {
+                        Defeat();
+                    }
+                }
+                if (target is Beetle beetle)
+                {
+                    if (beetle.State is MovingShell || beetle.State is NewlyMovingShell)
+                    {
+                        Defeat();
+                    }
                 }
             }
         }

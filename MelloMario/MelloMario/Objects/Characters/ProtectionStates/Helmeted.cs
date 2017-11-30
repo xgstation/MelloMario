@@ -8,19 +8,21 @@
     #endregion
 
     [Serializable]
-    internal class Normal : BaseState<Mario>, IMarioProtectionState
+    internal class Helmeted : BaseState<Mario>, IMarioProtectionState
     {
-        public Normal(Mario owner) : base(owner)
+        public Helmeted(Mario owner) : base(owner)
         {
         }
 
         public void Star()
         {
+            Owner.LoseHelmet();
             Owner.ProtectionState = new Starred(Owner);
         }
 
         public void Protect()
         {
+            Owner.LoseHelmet();
             Owner.ProtectionState = new Protected(Owner);
         }
 
@@ -30,7 +32,7 @@
 
         public void Helmet()
         {
-            Owner.ProtectionState = new Helmeted(Owner);
+            //do nothing
         }
     }
 }

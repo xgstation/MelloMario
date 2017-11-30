@@ -23,9 +23,9 @@
             Owner.State = new Defeated(Owner);
         }
 
-        public void Defeat()
+        public void Wear()
         {
-            Owner.State = new Defeated(Owner);
+            Owner.State = new Worn(Owner);
         }
 
         protected override void OnTimer(int time)

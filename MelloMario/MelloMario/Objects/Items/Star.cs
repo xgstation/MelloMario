@@ -149,7 +149,7 @@
                             || mode == CollisionMode.InnerBottom && corner == CornerMode.Center)
                         {
                             Bounce(mode, new Vector2());
-                            ApplyVerticalFriction(Const.VELOCITY_STAR_V);
+                            SetVerticalVelocity(-Const.VELOCITY_STAR_V);
                         }
                         break;
                 }

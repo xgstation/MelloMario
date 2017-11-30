@@ -3,6 +3,7 @@
     #region
 
     using System;
+    using MelloMario.Objects.Enemies;
 
     #endregion
 
@@ -31,6 +32,11 @@
         protected override void OnTimer(int time)
         {
             Owner.TransToGameOver();
+        }
+
+        public void Helmet()
+        {
+            //do nothing
         }
     }
 }

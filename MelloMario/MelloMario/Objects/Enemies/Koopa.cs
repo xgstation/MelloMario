@@ -104,7 +104,7 @@
             }
             else
             {
-                SetHorizontalVelocity(0);
+                StopHorizontalMovement();
             }
 
             base.OnSimulation(time);

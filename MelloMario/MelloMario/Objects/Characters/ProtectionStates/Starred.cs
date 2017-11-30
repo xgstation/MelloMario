@@ -13,6 +13,11 @@
         {
         }
 
+        public void Helmet()
+        {
+            //do nothing since star overrides helmets
+        }
+
         public void Star()
         {
             Owner.ProtectionState = new Starred(Owner);

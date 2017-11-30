@@ -26,10 +26,6 @@
             Owner.State = new NewlyMovingShell(Owner);
         }
 
-        public void Defeat()
-        {
-        }
-
         public override void Update(int time)
         {
             if (played <= 2)
@@ -41,6 +37,11 @@
                 //}
                 //SoundManager.EnemyKill.Play();
             }
+        }
+
+        public void Wear()
+        {
+            Owner.State = new Worn(Owner);
         }
 
         public void Pushed()

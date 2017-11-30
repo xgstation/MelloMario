@@ -22,11 +22,10 @@
     internal class Mario : BasePhysicalObject, ISoundable
     {
         public delegate void GameOverHandler(Mario m, EventArgs e);
-
-        private EventArgs eventInfo;
         private IMarioMovementState movementState;
         private IMarioPowerUpState powerUpState;
         private IMarioProtectionState protectionState;
+        private Beetle helmet;
 
         public Mario(
             IWorld world,
@@ -76,6 +75,17 @@
             }
         }
 
+        public void WearHelmet(Beetle beetle)
+        {
+            helmet = beetle;
+            protectionState.Helmet();
+        }
+
+        public void LoseHelmet()
+        {
+            helmet.Defeat();
+        }
+
         public IMarioProtectionState ProtectionState
         {
             get
@@ -117,6 +127,10 @@
 
         public void Downgrade()
         {
+            if (protectionState is Helmeted)
+            {
+                protectionState.Protect();
+            }
             if (protectionState is ProtectionStates.Normal)
             {
                 PowerUpState.Downgrade();
@@ -295,21 +309,30 @@
                         }
                     }
                     break;
+                case "Beetle":
+                    if (target is Beetle)
+                    {
+                        if (!(ProtectionState is Starred))
+                        {
+                            if (mode is CollisionMode.Bottom)
+                            {
+                                if (corner is CornerMode.Right)
+                                {
+                                    Bounce(mode, new Vector2(1f, -5f), 1f);
+                                }
+                                else if (corner is CornerMode.Left)
+                                {
+                                    Bounce(mode, new Vector2(-1f, -5f), 1f);
+                                }
+                                else
+                                {
+                                    Bounce(mode, new Vector2(0, -5f), 1f);
+                                }
+                            }
+                        }
+                    }
+                    break;
                 case "Koopa":
-                    //if (target is Koopa koopa && mode != CollisionMode.Bottom)
-                    //{
-                    //    if (koopa.State is Objects.Enemies.KoopaStates.Normal && !(ProtectionState is Starred))
-                    //    {
-                    //        Downgrade();
-                    //    }
-                    //    else if (koopa.State is Objects.Enemies.KoopaStates.MovingShell && !(ProtectionState is Starred))
-                    //    {
-                    //        if(koopa.Facing is FacingMode.right && (mode is CollisionMode.InnerRight || mode is CollisionMode.Left))
-                    //            Downgrade();
-                    //        if (koopa.Facing is FacingMode.left && (mode is CollisionMode.InnerLeft || mode is CollisionMode.Right))
-                    //            Downgrade();
-                    //    }
-                    //}
                     if (target is Koopa)
                     {
                         if (!(ProtectionState is Starred))
@@ -331,12 +354,6 @@
                             }
                         }
                     }
-
-                    //else if (!(protectionState is Starred))
-                    //{
-                    //    Bounce(mode, new Vector2(0, -5f), 1f);
-                    //}
-
                     break;
                 case "FireFlower":
                     if (((FireFlower) target).State is Items.FireFlowerStates.Normal)
