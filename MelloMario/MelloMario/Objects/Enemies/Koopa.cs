@@ -16,7 +16,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Koopa : BasePhysicalObject
     {
         private readonly string color;
@@ -163,7 +162,7 @@
                     break;
                 case Question question when question.State is Blocks.QuestionStates.Hidden:
                     break;
-                case IGameObject obj when target is Brick
+                case IGameObject _ when target is Brick
                 || target is Question
                 || target is Floor
                 || target is Pipeline
@@ -183,7 +182,7 @@
                         Bounce(mode, new Vector2());
                     }
                     break;
-                case FireBall fire:
+                case FireBall _:
                     Defeat();
                     break;
                 case Koopa koopa:

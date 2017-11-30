@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class NewlyMovingShell : BaseTimedState<Beetle>, IBeetleState
     {
         public NewlyMovingShell(Beetle owner) : base(owner, 500)

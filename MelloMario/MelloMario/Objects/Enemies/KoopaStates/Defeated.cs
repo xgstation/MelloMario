@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Defeated : BaseState<Koopa>, IKoopaState
     {
         private readonly int played;

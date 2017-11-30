@@ -7,7 +7,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Helmeted : BaseState<Mario>, IMarioProtectionState
     {
         public Helmeted(Mario owner) : base(owner)

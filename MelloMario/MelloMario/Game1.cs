@@ -99,8 +99,6 @@
                 case Menu.Quit:
                     Exit();
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -125,7 +123,6 @@
             base.Initialize();
             graphicsManager.Initialize();
             graphicsManager.BindPlyaer(ActivePlayer);
-            soundManager.Initialize();
         }
 
         /// <summary>

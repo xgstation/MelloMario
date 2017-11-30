@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal abstract class BaseTimedState<T> : BaseState<T>
     {
         private readonly int interval;

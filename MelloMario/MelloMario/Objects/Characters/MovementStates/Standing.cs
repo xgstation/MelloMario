@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Standing : BaseState<Mario>, IMarioMovementState
     {
         public Standing(Mario owner) : base(owner)

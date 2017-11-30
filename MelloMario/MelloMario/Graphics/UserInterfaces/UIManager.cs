@@ -33,10 +33,10 @@
                 hud.Update(time);
             }
             if (hud != null)
-           {
-              ((HUD) hud).IsSplashing = splash is GameWon || splash is GameOver;
+            {
+                ((HUD) hud).IsSplashing = splash is GameWon || splash is GameOver;
             }
-        
+
             splash?.Update(time);
         }
 
@@ -80,8 +80,6 @@
                     splash = new GameStart(game);
                     hud = null;
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
     }

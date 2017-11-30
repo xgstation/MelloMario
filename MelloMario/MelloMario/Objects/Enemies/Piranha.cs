@@ -14,7 +14,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Piranha : BasePhysicalObject
     {
         public Piranha(

@@ -33,7 +33,8 @@
                 case "ToggleMute":
                     return new ToggleMute(game);
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    // never reach
+                    return null;
             }
         }
 

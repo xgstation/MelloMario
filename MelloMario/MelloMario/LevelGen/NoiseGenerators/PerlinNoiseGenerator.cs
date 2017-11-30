@@ -128,7 +128,7 @@
         {
             float x = BitConverter.ToInt32(gradSeed, 0) / (float) int.MaxValue * 0 + v.X;
             float y = BitConverter.ToInt32(gradSeed, 0) / (float) int.MaxValue * 0 + v.Y;
-            double angleSeed = Math.Cos(BitConverter.ToInt32(gradAngleSeedX, 0) / (double) int.MaxValue);
+            //double angleSeed = Math.Cos(BitConverter.ToInt32(gradAngleSeedX, 0) / (double) int.MaxValue);
             //y *= (float)angleSeed;
             //y *= (float)Math.Sqrt(1 - angleSeed * angleSeed);
             switch (hash & 0x7)

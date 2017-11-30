@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Normal : BaseState<Koopa>, IKoopaState
     {
         public Normal(Koopa owner) : base(owner)

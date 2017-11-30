@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Walking : BaseState<Mario>, IMarioMovementState
     {
         public Walking(Mario owner) : base(owner)

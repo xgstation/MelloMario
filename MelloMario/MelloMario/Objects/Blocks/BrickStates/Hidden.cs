@@ -9,7 +9,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Hidden : BaseState<Brick>, IBlockState
     {
         public Hidden(Brick owner) : base(owner)

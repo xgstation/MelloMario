@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Player : IPlayer
     {
         public ISession Session { get; private set; }

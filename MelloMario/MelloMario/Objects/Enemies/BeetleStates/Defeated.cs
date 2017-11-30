@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Defeated : BaseState<Beetle>, IBeetleState
     {
         private readonly int played;

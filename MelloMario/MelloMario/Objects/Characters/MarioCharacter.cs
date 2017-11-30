@@ -12,7 +12,6 @@
 
     #endregion
 
-    [Serializable]
     internal class MarioCharacter : Mario, ICharacter
     {
         // TODO: create AnimationStates

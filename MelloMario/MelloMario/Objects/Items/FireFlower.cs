@@ -13,7 +13,6 @@
 
     #endregion
 
-    [Serializable]
     internal class FireFlower : BaseCollidableObject, ISoundable
     {
         private bool collected;

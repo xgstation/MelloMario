@@ -12,7 +12,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Brick : BaseCollidableObject, ISoundable
     {
         private bool isHidden;

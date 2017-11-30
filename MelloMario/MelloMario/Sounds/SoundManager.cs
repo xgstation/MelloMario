@@ -34,9 +34,5 @@
         {
             sounds.BindPlayer(player);
         }
-
-        public void Initialize()
-        {
-        }
     }
 }

@@ -12,7 +12,6 @@
 
     #endregion
 
-    [Serializable]
     internal class GameModel : IModel
     {
         private readonly Game1 game;

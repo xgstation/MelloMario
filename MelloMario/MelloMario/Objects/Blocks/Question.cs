@@ -12,7 +12,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Question : BaseCollidableObject, ISoundable
     {
         private bool isHidden;

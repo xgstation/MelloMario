@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Normal : BaseState<Brick>, IBlockState
     {
         public Normal(Brick owner) : base(owner)

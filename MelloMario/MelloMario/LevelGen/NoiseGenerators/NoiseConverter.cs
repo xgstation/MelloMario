@@ -46,7 +46,7 @@ namespace MelloMario.LevelGen.NoiseGenerators
                 for (int x = 0; x < width * GRID_I; x++)
                 {
                     float oneDimNoise = perlin.Noise(new Vector2(x + repeat * REPEATSHIFT_I, 0) * NOISESCALE_F);
-                    int amplitude = Math.Abs((int)(oneDimNoise * height * GRID_I * 1.5f));
+                    int amplitude = Math.Abs((int) (oneDimNoise * height * GRID_I * 1.5f));
                     amplitude = MathHelper.Clamp(amplitude, 400, 800);
                     if (oneDimPerlin.ContainsKey(x))
                     {
@@ -77,7 +77,6 @@ namespace MelloMario.LevelGen.NoiseGenerators
         {
             Color[] cellData = new Color[width * height * GRID_I * GRID_I];
             PerlinNoiseGenerator perlinColor = new PerlinNoiseGenerator(width * GRID_I);
-            float seed = Math.Abs(perlinColor.RandomNormal());
             for (int x = 0; x < GRID_I * width; x += GRID_I)
             {
                 //if (seed < 0.1f)

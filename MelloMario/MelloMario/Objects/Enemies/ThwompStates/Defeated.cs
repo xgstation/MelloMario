@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Defeated : BaseState<Thwomp>, IThwompState
     {
         public Defeated(Thwomp owner) : base(owner)

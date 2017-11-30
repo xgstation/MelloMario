@@ -9,7 +9,6 @@
 
     #endregion
 
-    [Serializable]
     internal class BrickPieceSprite : BaseSprite
     {
         private readonly Texture2D texture;

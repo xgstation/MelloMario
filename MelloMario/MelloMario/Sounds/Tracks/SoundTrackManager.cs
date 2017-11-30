@@ -43,16 +43,6 @@
             currentTrack = track;
         }
 
-        private void Pause()
-        {
-            MediaPlayer.Pause();
-        }
-
-        private void Resume()
-        {
-            MediaPlayer.Resume();
-        }
-
         private void UpdateBGM()
         {
             //BGM Updater

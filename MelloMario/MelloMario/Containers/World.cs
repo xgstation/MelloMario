@@ -9,7 +9,6 @@
 
     #endregion
 
-    [Serializable]
     internal class World : BaseContainer<Point, IGameObject>, IWorld
     {
         private readonly IGenerator generator;

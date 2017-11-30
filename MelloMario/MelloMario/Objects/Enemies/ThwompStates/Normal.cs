@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Normal : BaseTimedState<Thwomp>, IThwompState
     {
         public Normal(Thwomp owner) : base(owner, owner.NormalTime)
@@ -15,6 +14,7 @@
 
         public void Show()
         {
+            // nothing
         }
 
         public void Defeat()

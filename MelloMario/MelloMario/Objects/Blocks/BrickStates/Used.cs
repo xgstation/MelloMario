@@ -7,7 +7,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Used : BaseState<Brick>, IBlockState
     {
         public Used(Brick owner) : base(owner)

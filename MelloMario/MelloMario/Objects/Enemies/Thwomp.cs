@@ -17,7 +17,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Thwomp : BasePhysicalObject
     {
         private readonly IThwompState state;

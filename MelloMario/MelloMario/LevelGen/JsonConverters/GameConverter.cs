@@ -76,7 +76,7 @@
                     break;
                 }
             }
-            Util.TryGet(out string mapType, mapToBeLoaded, "Type");
+            Util.TryGet(out string _, mapToBeLoaded, "Type");
             if (Util.TryGet(out Point mapSize, mapToBeLoaded, "Size"))
             {
                 Debug.WriteLine("Map size:" + mapSize);

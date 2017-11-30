@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class MovingDown : BaseState<Piranha>, IPiranhaState
     {
         private readonly int initialY;

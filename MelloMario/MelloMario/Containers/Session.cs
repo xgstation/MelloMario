@@ -7,7 +7,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Session : BaseContainer<IWorld, IPlayer>, ISession
     {
         public IEnumerable<IWorld> ScanWorlds()

@@ -11,7 +11,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Flag : BaseCollidableObject
     {
         public delegate void TimeScoreHandler(Flag m, EventArgs e);

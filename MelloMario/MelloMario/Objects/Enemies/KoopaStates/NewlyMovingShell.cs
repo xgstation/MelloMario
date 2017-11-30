@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class NewlyMovingShell : BaseTimedState<Koopa>, IKoopaState
     {
         public NewlyMovingShell(Koopa owner) : base(owner, 500)

@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal abstract class BaseSprite : ISprite
     {
         private readonly ZIndex zIndex;

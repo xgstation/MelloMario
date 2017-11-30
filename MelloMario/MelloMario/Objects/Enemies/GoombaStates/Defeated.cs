@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Defeated : BaseState<Goomba>, IGoombaState
     {
         private int played;
