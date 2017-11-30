@@ -686,12 +686,6 @@
 /processorParam:Quality=Medium
 /build:SFX/smb_kick.wav
 
-#begin SFX/smb_mariodie.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Medium
-/build:SFX/smb_mariodie.wav
-
 #begin SFX/smb_pause.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -782,9 +776,15 @@
 /processorParam:Quality=Best
 /build:SFX/thwomp.WAV
 
-#begin SFX/smb_jumpsmall.wax
+#begin SFX/smb_jumpsmall.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
-/processorParam:Quality=Medium
-/build:SFX/smb_jumpsmall.wax
+/processorParam:Quality=Best
+/build:SFX/smb_jumpsmall.wav
+
+#begin SFX/smb_mariodie.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SFX/smb_mariodie.wav
 

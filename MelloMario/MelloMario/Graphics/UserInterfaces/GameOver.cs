@@ -29,13 +29,13 @@ namespace MelloMario.Graphics.UserInterfaces
         {
             this.lifes = lifes;
 
-            worldText = SpriteFactory.Instance.CreateTextSprite("World" + worldName);
+            worldText = SpriteFactory.Instance.CreateTextSprite("World   " + worldName);
             lifesText = SpriteFactory.Instance.CreateTextSprite("*  " + lifes);
             marioIcon = SpriteFactory.Instance.CreateMarioSprite("Standard", "Standing", "GameOver", "Right");
             gameOverText = SpriteFactory.Instance.CreateTextSprite("GAME    OVER");
             backGround = SpriteFactory.Instance.CreateSplashSprite();
 
-            worldTextDestination = new Rectangle(new Point(350, 200), new Point(80, 80));
+            worldTextDestination = new Rectangle(new Point(220, 200), new Point(80, 80));
             lifesTextDestination = new Rectangle(new Point(350, 250), new Point(80, 80));
             marioIconDestination = new Rectangle(new Point(250, 250), new Point(40, 40));
             gameOverTextDestination = new Rectangle(new Point(250, 250), new Point(80, 80));
@@ -44,6 +44,7 @@ namespace MelloMario.Graphics.UserInterfaces
 
         protected override void OnUpdate(int time)
         {
+            
         }
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch)
