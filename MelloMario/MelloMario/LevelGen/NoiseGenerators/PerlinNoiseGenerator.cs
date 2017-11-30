@@ -101,13 +101,13 @@
             // TODO: replace with smoothed pseudo-random
 
             int i = x;
-            while (rand(seed, i) % scale != 0)
+            while (Rand(seed, i) % scale != 0)
             {
                 i -= 1;
             }
 
             int j = x + 1;
-            while (rand(seed, j) % scale != 0)
+            while (Rand(seed, j) % scale != 0)
             {
                 j += 1;
             }
@@ -169,7 +169,7 @@
             return MathHelper.LerpPrecise(a, b, k);
         }
 
-        private static int rand(int seed, int x)
+        private static int Rand(int seed, int x)
         {
             int x1 = x * 987654321 + seed * 123456789 + 55556666;
             int q = x1 / 127773;
