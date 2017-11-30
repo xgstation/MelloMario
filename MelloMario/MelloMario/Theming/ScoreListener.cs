@@ -29,21 +29,23 @@
 
         public void Subscribe(IGameObject gameObject)
         {
-            switch (gameObject)
+            if (gameObject is BaseCollidableObject collidableObject)
             {
-                case Coin coin:
-                    coin.HandlerCoins += OnCoinCollect;
-                    break;
-                case Mario mario:
-                    mario.HandlerGameOver += OnGameOver;
-                    break;
-                case Flag flag:
-                    flag.HandlerTimeScore += OnLevelWon;
-                    break;
-                case BaseCollidableObject collidableObject:
-                    collidableObject.HandlerPoints += OnPointGain;
-                    collidableObject.HandlerLives += OnLivesChange;
-                    break;
+                switch (gameObject)
+                {
+                    case Coin coin:
+                        coin.HandlerCoins += OnCoinCollect;
+                        break;
+                    case Mario mario:
+                        mario.HandlerGameOver += OnGameOver;
+                        break;
+                    case Flag flag:
+                        flag.HandlerTimeScore += OnLevelWon;
+                        break;
+                }
+
+                collidableObject.HandlerPoints += OnPointGain;
+                collidableObject.HandlerLives += OnLivesChange;
             }
         }
 
