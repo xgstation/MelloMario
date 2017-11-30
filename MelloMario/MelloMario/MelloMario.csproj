@@ -108,7 +108,7 @@
     <Compile Include="Objects\Enemies\BeetleStates\NewlyMovingShell.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\Normal.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\Worn.cs" />
-    <Compile Include="Objects\Enemies\Bettle.cs" />
+    <Compile Include="Objects\Enemies\Beetle.cs" />
     <Compile Include="Objects\Enemies\KoopaStates\NewlyMovingShell.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingDown.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingUp.cs" />
