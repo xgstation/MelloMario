@@ -145,5 +145,25 @@
         {
             return MathHelper.LerpPrecise(a, b, k);
         }
+
+        public static Tuple<int, int> RandomSplit(int seed, int x, int scale)
+        {
+            // naive implementation
+            // TODO: replace with smoothed pseudo-random
+
+            int i = x;
+            while ((i * 987654321 + seed * 12345678901 + 55556666) / 233332333 % scale != 0)
+            {
+                i -= 1;
+            }
+
+            int j = x + 1;
+            while ((j * 987654321 + seed * 12345678901 + 55556666) / 233332333 % scale != 0)
+            {
+                j += 1;
+            }
+
+            return new Tuple<int, int>(i, j);
+        }
     }
 }
