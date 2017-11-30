@@ -30,9 +30,6 @@
             return instance != null ? instance.GetHashCode() : 0;
         }
 
-        protected bool Equals(SoundTrack other)
-        {
-            return Equals(instance, other.instance);
-        }
+
     }
 }

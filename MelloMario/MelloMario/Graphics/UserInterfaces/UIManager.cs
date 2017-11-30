@@ -46,10 +46,6 @@
             splash?.Draw(time, spriteBatch);
         }
 
-        public void ToggleHUD()
-        {
-            hud = hud == null ? new HUD() : null;
-        }
 
         public void BindModel(IModel newModel)
         {

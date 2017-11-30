@@ -276,17 +276,12 @@
             animation = Animation.flagpole;
         }
 
-        protected void Teleport()
-        {
-            animation = Animation.teleport;
-            toBeTraveled = Boundary.Height;
-            // TODO: initialize
-        }
-
-        protected void Reset()
-        {
-            animation = Animation.none;
-        }
+        //protected void Teleport()
+        //{
+        //    animation = Animation.teleport;
+        //    toBeTraveled = Boundary.Height;
+        //    // TODO: initialize
+        //}
 
         protected override void OnSimulation(int time)
         {
