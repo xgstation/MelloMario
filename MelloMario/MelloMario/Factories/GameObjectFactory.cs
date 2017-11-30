@@ -82,6 +82,8 @@
                     return new Goomba(world, location, listener);
                 case "GreenKoopa":
                     return new Koopa(world, location, listener, "Green");
+                case "Beetle":
+                    return new Beetle(world, location, listener);
                 case "RedKoopa":
                     return new Koopa(world, location, listener, "Red");
                 case "Thwomp":

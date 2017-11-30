@@ -9,6 +9,7 @@
         ISprite CreateMarioSprite(string powerUpStatus, string movementStatus, string protectionStatus, string facing);
         ISprite CreateGoombaSprite(string status);
         ISprite CreateKoopaSprite(string color, string status);
+        ISprite CreateBeetleSprite(string status);
         ISprite CreatePiranhaSprite(string color);
         ISprite CreateFireSprite();
         ISprite CreateStarSprite();

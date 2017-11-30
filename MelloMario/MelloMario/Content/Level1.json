@@ -676,13 +676,10 @@
           }
         },
         {
-          "Type": "Koopa",
+          "Type": "Beetle",
           "Point": {
             "X": 16,
             "Y": 12
-          },
-          "Property": {
-            "Color": "Green"
           }
         },
         {

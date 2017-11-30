@@ -138,6 +138,30 @@
             }
         }
 
+        public ISprite CreateBeetleSprite(string status)
+        {
+            switch (status)
+            {
+                case "DefeatedLeft":
+                case "DefeatedRight":
+                case "MovingShellLeft":
+                case "MovingShellRight":
+                case "NewlyMovingShellLeft":
+                case "NewlyMovingShellRight":
+                case "ShellLeft":
+                case "ShellRight":
+                    return new StaticSprite(GetTexture("BeetleDead"), 0, 0, 2, 3);
+                case "NormalLeft":
+                    return new AnimatedSprite(GetTexture("BeetleLeft"), 2, 1, 0, 0, 2, 2);
+                case "NormalRight":
+                    return new AnimatedSprite(GetTexture("BeetleRight"), 2, 1, 0, 0, 2, 2);
+                default:
+                    //it should never hit this case, if it does there is an error somewhere
+                    //else in the code
+                    return null;
+            }
+        }
+
         public ISprite CreatePiranhaSprite(string color)
         {
             switch (color)
