@@ -142,10 +142,7 @@
             }
         }
 
-        protected void RaiseSoundEvent()
-        {
-            SoundEvent?.Invoke(this, SoundEventArgs);
-        }
+  
 
         protected void ChangeFacing(FacingMode facing)
         {

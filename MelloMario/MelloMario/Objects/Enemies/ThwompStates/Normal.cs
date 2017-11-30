@@ -12,10 +12,7 @@
         {
         }
 
-        public void Show()
-        {
-            // nothing
-        }
+
 
         public override void Update(int time)
         {

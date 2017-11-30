@@ -65,7 +65,7 @@
             State = GameState.onProgress;
             new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
             new PlayingScript().Bind(controllers, this);
-            new PlayingScript().Unbind(controllers, this, game.ActivePlayer.Character);
+            new PlayingScript().Unbind(controllers);
         }
 
         public void Reset()
@@ -217,14 +217,18 @@
         {
             if (State == GameState.gameOver)
             {
-                stateTimer += time;
-                if (stateTimer >= 2000)
+                
+                if (game.ActivePlayer.Lifes > 0)
                 {
-                    stateTimer = 0;
-                    State = GameState.onProgress;
-                    game.ActivePlayer.Reset("Mario", scoreListener, new SoundEffectListener());
-                    new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
-                    new PlayingScript().Bind(controllers, this);
+                    stateTimer += time;
+                    if (stateTimer >= 2000)
+                    {
+                        stateTimer = 0;
+                        State = GameState.onProgress;
+                        game.ActivePlayer.Reset("Mario", scoreListener, new SoundEffectListener());
+                        new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
+                        new PlayingScript().Bind(controllers, this);
+                    }
                 }
             }
         }
