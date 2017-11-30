@@ -31,12 +31,72 @@
       "Entity": [
         {
           "Point": {
+            "X": 6,
+            "Y": 12
+          },
+          "Property": {
+            "Type": "Bush"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 10,
+            "Y": 12
+          },
+          "Property": {
+            "Type": "Bush"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 15,
+            "Y": 12
+          },
+          "Property": {
+            "Type": "Bush"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 35,
+            "Y": 12
+          },
+          "Property": {
+            "Type": "Bush"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 30,
+            "Y": 12
+          },
+          "Property": {
+            "Type": "Bush"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 67,
+            "Y": 12
+          },
+          "Property": {
+            "Type": "Bush"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
             "X": 64,
             "Y": 8
           },
           "Property": {
             "IsHidden": true,
-            "ItemValues": ["OneUpMushroomUnveil"]
+            "ItemValues": [ "OneUpMushroomUnveil" ]
           },
           "Type": "Question"
         },
@@ -47,7 +107,7 @@
           },
           "Property": {
             "IsHidden": false,
-            "ItemValues": ["StarUnveil"]
+            "ItemValues": [ "StarUnveil" ]
           },
           "Type": "Question"
         },
@@ -605,13 +665,13 @@
             "Y": 8
           }
         },
-        {
-          "Type": "Goomba",
-          "Point": {
-            "X": 22,
-            "Y": 12
-          }
-        },
+        //{
+        //"Type": "Goomba",
+        // "Point": {
+        // "X": 22,
+        //"Y": 12
+        // }
+        // },
         {
           "Type": "Thwomp",
           "Point": {
@@ -619,34 +679,34 @@
             "Y": 5
           }
         },
-        {
-          "Type": "Goomba",
-          "Point": {
-            "X": 40,
-            "Y": 12
-          }
-        },
-        {
-          "Type": "Goomba",
-          "Point": {
-            "X": 51,
-            "Y": 12
-          }
-        },
-        {
-          "Type": "Goomba",
-          "Point": {
-            "X": 52.5,
-            "Y": 12
-          }
-        },
-        {
-          "Type": "Goomba",
-          "Point": {
-            "X": 80,
-            "Y": 4
-          }
-        },
+        // {
+        //"Type": "Goomba",
+        //"Point": {
+        // "X": 40,
+        // "Y": 12
+        // }
+        // },
+        //{
+        // "Type": "Goomba",
+        //"Point": {
+        //  "X": 51,
+        //"Y": 12
+        // }
+        // },
+        // {
+        // "Type": "Goomba",
+        // "Point": {
+        //  "X": 52.5,
+        // "Y": 12
+        //}
+        //},
+        // {
+        //"Type": "Goomba",
+        //"Point": {
+        // "X": 80,
+        // "Y": 4
+        // }
+        // },
         {
           "Type": "Goomba",
           "Point": {
@@ -682,23 +742,23 @@
             "Y": 12
           }
         },
-        {
-          "Type": "Koopa",
-          "Point": {
-            "X": 107,
-            "Y": 12
-          },
-          "Property": {
-            "Color": "Green"
-          }
-        },
-        {
-          "Type": "Goomba",
-          "Point": {
-            "X": 114,
-            "Y": 12
-          }
-        },
+        // {
+        //"Type": "Koopa",
+        //  "Point": {
+        //  "X": 107,
+        // "Y": 12
+        // },
+        // "Property": {
+        //"Color": "Green"
+        //}
+        // },
+        //{
+        //"Type": "Goomba",
+        // "Point": {
+        //  "X": 114,
+        // "Y": 12
+        //}
+        //},
         {
           "Type": "Goomba",
           "Point": {
@@ -712,42 +772,42 @@
             "X": 124,
             "Y": 12
           }
-        },
-        {
-          "Type": "Goomba",
-          "Point": {
-            "X": 125.5,
-            "Y": 12
-          }
-        },
-        {
-          "Type": "Goomba",
-          "Point": {
-            "X": 128,
-            "Y": 12
-          }
-        },
-        {
-          "Type": "Goomba",
-          "Point": {
-            "X": 129.5,
-            "Y": 12
-          }
-        },
-        {
-          "Type": "Goomba",
-          "Point": {
-            "X": 174,
-            "Y": 12
-          }
-        },
-        {
-          "Type": "Goomba",
-          "Point": {
-            "X": 175.5,
-            "Y": 12
-          }
-        }
+        } //,
+        // {
+        // "Type": "Goomba",
+        // "Point": {
+        // "X": 125.5,
+        // "Y": 12
+        // }
+        // },
+        //{
+        // "Type": "Goomba",
+        // "Point": {
+        /// "X": 128,
+        // "Y": 12
+        //}
+        //  },
+        //  {
+        // "Type": "Goomba",
+        //  "Point": {
+        //  "X": 129.5,
+        //  "Y": 12
+        //  }
+        // },
+        // {
+        // "Type": "Goomba",
+        //"Point": {
+        // "X": 174,
+        //"Y": 12
+        // }
+        // },
+        // {
+        //"Type": "Goomba",
+        //"Point": {
+        //"X": 175.5,
+        // "Y": 12
+        //}
+        // }
       ]
     },
     {

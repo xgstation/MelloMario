@@ -66,11 +66,13 @@
             State = GameState.onProgress;
             new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
             new PlayingScript().Bind(controllers, this);
+            new PlayingScript().Unbind(controllers, this, game.ActivePlayer.Character);
         }
 
         public void Reset()
         {
-            game.Reset();
+            game.Reset(scoreListener);
+
             Resume();
         }
 
@@ -227,5 +229,7 @@
                 }
             }
         }
+        }
     }
-}
+
+

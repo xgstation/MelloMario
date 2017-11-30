@@ -33,7 +33,34 @@ namespace MelloMario.Controls.Controllers
                 commands[behavior].Add(castedKey, value);
             }
         }
+        public void DeleteCommand(object key, KeyBehavior behavior)
+        {
+            if (key is T castedKey)
+            {
+                commands[behavior].Remove(castedKey);
+            }
 
+        }
+        public bool ContainsKey(object key, KeyBehavior behavior)
+        {
+
+            bool result = false;
+
+            if (key is T castedKey)
+
+            {
+
+               if (commands[behavior].ContainsKey(castedKey))
+                {
+                    result = true;
+
+                }
+
+            }
+
+            return result;
+
+        }
         public void Update()
         {
             OnUpdate();

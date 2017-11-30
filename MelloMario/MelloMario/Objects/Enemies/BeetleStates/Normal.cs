@@ -22,9 +22,9 @@
             Owner.State = new Defeated(Owner);
         }
 
-        public void Defeat()
+        public void Wear()
         {
-            Owner.State = new Defeated(Owner);
+            Owner.State = new Worn(Owner);
         }
 
         public override void Update(int time)

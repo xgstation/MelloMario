@@ -102,11 +102,13 @@
     <Compile Include="LevelGen\Terrains\Forest.cs" />
     <Compile Include="LevelGen\Terrains\Village.cs" />
     <Compile Include="LevelGen\Terrains\Sky.cs" />
-    <Compile Include="Objects\Enemies\Beetle.cs" />
+    <Compile Include="Objects\Characters\ProtectionStates\Helmeted.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\Defeated.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\MovingShell.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\NewlyMovingShell.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\Normal.cs" />
+    <Compile Include="Objects\Enemies\BeetleStates\Worn.cs" />
+    <Compile Include="Objects\Enemies\Beetle.cs" />
     <Compile Include="Objects\Enemies\KoopaStates\NewlyMovingShell.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingDown.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingUp.cs" />
@@ -380,6 +382,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Content\Font\text.spritefont" />
     <None Include="Content\Infinite.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

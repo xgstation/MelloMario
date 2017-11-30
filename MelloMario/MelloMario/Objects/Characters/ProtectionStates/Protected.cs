@@ -13,6 +13,11 @@
         {
         }
 
+        public void Helmet()
+        {
+            Owner.ProtectionState = new Helmeted(Owner);
+        }
+
         public void Protect()
         {
             //refresh protection

@@ -4,7 +4,7 @@
     {
         void Show();
         void JumpOn();
+        void Wear();
         void Pushed();
-        void Defeat();
     }
 }

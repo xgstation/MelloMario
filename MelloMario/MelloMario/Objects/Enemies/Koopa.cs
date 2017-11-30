@@ -186,13 +186,18 @@
                 case FireBall fire:
                     Defeat();
                     break;
-            }
-            if (target is Koopa koopa)
-            {
-                if (koopa.State is MovingShell || koopa.State is NewlyMovingShell)
-                {
-                    Defeat();
-                }
+                case Koopa koopa:
+                    if (koopa.State is MovingShell || koopa.State is NewlyMovingShell)
+                    {
+                        Defeat();
+                    }
+                    break;
+                case Beetle beetle:
+                    if (beetle.State is BeetleStates.MovingShell || beetle.State is BeetleStates.NewlyMovingShell)
+                    {
+                        Defeat();
+                    }
+                    break;
             }
         }
 

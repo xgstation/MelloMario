@@ -16,7 +16,6 @@
         private SpriteBatch spriteBatchUI;
         private SpriteBatch spriteBatchGameObjects;
         private SpriteBatch spriteBatchBackgroundObjects;
-
         private IPlayer player;
         private IModel model;
 
@@ -62,6 +61,7 @@
             }
             switch (model.State)
             {
+               
                 case GameState.onProgress:
                     DrawGameObjects(time);
                     break;
@@ -89,10 +89,14 @@
         private void DrawGameObjects(int time)
         {
             spriteBatchGameObjects.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, player.Camera.GetViewMatrix(new Vector2(1f)));
-            foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
-            {
-                obj.Draw(time, spriteBatchGameObjects);
-            }
+
+                foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
+                {
+
+                    obj.Draw(time, spriteBatchGameObjects);
+
+                }
+       
             spriteBatchGameObjects.End();
         }
 

@@ -44,6 +44,7 @@ namespace MelloMario.Graphics.UserInterfaces
 
         protected override void OnUpdate(int time)
         {
+
         }
 
         protected override void OnDraw(int time, SpriteBatch spriteBatch)

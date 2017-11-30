@@ -168,5 +168,27 @@
                 controller.AddCommand(Keys.Q, factory.CreateModelCommand("Exit", model), KeyBehavior.press);
             }
         }
+
+        public void Unbind(IEnumerable<IController> controllers, IModel model, ICharacter character)
+
+        {
+            foreach (IController controller in controllers)
+            {
+                if (controller.ContainsKey(Keys.Q, KeyBehavior.press))
+                {
+                    controller.DeleteCommand(Keys.Q, KeyBehavior.press);
+                }
+                else if (controller.ContainsKey(Keys.Q, KeyBehavior.hold))
+                {
+                   controller.DeleteCommand(Keys.Q, KeyBehavior.hold);
+                }
+
+                else if (controller.ContainsKey(Keys.Q, KeyBehavior.release))
+                {
+                    controller.DeleteCommand(Keys.Q, KeyBehavior.release);
+                }
+
+            }
+        }
     }
 }

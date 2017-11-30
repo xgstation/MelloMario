@@ -29,6 +29,13 @@
         protected IWorld World;
 
         private Point location;
+        public Point Location
+        {
+            get
+            {
+                return location;
+            }
+        }
         private Point size;
         private ISprite sprite;
 

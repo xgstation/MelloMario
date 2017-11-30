@@ -64,6 +64,7 @@
                         2,
                         powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Normal":
+                case "Helmeted":
                     return new AnimatedSprite(
                         GetTexture(powerUpStatus + movementStatus + facing),
                         movementStatus == "Walking" ? 3 : 1,
@@ -124,9 +125,6 @@
                 case "NewlyMovingShellLeft":
                 case "NewlyMovingShellRight":
                     return new StaticSprite(GetTexture(color + "KoopaDead"), 0, 0, 2, 3);
-                case "ShellLeft":
-                case "ShellRight":
-                    return new StaticSprite(GetTexture(color + "KoopaStepped"), 0, 0, 2, 3);
                 case "NormalLeft":
                     return new AnimatedSprite(GetTexture(color + "KoopaLeft"), 2, 1, 0, 0, 2, 3);
                 case "NormalRight":
@@ -148,9 +146,10 @@
                 case "MovingShellRight":
                 case "NewlyMovingShellLeft":
                 case "NewlyMovingShellRight":
-                case "ShellLeft":
-                case "ShellRight":
-                    return new StaticSprite(GetTexture("BeetleDead"), 0, 0, 2, 3);
+                    return new StaticSprite(GetTexture("BeetleDead"), 0, 0, 2, 2);
+                case "WornLeft":
+                case "WornRight":
+                    return new StaticSprite(GetTexture("BeetleDead"), 0, 0, 2, 2, ZIndex.Foreground);
                 case "NormalLeft":
                     return new AnimatedSprite(GetTexture("BeetleLeft"), 2, 1, 0, 0, 2, 2);
                 case "NormalRight":
@@ -321,7 +320,7 @@
                 case "CastleDoor":
                     return new StaticSprite(GetTexture("BlockSheet"), 26, 2, 2, 2, zIndex);
                 case "Bush":
-                    return new StaticSprite(GetTexture("BlockSheet"), 23, 19, 6, 2, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 23, 18, 5, 2, zIndex);
                 case "BiggerBush":
                     return new StaticSprite(GetTexture("BlockSheet"), 41, 17, 7, 4, zIndex);
                 case "SharpBush":

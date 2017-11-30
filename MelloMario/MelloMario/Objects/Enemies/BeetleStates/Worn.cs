@@ -7,9 +7,9 @@
     #endregion
 
     [Serializable]
-    internal class NewlyMovingShell : BaseTimedState<Beetle>, IBeetleState
+    internal class Worn : BaseState<Beetle>, IBeetleState
     {
-        public NewlyMovingShell(Beetle owner) : base(owner, 500)
+        public Worn(Beetle owner) : base(owner)
         {
         }
 
@@ -23,18 +23,17 @@
             Owner.State = new Defeated(Owner);
         }
 
+        public override void Update(int time)
+        {
+        }
+
         public void Wear()
         {
-            Owner.State = new Worn(Owner);
+
         }
 
         public void Pushed()
         {
-        }
-
-        protected override void OnTimer(int time)
-        {
-            Owner.State = new MovingShell(Owner);
         }
     }
 }
