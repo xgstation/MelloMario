@@ -46,7 +46,7 @@
         {
             ScorePoints(Const.SCORE_THWOMP);
             World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_THWOMP));
-            State.Defeat();
+            state.Defeat();
         }
 
         protected override void OnUpdate(int time)

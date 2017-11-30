@@ -121,6 +121,8 @@
                 case "DefeatedRight":
                 case "MovingShellLeft":
                 case "MovingShellRight":
+                case "NewlyMovingShellLeft":
+                case "NewlyMovingShellRight":
                     return new StaticSprite(GetTexture(color + "KoopaDead"), 0, 0, 2, 3);
                 case "ShellLeft":
                 case "ShellRight":

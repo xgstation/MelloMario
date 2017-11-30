@@ -7,9 +7,9 @@
     #endregion
 
     [Serializable]
-    internal class MovingShell : BaseState<Koopa>, IKoopaState
+    internal class NewlyMovingShell : BaseTimedState<Koopa>, IKoopaState
     {
-        public MovingShell(Koopa owner) : base(owner)
+        public NewlyMovingShell(Koopa owner) : base(owner, 250)
         {
         }
 
@@ -28,8 +28,9 @@
             Owner.State = new Defeated(Owner);
         }
 
-        public override void Update(int time)
+        protected override void OnTimer(int time)
         {
+            Owner.State = new MovingShell(Owner);
         }
 
         public void Pushed()

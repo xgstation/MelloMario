@@ -23,7 +23,7 @@
 
         public void JumpOn()
         {
-            Owner.State = new MovingShell(Owner);
+            Owner.State = new NewlyMovingShell(Owner);
         }
 
         public void Defeat()
@@ -45,7 +45,7 @@
 
         public void Pushed()
         {
-            Owner.State = new MovingShell(Owner);
+            Owner.State = new NewlyMovingShell(Owner);
             //do nothing for this sprint
         }
     }

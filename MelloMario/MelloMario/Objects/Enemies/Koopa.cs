@@ -80,7 +80,7 @@
         {
             ApplyGravity();
 
-            if (state is MovingShell)
+            if (state is MovingShell || state is NewlyMovingShell)
             {
                 if (Facing == FacingMode.left)
                 {
@@ -91,7 +91,7 @@
                     SetHorizontalVelocity(Const.VELOCITY_KOOPA_SHELL);
                 }
             }
-            else
+            else if(state is KoopaStates.Normal)
             {
                 if (Facing == FacingMode.left)
                 {
@@ -101,6 +101,10 @@
                 {
                     SetHorizontalVelocity(Const.VELOCITY_KOOPA);
                 }
+            }
+            else
+            {
+                SetHorizontalVelocity(0);
             }
 
             base.OnSimulation(time);

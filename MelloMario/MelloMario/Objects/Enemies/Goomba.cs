@@ -90,7 +90,7 @@
             switch (target)
             {
                 case Mario mario:
-                    if (mode == CollisionMode.Top && mario.MovementState is Jumping || mario.ProtectionState is Starred)
+                    if (mode == CollisionMode.Top && !(mario.ProtectionState is Dead) || mario.ProtectionState is Starred)
                     {
                         Defeat();
                     }
