@@ -3,10 +3,7 @@
     #region
 
     using System;
-    using System.Collections.Generic;
     using MelloMario.Factories;
-    using MelloMario.Graphics;
-    using MelloMario.Sounds;
     using Microsoft.Xna.Framework;
 
     #endregion

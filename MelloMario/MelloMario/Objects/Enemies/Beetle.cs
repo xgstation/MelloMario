@@ -8,11 +8,11 @@
     using MelloMario.Objects.Blocks.BrickStates;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.ProtectionStates;
+    using MelloMario.Objects.Enemies.BeetleStates;
     using MelloMario.Objects.Items;
     using MelloMario.Objects.Miscs;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
-    using MelloMario.Objects.Enemies.BeetleStates;
 
     #endregion
 

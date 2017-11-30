@@ -4,10 +4,10 @@
 
     using System;
     using MelloMario.Factories;
-    using MelloMario.Objects.Characters;
-    using Microsoft.Xna.Framework;
-    using MelloMario.Theming;
     using MelloMario.Objects.Blocks;
+    using MelloMario.Objects.Blocks.BrickStates;
+    using MelloMario.Theming;
+    using Microsoft.Xna.Framework;
 
     #endregion
 
