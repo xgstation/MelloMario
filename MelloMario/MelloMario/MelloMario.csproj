@@ -90,6 +90,7 @@
     <Compile Include="Controls\Commands\KillMario.cs" />
     <Compile Include="Controls\Commands\Select.cs" />
     <Compile Include="Interfaces\Objects\States\IBeetleState.cs" />
+    <Compile Include="LevelGen\NoiseGenerators\NoiseConverter.cs" />
     <Compile Include="LevelGen\Objects\Enemies.cs" />
     <Compile Include="LevelGen\Scroll.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="LevelGen\Terrains\Forest.cs" />
     <Compile Include="LevelGen\Terrains\Village.cs" />
     <Compile Include="LevelGen\Terrains\Sky.cs" />
+    <Compile Include="NoiseGame.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Helmeted.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\Defeated.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\MovingShell.cs" />

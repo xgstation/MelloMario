@@ -17,7 +17,7 @@
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private NoiseInterpreter noiseInterpreter;
+        private NoiseConverter noiseInterpreter;
 
         public NoiseGame()
         {
@@ -36,7 +36,10 @@
         {
             base.LoadContent();
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            noiseInterpreter = new NoiseInterpreter(spriteBatch);
+            noiseInterpreter = new NoiseConverter(spriteBatch);
+            noiseInterpreter.SetSize(80, 18);
+            noiseInterpreter.GetData();
+            noiseInterpreter.DebugFill();
         }
 
         /// <summary>
