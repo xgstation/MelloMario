@@ -60,6 +60,7 @@
             LevelIOJson.BindSoundListener(soundManager.SoundEffectListener);
         }
 
+        public LevelIOJson LevelIOJson { get; private set; }
         public Menu CurrentSelected { get; private set; }
         public IPlayer ActivePlayer { get; }
 
