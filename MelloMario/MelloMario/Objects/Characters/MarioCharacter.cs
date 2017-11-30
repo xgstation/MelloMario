@@ -247,14 +247,15 @@
 
         public void Action()
         {
-            if (animation != Animation.none)
-            {
-                return;
-            }
+        //    if (animation != Animation.none)
+        //    {
+        //        return;
+        //    }
             if (PowerUpState is Fire)
             {
                 SoundEventArgs.SetMethodCalled();
-                new FireBall(World, Boundary.Location, null, soundListener);
+                bool facingRight = Facing is FacingMode.right;
+                World.Add(new FireBall(World, Boundary.Location, null, soundListener, facingRight));
             }
         }
 

@@ -24,6 +24,8 @@
         public const float VELOCITY_SUPER_MUSHROOM = 4f;
         public const float VELOCITY_STAR_H = 6f;
         public const float VELOCITY_STAR_V = 10f;
+        public const float VELOCITY_FIRE_H = 10f;
+        public const float VELOCITY_FIRE_V = 13f;
         public const float VELOCITY_ONE_UP_MUSHROOM = 6f;
 
         public const float VELOCITY_GOOMBA = 2f;
