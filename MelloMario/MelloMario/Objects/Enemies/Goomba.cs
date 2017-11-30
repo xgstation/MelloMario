@@ -17,7 +17,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Goomba : BasePhysicalObject
     {
         private IGoombaState state;
@@ -98,7 +97,7 @@
                     break;
                 case Question question when question.State is Blocks.QuestionStates.Hidden:
                     break;
-                case IGameObject obj when target is Brick
+                case IGameObject _ when target is Brick
                 || target is Question
                 || target is Floor
                 || target is Pipeline
@@ -124,7 +123,7 @@
                         Defeat();
                     }
                     break;
-                case FireBall fire:
+                case FireBall _:
                     Defeat();
                     break;
             }

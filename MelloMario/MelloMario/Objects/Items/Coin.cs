@@ -13,7 +13,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Coin : BaseCollidableObject, ISoundable
     {
         public delegate void CoinHandler(Coin m, EventArgs e);
@@ -27,7 +26,7 @@
             Point location,
             IListener<IGameObject> listener,
             IListener<ISoundable> soundListener,
-            bool isUnveil = false) : base(world, location, listener, new Point(32, 32))
+            bool isUnveil = false) : base(world, location, null, new Point(32, 32))
         {
             listener.Subscribe(this);
             soundListener.Subscribe(this);
@@ -71,10 +70,10 @@
         {
             if (!collected)
             {
+                collected = true;
                 SoundEventArgs.SetMethodCalled();
                 HandlerCoins?.Invoke(this, coinEventInfo);
                 ScorePoints(Const.SCORE_COIN);
-                collected = true;
                 World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_COIN));
             }
             RemoveSelf();

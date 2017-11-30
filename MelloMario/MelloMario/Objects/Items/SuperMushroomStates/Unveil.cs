@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Unveil : BaseTimedState<SuperMushroom>, IItemState
     {
         private float elapsed;

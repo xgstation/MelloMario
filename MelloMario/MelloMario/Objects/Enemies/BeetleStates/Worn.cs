@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Worn : BaseState<Beetle>, IBeetleState
     {
         public Worn(Beetle owner) : base(owner)

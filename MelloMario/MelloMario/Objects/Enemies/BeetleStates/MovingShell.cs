@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class MovingShell : BaseState<Beetle>, IBeetleState
     {
         public MovingShell(Beetle owner) : base(owner)

@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal abstract class BasePhysicalObject : BaseCollidableObject
     {
         // TODO: make this private again once we have a better collision event dispatch mechanism

@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Normal : BaseState<Beetle>, IBeetleState
     {
         public Normal(Beetle owner) : base(owner)

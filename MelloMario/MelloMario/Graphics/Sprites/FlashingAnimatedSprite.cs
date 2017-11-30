@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal class FlashingAnimatedSprite : AnimatedSprite
     {
         public FlashingAnimatedSprite(

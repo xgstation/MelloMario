@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Normal : BaseState<Goomba>, IGoombaState
     {
         public Normal(Goomba owner) : base(owner)

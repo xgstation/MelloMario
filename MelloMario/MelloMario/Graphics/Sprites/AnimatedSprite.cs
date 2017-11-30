@@ -9,7 +9,6 @@
 
     #endregion
 
-    [Serializable]
     internal class AnimatedSprite : BaseTextureSprite
     {
         private readonly int columns;

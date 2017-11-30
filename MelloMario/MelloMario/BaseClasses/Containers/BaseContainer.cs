@@ -8,7 +8,6 @@
 
     #endregion
 
-    [Serializable]
     internal abstract class BaseContainer<Key, Value>
     {
         private readonly IDictionary<Value, Key> keys;

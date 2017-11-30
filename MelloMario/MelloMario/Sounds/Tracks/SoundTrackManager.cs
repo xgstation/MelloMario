@@ -21,7 +21,7 @@
             player = newPlayer;
         }
 
-        public void ToggleMute()
+        public static void ToggleMute()
         {
             MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
         }
@@ -41,16 +41,6 @@
             track?.Play();
             MediaPlayer.IsRepeating = true;
             currentTrack = track;
-        }
-
-        private void Pause()
-        {
-            MediaPlayer.Pause();
-        }
-
-        private void Resume()
-        {
-            MediaPlayer.Resume();
         }
 
         private void UpdateBGM()

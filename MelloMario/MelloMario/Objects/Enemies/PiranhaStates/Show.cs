@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Show : BaseTimedState<Piranha>, IPiranhaState
     {
         public Show(Piranha owner) : base(owner, owner.ShowTime)

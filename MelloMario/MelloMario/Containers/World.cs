@@ -9,7 +9,6 @@
 
     #endregion
 
-    [Serializable]
     internal class World : BaseContainer<Point, IGameObject>, IWorld
     {
         private readonly IGenerator generator;
@@ -64,7 +63,7 @@
 
         public Point GetRespawnPoint(Point location)
         {
-            Point target = location;
+            Point target = new Point();
 
             foreach (Point p in respawnPoints)
             {

@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal abstract class BaseState<T> : IState
     {
         protected T Owner;

@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Unveil : BaseTimedState<FireFlower>, IItemState
     {
         private float elapsed;

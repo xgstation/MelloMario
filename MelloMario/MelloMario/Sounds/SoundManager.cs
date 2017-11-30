@@ -21,7 +21,7 @@
 
         public void ToggleMute()
         {
-            sounds.ToggleMute();
+            SoundTrackManager.ToggleMute();
             (SoundEffectListener as SoundEffectListener).ToggleMute();
         }
 
@@ -33,10 +33,6 @@
         public void BindPlayer(IPlayer player)
         {
             sounds.BindPlayer(player);
-        }
-
-        public void Initialize()
-        {
         }
     }
 }

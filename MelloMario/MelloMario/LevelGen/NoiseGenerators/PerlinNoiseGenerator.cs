@@ -101,13 +101,13 @@
             // TODO: replace with smoothed pseudo-random
 
             int i = x;
-            while (rand(seed, i) % scale != 0)
+            while (Rand(seed, i) % scale != 0)
             {
                 i -= 1;
             }
 
             int j = x + 1;
-            while (rand(seed, j) % scale != 0)
+            while (Rand(seed, j) % scale != 0)
             {
                 j += 1;
             }
@@ -128,7 +128,7 @@
         {
             float x = BitConverter.ToInt32(gradSeed, 0) / (float) int.MaxValue * 0 + v.X;
             float y = BitConverter.ToInt32(gradSeed, 0) / (float) int.MaxValue * 0 + v.Y;
-            double angleSeed = Math.Cos(BitConverter.ToInt32(gradAngleSeedX, 0) / (double) int.MaxValue);
+            //double angleSeed = Math.Cos(BitConverter.ToInt32(gradAngleSeedX, 0) / (double) int.MaxValue);
             //y *= (float)angleSeed;
             //y *= (float)Math.Sqrt(1 - angleSeed * angleSeed);
             switch (hash & 0x7)
@@ -169,7 +169,7 @@
             return MathHelper.LerpPrecise(a, b, k);
         }
 
-        private static int rand(int seed, int x)
+        private static int Rand(int seed, int x)
         {
             int x1 = x * 987654321 + seed * 123456789 + 55556666;
             int q = x1 / 127773;

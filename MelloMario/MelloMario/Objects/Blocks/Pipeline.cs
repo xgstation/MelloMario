@@ -12,7 +12,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Pipeline : BaseCollidableObject
     {
         private IModel model;

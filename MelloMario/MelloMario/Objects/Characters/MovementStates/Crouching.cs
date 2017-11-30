@@ -6,7 +6,6 @@
 
     #endregion
 
-    [Serializable]
     internal class Crouching : BaseState<Mario>, IMarioMovementState
     {
         public Crouching(Mario owner) : base(owner)
