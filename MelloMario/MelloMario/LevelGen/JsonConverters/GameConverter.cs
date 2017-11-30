@@ -23,8 +23,8 @@
         private JToken mapListToken;
         private JToken mapToBeLoaded;
 
-        private IWorld world;
-        private Static generator;
+        private readonly IWorld world;
+        private readonly Static generator;
 
         public GameConverter(
             IWorld world,

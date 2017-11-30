@@ -344,32 +344,32 @@
                     objectStack.Push((IGameObject) Activator.CreateInstance(type, world, objPoint, listener, false));
                     break;
                 case ProduceMode.Rectangle:
+                {
+                    foreach (IGameObject obj in Util.BatchRecCreate(
+                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                        objPoint,
+                        quantity,
+                        new Point(Const.GRID, Const.GRID),
+                        ignoredSet))
                     {
-                        foreach (IGameObject obj in Util.BatchRecCreate(
-                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                            objPoint,
-                            quantity,
-                            new Point(Const.GRID, Const.GRID),
-                            ignoredSet))
-                        {
-                            objectStack.Push(obj);
-                        }
-                        break;
+                        objectStack.Push(obj);
                     }
+                    break;
+                }
 
                 case ProduceMode.Triangle:
+                {
+                    foreach (IGameObject obj in Util.BatchTriCreate(
+                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
+                        objPoint,
+                        triangleSize,
+                        new Point(Const.GRID, Const.GRID),
+                        ignoredSet))
                     {
-                        foreach (IGameObject obj in Util.BatchTriCreate(
-                            point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                            objPoint,
-                            triangleSize,
-                            new Point(Const.GRID, Const.GRID),
-                            ignoredSet))
-                        {
-                            objectStack.Push(obj);
-                        }
-                        break;
+                        objectStack.Push(obj);
                     }
+                    break;
+                }
             }
         }
 

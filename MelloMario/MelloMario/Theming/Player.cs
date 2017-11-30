@@ -3,10 +3,7 @@
     #region
 
     using System;
-    using System.Collections.Generic;
     using MelloMario.Factories;
-    using MelloMario.Graphics;
-    using MelloMario.Sounds;
     using Microsoft.Xna.Framework;
 
     #endregion
@@ -14,10 +11,6 @@
     [Serializable]
     internal class Player : IPlayer
     {
-        public Player()
-        {
-        }
-
         public ISession Session { get; private set; }
 
         public ICharacter Character { get; private set; }

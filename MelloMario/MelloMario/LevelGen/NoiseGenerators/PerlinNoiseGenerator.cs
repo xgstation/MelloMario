@@ -95,6 +95,28 @@
             return BitConverter.ToInt32(bytes, 0) / (float) int.MaxValue * f;
         }
 
+        public static Tuple<int, int> RandomSplit(int seed, int x, int scale)
+        {
+            // naive implementation
+            // TODO: replace with smoothed pseudo-random
+
+            int i = x;
+            while (rand(seed, i) % scale != 0)
+            {
+                i -= 1;
+            }
+
+            int j = x + 1;
+            while (rand(seed, j) % scale != 0)
+            {
+                j += 1;
+            }
+
+            Debug.Print(i + " " + j);
+
+            return new Tuple<int, int>(i, j);
+        }
+
         private void SwapInitial(int i, int j)
         {
             int temp = permuteTable[i] == 0 ? i : permuteTable[i];
@@ -153,28 +175,6 @@
             int q = x1 / 127773;
             int r = x1 % 127773;
             return 16807 * r - 2836 * q;
-        }
-
-        public static Tuple<int, int> RandomSplit(int seed, int x, int scale)
-        {
-            // naive implementation
-            // TODO: replace with smoothed pseudo-random
-
-            int i = x;
-            while (rand(seed, i) % scale != 0)
-            {
-                i -= 1;
-            }
-
-            int j = x + 1;
-            while (rand(seed, j) % scale != 0)
-            {
-                j += 1;
-            }
-
-            Debug.Print(i + " " + j);
-
-            return new Tuple<int, int>(i, j);
         }
     }
 }

@@ -22,10 +22,11 @@
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
-                world.Add(new Floor(
-                    world,
-                    new Point(j, range.Bottom - (3 + Math.Abs(j / 96 * 123456789 / 65535) % 5) * Const.GRID),
-                    listener)); // TODO: random
+                world.Add(
+                    new Floor(
+                        world,
+                        new Point(j, range.Bottom - (3 + Math.Abs(j / 96 * 123456789 / 65535) % 5) * Const.GRID),
+                        listener)); // TODO: random
             }
         }
     }

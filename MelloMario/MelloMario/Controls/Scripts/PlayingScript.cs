@@ -8,7 +8,7 @@
 
     #endregion
 
-    internal class PlayingScript : IScript<ICharacter>
+    internal class PlayingScript : IScript<ICharacter>, IScript<IModel>
     {
         public void Bind(IEnumerable<IController> controllers, ICharacter character)
         {
@@ -155,6 +155,17 @@
                     Buttons.DPadRight,
                     factory.CreateCharacterCommand("RightRelease", character),
                     KeyBehavior.release);
+            }
+        }
+
+        public void Bind(IEnumerable<IController> controllers, IModel model)
+        {
+            ICommandFactory factory = CommandFactory.Instance;
+
+            foreach (IController controller in controllers)
+            {
+                controller.AddCommand(Keys.R, factory.CreateModelCommand("Reset", model), KeyBehavior.press);
+                controller.AddCommand(Keys.Q, factory.CreateModelCommand("Exit", model), KeyBehavior.press);
             }
         }
     }

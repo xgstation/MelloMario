@@ -28,13 +28,13 @@
             Owner.State = new Defeated(Owner);
         }
 
+        public void Pushed()
+        {
+        }
+
         protected override void OnTimer(int time)
         {
             Owner.State = new MovingShell(Owner);
-        }
-
-        public void Pushed()
-        {
         }
     }
 }

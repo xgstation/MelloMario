@@ -1,7 +1,9 @@
 ﻿namespace MelloMario
 {
     #region
+
     using System;
+
     #endregion
 
     internal enum GameState
@@ -22,9 +24,9 @@
 
     internal interface IModel
     {
-        event EventHandler<GameState> StateChanged;
         GameState State { get; }
         GameMode Mode { get; }
+        event EventHandler<GameState> StateChanged;
         void Initialize(GameMode mode, IListener<ISoundable> soundEffectListener);
         void Pause();
         void Resume();

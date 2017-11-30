@@ -11,7 +11,6 @@
     {
         public Defeated(Thwomp owner) : base(owner)
         {
-            //owner.removeself
         }
 
         public void Show()
