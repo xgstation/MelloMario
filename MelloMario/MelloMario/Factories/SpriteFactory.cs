@@ -320,7 +320,7 @@
                 case "CastleDoor":
                     return new StaticSprite(GetTexture("BlockSheet"), 26, 2, 2, 2, zIndex);
                 case "Bush":
-                    return new StaticSprite(GetTexture("BlockSheet"), 23, 19, 6, 2, zIndex);
+                    return new StaticSprite(GetTexture("BlockSheet"), 23, 18, 5, 2, zIndex);
                 case "BiggerBush":
                     return new StaticSprite(GetTexture("BlockSheet"), 41, 17, 7, 4, zIndex);
                 case "SharpBush":

@@ -31,13 +31,63 @@
       "Entity": [
         {
           "Point": {
-            "X": 3,
-            "Y": 13
+            "X": 6,
+            "Y": 12
           },
           "Property": {
             "Type": "Bush"
           },
-          "Type": "Background" 
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 10,
+            "Y": 12
+          },
+          "Property": {
+            "Type": "Bush"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 15,
+            "Y": 12
+          },
+          "Property": {
+            "Type": "Bush"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 35,
+            "Y": 12
+          },
+          "Property": {
+            "Type": "Bush"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 30,
+            "Y": 12
+          },
+          "Property": {
+            "Type": "Bush"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 67,
+            "Y": 12
+          },
+          "Property": {
+            "Type": "Bush"
+          },
+          "Type": "Background"
         },
         {
           "Point": {
@@ -722,7 +772,7 @@
             "X": 124,
             "Y": 12
           }
-        }//,
+        } //,
         // {
         // "Type": "Goomba",
         // "Point": {
