@@ -382,7 +382,6 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Content\Font\text.spritefont" />
     <None Include="Content\Infinite.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
