@@ -605,13 +605,13 @@
             "Y": 8
           }
         },
-        //{
-          //"Type": "Goomba",
-         // "Point": {
-           // "X": 22,
-            //"Y": 12
-         // }
-       // },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 22,
+            "Y": 12
+          }
+        },
         {
           "Type": "Thwomp",
           "Point": {
@@ -619,34 +619,34 @@
             "Y": 5
           }
         },
-       // {
-          //"Type": "Goomba",
-          //"Point": {
-           // "X": 40,
-           // "Y": 12
-         // }
-       // },
-        //{
-         // "Type": "Goomba",
-          //"Point": {
-          //  "X": 51,
-            //"Y": 12
-         // }
-       // },
-       // {
-         // "Type": "Goomba",
-         // "Point": {
-          //  "X": 52.5,
-           // "Y": 12
-          //}
-        //},
-       // {
-          //"Type": "Goomba",
-          //"Point": {
-           // "X": 80,
-           // "Y": 4
-         // }
-       // },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 40,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 51,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 52.5,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 80,
+            "Y": 4
+          }
+        },
         {
           "Type": "Goomba",
           "Point": {
@@ -682,23 +682,23 @@
             "Y": 12
           }
         },
-       // {
-          //"Type": "Koopa",
-        //  "Point": {
-          //  "X": 107,
-           // "Y": 12
-         // },
-         // "Property": {
-            //"Color": "Green"
-          //}
-       // },
-        //{
-          //"Type": "Goomba",
-         // "Point": {
-          //  "X": 114,
-           // "Y": 12
-          //}
-        //},
+        {
+          "Type": "Koopa",
+          "Point": {
+            "X": 107,
+            "Y": 12
+          },
+          "Property": {
+            "Color": "Green"
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 114,
+            "Y": 12
+          }
+        },
         {
           "Type": "Goomba",
           "Point": {
@@ -713,41 +713,41 @@
             "Y": 12
           }
         },
-       // {
-         // "Type": "Goomba",
-         // "Point": {
-           // "X": 125.5,
-           // "Y": 12
-         // }
-       // },
-        //{
-         // "Type": "Goomba",
-         // "Point": {
-           /// "X": 128,
-           // "Y": 12
-          //}
-      //  },
-      //  {
-         // "Type": "Goomba",
-        //  "Point": {
-          //  "X": 129.5,
-          //  "Y": 12
-        //  }
-       // },
-       // {
-         // "Type": "Goomba",
-          //"Point": {
-           // "X": 174,
-            //"Y": 12
-         // }
-       // },
-       // {
-          //"Type": "Goomba",
-          //"Point": {
-            //"X": 175.5,
-           // "Y": 12
-          //}
-       // }
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 125.5,
+            "Y": 12
+          }
+        },
+        {
+          "Type": "Goomba",
+          "Point": {
+            "X": 128,
+            "Y": 12
+          }
+        },
+        {
+          "type": "goomba",
+          "point": {
+            "x": 129.5,
+            "y": 12
+          }
+        },
+        {
+          "type": "goomba",
+          "point": {
+            "x": 174,
+            "y": 12
+          }
+        },
+        {
+          "type": "goomba",
+          "point": {
+            "x": 175.5,
+            "y": 12
+          }
+        }
       ]
     },
     {
