@@ -76,7 +76,7 @@
             helmetParent = mario;
             State.Wear();
             mario.WearHelmet(this);
-            
+
         }
 
         protected override void OnUpdate(int time)
@@ -86,7 +86,7 @@
 
         protected override void OnSimulation(int time)
         {
-            if(!(state is Worn))
+            if (!(state is Worn))
                 ApplyGravity();
 
             if (state is MovingShell || state is NewlyMovingShell)
@@ -100,7 +100,7 @@
                     SetHorizontalVelocity(Const.VELOCITY_BEETLE_SHELL);
                 }
             }
-            else if(state is BeetleStates.Normal)
+            else if (state is BeetleStates.Normal)
             {
                 if (Facing == FacingMode.left)
                 {
@@ -111,11 +111,11 @@
                     SetHorizontalVelocity(Const.VELOCITY_BEETLE);
                 }
             }
-            else if(state is Worn)
+            else if (state is Worn)
             {
                 StopHorizontalMovement();
                 StopVerticalMovement();
-                Relocate(new Point(helmetParent.Location.X-5, helmetParent.Location.Y-5));
+                Relocate(new Point(helmetParent.Location.X - 5, helmetParent.Location.Y - 5));
             }
             else
             {

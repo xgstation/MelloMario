@@ -70,8 +70,9 @@
 
         public void Reset()
         {
-            game.Reset();
-            Resume();
+            game.Reset(scoreListener);
+
+             Resume();
         }
 
         public void Exit()

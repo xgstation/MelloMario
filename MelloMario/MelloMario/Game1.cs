@@ -75,8 +75,9 @@
             soundManager.ToggleMute();
         }
 
-        public void Reset()
+        public void Reset(IListener<IGameObject> scoreListener)
         {
+            ActivePlayer.Reset("Mario", scoreListener, soundManager.SoundEffectListener);
         }
 
         public void Select()

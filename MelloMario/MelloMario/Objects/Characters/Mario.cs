@@ -15,10 +15,12 @@
     using MelloMario.Sounds.Effects;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
+ 
 
     #endregion
 
     [Serializable]
+
     internal class Mario : BasePhysicalObject, ISoundable
     {
         public delegate void GameOverHandler(Mario m, EventArgs e);
@@ -75,12 +77,12 @@
             }
         }
 
-        public void WearHelmet(Beetle beetle)
-        {
-            helmet = beetle;
+          public void WearHelmet(Beetle beetle)
+       {
+            ;helmet = beetle;
             protectionState.Helmet();
         }
-
+    
         public void LoseHelmet()
         {
             helmet.Defeat();
