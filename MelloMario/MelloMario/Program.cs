@@ -20,7 +20,7 @@
         private static void Main()
         {
             Game game = new Game1();
-            //game = new NoiseGame();
+            //Game game = new NoiseGame();
             game.Run();
             game.Dispose();
         }
