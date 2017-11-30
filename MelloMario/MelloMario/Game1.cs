@@ -62,7 +62,6 @@
 
         public Menu CurrentSelected { get; private set; }
         public IPlayer ActivePlayer { get; }
-        public LevelIOJson LevelIOJson { get; }
 
         // game controlling
         public void ToggleFullScreen()
