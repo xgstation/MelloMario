@@ -70,7 +70,7 @@
                 characterType,
                 world,
                 this,
-                new Point(32, 32), //world.GetRespawnPoint(new Point()),
+                world.GetRespawnPoint(new Point()),
                 scoreListener,
                 soundEffectListener);
             world.Add(pair.Item1);
@@ -99,7 +99,7 @@
                 type,
                 world,
                 this,
-                new Point(32, 32), //world.GetRespawnPoint(((IGameObject) Character).Boundary.Location), // TODO: remove type casting
+                world.GetRespawnPoint(((IGameObject) Character).Boundary.Location), // TODO: remove type casting
                 scoreListener,
                 soundEffectListener);
             world.Add(pair.Item1);

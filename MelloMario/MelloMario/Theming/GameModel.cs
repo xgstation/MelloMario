@@ -106,7 +106,7 @@
                     generator,
                     new List<Point>
                     {
-                        new Point()
+                        new Point(0, 128) // TODO
                     });
 
                 game.LevelIOJson.Load(map, id, newWorld, generator);
@@ -123,7 +123,7 @@
                     generator,
                     new List<Point>
                     {
-                        new Point()
+                        new Point(0, 128) // TODO
                     });
 
                 newWorld.Extend(0, 0, 0, Const.GRID * 16);

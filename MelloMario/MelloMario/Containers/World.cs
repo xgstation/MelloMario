@@ -25,7 +25,7 @@
             respawnPoints = new HashSet<Point>();
             foreach (Point p in respawn)
             {
-                respawnPoints.Add(new Point(p.X * Const.GRID, p.Y * Const.GRID));
+                respawnPoints.Add(new Point(p.X, p.Y));
             }
         }
 
@@ -68,7 +68,7 @@
 
             foreach (Point p in respawnPoints)
             {
-                if (p.X <= location.X && p.X > target.X)
+                if (p.X <= location.X && p.X >= target.X)
                 {
                     target = p;
                 }
