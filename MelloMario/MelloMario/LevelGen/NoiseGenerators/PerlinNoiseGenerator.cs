@@ -3,6 +3,7 @@
     #region
 
     using System;
+    using System.Diagnostics;
     using System.Security.Cryptography;
     using Microsoft.Xna.Framework;
 
@@ -170,6 +171,8 @@
             {
                 j += 1;
             }
+
+            Debug.Print(i + " " + j);
 
             return new Tuple<int, int>(i, j);
         }
