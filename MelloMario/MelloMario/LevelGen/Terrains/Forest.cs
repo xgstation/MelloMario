@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -19,7 +20,7 @@
 
         public void Request(IWorld world, Rectangle range)
         {
-            for (int i = 1; i < 2 + range.Left * 23456789 / 32767 % 3; ++i)
+            for (int i = 1; i < 2 + Math.Abs(range.Left * 23456789 / 32767) % 5; ++i)
             {
                 world.Add(new Floor(world, new Point(range.Left, range.Bottom - i * Const.GRID), listener));
             }

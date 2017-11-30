@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using System.Collections.Generic;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -24,13 +25,13 @@
             while (world.Boundary.Left > range.Left - Const.SCAN_RANGE)
             {
                 Rectangle subRange = new Rectangle(world.Boundary.Left - Const.GRID, world.Boundary.Top, Const.GRID, world.Boundary.Height);
-                terrains[((range.Left / 640 % terrains.Count) + terrains.Count) % terrains.Count].Request(world, subRange); // TODO
+                terrains[Math.Abs(range.Left / 640) % terrains.Count].Request(world, subRange); // TODO
                 world.Extend(Const.GRID, 0, 0, 0);
             }
             while (world.Boundary.Right < range.Right + Const.SCAN_RANGE)
             {
                 Rectangle subRange = new Rectangle(world.Boundary.Right, world.Boundary.Top, Const.GRID, world.Boundary.Height);
-                terrains[((range.Left / 640 % terrains.Count) + terrains.Count) % terrains.Count].Request(world, subRange); // TODO
+                terrains[Math.Abs(range.Left / 640) % terrains.Count].Request(world, subRange); // TODO
                 world.Extend(0, Const.GRID, 0, 0);
             }
         }
