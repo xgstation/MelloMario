@@ -21,7 +21,7 @@
 
         public void ToggleMute()
         {
-            sounds.ToggleMute();
+            SoundTrackManager.ToggleMute();
             (SoundEffectListener as SoundEffectListener).ToggleMute();
         }
 

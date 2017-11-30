@@ -21,7 +21,7 @@
             player = newPlayer;
         }
 
-        public void ToggleMute()
+        public static void ToggleMute()
         {
             MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
         }
