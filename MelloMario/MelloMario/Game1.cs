@@ -87,11 +87,13 @@
                     gameModel = new GameModel(this, controllers);
                     graphicsManager.BindModel(gameModel);
                     gameModel.Initialize(GameMode.normal, soundManager.SoundEffectListener);
+                    soundManager.BindPlayer(ActivePlayer);
                     break;
                 case Menu.Infinite:
                     gameModel = new GameModel(this, controllers);
                     graphicsManager.BindModel(gameModel);
                     gameModel.Initialize(GameMode.infinite, soundManager.SoundEffectListener);
+                    soundManager.BindPlayer(ActivePlayer);
                     break;
                 case Menu.Quit:
                     Exit();

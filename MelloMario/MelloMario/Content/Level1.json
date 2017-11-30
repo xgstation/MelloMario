@@ -36,7 +36,18 @@
           },
           "Property": {
             "IsHidden": true,
-            "ItemValues": ["OneUpMushroomUnveil"]
+            "ItemValues": [ "OneUpMushroomUnveil" ]
+          },
+          "Type": "Question"
+        },
+        {
+          "Point": {
+            "X": 12,
+            "Y": 10
+          },
+          "Property": {
+            "IsHidden": false,
+            "ItemValues": [ "StarUnveil" ]
           },
           "Type": "Question"
         },
