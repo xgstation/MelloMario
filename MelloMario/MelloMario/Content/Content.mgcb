@@ -767,13 +767,13 @@
 #begin SFX/thwomp.WAV
 /importer:WavImporter
 /processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/processorParam:Quality=Medium
 /build:SFX/thwomp.WAV
 
 #begin SFX/smb_mariodie.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/processorParam:Quality=Medium
 /build:SFX/smb_mariodie.wav
 
 #begin BeetleDead.png
@@ -815,12 +815,12 @@
 #begin SFX/smb_jumpsmall.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/processorParam:Quality=Medium
 /build:SFX/smb_jumpsmall.wav
 
 #begin SFX/smb_bump.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/processorParam:Quality=Medium
 /build:SFX/smb_bump.wav
 
