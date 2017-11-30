@@ -20,9 +20,13 @@
 
         public void Request(IWorld world, Rectangle range)
         {
-            world.Add(new Floor(world, new Point(range.Left, range.Bottom - (3 + Math.Abs(range.Left / 96 * 123456789 / 65535) % 5) * Const.GRID), listener)); // TODO: random
-            //world.Add(new Floor(world, new Point(range.Left, range.Bottom - 2 * Const.GRID), listener));
-            //world.Add(new Floor(world, new Point(range.Left, range.Bottom - 1 * Const.GRID), listener));
+            for (int j = range.Left; j < range.Right; j += Const.GRID)
+            {
+                world.Add(new Floor(
+                    world,
+                    new Point(j, range.Bottom - (3 + Math.Abs(j / 96 * 123456789 / 65535) % 5) * Const.GRID),
+                    listener)); // TODO: random
+            }
         }
     }
 }

@@ -20,9 +20,12 @@
 
         public void Request(IWorld world, Rectangle range)
         {
-            for (int i = 1; i < 2 + Math.Abs(range.Left * 23456789 / 32767) % 5; ++i)
+            for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
-                world.Add(new Floor(world, new Point(range.Left, range.Bottom - i * Const.GRID), listener));
+                for (int i = 1; i < 2 + Math.Abs(j * 23456789 / 32767) % 5; ++i)
+                {
+                    world.Add(new Floor(world, new Point(j, range.Bottom - i * Const.GRID), listener));
+                }
             }
         }
     }
