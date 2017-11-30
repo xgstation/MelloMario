@@ -3,7 +3,10 @@
     #region
 
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using MelloMario.Graphics.UserInterfaces;
+    using MelloMario.Objects.Miscs;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -18,7 +21,7 @@
         private SpriteBatch spriteBatchBackgroundObjects;
         private IPlayer player;
         private IModel model;
-
+        private ICollection<Background> backgrounds;
         public GraphicsManager(Game1 game)
         {
             this.game = game;
@@ -34,6 +37,7 @@
             spriteBatchUI = new SpriteBatch(newGraphicsDevice);
             spriteBatchGameObjects = new SpriteBatch(newGraphicsDevice);
             spriteBatchBackgroundObjects = new SpriteBatch(newGraphicsDevice);
+            backgrounds = new List<Background>();
         }
 
         public void BindPlyaer(IPlayer newPlayer)
@@ -75,6 +79,7 @@
                 case GameState.transist:
                     break;
             }
+            DrawBackgroundObjects(time);
         }
 
         private void DrawUI(int time)
@@ -90,9 +95,15 @@
 
             foreach (IGameObject obj in player.Character.CurrentWorld.ScanNearby(player.Camera.Viewport))
             {
+                if (obj is Background background && background.BackGroundType.Contains("Cloud"))
+                {
 
-                obj.Draw(time, spriteBatchGameObjects);
-
+                    backgrounds.Add(background);
+                }
+                else
+                {
+                    obj.Draw(time, spriteBatchGameObjects);
+                }
             }
 
             spriteBatchGameObjects.End();
@@ -108,7 +119,11 @@
                 null,
                 null,
                 player.Camera.GetViewMatrix(new Vector2(0.5f)));
-            //TODO: Add background objects
+            foreach (Background background in backgrounds)
+            {
+                background.Draw(time, spriteBatchBackgroundObjects);
+            }
+            backgrounds.Clear();
             spriteBatchBackgroundObjects.End();
         }
     }
