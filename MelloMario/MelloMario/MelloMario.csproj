@@ -94,6 +94,7 @@
     <Compile Include="LevelGen\Static.cs" />
     <Compile Include="LevelGen\Terrains\Tunnel.cs" />
     <Compile Include="LevelGen\Terrains\Plain.cs" />
+    <Compile Include="LevelGen\Terrains\Forest.cs" />
     <Compile Include="LevelGen\Terrains\Village.cs" />
     <Compile Include="LevelGen\Terrains\Sky.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingDown.cs" />
