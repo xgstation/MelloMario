@@ -119,7 +119,7 @@
             }
             else
             {
-                StopHorizontalMovement();
+                SetHorizontalVelocity(0);
             }
 
             base.OnSimulation(time);
@@ -141,7 +141,7 @@
                         {
                             Wear(mario);
                         }
-                        else if (mode == CollisionMode.Top && corner == CornerMode.Top && !(mario.ProtectionState is Dead) || mario.ProtectionState is Starred)
+                        else if (mario.ProtectionState is Starred)
                         {
                             Defeat();
                         }
@@ -207,20 +207,18 @@
                     case FireBall fire:
                         Defeat();
                         break;
-                }
-                if (target is Koopa koopa)
-                {
-                    if (koopa.State is KoopaStates.MovingShell || koopa.State is KoopaStates.NewlyMovingShell)
-                    {
-                        Defeat();
-                    }
-                }
-                if (target is Beetle beetle)
-                {
-                    if (beetle.State is MovingShell || beetle.State is NewlyMovingShell)
-                    {
-                        Defeat();
-                    }
+                    case Koopa koopa:
+                        if (koopa.State is KoopaStates.MovingShell || koopa.State is KoopaStates.NewlyMovingShell)
+                        {
+                            Defeat();
+                        }
+                        break;
+                    case Beetle beetle:
+                        if (beetle.State is MovingShell || beetle.State is NewlyMovingShell)
+                        {
+                            Defeat();
+                        }
+                        break;
                 }
             }
         }
