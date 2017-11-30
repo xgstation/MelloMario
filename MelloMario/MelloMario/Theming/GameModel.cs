@@ -118,6 +118,7 @@
             {
                 IGenerator generator = new Scroll(new List<IGenerator>
                 {
+                    new Forest(scoreListener),
                     new Plain(scoreListener),
                     new Sky(scoreListener),
                     new Tunnel(scoreListener),
