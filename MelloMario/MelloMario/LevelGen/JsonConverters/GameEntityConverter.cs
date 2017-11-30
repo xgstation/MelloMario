@@ -103,7 +103,7 @@
                 Debug.WriteLine("Deserialize fail: No start point provided!");
                 return null;
             }
-            objPoint = new Point((int) (objVector.X * Const.GRID), (int) (objVector.Y * Const.GRID));
+            objPoint = new Point((int)(objVector.X * Const.GRID), (int)(objVector.Y * Const.GRID));
             objectStack = new Stack<IGameObject>();
 
             if (!Util.TryGet(out string typeStr, token, "Type"))
@@ -197,7 +197,7 @@
 
         private bool ItemConverter()
         {
-            createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, listener, soundListener, false);
+            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, listener, soundListener, false);
             switch (produceMode)
             {
                 case ProduceMode.One:
@@ -235,13 +235,13 @@
             if (type.Name == "Piranha")
             {
                 float hideTime = Util.TryGet(out hideTime, token, "Property", "HideTime") ? hideTime : 3;
-                createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, hideTime);
+                createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, hideTime);
                 objectStack.Push(createFunc(objPoint));
             }
             else if (type.Name == "Koopa")
             {
                 Util.TryGet(out string color, token, "Property", "Color");
-                createFunc = point => (IGameObject) Activator.CreateInstance(
+                createFunc = point => (IGameObject)Activator.CreateInstance(
                     type,
                     world,
                     point,
@@ -341,35 +341,35 @@
             switch (produceMode)
             {
                 case ProduceMode.One:
-                    objectStack.Push((IGameObject) Activator.CreateInstance(type, world, objPoint, listener, false));
+                    objectStack.Push((IGameObject)Activator.CreateInstance(type, world, objPoint, listener, false));
                     break;
                 case ProduceMode.Rectangle:
-                {
-                    foreach (IGameObject obj in Util.BatchRecCreate(
-                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                        objPoint,
-                        quantity,
-                        new Point(Const.GRID, Const.GRID),
-                        ignoredSet))
                     {
-                        objectStack.Push(obj);
+                        foreach (IGameObject obj in Util.BatchRecCreate(
+                            point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false),
+                            objPoint,
+                            quantity,
+                            new Point(Const.GRID, Const.GRID),
+                            ignoredSet))
+                        {
+                            objectStack.Push(obj);
+                        }
+                        break;
                     }
-                    break;
-                }
 
                 case ProduceMode.Triangle:
-                {
-                    foreach (IGameObject obj in Util.BatchTriCreate(
-                        point => (IGameObject) Activator.CreateInstance(type, world, point, listener, false),
-                        objPoint,
-                        triangleSize,
-                        new Point(Const.GRID, Const.GRID),
-                        ignoredSet))
                     {
-                        objectStack.Push(obj);
+                        foreach (IGameObject obj in Util.BatchTriCreate(
+                            point => (IGameObject)Activator.CreateInstance(type, world, point, listener, false),
+                            objPoint,
+                            triangleSize,
+                            new Point(Const.GRID, Const.GRID),
+                            ignoredSet))
+                        {
+                            objectStack.Push(obj);
+                        }
+                        break;
                     }
-                    break;
-                }
             }
         }
 
@@ -401,8 +401,8 @@
                             new Point(objPoint.X + 16, objPoint.Y),
                             listener,
                             new Point(32, 48),
-                            (int) (hiddenTime * 1000),
-                            (int) (showTime * 1000),
+                            (int)(hiddenTime * 1000),
+                            (int)(showTime * 1000),
                             32,
                             color);
                     }
@@ -425,6 +425,10 @@
                         Database.AddPortal(list[0] as Pipeline, portalTo);
                         Database.AddPortal(list[1] as Pipeline, portalTo);
                     }
+                }
+                foreach (IGameObject pipecomponent in list)
+                {
+                    objectStack.Push(pipecomponent);
                 }
             }
             else
@@ -489,9 +493,9 @@
                 Debug.WriteLine("Deserialize fail: Type of background is not given!");
             }
             ZIndex zIndex = Util.TryGet(out string s, token, "Property", "ZIndex")
-                ? (ZIndex) Enum.Parse(typeof(ZIndex), s)
+                ? (ZIndex)Enum.Parse(typeof(ZIndex), s)
                 : ZIndex.Background0;
-            createFunc = point => (IGameObject) Activator.CreateInstance(type, world, point, backgroundType, zIndex);
+            createFunc = point => (IGameObject)Activator.CreateInstance(type, world, point, backgroundType, zIndex);
             objFullSize = createFunc(new Point()).Boundary.Size;
             if (produceMode is ProduceMode.One)
             {
