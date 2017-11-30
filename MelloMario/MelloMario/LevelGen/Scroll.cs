@@ -4,6 +4,7 @@
 
     using System;
     using System.Collections.Generic;
+    using MelloMario.LevelGen.Terrains;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
@@ -13,9 +14,16 @@
     {
         private readonly IList<IGenerator> terrains;
 
-        public Scroll(IList<IGenerator> terrains)
+        public Scroll(IListener<IGameObject> scoreListener)
         {
-            this.terrains = terrains;
+            this.terrains = new List<IGenerator>
+            {
+                new Forest(scoreListener),
+                new Plain(scoreListener),
+                new Sky(scoreListener),
+                new Tunnel(scoreListener),
+                new Village(scoreListener)
+            };
         }
 
         public void Request(IWorld world, Rectangle range)

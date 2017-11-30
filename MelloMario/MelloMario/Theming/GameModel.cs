@@ -7,7 +7,6 @@
     using MelloMario.Containers;
     using MelloMario.Controls.Scripts;
     using MelloMario.LevelGen;
-    using MelloMario.LevelGen.Terrains;
     using MelloMario.Sounds.Effects;
     using Microsoft.Xna.Framework;
 
@@ -116,14 +115,7 @@
             }
             else
             {
-                IGenerator generator = new Scroll(new List<IGenerator>
-                {
-                    new Forest(scoreListener),
-                    new Plain(scoreListener),
-                    new Sky(scoreListener),
-                    new Tunnel(scoreListener),
-                    new Village(scoreListener)
-                });
+                IGenerator generator = new Scroll(scoreListener);
 
                 IWorld newWorld = new World(
                     id,
