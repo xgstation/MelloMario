@@ -6,16 +6,16 @@
       "Grid": 32,
       "Size": {
         "X": 212,
-        "Y": 15
+        "Y": 18
       },
       "RespawnPoints": [
         {
           "X": 3,
-          "Y": 5
+          "Y": 10
         },
         {
           "X": 53,
-          "Y": 5
+          "Y": 10
         }
       ],
       "Characters": [
@@ -32,7 +32,7 @@
         {
           "Point": {
             "X": 6,
-            "Y": 12
+            "Y": 15
           },
           "Property": {
             "Type": "Bush"
@@ -42,7 +42,7 @@
         {
           "Point": {
             "X": 10,
-            "Y": 12
+            "Y": 15
           },
           "Property": {
             "Type": "Bush"
@@ -52,7 +52,7 @@
         {
           "Point": {
             "X": 15,
-            "Y": 12
+            "Y": 15
           },
           "Property": {
             "Type": "Bush"
@@ -62,7 +62,7 @@
         {
           "Point": {
             "X": 35,
-            "Y": 12
+            "Y": 15
           },
           "Property": {
             "Type": "Bush"
@@ -72,7 +72,7 @@
         {
           "Point": {
             "X": 30,
-            "Y": 12
+            "Y": 15
           },
           "Property": {
             "Type": "Bush"
@@ -82,7 +82,7 @@
         {
           "Point": {
             "X": 67,
-            "Y": 12
+            "Y": 15
           },
           "Property": {
             "Type": "Bush"
@@ -92,7 +92,7 @@
         {
           "Point": {
             "X": 64,
-            "Y": 8
+            "Y": 11
           },
           "Property": {
             "IsHidden": true,
@@ -103,7 +103,7 @@
         {
           "Point": {
             "X": 12,
-            "Y": 10
+            "Y": 13
           },
           "Property": {
             "IsHidden": false,
@@ -114,21 +114,21 @@
         {
           "Point": {
             "X": 13,
-            "Y": 12
+            "Y": 15
           },
           "Type": "Stair"
         },
         {
           "Point": {
             "X": 25,
-            "Y": 12
+            "Y": 15
           },
           "Type": "Stair"
         },
         {
           "Point": {
             "X": 0,
-            "Y": 13
+            "Y": 16
           },
           "Quantity": {
             "X": 69,
@@ -139,7 +139,7 @@
         {
           "Point": {
             "X": 71,
-            "Y": 13
+            "Y": 16
           },
           "Quantity": {
             "X": 15,
@@ -150,7 +150,7 @@
         {
           "Point": {
             "X": 89,
-            "Y": 13
+            "Y": 16
           },
           "Quantity": {
             "X": 64,
@@ -161,7 +161,7 @@
         {
           "Point": {
             "X": 155,
-            "Y": 13
+            "Y": 16
           },
           "Quantity": {
             "X": 57,
@@ -178,14 +178,14 @@
           },
           "Point": {
             "X": 16,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Question"
         },
         {
           "Point": {
             "X": 20,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Brick"
         },
@@ -198,14 +198,14 @@
           },
           "Point": {
             "X": 21,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Question"
         },
         {
           "Point": {
             "X": 22,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Brick"
         },
@@ -218,14 +218,14 @@
           },
           "Point": {
             "X": 23,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Question"
         },
         {
           "Point": {
             "X": 24,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Brick"
         },
@@ -238,7 +238,7 @@
           },
           "Point": {
             "X": 22,
-            "Y": 5
+            "Y": 8
           },
           "Type": "Question"
         },
@@ -246,7 +246,7 @@
           "Type": "Pipeline",
           "Point": {
             "X": 28,
-            "Y": 11
+            "Y": 14
           },
           "Property": {
             "Piranha": {
@@ -262,7 +262,7 @@
           "Type": "Pipeline",
           "Point": {
             "X": 38,
-            "Y": 10
+            "Y": 13
           },
           "Property": {
             "Length": 2,
@@ -273,7 +273,7 @@
           "Type": "Pipeline",
           "Point": {
             "X": 46,
-            "Y": 9
+            "Y": 12
           },
           "Property": {
             "Length": 3,
@@ -284,7 +284,7 @@
           "Type": "Pipeline",
           "Point": {
             "X": 57,
-            "Y": 9
+            "Y": 12
           },
           "Property": {
             "Length": 3,
@@ -296,7 +296,7 @@
         {
           "Point": {
             "X": 77,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Brick"
         },
@@ -309,14 +309,14 @@
           },
           "Point": {
             "X": 78,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Question"
         },
         {
           "Point": {
             "X": 79,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Brick"
         },
@@ -327,7 +327,7 @@
           },
           "Point": {
             "X": 80,
-            "Y": 5
+            "Y": 8
           },
           "Type": "Brick"
         },
@@ -338,7 +338,7 @@
           },
           "Point": {
             "X": 91,
-            "Y": 5
+            "Y": 8
           },
           "Type": "Brick"
         },
@@ -351,7 +351,7 @@
           },
           "Point": {
             "X": 94,
-            "Y": 5
+            "Y": 8
           },
           "Type": "Question"
         },
@@ -366,7 +366,7 @@
           },
           "Point": {
             "X": 94,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Brick"
         },
@@ -391,7 +391,7 @@
           },
           "Point": {
             "X": 100,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Brick"
         },
@@ -404,7 +404,7 @@
           },
           "Point": {
             "X": 106,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Question"
         },
@@ -417,7 +417,7 @@
           },
           "Point": {
             "X": 109,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Question"
         },
@@ -430,7 +430,7 @@
           },
           "Point": {
             "X": 112,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Question"
         },
@@ -443,14 +443,14 @@
           },
           "Point": {
             "X": 109,
-            "Y": 5
+            "Y": 8
           },
           "Type": "Question"
         },
         {
           "Point": {
             "X": 118,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Brick"
         },
@@ -461,14 +461,14 @@
           },
           "Point": {
             "X": 121,
-            "Y": 5
+            "Y": 8
           },
           "Type": "Brick"
         },
         {
           "Point": {
             "X": 128,
-            "Y": 5
+            "Y": 8
           },
           "Type": "Brick"
         },
@@ -480,7 +480,7 @@
           },
           "Point": {
             "X": 129,
-            "Y": 5
+            "Y": 8
           },
           "Type": "Question"
         },
@@ -492,14 +492,14 @@
           },
           "Point": {
             "X": 130,
-            "Y": 5
+            "Y": 8
           },
           "Type": "Question"
         },
         {
           "Point": {
             "X": 131,
-            "Y": 5
+            "Y": 8
           },
           "Type": "Brick"
         },
@@ -510,7 +510,7 @@
           },
           "Point": {
             "X": 129,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Brick"
         },
@@ -521,7 +521,7 @@
           },
           "Point": {
             "X": 137,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Stair"
         },
@@ -532,7 +532,7 @@
           },
           "Point": {
             "X": 140,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Stair"
         },
@@ -543,7 +543,7 @@
           },
           "Point": {
             "X": 151,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Stair"
         },
@@ -554,7 +554,7 @@
           },
           "Point": {
             "X": 152,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Stair"
         },
@@ -565,7 +565,7 @@
           },
           "Point": {
             "X": 155,
-            "Y": 9
+            "Y": 12
           },
           "Type": "Stair"
         },
@@ -573,7 +573,7 @@
           "Type": "Pipeline",
           "Point": {
             "X": 163,
-            "Y": 11
+            "Y": 14
           },
           "Property": {
             "Length": 1,
@@ -584,7 +584,7 @@
           "Type": "Brick",
           "Point": {
             "X": 168,
-            "Y": 9
+            "Y": 12
           },
           "Quantity": {
             "X": 2,
@@ -595,7 +595,7 @@
           "Type": "Question",
           "Point": {
             "X": 170,
-            "Y": 9
+            "Y": 12
           },
           "Property": {
             "ItemValue": "CoinUnveil"
@@ -605,14 +605,14 @@
           "Type": "Brick",
           "Point": {
             "X": 171,
-            "Y": 9
+            "Y": 12
           }
         },
         {
           "Type": "Pipeline",
           "Point": {
             "X": 179,
-            "Y": 11
+            "Y": 14
           },
           "Property": {
             "Length": 1,
@@ -623,7 +623,7 @@
           "Type": "Stair",
           "Point": {
             "X": 188,
-            "Y": 5
+            "Y": 8
           },
           "Triangle": {
             "X": -8,
@@ -634,7 +634,7 @@
           "Type": "Stair",
           "Point": {
             "X": 189,
-            "Y": 5
+            "Y": 8
           },
           "Quantity": {
             "X": 1,
@@ -645,14 +645,14 @@
           "Type": "Stair",
           "Point": {
             "X": 198,
-            "Y": 12
+            "Y": 15
           }
         },
         {
           "Type": "Flag",
           "Point": {
             "X": 198,
-            "Y": 3
+            "Y": 6
           },
           "Property": {
             "Height": 9
@@ -662,91 +662,91 @@
           "Type": "CastleIdle",
           "Point": {
             "X": 202,
-            "Y": 8
+            "Y": 11
           }
         },
         //{
         //"Type": "Goomba",
         // "Point": {
         // "X": 22,
-        //"Y": 12
+        //"Y": 15
         // }
         // },
         {
           "Type": "Thwomp",
           "Point": {
             "X": 30,
-            "Y": 5
+            "Y": 8
           }
         },
         // {
         //"Type": "Goomba",
         //"Point": {
         // "X": 40,
-        // "Y": 12
+        // "Y": 15
         // }
         // },
         //{
         // "Type": "Goomba",
         //"Point": {
         //  "X": 51,
-        //"Y": 12
+        //"Y": 15
         // }
         // },
         // {
         // "Type": "Goomba",
         // "Point": {
         //  "X": 52.5,
-        // "Y": 12
+        // "Y": 15
         //}
         //},
         // {
         //"Type": "Goomba",
         //"Point": {
         // "X": 80,
-        // "Y": 4
+        // "Y": 7
         // }
         // },
         {
           "Type": "Goomba",
           "Point": {
             "X": 82,
-            "Y": 4
+            "Y": 7
           }
         },
         {
           "Type": "Goomba",
           "Point": {
             "X": 97,
-            "Y": 12
+            "Y": 15
           }
         },
         {
           "Type": "Goomba",
           "Point": {
             "X": 98.5,
-            "Y": 12
+            "Y": 15
           }
         },
         {
           "Type": "Goomba",
           "Point": {
             "X": 98.5,
-            "Y": 12
+            "Y": 15
           }
         },
         {
           "Type": "Beetle",
           "Point": {
             "X": 16,
-            "Y": 12
+            "Y": 15
           }
         },
         // {
         //"Type": "Koopa",
         //  "Point": {
         //  "X": 107,
-        // "Y": 12
+        // "Y": 15
         // },
         // "Property": {
         //"Color": "Green"
@@ -756,56 +756,56 @@
         //"Type": "Goomba",
         // "Point": {
         //  "X": 114,
-        // "Y": 12
+        // "Y": 15
         //}
         //},
         {
           "Type": "Goomba",
           "Point": {
             "X": 115.5,
-            "Y": 12
+            "Y": 15
           }
         },
         {
           "Type": "Goomba",
           "Point": {
             "X": 124,
-            "Y": 12
+            "Y": 15
           }
         } //,
         // {
         // "Type": "Goomba",
         // "Point": {
         // "X": 125.5,
-        // "Y": 12
+        // "Y": 15
         // }
         // },
         //{
         // "Type": "Goomba",
         // "Point": {
         /// "X": 128,
-        // "Y": 12
+        // "Y": 15
         //}
         //  },
         //  {
         // "Type": "Goomba",
         //  "Point": {
         //  "X": 129.5,
-        //  "Y": 12
+        //  "Y": 15
         //  }
         // },
         // {
         // "Type": "Goomba",
         //"Point": {
         // "X": 174,
-        //"Y": 12
+        //"Y": 15
         // }
         // },
         // {
         //"Type": "Goomba",
         //"Point": {
         //"X": 175.5,
-        // "Y": 12
+        // "Y": 15
         //}
         // }
       ]
@@ -833,7 +833,7 @@
           },
           "Point": {
             "X": 0,
-            "Y": 13
+            "Y": 16
           }
         },
         {
@@ -844,7 +844,7 @@
           },
           "Point": {
             "X": 0,
-            "Y": 2
+            "Y": 5
           }
         },
         {
@@ -855,7 +855,7 @@
           },
           "Point": {
             "X": 4,
-            "Y": 2
+            "Y": 5
           }
         },
         {
@@ -866,21 +866,21 @@
           },
           "Point": {
             "X": 4,
-            "Y": 10
+            "Y": 13
           }
         },
         {
           "Type": "IdelForPipelineH",
           "Point": {
             "X": 13,
-            "Y": 11
+            "Y": 14
           }
         },
         {
           "Type": "PipelineH",
           "Point": {
             "X": 14,
-            "Y": 12
+            "Y": 15
           },
           "Property": {
             "Entrance": "Main",
@@ -892,7 +892,7 @@
           "Type": "Coin",
           "Point": {
             "X": 5,
-            "Y": 5
+            "Y": 8
           },
           "Quantity": {
             "X": 5,
@@ -903,7 +903,7 @@
           "Type": "Coin",
           "Point": {
             "X": 4,
-            "Y": 7
+            "Y": 10
           },
           "Quantity": {
             "X": 7,
@@ -914,7 +914,7 @@
           "Type": "Coin",
           "Point": {
             "X": 4,
-            "Y": 9
+            "Y": 12
           },
           "Quantity": {
             "X": 7,
