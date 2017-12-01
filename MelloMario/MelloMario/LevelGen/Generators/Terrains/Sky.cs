@@ -50,6 +50,8 @@
                 {
                     AddObject("Floor", world, new Point(j + k * Const.GRID, range.Bottom - i * Const.GRID));
                 }
+
+                RunChild2(world, new Rectangle(j, range.Bottom - (i + 1) * Const.GRID, Const.GRID, Const.GRID), PerlinNoiseGenerator.Random(23335, j / Const.GRID));
             }
         }
     }
