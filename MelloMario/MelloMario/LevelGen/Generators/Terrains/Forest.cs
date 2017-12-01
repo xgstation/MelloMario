@@ -5,6 +5,7 @@
     using System;
     using MelloMario.Factories;
     using MelloMario.LevelGen.Generators.Objects;
+    using MelloMario.LevelGen.Generators.Structures;
     using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
@@ -16,6 +17,10 @@
     {
         public Forest(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
+            Children.Add(new None());
+            Children.Add(new None());
+            Children.Add(new None());
+            Children.Add(new Coins(scoreListener, soundListener));
             Children2.Add(new None());
             Children2.Add(new None());
             Children2.Add(new Enemies(scoreListener, soundListener));
@@ -29,11 +34,11 @@
                 int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 20) % 20;
 
                 int height = Math.Min(
-                    PerlinNoiseGenerator.Random(1234, j / Const.GRID) % 5
+                    2 + PerlinNoiseGenerator.Random(1234, j / Const.GRID) % 5
                     + PerlinNoiseGenerator.Random(1234, j / Const.GRID + 1) % 5,
                     Math.Min(3 + 3 * (j - range.Left) / Const.GRID, 3 + 3 * (range.Right - Const.GRID - j) / Const.GRID));
 
-                for (int i = 1; i <= 2 + height; ++i)
+                for (int i = 1; i <= height; ++i)
                 {
                     if (
                         mat < 1
@@ -48,6 +53,15 @@
                 }
 
                 RunChild2(world, new Rectangle(j, range.Bottom - (height + 1) * Const.GRID, Const.GRID, Const.GRID), PerlinNoiseGenerator.Random(23335, j / Const.GRID));
+            }
+
+            for (int j = range.Left, k; j < range.Right; j = k)
+            {
+                Tuple<int, int> pair = PerlinNoiseGenerator.RandomSplit(34567, j / Const.GRID, 8);
+                k = Math.Min(pair.Item2 * Const.GRID, range.Right);
+
+                Rectangle subRange = new Rectangle(j, world.Boundary.Top, k - j, world.Boundary.Height - 14 * Const.GRID);
+                RunChild(world, subRange, PerlinNoiseGenerator.Random(23335, pair.Item1));
             }
         }
     }

@@ -14,10 +14,6 @@
     {
         public Island(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
-            Children2.Add(new Backgrounds(scoreListener, soundListener));
-            Children2.Add(new Blocks(scoreListener, soundListener));
-            Children2.Add(new Enemies(scoreListener, soundListener));
-            Children2.Add(new Enemies(scoreListener, soundListener));
         }
 
         protected override void OnRequest(IWorld world, Rectangle range)
