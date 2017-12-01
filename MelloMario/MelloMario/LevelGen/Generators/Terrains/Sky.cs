@@ -37,7 +37,7 @@
                 {
                     AddObject("Question", world, new Point(j + k * Const.GRID, range.Bottom - i * Const.GRID));
                 }
-                else if (mat < 2 || mat < 4 && PerlinNoiseGenerator.Random(8766, (range.Left + i) / Const.GRID) % 2 != 0)
+                else if (mat < 2 || mat < 4 && PerlinNoiseGenerator.Random(8766, range.Left / Const.GRID + i) % 2 != 0)
                 {
                     AddObject("Stair", world, new Point(j + k * Const.GRID, range.Bottom - i * Const.GRID));
                 }

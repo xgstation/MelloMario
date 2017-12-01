@@ -17,7 +17,10 @@
 
         protected override void OnRequest(IWorld world, Rectangle range)
         {
-            base.OnRequest(world, new Rectangle(range.X + 2 * Const.GRID, range.Y, range.Width - 4 * Const.GRID, range.Height));
+            int m1 = PerlinNoiseGenerator.Random(3333, range.Left / Const.GRID) % 4 + 2;
+            int m2 = PerlinNoiseGenerator.Random(3333, range.Left / Const.GRID) % 4 + 2;
+
+            base.OnRequest(world, new Rectangle(range.X + m1 * Const.GRID, range.Y, range.Width - (m1 + m2) * Const.GRID, range.Height));
         }
     }
 }

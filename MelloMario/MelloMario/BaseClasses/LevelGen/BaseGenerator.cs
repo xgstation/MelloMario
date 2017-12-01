@@ -3,6 +3,7 @@
     #region
 
     using System;
+    using System.Collections.Generic;
     using MelloMario.Factories;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -11,6 +12,8 @@
 
     internal abstract class BaseGenerator : IGenerator
     {
+        protected IList<IGenerator> Children;
+
         protected IListener<IGameObject> ScoreListener;
         protected IListener<ISoundable> SoundListener;
 
@@ -20,6 +23,7 @@
         {
             ScoreListener = scoreListener;
             SoundListener = soundListener;
+            Children = new List<IGenerator>();
         }
 
         public void Request(IWorld world, Rectangle range)

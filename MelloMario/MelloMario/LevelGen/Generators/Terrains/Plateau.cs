@@ -23,7 +23,7 @@
                 int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 20) % 20;
 
                 int height = Math.Min(
-                    range.Height / Const.GRID - 6 - PerlinNoiseGenerator.Random(12321, range.Left) % 6,
+                    range.Height / Const.GRID - 6 - PerlinNoiseGenerator.Random(12321, range.Left / Const.GRID) % 6,
                     Math.Min(3 + (j - range.Left) / Const.GRID, 3 + (range.Right - Const.GRID - j) / Const.GRID));
 
                 for (int i = 1; i <= height; ++i)
