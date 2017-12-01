@@ -169,12 +169,12 @@
             return MathHelper.LerpPrecise(a, b, k);
         }
 
-        private static int Rand(int seed, int x)
+        public static int Rand(int seed, int x)
         {
             int x1 = x * 987654321 + seed * 123456789 + 55556666;
             int q = x1 / 127773;
             int r = x1 % 127773;
-            return 16807 * r - 2836 * q;
+            return Math.Abs(16807 * r - 2836 * q);
         }
     }
 }

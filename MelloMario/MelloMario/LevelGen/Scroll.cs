@@ -21,6 +21,7 @@
             {
                 new Forest(scoreListener),
                 new Plain(scoreListener),
+                new Plain(scoreListener), // more plain terrain // TODO: use weighted list
                 new Plateau(scoreListener),
                 new Sky(scoreListener),
                 new Tunnel(scoreListener)
