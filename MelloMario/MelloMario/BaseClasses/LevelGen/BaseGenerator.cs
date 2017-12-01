@@ -47,7 +47,7 @@
 
         protected void RunChild2(IWorld world, Rectangle range, int rand)
         {
-            Children[rand % Children.Count].Request(world, range);
+            Children2[rand % Children2.Count].Request(world, range);
         }
     }
 }
