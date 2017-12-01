@@ -18,7 +18,7 @@
 
     #endregion
 
-    internal class Goomba : BasePhysicalObject
+    internal class Goomba : BasePhysicalObject, ISoundable
     {
         private IGoombaState state;
 
@@ -62,6 +62,8 @@
             state.Update(time);
         }
 
+        public event SoundHandler SoundEvent;
+
         protected override void OnSimulation(int time)
         {
             ApplyGravity();
@@ -74,7 +76,7 @@
             {
                 SetHorizontalVelocity(Const.VELOCITY_GOOMBA);
             }
-
+            SoundEvent?.Invoke(this, SoundEventArgs);
             base.OnSimulation(time);
         }
 

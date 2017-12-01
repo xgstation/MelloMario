@@ -2,6 +2,7 @@
 {
     #region
 
+    using MelloMario.Factories;
     using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
@@ -9,16 +10,13 @@
 
     #endregion
 
-    internal class Forest : IGenerator
+    internal class Forest : BaseGenerator
     {
-        private readonly IListener<IGameObject> listener;
-
-        public Forest(IListener<IGameObject> listener)
+        public Forest(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
-            this.listener = listener;
         }
 
-        public void Request(IWorld world, Rectangle range)
+        protected override void OnRequest(IWorld world, Rectangle range)
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
@@ -28,11 +26,11 @@
                 {
                     if (mat >= 4 || mat >= 3 && PerlinNoiseGenerator.Random(1235, i / Const.GRID) % 2 == 0)
                     {
-                        world.Add(new Stair(world, new Point(j, range.Bottom - i * Const.GRID), listener));
+                        AddObject("Stair", world, new Point(j, range.Bottom - i * Const.GRID));
                     }
                     else
                     {
-                        world.Add(new Floor(world, new Point(j, range.Bottom - i * Const.GRID), listener));
+                        AddObject("Floor", world, new Point(j, range.Bottom - i * Const.GRID));
                     }
                 }
             }

@@ -124,7 +124,7 @@
             }
             else
             {
-                IGenerator generator = new Scroll(scoreListener);
+                IGenerator generator = new Scroll(scoreListener, new SoundEffectListener()); // TODO: do not init it here
 
                 IWorld newWorld = new World(
                     id,

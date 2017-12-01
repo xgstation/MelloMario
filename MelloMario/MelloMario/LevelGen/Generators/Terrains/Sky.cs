@@ -9,49 +9,33 @@
 
     #endregion
 
-    internal class Sky : IGenerator
+    internal class Sky : BaseGenerator
     {
-        private readonly IListener<IGameObject> listener;
-
-        public Sky(IListener<IGameObject> listener)
+        public Sky(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
-            this.listener = listener;
         }
 
-        public void Request(IWorld world, Rectangle range)
+        protected override void OnRequest(IWorld world, Rectangle range)
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
                 int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 5;
 
-                int h = PerlinNoiseGenerator.RandomProp(8765, j / Const.GRID, 2) % (range.Height / Const.GRID - 8);
+                int i = PerlinNoiseGenerator.RandomProp(8765, j / Const.GRID, 2) % (range.Height / Const.GRID - 8);
 
-                if (h >= 2)
+                if (i >= 2)
                 {
                     if (mat >= 3)
                     {
-                        // TODO
-                        //world.Add(
-                        //    new Brick(
-                        //        world,
-                        //        new Point(j, range.Bottom - h * Const.GRID),
-                        //        listener));
+                        AddObject("Brick", world, new Point(j, range.Bottom - i * Const.GRID));
                     }
-                    if (mat >= 2 || mat >= 1 && PerlinNoiseGenerator.Random(8766, (range.Left + h) / Const.GRID) % 2 != 0)
+                    if (mat >= 2 || mat >= 1 && PerlinNoiseGenerator.Random(8766, (range.Left + i) / Const.GRID) % 2 != 0)
                     {
-                        world.Add(
-                            new Stair(
-                                world,
-                                new Point(j, range.Bottom - h * Const.GRID),
-                                listener));
+                        AddObject("Stair", world, new Point(j, range.Bottom - i * Const.GRID));
                     }
                     else
                     {
-                        world.Add(
-                            new Floor(
-                                world,
-                                new Point(j, range.Bottom - h * Const.GRID),
-                                listener));
+                        AddObject("Floor", world, new Point(j, range.Bottom - i * Const.GRID));
                     }
                 }
             }

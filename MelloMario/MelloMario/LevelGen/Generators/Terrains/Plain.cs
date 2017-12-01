@@ -9,32 +9,28 @@
 
     #endregion
 
-    internal class Plain : IGenerator
+    internal class Plain : BaseGenerator
     {
-        private readonly IListener<IGameObject> listener;
-
-        public Plain(IListener<IGameObject> listener)
+        public Plain(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
-            this.listener = listener;
         }
 
-        public void Request(IWorld world, Rectangle range)
+        protected override void OnRequest(IWorld world, Rectangle range)
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
                 int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 5;
 
-                if (mat >= 4)
+                for (int i = 1; i <= 3; ++i)
                 {
-                    world.Add(new Stair(world, new Point(j, range.Bottom - 3 * Const.GRID), listener));
-                    world.Add(new Stair(world, new Point(j, range.Bottom - 2 * Const.GRID), listener));
-                    world.Add(new Stair(world, new Point(j, range.Bottom - 1 * Const.GRID), listener));
-                }
-                else
-                {
-                    world.Add(new Floor(world, new Point(j, range.Bottom - 3 * Const.GRID), listener));
-                    world.Add(new Floor(world, new Point(j, range.Bottom - 2 * Const.GRID), listener));
-                    world.Add(new Floor(world, new Point(j, range.Bottom - 1 * Const.GRID), listener));
+                    if (mat >= 4)
+                    {
+                        AddObject("Stair", world, new Point(j, range.Bottom - i * Const.GRID));
+                    }
+                    else
+                    {
+                        AddObject("Floor", world, new Point(j, range.Bottom - i * Const.GRID));
+                    }
                 }
             }
         }
