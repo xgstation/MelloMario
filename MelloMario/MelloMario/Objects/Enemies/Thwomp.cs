@@ -20,8 +20,6 @@
 
     internal class Thwomp : BasePhysicalObject
     {
-        private readonly IState state;
-
         private bool onFloor = true;
 
         public ISoundArgs SoundEventArgs { get; }
@@ -33,7 +31,7 @@
             new Point(32, 32),
             32)
         {
-            state = new ThwompStates.Normal(this);
+            State = new ThwompStates.Normal(this);
             SoundEventArgs = new SoundArgs();
             NormalTime = 100;
             UpdateSprite();
@@ -54,7 +52,7 @@
 
         protected override void OnUpdate(int time)
         {
-            state.Update(time);
+            State.Update(time);
             HasMarioBelow = DetectMario();
         }
 
@@ -140,8 +138,8 @@
         private bool DetectMario()
         {
             return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 500))
-                where obj is ICharacter
-                select obj).Any();
+                    where obj is ICharacter
+                    select obj).Any();
         }
 
         private void UpdateSprite()
