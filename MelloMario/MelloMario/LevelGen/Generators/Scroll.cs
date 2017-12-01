@@ -25,8 +25,7 @@
                 new Plain(scoreListener, soundListener),
                 new Plain(scoreListener, soundListener), // more plain terrain // TODO: use weighted list
                 new Plateau(scoreListener, soundListener),
-                new Sky(scoreListener, soundListener),
-                new Tunnel(scoreListener, soundListener)
+                new Sky(scoreListener, soundListener)
             };
         }
 
