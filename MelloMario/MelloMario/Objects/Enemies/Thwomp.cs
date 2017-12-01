@@ -87,7 +87,6 @@
             switch (target.GetType().Name)
             {
                 case "MarioCharacter":
-                    //TODO: Fire to be added
                     Mario mario = (Mario) target;
                     if (mario.ProtectionState is Starred)
                     {
@@ -109,7 +108,6 @@
                 case "Floor":
                     onFloor = true;
                     break;
-                // perhaps register that it is on the floor, wait a second, then rise back up?
                 case "Pipeline":
                 case "Stair":
                     if (mode == CollisionMode.Left)
