@@ -37,7 +37,7 @@
 
             while (world.Boundary.Left > range.Left - Const.GRID)
             {
-                Tuple<int, int> pair = PerlinNoiseGenerator.RandomSplit(23333, world.Boundary.Left / Const.GRID - 1, 16);
+                Tuple<int, int> pair = PerlinNoiseGenerator.RandomSplit(23333, world.Boundary.Left / Const.GRID - 1, 32);
 
                 Rectangle subRange = new Rectangle(
                     pair.Item1 * Const.GRID,

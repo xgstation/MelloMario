@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using MelloMario.Factories;
     using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
@@ -22,8 +23,10 @@
             {
                 int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 20;
 
-                int height = PerlinNoiseGenerator.Random(1234, j / Const.GRID) % 5
-                    + PerlinNoiseGenerator.Random(1234, j / Const.GRID + 1) % 5;
+                int height = Math.Min(
+                    PerlinNoiseGenerator.Random(1234, j / Const.GRID) % 5
+                    + PerlinNoiseGenerator.Random(1234, j / Const.GRID + 1) % 5,
+                    Math.Min(3 + 3 * (j - range.Left) / Const.GRID, 3 + 3 * (range.Right - Const.GRID - j) / Const.GRID));
 
                 for (int i = 1; i <= 2 + height; ++i)
                 {

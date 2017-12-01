@@ -23,9 +23,13 @@
 
                 int i = PerlinNoiseGenerator.RandomProp(8765, j / Const.GRID, 4) % (range.Height / Const.GRID - 7) + 1;
 
-                if (mat == 5)
+                if (mat == 4 || mat == 5 || mat == 6)
                 {
                     AddObject("Brick", world, new Point(j, range.Bottom - i * Const.GRID));
+                }
+                if (mat == 7)
+                {
+                    AddObject("Question", world, new Point(j, range.Bottom - i * Const.GRID));
                 }
                 else if (mat < 2 || mat < 4 && PerlinNoiseGenerator.Random(8766, (range.Left + i) / Const.GRID) % 2 != 0)
                 {

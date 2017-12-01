@@ -20,7 +20,7 @@
         public Question(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool isHidden = false) :
             base(world, location, listener, new Point(32, 32))
         {
-            this.isHidden = isHidden;
+            Initialize(isHidden);
             soundListener.Subscribe(this);
             SoundEventArgs = new SoundArgs();
         }
