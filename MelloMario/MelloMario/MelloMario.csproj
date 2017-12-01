@@ -95,7 +95,9 @@
     <Compile Include="LevelGen\Generators\None.cs" />
     <Compile Include="LevelGen\Generators\Objects\Blocks.cs" />
     <Compile Include="LevelGen\Generators\Objects\Backgrounds.cs" />
+    <Compile Include="LevelGen\Generators\Structures\Bricks.cs" />
     <Compile Include="LevelGen\Generators\Structures\Coins.cs" />
+    <Compile Include="LevelGen\Generators\Structures\Roof.cs" />
     <Compile Include="LevelGen\Generators\Terrains\Island.cs" />
     <Compile Include="LevelGen\NoiseGenerators\NoiseConverter.cs" />
     <Compile Include="LevelGen\Generators\Objects\Enemies.cs" />
