@@ -167,10 +167,12 @@
                 case Mario _:
                     break;
                 case Coin coin when coin.State.GetType().Name == "Unveil":
-                    PlayEffect(coin.State.GetType().Name == "Unveil" ? "Unveil" : "Coin");
+                    //PlayEffect(coin.State.GetType().Name == "Unveil" ? "Unveil" : "Coin");
+                    PlayEffect(s is Coin ? "Coin" : "Unveil");
                     break;
                 case Coin _ when e.MethodCalled == "Collect":
-                    PlayEffect("Coin");
+                    //PlayEffect("Coin");
+                    PlayEffect(s is Coin ? "Coin" : "Unveil");
                     break;
                 case FireFlower fireFlower when fireFlower.State.GetType().Name == "Unveil":
                 case OneUpMushroom oneUpMushroom when oneUpMushroom.State.GetType().Name == "Unveil":
