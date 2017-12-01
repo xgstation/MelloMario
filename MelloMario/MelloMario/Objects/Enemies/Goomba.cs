@@ -14,12 +14,15 @@
     using MelloMario.Objects.Miscs;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
+    using MelloMario.Sounds.Effects;
 
     #endregion
 
     internal class Goomba : BasePhysicalObject
     {
         private IGoombaState state;
+
+        public ISoundArgs SoundEventArgs { get; }
 
         public Goomba(IWorld world, Point location, IListener<IGameObject> listener) : base(
             world,
@@ -28,6 +31,7 @@
             new Point(32, 32),
             32)
         {
+            SoundEventArgs = new SoundArgs();
             state = new GoombaStates.Normal(this);
             UpdateSprite();
         }
@@ -47,6 +51,7 @@
 
         public void Defeat()
         {
+            SoundEventArgs.SetMethodCalled();
             ScorePoints(Const.SCORE_GOOMBA);
             World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_GOOMBA));
             State.Defeat();

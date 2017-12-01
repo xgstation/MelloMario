@@ -1,4 +1,4 @@
-﻿namespace MelloMario.LevelGen.Terrains
+﻿namespace MelloMario.LevelGen.Generators.Structures
 {
     #region
 
@@ -9,11 +9,11 @@
 
     #endregion
 
-    internal class Enemies : IGenerator
+    internal class Blocks : IGenerator
     {
         private readonly IListener<IGameObject> listener;
 
-        public Enemies(IListener<IGameObject> listener)
+        public Blocks(IListener<IGameObject> listener)
         {
             this.listener = listener;
         }

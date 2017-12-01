@@ -7,6 +7,7 @@
     using MelloMario.Containers;
     using MelloMario.Controls.Scripts;
     using MelloMario.LevelGen;
+    using MelloMario.LevelGen.Generators;
     using MelloMario.Sounds.Effects;
     using Microsoft.Xna.Framework;
 
@@ -217,7 +218,7 @@
         {
             if (State == GameState.gameOver)
             {
-                
+
                 if (game.ActivePlayer.Lifes > 0)
                 {
                     stateTimer += time;

@@ -254,7 +254,7 @@
             {
                 SoundEventArgs.SetMethodCalled();
                 bool facingRight = Facing is FacingMode.right;
-                World.Add(new FireBall(World, Boundary.Location, null, soundListener, facingRight));
+                World.Add(new FireBall(World, Boundary.Location, null,  facingRight));
             }
         }
 
