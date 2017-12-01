@@ -22,7 +22,9 @@
             terrains = new List<IGenerator>
             {
                 new Forest(scoreListener, soundListener),
+                new Island(scoreListener, soundListener),
                 new Plain(scoreListener, soundListener),
+                new Plain(scoreListener, soundListener), // more plain terrain // TODO: use weighted list
                 new Plain(scoreListener, soundListener), // more plain terrain // TODO: use weighted list
                 new Plateau(scoreListener, soundListener),
                 new Sky(scoreListener, soundListener)
