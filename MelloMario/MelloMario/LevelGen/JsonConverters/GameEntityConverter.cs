@@ -90,6 +90,7 @@
             return typeof(EncapsulatedObject<IGameObject>).IsAssignableFrom(objectType);
         }
 
+
         public override object ReadJson(
             JsonReader reader,
             Type objectType,
@@ -98,19 +99,12 @@
         {
             token = JToken.Load(reader);
 
-            if (!Util.TryGet(out objVector, token, "Point"))
-            {
-                Debug.WriteLine("Deserialize fail: No start point provided!");
-                return null;
-            }
+            Util.TryGet(out objVector, token, "Point");
+
             objPoint = new Point((int)(objVector.X * Const.GRID), (int)(objVector.Y * Const.GRID));
             objectStack = new Stack<IGameObject>();
 
-            if (!Util.TryGet(out string typeStr, token, "Type"))
-            {
-                Debug.Print("Deserialize fail: Object token does not contain property \"Type\"");
-                return null;
-            }
+            Util.TryGet(out string typeStr, token, "Type");
 
             type = null;
             foreach (Type t in AssemblyTypes)
