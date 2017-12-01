@@ -27,20 +27,13 @@
         // note: World should only be used in base classes and MarioCharacter
         protected IWorld World;
 
-        private Point location;
-        public Point Location
-        {
-            get
-            {
-                return location;
-            }
-        }
+        public Point Location { get; protected set; }
         private Point size;
         private ISprite sprite;
 
         protected BaseGameObject(IWorld world, Point location, Point size)
         {
-            this.location = location;
+            this.Location = location;
             this.size = size;
             World = world;
         }
@@ -49,7 +42,7 @@
         {
             get
             {
-                return new Rectangle(location.X, location.Y, size.X, size.Y);
+                return new Rectangle(Location.X, Location.Y, size.X, size.Y);
             }
         }
 
@@ -63,10 +56,7 @@
 
         public void Draw(int time, SpriteBatch spriteBatch)
         {
-            if (sprite != null)
-            {
-                sprite.Draw(time, spriteBatch, new Rectangle(Boundary.Location, Boundary.Size));
-            }
+            sprite?.Draw(time, spriteBatch, new Rectangle(Boundary.Location, Boundary.Size));
         }
 
         protected abstract void OnUpdate(int time);
@@ -74,7 +64,7 @@
 
         protected void Relocate(Point newLocation)
         {
-            location = newLocation;
+            Location = newLocation;
         }
 
         protected void Resize(Point newSize, ResizeModeX modeX, ResizeModeY modeY)
@@ -106,7 +96,7 @@
                     break;
             }
 
-            Relocate(location + delta);
+            Relocate(Location + delta);
             size = newSize;
 
             World.Move(this);

@@ -22,7 +22,7 @@
         ISprite CreateFloorSprite();
         ISprite CreateStairSprite();
         ISprite CreatePipelineSprite(string type);
-        ISprite CreateFlagSprite(bool isTop);
+        ISprite CreateFlagSprite(bool isTop, bool isFlagPole = true);
         ISprite CreateSceneSprite(string type, ZIndex zIndex);
         ISprite CreateTitle(ZIndex zIndex);
         ISprite CreateThwompSprite(string name);
