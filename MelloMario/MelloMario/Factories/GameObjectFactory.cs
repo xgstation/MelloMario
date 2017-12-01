@@ -141,19 +141,19 @@
             IWorld world,
             Point location,
             int count,
-            IListener<IGameObject> listener)
+            IListener<IGameObject> listener, IListener<ISoundable> soundListener)
         {
             switch (type)
             {
                 case "FlagPole":
                     for (int i = 0; i < count; ++i)
                     {
-                        yield return new Flag(
+                        yield return new FlagPole(
                             world,
                             new Point(location.X, location.Y + 32 * i),
                             listener,
                             count - i,
-                            count);
+                            count,soundListener);
                     }
                     yield break;
 

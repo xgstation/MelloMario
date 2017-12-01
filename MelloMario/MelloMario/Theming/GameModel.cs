@@ -124,7 +124,7 @@
             }
             else
             {
-                IGenerator generator = new Scroll(scoreListener);
+                IGenerator generator = new Scroll(scoreListener, new SoundEffectListener()); // TODO: do not init it here
 
                 IWorld newWorld = new World(
                     id,
@@ -150,7 +150,7 @@
         public void TransistGameWon()
         {
             game.ActivePlayer.Win();
-            State = GameState.transist;
+            State = GameState.gameWon;
             new TransistScript().Bind(controllers, this);
         }
 

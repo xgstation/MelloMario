@@ -23,8 +23,8 @@
         //MelloMario Members
         public enum Menu
         {
-            Normal,
-            Infinite,
+            Normal_Mode,
+            Infinite_Mode,
             Quit
         }
 
@@ -45,7 +45,7 @@
                 PreferredBackBufferHeight = Const.SCREEN_HEIGHT
             };
             //MelloMario initialize
-            CurrentSelected = Menu.Normal;
+            CurrentSelected = Menu.Normal_Mode;
             graphicsManager = new GraphicsManager(this);
             soundManager = new SoundManager();
             controllers = new List<IController>
@@ -84,17 +84,19 @@
         {
             switch (CurrentSelected)
             {
-                case Menu.Normal:
+                case Menu.Normal_Mode:
                     gameModel = new GameModel(this, controllers);
                     graphicsManager.BindModel(gameModel);
                     gameModel.Initialize(GameMode.normal, soundManager.SoundEffectListener);
                     soundManager.BindPlayer(ActivePlayer);
+                    soundManager.BindModel(gameModel);
                     break;
-                case Menu.Infinite:
+                case Menu.Infinite_Mode:
                     gameModel = new GameModel(this, controllers);
                     graphicsManager.BindModel(gameModel);
                     gameModel.Initialize(GameMode.infinite, soundManager.SoundEffectListener);
                     soundManager.BindPlayer(ActivePlayer);
+                    soundManager.BindModel(gameModel);
                     break;
                 case Menu.Quit:
                     Exit();
@@ -104,12 +106,12 @@
 
         public void CursorUp()
         {
-            CurrentSelected = CurrentSelected == Menu.Normal ? Menu.Quit : (Menu) ((int) CurrentSelected - 1);
+            CurrentSelected = CurrentSelected == Menu.Normal_Mode ? Menu.Quit : (Menu) ((int) CurrentSelected - 1);
         }
 
         public void CursorDown()
         {
-            CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal : (Menu) ((int) CurrentSelected + 1);
+            CurrentSelected = CurrentSelected == Menu.Quit ? Menu.Normal_Mode : (Menu) ((int) CurrentSelected + 1);
         }
 
         /// <summary>

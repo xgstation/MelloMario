@@ -100,11 +100,12 @@
     <Compile Include="LevelGen\Generators\Static.cs" />
     <Compile Include="LevelGen\Generators\Structures\Blocks.cs" />
     <Compile Include="LevelGen\Generators\Terrains\Plateau.cs" />
-    <Compile Include="LevelGen\Generators\Terrains\Tunnel.cs" />
+    <Compile Include="LevelGen\Generators\Structures\Tunnel.cs" />
     <Compile Include="LevelGen\Generators\Terrains\Plain.cs" />
     <Compile Include="LevelGen\Generators\Terrains\Forest.cs" />
     <Compile Include="LevelGen\Generators\Terrains\Sky.cs" />
     <Compile Include="NoiseGame.cs" />
+    <Compile Include="Objects\Blocks\Flag.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Helmeted.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\Defeated.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\MovingShell.cs" />
@@ -130,7 +131,7 @@
     <Compile Include="Objects\Blocks\BrickStates\Hidden.cs" />
     <Compile Include="Objects\Blocks\BrickStates\Normal.cs" />
     <Compile Include="Objects\Blocks\BrickStates\Used.cs" />
-    <Compile Include="Objects\Blocks\Flag.cs" />
+    <Compile Include="Objects\Blocks\FlagPole.cs" />
     <Compile Include="Objects\Blocks\Floor.cs" />
     <Compile Include="Objects\Blocks\Pipeline.cs" />
     <Compile Include="Objects\Blocks\Question.cs" />

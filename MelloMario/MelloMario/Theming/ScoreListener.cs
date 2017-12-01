@@ -38,7 +38,7 @@
                     case Mario mario:
                         mario.HandlerGameOver += OnGameOver;
                         break;
-                    case Flag flag:
+                    case FlagPole flag:
                         flag.HandlerTimeScore += OnLevelWon;
                         break;
                 }
@@ -58,7 +58,7 @@
             player.AddScore(e.Points);
         }
 
-        private void OnLevelWon(Flag m, EventArgs e)
+        private void OnLevelWon(FlagPole m, EventArgs e)
         {
             model.TransistGameWon();
         }

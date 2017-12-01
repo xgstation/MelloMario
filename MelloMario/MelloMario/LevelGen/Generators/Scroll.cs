@@ -11,24 +11,25 @@
 
     #endregion
 
-    internal class Scroll : IGenerator
+    internal class Scroll : BaseGenerator
     {
         private readonly IList<IGenerator> terrains;
 
-        public Scroll(IListener<IGameObject> scoreListener)
+        public Scroll(
+            IListener<IGameObject> scoreListener,
+            IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
             terrains = new List<IGenerator>
             {
-                new Forest(scoreListener),
-                new Plain(scoreListener),
-                new Plain(scoreListener), // more plain terrain // TODO: use weighted list
-                new Plateau(scoreListener),
-                new Sky(scoreListener),
-                new Tunnel(scoreListener)
+                new Forest(scoreListener, soundListener),
+                new Plain(scoreListener, soundListener),
+                new Plain(scoreListener, soundListener), // more plain terrain // TODO: use weighted list
+                new Plateau(scoreListener, soundListener),
+                new Sky(scoreListener, soundListener)
             };
         }
 
-        public void Request(IWorld world, Rectangle range)
+        protected override void OnRequest(IWorld world, Rectangle range)
         {
             // note: top / buttom are locked
 

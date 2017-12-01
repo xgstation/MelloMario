@@ -2,6 +2,7 @@
 {
     #region
 
+    using MelloMario.Factories;
     using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
@@ -9,30 +10,32 @@
 
     #endregion
 
-    internal class Forest : IGenerator
+    internal class Forest : BaseGenerator
     {
-        private readonly IListener<IGameObject> listener;
-
-        public Forest(IListener<IGameObject> listener)
+        public Forest(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
-            this.listener = listener;
         }
 
-        public void Request(IWorld world, Rectangle range)
+        protected override void OnRequest(IWorld world, Rectangle range)
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
                 int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 5;
 
-                for (int i = 1; i <= 2 + PerlinNoiseGenerator.Random(1234, j / Const.GRID) % 5; ++i)
+                int height = PerlinNoiseGenerator.Random(1234, j / Const.GRID) % 3
+                    + PerlinNoiseGenerator.Random(1234, j / Const.GRID + 1) % 3;
+
+                for (int i = 1; i <= 2 + height; ++i)
                 {
-                    if (mat >= 4 || mat >= 3 && PerlinNoiseGenerator.Random(1235, i / Const.GRID) % 2 == 0)
+                    if (
+                        mat < 1
+                        || mat < 2 && PerlinNoiseGenerator.Random(1002, j / Const.GRID * 123 + i * 45) % 2 == 0)
                     {
-                        world.Add(new Stair(world, new Point(j, range.Bottom - i * Const.GRID), listener));
+                        AddObject("Stair", world, new Point(j, range.Bottom - i * Const.GRID));
                     }
                     else
                     {
-                        world.Add(new Floor(world, new Point(j, range.Bottom - i * Const.GRID), listener));
+                        AddObject("Floor", world, new Point(j, range.Bottom - i * Const.GRID));
                     }
                 }
             }

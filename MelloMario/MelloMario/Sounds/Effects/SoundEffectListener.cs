@@ -145,7 +145,7 @@
                 case Pipeline _:
                     break;
                 case Flag _:
-                    PlayEffect(methodName == "OnCollision" ? "GameWon" : null);
+                    PlayEffect("GameWon");
                     break;
                 case Thwomp _:
                     PlayEffect(methodName == "OnSimulation" ? "Thwomp" : null);

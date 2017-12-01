@@ -58,28 +58,29 @@
 
         public void Draw(int time)
         {
-            DrawUI(time);
-            if (model == null)
+            if (model != null)
             {
-                return;
-            }
-            switch (model.State)
-            {
+                switch (model.State)
+                {
 
-                case GameState.onProgress:
-                    DrawGameObjects(time);
-                    break;
-                case GameState.pause:
-                    DrawGameObjects(0);
-                    break;
-                case GameState.gameOver:
-                    break;
-                case GameState.gameWon:
-                    break;
-                case GameState.transist:
-                    break;
+                    case GameState.onProgress:
+                        DrawGameObjects(time);
+                        break;
+                    case GameState.pause:
+                        DrawGameObjects(0);
+                        break;
+                    case GameState.gameOver:
+                        break;
+                    case GameState.gameWon:
+                        break;
+                    case GameState.transist:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                DrawBackgroundObjects(time);
             }
-            DrawBackgroundObjects(time);
+            DrawUI(time);
         }
 
         private void DrawUI(int time)
