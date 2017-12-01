@@ -15,7 +15,7 @@
     {
         private int elapsed;
 
-        public FireBall(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, bool facingRight) : base(
+        public FireBall(IWorld world, Point location, IListener<IGameObject> listener, bool facingRight) : base(
             world,
             location,
             listener,
