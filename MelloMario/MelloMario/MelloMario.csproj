@@ -104,6 +104,7 @@
     <Compile Include="LevelGen\Terrains\Forest.cs" />
     <Compile Include="LevelGen\Terrains\Sky.cs" />
     <Compile Include="NoiseGame.cs" />
+    <Compile Include="Objects\Blocks\Flag.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Helmeted.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\Defeated.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\MovingShell.cs" />
@@ -129,7 +130,7 @@
     <Compile Include="Objects\Blocks\BrickStates\Hidden.cs" />
     <Compile Include="Objects\Blocks\BrickStates\Normal.cs" />
     <Compile Include="Objects\Blocks\BrickStates\Used.cs" />
-    <Compile Include="Objects\Blocks\Flag.cs" />
+    <Compile Include="Objects\Blocks\FlagPole.cs" />
     <Compile Include="Objects\Blocks\Floor.cs" />
     <Compile Include="Objects\Blocks\Pipeline.cs" />
     <Compile Include="Objects\Blocks\Question.cs" />

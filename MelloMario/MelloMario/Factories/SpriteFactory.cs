@@ -74,9 +74,9 @@
                         2,
                         powerUpStatus == "Standard" ? 2 : movementStatus == "Crouching" ? 3 : 4);
                 case "Dead":
-                    return new StaticSprite(GetTexture(protectionStatus), zIndex : ZIndex.Foreground);
+                    return new StaticSprite(GetTexture(protectionStatus), zIndex: ZIndex.Foreground);
                 case "GameOver":
-                    return new StaticSprite(GetTexture(powerUpStatus + movementStatus + facing), zIndex : ZIndex.Hud);
+                    return new StaticSprite(GetTexture(powerUpStatus + movementStatus + facing), zIndex: ZIndex.Hud);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -217,11 +217,11 @@
             switch (status)
             {
                 case "Bumped":
-                    return new AnimatedSprite(GetTexture("Question"), 3, 1, zIndex : ZIndex.Level);
+                    return new AnimatedSprite(GetTexture("Question"), 3, 1, zIndex: ZIndex.Level);
                 case "Normal":
-                    return new AnimatedSprite(GetTexture("Question"), 3, 1, zIndex : ZIndex.Level);
+                    return new AnimatedSprite(GetTexture("Question"), 3, 1, zIndex: ZIndex.Level);
                 case "Used":
-                    return new StaticSprite(GetTexture("BlockSheet"), 54, 0, zIndex : ZIndex.Level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 54, 0, zIndex: ZIndex.Level);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -234,13 +234,13 @@
             switch (status)
             {
                 case "Bumped":
-                    return new StaticSprite(GetTexture("BlockSheet"), 2, 0, zIndex : ZIndex.Level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 0, zIndex: ZIndex.Level);
                 case "Destroyed":
                     return new BrickPieceSprite(GetTexture("BrickPieces"));
                 case "Normal":
-                    return new StaticSprite(GetTexture("BlockSheet"), 2, 0, zIndex : ZIndex.Level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 0, zIndex: ZIndex.Level);
                 case "Used":
-                    return new StaticSprite(GetTexture("BlockSheet"), 54, 0, zIndex : ZIndex.Level);
+                    return new StaticSprite(GetTexture("BlockSheet"), 54, 0, zIndex: ZIndex.Level);
                 default:
                     //it should never hit this case, if it does there is an error somewhere
                     //else in the code
@@ -250,12 +250,12 @@
 
         public ISprite CreateFloorSprite()
         {
-            return new StaticSprite(GetTexture("BlockSheet"), 0, 0, zIndex : ZIndex.Level);
+            return new StaticSprite(GetTexture("BlockSheet"), 0, 0, zIndex: ZIndex.Level);
         }
 
         public ISprite CreateStairSprite()
         {
-            return new StaticSprite(GetTexture("BlockSheet"), 0, 2, zIndex : ZIndex.Level);
+            return new StaticSprite(GetTexture("BlockSheet"), 0, 2, zIndex: ZIndex.Level);
         }
 
         public ISprite CreatePipelineSprite(string type)
@@ -263,13 +263,13 @@
             switch (type)
             {
                 case "LeftIn":
-                    return new StaticSprite(GetTexture("BlockSheet"), 0, 16, zIndex : ZIndex.Foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 0, 16, zIndex: ZIndex.Foreground);
                 case "RightIn":
-                    return new StaticSprite(GetTexture("BlockSheet"), 2, 16, zIndex : ZIndex.Foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 16, zIndex: ZIndex.Foreground);
                 case "Left":
-                    return new StaticSprite(GetTexture("BlockSheet"), 0, 18, zIndex : ZIndex.Foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 0, 18, zIndex: ZIndex.Foreground);
                 case "Right":
-                    return new StaticSprite(GetTexture("BlockSheet"), 2, 18, zIndex : ZIndex.Foreground);
+                    return new StaticSprite(GetTexture("BlockSheet"), 2, 18, zIndex: ZIndex.Foreground);
                 //TODO: Implement cases below
                 case "TopLeftIn":
                 case "BottomLeftIn":
@@ -284,13 +284,17 @@
             }
         }
 
-        public ISprite CreateFlagSprite(bool isTop)
+        public ISprite CreateFlagSprite(bool isTop, bool isFlagPole = true)
         {
-            if (isTop)
+            if (isTop && isFlagPole)
             {
                 return new StaticSprite(GetTexture("BlockSheet"), 32, 16, zIndex : ZIndex.Level);
             }
-            return new StaticSprite(GetTexture("BlockSheet"), 32, 18, zIndex : ZIndex.Level);
+            if(!isFlagPole)
+            {
+                return new StaticSprite(GetTexture("BlockSheet"));
+            }
+            return new StaticSprite(GetTexture("BlockSheet"), 32, 18, zIndex: ZIndex.Level);
         }
 
         public ISprite CreateSceneSprite(string type, ZIndex zIndex)

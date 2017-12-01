@@ -1,75 +1,57 @@
-﻿namespace MelloMario.Objects.Blocks
-{
-    #region
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    using System;
+namespace MelloMario.Objects.Blocks
+{
     using MelloMario.Factories;
-    using MelloMario.Objects.Characters;
-    using MelloMario.Objects.Miscs;
-    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
-    #endregion
-
-    internal class Flag : BaseCollidableObject
+    internal class Flag : BaseGameObject
     {
-        public delegate void TimeScoreHandler(Flag m, EventArgs e);
+        private int height;
 
-        private readonly int height;
-        private readonly int maxHeight;
-        private readonly bool top;
+        private bool pulling;
 
-        private EventArgs eventInfo;
-
-        public Flag(IWorld world, Point location, IListener<IGameObject> listener, int height, int maxHeight) :
-            base(world, location, listener, new Point(32, 32))
+        public bool Pulled
         {
-            listener.Subscribe(this);
-            this.height = height;
-            this.maxHeight = maxHeight;
-            top = height == maxHeight;
-            UpdateSprite();
+            get
+            {
+                return height <= 0;
+            }
         }
 
-        public event TimeScoreHandler HandlerTimeScore;
+        public Flag(IWorld world, Point location, Point size, int height) : base(world, location, size)
+        {
+            this.height = height;
+            pulling = false;
+            ShowSprite(SpriteFactory.Instance.CreateFlagSprite(false));
+        }
 
         protected override void OnUpdate(int time)
         {
         }
+        
 
-        protected override void OnCollision(
-            IGameObject target,
-            CollisionMode mode,
-            CollisionMode modePassive,
-            CornerMode corner,
-            CornerMode cornerPassive)
+        protected override void OnSimulation(int time)
         {
-            if (!(target is MarioCharacter mario))
+            if (!pulling)
             {
                 return;
             }
-            if (!mario.Active)
+            while (height > 0)
             {
-                return;
+                height--;
+                Location = new Point(Location.X, Location.Y + 32);
+                World.Move(this);
             }
-            if (top)
-            {
-                ChangeLives();
-            }
-            eventInfo = EventArgs.Empty;
-            HandlerTimeScore?.Invoke(this, eventInfo);
-            ScorePoints(Const.SCORE_FLAG_MAX * height / maxHeight);
-            World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_FLAG_MAX * height / maxHeight));
-            mario.FlagPole();
         }
 
-        protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
+        public void PullDown()
         {
-        }
-
-        private void UpdateSprite()
-        {
-            ShowSprite(SpriteFactory.Instance.CreateFlagSprite(top));
+            pulling = true;
         }
     }
 }

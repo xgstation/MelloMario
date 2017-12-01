@@ -145,7 +145,7 @@
                 case "FlagPole":
                     for (int i = 0; i < count; ++i)
                     {
-                        yield return new Flag(
+                        yield return new FlagPole(
                             world,
                             new Point(location.X, location.Y + 32 * i),
                             listener,

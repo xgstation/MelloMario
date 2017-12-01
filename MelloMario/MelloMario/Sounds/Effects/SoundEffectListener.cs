@@ -72,7 +72,7 @@
                 case Thwomp _:
                     BlockSoundEffect(c, e);
                     break;
-                case Flag _:
+                case FlagPole _:
                     BlockSoundEffect(c, e);
                     break;
                 case FireFlower _:
@@ -144,7 +144,7 @@
                     break;
                 case Pipeline _:
                     break;
-                case Flag _:
+                case FlagPole _:
                     PlayEffect("GameWon");
                     break;
                 case Thwomp _:
