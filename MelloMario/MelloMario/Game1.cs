@@ -102,7 +102,7 @@
                     Exit();
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    break;
             }
         }
 
