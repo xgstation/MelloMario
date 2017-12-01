@@ -54,7 +54,7 @@
 
         protected override void OnUpdate(int time)
         {
-            state.Update(time);
+            State.Update(time);
             HasMarioBelow = DetectMario();
         }
 
