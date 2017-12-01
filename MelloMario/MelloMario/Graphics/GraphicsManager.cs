@@ -58,7 +58,6 @@
 
         public void Draw(int time)
         {
-            DrawUI(time);
             if (model == null)
             {
                 return;
@@ -78,8 +77,11 @@
                     break;
                 case GameState.transist:
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             DrawBackgroundObjects(time);
+            DrawUI(time);
         }
 
         private void DrawUI(int time)
