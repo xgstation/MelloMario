@@ -114,7 +114,6 @@
     <Compile Include="Objects\Enemies\BeetleStates\Worn.cs" />
     <Compile Include="Objects\Enemies\Beetle.cs" />
     <Compile Include="Objects\Enemies\KoopaStates\NewlyMovingShell.cs" />
-    <Compile Include="Objects\Enemies\ThwompStates\MovingDown.cs" />
     <Compile Include="Objects\Enemies\ThwompStates\MovingUp.cs" />
     <Compile Include="Graphics\UserInterfaces\GamePause.cs" />
     <Compile Include="Graphics\UserInterfaces\UIManager.cs" />
