@@ -22,7 +22,9 @@
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
-                if (PerlinNoiseGenerator.Rand(3721, range.Left) % 5 >= 4)
+                int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 5;
+
+                if (mat >= 4)
                 {
                     world.Add(new Stair(world, new Point(j, range.Bottom - 3 * Const.GRID), listener));
                     world.Add(new Stair(world, new Point(j, range.Bottom - 2 * Const.GRID), listener));

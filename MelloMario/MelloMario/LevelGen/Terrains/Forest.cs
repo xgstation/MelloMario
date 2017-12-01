@@ -3,6 +3,7 @@
     #region
 
     using System;
+    using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -22,9 +23,18 @@
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
-                for (int i = 1; i < 2 + Math.Abs(j * 23456789 / 32767) % 5; ++i)
+                int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 5;
+
+                for (int i = 1; i <= 2 + PerlinNoiseGenerator.Random(1234, j / Const.GRID) % 5; ++i)
                 {
-                    world.Add(new Floor(world, new Point(j, range.Bottom - i * Const.GRID), listener));
+                    if (mat >= 4 || mat >= 3 && PerlinNoiseGenerator.Random(1235, i / Const.GRID) % 2 == 0)
+                    {
+                        world.Add(new Stair(world, new Point(j, range.Bottom - i * Const.GRID), listener));
+                    }
+                    else
+                    {
+                        world.Add(new Floor(world, new Point(j, range.Bottom - i * Const.GRID), listener));
+                    }
                 }
             }
         }

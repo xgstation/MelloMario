@@ -2,6 +2,7 @@
 {
     #region
 
+    using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
@@ -21,10 +22,12 @@
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
-                world.Add(new Floor(world, new Point(j, 0), listener));
+                int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 5;
+
+                world.Add(new Floor(world, new Point(j, range.Top), listener));
                 if (j != range.Left && j != range.Right - Const.GRID)
                 {
-                    world.Add(new Floor(world, new Point(j, Const.GRID), listener));
+                    world.Add(new Floor(world, new Point(j, range.Top + Const.GRID), listener));
                 }
 
                 world.Add(new Floor(world, new Point(j, range.Bottom - 3 * Const.GRID), listener));

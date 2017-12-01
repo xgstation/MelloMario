@@ -23,12 +23,15 @@
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
+                int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 5;
+
                 int height = Math.Min(
-                    range.Height / Const.GRID - 6 - PerlinNoiseGenerator.Rand(12321, range.Left) % 6,
+                    range.Height / Const.GRID - 6 - PerlinNoiseGenerator.Random(12321, range.Left) % 6,
                     Math.Min(3 + (j - range.Left) / Const.GRID, 3 + (range.Right - Const.GRID - j) / Const.GRID));
-                for (int i = 1; i < height; ++i)
+
+                for (int i = 1; i <= height; ++i)
                 {
-                    if (i > 3 && PerlinNoiseGenerator.Rand(13579, range.Left) % 5 >= 2)
+                    if (mat >= 4 || mat >= 2 && i > 3)
                     {
                         world.Add(new Stair(world, new Point(j, range.Bottom - i * Const.GRID), listener));
                     }
