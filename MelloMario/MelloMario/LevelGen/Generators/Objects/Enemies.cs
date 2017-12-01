@@ -18,7 +18,7 @@
 
         protected override void OnRequest(IWorld world, Rectangle range)
         {
-            int val = PerlinNoiseGenerator.Random(3902, (range.Left * 1100 + range.Top * 2367) / Const.GRID) % 100;
+            int val = PerlinNoiseGenerator.Random(3902, (range.Left * 1100 + range.Top * 2367) / Const.GRID) % 40;
 
             if (val < 5)
             {
