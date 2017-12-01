@@ -58,10 +58,11 @@
                 ChangeLives();
             }
             eventInfo = EventArgs.Empty;
-            HandlerTimeScore?.Invoke(this, eventInfo);
             ScorePoints(Const.SCORE_FLAG_MAX * height / maxHeight);
             World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_FLAG_MAX * height / maxHeight));
             flag.PullDown();
+            mario.FlagPole();
+            HandlerTimeScore?.Invoke(this, eventInfo);
         }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
