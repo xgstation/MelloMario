@@ -18,21 +18,17 @@
 
         protected override void OnRequest(IWorld world, Rectangle range)
         {
-            int val = PerlinNoiseGenerator.Random(3902, (range.Left * 1100 + range.Top * 2367) / Const.GRID) % 40;
+            int val = PerlinNoiseGenerator.Random(3902, (range.Left * 1100 + range.Top * 2367) / Const.GRID) % 20;
 
             if (val < 1)
             {
-                AddObject("Floor", world, range.Location);
+                AddObject("Brick", world, range.Location);
             }
             else if (val < 2)
             {
-                AddObject("Brick", world, range.Location);
-            }
-            else if (val < 3)
-            {
                 AddObject("Stair", world, range.Location);
             }
-            else if (val < 4)
+            else if (val < 3)
             {
                 AddObject("Question", world, range.Location);
             }
