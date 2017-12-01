@@ -228,18 +228,6 @@
                         ChangeFacing(FacingMode.left);
                         Pushed();
                         break;
-                    case CollisionMode.Bottom:
-                        break;
-                    case CollisionMode.InnerLeft:
-                        break;
-                    case CollisionMode.InnerRight:
-                        break;
-                    case CollisionMode.InnerTop:
-                        break;
-                    case CollisionMode.InnerBottom:
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
                 }
             }
         }
