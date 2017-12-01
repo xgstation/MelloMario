@@ -10,16 +10,13 @@
 
     #endregion
 
-    internal class Plateau : IGenerator
+    internal class Plateau : BaseGenerator
     {
-        private readonly IListener<IGameObject> listener;
-
-        public Plateau(IListener<IGameObject> listener)
+        public Plateau(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
-            this.listener = listener;
         }
 
-        public void Request(IWorld world, Rectangle range)
+        protected override void OnRequest(IWorld world, Rectangle range)
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
@@ -33,11 +30,11 @@
                 {
                     if (mat >= 4 || mat >= 2 && i > 3)
                     {
-                        world.Add(new Stair(world, new Point(j, range.Bottom - i * Const.GRID), listener));
+                        AddObject("Stair", world, new Point(j, range.Bottom - i * Const.GRID));
                     }
                     else
                     {
-                        world.Add(new Floor(world, new Point(j, range.Bottom - i * Const.GRID), listener));
+                        AddObject("Stair", world, new Point(j, range.Bottom - i * Const.GRID));
                     }
                 }
             }
