@@ -3,8 +3,7 @@ Date: 11/30/2017
 Sprint number: 5
 Name of file being reviewed:PausedScript.cs, PlayingScript.cs, StartScript, TransistScript.cs, Pipeline.cs, Fireball.cs
 Author of file being reviewed: multiple authors
-Number of minutes taken to complete the review: 40 minutes
-Since all of those scripts' main function is adding or deleting commands, when the game starts, we can add all the needed commands 
-and then on each script class,delete unallowed commands. For example, since we are not allowed hit quit or reset when game is running, 
-we can just delete exit and reset commands in playingscript. 
+Number of minutes taken to complete the review: 20 minutes
+Since all of those scripts' main function is adding  commands, when the game starts, we can add all the needed commands 
+and then on each script class,delete unallowed commands. 
 In constructors of both Pipeline.cs and Fireball.cs, the soundlistern are not used which can be removed. 
