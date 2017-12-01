@@ -153,7 +153,6 @@
         public static IList<IGameObject> CreateSinglePipeline(
             IWorld world,
             IListener<IGameObject> listener,
-            IListener<ISoundable> soundListener,
             string pipelineType,
             int pipelineLength,
             Point pipelineLoc)

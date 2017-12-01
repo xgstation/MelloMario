@@ -119,44 +119,7 @@
             switch (target)
             {
                 case Mario mario:
-                    if (mode == CollisionMode.Top && corner == CornerMode.Top && !(mario.ProtectionState is Dead) || mario.ProtectionState is Starred)
-                    {
-                        Defeat();
-                    }
-                    else if ((state is KoopaStates.Normal || state is MovingShell) && !(mario.ProtectionState is Dead))
-                    {
-                        if (mode == CollisionMode.Top)
-                        {
-                            JumpOn();
-                        }
-                        else
-                        {
-                            mario.Downgrade();
-                        }
-                    }
-                    else if (state is Defeated && !(mario.ProtectionState is Dead))
-                    {
-                        if (mode == CollisionMode.Left)
-                        {
-                            ChangeFacing(FacingMode.right);
-                            Pushed();
-                        }
-                        else if (mode == CollisionMode.Right)
-                        {
-                            ChangeFacing(FacingMode.left);
-                            Pushed();
-                        }
-                        else if (mode == CollisionMode.Top && corner == CornerMode.Left)
-                        {
-                            ChangeFacing(FacingMode.right);
-                            Pushed();
-                        }
-                        else if (mode == CollisionMode.Top && corner == CornerMode.Right)
-                        {
-                            ChangeFacing(FacingMode.left);
-                            Pushed();
-                        }
-                    }
+                    OnCollisionMario(mario, mode, corner);
                     break;
                 case Brick brick when brick.State is Hidden:
                     break;
@@ -200,6 +163,58 @@
             }
         }
 
+        private void OnCollisionMario(Mario mario, CollisionMode mode, CornerMode corner)
+        {
+            if (mode == CollisionMode.Top && corner == CornerMode.Top && !(mario.ProtectionState is Dead) || mario.ProtectionState is Starred)
+            {
+                Defeat();
+            }
+            else if ((state is KoopaStates.Normal || state is MovingShell) && !(mario.ProtectionState is Dead))
+            {
+                if (mode == CollisionMode.Top)
+                {
+                    JumpOn();
+                }
+                else
+                {
+                    mario.Downgrade();
+                }
+            }
+            else if (state is Defeated && !(mario.ProtectionState is Dead))
+            {
+                switch (mode)
+                {
+                    case CollisionMode.Left:
+                        ChangeFacing(FacingMode.right);
+                        Pushed();
+                        break;
+                    case CollisionMode.Right:
+                        ChangeFacing(FacingMode.left);
+                        Pushed();
+                        break;
+                    case CollisionMode.Top when corner == CornerMode.Left:
+                        ChangeFacing(FacingMode.right);
+                        Pushed();
+                        break;
+                    case CollisionMode.Top when corner == CornerMode.Right:
+                        ChangeFacing(FacingMode.left);
+                        Pushed();
+                        break;
+                    case CollisionMode.Bottom:
+                        break;
+                    case CollisionMode.InnerLeft:
+                        break;
+                    case CollisionMode.InnerRight:
+                        break;
+                    case CollisionMode.InnerTop:
+                        break;
+                    case CollisionMode.InnerBottom:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
+                }
+            }
+        }
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
         {
         }
