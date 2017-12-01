@@ -19,13 +19,13 @@
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
-                int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 8;
+                int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 20;
 
                 int i = PerlinNoiseGenerator.RandomProp(8765, j / Const.GRID, 2) % (range.Height / Const.GRID - 8);
 
                 if (i >= 2)
                 {
-                    if (mat == 7)
+                    if (mat == 5)
                     {
                         AddObject("Brick", world, new Point(j, range.Bottom - i * Const.GRID));
                     }

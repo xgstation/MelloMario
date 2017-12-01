@@ -20,10 +20,10 @@
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
-                int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 5;
+                int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 20;
 
-                int height = PerlinNoiseGenerator.Random(1234, j / Const.GRID) % 3
-                    + PerlinNoiseGenerator.Random(1234, j / Const.GRID + 1) % 3;
+                int height = PerlinNoiseGenerator.Random(1234, j / Const.GRID) % 5
+                    + PerlinNoiseGenerator.Random(1234, j / Const.GRID + 1) % 5;
 
                 for (int i = 1; i <= 2 + height; ++i)
                 {

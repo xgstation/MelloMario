@@ -19,7 +19,7 @@
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
-                int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 8;
+                int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 20;
 
                 for (int i = 1; i <= 3; ++i)
                 {
