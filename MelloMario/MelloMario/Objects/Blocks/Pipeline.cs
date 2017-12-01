@@ -17,8 +17,7 @@
         private IModel model;
         private int elapsed;
         private IPlayer switchingPlayer;
-
-        public Pipeline(IWorld world, Point location, IListener<IGameObject> listener, IListener<ISoundable> soundListener, string type) : base(
+        public Pipeline(IWorld world, Point location, IListener<IGameObject> listener, string type) : base(
             world,
             location,
             listener,
