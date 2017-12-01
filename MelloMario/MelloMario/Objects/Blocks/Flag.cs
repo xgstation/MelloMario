@@ -8,6 +8,7 @@
     using MelloMario.Objects.Miscs;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
+    using MelloMario.Sounds.Effects;
 
     #endregion
 
@@ -20,10 +21,12 @@
         private readonly bool top;
 
         private EventArgs eventInfo;
+        public ISoundArgs SoundEventArgs { get; }
 
         public Flag(IWorld world, Point location, IListener<IGameObject> listener, int height, int maxHeight) :
             base(world, location, listener, new Point(32, 32))
         {
+            SoundEventArgs = new SoundArgs();
             listener.Subscribe(this);
             this.height = height;
             this.maxHeight = maxHeight;
@@ -61,6 +64,7 @@
             ScorePoints(Const.SCORE_FLAG_MAX * height / maxHeight);
             World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_FLAG_MAX * height / maxHeight));
             mario.FlagPole();
+            SoundEventArgs.SetMethodCalled();
         }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)
