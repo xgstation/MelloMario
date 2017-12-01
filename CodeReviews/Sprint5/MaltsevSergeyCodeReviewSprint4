@@ -1,0 +1,21 @@
+Sergey Maltsev
+11/30/2017
+Sprint 5
+Beetle
+Multiple Authors
+
+Overall the Beetle works fairly cleanly,
+the oncollide method has a high cyclomatic
+complexity, however this is acceptable in
+my opinion since it has to handle a lot of
+different interactions.
+
+The helmet visuals are a bit stuttery, for
+now this is acceptable, since the alternative
+is doubling our player sprite count.
+
+If work on the beetle were to continue, the
+next step would be clinging to ceilings and
+attempting to fall on mario.
+
+This took 10 min.
