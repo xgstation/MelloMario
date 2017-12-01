@@ -2,7 +2,9 @@
 {
     #region
 
+    using System;
     using MelloMario.LevelGen.Generators.Objects;
+    using MelloMario.LevelGen.Generators.Structures;
     using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
@@ -14,8 +16,12 @@
     {
         public Plain(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
+            Children.Add(new None());
+            Children.Add(new None());
+            Children.Add(new None());
+            Children.Add(new Coins(scoreListener, soundListener));
             Children2.Add(new Backgrounds(scoreListener, soundListener));
-            Children2.Add(new Blocks(scoreListener, soundListener));
+            Children2.Add(new Objects.Blocks(scoreListener, soundListener));
             Children2.Add(new Enemies(scoreListener, soundListener));
             Children2.Add(new Enemies(scoreListener, soundListener));
         }
@@ -41,6 +47,15 @@
                 }
 
                 RunChild2(world, new Rectangle(j, range.Bottom - 4 * Const.GRID, Const.GRID, Const.GRID), PerlinNoiseGenerator.Random(23335, j / Const.GRID));
+            }
+
+            for (int j = range.Left, k; j < range.Right; j = k)
+            {
+                Tuple<int, int> pair = PerlinNoiseGenerator.RandomSplit(34567, j / Const.GRID, 8);
+                k = Math.Min(pair.Item2 * Const.GRID, range.Right);
+
+                Rectangle subRange = new Rectangle(j, world.Boundary.Top, k - j, world.Boundary.Height - 5 * Const.GRID);
+                RunChild(world, subRange, PerlinNoiseGenerator.Random(23335, pair.Item1));
             }
         }
     }
