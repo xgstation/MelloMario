@@ -72,6 +72,9 @@
                 case Thwomp _:
                     BlockSoundEffect(c, e);
                     break;
+                case Flag _:
+                    BlockSoundEffect(c, e);
+                    break;
                 case FireFlower _:
                 case SuperMushroom _:
                 case Star _:
@@ -140,6 +143,9 @@
                     PlayEffect(methodName == "Bump" ? "BumpBlock" : null);
                     break;
                 case Pipeline _:
+                    break;
+                case Flag _:
+                    PlayEffect("GameWon");
                     break;
                 case Thwomp _:
                     PlayEffect("Thwomp");
