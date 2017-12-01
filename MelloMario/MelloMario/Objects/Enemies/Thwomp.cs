@@ -22,7 +22,7 @@
     {
         private readonly IState state;
 
-        private bool onFloor;
+        private bool onFloor = true;
 
         public ISoundArgs SoundEventArgs { get; }
 
@@ -64,12 +64,15 @@
             {
                 SetVerticalVelocity(-Const.VELOCITY_RISING_THWOMP);
             }
-            else
+            else if (!onFloor && DetectMario())
             {
                 ApplyGravity();
                 SoundEventArgs.SetMethodCalled();
             }
-
+            else
+            {
+                // Do nothing
+            }
             base.OnSimulation(time);
         }
 
@@ -138,7 +141,7 @@
 
         private bool DetectMario()
         {
-            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 0))
+            return (from obj in World.ScanNearby(new Rectangle(Boundary.Center.X - 4, Boundary.Y, Boundary.Height, 500))
                 where obj is ICharacter
                 select obj).Any();
         }
