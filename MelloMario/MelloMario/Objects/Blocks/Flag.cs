@@ -16,14 +16,6 @@ namespace MelloMario.Objects.Blocks
 
         private bool pulling;
 
-        public bool Pulled
-        {
-            get
-            {
-                return height <= 0;
-            }
-        }
-
         public Flag(IWorld world, Point location, Point size, int height) : base(world, location, size)
         {
             this.height = height;
