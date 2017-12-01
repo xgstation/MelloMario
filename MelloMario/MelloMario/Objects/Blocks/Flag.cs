@@ -19,7 +19,7 @@
         private readonly int maxHeight;
         private readonly bool top;
 
-       // private EventArgs eventInfo;
+        private EventArgs eventInfo;
 
         public Flag(IWorld world, Point location, IListener<IGameObject> listener, int height, int maxHeight) :
             base(world, location, listener, new Point(32, 32))
