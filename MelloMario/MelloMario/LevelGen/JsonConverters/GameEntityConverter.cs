@@ -383,7 +383,7 @@
             bool isPortalTo = Util.TryGet(out string portalTo, token, "Property", "PortalTo");
             if (produceMode is ProduceMode.One)
             {
-                list = Util.CreateSinglePipeline(world, listener, soundListener, direction, length, objPoint);
+                list = Util.CreateSinglePipeline(world, listener, direction, length, objPoint);
                 if (Util.TryGet(out JToken piranhaToken, token, "Property", "Piranha"))
                 {
                     if (Util.TryGet(out string color, piranhaToken, "Color")
@@ -431,7 +431,7 @@
                     ? new Point(Const.GRID * 2, Const.GRID + Const.GRID * length)
                     : new Point(Const.GRID + Const.GRID * length, Const.GRID * 2);
                 foreach (IGameObject obj in Util.BatchRecCreate(
-                    point => Util.CreateSinglePipeline(world, listener, soundListener, direction, length, point),
+                    point => Util.CreateSinglePipeline(world, listener, direction, length, point),
                     objPoint,
                     quantity,
                     objFullSize,

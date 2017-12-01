@@ -101,6 +101,8 @@
                 case Menu.Quit:
                     Exit();
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 

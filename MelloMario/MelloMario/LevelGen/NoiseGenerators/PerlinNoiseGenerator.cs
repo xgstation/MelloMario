@@ -83,7 +83,7 @@
             Array.Copy(permuteTable, 0, permuteTable, size, size);
         }
 
-        public float Fade(float f)
+        public static float Fade(float f)
         {
             return f * f * f * (f * (f * 6 - 15) + 10);
         }

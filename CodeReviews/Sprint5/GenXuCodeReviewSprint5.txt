@@ -1,0 +1,14 @@
+Gen Xu
+11/30/2017
+Sprint 5
+
+Spend: 10 minutes
+
+Code being reviewed: BaseCollidableObject.cs ans classes derived from this.
+Code Author: Chenzhang, Sergey
+
+The OnCollision is still complex. Technically, Collision should be written as events, which will make code neat.
+Currently, the OnCollision usually involves with switch statement of dozens lines. Consider implementing a 
+collision model(listener) that subscribe all collidable objects and define different collide results such as Hurt,
+Destroy etc. Using Delegates to deal with collide response should be a better choice.
+

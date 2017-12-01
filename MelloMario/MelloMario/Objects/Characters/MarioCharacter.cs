@@ -28,8 +28,7 @@
         private int toBeTraveled;
 
         private Vector2 userInput;
-
-        private readonly IListener<ISoundable> soundListener;
+        
 
         public MarioCharacter(
             IWorld world,
@@ -42,7 +41,6 @@
             listener,
             soundListener)
         {
-            this.soundListener = soundListener;
             Player = player;
         }
 

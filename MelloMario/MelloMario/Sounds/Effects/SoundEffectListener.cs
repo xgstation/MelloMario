@@ -101,7 +101,7 @@
             e?.SetMethodCalled();
         }
 
-        private void MarioSoundEffect(Mario mario, ISoundArgs e)
+        private static void MarioSoundEffect(Mario mario, ISoundArgs e)
         {
             if (!e.HasArgs)
             {
@@ -135,7 +135,7 @@
             }
         }
 
-        private void BlockSoundEffect(ISoundable s, ISoundArgs e)
+        private static void BlockSoundEffect(ISoundable s, ISoundArgs e)
         {
             if (!e.HasArgs)
             {
@@ -164,7 +164,7 @@
             }
         }
 
-        private void ItemSoundEffect(ISoundable s, ISoundArgs e)
+        private static void ItemSoundEffect(ISoundable s, ISoundArgs e)
         {
             if (s is Star ss)
             {
