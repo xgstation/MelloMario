@@ -38,7 +38,6 @@
             {
                 state = new Unveil(this);
                 UpdateSprite();
-                RemoveSelf();
             }
             else
             {

@@ -16,10 +16,10 @@
     {
         public Plateau(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
-            Children.Add(new None());
-            Children.Add(new None());
-            Children.Add(new None());
+            Children.Add(new Bricks(scoreListener, soundListener));
             Children.Add(new Coins(scoreListener, soundListener));
+            Children.Add(new Roof(scoreListener, soundListener));
+            Children.Add(new Tunnel(scoreListener, soundListener));
             Children2.Add(new Backgrounds(scoreListener, soundListener));
             Children2.Add(new None());
             Children2.Add(new Enemies(scoreListener, soundListener));

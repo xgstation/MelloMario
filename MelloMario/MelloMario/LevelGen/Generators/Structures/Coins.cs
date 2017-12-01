@@ -21,7 +21,8 @@
             {
                 for (int i = range.Top; i < range.Bottom; i += Const.GRID)
                 {
-                    AddObject("Coin", world, new Point(j, i));
+                    // TODO: have some errors
+                    // AddObject("Coin", world, new Point(j, i));
                 }
             }
         }
