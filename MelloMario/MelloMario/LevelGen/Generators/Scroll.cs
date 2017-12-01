@@ -22,7 +22,9 @@
             terrains = new List<IGenerator>
             {
                 new Forest(scoreListener, soundListener),
+                new Island(scoreListener, soundListener),
                 new Plain(scoreListener, soundListener),
+                new Plain(scoreListener, soundListener), // more plain terrain // TODO: use weighted list
                 new Plain(scoreListener, soundListener), // more plain terrain // TODO: use weighted list
                 new Plateau(scoreListener, soundListener),
                 new Sky(scoreListener, soundListener)
@@ -35,7 +37,7 @@
 
             while (world.Boundary.Left > range.Left - Const.GRID)
             {
-                Tuple<int, int> pair = PerlinNoiseGenerator.RandomSplit(23333, world.Boundary.Left / Const.GRID - 1, 16);
+                Tuple<int, int> pair = PerlinNoiseGenerator.RandomSplit(23333, world.Boundary.Left / Const.GRID - 1, 32);
 
                 Rectangle subRange = new Rectangle(
                     pair.Item1 * Const.GRID,

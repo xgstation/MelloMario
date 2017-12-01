@@ -28,17 +28,9 @@
             listener,
             new Point(32, 32))
         {
-            this.isHidden = isHidden;
+            Initialize(isHidden);
             soundListener.Subscribe(this);
             SoundEventArgs = new SoundArgs();
-            if (isHidden)
-            {
-                state = new Hidden(this);
-            }
-            else
-            {
-                state = new Normal(this);
-            }
         }
 
         public ISoundArgs SoundEventArgs { get; }
