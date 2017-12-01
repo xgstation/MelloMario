@@ -47,6 +47,7 @@
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public ISoundEffect CreateSoundEffect(string name)
         {
             switch (name)

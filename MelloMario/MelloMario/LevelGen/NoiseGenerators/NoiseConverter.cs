@@ -9,7 +9,7 @@ namespace MelloMario.LevelGen.NoiseGenerators
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class NoiseConverter
+    internal class NoiseConverter : IDisposable
     {
         private const int REPEAT_I = 50;
         private const int REPEATSHIFT_I = 10;
@@ -129,6 +129,11 @@ namespace MelloMario.LevelGen.NoiseGenerators
         public void Draw()
         {
             spriteBatch.Draw(debugTexture2D, Vector2.Zero, Color.White);
+        }
+
+        public void Dispose()
+        {
+            debugTexture2D.Dispose();
         }
     }
 

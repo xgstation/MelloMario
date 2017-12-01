@@ -12,7 +12,7 @@
 
     #endregion
 
-    internal class GraphicsManager
+    internal class GraphicsManager : IDisposable
     {
         private readonly Game1 game;
         private UIManager uiManager;
@@ -76,7 +76,8 @@
                     case GameState.transist:
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        Console.WriteLine("Unknown State");
+                        break;
                 }
                 DrawBackgroundObjects(time);
             }
@@ -126,6 +127,13 @@
             }
             backgrounds.Clear();
             spriteBatchBackgroundObjects.End();
+        }
+
+        public void Dispose()
+        {
+            spriteBatchBackgroundObjects.Dispose();
+            spriteBatchGameObjects.Dispose();
+            spriteBatchUI.Dispose();
         }
     }
 }

@@ -66,7 +66,6 @@
             State = GameState.onProgress;
             new PlayingScript().Bind(controllers, game.ActivePlayer.Character);
             new PlayingScript().Bind(controllers, this);
-            new PlayingScript().Unbind(controllers);
         }
 
         public void Reset()

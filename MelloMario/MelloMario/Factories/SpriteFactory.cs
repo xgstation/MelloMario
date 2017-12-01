@@ -297,6 +297,7 @@
             return new StaticSprite(GetTexture("BlockSheet"), 32, 18, zIndex: ZIndex.Level);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public ISprite CreateSceneSprite(string type, ZIndex zIndex)
         {
             switch (type)

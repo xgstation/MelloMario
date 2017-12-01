@@ -76,9 +76,17 @@
                     BlockSoundEffect(c, e);
                     break;
                 case FireFlower _:
+                    ItemSoundEffect(c, e);
+                    break;
                 case SuperMushroom _:
+                    ItemSoundEffect(c, e);
+                    break;
                 case Star _:
+                    ItemSoundEffect(c, e);
+                    break;
                 case OneUpMushroom _:
+                    ItemSoundEffect(c, e);
+                    break;
                 case Coin _:
                     ItemSoundEffect(c, e);
                     break;
@@ -178,8 +186,14 @@
                     PlayEffect(s is Coin ? "Coin" : "Unveil");
                     break;
                 case FireFlower fireFlower when fireFlower.State.GetType().Name == "Unveil":
+                    PlayEffect("Unveil");
+                    break;
                 case OneUpMushroom oneUpMushroom when oneUpMushroom.State.GetType().Name == "Unveil":
+                    PlayEffect("Unveil");
+                    break;
                 case Star star when star.State.GetType().Name == "Unveil":
+                    PlayEffect("Unveil");
+                    break;
                 case SuperMushroom superMushroom when superMushroom.State.GetType().Name == "Unveil":
                     PlayEffect("Unveil");
                     break;

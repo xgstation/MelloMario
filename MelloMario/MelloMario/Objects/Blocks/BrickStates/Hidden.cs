@@ -6,6 +6,7 @@
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.PowerUpStates;
     using MelloMario.Theming;
+    using MelloMario.Objects.Characters.ProtectionStates;
 
     #endregion
 
@@ -33,7 +34,7 @@
             }
             else
             {
-                if (mario.PowerUpState is Standard || Owner.HasInitialItem)
+                if ((mario.PowerUpState is Standard && !(mario.ProtectionState is Helmeted)) || Owner.HasInitialItem)
                 {
                     Owner.State = new Bumped(Owner);
                 }
