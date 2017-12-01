@@ -770,12 +770,6 @@
 /processorParam:Quality=Medium
 /build:SFX/thwomp.WAV
 
-#begin SFX/smb_mariodie.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Medium
-/build:SFX/smb_mariodie.wav
-
 #begin BeetleDead.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -812,15 +806,21 @@
 /processorParam:TextureFormat=Color
 /build:BeetleRight.png
 
+#begin SFX/smb_bump.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Medium
+/build:SFX/smb_bump.wav
+
 #begin SFX/smb_jumpsmall.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Medium
 /build:SFX/smb_jumpsmall.wav
 
-#begin SFX/smb_bump.wav
+#begin SFX/smb_mariodie.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Medium
-/build:SFX/smb_bump.wav
+/build:SFX/smb_mariodie.wav
 

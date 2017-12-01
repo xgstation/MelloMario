@@ -51,7 +51,10 @@
 
         public IItemState State
         {
-           
+            get
+            {
+                return state;
+            }
             set
             {
                 state = value;

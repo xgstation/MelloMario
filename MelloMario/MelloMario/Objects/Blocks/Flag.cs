@@ -44,21 +44,23 @@
             CornerMode corner,
             CornerMode cornerPassive)
         {
-            if (target is MarioCharacter mario)
+            if (!(target is MarioCharacter mario))
             {
-                if (mario.Active)
-                {
-                    if (top)
-                    {
-                        ChangeLives();
-                    }
-                    eventInfo = null;
-                    HandlerTimeScore?.Invoke(this, eventInfo);
-                    ScorePoints(Const.SCORE_FLAG_MAX * height / maxHeight);
-                    World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_FLAG_MAX * height / maxHeight));
-                    mario.FlagPole();
-                }
+                return;
             }
+            if (!mario.Active)
+            {
+                return;
+            }
+            if (top)
+            {
+                ChangeLives();
+            }
+            eventInfo = EventArgs.Empty;
+            HandlerTimeScore?.Invoke(this, eventInfo);
+            ScorePoints(Const.SCORE_FLAG_MAX * height / maxHeight);
+            World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_FLAG_MAX * height / maxHeight));
+            mario.FlagPole();
         }
 
         protected override void OnCollideWorld(CollisionMode mode, CollisionMode modePassive)

@@ -92,10 +92,12 @@
             world.Add(pair.Item1);
             Character = pair.Item2;
 
-            if (Lifes > 0)
-            {
                 Lifes -= 1;
+            if (Lifes < 0)
+            {
+                Lifes = Const.LIFES_INIT;
             }
+
             TimeRemain = Const.LEVEL_TIME * 1000;
         }
 

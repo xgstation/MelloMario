@@ -72,6 +72,9 @@
                 case Thwomp _:
                     BlockSoundEffect(c, e);
                     break;
+                case Flag _:
+                    BlockSoundEffect(c, e);
+                    break;
                 case FireFlower _:
                 case SuperMushroom _:
                 case Star _:
@@ -141,6 +144,9 @@
                     break;
                 case Pipeline _:
                     break;
+                case Flag _:
+                    PlayEffect("GameWon");
+                    break;
                 case Thwomp _:
                     PlayEffect("Thwomp");
                     break;
@@ -149,13 +155,29 @@
 
         private void ItemSoundEffect(ISoundable s, ISoundArgs e)
         {
-            if (s.GetType().GetProperty("State")?.GetValue(s, null).GetType().Name == "Unveil")
+            if (s is Star ss)
             {
-                PlayEffect(s is Coin ? "Coin" : "Unveil");
+                Debug.WriteLine(ss.State.GetType().Name);
             }
-            else if (e.MethodCalled == "Collect")
+            switch (s)
             {
-                PlayEffect("Coin");
+                case Brick _:
+                case Question _:
+                case MarioCharacter _:
+                case Mario _:
+                    break;
+                case Coin coin when coin.State.GetType().Name == "Unveil":
+                    PlayEffect(coin.State.GetType().Name == "Unveil" ? "Unveil" : "Coin");
+                    break;
+                case Coin _ when e.MethodCalled == "Collect":
+                    PlayEffect("Coin");
+                    break;
+                case FireFlower fireFlower when fireFlower.State.GetType().Name == "Unveil":
+                case OneUpMushroom oneUpMushroom when oneUpMushroom.State.GetType().Name == "Unveil":
+                case Star star when star.State.GetType().Name == "Unveil":
+                case SuperMushroom superMushroom when superMushroom.State.GetType().Name == "Unveil":
+                    PlayEffect("Unveil");
+                    break;
             }
         }
 
