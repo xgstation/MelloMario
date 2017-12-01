@@ -21,22 +21,19 @@
             {
                 int mat = PerlinNoiseGenerator.RandomProp(1001, j / Const.GRID, 10) % 20;
 
-                int i = PerlinNoiseGenerator.RandomProp(8765, j / Const.GRID, 2) % (range.Height / Const.GRID - 8);
+                int i = PerlinNoiseGenerator.RandomProp(8765, j / Const.GRID, 4) % (range.Height / Const.GRID - 7) + 1;
 
-                if (i >= 2)
+                if (mat == 5)
                 {
-                    if (mat == 5)
-                    {
-                        AddObject("Brick", world, new Point(j, range.Bottom - i * Const.GRID));
-                    }
-                    else if (mat < 2 || mat < 4 && PerlinNoiseGenerator.Random(8766, (range.Left + i) / Const.GRID) % 2 != 0)
-                    {
-                        AddObject("Stair", world, new Point(j, range.Bottom - i * Const.GRID));
-                    }
-                    else
-                    {
-                        AddObject("Floor", world, new Point(j, range.Bottom - i * Const.GRID));
-                    }
+                    AddObject("Brick", world, new Point(j, range.Bottom - i * Const.GRID));
+                }
+                else if (mat < 2 || mat < 4 && PerlinNoiseGenerator.Random(8766, (range.Left + i) / Const.GRID) % 2 != 0)
+                {
+                    AddObject("Stair", world, new Point(j, range.Bottom - i * Const.GRID));
+                }
+                else
+                {
+                    AddObject("Floor", world, new Point(j, range.Bottom - i * Const.GRID));
                 }
             }
         }
