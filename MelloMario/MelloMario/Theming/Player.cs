@@ -109,13 +109,17 @@
 
         public void Update(int time)
         {
-            TimeRemain -= time;
+            if (TimeRemain >0)
+            { TimeRemain -= time;
+            }
+            
             if (Character != null)
             {
                 Camera.LookAt(
                     ((IGameObject) Character).Boundary.Location,
                     Character.CurrentWorld.Boundary); // TODO: remove type casting
             }
+
         }
     }
 }

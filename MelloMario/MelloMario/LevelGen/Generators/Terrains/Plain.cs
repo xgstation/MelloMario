@@ -37,7 +37,7 @@
                     }
                 }
 
-                RunChild(world, new Rectangle(j, range.Bottom - 4 * Const.GRID, Const.GRID, Const.GRID), PerlinNoiseGenerator.Random(23335, j / Const.GRID));
+                RunChild2(world, new Rectangle(j, range.Bottom - 4 * Const.GRID, Const.GRID, Const.GRID), PerlinNoiseGenerator.Random(23335, j / Const.GRID));
             }
         }
     }
