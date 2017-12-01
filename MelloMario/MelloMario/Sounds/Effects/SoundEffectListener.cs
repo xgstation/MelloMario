@@ -145,10 +145,13 @@
                 case Pipeline _:
                     break;
                 case Flag _:
-                    PlayEffect("GameWon");
+                    PlayEffect(methodName == "OnCollision" ? "GameWon" : null);
                     break;
                 case Thwomp _:
-                    PlayEffect("Thwomp");
+                    PlayEffect(methodName == "OnSimulation" ? "Thwomp" : null);
+                    break;
+                case Goomba _:
+                    PlayEffect(methodName == "Defeat" ? "EnemyKill" : null);
                     break;
             }
         }

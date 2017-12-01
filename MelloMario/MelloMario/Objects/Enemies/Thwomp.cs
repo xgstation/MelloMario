@@ -14,6 +14,7 @@
     using MelloMario.Objects.Miscs;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
+    using MelloMario.Sounds.Effects;
 
     #endregion
 
@@ -23,6 +24,8 @@
 
         private bool onFloor;
 
+        public ISoundArgs SoundEventArgs { get; }
+
         public Thwomp(IWorld world, Point location, IListener<IGameObject> listener) : base(
             world,
             location,
@@ -31,6 +34,7 @@
             32)
         {
             state = new ThwompStates.Normal(this);
+            SoundEventArgs = new SoundArgs();
             NormalTime = 100;
             UpdateSprite();
         }
@@ -43,7 +47,6 @@
 
         public void Defeat()
         {
-            
             ScorePoints(Const.SCORE_THWOMP);
             World.Add(new PopingUpPoints(World, Boundary.Location, Const.SCORE_THWOMP));
             RemoveSelf();
@@ -64,6 +67,7 @@
             else
             {
                 ApplyGravity();
+                SoundEventArgs.SetMethodCalled();
             }
 
             base.OnSimulation(time);
