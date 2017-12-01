@@ -5,6 +5,7 @@
     using System;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Characters.PowerUpStates;
+    using MelloMario.Objects.Characters.ProtectionStates;
 
     #endregion
 
@@ -26,7 +27,7 @@
 
         public void Bump(Mario mario)
         {
-            if (mario.PowerUpState is Standard || Owner.HasInitialItem)
+            if ((mario.PowerUpState is Standard && !(mario.ProtectionState is Helmeted)) || Owner.HasInitialItem)
             {
                 Owner.State = new Bumped(Owner);
             }
