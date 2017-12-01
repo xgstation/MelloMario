@@ -91,6 +91,86 @@
         },
         {
           "Point": {
+            "X": 4,
+            "Y": 9
+          },
+          "Property": {
+            "Type": "LeftTriangle"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 8,
+            "Y": 9
+          },
+          "Property": {
+            "Type": "RightTriangle"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 5,
+            "Y": 9
+          },
+          "Property": {
+            "Type": "Rectangle"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 5,
+            "Y": 8
+          },
+          "Property": {
+            "Type": "LeftTriangle"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 6,
+            "Y": 9
+          },
+          "Property": {
+            "Type": "Rectangle"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 7,
+            "Y": 9
+          },
+          "Property": {
+            "Type": "Rectangle"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 6,
+            "Y": 8
+          },
+          "Property": {
+            "Type": "Arc"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
+            "X": 7,
+            "Y": 8
+          },
+          "Property": {
+            "Type": "RightTriangle"
+          },
+          "Type": "Background"
+        },
+        {
+          "Point": {
             "X": 64,
             "Y": 11
           },

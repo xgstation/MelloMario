@@ -123,11 +123,14 @@
 
                 case "Bush":
                     return new Background(world, location, type, ZIndex.Background0);
-                case "BiggerBush":
+                case "LeftTriangle":
                     return new Background(world, location, type, ZIndex.Background1);
-                case "SharpBush":
-                    return new Background(world, location, type, ZIndex.Background2);
-
+                case "RightTriangle":
+                    return new Background(world, location, type, ZIndex.Background1);
+                case "Arc":
+                    return new Background(world, location, type, ZIndex.Background1);
+                case "Rectangle":
+                    return new Background(world, location, type, ZIndex.Background1);
                 default:
                     return null;
             }
