@@ -151,7 +151,7 @@
                 controller.Update();
             }
             graphicsManager.Update(time.ElapsedGameTime.Milliseconds);
-            soundManager.Update(time.ElapsedGameTime.Milliseconds);
+            soundManager.Update();
             gameModel?.Update(time.ElapsedGameTime.Milliseconds);
         }
 

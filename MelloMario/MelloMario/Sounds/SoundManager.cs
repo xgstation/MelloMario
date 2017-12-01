@@ -25,7 +25,7 @@
             (SoundEffectListener as SoundEffectListener).ToggleMute();
         }
 
-        public void Update(int time)
+        public void Update()
         {
             sounds.Update();
         }
