@@ -16,6 +16,9 @@
     {
         public Forest(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
+            Children2.Add(new None());
+            Children2.Add(new None());
+            Children2.Add(new Enemies(scoreListener, soundListener));
             Children2.Add(new Enemies(scoreListener, soundListener));
         }
 
