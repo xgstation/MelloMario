@@ -6,6 +6,7 @@
     using MelloMario.Factories;
     using MelloMario.Objects.Characters;
     using MelloMario.Objects.Miscs;
+    using MelloMario.Sounds.Effects;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
@@ -21,7 +22,7 @@
         private readonly Flag flag;
         private EventArgs eventInfo;
 
-        public FlagPole(IWorld world, Point location, IListener<IGameObject> listener, int height, int maxHeight) :
+        public FlagPole(IWorld world, Point location, IListener<IGameObject> listener, int height, int maxHeight, IListener<ISoundable> soundListener) :
             base(world, location, listener, new Point(32, 32))
         {
             listener.Subscribe(this);
@@ -29,6 +30,7 @@
             this.maxHeight = maxHeight;
             top = height == maxHeight;
             flag = new Flag(world, location, new Point(32, 32), height);
+            soundListener.Subscribe(flag);
             UpdateSprite();
         }
 
@@ -73,5 +75,6 @@
         {
             ShowSprite(SpriteFactory.Instance.CreateFlagSprite(top));
         }
+        
     }
 }

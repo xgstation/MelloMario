@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 namespace MelloMario.Objects.Blocks
 {
     using MelloMario.Factories;
+    using MelloMario.Sounds.Effects;
     using Microsoft.Xna.Framework;
 
-    internal class Flag : BaseGameObject
+    internal class Flag : BaseGameObject, ISoundable
     {
         private int height;
 
@@ -27,13 +28,14 @@ namespace MelloMario.Objects.Blocks
         {
             this.height = height;
             pulling = false;
+            SoundEventArgs = new SoundArgs();
             ShowSprite(SpriteFactory.Instance.CreateFlagSprite(false));
         }
 
         protected override void OnUpdate(int time)
         {
         }
-        
+
 
         protected override void OnSimulation(int time)
         {
@@ -52,6 +54,11 @@ namespace MelloMario.Objects.Blocks
         public void PullDown()
         {
             pulling = true;
+            SoundEventArgs.SetMethodCalled();
+            SoundEvent?.Invoke(this, SoundEventArgs);
         }
+
+        public ISoundArgs SoundEventArgs { get; }
+        public event SoundHandler SoundEvent;
     }
 }

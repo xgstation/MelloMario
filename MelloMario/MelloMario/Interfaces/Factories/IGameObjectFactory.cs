@@ -32,6 +32,6 @@
             IWorld world,
             Point location,
             int count,
-            IListener<IGameObject> listener);
+            IListener<IGameObject> listener, IListener<ISoundable> soundListener);
     }
 }

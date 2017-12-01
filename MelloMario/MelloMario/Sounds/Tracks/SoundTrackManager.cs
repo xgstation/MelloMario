@@ -15,10 +15,16 @@
 
         private ISoundTrack currentTrack;
         private IPlayer player;
+        private IModel model;
 
         public void BindPlayer(IPlayer newPlayer)
         {
             player = newPlayer;
+        }
+
+        public void BindModel(IModel newModel)
+        {
+            model = newModel;
         }
 
         public static void ToggleMute()
@@ -38,7 +44,7 @@
                 return;
             }
             MediaPlayer.Stop();
-            track?.Play();
+            track.Play();
             MediaPlayer.IsRepeating = true;
             currentTrack = track;
         }
@@ -46,6 +52,10 @@
         private void UpdateBGM()
         {
             //BGM Updater
+            if (model?.State == GameState.gameWon)
+            {
+                MediaPlayer.Stop();
+            }
             switch (player?.Character)
             {
                 case MarioCharacter mario when mario.ProtectionState is Dead:
