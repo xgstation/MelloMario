@@ -72,7 +72,7 @@
                 case Thwomp _:
                     BlockSoundEffect(c, e);
                     break;
-                case Flag _:
+                case FlagPole _:
                     BlockSoundEffect(c, e);
                     break;
                 case FireFlower _:
@@ -144,8 +144,8 @@
                     break;
                 case Pipeline _:
                     break;
-                case Flag _:
-                    PlayEffect(methodName == "OnCollision" ? "GameWon" : null);
+                case FlagPole _:
+                    PlayEffect("GameWon");
                     break;
                 case Thwomp _:
                     PlayEffect(methodName == "OnSimulation" ? "Thwomp" : null);

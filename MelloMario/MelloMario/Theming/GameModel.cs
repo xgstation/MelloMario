@@ -150,7 +150,7 @@
         public void TransistGameWon()
         {
             game.ActivePlayer.Win();
-            State = GameState.transist;
+            State = GameState.gameWon;
             new TransistScript().Bind(controllers, this);
         }
 

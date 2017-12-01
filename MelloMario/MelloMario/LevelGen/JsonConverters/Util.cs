@@ -166,27 +166,25 @@
             {
                 //TODO: this is sloppy, this should use the game object factory.
                 case "V":
-                    in1 = new Pipeline(world, pipelineLoc, listener, soundListener, "LeftIn");
+                    in1 = new Pipeline(world, pipelineLoc, listener,  "LeftIn");
                     in2 = new Pipeline(
                         world,
                         new Point(pipelineLoc.X + grid, pipelineLoc.Y),
                         listener,
-                        soundListener,
                         "RightIn");
                     pipelineLoc = new Point(pipelineLoc.X, pipelineLoc.Y + grid);
                     goto case "NV";
                 case "HL":
-                    in1 = new Pipeline(world, pipelineLoc, listener, soundListener, "TopLeftIn");
-                    in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), listener, soundListener, "BottomLeftIn");
+                    in1 = new Pipeline(world, pipelineLoc, listener,  "TopLeftIn");
+                    in2 = new Pipeline(world, new Point(pipelineLoc.X, pipelineLoc.Y + grid), listener,  "BottomLeftIn");
                     pipelineLoc = new Point(pipelineLoc.X + Const.GRID, pipelineLoc.Y);
                     goto case "NH";
                 case "HR":
-                    in1 = new Pipeline(world, pipelineLoc, listener, soundListener, "TopRightIn");
+                    in1 = new Pipeline(world, pipelineLoc, listener, "TopRightIn");
                     in2 = new Pipeline(
                         world,
                         new Point(pipelineLoc.X, pipelineLoc.Y + grid),
                         listener,
-                        soundListener,
                         "BottomRightIn");
                     pipelineLoc = new Point(pipelineLoc.X - pipelineLength * grid, pipelineLoc.Y);
                     goto case "NH";
@@ -195,8 +193,8 @@
                     {
                         Point loc1 = new Point(pipelineLoc.X, pipelineLoc.Y + grid * y);
                         Point loc2 = new Point(pipelineLoc.X + grid, pipelineLoc.Y + grid * y);
-                        listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, soundListener, "Left"));
-                        listOfPipelineComponents.Add(new Pipeline(world, loc2, listener, soundListener, "Right"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, "Left"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc2, listener,  "Right"));
                     }
                     break;
                 case "NH":
@@ -204,8 +202,8 @@
                     {
                         Point loc1 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y);
                         Point loc2 = new Point(pipelineLoc.X + grid * x, pipelineLoc.Y + grid);
-                        listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, soundListener, "Top"));
-                        listOfPipelineComponents.Add(new Pipeline(world, loc2, listener, soundListener, "Bottom"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc1, listener, "Top"));
+                        listOfPipelineComponents.Add(new Pipeline(world, loc2, listener,  "Bottom"));
                     }
                     break;
                 default:

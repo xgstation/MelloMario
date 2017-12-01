@@ -821,6 +821,6 @@
 #begin SFX/smb_jumpsmall.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/processorParam:Quality=Medium
 /build:SFX/smb_jumpsmall.wav
 
