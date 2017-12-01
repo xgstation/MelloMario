@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="BaseClasses\Containers\BaseContainer.cs" />
     <Compile Include="BaseClasses\Graphics\Sprites\BaseSprite.cs" />
+    <Compile Include="BaseClasses\LevelGen\BaseGenerator.cs" />
     <Compile Include="BaseClasses\Objects\BaseCollidableObject.cs" />
     <Compile Include="BaseClasses\Objects\BasePhysicalObject.cs" />
     <Compile Include="BaseClasses\Objects\BaseGameObject.cs" />
