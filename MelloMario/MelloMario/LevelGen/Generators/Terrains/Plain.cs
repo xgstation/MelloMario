@@ -1,4 +1,4 @@
-﻿namespace MelloMario.LevelGen.Terrains
+﻿namespace MelloMario.LevelGen.Generators.Terrains
 {
     #region
 

@@ -1,11 +1,11 @@
-﻿namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen.Generators
 {
     #region
 
     using System;
     using System.Collections.Generic;
+    using MelloMario.LevelGen.Generators.Terrains;
     using MelloMario.LevelGen.NoiseGenerators;
-    using MelloMario.LevelGen.Terrains;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 

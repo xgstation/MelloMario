@@ -1,8 +1,7 @@
-﻿namespace MelloMario.LevelGen.Terrains
+﻿namespace MelloMario.LevelGen.Generators.Terrains
 {
     #region
 
-    using System;
     using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
