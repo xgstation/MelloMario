@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="BaseClasses\Containers\BaseContainer.cs" />
     <Compile Include="BaseClasses\Graphics\Sprites\BaseSprite.cs" />
+    <Compile Include="BaseClasses\LevelGen\BaseGenerator.cs" />
     <Compile Include="BaseClasses\Objects\BaseCollidableObject.cs" />
     <Compile Include="BaseClasses\Objects\BasePhysicalObject.cs" />
     <Compile Include="BaseClasses\Objects\BaseGameObject.cs" />
@@ -92,17 +93,17 @@
     <Compile Include="Interfaces\Objects\States\IThwompState.cs" />
     <Compile Include="Interfaces\Objects\States\IBeetleState.cs" />
     <Compile Include="LevelGen\NoiseGenerators\NoiseConverter.cs" />
-    <Compile Include="LevelGen\Objects\Enemies.cs" />
-    <Compile Include="LevelGen\Scroll.cs" />
+    <Compile Include="LevelGen\Generators\Objects\Enemies.cs" />
+    <Compile Include="LevelGen\Generators\Scroll.cs" />
     <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="LevelGen\NoiseGenerators\NoiseInterpreter.cs" />
-    <Compile Include="LevelGen\Static.cs" />
-    <Compile Include="LevelGen\Structures\Blocks.cs" />
-    <Compile Include="LevelGen\Terrains\Plateau.cs" />
-    <Compile Include="LevelGen\Terrains\Tunnel.cs" />
-    <Compile Include="LevelGen\Terrains\Plain.cs" />
-    <Compile Include="LevelGen\Terrains\Forest.cs" />
-    <Compile Include="LevelGen\Terrains\Sky.cs" />
+    <Compile Include="LevelGen\Generators\Static.cs" />
+    <Compile Include="LevelGen\Generators\Structures\Blocks.cs" />
+    <Compile Include="LevelGen\Generators\Terrains\Plateau.cs" />
+    <Compile Include="LevelGen\Generators\Terrains\Tunnel.cs" />
+    <Compile Include="LevelGen\Generators\Terrains\Plain.cs" />
+    <Compile Include="LevelGen\Generators\Terrains\Forest.cs" />
+    <Compile Include="LevelGen\Generators\Terrains\Sky.cs" />
     <Compile Include="NoiseGame.cs" />
     <Compile Include="Objects\Characters\ProtectionStates\Helmeted.cs" />
     <Compile Include="Objects\Enemies\BeetleStates\Defeated.cs" />
@@ -408,7 +409,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="LevelGen\Generators\Contents\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <PropertyGroup>

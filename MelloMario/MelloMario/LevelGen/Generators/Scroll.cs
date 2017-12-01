@@ -1,11 +1,11 @@
-﻿namespace MelloMario.LevelGen
+﻿namespace MelloMario.LevelGen.Generators
 {
     #region
 
     using System;
     using System.Collections.Generic;
+    using MelloMario.LevelGen.Generators.Terrains;
     using MelloMario.LevelGen.NoiseGenerators;
-    using MelloMario.LevelGen.Terrains;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
@@ -21,6 +21,7 @@
             {
                 new Forest(scoreListener),
                 new Plain(scoreListener),
+                new Plain(scoreListener), // more plain terrain // TODO: use weighted list
                 new Plateau(scoreListener),
                 new Sky(scoreListener),
                 new Tunnel(scoreListener)

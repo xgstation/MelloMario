@@ -65,7 +65,7 @@
                 case "Stair":
                     return new Stair(world, location, listener);
                 case "Question":
-                    return new Question(world, location, listener, soundListener, false);
+                    return new Question(world, location, listener, soundListener);
                 case "HiddenQuestion":
                     return new Question(world, location, listener, soundListener, true);
                 case "PipelineLeftIn":
