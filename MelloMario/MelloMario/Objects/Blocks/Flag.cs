@@ -12,7 +12,7 @@
 
     #endregion
 
-    internal class Flag : BaseCollidableObject
+    internal class Flag : BaseCollidableObject, ISoundable
     {
         public delegate void TimeScoreHandler(Flag m, EventArgs e);
 
@@ -34,10 +34,13 @@
             UpdateSprite();
         }
 
+        public event SoundHandler SoundEvent;
+
         public event TimeScoreHandler HandlerTimeScore;
 
         protected override void OnUpdate(int time)
         {
+            SoundEvent?.Invoke(this, SoundEventArgs);
         }
 
         protected override void OnCollision(
