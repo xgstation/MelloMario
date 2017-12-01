@@ -99,7 +99,6 @@
     <Compile Include="Interfaces\ISoundable.cs" />
     <Compile Include="LevelGen\NoiseGenerators\NoiseInterpreter.cs" />
     <Compile Include="LevelGen\Generators\Static.cs" />
-    <Compile Include="LevelGen\Generators\Structures\Blocks.cs" />
     <Compile Include="LevelGen\Generators\Terrains\Plateau.cs" />
     <Compile Include="LevelGen\Generators\Structures\Tunnel.cs" />
     <Compile Include="LevelGen\Generators\Terrains\Plain.cs" />

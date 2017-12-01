@@ -13,22 +13,17 @@
 
     internal class Scroll : BaseGenerator
     {
-        private readonly IList<IGenerator> terrains;
-
         public Scroll(
             IListener<IGameObject> scoreListener,
             IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
-            terrains = new List<IGenerator>
-            {
-                new Forest(scoreListener, soundListener),
-                new Island(scoreListener, soundListener),
-                new Plain(scoreListener, soundListener),
-                new Plain(scoreListener, soundListener), // more plain terrain // TODO: use weighted list
-                new Plain(scoreListener, soundListener), // more plain terrain // TODO: use weighted list
-                new Plateau(scoreListener, soundListener),
-                new Sky(scoreListener, soundListener)
-            };
+            Children.Add(new Forest(scoreListener, soundListener));
+            Children.Add(new Island(scoreListener, soundListener));
+            Children.Add(new Plain(scoreListener, soundListener));
+            Children.Add(new Plain(scoreListener, soundListener));
+            Children.Add(new Plain(scoreListener, soundListener));
+            Children.Add(new Plateau(scoreListener, soundListener));
+            Children.Add(new Sky(scoreListener, soundListener));
         }
 
         protected override void OnRequest(IWorld world, Rectangle range)
@@ -44,7 +39,7 @@
                     world.Boundary.Top,
                     world.Boundary.Left - pair.Item1 * Const.GRID,
                     world.Boundary.Height);
-                terrains[Math.Abs(pair.Item1 * 23333) % terrains.Count].Request(world, subRange); // TODO
+                RunChild(world, subRange, PerlinNoiseGenerator.Random(23334, pair.Item1));
                 world.Extend(subRange.Width, 0, 0, 0);
             }
 
@@ -57,7 +52,7 @@
                     world.Boundary.Top,
                     pair.Item2 * Const.GRID - world.Boundary.Right,
                     world.Boundary.Height);
-                terrains[Math.Abs(pair.Item1 * 23333) % terrains.Count].Request(world, subRange); // TODO
+                RunChild(world, subRange, PerlinNoiseGenerator.Random(23334, pair.Item1));
                 world.Extend(0, subRange.Width, 0, 0);
             }
         }

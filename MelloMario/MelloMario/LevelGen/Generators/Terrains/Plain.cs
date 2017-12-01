@@ -2,6 +2,7 @@
 {
     #region
 
+    using MelloMario.LevelGen.Generators.Objects;
     using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
@@ -13,6 +14,7 @@
     {
         public Plain(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
+            Children2.Add(new Enemies(scoreListener, soundListener));
         }
 
         protected override void OnRequest(IWorld world, Rectangle range)
@@ -34,6 +36,8 @@
                         AddObject("Floor", world, new Point(j, range.Bottom - i * Const.GRID));
                     }
                 }
+
+                RunChild(world, new Rectangle(j, range.Bottom - 4 * Const.GRID, Const.GRID, Const.GRID), PerlinNoiseGenerator.Random(23335, j / Const.GRID));
             }
         }
     }

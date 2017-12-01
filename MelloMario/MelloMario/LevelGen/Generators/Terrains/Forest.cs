@@ -4,6 +4,7 @@
 
     using System;
     using MelloMario.Factories;
+    using MelloMario.LevelGen.Generators.Objects;
     using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
@@ -15,6 +16,7 @@
     {
         public Forest(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
+            Children2.Add(new Enemies(scoreListener, soundListener));
         }
 
         protected override void OnRequest(IWorld world, Rectangle range)

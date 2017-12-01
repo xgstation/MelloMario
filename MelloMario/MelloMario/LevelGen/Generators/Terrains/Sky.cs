@@ -2,6 +2,7 @@
 {
     #region
 
+    using MelloMario.LevelGen.Generators.Objects;
     using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
@@ -13,6 +14,7 @@
     {
         public Sky(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
+            Children2.Add(new Enemies(scoreListener, soundListener));
         }
 
         protected override void OnRequest(IWorld world, Rectangle range)
@@ -37,7 +39,7 @@
                 {
                     AddObject("Question", world, new Point(j + k * Const.GRID, range.Bottom - i * Const.GRID));
                 }
-                else if (mat < 2 || mat < 4 && PerlinNoiseGenerator.Random(8766, (range.Left + i) / Const.GRID) % 2 != 0)
+                else if (mat < 2 || mat < 4 && PerlinNoiseGenerator.Random(8766, range.Left / Const.GRID + i) % 2 != 0)
                 {
                     AddObject("Stair", world, new Point(j + k * Const.GRID, range.Bottom - i * Const.GRID));
                 }

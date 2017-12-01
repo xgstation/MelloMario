@@ -3,30 +3,43 @@
     #region
 
     using System;
+    using MelloMario.LevelGen.NoiseGenerators;
     using MelloMario.Objects.Blocks;
     using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
     #endregion
 
-    internal class Enemies : IGenerator
+    internal class Enemies : BaseGenerator
     {
-        private readonly IListener<IGameObject> listener;
-
-        public Enemies(IListener<IGameObject> listener)
+        public Enemies(IListener<IGameObject> scoreListener, IListener<ISoundable> soundListener) : base(scoreListener, soundListener)
         {
-            this.listener = listener;
         }
 
-        public void Request(IWorld world, Rectangle range)
+        protected override void OnRequest(IWorld world, Rectangle range)
         {
-            world.Add(
-                new Floor(
-                    world,
-                    new Point(range.Left, range.Bottom - (3 + Math.Abs(range.Left / 96 * 123456789 / 65535) % 5) * Const.GRID),
-                    listener)); // TODO: random
-            //world.Add(new Floor(world, new Point(range.Left, range.Bottom - 2 * Const.GRID), listener));
-            //world.Add(new Floor(world, new Point(range.Left, range.Bottom - 1 * Const.GRID), listener));
+            int val = PerlinNoiseGenerator.Random(3902, (range.Left * 1100 + range.Top * 2367) / Const.GRID) % 100;
+
+            if (val < 5)
+            {
+                AddObject("Goomba", world, range.Location);
+            }
+            else if (val < 7)
+            {
+                AddObject("GreenKoopa", world, range.Location);
+            }
+            else if (val < 9)
+            {
+                AddObject("RedKoopa", world, range.Location);
+            }
+            else if (val < 11)
+            {
+                AddObject("Beetle", world, range.Location);
+            }
+            else if (val < 12)
+            {
+                AddObject("Thwomp", world, range.Location);
+            }
         }
     }
 }
