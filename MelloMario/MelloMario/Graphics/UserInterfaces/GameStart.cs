@@ -2,6 +2,7 @@
 {
     #region
 
+    using System;
     using System.Diagnostics.Contracts;
     using System.Text;
     using MelloMario.Factories;
@@ -30,12 +31,11 @@
             startDestinationRect = new Rectangle(100, 100, 352, 176);
             titleDestinationRect = new Rectangle(0, 400, 200, 200);
 
-            menuStrings = new[]
+            menuStrings = Enum.GetNames(typeof(Game1.Menu));
+            for (int i = 0; i < menuStrings.Length; i++)
             {
-                "Normal Mode",
-                "Infinite Mode",
-                "Quit"
-            };
+                menuStrings[i] = menuStrings[i].Replace('_', ' ');
+            }
             menuSprite = SpriteFactory.Instance.CreateTextSprite(AddCursor((int) game.CurrentSelected));
             menuDestinationRect = new Rectangle(0, 450, 200, 200);
         }
