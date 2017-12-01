@@ -19,7 +19,7 @@
         {
             for (int j = range.Left; j < range.Right; j += Const.GRID)
             {
-                int i = range.Bottom + 3 * Const.GRID;
+                int i = range.Bottom - 3 * Const.GRID;
                 AddObject("Brick", world, new Point(j, i));
             }
         }
