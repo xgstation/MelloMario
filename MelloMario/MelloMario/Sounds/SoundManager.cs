@@ -34,5 +34,10 @@
         {
             sounds.BindPlayer(player);
         }
+
+        public void BindModel(IModel model)
+        {
+            sounds.BindModel(model);
+        }
     }
 }

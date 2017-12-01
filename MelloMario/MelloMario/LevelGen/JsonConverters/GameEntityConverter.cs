@@ -456,7 +456,7 @@
                 world,
                 objPoint,
                 hasHeight ? Height : 7,
-                listener))
+                listener, soundListener))
             {
                 objectStack.Push(obj);
             }
