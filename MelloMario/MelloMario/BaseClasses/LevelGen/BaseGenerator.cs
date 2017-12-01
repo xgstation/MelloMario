@@ -31,7 +31,7 @@
 
         protected void AddObject(string type, IWorld world, Point location)
         {
-            world.Add(GameObjectFactory.Instance.CreateGameObject("Stair", world, location, ScoreListener, SoundListener));
+            world.Add(GameObjectFactory.Instance.CreateGameObject(type, world, location, ScoreListener, SoundListener));
         }
     }
 }
