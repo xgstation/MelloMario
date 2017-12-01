@@ -325,10 +325,14 @@
                     return new StaticSprite(GetTexture("BlockSheet"), 26, 2, 2, 2, zIndex);
                 case "Bush":
                     return new StaticSprite(GetTexture("BlockSheet"), 23, 18, 5, 2, zIndex);
-                case "BiggerBush":
-                    return new StaticSprite(GetTexture("BlockSheet"), 41, 17, 7, 4, zIndex);
-                case "SharpBush":
-                    return new StaticSprite(GetTexture("BlockSheet"), 16, 17, 7, 5, zIndex);
+                case "LeftTriangle":
+                    return new StaticSprite(GetTexture("BlockSheet"), 16, 16, 2, 2, zIndex);
+                case "RightTriangle":
+                    return new StaticSprite(GetTexture("BlockSheet"), 20, 16, 2, 2, zIndex);
+                case "Arc":
+                    return new StaticSprite(GetTexture("BlockSheet"), 18, 21, 2, 3, zIndex);
+                case "Rectangle":
+                    return new StaticSprite(GetTexture("BlockSheet"), 16, 18, 2, 2, zIndex);
                 default:
                     return null;
             }
