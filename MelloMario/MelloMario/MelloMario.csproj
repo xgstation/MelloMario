@@ -89,6 +89,7 @@
     <Compile Include="Controls\Commands\CursorUp.cs" />
     <Compile Include="Controls\Commands\KillMario.cs" />
     <Compile Include="Controls\Commands\Select.cs" />
+    <Compile Include="Interfaces\Objects\States\IThwompState.cs" />
     <Compile Include="Interfaces\Objects\States\IBeetleState.cs" />
     <Compile Include="LevelGen\NoiseGenerators\NoiseConverter.cs" />
     <Compile Include="LevelGen\Objects\Enemies.cs" />
