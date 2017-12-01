@@ -3,6 +3,8 @@
     #region
 
     using System;
+    using MelloMario.Factories;
+    using MelloMario.Theming;
     using Microsoft.Xna.Framework;
 
     #endregion
@@ -26,5 +28,10 @@
         }
 
         protected abstract void OnRequest(IWorld world, Rectangle range);
+
+        protected void AddObject(string type, IWorld world, Point location)
+        {
+            world.Add(GameObjectFactory.Instance.CreateGameObject("Stair", world, location, ScoreListener, SoundListener));
+        }
     }
 }
