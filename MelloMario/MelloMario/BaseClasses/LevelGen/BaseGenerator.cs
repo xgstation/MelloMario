@@ -13,6 +13,7 @@
     internal abstract class BaseGenerator : IGenerator
     {
         protected IList<IGenerator> Children;
+        protected IList<IGenerator> Children2;
 
         protected IListener<IGameObject> ScoreListener;
         protected IListener<ISoundable> SoundListener;
@@ -24,6 +25,7 @@
             ScoreListener = scoreListener;
             SoundListener = soundListener;
             Children = new List<IGenerator>();
+            Children2 = new List<IGenerator>();
         }
 
         public void Request(IWorld world, Rectangle range)
@@ -36,6 +38,16 @@
         protected void AddObject(string type, IWorld world, Point location)
         {
             world.Add(GameObjectFactory.Instance.CreateGameObject(type, world, location, ScoreListener, SoundListener));
+        }
+
+        protected void RunChild(IWorld world, Rectangle range, int rand)
+        {
+            Children[rand % Children.Count].Request(world, range);
+        }
+
+        protected void RunChild2(IWorld world, Rectangle range, int rand)
+        {
+            Children[rand % Children.Count].Request(world, range);
         }
     }
 }

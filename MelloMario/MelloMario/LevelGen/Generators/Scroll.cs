@@ -39,7 +39,7 @@
                     world.Boundary.Top,
                     world.Boundary.Left - pair.Item1 * Const.GRID,
                     world.Boundary.Height);
-                Children[Math.Abs(pair.Item1 * 2333) % Children.Count].Request(world, subRange); // TODO
+                RunChild(world, subRange, PerlinNoiseGenerator.Random(23334, pair.Item1));
                 world.Extend(subRange.Width, 0, 0, 0);
             }
 
@@ -52,7 +52,7 @@
                     world.Boundary.Top,
                     pair.Item2 * Const.GRID - world.Boundary.Right,
                     world.Boundary.Height);
-                Children[Math.Abs(pair.Item1 * 2333) % Children.Count].Request(world, subRange); // TODO
+                RunChild(world, subRange, PerlinNoiseGenerator.Random(23334, pair.Item1));
                 world.Extend(0, subRange.Width, 0, 0);
             }
         }
