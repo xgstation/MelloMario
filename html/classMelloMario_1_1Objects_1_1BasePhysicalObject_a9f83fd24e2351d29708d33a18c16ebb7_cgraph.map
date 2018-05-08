@@ -1,4 +1,0 @@
-<map id="MelloMario.Objects.BasePhysicalObject.Bounce" name="MelloMario.Objects.BasePhysicalObject.Bounce">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#afb437ff84f73186d883167df00854fb0" title="MelloMario.Objects.BaseCollidable\lObject.StopHorizontalMovement" alt="" coords="272,5,496,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a93e7a1fd2da3f05e1549054a58faad95" title="MelloMario.Objects.BaseCollidable\lObject.StopVerticalMovement" alt="" coords="272,71,496,112"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="MelloMario.Theming.Database.IsEntrance" name="MelloMario.Theming.Database.IsEntrance">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Theming_1_1Database.html#ae250a55a50ed920475af0873c7494f76" title="MelloMario.Theming.Database.\lGetEntranceIndex" alt="" coords="257,5,458,47"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Pipeline.html#a8d7e5af8793f80075283fa2560bdfa57" title="MelloMario.Objects.Blocks.\lPipeline.OnCollision" alt="" coords="266,71,449,112"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#a1734a84d18aa7e354803cfe92b137144" title="MelloMario.Objects.Characters.\lMario.OnCollision" alt="" coords="255,136,460,177"/>
-<area shape="rect" id="node6" href="$classMelloMario_1_1Theming_1_1Database.html#a05ce5701743a3414d738b840298694ed" title="MelloMario.Theming.Database.\lSetEntranceIndex" alt="" coords="257,201,458,243"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Pipeline.html#a48226415eb79b85ae8ee14b9c71ea6dd" title="MelloMario.Objects.Blocks.\lPipeline.OnUpdate" alt="" coords="523,5,706,47"/>
-<area shape="rect" id="node7" href="$classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameEntityConverter.html#a078693ba39b06cb636e8d8cb0193a4a5" title="MelloMario.LevelGen.Json\lConverters.GameEntityConverter.\lCreatePipeline" alt="" coords="508,194,721,250"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="MelloMario.ISpriteFactory.CreateCoinSprite" name="MelloMario.ISpriteFactory.CreateCoinSprite">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#ad2c84984a1b68fce93da9782bf5abf6d" title="MelloMario.Objects.UserInterfaces.\lGameOver.GameOver" alt="" coords="227,5,452,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1HUD.html#aa058c69f206a30ff9d0cfd6574358be8" title="MelloMario.Objects.UserInterfaces.\lHUD.HUD" alt="" coords="227,71,452,112"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Items_1_1Coin.html#ad63f2819fb77cfd23f9ddf0cb055f835" title="MelloMario.Objects.Items.\lCoin.UpdateSprite" alt="" coords="252,136,427,177"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Items_1_1Coin.html#ab7f8d38366e58f8e4ff4fdc130c9a8a8" title="MelloMario.Objects.Items.\lCoin.Coin" alt="" coords="500,136,675,177"/>
-</map>

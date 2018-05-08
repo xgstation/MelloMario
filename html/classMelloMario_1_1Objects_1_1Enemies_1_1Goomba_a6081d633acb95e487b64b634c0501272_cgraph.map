@@ -1,5 +1,0 @@
-<map id="MelloMario.Objects.Enemies.Goomba.OnSimulation" name="MelloMario.Objects.Enemies.Goomba.OnSimulation">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#a0afbb621a892d8108995ef3d773d4281" title="MelloMario.Objects.BasePhysical\lObject.ApplyGravity" alt="" coords="247,5,465,47"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#a0caba56ebb165c87cd16d65cb788cf5e" title="MelloMario.Objects.BasePhysical\lObject.SetHorizontalVelocity" alt="" coords="247,71,465,112"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#ae7280ca5238156966b9d7e39154bc5f5" title="MelloMario.Objects.BasePhysical\lObject.ApplyAccel" alt="" coords="513,5,732,47"/>
-</map>

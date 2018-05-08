@@ -1,4 +1,0 @@
-<map id="MelloMario.Objects.UserInterfaces.GameWon" name="MelloMario.Objects.UserInterfaces.GameWon">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseUIObject.html" title="{BaseUIObject\n|# Player\l# RelativeOrigin\l|+ Update()\l+ Draw()\l# BaseUIObject()\l# Offset()\l# UpdateOrigin()\l# OnUpdate()\l# OnDraw()\l}" alt="" coords="57,145,179,325"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IObject.html" title="{IObject\n||+ Update()\l+ Draw()\l}" alt="" coords="77,5,159,97"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="MelloMario.Objects.Characters.MovementStates.Crouching" name="MelloMario.Objects.Characters.MovementStates.Crouching">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{BaseState\&lt; Mario \&gt;\n|# Owner\l|+ Update()\l# BaseState()\l}" alt="" coords="144,421,283,513"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{MelloMario.Objects.BaseState\&lt; T \&gt;\n||+ Update()\l# BaseState()\l}" alt="" coords="105,145,335,237"/>
-<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="60,5,143,83"/>
-<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IMarioMovementState.html" title="{IMarioMovementState\n||+ Crouch()\l+ Idle()\l+ Land()\l+ Jump()\l+ Walk()\l}" alt="" coords="5,261,152,397"/>
-</map>

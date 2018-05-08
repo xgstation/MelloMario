@@ -1,6 +1,0 @@
-<map id="MelloMario.Objects.Enemies.Piranha.OnUpdate" name="MelloMario.Objects.Enemies.Piranha.OnUpdate">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Piranha.html#a906bb101bf4a8b5c6a30480dbb750f70" title="MelloMario.Objects.Enemies.\lPiranha.DetectMario" alt="" coords="247,13,440,54"/>
-<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IState.html#ae7c9397fccacd69066825f983b94c8fb" title="MelloMario.IState.Update" alt="" coords="259,79,427,105"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Containers_1_1World.html#aea586175f8222efd98a95899e510cd6b" title="MelloMario.Containers.World.\lScanNearby" alt="" coords="488,13,681,54"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#ab2746816cefc64fdadac94ac31eaea47" title="MelloMario.Containers.Base\lContainer\&lt; Point, IGameObject\l \&gt;::Scan" alt="" coords="729,5,932,61"/>
-</map>

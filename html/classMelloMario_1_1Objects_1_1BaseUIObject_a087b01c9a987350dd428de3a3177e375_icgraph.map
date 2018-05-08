@@ -1,6 +1,0 @@
-<map id="MelloMario.Objects.BaseUIObject.Offset" name="MelloMario.Objects.BaseUIObject.Offset">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameStart.html#ad5e2531a90a5e816aed32822637975e2" title="MelloMario.Objects.UserInterfaces.\lGameStart.OnUpdate" alt="" coords="276,5,501,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1HUD.html#a4d0f18016827e7a05e405951bf88e93b" title="MelloMario.Objects.UserInterfaces.\lHUD.OnUpdate" alt="" coords="276,71,501,112"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameWon.html#acdbc3d6f82ff7814f251ddd57c07f857" title="MelloMario.Objects.UserInterfaces.\lGameWon.OnUpdate" alt="" coords="276,136,501,177"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a572b91cd806714b0ab07ef951fe723bc" title="MelloMario.Objects.UserInterfaces.\lGameOver.OnUpdate" alt="" coords="276,201,501,243"/>
-</map>

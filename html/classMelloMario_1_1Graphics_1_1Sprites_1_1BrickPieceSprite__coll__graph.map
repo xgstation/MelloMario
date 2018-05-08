@@ -1,4 +1,0 @@
-<map id="MelloMario.Graphics.Sprites.BrickPieceSprite" name="MelloMario.Graphics.Sprites.BrickPieceSprite">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite.html" title="{BaseSprite\n|+ LayerDepth\l+ PixelSize\l&#45; zIndex\l&#45; visible\l|+ Draw()\l# BaseSprite()\l# OnDraw()\l# Toggle()\l}" alt="" coords="48,131,153,296"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1ISprite.html" title="{ISprite\n|+ PixelSize\l|+ Draw()\l}" alt="" coords="56,5,145,83"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="MelloMario.IMarioPowerUpState.UpgradeToSuper" name="MelloMario.IMarioPowerUpState.UpgradeToSuper">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#a4e290f49548ea3f4ff457a7bc4190481" title="MelloMario.Objects.Characters.\lMarioCharacter.SuperCreate" alt="" coords="229,5,435,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#ad2c76ee3f11ba8897ae36d5dbb07d71c" title="MelloMario.Objects.Characters.\lMario.UpgradeToSuper" alt="" coords="229,71,435,112"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#a1734a84d18aa7e354803cfe92b137144" title="MelloMario.Objects.Characters.\lMario.OnCollision" alt="" coords="483,71,688,112"/>
-</map>

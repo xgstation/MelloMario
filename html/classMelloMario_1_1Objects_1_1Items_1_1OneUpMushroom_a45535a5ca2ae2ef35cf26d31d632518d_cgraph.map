@@ -1,9 +1,0 @@
-<map id="MelloMario.Objects.Items.OneUpMushroom.OnCollision" name="MelloMario.Objects.Items.OneUpMushroom.OnCollision">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#a9f83fd24e2351d29708d33a18c16ebb7" title="MelloMario.Objects.BasePhysical\lObject.Bounce" alt="" coords="472,5,691,47"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Items_1_1OneUpMushroom.html#a8a50fc4a8eb54cb5cda938dff58c33ca" title="MelloMario.Objects.Items.\lOneUpMushroom.Collect" alt="" coords="247,71,421,112"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#afb437ff84f73186d883167df00854fb0" title="MelloMario.Objects.BaseCollidable\lObject.StopHorizontalMovement" alt="" coords="741,71,965,112"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a93e7a1fd2da3f05e1549054a58faad95" title="MelloMario.Objects.BaseCollidable\lObject.StopVerticalMovement" alt="" coords="741,5,965,47"/>
-<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#ac4d6aa03314802dcc75cb4730b1be51f" title="MelloMario.Objects.BaseCollidable\lObject.ChangeLives" alt="" coords="469,71,693,112"/>
-<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#ab856d6c80f08fd49fac68e0fefbed65b" title="MelloMario.Objects.BaseCollidable\lObject.RemoveSelf" alt="" coords="469,136,693,177"/>
-<area shape="rect" id="node8" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#a22d1d351d72889669184260796158208" title="MelloMario.Containers.Base\lContainer.Remove" alt="" coords="761,136,946,177"/>
-</map>

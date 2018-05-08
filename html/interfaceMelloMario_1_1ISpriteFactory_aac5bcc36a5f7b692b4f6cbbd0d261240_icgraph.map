@@ -1,6 +1,0 @@
-<map id="MelloMario.ISpriteFactory.CreateKoopaSprite" name="MelloMario.ISpriteFactory.CreateKoopaSprite">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Koopa.html#ae5a8dbbbfbcce76fcc24e856f18762e3" title="MelloMario.Objects.Enemies.\lKoopa.UpdateSprite" alt="" coords="227,39,420,80"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Koopa.html#a560118263c5ab2f7d3f4201d98386d5a" title="MelloMario.Objects.Enemies.\lKoopa.Koopa" alt="" coords="468,5,661,47"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Koopa.html#ae013cbfffdcdeef04a65899500579377" title="MelloMario.Objects.Enemies.\lKoopa.ChangeFacing" alt="" coords="468,71,661,112"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Koopa.html#af25ae1fadcaa75f7bb01d6b30708c522" title="MelloMario.Objects.Enemies.\lKoopa.OnCollision" alt="" coords="709,71,903,112"/>
-</map>

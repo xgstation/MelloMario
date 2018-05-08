@@ -1,7 +1,0 @@
-<map id="MelloMario.IMarioMovementState" name="MelloMario.IMarioMovementState">
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Crouching.html" title="{MelloMario.Objects.Characters.\lMovementStates.Crouching\n||+ Crouching()\l+ Crouch()\l+ Idle()\l+ Land()\l+ Jump()\l+ Walk()\l+ Update()\l}" alt="" coords="5,337,211,517"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Jumping.html" title="{MelloMario.Objects.Characters.\lMovementStates.Jumping\n|+ Finished\l&#45; previous\l|+ Jumping()\l+ Crouch()\l+ Idle()\l+ Land()\l+ Jump()\l+ Walk()\l# OnTimer()\l}" alt="" coords="235,329,440,524"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Standing.html" title="{MelloMario.Objects.Characters.\lMovementStates.Standing\n||+ Standing()\l+ Crouch()\l+ Idle()\l+ Land()\l+ Jump()\l+ Walk()\l+ Update()\l}" alt="" coords="464,337,669,517"/>
-<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1Characters_1_1MovementStates_1_1Walking.html" title="{MelloMario.Objects.Characters.\lMovementStates.Walking\n||+ Walking()\l+ Crouch()\l+ Idle()\l+ Land()\l+ Jump()\l+ Walk()\l+ Update()\l}" alt="" coords="693,337,899,517"/>
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="411,5,493,83"/>
-</map>

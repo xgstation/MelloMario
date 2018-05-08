@@ -1,7 +1,0 @@
-<map id="MelloMario.Objects.BasePhysicalObject.SetHorizontalVelocity" name="MelloMario.Objects.BasePhysicalObject.SetHorizontalVelocity">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Goomba.html#a6081d633acb95e487b64b634c0501272" title="MelloMario.Objects.Enemies.\lGoomba.OnSimulation" alt="" coords="278,5,471,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Items_1_1OneUpMushroom.html#a0deeb4203389594181a4eaadbdf47dbf" title="MelloMario.Objects.Items.\lOneUpMushroom.OnSimulation" alt="" coords="272,71,477,112"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Items_1_1Star.html#a2cde05ab41c12c8ff6fae1162b414c07" title="MelloMario.Objects.Items.\lStar.OnSimulation" alt="" coords="287,136,462,177"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Koopa.html#ac0153b8b26863b2a1c9a862ea37fd3b8" title="MelloMario.Objects.Enemies.\lKoopa.OnSimulation" alt="" coords="278,201,471,243"/>
-<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1Items_1_1SuperMushroom.html#aee4e548c44ebdf1e0d4ae155fd80bf1a" title="MelloMario.Objects.Items.\lSuperMushroom.OnSimulation" alt="" coords="275,267,474,308"/>
-</map>

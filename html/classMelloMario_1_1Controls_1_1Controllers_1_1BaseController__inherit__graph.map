@@ -1,7 +1,0 @@
-<map id="MelloMario.Controls.Controllers.BaseController&lt; T &gt;" name="MelloMario.Controls.Controllers.BaseController&lt; T &gt;">
-<area shape="rect" id="node3" href="$classMelloMario_1_1Controls_1_1Controllers_1_1BaseController.html" title="{MelloMario.Controls.Controllers.\lBaseController\&lt; Buttons \&gt;\n|&#45; commands\l|+ AddCommand()\l+ Update()\l+ Reset()\l# BaseController()\l# OnUpdate()\l# RunCommand()\l}" alt="" coords="5,389,212,555"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Controls_1_1Controllers_1_1BaseController.html" title="{MelloMario.Controls.Controllers.\lBaseController\&lt; Keys \&gt;\n|&#45; commands\l|+ AddCommand()\l+ Update()\l+ Reset()\l# BaseController()\l# OnUpdate()\l# RunCommand()\l}" alt="" coords="236,389,443,555"/>
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IController.html" title="{IController\n||+ AddCommand()\l+ Update()\l+ Reset()\l}" alt="" coords="162,5,285,112"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Controls_1_1Controllers_1_1GamepadController.html" title="{MelloMario.Controls.Controllers.\lGamepadController\n|&#45; previousState\l|+ GamepadController()\l# OnUpdate()\l}" alt="" coords="5,604,212,711"/>
-<area shape="rect" id="node6" href="$classMelloMario_1_1Controls_1_1Controllers_1_1KeyboardController.html" title="{MelloMario.Controls.Controllers.\lKeyboardController\n|&#45; previousState\l|+ KeyboardController()\l# OnUpdate()\l}" alt="" coords="236,604,443,711"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="MelloMario.Theming.GameModel.UpdateGameObjects" name="MelloMario.Theming.GameModel.UpdateGameObjects">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IWorld.html#a2b7d10f85b41db12b1a274c9cf1aa2e9" title="MelloMario.IWorld.ScanNearby" alt="" coords="269,5,471,32"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IObject.html#aae8242b2fc9319733d1d09dc0271d971" title="MelloMario.IObject.Update" alt="" coords="283,56,457,83"/>
-<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IPlayer.html#a641b95b402ca88df5b40252f38573350" title="MelloMario.IPlayer.Update" alt="" coords="283,107,457,133"/>
-</map>

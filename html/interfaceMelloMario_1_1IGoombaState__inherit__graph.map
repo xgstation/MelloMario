@@ -1,5 +1,0 @@
-<map id="MelloMario.IGoombaState" name="MelloMario.IGoombaState">
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Enemies_1_1GoombaStates_1_1Defeated.html" title="{MelloMario.Objects.Enemies.\lGoombaStates.Defeated\n|&#45; played\l|+ Defeated()\l+ Show()\l+ Defeat()\l+ Update()\l}" alt="" coords="5,271,199,407"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Enemies_1_1GoombaStates_1_1Normal.html" title="{MelloMario.Objects.Enemies.\lGoombaStates.Normal\n||+ Normal()\l+ Show()\l+ Defeat()\l+ Update()\l}" alt="" coords="223,271,416,407"/>
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="169,5,251,83"/>
-</map>

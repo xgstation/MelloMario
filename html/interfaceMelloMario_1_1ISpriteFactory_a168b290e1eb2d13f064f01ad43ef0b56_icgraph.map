@@ -1,6 +1,0 @@
-<map id="MelloMario.ISpriteFactory.CreateThwompSprite" name="MelloMario.ISpriteFactory.CreateThwompSprite">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Thwomp.html#ab85e6ce27b3300ef70d72bdcf386ad81" title="MelloMario.Objects.Enemies.\lThwomp.UpdateSprite" alt="" coords="227,39,420,80"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Thwomp.html#aa2acd3979df910023d135e118e11b7bd" title="MelloMario.Objects.Enemies.\lThwomp.Thwomp" alt="" coords="468,5,661,47"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Thwomp.html#ac598f4fb458dfeab3f006fa69766f583" title="MelloMario.Objects.Enemies.\lThwomp.ChangeFacing" alt="" coords="468,71,661,112"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Thwomp.html#aa2f44a49c53e014ddae36192159e1691" title="MelloMario.Objects.Enemies.\lThwomp.OnCollision" alt="" coords="709,71,903,112"/>
-</map>

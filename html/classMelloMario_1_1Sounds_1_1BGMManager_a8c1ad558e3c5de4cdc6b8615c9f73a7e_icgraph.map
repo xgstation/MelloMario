@@ -1,5 +1,0 @@
-<map id="MelloMario.Sounds.BGMManager.Resume" name="MelloMario.Sounds.BGMManager.Resume">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Sounds_1_1BGMManager.html#aa88afc7fae97d54e5fabfbdeb3b7d894" title="MelloMario.Sounds.BGMManager.\lUpdatePausing" alt="" coords="273,5,493,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Sounds_1_1BGMManager.html#a0f3110164cefbd709684211ae151020e" title="MelloMario.Sounds.BGMManager.\lUpdate" alt="" coords="541,5,761,47"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Game1.html#abe3eff66b402af3861215080c44a8b02" title="Allows the game to run logic such as updating the World, checking for collisions, gathering input..." alt="" coords="809,13,985,39"/>
-</map>

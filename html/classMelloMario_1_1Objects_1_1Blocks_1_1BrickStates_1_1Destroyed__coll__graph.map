@@ -1,7 +1,0 @@
-<map id="MelloMario.Objects.Blocks.BrickStates.Destroyed" name="MelloMario.Objects.Blocks.BrickStates.Destroyed">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="{BaseTimedState\&lt; Brick \&gt;\n|+ Progress\l&#45; interval\l&#45; elapsed\l|+ Update()\l# BaseTimedState()\l# OnTimer()\l}" alt="" coords="101,605,273,741"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="{MelloMario.Objects.BaseTimed\lState\&lt; T \&gt;\n|+ Progress\l&#45; interval\l&#45; elapsed\l|+ Update()\l# BaseTimedState()\l# OnTimer()\l}" alt="" coords="94,392,297,543"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{BaseState\&lt; T \&gt;\n||+ Update()\l# BaseState()\l}" alt="" coords="131,145,246,237"/>
-<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="58,5,141,83"/>
-<area shape="rect" id="node7" href="$interfaceMelloMario_1_1IBlockState.html" title="{IBlockState\n||+ Show()\l+ Hide()\l+ Bump()\l}" alt="" coords="33,261,123,368"/>
-</map>

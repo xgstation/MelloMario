@@ -1,6 +1,0 @@
-<map id="MelloMario.Containers.World.ScanNearby" name="MelloMario.Containers.World.ScanNearby">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a4206babe2bd6b68ec7fd6f481846918f" title="MelloMario.Objects.BaseCollidable\lObject.CollideAll" alt="" coords="247,5,471,47"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Piranha.html#a906bb101bf4a8b5c6a30480dbb750f70" title="MelloMario.Objects.Enemies.\lPiranha.DetectMario" alt="" coords="262,71,455,112"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a9a601d5ff90ca4c040fbe7cc4c4a2810" title="MelloMario.Objects.BaseCollidable\lObject.OnSimulation" alt="" coords="519,5,743,47"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Piranha.html#ace9229bc475ba3247951f15a690516c7" title="MelloMario.Objects.Enemies.\lPiranha.OnUpdate" alt="" coords="534,71,727,112"/>
-</map>

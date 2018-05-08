@@ -1,4 +1,0 @@
-<map id="MelloMario.LevelGen.JsonGenerator.GetObjs" name="MelloMario.LevelGen.JsonGenerator.GetObjs">
-<area shape="rect" id="node2" href="$classMelloMario_1_1LevelGen_1_1JsonConverters_1_1LevelIOJson.html#aa3fd52213102bf6ca317746b70eb5819" title="MelloMario.LevelGen.Json\lConverters.LevelIOJson.Load" alt="" coords="233,5,421,47"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IWorld.html#a2b7d10f85b41db12b1a274c9cf1aa2e9" title="MelloMario.IWorld.ScanNearby" alt="" coords="227,71,428,98"/>
-</map>

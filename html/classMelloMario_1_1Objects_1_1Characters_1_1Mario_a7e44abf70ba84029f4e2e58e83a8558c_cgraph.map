@@ -1,4 +1,0 @@
-<map id="MelloMario.Objects.Characters.Mario.OnDeath" name="MelloMario.Objects.Characters.Mario.OnDeath">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1ISoundArgs.html#a59ed0ce0559c17ccb69be1cdda2b9b36" title="MelloMario.ISoundArgs.Set\lMethodCalled" alt="" coords="278,5,458,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BasePhysicalObject.html#a978f06a3b8ccdb4aacc6c6777d0e76f6" title="MelloMario.Objects.BasePhysical\lObject.SetVerticalVelocity" alt="" coords="259,71,477,112"/>
-</map>

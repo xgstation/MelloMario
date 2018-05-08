@@ -1,4 +1,0 @@
-<map id="MelloMario.LevelGen.JsonGenerator" name="MelloMario.LevelGen.JsonGenerator">
-<area shape="rect" id="node2" href="$classMelloMario_1_1LevelGen_1_1StaticGenerator.html" title="{StaticGenerator\n|&#45; objects\l|+ StaticGenerator()\l+ Request()\l}" alt="" coords="25,131,159,223"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1ILevelGenerator.html" title="{ILevelGenerator\n||+ Request()\l}" alt="" coords="37,5,147,83"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="MelloMario.Objects.Characters.Mario.Mario" name="MelloMario.Objects.Characters.Mario.Mario">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IListener.html#a7cc6b69de82ebae5ec8a4d6b4008a2bc" title="MelloMario.IListener.Subscribe" alt="" coords="262,9,461,36"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1Mario.html#aa16fb9cc546f240bf7e7963f244b4f8d" title="MelloMario.Objects.Characters.\lMario.UpdateSprite" alt="" coords="259,61,464,102"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#aa3116237ab408071c073373daca92ad0" title="MelloMario.Objects.BaseGame\lObject.ShowSprite" alt="" coords="512,27,715,69"/>
-<area shape="rect" id="node8" href="$interfaceMelloMario_1_1ISpriteFactory.html#a204f922bd360ad83cdaf563e60e969bc" title="MelloMario.ISpriteFactory.\lCreateMarioSprite" alt="" coords="527,93,700,134"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a968dd48f33c69acc16fb2acfae36c3a8" title="MelloMario.Objects.BaseGame\lObject.Resize" alt="" coords="763,27,965,69"/>
-<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IContainer.html#a515faf6ba73cf569cb85fa5f690e2941" title="MelloMario.IContainer.Move" alt="" coords="1025,5,1205,32"/>
-<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a739d7c5d6a671aa79c6e9a6b642e444c" title="MelloMario.Objects.BaseGame\lObject.Relocate" alt="" coords="1013,57,1216,98"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="MelloMario.Objects.Enemies.GoombaStates.Normal" name="MelloMario.Objects.Enemies.GoombaStates.Normal">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{BaseState\&lt; Goomba \&gt;\n|# Owner\l|+ Update()\l# BaseState()\l}" alt="" coords="119,377,275,469"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{MelloMario.Objects.BaseState\&lt; T \&gt;\n||+ Update()\l# BaseState()\l}" alt="" coords="87,145,317,237"/>
-<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="42,5,125,83"/>
-<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IGoombaState.html" title="{IGoombaState\n||+ Show()\l+ Defeat()\l}" alt="" coords="5,261,111,353"/>
-</map>

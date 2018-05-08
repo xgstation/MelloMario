@@ -1,8 +1,0 @@
-<map id="MelloMario.Objects.Blocks.Pipeline.OnUpdate" name="MelloMario.Objects.Blocks.Pipeline.OnUpdate">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Theming_1_1Database.html#ae250a55a50ed920475af0873c7494f76" title="MelloMario.Theming.Database.\lGetEntranceIndex" alt="" coords="236,5,437,47"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Theming_1_1Database.html#aa993391b45238e267030c9103d64fa89" title="MelloMario.Theming.Database.\lGetPortal" alt="" coords="236,71,437,112"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Theming_1_1Database.html#abb6dce685c8a34a586fa4c8fc41fff87" title="MelloMario.Theming.Database.\lIsPortal" alt="" coords="236,136,437,177"/>
-<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IModel.html#ac3de5797c48482bd254ca44f4c2a3a50" title="MelloMario.IModel.LoadLevel" alt="" coords="243,202,431,229"/>
-<area shape="rect" id="node7" href="$interfaceMelloMario_1_1IPlayer.html#a72405dacae108f56ee68df0b8d60c95c" title="MelloMario.IPlayer.Spawn" alt="" coords="251,253,422,279"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Theming_1_1Database.html#a1c6942339fed6d28302debda9c4e6756" title="MelloMario.Theming.Database.\lIsEntrance" alt="" coords="485,5,687,47"/>
-</map>

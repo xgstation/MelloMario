@@ -1,8 +1,0 @@
-<map id="MelloMario.Controls.Scripts.PlayingScript.Bind" name="MelloMario.Controls.Scripts.PlayingScript.Bind">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Theming_1_1GameModel.html#a47a50dce16e211b57e3c2cae307f5e42" title="MelloMario.Theming.GameModel.\lResume" alt="" coords="240,104,456,145"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Theming_1_1GameModel.html#a398fab5ee4f986acac7ba10841ae0765" title="MelloMario.Theming.GameModel.\lReset" alt="" coords="504,5,720,47"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Theming_1_1GameModel.html#aa99d3524a0689120b4c1915ab212b0ae" title="MelloMario.Theming.GameModel.\lInfinite" alt="" coords="504,71,720,112"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Theming_1_1GameModel.html#a2d58c8618777941b871792b8c1a29fa5" title="MelloMario.Theming.GameModel.\lNormal" alt="" coords="504,136,720,177"/>
-<area shape="rect" id="node6" href="$classMelloMario_1_1Theming_1_1GameModel.html#a72c88e41105e13edab09d886b9031d5d" title="MelloMario.Theming.GameModel.\lUpdate" alt="" coords="504,201,720,243"/>
-<area shape="rect" id="node7" href="$classMelloMario_1_1Game1.html#abe3eff66b402af3861215080c44a8b02" title="Allows the game to run logic such as updating the World, checking for collisions, gathering input..." alt="" coords="768,209,944,235"/>
-</map>

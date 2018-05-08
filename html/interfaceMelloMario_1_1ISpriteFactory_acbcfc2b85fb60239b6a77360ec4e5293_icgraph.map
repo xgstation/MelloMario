@@ -1,6 +1,0 @@
-<map id="MelloMario.ISpriteFactory.CreateGoombaSprite" name="MelloMario.ISpriteFactory.CreateGoombaSprite">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Goomba.html#a9a9818aac3ef99146bbac402b0470ba3" title="MelloMario.Objects.Enemies.\lGoomba.UpdateSprite" alt="" coords="227,39,420,80"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Goomba.html#a1c2f1443d4e29ebdaf3cd1fc99fd432f" title="MelloMario.Objects.Enemies.\lGoomba.Goomba" alt="" coords="468,5,661,47"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Goomba.html#adc857e0e74326d12567f7bd5df01f7d4" title="MelloMario.Objects.Enemies.\lGoomba.ChangeFacing" alt="" coords="468,71,661,112"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Enemies_1_1Goomba.html#a6918dd64d99d998bc3544674d4f91408" title="MelloMario.Objects.Enemies.\lGoomba.OnCollision" alt="" coords="709,71,903,112"/>
-</map>

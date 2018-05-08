@@ -1,8 +1,0 @@
-<map id="MelloMario.Interfaces.Objects.States.IPiranhaState" name="MelloMario.Interfaces.Objects.States.IPiranhaState">
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1Defeated.html" title="{MelloMario.Objects.Enemies.\lPiranhaStates.Defeated\n||+ Defeated()\l+ Defeat()\l+ Update()\l}" alt="" coords="5,271,199,392"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1Hidden.html" title="{MelloMario.Objects.Enemies.\lPiranhaStates.Hidden\n||+ Hidden()\l+ Defeat()\l# OnTimer()\l}" alt="" coords="223,271,416,392"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1MovingDown.html" title="{MelloMario.Objects.Enemies.\lPiranhaStates.MovingDown\n|&#45; initialY\l|+ MovingDown()\l+ Update()\l+ Defeat()\l}" alt="" coords="440,271,633,392"/>
-<area shape="rect" id="node6" href="$classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1MovingUp.html" title="{MelloMario.Objects.Enemies.\lPiranhaStates.MovingUp\n|&#45; initialY\l|+ MovingUp()\l+ Update()\l+ Defeat()\l}" alt="" coords="657,271,851,392"/>
-<area shape="rect" id="node7" href="$classMelloMario_1_1Objects_1_1Enemies_1_1PiranhaStates_1_1Show.html" title="{MelloMario.Objects.Enemies.\lPiranhaStates.Show\n||+ Show()\l+ Defeat()\l# OnTimer()\l}" alt="" coords="875,271,1068,392"/>
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="495,5,578,83"/>
-</map>

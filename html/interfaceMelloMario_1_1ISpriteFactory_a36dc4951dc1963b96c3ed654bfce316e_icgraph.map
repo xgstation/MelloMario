@@ -1,4 +1,0 @@
-<map id="MelloMario.ISpriteFactory.CreateStairSprite" name="MelloMario.ISpriteFactory.CreateStairSprite">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Stair.html#a4cbbc4b5734600f2a011b8328fb5c978" title="MelloMario.Objects.Blocks.\lStair.UpdateSprite" alt="" coords="227,5,409,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Stair.html#a0a9d21916af16e2dd439cd314f4981d4" title="MelloMario.Objects.Blocks.\lStair.Stair" alt="" coords="457,5,640,47"/>
-</map>

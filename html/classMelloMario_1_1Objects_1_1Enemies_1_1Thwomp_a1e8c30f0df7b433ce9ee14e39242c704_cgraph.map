@@ -1,4 +1,0 @@
-<map id="MelloMario.Objects.Enemies.Thwomp.Defeat" name="MelloMario.Objects.Enemies.Thwomp.Defeat">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IThwompState.html#a8d6401ab3c8329a9bb99cd82bfa14c55" title="MelloMario.IThwompState.\lDefeat" alt="" coords="271,5,446,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a51b9dcd51c329bef4f04919f67234378" title="MelloMario.Objects.BaseCollidable\lObject.ScorePoints" alt="" coords="247,71,471,112"/>
-</map>

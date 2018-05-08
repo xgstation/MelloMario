@@ -1,7 +1,0 @@
-<map id="MelloMario.Objects.Characters.MovementStates.Jumping" name="MelloMario.Objects.Characters.MovementStates.Jumping">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="{BaseTimedState\&lt; Mario \&gt;\n|+ Progress\l&#45; interval\l&#45; elapsed\l|+ Update()\l# BaseTimedState()\l# OnTimer()\l}" alt="" coords="30,621,205,757"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseTimedState.html" title="{MelloMario.Objects.BaseTimed\lState\&lt; T \&gt;\n|+ Progress\l&#45; interval\l&#45; elapsed\l|+ Update()\l# BaseTimedState()\l# OnTimer()\l}" alt="" coords="5,408,208,559"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{BaseState\&lt; T \&gt;\n|# Owner\l|+ Update()\l# BaseState()\l}" alt="" coords="81,132,196,224"/>
-<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="149,5,232,83"/>
-<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IMarioMovementState.html" title="{IMarioMovementState\n||+ Crouch()\l+ Idle()\l+ Land()\l+ Jump()\l+ Walk()\l}" alt="" coords="168,248,315,384"/>
-</map>

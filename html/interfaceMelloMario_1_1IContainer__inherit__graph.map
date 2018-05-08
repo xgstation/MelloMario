@@ -1,8 +1,0 @@
-<map id="MelloMario.IContainer&lt; T &gt;" name="MelloMario.IContainer&lt; T &gt;">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IContainer.html" title="{MelloMario.IContainer\l\&lt; IPlayer \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="71,189,217,325"/>
-<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IContainer.html" title="{MelloMario.IContainer\l\&lt; IGameObject \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="248,189,395,325"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1ISession.html" title="{MelloMario.ISession\n||+ ScanWorlds()\l+ ScanPlayers()\l}" alt="" coords="39,397,177,489"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Containers_1_1Session.html" title="{MelloMario.Containers.Session\n||+ ScanWorlds()\l+ ScanPlayers()\l# GetKey()\l}" alt="" coords="5,597,208,703"/>
-<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IWorld.html" title="{MelloMario.IWorld\n|+ ID\l+ Type\l+ Boundary\l|+ Extend()\l+ ScanNearby()\l+ GetRespawnPoint()\l}" alt="" coords="252,375,399,511"/>
-<area shape="rect" id="node7" href="$classMelloMario_1_1Containers_1_1World.html" title="{MelloMario.Containers.World\n|+ ID\l+ Type\l+ Boundary\l&#45; respawnPoints\l|+ World()\l+ Extend()\l+ ScanNearby()\l+ GetRespawnPoint()\l# GetKey()\l}" alt="" coords="232,560,421,740"/>
-</map>

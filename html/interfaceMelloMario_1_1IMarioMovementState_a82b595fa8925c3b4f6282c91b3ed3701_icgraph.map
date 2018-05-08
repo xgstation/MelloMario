@@ -1,5 +1,0 @@
-<map id="MelloMario.IMarioMovementState.Idle" name="MelloMario.IMarioMovementState.Idle">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#ad169198325d1cd7014d673ff591ea97e" title="MelloMario.Objects.Characters.\lMarioCharacter.CrouchRelease" alt="" coords="236,5,441,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#a119e784a36a46f944748073cffb34fcb" title="MelloMario.Objects.Characters.\lMarioCharacter.LeftRelease" alt="" coords="236,71,441,112"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#a2ea2e77b23faff8a31fad9d98e18bcb2" title="MelloMario.Objects.Characters.\lMarioCharacter.RightRelease" alt="" coords="236,136,441,177"/>
-</map>

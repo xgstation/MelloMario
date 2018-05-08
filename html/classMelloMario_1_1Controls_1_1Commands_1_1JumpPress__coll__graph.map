@@ -1,5 +1,0 @@
-<map id="MelloMario.Controls.Commands.JumpPress" name="MelloMario.Controls.Commands.JumpPress">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Controls_1_1Commands_1_1BaseCommand.html" title="{BaseCommand\&lt; ICharacter \&gt;\n|# Receiver\l|+ Execute()\l# BaseCommand()\l}" alt="" coords="13,315,208,407"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Controls_1_1Commands_1_1BaseCommand.html" title="{MelloMario.Controls.Commands.\lBaseCommand\&lt; T \&gt;\n||+ Execute()\l# BaseCommand()\l}" alt="" coords="5,145,216,252"/>
-<area shape="rect" id="node4" href="$interfaceMelloMario_1_1ICommand.html" title="{ICommand\n||+ Execute()\l}" alt="" coords="21,5,112,83"/>
-</map>

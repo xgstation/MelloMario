@@ -1,8 +1,0 @@
-<map id="MelloMario.Game1.Initialize" name="MelloMario.Game1.Initialize">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Game1.html#a3ae863c0c57d5b278bfc755bb5d59b03" title="MelloMario.Game1.Reset" alt="" coords="236,42,405,69"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Theming_1_1GameModel.html#a19da2d1bc754010340936e99573752a4" title="MelloMario.Theming.GameModel.\lLoadControllers" alt="" coords="462,5,678,47"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Theming_1_1GameModel.html#af042af9084a4d24ccc8e32f96233b521" title="MelloMario.Theming.GameModel.Init" alt="" coords="453,71,687,98"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Controls_1_1Scripts_1_1StartScript.html#ae2c75ac7e78d17a969a8e9f8cb490cdd" title="MelloMario.Controls.Scripts.\lStartScript.Bind" alt="" coords="735,64,921,105"/>
-<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IController.html#aee9b89a6c5fc218ec1e2afd65e7d91e7" title="MelloMario.IController.Reset" alt="" coords="969,42,1153,69"/>
-<area shape="rect" id="node7" href="$interfaceMelloMario_1_1IController.html#a11f1fbf12b60c68413e5a2a720805b3b" title="MelloMario.IController.Add\lCommand" alt="" coords="975,93,1148,135"/>
-</map>

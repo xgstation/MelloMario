@@ -1,6 +1,0 @@
-<map id="MelloMario.IScript" name="MelloMario.IScript">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Controls_1_1Scripts_1_1PausedScript.html" title="{MelloMario.Controls.Scripts.\lPausedScript\n||+ Bind()\l}" alt="" coords="5,131,192,223"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Controls_1_1Scripts_1_1PlayingScript.html" title="{MelloMario.Controls.Scripts.\lPlayingScript\n||+ Bind()\l}" alt="" coords="216,131,403,223"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Controls_1_1Scripts_1_1StartScript.html" title="{MelloMario.Controls.Scripts.\lStartScript\n||+ Bind()\l}" alt="" coords="427,131,613,223"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Controls_1_1Scripts_1_1TransistScript.html" title="{MelloMario.Controls.Scripts.\lTransistScript\n||+ Bind()\l}" alt="" coords="637,131,824,223"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="MelloMario.Objects.Blocks.Brick.Remove" name="MelloMario.Objects.Blocks.Brick.Remove">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#ab856d6c80f08fd49fac68e0fefbed65b" title="MelloMario.Objects.BaseCollidable\lObject.RemoveSelf" alt="" coords="236,71,460,112"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Containers_1_1BaseContainer.html#a22d1d351d72889669184260796158208" title="MelloMario.Containers.Base\lContainer.Remove" alt="" coords="527,5,713,47"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#afb437ff84f73186d883167df00854fb0" title="MelloMario.Objects.BaseCollidable\lObject.StopHorizontalMovement" alt="" coords="508,71,732,112"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a93e7a1fd2da3f05e1549054a58faad95" title="MelloMario.Objects.BaseCollidable\lObject.StopVerticalMovement" alt="" coords="508,136,732,177"/>
-</map>

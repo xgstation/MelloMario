@@ -1,4 +1,0 @@
-<map id="MelloMario.ISoundFactory&lt; T &gt;" name="MelloMario.ISoundFactory&lt; T &gt;">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1ISoundFactory.html" title="{MelloMario.ISoundFactory\l\&lt; ContentManager \&gt;\n||+ BindLoader()\l+ CreateSoundTrack()\l+ CreateSoundEffect()\l}" alt="" coords="21,175,194,296"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Factories_1_1SoundFactory.html" title="{MelloMario.Factories.Sound\lFactory\n|+ Instance\l&#45; songs\l&#45; soundEffects\l&#45; content\l|+ BindLoader()\l+ CreateSoundTrack()\l+ CreateSoundEffect()\l&#45; SoundFactory()\l&#45; GetSong()\l&#45; GetSoundEffect()\l}" alt="" coords="15,345,199,555"/>
-</map>

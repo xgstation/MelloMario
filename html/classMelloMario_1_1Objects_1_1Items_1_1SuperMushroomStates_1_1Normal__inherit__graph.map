@@ -1,6 +1,0 @@
-<map id="MelloMario.Objects.Items.SuperMushroomStates.Normal" name="MelloMario.Objects.Items.SuperMushroomStates.Normal">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{BaseState\&lt; SuperMushroom \&gt;\n|# Owner\l|+ Update()\l# BaseState()\l}" alt="" coords="26,364,229,456"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{MelloMario.Objects.BaseState\&lt; T \&gt;\n|# Owner\l|+ Update()\l# BaseState()\l}" alt="" coords="5,132,236,224"/>
-<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="159,5,242,83"/>
-<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IItemState.html" title="{IItemState\n||+ Show()\l+ Collect()\l}" alt="" coords="242,248,325,340"/>
-</map>

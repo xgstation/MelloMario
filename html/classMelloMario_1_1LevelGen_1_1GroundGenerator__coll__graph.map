@@ -1,5 +1,0 @@
-<map id="MelloMario.LevelGen.GroundGenerator" name="MelloMario.LevelGen.GroundGenerator">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1ILevelGenerator.html" title="{ILevelGenerator\n||+ Request()\l}" alt="" coords="23,167,133,245"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IListener.html" title="{MelloMario.IListener\l\&lt; MelloMario.IGameObject \&gt;\n||+ Subscribe()\l}" alt="" coords="158,160,347,252"/>
-<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IListener.html" title="{MelloMario.IListener\l\&lt; in in T \&gt;\n||+ Subscribe()\l}" alt="" coords="183,5,322,97"/>
-</map>

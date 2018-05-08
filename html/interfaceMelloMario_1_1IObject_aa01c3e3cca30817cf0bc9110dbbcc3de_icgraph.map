@@ -1,4 +1,0 @@
-<map id="MelloMario.IObject.Draw" name="MelloMario.IObject.Draw">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Theming_1_1GameModel.html#a6f0e3f02c5751f99e1609d383f141dd1" title="MelloMario.Theming.GameModel.Draw" alt="" coords="216,5,461,32"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Game1.html#acf83ef72d18163996d51454769a2dcfd" title="This is called when the game should draw itself. " alt="" coords="509,5,673,32"/>
-</map>

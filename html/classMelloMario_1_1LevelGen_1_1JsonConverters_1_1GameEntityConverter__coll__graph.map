@@ -1,8 +1,0 @@
-<map id="MelloMario.LevelGen.JsonConverters.GameEntityConverter" name="MelloMario.LevelGen.JsonConverters.GameEntityConverter">
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IListener.html" title="{MelloMario.IListener\l\&lt; MelloMario.ISoundable \&gt;\n||+ Subscribe()\l}" alt="" coords="132,395,309,487"/>
-<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IListener.html" title="{MelloMario.IListener\l\&lt; in in T \&gt;\n||+ Subscribe()\l}" alt="" coords="255,204,394,296"/>
-<area shape="rect" id="node8" href="$interfaceMelloMario_1_1IListener.html" title="{MelloMario.IListener\l\&lt; MelloMario.IGameObject \&gt;\n||+ Subscribe()\l}" alt="" coords="334,395,523,487"/>
-<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IWorld.html" title="{MelloMario.IWorld\n|+ ID\l+ Type\l+ Boundary\l|+ Extend()\l+ ScanNearby()\l+ GetRespawnPoint()\l}" alt="" coords="547,373,694,509"/>
-<area shape="rect" id="node6" href="$interfaceMelloMario_1_1IContainer.html" title="{IContainer\&lt; IGameObject \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="531,189,711,311"/>
-<area shape="rect" id="node7" href="$interfaceMelloMario_1_1IContainer.html" title="{MelloMario.IContainer\&lt; T \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="531,5,710,127"/>
-</map>

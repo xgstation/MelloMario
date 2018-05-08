@@ -1,5 +1,0 @@
-<map id="MelloMario.IGameObjectFactory.CreateGameObject" name="MelloMario.IGameObjectFactory.CreateGameObject">
-<area shape="rect" id="node2" href="$classMelloMario_1_1LevelGen_1_1JsonConverters_1_1Util.html#af87c2b204c27e1c032984b7606d38057" title="MelloMario.LevelGen.Json\lConverters.Util.CreateItemList" alt="" coords="269,13,464,54"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Items_1_1SuperMushroom.html#ae189166f3a8e314baa5bb615bcab665a" title="MelloMario.Objects.Items.\lSuperMushroom.GetFireFlower" alt="" coords="265,78,468,119"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1LevelGen_1_1JsonConverters_1_1GameEntityConverter.html#a3a832fa94bbe1390575d204c5da2f6aa" title="MelloMario.LevelGen.Json\lConverters.GameEntityConverter.\lCreateBrickOrQuestion" alt="" coords="516,5,729,61"/>
-</map>

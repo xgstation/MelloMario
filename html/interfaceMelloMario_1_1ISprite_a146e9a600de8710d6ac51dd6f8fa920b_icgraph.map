@@ -1,5 +1,0 @@
-<map id="MelloMario.ISprite.Draw" name="MelloMario.ISprite.Draw">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a0ca5164820fd5343cb3b6850a3193da2" title="MelloMario.Objects.BaseGame\lObject.Draw" alt="" coords="223,5,426,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1HUD.html#a9a8037c30e45b71a05179171f4d8a973" title="MelloMario.Objects.UserInterfaces.\lHUD.OnDraw" alt="" coords="212,71,437,112"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1UserInterfaces_1_1GameOver.html#a6dc1cf6c7907e8e99bbb4ff4f5639520" title="MelloMario.Objects.UserInterfaces.\lGameOver.OnDraw" alt="" coords="212,136,437,177"/>
-</map>

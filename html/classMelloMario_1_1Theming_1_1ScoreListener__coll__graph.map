@@ -1,6 +1,0 @@
-<map id="MelloMario.Theming.ScoreListener" name="MelloMario.Theming.ScoreListener">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IListener.html" title="{IListener\&lt; IGameObject \&gt;\n||+ Subscribe()\l}" alt="" coords="5,263,176,340"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IListener.html" title="{MelloMario.IListener\l\&lt; in in T \&gt;\n||+ Subscribe()\l}" alt="" coords="21,5,160,97"/>
-<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IModel.html" title="{MelloMario.IModel\n|+ ActivePlayer\l+ IsPaused\l|+ ToggleFullScreen()\l+ Pause()\l+ Resume()\l+ Init()\l+ Reset()\l+ Quit()\l+ Update()\l+ Infinite()\l+ Normal()\l+ Draw()\l+ ToggleMute()\l+ LoadLevel()\l+ TransistGameWon()\l+ Transist()\l}" alt="" coords="201,160,351,443"/>
-<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IPlayer.html" title="{MelloMario.IPlayer\n|+ Character\l+ Camera\l+ Coins\l+ Score\l+ Lifes\l+ TimeRemain\l|+ AddCoin()\l+ AddLife()\l+ AddScore()\l+ Init()\l+ Spawn()\l+ Reset()\l+ Win()\l+ Update()\l}" alt="" coords="375,175,505,428"/>
-</map>

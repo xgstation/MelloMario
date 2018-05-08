@@ -1,6 +1,0 @@
-<map id="MelloMario.Theming.GameModel.Transist" name="MelloMario.Theming.GameModel.Transist">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Controls_1_1Scripts_1_1TransistScript.html#a3db2668bd1e26eec857358362e74dd49" title="MelloMario.Controls.Scripts.\lTransistScript.Bind" alt="" coords="269,35,456,76"/>
-<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IPlayer.html#ac0444f818790f3b9faf05be2a518ec38" title="MelloMario.IPlayer.Reset" alt="" coords="279,101,446,127"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IController.html#a11f1fbf12b60c68413e5a2a720805b3b" title="MelloMario.IController.Add\lCommand" alt="" coords="509,5,683,47"/>
-<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IController.html#aee9b89a6c5fc218ec1e2afd65e7d91e7" title="MelloMario.IController.Reset" alt="" coords="504,71,688,98"/>
-</map>

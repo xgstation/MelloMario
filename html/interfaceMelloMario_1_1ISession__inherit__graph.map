@@ -1,5 +1,0 @@
-<map id="MelloMario.ISession" name="MelloMario.ISession">
-<area shape="rect" id="node4" href="$classMelloMario_1_1Containers_1_1Session.html" title="{MelloMario.Containers.Session\n||+ ScanWorlds()\l+ ScanPlayers()\l# GetKey()\l}" alt="" coords="5,501,208,608"/>
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IContainer.html" title="{IContainer\&lt; IPlayer \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="35,189,179,311"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IContainer.html" title="{MelloMario.IContainer\&lt; T \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="17,5,196,127"/>
-</map>

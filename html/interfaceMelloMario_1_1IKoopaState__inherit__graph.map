@@ -1,6 +1,0 @@
-<map id="MelloMario.IKoopaState" name="MelloMario.IKoopaState">
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Defeated.html" title="{MelloMario.Objects.Enemies.\lKoopaStates.Defeated\n|&#45; played\l|+ Defeated()\l+ Show()\l+ JumpOn()\l+ Defeat()\l+ Update()\l+ Pushed()\l}" alt="" coords="5,300,199,465"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1MovingShell.html" title="{MelloMario.Objects.Enemies.\lKoopaStates.MovingShell\n||+ MovingShell()\l+ Show()\l+ JumpOn()\l+ Defeat()\l+ Update()\l+ Pushed()\l}" alt="" coords="223,300,416,465"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1Enemies_1_1KoopaStates_1_1Normal.html" title="{MelloMario.Objects.Enemies.\lKoopaStates.Normal\n||+ Normal()\l+ Show()\l+ JumpOn()\l+ Defeat()\l+ Update()\l+ Pushed()\l}" alt="" coords="440,300,633,465"/>
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="278,5,361,83"/>
-</map>

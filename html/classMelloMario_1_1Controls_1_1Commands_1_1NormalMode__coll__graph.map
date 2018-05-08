@@ -1,4 +1,0 @@
-<map id="MelloMario.Controls.Commands.NormalMode" name="MelloMario.Controls.Commands.NormalMode">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1ICommand.html" title="{ICommand\n||+ Execute()\l}" alt="" coords="5,108,96,185"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IModel.html" title="{MelloMario.IModel\n|+ ActivePlayer\l+ IsPaused\l|+ ToggleFullScreen()\l+ Pause()\l+ Resume()\l+ Init()\l+ Reset()\l+ Quit()\l+ Update()\l+ Infinite()\l+ Normal()\l+ Draw()\l+ ToggleMute()\l+ LoadLevel()\l+ TransistGameWon()\l+ Transist()\l}" alt="" coords="121,5,271,288"/>
-</map>

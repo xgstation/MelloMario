@@ -1,4 +1,0 @@
-<map id="MelloMario.Objects.Blocks.Flag.OnCollision" name="MelloMario.Objects.Blocks.Flag.OnCollision">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#ac4d6aa03314802dcc75cb4730b1be51f" title="MelloMario.Objects.BaseCollidable\lObject.ChangeLives" alt="" coords="236,5,460,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseCollidableObject.html#a51b9dcd51c329bef4f04919f67234378" title="MelloMario.Objects.BaseCollidable\lObject.ScorePoints" alt="" coords="236,71,460,112"/>
-</map>

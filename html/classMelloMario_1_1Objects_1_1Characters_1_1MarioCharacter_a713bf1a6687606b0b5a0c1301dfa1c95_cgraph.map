@@ -1,4 +1,0 @@
-<map id="MelloMario.Objects.Characters.MarioCharacter.CrouchPress" name="MelloMario.Objects.Characters.MarioCharacter.CrouchPress">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Characters_1_1MarioCharacter.html#ae620b1f991ec70eb5c0be5f129191460" title="MelloMario.Objects.Characters.\lMarioCharacter.Crouch" alt="" coords="259,5,464,47"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IMarioMovementState.html#aa88d92d51231fa474d01bd6903b25cf7" title="MelloMario.IMarioMovement\lState.Crouch" alt="" coords="512,5,695,47"/>
-</map>

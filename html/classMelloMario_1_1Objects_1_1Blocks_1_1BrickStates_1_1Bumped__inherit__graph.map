@@ -1,6 +1,0 @@
-<map id="MelloMario.Objects.Blocks.BrickStates.Bumped" name="MelloMario.Objects.Blocks.BrickStates.Bumped">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{BaseState\&lt; Brick \&gt;\n|# Owner\l|+ Update()\l# BaseState()\l}" alt="" coords="75,379,212,471"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{MelloMario.Objects.BaseState\&lt; T \&gt;\n|# Owner\l|+ Update()\l# BaseState()\l}" alt="" coords="5,132,236,224"/>
-<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="155,5,238,83"/>
-<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IBlockState.html" title="{IBlockState\n||+ Show()\l+ Hide()\l+ Bump()\l}" alt="" coords="219,248,308,355"/>
-</map>

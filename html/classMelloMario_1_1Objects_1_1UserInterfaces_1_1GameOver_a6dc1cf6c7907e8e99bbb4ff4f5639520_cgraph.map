@@ -1,4 +1,0 @@
-<map id="MelloMario.Objects.UserInterfaces.GameOver.OnDraw" name="MelloMario.Objects.UserInterfaces.GameOver.OnDraw">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1ISpriteFactory.html#a240c908f42b48cd00a57ab07b52d8488" title="MelloMario.ISpriteFactory.\lCreateTextSprite" alt="" coords="279,5,452,47"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1ISprite.html#a146e9a600de8710d6ac51dd6f8fa920b" title="MelloMario.ISprite.Draw" alt="" coords="286,71,445,98"/>
-</map>

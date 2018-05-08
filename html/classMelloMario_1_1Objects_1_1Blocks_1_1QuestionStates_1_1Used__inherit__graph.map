@@ -1,6 +1,0 @@
-<map id="MelloMario.Objects.Blocks.QuestionStates.Used" name="MelloMario.Objects.Blocks.QuestionStates.Used">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{BaseState\&lt; Question \&gt;\n|# Owner\l|+ Update()\l# BaseState()\l}" alt="" coords="59,379,217,471"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseState.html" title="{MelloMario.Objects.BaseState\&lt; T \&gt;\n|# Owner\l|+ Update()\l# BaseState()\l}" alt="" coords="5,132,236,224"/>
-<area shape="rect" id="node4" href="$interfaceMelloMario_1_1IState.html" title="{IState\n||+ Update()\l}" alt="" coords="155,5,238,83"/>
-<area shape="rect" id="node5" href="$interfaceMelloMario_1_1IBlockState.html" title="{IBlockState\n||+ Show()\l+ Hide()\l+ Bump()\l}" alt="" coords="224,248,313,355"/>
-</map>

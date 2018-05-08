@@ -1,6 +1,0 @@
-<map id="MelloMario.Objects.BaseGameObject.Draw" name="MelloMario.Objects.BaseGameObject.Draw">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1ISprite.html#a146e9a600de8710d6ac51dd6f8fa920b" title="MelloMario.ISprite.Draw" alt="" coords="278,5,437,32"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a0ef49bef700acd9c2327a635cd449b4e" title="MelloMario.Objects.BaseGame\lObject.OnDraw" alt="" coords="256,57,459,98"/>
-<area shape="rect" id="node4" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#aead34775da7bbf3904154cd0b457011d" title="MelloMario.Objects.BaseGame\lObject.OnSimulation" alt="" coords="256,122,459,163"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Objects_1_1BaseGameObject.html#a163927be40bce605ce978fea27938ac5" title="MelloMario.Objects.BaseGame\lObject.OnUpdate" alt="" coords="256,187,459,229"/>
-</map>

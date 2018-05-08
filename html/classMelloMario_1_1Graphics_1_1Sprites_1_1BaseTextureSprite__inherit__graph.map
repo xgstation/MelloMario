@@ -1,8 +1,0 @@
-<map id="MelloMario.Graphics.Sprites.BaseTextureSprite" name="MelloMario.Graphics.Sprites.BaseTextureSprite">
-<area shape="rect" id="node4" href="$classMelloMario_1_1Graphics_1_1Sprites_1_1AnimatedSprite.html" title="{MelloMario.Graphics.Sprites.\lAnimatedSprite\n|&#45; columns\l&#45; interval\l&#45; rows\l&#45; elapsed\l&#45; frames\l&#45; refSource\l|+ AnimatedSprite()\l# OnAnimate()\l# OnFrame()\l&#45; UpdateSourceRectangle()\l}" alt="" coords="112,572,303,781"/>
-<area shape="rect" id="node7" href="$classMelloMario_1_1Graphics_1_1Sprites_1_1StaticSprite.html" title="{MelloMario.Graphics.Sprites.\lStaticSprite\n||+ StaticSprite()\l# OnAnimate()\l}" alt="" coords="327,623,517,730"/>
-<area shape="rect" id="node2" href="$classMelloMario_1_1Graphics_1_1Sprites_1_1BaseSprite.html" title="{BaseSprite\n|+ LayerDepth\l+ PixelSize\l&#45; zIndex\l&#45; visible\l|+ Draw()\l# BaseSprite()\l# OnDraw()\l# Toggle()\l}" alt="" coords="261,131,367,296"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1ISprite.html" title="{ISprite\n|+ PixelSize\l|+ Draw()\l}" alt="" coords="269,5,359,83"/>
-<area shape="rect" id="node5" href="$classMelloMario_1_1Graphics_1_1Sprites_1_1FlashingAnimatedSprite.html" title="{MelloMario.Graphics.Sprites.\lFlashingAnimatedSprite\n||+ FlashingAnimatedSprite()\l# OnFrame()\l}" alt="" coords="5,829,196,936"/>
-<area shape="rect" id="node6" href="$classMelloMario_1_1Graphics_1_1Sprites_1_1FlickingAnimatedSprite.html" title="{MelloMario.Graphics.Sprites.\lFlickingAnimatedSprite\n|&#45; random\l|+ FlickingAnimatedSprite()\l# OnFrame()\l}" alt="" coords="220,829,411,936"/>
-</map>

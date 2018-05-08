@@ -1,4 +1,0 @@
-<map id="MelloMario.ISpriteFactory.CreateFloorSprite" name="MelloMario.ISpriteFactory.CreateFloorSprite">
-<area shape="rect" id="node2" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Floor.html#a474b322ea21110e72f2cce58a7a426de" title="MelloMario.Objects.Blocks.\lFloor.UpdateSprite" alt="" coords="227,5,409,47"/>
-<area shape="rect" id="node3" href="$classMelloMario_1_1Objects_1_1Blocks_1_1Floor.html#acd1d2da17a76b907b9b1f7e301cfdccc" title="MelloMario.Objects.Blocks.\lFloor.Floor" alt="" coords="457,5,640,47"/>
-</map>

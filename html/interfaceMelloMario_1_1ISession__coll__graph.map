@@ -1,4 +1,0 @@
-<map id="MelloMario.ISession" name="MelloMario.ISession">
-<area shape="rect" id="node2" href="$interfaceMelloMario_1_1IContainer.html" title="{IContainer\&lt; IPlayer \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="23,189,167,311"/>
-<area shape="rect" id="node3" href="$interfaceMelloMario_1_1IContainer.html" title="{MelloMario.IContainer\&lt; T \&gt;\n||+ Add()\l+ Move()\l+ Remove()\l+ Update()\l}" alt="" coords="5,5,184,127"/>
-</map>
